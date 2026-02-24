@@ -458,7 +458,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -1017,7 +1017,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -1576,7 +1576,7 @@ exports[`<Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -2185,7 +2185,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -2744,7 +2744,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -3303,7 +3303,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -3911,7 +3911,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -4470,7 +4470,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }
@@ -5029,7 +5029,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                       [
                         {
                           "marginBottom": 0,
-                          "marginTop": 16,
+                          "marginTop": 12,
                         },
                       ]
                     }

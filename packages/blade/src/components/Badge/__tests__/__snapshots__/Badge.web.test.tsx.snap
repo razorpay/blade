@@ -31,8 +31,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -40,7 +40,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -67,10 +66,10 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -79,6 +78,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -129,6 +130,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
         <p
           class="c5"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -169,8 +171,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -197,10 +199,10 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -209,6 +211,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -227,6 +231,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -267,8 +272,8 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -290,15 +295,15 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -307,6 +312,8 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -325,6 +332,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -365,8 +373,8 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -388,15 +396,15 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -405,6 +413,8 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -423,6 +433,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -463,8 +474,8 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -486,15 +497,15 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -503,6 +514,8 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -521,6 +534,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -561,8 +575,8 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -584,15 +598,15 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -601,6 +615,8 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -619,6 +635,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -659,8 +676,8 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -682,15 +699,15 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -699,6 +716,8 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -717,6 +736,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -757,8 +777,8 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -780,15 +800,15 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -797,6 +817,8 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -815,6 +837,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -855,8 +878,8 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -878,15 +901,15 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -895,6 +918,8 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -913,6 +938,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -953,8 +979,8 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -976,15 +1002,15 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -993,6 +1019,8 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1011,6 +1039,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1051,8 +1080,8 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1074,15 +1103,15 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1091,6 +1120,8 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1109,6 +1140,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1149,8 +1181,8 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1172,15 +1204,15 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1189,6 +1221,8 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1207,6 +1241,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1247,8 +1282,8 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1270,15 +1305,15 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1287,6 +1322,8 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1305,6 +1342,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1345,8 +1383,8 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1368,15 +1406,15 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1385,6 +1423,8 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1403,6 +1443,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1443,8 +1484,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1471,10 +1512,10 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1483,6 +1524,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1501,6 +1544,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1541,8 +1585,8 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1569,10 +1613,10 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1581,6 +1625,8 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1599,6 +1645,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1639,8 +1686,8 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1667,10 +1714,10 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1679,6 +1726,8 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1697,6 +1746,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1737,8 +1787,8 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1765,10 +1815,10 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1777,6 +1827,8 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1795,6 +1847,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1835,8 +1888,8 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1863,10 +1916,10 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1875,6 +1928,8 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1893,6 +1948,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -1933,8 +1989,8 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1961,10 +2017,10 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1973,6 +2029,8 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -1991,6 +2049,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2031,8 +2090,8 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2059,10 +2118,10 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2071,6 +2130,8 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2089,6 +2150,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2129,8 +2191,8 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2157,10 +2219,10 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2169,6 +2231,8 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2187,6 +2251,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2227,8 +2292,8 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2255,10 +2320,10 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2267,6 +2332,8 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2285,6 +2352,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2325,8 +2393,8 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2353,10 +2421,10 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2365,6 +2433,8 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2383,6 +2453,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2423,8 +2494,8 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2451,10 +2522,10 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2463,6 +2534,8 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2481,6 +2554,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2521,8 +2595,8 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2549,10 +2623,10 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2561,6 +2635,8 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2579,6 +2655,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2619,8 +2696,8 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2647,10 +2724,10 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2659,6 +2736,8 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2677,6 +2756,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2717,8 +2797,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2745,10 +2825,10 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2757,6 +2837,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 <div>
@@ -2775,6 +2857,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>
@@ -2815,8 +2898,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2843,10 +2926,10 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2855,6 +2938,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 <div>
@@ -2873,6 +2958,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </p>

@@ -96,8 +96,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "borderColor": "hsla(204, 8%, 88%, 1)",
-                  "borderRadius": 8,
+                  "borderColor": "hsla(205, 8%, 71%, 1)",
+                  "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
@@ -108,6 +108,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                   "marginLeft": 2,
                   "marginRight": 2,
                   "marginTop": 2,
+                  "paddingTop": 0,
                   "position": "relative",
                   "width": 16,
                 },
@@ -263,7 +264,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   "borderColor": "hsla(204, 8%, 88%, 1)",
-                  "borderRadius": 8,
+                  "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
@@ -274,6 +275,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                   "marginLeft": 2,
                   "marginRight": 2,
                   "marginTop": 2,
+                  "paddingTop": 0,
                   "position": "relative",
                   "width": 16,
                 },
@@ -429,7 +431,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   "borderColor": "hsla(4, 85%, 44%, 1)",
-                  "borderRadius": 8,
+                  "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
@@ -440,6 +442,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                   "marginLeft": 2,
                   "marginRight": 2,
                   "marginTop": 2,
+                  "paddingTop": 0,
                   "position": "relative",
                   "width": 16,
                 },
@@ -631,6 +634,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           fontStyle="normal"
           fontWeight="regular"
           lineHeight={50}
+          marginTop="spacing.0"
           style={
             [
               {

@@ -306,7 +306,10 @@ const _Pagination = ({
               </DropdownOverlay>
             </Dropdown>
             <BaseBox aria-hidden paddingLeft="spacing.3" paddingRight="spacing.3">
-              <Text size="small" weight='regular'> {pageSizeLabel} </Text>
+              <Text size="small" weight="regular">
+                {' '}
+                {pageSizeLabel}{' '}
+              </Text>
             </BaseBox>
           </BaseBox>
         )}
@@ -328,7 +331,9 @@ const _Pagination = ({
           />
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
-              <Text textAlign="center" size="small" weight="regular">{`Showing ${internalPage + 1} of ${totalPages} pages`}</Text>
+              <Text textAlign="center" size="small" weight="regular">{`Showing ${
+                internalPage + 1
+              } of ${totalPages} pages`}</Text>
             </BaseBox>
           )}
           {totalPages > 1 && showPageNumberSelector && !onMobile && (

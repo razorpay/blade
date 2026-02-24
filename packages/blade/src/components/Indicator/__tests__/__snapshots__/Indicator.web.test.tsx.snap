@@ -35,10 +35,10 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -80,6 +80,7 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -122,10 +123,10 @@ exports[`<Indicator /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -166,6 +167,7 @@ exports[`<Indicator /> should render 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -208,10 +210,10 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -226,10 +228,10 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -270,6 +272,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -308,6 +311,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -346,6 +350,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -384,6 +389,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -426,10 +432,10 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -477,6 +483,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Success
         </p>

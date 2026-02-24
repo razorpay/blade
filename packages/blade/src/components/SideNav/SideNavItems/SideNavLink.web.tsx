@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import type { SideNavLinkProps } from '../types';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import type { SideNavLinkProps } from '../types';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { Box } from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
@@ -38,7 +38,7 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
 
       [`.${STYLED_NAV_LINK}`]: {
         color: props.theme.colors.interactive.text.gray.normal,
-        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
+        backgroundColor: props.theme.colors.interactive.background.gray.default,
       },
     },
     [`.${STYLED_NAV_LINK}`]: {
@@ -61,13 +61,9 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
       transition: getNavItemTransition(props.theme),
-      '&[aria-current]': {
-        color: props.theme.colors.interactive.text.gray.subtle,
-        backgroundColor: props.theme.colors.interactive.background.gray.default,
-      },
-      '&[aria-current]:hover': {
+      '&[aria-current], &[aria-current]:hover': {
         color: props.theme.colors.interactive.text.gray.normal,
-        backgroundColor: props.theme.colors.interactive.background.gray.highlighted,
+        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),

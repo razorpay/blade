@@ -6,14 +6,13 @@ exports[`<Button /> should render button with default properties 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -29,8 +28,9 @@ exports[`<Button /> should render button with default properties 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -40,19 +40,21 @@ exports[`<Button /> should render button with default properties 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -112,6 +114,8 @@ exports[`<Button /> should render button with default properties 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -151,14 +155,13 @@ exports[`<Button /> should render button with full width 1`] = `
   width: 100%;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -174,8 +177,9 @@ exports[`<Button /> should render button with full width 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -185,19 +189,21 @@ exports[`<Button /> should render button with full width 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -257,6 +263,8 @@ exports[`<Button /> should render button with full width 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -296,14 +304,13 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -319,8 +326,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -330,19 +338,21 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -389,7 +399,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -418,6 +427,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -489,14 +500,13 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -512,8 +522,9 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -523,19 +534,21 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -582,7 +595,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-left: 8px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -611,6 +623,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -682,14 +696,12 @@ exports[`<Button /> should render disabled button 1`] = `
   width: auto;
   cursor: not-allowed;
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -705,8 +717,9 @@ exports[`<Button /> should render disabled button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -716,18 +729,18 @@ exports[`<Button /> should render disabled button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -788,6 +801,8 @@ exports[`<Button /> should render disabled button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -828,14 +843,12 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
   width: auto;
   cursor: not-allowed;
   background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -851,8 +864,9 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -862,18 +876,18 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -934,6 +948,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -973,15 +989,14 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -997,8 +1012,9 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1007,20 +1023,22 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1080,6 +1098,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1120,14 +1140,12 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
   width: auto;
   cursor: not-allowed;
   background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1143,8 +1161,9 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1154,18 +1173,18 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1226,6 +1245,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1265,15 +1286,14 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1289,8 +1309,9 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1299,20 +1320,22 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1372,6 +1395,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1412,14 +1437,12 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
   width: auto;
   cursor: not-allowed;
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1435,8 +1458,9 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1446,18 +1470,18 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1518,6 +1542,8 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1557,15 +1583,14 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,0.18);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1581,8 +1606,9 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1591,163 +1617,22 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c1.c1.c1.c1.c1 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
-}
-
-.c4.c4.c4.c4.c4 {
-  color: hsla(218,89%,51%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3.c3.c3.c3.c3 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class=" c1"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c2 c3"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c4"
-          data-blade-component="base-text"
-        >
-          Pay Now
-        </div>
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render disabled primary color tertiary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: not-allowed;
-  background-color: hsla(206,10%,29%,0.09);
-  border-color: hsla(204,8%,88%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(206,10%,29%,0.09);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.09);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(206,10%,29%,0.09);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1807,6 +1692,158 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render disabled primary color tertiary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1847,14 +1884,12 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
   width: auto;
   cursor: not-allowed;
   background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.32);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1870,8 +1905,9 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1881,18 +1917,18 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.32);
   outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1953,6 +1989,8 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1992,15 +2030,14 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0.32);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(206,10%,29%,0.06);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2016,8 +2053,9 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2026,20 +2064,22 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(206,10%,29%,0.06);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(206,10%,29%,0.06);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2099,6 +2139,8 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2138,15 +2180,14 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(206,10%,29%,0.06);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2162,8 +2203,9 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2172,17 +2214,22 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2242,6 +2289,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2282,14 +2331,13 @@ exports[`<Button /> should render large size button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
+  border: none;
   border-radius: 12px;
-  border-style: solid;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2305,8 +2353,9 @@ exports[`<Button /> should render large size button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(72px 72px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2316,19 +2365,21 @@ exports[`<Button /> should render large size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2388,6 +2439,8 @@ exports[`<Button /> should render large size button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2427,14 +2480,13 @@ exports[`<Button /> should render medium size button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2450,8 +2502,9 @@ exports[`<Button /> should render medium size button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2461,19 +2514,21 @@ exports[`<Button /> should render medium size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2533,6 +2588,8 @@ exports[`<Button /> should render medium size button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2572,14 +2629,13 @@ exports[`<Button /> should render negative color primary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(4,85%,44%,1);
-  border-color: hsla(4,85%,44%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,44%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2595,8 +2651,9 @@ exports[`<Button /> should render negative color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2606,19 +2663,21 @@ exports[`<Button /> should render negative color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(4,85%,36%,1);
-  border-color: hsla(4,85%,36%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(4,85%,36%,1);
-  border-color: hsla(4,85%,36%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(4,85%,36%,1);
-  border-color: hsla(4,85%,36%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(4,85%,36%,1),inset 0 0px 0px 0.5px hsla(4,85%,36%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2678,6 +2737,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2716,15 +2777,14 @@ exports[`<Button /> should render negative color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(4,85%,44%,0.09);
-  border-color: hsla(4,85%,44%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2740,8 +2800,9 @@ exports[`<Button /> should render negative color secondary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2750,20 +2811,22 @@ exports[`<Button /> should render negative color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(4,85%,44%,0.18);
-  border-color: hsla(4,85%,44%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(4,85%,44%,0.18);
-  border-color: hsla(4,85%,44%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(4,85%,44%,0.18);
-  border-color: hsla(4,85%,44%,1);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2823,6 +2886,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2862,14 +2927,13 @@ exports[`<Button /> should render positive color primary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(150,100%,28%,1);
-  border-color: hsla(150,100%,28%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,28%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2885,8 +2949,9 @@ exports[`<Button /> should render positive color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2896,19 +2961,21 @@ exports[`<Button /> should render positive color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(150,100%,23%,1);
-  border-color: hsla(150,100%,23%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(150,100%,23%,1);
-  border-color: hsla(150,100%,23%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(150,100%,23%,1);
-  border-color: hsla(150,100%,23%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(150,100%,23%,1),inset 0 0px 0px 0.5px hsla(150,100%,23%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2968,6 +3035,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3006,15 +3075,14 @@ exports[`<Button /> should render positive color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(150,100%,28%,0.09);
-  border-color: hsla(150,100%,28%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3030,8 +3098,9 @@ exports[`<Button /> should render positive color secondary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3040,20 +3109,22 @@ exports[`<Button /> should render positive color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(150,100%,28%,0.18);
-  border-color: hsla(150,100%,28%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(150,100%,28%,0.18);
-  border-color: hsla(150,100%,28%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(150,100%,28%,0.18);
-  border-color: hsla(150,100%,28%,1);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3113,6 +3184,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3152,14 +3225,13 @@ exports[`<Button /> should render primary color primary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3175,8 +3247,9 @@ exports[`<Button /> should render primary color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3186,19 +3259,21 @@ exports[`<Button /> should render primary color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3258,6 +3333,8 @@ exports[`<Button /> should render primary color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3296,15 +3373,14 @@ exports[`<Button /> should render primary color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3320,8 +3396,9 @@ exports[`<Button /> should render primary color secondary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3330,162 +3407,22 @@ exports[`<Button /> should render primary color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c1.c1.c1.c1.c1 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 160px;
-  transition-timing-function: 160px;
-}
-
-.c4.c4.c4.c4.c4 {
-  color: hsla(218,89%,51%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3.c3.c3.c3.c3 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class=" c1"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c2 c3"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c4"
-          data-blade-component="base-text"
-        >
-          Pay Now
-        </div>
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render primary color tertiary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(206,10%,29%,0.06);
-  border-color: hsla(204,8%,88%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(206,10%,29%,0.12);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.12);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(206,10%,29%,0.12);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3545,6 +3482,157 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render primary color tertiary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 160px;
+  transition-timing-function: 160px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3584,14 +3672,13 @@ exports[`<Button /> should render small size button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3607,8 +3694,9 @@ exports[`<Button /> should render small size button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(56px 56px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3618,19 +3706,21 @@ exports[`<Button /> should render small size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3690,6 +3780,8 @@ exports[`<Button /> should render small size button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3729,14 +3821,13 @@ exports[`<Button /> should render white color primary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(0,0%,100%,1);
-  border-color: hsla(0,0%,100%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3752,8 +3843,9 @@ exports[`<Button /> should render white color primary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3763,19 +3855,21 @@ exports[`<Button /> should render white color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,0.8);
-  border-color: hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,0.8);
-  border-color: hsla(0,0%,100%,0.8);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(0,0%,100%,0.8);
-  border-color: hsla(0,0%,100%,0.8);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3835,6 +3929,8 @@ exports[`<Button /> should render white color primary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -3873,15 +3969,14 @@ exports[`<Button /> should render white color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(0,0%,100%,0.8);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.18);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3897,8 +3992,9 @@ exports[`<Button /> should render white color secondary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3907,20 +4003,22 @@ exports[`<Button /> should render white color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.8);
+  background-color: hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.8);
+  background-color: hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.8);
+  background-color: hsla(0,0%,0%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3980,6 +4078,8 @@ exports[`<Button /> should render white color secondary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -4019,14 +4119,13 @@ exports[`<Button /> should render white color tertiary button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(0,0%,100%,0.18);
-  border-color: hsla(0,0%,100%,0.18);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -4042,8 +4141,9 @@ exports[`<Button /> should render white color tertiary button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -4052,17 +4152,22 @@ exports[`<Button /> should render white color tertiary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(0,0%,0%,0.18);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0.32);
+  background-color: hsla(0,0%,0%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4122,6 +4227,8 @@ exports[`<Button /> should render white color tertiary button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -4161,10 +4268,9 @@ exports[`<Button /> should render xsmall size button 1`] = `
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 8px;
@@ -4184,8 +4290,9 @@ exports[`<Button /> should render xsmall size button 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(48px 48px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -4195,19 +4302,21 @@ exports[`<Button /> should render xsmall size button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4267,6 +4376,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c3.c3.c3.c3.c3 {

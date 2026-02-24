@@ -82,21 +82,24 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
+  border-radius: 8px;
   border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
@@ -120,6 +123,8 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  --chip-outer-radius: 8px;
+  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -136,6 +141,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -219,15 +225,15 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -236,10 +242,10 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -333,6 +339,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -378,12 +385,18 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -427,12 +440,18 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -528,21 +547,24 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
+  border-radius: 8px;
   border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
@@ -566,6 +588,8 @@ exports[`<Chip /> should render chip 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  --chip-outer-radius: 8px;
+  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -582,6 +606,7 @@ exports[`<Chip /> should render chip 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -665,15 +690,15 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -682,10 +707,10 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -778,6 +803,7 @@ exports[`<Chip /> should render chip 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -822,12 +848,18 @@ exports[`<Chip /> should render chip 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -870,12 +902,18 @@ exports[`<Chip /> should render chip 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -971,13 +1009,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
@@ -990,9 +1026,14 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: flex;
 }
 
+.c14.c14.c14.c14.c14 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
+  border-radius: 8px;
   border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
@@ -1016,6 +1057,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  --chip-outer-radius: 8px;
+  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1032,6 +1075,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -1115,15 +1159,15 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1132,10 +1176,10 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1228,6 +1272,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -1304,12 +1349,18 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           />
                         </svg>
                       </div>
-                      <p
+                      <div
                         class="c14"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c15"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1384,12 +1435,18 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           />
                         </svg>
                       </div>
-                      <p
+                      <div
                         class="c14"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c15"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1485,24 +1542,27 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(204,8%,88%,1);
   border-style: solid;
 }
 
-.c15.c15.c15.c15.c15 {
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c16.c16.c16.c16.c16 {
   border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1519,13 +1579,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
@@ -1533,7 +1591,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
+  border-radius: 8px;
   border-color: hsla(204,8%,88%,1);
   border-width: 1px;
   display: -webkit-box;
@@ -1557,6 +1615,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  --chip-outer-radius: 8px;
+  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1567,9 +1627,9 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   background-color: transparent;
-  border-radius: 9999px;
+  border-radius: 8px;
   border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
@@ -1593,6 +1653,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  --chip-outer-radius: 8px;
+  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1609,17 +1671,19 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
 }
 
-.c18.c18.c18.c18.c18:hover {
+.c19.c19.c19.c19.c19:hover {
   background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1682,7 +1746,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   z-index: 2;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1699,7 +1763,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14:focus-visible + div {
+.c15.c15.c15.c15.c15:focus-visible + div {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1711,7 +1775,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   z-index: 2;
 }
 
-.c14.c14.c14.c14.c14:hover + div {
+.c15.c15.c15.c15.c15:hover + div {
   border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1729,15 +1793,15 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1746,10 +1810,10 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1760,7 +1824,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   overflow-wrap: break-word;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1769,10 +1833,10 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1844,61 +1908,61 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
@@ -1925,6 +1989,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -1970,12 +2035,18 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2005,25 +2076,31 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     aria-disabled="false"
                     aria-invalid="false"
                     aria-required="false"
-                    class="c14"
+                    class="c15"
                     role="radio"
                     type="radio"
                     value="mango"
                   />
                   <div
-                    class="c15 c16"
+                    class="c16 c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c17 c18"
+                      class="c18 c19"
                       data-blade-component="base-box"
                     >
-                      <p
-                        class="c19"
-                        data-blade-component="text"
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c20"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

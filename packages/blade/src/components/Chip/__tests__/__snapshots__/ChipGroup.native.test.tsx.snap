@@ -63,22 +63,22 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 17,
                   "marginBottom": 0,
@@ -342,11 +342,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -370,13 +372,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -388,17 +388,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -409,41 +407,53 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -542,11 +552,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -570,13 +582,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -588,17 +598,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -609,41 +617,53 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -742,11 +762,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -770,13 +792,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -788,17 +808,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -809,41 +827,53 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Orange
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Orange
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -921,22 +951,22 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 17,
                   "marginBottom": 0,
@@ -1201,11 +1231,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -1229,13 +1261,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -1247,17 +1277,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1268,41 +1296,53 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Apple
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1402,11 +1442,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -1430,13 +1472,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -1448,17 +1488,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1469,41 +1507,53 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Mango
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1603,11 +1653,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
+                          "--chip-outer-border-width": 1,
+                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 9999,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
@@ -1631,13 +1683,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       alignItems="center"
                       backgroundColor="surface.background.gray.intense"
                       borderColor="interactive.border.gray.faded"
-                      borderRadius="max"
                       borderWidth="thinner"
                       color="primary"
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      gap="spacing.3"
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
@@ -1649,17 +1699,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
                             "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 0.5,
                             "display": "flex",
                             "flexDirection": "row",
-                            "gap": 8,
                             "height": 28,
                             "justifyContent": "center",
                             "overflow": "hidden",
-                            "paddingLeft": 12,
-                            "paddingRight": 12,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
                             "width": "100%",
                           },
                           {
@@ -1670,41 +1718,53 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       }
                       width="100%"
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={100}
-                        numberOfLines={1}
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
+                              "paddingLeft": 4,
+                              "paddingRight": 4,
                             },
                           ]
                         }
                       >
-                        Orange
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Orange
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>

@@ -63,22 +63,22 @@ exports[`<OTPInput /> should render 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 17,
                   "marginBottom": 0,
@@ -221,7 +221,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -236,9 +236,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -250,7 +251,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -294,7 +295,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -377,7 +378,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -392,9 +393,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -406,7 +408,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -450,7 +452,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -533,7 +535,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -548,9 +550,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -562,7 +565,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -606,7 +609,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -689,7 +692,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -704,9 +707,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -718,7 +722,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -762,7 +766,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -845,7 +849,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -860,9 +864,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -874,7 +879,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -918,7 +923,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1001,7 +1006,7 @@ exports[`<OTPInput /> should render 1`] = `
                   [
                     {},
                     {
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "width": "100%",
                     },
                   ]
@@ -1016,9 +1021,10 @@ exports[`<OTPInput /> should render 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 0,
                         "display": "flex",
@@ -1030,7 +1036,7 @@ exports[`<OTPInput /> should render 1`] = `
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
-                        "borderRadius": 12,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                       },
@@ -1074,7 +1080,7 @@ exports[`<OTPInput /> should render 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1188,22 +1194,22 @@ exports[`<OTPInput /> should render large size 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
             lineHeight={100}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(204, 9%, 42%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
+                  "fontWeight": "500",
                   "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
@@ -1361,6 +1367,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -1420,7 +1427,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1518,6 +1525,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -1577,7 +1585,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1675,6 +1683,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -1734,7 +1743,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1832,6 +1841,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -1891,7 +1901,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1989,6 +1999,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -2047,7 +2058,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2145,6 +2156,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "center",
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(204, 8%, 88%, 1)",
                         "borderRadius": 12,
@@ -2203,7 +2215,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                       [
                         {
                           "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                          "color": "hsla(200, 10%, 18%, 1)",
+                          "color": "hsla(0, 0%, 2%, 1)",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,

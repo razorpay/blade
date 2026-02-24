@@ -1,10 +1,16 @@
 import { memo } from 'react';
-import isUndefined from '~utils/lodashButBetter/isUndefined';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
-import { TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon, RefreshIcon } from '~components/Icons';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
+import {
+  TrashIcon,
+  EyeIcon,
+  CloseIcon,
+  CheckCircleIcon,
+  RotateClockWiseIcon,
+} from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
@@ -53,9 +59,13 @@ const FileUploadItem = memo(
           <BaseBox
             display="flex"
             flexDirection="row"
-            margin={containerSize === 'large' ? 'spacing.4' : 'spacing.3'}
+            margin={
+              containerSize === 'large'
+                ? 'spacing.4'
+                : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
+            }
           >
-            <BaseBox marginRight="spacing.3">
+            <BaseBox marginRight="spacing.4">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
             <BaseBox flexGrow={1}>
@@ -104,7 +114,7 @@ const FileUploadItem = memo(
                 <BaseLink
                   marginX="spacing.1"
                   variant="button"
-                  icon={RefreshIcon}
+                  icon={RotateClockWiseIcon}
                   color="negative"
                   size="small"
                   onClick={() => {

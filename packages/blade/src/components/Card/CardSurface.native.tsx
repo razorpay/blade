@@ -23,6 +23,7 @@ type CardSurfaceProps = {
   children: React.ReactNode;
   elevation: keyof Elevation;
   colorScheme?: ColorSchemeNames;
+  isSelected?: boolean;
 } & Omit<BaseBoxProps, 'elevation'>;
 
 const CardSurface = ({
@@ -35,6 +36,7 @@ const CardSurface = ({
   onPointerEnter,
   pointerEvents,
   colorScheme: _colorScheme,
+  isSelected: _isSelected,
   ...props
 }: CardSurfaceProps): React.ReactElement => {
   return (

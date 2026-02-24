@@ -10,10 +10,10 @@ exports[`<Alert /> should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 2px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  margin-top: 1px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -51,7 +51,7 @@ exports[`<Alert /> should render 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -72,6 +72,7 @@ exports[`<Alert /> should render 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  margin-top: 2px;
 }
 
 .c6.c6.c6.c6.c6:hover:not([disabled]) {
@@ -90,6 +91,7 @@ exports[`<Alert /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c6.c6.c6.c6.c6:active {
@@ -105,10 +107,10 @@ exports[`<Alert /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -166,6 +168,7 @@ exports[`<Alert /> should render 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Currently you can only accept payments in international currencies using PayPal.
           </p>
@@ -211,7 +214,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -250,7 +253,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -271,6 +274,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  margin-top: 2px;
 }
 
 .c6.c6.c6.c6.c6:hover:not([disabled]) {
@@ -289,6 +293,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c6.c6.c6.c6.c6:active {
@@ -304,10 +309,10 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -358,6 +363,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Currently you can only accept payments in international currencies using PayPal.
           </p>
@@ -403,7 +409,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -442,7 +448,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -463,6 +469,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  margin-top: 2px;
 }
 
 .c6.c6.c6.c6.c6:hover:not([disabled]) {
@@ -481,6 +488,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c6.c6.c6.c6.c6:active {
@@ -496,10 +504,10 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -550,6 +558,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Currently you can only accept payments in international currencies using PayPal.
           </p>

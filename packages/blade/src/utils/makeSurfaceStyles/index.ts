@@ -3,7 +3,9 @@ export {
   getSurfaceBoxShadowString,
   getSurfaceGradients,
   getSurfaceStyles,
-  type SurfaceBoxShadow,
-  type SurfaceGradients,
-  type SurfaceGradientColors,
+} from './makeSurfaceStyles';
+export type {
+  SurfaceBoxShadow,
+  SurfaceGradients,
+  SurfaceGradientColors,
 } from './makeSurfaceStyles';

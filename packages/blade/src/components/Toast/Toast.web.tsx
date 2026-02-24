@@ -4,12 +4,12 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
+import type { ToastProps } from './types';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { ToastProps } from './types';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
@@ -158,7 +158,12 @@ const Toast = ({
           />
         </Box>
       ) : null}
-      <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="spacing.3"
+        paddingY={isPromotional ? 'spacing.0' : 'spacing.2'}
+      >
         {isPromotional ? (
           content
         ) : (
@@ -168,7 +173,12 @@ const Toast = ({
         )}
         {isPromotional && actionButton}
       </Box>
-      <Box alignSelf="start" marginLeft="auto" display="flex" gap="spacing.4">
+      <Box
+        alignSelf={isPromotional ? 'start' : 'center'}
+        marginLeft="auto"
+        display="flex"
+        gap="spacing.4"
+      >
         {!isPromotional && actionButton}
         <IconButton
           emphasis={isPromotional ? 'intense' : 'subtle'}

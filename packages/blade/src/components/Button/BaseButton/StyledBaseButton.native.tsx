@@ -16,9 +16,12 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
 >((props) => {
   const styledPropsCSSObject = useStyledProps(props);
+  // boxShadow with inset values is not supported in React Native (css-to-react-native
+  // cannot parse multiple inset shadows), so we exclude it from native styles.
+  const { boxShadow: _boxShadow, ...nativeButtonStyles } = getStyledBaseButtonStyles(props);
 
   return {
-    ...getStyledBaseButtonStyles(props),
+    ...nativeButtonStyles,
     alignSelf: 'center',
     display: 'flex',
     flexDirection: 'row',

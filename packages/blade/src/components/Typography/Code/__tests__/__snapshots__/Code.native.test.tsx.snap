@@ -17,7 +17,7 @@ exports[`<Code /> should render Code with color 1`] = `
         {},
         {
           "alignSelf": "center",
-          "borderRadius": 12,
+          "borderRadius": 4,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -84,7 +84,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
         {
           "alignSelf": "center",
           "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-          "borderRadius": 12,
+          "borderRadius": 4,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -150,7 +150,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
         {},
         {
           "alignSelf": "center",
-          "borderRadius": 12,
+          "borderRadius": 4,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -217,7 +217,7 @@ exports[`<Code /> should render medium Code 1`] = `
         {
           "alignSelf": "center",
           "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-          "borderRadius": 12,
+          "borderRadius": 4,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,
@@ -284,7 +284,7 @@ exports[`<Code /> should render small Code 1`] = `
         {
           "alignSelf": "center",
           "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-          "borderRadius": 12,
+          "borderRadius": 4,
           "display": "flex",
           "lineHeight": 0,
           "paddingBottom": 0,

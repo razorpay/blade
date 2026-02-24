@@ -104,8 +104,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -128,7 +128,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -174,10 +174,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -191,10 +191,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -208,16 +208,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -232,6 +232,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c21.c21.c21.c21.c21 {
@@ -250,21 +252,22 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c14.c14.c14.c14.c14 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -280,8 +283,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -290,20 +294,22 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -320,14 +326,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   width: 100%;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -343,8 +348,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -354,19 +360,21 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 .c20.c20.c20.c20.c20:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c20.c20.c20.c20.c20:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c20.c20.c20.c20.c20:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c20.c20.c20.c20.c20 * {
@@ -449,6 +457,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>
@@ -473,12 +482,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Card Footer
             </p>
             <p
               class="c11"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Card footer subtitle
             </p>
@@ -655,10 +666,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c14.c14.c14.c14.c14 {
   min-height: 20px;
+  min-width: 20px;
   background-color: hsla(206,10%,29%,0.09);
 }
 
@@ -690,12 +709,40 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c21.c21.c21.c21.c21 {
   text-align: left;
   height: 20px;
   background-color: hsla(206,10%,29%,0.09);
 }
 
 .c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c25.c25.c25.c25.c25 {
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
@@ -710,8 +757,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -734,7 +781,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -771,7 +818,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   position: relative;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -795,10 +842,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -812,10 +859,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -836,16 +883,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
-.c22.c22.c22.c22.c22 {
+.c24.c24.c24.c24.c24 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -854,10 +901,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -866,9 +913,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c27.c27.c27.c27.c27 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -877,10 +926,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -893,6 +942,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -901,7 +958,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c24.c24.c24.c24.c24 {
+.c26.c26.c26.c26.c26 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -912,31 +969,31 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
@@ -1010,6 +1067,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   <p
                     class="c11"
                     data-blade-component="text"
+                    letter-spacing="25"
                   >
                     Card Header
                   </p>
@@ -1032,6 +1090,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           <p
                             class="c17"
                             data-blade-component="text"
+                            letter-spacing="50"
                           >
                             12
                           </p>
@@ -1043,6 +1102,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 <p
                   class="c18"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Card subtitle
                 </p>
@@ -1054,20 +1114,21 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c13"
+              class="c20"
               data-blade-component="badge"
             >
               <div
-                class="c20 c21"
+                class="c21 c22"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c16"
+                  class="c23"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="c22"
+                    class="c24"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     NEW
                   </p>
@@ -1077,7 +1138,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           </div>
         </div>
         <div
-          class="c23 c24"
+          class="c25 c26"
           data-blade-component="divider"
           role="separator"
         />
@@ -1087,8 +1148,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
         data-blade-component="card-body"
       >
         <p
-          class="c25"
+          class="c27"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>
@@ -1122,8 +1184,8 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1146,7 +1208,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1228,8 +1290,8 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1252,7 +1314,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1319,7 +1381,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
-  background-color: hsla(0,0%,97%,1);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
   box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
@@ -1334,8 +1396,8 @@ exports[`<Card /> should render a plain Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1358,7 +1420,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1520,8 +1582,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1544,7 +1606,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1590,10 +1652,10 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1607,16 +1669,16 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1631,6 +1693,8 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c20.c20.c20.c20.c20 {
@@ -1649,21 +1713,22 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c13.c13.c13.c13.c13 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1679,8 +1744,9 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1689,20 +1755,22 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c13.c13.c13.c13.c13:active {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c13.c13.c13.c13.c13 * {
@@ -1719,14 +1787,13 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   width: 100%;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1742,8 +1809,9 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1753,19 +1821,21 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 
 .c19.c19.c19.c19.c19:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c19.c19.c19.c19.c19:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c19.c19.c19.c19.c19:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c19.c19.c19.c19.c19 * {
@@ -1850,6 +1920,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>
@@ -1876,6 +1947,7 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Card Footer
             </p>

@@ -91,7 +91,7 @@ exports[`<Line /> should render Line with all line types 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r1t:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -217,7 +217,7 @@ exports[`<Line /> should render Line with all line types 2`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r1v:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -343,7 +343,7 @@ exports[`<Line /> should render Line with all line types 3`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r21:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -469,7 +469,7 @@ exports[`<Line /> should render Line with all line types 4`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r23:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -595,7 +595,7 @@ exports[`<Line /> should render Line with all line types 5`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r25:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -721,7 +721,7 @@ exports[`<Line /> should render Line with all stroke styles 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r27:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px, 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -847,7 +847,7 @@ exports[`<Line /> should render Line with all stroke styles 2`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r29:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px, 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -973,7 +973,7 @@ exports[`<Line /> should render Line with all stroke styles 3`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r2b:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1099,7 +1099,7 @@ exports[`<Line /> should render Line with custom activeDot configuration 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r2f:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1225,7 +1225,7 @@ exports[`<Line /> should render Line with custom dot configuration 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r2d:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1413,7 +1413,7 @@ exports[`<Line /> should render Line with custom name 1`] = `
                 height="790"
                 id="recharts-line-:r1r:"
                 name="Monthly Sales"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1539,7 +1539,7 @@ exports[`<Line /> should render Line with default props 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r1p:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1665,7 +1665,7 @@ exports[`<LineChart /> should handle data with missing properties 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r1d:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1883,7 +1883,7 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r11:"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -1916,7 +1916,7 @@ exports[`<LineChart /> should render LineChart with activeDot disabled 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r13:"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2042,7 +2042,7 @@ exports[`<LineChart /> should render LineChart with connectNulls true 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r19:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2168,7 +2168,7 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rl:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2201,7 +2201,7 @@ exports[`<LineChart /> should render LineChart with custom colors 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rn:"
-                stroke="hsla(220, 100%, 73%, 1)"
+                stroke="hsla(217, 100%, 73%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2327,7 +2327,7 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r9:"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2360,7 +2360,7 @@ exports[`<LineChart /> should render LineChart with different line types 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rb:"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2519,7 +2519,7 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                 fill="none"
                 height="790"
                 id="recharts-line-:rf:"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2552,7 +2552,7 @@ exports[`<LineChart /> should render LineChart with different stroke styles 1`] 
                 fill="none"
                 height="790"
                 id="recharts-line-:rh:"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px, 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2711,7 +2711,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rt:"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2744,7 +2744,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rv:"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2770,7 +2770,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="#fff"
                 height="790"
                 r="3"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-opacity="1"
@@ -2784,7 +2784,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="#fff"
                 height="790"
                 r="3"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-opacity="1"
@@ -2798,7 +2798,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="#fff"
                 height="790"
                 r="3"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-opacity="1"
@@ -2812,7 +2812,7 @@ exports[`<LineChart /> should render LineChart with dots enabled 1`] = `
                 fill="#fff"
                 height="790"
                 r="3"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-opacity="1"
@@ -2932,7 +2932,7 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                 height="790"
                 id="recharts-line-:r3:"
                 name="Sales"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -2966,7 +2966,7 @@ exports[`<LineChart /> should render LineChart with multiple lines 1`] = `
                 height="790"
                 id="recharts-line-:r5:"
                 name="Profit"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3126,7 +3126,7 @@ exports[`<LineChart /> should render LineChart with sequential colors 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rp:"
-                stroke="hsla(223, 100%, 65%, 1)"
+                stroke="hsla(218, 100%, 63%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3159,7 +3159,7 @@ exports[`<LineChart /> should render LineChart with sequential colors 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:rr:"
-                stroke="hsla(150, 100%, 32%, 1)"
+                stroke="hsla(150, 100%, 28%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3285,7 +3285,7 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r15:"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3318,7 +3318,7 @@ exports[`<LineChart /> should render LineChart with showLegend false 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r17:"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3444,7 +3444,7 @@ exports[`<LineChart /> should render basic LineChart with single line 1`] = `
                 fill="none"
                 height="790"
                 id="recharts-line-:r1:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3498,7 +3498,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3506,10 +3506,10 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -3576,13 +3576,13 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
 }
 
 .c4.c4.c4.c4.c4 p {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition: color 160ms cubic-bezier(0,0,0,0);
   transition: color 160ms cubic-bezier(0,0,0,0);
 }
 
 .c4.c4.c4.c4.c4:hover p {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
 }
 
 <div>
@@ -3607,7 +3607,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
           xmlns="http://www.w3.org/1999/xhtml"
         >
           <div
-            style="background-color: rgb(0, 0, 0); border-radius: 8px; border: 1px solid hsla(211, 20%, 52%, 0.18); padding: 12px;"
+            style="background-color: rgb(0, 0, 0); border-radius: 16px; border: 1px solid hsla(206, 10%, 29%, 0.12); padding: 12px;"
           >
             <h6
               class="c2"
@@ -3621,7 +3621,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
         </div>
         <div
           class="recharts-legend-wrapper"
-          style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(25, 25, 25); padding-top: 8px;"
+          style="position: absolute; width: 790px; height: auto; left: 5px; bottom: 5px; font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 14px; color: rgb(5, 5, 5); padding-top: 8px;"
         >
           <div
             class="c3"
@@ -3636,11 +3636,12 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 data-blade-component="box"
               >
                 <span
-                  style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                  style="background-color: rgb(0, 0, 0); width: 12px; height: 12px; display: inline-block; border-radius: 8px;"
                 />
                 <p
                   class="c6"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Profit
                 </p>
@@ -3655,11 +3656,12 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 data-blade-component="box"
               >
                 <span
-                  style="background-color: rgb(46, 46, 46); width: 12px; height: 12px; display: inline-block; border-radius: 2px;"
+                  style="background-color: rgb(19, 19, 19); width: 12px; height: 12px; display: inline-block; border-radius: 8px;"
                 />
                 <p
                   class="c6"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Sales
                 </p>
@@ -3690,7 +3692,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   fill="none"
                   height="767.5"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="hsla(206, 10%, 29%, 0.12)"
                   width="730"
                   x="65"
                   x1="65"
@@ -3702,7 +3704,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   fill="none"
                   height="767.5"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="hsla(206, 10%, 29%, 0.12)"
                   width="730"
                   x="65"
                   x1="65"
@@ -3714,7 +3716,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   fill="none"
                   height="767.5"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="hsla(206, 10%, 29%, 0.12)"
                   width="730"
                   x="65"
                   x1="65"
@@ -3726,7 +3728,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   fill="none"
                   height="767.5"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="hsla(206, 10%, 29%, 0.12)"
                   width="730"
                   x="65"
                   x1="65"
@@ -3738,7 +3740,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 <line
                   fill="none"
                   height="767.5"
-                  stroke="hsla(211, 20%, 52%, 0.18)"
+                  stroke="hsla(206, 10%, 29%, 0.12)"
                   width="730"
                   x="65"
                   x1="65"
@@ -3802,7 +3804,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 height="767.5"
                 id="recharts-line-:r1f:"
                 name="Sales"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3836,7 +3838,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 height="767.5"
                 id="recharts-line-:r1h:"
                 name="Profit"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -3858,7 +3860,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 fill="none"
                 height="22.5"
                 orientation="bottom"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="730"
                 x="65"
                 x1="65"
@@ -3888,7 +3890,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 </g>
               </g>
               <text
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 font-family=""Inter", "Inter Fallback Arial", Arial"
                 font-size="12"
                 font-weight="400"
@@ -3907,7 +3909,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                 fill="none"
                 height="767.5"
                 orientation="left"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="60"
                 x="5"
                 x1="65"
@@ -3966,7 +3968,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   transform="translate(65,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -3991,7 +3993,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   transform="translate(308.33333333333337,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4016,7 +4018,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   transform="translate(551.6666666666667,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4041,7 +4043,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
                   transform="translate(795,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4068,7 +4070,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4094,7 +4096,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4120,7 +4122,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4146,7 +4148,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4172,7 +4174,7 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4294,7 +4296,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 height="780"
                 id="recharts-line-:r2l:"
                 name="Sales"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -4328,7 +4330,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 height="780"
                 id="recharts-line-:r2n:"
                 name="Profit"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -4350,7 +4352,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 fill="none"
                 height="22.5"
                 orientation="bottom"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="730"
                 x="65"
                 x1="65"
@@ -4374,7 +4376,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 </g>
               </g>
               <text
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 font-family=""Inter", "Inter Fallback Arial", Arial"
                 font-size="12"
                 font-weight="400"
@@ -4393,7 +4395,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                 fill="none"
                 height="780"
                 orientation="left"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="60"
                 x="5"
                 x1="65"
@@ -4452,7 +4454,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   transform="translate(65,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4477,7 +4479,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
                   transform="translate(795,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4504,7 +4506,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4530,7 +4532,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4556,7 +4558,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4582,7 +4584,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4608,7 +4610,7 @@ exports[`LineChart Integration Tests should handle complex data structure 1`] = 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4730,7 +4732,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 height="780"
                 id="recharts-line-:r2p:"
                 name="Value"
-                stroke="hsla(227, 100%, 59%, 1)"
+                stroke="hsla(218, 89%, 51%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -4764,7 +4766,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 height="780"
                 id="recharts-line-:r2r:"
                 name="Percentage"
-                stroke="hsla(150, 100%, 37%, 1)"
+                stroke="hsla(153, 100%, 30%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -4786,7 +4788,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 fill="none"
                 height="22.5"
                 orientation="bottom"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="730"
                 x="65"
                 x1="65"
@@ -4813,7 +4815,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 </g>
               </g>
               <text
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 font-family=""Inter", "Inter Fallback Arial", Arial"
                 font-size="12"
                 font-weight="400"
@@ -4832,7 +4834,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                 fill="none"
                 height="780"
                 orientation="left"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="60"
                 x="5"
                 x1="65"
@@ -4891,7 +4893,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   transform="translate(65,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4916,7 +4918,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   transform="translate(430,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4941,7 +4943,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
                   transform="translate(795,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -4968,7 +4970,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -4994,7 +4996,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5020,7 +5022,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5046,7 +5048,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5072,7 +5074,7 @@ exports[`LineChart Integration Tests should handle mixed data types 1`] = `
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5193,7 +5195,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 fill="none"
                 height="780"
                 id="recharts-line-:r2j:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -5215,7 +5217,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 fill="none"
                 height="22.5"
                 orientation="bottom"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="730"
                 x="65"
                 x1="65"
@@ -5245,7 +5247,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 </g>
               </g>
               <text
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 font-family=""Inter", "Inter Fallback Arial", Arial"
                 font-size="12"
                 font-weight="400"
@@ -5264,7 +5266,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                 fill="none"
                 height="780"
                 orientation="left"
-                stroke="hsla(211, 20%, 52%, 0.18)"
+                stroke="hsla(206, 10%, 29%, 0.12)"
                 width="60"
                 x="5"
                 x1="65"
@@ -5323,7 +5325,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   transform="translate(65,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -5348,7 +5350,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   transform="translate(308.33333333333337,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -5373,7 +5375,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   transform="translate(551.6666666666667,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -5398,7 +5400,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
                   transform="translate(795,780.5)"
                 >
                   <text
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     font-family=""Inter", "Inter Fallback Arial", Arial"
                     font-size="12"
                     font-weight="400"
@@ -5425,7 +5427,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5451,7 +5453,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5477,7 +5479,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5503,7 +5505,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5529,7 +5531,7 @@ exports[`LineChart Integration Tests should render with ResponsiveContainer 1`] 
               >
                 <text
                   class="recharts-text recharts-cartesian-axis-tick-value"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(204, 9%, 42%, 1)"
                   font-family=""Inter", "Inter Fallback Arial", Arial"
                   font-size="12"
                   font-weight="400"
@@ -5650,7 +5652,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for d
                 fill="none"
                 height="790"
                 id="recharts-line-:r2t:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px, 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -5776,7 +5778,7 @@ exports[`LineChart Styling Tests should apply correct animation properties for s
                 fill="none"
                 height="790"
                 id="recharts-line-:r2v:"
-                stroke="hsla(214, 40%, 92%, 1)"
+                stroke="hsla(200, 10%, 94%, 1)"
                 stroke-dasharray="0px 0px"
                 stroke-linecap="round"
                 stroke-linejoin="round"

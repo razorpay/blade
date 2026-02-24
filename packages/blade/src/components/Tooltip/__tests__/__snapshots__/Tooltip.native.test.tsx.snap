@@ -28,23 +28,22 @@ exports[`<Tooltip /> should render 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -68,14 +67,15 @@ exports[`<Tooltip /> should render 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -85,8 +85,8 @@ exports[`<Tooltip /> should render 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -95,7 +95,6 @@ exports[`<Tooltip /> should render 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -145,6 +144,7 @@ exports[`<Tooltip /> should render 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -156,8 +156,8 @@ exports[`<Tooltip /> should render 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -233,26 +233,30 @@ exports[`<Tooltip /> should render 1`] = `
       >
         <View
           collapse={false}
+          colorScheme="light"
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
                 "borderRadius": 12,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -369,7 +373,7 @@ exports[`<Tooltip /> should render 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -380,17 +384,17 @@ exports[`<Tooltip /> should render 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }
@@ -440,23 +444,22 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -480,14 +483,15 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -497,8 +501,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -507,7 +511,6 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -557,6 +560,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -568,8 +572,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -645,26 +649,30 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       >
         <View
           collapse={false}
+          colorScheme="light"
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
                 "borderRadius": 12,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -781,7 +789,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -792,17 +800,17 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }
@@ -852,23 +860,22 @@ exports[`<Tooltip /> should render with title 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
-    borderWidth="0px"
+    borderRadius="8px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
     defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(218, 87%, 43%, 1)"
-    focusBorderColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
-    hoverBorderColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -892,14 +899,15 @@ exports[`<Tooltip /> should render with title 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 12,
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -909,8 +917,8 @@ exports[`<Tooltip /> should render with title 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -919,7 +927,6 @@ exports[`<Tooltip /> should render with title 1`] = `
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
@@ -969,6 +976,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -980,8 +988,8 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -1057,26 +1065,30 @@ exports[`<Tooltip /> should render with title 1`] = `
       >
         <View
           collapse={false}
+          colorScheme="light"
           data-blade-component="base-box"
+          display="flex"
           elevation={20}
+          flexDirection="column"
+          gap="spacing.2"
           maxWidth="200px"
           position="absolute"
           style={
             [
               {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 4,
                 "maxWidth": 200,
-                "paddingBottom": 8,
+                "paddingBottom": 12,
                 "paddingLeft": 12,
                 "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingTop": 12,
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(205, 10%, 24%, 1)",
-                "borderColor": "hsla(206, 10%, 29%, 1)",
+                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
                 "borderRadius": 12,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "left": -200,
                 "position": "absolute",
                 "top": -200,
@@ -1227,7 +1239,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                 }
               >
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={null}
                   propList={
                     [
@@ -1238,17 +1250,17 @@ exports[`<Tooltip /> should render with title 1`] = `
                   }
                   stroke={
                     {
-                      "payload": 4282600273,
+                      "payload": 4281810499,
                       "type": 0,
                     }
                   }
                   strokeWidth="2px"
                 />
                 <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                   fill={
                     {
-                      "payload": 4281810499,
+                      "payload": 3087007744,
                       "type": 0,
                     }
                   }

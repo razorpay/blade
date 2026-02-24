@@ -3,14 +3,14 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { useDropdown } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import { spacing } from '~tokens/global';
-import { useDropdown } from './useDropdown';
-import { dropdownComponentIds } from './dropdownComponentIds';
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { ChevronUpDownIcon } from '~components/Icons';

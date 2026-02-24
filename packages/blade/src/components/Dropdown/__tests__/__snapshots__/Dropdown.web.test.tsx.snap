@@ -4,6 +4,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -86,7 +87,6 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -189,18 +189,18 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -220,10 +220,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -237,10 +237,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -264,7 +264,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(200,10%,18%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -272,10 +272,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -291,6 +291,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
@@ -305,10 +306,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -323,10 +324,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -341,10 +342,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -359,10 +360,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -373,8 +374,8 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -384,6 +385,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -398,8 +403,8 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -409,6 +414,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -425,8 +434,8 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -436,6 +445,10 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -485,7 +498,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 12px;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -597,6 +610,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
                         <p
                           class="c8"
                           data-blade-component="text"
+                          letter-spacing="50"
                         >
                           Fruits
                         </p>
@@ -607,6 +621,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
                           <p
                             class="c9"
                             data-blade-component="text"
+                            letter-spacing="50"
                           />
                         </div>
                       </div>
@@ -656,6 +671,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
                         <p
                           class="c18"
                           data-blade-component="text"
+                          letter-spacing="50"
                         >
                           Select Option
                         </p>
@@ -740,6 +756,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -822,7 +839,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c15.c15.c15.c15.c15 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -925,18 +941,18 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -956,10 +972,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -973,10 +989,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1000,7 +1016,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(200,10%,18%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1008,10 +1024,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1027,6 +1043,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
@@ -1041,10 +1058,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1059,10 +1076,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1077,10 +1094,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1095,10 +1112,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1109,8 +1126,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1120,6 +1137,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -1134,8 +1155,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1145,6 +1166,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -1161,8 +1186,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1172,6 +1197,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
@@ -1189,6 +1218,753 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-animation: none;
   animation: none;
   max-height: 36px;
+}
+
+.c14.c14.c14.c14.c14 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c14.c14.c14.c14.c14::-webkit-scrollbar {
+  display: none;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c10.c10.c10.c10.c10 {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
+  z-index: 2;
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:320px) {
+
+}
+
+@media screen and (min-width:480px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2"
+          data-blade-component="visually-hidden"
+        >
+          <input
+            aria-hidden="true"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="select-input"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-7-trigger-1-input-2"
+                id="dropdown-7-label"
+                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class=""
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c7"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c8"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Fruits
+                        </p>
+                        <div
+                          class="c2"
+                          data-blade-component="visually-hidden"
+                        >
+                          <p
+                            class="c9"
+                            data-blade-component="text"
+                            letter-spacing="50"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c10 focus-ring-wrapper"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c11 c12 __blade-base-input-wrapper"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c13 c14 tags-slot"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c15"
+                    data-blade-component="base-box"
+                  >
+                    <button
+                      aria-controls="dropdown-7-actionlist"
+                      aria-describedby=""
+                      aria-disabled="false"
+                      aria-expanded="true"
+                      aria-haspopup="dialog"
+                      aria-invalid="false"
+                      aria-required="false"
+                      autocomplete="off"
+                      class="c16"
+                      data-blade-component="styled-base-input"
+                      id="dropdown-7-trigger-1-input-2"
+                      placeholder="Select Option"
+                      role="combobox"
+                      type="button"
+                      value=""
+                    >
+                      <div
+                        class="c17"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Select Option
+                        </p>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="c19"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c19"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c20"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c21"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="c22"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(204, 9%, 42%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="c23"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="16px"
+                          viewBox="0 0 24 24"
+                          width="16px"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            data-blade-component="svg-path"
+                            fill="hsla(204, 9%, 42%, 1)"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c24"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c25"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> should render dropdown with large size select input 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+  height: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 48px;
+}
+
+.c15.c15.c15.c15.c15 {
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c19.c19.c19.c19.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c24.c24.c24.c24.c24 {
+  margin-left: 0px;
+}
+
+.c25.c25.c25.c25.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c18.c18.c18.c18.c18 {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c23.c23.c23.c23.c23 {
+  display: none;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c16.c16.c16.c16.c16::-webkit-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::-moz-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:-ms-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16::placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16:focus {
+  outline: none;
+}
+
+.c11.c11.c11.c11.c11 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c12.c12.c12.c12.c12 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 48px;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -1306,737 +2082,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-7-trigger-1-input-2"
-                id="dropdown-7-label"
-                style="width: 100%; flex-shrink: 0; margin-right: 0px;"
-              >
-                <div
-                  class="c5"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c6"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class=""
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c7"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c8"
-                          data-blade-component="text"
-                        >
-                          Fruits
-                        </p>
-                        <div
-                          class="c2"
-                          data-blade-component="visually-hidden"
-                        >
-                          <p
-                            class="c9"
-                            data-blade-component="text"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-            <div
-              class=" c10 focus-ring-wrapper"
-              data-blade-component="base-box"
-            >
-              <div
-                class=" c11 c12 __blade-base-input-wrapper"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c13 c14 tags-slot"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c15"
-                    data-blade-component="base-box"
-                  >
-                    <button
-                      aria-controls="dropdown-7-actionlist"
-                      aria-describedby=""
-                      aria-disabled="false"
-                      aria-expanded="true"
-                      aria-haspopup="dialog"
-                      aria-invalid="false"
-                      aria-required="false"
-                      autocomplete="off"
-                      class="c16"
-                      data-blade-component="styled-base-input"
-                      id="dropdown-7-trigger-1-input-2"
-                      placeholder="Select Option"
-                      role="combobox"
-                      type="button"
-                      value=""
-                    >
-                      <div
-                        class="c17"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c18"
-                          data-blade-component="text"
-                        >
-                          Select Option
-                        </p>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-                <div
-                  class="c19"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c19"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c20"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c21"
-                        data-blade-component="base-box"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="c22"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="16px"
-                          viewBox="0 0 24 24"
-                          width="16px"
-                        >
-                          <path
-                            clip-rule="evenodd"
-                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                            data-blade-component="svg-path"
-                            fill="hsla(204, 9%, 42%, 1)"
-                            fill-rule="evenodd"
-                          />
-                        </svg>
-                        <svg
-                          aria-hidden="true"
-                          class="c23"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="16px"
-                          viewBox="0 0 24 24"
-                          width="16px"
-                        >
-                          <path
-                            clip-rule="evenodd"
-                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                            data-blade-component="svg-path"
-                            fill="hsla(204, 9%, 42%, 1)"
-                            fill-rule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="c24"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c25"
-              data-blade-component="base-box"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<Dropdown /> should render dropdown with large size select input 1`] = `
-.c0.c0.c0.c0.c0 {
-  text-align: left;
-  position: relative;
-}
-
-.c1.c1.c1.c1.c1 {
-  position: relative;
-}
-
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.c4.c4.c4.c4.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.c5.c5.c5.c5.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-  width: 100%;
-}
-
-.c6.c6.c6.c6.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 4px;
-}
-
-.c7.c7.c7.c7.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c13.c13.c13.c13.c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  min-height: 48px;
-}
-
-.c15.c15.c15.c15.c15 {
-  margin-top: -4px;
-  width: 100%;
-  min-width: min(20%,60px);
-}
-
-.c17.c17.c17.c17.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.c19.c19.c19.c19.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c20.c20.c20.c20.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  padding-right: 12px;
-}
-
-.c21.c21.c21.c21.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.c24.c24.c24.c24.c24 {
-  margin-left: 0px;
-}
-
-.c25.c25.c25.c25.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c9.c9.c9.c9.c9 {
-  color: hsla(0,0%,2%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c18.c18.c18.c18.c18 {
-  color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c22.c22.c22.c22.c22 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c23.c23.c23.c23.c23 {
-  display: none;
-}
-
-.c16.c16.c16.c16.c16 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: hsla(0,0%,100%,0);
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 0px;
-  padding-right: 8px;
-  width: 100%;
-  height: 48px;
-  min-height: 48px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c16.c16.c16.c16.c16::-webkit-input-placeholder {
-  color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c16.c16.c16.c16.c16::-moz-placeholder {
-  color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c16.c16.c16.c16.c16:-ms-input-placeholder {
-  color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c16.c16.c16.c16.c16::placeholder {
-  color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c16.c16.c16.c16.c16:focus {
-  outline: none;
-}
-
-.c11.c11.c11.c11.c11 {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11:hover {
-  background-color: hsla(0,0%,97%,1);
-  border-radius: 12px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(203,8%,80%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 12px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  border: none;
-  border-width: 0px;
-  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
-  -webkit-transition-property: box-shadow,background-color;
-  transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c12.c12.c12.c12.c12 {
-  -webkit-animation: none;
-  animation: none;
-  max-height: 48px;
-}
-
-.c14.c14.c14.c14.c14 {
-  -ms-overflow-style: none;
-  -webkit-scrollbar-width: none;
-  -moz-scrollbar-width: none;
-  -ms-scrollbar-width: none;
-  scrollbar-width: none;
-}
-
-.c14.c14.c14.c14.c14::-webkit-scrollbar {
-  display: none;
-}
-
-.c2.c2.c2.c2.c2 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c10.c10.c10.c10.c10 {
-  border-radius: 12px;
-  width: 100%;
-}
-
-.c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(218,89%,51%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:320px) {
-
-}
-
-@media screen and (min-width:480px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-@media screen and (min-width:768px) {
-
-}
-
-<div>
-  <div
-    class=""
-    data-blade-component="dropdown"
-  >
-    <div
-      class="c0"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c1"
-        data-blade-component="base-box"
-      >
-        <div
-          class="c2"
-          data-blade-component="visually-hidden"
-        >
-          <input
-            aria-hidden="true"
-            tabindex="-1"
-            value=""
-          />
-        </div>
-        <div
-          class=""
-          data-blade-component="select-input"
-        >
-          <div
-            class="c3"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c4"
-              data-blade-component="base-box"
-            >
-              <label
-                data-blade-component="form-label"
                 for="dropdown-164-trigger-165-input-166"
                 id="dropdown-164-label"
                 style="width: 100%; flex-shrink: 0; margin-right: 0px;"
@@ -2060,6 +2105,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                         <p
                           class="c8"
                           data-blade-component="text"
+                          letter-spacing="50"
                         >
                           Fruits
                         </p>
@@ -2070,6 +2116,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                           <p
                             class="c9"
                             data-blade-component="text"
+                            letter-spacing="50"
                           />
                         </div>
                       </div>
@@ -2118,6 +2165,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                         <p
                           class="c18"
                           data-blade-component="text"
+                          letter-spacing="25"
                         >
                           Select Option
                         </p>
@@ -2561,6 +2609,7 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2590,14 +2639,13 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
   width: auto;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2613,8 +2661,9 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2624,19 +2673,21 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
 
 .c1.c1.c1.c1.c1:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -2674,6 +2725,8 @@ exports[`<Dropdown /> with <DropdownButton /> should support data-analytics-attr
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2729,6 +2782,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2737,6 +2791,10 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
   display: -ms-flexbox;
   display: flex;
   white-space: nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 4px;
 }
 
@@ -2755,16 +2813,16 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 .c4.c4.c4.c4.c4 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2776,17 +2834,17 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 0.5px;
-  border-color: hsla(203,8%,80%,1);
-  height: 24px;
-  border-radius: 9999px;
+  border-width: 1px;
+  border-color: hsla(206,10%,29%,0.18);
+  height: 28px;
+  border-radius: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: solid;
+  border-style: dashed;
   background-color: hsla(0,0%,100%,1);
-  color: hsla(0,0%,2%,1);
+  color: hsla(204,9%,42%,1);
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -2794,9 +2852,9 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
 
 .c2.c2.c2.c2.c2 {
   background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-bottom-left-radius: 9999px;
+  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding-left: 12px;
   padding-right: 8px;
   gap: 4px;
@@ -2867,6 +2925,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should render dropdown with 
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Fruits
             </p>
@@ -2904,6 +2963,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2912,6 +2972,10 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
   display: -ms-flexbox;
   display: flex;
   white-space: nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 4px;
 }
 
@@ -2930,16 +2994,16 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 .c4.c4.c4.c4.c4 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2951,17 +3015,17 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 }
 
 .c1.c1.c1.c1.c1 {
-  border-width: 0.5px;
-  border-color: hsla(203,8%,80%,1);
-  height: 24px;
-  border-radius: 9999px;
+  border-width: 1px;
+  border-color: hsla(206,10%,29%,0.18);
+  height: 28px;
+  border-radius: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-style: solid;
+  border-style: dashed;
   background-color: hsla(0,0%,100%,1);
-  color: hsla(0,0%,2%,1);
+  color: hsla(204,9%,42%,1);
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -2969,9 +3033,9 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
 
 .c2.c2.c2.c2.c2 {
   background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-bottom-left-radius: 9999px;
+  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding-left: 12px;
   padding-right: 8px;
   gap: 4px;
@@ -3043,6 +3107,7 @@ exports[`<Dropdown /> with <FilterChipSelectInput/> should support data-analytic
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               profile
             </p>

@@ -1,14 +1,14 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import { FILTER_CHIP_HEIGHT } from './tokens';
+import type { BaseFilterChipProps } from './types';
 import { makeBorderSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { FILTER_CHIP_HEIGHT } from './tokens';
-import type { BaseFilterChipProps } from './types';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Counter } from '~components/Counter';
@@ -41,14 +41,14 @@ const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject 
 };
 
 const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: boolean }>(
-  ({ theme, $isDisabled }) => {
+  ({ theme, $isDisabled, $isSelected }) => {
     return {
-      borderWidth: makeBorderSize(theme.border.width.thinner),
+      borderWidth: makeBorderSize(theme.border.width.thin),
       borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
       height: FILTER_CHIP_HEIGHT,
       borderRadius: theme.border.radius.small,
       display: 'flex',
-      borderStyle: 'solid',
+      borderStyle: $isSelected ? 'solid' : 'dashed',
       backgroundColor: theme.colors.surface.background.gray.intense,
       color: theme.colors.interactive.text.gray[$isDisabled ? 'disabled' : 'muted'],
       width: 'fit-content',
@@ -75,9 +75,10 @@ const StyledFilterCloseButton = styled.button(({ theme }) => {
     backgroundColor: theme.colors.transparent,
     borderTopRightRadius: theme.border.radius.small,
     borderBottomRightRadius: theme.border.radius.small,
-    paddingLeft: makeSpace(theme.spacing[2]),
-    paddingRight: makeSpace(theme.spacing[3]),
+    paddingLeft: makeSpace(theme.spacing[2] + theme.spacing[1]),
+    paddingRight: makeSpace(theme.spacing[2] + theme.spacing[1]),
     justifyContent: 'center',
+    alignItems: 'center',
     ...getInteractiveFilterItemStyles({ theme }),
   };
 });
@@ -155,7 +156,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
           <Text
             size="small"
             weight="medium"
-            color="interactive.text.gray.muted"
+            color="interactive.text.gray.subtle"
             truncateAfterLines={1}
           >
             {label}

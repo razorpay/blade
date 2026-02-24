@@ -105,10 +105,10 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -122,10 +122,10 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -140,8 +140,8 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -164,7 +164,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 .c6.c6.c6.c6.c6::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -223,7 +223,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -269,7 +269,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -334,6 +334,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                   <p
                     class="c8"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Where do you want to collect payments?
                   </p>
@@ -398,6 +399,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       Website
                                     </p>
@@ -449,6 +451,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       Android App
                                     </p>
@@ -500,6 +503,7 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       iOS App
                                     </p>
@@ -595,10 +599,10 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -613,13 +617,14 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -642,6 +647,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
         <p
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Can you help me with the docs?
         </p>
@@ -693,6 +699,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
             <span
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Message not sent. Tap to retry.
             </span>
@@ -746,10 +753,10 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -771,6 +778,7 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
         <p
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
            This is a demo message 
         </p>
@@ -826,10 +834,10 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -851,6 +859,7 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
         <p
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
            This is another demo message 
         </p>
@@ -903,10 +912,10 @@ exports[`<ChatMessage/> should render last message correctly 3`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -952,6 +961,7 @@ exports[`<ChatMessage/> should render last message correctly 3`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
              This is another demo message 
           </p>
@@ -1071,10 +1081,10 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1088,10 +1098,10 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1106,8 +1116,8 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1130,7 +1140,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 .c6.c6.c6.c6.c6::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1189,7 +1199,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   margin: 2px;
   border-radius: 9999px;
   background-color: hsla(0,0%,100%,0);
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.17,0,1,1);
@@ -1235,7 +1245,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(204,8%,88%,1);
+  border-color: hsla(205,8%,71%,1);
   background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1300,6 +1310,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                   <p
                     class="c8"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Where do you want to collect payments?
                   </p>
@@ -1364,6 +1375,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       Website
                                     </p>
@@ -1415,6 +1427,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       Android App
                                     </p>
@@ -1466,6 +1479,7 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
                                     <p
                                       class="c16"
                                       data-blade-component="text"
+                                      letter-spacing="50"
                                     >
                                       iOS App
                                     </p>

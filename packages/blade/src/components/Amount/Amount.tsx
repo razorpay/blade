@@ -3,7 +3,12 @@ import React from 'react';
 import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
 import type { AmountTypeProps } from './amountTokens';
-import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
+import {
+  normalAmountSizes,
+  subtleFontSizes,
+  currencyHardcodedSizes,
+  amountLineHeights,
+} from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
@@ -17,8 +22,10 @@ import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
-import type { FontFamily } from '~tokens/global';
+import type { FontFamily, FontSize } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import { useBreakpoint } from '~utils/useBreakpoint';
 
 /**
  * Pollyfill function to get around the node 18 error
@@ -326,6 +333,10 @@ const _Amount = (
     color,
   });
 
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isDesktop = matchedDeviceType === 'desktop';
+
   const renderedValue = getAmountByParts({ suffix, value, currency, fractionDigits });
   const isPrefixSymbol = renderedValue.isPrefixSymbol ?? true;
   const currencySymbol = renderedValue.currency ?? currency;
@@ -333,9 +344,28 @@ const _Amount = (
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
 
-  const currencyFontSize = isAffixSubtle
-    ? subtleFontSizes[type][size]
-    : normalAmountSizes[type][size];
+  // Get currency font size - use subtle sizes when isAffixSubtle, otherwise hardcoded values
+  const getCurrencyFontProps = (): {
+    fontSize: keyof FontSize | undefined;
+    style: { fontSize: string } | undefined;
+  } => {
+    if (isAffixSubtle) {
+      return {
+        fontSize: subtleFontSizes[type][size],
+        style: undefined,
+      };
+    }
+
+    const hardcodedSize = currencyHardcodedSizes[type][size];
+    return {
+      fontSize: normalAmountSizes[type][size], // Fallback for token-based rendering
+      style: hardcodedSize
+        ? { fontSize: `${hardcodedSize[isDesktop ? 'desktop' : 'mobile']}px` }
+        : undefined,
+    };
+  };
+
+  const currencyFontProps = getCurrencyFontProps();
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
@@ -369,10 +399,11 @@ const _Amount = (
           <BaseText
             marginRight="spacing.1"
             fontWeight={weight}
-            fontSize={currencyFontSize}
+            fontSize={currencyFontProps.fontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
             opacity={isAffixSubtle ? opacity[800] : 1}
+            style={currencyFontProps.style}
           >
             {currencySymbolOrCode}
           </BaseText>
@@ -391,10 +422,11 @@ const _Amount = (
           <BaseText
             marginLeft="spacing.1"
             fontWeight={weight}
-            fontSize={currencyFontSize}
+            fontSize={currencyFontProps.fontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
             opacity={isAffixSubtle ? opacity[800] : 1}
+            style={currencyFontProps.style}
           >
             {currencySymbolOrCode}
           </BaseText>

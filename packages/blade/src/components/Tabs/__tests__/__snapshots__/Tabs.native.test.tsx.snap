@@ -385,7 +385,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -395,7 +395,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -643,7 +643,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -653,7 +653,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1204,7 +1204,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1214,7 +1214,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1499,7 +1499,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1509,7 +1509,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2096,7 +2096,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2106,7 +2106,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2352,7 +2352,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2362,7 +2362,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2918,7 +2918,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -2928,7 +2928,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -3176,7 +3176,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="interactive.text.primary.subtle"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -3186,7 +3186,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(0, 0%, 2%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
