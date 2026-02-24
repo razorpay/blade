@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { ReactElement } from 'react';
-import { throwBladeError } from '~utils/logger';
-import { isReactNative } from '~utils';
 import type { BaseInputProps } from './BaseInput';
 import { inputDropdownButtonPadding } from './baseInputTokens';
+import { throwBladeError } from '~utils/logger';
+import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';

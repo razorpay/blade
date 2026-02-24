@@ -7,7 +7,7 @@ import type { Size } from '~tokens/global';
 import { size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
-import { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48];
 

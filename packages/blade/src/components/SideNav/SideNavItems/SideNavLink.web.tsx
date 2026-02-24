@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import type { SideNavLinkProps } from '../types';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import type { SideNavLinkProps } from '../types';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { Box } from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';

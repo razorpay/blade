@@ -27,17 +27,26 @@ const getTableActionsHoverStyles = ({
   return {
     // Solid layer 1 background - should match the table background
     [`& .${classes.HOVER_ACTIONS}`]: {
-      background: `linear-gradient(90deg, transparent 0%, ${getIn(theme.colors, tableBackgroundColor)} 10.08%, ${getIn(theme.colors, tableBackgroundColor)} 100%)`,
+      background: `linear-gradient(90deg, transparent 0%, ${getIn(
+        theme.colors,
+        tableBackgroundColor,
+      )} 10.08%, ${getIn(theme.colors, tableBackgroundColor)} 100%)`,
       transition: rowBackgroundTransition,
     },
     // Alpha layer 2 background - Stripped row background, Hover background in selected state, etc
     [`& .${classes.HOVER_ACTIONS_LAYER2}`]: {
-      background: `linear-gradient(90deg, transparent 0%, ${getIn(theme.colors, backgroundGradientColor ?? 'transparent')} 10.08%, ${getIn(theme.colors, backgroundGradientColor ?? 'transparent')} 100%)`,
+      background: `linear-gradient(90deg, transparent 0%, ${getIn(
+        theme.colors,
+        backgroundGradientColor ?? 'transparent',
+      )} 10.08%, ${getIn(theme.colors, backgroundGradientColor ?? 'transparent')} 100%)`,
       transition: rowBackgroundTransition,
     },
     // Alpha layer 3 background - Hover, selection, active background
     [`& .${classes.HOVER_ACTIONS_LAYER3}`]: {
-      background: `linear-gradient(90deg, transparent 0%, ${getIn(theme.colors, hoverColor)} 10.08%, ${getIn(theme.colors, hoverColor)} 100%)`,
+      background: `linear-gradient(90deg, transparent 0%, ${getIn(
+        theme.colors,
+        hoverColor,
+      )} 10.08%, ${getIn(theme.colors, hoverColor)} 100%)`,
       transition: rowBackgroundTransition,
     },
   };

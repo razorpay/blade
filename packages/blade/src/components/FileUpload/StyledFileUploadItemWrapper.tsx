@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
-import { castWebType, makeSize, useTheme } from '~utils';
-import { colors as globalColors } from '~tokens/global';
 import type { StyledFileUploadItemWrapperProps } from './types';
 import {
   fileUploadItemBackgroundColors,
   fileUploadMotionTokens,
   fileUploadHeightTokens,
 } from './fileUploadTokens';
+import getIn from '~utils/lodashButBetter/get';
+import { castWebType, makeSize, useTheme } from '~utils';
+import { colors as globalColors } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 

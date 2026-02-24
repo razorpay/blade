@@ -1,6 +1,6 @@
+import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import { size } from '~tokens/global';
 import type { DurationString, EasingString } from '~tokens/global';
-import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 
 const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {

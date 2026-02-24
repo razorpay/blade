@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { BottomNavItemProps, BottomNavProps } from './types';
 import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
@@ -7,7 +8,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { colors as globalColors } from '~tokens/global';
-import type { BottomNavItemProps, BottomNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';

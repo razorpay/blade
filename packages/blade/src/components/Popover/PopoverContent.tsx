@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { isReactNative } from '~utils';
 import { PopoverContentWrapper } from './PopoverContentWrapper';
 import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
 import { usePopoverContext } from './PopoverContext';
+import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useIsMobile } from '~utils/useIsMobile';

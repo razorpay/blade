@@ -1,14 +1,14 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import { FILTER_CHIP_HEIGHT } from './tokens';
+import type { BaseFilterChipProps } from './types';
 import { makeBorderSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { FILTER_CHIP_HEIGHT } from './tokens';
-import type { BaseFilterChipProps } from './types';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Counter } from '~components/Counter';

@@ -177,10 +177,10 @@ const StripedTableContent = (): React.ReactElement => (
                       tableItem.status === 'Completed'
                         ? 'positive'
                         : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'neutral'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'neutral'
                     }
                   >
                     {tableItem.status}

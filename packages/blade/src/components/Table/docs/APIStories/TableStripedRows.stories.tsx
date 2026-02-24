@@ -195,10 +195,10 @@ export const TableStripedSelection: StoryFn<typeof TableComponent> = () => (
                       tableItem.status === 'Completed'
                         ? 'positive'
                         : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'neutral'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'neutral'
                     }
                   >
                     {tableItem.status}
@@ -215,77 +215,75 @@ export const TableStripedSelection: StoryFn<typeof TableComponent> = () => (
 
 TableStripedSelection.storyName = 'TableStripedSelection';
 
-export const TableStripedSelectionNoToolbarNoPagination: StoryFn<typeof TableComponent> =
-  () => (
-    <Box
-      backgroundColor="surface.background.gray.moderate"
-      padding="spacing.8"
-      overflow="auto"
-      minHeight="400px"
+export const TableStripedSelectionNoToolbarNoPagination: StoryFn<typeof TableComponent> = () => (
+  <Box
+    backgroundColor="surface.background.gray.moderate"
+    padding="spacing.8"
+    overflow="auto"
+    minHeight="400px"
+  >
+    <TableComponent
+      data={data}
+      showStripedRows
+      selectionType="multiple"
+      onSelectionChange={({ selectedIds }) => console.log('Selected:', selectedIds)}
     >
-      <TableComponent
-        data={data}
-        showStripedRows
-        selectionType="multiple"
-        onSelectionChange={({ selectedIds }) => console.log('Selected:', selectedIds)}
-      >
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell>Payment ID</TableHeaderCell>
-                <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Account</TableHeaderCell>
-                <TableHeaderCell>Date</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((tableItem) => (
-                <TableRow key={tableItem.id} item={tableItem}>
-                  <TableCell>
-                    <Code size="medium">{tableItem.paymentId}</Code>
-                  </TableCell>
-                  <TableCell>
-                    <Amount value={tableItem.amount} />
-                  </TableCell>
-                  <TableCell>{tableItem.account}</TableCell>
-                  <TableCell>
-                    {tableItem.date?.toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                            ? 'notice'
-                            : tableItem.status === 'Failed'
-                              ? 'negative'
-                              : 'neutral'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </TableComponent>
-    </Box>
-  );
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Payment ID</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Account</TableHeaderCell>
+              <TableHeaderCell>Date</TableHeaderCell>
+              <TableHeaderCell>Method</TableHeaderCell>
+              <TableHeaderCell>Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((tableItem) => (
+              <TableRow key={tableItem.id} item={tableItem}>
+                <TableCell>
+                  <Code size="medium">{tableItem.paymentId}</Code>
+                </TableCell>
+                <TableCell>
+                  <Amount value={tableItem.amount} />
+                </TableCell>
+                <TableCell>{tableItem.account}</TableCell>
+                <TableCell>
+                  {tableItem.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
+                </TableCell>
+                <TableCell>{tableItem.method}</TableCell>
+                <TableCell>
+                  <Badge
+                    size="medium"
+                    color={
+                      tableItem.status === 'Completed'
+                        ? 'positive'
+                        : tableItem.status === 'Pending'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'neutral'
+                    }
+                  >
+                    {tableItem.status}
+                  </Badge>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </TableComponent>
+  </Box>
+);
 
-TableStripedSelectionNoToolbarNoPagination.storyName =
-  'TableStripedSelectionNoToolbarNoPagination';
+TableStripedSelectionNoToolbarNoPagination.storyName = 'TableStripedSelectionNoToolbarNoPagination';
 
 export const TableStripedHoverNoSelection: StoryFn<typeof TableComponent> = () => (
   <Box
@@ -356,10 +354,10 @@ export const TableStripedHoverNoSelection: StoryFn<typeof TableComponent> = () =
                       tableItem.status === 'Completed'
                         ? 'positive'
                         : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                            ? 'negative'
-                            : 'neutral'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'neutral'
                     }
                   >
                     {tableItem.status}

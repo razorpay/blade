@@ -69,12 +69,7 @@ const _Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  const {
-    refs,
-    floatingStyles,
-    context,
-    placement: computedPlacement,
-  } = useFloating({
+  const { refs, floatingStyles, context, placement: computedPlacement } = useFloating({
     open: controllableIsOpen,
     onOpenChange: (isOpen) => controllableSetIsOpen(() => isOpen),
     placement,

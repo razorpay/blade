@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import isUndefined from '~utils/lodashButBetter/isUndefined';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 import {
   TrashIcon,
   EyeIcon,
