@@ -8,7 +8,8 @@ This document covers changes, deprecations, and notable additions introduced in 
 
 > NOTE: 
 > This is a minor change, it doesn't introduce any breaking changes.
-> Thought consumers may need to update snapshots & test cases in particular scenarios.
+> 
+> Though consumers may need to update snapshots & test cases in particular scenarios.
 
 
 ---
