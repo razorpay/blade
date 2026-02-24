@@ -12,14 +12,13 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
-import { BaseMotionBox } from '~components/BaseMotion';
+import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
-import { Slide } from '~components/Slide';
 import { CloseIcon, InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
@@ -93,6 +92,31 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onSuggestionAccept,
     },
     ref,
+  );
+
+  const errorSlideVariants: MotionVariantsType = React.useMemo(
+    () => ({
+      initial: { opacity: 0 },
+      animate: {
+        transform: ['translateY(100%)', 'translateY(0%)'],
+        opacity: 1,
+        transition: {
+          duration: msToSeconds(theme.motion.duration.xmoderate),
+          ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
+        },
+      },
+      exit: {
+        opacity: 0,
+        transform: 'translateY(100%)',
+        transitionEnd: { transform: 'translateY(100%)' },
+        transition: {
+          duration: msToSeconds(theme.motion.duration.xmoderate),
+          ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
+        },
+      },
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme.name],
   );
 
   const filePreviewMotionVariants: MotionVariantsType = {
@@ -232,7 +256,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         right="spacing.0"
         zIndex={0}
       >
-        <Slide direction="bottom" fromOffset="100%" isVisible={isError} type="inout">
+        <BaseMotionEntryExit motionVariants={errorSlideVariants} isVisible={isError} type="inout">
           <BaseBox
             display="flex"
             flexDirection="row"
@@ -261,7 +285,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
               />
             ) : null}
           </BaseBox>
-        </Slide>
+        </BaseMotionEntryExit>
       </BaseBox>
     </BaseBox>
   );
