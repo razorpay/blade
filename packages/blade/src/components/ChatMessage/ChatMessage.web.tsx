@@ -27,7 +27,8 @@ const ButtonResetCss = {
 
 const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
-    messageType = 'default',
+    //TODO: need to deplicate this prop
+    // messageType = 'default',
     senderType = 'self',
     isLoading = false,
     validationState = 'none',
@@ -89,7 +90,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
           validationState={validationState}
           errorText={errorText}
           children={finalChildren}
-          messageType={messageType}
+          // messageType={messageType}
           isChildText={shouldWrapInText}
         />
       ) : (

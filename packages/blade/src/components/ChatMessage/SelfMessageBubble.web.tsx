@@ -8,9 +8,8 @@ const SelfMessageBubble = ({
   children,
   validationState,
   errorText = 'Message not sent. Tap to retry.',
-  messageType,
   isChildText,
-}: Pick<CommonChatMessageProps, 'children' | 'validationState' | 'errorText' | 'messageType'> & {
+}: Pick<CommonChatMessageProps, 'children' | 'validationState' | 'errorText'> & {
   // is child is text then only add padding otherwise no need to add padding
   isChildText: boolean;
 }): React.ReactElement => {
