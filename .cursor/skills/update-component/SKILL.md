@@ -1,3 +1,8 @@
+---
+name: update-component
+description: Update an existing Blade component (web only) using Figma designs and knowledgebase documentation
+disable-model-invocation: true
+---
 # Update Component
 
 Update an existing Blade component (web only) using Figma designs and knowledgebase documentation.

@@ -14,12 +14,12 @@ import {
 } from './baseInputTokens';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { BaseInputWrapperProps } from './types';
-import type { Theme } from '~components/BladeProvider';
-import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
+import getTextStyles from '~components/Typography/Text/getTextStyles';
+import { makeSpace } from '~utils/makeSpace';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
@@ -305,25 +305,29 @@ export const getBaseInputStyles = ({
 
     paddingTop: padding ?? makeSpace(getTopPadding({ theme, size, isInsideCounterInput })),
     paddingBottom: padding ?? makeSpace(getBottomPadding({ theme, size, isInsideCounterInput })),
-    paddingLeft: padding ?? makeSpace(
-      getLeftPadding({
+    paddingLeft:
+      padding ??
+      makeSpace(
+        getLeftPadding({
+          theme,
+          isDropdownTrigger,
+          hasLeadingIcon,
+          hasPrefix,
+          size,
+          hasLeadingDropdown,
+          isInsideCounterInput,
+        }),
+      ),
+    paddingRight:
+      padding ??
+      getRightPadding({
         theme,
-        isDropdownTrigger,
-        hasLeadingIcon,
-        hasPrefix,
+        hasTrailingInteractionElement,
+        hasSuffix,
+        hasTrailingIcon,
         size,
-        hasLeadingDropdown,
         isInsideCounterInput,
       }),
-    ),
-    paddingRight: padding ?? getRightPadding({
-      theme,
-      hasTrailingInteractionElement,
-      hasSuffix,
-      hasTrailingIcon,
-      size,
-      isInsideCounterInput,
-    }),
 
     textAlign,
     width: '100%',

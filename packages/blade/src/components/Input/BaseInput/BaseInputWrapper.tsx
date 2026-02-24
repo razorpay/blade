@@ -29,6 +29,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
   },
   ref,
 ): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const hasExtraContent = Boolean(topContent || bottomContent || inputRowOverlay);
 
   return (

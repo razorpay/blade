@@ -1,3 +1,8 @@
+---
+name: verify-with-browser
+description: Visually verify component changes in Storybook using the agent-browser CLI tool
+disable-model-invocation: true
+---
 # Verify with Browser
 
 Visually verify component changes in Storybook using the agent-browser CLI tool.
