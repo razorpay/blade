@@ -11,11 +11,26 @@ import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
-import { Chip, ChipGroup } from '~components/Chip';
 import { Stagger } from '~components/Stagger';
 import { Fade } from '~components/Fade';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { IconButton as IconButtonComponent } from '~components/Button/IconButton';
+import { Divider } from '~components/Divider';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { Chip, ChipGroup } from '~components/Chip';
+import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
+import { Amount } from '~components/Amount';
+import {
+  Table,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from '~components/Table';
+import type { TableData } from '~components/Table';
 
 const Page = (): React.ReactElement => {
   return (
@@ -398,6 +413,286 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation =
-  ChatMessageWithCustomTypingAnimationTemplate.bind({});
+export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
+  {},
+);
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
+
+const suggestedQuestions = [
+  'Why is the netbanking pending?',
+  'How do I initiate a refund for failed payment?',
+  'What are the supported payment methods?',
+];
+
+const ChatMessageWithSuggestedQuestionsTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3" maxWidth="400px">
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="large" color="surface.icon.onSea.onSubtle" />}
+        footerActions={
+          <ActionList>
+            {suggestedQuestions.map((question, index) => (
+              <ActionListItem
+                key={index}
+                title={`${index + 1}. ${question}`}
+                value={`suggestion-${index}`}
+                onClick={() => console.log(`Selected: ${question}`)}
+              />
+            ))}
+          </ActionList>
+        }
+      >
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
+            How can I help you next?
+          </Text>
+        </Box>
+      </ChatMessage>
+      <Divider dividerStyle="dashed" marginLeft="24px" />
+    </Box>
+  );
+};
+
+export const ChatMessageWithSuggestedQuestions = ChatMessageWithSuggestedQuestionsTemplate.bind({});
+ChatMessageWithSuggestedQuestions.storyName = 'Chat Message with Suggested Questions';
+
+type PaymentRow = {
+  id: string;
+  status: string;
+  amount: number;
+  col3: string;
+  col4: string;
+  col5: string;
+};
+
+const paymentTableData: TableData<PaymentRow> = {
+  nodes: [
+    {
+      id: '1',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '2',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '3',
+      status: 'Pending',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '4',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+  ],
+};
+
+// step 0 → user message visible
+// step 1 → AI loading slides in
+// step 2 → loading swaps to full content
+// step 3 → suggested questions slide in
+const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [step, setStep] = React.useState(0);
+  const [animKey, setAnimKey] = React.useState(0);
+
+  const startAnimation = React.useCallback(() => {
+    setStep(0);
+    // bump key so Move components remount and re-animate on replay
+    setAnimKey((k) => k + 1);
+    const t1 = setTimeout(() => setStep(1), 800);
+    const t2 = setTimeout(() => setStep(2), 5800); // 5s typing animation
+    const t3 = setTimeout(() => setStep(3), 6800);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    return startAnimation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const footerActions = (
+    <Box display="flex" justifyContent="space-between" alignItems="center" marginTop="spacing.3">
+      <Box display="flex" gap="spacing.1">
+        <IconButtonComponent
+          icon={ThumbsUpIcon}
+          accessibilityLabel="Thumbs Up"
+          onClick={() => console.log('Thumbs Up')}
+        />
+        <IconButtonComponent
+          icon={ThumbsDownIcon}
+          accessibilityLabel="Thumbs Down"
+          onClick={() => console.log('Thumbs Down')}
+        />
+        <IconButtonComponent
+          icon={CopyIcon}
+          accessibilityLabel="Copy"
+          onClick={() => console.log('Copy')}
+        />
+        <IconButtonComponent
+          icon={ShareIcon}
+          accessibilityLabel="Share"
+          onClick={() => console.log('Share')}
+        />
+      </Box>
+      <Text size="small" color="surface.text.gray.muted">
+        5 min ago
+      </Text>
+    </Box>
+  );
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.6">
+      <Box display="flex" justifyContent="flex-end">
+        <Button size="small" variant="secondary" onClick={startAnimation}>
+          Replay
+        </Button>
+      </Box>
+
+      {/* Self message — always visible, no animation per requirement */}
+      <Box display="flex" justifyContent="flex-end">
+        <ChatMessage senderType="self" messageType="last">
+          How much was settled into my account today?
+        </ChatMessage>
+      </Box>
+
+      {/* AI message: slides in at step 1; isLoading flips to false at step 2 */}
+      {step >= 1 && (
+        <Move key={`ai-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
+          <ChatMessage
+            senderType="other"
+            leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+            isLoading={step < 2}
+            loadingText={[
+              'Analyzing your request...',
+              'Fetching payment details...',
+              'Preparing your response...',
+            ]}
+            footerActions={step >= 2 ? footerActions : undefined}
+          >
+            <Box display="flex" flexDirection="column" gap="spacing.5">
+              <Heading size="small" weight="semibold">
+                Recent payments from pingal@gmail.com
+              </Heading>
+
+              <Text color="surface.text.gray.normal" size="medium">
+                Pingal has{' '}
+                <Text as="span" weight="semibold" color="surface.text.gray.normal" size="medium">
+                  3 recent payments totalling ₹26,000
+                </Text>
+                . Two are successful (captured) and have been settled. The{' '}
+                <Text as="span" weight="semibold" color="surface.text.gray.normal" size="medium">
+                  third—a netbanking payment—is still pending
+                </Text>{' '}
+                as we wait for the customer&apos;s bank to confirm the transfer.
+              </Text>
+
+              <Table data={paymentTableData}>
+                {(tableData) => (
+                  <>
+                    <TableHeader>
+                      <TableHeaderRow>
+                        <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                        <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL3">Payment ID</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL4">Method</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL5">Reference</TableHeaderCell>
+                      </TableHeaderRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tableData.map((item, index) => (
+                        <TableRow key={index} item={item}>
+                          <TableCell>
+                            <Badge color={item.status === 'Pending' ? 'notice' : 'positive'}>
+                              {item.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Amount value={item.amount} />
+                          </TableCell>
+                          <TableCell>{item.col3}</TableCell>
+                          <TableCell>{item.col4}</TableCell>
+                          <TableCell>{item.col5}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </>
+                )}
+              </Table>
+
+              <ChipGroup
+                accessibilityLabel="Select platform"
+                defaultValue="website"
+                onChange={({ values }) => console.log('Platform:', values)}
+              >
+                <Chip value="website">Website</Chip>
+                <Chip value="android">Android</Chip>
+                <Chip value="ios">iOS</Chip>
+                <Chip value="social_media">Social Media</Chip>
+                <Chip value="others">Others</Chip>
+              </ChipGroup>
+
+              <Box display="flex" gap="spacing.3">
+                <Button>Button</Button>
+                <Button variant="secondary">Button</Button>
+              </Box>
+            </Box>
+          </ChatMessage>
+        </Move>
+      )}
+
+      {/* Suggested questions — slides in at step 3 */}
+      {step >= 3 && (
+        <Move key={`suggestions-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
+          <Box display="flex" flexDirection="column" gap="spacing.0">
+            <ChatMessage
+              senderType="other"
+              leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+            >
+              <Box display="flex" flexDirection="column" gap="spacing.3">
+                <Text color="surface.text.gray.normal" size="medium">
+                  How can I help you next?
+                </Text>
+                <ActionList>
+                  <ActionListItem
+                    title="1. Why is the netbanking pending?"
+                    value="q1"
+                    onClick={() => console.log('Q1 selected')}
+                  />
+                  <ActionListItem
+                    title="2. How long does settlement take?"
+                    value="q2"
+                    onClick={() => console.log('Q2 selected')}
+                  />
+                </ActionList>
+              </Box>
+            </ChatMessage>
+            <Divider dividerStyle="dashed" marginLeft="24px" />
+          </Box>
+        </Move>
+      )}
+    </Box>
+  );
+};
+
+export const FullChatExample = FullChatExampleTemplate.bind({});
+FullChatExample.storyName = 'Full Chat Example';
