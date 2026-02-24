@@ -64,6 +64,18 @@ The `elevation` prop on `Card` is **deprecated and is now a no-op**. `Card` alwa
 <Card>...</Card>
 ```
 
+### `Card` — `borderRadius` prop
+
+The `borderRadius` prop on `Card` is **deprecated and is now a no-op**. `Card` always uses `medium` borderRadius now. The prop will be removed in a future major version.
+
+```tsx
+// Before (deprecated — value was applied)
+<Card borderRadius="small">...</Card>
+
+// After — prop is ignored, remove it
+<Card>...</Card>
+```
+
 ---
 
 ## Visual Changes
