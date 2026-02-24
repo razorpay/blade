@@ -19,6 +19,10 @@ import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
+import { Slide } from '~components/Slide';
+import { CloseIcon, InfoIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
+import { IconButton } from '~components/Button/IconButton';
 
 const HiddenScrollbarBox = styled(BaseBox)(() => ({
   '&::-webkit-scrollbar': { display: 'none' },
@@ -43,6 +47,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     maxFileCount,
     suggestions,
     onSuggestionAccept,
+    validationState,
+    errorText,
+    onErrorDismiss,
     accessibilityLabel = 'Chat input',
     testID,
     ...rest
@@ -152,6 +159,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
+  const isError = validationState === 'error';
+
   return (
     <BaseBox
       position="relative"
@@ -170,48 +179,90 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseInput
-        ref={mergedRef}
-        as="textarea"
-        id="chat-input"
-        elevation="highRaised"
-        label={undefined}
-        accessibilityLabel={accessibilityLabel}
-        hideLabelText
-        hideFormHint
-        placeholder={showGhostSuggestion ? '' : placeholder}
-        value={textValue}
-        onChange={handleTextChange}
-        onKeyDown={handleKeyDown}
-        onPaste={handlePaste}
-        isDisabled={isDisabled}
-        numberOfLines={2}
-        size="medium"
-        padding={makeSpace(theme.spacing[5])}
-        borderRadius="large"
-        caretColor="surface.icon.onSea.onSubtle"
-        topContent={filePreviewContent}
-        bottomContent={actionBarContent}
-        inputRowOverlay={
-          showGhostSuggestion && suggestions ? (
-            <BaseBox
-              position="absolute"
-              top="spacing.5"
-              left="spacing.5"
-              right="spacing.5"
-              pointerEvents="none"
-              zIndex={3}
-            >
-              <ChatInputGhostSuggestion
-                suggestions={suggestions}
-                isVisible={showGhostSuggestion}
-                onIndexChange={setActiveSuggestionIndex}
+      <BaseBox position="relative" zIndex={1}>
+        <BaseInput
+          ref={mergedRef}
+          as="textarea"
+          id="chat-input"
+          elevation="highRaised"
+          label={undefined}
+          accessibilityLabel={accessibilityLabel}
+          hideLabelText
+          hideFormHint
+          placeholder={showGhostSuggestion ? '' : placeholder}
+          value={textValue}
+          onChange={handleTextChange}
+          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
+          isDisabled={isDisabled}
+          numberOfLines={2}
+          size="medium"
+          padding={makeSpace(theme.spacing[5])}
+          borderRadius="large"
+          caretColor="surface.icon.onSea.onSubtle"
+          topContent={filePreviewContent}
+          bottomContent={actionBarContent}
+          inputRowOverlay={
+            showGhostSuggestion && suggestions ? (
+              <BaseBox
+                position="absolute"
+                top="spacing.5"
+                left="spacing.5"
+                right="spacing.5"
+                pointerEvents="none"
+                zIndex={3}
+              >
+                <ChatInputGhostSuggestion
+                  suggestions={suggestions}
+                  isVisible={showGhostSuggestion}
+                  onIndexChange={setActiveSuggestionIndex}
+                />
+              </BaseBox>
+            ) : null
+          }
+          {...makeAnalyticsAttribute(rest)}
+        />
+      </BaseBox>
+
+      {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
+      <BaseBox
+        position="absolute"
+        bottom="calc(100% - 8px)"
+        left="spacing.0"
+        right="spacing.0"
+        zIndex={0}
+      >
+        <Slide direction="bottom" fromOffset="100%" isVisible={isError} type="inout">
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            gap="spacing.2"
+            backgroundColor="feedback.background.negative.subtle"
+            paddingX="spacing.4"
+            paddingTop="spacing.3"
+            paddingBottom="spacing.5"
+            borderTopLeftRadius="medium"
+            borderTopRightRadius="medium"
+            role="alert"
+          >
+            <InfoIcon size="small" color="feedback.icon.negative.intense" />
+            <Text size="small" color="feedback.text.negative.intense">
+              {errorText}
+            </Text>
+            {onErrorDismiss ? (
+              <IconButton
+                marginLeft="auto"
+                icon={CloseIcon}
+                size="small"
+                emphasis="intense"
+                accessibilityLabel="Dismiss error"
+                onClick={() => onErrorDismiss()}
               />
-            </BaseBox>
-          ) : null
-        }
-        {...makeAnalyticsAttribute(rest)}
-      />
+            ) : null}
+          </BaseBox>
+        </Slide>
+      </BaseBox>
     </BaseBox>
   );
 };
