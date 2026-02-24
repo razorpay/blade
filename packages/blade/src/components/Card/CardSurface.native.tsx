@@ -2,33 +2,28 @@ import React from 'react';
 import styled from 'styled-components/native';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { Elevation } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { castNativeType, makeBorderSize } from '~utils';
 
-const CardSurfaceStyled = styled(BaseBox)<{
-  elevation: keyof Elevation;
-}>(({ elevation, theme }) => {
+const CardSurfaceStyled = styled(BaseBox)(({ theme }) => {
   return {
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    borderWidth: elevation === 'none' ? makeBorderSize(theme.border.width.thin) : undefined,
-    borderStyle: elevation === 'none' ? 'solid' : undefined,
-    borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.muted}` : undefined,
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderStyle: 'solid',
+    borderColor: `${theme.colors.surface.border.gray.muted}`,
   };
 });
 
 type CardSurfaceProps = {
   children: React.ReactNode;
-  elevation: keyof Elevation;
   colorScheme?: ColorSchemeNames;
   isSelected?: boolean;
-} & Omit<BaseBoxProps, 'elevation'>;
+} & BaseBoxProps;
 
 const CardSurface = ({
   children,
-  elevation,
   backgroundColor,
   onTouchEnd,
   onTouchStart,
@@ -43,7 +38,6 @@ const CardSurface = ({
     <CardSurfaceStyled
       {...props}
       backgroundColor={backgroundColor}
-      elevation={elevation}
       onPointerEnter={castNativeType(onPointerEnter)}
       onPointerDown={castNativeType(onPointerDown)}
       onTouchStart={castNativeType(onTouchStart)}
