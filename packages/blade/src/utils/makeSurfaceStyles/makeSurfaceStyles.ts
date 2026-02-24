@@ -74,7 +74,7 @@ const surfaceGradientsByScheme: Record<ColorSchemeNames, SurfaceGradients> = {
     },
     bottom: {
       start: colors.neutral.blueGrayDark[1100],
-      end: colors.neutral.blueGrayDark[1300],
+      end: colors.neutral.blueGrayDark[1100],
     },
   },
 };
