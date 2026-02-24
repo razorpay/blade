@@ -198,8 +198,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   });
   const hasBothDatesSelected = controlledValue?.[0] && controlledValue?.[1];
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
-    useFilterChipGroupContext();
+  const {
+    clearFilterCallbackTriggerer,
+    setFilterChipGroupSelectedFilters,
+  } = useFilterChipGroupContext();
   let applyButtonDisabled = !hasBothDatesSelected;
   if (isSingle) {
     applyButtonDisabled = !Boolean(controlledValue);
@@ -250,6 +252,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       shouldApplyAfterPresetSelection.current = false;
       handleApply();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controlledValue]);
 
   const handleCancel = (): void => {
@@ -278,9 +281,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   React.useEffect(() => {
     if (listViewSelectedFilters[label as string]) {
       setControlledValue(
-        listViewSelectedFilters[
+        (listViewSelectedFilters[
           label as keyof typeof listViewSelectedFilters
-        ] as unknown as DatesRangeValue,
+        ] as unknown) as DatesRangeValue,
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -326,7 +329,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   // snapshots the focused input, then we blur to hide keyboard. On close, focus auto-restores.
   React.useEffect(() => {
     if (isMobile && controllableIsOpen) {
-      const refEl = refs.reference?.current as unknown as { blur?: () => void } | null;
+      const refEl = (refs.reference?.current as unknown) as { blur?: () => void } | null;
       if (refEl?.blur) {
         setTimeout(() => {
           refEl.blur?.();

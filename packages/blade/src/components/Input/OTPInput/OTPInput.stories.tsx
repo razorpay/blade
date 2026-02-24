@@ -544,6 +544,7 @@ export const OTPInputShowcase: StoryFn<typeof OTPInputComponent> = () => {
           Auto Focus
         </Text>
         <Box maxWidth="568px">
+          {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
           <OTPInputComponent label="Auto Focus Enabled" autoFocus name="autoFocus" />
         </Box>
       </Box>
