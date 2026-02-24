@@ -54,46 +54,6 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -142,6 +102,46 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -1248,6 +1248,56 @@ exports[`<Table /> should render table 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1303,56 +1353,6 @@ exports[`<Table /> should render table 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -2958,6 +2958,56 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   width: 100%;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c6.c6.c6.c6.c6 {
   padding: 1px;
   width: -webkit-max-content;
@@ -3026,56 +3076,6 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -4447,46 +4447,6 @@ exports[`<Table /> should render table with column spanning 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -4535,6 +4495,46 @@ exports[`<Table /> should render table with column spanning 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -5261,6 +5261,56 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c8.c8.c8.c8.c8 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -5316,56 +5366,6 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -6363,6 +6363,56 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c8.c8.c8.c8.c8 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -6418,56 +6468,6 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -7465,6 +7465,56 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c8.c8.c8.c8.c8 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -7520,56 +7570,6 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -8363,46 +8363,6 @@ exports[`<Table /> should render table with grouping 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -8451,6 +8411,46 @@ exports[`<Table /> should render table with grouping 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -9193,46 +9193,6 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   pointer-events: none;
 }
 
-.c16.c16.c16.c16.c16 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c24.c24.c24.c24.c24 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -9281,6 +9241,46 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c24.c24.c24.c24.c24 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -10892,46 +10892,6 @@ exports[`<Table /> should render table with header spanning 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -10980,6 +10940,46 @@ exports[`<Table /> should render table with header spanning 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -11638,19 +11638,6 @@ exports[`<Table /> should render table with isLoading 1`] = `
   align-items: center;
 }
 
-.c4.c4.c4.c4.c4 {
-  padding: 1px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -11699,6 +11686,19 @@ exports[`<Table /> should render table with isLoading 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c4.c4.c4.c4.c4 {
+  padding: 1px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -11847,6 +11847,56 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c6.c6.c6.c6.c6 {
   padding: 1px;
   width: -webkit-max-content;
@@ -11915,56 +11965,6 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -13156,6 +13156,56 @@ exports[`<Table /> should render table with multi select 1`] = `
   position: relative;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c12.c12.c12.c12.c12 {
   color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -13283,56 +13333,6 @@ exports[`<Table /> should render table with multi select 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
@@ -15928,6 +15928,56 @@ exports[`<Table /> should render table with multi select 2`] = `
   position: relative;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c12.c12.c12.c12.c12 {
   color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -16055,56 +16105,6 @@ exports[`<Table /> should render table with multi select 2`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
@@ -18722,6 +18722,56 @@ exports[`<Table /> should render table with multi select 3`] = `
   position: relative;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -18849,56 +18899,6 @@ exports[`<Table /> should render table with multi select 3`] = `
   text-align: center;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
@@ -21266,46 +21266,6 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   background-color: hsla(200,10%,94%,1);
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -21354,6 +21314,46 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -21987,46 +21987,6 @@ exports[`<Table /> should render table with row spanning 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -22075,6 +22035,46 @@ exports[`<Table /> should render table with row spanning 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -22760,6 +22760,56 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c8.c8.c8.c8.c8 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -22815,56 +22865,6 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -23884,46 +23884,6 @@ exports[`<Table /> should render table with single select 1`] = `
   pointer-events: auto;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.0625rem;
-  -webkit-letter-spacing: -0.15600000000000003px;
-  -moz-letter-spacing: -0.15600000000000003px;
-  -ms-letter-spacing: -0.15600000000000003px;
-  letter-spacing: -0.15600000000000003px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
 .c1.c1.c1.c1.c1 {
   width: 100%;
   display: -webkit-box;
@@ -23972,6 +23932,46 @@ exports[`<Table /> should render table with single select 1`] = `
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   z-index: -1;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
@@ -25403,6 +25403,56 @@ exports[`<Table /> should render table with sticky header, footer & first column
   pointer-events: auto;
 }
 
+.c1.c1.c1.c1.c1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  border-top: 1px solid hsla(204,8%,88%,1);
+  isolation: isolate;
+  border-left: 1px solid hsla(204,8%,88%,1);
+  border-right: 1px solid hsla(204,8%,88%,1);
+  border-bottom: 1px solid hsla(204,8%,88%,1);
+}
+
+.c1.c1.c1.c1.c1::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c1.c1.c1.c1.c1::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
+}
+
 .c8.c8.c8.c8.c8 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -25458,56 +25508,6 @@ exports[`<Table /> should render table with sticky header, footer & first column
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  box-sizing: border-box;
-  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
-  border: none;
-  border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
-  border-left: 1px solid hsla(204,8%,88%,1);
-  border-right: 1px solid hsla(204,8%,88%,1);
-  border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
