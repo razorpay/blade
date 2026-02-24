@@ -257,21 +257,16 @@ export const getBaseInputStyles = ({
   disabledColor,
   isInsideCounterInput,
 }: GetInputStyles): CSSObject => {
-  const {
-    hasLeadingIcon,
-    hasPrefix,
-    hasTrailingInteractionElement,
-    hasSuffix,
-    hasTrailingIcon,
-  } = getInputVisualsToBeRendered({
-    leadingIcon,
-    prefix,
-    trailingInteractionElement,
-    leadingInteractionElement,
-    suffix,
-    trailingIcon,
-    size,
-  });
+  const { hasLeadingIcon, hasPrefix, hasTrailingInteractionElement, hasSuffix, hasTrailingIcon } =
+    getInputVisualsToBeRendered({
+      leadingIcon,
+      prefix,
+      trailingInteractionElement,
+      leadingInteractionElement,
+      suffix,
+      trailingIcon,
+      size,
+    });
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
@@ -305,25 +300,29 @@ export const getBaseInputStyles = ({
 
     paddingTop: padding ?? makeSpace(getTopPadding({ theme, size, isInsideCounterInput })),
     paddingBottom: padding ?? makeSpace(getBottomPadding({ theme, size, isInsideCounterInput })),
-    paddingLeft: padding ?? makeSpace(
-      getLeftPadding({
+    paddingLeft:
+      padding ??
+      makeSpace(
+        getLeftPadding({
+          theme,
+          isDropdownTrigger,
+          hasLeadingIcon,
+          hasPrefix,
+          size,
+          hasLeadingDropdown,
+          isInsideCounterInput,
+        }),
+      ),
+    paddingRight:
+      padding ??
+      getRightPadding({
         theme,
-        isDropdownTrigger,
-        hasLeadingIcon,
-        hasPrefix,
+        hasTrailingInteractionElement,
+        hasSuffix,
+        hasTrailingIcon,
         size,
-        hasLeadingDropdown,
         isInsideCounterInput,
       }),
-    ),
-    paddingRight: padding ?? getRightPadding({
-      theme,
-      hasTrailingInteractionElement,
-      hasSuffix,
-      hasTrailingIcon,
-      size,
-      isInsideCounterInput,
-    }),
 
     textAlign,
     width: '100%',
