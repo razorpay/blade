@@ -125,7 +125,7 @@ exports[`<Accordion /> should render 1`] = `
 
 .c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -166,10 +166,10 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -185,10 +185,10 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -402,6 +402,7 @@ exports[`<Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup Route?
                               </p>
@@ -478,6 +479,7 @@ exports[`<Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
                       </p>
@@ -551,6 +553,7 @@ exports[`<Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup QR Codes?
                               </p>
@@ -627,6 +630,7 @@ exports[`<Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                       </p>
@@ -700,6 +704,7 @@ exports[`<Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup Subscriptions?
                               </p>
@@ -776,6 +781,7 @@ exports[`<Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                       </p>
@@ -922,7 +928,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 
 .c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -963,10 +969,10 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -982,10 +988,10 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1199,6 +1205,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup Route?
                               </p>
@@ -1275,6 +1282,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
                       </p>
@@ -1348,6 +1356,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup QR Codes?
                               </p>
@@ -1424,6 +1433,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                       </p>
@@ -1497,6 +1507,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                               <p
                                 class="c10"
                                 data-blade-component="text"
+                                letter-spacing="25"
                               >
                                 How can I setup Subscriptions?
                               </p>
@@ -1573,6 +1584,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                       <p
                         class="c17"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Just use Razorpay.
                       </p>

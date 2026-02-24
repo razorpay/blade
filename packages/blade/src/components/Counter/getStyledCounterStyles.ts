@@ -14,6 +14,8 @@ const getStyledCounterStyles = ({
   borderRadius: makeBorderSize(theme.border.radius.max),
   maxWidth: makeSize(maxWidth[platform]),
   display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   flexWrap: 'nowrap',
 });
 

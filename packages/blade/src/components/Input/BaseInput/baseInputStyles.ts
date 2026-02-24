@@ -278,7 +278,7 @@ export const getBaseInputStyles = ({
       ? getHeadingStyles({
           size: size === 'xsmall' ? 'small' : size,
           weight: 'regular',
-          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          color: isDisabled ? 'surface.text.gray.disabled' : 'interactive.text.gray.normal',
           theme,
         })
       : getTextStyles({
@@ -290,7 +290,7 @@ export const getBaseInputStyles = ({
           weight: isInsideCounterInput ? 'semibold' : 'regular',
           color: isDisabled
             ? disabledColor ?? 'surface.text.gray.disabled'
-            : color ?? 'surface.text.gray.subtle',
+            : color ?? 'interactive.text.gray.normal',
           theme,
         })),
 

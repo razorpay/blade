@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { isReactNative } from '~utils';
 import { PopoverContentWrapper } from './PopoverContentWrapper';
 import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
 import { usePopoverContext } from './PopoverContext';
+import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useIsMobile } from '~utils/useIsMobile';
+import { useTheme } from '~components/BladeProvider';
 
 type PopoverHeaderProps = {
   title?: string;
@@ -29,8 +30,8 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         borderRadius="max"
         position="absolute"
         padding="spacing.2"
-        top="spacing.2"
-        right="spacing.2"
+        top="spacing.3"
+        right="spacing.3"
         zIndex={1}
       >
         <PopoverCloseButton />
@@ -68,6 +69,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
     const isMobile = useIsMobile();
+    const { colorScheme } = useTheme();
     return (
       <PopoverContentWrapper
         ref={ref as never}
@@ -75,6 +77,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         side={side}
         isVisible={isVisible}
         isMobile={isMobile}
+        colorScheme={colorScheme}
       >
         <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
           <BaseBox display="flex" flexDirection="column" gap="spacing.2">

@@ -549,10 +549,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
-      onMouseMove={(event: React.MouseEvent<HTMLButtonElement>) => {
-        // TODO(spark): enable once design figures out animations
-        onMouseMove?.(event);
-      }}
+      onMouseMove={onMouseMove}
       tabIndex={tabIndex}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}

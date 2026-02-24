@@ -243,7 +243,7 @@ describe('<BaseLink />', () => {
     // click and focus
     fireEvent.focus(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: bladeTheme.colors.onLight.interactive.text.primary.normal,
+      color: bladeTheme.colors.onLight.interactive.text.primary.subtle,
     });
 
     // click outside

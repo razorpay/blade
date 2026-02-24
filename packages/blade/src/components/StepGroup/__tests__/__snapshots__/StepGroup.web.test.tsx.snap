@@ -44,7 +44,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   height: 6px;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(204,8%,88%,1);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
   visibility: hidden;
 }
@@ -105,7 +105,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   flex: 1;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(204,8%,88%,1);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
   visibility: visible;
 }
@@ -142,7 +142,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   height: 6px;
   width: 2px;
   border-left-width: 2px;
-  border-left-color: hsla(204,8%,88%,1);
+  border-left-color: hsla(206,10%,29%,0.12);
   border-left-style: solid;
   visibility: visible;
 }
@@ -241,10 +241,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -259,10 +259,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -276,10 +276,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   margin-bottom: 4px;
@@ -295,10 +295,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -312,10 +312,10 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -469,6 +469,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   <p
                     class="c9"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -499,18 +500,21 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
               <p
                 class="c14"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Introduction
               </p>
               <p
                 class="c15"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Thu, 15th Oct
               </p>
               <p
                 class="c16"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Header description
               </p>
@@ -573,6 +577,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                   <p
                     class="c9"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -603,18 +608,21 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
               <p
                 class="c14"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Personal Details
               </p>
               <p
                 class="c15"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Thu, 15th Oct
               </p>
               <p
                 class="c16"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Person Details description
               </p>
@@ -694,6 +702,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     <p
                       class="c9"
                       data-blade-component="text"
+                      letter-spacing="50"
                     />
                   </div>
                 </div>
@@ -724,18 +733,21 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 <p
                   class="c23"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Address
                 </p>
                 <p
                   class="c15"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Thu, 15th Oct
                 </p>
                 <p
                   class="c16"
                   data-blade-component="text"
+                  letter-spacing="50"
                 />
               </div>
             </div>
@@ -796,6 +808,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                     <p
                       class="c9"
                       data-blade-component="text"
+                      letter-spacing="50"
                     />
                   </div>
                 </div>
@@ -865,18 +878,21 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
                 <p
                   class="c23"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Bank Details
                 </p>
                 <p
                   class="c15"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Thu, 15th Oct
                 </p>
                 <p
                   class="c16"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Person Details description
                 </p>
@@ -1039,10 +1055,10 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1057,10 +1073,10 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1074,10 +1090,10 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   margin-bottom: 4px;
@@ -1093,10 +1109,10 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1162,6 +1178,7 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
                   <p
                     class="c9"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -1192,16 +1209,19 @@ exports[`<StepGroup /> should support adding data-analytics attribute should acc
               <p
                 class="c14"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Introduction
               </p>
               <p
                 class="c15"
                 data-blade-component="text"
+                letter-spacing="50"
               />
               <p
                 class="c16"
                 data-blade-component="text"
+                letter-spacing="50"
               />
             </div>
           </div>

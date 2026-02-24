@@ -59,7 +59,7 @@ exports[`<Scale /> should enhance and render child to add slide 1`] = `
   border: none;
   cursor: pointer;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   display: -webkit-box;
   display: -webkit-flex;
@@ -98,6 +98,7 @@ exports[`<Scale /> should enhance and render child to add slide 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
   color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c5.c5.c5.c5.c5:active {
@@ -113,10 +114,10 @@ exports[`<Scale /> should enhance and render child to add slide 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -151,6 +152,7 @@ exports[`<Scale /> should enhance and render child to add slide 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         >
           in:User
         </p>

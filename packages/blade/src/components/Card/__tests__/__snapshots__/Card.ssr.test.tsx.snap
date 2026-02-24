@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk bCFnWA"><div data-blade-component="card-header" class="BaseBox-bmPWx dVKABc"><div data-blade-component="base-box" class="BaseBox-bmPWx biCNyr"><div data-blade-component="base-box" class="BaseBox-bmPWx kwSlRe"><div data-blade-component="base-box" class="BaseBox-bmPWx gTkVyh"><div data-blade-component="base-box" class="BaseBox-bmPWx zthMO"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(0, 0%, 2%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx ihuchP"><div data-blade-component="base-box" class="BaseBox-bmPWx mKtKh"><p class="StyledBaseText-dVBfTO fnccvB" data-blade-component="text">Card Header</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 ghkOYU gYepcg"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO eqUYbP" data-blade-component="text">12</p></div></div></div></div></div><p class="StyledBaseText-dVBfTO QokJp" data-blade-component="text">Card subtitle</p></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bLJxIg"><div data-blade-component="badge" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 hKByWw NuPgp"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO cGaYJU" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx cdqgjM"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjVlQX"><div data-blade-component="base-box" class="BaseBox-bmPWx edNXIx"><p class="StyledBaseText-dVBfTO kYKifu" data-blade-component="text">Card Footer</p><p class="StyledBaseText-dVBfTO LFffy" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jwvbFL"><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" data-analytics-name="card-footer-secondary-action-button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eSYgYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bHmVfm" data-blade-component="base-text">Delete</div></div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx kVSNdI"></div><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" data-analytics-name="card-footer-primary-action-button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fupizo"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Save</div></div></div></button></div></div></div></div></div></div></div>"`;
+exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk dda-DoH"><div data-blade-component="card-header" class="BaseBox-bmPWx dVKABc"><div data-blade-component="base-box" class="BaseBox-bmPWx biCNyr"><div data-blade-component="base-box" class="BaseBox-bmPWx kwSlRe"><div data-blade-component="base-box" class="BaseBox-bmPWx gTkVyh"><div data-blade-component="base-box" class="BaseBox-bmPWx zthMO"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(0, 0%, 2%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(0, 0%, 2%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx ihuchP"><div data-blade-component="base-box" class="BaseBox-bmPWx mKtKh"><p letter-spacing="25" class="StyledBaseText-dVBfTO iYFTOZ" data-blade-component="text">Card Header</p><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="counter" class="BaseBox-bmPWx cDQJLc"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 dfiBkK euKLJM"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p letter-spacing="50" class="StyledBaseText-dVBfTO gcGTYx" data-blade-component="text">12</p></div></div></div></div></div><p letter-spacing="50" class="StyledBaseText-dVBfTO OSBor" data-blade-component="text">Card subtitle</p></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bLJxIg"><div data-blade-component="badge" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 hKByWw NuPgp"><div data-blade-component="base-box" class="BaseBox-bmPWx bZPqUy"><p letter-spacing="50" class="StyledBaseText-dVBfTO krgNrF" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx cdqgjM"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jGOItS WrXok"></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjVlQX"><div data-blade-component="base-box" class="BaseBox-bmPWx edNXIx"><p letter-spacing="50" class="StyledBaseText-dVBfTO bkoywk" data-blade-component="text">Card Footer</p><p letter-spacing="50" class="StyledBaseText-dVBfTO iIBteE" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jwvbFL"><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" data-analytics-name="card-footer-secondary-action-button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fkhrPc"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO fxxtMV" data-blade-component="base-text">Delete</div></div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx kVSNdI"></div><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" data-analytics-name="card-footer-primary-action-button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dqGEKm"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  eHcfsa"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO etFCJy" data-blade-component="base-text">Save</div></div></div></button></div></div></div></div></div></div></div>"`;
 
 exports[`<Card /> should render a Card with Header & Footer 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -100,10 +100,18 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c14.c14.c14.c14.c14 {
   min-height: 20px;
+  min-width: 20px;
   background-color: hsla(206,10%,29%,0.09);
 }
 
@@ -135,21 +143,49 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 }
 
 .c20.c20.c20.c20.c20 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c21.c21.c21.c21.c21 {
   text-align: left;
   height: 20px;
   background-color: hsla(206,10%,29%,0.09);
 }
 
 .c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c25.c25.c25.c25.c25 {
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c26.c26.c26.c26.c26 {
+.c28.c28.c28.c28.c28 {
   margin-top: 12px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,11 +204,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding-top: 12px;
 }
 
-.c28.c28.c28.c28.c28 {
+.c30.c30.c30.c30.c30 {
   text-align: left;
 }
 
-.c31.c31.c31.c31.c31 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -187,14 +223,14 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   margin-left: 16px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c34.c34.c34.c34.c34 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c35.c35.c35.c35.c35 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -216,7 +252,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   z-index: 1;
 }
 
-.c38.c38.c38.c38.c38 {
+.c40.c40.c40.c40.c40 {
   margin-left: 16px;
 }
 
@@ -230,8 +266,8 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -254,7 +290,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -291,7 +327,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   position: relative;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -315,10 +351,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -332,10 +368,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -356,16 +392,16 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
-.c22.c22.c22.c22.c22 {
+.c24.c24.c24.c24.c24 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -374,10 +410,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -386,9 +422,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c27.c27.c27.c27.c27 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -397,15 +435,15 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c29.c29.c29.c29.c29 {
+.c31.c31.c31.c31.c31 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -414,15 +452,15 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c30.c30.c30.c30.c30 {
+.c32.c32.c32.c32.c32 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -431,16 +469,16 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c37.c37.c37.c37.c37 {
-  color: hsla(218,89%,51%,1);
+.c39.c39.c39.c39.c39 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -455,9 +493,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c40.c40.c40.c40.c40 {
+.c42.c42.c42.c42.c42 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -473,21 +513,22 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c35.c35.c35.c35.c35 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 12px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -503,8 +544,9 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -512,24 +554,26 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   position: relative;
 }
 
-.c33.c33.c33.c33.c33:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c35.c35.c35.c35.c35:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c33.c33.c33.c33.c33:active {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c35.c35.c35.c35.c35:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c33.c33.c33.c33.c33:focus-visible {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
+.c35.c35.c35.c35.c35:focus-visible {
+  background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c33.c33.c33.c33.c33 * {
+.c35.c35.c35.c35.c35 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -538,19 +582,18 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c39.c39.c39.c39.c39 {
+.c41.c41.c41.c41.c41 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
   background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 0px;
-  border-radius: 12px;
-  border-style: solid;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -566,8 +609,9 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -575,24 +619,26 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   position: relative;
 }
 
-.c39.c39.c39.c39.c39:hover {
+.c41.c41.c41.c41.c41:hover {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
-.c39.c39.c39.c39.c39:active {
+.c41.c41.c41.c41.c41:active {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
-.c39.c39.c39.c39.c39:focus-visible {
+.c41.c41.c41.c41.c41:focus-visible {
   background-color: hsla(218,87%,43%,1);
-  border-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
-.c39.c39.c39.c39.c39 * {
+.c41.c41.c41.c41.c41 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -601,7 +647,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34.c34.c34.c34.c34 {
+.c36.c36.c36.c36.c36 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -611,7 +657,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-timing-function: 160px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c38.c38.c38.c38.c38 {
   opacity: 1;
 }
 
@@ -623,6 +669,14 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -631,7 +685,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   width: fit-content;
 }
 
-.c24.c24.c24.c24.c24 {
+.c26.c26.c26.c26.c26 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -642,31 +696,31 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c23.c23.c23.c23.c23 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
@@ -742,6 +796,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                   <p
                     class="c11"
                     data-blade-component="text"
+                    letter-spacing="25"
                   >
                     Card Header
                   </p>
@@ -764,6 +819,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                           <p
                             class="c17"
                             data-blade-component="text"
+                            letter-spacing="50"
                           >
                             12
                           </p>
@@ -775,6 +831,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 <p
                   class="c18"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Card subtitle
                 </p>
@@ -786,20 +843,21 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c13"
+              class="c20"
               data-blade-component="badge"
             >
               <div
-                class="c20 c21"
+                class="c21 c22"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c16"
+                  class="c23"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="c22"
+                    class="c24"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     NEW
                   </p>
@@ -809,7 +867,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           </div>
         </div>
         <div
-          class="c23 c24"
+          class="c25 c26"
           data-blade-component="divider"
           role="separator"
         />
@@ -819,67 +877,70 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
         data-blade-component="card-body"
       >
         <p
-          class="c25"
+          class="c27"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>
       </div>
       <div
-        class="c26"
+        class="c28"
         data-blade-component="card-footer"
       >
         <div
-          class="c23 c24"
+          class="c25 c26"
           data-blade-component="divider"
           role="separator"
         />
         <div
-          class="c27"
+          class="c29"
           data-blade-component="base-box"
         >
           <div
-            class="c28"
+            class="c30"
             data-blade-component="base-box"
           >
             <p
-              class="c29"
+              class="c31"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Card Footer
             </p>
             <p
-              class="c30"
+              class="c32"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Card footer subtitle
             </p>
           </div>
           <div
-            class="c31"
+            class="c33"
             data-blade-component="base-box"
           >
             <div
-              class="c32"
+              class="c34"
               data-blade-component="base-box"
             >
               <button
-                class="c33"
+                class="c35"
                 data-analytics-name="card-footer-secondary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class=" c34"
+                  class=" c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c35 c36"
+                    class="c37 c38"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c37"
+                      class="c39"
                       data-blade-component="base-text"
                     >
                       Delete
@@ -889,30 +950,30 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </button>
             </div>
             <div
-              class="c38"
+              class="c40"
               data-blade-component="base-box"
             />
             <div
-              class="c32"
+              class="c34"
               data-blade-component="base-box"
             >
               <button
-                class="c39"
+                class="c41"
                 data-analytics-name="card-footer-primary-action-button"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class=" c34"
+                  class=" c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c35 c36"
+                    class="c37 c38"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c40"
+                      class="c42"
                       data-blade-component="base-text"
                     >
                       Save
@@ -929,7 +990,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk bCFnWA"><a href="https://google.com" data-blade-component="card-link-overlay" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk dda-DoH"><a href="https://google.com" data-blade-component="card-link-overlay" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with href 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -955,8 +1016,8 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -979,7 +1040,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1048,10 +1109,10 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1081,6 +1142,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
         <p
           class="c5"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>
@@ -1090,7 +1152,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk bCFnWA"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO kSAxgY" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bmsuyj dzkBld"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dLXTxk dda-DoH"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with onClick 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -1116,8 +1178,8 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   isolation: isolate;
 }
@@ -1140,7 +1202,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
 .c3.c3.c3.c3.c3::after {
   content: "";
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 1px;
   right: 1px;
   height: 16px;
@@ -1209,10 +1271,10 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1241,6 +1303,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
         <p
           class="c5"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Plain Card
         </p>

@@ -117,10 +117,10 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -134,10 +134,10 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -151,10 +151,10 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -201,6 +201,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -227,6 +228,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -253,6 +255,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -381,10 +384,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -398,10 +401,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -415,10 +418,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -463,6 +466,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -489,6 +493,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -515,6 +520,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -643,10 +649,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -660,10 +666,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -677,10 +683,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -725,6 +731,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -751,6 +758,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -777,6 +785,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -905,10 +914,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -922,10 +931,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -939,10 +948,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -987,6 +996,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -1013,6 +1023,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -1039,6 +1050,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -1429,10 +1441,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1446,10 +1458,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1463,10 +1475,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.8125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1511,6 +1523,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -1537,6 +1550,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -1563,6 +1577,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>

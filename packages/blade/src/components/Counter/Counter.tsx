@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
-import { counterHeight, horizontalPadding } from './counterTokens';
+import { counterHeight, counterMinWidth, horizontalPadding } from './counterTokens';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -120,18 +120,21 @@ const _Counter = (
     <BaseBox
       ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      alignSelf="center"
+      justifyContent="center"
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
       <StyledCounter
         minHeight={makeSize(counterHeight[size])}
+        minWidth={makeSize(counterMinWidth[size])}
         backgroundColor={backgroundColor}
         size={size}
         platform={platform}
       >
         <BaseBox
-          paddingX={horizontalPadding[size]}
+          paddingX={value > 9 ? horizontalPadding[size] : undefined}
           display="flex"
           flexDirection="row"
           justifyContent="center"

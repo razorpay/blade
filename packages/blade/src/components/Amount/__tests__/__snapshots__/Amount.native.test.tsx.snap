@@ -3328,6 +3328,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "fontSize": "10px",
+            },
           ]
         }
       >

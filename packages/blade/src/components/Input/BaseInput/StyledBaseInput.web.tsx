@@ -205,7 +205,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       <BaseBox display="flex" alignItems="center" gap="spacing.3">
         <Text
           color={
-            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+            props.value && !isDisabled
+              ? 'interactive.text.gray.normal'
+              : 'surface.text.gray.disabled'
           }
           truncateAfterLines={1}
           textAlign={props.textAlign}

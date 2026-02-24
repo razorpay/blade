@@ -114,7 +114,10 @@ const BulkActionContent = (): React.ReactElement => {
     if (!value) return { nodes: tableData.nodes };
     return { nodes: tableData.nodes.filter((node) => node.method.key === value) };
   };
-  const getFilterRangeData = (tableData: TableData<Item>, value?: DatesRangeValue): TableData<Item> => {
+  const getFilterRangeData = (
+    tableData: TableData<Item>,
+    value?: DatesRangeValue,
+  ): TableData<Item> => {
     if (!value?.[0]) return { nodes: tableData.nodes };
     return {
       nodes: tableData.nodes.filter((node) => {
@@ -173,14 +176,20 @@ const BulkActionContent = (): React.ReactElement => {
                     const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                     const searchValueData = getSearchedData(quickFilterData, value);
                     const methodFilterData = getMethodFilterData(searchValueData, methodFilter);
-                    const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                    const dateRangeFilterData = getFilterRangeData(
+                      methodFilterData,
+                      filterDateRange,
+                    );
                     setListViewTableData(dateRangeFilterData);
                     setSearchValue(value);
                   }}
                   onClearButtonClick={() => {
                     const quickFilterData = getQuickFilterData(data, selectedQuickFilter);
                     const methodFilterData = getMethodFilterData(quickFilterData, methodFilter);
-                    const dateRangeFilterData = getFilterRangeData(methodFilterData, filterDateRange);
+                    const dateRangeFilterData = getFilterRangeData(
+                      methodFilterData,
+                      filterDateRange,
+                    );
                     setListViewTableData(dateRangeFilterData);
                     setSearchValue('');
                   }}

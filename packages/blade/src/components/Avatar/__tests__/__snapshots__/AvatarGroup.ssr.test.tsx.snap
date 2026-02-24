@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AvatarGroup /> should render AvatarGroup  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  bOeoht"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="information" class="StyledAvatarButton-sc-1w6qflj-0 jQFQNd"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO foibUV" data-blade-component="text">NK</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 iqbfQo"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO FCyvm" data-blade-component="text">AN</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="negative" class="StyledAvatarButton-sc-1w6qflj-0 hXPqSa"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO eJScL" data-blade-component="text">RB</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="primary" class="StyledAvatarButton-sc-1w6qflj-0 hgfJwp"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO dYtkgY" data-blade-component="text">CH</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 iqbfQo"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p class="StyledBaseText-dVBfTO FCyvm" data-blade-component="text">SA</p></div></div></div></div></div></div>"`;
+exports[`<AvatarGroup /> should render AvatarGroup  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  bOeoht"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="information" class="StyledAvatarButton-sc-1w6qflj-0 jQFQNd"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO ljOchz" data-blade-component="text">NK</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 iqbfQo"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO jALQSs" data-blade-component="text">AN</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="negative" class="StyledAvatarButton-sc-1w6qflj-0 hXPqSa"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO TIjxd" data-blade-component="text">RB</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="primary" class="StyledAvatarButton-sc-1w6qflj-0 hgfJwp"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO iYBdaK" data-blade-component="text">CH</p></div></div></div></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="positive" class="StyledAvatarButton-sc-1w6qflj-0 iqbfQo"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO jALQSs" data-blade-component="text">SA</p></div></div></div></div></div></div>"`;
 
 exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
 .c1.c1.c1.c1.c1 {
@@ -141,10 +141,10 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -158,10 +158,10 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -175,16 +175,16 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -192,10 +192,10 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.0625rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -242,6 +242,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -268,6 +269,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -294,6 +296,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -320,6 +323,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
             <p
               class="c12"
               data-blade-component="text"
+              letter-spacing="50"
             >
               CH
             </p>
@@ -346,6 +350,7 @@ exports[`<AvatarGroup /> should render AvatarGroup  2`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               SA
             </p>

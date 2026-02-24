@@ -2,12 +2,12 @@
 import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import { SelectInput } from './SelectInput';
 import { bladeTheme } from '~tokens/theme';
 import { BladeProvider } from '~components/BladeProvider';
 import { Badge } from '~components/Badge';
 import { BankIcon, InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
-import { SelectInput } from './SelectInput';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
@@ -236,7 +236,7 @@ const SelectInputTemplate: StoryFn<typeof SelectInput> = ({ icon, ...args }) => 
           onChange={({ name, values }) => {
             console.log(name, values);
           }}
-          icon={iconMap[icon as unknown as string]}
+          icon={iconMap[(icon as unknown) as string]}
           valueSuffix={({ values }) => {
             if (values[0] === 'item-1') {
               return <Badge color="positive">20% Off</Badge>;
