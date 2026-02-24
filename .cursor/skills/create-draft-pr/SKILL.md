@@ -1,3 +1,8 @@
+---
+name: create-draft-pr
+description: Create a draft pull request with conventional commit message and structured PR body targeting master branch
+disable-model-invocation: true
+---
 # Create Draft PR
 
 Create a draft pull request with your changes.
@@ -47,8 +52,8 @@ git commit -m "feat(<ComponentName>): <brief description>"
 # Push branch to remote
 git push -u origin HEAD
 
-# Create draft PR using gh cli with spark as base
-gh pr create --base spark --draft --title "feat(<ComponentName>): <brief description>" --body "$(cat <<'EOF'
+# Create draft PR using gh cli with master as base
+gh pr create --base master --draft --title "feat(<ComponentName>): <brief description>" --body "$(cat <<'EOF'
 ## Summary
 - Updated <ComponentName> with latest Figma designs
 - Added/Modified [list specific changes]
