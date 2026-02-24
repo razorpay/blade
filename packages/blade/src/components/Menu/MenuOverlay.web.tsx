@@ -6,7 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getPopupBoxShadowString, useTheme } from '~utils';
+import { getPopupBoxShadowString, isReactNative, useTheme } from '~utils';
 import type { ColorSchemeNames } from '~tokens/theme';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
@@ -21,7 +21,7 @@ const StyledMenuOverlayContent = styled(BaseBox)<{ colorScheme: ColorSchemeNames
   ({ theme, colorScheme }) => {
     return {
       backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
-      boxShadow: getPopupBoxShadowString(theme, colorScheme),
+      boxShadow: isReactNative() ? undefined : getPopupBoxShadowString(theme, colorScheme),
     };
   },
 );

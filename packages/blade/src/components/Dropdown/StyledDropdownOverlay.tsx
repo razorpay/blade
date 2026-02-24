@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize, getPopupBoxShadowString } from '~utils';
+import { makeSize, getPopupBoxShadowString, isReactNative } from '~utils';
 import type { ColorSchemeNames } from '~tokens/theme';
 
 const StyledDropdownOverlay = styled(BaseBox)<{
@@ -14,7 +14,8 @@ const StyledDropdownOverlay = styled(BaseBox)<{
     borderTopStyle: undefined,
     borderRadius: makeSize(theme.border.radius.medium),
     backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
-    boxShadow: isInBottomSheet ? undefined : getPopupBoxShadowString(theme, colorScheme),
+    boxShadow:
+      isInBottomSheet || isReactNative() ? undefined : getPopupBoxShadowString(theme, colorScheme),
   };
 });
 
