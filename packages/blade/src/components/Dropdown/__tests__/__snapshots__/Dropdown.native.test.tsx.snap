@@ -18,10 +18,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
   >
     <View
       data-blade-component="base-box"
+      height="100%"
       position="relative"
       style={
         [
           {
+            "height": "100%",
             "position": "relative",
             "textAlign": "left",
           },
@@ -114,22 +116,22 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.gray.muted"
+                    color="surface.text.gray.subtle"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
-                    fontWeight="semibold"
+                    fontWeight="medium"
                     lineHeight={75}
                     numberOfLines={2}
                     style={
                       [
                         {
-                          "color": "hsla(204, 9%, 42%, 1)",
+                          "color": "hsla(200, 10%, 18%, 1)",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
-                          "fontWeight": "600",
+                          "fontWeight": "500",
                           "letterSpacing": 0,
                           "lineHeight": 17,
                           "marginBottom": 0,
@@ -222,7 +224,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 [
                   {},
                   {
-                    "borderRadius": 12,
+                    "borderRadius": 8,
                     "width": "100%",
                   },
                 ]
@@ -238,9 +240,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "borderColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "borderStyle": "solid",
                       "borderWidth": 0,
                       "display": "flex",
@@ -255,7 +258,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "borderColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 12,
+                      "borderRadius": 8,
                       "borderStyle": "solid",
                       "borderWidth": 1,
                     },
@@ -391,7 +394,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "height": 36,
-                              "letterSpacing": 0,
+                              "letterSpacing": -0.18200000000000002,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -803,6 +806,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           testID="closeable-area"
         >
           <View
+            colorScheme="light"
             data-blade-component="dropdown-overlay"
             display="none"
             elevation="midRaised"
@@ -827,11 +831,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 },
                 [
                   {
-                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                    "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                    "backdropFilter": "blur(8px)",
+                    "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
                     "borderRadius": 12,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
+                    "borderWidth": "none",
                     "transform": [
                       {
                         "translateY": 8,
@@ -1142,13 +1145,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderRadius": 12,
+                          "borderRadius": 8,
                           "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
                           "flexDirection": "column",
-                          "marginBottom": 2,
-                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
@@ -1321,13 +1322,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderRadius": 12,
+                          "borderRadius": 8,
                           "borderWidth": 0,
                           "cursor": "pointer",
                           "display": "flex",
                           "flexDirection": "column",
-                          "marginBottom": 2,
-                          "marginTop": 2,
                           "opacity": 1,
                           "paddingBottom": 8,
                           "paddingLeft": 8,
