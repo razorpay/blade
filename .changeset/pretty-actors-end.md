@@ -66,7 +66,7 @@ The `elevation` prop on `Card` is **deprecated and is now a no-op**. `Card` alwa
 
 ---
 
-## Breaking Changes
+## Visual Changes
 
 ### `TopNav` — Always Renders in Dark / Black Theme
 
