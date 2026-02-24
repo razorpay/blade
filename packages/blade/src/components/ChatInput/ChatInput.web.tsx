@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { castWebType, makeSpace } from '~utils';
 import type { ChatInputProps } from './types';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { castWebType, makeSpace } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';

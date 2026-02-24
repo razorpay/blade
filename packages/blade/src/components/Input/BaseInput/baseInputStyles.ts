@@ -1,7 +1,4 @@
 import type { CSSObject } from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
-import { getPlatformType } from '~utils';
-import { makeBorderSize } from '~utils/makeBorderSize';
 import type { BaseInputProps } from './BaseInput';
 import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
 import {
@@ -17,6 +14,9 @@ import {
 } from './baseInputTokens';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { BaseInputWrapperProps } from './types';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import { getPlatformType } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';

@@ -1,8 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
-import type { ContainerElementType } from '~utils/types';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
 import type { BaseInputWrapperProps } from './types';
+import type { ContainerElementType } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 
 const _BaseInputWrapper: React.ForwardRefRenderFunction<

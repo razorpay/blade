@@ -9,7 +9,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { ChatMessage } from '~components/ChatMessage';
-import { RayIcon, RefreshIcon } from '~components/Icons';
+import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
@@ -398,13 +398,15 @@ const getMockResponse = (userMessage: string): MockResponseResult => {
   if (/integrate|integration|sdk|api key/i.test(lower)) {
     return {
       type: 'text',
-      text: 'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
+      text:
+        'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
     };
   }
 
   return {
     type: 'text',
-    text: "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
+    text:
+      "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
   };
 };
 
