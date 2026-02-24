@@ -413,9 +413,8 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -503,25 +502,57 @@ const paymentTableData: TableData<PaymentRow> = {
   ],
 };
 
+const HEADING_WORDS = ['Recent', 'payments', 'from', 'pingal@gmail.com'];
+
+type ParagraphWord = { word: string; bold?: boolean };
+const PARAGRAPH_WORDS: ParagraphWord[] = [
+  ...['Pingal', 'has'].map((w) => ({ word: w })),
+  ...['3', 'recent', 'payments', 'totalling', '₹26,000.'].map((w) => ({ word: w, bold: true })),
+  ...['Two', 'are', 'successful', '(captured)', 'and', 'have', 'been', 'settled.', 'The'].map(
+    (w) => ({ word: w }),
+  ),
+  ...['third—a', 'netbanking', 'payment—is', 'still', 'pending'].map((w) => ({
+    word: w,
+    bold: true,
+  })),
+  ...[
+    'as',
+    'we',
+    'wait',
+    'for',
+    'the',
+    "customer's",
+    'bank',
+    'to',
+    'confirm',
+    'the',
+    'transfer.',
+  ].map((w) => ({ word: w })),
+];
+
 // step 0 → user message visible
 // step 1 → AI loading slides in
-// step 2 → loading swaps to full content
-// step 3 → suggested questions slide in
+// step 2 → loading swaps to full content, typing animation starts (heading + text)
+// step 3 → table / chips / buttons slide in after typing animation finishes (~3s)
+// step 4 → suggested questions slide in
 const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
   const [step, setStep] = React.useState(0);
   const [animKey, setAnimKey] = React.useState(0);
+  const bottomRef = React.useRef<HTMLDivElement>(null);
 
   const startAnimation = React.useCallback(() => {
     setStep(0);
     // bump key so Move components remount and re-animate on replay
     setAnimKey((k) => k + 1);
     const t1 = setTimeout(() => setStep(1), 800);
-    const t2 = setTimeout(() => setStep(2), 5800); // 5s typing animation
-    const t3 = setTimeout(() => setStep(3), 6800);
+    const t2 = setTimeout(() => setStep(2), 5800); // typing animation starts
+    const t3 = setTimeout(() => setStep(3), 8800); // 3s after typing: table appears
+    const t4 = setTimeout(() => setStep(4), 9800); // suggestions follow
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, []);
 
@@ -529,6 +560,14 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
     return startAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Scroll to bottom whenever a new step mounts new content
+  React.useEffect(() => {
+    const id = setTimeout(() => {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);
+    return () => clearTimeout(id);
+  }, [step, animKey]);
 
   const footerActions = (
     <Box display="flex" justifyContent="space-between" alignItems="center" marginTop="spacing.3">
@@ -561,135 +600,212 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
   );
 
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.6">
-      <Box display="flex" justifyContent="flex-end">
-        <Button size="small" variant="secondary" onClick={startAnimation}>
-          Replay
-        </Button>
-      </Box>
+    <Box maxHeight="600px" overflowY="auto" display="flex" flexDirection="column">
+      <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.6">
+        <Box display="flex" justifyContent="flex-end">
+          <Button size="small" variant="secondary" onClick={startAnimation}>
+            Replay
+          </Button>
+        </Box>
 
-      {/* Self message — always visible, no animation per requirement */}
-      <Box display="flex" justifyContent="flex-end">
-        <ChatMessage senderType="self" messageType="last">
-          How much was settled into my account today?
-        </ChatMessage>
-      </Box>
-
-      {/* AI message: slides in at step 1; isLoading flips to false at step 2 */}
-      {step >= 1 && (
-        <Move key={`ai-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
-          <ChatMessage
-            senderType="other"
-            leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
-            isLoading={step < 2}
-            loadingText={[
-              'Analyzing your request...',
-              'Fetching payment details...',
-              'Preparing your response...',
-            ]}
-            footerActions={step >= 2 ? footerActions : undefined}
-          >
-            <Box display="flex" flexDirection="column" gap="spacing.5">
-              <Heading size="small" weight="semibold">
-                Recent payments from pingal@gmail.com
-              </Heading>
-
-              <Text color="surface.text.gray.normal" size="medium">
-                Pingal has{' '}
-                <Text as="span" weight="semibold" color="surface.text.gray.normal" size="medium">
-                  3 recent payments totalling ₹26,000
-                </Text>
-                . Two are successful (captured) and have been settled. The{' '}
-                <Text as="span" weight="semibold" color="surface.text.gray.normal" size="medium">
-                  third—a netbanking payment—is still pending
-                </Text>{' '}
-                as we wait for the customer&apos;s bank to confirm the transfer.
-              </Text>
-
-              <Table data={paymentTableData}>
-                {(tableData) => (
-                  <>
-                    <TableHeader>
-                      <TableHeaderRow>
-                        <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                        <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                        <TableHeaderCell headerKey="COL3">Payment ID</TableHeaderCell>
-                        <TableHeaderCell headerKey="COL4">Method</TableHeaderCell>
-                        <TableHeaderCell headerKey="COL5">Reference</TableHeaderCell>
-                      </TableHeaderRow>
-                    </TableHeader>
-                    <TableBody>
-                      {tableData.map((item, index) => (
-                        <TableRow key={index} item={item}>
-                          <TableCell>
-                            <Badge color={item.status === 'Pending' ? 'notice' : 'positive'}>
-                              {item.status}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <Amount value={item.amount} />
-                          </TableCell>
-                          <TableCell>{item.col3}</TableCell>
-                          <TableCell>{item.col4}</TableCell>
-                          <TableCell>{item.col5}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </>
-                )}
-              </Table>
-
-              <ChipGroup
-                accessibilityLabel="Select platform"
-                defaultValue="website"
-                onChange={({ values }) => console.log('Platform:', values)}
-              >
-                <Chip value="website">Website</Chip>
-                <Chip value="android">Android</Chip>
-                <Chip value="ios">iOS</Chip>
-                <Chip value="social_media">Social Media</Chip>
-                <Chip value="others">Others</Chip>
-              </ChipGroup>
-
-              <Box display="flex" gap="spacing.3">
-                <Button>Button</Button>
-                <Button variant="secondary">Button</Button>
-              </Box>
-            </Box>
+        {/* Self message — always visible, no animation per requirement */}
+        <Box display="flex" justifyContent="flex-end">
+          <ChatMessage senderType="self" messageType="last">
+            How much was settled into my account today?
           </ChatMessage>
-        </Move>
-      )}
+        </Box>
 
-      {/* Suggested questions — slides in at step 3 */}
-      {step >= 3 && (
-        <Move key={`suggestions-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
-          <Box display="flex" flexDirection="column" gap="spacing.0">
+        {/* AI message: slides in at step 1; isLoading flips to false at step 2 */}
+        {step >= 1 && (
+          <Move key={`ai-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
             <ChatMessage
               senderType="other"
               leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+              isLoading={step < 2}
+              loadingText={[
+                'Analyzing your request...',
+                'Fetching payment details...',
+                'Preparing your response...',
+              ]}
+              footerActions={step >= 3 ? footerActions : undefined}
             >
-              <Box display="flex" flexDirection="column" gap="spacing.3">
+              <Box display="flex" flexDirection="column" gap="spacing.5">
+                <Heading size="small" weight="semibold">
+                  <Stagger
+                    display="inline-flex"
+                    flexWrap="wrap"
+                    gap="spacing.2"
+                    motionTriggers={['mount']}
+                    type="in"
+                  >
+                    {HEADING_WORDS.map((word, i) => (
+                      <Fade key={i}>
+                        <span>{word}</span>
+                      </Fade>
+                    ))}
+                  </Stagger>
+                </Heading>
+
                 <Text color="surface.text.gray.normal" size="medium">
-                  How can I help you next?
+                  <Stagger
+                    display="inline-flex"
+                    flexWrap="wrap"
+                    gap="spacing.2"
+                    motionTriggers={['mount']}
+                    type="in"
+                  >
+                    {PARAGRAPH_WORDS.map(({ word, bold }, i) => (
+                      <Fade key={i}>
+                        <span style={{ fontWeight: bold ? 600 : undefined }}>{word}</span>
+                      </Fade>
+                    ))}
+                  </Stagger>
                 </Text>
-                <ActionList>
-                  <ActionListItem
-                    title="1. Why is the netbanking pending?"
-                    value="q1"
-                    onClick={() => console.log('Q1 selected')}
-                  />
-                  <ActionListItem
-                    title="2. How long does settlement take?"
-                    value="q2"
-                    onClick={() => console.log('Q2 selected')}
-                  />
-                </ActionList>
+
+                {step >= 3 && (
+                  <Stagger
+                    key={`table-${animKey}`}
+                    display="flex"
+                    flexDirection="column"
+                    gap="spacing.5"
+                    motionTriggers={['mount']}
+                    type="in"
+                  >
+                    {/* Wrap Table in Box so framer-motion animates the div, not the Table component */}
+                    <Fade>
+                      <Box>
+                        <Table data={paymentTableData}>
+                          {(tableData) => (
+                            <>
+                              <TableHeader>
+                                <TableHeaderRow>
+                                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                                  <TableHeaderCell headerKey="COL3">Payment ID</TableHeaderCell>
+                                  <TableHeaderCell headerKey="COL4">Method</TableHeaderCell>
+                                  <TableHeaderCell headerKey="COL5">Reference</TableHeaderCell>
+                                </TableHeaderRow>
+                              </TableHeader>
+                              <TableBody>
+                                {tableData.map((item, index) => (
+                                  <TableRow key={index} item={item}>
+                                    <TableCell>
+                                      <Badge
+                                        color={item.status === 'Pending' ? 'notice' : 'positive'}
+                                      >
+                                        {item.status}
+                                      </Badge>
+                                    </TableCell>
+                                    <TableCell>
+                                      <Amount value={item.amount} />
+                                    </TableCell>
+                                    <TableCell>{item.col3}</TableCell>
+                                    <TableCell>{item.col4}</TableCell>
+                                    <TableCell>{item.col5}</TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </>
+                          )}
+                        </Table>
+                      </Box>
+                    </Fade>
+
+                    {/* Each chip animates individually; Box wrapper ensures framer-motion styles apply */}
+                    <Fade>
+                      <Box>
+                        <ChipGroup
+                          accessibilityLabel="Select platform"
+                          defaultValue="website"
+                          onChange={({ values }) => console.log('Platform:', values)}
+                        >
+                          {[
+                            { value: 'website', label: 'Website' },
+                            { value: 'android', label: 'Android' },
+                            { value: 'ios', label: 'iOS' },
+                            { value: 'social_media', label: 'Social Media' },
+                            { value: 'others', label: 'Others' },
+                          ].map(({ value, label }) => (
+                            <Fade key={value} delay="2xquick" motionTriggers={['mount']}>
+                              <Box display="inline-flex">
+                                <Chip value={value}>{label}</Chip>
+                              </Box>
+                            </Fade>
+                          ))}
+                        </ChipGroup>
+                      </Box>
+                    </Fade>
+
+                    {/* Each button fades in via its own Box wrapper */}
+                    <Fade>
+                      <Box display="flex" gap="spacing.3">
+                        <Fade motionTriggers={['mount']}>
+                          <Box display="inline-flex">
+                            <Button>Button</Button>
+                          </Box>
+                        </Fade>
+                        <Fade motionTriggers={['mount']} delay="2xquick">
+                          <Box display="inline-flex">
+                            <Button variant="secondary">Button</Button>
+                          </Box>
+                        </Fade>
+                      </Box>
+                    </Fade>
+                  </Stagger>
+                )}
               </Box>
             </ChatMessage>
-            <Divider dividerStyle="dashed" marginLeft="24px" />
-          </Box>
-        </Move>
-      )}
+          </Move>
+        )}
+
+        {/* Suggested questions — slides in at step 4 */}
+        {step >= 4 && (
+          <Move key={`suggestions-${animKey}`} isVisible motionTriggers={['mount']} type="inout">
+            <Box display="flex" flexDirection="column" gap="spacing.0">
+              <ChatMessage
+                senderType="other"
+                leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+              >
+                <Box display="flex" flexDirection="column" gap="spacing.3">
+                  <Text color="surface.text.gray.normal" size="medium">
+                    <Stagger
+                      display="inline-flex"
+                      flexWrap="wrap"
+                      gap="spacing.2"
+                      motionTriggers={['mount']}
+                      type="in"
+                    >
+                      {['How', 'can', 'I', 'help', 'you', 'next?'].map((word, i) => (
+                        <Fade key={i}>
+                          <span>{word}</span>
+                        </Fade>
+                      ))}
+                    </Stagger>
+                  </Text>
+                  <Fade motionTriggers={['mount']} delay="gentle">
+                    <ActionList>
+                      <ActionListItem
+                        title="1. Why is the netbanking pending?"
+                        value="q1"
+                        onClick={() => console.log('Q1 selected')}
+                      />
+                      <ActionListItem
+                        title="2. How long does settlement take?"
+                        value="q2"
+                        onClick={() => console.log('Q2 selected')}
+                      />
+                    </ActionList>
+                  </Fade>
+                </Box>
+              </ChatMessage>
+              <Divider dividerStyle="dashed" marginLeft="24px" />
+            </Box>
+          </Move>
+        )}
+
+        {/* Sentinel — scrolled into view whenever step changes */}
+        <div ref={bottomRef} />
+      </Box>
     </Box>
   );
 };
