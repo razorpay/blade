@@ -70,12 +70,10 @@ export type CardProps = {
   /**
    * Sets the elevation for Cards
    *
-   * eg: `theme.elevation.midRaised`
-   *
-   * @default `theme.elevation.lowRaised`
-   *
    * **Links:**
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--docs
+   *
+   * @deprecated The `elevation` prop is deprecated and is a no-op. The Card always uses a custom elevation. This prop will be removed in a future major version.
    */
   elevation?: keyof Elevation;
   /**
