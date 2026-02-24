@@ -125,6 +125,34 @@ export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
 };
 WithFileUpload.storyName = 'With File Upload';
 
+export const WithValidationError: StoryFn<typeof ChatInput> = () => {
+  const [validationState, setValidationState] = useState<'error' | 'none'>('none');
+  const [errorText, setErrorText] = useState('Something went wrong. Please try again.');
+
+  return (
+    <Box
+      maxWidth="600px"
+      paddingTop="spacing.8"
+      display="flex"
+      flexDirection="column"
+      gap="spacing.5"
+    >
+      <ChatInput
+        placeholder="Ask a question..."
+        validationState={validationState}
+        errorText={errorText}
+        onErrorDismiss={() => setValidationState('none')}
+        onSubmit={({ value }) => {
+          console.log('value', value);
+          setErrorText(`"${value}"? What is even that. Ask better questions`);
+          setValidationState('error');
+        }}
+      />
+    </Box>
+  );
+};
+WithValidationError.storyName = 'With Validation Error';
+
 export const StopGeneration: StoryFn<typeof ChatInput> = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
@@ -231,7 +259,7 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
         </Text>
         <img
           src="https://picsum.photos/300/200"
-          alt="Sample image"
+          alt="Sample"
           style={{ width: 300, borderRadius: 8 }}
         />
       </Box>
