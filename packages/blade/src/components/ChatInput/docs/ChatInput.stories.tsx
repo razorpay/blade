@@ -309,7 +309,14 @@ const simulateStream = (
   tick();
 };
 
-const INITIAL_MESSAGES: ChatMsg[] = [];
+const INITIAL_MESSAGES: ChatMsg[] = [
+  {
+    id: 'msg-agent-1',
+    senderType: 'other',
+    content:
+      'Hello! This is a basic demo with ChatInput and ChatMessage components of Blade design system. You can accept the suggestions with tab in input to see different types of responses. Try adding more than 3 files in FileUpload to see error from file upload.',
+  },
+];
 
 const LOADING_TEXTS = [
   'Analyzing your request...',
@@ -479,10 +486,11 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   const scrollAnchorRef = useRef<HTMLDivElement>(null);
 
   const suggestions = [
-    'How do I integrate payments?',
     'Set up webhooks',
-    'Show recent transactions',
     'Invalid PAN Number',
+    'Show me Error',
+    'How do I integrate payments?',
+    'Show recent transactions',
   ];
 
   useEffect(() => {
@@ -528,6 +536,8 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
           `"${value.trim()}" is not a valid PAN number. Please enter a valid 10-character PAN.`,
         );
         return;
+      } else {
+        setInputErrorText(undefined);
       }
 
       const userMsgId = `msg-user-${Date.now()}`;
@@ -658,14 +668,6 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
               >
                 {msg.isLoading ? undefined : msg.content}
               </ChatMessage>
-              {msg.validationState === 'error' && (
-                <Box display="flex" alignItems="center" gap="spacing.1" marginTop="spacing.1">
-                  <RefreshIcon size="small" color="feedback.icon.negative.intense" />
-                  <Text variant="body" size="small" color="feedback.text.negative.intense">
-                    Tap message to retry
-                  </Text>
-                </Box>
-              )}
             </Box>
           </Move>
         ))}
@@ -678,7 +680,6 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
           value={text}
           onChange={({ value }) => {
             setText(value);
-            if (inputErrorText) setInputErrorText(undefined);
           }}
           onSubmit={handleSubmit}
           validationState={inputErrorText ? 'error' : 'none'}
