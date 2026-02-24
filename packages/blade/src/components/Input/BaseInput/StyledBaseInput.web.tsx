@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
+import getIn from '~utils/lodashButBetter/get';
 import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './types';
-import getIn from '~utils/lodashButBetter/get';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
