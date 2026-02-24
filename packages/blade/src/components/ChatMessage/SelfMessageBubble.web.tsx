@@ -23,18 +23,17 @@ const SelfMessageBubble = ({
             ? chatMessageToken.self.backgroundColor.error
             : chatMessageToken.self.backgroundColor.default
         }
-        padding={isChildText ? 'spacing.4' : 'spacing.0'}
-        borderTopLeftRadius={chatMessageToken.self.borderTopLeftRadius}
-        borderTopRightRadius={chatMessageToken.self.borderTopRightRadius}
-        borderBottomLeftRadius={chatMessageToken.self.borderBottomLeftRadius}
-        borderBottomRightRadius={
-          messageType === 'last'
-            ? chatMessageToken.self.borderBottomRightRadiusForLastMessage
-            : chatMessageToken.self.borderBottomRightRadius
-        }
+        padding={isChildText ? 'spacing.5' : 'spacing.0'}
+        borderRadius="large"
         width="fit-content"
         height="auto"
         alignSelf="flex-end"
+        border="thin"
+        borderColor="surface.border.gray.muted"
+        style={{
+          //TODO: ask for tokens  design
+          boxShadow: '0 2px 2px 0 rgba(237, 236, 236, 0.16)',
+        }}
       >
         {children}
       </BaseBox>
