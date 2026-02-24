@@ -94,6 +94,24 @@ type ChatInputProps = {
   onSuggestionAccept?: ({ suggestion }: { suggestion: string }) => void;
 
   /**
+   * Indicates the validation state of the input.
+   * When set to 'error', errorText is displayed below the input as an animated popup sliding from behind the card.
+   * @default 'none'
+   */
+  validationState?: 'error' | 'none';
+
+  /**
+   * Error message displayed below the input when validationState is 'error'.
+   */
+  errorText?: string;
+
+  /**
+   * Callback fired when the validation state changes.
+   * Called with `{ validationState: 'none' }` when the user dismisses the error popup.
+   */
+  onValidationStateChange?: ({ validationState }: { validationState: 'error' | 'none' }) => void;
+
+  /**
    * Accessibility label for the input. Required when no visible label is present.
    */
   accessibilityLabel?: string;
