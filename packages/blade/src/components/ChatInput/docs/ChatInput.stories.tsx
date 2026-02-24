@@ -141,7 +141,7 @@ export const WithValidationError: StoryFn<typeof ChatInput> = () => {
         placeholder="Ask a question..."
         validationState={validationState}
         errorText={errorText}
-        onValidationStateChange={({ validationState: newState }) => setValidationState(newState)}
+        onErrorDismiss={() => setValidationState('none')}
         onSubmit={({ value }) => {
           console.log('value', value);
           setErrorText(`"${value}"? What is even that. Ask better questions`);

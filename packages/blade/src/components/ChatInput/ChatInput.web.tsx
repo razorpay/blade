@@ -49,7 +49,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onSuggestionAccept,
     validationState,
     errorText,
-    onValidationStateChange,
+    onErrorDismiss,
     accessibilityLabel = 'Chat input',
     testID,
     ...rest
@@ -250,14 +250,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             <Text size="small" color="feedback.text.negative.intense">
               {errorText}
             </Text>
-            {onValidationStateChange ? (
+            {onErrorDismiss ? (
               <IconButton
                 marginLeft="auto"
                 icon={CloseIcon}
                 size="small"
                 emphasis="intense"
                 accessibilityLabel="Dismiss error"
-                onClick={() => onValidationStateChange({ validationState: 'none' })}
+                onClick={() => onErrorDismiss()}
               />
             ) : null}
           </BaseBox>

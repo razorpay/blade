@@ -39,6 +39,77 @@ import { ChatInput } from '@razorpay/blade/components';
 />;
 ```
 
+<details>
+  <summary>Alternate API: JSX-based for files and quote</summary>
+
+### Alternate API
+
+In this alternate approach, `files` and `quote` accept `ReactNode` instead of data props. The upload button and file picker remain built-in to ChatInput; only the preview rendering and quote content are fully consumer-controlled.
+
+```jsx
+import { ChatInput, ChatInputFilePreview, ChatInputQuote } from '@razorpay/blade/components';
+
+<ChatInput
+  value={text}
+  onChange={({ value }) => setText(value)}
+  onSubmit={({ value }) => handleSubmit(value)}
+  placeholder="Ask a question..."
+  onFileChange={({ fileList }) => setFiles(fileList)}
+  accept=".jpg,.png,.pdf,.xlsx"
+  files={
+    <>
+      <ChatInputFilePreview name="File_Name.xlsx" size="1.3 MB" onRemove={() => removeFile(0)} />
+      <ChatInputFilePreview name="File_Name.pdf" size="1.3 MB" onRemove={() => removeFile(1)} />
+    </>
+  }
+  validationState="error"
+  onErrorDismiss={() => {
+    setValidationState('error');
+  }}
+  errorText="Something went wrong"
+/>;
+```
+
+- Pros
+  - Full rendering control over file previews and quote content
+  - Consumer can use custom components or Blade components for previews
+  - Flexible for edge cases (custom file preview states, different quote layouts, any ReactNode as quote content)
+- Cons
+  - More boilerplate for common cases
+  - Less consistency across consumers since each team renders their own previews
+  - Consumer needs to manually map files from `onFileChange` to `ChatInputFilePreview` components
+  - `onSubmit` cannot easily include the file list since files are consumer-managed JSX (consumer tracks files in their own state)
+
+#### Alternate API Props
+
+#### ChatInputFilePreview
+
+```typescript
+type ChatInputFilePreviewProps = {
+  /**
+   * Name of the file to display
+   */
+  name: string;
+
+  /**
+   * Human-readable file size string (e.g. "1.3 MB")
+   */
+  size: string;
+
+  /**
+   * Callback fired when the remove button on the file preview is clicked
+   */
+  onRemove?: () => void;
+
+  /**
+   * Test ID for automation testing
+   */
+  testID?: string;
+};
+```
+
+</details>
+
 ### Props
 
 #### ChatInput
@@ -150,6 +221,11 @@ type ChatInputProps = {
   errorText?: string;
 
   /**
+   * Callback fired when the user dismisses the error popup by clicking the close button.
+   */
+  onErrorDismiss?: () => void;
+
+  /**
    * Accessibility label for the input. Required when no visible label is present.
    */
   accessibilityLabel?: string;
@@ -207,6 +283,7 @@ const ChatWithError = () => {
       placeholder="Ask a question..."
       validationState={validationState}
       errorText="Something went wrong. Please try again."
+      onErrorDismiss={() => setValidationState('none')}
       onSubmit={({ value }) => {
         const result = sendMessage(value);
         if (!result.ok) setValidationState('error');

@@ -106,10 +106,9 @@ type ChatInputProps = {
   errorText?: string;
 
   /**
-   * Callback fired when the validation state changes.
-   * Called with `{ validationState: 'none' }` when the user dismisses the error popup.
+   * Callback fired when the user dismisses the error popup by clicking the close button.
    */
-  onValidationStateChange?: ({ validationState }: { validationState: 'error' | 'none' }) => void;
+  onErrorDismiss?: () => void;
 
   /**
    * Accessibility label for the input. Required when no visible label is present.
