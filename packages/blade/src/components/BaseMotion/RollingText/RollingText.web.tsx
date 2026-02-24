@@ -115,7 +115,7 @@ const RollingText = ({
   };
 
   return (
-    <Box position="relative" display="inline-grid" overflow="hidden">
+    <Box position="relative" display="inline-flex" overflow="hidden">
       <AnimatePresence mode="popLayout" initial={false}>
         <BaseMotionBox key={currentIndex} motionVariants={slideVariants}>
           <Box position="relative" overflow="hidden" whiteSpace="nowrap">

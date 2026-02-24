@@ -1,2 +1,2 @@
-export { RollingText } from './RollingText.web';
-export type { RollingTextProps } from './RollingText.web';
+export { RollingText } from './RollingText';
+export type { RollingTextProps } from './RollingText';

@@ -4,7 +4,7 @@ import { Badge } from '~components/Badge';
 import { ArrowRightIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { RollingText } from '~components/BaseMotion';
+import { RollingText } from '~components/BaseMotion/RollingText';
 
 type ChatInputGhostSuggestionProps = {
   suggestions: string[];
