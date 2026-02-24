@@ -7,14 +7,7 @@
 ## Important Constraints
 
 - `suggestions` and `onSuggestionAccept` must be used together — providing `suggestions` without `onSuggestionAccept` means accepted suggestions are not propagated back to state.
-- Ghost suggestions are only shown when the text input is empty; once the user starts typing the suggestions are hidden.
-- The user presses **Tab** to accept the currently visible ghost suggestion — do not intercept Tab key presses elsewhere on the page if you want suggestion acceptance to work.
-- File upload is only activated when at least one of `fileList`, `onFileChange`, or `onFileRemove` is provided; omitting these props hides the upload button.
-- `isGenerating={true}` replaces the submit button with a stop button — `onStop` should always be provided alongside `isGenerating` so the user can cancel generation.
-- `validationState="error"` requires `errorText` to be set, otherwise the error popup is shown empty.
-- `onErrorDismiss` is optional; if omitted, no close button is rendered in the error popup and the error can only be dismissed programmatically by setting `validationState` back to `"none"`.
-- `accept` follows the HTML `<input type="file">` accept attribute format (e.g. `".jpg,.png"` or `"image/*"`).
-- `maxFileCount={1}` disables the `multiple` attribute on the hidden file input, restricting selection to a single file.
+- Most functionality of ChatInput is always controlled on consumer.
 
 ## TypeScript Types
 
@@ -89,12 +82,6 @@ type ChatInputProps = {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept
    */
   accept?: string;
-
-  /** Maximum file size in bytes per file */
-  maxFileSize?: number;
-
-  /** Maximum number of files that can be attached */
-  maxFileCount?: number;
 
   /**
    * List of ghost suggestions displayed as faded text in the input.
@@ -217,7 +204,7 @@ function ChatInputWithSuggestions() {
 
 ### File Upload with Attachment Previews
 
-Enable file upload by providing `fileList`, `onFileChange`, and `onFileRemove`. Restrict accepted file types with `accept`, limit file size with `maxFileSize` (in bytes), and limit the number of files with `maxFileCount`. Users can also paste images directly into the input when `accept` includes image types.
+Enable file upload by providing `fileList`, `onFileChange`, and `onFileRemove`. Restrict accepted file types with `accept`. Users can also paste images directly into the input when `accept` includes image types.
 
 ```tsx
 import { useState } from 'react';
@@ -235,12 +222,8 @@ function ChatInputWithFileUpload() {
       placeholder="Ask a question or attach a file..."
       fileList={files}
       onFileChange={({ fileList }) => setFiles(fileList)}
-      onFileRemove={({ file }) =>
-        setFiles((prev) => prev.filter((f) => f.id !== file.id))
-      }
+      onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
       onSubmit={({ value, fileList }) => {
         console.log('Submitted:', value, 'Files:', fileList);
         setValue('');
@@ -370,12 +353,8 @@ function FullFeaturedChatInput() {
       }}
       fileList={files}
       onFileChange={({ fileList }) => setFiles(fileList)}
-      onFileRemove={({ file }) =>
-        setFiles((prev) => prev.filter((f) => f.id !== file.id))
-      }
+      onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
       accept=".jpg,.png,.pdf,.xlsx"
-      maxFileSize={5 * 1024 * 1024}
-      maxFileCount={5}
       suggestions={[
         'How do I integrate the payment gateway?',
         'Show me recent transactions',
