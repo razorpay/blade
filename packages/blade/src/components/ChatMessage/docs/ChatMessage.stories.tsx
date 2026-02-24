@@ -6,7 +6,7 @@ import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { RayIcon, ThumbsDownIcon, ThumbsUpIcon } from '~components/Icons';
+import { CopyIcon, RayIcon, ThumbsDownIcon, ThumbsUpIcon, ShareIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -15,6 +15,7 @@ import { Chip, ChipGroup } from '~components/Chip';
 import { Stagger } from '~components/Stagger';
 import { Fade } from '~components/Fade';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { IconButton as IconButtonComponent } from '~components/Button/IconButton';
 
 const Page = (): React.ReactElement => {
   return (
@@ -307,10 +308,10 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           messageType="last"
           footerActions={
             <Box display="flex" justifyContent="flex-end">
-              <ChipGroup label="">
+              {/* <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />
-              </ChipGroup>
+              </ChipGroup> */}
             </Box>
           }
         >
@@ -319,11 +320,35 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box>
-              <ChipGroup label="">
-                <Chip value="yes" icon={ThumbsUpIcon} />
-                <Chip value="no" icon={ThumbsDownIcon} />
-              </ChipGroup>
+            <Box display="flex" alignItems="center" justifyContent="center" gap="spacing.3">
+              <IconButtonComponent
+                icon={ThumbsUpIcon}
+                accessibilityLabel="Thumbs Up"
+                onClick={() => {
+                  console.log('Thumbs Up...');
+                }}
+              />
+              <IconButtonComponent
+                icon={ThumbsDownIcon}
+                accessibilityLabel="Thumbs Down"
+                onClick={() => {
+                  console.log('Thumbs Down...');
+                }}
+              />
+              <IconButtonComponent
+                icon={CopyIcon}
+                accessibilityLabel="Copy"
+                onClick={() => {
+                  console.log('Copying...');
+                }}
+              />
+              <IconButtonComponent
+                icon={ShareIcon}
+                accessibilityLabel="Share"
+                onClick={() => {
+                  console.log('Sharing...');
+                }}
+              />
             </Box>
           }
           leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
@@ -373,7 +398,6 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
