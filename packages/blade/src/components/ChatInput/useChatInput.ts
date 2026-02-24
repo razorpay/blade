@@ -21,8 +21,6 @@ type UseChatInputProps = Pick<
   | 'onFileChange'
   | 'onFileRemove'
   | 'accept'
-  | 'maxFileSize'
-  | 'maxFileCount'
   | 'suggestions'
   | 'onSuggestionAccept'
 >;
@@ -37,8 +35,6 @@ const useChatInput = (
     onFileChange,
     onFileRemove,
     accept,
-    maxFileSize,
-    maxFileCount,
     suggestions,
     onSuggestionAccept,
   }: UseChatInputProps,
@@ -161,7 +157,6 @@ const useChatInput = (
 
       const validFiles = inputFiles.filter((file) => {
         if (accept && !isFileAccepted(file, accept)) return false;
-        if (maxFileSize && file.size > maxFileSize) return false;
         return true;
       });
 
@@ -171,21 +166,15 @@ const useChatInput = (
         }
       }
 
-      const currentCount = files.length;
-      const allowedFiles =
-        maxFileCount && currentCount + validFiles.length > maxFileCount
-          ? validFiles.slice(0, maxFileCount - currentCount)
-          : validFiles;
-
-      if (allowedFiles.length > 0) {
-        const newFileList = [...files, ...allowedFiles];
+      if (validFiles.length > 0) {
+        const newFileList = [...files, ...validFiles];
         setFiles(() => newFileList);
         onFileChange?.({ fileList: newFileList });
       }
 
       event.target.value = '';
     },
-    [accept, maxFileSize, maxFileCount, files, setFiles, onFileChange],
+    [accept, files, setFiles, onFileChange],
   );
 
   const handleFileRemove = React.useCallback(
@@ -210,17 +199,13 @@ const useChatInput = (
         }
       }
 
-      const allowed = maxFileCount
-        ? clipboardFiles.slice(0, Math.max(0, maxFileCount - files.length))
-        : clipboardFiles;
-
-      if (allowed.length > 0) {
-        const newFileList = [...files, ...allowed] as BladeFileList;
+      if (clipboardFiles.length > 0) {
+        const newFileList = [...files, ...clipboardFiles] as BladeFileList;
         setFiles(() => newFileList);
         onFileChange?.({ fileList: newFileList });
       }
     },
-    [maxFileCount, files, setFiles, onFileChange],
+    [files, setFiles, onFileChange],
   );
 
   return {

@@ -55,6 +55,7 @@ const ChatInputActionBar = ({
             color="primary"
             accessibilityLabel="Submit"
             onClick={onSubmit}
+            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
             isDisabled={isSubmitDisabled || isDisabled}
             size="small"
           />
