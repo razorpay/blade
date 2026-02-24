@@ -257,16 +257,21 @@ export const getBaseInputStyles = ({
   disabledColor,
   isInsideCounterInput,
 }: GetInputStyles): CSSObject => {
-  const { hasLeadingIcon, hasPrefix, hasTrailingInteractionElement, hasSuffix, hasTrailingIcon } =
-    getInputVisualsToBeRendered({
-      leadingIcon,
-      prefix,
-      trailingInteractionElement,
-      leadingInteractionElement,
-      suffix,
-      trailingIcon,
-      size,
-    });
+  const {
+    hasLeadingIcon,
+    hasPrefix,
+    hasTrailingInteractionElement,
+    hasSuffix,
+    hasTrailingIcon,
+  } = getInputVisualsToBeRendered({
+    leadingIcon,
+    prefix,
+    trailingInteractionElement,
+    leadingInteractionElement,
+    suffix,
+    trailingIcon,
+    size,
+  });
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
