@@ -114,6 +114,7 @@ type ChatMessageThumbnailProps = {
   - `messageType` is no longer used for thumbnail preview behavior or bubble rendering
   - continue accepting it temporarily as deprecated for backward compatibility
   - remove in next major release after migration window
+  - We use to use this prop for changing styles of chat message bubble for last message. now we have same styles for all messages.
 
 ## Alternatives Considered
 
