@@ -125,84 +125,7 @@ type ChatInputProps = {
 
 ## Examples
 
-### Basic Chat Input
-
-A minimal `ChatInput` with a placeholder and submit handler. Enter key (without Shift) or the submit button sends the message.
-
-```tsx
-import { useState } from 'react';
-import { ChatInput } from '@razorpay/blade/components';
-import type { BladeFileList } from '@razorpay/blade/components';
-
-function BasicChatInput() {
-  const [value, setValue] = useState('');
-
-  return (
-    <ChatInput
-      value={value}
-      onChange={({ value }) => setValue(value)}
-      placeholder="Ask a question..."
-      accessibilityLabel="Chat input"
-      onSubmit={({ value }) => {
-        console.log('Submitted:', value);
-        setValue('');
-      }}
-    />
-  );
-}
-```
-
-### Disabled State
-
-Use `isDisabled` to disable the entire input — the textarea, file upload button, and submit button are all disabled.
-
-```tsx
-import { ChatInput } from '@razorpay/blade/components';
-
-function DisabledChatInput() {
-  return (
-    <ChatInput
-      placeholder="Ask a question..."
-      isDisabled={true}
-      accessibilityLabel="Chat input (disabled)"
-    />
-  );
-}
-```
-
-### Ghost Suggestions (Autocomplete)
-
-Pass an array of `suggestions` to show cycling ghost suggestions as faded text overlay. The user presses **Tab** to accept the visible suggestion. Use `onSuggestionAccept` to update the controlled value.
-
-```tsx
-import { useState } from 'react';
-import { ChatInput } from '@razorpay/blade/components';
-
-function ChatInputWithSuggestions() {
-  const [value, setValue] = useState('');
-
-  return (
-    <ChatInput
-      value={value}
-      onChange={({ value }) => setValue(value)}
-      placeholder="Ask a question..."
-      suggestions={[
-        'How do I integrate the payment gateway?',
-        'Show me recent transactions',
-        'Help me set up webhooks',
-      ]}
-      onSuggestionAccept={({ suggestion }) => setValue(suggestion)}
-      onSubmit={({ value }) => {
-        console.log('Submitted:', value);
-        setValue('');
-      }}
-      accessibilityLabel="Chat input with suggestions"
-    />
-  );
-}
-```
-
-### File Upload with Attachment Previews
+### Basic Chat Input with File Upload
 
 Enable file upload by providing `fileList`, `onFileChange`, and `onFileRemove`. Restrict accepted file types with `accept`. Users can also paste images directly into the input when `accept` includes image types.
 
@@ -272,7 +195,7 @@ function ChatInputWithStopGeneration() {
 }
 ```
 
-### Validation Error
+### Error Handling
 
 Set `validationState="error"` with an `errorText` to show an animated error popup that slides out from behind the input card. Provide `onErrorDismiss` to render a dismiss button inside the popup.
 
