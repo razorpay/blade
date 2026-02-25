@@ -94,6 +94,7 @@ const FileUploadItem = memo(
                 color={
                   status === 'error' ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'
                 }
+                truncateAfterLines={1}
               >
                 {errorText ??
                   `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${
