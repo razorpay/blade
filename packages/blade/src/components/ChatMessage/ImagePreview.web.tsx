@@ -9,6 +9,7 @@ type ThumbnailPreviewProps = {
 
 const MAX_VISIBLE_STACK_IMAGES = 3;
 const PREVIEW_IMAGE_SIZE = '120px';
+const PREVIEW_IMAGE_SIZE_PX = 120;
 
 const ThumbnailPreview = ({
   thumbnails,
@@ -33,8 +34,8 @@ const ThumbnailPreview = ({
   } => {
     if (stackIndex === 0) {
       return {
-        bottom: 0,
-        right: 14,
+        bottom: 2,
+        right: 25,
         transform: 'rotate(0deg)',
         zIndex: 3,
       };
@@ -42,24 +43,33 @@ const ThumbnailPreview = ({
 
     if (stackIndex === 1) {
       return {
-        bottom: 51,
-        right: 0,
-        transform: 'rotate(8deg)',
+        bottom: 61,
+        right: 3,
+        transform: 'rotate(15deg)',
         zIndex: 2,
       };
     }
 
     return {
-      bottom: 40,
-      right: 32,
-      transform: 'rotate(-8deg)',
+      bottom: 44,
+      right: 54,
+      transform: 'rotate(-15deg)',
       zIndex: 1,
     };
   };
 
+  // Absolutely positioned cards don't affect parent height,
+  // so compute a deterministic min height from card offsets.
+  const stackHeight = Math.max(
+    ...previewThumbnails.map(
+      (_, stackIndex) => getCardStyle(stackIndex).bottom + PREVIEW_IMAGE_SIZE_PX,
+    ),
+    0,
+  );
+
   return (
     <BaseBox padding="spacing.3">
-      <BaseBox position="relative" width="188px" height="160px">
+      <BaseBox position="relative" width="188px" height={`${stackHeight}px`}>
         {[...previewThumbnails].reverse().map(({ thumbnail, index }, reverseIndex) => {
           const stackIndex = previewThumbnails.length - reverseIndex - 1;
           const cardStyle = getCardStyle(stackIndex);

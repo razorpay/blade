@@ -704,17 +704,6 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       </ChatMessage>
 
       <ChatMessage
-        senderType="other"
-        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
-        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
-        }}
-      >
-        Here's the image you requested
-      </ChatMessage>
-
-      <ChatMessage
         senderType="self"
         validationState="error"
         errorText="Failed to send images. Tap to retry."
@@ -727,7 +716,7 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       </ChatMessage>
 
       <ChatMessage
-        senderType="other"
+        senderType="self"
         leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
         thumbnails={[
           'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
