@@ -85,6 +85,7 @@ const ThumbnailPreview = ({
                 padding: 0,
                 background: 'none',
               }}
+              elevation="lowRaised"
             >
               <img
                 src={thumbnail}
@@ -113,27 +114,13 @@ const ThumbnailPreview = ({
             alignItems="center"
             justifyContent="center"
             backgroundColor="surface.background.gray.moderate"
-            //TODO: add box shadow
-            style={{ zIndex: 4 }}
+            elevation="midRaised"
+            borderColor="surface.border.gray.muted"
+            style={{ zIndex: 4, borderWidth: '3px' }}
           >
-            <BaseBox
-              backgroundColor="surface.background.gray.subtle"
-              width="37px"
-              height="37px"
-              borderRadius="max"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Text
-                color="surface.text.gray.muted"
-                size="large"
-                weight="semibold"
-                textAlign="center"
-              >
-                +{overflowCount}
-              </Text>
-            </BaseBox>
+            <Text color="surface.text.gray.muted" size="large" weight="semibold" textAlign="center">
+              +{overflowCount}
+            </Text>
           </BaseBox>
         ) : null}
       </BaseBox>

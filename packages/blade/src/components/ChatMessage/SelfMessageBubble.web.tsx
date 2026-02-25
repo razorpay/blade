@@ -1,6 +1,8 @@
 import React from 'react';
-import type { CommonChatMessageProps } from './types';
+import { colors as globalColors } from '~tokens/global';
+import { useTheme } from '~utils';
 import { chatMessageToken } from './token';
+import type { CommonChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
 
@@ -14,6 +16,12 @@ const SelfMessageBubble = ({
   isChildText: boolean;
 }): React.ReactElement => {
   const isError = validationState === 'error';
+  const { colorScheme } = useTheme();
+  const boxShadowColor =
+    colorScheme === 'light'
+      ? globalColors.neutral.blueGrayLight.a906
+      : globalColors.neutral.black[50];
+
   return (
     <BaseBox display="flex" flexDirection="column">
       <BaseBox
@@ -26,8 +34,7 @@ const SelfMessageBubble = ({
         border="thin"
         borderColor="surface.border.gray.muted"
         style={{
-          //TODO: ask for tokens  design
-          boxShadow: '0 2px 2px 0 rgba(237, 236, 236, 0.16)',
+          boxShadow: `0px 0.5px 4px 0px ${boxShadowColor}`,
         }}
       >
         {children}
