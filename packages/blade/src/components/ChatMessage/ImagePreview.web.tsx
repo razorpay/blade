@@ -22,6 +22,7 @@ const ThumbnailPreview = ({
   const previewThumbnails = thumbnails
     .slice(0, MAX_VISIBLE_STACK_IMAGES)
     .map((thumbnail, index) => ({ thumbnail, index }));
+  const isSingleThumbnail = previewThumbnails.length === 1;
   const overflowCount = Math.max(thumbnails.length - MAX_VISIBLE_STACK_IMAGES, 0);
 
   const getCardStyle = (
@@ -32,6 +33,15 @@ const ThumbnailPreview = ({
     transform: string;
     zIndex: number;
   } => {
+    if (isSingleThumbnail) {
+      return {
+        bottom: 0,
+        right: 0,
+        transform: 'rotate(0deg)',
+        zIndex: 3,
+      };
+    }
+
     if (stackIndex === 0) {
       return {
         bottom: 2,
@@ -68,8 +78,12 @@ const ThumbnailPreview = ({
   );
 
   return (
-    <BaseBox padding="spacing.3">
-      <BaseBox position="relative" width="188px" height={`${stackHeight}px`}>
+    <BaseBox>
+      <BaseBox
+        position="relative"
+        width={isSingleThumbnail ? PREVIEW_IMAGE_SIZE : '188px'}
+        height={`${stackHeight}px`}
+      >
         {[...previewThumbnails].reverse().map(({ thumbnail, index }, reverseIndex) => {
           const stackIndex = previewThumbnails.length - reverseIndex - 1;
           const cardStyle = getCardStyle(stackIndex);
