@@ -1,17 +1,17 @@
 import React from 'react';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
+import type { ChatMessageProps } from './types';
 import { DefaultMessageBubble } from './DefaultMessageBubble.web';
 import { ThumbnailPreview } from './ImagePreview.web';
 import { RollingText } from './RollingText.web';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
-import type { ChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStringFromReactText } from '~utils/getStringChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 const ButtonResetCss = {
   background: 'none',
@@ -28,8 +28,7 @@ const ButtonResetCss = {
 
 const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageProps> = (
   {
-    //TODO: need to deplicate this prop
-    // messageType = 'default',
+    messageType = 'default',
     senderType = 'self',
     isLoading = false,
     validationState = 'none',
@@ -47,6 +46,9 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
+  // Keep deprecated prop "used" to avoid lint errors while preserving compatibility.
+  void messageType;
+
   // since we can pass both string and Card component as children, we need to check if children is string or Card component
   // if children is string or array of string, we need to wrap it in Text component otherwise we will pass children as it is
   const shouldWrapInText =

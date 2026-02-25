@@ -53,6 +53,8 @@ type CommonChatMessageProps = {
    * default: chat message will be shown as default.
    * last: chat message will be shown as last. it will remove border radius from bottom right.
    * messageType prop is only works when senderType is self.
+   *
+   * @deprecated This prop is no longer used by `ChatMessage` and will be removed in a future release.
    */
   messageType?: 'default' | 'last';
   /**
@@ -94,6 +96,7 @@ type CommonChatMessageProps = {
 
 type SelfChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
+  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   errorText?: string;
   isLoading?: boolean;
@@ -103,6 +106,7 @@ type SelfChatMessageProps = CommonChatMessageProps & {
 
 type DefaultChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
+  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   isLoading?: boolean;
   loadingText?: string | string[];
