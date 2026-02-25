@@ -1,16 +1,17 @@
 import React from 'react';
-import { SelfMessageBubble } from './SelfMessageBubble.web';
-import { DefaultMessageBubble } from './DefaultMessageBubble.web';
-import { RollingText } from './RollingText.web';
-import type { ChatMessageProps } from './types';
-import { Text } from '~components/Typography';
-import BaseBox from '~components/Box/BaseBox';
-import { getStringFromReactText } from '~utils/getStringChildren';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { BladeElementRef } from '~utils/types';
-import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { DefaultMessageBubble } from './DefaultMessageBubble.web';
+import { ThumbnailPreview } from './ImagePreview.web';
+import { RollingText } from './RollingText.web';
+import { SelfMessageBubble } from './SelfMessageBubble.web';
+import type { ChatMessageProps } from './types';
+import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
+import { Text } from '~components/Typography';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getStringFromReactText } from '~utils/getStringChildren';
 
 const ButtonResetCss = {
   background: 'none',
@@ -40,6 +41,8 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     loadingText,
     wordBreak = 'break-word',
     maxWidth,
+    thumbnails,
+    onThumbnailClick,
     ...props
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
@@ -74,34 +77,46 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     (children as React.ReactElement)
   );
 
+  const messageBubble =
+    senderType === 'self' ? (
+      <SelfMessageBubble
+        validationState={validationState}
+        errorText={errorText}
+        children={finalChildren}
+        // messageType={messageType}
+        isChildText={shouldWrapInText}
+      />
+    ) : (
+      <DefaultMessageBubble
+        children={finalChildren}
+        leading={leading}
+        isLoading={isLoading}
+        footerActions={footerActions}
+        isChildText={shouldWrapInText}
+      />
+    );
+
+  const imagePreviewAlignment = senderType === 'self' ? 'flex-end' : 'flex-start';
+
   return (
-    <BaseBox
-      onClick={onClick}
-      {...(onClick ? { ...ButtonResetCss } : {})}
-      {...metaAttribute({ name: MetaConstants.ChatMessage, testID: props.testID })}
-      {...makeAnalyticsAttribute(props)}
-      {...getStyledProps(props)}
-      maxWidth={maxWidth}
-      ref={ref as never}
-      as={onClick ? 'button' : undefined}
-    >
-      {senderType === 'self' ? (
-        <SelfMessageBubble
-          validationState={validationState}
-          errorText={errorText}
-          children={finalChildren}
-          // messageType={messageType}
-          isChildText={shouldWrapInText}
-        />
-      ) : (
-        <DefaultMessageBubble
-          children={finalChildren}
-          leading={leading}
-          isLoading={isLoading}
-          footerActions={footerActions}
-          isChildText={shouldWrapInText}
-        />
-      )}
+    <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+      {thumbnails && thumbnails.length > 0 ? (
+        <BaseBox alignSelf={imagePreviewAlignment}>
+          <ThumbnailPreview thumbnails={thumbnails} onThumbnailClick={onThumbnailClick} />
+        </BaseBox>
+      ) : null}
+      <BaseBox
+        onClick={onClick}
+        {...(onClick ? { ...ButtonResetCss } : {})}
+        {...metaAttribute({ name: MetaConstants.ChatMessage, testID: props.testID })}
+        {...makeAnalyticsAttribute(props)}
+        {...getStyledProps(props)}
+        maxWidth={maxWidth}
+        ref={ref as never}
+        as={onClick ? 'button' : undefined}
+      >
+        {messageBubble}
+      </BaseBox>
     </BaseBox>
   );
 };

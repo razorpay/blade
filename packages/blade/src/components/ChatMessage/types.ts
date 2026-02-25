@@ -1,14 +1,15 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
   leading?: React.ReactNode;
   isLoading?: boolean;
   onClick?: () => void;
+  thumbnails?: string[];
 };
 
 type CommonChatMessageProps = {
@@ -78,6 +79,15 @@ type CommonChatMessageProps = {
    * *this will only work when children is string*
    */
   wordBreak?: BaseTextProps['wordBreak'];
+  /**
+   * thumbnails prop is used to show image previews in chat message.
+   * Accepts an array of thumbnail URLs that will be displayed in a stacked preview.
+   */
+  thumbnails?: string[];
+  /**
+   * onThumbnailClick is called when any thumbnail in the stacked preview is clicked.
+   */
+  onThumbnailClick?: (args: { index: number; thumbnail: string }) => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;

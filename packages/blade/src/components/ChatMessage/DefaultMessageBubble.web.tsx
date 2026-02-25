@@ -26,7 +26,8 @@ const DefaultMessageBubble = ({
 
         <BaseBox
           display="flex"
-          alignItems="center"
+          flexDirection="column"
+          alignItems="flex-start"
           paddingY={isChildText ? 'spacing.2' : 'spacing.0'}
         >
           {children}

@@ -812,3 +812,64 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
 
 export const FullChatExample = FullChatExampleTemplate.bind({});
 FullChatExample.storyName = 'Full Chat Example';
+
+const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.5">
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+        ]}
+      >
+        Check out these beautiful landscapes!
+      </ChatMessage>
+
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
+      >
+        Here's the image you requested
+      </ChatMessage>
+
+      <ChatMessage
+        senderType="self"
+        validationState="error"
+        errorText="Failed to send images. Tap to retry."
+        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
+      >
+        This message failed to send
+      </ChatMessage>
+
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+        thumbnails={[
+          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+        ]}
+      >
+        Example with 3 images
+      </ChatMessage>
+
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+          'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
+          'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+        ]}
+      >
+        Example with 5 images (+2 badge)
+      </ChatMessage>
+    </Box>
+  );
+};
+
+export const ChatMessageWithImages = ChatMessageWithImagesTemplate.bind({});
+ChatMessageWithImages.storyName = 'Chat Message with Images';
