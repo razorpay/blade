@@ -5,7 +5,6 @@ import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs';
 import styled from 'styled-components';
-import type { TopNavProps } from '../TopNav';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
 import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
@@ -105,7 +104,7 @@ export default {
     },
   },
   decorators: [storyRouterDecorator(undefined, { initialEntries: ['/home'] })] as unknown,
-} as Meta<TopNavProps>;
+} as Meta<typeof TopNav>;
 
 const isItemActive = (
   location: { pathname: string },
@@ -284,6 +283,10 @@ const TopNavSearchDropdown = (): React.ReactElement => {
       </Dropdown>
     </SearchContainer>
   );
+};
+
+const TopNavSearchDropdownWithContext = (): React.ReactElement => {
+  return <TopNavSearchDropdown />;
 };
 
 const MobileTopNav = (): React.ReactElement => {
@@ -859,6 +862,73 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
 
 export const SearchWithDropdown = TopNavSearchDropdownTemplate.bind({});
 SearchWithDropdown.storyName = 'Search With Dropdown';
+
+const TopNavActionsWithContextTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <BaseBox>
+      <TopNavActions>
+        <TopNavSearchDropdownWithContext />
+        <Tooltip content="View Announcements">
+          <IconButton
+            icon={AnnouncementIcon}
+            onClick={noop}
+            accessibilityLabel="View Announcements"
+            isHighlighted={true}
+            size="medium"
+          />
+        </Tooltip>
+        <Menu openInteraction="click">
+          <Avatar size="small" name="Anurag Hazra" />
+          <MenuOverlay>
+            <MenuHeader title="Profile" />
+            <Box display="flex" gap="spacing.4" padding="spacing.4" alignItems="center">
+              <Avatar size="medium" name="Anurag Hazra" />
+              <Box display="flex" flexDirection="column" gap="spacing.2">
+                <Text size="medium" weight="semibold">
+                  Anurag Hazra
+                </Text>
+                <Text size="xsmall" color="surface.text.gray.muted">
+                  Razorpay Trusted Merchant
+                </Text>
+              </Box>
+            </Box>
+            <MenuItem>
+              <Text color="surface.text.gray.subtle">Settings</Text>
+            </MenuItem>
+            <MenuItem color="negative">
+              <Text color="feedback.text.negative.intense">Logout</Text>
+            </MenuItem>
+          </MenuOverlay>
+        </Menu>
+      </TopNavActions>
+
+      <Box
+        overflow="hidden"
+        position="relative"
+        borderRadius={{ base: 'none', m: 'large' }}
+        borderTopRightRadius={{ base: 'none', m: 'large' }}
+        borderBottomLeftRadius="none"
+        borderBottomRightRadius="none"
+        height="100%"
+        marginX={{ base: 'spacing.0', m: 'spacing.3' }}
+      >
+        <Box
+          height="calc(100vh - 58px)"
+          padding="spacing.5"
+          backgroundColor="surface.background.gray.moderate"
+        >
+          <Text margin="spacing.5">
+            This example shows direct usage of `TopNavContext.Provider` to wrap search and preserve
+            app color scheme for search overlays.
+          </Text>
+        </Box>
+      </Box>
+    </BaseBox>
+  );
+};
+
+export const TopNavActionsWithContext = TopNavActionsWithContextTemplate.bind({});
+TopNavActionsWithContext.storyName = 'TopNavActions With Context';
 
 const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
   const { theme } = useTheme();

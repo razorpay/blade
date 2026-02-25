@@ -1,20 +1,20 @@
 import React from 'react';
-import { TopNavContext } from './TopNavContext';
+import { TopNavContext, useTopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import { size } from '~tokens/global';
-import { makeSize } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { componentZIndices } from '~utils/componentZIndices';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { BladeProvider, useTheme } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+import { makeSize } from '~utils';
+import { componentZIndices } from '~utils/componentZIndices';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 
 const TOP_NAV_HEIGHT = size[56];
 
@@ -112,7 +112,9 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 };
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return (
+  const topNavContext = useTopNavContext();
+  const { colorScheme } = useTheme();
+  const topNavActions = (
     <BaseBox
       alignSelf="flex-start"
       display="flex"
@@ -127,6 +129,18 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
     >
       {children}
     </BaseBox>
+  );
+
+  if (topNavContext) {
+    return topNavActions;
+  }
+
+  return (
+    <TopNavContext.Provider value={{ colorScheme }}>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        {topNavActions}
+      </BladeProvider>
+    </TopNavContext.Provider>
   );
 };
 
