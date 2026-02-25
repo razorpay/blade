@@ -92,6 +92,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
         isLoading={isLoading}
         footerActions={footerActions}
         isChildText={shouldWrapInText}
+        senderType={senderType}
       />
     );
 

@@ -9,7 +9,11 @@ const DefaultMessageBubble = ({
   isLoading,
   footerActions,
   isChildText,
-}: Pick<CommonChatMessageProps, 'children' | 'leading' | 'isLoading' | 'footerActions'> & {
+  senderType,
+}: Pick<
+  CommonChatMessageProps,
+  'children' | 'leading' | 'isLoading' | 'footerActions' | 'senderType'
+> & {
   isChildText: boolean;
 }): React.ReactElement => {
   return (
@@ -26,8 +30,7 @@ const DefaultMessageBubble = ({
 
         <BaseBox
           display="flex"
-          flexDirection="column"
-          alignItems="flex-start"
+          alignItems="center"
           paddingY={isChildText ? 'spacing.2' : 'spacing.0'}
         >
           {children}

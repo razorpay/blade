@@ -323,10 +323,10 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
           messageType="last"
           footerActions={
             <Box display="flex" justifyContent="flex-end">
-              {/* <ChipGroup label="">
+              <ChipGroup label="">
                 <Chip value="yes" icon={ThumbsUpIcon} />
                 <Chip value="no" icon={ThumbsDownIcon} />
-              </ChipGroup> */}
+              </ChipGroup>
             </Box>
           }
         >
@@ -335,7 +335,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box display="flex" alignItems="center" justifyContent="center" gap="spacing.4">
+            <Box display="flex" alignItems="flex-start" gap="spacing.4">
               <IconButtonComponent
                 icon={ThumbsUpIcon}
                 accessibilityLabel="Thumbs Up"
@@ -575,7 +575,7 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
           leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
           footerActions={footerActions}
         >
-          <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Box display="flex" flexDirection="column" gap="spacing.5" marginTop="spacing.2">
             <Heading size="small" weight="semibold">
               {HEADING_WORDS.join(' ')}
             </Heading>
