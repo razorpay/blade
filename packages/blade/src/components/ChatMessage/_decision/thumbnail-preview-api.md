@@ -1,7 +1,8 @@
 # ChatMessage Thumbnail Preview API Decision
 
-This document captures API decisions for thumbnail preview behavior in `ChatMessage`.
-The goal is to support a simple, implementable API for stacked media previews without overfitting to one product flow.
+`ChatMessage` supports a stacked thumbnail preview above message content.
+This API keeps existing URL-only integrations easy, while allowing richer metadata (`id`, `url`, `alt`) for accessibility and analytics.
+The thumbnail experience remains presentational inside `ChatMessage`.
 
 ## Scope
 
@@ -9,7 +10,33 @@ The goal is to support a simple, implementable API for stacked media previews wi
 - `onThumbnailClick`
 - `messageType` deprecation
 
-## Proposed API
+## Design
+
+- [Figma - ChatMessage Thumbnail Preview](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/branch/QjSexUED296OBCwWwhYKQE/Blade-DSL?node-id=117092-5019&m=dev)
+
+## API
+
+```tsx
+import { ChatMessage } from '@razorpay/blade/components';
+
+<ChatMessage
+  thumbnails={[
+    'https://example.com/a.jpg',
+    { id: 'img-2', url: 'https://example.com/b.jpg', alt: 'Receipt screenshot' },
+    { id: 'img-3', url: 'https://example.com/c.jpg', alt: 'Error state screenshot' },
+    'https://example.com/d.jpg',
+  ]}
+  onThumbnailClick={({ index, thumbnail }) => {
+    openImageViewer({ startAt: index, src: thumbnail });
+  }}
+>
+  Here are the screenshots from the user.
+</ChatMessage>
+```
+
+### Props
+
+#### `ChatMessage`
 
 ```ts
 type ThumbnailItem = {
@@ -31,12 +58,30 @@ type ChatMessageThumbnailProps = {
    * Returns index from original thumbnails array and the resolved clicked URL.
    */
   onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
+
+  /**
+   * Deprecated. This prop is no longer used for thumbnail preview behavior or bubble rendering.
+   * Keep temporarily for backward compatibility and remove in next major release.
+   */
+  messageType?: 'self' | 'other';
+
 };
 ```
 
-## Example
+## Examples
 
 ```tsx
+// URL-only thumbnails
+<ChatMessage
+  thumbnails={[
+    'https://example.com/a.jpg',
+    'https://example.com/b.jpg',
+    'https://example.com/c.jpg',
+    'https://example.com/d.jpg',
+  ]}
+/>
+
+// Mixed thumbnails with metadata
 <ChatMessage
   thumbnails={[
     'https://example.com/a.jpg',
@@ -52,7 +97,7 @@ type ChatMessageThumbnailProps = {
 </ChatMessage>
 ```
 
-## Decision Notes
+## Behaviors and Decision Notes
 
 - Keep `thumbnails` flexible as `Array<string | { id; url; alt }>`:
   - preserves easy migration for existing URL-only payloads
@@ -117,9 +162,11 @@ type ChatMessageThumbnailProps = {
   - `mediaPreviews`: Better future-proofing (not limited to image semantics)
   - `previewImages`: Clearer than thumbnails, still image-specific
   - `messageAttachments`: Best when this should represent domain-level attachments
+  - `attachmentPreviewList`: Inspired by Stream naming; better for composer/attachment contexts than message bubble content
 - Recommendation
   - Keep `thumbnails` for now to match existing behavior and visual language.
   - If we expect videos/files soon, prefer `mediaPreviews` in next iteration.
+  - Avoid `attachmentPreviewList` for this prop because it sounds like a component/API surface, not a data prop.
 
 ### Callback Payload Alternatives (`onThumbnailClick`)
 
@@ -150,11 +197,35 @@ onThumbnailClick?: (thumbnail: string) => void;
 - Option C cons
   - Loses stable position context for galleries
 - Recommendation
-  - Keep args object. It is the most flexible and avoids future breaking changes.
+  - Keep object payload. It is the most flexible and avoids future breaking changes.
   - If needed, we can add a helper in examples to ignore unused keys:
     `onThumbnailClick={({ thumbnail }) => openImage(thumbnail)}`.
 
-## Accessibility Notes
+### Overflow Label Customization (`thumbnailOverflowLabel`) (Alternative)
+
+```ts
+// Option A: formatter callback
+thumbnailOverflowLabel?: ({ hiddenCount }: { hiddenCount: number }) => string;
+
+// Option B: fixed string
+thumbnailOverflowText?: string;
+```
+
+- Option A (formatter callback) pros
+  - Supports dynamic labels based on hidden count
+  - Enables localization/pluralization in consumer space
+  - Keeps internal stacked UI contract stable
+- Option A cons
+  - Slightly more verbose than fixed text
+- Option B (fixed string) pros
+  - Very simple API for static copy
+- Option B cons
+  - Cannot represent count-driven copy without losing context
+  - Less suitable for pluralization/localization patterns
+- Recommendation
+  - Keep this as an alternative for now until product copy/localization requirements are clearer.
+
+## Accessibility
 
 - Interactive thumbnail cards are rendered only when `onThumbnailClick` is provided.
 - String thumbnails use generated fallback alt text by stack order.
@@ -164,3 +235,9 @@ onThumbnailClick?: (thumbnail: string) => void;
 
 - Do we want to rename `thumbnails` to `mediaPreviews` ?
 - Is thumbnail naming correct?
+- Should overflow label customization be promoted from alternative to main API?
+- Should `thumbnailOverflowLabel` allow richer output (for example `ReactNode`) in a future revision?
+
+## References
+
+- [Stream Chat - Attachment Previews in Message Input](https://getstream.io/chat/docs/sdk/react/guides/message-input/attachment_previews/)
