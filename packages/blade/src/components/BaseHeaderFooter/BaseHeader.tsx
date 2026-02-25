@@ -8,7 +8,6 @@ import { Heading, Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
-import type { SubtleOrIntense } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -77,7 +76,6 @@ type BaseHeaderProps = {
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
   backButtonRef?: React.MutableRefObject<any>;
-  closeButtonEmphasis?: SubtleOrIntense;
   metaComponentName?: string;
   /**
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
@@ -296,7 +294,6 @@ const _BaseHeader = ({
   onCloseButtonClick,
   closeButtonRef,
   backButtonRef,
-  closeButtonEmphasis,
   testID,
   onClickCapture,
   onKeyDown,
@@ -504,7 +501,6 @@ const _BaseHeader = ({
                 icon={CloseIcon}
                 accessibilityLabel="Close"
                 onClick={() => onCloseButtonClick?.()}
-                emphasis={closeButtonEmphasis}
               />
             </Box>
           ) : null}

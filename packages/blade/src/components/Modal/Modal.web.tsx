@@ -66,7 +66,6 @@ const Modal = ({
   size = 'small',
   accessibilityLabel,
   zIndex = componentZIndices.modal,
-  variant = 'filled',
   ...rest
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
@@ -102,9 +101,8 @@ const Modal = ({
       isDismissible,
       defaultInitialFocusRef,
       isVisible,
-      variant,
     }),
-    [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible, variant],
+    [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible],
   );
 
   const handleKeyDown = (event: React.KeyboardEvent): void => {
@@ -145,7 +143,7 @@ const Modal = ({
                     : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
                 }
                 borderRadius={modalBorderRadius}
-                backgroundColor={variant === 'transparent' ? 'transparent' : 'popup.background.gray.subtle'}
+                backgroundColor="popup.background.gray.subtle"
                 display="flex"
                 flexDirection="column"
                 top="50%"

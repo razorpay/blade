@@ -39,11 +39,4 @@ export type ModalProps = {
    * @default 1000
    */
   zIndex?: number;
-  /**
-   * Background variant of the modal.
-   * - 'filled': Default opaque background
-   * - 'transparent': Transparent modal background, backdrop remains visible
-   * @default 'filled'
-   */
-  variant?: 'filled' | 'transparent';
 } & DataAnalyticsAttribute;

@@ -30,10 +30,7 @@ const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): Re
 
   return (
     <StyledNavigationButton
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick?.();
-      }}
+      onClick={onClick}
       variant={variant}
       {...metaAttribute({ name: 'NavigationButton' })}
       {...makeAccessible({ label: type === 'previous' ? 'Previous Slide' : 'Next Slide' })}
