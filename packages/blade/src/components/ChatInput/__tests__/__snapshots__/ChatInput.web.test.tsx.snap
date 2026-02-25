@@ -142,7 +142,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: absolute;
   z-index: 0;
   right: 0px;
-  bottom: calc(100% - 8px);
+  bottom: calc(100% - 12px);
   left: 0px;
 }
 
@@ -159,7 +159,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   -ms-flex-align: center;
   align-items: center;
   padding-top: 8px;
-  padding-bottom: 16px;
+  padding-bottom: 20px;
   padding-right: 12px;
   padding-left: 12px;
   gap: 4px;
@@ -274,6 +274,12 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 8;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -332,7 +338,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   -ms-flex-align: center;
   align-items: center;
   padding-top: 8px;
-  padding-bottom: 16px;
+  padding-bottom: 20px;
   padding-right: 12px;
   padding-left: 12px;
   gap: 4px;
