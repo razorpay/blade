@@ -17,6 +17,7 @@ import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import { BaseLink } from '~components/Link/BaseLink';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const FileUploadItem = memo(
   ({
@@ -26,6 +27,13 @@ const FileUploadItem = memo(
     onReupload,
     onDismiss,
     size: containerSize,
+    width,
+    minWidth,
+    maxWidth,
+    flexShrink,
+    flexGrow,
+    flexBasis,
+    ...rest
   }: FileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
@@ -39,6 +47,13 @@ const FileUploadItem = memo(
         status={status ?? 'success'}
         borderRadius="medium"
         borderWidth="thin"
+        width={width}
+        minWidth={minWidth}
+        maxWidth={maxWidth}
+        flexShrink={flexShrink}
+        flexGrow={flexGrow}
+        flexBasis={flexBasis}
+        {...getStyledProps(rest)}
       >
         <BaseBox width="100%" display="flex" flexDirection="column">
           <BaseBox
