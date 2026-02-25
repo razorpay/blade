@@ -82,12 +82,13 @@ const RollingText = ({
     };
   }, [texts.length, cycleDuration, onIndexChange]);
 
+  const textsString = texts.join('\0');
   React.useEffect(() => {
     setCurrentIndex(0);
     onIndexChange?.(0);
-    // Reset when the texts array identity changes
+    // Reset only when the text contents change, not on every render (new array reference)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [texts]);
+  }, [textsString]);
 
   const renderContent = (text: string): React.ReactNode => {
     return children ? children(text) : text;
