@@ -90,30 +90,26 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     ref,
   );
 
-  const errorSlideVariants: MotionVariantsType = React.useMemo(
-    () => ({
-      initial: { opacity: 0 },
-      animate: {
-        transform: ['translateY(100%)', 'translateY(0%)'],
-        opacity: 1,
-        transition: {
-          duration: msToSeconds(theme.motion.duration.xmoderate),
-          ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
-        },
+  const errorSlideVariants: MotionVariantsType = {
+    initial: { opacity: 0 },
+    animate: {
+      transform: ['translateY(100%)', 'translateY(0%)'],
+      opacity: 1,
+      transition: {
+        duration: msToSeconds(theme.motion.duration.xmoderate),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
       },
-      exit: {
-        opacity: 0,
-        transform: 'translateY(100%)',
-        transitionEnd: { transform: 'translateY(100%)' },
-        transition: {
-          duration: msToSeconds(theme.motion.duration.xmoderate),
-          ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
-        },
+    },
+    exit: {
+      opacity: 0,
+      transform: 'translateY(100%)',
+      transitionEnd: { transform: 'translateY(100%)' },
+      transition: {
+        duration: msToSeconds(theme.motion.duration.xmoderate),
+        ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
       },
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [theme.name],
-  );
+    },
+  };
 
   const filePreviewMotionVariants: MotionVariantsType = {
     initial: { height: '0px', overflow: 'hidden' },
@@ -247,7 +243,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       {/* Error popup — positioned behind the card (zIndex: 0), slides out from behind the top edge */}
       <BaseBox
         position="absolute"
-        bottom="calc(100% - 8px)"
+        bottom="calc(100% - 12px)"
         left="spacing.0"
         right="spacing.0"
         zIndex={0}
@@ -261,13 +257,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             backgroundColor="feedback.background.negative.subtle"
             paddingX="spacing.4"
             paddingTop="spacing.3"
-            paddingBottom="spacing.5"
+            paddingBottom="spacing.6"
             borderTopLeftRadius="medium"
             borderTopRightRadius="medium"
             role="alert"
           >
             <InfoIcon size="small" color="feedback.icon.negative.intense" />
-            <Text size="small" color="feedback.text.negative.intense">
+            <Text size="small" truncateAfterLines={8} color="feedback.text.negative.intense">
               {errorText}
             </Text>
             {onErrorDismiss ? (
