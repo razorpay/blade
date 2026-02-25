@@ -27,9 +27,6 @@ const getAnimatedChipStyles = ({
     textAlign: 'left',
     textOverflow: 'ellipsis',
     maxWidth: isDesktop ? '420px' : '280px',
-    // CSS variables for Concentric Corner rule
-    '--chip-outer-radius': outerRadius,
-    '--chip-outer-border-width': outerBorderWidth,
   } as CSSObject;
 };
 

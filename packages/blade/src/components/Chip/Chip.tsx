@@ -199,6 +199,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 isChecked={_isChecked}
                 isDisabled={_isDisabled}
                 color={chipColor}
+                size={_size}
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"

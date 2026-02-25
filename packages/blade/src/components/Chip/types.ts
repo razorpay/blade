@@ -252,6 +252,7 @@ type StyledChipWrapperProps = {
   isDisabled?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  size?: ChipGroupProps['size'];
 };
 
 export type {
