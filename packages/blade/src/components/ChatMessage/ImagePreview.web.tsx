@@ -103,50 +103,52 @@ const ThumbnailPreview = ({
         width={isSingleThumbnail ? PREVIEW_IMAGE_SIZE : '188px'}
         height={`${stackHeight}px`}
       >
-        {[...previewThumbnails].reverse().map(({ id, thumbnail, alt, originalIndex }, reverseIndex) => {
-          const stackIndex = previewThumbnails.length - reverseIndex - 1;
-          const cardStyle = getCardStyle(stackIndex);
+        {[...previewThumbnails]
+          .reverse()
+          .map(({ id, thumbnail, alt, originalIndex }, reverseIndex) => {
+            const stackIndex = previewThumbnails.length - reverseIndex - 1;
+            const cardStyle = getCardStyle(stackIndex);
 
-          return (
-            <BaseBox
-              key={`${id}-${stackIndex}`}
-              position="absolute"
-              as={onThumbnailClick ? 'button' : 'div'}
-              onClick={
-                onThumbnailClick
-                  ? () => onThumbnailClick({ index: originalIndex, thumbnail })
-                  : undefined
-              }
-              width={PREVIEW_IMAGE_SIZE}
-              height={PREVIEW_IMAGE_SIZE}
-              borderRadius="large"
-              overflow="hidden"
-              style={{
-                bottom: `${cardStyle.bottom}px`,
-                right: `${cardStyle.right}px`,
-                transform: cardStyle.transform,
-                zIndex: cardStyle.zIndex,
-                cursor: onThumbnailClick ? 'pointer' : undefined,
-                border: 'none',
-                padding: 0,
-                background: 'none',
-              }}
-              elevation="lowRaised"
-            >
-              <img
-                src={thumbnail}
-                alt={alt}
+            return (
+              <BaseBox
+                key={`${id}-${stackIndex}`}
+                position="absolute"
+                as={onThumbnailClick ? 'button' : 'div'}
+                onClick={
+                  onThumbnailClick
+                    ? () => onThumbnailClick({ index: originalIndex, thumbnail })
+                    : undefined
+                }
+                width={PREVIEW_IMAGE_SIZE}
+                height={PREVIEW_IMAGE_SIZE}
+                borderRadius="small"
+                overflow="hidden"
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  aspectRatio: '1 / 1',
-                  objectFit: 'cover',
-                  display: 'block',
+                  bottom: `${cardStyle.bottom}px`,
+                  right: `${cardStyle.right}px`,
+                  transform: cardStyle.transform,
+                  zIndex: cardStyle.zIndex,
+                  cursor: onThumbnailClick ? 'pointer' : undefined,
+                  border: 'none',
+                  padding: 0,
+                  background: 'none',
                 }}
-              />
-            </BaseBox>
-          );
-        })}
+                elevation="lowRaised"
+              >
+                <img
+                  src={thumbnail}
+                  alt={alt}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    aspectRatio: '1 / 1',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </BaseBox>
+            );
+          })}
 
         {overflowCount > 0 ? (
           <BaseBox
