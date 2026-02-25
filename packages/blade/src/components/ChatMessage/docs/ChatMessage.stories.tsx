@@ -695,39 +695,13 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
         thumbnails={[
           'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
           'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-        ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
-        }}
-      >
-        Check out these beautiful landscapes!
-      </ChatMessage>
-
-      <ChatMessage
-        senderType="self"
-        validationState="error"
-        errorText="Failed to send images. Tap to retry."
-        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
-        }}
-      >
-        This message failed to send
-      </ChatMessage>
-
-      <ChatMessage
-        senderType="self"
-        leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
-        thumbnails={[
-          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
           'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
         ]}
         onThumbnailClick={({ index, thumbnail }) => {
           console.log('Thumbnail clicked:', index, thumbnail);
         }}
       >
-        Example with 3 images
+        Check out these beautiful landscapes!
       </ChatMessage>
 
       <ChatMessage
