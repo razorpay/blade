@@ -1,6 +1,6 @@
 # LightBox
 
-LightBox is a full-screen overlay component for viewing media items — images, videos, documents, or any custom content — in an immersive gallery experience. It provides prev/next navigation, a thumbnail strip for quick item access, and a configurable action area. It is typically used in KYC document review, media galleries, and product image viewers.
+LightBox is a full-screen overlay component for viewing media items — images, videos, documents, or any custom content — in an immersive gallery experience. It provides prev/next navigation and a thumbnail strip for quick item access. It is typically used in KYC document review, media galleries, and product image viewers.
 
 ## Design
 
@@ -19,12 +19,6 @@ const [activeIndex, setActiveIndex] = useState(0);
   onDismiss={() => setIsOpen(false)}
   activeIndex={activeIndex}
   onIndexChange={(index) => setActiveIndex(index)}
-  trailing={
-    <>
-      <IconButton icon={PlusIcon} accessibilityLabel="Upload document" />
-      <IconButton icon={FileIcon} accessibilityLabel="View source" />
-    </>
-  }
 >
   <LightBoxBody>
     {/* Image mode: renders <img> internally, src auto-used as thumbnail */}
@@ -37,7 +31,7 @@ const [activeIndex, setActiveIndex] = useState(0);
     </LightBoxItem>
 
     <LightBoxItem thumbnailSrc="/doc-thumb.jpg" alt="Agreement PDF">
-      <Preview isDragAndZoomDisabled>
+      <Preview>
         <PreviewBody>
           <iframe src="/agreement.pdf" title="Agreement" />
         </PreviewBody>
@@ -64,7 +58,6 @@ const [activeIndex, setActiveIndex] = useState(0);
     ]}
     activeIndex={activeIndex}
     onIndexChange={(index) => setActiveIndex(index)}
-    trailing={<IconButton icon={PlusIcon} accessibilityLabel="Upload document" />}
   />
   ```
 
@@ -109,18 +102,6 @@ type LightBoxProps = {
    * Called when the active item changes via navigation arrows, thumbnail click, or keyboard.
    */
   onIndexChange?: (index: number) => void;
-
-  /**
-   * Action buttons rendered in the top-left corner of the overlay, next to the close button.
-   * Accepts `IconButton` or similar compact action components.
-   */
-  trailing?: React.ReactNode;
-
-  /**
-   * Whether the thumbnail strip is shown at the bottom.
-   * @default true
-   */
-  showThumbnails?: boolean;
 
   /**
    * Accessibility label for the LightBox dialog.
@@ -237,7 +218,6 @@ When some items are not images, use the custom mode with `children` + `thumbnail
   onDismiss={() => setIsOpen(false)}
   activeIndex={activeIndex}
   onIndexChange={setActiveIndex}
-  trailing={<IconButton icon={PlusIcon} accessibilityLabel="Upload new document" />}
 >
   <LightBoxBody>
     {/* Standard image */}
@@ -248,13 +228,17 @@ When some items are not images, use the custom mode with `children` + `thumbnail
       <video src="/onboarding.mp4" controls style={{ maxHeight: '80vh' }} />
     </LightBoxItem>
 
-    {/* PDF via iframe */}
+    {/* PDF — wrapped in Preview for zoom/pan controls */}
     <LightBoxItem thumbnailSrc="/pdf-preview.jpg" alt="Agreement PDF">
-      <iframe
-        src="/agreement.pdf"
-        title="Agreement"
-        style={{ width: '100%', height: '80vh', border: 'none' }}
-      />
+      <Preview>
+        <PreviewBody>
+          <iframe
+            src="/agreement.pdf"
+            title="Agreement"
+            style={{ width: '100%', height: '80vh', border: 'none' }}
+          />
+        </PreviewBody>
+      </Preview>
     </LightBoxItem>
   </LightBoxBody>
 </LightBox>
@@ -278,22 +262,6 @@ When you don't need to track the active index externally, use `defaultActiveInde
 </LightBox>
 ```
 
-### Without thumbnails
-
-For single-item or minimal experiences where the thumbnail strip is unnecessary.
-
-```jsx
-<LightBox
-  isOpen={isOpen}
-  onDismiss={() => setIsOpen(false)}
-  showThumbnails={false}
->
-  <LightBoxBody>
-    <LightBoxItem src="/aadhar.jpg" alt="Aadhar Card" />
-  </LightBoxBody>
-</LightBox>
-```
-
 ## Behaviors
 
 ### Opening and closing
@@ -308,7 +276,7 @@ For single-item or minimal experiences where the thumbnail strip is unnecessary.
 - At the first item, the Previous button is disabled. At the last item, the Next button is disabled (no wrap-around by default).
 
 ### Thumbnail strip
-- Shown at the bottom of the overlay when `showThumbnails={true}` (default).
+- Always shown at the bottom of the overlay.
 - Thumbnails are derived from `src` for image items, or from `thumbnailSrc` for custom items.
 - The active thumbnail is visually highlighted.
 - The strip scrolls horizontally when there are more items than fit in the viewport.
@@ -339,7 +307,7 @@ For single-item or minimal experiences where the thumbnail strip is unnecessary.
 
 - **Swipe gesture on mobile**: Touch swipe to navigate between items is desirable on mobile. This is deferred to implementation — not an API-level decision but worth noting for the implementation spec.
 
-- **`LightBoxHeader` slot**: Intentionally omitted in v1. `trailing` on `LightBox` covers the immediate use case. `LightBoxBody` is kept as a structural wrapper so a `LightBoxHeader` can be introduced later without a breaking change.
+- **`LightBoxHeader` slot**: Intentionally omitted in v1. `LightBoxBody` is kept as a structural wrapper so a `LightBoxHeader` can be introduced later without a breaking change.
 
 ## References
 
