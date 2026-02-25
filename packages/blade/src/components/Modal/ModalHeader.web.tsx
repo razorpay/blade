@@ -41,7 +41,7 @@ const _ModalHeader = ({
       width={makeSize(size[28])}
       height={makeSize(size[28])}
       flexShrink={0}
-      backgroundColor="popup.background.subtle"
+      backgroundColor="popup.background.gray.subtle"
       borderRadius="max"
       zIndex={componentZIndices.modal}
       {...makeAnalyticsAttribute(rest)}
