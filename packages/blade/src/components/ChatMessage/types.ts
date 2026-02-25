@@ -9,7 +9,13 @@ type DefaultMessageBubbleProps = {
   leading?: React.ReactNode;
   isLoading?: boolean;
   onClick?: () => void;
-  thumbnails?: string[];
+  thumbnails?: ThumbnailItem[];
+};
+
+type ThumbnailItem = {
+  id: string;
+  url: string;
+  alt: string;
 };
 
 type CommonChatMessageProps = {
@@ -83,13 +89,13 @@ type CommonChatMessageProps = {
   wordBreak?: BaseTextProps['wordBreak'];
   /**
    * thumbnails prop is used to show image previews in chat message.
-   * Accepts an array of thumbnail URLs that will be displayed in a stacked preview.
+   * Accepts an array of thumbnail objects.
    */
-  thumbnails?: string[];
+  thumbnails?: ThumbnailItem[];
   /**
    * onThumbnailClick is called when any thumbnail in the stacked preview is clicked.
    */
-  onThumbnailClick?: (args: { index: number; thumbnail: string }) => void;
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
@@ -115,6 +121,7 @@ type DefaultChatMessageProps = CommonChatMessageProps & {
 type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;
 
 export type {
+  ThumbnailItem,
   CommonChatMessageProps,
   ChatMessageProps,
   DefaultMessageBubbleProps,

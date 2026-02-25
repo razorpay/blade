@@ -1,16 +1,24 @@
 import React from 'react';
+import type { ThumbnailItem } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
 type ThumbnailPreviewProps = {
-  thumbnails: string[];
-  onThumbnailClick?: (args: { index: number; thumbnail: string }) => void;
+  thumbnails: ThumbnailItem[];
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
 };
 
 const MAX_VISIBLE_STACK_IMAGES = 3;
 const PREVIEW_IMAGE_SIZE = '120px';
 const PREVIEW_IMAGE_SIZE_PX = 120;
 const SPACING_OFFSET = 8;
+
+type ResolvedThumbnailItem = {
+  id: string;
+  thumbnail: string;
+  alt: string;
+  originalIndex: number;
+};
 
 const ThumbnailPreview = ({
   thumbnails,
@@ -20,11 +28,20 @@ const ThumbnailPreview = ({
     return <BaseBox />;
   }
 
-  const previewThumbnails = thumbnails
+  const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map((thumbnail, originalIndex) => {
+    return {
+      id: thumbnail.id,
+      thumbnail: thumbnail.url,
+      alt: thumbnail.alt,
+      originalIndex,
+    };
+  });
+
+  const previewThumbnails = resolvedThumbnails
     .slice(0, MAX_VISIBLE_STACK_IMAGES)
-    .map((thumbnail, index) => ({ thumbnail, index }));
+    .map((resolvedThumbnail) => resolvedThumbnail);
   const isSingleThumbnail = previewThumbnails.length === 1;
-  const overflowCount = Math.max(thumbnails.length - MAX_VISIBLE_STACK_IMAGES, 0);
+  const overflowCount = Math.max(resolvedThumbnails.length - MAX_VISIBLE_STACK_IMAGES, 0);
 
   const getCardStyle = (
     stackIndex: number,
@@ -86,16 +103,20 @@ const ThumbnailPreview = ({
         width={isSingleThumbnail ? PREVIEW_IMAGE_SIZE : '188px'}
         height={`${stackHeight}px`}
       >
-        {[...previewThumbnails].reverse().map(({ thumbnail, index }, reverseIndex) => {
+        {[...previewThumbnails].reverse().map(({ id, thumbnail, alt, originalIndex }, reverseIndex) => {
           const stackIndex = previewThumbnails.length - reverseIndex - 1;
           const cardStyle = getCardStyle(stackIndex);
 
           return (
             <BaseBox
-              key={`${thumbnail}-${stackIndex}`}
+              key={`${id}-${stackIndex}`}
               position="absolute"
               as={onThumbnailClick ? 'button' : 'div'}
-              onClick={onThumbnailClick ? () => onThumbnailClick({ index, thumbnail }) : undefined}
+              onClick={
+                onThumbnailClick
+                  ? () => onThumbnailClick({ index: originalIndex, thumbnail })
+                  : undefined
+              }
               width={PREVIEW_IMAGE_SIZE}
               height={PREVIEW_IMAGE_SIZE}
               borderRadius="large"
@@ -114,7 +135,7 @@ const ThumbnailPreview = ({
             >
               <img
                 src={thumbnail}
-                alt={`Chat thumbnail preview ${stackIndex + 1}`}
+                alt={alt}
                 style={{
                   width: '100%',
                   height: '100%',

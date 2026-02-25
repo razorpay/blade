@@ -1,7 +1,7 @@
 # ChatMessage Thumbnail Preview API Decision
 
 `ChatMessage` supports a stacked thumbnail preview above message content.
-This API keeps existing URL-only integrations easy, while allowing richer metadata (`id`, `url`, `alt`) for accessibility and analytics.
+This API uses structured thumbnail objects (`id`, `url`, `alt`) for accessibility, analytics, and stable item identity.
 The thumbnail experience remains presentational inside `ChatMessage`.
 
 ## Scope
@@ -14,6 +14,10 @@ The thumbnail experience remains presentational inside `ChatMessage`.
 
 - [Figma - ChatMessage Thumbnail Preview](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/branch/QjSexUED296OBCwWwhYKQE/Blade-DSL?node-id=117092-5019&m=dev)
 
+Reference visual (stacked thumbnail preview with overflow `+2`):
+
+![ChatMessage stacked thumbnail preview](./chatMessage-thumbnail-stack-preview.png)
+
 ## API
 
 ```tsx
@@ -21,10 +25,10 @@ import { ChatMessage } from '@razorpay/blade/components';
 
 <ChatMessage
   thumbnails={[
-    'https://example.com/a.jpg',
+    { id: 'img-1', url: 'https://example.com/a.jpg', alt: 'Payment chat screenshot 1' },
     { id: 'img-2', url: 'https://example.com/b.jpg', alt: 'Receipt screenshot' },
     { id: 'img-3', url: 'https://example.com/c.jpg', alt: 'Error state screenshot' },
-    'https://example.com/d.jpg',
+    { id: 'img-4', url: 'https://example.com/d.jpg', alt: 'Payment chat screenshot 4' },
   ]}
   onThumbnailClick={({ index, thumbnail }) => {
     openImageViewer({ startAt: index, src: thumbnail });
@@ -48,10 +52,9 @@ type ThumbnailItem = {
 type ChatMessageThumbnailProps = {
   /**
    * Thumbnail previews rendered above the message in a stacked layout.
-   * Supports URL strings for backward compatibility and object items for richer metadata.
    * Up to first 3 thumbnails are visibly stacked; remaining count is shown as `+N`.
    */
-  thumbnails?: Array<string | ThumbnailItem>;
+  thumbnails?: ThumbnailItem[];
 
   /**
    * Called when a visible thumbnail preview is clicked.
@@ -63,7 +66,7 @@ type ChatMessageThumbnailProps = {
    * Deprecated. This prop is no longer used for thumbnail preview behavior or bubble rendering.
    * Keep temporarily for backward compatibility and remove in next major release.
    */
-  messageType?: 'self' | 'other';
+  messageType?: 'default' | 'last';
 
 };
 ```
@@ -71,23 +74,13 @@ type ChatMessageThumbnailProps = {
 ## Examples
 
 ```tsx
-// URL-only thumbnails
+// Thumbnail objects
 <ChatMessage
   thumbnails={[
-    'https://example.com/a.jpg',
-    'https://example.com/b.jpg',
-    'https://example.com/c.jpg',
-    'https://example.com/d.jpg',
-  ]}
-/>
-
-// Mixed thumbnails with metadata
-<ChatMessage
-  thumbnails={[
-    'https://example.com/a.jpg',
+    { id: 'img-1', url: 'https://example.com/a.jpg', alt: 'Payment chat screenshot 1' },
     { id: 'img-2', url: 'https://example.com/b.jpg', alt: 'Receipt screenshot' },
     { id: 'img-3', url: 'https://example.com/c.jpg', alt: 'Error state screenshot' },
-    'https://example.com/d.jpg',
+    { id: 'img-4', url: 'https://example.com/d.jpg', alt: 'Payment chat screenshot 4' },
   ]}
   onThumbnailClick={({ index, thumbnail }) => {
     openImageViewer({ startAt: index, src: thumbnail });
@@ -99,10 +92,10 @@ type ChatMessageThumbnailProps = {
 
 ## Behaviors and Decision Notes
 
-- Keep `thumbnails` flexible as `Array<string | { id; url; alt }>`:
-  - preserves easy migration for existing URL-only payloads
-  - supports better a11y via per-item `alt`
-  - supports stable analytics/tracking through `id`
+- Keep `thumbnails` as object-only `ThumbnailItem[]`:
+  - enforces explicit per-item `alt` for better accessibility
+  - provides stable analytics/tracking through `id`
+  - keeps shape predictable for integrations and future extensions
 - Keep callback payload as `{ index, thumbnail }`:
   - index helps open full galleries with stable ordering
   - thumbnail is always a resolved URL, avoiding array/object branching in consumer code
@@ -118,7 +111,7 @@ type ChatMessageThumbnailProps = {
 
 ## Alternatives Considered
 
-### Rich Thumbnail Object API
+### Rich Thumbnail Object API (Current)
 
 ```ts
 type ThumbnailItem = {
@@ -132,10 +125,8 @@ type ThumbnailItem = {
   - Better a11y control through explicit `alt`
   - Better analytics/tracking through stable `id`
   - Clearer semantics with `url` key
-- Cons
-  - More verbose than URL-only arrays
 
-### URL-only Thumbnail API
+### URL-only Thumbnail API (Not Adopted)
 
 ```ts
 thumbnails?: string[];
@@ -148,13 +139,13 @@ thumbnails?: string[];
   - No item-level alt text for domain-specific accessibility
   - No stable item id for analytics and tracking
 - Recommendation
-  - Support both in one API: `Array<string | ThumbnailItem>`.
+  - Do not adopt. Keep object-only API for consistency and accessibility guarantees.
 
 ### Naming Alternatives for `thumbnails`
 
 ```ts
 type ChatMessageThumbnailProps = {
-  mediaPreviews?: string[];
+  mediaPreviews?: ThumbnailItem[];
   onMediaPreviewClick?: ({ index, src }: { index: number; src: string }) => void;
 };
 ```
@@ -229,8 +220,7 @@ thumbnailOverflowText?: string;
 ## Accessibility
 
 - Interactive thumbnail cards are rendered only when `onThumbnailClick` is provided.
-- String thumbnails use generated fallback alt text by stack order.
-- Object thumbnails use provided `alt` text for domain-specific accessibility.
+- Thumbnails use provided `alt` text for domain-specific accessibility.
 
 ## Open Questions
 

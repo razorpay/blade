@@ -413,8 +413,9 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation =
-  ChatMessageWithCustomTypingAnimationTemplate.bind({});
+export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
+  {},
+);
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -508,9 +509,17 @@ type ParagraphWord = { word: string; bold?: boolean };
 const PARAGRAPH_WORDS: ParagraphWord[] = [
   ...['Pingal', 'has'].map((w) => ({ word: w })),
   ...['3', 'recent', 'payments', 'totalling', '₹26,000.'].map((w) => ({ word: w, bold: true })),
-  ...['Two', 'are', 'successful', '(captured)', 'and', 'have', 'been', 'settled.', 'The'].map(
-    (w) => ({ word: w }),
-  ),
+  ...[
+    'Two',
+    'are',
+    'successful',
+    '(captured)',
+    'and',
+    'have',
+    'been',
+    'settled.',
+    'The',
+  ].map((w) => ({ word: w })),
   ...['third—a', 'netbanking', 'payment—is', 'still', 'pending'].map((w) => ({
     word: w,
     bold: true,
@@ -693,9 +702,21 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       <ChatMessage
         senderType="self"
         thumbnails={[
-          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+          {
+            id: 'landscape-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Snowy mountain landscape',
+          },
+          {
+            id: 'landscape-2',
+            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+            alt: 'Forest and mountain view',
+          },
+          {
+            id: 'landscape-3',
+            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+            alt: 'Mountain lake view',
+          },
         ]}
         onThumbnailClick={({ index, thumbnail }) => {
           console.log('Thumbnail clicked:', index, thumbnail);
@@ -707,11 +728,31 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       <ChatMessage
         senderType="self"
         thumbnails={[
-          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-          'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
-          'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
-          'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+          {
+            id: 'mountain-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Mountain landscape',
+          },
+          {
+            id: 'mountain-2',
+            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+            alt: 'Mountain and forest view',
+          },
+          {
+            id: 'mountain-3',
+            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+            alt: 'Lake with mountains in the background',
+          },
+          {
+            id: 'mountain-4',
+            url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
+            alt: 'Valley and mountain range',
+          },
+          {
+            id: 'mountain-5',
+            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+            alt: 'Forest trail landscape',
+          },
         ]}
         onThumbnailClick={({ index, thumbnail }) => {
           console.log('Thumbnail clicked:', index, thumbnail);
@@ -721,7 +762,13 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       </ChatMessage>
       <ChatMessage
         senderType="self"
-        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
+        thumbnails={[
+          {
+            id: 'single-landscape-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Single mountain landscape',
+          },
+        ]}
         onThumbnailClick={({ index, thumbnail }) => {
           console.log('Thumbnail clicked:', index, thumbnail);
         }}
