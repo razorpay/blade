@@ -130,5 +130,5 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
   );
 };
 
-export { TopNav, TopNavBrand, TopNavContent, TopNavActions };
+export { TopNav, TopNavBrand, TopNavContent, TopNavActions, TopNavContext };
 export type { TopNavProps };
