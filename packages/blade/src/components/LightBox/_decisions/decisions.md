@@ -299,7 +299,7 @@ When you don't need to track the active index externally, use `defaultActiveInde
 - Name Decisions:
   - **LightBox** (Commonly used. Although its primarily used for photos and videos and not so commonly used for documents. yet-another-react-lightbox uses this name and provides custom rendered as well though)
   - **FilePreview**
-  - **MediaViewer** (Sounds more intuitive although very rarely used in other DS for some reason)
+  - **MediaViewer** (Sounds more intuitive although very rarely used in other DS for some reason. Also, MediaViewerItem doesn't have that vibe that LightBoxItem has)
 
 ## References
 
