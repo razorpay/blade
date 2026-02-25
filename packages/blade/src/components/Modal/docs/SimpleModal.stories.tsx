@@ -11,6 +11,9 @@ import { DownloadIcon } from '~components/Icons';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
+import { Carousel, CarouselItem } from '~components/Carousel';
+import { Preview, PreviewBody } from '~components/Preview';
+import { Card, CardBody } from '~components/Card';
 
 export default {
   title: 'Components/Modal/SimpleModal',
@@ -173,3 +176,131 @@ FullPageModal.args = {
   size: 'full',
 };
 FullPageModal.storyName = 'Full Page Modal';
+
+const lightboxImages = [
+  { id: 1, src: 'https://picsum.photos/seed/blade1/800/500', alt: 'Photo 1' },
+  { id: 2, src: 'https://picsum.photos/seed/blade2/800/500', alt: 'Photo 2' },
+  { id: 3, src: 'https://picsum.photos/seed/blade3/800/500', alt: 'Photo 3' },
+  { id: 4, src: 'https://picsum.photos/seed/blade4/800/500', alt: 'Photo 4' },
+  { id: 5, src: 'https://picsum.photos/seed/blade5/800/500', alt: 'Photo 5' },
+  { id: 6, src: 'https://picsum.photos/seed/blade6/800/500', alt: 'Photo 6' },
+];
+
+const LightboxModalTemplate: StoryFn<typeof Modal> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [activeSlide, setActiveSlide] = React.useState(0);
+
+  const openLightbox = (index: number): void => {
+    setActiveSlide(index);
+    setIsOpen(true);
+  };
+
+  return (
+    <Box>
+      <Box display="flex" gap="spacing.4" flexWrap="wrap">
+        {lightboxImages.map((image, index) => (
+          <button
+            key={image.id}
+            onClick={() => openLightbox(index)}
+            style={{ cursor: 'pointer', border: 'none', padding: 0, background: 'none' }}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              style={{
+                width: '150px',
+                height: '100px',
+                objectFit: 'cover',
+                borderRadius: '4px',
+                display: 'block',
+              }}
+            />
+          </button>
+        ))}
+      </Box>
+
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="full" variant="transparent">
+        <ModalHeader />
+        <ModalBody padding="spacing.6">
+          <div onClick={() => setIsOpen(false)}>
+            <Box padding="spacing.11" display="flex" flexDirection="column">
+              <Box marginX="spacing.9">
+                <Carousel
+                  activeSlide={activeSlide}
+                  onChange={setActiveSlide}
+                  navigationButtonPosition="side-overlap"
+                  showIndicators={false}
+                  visibleItems={1}
+                >
+                  {lightboxImages.map((image) => (
+                    <CarouselItem key={image.id}>
+                      <Preview isDragAndZoomDisabled={true} key={image.id}>
+                        <PreviewBody>
+                          <div onClick={(e) => e.stopPropagation()}>
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              style={{
+                                width: '100%',
+                                height: '400px',
+                                objectFit: 'cover',
+                                display: 'block',
+                              }}
+                            />
+                          </div>
+                        </PreviewBody>
+                      </Preview>
+                    </CarouselItem>
+                  ))}
+                </Carousel>
+              </Box>
+
+              <Box display="flex" alignItems="center" justifyContent="center">
+                <Box
+                  marginTop="spacing.4"
+                  display="flex"
+                  flexDirection="row"
+                  gap="spacing.4"
+                  paddingX="spacing.4"
+                  paddingY="spacing.3"
+                  overflowX="auto"
+                >
+                  {lightboxImages.map((image, index) => (
+                    <Card
+                      key={image.id}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveSlide(index);
+                      }}
+                      isSelected={activeSlide === index}
+                      padding="spacing.0"
+                      width="auto"
+                    >
+                      <CardBody>
+                        <Box overflow="hidden" borderRadius="medium">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            style={{
+                              width: '72px',
+                              height: '48px',
+                              objectFit: 'cover',
+                              display: 'block',
+                            }}
+                          />
+                        </Box>
+                      </CardBody>
+                    </Card>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </div>
+        </ModalBody>
+      </Modal>
+    </Box>
+  );
+};
+
+export const LightboxModal = LightboxModalTemplate.bind({});
+LightboxModal.storyName = 'Lightbox Modal';

@@ -22,6 +22,10 @@ type ModalContextProps = {
    * Indicates if the Modal is visible according to the usePresence hook
    */
   isVisible: boolean;
+  /**
+   * Background variant of the modal
+   */
+  variant: 'filled' | 'transparent';
 };
 
 const ModalContext = React.createContext<ModalContextProps>({
@@ -31,6 +35,7 @@ const ModalContext = React.createContext<ModalContextProps>({
   defaultInitialFocusRef: { current: null },
   isOpen: false,
   isVisible: false,
+  variant: 'filled',
 });
 
 const useModalContext = (): ModalContextProps => {

@@ -27,7 +27,8 @@ const _ModalHeader = ({
   trailing,
   ...rest
 }: ModalHeaderProps): React.ReactElement => {
-  const { close, defaultInitialFocusRef, isDismissible } = useModalContext();
+  const { close, defaultInitialFocusRef, isDismissible, variant } = useModalContext();
+  const closeButtonEmphasis = variant === 'transparent' ? 'intense' : undefined;
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing);
   return isHeaderEmpty ? (
@@ -53,6 +54,7 @@ const _ModalHeader = ({
           icon={CloseIcon}
           accessibilityLabel="Close"
           onClick={() => close?.()}
+          emphasis={closeButtonEmphasis}
         />
       )}
     </BaseBox>
@@ -67,6 +69,7 @@ const _ModalHeader = ({
       closeButtonRef={defaultInitialFocusRef}
       showCloseButton={isDismissible}
       onCloseButtonClick={close}
+      closeButtonEmphasis={closeButtonEmphasis}
       {...makeAnalyticsAttribute(rest)}
     />
   );
