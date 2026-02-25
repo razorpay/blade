@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.84.0
+
+### Minor Changes
+
+- efba04492: feat(ChatInput): add ChatInput Component
+
 ## 12.83.0
 
 ### Minor Changes

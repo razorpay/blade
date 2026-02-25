@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.23.4
+
+### Patch Changes
+
+- efba04492: feat(ChatInput): add mcp knowledgebase
+
 ## 1.23.3
 
 ### Patch Changes
