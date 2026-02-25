@@ -41,6 +41,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     fileList,
     onFileChange,
     onFileRemove,
+    onFileReupload,
     accept,
     suggestions,
     onSuggestionAccept,
@@ -156,6 +157,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
                 key={file.id ?? file.name}
                 file={file}
                 onRemove={() => handleFileRemove(file)}
+                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
               />
             ))}
           </HiddenScrollbarBox>

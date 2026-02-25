@@ -65,6 +65,11 @@ type ChatInputProps = {
   onFileRemove?: ({ file }: { file: BladeFile }) => void;
 
   /**
+   * Callback fired when the re-upload button is clicked on a file with error status
+   */
+  onFileReupload?: ({ file }: { file: BladeFile }) => void;
+
+  /**
    * File types that can be accepted. Follows the HTML input accept attribute format.
    * @example ".jpg,.png,.pdf" or "image/*"
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept
