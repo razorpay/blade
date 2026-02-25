@@ -719,6 +719,15 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       >
         Example with 5 images (+2 badge)
       </ChatMessage>
+      <ChatMessage
+        senderType="self"
+        thumbnails={['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400']}
+        onThumbnailClick={({ index, thumbnail }) => {
+          console.log('Thumbnail clicked:', index, thumbnail);
+        }}
+      >
+        ChatMessage with single image
+      </ChatMessage>
     </Box>
   );
 };
