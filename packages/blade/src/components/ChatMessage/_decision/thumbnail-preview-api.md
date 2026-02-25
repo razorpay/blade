@@ -1,4 +1,4 @@
-l# ChatMessage Thumbnail Preview API Decision
+# ChatMessage Thumbnail Preview API Decision
 
 `ChatMessage` supports a stacked thumbnail preview above message content.
 This API uses structured thumbnail objects (`id`, `url`, `alt`) for accessibility, analytics, and stable item identity.
