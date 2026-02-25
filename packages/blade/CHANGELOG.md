@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.85.0
+
+### Minor Changes
+
+- 567d5daee: feat(ChatInput): add onFileReupload callback to ChatInput
+
 ## 12.84.0
 
 ### Minor Changes
