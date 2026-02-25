@@ -2,6 +2,9 @@
 
 LightBox is a full-screen overlay component for viewing media items — images, videos, documents, or any custom content — in an immersive gallery experience. It provides prev/next navigation and a thumbnail strip for quick item access. It is typically used in KYC document review, media galleries, and product image viewers.
 
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d2a13e39-0102-4a2c-984b-8a074e65d1db" />
+
+
 ## Design
 
 - [Figma - LightBox](#) <!-- TODO: Add Figma link -->
