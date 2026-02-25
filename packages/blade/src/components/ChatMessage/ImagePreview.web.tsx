@@ -10,6 +10,7 @@ type ThumbnailPreviewProps = {
 const MAX_VISIBLE_STACK_IMAGES = 3;
 const PREVIEW_IMAGE_SIZE = '120px';
 const PREVIEW_IMAGE_SIZE_PX = 120;
+const SPACING_OFFSET = 8;
 
 const ThumbnailPreview = ({
   thumbnails,
@@ -44,8 +45,8 @@ const ThumbnailPreview = ({
 
     if (stackIndex === 0) {
       return {
-        bottom: 2,
-        right: 25,
+        bottom: 0,
+        right: 32,
         transform: 'rotate(0deg)',
         zIndex: 3,
       };
@@ -53,16 +54,16 @@ const ThumbnailPreview = ({
 
     if (stackIndex === 1) {
       return {
-        bottom: 61,
-        right: 3,
+        bottom: 59,
+        right: 10,
         transform: 'rotate(15deg)',
         zIndex: 2,
       };
     }
 
     return {
-      bottom: 44,
-      right: 54,
+      bottom: 42,
+      right: 62,
       transform: 'rotate(-15deg)',
       zIndex: 1,
     };
@@ -70,12 +71,13 @@ const ThumbnailPreview = ({
 
   // Absolutely positioned cards don't affect parent height,
   // so compute a deterministic min height from card offsets.
-  const stackHeight = Math.max(
-    ...previewThumbnails.map(
-      (_, stackIndex) => getCardStyle(stackIndex).bottom + PREVIEW_IMAGE_SIZE_PX,
-    ),
-    0,
-  );
+  const stackHeight =
+    Math.max(
+      ...previewThumbnails.map(
+        (_, stackIndex) => getCardStyle(stackIndex).bottom + PREVIEW_IMAGE_SIZE_PX,
+      ),
+      0,
+    ) + SPACING_OFFSET;
 
   return (
     <BaseBox>
@@ -103,7 +105,6 @@ const ThumbnailPreview = ({
                 right: `${cardStyle.right}px`,
                 transform: cardStyle.transform,
                 zIndex: cardStyle.zIndex,
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
                 cursor: onThumbnailClick ? 'pointer' : undefined,
                 border: 'none',
                 padding: 0,
@@ -129,7 +130,7 @@ const ThumbnailPreview = ({
         {overflowCount > 0 ? (
           <BaseBox
             position="absolute"
-            right="-8px"
+            right="10px"
             bottom="0px"
             width="40px"
             height="40px"
