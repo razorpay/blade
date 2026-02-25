@@ -659,7 +659,7 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
             senderType="other"
             leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
           >
-            <Box display="flex" flexDirection="column" gap="spacing.3">
+            <Box display="flex" flexDirection="column" gap="spacing.3" marginTop="spacing.2">
               <Text color="surface.text.gray.normal" size="medium">
                 {'How can I help you next?'}
               </Text>
