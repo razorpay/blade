@@ -83,7 +83,6 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
         validationState={validationState}
         errorText={errorText}
         children={finalChildren}
-        // messageType={messageType}
         isChildText={shouldWrapInText}
       />
     ) : (
