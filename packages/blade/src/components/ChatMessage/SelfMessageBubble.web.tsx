@@ -1,8 +1,8 @@
 import React from 'react';
+import type { CommonChatMessageProps } from './types';
+import { chatMessageToken } from './token';
 import { colors as globalColors } from '~tokens/global';
 import { useTheme } from '~utils';
-import { chatMessageToken } from './token';
-import type { CommonChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
 
