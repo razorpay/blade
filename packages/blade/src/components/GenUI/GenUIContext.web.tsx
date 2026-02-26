@@ -1,5 +1,6 @@
 import React from 'react';
 import type { GenUIAction, GenUIComponentRegistry } from './types';
+import type { AnimateOptions } from './rehypeAnimate';
 
 /**
  * GenUI context value
@@ -11,6 +12,10 @@ type GenUIContextValue = {
   onActionClick?: (action: GenUIAction) => void;
   /** All valid component type names */
   validComponentTypes: string[];
+  /** Whether text animation is active (for streaming) */
+  isAnimating?: boolean;
+  /** Animation options for text streaming */
+  animateOptions?: AnimateOptions;
 };
 
 const GenUIContext = React.createContext<GenUIContextValue | null>(null);
@@ -35,5 +40,16 @@ const useGenUIAction = (): ((action: GenUIAction) => void) | undefined => {
   return context?.onActionClick;
 };
 
-export { GenUIContext, useGenUI, useGenUIAction };
+/**
+ * Hook to access animation state
+ */
+const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOptions } => {
+  const context = React.useContext(GenUIContext);
+  return {
+    isAnimating: context?.isAnimating ?? false,
+    animateOptions: context?.animateOptions,
+  };
+};
+
+export { GenUIContext, useGenUI, useGenUIAction, useGenUIAnimation };
 export type { GenUIContextValue };
