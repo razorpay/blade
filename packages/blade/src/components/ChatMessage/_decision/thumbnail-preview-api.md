@@ -60,7 +60,7 @@ type ChatMessageThumbnailProps = {
    * Called when a visible thumbnail preview is clicked.
    * Returns index from original thumbnails array and the resolved clicked URL.
    */
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
 
   /**
    * Deprecated. This prop is no longer used for thumbnail preview behavior or bubble rendering.
@@ -115,9 +115,9 @@ type ChatMessageThumbnailProps = {
 
 ```ts
 type ThumbnailItem = {
-  id: string;
+  id?: string;
   url: string;
-  alt: string;
+  alt?: string;
 };
 ```
 
