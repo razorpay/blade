@@ -128,10 +128,10 @@ const ThumbnailPreview = ({
         {overflowCount > 0 ? (
           <BaseBox
             position="absolute"
-            right="10px"
-            bottom="0px"
-            width="40px"
-            height="40px"
+            right={makeSize(10)}
+            bottom={makeSize(0)}
+            width={makeSize(40)}
+            height={makeSize(40)}
             borderRadius="max"
             display="flex"
             alignItems="center"
