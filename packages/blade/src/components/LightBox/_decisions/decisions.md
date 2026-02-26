@@ -4,7 +4,6 @@ LightBox is a full-screen overlay component for viewing media items — images, 
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/d2a13e39-0102-4a2c-984b-8a074e65d1db" />
 
-
 ## Design
 
 - [Figma - LightBox](#) <!-- TODO: Add Figma link -->
@@ -21,19 +20,19 @@ const [activeIndex, setActiveIndex] = useState(0);
   isOpen={isOpen}
   onDismiss={() => setIsOpen(false)}
   activeIndex={activeIndex}
-  onIndexChange={(index) => setActiveIndex(index)}
+  onIndexChange={({ index }) => setActiveIndex(index)}
 >
   <LightBoxBody>
     {/* Image mode: renders <img> internally, src auto-used as thumbnail */}
     <LightBoxItem src="/aadhar.jpg" alt="Aadhar Card" />
     <LightBoxItem src="/pan.jpg" alt="PAN Card" />
 
-    {/* Custom mode: consumer owns rendering, thumbnailSrc required for strip */}
-    <LightBoxItem thumbnailSrc="/video-thumb.jpg" alt="Introduction Video">
+    {/* Custom mode: consumer owns rendering, thumbnail required for strip */}
+    <LightBoxItem thumbnail="/video-thumb.jpg" alt="Introduction Video">
       <video src="/intro.mp4" controls />
     </LightBoxItem>
 
-    <LightBoxItem thumbnailSrc="/doc-thumb.jpg" alt="Agreement PDF">
+    <LightBoxItem thumbnail="/doc-thumb.jpg" alt="Agreement PDF">
       <Preview>
         <PreviewBody>
           <iframe src="/agreement.pdf" title="Agreement" />
@@ -57,10 +56,10 @@ A single-component API where items are passed as an array of config objects. Lig
   onDismiss={() => setIsOpen(false)}
   items={[
     { src: '/aadhar.jpg', alt: 'Aadhar Card' },
-    { src: '/pan.jpg', alt: 'PAN Card', thumbnailSrc: '/pan-thumb.jpg' },
+    { src: '/pan.jpg', alt: 'PAN Card', thumbnail: '/pan-thumb.jpg' },
   ]}
   activeIndex={activeIndex}
-  onIndexChange={(index) => setActiveIndex(index)}
+  onIndexChange={({ index }) => setActiveIndex(index)}
 />
 ```
 
@@ -104,7 +103,7 @@ type LightBoxProps = {
   /**
    * Called when the active item changes via navigation arrows, thumbnail click, or keyboard.
    */
-  onIndexChange?: (index: number) => void;
+  onIndexChange?: (value: { index: number }) => void;
 
   /**
    * Accessibility label for the LightBox dialog.
@@ -134,15 +133,15 @@ type LightBoxBodyProps = {
 
 `LightBoxItem` operates in two modes determined by which props are provided:
 
-- **Image mode** — pass `src` (and optionally `alt`). LightBox renders `<img>` internally and automatically uses `src` as the thumbnail image. Use `thumbnailSrc` to override the thumbnail.
-- **Custom mode** — pass `children` alongside `thumbnailSrc`. Consumer fully controls rendering (video, iframe, Preview, etc.). `thumbnailSrc` is required so the thumbnail strip has an image to show.
+- **Image mode** — pass `src` (and optionally `alt`). LightBox renders `<img>` internally and automatically uses `src` as the thumbnail image. Use `thumbnail` to override the thumbnail.
+- **Custom mode** — pass `children` alongside `thumbnail`. Consumer fully controls rendering (video, iframe, Preview, etc.). `thumbnail` is required so the thumbnail strip has an image to show.
 
 ```typescript
 type LightBoxItemProps =
   | {
       /**
        * Image URL. LightBox renders an `<img>` element using this src.
-       * The same URL is used for the thumbnail strip unless `thumbnailSrc` is provided.
+       * The same URL is used for the thumbnail strip unless `thumbnail` is provided.
        */
       src: string;
 
@@ -154,7 +153,7 @@ type LightBoxItemProps =
       /**
        * Optional thumbnail image URL override. Defaults to `src`.
        */
-      thumbnailSrc?: string;
+      thumbnail?: string;
 
       children?: never;
     }
@@ -164,7 +163,7 @@ type LightBoxItemProps =
        * Required when `children` is provided, since LightBox cannot auto-derive a thumbnail
        * from arbitrary content.
        */
-      thumbnailSrc: string;
+      thumbnail: string;
 
       /**
        * Accessible label for the thumbnail in the strip (e.g. "Introduction Video").
@@ -201,7 +200,7 @@ const documents = [
   isOpen={isOpen}
   onDismiss={() => setIsOpen(false)}
   activeIndex={activeIndex}
-  onIndexChange={setActiveIndex}
+  onIndexChange={({ index }) => setActiveIndex(index)}
 >
   <LightBoxBody>
     {documents.map((doc) => (
@@ -213,26 +212,26 @@ const documents = [
 
 ### Mixed content (images + video + PDF)
 
-When some items are not images, use the custom mode with `children` + `thumbnailSrc`. Use Blade's `Preview` component for zoomable document/image rendering.
+When some items are not images, use the custom mode with `children` + `thumbnail`. Use Blade's `Preview` component for zoomable document/image rendering.
 
 ```jsx
 <LightBox
   isOpen={isOpen}
   onDismiss={() => setIsOpen(false)}
   activeIndex={activeIndex}
-  onIndexChange={setActiveIndex}
+  onIndexChange={({ index }) => setActiveIndex(index)}
 >
   <LightBoxBody>
     {/* Standard image */}
     <LightBoxItem src="/aadhar.jpg" alt="Aadhar Card" />
 
     {/* Video with a poster as thumbnail */}
-    <LightBoxItem thumbnailSrc="/video-poster.jpg" alt="Onboarding Video">
+    <LightBoxItem thumbnail="/video-poster.jpg" alt="Onboarding Video">
       <video src="/onboarding.mp4" controls style={{ maxHeight: '80vh' }} />
     </LightBoxItem>
 
     {/* PDF — wrapped in Preview for zoom/pan controls */}
-    <LightBoxItem thumbnailSrc="/pdf-preview.jpg" alt="Agreement PDF">
+    <LightBoxItem thumbnail="/pdf-preview.jpg" alt="Agreement PDF">
       <Preview>
         <PreviewBody>
           <iframe
@@ -279,7 +278,7 @@ When you don't need to track the active index externally, use `defaultActiveInde
 ### Thumbnail strip
 
 - Always shown at the bottom of the overlay.
-- Thumbnails are derived from `src` for image items, or from `thumbnailSrc` for custom items.
+- Thumbnails are derived from `src` for image items, or from `thumbnail` for custom items.
 - The active thumbnail is visually highlighted.
 - The strip scrolls horizontally when there are more items than fit in the viewport.
 
