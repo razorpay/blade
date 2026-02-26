@@ -130,7 +130,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       justifyContent={trailing ? 'space-between' : 'center'}
       width="100%"
       backgroundColor="transparent"
-      padding="spacing.5"
+      padding={{ base: 'spacing.2', m: 'spacing.5' }}
       zIndex={componentZIndices.previewPanel}
     >
       <BaseBox padding="spacing.2">

@@ -25,6 +25,7 @@ const StyledBackdrop = styled(FloatingOverlay)<{ $isVisible: boolean }>(
   ({ theme, $isVisible }) => ({
     backgroundColor: theme.colors.overlay.background.subtle,
     transitionProperty: 'opacity',
+    backdropFilter: `blur(${theme.backdropBlur.high}px)`,
     transitionDuration: `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: $isVisible
       ? castWebType(theme.motion.easing.entrance)
@@ -104,17 +105,26 @@ const _LightBox = ({
               bottom="spacing.0"
               left="spacing.0"
               display="flex"
-              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              padding="spacing.6"
+              onClick={() => {
+                console.log('dismiss');
+                onDismiss?.();
+              }}
             >
-              <Box position="absolute" top="spacing.3" right="spacing.3" zIndex={1}>
+              <Box position="absolute" top="spacing.6" right="spacing.6" zIndex={1}>
                 <IconButton
                   icon={CloseIcon}
                   onClick={onDismiss}
                   accessibilityLabel="Close lightbox"
                   emphasis="subtle"
+                  size="large"
                 />
               </Box>
-              {children}
+              <BaseBox position="relative" height="100%" width="100%">
+                {children}
+              </BaseBox>
             </StyledContent>
           </Box>
         ) : null}
