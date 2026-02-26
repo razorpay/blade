@@ -413,9 +413,8 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -509,17 +508,9 @@ type ParagraphWord = { word: string; bold?: boolean };
 const PARAGRAPH_WORDS: ParagraphWord[] = [
   ...['Pingal', 'has'].map((w) => ({ word: w })),
   ...['3', 'recent', 'payments', 'totalling', '₹26,000.'].map((w) => ({ word: w, bold: true })),
-  ...[
-    'Two',
-    'are',
-    'successful',
-    '(captured)',
-    'and',
-    'have',
-    'been',
-    'settled.',
-    'The',
-  ].map((w) => ({ word: w })),
+  ...['Two', 'are', 'successful', '(captured)', 'and', 'have', 'been', 'settled.', 'The'].map(
+    (w) => ({ word: w }),
+  ),
   ...['third—a', 'netbanking', 'payment—is', 'still', 'pending'].map((w) => ({
     word: w,
     bold: true,
@@ -698,7 +689,15 @@ FullChatExample.storyName = 'Full Chat Example';
 
 const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.5">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.5"
+      padding="spacing.5"
+      backgroundColor="surface.background.gray.moderate"
+      width="100%"
+      height="100%"
+    >
       <ChatMessage
         senderType="self"
         thumbnails={[

@@ -129,11 +129,12 @@ const ThumbnailPreview = ({
                   transform: cardStyle.transform,
                   zIndex: cardStyle.zIndex,
                   cursor: onThumbnailClick ? 'pointer' : undefined,
-                  border: 'none',
                   padding: 0,
                   background: 'none',
                 }}
-                elevation="lowRaised"
+                elevation="midRaised"
+                border="thin"
+                borderColor="interactive.border.staticWhite.default"
               >
                 <img
                   src={thumbnail}
@@ -163,8 +164,9 @@ const ThumbnailPreview = ({
             justifyContent="center"
             backgroundColor="surface.background.gray.moderate"
             elevation="midRaised"
+            border="thin"
             borderColor="surface.border.gray.muted"
-            style={{ zIndex: 4, borderWidth: '3px' }}
+            style={{ zIndex: 4 }}
           >
             <Text color="surface.text.gray.muted" size="large" weight="semibold" textAlign="center">
               +{overflowCount}
