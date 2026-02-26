@@ -143,6 +143,10 @@ type CarouselProps = {
    */
   height?: BoxProps['height'];
   /**
+   * Sets the width of the carousel
+   */
+  width?: BoxProps['width'];
+  /**
    * If set to true, shows the navigation buttons.
    *
    * Note: This prop has no effect on desktop, we only hide navigation buttons on mobile.

@@ -34,7 +34,7 @@ const StyledBackdrop = styled(FloatingOverlay)<{ $isVisible: boolean }>(
   }),
 );
 
-const StyledContent = styled(BaseBox)<{ $isVisible: boolean }>(({ theme, $isVisible }) => ({
+const StyledLightBoxContent = styled(BaseBox)<{ $isVisible: boolean }>(({ theme, $isVisible }) => ({
   opacity: $isVisible ? 1 : 0,
   transitionProperty: 'opacity',
   transitionDuration: `${makeMotionTime(theme.motion.duration.moderate)}`,
@@ -92,7 +92,7 @@ const _LightBox = ({
         {isMounted ? (
           <Box position="fixed" zIndex={componentZIndices.modal}>
             <LightBoxBackdrop isVisible={isVisible} />
-            <StyledContent
+            <StyledLightBoxContent
               ref={refs.setFloating}
               {...getFloatingProps()}
               $isVisible={isVisible}
@@ -105,18 +105,20 @@ const _LightBox = ({
               bottom="spacing.0"
               left="spacing.0"
               display="flex"
+              height="100%"
+              width="100%"
               alignItems="center"
               justifyContent="center"
               padding="spacing.6"
               onClick={() => {
-                console.log('dismiss');
                 onDismiss?.();
               }}
             >
               <Box position="absolute" top="spacing.6" right="spacing.6" zIndex={1}>
                 <IconButton
                   icon={CloseIcon}
-                  onClick={onDismiss}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onClick={() => {}} // onClick of parent already handles dismiss
                   accessibilityLabel="Close lightbox"
                   emphasis="subtle"
                   size="large"
@@ -125,7 +127,7 @@ const _LightBox = ({
               <BaseBox position="relative" height="100%" width="100%">
                 {children}
               </BaseBox>
-            </StyledContent>
+            </StyledLightBoxContent>
           </Box>
         ) : null}
       </FloatingPortal>

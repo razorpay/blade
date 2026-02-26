@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
+import type { BoxProps } from '~components/Box';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<
@@ -88,6 +89,9 @@ type CarouselItemProps = {
   shouldHaveEndSpacing?: boolean;
   snapAlign?: CarouselProps['snapAlign'];
   gap?: CarouselProps['gap'];
+  display?: BoxProps['display'];
+  alignItems?: BoxProps['alignItems'];
+  justifyContent?: BoxProps['justifyContent'];
 } & DataAnalyticsAttribute;
 
 const _CarouselItem = ({
@@ -98,6 +102,9 @@ const _CarouselItem = ({
   index,
   snapAlign,
   gap,
+  display,
+  alignItems,
+  justifyContent,
   ...rest
 }: CarouselItemProps): React.ReactElement => {
   const itemRef = React.useRef<HTMLDivElement>(null);
@@ -130,6 +137,9 @@ const _CarouselItem = ({
       shouldHaveEndSpacing={shouldHaveEndSpacing}
       snapAlign={snapAlign}
       gap={gap}
+      display={display}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

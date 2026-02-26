@@ -265,6 +265,7 @@ const _Carousel = (
     navigationButtonVariant = 'filled',
     carouselItemAlignment = 'start',
     height,
+    width,
     defaultActiveSlide,
     activeSlide: activeSlideProp,
     showNavigationButtons: showNavigationButtonProp = true,
@@ -545,6 +546,7 @@ const _Carousel = (
         alignItems="center"
         flexDirection="column"
         height={height}
+        width={width}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
       >

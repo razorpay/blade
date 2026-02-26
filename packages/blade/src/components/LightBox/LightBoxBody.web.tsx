@@ -8,15 +8,8 @@ import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { BaseBox } from '~components/Box/BaseBox';
 
-type ExtractedItem = {
-  src?: string;
-  thumbnailSrc: string;
-  alt?: string;
-  children?: React.ReactNode;
-};
-
 type LightBoxMainViewProps = {
-  items: ExtractedItem[];
+  items: LightBoxItemProps[];
   activeIndex: number;
   onChange: (index: number) => void;
 };
@@ -29,14 +22,7 @@ const LightBoxMainView = ({
   activeIndex,
   onChange,
 }: LightBoxMainViewProps): React.ReactElement => (
-  <Box
-    overflow="hidden"
-    height="100%"
-    display={{ base: 'flex', m: 'block' }}
-    justifyContent="center"
-    alignItems="center"
-    paddingTop={{ base: 'spacing.0', m: 'spacing.11' }}
-  >
+  <Box overflow="hidden" height="100%" display="flex" alignItems="center">
     <Carousel
       activeSlide={activeIndex}
       onChange={onChange}
@@ -45,6 +31,7 @@ const LightBoxMainView = ({
       navigationButtonPosition="side"
       showNavigationButtons={false}
       showIndicators={false}
+      width="100%"
       carouselItemWidth="100%"
       carouselItemAlignment="center"
       accessibilityLabel="Media viewer carousel"
@@ -63,6 +50,8 @@ const LightBoxMainView = ({
                 height={LIGHTBOX_MAX_HEIGHT}
                 justifyContent="center"
                 display="flex"
+                alignItems="center"
+                onClick={(e) => e.stopPropagation()}
               >
                 <img
                   src={item.src}
@@ -75,7 +64,6 @@ const LightBoxMainView = ({
                     maxHeight: '100%',
                     objectFit: 'contain',
                   }}
-                  onClick={(e) => e.stopPropagation()}
                 />
               </BaseBox>
             ) : (
@@ -98,7 +86,7 @@ const LightBoxMainView = ({
 );
 
 type LightBoxThumbnailStripProps = {
-  items: ExtractedItem[];
+  items: LightBoxItemProps[];
   activeIndex: number;
   onSelect: (index: number) => void;
 };
@@ -111,7 +99,7 @@ const LightBoxThumbnailStrip = ({
   <Box
     display="flex"
     flexDirection="row"
-    gap="spacing.5"
+    gap="spacing.3"
     overflowX="auto"
     padding="spacing.3"
     justifyContent="center"
@@ -125,17 +113,24 @@ const LightBoxThumbnailStrip = ({
           onSelect(i);
         }}
         isSelected={i === activeIndex}
+        opacity={i === activeIndex ? 1 : 0.7}
+        transition="opacity 0.2s ease"
         padding="spacing.0"
         accessibilityLabel={item.alt ?? `Item ${i + 1}`}
         width="80px"
-        height="60px"
+        height="80px"
       >
         <CardBody height="100%">
           <Box overflow="hidden" borderRadius="medium" width="100%" height="100%">
             <img
               src={item.thumbnailSrc}
               alt={item.alt ?? `Thumbnail ${i + 1}`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+              }}
             />
           </Box>
         </CardBody>
@@ -147,7 +142,7 @@ const LightBoxThumbnailStrip = ({
 const _LightBoxBody = ({ children }: LightBoxBodyProps): React.ReactElement => {
   const { activeIndex, handleIndexChange } = useLightBoxContext();
 
-  const items: ExtractedItem[] = [];
+  const items: LightBoxItemProps[] = [];
   React.Children.forEach(children, (child) => {
     if (React.isValidElement(child) && child.type === LightBoxItem) {
       const {
@@ -156,12 +151,19 @@ const _LightBoxBody = ({ children }: LightBoxBodyProps): React.ReactElement => {
         alt,
         children: itemChildren,
       } = child.props as LightBoxItemProps & { children?: React.ReactNode };
-      items.push({
-        src,
-        thumbnailSrc: thumbnailSrc ?? src ?? '',
-        alt,
-        children: itemChildren,
-      });
+      if (src) {
+        items.push({
+          src,
+          thumbnailSrc: thumbnailSrc ?? src,
+          alt,
+        });
+      } else if (thumbnailSrc && itemChildren != null) {
+        items.push({
+          thumbnailSrc,
+          alt,
+          children: itemChildren,
+        });
+      }
     }
   });
 
@@ -171,6 +173,7 @@ const _LightBoxBody = ({ children }: LightBoxBodyProps): React.ReactElement => {
       flexDirection="column"
       overflow="hidden"
       justifyContent="space-between"
+      width="100%"
       height="100%"
     >
       <LightBoxMainView items={items} activeIndex={activeIndex} onChange={handleIndexChange} />
