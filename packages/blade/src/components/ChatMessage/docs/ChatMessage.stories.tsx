@@ -687,17 +687,23 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
 export const FullChatExample = FullChatExampleTemplate.bind({});
 FullChatExample.storyName = 'Full Chat Example';
 
-const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+const ImageStoryContainer = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <Box
       display="flex"
       flexDirection="column"
-      gap="spacing.5"
-      padding="spacing.5"
       backgroundColor="surface.background.gray.moderate"
       width="100%"
-      height="100%"
+      minHeight="100vh"
     >
+      {children}
+    </Box>
+  );
+};
+
+const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -723,7 +729,16 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       >
         Check out these beautiful landscapes!
       </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
 
+export const ChatMessageWithThreeImages = ChatMessageWithThreeImagesTemplate.bind({});
+ChatMessageWithThreeImages.storyName = 'Chat Message with 3 Images';
+
+const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -759,6 +774,16 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       >
         Example with 5 images (+2 badge)
       </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithFiveImages = ChatMessageWithFiveImagesTemplate.bind({});
+ChatMessageWithFiveImages.storyName = 'Chat Message with 5 Images';
+
+const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -774,9 +799,9 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
       >
         ChatMessage with single image
       </ChatMessage>
-    </Box>
+    </ImageStoryContainer>
   );
 };
 
-export const ChatMessageWithImages = ChatMessageWithImagesTemplate.bind({});
-ChatMessageWithImages.storyName = 'Chat Message with Images';
+export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
+ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';
