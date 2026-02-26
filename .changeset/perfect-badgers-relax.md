@@ -2,4 +2,5 @@
 '@razorpay/blade': patch
 ---
 
-feat(spark): expose topnav context
+feat: expose topNav context using TopNavActions
+
