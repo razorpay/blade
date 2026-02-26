@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.86.0
+
+### Minor Changes
+
+- bbad553f1: feat(blade): enable topNavIndicator to watch for childlist changes
+
 ## 12.85.1
 
 ### Patch Changes
