@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.85.1
+
+### Patch Changes
+
+- 413fdd1ed: fix(Chip): simplify border radius calculation using direct computation
+- 06e2003c6: feat: expose topNav context using TopNavActions
+
 ## 12.85.0
 
 ### Minor Changes
