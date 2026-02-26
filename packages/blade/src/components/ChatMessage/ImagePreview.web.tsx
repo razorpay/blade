@@ -39,15 +39,6 @@ const getCardStyle = (stackIndex: number, isSingleThumbnail: boolean): CardStyle
   );
 };
 
-const getThumbnailButtonLabel = (alt: string, originalIndex: number): string => {
-  const normalizedAlt = alt.trim();
-  if (normalizedAlt.length > 0) {
-    return normalizedAlt;
-  }
-
-  return `Preview image ${originalIndex + 1}`;
-};
-
 const StyledPreviewImage = styled.img({
   width: '100%',
   height: '100%',
@@ -59,9 +50,9 @@ const StyledPreviewImage = styled.img({
 const ThumbnailPreview = ({
   thumbnails,
   onThumbnailClick,
-}: ThumbnailPreviewProps): React.ReactElement => {
+}: ThumbnailPreviewProps): React.ReactElement | null => {
   if (!thumbnails || thumbnails.length === 0) {
-    return <BaseBox />;
+    return null;
   }
 
   const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map(resolveThumbnailItem);
@@ -86,9 +77,17 @@ const ThumbnailPreview = ({
   return (
     <BaseBox>
       <BaseBox
+        as={onThumbnailClick ? 'button' : 'div'}
+        type={onThumbnailClick ? 'button' : undefined}
+        onClick={onThumbnailClick}
+        cursor={onThumbnailClick ? 'pointer' : 'default'}
         position="relative"
         width={isSingleThumbnail ? imagePreviewToken.previewImageSize : '188px'}
         height={makeSize(stackHeight)}
+        border="none"
+        padding="spacing.0"
+        margin="spacing.0"
+        backgroundColor="transparent"
       >
         {
           // Render back cards first and front card last (top-most in DOM paint order).
@@ -99,48 +98,31 @@ const ThumbnailPreview = ({
           // - Computed stackIndex becomes 2, 1, 0 respectively
           //   => C uses style slot 2, B uses style slot 1, A uses style slot 0
           // This preserves stack positioning by original order while controlling paint order.
-          [...previewThumbnails]
-            .reverse()
-            .map(({ id, url, alt, originalIndex, originalThumbnail }, reverseIndex) => {
-              const stackIndex = previewThumbnails.length - reverseIndex - 1;
-              const cardStyle = getCardStyle(stackIndex, isSingleThumbnail);
+          [...previewThumbnails].reverse().map(({ id, url, alt }, reverseIndex) => {
+            const stackIndex = previewThumbnails.length - reverseIndex - 1;
+            const cardStyle = getCardStyle(stackIndex, isSingleThumbnail);
 
-              return (
-                <BaseBox
-                  key={`${id}-${stackIndex}`}
-                  position="absolute"
-                  as={onThumbnailClick ? 'button' : 'div'}
-                  type={onThumbnailClick ? 'button' : undefined}
-                  aria-label={
-                    onThumbnailClick ? getThumbnailButtonLabel(alt, originalIndex) : undefined
-                  }
-                  onClick={
-                    onThumbnailClick
-                      ? () =>
-                          onThumbnailClick({ index: originalIndex, thumbnail: originalThumbnail })
-                      : undefined
-                  }
-                  width={imagePreviewToken.previewImageSize}
-                  height={imagePreviewToken.previewImageSize}
-                  borderRadius="small"
-                  overflow="hidden"
-                  padding="spacing.0"
-                  cursor={onThumbnailClick ? 'pointer' : 'default'}
-                  style={{
-                    bottom: makeSize(cardStyle.bottom),
-                    right: makeSize(cardStyle.right),
-                    transform: cardStyle.transform,
-                    zIndex: cardStyle.zIndex,
-                    background: 'none',
-                  }}
-                  elevation="midRaised"
-                  border="thin"
-                  borderColor="interactive.border.staticWhite.default"
-                >
-                  <StyledPreviewImage src={url} alt={alt} />
-                </BaseBox>
-              );
-            })
+            return (
+              <BaseBox
+                key={`${id}-${stackIndex}`}
+                position="absolute"
+                width={imagePreviewToken.previewImageSize}
+                height={imagePreviewToken.previewImageSize}
+                borderRadius="small"
+                overflow="hidden"
+                padding="spacing.0"
+                bottom={makeSize(cardStyle.bottom)}
+                right={makeSize(cardStyle.right)}
+                transform={cardStyle.transform}
+                zIndex={cardStyle.zIndex}
+                elevation="midRaised"
+                border="thin"
+                borderColor="interactive.border.staticWhite.default"
+              >
+                <StyledPreviewImage src={url} alt={alt} />
+              </BaseBox>
+            );
+          })
         }
 
         {overflowCount > 0 ? (

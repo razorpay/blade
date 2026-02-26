@@ -20,7 +20,7 @@ type ThumbnailItem = {
 
 type ThumbnailPreviewProps = {
   thumbnails: ThumbnailItem[];
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
+  onThumbnailClick?: () => void;
 };
 
 type ResolvedThumbnailItem = {
@@ -106,9 +106,9 @@ type CommonChatMessageProps = {
    */
   thumbnails?: ThumbnailItem[];
   /**
-   * onThumbnailClick is called when any thumbnail in the stacked preview is clicked.
+   * onThumbnailClick is called when the image preview is clicked.
    */
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
+  onThumbnailClick?: () => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;

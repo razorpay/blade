@@ -413,9 +413,8 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -697,8 +696,8 @@ const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Mountain lake view',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         Check out these beautiful landscapes!
@@ -742,8 +741,8 @@ const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Forest trail landscape',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         Example with 5 images (+2 badge)
@@ -767,8 +766,8 @@ const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Single mountain landscape',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         ChatMessage with single image
@@ -798,8 +797,47 @@ const ChatMessageWithOptionalThumbnailFieldsTemplate: StoryFn<typeof ChatMessage
             url: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked payload:', { index, thumbnail });
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
+        }}
+      >
+        Story with optional thumbnail fields (`id` and `alt`)
+      </ChatMessage>
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          {
+            url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+          },
+          {
+            id: 'optional-alt-example',
+            url: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963',
+          },
+          {
+            alt: 'Thumbnail with no id',
+            url: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+          },
+        ]}
+      >
+        Story with optional thumbnail fields (`id` and `alt`)
+      </ChatMessage>
+      <ChatMessage
+        senderType="other"
+        thumbnails={[
+          {
+            url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+          },
+          {
+            id: 'optional-alt-example',
+            url: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963',
+          },
+          {
+            alt: 'Thumbnail with no id',
+            url: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+          },
+        ]}
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         Story with optional thumbnail fields (`id` and `alt`)
@@ -808,7 +846,6 @@ const ChatMessageWithOptionalThumbnailFieldsTemplate: StoryFn<typeof ChatMessage
   );
 };
 
-export const ChatMessageWithOptionalThumbnailFields = ChatMessageWithOptionalThumbnailFieldsTemplate.bind(
-  {},
-);
+export const ChatMessageWithOptionalThumbnailFields =
+  ChatMessageWithOptionalThumbnailFieldsTemplate.bind({});
 ChatMessageWithOptionalThumbnailFields.storyName = 'Chat Message with Optional Thumbnail Fields';
