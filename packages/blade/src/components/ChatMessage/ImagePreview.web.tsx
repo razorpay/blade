@@ -1,8 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { ResolvedThumbnailItem, ThumbnailPreviewProps } from './types';
 import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { makeSize } from '~utils';
 
 const imagePreviewToken = chatMessageToken.imagePreview;
 
@@ -37,6 +39,14 @@ const getCardStyle = (stackIndex: number, isSingleThumbnail: boolean): CardStyle
   );
 };
 
+const StyledPreviewImage = styled.img({
+  width: '100%',
+  height: '100%',
+  aspectRatio: '1 / 1',
+  objectFit: 'cover',
+  display: 'block',
+});
+
 const ThumbnailPreview = ({
   thumbnails,
   onThumbnailClick,
@@ -69,7 +79,7 @@ const ThumbnailPreview = ({
       <BaseBox
         position="relative"
         width={isSingleThumbnail ? imagePreviewToken.previewImageSize : '188px'}
-        height={`${stackHeight}px`}
+        height={makeSize(stackHeight)}
       >
         {[...previewThumbnails]
           .reverse()
@@ -91,30 +101,20 @@ const ThumbnailPreview = ({
                 height={imagePreviewToken.previewImageSize}
                 borderRadius="small"
                 overflow="hidden"
+                padding="spacing.0"
+                cursor={onThumbnailClick ? 'pointer' : 'default'}
                 style={{
-                  bottom: `${cardStyle.bottom}px`,
-                  right: `${cardStyle.right}px`,
+                  bottom: makeSize(cardStyle.bottom),
+                  right: makeSize(cardStyle.right),
                   transform: cardStyle.transform,
                   zIndex: cardStyle.zIndex,
-                  cursor: onThumbnailClick ? 'pointer' : undefined,
-                  padding: 0,
                   background: 'none',
                 }}
                 elevation="midRaised"
                 border="thin"
                 borderColor="interactive.border.staticWhite.default"
               >
-                <img
-                  src={url}
-                  alt={alt}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    aspectRatio: '1 / 1',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                />
+                <StyledPreviewImage src={url} alt={alt} />
               </BaseBox>
             );
           })}
