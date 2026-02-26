@@ -39,6 +39,15 @@ const getCardStyle = (stackIndex: number, isSingleThumbnail: boolean): CardStyle
   );
 };
 
+const getThumbnailButtonLabel = (alt: string, originalIndex: number): string => {
+  const normalizedAlt = alt.trim();
+  if (normalizedAlt.length > 0) {
+    return normalizedAlt;
+  }
+
+  return `Preview image ${originalIndex + 1}`;
+};
+
 const StyledPreviewImage = styled.img({
   width: '100%',
   height: '100%',
@@ -101,6 +110,10 @@ const ThumbnailPreview = ({
                   key={`${id}-${stackIndex}`}
                   position="absolute"
                   as={onThumbnailClick ? 'button' : 'div'}
+                  type={onThumbnailClick ? 'button' : undefined}
+                  aria-label={
+                    onThumbnailClick ? getThumbnailButtonLabel(alt, originalIndex) : undefined
+                  }
                   onClick={
                     onThumbnailClick
                       ? () =>
