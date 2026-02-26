@@ -31,8 +31,10 @@ const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): Re
   return (
     <StyledNavigationButton
       onClick={(e) => {
-        e.stopPropagation();
-        onClick?.();
+        if (e) {
+          e.stopPropagation();
+        }
+        onClick?.(e);
       }}
       variant={variant}
       {...metaAttribute({ name: 'NavigationButton' })}

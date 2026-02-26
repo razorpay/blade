@@ -435,7 +435,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   z-index: 1100;
-  padding: 16px;
+  padding: 4px;
   width: 100%;
   background-color: hsla(0,0%,100%,0);
 }
@@ -651,6 +651,12 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
 @media screen and (min-width:1200px) {
   .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c16.c16.c16.c16.c16 {
+    padding: 16px;
   }
 }
 
