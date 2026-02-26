@@ -21,7 +21,7 @@ afterAll(() => {
 
 const BasicLightBox = ({
   isOpen = true,
-  onDismiss = () => {},
+  onDismiss = jest.fn(),
   activeIndex,
   defaultActiveIndex,
   onIndexChange,
@@ -45,7 +45,10 @@ const BasicLightBox = ({
     <LightBoxBody>
       <LightBoxItem src="https://picsum.photos/seed/lightbox-1/1200/800" alt="Document 1" />
       <LightBoxItem src="https://picsum.photos/seed/lightbox-2/1200/800" alt="Document 2" />
-      <LightBoxItem thumbnail="https://picsum.photos/seed/lightbox-custom-thumb/300/200" alt="Video File">
+      <LightBoxItem
+        thumbnail="https://picsum.photos/seed/lightbox-custom-thumb/300/200"
+        alt="Video File"
+      >
         <div>Custom content slide</div>
       </LightBoxItem>
     </LightBoxBody>
@@ -118,7 +121,7 @@ describe('<LightBox />', () => {
 
   it('should render image gallery snapshot', () => {
     const { container } = renderWithTheme(
-      <LightBox isOpen={true} onDismiss={() => {}}>
+      <LightBox isOpen={true} onDismiss={jest.fn()}>
         <LightBoxBody>
           <LightBoxItem src="https://picsum.photos/seed/lightbox-1/1200/800" alt="Document 1" />
           <LightBoxItem src="https://picsum.photos/seed/lightbox-2/1200/800" alt="Document 2" />
