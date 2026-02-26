@@ -413,9 +413,8 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -505,31 +504,8 @@ const paymentTableData: TableData<PaymentRow> = {
 
 const HEADING_WORDS = ['Recent', 'payments', 'from', 'pingal@gmail.com'];
 
-type ParagraphWord = { word: string; bold?: boolean };
-const PARAGRAPH_WORDS: ParagraphWord[] = [
-  ...['Pingal', 'has'].map((w) => ({ word: w })),
-  ...['3', 'recent', 'payments', 'totalling', '₹26,000.'].map((w) => ({ word: w, bold: true })),
-  ...['Two', 'are', 'successful', '(captured)', 'and', 'have', 'been', 'settled.', 'The'].map(
-    (w) => ({ word: w }),
-  ),
-  ...['third—a', 'netbanking', 'payment—is', 'still', 'pending'].map((w) => ({
-    word: w,
-    bold: true,
-  })),
-  ...[
-    'as',
-    'we',
-    'wait',
-    'for',
-    'the',
-    "customer's",
-    'bank',
-    'to',
-    'confirm',
-    'the',
-    'transfer.',
-  ].map((w) => ({ word: w })),
-];
+const PARAGRAPH_TEXT =
+  "Pingal has 3 recent payments totalling ₹26,000. Two are successful (captured) and have been settled. The third—a netbanking payment—is still pending as we wait for the customer's bank to confirm the transfer.";
 
 const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
   const footerActions = (
@@ -582,11 +558,7 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
             </Heading>
 
             <Text color="surface.text.gray.normal" size="medium">
-              {PARAGRAPH_WORDS.map(({ word, bold }, i) => (
-                <React.Fragment key={i}>
-                  <span style={{ fontWeight: bold ? 600 : undefined }}>{word}</span>{' '}
-                </React.Fragment>
-              ))}
+              {PARAGRAPH_TEXT}
             </Text>
 
             <Box>

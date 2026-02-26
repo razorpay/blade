@@ -18,6 +18,19 @@ type ThumbnailItem = {
   alt?: string;
 };
 
+type ThumbnailPreviewProps = {
+  thumbnails: ThumbnailItem[];
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
+};
+
+type ResolvedThumbnailItem = {
+  id: string;
+  url: string;
+  alt: string;
+  originalIndex: number;
+  originalThumbnail: ThumbnailItem;
+};
+
 type CommonChatMessageProps = {
   /**
    * isLoading prop is used to show loading state in chat message. it will add loading styles and animation to chat message.
@@ -121,6 +134,8 @@ type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;
 
 export type {
   ThumbnailItem,
+  ThumbnailPreviewProps,
+  ResolvedThumbnailItem,
   CommonChatMessageProps,
   ChatMessageProps,
   DefaultMessageBubbleProps,

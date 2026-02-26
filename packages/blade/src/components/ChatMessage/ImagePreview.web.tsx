@@ -1,25 +1,10 @@
 import React from 'react';
-import type { ThumbnailItem } from './types';
+import type { ResolvedThumbnailItem, ThumbnailPreviewProps } from './types';
+import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
-type ThumbnailPreviewProps = {
-  thumbnails: ThumbnailItem[];
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
-};
-
-const MAX_VISIBLE_STACK_IMAGES = 3;
-const PREVIEW_IMAGE_SIZE = '120px';
-const PREVIEW_IMAGE_SIZE_PX = 120;
-const SPACING_OFFSET = 12;
-
-type ResolvedThumbnailItem = {
-  id: string;
-  url: string;
-  alt: string;
-  originalIndex: number;
-  originalThumbnail: ThumbnailItem;
-};
+const imagePreviewToken = chatMessageToken.imagePreview;
 
 const ThumbnailPreview = ({
   thumbnails,
@@ -40,10 +25,13 @@ const ThumbnailPreview = ({
   });
 
   const previewThumbnails = resolvedThumbnails
-    .slice(0, MAX_VISIBLE_STACK_IMAGES)
+    .slice(0, imagePreviewToken.maxVisibleStackImages)
     .map((resolvedThumbnail) => resolvedThumbnail);
   const isSingleThumbnail = previewThumbnails.length === 1;
-  const overflowCount = Math.max(resolvedThumbnails.length - MAX_VISIBLE_STACK_IMAGES, 0);
+  const overflowCount = Math.max(
+    resolvedThumbnails.length - imagePreviewToken.maxVisibleStackImages,
+    0,
+  );
 
   const getCardStyle = (
     stackIndex: number,
@@ -92,16 +80,16 @@ const ThumbnailPreview = ({
   const stackHeight =
     Math.max(
       ...previewThumbnails.map(
-        (_, stackIndex) => getCardStyle(stackIndex).bottom + PREVIEW_IMAGE_SIZE_PX,
+        (_, stackIndex) => getCardStyle(stackIndex).bottom + imagePreviewToken.previewImageSizePx,
       ),
       0,
-    ) + SPACING_OFFSET;
+    ) + imagePreviewToken.stackHeightOffset;
 
   return (
     <BaseBox>
       <BaseBox
         position="relative"
-        width={isSingleThumbnail ? PREVIEW_IMAGE_SIZE : '188px'}
+        width={isSingleThumbnail ? imagePreviewToken.previewImageSize : '188px'}
         height={`${stackHeight}px`}
       >
         {[...previewThumbnails]
@@ -120,8 +108,8 @@ const ThumbnailPreview = ({
                     ? () => onThumbnailClick({ index: originalIndex, thumbnail: originalThumbnail })
                     : undefined
                 }
-                width={PREVIEW_IMAGE_SIZE}
-                height={PREVIEW_IMAGE_SIZE}
+                width={imagePreviewToken.previewImageSize}
+                height={imagePreviewToken.previewImageSize}
                 borderRadius="small"
                 overflow="hidden"
                 style={{
