@@ -23,7 +23,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-const IMAGES = [
+const DEFAULT_IMAGES = [
   {
     src: 'https://picsum.photos/seed/lightbox1/1200/800',
     alt: 'Document 1',
@@ -37,6 +37,54 @@ const IMAGES = [
     alt: 'Document 3',
   },
 ];
+
+const PDF_FILE_URL = 'https://cdn.razorpay.com/traditional-banks-vs-razorpayx.pdf';
+const FALLBACK_PDF_THUMBNAIL = 'https://picsum.photos/seed/pdfthumb/400/300';
+const VIDEO_FILE_URL = 'https://www.w3schools.com/html/mov_bbb.mp4';
+const VIDEO_THUMBNAIL_URL = 'https://picsum.photos/seed/lightbox-video-thumb/400/300';
+
+const usePdfThumbnail = (pdfUrl: string): string | undefined => {
+  const [thumbnail, setThumbnail] = useState<string>();
+
+  React.useEffect(() => {
+    let isMounted = true;
+    const loadingTask = pdfjs.getDocument(pdfUrl);
+
+    const generateThumbnail = async (): Promise<void> => {
+      try {
+        const pdf = await loadingTask.promise;
+        const page = await pdf.getPage(1);
+        const viewport = page.getViewport({ scale: 0.25 });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        if (!context) {
+          return;
+        }
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({ canvasContext: context, viewport }).promise;
+
+        if (isMounted) {
+          setThumbnail(canvas.toDataURL('image/jpeg', 0.8));
+        }
+      } catch {
+        // Keep fallback thumbnail when PDF thumbnail generation fails.
+      }
+    };
+
+    void generateThumbnail();
+
+    return () => {
+      isMounted = false;
+      void loadingTask.destroy();
+    };
+  }, [pdfUrl]);
+
+  return thumbnail;
+};
 
 const Page = (): React.ReactElement => {
   return (
@@ -99,34 +147,13 @@ export default {
   },
 } as Meta<LightBoxProps>;
 
-const BasicTemplate: StoryFn<typeof LightBox> = () => {
+const DefaultTemplate: StoryFn<typeof LightBox> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <Box>
-      <Box display="flex" gap="spacing.3" flexWrap="wrap">
-        {IMAGES.map((img, i) => (
-          <button
-            key={img.src}
-            type="button"
-            onClick={() => {
-              setActiveIndex(i);
-              setIsOpen(true);
-            }}
-            style={{ cursor: 'pointer', border: 'none', padding: 0, background: 'none' }}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              style={{ width: '120px', height: '80px', objectFit: 'cover', display: 'block' }}
-            />
-          </button>
-        ))}
-      </Box>
-      <Box marginTop="spacing.5">
-        <Button onClick={() => setIsOpen(true)}>Open Gallery</Button>
-      </Box>
+      <Button onClick={() => setIsOpen(true)}>Open Gallery</Button>
       <LightBox
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
@@ -134,7 +161,7 @@ const BasicTemplate: StoryFn<typeof LightBox> = () => {
         onIndexChange={setActiveIndex}
       >
         <LightBoxBody>
-          {IMAGES.map((img) => (
+          {DEFAULT_IMAGES.map((img) => (
             <LightBoxItem key={img.src} src={img.src} alt={img.alt} />
           ))}
         </LightBoxBody>
@@ -143,79 +170,20 @@ const BasicTemplate: StoryFn<typeof LightBox> = () => {
   );
 };
 
-export const Basic = BasicTemplate.bind({});
-Basic.storyName = 'Basic Image Gallery';
-
-const UncontrolledTemplate: StoryFn<typeof LightBox> = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <Box>
-      <Button onClick={() => setIsOpen(true)}>Open Gallery (Uncontrolled)</Button>
-      <LightBox isOpen={isOpen} onDismiss={() => setIsOpen(false)} defaultActiveIndex={1}>
-        <LightBoxBody>
-          {IMAGES.map((img) => (
-            <LightBoxItem key={img.src} src={img.src} alt={img.alt} />
-          ))}
-        </LightBoxBody>
-      </LightBox>
-    </Box>
-  );
-};
-
-export const Uncontrolled = UncontrolledTemplate.bind({});
-Uncontrolled.storyName = 'Uncontrolled (Default Active Index)';
-
-const MixedContentTemplate: StoryFn<typeof LightBox> = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  return (
-    <Box>
-      <Button onClick={() => setIsOpen(true)}>Open Mixed Gallery</Button>
-      <LightBox
-        isOpen={isOpen}
-        onDismiss={() => setIsOpen(false)}
-        activeIndex={activeIndex}
-        onIndexChange={setActiveIndex}
-      >
-        <LightBoxBody>
-          <LightBoxItem src="https://picsum.photos/seed/img1/1200/800" alt="Landscape 1" />
-          <LightBoxItem src="https://picsum.photos/seed/img2/1200/800" alt="Landscape 2" />
-          <LightBoxItem thumbnailSrc="https://picsum.photos/seed/img3/400/300" alt="Custom Content">
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              height="400px"
-              backgroundColor="surface.background.gray.moderate"
-              borderRadius="medium"
-              padding="spacing.7"
-            >
-              <Heading size="xlarge" textAlign="center">
-                Custom content can go here — videos, PDFs, iframes, etc.
-              </Heading>
-            </Box>
-          </LightBoxItem>
-        </LightBoxBody>
-      </LightBox>
-    </Box>
-  );
-};
-
-export const MixedContent = MixedContentTemplate.bind({});
-MixedContent.storyName = 'Mixed Content (Images + Custom)';
+export const Default = DefaultTemplate.bind({});
+Default.storyName = 'Default';
 
 const PDF_TOTAL_PAGES = 8;
 
-const WithPDFSlideshowTemplate: StoryFn<typeof LightBox> = () => {
+const MixedContentWithPDFTemplate: StoryFn<typeof LightBox> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [pdfPage, setPdfPage] = useState(1);
+  const pdfThumbnail = usePdfThumbnail(PDF_FILE_URL);
 
   return (
     <Box>
-      <Button onClick={() => setIsOpen(true)}>Open Slideshow with PDF</Button>
+      <Button onClick={() => setIsOpen(true)}>Open Mixed Gallery (Image + PDF + Video)</Button>
       <LightBox
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
@@ -223,15 +191,18 @@ const WithPDFSlideshowTemplate: StoryFn<typeof LightBox> = () => {
         onIndexChange={setActiveIndex}
       >
         <LightBoxBody>
-          <LightBoxItem src="https://picsum.photos/seed/lightbox1/1200/800" alt="Photo 1" />
-          <LightBoxItem src="https://picsum.photos/seed/lightbox2/1200/800" alt="Photo 2" />
           <LightBoxItem
-            thumbnailSrc="https://picsum.photos/seed/pdfthumb/400/300"
-            alt="PDF Document"
-          >
+            src="https://picsum.photos/seed/lightbox-horizontal/1200/800"
+            alt="Horizontal Image"
+          />
+          <LightBoxItem
+            src="https://picsum.photos/seed/lightbox-vertical/800/1200"
+            alt="Vertical Image"
+          />
+          <LightBoxItem thumbnailSrc={pdfThumbnail ?? FALLBACK_PDF_THUMBNAIL} alt="PDF File">
             <Preview>
               <PreviewBody>
-                <Document file="https://cdn.razorpay.com/traditional-banks-vs-razorpayx.pdf">
+                <Document file={PDF_FILE_URL}>
                   <ReactPdfPage pageNumber={pdfPage} width={600} />
                 </Document>
               </PreviewBody>
@@ -269,57 +240,50 @@ const WithPDFSlideshowTemplate: StoryFn<typeof LightBox> = () => {
               />
             </Preview>
           </LightBoxItem>
+          <LightBoxItem thumbnailSrc={VIDEO_THUMBNAIL_URL} alt="Video File">
+            <Box width="100%" maxWidth="1000px">
+              <video controls width="100%">
+                <source src={VIDEO_FILE_URL} type="video/mp4" />
+                <track
+                  kind="captions"
+                  srcLang="en"
+                  label="English captions"
+                  src="data:text/vtt,WEBVTT"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </Box>
+          </LightBoxItem>
         </LightBoxBody>
       </LightBox>
     </Box>
   );
 };
 
-export const WithPDFSlideshow = WithPDFSlideshowTemplate.bind({});
-WithPDFSlideshow.storyName = 'With PDF Slideshow (Images + PDF)';
+export const MixedContentWithPDF = MixedContentWithPDFTemplate.bind({});
+MixedContentWithPDF.storyName = 'Mixed Content (Horizontal + Vertical + PDF + Video)';
 
-const VERTICAL_IMAGES = [
-  {
-    src: 'https://picsum.photos/seed/vert1/800/1200',
-    alt: 'Portrait Document 1',
-  },
-  {
-    src: 'https://picsum.photos/seed/vert2/800/1200',
-    alt: 'Portrait Document 2',
-  },
-  {
-    src: 'https://picsum.photos/seed/vert3/800/1200',
-    alt: 'Portrait Document 3',
-  },
-];
-
-const VerticalImagesTemplate: StoryFn<typeof LightBox> = () => {
+const ControlledTemplate: StoryFn<typeof LightBox> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <Box>
       <Box display="flex" gap="spacing.3" flexWrap="wrap">
-        {VERTICAL_IMAGES.map((img, i) => (
-          <button
+        {DEFAULT_IMAGES.map((img, i) => (
+          <Button
             key={img.src}
-            type="button"
             onClick={() => {
               setActiveIndex(i);
               setIsOpen(true);
             }}
-            style={{ cursor: 'pointer', border: 'none', padding: 0, background: 'none' }}
           >
-            <img
-              src={img.src}
-              alt={img.alt}
-              style={{ width: '60px', height: '90px', objectFit: 'cover', display: 'block' }}
-            />
-          </button>
+            Open item {i + 1}
+          </Button>
         ))}
       </Box>
       <Box marginTop="spacing.5">
-        <Button onClick={() => setIsOpen(true)}>Open Vertical Gallery</Button>
+        <Button onClick={() => setIsOpen(true)}>Open Gallery</Button>
       </Box>
       <LightBox
         isOpen={isOpen}
@@ -328,7 +292,7 @@ const VerticalImagesTemplate: StoryFn<typeof LightBox> = () => {
         onIndexChange={setActiveIndex}
       >
         <LightBoxBody>
-          {VERTICAL_IMAGES.map((img) => (
+          {DEFAULT_IMAGES.map((img) => (
             <LightBoxItem key={img.src} src={img.src} alt={img.alt} />
           ))}
         </LightBoxBody>
@@ -337,5 +301,5 @@ const VerticalImagesTemplate: StoryFn<typeof LightBox> = () => {
   );
 };
 
-export const VerticalImages = VerticalImagesTemplate.bind({});
-VerticalImages.storyName = 'Vertical (Portrait) Images';
+export const Controlled = ControlledTemplate.bind({});
+Controlled.storyName = 'Controlled';

@@ -192,6 +192,7 @@ export type CardProps = {
   }>;
   opacity?: BoxProps['opacity'];
   transition?: BoxProps['transition'];
+  flexShrink?: BoxProps['flexShrink'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -223,6 +224,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     cursor,
     opacity,
     transition,
+    flexShrink,
     ...rest
   },
   ref,
@@ -285,6 +287,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         cursor={isReactNative() ? undefined : cursor}
         opacity={opacity}
         transition={transition}
+        flexShrink={flexShrink}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
