@@ -2,6 +2,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
 import React from 'react';
+import { isReactNative } from '~utils';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
@@ -10,7 +11,6 @@ import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
-import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';

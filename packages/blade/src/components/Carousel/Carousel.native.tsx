@@ -1,5 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { castNativeType } from '~utils';
+import { logger } from '~utils/logger';
+import { size } from '~tokens/global';
+import type { BladeElementRef } from '~utils/types';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
@@ -10,13 +14,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { useInterval } from '~utils/useInterval';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
-import { castNativeType } from '~utils';
 import { useId } from '~utils/useId';
-import { logger } from '~utils/logger';
-import { size } from '~tokens/global';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
-import type { BladeElementRef } from '~utils/types';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {

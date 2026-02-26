@@ -1,6 +1,6 @@
 import React from 'react';
-import type { CarouselProps } from './types';
 import { throwBladeError } from '~utils/logger';
+import type { CarouselProps } from './types';
 
 type CarouselContextProps =
   | (Pick<

@@ -1,11 +1,11 @@
 import React from 'react';
+import { throwBladeError } from '~utils/logger';
 import type {
   PreviewBodyProps,
   PreviewFooterProps,
   PreviewHeaderProps,
   PreviewProps,
 } from './types';
-import { throwBladeError } from '~utils/logger';
 
 const Preview = (_prop: PreviewProps): React.ReactElement => {
   throwBladeError({

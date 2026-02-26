@@ -1,6 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
+import { MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import { size } from '~tokens/global';
 import type {
   PreviewProps,
   PreviewHeaderProps,
@@ -20,15 +24,11 @@ import { Heading, Text } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
-import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 
 const _PreviewHeader = ({

@@ -1,8 +1,8 @@
+import { makeAccessible } from '~utils/makeAccessible';
 import { useCarouselContext } from '../CarouselContext';
 import { IndicatorButton } from './IndicatorButton';
 import type { IndicatorsProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils/makeAccessible';
 
 const Indicators = (props: IndicatorsProps): React.ReactElement => {
   const { carouselId, isResponsive, visibleItems } = useCarouselContext();

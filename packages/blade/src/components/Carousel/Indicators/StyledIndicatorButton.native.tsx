@@ -2,12 +2,12 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { castNativeType, makeMotionTime } from '~utils';
+import { size } from '~tokens/global';
 import { getIndicatorButtonStyles } from './getIndicatorButtonStyles';
 import type { IndicatorButtonProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
 
 const PressableIndicatorButton = styled(BaseBox)<
   Pick<IndicatorButtonProps, 'variant' | 'isActive'>

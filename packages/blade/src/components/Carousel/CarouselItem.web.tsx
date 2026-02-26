@@ -3,16 +3,16 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import styled from 'styled-components';
 import React from 'react';
+import { useBreakpoint } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { CarouselProps } from './types';
 import { useCarouselContext } from './CarouselContext';
 import { componentIds } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint } from '~utils';
-import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { DataAnalyticsAttribute } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &

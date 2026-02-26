@@ -7,6 +7,14 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
+import getIn from '~utils/lodashButBetter/get';
+import throttle from '~utils/lodashButBetter/throttle';
+import debounce from '~utils/lodashButBetter/debounce';
+import { castWebType, makeMotionTime, useInterval } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
@@ -18,23 +26,15 @@ import {
   componentIds,
   CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
 } from './constants';
-import getIn from '~utils/lodashButBetter/get';
-import throttle from '~utils/lodashButBetter/throttle';
-import debounce from '~utils/lodashButBetter/debounce';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval } from '~utils';
 import { useId } from '~utils/useId';
-import { makeAccessible } from '~utils/makeAccessible';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
-import type { BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ControlsProp = Required<
   Pick<

@@ -1,7 +1,7 @@
 import type { CSSObject, DefaultTheme } from 'styled-components';
-import type { IndicatorButtonProps } from './types';
 import { size } from '~tokens/global';
 import { castWebType, isReactNative, makeMotionTime, makeSize, makeSpace } from '~utils';
+import type { IndicatorButtonProps } from './types';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const getIndicatorButtonStyles = ({

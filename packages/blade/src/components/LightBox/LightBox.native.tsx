@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
+import { logger } from '~utils/logger';
 import type { LightBoxProps } from './types';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { logger } from '~utils/logger';
 
 const _LightBox = (props: LightBoxProps): React.ReactElement => {
   if (__DEV__) {
