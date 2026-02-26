@@ -6,6 +6,37 @@ import { Text } from '~components/Typography';
 
 const imagePreviewToken = chatMessageToken.imagePreview;
 
+type CardStyle = {
+  bottom: number;
+  right: number;
+  transform: string;
+  zIndex: number;
+};
+
+const resolveThumbnailItem = (
+  thumbnail: ResolvedThumbnailItem['originalThumbnail'],
+  originalIndex: number,
+): ResolvedThumbnailItem => {
+  return {
+    id: thumbnail.id ?? `thumbnail-${originalIndex}-${thumbnail.url}`,
+    url: thumbnail.url,
+    alt: thumbnail.alt ?? '',
+    originalIndex,
+    originalThumbnail: thumbnail,
+  };
+};
+
+const getCardStyle = (stackIndex: number, isSingleThumbnail: boolean): CardStyle => {
+  if (isSingleThumbnail) {
+    return imagePreviewToken.singleCardStyle;
+  }
+
+  return (
+    imagePreviewToken.stackCardStyles[stackIndex] ??
+    imagePreviewToken.stackCardStyles[imagePreviewToken.stackCardStyles.length - 1]
+  );
+};
+
 const ThumbnailPreview = ({
   thumbnails,
   onThumbnailClick,
@@ -14,73 +45,21 @@ const ThumbnailPreview = ({
     return <BaseBox />;
   }
 
-  const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map((thumbnail, originalIndex) => {
-    return {
-      id: thumbnail.id ?? `thumbnail-${originalIndex}-${thumbnail.url}`,
-      url: thumbnail.url,
-      alt: thumbnail.alt ?? '',
-      originalIndex,
-      originalThumbnail: thumbnail,
-    };
-  });
+  const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map(resolveThumbnailItem);
 
-  const previewThumbnails = resolvedThumbnails
-    .slice(0, imagePreviewToken.maxVisibleStackImages)
-    .map((resolvedThumbnail) => resolvedThumbnail);
+  const previewThumbnails = resolvedThumbnails.slice(0, imagePreviewToken.maxVisibleStackImages);
   const isSingleThumbnail = previewThumbnails.length === 1;
   const overflowCount = Math.max(
     resolvedThumbnails.length - imagePreviewToken.maxVisibleStackImages,
     0,
   );
-
-  const getCardStyle = (
-    stackIndex: number,
-  ): {
-    bottom: number;
-    right: number;
-    transform: string;
-    zIndex: number;
-  } => {
-    if (isSingleThumbnail) {
-      return {
-        bottom: 0,
-        right: 0,
-        transform: 'rotate(0deg)',
-        zIndex: 3,
-      };
-    }
-
-    if (stackIndex === 0) {
-      return {
-        bottom: 0,
-        right: 32,
-        transform: 'rotate(0deg)',
-        zIndex: 3,
-      };
-    }
-
-    if (stackIndex === 1) {
-      return {
-        bottom: 59,
-        right: 10,
-        transform: 'rotate(15deg)',
-        zIndex: 2,
-      };
-    }
-
-    return {
-      bottom: 42,
-      right: 62,
-      transform: 'rotate(-15deg)',
-      zIndex: 1,
-    };
-  };
   // Absolutely positioned cards don't affect parent height,
   // so compute a deterministic min height from card offsets.
   const stackHeight =
     Math.max(
       ...previewThumbnails.map(
-        (_, stackIndex) => getCardStyle(stackIndex).bottom + imagePreviewToken.previewImageSizePx,
+        (_, stackIndex) =>
+          getCardStyle(stackIndex, isSingleThumbnail).bottom + imagePreviewToken.previewImageSizePx,
       ),
       0,
     ) + imagePreviewToken.stackHeightOffset;
@@ -96,7 +75,7 @@ const ThumbnailPreview = ({
           .reverse()
           .map(({ id, url, alt, originalIndex, originalThumbnail }, reverseIndex) => {
             const stackIndex = previewThumbnails.length - reverseIndex - 1;
-            const cardStyle = getCardStyle(stackIndex);
+            const cardStyle = getCardStyle(stackIndex, isSingleThumbnail);
 
             return (
               <BaseBox
