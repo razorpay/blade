@@ -1,3 +1,5 @@
+import { size } from '~tokens/global';
+
 const chatMessageToken = {
   default: {},
   self: {
@@ -10,30 +12,30 @@ const chatMessageToken = {
   imagePreview: {
     maxVisibleStackImages: 3,
     previewImageSize: '120px',
-    previewImageSizePx: 120,
-    stackHeightOffset: 12,
+    previewImageSizePx: size[120],
+    stackHeightOffset: size[12],
     singleCardStyle: {
-      bottom: 0,
-      right: 0,
+      bottom: size[0],
+      right: size[0],
       transform: 'rotate(0deg)',
       zIndex: 3,
     },
     stackCardStyles: [
       {
-        bottom: 0,
-        right: 32,
+        bottom: size[0],
+        right: size[32],
         transform: 'rotate(0deg)',
         zIndex: 3,
       },
       {
-        bottom: 59,
-        right: 10,
+        bottom: size[59],
+        right: size[10],
         transform: 'rotate(15deg)',
         zIndex: 2,
       },
       {
-        bottom: 42,
-        right: 62,
+        bottom: size[42],
+        right: size[62],
         transform: 'rotate(-15deg)',
         zIndex: 1,
       },
