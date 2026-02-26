@@ -26,6 +26,7 @@ export const MetaConstants = {
   Carousel: 'carousel',
   ChatInput: 'chat-input',
   ChatMessage: 'chat-message',
+  ChatMessageThumbnailPreview: 'chat-message-thumbnail-preview',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',
   CheckboxLabel: 'checkbox-label',

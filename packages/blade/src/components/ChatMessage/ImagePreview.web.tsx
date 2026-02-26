@@ -5,6 +5,7 @@ import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 const imagePreviewToken = chatMessageToken.imagePreview;
 
@@ -51,10 +52,6 @@ const ThumbnailPreview = ({
   thumbnails,
   onThumbnailClick,
 }: ThumbnailPreviewProps): React.ReactElement | null => {
-  if (!thumbnails || thumbnails.length === 0) {
-    return null;
-  }
-
   const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map(resolveThumbnailItem);
 
   const previewThumbnails = resolvedThumbnails.slice(0, imagePreviewToken.maxVisibleStackImages);
@@ -79,7 +76,7 @@ const ThumbnailPreview = ({
       ) + imagePreviewToken.stackHeightOffset;
 
   return (
-    <BaseBox>
+    <BaseBox {...metaAttribute({ name: MetaConstants.ChatMessageThumbnailPreview })}>
       <BaseBox
         as={onThumbnailClick ? 'button' : 'div'}
         type={onThumbnailClick ? 'button' : undefined}
