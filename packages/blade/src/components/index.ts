@@ -73,6 +73,7 @@ export * from './TopNav';
 export * from './types';
 export * from './Typography';
 export * from './VisuallyHidden';
+export * from './LightBox';
 export * from './ListView';
 export * from './Preview';
 export * from './GenUI';
