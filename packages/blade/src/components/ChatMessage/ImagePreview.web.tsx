@@ -2,6 +2,7 @@ import React from 'react';
 import type { ThumbnailItem } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 
 type ThumbnailPreviewProps = {
   thumbnails: ThumbnailItem[];
@@ -85,7 +86,7 @@ const ThumbnailPreview = ({
       zIndex: 1,
     };
   };
-
+  const { theme } = useTheme();
   // Absolutely positioned cards don't affect parent height,
   // so compute a deterministic min height from card offsets.
   const stackHeight =
@@ -131,8 +132,8 @@ const ThumbnailPreview = ({
                   cursor: onThumbnailClick ? 'pointer' : undefined,
                   padding: 0,
                   background: 'none',
+                  boxShadow: theme.elevation.midRaised,
                 }}
-                elevation="midRaised"
                 border="thin"
                 borderColor="interactive.border.staticWhite.default"
               >
