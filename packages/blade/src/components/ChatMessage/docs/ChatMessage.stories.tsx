@@ -413,8 +413,9 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation =
-  ChatMessageWithCustomTypingAnimationTemplate.bind({});
+export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
+  {},
+);
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [
@@ -807,6 +808,7 @@ const ChatMessageWithOptionalThumbnailFieldsTemplate: StoryFn<typeof ChatMessage
   );
 };
 
-export const ChatMessageWithOptionalThumbnailFields =
-  ChatMessageWithOptionalThumbnailFieldsTemplate.bind({});
+export const ChatMessageWithOptionalThumbnailFields = ChatMessageWithOptionalThumbnailFieldsTemplate.bind(
+  {},
+);
 ChatMessageWithOptionalThumbnailFields.storyName = 'Chat Message with Optional Thumbnail Fields';
