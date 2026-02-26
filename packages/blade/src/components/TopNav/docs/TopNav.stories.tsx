@@ -918,8 +918,8 @@ const TopNavActionsWithContextTemplate: StoryFn<typeof TopNav> = () => {
           backgroundColor="surface.background.gray.moderate"
         >
           <Text margin="spacing.5">
-            This example shows direct usage of `TopNavContext.Provider` to wrap search and preserve
-            app color scheme for search overlays.
+            This example shows direct usage of `TopNavContext.Provider` using TopNavActions
+            component to wrap search and preserve app color scheme for search overlays.
           </Text>
         </Box>
       </Box>
