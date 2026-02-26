@@ -124,7 +124,6 @@ type SelfChatMessageProps = CommonChatMessageProps & {
 
 type DefaultChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
-  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   isLoading?: boolean;
   loadingText?: string | string[];
