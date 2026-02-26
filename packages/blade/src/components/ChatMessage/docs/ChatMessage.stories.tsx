@@ -805,3 +805,35 @@ const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
 
 export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
 ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';
+
+const ChatMessageWithOptionalThumbnailFieldsTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          {
+            url: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+          },
+          {
+            id: 'optional-alt-example',
+            url: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963',
+          },
+          {
+            alt: 'Thumbnail with no id',
+            url: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
+          },
+        ]}
+        onThumbnailClick={({ index, thumbnail }) => {
+          console.log('Thumbnail clicked payload:', { index, thumbnail });
+        }}
+      >
+        Story with optional thumbnail fields (`id` and `alt`)
+      </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithOptionalThumbnailFields =
+  ChatMessageWithOptionalThumbnailFieldsTemplate.bind({});
+ChatMessageWithOptionalThumbnailFields.storyName = 'Chat Message with Optional Thumbnail Fields';

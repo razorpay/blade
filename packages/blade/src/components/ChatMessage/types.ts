@@ -13,9 +13,9 @@ type DefaultMessageBubbleProps = {
 };
 
 type ThumbnailItem = {
-  id: string;
+  id?: string;
   url: string;
-  alt: string;
+  alt?: string;
 };
 
 type CommonChatMessageProps = {
@@ -95,14 +95,13 @@ type CommonChatMessageProps = {
   /**
    * onThumbnailClick is called when any thumbnail in the stacked preview is clicked.
    */
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
 
 type SelfChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
-  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   errorText?: string;
   isLoading?: boolean;

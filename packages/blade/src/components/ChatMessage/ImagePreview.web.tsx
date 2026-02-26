@@ -5,7 +5,7 @@ import { Text } from '~components/Typography';
 
 type ThumbnailPreviewProps = {
   thumbnails: ThumbnailItem[];
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
+  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
 };
 
 const MAX_VISIBLE_STACK_IMAGES = 3;
@@ -15,9 +15,10 @@ const SPACING_OFFSET = 8;
 
 type ResolvedThumbnailItem = {
   id: string;
-  thumbnail: string;
+  url: string;
   alt: string;
   originalIndex: number;
+  originalThumbnail: ThumbnailItem;
 };
 
 const ThumbnailPreview = ({
@@ -30,10 +31,11 @@ const ThumbnailPreview = ({
 
   const resolvedThumbnails: ResolvedThumbnailItem[] = thumbnails.map((thumbnail, originalIndex) => {
     return {
-      id: thumbnail.id,
-      thumbnail: thumbnail.url,
-      alt: thumbnail.alt,
+      id: thumbnail.id ?? `thumbnail-${originalIndex}-${thumbnail.url}`,
+      url: thumbnail.url,
+      alt: thumbnail.alt ?? '',
       originalIndex,
+      originalThumbnail: thumbnail,
     };
   });
 
@@ -104,7 +106,7 @@ const ThumbnailPreview = ({
       >
         {[...previewThumbnails]
           .reverse()
-          .map(({ id, thumbnail, alt, originalIndex }, reverseIndex) => {
+          .map(({ id, url, alt, originalIndex, originalThumbnail }, reverseIndex) => {
             const stackIndex = previewThumbnails.length - reverseIndex - 1;
             const cardStyle = getCardStyle(stackIndex);
 
@@ -115,7 +117,7 @@ const ThumbnailPreview = ({
                 as={onThumbnailClick ? 'button' : 'div'}
                 onClick={
                   onThumbnailClick
-                    ? () => onThumbnailClick({ index: originalIndex, thumbnail })
+                    ? () => onThumbnailClick({ index: originalIndex, thumbnail: originalThumbnail })
                     : undefined
                 }
                 width={PREVIEW_IMAGE_SIZE}
@@ -136,7 +138,7 @@ const ThumbnailPreview = ({
                 borderColor="interactive.border.staticWhite.default"
               >
                 <img
-                  src={thumbnail}
+                  src={url}
                   alt={alt}
                   style={{
                     width: '100%',
