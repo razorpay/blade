@@ -1,5 +1,23 @@
 # @razorpay/blade-mcp
 
+## 1.23.5
+
+### Patch Changes
+
+- a6fd747df: feat(ChatInput): add onFileReupload to ChatInput knowledgebase of blade mcp
+
+## 1.23.4
+
+### Patch Changes
+
+- efba04492: feat(ChatInput): add mcp knowledgebase
+
+## 1.23.3
+
+### Patch Changes
+
+- 2eddc691a: chore: add changeset
+
 ## 1.23.2
 
 ### Patch Changes

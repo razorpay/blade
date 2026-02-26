@@ -1150,7 +1150,7 @@ const colors: ColorsWithModes = {
         // @deprecated
         intense: globalColors.neutral.blueGrayDark[700],
         gray: {
-          subtle: globalColors.neutral.blueGrayDark[1000],
+          subtle: globalColors.neutral.blueGrayDark[1300],
           moderate: globalColors.neutral.blueGrayDark.a1188,
           intense: globalColors.neutral.black[300],
         },

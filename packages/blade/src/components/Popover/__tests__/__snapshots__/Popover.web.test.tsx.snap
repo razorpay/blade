@@ -64,7 +64,7 @@ exports[`<Popover /> should render 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 1px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
   box-sizing: border-box;
   background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;
@@ -459,7 +459,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 1px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
   box-sizing: border-box;
   background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;
@@ -870,7 +870,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 1px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
   box-sizing: border-box;
   background-color: hsla(0,0%,100%,0.94);
   border-radius: 16px;

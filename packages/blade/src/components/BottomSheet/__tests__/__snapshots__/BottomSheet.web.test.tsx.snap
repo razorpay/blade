@@ -341,7 +341,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -1320,7 +1320,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -1954,7 +1954,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(200,10%,94%,0);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
