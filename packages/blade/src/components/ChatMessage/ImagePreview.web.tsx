@@ -65,14 +65,18 @@ const ThumbnailPreview = ({
   );
   // Absolutely positioned cards don't affect parent height,
   // so compute a deterministic min height from card offsets.
-  const stackHeight =
-    Math.max(
-      ...previewThumbnails.map(
-        (_, stackIndex) =>
-          getCardStyle(stackIndex, isSingleThumbnail).bottom + imagePreviewToken.previewImageSizePx,
-      ),
-      0,
-    ) + imagePreviewToken.stackHeightOffset;
+  // For a single card, use the image size directly.
+  // For stacked cards, calculate based on bottom offsets plus image size and stack offset.
+  const stackHeight = isSingleThumbnail
+    ? imagePreviewToken.previewImageSizePx
+    : Math.max(
+        ...previewThumbnails.map(
+          (_, stackIndex) =>
+            getCardStyle(stackIndex, isSingleThumbnail).bottom +
+            imagePreviewToken.previewImageSizePx,
+        ),
+        0,
+      ) + imagePreviewToken.stackHeightOffset;
 
   return (
     <BaseBox>
