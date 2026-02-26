@@ -170,8 +170,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -188,7 +186,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c16.c16.c16.c16.c16:hover {
@@ -794,8 +792,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -812,7 +808,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c16.c16.c16.c16.c16:hover {

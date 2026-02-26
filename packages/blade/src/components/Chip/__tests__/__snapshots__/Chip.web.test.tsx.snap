@@ -123,8 +123,6 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -141,7 +139,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -588,8 +586,6 @@ exports[`<Chip /> should render chip 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -606,7 +602,7 @@ exports[`<Chip /> should render chip 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -1057,8 +1053,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1075,7 +1069,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
@@ -1615,8 +1609,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1653,8 +1645,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-  --chip-outer-radius: 8px;
-  --chip-outer-border-width: 1px;
   width: 100%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -1671,7 +1661,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -1680,7 +1670,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
-  border-radius: calc(var(--chip-outer-radius) - var(--chip-outer-border-width));
+  border-radius: 7px;
 }
 
 .c19.c19.c19.c19.c19:hover {

@@ -217,8 +217,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -257,6 +255,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       isDisabled={true}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -428,8 +427,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -468,6 +465,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -770,8 +768,6 @@ exports[`<Chip /> should render chip 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -810,6 +806,7 @@ exports[`<Chip /> should render chip 1`] = `
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -981,8 +978,6 @@ exports[`<Chip /> should render chip 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1021,6 +1016,7 @@ exports[`<Chip /> should render chip 1`] = `
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -1323,8 +1319,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1363,6 +1357,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -1634,8 +1629,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1674,6 +1667,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -2076,8 +2070,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -2116,6 +2108,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       isDisabled={true}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -2287,8 +2280,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -2327,6 +2318,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {

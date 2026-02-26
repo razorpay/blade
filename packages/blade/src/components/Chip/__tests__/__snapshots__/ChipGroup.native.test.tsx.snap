@@ -342,8 +342,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -382,6 +380,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -552,8 +551,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -592,6 +589,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -762,8 +760,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -802,6 +798,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -1231,8 +1228,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1271,6 +1266,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -1442,8 +1438,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1482,6 +1476,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
@@ -1653,8 +1648,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     style={
                       [
                         {
-                          "--chip-outer-border-width": 1,
-                          "--chip-outer-radius": 8,
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "transparent",
@@ -1693,6 +1686,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       isDisabled={false}
                       justifyContent="center"
                       overflow="hidden"
+                      size="small"
                       style={
                         [
                           {
