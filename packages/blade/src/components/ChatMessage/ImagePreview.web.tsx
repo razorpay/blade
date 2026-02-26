@@ -169,7 +169,13 @@ const ThumbnailPreview = ({
             borderColor="surface.border.gray.muted"
             style={{ zIndex: 4 }}
           >
-            <Text color="surface.text.gray.muted" size="large" weight="semibold" textAlign="center">
+            <Text
+              color="surface.text.gray.muted"
+              size="medium"
+              weight="medium"
+              textAlign="center"
+              marginRight="spacing.1"
+            >
               +{overflowCount}
             </Text>
           </BaseBox>
