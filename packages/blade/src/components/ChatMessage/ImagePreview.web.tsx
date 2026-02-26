@@ -81,43 +81,54 @@ const ThumbnailPreview = ({
         width={isSingleThumbnail ? imagePreviewToken.previewImageSize : '188px'}
         height={makeSize(stackHeight)}
       >
-        {[...previewThumbnails]
-          .reverse()
-          .map(({ id, url, alt, originalIndex, originalThumbnail }, reverseIndex) => {
-            const stackIndex = previewThumbnails.length - reverseIndex - 1;
-            const cardStyle = getCardStyle(stackIndex, isSingleThumbnail);
+        {
+          // Render back cards first and front card last (top-most in DOM paint order).
+          // `reverse()` mutates, so clone first to preserve `previewThumbnails`.
+          // Data mapping example for `previewThumbnails = [A, B, C]`:
+          // - A = thumbnails[0], B = thumbnails[1], C = thumbnails[2]
+          // - Render loop iterates `[C, B, A]`
+          // - Computed stackIndex becomes 2, 1, 0 respectively
+          //   => C uses style slot 2, B uses style slot 1, A uses style slot 0
+          // This preserves stack positioning by original order while controlling paint order.
+          [...previewThumbnails]
+            .reverse()
+            .map(({ id, url, alt, originalIndex, originalThumbnail }, reverseIndex) => {
+              const stackIndex = previewThumbnails.length - reverseIndex - 1;
+              const cardStyle = getCardStyle(stackIndex, isSingleThumbnail);
 
-            return (
-              <BaseBox
-                key={`${id}-${stackIndex}`}
-                position="absolute"
-                as={onThumbnailClick ? 'button' : 'div'}
-                onClick={
-                  onThumbnailClick
-                    ? () => onThumbnailClick({ index: originalIndex, thumbnail: originalThumbnail })
-                    : undefined
-                }
-                width={imagePreviewToken.previewImageSize}
-                height={imagePreviewToken.previewImageSize}
-                borderRadius="small"
-                overflow="hidden"
-                padding="spacing.0"
-                cursor={onThumbnailClick ? 'pointer' : 'default'}
-                style={{
-                  bottom: makeSize(cardStyle.bottom),
-                  right: makeSize(cardStyle.right),
-                  transform: cardStyle.transform,
-                  zIndex: cardStyle.zIndex,
-                  background: 'none',
-                }}
-                elevation="midRaised"
-                border="thin"
-                borderColor="interactive.border.staticWhite.default"
-              >
-                <StyledPreviewImage src={url} alt={alt} />
-              </BaseBox>
-            );
-          })}
+              return (
+                <BaseBox
+                  key={`${id}-${stackIndex}`}
+                  position="absolute"
+                  as={onThumbnailClick ? 'button' : 'div'}
+                  onClick={
+                    onThumbnailClick
+                      ? () =>
+                          onThumbnailClick({ index: originalIndex, thumbnail: originalThumbnail })
+                      : undefined
+                  }
+                  width={imagePreviewToken.previewImageSize}
+                  height={imagePreviewToken.previewImageSize}
+                  borderRadius="small"
+                  overflow="hidden"
+                  padding="spacing.0"
+                  cursor={onThumbnailClick ? 'pointer' : 'default'}
+                  style={{
+                    bottom: makeSize(cardStyle.bottom),
+                    right: makeSize(cardStyle.right),
+                    transform: cardStyle.transform,
+                    zIndex: cardStyle.zIndex,
+                    background: 'none',
+                  }}
+                  elevation="midRaised"
+                  border="thin"
+                  borderColor="interactive.border.staticWhite.default"
+                >
+                  <StyledPreviewImage src={url} alt={alt} />
+                </BaseBox>
+              );
+            })
+        }
 
         {overflowCount > 0 ? (
           <BaseBox
