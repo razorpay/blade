@@ -58,10 +58,7 @@ const LightBoxThumbnailStrip = ({
         >
           <CardBody height="100%">
             <Box overflow="hidden" borderRadius="medium" width="100%" height="100%">
-              <StyledThumbnailImage
-                src={item.thumbnailSrc}
-                alt={item.alt ?? `Thumbnail ${i + 1}`}
-              />
+              <StyledThumbnailImage src={item.thumbnail} alt={item.alt ?? `Thumbnail ${i + 1}`} />
             </Box>
           </CardBody>
         </Card>

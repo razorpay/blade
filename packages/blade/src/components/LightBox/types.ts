@@ -26,7 +26,7 @@ type LightBoxProps = {
   /**
    * Called when the active item changes via navigation arrows, thumbnail click, or keyboard.
    */
-  onIndexChange?: (index: number) => void;
+  onIndexChange?: (value: { index: number }) => void;
 
   /**
    * Accessibility label for the LightBox dialog.
@@ -51,7 +51,7 @@ type LightBoxItemProps =
   | {
       /**
        * Image URL. LightBox renders an `<img>` element using this src.
-       * The same URL is used for the thumbnail strip unless `thumbnailSrc` is provided.
+       * The same URL is used for the thumbnail strip unless `thumbnail` is provided.
        */
       src: string;
 
@@ -63,7 +63,7 @@ type LightBoxItemProps =
       /**
        * Optional thumbnail image URL override. Defaults to `src`.
        */
-      thumbnailSrc?: string;
+      thumbnail?: string;
 
       children?: never;
     }
@@ -72,7 +72,7 @@ type LightBoxItemProps =
        * Thumbnail image URL for the thumbnail strip.
        * Required when `children` is provided.
        */
-      thumbnailSrc: string;
+      thumbnail: string;
 
       /**
        * Accessible label for the thumbnail in the strip.

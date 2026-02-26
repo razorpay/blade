@@ -13,21 +13,18 @@ const _LightBoxBody = ({ children }: LightBoxBodyProps): React.ReactElement => {
   const items: LightBoxItemProps[] = [];
   React.Children.forEach(children, (child) => {
     if (React.isValidElement(child) && child.type === LightBoxItem) {
-      const {
-        src,
-        thumbnailSrc,
-        alt,
-        children: itemChildren,
-      } = child.props as LightBoxItemProps & { children?: React.ReactNode };
+      const { src, thumbnail, alt, children: itemChildren } = child.props as LightBoxItemProps & {
+        children?: React.ReactNode;
+      };
       if (src) {
         items.push({
           src,
-          thumbnailSrc: thumbnailSrc ?? src,
+          thumbnail: thumbnail ?? src,
           alt,
         });
-      } else if (thumbnailSrc && itemChildren != null) {
+      } else if (thumbnail && itemChildren != null) {
         items.push({
-          thumbnailSrc,
+          thumbnail,
           alt,
           children: itemChildren,
         });

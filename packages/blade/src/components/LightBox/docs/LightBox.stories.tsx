@@ -117,7 +117,7 @@ function App() {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         activeIndex={activeIndex}
-        onIndexChange={setActiveIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
       >
         <LightBoxBody>
           {documents.map((doc) => (
@@ -158,7 +158,7 @@ const DefaultTemplate: StoryFn<typeof LightBox> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         activeIndex={activeIndex}
-        onIndexChange={setActiveIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
       >
         <LightBoxBody>
           {DEFAULT_IMAGES.map((img) => (
@@ -188,7 +188,7 @@ const MixedContentWithPDFTemplate: StoryFn<typeof LightBox> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         activeIndex={activeIndex}
-        onIndexChange={setActiveIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
       >
         <LightBoxBody>
           <LightBoxItem
@@ -199,7 +199,7 @@ const MixedContentWithPDFTemplate: StoryFn<typeof LightBox> = () => {
             src="https://picsum.photos/seed/lightbox-vertical/800/1200"
             alt="Vertical Image"
           />
-          <LightBoxItem thumbnailSrc={pdfThumbnail ?? FALLBACK_PDF_THUMBNAIL} alt="PDF File">
+          <LightBoxItem thumbnail={pdfThumbnail ?? FALLBACK_PDF_THUMBNAIL} alt="PDF File">
             <Preview>
               <PreviewBody>
                 <Document file={PDF_FILE_URL}>
@@ -240,7 +240,7 @@ const MixedContentWithPDFTemplate: StoryFn<typeof LightBox> = () => {
               />
             </Preview>
           </LightBoxItem>
-          <LightBoxItem thumbnailSrc={VIDEO_THUMBNAIL_URL} alt="Video File">
+          <LightBoxItem thumbnail={VIDEO_THUMBNAIL_URL} alt="Video File">
             <Box width="100%" maxWidth="1000px">
               <video controls width="100%">
                 <source src={VIDEO_FILE_URL} type="video/mp4" />
@@ -289,7 +289,7 @@ const ControlledTemplate: StoryFn<typeof LightBox> = () => {
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         activeIndex={activeIndex}
-        onIndexChange={setActiveIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
       >
         <LightBoxBody>
           {DEFAULT_IMAGES.map((img) => (

@@ -69,7 +69,9 @@ const _LightBox = ({
   const [activeIndex, setActiveIndex] = useControllableState({
     value: activeIndexProp,
     defaultValue: defaultActiveIndex ?? 0,
-    onChange: onIndexChange,
+    onChange: (index) => {
+      onIndexChange?.({ index });
+    },
   });
 
   const handleIndexChange = (index: number): void => {
