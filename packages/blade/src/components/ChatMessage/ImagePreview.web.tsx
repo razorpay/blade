@@ -11,7 +11,7 @@ type ThumbnailPreviewProps = {
 const MAX_VISIBLE_STACK_IMAGES = 3;
 const PREVIEW_IMAGE_SIZE = '120px';
 const PREVIEW_IMAGE_SIZE_PX = 120;
-const SPACING_OFFSET = 8;
+const SPACING_OFFSET = 12;
 
 type ResolvedThumbnailItem = {
   id: string;
