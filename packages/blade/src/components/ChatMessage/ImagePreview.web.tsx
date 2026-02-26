@@ -132,9 +132,9 @@ const ThumbnailPreview = ({
                   cursor: onThumbnailClick ? 'pointer' : undefined,
                   padding: 0,
                   background: 'none',
-                  boxShadow: theme.elevation.midRaised,
                 }}
-                border="thin"
+                elevation="midRaised"
+                border="thiner"
                 borderColor="interactive.border.staticWhite.default"
               >
                 <img
