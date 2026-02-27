@@ -1062,6 +1062,7 @@ const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: St
       paddingY="spacing.3"
       flexDirection={direction === 'vertical' ? 'column' : 'row'}
       gap={sizeMap[gap ?? 'small']}
+      alignItems={direction === 'horizontal' ? 'center' : undefined}
     >
       {children.map((child, index) => (
         <GenUIComponentRenderer key={index} component={child} index={index} />
