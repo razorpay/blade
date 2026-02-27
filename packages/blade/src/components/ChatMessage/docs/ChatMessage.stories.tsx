@@ -335,7 +335,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box display="flex" alignItems="flex-start" gap="spacing.4">
+            <Box display="flex" alignItems="flex-start">
               <IconButtonComponent
                 icon={ThumbsUpIcon}
                 accessibilityLabel="Thumbs Up"
