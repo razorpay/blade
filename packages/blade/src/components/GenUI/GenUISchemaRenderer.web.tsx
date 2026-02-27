@@ -96,11 +96,12 @@ const shadeMove = keyframes`
   }
 `;
 
-/** Container for the animated border effect */
+/** Container for the animated border effect — owns the vertical margin to keep the ring flush */
 const AnimatedBorderContainer = styled.div<{ $showContent?: boolean }>`
   position: relative;
   width: 100%;
   border-radius: 12px;
+  margin: 12px 0;
 `;
 
 /**
@@ -109,12 +110,12 @@ const AnimatedBorderContainer = styled.div<{ $showContent?: boolean }>`
  * The animation moves the gradient center along the horizontal axis while
  * rotating it at the corners to create the illusion of perimeter traversal.
  */
-const GradientBorder = styled.div<{ $fadeOut?: boolean; $verticalInset?: number }>`
+const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
   position: absolute;
-  top: ${({ $verticalInset }) => $verticalInset ?? 13}px;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: ${({ $verticalInset }) => $verticalInset ?? 13}px;
+  bottom: 0;
   border-radius: 12px;
   background: conic-gradient(
       from calc(var(--travel-r) - 50deg) at var(--travel-x) 50%,
@@ -134,8 +135,8 @@ const GradientBorder = styled.div<{ $fadeOut?: boolean; $verticalInset?: number 
       transparent 30%,
       transparent 100%
     );
-  animation: ${travelX} 1.5s linear infinite alternate, ${travelR} 1.5s linear infinite alternate,
-    ${travelX2} 1.5s linear infinite alternate, ${travelR2} 1.5s linear infinite alternate;
+  animation: ${travelX} 1s linear infinite, ${travelR} 1s linear infinite,
+    ${travelX2} 1s linear infinite, ${travelR2} 1s linear infinite;
   pointer-events: none;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -195,9 +196,8 @@ const GradientShade = styled.div`
  */
 const AnimatedGradientBorder: React.FC<{
   children: React.ReactNode;
-  verticalInset?: number;
   onAnimationComplete?: () => void;
-}> = ({ children, verticalInset = 13, onAnimationComplete }) => {
+}> = ({ children, onAnimationComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showContent, setShowContent] = useState(false);
   // Initial default values to prevent animation from breaking before ResizeObserver fires
@@ -215,23 +215,21 @@ const AnimatedGradientBorder: React.FC<{
     return () => clearTimeout(timer);
   }, [onAnimationComplete]);
 
-  // Measure element and compute CSS variable values for animation positions
-  const computePositions = useCallback(
-    (entry: ResizeObserverEntry) => {
-      const { width: w, height } = entry.contentRect;
-      const h = height - verticalInset * 2;
-      if (w <= 0 || h <= 0) return;
+  // Measure container and compute CSS variable values for animation positions.
+  // Ring now spans the full container (top: 0, bottom: 0), so rect.height is the ring height.
+  const computePositions = useCallback((entry: ResizeObserverEntry) => {
+    const { width: w, height } = entry.contentRect;
+    const h = height;
+    if (w <= 0 || h <= 0) return;
 
-      const xMargin = Math.min(h * 0.5, w * 0.1);
-      const xMax = w - xMargin;
+    const xMargin = Math.min(h * 0.5, w * 0.1);
+    const xMax = w - xMargin;
 
-      setCssVars({
-        '--x-start': `${xMargin.toFixed(1)}px`,
-        '--x-end': `${xMax.toFixed(1)}px`,
-      } as React.CSSProperties);
-    },
-    [verticalInset],
-  );
+    setCssVars({
+      '--x-start': `${xMargin.toFixed(1)}px`,
+      '--x-end': `${xMax.toFixed(1)}px`,
+    } as React.CSSProperties);
+  }, []);
 
   useResize(containerRef, computePositions);
 
@@ -239,7 +237,7 @@ const AnimatedGradientBorder: React.FC<{
     <>
       <GlobalAnimationStyles />
       <AnimatedBorderContainer ref={containerRef} $showContent={showContent}>
-        <GradientBorder $fadeOut={showContent} $verticalInset={verticalInset} style={cssVars} />
+        <GradientBorder $fadeOut={showContent} style={cssVars} />
         <ContentContainer>
           {children}
           <GradientShade />
@@ -295,7 +293,7 @@ const ComponentRenderer = memo(({ component, index }: ComponentRendererProps) =>
     // 13px inset; custom components have no external margin so use 0.
     if (isBlockLevel) {
       return (
-        <AnimatedGradientBorder key={key} verticalInset={isBuiltInBlockLevel ? 13 : 0}>
+        <AnimatedGradientBorder key={key}>
           <Renderer {...component} index={index} />
         </AnimatedGradientBorder>
       );

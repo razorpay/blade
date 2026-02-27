@@ -1051,7 +1051,7 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
   };
 
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.3" paddingY="spacing.4">
+    <Box display="flex" flexDirection="column" gap="spacing.3">
       <Table
         data={tableData}
         backgroundColor="transparent"
@@ -1103,7 +1103,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
   }
 
   return (
-    <Box height="100%" display="flex" flexDirection="column" gap="spacing.3" marginY="spacing.4">
+    <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
       <Card width="100%" height="100%" padding="spacing.7">
         <CardHeader showDivider={false}>
           <CardHeaderLeading title={title || ''} subtitle={description || ''} />
