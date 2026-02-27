@@ -44,9 +44,9 @@ import { ChatMessage } from '@razorpay/blade/components';
 
 ```ts
 type ThumbnailItem = {
-  id: string;
+  id?: string;
   url: string;
-  alt: string;
+  alt?: string;
 };
 
 type ChatMessageThumbnailProps = {
@@ -58,9 +58,8 @@ type ChatMessageThumbnailProps = {
 
   /**
    * Called when a visible thumbnail preview is clicked.
-   * Returns index from original thumbnails array and the resolved clicked URL.
    */
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: ThumbnailItem }) => void;
+  onThumbnailClick?: () => void;
 
   /**
    * Deprecated. This prop is no longer used for thumbnail preview behavior or bubble rendering.
@@ -82,8 +81,8 @@ type ChatMessageThumbnailProps = {
     { id: 'img-3', url: 'https://example.com/c.jpg', alt: 'Error state screenshot' },
     { id: 'img-4', url: 'https://example.com/d.jpg', alt: 'Payment chat screenshot 4' },
   ]}
-  onThumbnailClick={({ index, thumbnail }) => {
-    openImageViewer({ startAt: index, src: thumbnail });
+  onThumbnailClick={() => {
+    openImageViewer();
   }}
 >
   Here are the screenshots from the user.
@@ -96,9 +95,8 @@ type ChatMessageThumbnailProps = {
   - enforces explicit per-item `alt` for better accessibility
   - provides stable analytics/tracking through `id`
   - keeps shape predictable for integrations and future extensions
-- Keep callback payload as `{ index, thumbnail }`:
-  - index helps open full galleries with stable ordering
-  - thumbnail is always a resolved URL, avoiding array/object branching in consumer code
+- `onThumbnailClick` is a simple no-argument callback:
+  - consumers handle index/src tracking themselves if needed
 - Thumbnail rendering remains presentational:
   - first 3 items in stacked preview
   - overflow represented as `+N`
@@ -115,9 +113,9 @@ type ChatMessageThumbnailProps = {
 
 ```ts
 type ThumbnailItem = {
-  id?: string;
+  id?: string; // optional: enables analytics/tracking when provided
   url: string;
-  alt?: string;
+  alt?: string; // optional: enables per-item accessibility context when provided
 };
 ```
 
