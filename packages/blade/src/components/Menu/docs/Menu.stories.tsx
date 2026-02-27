@@ -352,6 +352,98 @@ CustomItems.args = {
   openInteraction: 'hover',
 };
 
+const fixedAnchorButtons = ['Payments', 'Settlements', 'Manage Account', 'Support'] as const;
+
+const fixedAnchorMenuItemsByTrigger: Record<(typeof fixedAnchorButtons)[number], string[]> = {
+  Payments: [
+    'Why did the last transaction for [email] fail?',
+    'Create a payment link for the last failed order.',
+    'Check the live status of Refund #R9921.',
+    'Draft a message explaining the refund delay.',
+  ],
+  Settlements: [
+    'Why did the last transaction for [email] fail?',
+    'Create a payment link for the last failed order.',
+    'Check the live status of Refund #R9921.',
+    'Draft a message explaining the refund delay.',
+  ],
+  'Manage Account': [
+    'Enable AMEX cards on my checkout page.',
+    'Update the business name on my billing label.',
+    'Add [email] as a Finance user.',
+    "Disable 'Cash on Delivery' for orders above ₹5,000.",
+  ],
+  Support: [
+    'Why did the last transaction for [email] fail?',
+    'Create a payment link for the last failed order.',
+    'Check the live status of Refund #R9921.',
+    'Draft a message explaining the refund delay.',
+  ],
+};
+
+export const MenuWithCustomOffsets = (props: MenuProps): React.ReactElement => {
+  const anchorRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const [crossAxisOffsets, setCrossAxisOffsets] = React.useState<number[]>([]);
+  const [overlayWidth, setOverlayWidth] = React.useState<number | null>(null);
+
+  React.useLayoutEffect(() => {
+    const computeOffsets = (): void => {
+      const anchorRects = fixedAnchorButtons.map((_, index) =>
+        anchorRefs.current[index]?.getBoundingClientRect(),
+      );
+      const anchorLeft = anchorRects[0]?.left;
+      const lastAnchorRight = anchorRects[anchorRects.length - 1]?.right;
+
+      if (anchorLeft == null || lastAnchorRight == null) {
+        return;
+      }
+
+      setCrossAxisOffsets(
+        anchorRects.map((rect) => {
+          if (!rect) {
+            return 0;
+          }
+
+          return Math.round(anchorLeft - rect.left);
+        }),
+      );
+
+      setOverlayWidth(Math.round(lastAnchorRight - anchorLeft));
+    };
+
+    computeOffsets();
+    window.addEventListener('resize', computeOffsets);
+
+    return () => {
+      window.removeEventListener('resize', computeOffsets);
+    };
+  }, []);
+
+  return (
+    <Box paddingTop="spacing.10">
+      <Box display="flex" gap="spacing.4">
+        {fixedAnchorButtons.map((buttonLabel, index) => {
+          return (
+            <Box key={buttonLabel} ref={(element) => (anchorRefs.current[index] = element)}>
+              <Menu {...props}>
+                <MenuTrigger>{buttonLabel}</MenuTrigger>
+                <MenuOverlay
+                  width={overlayWidth != null ? `${overlayWidth}px` : undefined}
+                  offset={{ mainAxis: 12, crossAxis: crossAxisOffsets[index] ?? 0 }}
+                >
+                  {fixedAnchorMenuItemsByTrigger[buttonLabel].map((menuItemTitle) => (
+                    <MenuItem key={`${buttonLabel}-${menuItemTitle}`} title={menuItemTitle} />
+                  ))}
+                </MenuOverlay>
+              </Menu>
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+};
+
 export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {
   const [isLinkTriggerOpen, setIsLinkTriggerOpen] = React.useState(false);
 

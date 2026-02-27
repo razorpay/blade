@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { MenuOverlayProps } from './types';
-import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
-import BaseBox from '~components/Box/BaseBox';
-import { componentZIndices } from '~utils/componentZIndices';
-import type { BladeElementRef } from '~utils/types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getPopupBoxShadowString, isReactNative, useTheme } from '~utils';
 import type { ColorSchemeNames } from '~tokens/theme';
+import { getPopupBoxShadowString, isReactNative, useTheme } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
+import type { MenuOverlayProps } from './types';
+import { componentZIndices } from '~utils/componentZIndices';
+import BaseBox from '~components/Box/BaseBox';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
   return {
@@ -34,12 +34,14 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
     minWidth,
     maxWidth,
     width,
+    offset,
     testID,
     ...props
   },
   ref,
 ): React.ReactElement => {
   const { colorScheme } = useTheme();
+  void offset;
 
   return (
     <UnfocussableOverlay
