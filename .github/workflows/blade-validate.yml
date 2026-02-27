@@ -20,7 +20,7 @@ jobs:
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
-          node-version: 22.15.5
+          node-version: 22
       - name: Pre-Generate Documentation Lock File
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
@@ -70,7 +70,7 @@ jobs:
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
-          node-version: 22.15.5
+          node-version: 22
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run Unit Tests
@@ -102,7 +102,7 @@ jobs:
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
-          node-version: 22.15.5
+          node-version: 22
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Download Coverage Reports
