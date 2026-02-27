@@ -16,7 +16,6 @@ import { Fade } from '~components/Fade';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { IconButton as IconButtonComponent } from '~components/Button/IconButton';
 import { Divider } from '~components/Divider';
-import { ActionList, ActionListItem } from '~components/ActionList';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
@@ -32,6 +31,7 @@ import {
 } from '~components/Table';
 import type { TableData } from '~components/Table';
 import { LightBox, LightBoxBody, LightBoxItem } from '~components/LightBox';
+import { useTheme } from '~components/BladeProvider';
 
 const Page = (): React.ReactElement => {
   return (
@@ -429,24 +429,63 @@ const suggestedQuestions = [
   'What are the supported payment methods?',
 ];
 
+const SuggestedQuestionItem = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}): React.ReactElement => {
+  const { theme } = useTheme();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const buttonStyle: React.CSSProperties = {
+    display: 'block',
+    width: '100%',
+    background: 'transparent',
+    border: 'none',
+    padding: `${theme.spacing[3]}px`,
+    cursor: 'pointer',
+    textAlign: 'left',
+    borderRadius: `${theme.border.radius.small}px`,
+    backgroundColor: isHovered ? theme.colors.interactive.background.gray.default : 'transparent',
+  };
+
+  return (
+    <button
+      style={buttonStyle}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Text color="surface.text.gray.normal" size="medium">
+        {label}
+      </Text>
+    </button>
+  );
+};
+
+const SuggestedQuestionList = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      {suggestedQuestions.map((question, index) => (
+        <SuggestedQuestionItem
+          key={index}
+          label={`${index + 1}. ${question}`}
+          onClick={() => console.log(`Selected: ${question}`)}
+        />
+      ))}
+    </Box>
+  );
+};
+
 const ChatMessageWithSuggestedQuestionsTemplate: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.3" maxWidth="400px">
       <ChatMessage
         senderType="other"
         leading={<RayIcon size="large" color="surface.icon.onSea.onSubtle" />}
-        footerActions={
-          <ActionList>
-            {suggestedQuestions.map((question, index) => (
-              <ActionListItem
-                key={index}
-                title={`${index + 1}. ${question}`}
-                value={`suggestion-${index}`}
-                onClick={() => console.log(`Selected: ${question}`)}
-              />
-            ))}
-          </ActionList>
-        }
+        footerActions={<SuggestedQuestionList />}
       >
         <Box display="flex" flexDirection="column" gap="spacing.3">
           <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
@@ -642,18 +681,16 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
               <Text color="surface.text.gray.normal" size="medium">
                 {'How can I help you next?'}
               </Text>
-              <ActionList>
-                <ActionListItem
-                  title="1. Why is the netbanking pending?"
-                  value="q1"
+              <Box display="flex" flexDirection="column" gap="spacing.3">
+                <SuggestedQuestionItem
+                  label="1. Why is the netbanking pending?"
                   onClick={() => console.log('Q1 selected')}
                 />
-                <ActionListItem
-                  title="2. How long does settlement take?"
-                  value="q2"
+                <SuggestedQuestionItem
+                  label="2. How long does settlement take?"
                   onClick={() => console.log('Q2 selected')}
                 />
-              </ActionList>
+              </Box>
             </Box>
           </ChatMessage>
           <Divider dividerStyle="dashed" marginLeft="24px" />
