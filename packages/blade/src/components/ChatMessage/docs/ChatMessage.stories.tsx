@@ -339,6 +339,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={ThumbsUpIcon}
                 accessibilityLabel="Thumbs Up"
+                isHighlighted
                 onClick={() => {
                   console.log('Thumbs Up...');
                 }}
@@ -346,6 +347,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={ThumbsDownIcon}
                 accessibilityLabel="Thumbs Down"
+                isHighlighted
                 onClick={() => {
                   console.log('Thumbs Down...');
                 }}
@@ -353,6 +355,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={CopyIcon}
                 accessibilityLabel="Copy"
+                isHighlighted
                 onClick={() => {
                   console.log('Copying...');
                 }}
@@ -360,6 +363,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={ShareIcon}
                 accessibilityLabel="Share"
+                isHighlighted
                 onClick={() => {
                   console.log('Sharing...');
                 }}
@@ -413,9 +417,8 @@ const ChatMessageWithCustomTypingAnimationTemplate: StoryFn<typeof ChatMessage> 
     </Box>
   );
 };
-export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingAnimationTemplate.bind(
-  {},
-);
+export const ChatMessageWithCustomTypingAnimation =
+  ChatMessageWithCustomTypingAnimationTemplate.bind({});
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
 
 const suggestedQuestions = [

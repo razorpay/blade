@@ -1,4 +1,4 @@
-import { size } from '~tokens/global';
+import { size, colors as globalColors } from '~tokens/global';
 
 const chatMessageToken = {
   default: {},
@@ -40,6 +40,13 @@ const chatMessageToken = {
         zIndex: 1,
       },
     ],
+  },
+  messageBubble: {
+    boxShadow: '0px 0.5px 4px 0px',
+    boxShadowColor: {
+      light: globalColors.neutral.blueGrayLight.a906,
+      dark: globalColors.neutral.black[50],
+    },
   },
 } as const;
 
