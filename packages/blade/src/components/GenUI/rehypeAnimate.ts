@@ -82,7 +82,7 @@ const makeSpan = (word: string, duration: number, easing: string): Element => ({
  * @param options - Animation configuration options
  * @returns A rehype plugin function
  */
-export function createRehypeAnimate(options?: AnimateOptions) {
+export function createRehypeAnimate(options?: AnimateOptions): () => (tree: Root) => void {
   const duration = options?.duration ?? 300;
   const easing = options?.easing ?? 'ease-in-out';
   const sep = options?.sep ?? 'word';
@@ -97,7 +97,7 @@ export function createRehypeAnimate(options?: AnimateOptions) {
     visitParents(tree, 'text', (node: Text, ancestors: Node[]) => {
       const parent = ancestors[ancestors.length - 1] as Parent | undefined;
       if (!parent || !('children' in parent)) {
-        return;
+        return undefined;
       }
 
       if (hasSkipAncestor(ancestors)) {
@@ -106,12 +106,12 @@ export function createRehypeAnimate(options?: AnimateOptions) {
 
       const index = parent.children.indexOf(node);
       if (index === -1) {
-        return;
+        return undefined;
       }
 
       const text = node.value;
       if (!text.trim()) {
-        return;
+        return undefined;
       }
 
       const parts = sep === 'char' ? splitByChar(text) : splitByWord(text);

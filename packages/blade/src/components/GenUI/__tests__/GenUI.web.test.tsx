@@ -1686,7 +1686,7 @@ describe('<GenUI />', () => {
     });
 
     it('should warn and render nothing for invalid component types', () => {
-      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
       const components: GenUIComponent[] = [
         {
           component: 'INVALID_COMPONENT' as any,
