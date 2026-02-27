@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -31,8 +32,6 @@ import {
 } from '~components/Table';
 import type { TableData } from '~components/Table';
 import { LightBox, LightBoxBody, LightBoxItem } from '~components/LightBox';
-import { useTheme } from '~components/BladeProvider';
-
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -429,6 +428,20 @@ const suggestedQuestions = [
   'What are the supported payment methods?',
 ];
 
+const StyledSuggestionButton = styled.button(({ theme }) => ({
+  display: 'block',
+  width: '100%',
+  background: 'transparent',
+  border: 'none',
+  padding: `${theme.spacing[3]}px`,
+  cursor: 'pointer',
+  textAlign: 'left',
+  borderRadius: `${theme.border.radius.small}px`,
+  '&:hover': {
+    backgroundColor: theme.colors.interactive.background.gray.default,
+  },
+}));
+
 const SuggestedQuestionItem = ({
   label,
   onClick,
@@ -436,32 +449,12 @@ const SuggestedQuestionItem = ({
   label: string;
   onClick: () => void;
 }): React.ReactElement => {
-  const { theme } = useTheme();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const buttonStyle: React.CSSProperties = {
-    display: 'block',
-    width: '100%',
-    background: 'transparent',
-    border: 'none',
-    padding: `${theme.spacing[3]}px`,
-    cursor: 'pointer',
-    textAlign: 'left',
-    borderRadius: `${theme.border.radius.small}px`,
-    backgroundColor: isHovered ? theme.colors.interactive.background.gray.default : 'transparent',
-  };
-
   return (
-    <button
-      style={buttonStyle}
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <StyledSuggestionButton onClick={onClick}>
       <Text color="surface.text.gray.normal" size="medium">
         {label}
       </Text>
-    </button>
+    </StyledSuggestionButton>
   );
 };
 
@@ -693,7 +686,7 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
               </Box>
             </Box>
           </ChatMessage>
-          <Divider dividerStyle="dashed" marginLeft="24px" />
+          <Divider dividerStyle="dashed" marginLeft="24px" marginTop="spacing.2" />
         </Box>
       </Box>
     </Box>
