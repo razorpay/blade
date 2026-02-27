@@ -13,9 +13,22 @@ type DefaultMessageBubbleProps = {
 };
 
 type ThumbnailItem = {
+  id?: string;
+  url: string;
+  alt?: string;
+};
+
+type ThumbnailPreviewProps = {
+  thumbnails: ThumbnailItem[];
+  onThumbnailClick?: () => void;
+};
+
+type ResolvedThumbnailItem = {
   id: string;
   url: string;
   alt: string;
+  originalIndex: number;
+  originalThumbnail: ThumbnailItem;
 };
 
 type CommonChatMessageProps = {
@@ -93,16 +106,15 @@ type CommonChatMessageProps = {
    */
   thumbnails?: ThumbnailItem[];
   /**
-   * onThumbnailClick is called when any thumbnail in the stacked preview is clicked.
+   * onThumbnailClick is called when the image preview is clicked.
    */
-  onThumbnailClick?: ({ index, thumbnail }: { index: number; thumbnail: string }) => void;
+  onThumbnailClick?: () => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
 
 type SelfChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
-  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   errorText?: string;
   isLoading?: boolean;
@@ -112,7 +124,6 @@ type SelfChatMessageProps = CommonChatMessageProps & {
 
 type DefaultChatMessageProps = CommonChatMessageProps & {
   senderType: 'self' | 'other';
-  /** @deprecated This prop is no longer used by `ChatMessage`. */
   messageType?: 'default' | 'last';
   isLoading?: boolean;
   loadingText?: string | string[];
@@ -122,6 +133,8 @@ type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;
 
 export type {
   ThumbnailItem,
+  ThumbnailPreviewProps,
+  ResolvedThumbnailItem,
   CommonChatMessageProps,
   ChatMessageProps,
   DefaultMessageBubbleProps,

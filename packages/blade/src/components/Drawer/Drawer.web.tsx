@@ -206,7 +206,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
                   label: accessibilityLabel,
                 })}
                 position="fixed"
-                backgroundColor="popup.background.subtle"
+                backgroundColor="popup.background.gray.subtle"
                 borderRadius={{ base: 'none', m: 'large' }}
                 overflow="hidden"
                 elevation="highRaised"

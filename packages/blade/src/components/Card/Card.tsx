@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import type { CSSObject } from 'styled-components';
@@ -65,6 +66,8 @@ export type CardProps = {
    * Sets the border radius of the Card
    *
    * @default `medium`
+   *
+   * @deprecated The `borderRadius` prop is deprecated and is a no-op. The Card always uses `medium` borderRadius. This prop will be removed in a future major version.
    */
   borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
   /**
@@ -260,7 +263,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         as={as}
         ref={ref as never}
         display={'block' as never}
-        borderRadius={borderRadius}
+        borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
         isSelected={isSelected}
@@ -284,8 +287,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           height={height}
           minHeight={minHeight}
           padding={padding}
-          borderRadius={borderRadius}
-          elevation={elevation}
+          borderRadius="medium"
           textAlign={'left' as never}
           backgroundColor="surface.background.gray.intense"
           colorScheme={colorScheme}

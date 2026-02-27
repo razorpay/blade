@@ -9,11 +9,7 @@ const DefaultMessageBubble = ({
   isLoading,
   footerActions,
   isChildText,
-  senderType,
-}: Pick<
-  CommonChatMessageProps,
-  'children' | 'leading' | 'isLoading' | 'footerActions' | 'senderType'
-> & {
+}: Pick<CommonChatMessageProps, 'children' | 'leading' | 'isLoading' | 'footerActions'> & {
   isChildText: boolean;
 }): React.ReactElement => {
   return (

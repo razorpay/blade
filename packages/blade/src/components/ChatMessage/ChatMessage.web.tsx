@@ -1,12 +1,12 @@
 import React from 'react';
-import type { ChatMessageProps } from './types';
-import { DefaultMessageBubble } from './DefaultMessageBubble.web';
-import { ThumbnailPreview } from './ImagePreview.web';
-import { RollingText } from './RollingText.web';
 import { SelfMessageBubble } from './SelfMessageBubble.web';
+import { DefaultMessageBubble } from './DefaultMessageBubble.web';
+import type { ChatMessageProps } from './types';
+import { ThumbnailPreview } from './ThumbnailPreview.web';
+import { RollingText } from '~components/RollingText';
+import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStringFromReactText } from '~utils/getStringChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -94,7 +94,6 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
         isLoading={isLoading}
         footerActions={footerActions}
         isChildText={shouldWrapInText}
-        senderType={senderType}
       />
     );
 

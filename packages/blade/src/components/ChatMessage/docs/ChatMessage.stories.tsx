@@ -335,10 +335,11 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box display="flex" alignItems="flex-start" gap="spacing.4">
+            <Box display="flex" alignItems="flex-start">
               <IconButtonComponent
                 icon={ThumbsUpIcon}
                 accessibilityLabel="Thumbs Up"
+                isHighlighted
                 onClick={() => {
                   console.log('Thumbs Up...');
                 }}
@@ -346,6 +347,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={ThumbsDownIcon}
                 accessibilityLabel="Thumbs Down"
+                isHighlighted
                 onClick={() => {
                   console.log('Thumbs Down...');
                 }}
@@ -353,6 +355,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={CopyIcon}
                 accessibilityLabel="Copy"
+                isHighlighted
                 onClick={() => {
                   console.log('Copying...');
                 }}
@@ -360,6 +363,7 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
               <IconButtonComponent
                 icon={ShareIcon}
                 accessibilityLabel="Share"
+                isHighlighted
                 onClick={() => {
                   console.log('Sharing...');
                 }}
@@ -505,39 +509,8 @@ const paymentTableData: TableData<PaymentRow> = {
 
 const HEADING_WORDS = ['Recent', 'payments', 'from', 'pingal@gmail.com'];
 
-type ParagraphWord = { word: string; bold?: boolean };
-const PARAGRAPH_WORDS: ParagraphWord[] = [
-  ...['Pingal', 'has'].map((w) => ({ word: w })),
-  ...['3', 'recent', 'payments', 'totalling', '₹26,000.'].map((w) => ({ word: w, bold: true })),
-  ...[
-    'Two',
-    'are',
-    'successful',
-    '(captured)',
-    'and',
-    'have',
-    'been',
-    'settled.',
-    'The',
-  ].map((w) => ({ word: w })),
-  ...['third—a', 'netbanking', 'payment—is', 'still', 'pending'].map((w) => ({
-    word: w,
-    bold: true,
-  })),
-  ...[
-    'as',
-    'we',
-    'wait',
-    'for',
-    'the',
-    "customer's",
-    'bank',
-    'to',
-    'confirm',
-    'the',
-    'transfer.',
-  ].map((w) => ({ word: w })),
-];
+const PARAGRAPH_TEXT =
+  "Pingal has 3 recent payments totalling ₹26,000. Two are successful (captured) and have been settled. The third—a netbanking payment—is still pending as we wait for the customer's bank to confirm the transfer.";
 
 const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
   const footerActions = (
@@ -590,11 +563,7 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
             </Heading>
 
             <Text color="surface.text.gray.normal" size="medium">
-              {PARAGRAPH_WORDS.map(({ word, bold }, i) => (
-                <React.Fragment key={i}>
-                  <span style={{ fontWeight: bold ? 600 : undefined }}>{word}</span>{' '}
-                </React.Fragment>
-              ))}
+              {PARAGRAPH_TEXT}
             </Text>
 
             <Box>
@@ -696,9 +665,23 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
 export const FullChatExample = FullChatExampleTemplate.bind({});
 FullChatExample.storyName = 'Full Chat Example';
 
-const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+const ImageStoryContainer = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.5">
+    <Box
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+      width="100%"
+      minHeight="100vh"
+    >
+      {children}
+    </Box>
+  );
+};
+
+const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -718,13 +701,22 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Mountain lake view',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         Check out these beautiful landscapes!
       </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
 
+export const ChatMessageWithThreeImages = ChatMessageWithThreeImagesTemplate.bind({});
+ChatMessageWithThreeImages.storyName = 'Chat Message with 3 Images';
+
+const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -754,12 +746,22 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Forest trail landscape',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         Example with 5 images (+2 badge)
       </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithFiveImages = ChatMessageWithFiveImagesTemplate.bind({});
+ChatMessageWithFiveImages.storyName = 'Chat Message with 5 Images';
+
+const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
       <ChatMessage
         senderType="self"
         thumbnails={[
@@ -769,15 +771,15 @@ const ChatMessageWithImagesTemplate: StoryFn<typeof ChatMessage> = () => {
             alt: 'Single mountain landscape',
           },
         ]}
-        onThumbnailClick={({ index, thumbnail }) => {
-          console.log('Thumbnail clicked:', index, thumbnail);
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
         }}
       >
         ChatMessage with single image
       </ChatMessage>
-    </Box>
+    </ImageStoryContainer>
   );
 };
 
-export const ChatMessageWithImages = ChatMessageWithImagesTemplate.bind({});
-ChatMessageWithImages.storyName = 'Chat Message with Images';
+export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
+ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';
