@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -31,6 +31,7 @@ import {
   TableCell,
 } from '~components/Table';
 import type { TableData } from '~components/Table';
+import { LightBox, LightBoxBody, LightBoxItem } from '~components/LightBox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -665,119 +666,159 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
 export const FullChatExample = FullChatExampleTemplate.bind({});
 FullChatExample.storyName = 'Full Chat Example';
 
-const ImageStoryContainer = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      backgroundColor="surface.background.gray.moderate"
-      width="100%"
-      minHeight="100vh"
-    >
-      {children}
-    </Box>
-  );
-};
+const THREE_IMAGE_THUMBNAILS = [
+  {
+    id: 'landscape-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Snowy mountain landscape',
+  },
+  {
+    id: 'landscape-2',
+    url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+    alt: 'Forest and mountain view',
+  },
+  {
+    id: 'landscape-3',
+    url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+    alt: 'Mountain lake view',
+  },
+];
 
 const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'landscape-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Snowy mountain landscape',
-          },
-          {
-            id: 'landscape-2',
-            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-            alt: 'Forest and mountain view',
-          },
-          {
-            id: 'landscape-3',
-            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
-            alt: 'Mountain lake view',
-          },
-        ]}
+        thumbnails={THREE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         Check out these beautiful landscapes!
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {THREE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
 export const ChatMessageWithThreeImages = ChatMessageWithThreeImagesTemplate.bind({});
 ChatMessageWithThreeImages.storyName = 'Chat Message with 3 Images';
 
+const FIVE_IMAGE_THUMBNAILS = [
+  {
+    id: 'mountain-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Mountain landscape',
+  },
+  {
+    id: 'mountain-2',
+    url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+    alt: 'Mountain and forest view',
+  },
+  {
+    id: 'mountain-3',
+    url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+    alt: 'Lake with mountains in the background',
+  },
+  {
+    id: 'mountain-4',
+    url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
+    alt: 'Valley and mountain range',
+  },
+  {
+    id: 'mountain-5',
+    url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+    alt: 'Forest trail landscape',
+  },
+];
+
 const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'mountain-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Mountain landscape',
-          },
-          {
-            id: 'mountain-2',
-            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-            alt: 'Mountain and forest view',
-          },
-          {
-            id: 'mountain-3',
-            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
-            alt: 'Lake with mountains in the background',
-          },
-          {
-            id: 'mountain-4',
-            url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
-            alt: 'Valley and mountain range',
-          },
-          {
-            id: 'mountain-5',
-            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
-            alt: 'Forest trail landscape',
-          },
-        ]}
+        thumbnails={FIVE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         Example with 5 images (+2 badge)
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {FIVE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
 export const ChatMessageWithFiveImages = ChatMessageWithFiveImagesTemplate.bind({});
 ChatMessageWithFiveImages.storyName = 'Chat Message with 5 Images';
 
+const SINGLE_IMAGE_THUMBNAILS = [
+  {
+    id: 'single-landscape-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Single mountain landscape',
+  },
+];
+
 const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'single-landscape-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Single mountain landscape',
-          },
-        ]}
+        thumbnails={SINGLE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         ChatMessage with single image
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {SINGLE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
