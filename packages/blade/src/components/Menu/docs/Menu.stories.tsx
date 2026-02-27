@@ -1,9 +1,10 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import type { MenuProps } from '..';
 import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from '..';
+import type { MenuProps } from '..';
 import { CustomMenuItem, CustomMenuTrigger, MenuTrigger, navMenuItems } from './CustomMenu';
+import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import {
@@ -28,7 +29,6 @@ import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { BladeProvider } from '~components/BladeProvider';
-import { bladeTheme } from '~tokens/theme';
 
 const Page = (): React.ReactElement => {
   return (
@@ -356,16 +356,16 @@ const fixedAnchorButtons = ['Payments', 'Settlements', 'Manage Account', 'Suppor
 
 const fixedAnchorMenuItemsByTrigger: Record<(typeof fixedAnchorButtons)[number], string[]> = {
   Payments: [
-    'Why did the last transaction for [email] fail?',
-    'Create a payment link for the last failed order.',
-    'Check the live status of Refund #R9921.',
-    'Draft a message explaining the refund delay.',
+    'Create a payment link for the latest abandoned checkout.',
+    'Share a one-time payment page with [email].',
+    'Retry the failed auto-debit for invoice #INV-2031.',
+    'Generate a reminder for overdue payment #PAY-7782.',
   ],
   Settlements: [
-    'Why did the last transaction for [email] fail?',
-    'Create a payment link for the last failed order.',
-    'Check the live status of Refund #R9921.',
-    'Draft a message explaining the refund delay.',
+    'Show today’s expected settlement timeline.',
+    'Reconcile payout #PAYOUT-1147 with bank statement.',
+    'Download T+1 settlement report for this week.',
+    'Investigate deduction marked as adjustment #ADJ-902.',
   ],
   'Manage Account': [
     'Enable AMEX cards on my checkout page.',
@@ -374,15 +374,16 @@ const fixedAnchorMenuItemsByTrigger: Record<(typeof fixedAnchorButtons)[number],
     "Disable 'Cash on Delivery' for orders above ₹5,000.",
   ],
   Support: [
-    'Why did the last transaction for [email] fail?',
-    'Create a payment link for the last failed order.',
-    'Check the live status of Refund #R9921.',
-    'Draft a message explaining the refund delay.',
+    'Why was chargeback #CB-4451 raised?',
+    'Escalate open ticket #SUP-982 to priority support.',
+    'Share dispute evidence checklist with my team.',
+    'Draft a status update for customer [email].',
   ],
 };
 
 export const MenuWithCustomOffsets = (props: MenuProps): React.ReactElement => {
-  const anchorRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  type TriggerAnchorElement = { getBoundingClientRect: () => DOMRect };
+  const anchorRefs = React.useRef<(TriggerAnchorElement | null)[]>([]);
   const [crossAxisOffsets, setCrossAxisOffsets] = React.useState<number[]>([]);
   const [overlayWidth, setOverlayWidth] = React.useState<number | null>(null);
 
@@ -424,7 +425,17 @@ export const MenuWithCustomOffsets = (props: MenuProps): React.ReactElement => {
       <Box display="flex" gap="spacing.4">
         {fixedAnchorButtons.map((buttonLabel, index) => {
           return (
-            <Box key={buttonLabel} ref={(element) => (anchorRefs.current[index] = element)}>
+            <Box
+              key={buttonLabel}
+              ref={(element) => {
+                if (element && 'getBoundingClientRect' in element) {
+                  anchorRefs.current[index] = element;
+                  return;
+                }
+
+                anchorRefs.current[index] = null;
+              }}
+            >
               <Menu {...props}>
                 <MenuTrigger>{buttonLabel}</MenuTrigger>
                 <MenuOverlay

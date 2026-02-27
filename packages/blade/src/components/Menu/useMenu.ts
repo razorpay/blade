@@ -19,8 +19,8 @@ import {
   useRole,
   useTransitionStyles,
 } from '@floating-ui/react';
-import { makeSize, useTheme } from '~utils';
 import type { MenuContextType, UseFloatingMenuProps, UseFloatingMenuReturnType } from './types';
+import { makeSize, useTheme } from '~utils';
 import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
 import { useControllableState } from '~utils/useControllable';
 

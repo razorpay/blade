@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
+import type { MenuOverlayProps } from './types';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { getPopupBoxShadowString, isReactNative, useTheme } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
-import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
-import type { MenuOverlayProps } from './types';
 import { componentZIndices } from '~utils/componentZIndices';
 import BaseBox from '~components/Box/BaseBox';
 
