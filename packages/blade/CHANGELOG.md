@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.88.0
+
+### Minor Changes
+
+- 61297d8e0: feat(spark): chatmessage updates
+
 ## 12.87.0
 
 ### Minor Changes
