@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  FloatingFocusManager,
   FloatingPortal,
   FloatingOverlay,
   useFloating,
@@ -87,6 +88,7 @@ const _LightBox = ({
 
   const dismiss = useDismiss(context);
   const { getFloatingProps } = useInteractions([dismiss]);
+  const defaultInitialFocusRef = React.useRef<HTMLButtonElement | null>(null);
 
   return (
     <LightBoxProvider value={{ activeIndex, handleIndexChange }}>
@@ -94,42 +96,50 @@ const _LightBox = ({
         {isMounted ? (
           <Box position="fixed" zIndex={componentZIndices.modal}>
             <LightBoxBackdrop isVisible={isVisible} />
-            <StyledLightBoxContent
-              ref={refs.setFloating}
-              {...getFloatingProps()}
-              $isVisible={isVisible}
-              role="dialog"
-              aria-label={accessibilityLabel}
-              aria-modal={true}
-              position="fixed"
-              top="spacing.0"
-              right="spacing.0"
-              bottom="spacing.0"
-              left="spacing.0"
-              display="flex"
-              height="100%"
-              width="100%"
-              alignItems="center"
-              justifyContent="center"
-              padding="spacing.6"
-              onClick={() => {
-                onDismiss?.();
-              }}
+            <FloatingFocusManager
+              returnFocus
+              initialFocus={defaultInitialFocusRef}
+              context={context}
+              modal={true}
             >
-              <Box position="absolute" top="spacing.6" right="spacing.6" zIndex={1}>
-                <IconButton
-                  icon={CloseIcon}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onClick={() => {}} // onClick of parent already handles dismiss
-                  accessibilityLabel="Close lightbox"
-                  emphasis="subtle"
-                  size="large"
-                />
-              </Box>
-              <BaseBox position="relative" height="100%" width="100%">
-                {children}
-              </BaseBox>
-            </StyledLightBoxContent>
+              <StyledLightBoxContent
+                ref={refs.setFloating}
+                {...getFloatingProps()}
+                $isVisible={isVisible}
+                role="dialog"
+                aria-label={accessibilityLabel}
+                aria-modal={true}
+                position="fixed"
+                top="spacing.0"
+                right="spacing.0"
+                bottom="spacing.0"
+                left="spacing.0"
+                display="flex"
+                height="100%"
+                width="100%"
+                alignItems="center"
+                justifyContent="center"
+                padding="spacing.6"
+                onClick={() => {
+                  onDismiss?.();
+                }}
+              >
+                <Box position="absolute" top="spacing.6" right="spacing.6" zIndex={1}>
+                  <IconButton
+                    ref={defaultInitialFocusRef}
+                    icon={CloseIcon}
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    onClick={() => {}} // onClick of parent already handles dismiss
+                    accessibilityLabel="Close lightbox"
+                    emphasis="subtle"
+                    size="large"
+                  />
+                </Box>
+                <BaseBox position="relative" height="100%" width="100%">
+                  {children}
+                </BaseBox>
+              </StyledLightBoxContent>
+            </FloatingFocusManager>
           </Box>
         ) : null}
       </FloatingPortal>
