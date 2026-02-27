@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.23.6
+
+### Patch Changes
+
+- b6d980719: npm publish OIDC
+
 ## 1.23.5
 
 ### Patch Changes

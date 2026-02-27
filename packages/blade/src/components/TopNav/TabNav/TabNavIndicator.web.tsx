@@ -120,8 +120,10 @@ const TabNavIndicator = ({
     void updatePosition();
   }, [updatePosition]);
 
-  // Watch for data-active attribute changes so the indicator moves
-  // even when TabNav itself doesn't re-render (e.g. router-driven isActive)
+  // Watch for data-active attribute changes AND child additions/removals so the
+  // indicator moves when: (a) active tab changes via router, (b) an item moves
+  // into/out of the "More" overflow (the More button is added to the DOM with
+  // data-active already set, so a pure attribute observer would miss it).
   React.useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -137,6 +139,7 @@ const TabNavIndicator = ({
     observer.observe(container, {
       attributes: true,
       attributeFilter: ['data-active'],
+      childList: true,
       subtree: true,
     });
 

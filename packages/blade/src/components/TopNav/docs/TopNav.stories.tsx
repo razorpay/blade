@@ -242,7 +242,7 @@ const popularSearchItems = [
 ];
 
 const SearchContainer = styled.div<{ isActive: boolean }>(({ isActive }) => ({
-  width: isActive ? '300px' : '200px',
+  width: isActive ? '400px' : '200px',
   transition: 'width 200ms ease-in-out',
 }));
 
@@ -461,12 +461,7 @@ const TopNavFullExample = () => {
                     />
                   </Tooltip>
                 ) : (
-                  <Box width="200px">
-                    <SearchInput
-                      placeholder="Search in payments"
-                      accessibilityLabel="Search Across Razorpay"
-                    />
-                  </Box>
+                  <TopNavSearchDropdown />
                 )}
                 <Tooltip content="View Ecosystem Health">
                   <IconButton
@@ -779,10 +774,25 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                 <TabNav
                   items={[
                     { title: 'Home', href: '/home', icon: HomeIcon },
+
                     {
                       href: '/payments',
                       title: 'Payments',
-                      icon: AcceptPaymentsIcon,
+                      icon: { default: AcceptPaymentsIcon, selected: AcceptPaymentsFilledIcon },
+                      description: 'Manage payments effortlessly.',
+                    },
+                    {
+                      href: '/magic-checkout',
+                      title: 'Magic Checkout',
+                      icon: { default: ShoppingBagIcon, selected: MagicCheckoutFilledIcon },
+                      description: 'Fast, one-click checkout.',
+                    },
+                    {
+                      href: '/rize',
+                      title: 'Rize',
+                      icon: AwardIcon,
+                      isAlwaysOverflowing: true,
+                      description: 'Boost your business growth.',
                     },
                   ]}
                 >

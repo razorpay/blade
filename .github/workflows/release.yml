@@ -23,9 +23,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: Use Node v22
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 22.15.5
+          registry-url: 'https://registry.npmjs.org'
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade Core
