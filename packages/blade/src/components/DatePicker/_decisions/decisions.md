@@ -77,6 +77,17 @@ type DatePickerProps = InputProps &
      * Can be used to add custom content like informational text, links, or other components
      */
     footer?: React.ReactElement;
+    /**
+     * Decides whether to render a clear icon button in the input field.
+     * When clicked, it clears the selected date(s).
+     */
+    showClearButton?: boolean;
+    /**
+     * Event handler called when the clear button is clicked.
+     * Used when `showClearButton` is `true`.
+     * In controlled mode, use this callback to reset your state.
+     */
+    onClearButtonClick?: () => void;
   };
 ```
 
@@ -210,6 +221,36 @@ function DatePickerWithPresets() {
         { label: 'Past 7 days', value: (date) => [dayjs(date).subtract(7, 'day'), date] },
         { label: 'Past month', value: (date) => [dayjs(date).subtract(1, 'month'), date] },
       ]}
+    />
+  );
+}
+```
+
+### Clear Button
+
+Use `showClearButton` prop to render a clear button in the DatePicker input. When clicked, it clears the selected date(s).
+
+```jsx
+// Uncontrolled Mode - clear button automatically clears internal state
+<DatePicker
+  label="Pick date"
+  selectionType="single"
+  showClearButton
+  onClearButtonClick={() => console.log('Date cleared!')}
+/>
+
+// Controlled Mode - use onClearButtonClick to reset your state
+function ControlledDatePickerWithClear() {
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  return (
+    <DatePicker
+      label="Pick date"
+      selectionType="single"
+      value={selectedDate}
+      onChange={setSelectedDate}
+      showClearButton
+      onClearButtonClick={() => setSelectedDate(null)}
     />
   );
 }

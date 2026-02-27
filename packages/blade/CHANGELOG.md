@@ -1,5 +1,264 @@
 # @razorpay/blade
 
+## 12.86.0
+
+### Minor Changes
+
+- bbad553f1: feat(blade): enable topNavIndicator to watch for childlist changes
+
+## 12.85.1
+
+### Patch Changes
+
+- 413fdd1ed: fix(Chip): simplify border radius calculation using direct computation
+- 06e2003c6: feat: expose topNav context using TopNavActions
+
+## 12.85.0
+
+### Minor Changes
+
+- 567d5daee: feat(ChatInput): add onFileReupload callback to ChatInput
+
+## 12.84.0
+
+### Minor Changes
+
+- efba04492: feat(ChatInput): add ChatInput Component
+
+## 12.83.0
+
+### Minor Changes
+
+- 9e2f61360: # ✨ Blade Spark
+
+  This document covers changes, deprecations, and notable additions introduced in the Blade Spark update.
+
+  > NOTE:
+  > This is a minor change, it doesn't introduce any breaking changes.
+  >
+  > Though consumers may need to update snapshots & test cases in particular scenarios.
+
+  ***
+
+  ## Deprecated APIs
+
+  ### Theme — Popup Color Tokens
+
+  The shorthand `popup.background.subtle`, `popup.background.intense`, `popup.border.subtle`, and `popup.border.intense` color tokens are **deprecated**. They are still functional but will be removed in a future major version.
+
+  **Migration:** Use the namespaced `popup.[background|border].[color]` form instead.
+
+  ```ts
+  // Before (deprecated)
+  theme.colors.popup.background.subtle;
+  theme.colors.popup.background.intense;
+  theme.colors.popup.border.subtle;
+  theme.colors.popup.border.intense;
+
+  // After
+  theme.colors.popup.background.gray.subtle;
+  theme.colors.popup.background.gray.intense;
+  theme.colors.popup.border.gray.subtle;
+  theme.colors.popup.border.gray.intense;
+  ```
+
+  ***
+
+  ### `Card` — `backgroundColor` prop
+
+  The `backgroundColor` prop on `Card` is **deprecated and is now a no-op**. `Card` always renders with `surface.background.gray.intense` as its background, regardless of the value passed. The prop will be removed in a future major version.
+
+  ```tsx
+  // Before (deprecated — value was applied)
+  <Card backgroundColor="surface.background.gray.subtle">...</Card>
+
+  // After — prop is ignored, remove it
+  <Card>...</Card>
+  ```
+
+  ***
+
+  ### `Card` — `elevation` prop
+
+  The `elevation` prop on `Card` is **deprecated and is now a no-op**. `Card` always uses its own custom elevation style. The prop will be removed in a future major version.
+
+  ```tsx
+  // Before (deprecated — value was applied)
+  <Card elevation="midRaised">...</Card>
+
+  // After — prop is ignored, remove it
+  <Card>...</Card>
+  ```
+
+  ### `Card` — `borderRadius` prop
+
+  The `borderRadius` prop on `Card` is **deprecated and is now a no-op**. `Card` always uses `medium` borderRadius now. The prop will be removed in a future major version.
+
+  ```tsx
+  // Before (deprecated — value was applied)
+  <Card borderRadius="small">...</Card>
+
+  // After — prop is ignored, remove it
+  <Card>...</Card>
+  ```
+
+  ***
+
+  ## Visual Changes
+
+  ### `TopNav` — Always Renders in Dark / Black Theme
+
+  `TopNav` now **always forces a dark color scheme** (`colorScheme="dark"`) internally, regardless of the app's active color scheme. Its background is always `interactive.background.staticBlack.default`, giving it a permanent black appearance.
+
+  Previously, `TopNav` would inherit the app's color scheme. Any customization of `TopNav`'s background color via props no longer has the same effect because the internal `BladeProvider` forces dark mode for all children.
+
+  **Impact:**
+
+  - All components rendered inside `TopNav` (buttons, icons, inputs, etc.) will always use dark-mode token values.
+  - Overlay components portalled _outside_ `TopNav` (e.g. `Popover`, `Menu`, `Dropdown`) correctly reset back to the app's original color scheme using the new `TopNavOverlayThemeOverride` wrapper — no action needed for those.
+  - If you render a `SearchInput` or similar focusable input inside `TopNav`, it switches to the app's original color scheme on focus (handled automatically by `TopNavOverlayThemeOverride`).
+
+  **Migration:** Remove any manual `backgroundColor` or color-scheme overrides applied to `TopNav` or its children, as these are now managed internally.
+
+  ```tsx
+  // Before — may have relied on inheriting app theme
+  <TopNav backgroundColor="surface.background.primary.intense">
+    ...
+  </TopNav>
+
+  // After — TopNav is always dark/black; pass no background override
+  <TopNav>
+    ...
+  </TopNav>
+  ```
+
+  ***
+
+  ## New Additions
+
+  ### Interactive Background — `ghost` State
+
+  A new `ghost` interactive state has been added to specific `interactive.background` color keys for transparent/invisible button backgrounds.
+
+  | Color Key                            | `ghost` State Available |
+  | ------------------------------------ | ----------------------- |
+  | `interactive.background.gray`        | ✅                      |
+  | `interactive.background.staticBlack` | ✅                      |
+  | `interactive.background.staticWhite` | ✅                      |
+
+  ```ts
+  // Available via theme tokens
+  theme.colors.interactive.background.gray.ghost;
+  theme.colors.interactive.background.staticBlack.ghost;
+  theme.colors.interactive.background.staticWhite.ghost;
+  ```
+
+  ***
+
+  ### `theme.backdropBlur` Tokens
+
+  A new `backdropBlur` token category is now available in the theme for use with CSS `backdrop-filter: blur()`. This enables consistent glassmorphic effects across the design system.
+
+  | Token                       | Value | Usage                    |
+  | --------------------------- | ----- | ------------------------ |
+  | `theme.backdropBlur.low`    | 4px   | Subtle background blur   |
+  | `theme.backdropBlur.medium` | 8px   | Moderate background blur |
+  | `theme.backdropBlur.high`   | 12px  | Strong background blur   |
+
+  ```tsx
+  import { useTheme } from '@razorpay/blade/components';
+
+  const { theme } = useTheme();
+
+  // Use in styled components or inline styles
+  backdropFilter: `blur(${theme.backdropBlur.medium}px)`;
+  ```
+
+## 12.82.0
+
+### Minor Changes
+
+- 7952254f1: Add agentic loaded in ChatMessage
+
+### Patch Changes
+
+- 2ef2e255c: feat(blade): re-trigger release
+
+## 12.81.3
+
+### Patch Changes
+
+- 80e9900ae: Added sequential color support to ChartLine component
+
+## 12.81.2
+
+### Patch Changes
+
+- 6c65e83b1: fix(Table): hide deselect button when selectionType="none" is set
+  fix(Tabs): tab selection indicator line is not updated when state changes the layout
+
+## 12.81.1
+
+### Patch Changes
+
+- 72a1704ee: feat(blade): expose barSize prop in barChart
+
+## 12.81.0
+
+### Minor Changes
+
+- 84180580d: fix(blade): chart UX improvements and recharts upgrade
+
+  - Updated recharts from 3.1.2 to 3.7.0
+  - BarChart: Fixed unwanted re-animation on tooltip hover
+  - LineChart: Update auto color logic - single data indicator now defaults to gray.moderate
+  - Updated chart documentation
+
+## 12.80.1
+
+### Patch Changes
+
+- a4031566b: fix(blade): added meta attr to step-item and checkbox icon fade component
+
+## 12.80.0
+
+### Minor Changes
+
+- bf83ed9c3: fix(blade): update alert styles
+
+## 12.79.0
+
+### Minor Changes
+
+- 7e66ed45e: feat(DatePicker): add `showClearButton` and `onClearButtonClick` props
+
+  - **`showClearButton`**: When set to `true`, renders a clear icon button in the DatePicker input field. Clicking the button clears the selected date(s).
+  - **`onClearButtonClick`**: Event handler called when the clear button is clicked.
+
+  Example usage:
+
+  ```jsx
+  <DatePicker
+    label="Select date"
+    selectionType="single"
+    showClearButton
+    onClearButtonClick={() => console.log('Cleared!')}
+  />
+  ```
+
+  **Change for FilterChipDatePicker:**
+
+  When using `FilterChipDatePicker` with `selectionType="single"`, clearing the date will now return `null` instead of `[null, null]`. This aligns the clear behavior with the selection type:
+
+  - `selectionType="single"` → clears to `null`
+  - `selectionType="range"` → clears to `[null, null]`
+
+## 12.78.0
+
+### Minor Changes
+
+- ed48d1282: feat: Export FileUploadItem component
+
 ## 12.77.0
 
 ### Minor Changes

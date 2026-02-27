@@ -9,7 +9,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -29,7 +29,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -89,11 +89,10 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -113,8 +112,9 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -123,17 +123,22 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -150,11 +155,10 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -174,8 +178,9 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -184,17 +189,22 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c8.c8.c8.c8.c8:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c8.c8.c8.c8.c8 * {
@@ -266,7 +276,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -306,7 +316,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -329,7 +339,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -349,7 +359,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -409,11 +419,10 @@ exports[`<Pagination /> should render disabled state 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -433,8 +442,9 @@ exports[`<Pagination /> should render disabled state 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -443,17 +453,22 @@ exports[`<Pagination /> should render disabled state 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -525,7 +540,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -566,7 +581,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -589,7 +604,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -624,7 +639,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -644,6 +659,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 .c5.c5.c5.c5.c5 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -682,7 +698,6 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -770,7 +785,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   padding-left: 8px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -785,7 +800,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   gap: 4px;
 }
 
-.c30.c30.c30.c30.c30 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -807,7 +822,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 1;
 }
 
-.c32.c32.c32.c32.c32 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -829,16 +844,15 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   display: none;
 }
 
-.c28.c28.c28.c28.c28 {
+.c27.c27.c27.c27.c27 {
   min-height: 36px;
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -858,8 +872,9 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -867,21 +882,26 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   position: relative;
 }
 
-.c28.c28.c28.c28.c28:hover {
-  background-color: hsla(211,20%,52%,0.18);
+.c27.c27.c27.c27.c27:hover {
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c28.c28.c28.c28.c28:active {
-  background-color: hsla(211,20%,52%,0.18);
+.c27.c27.c27.c27.c27:active {
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c28.c28.c28.c28.c28:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c27.c27.c27.c27.c27:focus-visible {
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
-.c28.c28.c28.c28.c28 * {
+.c27.c27.c27.c27.c27 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -890,16 +910,15 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c37.c37.c37.c37.c37 {
+.c36.c36.c36.c36.c36 {
   min-height: 36px;
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -919,8 +938,9 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -928,21 +948,26 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   position: relative;
 }
 
-.c37.c37.c37.c37.c37:hover {
-  background-color: hsla(211,20%,52%,0.18);
+.c36.c36.c36.c36.c36:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c37.c37.c37.c37.c37:active {
-  background-color: hsla(211,20%,52%,0.18);
+.c36.c36.c36.c36.c36:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c37.c37.c37.c37.c37:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c36.c36.c36.c36.c36:focus-visible {
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c37.c37.c37.c37.c37 * {
+.c36.c36.c36.c36.c36 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -951,7 +976,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c29.c29.c29.c29.c29 {
+.c28.c28.c28.c28.c28 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -962,24 +987,24 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c26.c26.c26.c26.c26 {
-  color: hsla(212,39%,16%,1);
+.c33.c33.c33.c33.c33 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -987,16 +1012,16 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c34.c34.c34.c34.c34 {
-  color: hsla(227,100%,59%,1);
+.c35.c35.c35.c35.c35 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1004,33 +1029,16 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c36.c36.c36.c36.c36 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1038,10 +1046,10 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1053,12 +1061,12 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   overflow-wrap: break-word;
 }
 
-.c31.c31.c31.c31.c31 {
+.c30.c30.c30.c30.c30 {
   opacity: 1;
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1066,10 +1074,10 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1085,13 +1093,14 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1099,17 +1108,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1117,17 +1126,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1135,17 +1144,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1153,10 +1162,10 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -1168,7 +1177,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1178,22 +1187,26 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1203,24 +1216,28 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1230,17 +1247,21 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -1279,24 +1300,24 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
-.c33.c33.c33.c33.c33 {
-  background-color: hsla(227,100%,59%,0.09);
+.c32.c32.c32.c32.c32 {
+  background-color: hsla(206,10%,29%,0.09);
   border: none;
   cursor: pointer;
   height: 32px;
@@ -1313,16 +1334,16 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   opacity: 1;
 }
 
-.c33.c33.c33.c33.c33:hover {
-  background-color: hsla(227,100%,59%,0.18);
+.c32.c32.c32.c32.c32:hover {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
-.c33.c33.c33.c33.c33:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
+.c32.c32.c32.c32.c32:focus-visible {
+  background-color: hsla(206,10%,29%,0.09);
   outline: none;
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1334,8 +1355,8 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c33.c33.c33.c33.c33:focus-visible:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c32.c32.c32.c32.c32:focus-visible:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1346,11 +1367,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c33.c33.c33.c33.c33:active {
-  background-color: hsla(227,100%,59%,0.18);
+.c32.c32.c32.c32.c32:active {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
-.c35.c35.c35.c35.c35 {
+.c34.c34.c34.c34.c34 {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -1368,16 +1389,16 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   opacity: 1;
 }
 
-.c35.c35.c35.c35.c35:hover {
-  background-color: hsla(211,20%,52%,0.12);
+.c34.c34.c34.c34.c34:hover {
+  background-color: hsla(206,10%,29%,0.06);
 }
 
-.c35.c35.c35.c35.c35:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
+.c34.c34.c34.c34.c34:focus-visible {
+  background-color: hsla(206,10%,29%,0.06);
   outline: none;
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1389,8 +1410,8 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c35.c35.c35.c35.c35:focus-visible:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c34.c34.c34.c34.c34:focus-visible:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1401,8 +1422,8 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c35.c35.c35.c35.c35:active {
-  background-color: hsla(211,20%,52%,0.18);
+.c34.c34.c34.c34.c34:active {
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 @media screen and (min-width:768px) {
@@ -1421,6 +1442,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
       <p
         class="c2"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Showing 1-10 of 100 items
       </p>
@@ -1506,6 +1528,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                               <p
                                 class="c17"
                                 data-blade-component="text"
+                                letter-spacing="50"
                               >
                                 10
                               </p>
@@ -1542,7 +1565,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                                   clip-rule="evenodd"
                                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                   data-blade-component="svg-path"
-                                  fill="hsla(211, 22%, 56%, 1)"
+                                  fill="hsla(204, 9%, 42%, 1)"
                                   fill-rule="evenodd"
                                 />
                               </svg>
@@ -1559,7 +1582,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                                   clip-rule="evenodd"
                                   d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                                   data-blade-component="svg-path"
-                                  fill="hsla(211, 22%, 56%, 1)"
+                                  fill="hsla(204, 9%, 42%, 1)"
                                   fill-rule="evenodd"
                                 />
                               </svg>
@@ -1589,8 +1612,9 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           data-blade-component="base-box"
         >
           <p
-            class="c26"
+            class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
              
             items / page
@@ -1599,23 +1623,23 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
         </div>
       </div>
       <div
-        class="c27"
+        class="c26"
         data-blade-component="base-box"
       >
         <button
           aria-label="Previous Page"
-          class="c28"
+          class="c27"
           data-blade-component="button"
           disabled=""
           role="button"
           type="button"
         >
           <div
-            class=" c29"
+            class=" c28"
             data-blade-component="base-box"
           >
             <div
-              class="c30 c31"
+              class="c29 c30"
               data-blade-component="base-box"
             >
               <div
@@ -1635,7 +1659,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1644,84 +1668,90 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </div>
         </button>
         <div
-          class="c32"
+          class="c31"
           data-blade-component="base-box"
         >
           <button
             aria-label="Page 1"
-            class="c33"
+            class="c32"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c34"
+              class="c33"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
           </button>
           <button
             aria-label="Page 2"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
           </button>
           <button
             aria-label="Page 3"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
           </button>
           <button
             aria-label="Page 4"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               4
             </p>
           </button>
           <button
             aria-label="Page 5"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               5
             </p>
           </button>
           <button
             aria-label="Page 6"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               6
             </p>
           </button>
           <button
             aria-label="Go forward 5 pages"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <svg
@@ -1737,19 +1767,20 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                 clip-rule="evenodd"
                 d="M4 9C2.34315 9 1 10.3431 1 12C1 13.6569 2.34315 15 4 15C5.65685 15 7 13.6569 7 12C7 10.3431 5.65685 9 4 9ZM9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12ZM17 12C17 10.3431 18.3431 9 20 9C21.6569 9 23 10.3431 23 12C23 13.6569 21.6569 15 20 15C18.3431 15 17 13.6569 17 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
           </button>
           <button
             aria-label="Page 100"
-            class="c35"
+            class="c34"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c36"
+              class="c35"
               data-blade-component="text"
+              letter-spacing="50"
             >
               100
             </p>
@@ -1757,17 +1788,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
         </div>
         <button
           aria-label="Next Page"
-          class="c37"
+          class="c36"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c29"
+            class=" c28"
             data-blade-component="base-box"
           >
             <div
-              class="c30 c31"
+              class="c29 c30"
               data-blade-component="base-box"
             >
               <div
@@ -1787,7 +1818,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1810,7 +1841,7 @@ exports[`<Pagination /> should render with label 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -1845,7 +1876,7 @@ exports[`<Pagination /> should render with label 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1890,11 +1921,10 @@ exports[`<Pagination /> should render with label 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1914,8 +1944,9 @@ exports[`<Pagination /> should render with label 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1924,17 +1955,22 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c5.c5.c5.c5.c5:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c5.c5.c5.c5.c5:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c5.c5.c5.c5.c5 * {
@@ -1951,11 +1987,10 @@ exports[`<Pagination /> should render with label 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1975,8 +2010,9 @@ exports[`<Pagination /> should render with label 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1985,17 +2021,22 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c9.c9.c9.c9.c9:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -2018,18 +2059,18 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2050,6 +2091,7 @@ exports[`<Pagination /> should render with label 1`] = `
       <p
         class="c2"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Custom label
       </p>
@@ -2095,7 +2137,7 @@ exports[`<Pagination /> should render with label 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2135,7 +2177,7 @@ exports[`<Pagination /> should render with label 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2158,7 +2200,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -2178,7 +2220,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2249,11 +2291,10 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -2273,8 +2314,9 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2283,17 +2325,22 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -2316,7 +2363,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2324,16 +2371,16 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2341,10 +2388,10 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -2371,16 +2418,16 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   opacity: 1;
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
   outline: none;
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -2393,7 +2440,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2405,11 +2452,11 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c9.c9.c9.c9.c9:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(227,100%,59%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border: none;
   cursor: pointer;
   height: 32px;
@@ -2426,16 +2473,16 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
   opacity: 1;
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c11.c11.c11.c11.c11:focus-visible {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
   outline: none;
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -2448,7 +2495,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c11.c11.c11.c11.c11:focus-visible:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2460,7 +2507,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c11.c11.c11.c11.c11:active {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 <div>
@@ -2508,7 +2555,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2528,6 +2575,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -2550,7 +2598,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
                 clip-rule="evenodd"
                 d="M4 9C2.34315 9 1 10.3431 1 12C1 13.6569 2.34315 15 4 15C5.65685 15 7 13.6569 7 12C7 10.3431 5.65685 9 4 9ZM9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12ZM17 12C17 10.3431 18.3431 9 20 9C21.6569 9 23 10.3431 23 12C23 13.6569 21.6569 15 20 15C18.3431 15 17 13.6569 17 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -2563,6 +2611,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               4
             </p>
@@ -2575,6 +2624,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               5
             </p>
@@ -2587,6 +2637,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c12"
               data-blade-component="text"
+              letter-spacing="50"
             >
               6
             </p>
@@ -2599,6 +2650,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               7
             </p>
@@ -2611,6 +2663,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               8
             </p>
@@ -2633,7 +2686,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
                 clip-rule="evenodd"
                 d="M4 9C2.34315 9 1 10.3431 1 12C1 13.6569 2.34315 15 4 15C5.65685 15 7 13.6569 7 12C7 10.3431 5.65685 9 4 9ZM9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12ZM17 12C17 10.3431 18.3431 9 20 9C21.6569 9 23 10.3431 23 12C23 13.6569 21.6569 15 20 15C18.3431 15 17 13.6569 17 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(212, 39%, 16%, 1)"
+                fill="hsla(0, 0%, 2%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -2646,6 +2699,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               100
             </p>
@@ -2683,7 +2737,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2706,7 +2760,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 6px 8px;
+  padding: 10px 8px;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -2726,7 +2780,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2746,6 +2800,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 .c3.c3.c3.c3.c3 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2784,7 +2839,6 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -2940,11 +2994,10 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(211,20%,52%,0.18);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,0.01);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -2964,8 +3017,9 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -2974,17 +3028,22 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c26.c26.c26.c26.c26:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c26.c26.c26.c26.c26:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c26.c26.c26.c26.c26:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0.01);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
 }
 
 .c26.c26.c26.c26.c26 * {
@@ -3001,11 +3060,10 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -3025,8 +3083,9 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3035,17 +3094,22 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c31.c31.c31.c31.c31:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c31.c31.c31.c31.c31:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c31.c31.c31.c31.c31:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c31.c31.c31.c31.c31 * {
@@ -3068,24 +3132,24 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c24.c24.c24.c24.c24 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3093,10 +3157,10 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -3113,7 +3177,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3121,10 +3185,10 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -3140,13 +3204,14 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c13.c13.c13.c13.c13::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3154,17 +3219,17 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3172,17 +3237,17 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3190,17 +3255,17 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -3208,10 +3273,10 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -3223,7 +3288,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 
 .c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3233,22 +3298,26 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c8.c8.c8.c8.c8:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3258,24 +3327,28 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3285,17 +3358,21 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -3334,19 +3411,19 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c7.c7.c7.c7.c7:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -3440,6 +3517,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
                               <p
                                 class="c15"
                                 data-blade-component="text"
+                                letter-spacing="50"
                               >
                                 25
                               </p>
@@ -3476,7 +3554,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
                                   clip-rule="evenodd"
                                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                                   data-blade-component="svg-path"
-                                  fill="hsla(211, 22%, 56%, 1)"
+                                  fill="hsla(204, 9%, 42%, 1)"
                                   fill-rule="evenodd"
                                 />
                               </svg>
@@ -3493,7 +3571,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
                                   clip-rule="evenodd"
                                   d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                                   data-blade-component="svg-path"
-                                  fill="hsla(211, 22%, 56%, 1)"
+                                  fill="hsla(204, 9%, 42%, 1)"
                                   fill-rule="evenodd"
                                 />
                               </svg>
@@ -3525,6 +3603,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
           <p
             class="c24"
             data-blade-component="text"
+            letter-spacing="50"
           >
              
             items / page
@@ -3569,7 +3648,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
                     clip-rule="evenodd"
                     d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 20%, 52%, 0.32)"
+                    fill="hsla(206, 10%, 29%, 0.32)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -3609,7 +3688,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
                     clip-rule="evenodd"
                     d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                     data-blade-component="svg-path"
-                    fill="hsla(212, 39%, 16%, 1)"
+                    fill="hsla(0, 0%, 2%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>

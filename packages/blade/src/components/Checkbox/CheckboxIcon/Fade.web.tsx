@@ -7,6 +7,7 @@ import styled, { css, keyframes } from 'styled-components';
 import type { FadeProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const fadeIn = keyframes`
   from {
@@ -63,6 +64,7 @@ const Fade = ({ show, children, styles }: FadeProps) => {
         opacity: show ? 1 : 0,
         ...styles,
       }}
+      {...metaAttribute({ name: MetaConstants.CheckboxIconFade })}
     >
       {children}
     </AnimatedFade>

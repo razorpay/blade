@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="tabs" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="box" class="BaseBox-bmPWx bTmnOt"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 cIMjwK bOfmyA"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx ionHzf"><button type="button" id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 gnfRFp"><p class="StyledBaseText-dVBfTO dBbFZp" data-blade-component="text">Payments</p></button><button type="button" id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 gnfRFp"><p class="StyledBaseText-dVBfTO juAXIO" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="tab-indicator" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 itSyci cRvRoB"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx fNJCJA"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" class="BaseBox-bmPWx kukYOz"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" class="BaseBox-bmPWx eTTyBE"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Refunds</p></div></div></div>"`;
+exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="tabs" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="box" class="BaseBox-bmPWx bTmnOt"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 cIMjwK bOfmyA"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx ionHzf"><button type="button" id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 jXagHt"><p letter-spacing="50" class="StyledBaseText-dVBfTO hrPJeA" data-blade-component="text">Payments</p></button><button type="button" id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 dQvStD"><p letter-spacing="50" class="StyledBaseText-dVBfTO jfOlUz" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, height, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="tab-indicator" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 bsSyRS iObMmh"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx jcraSf"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" class="BaseBox-bmPWx kukYOz"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" class="BaseBox-bmPWx eTTyBE"><p letter-spacing="50" class="StyledBaseText-dVBfTO jYEGWa" data-blade-component="text">Refunds</p></div></div></div>"`;
 
 exports[`<Tabs /> should render tabs ssr 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -62,65 +62,65 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   gap: 24px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   position: absolute;
   height: 2px;
   top: -0.5px;
   left: 0%;
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(0,0%,2%,1);
   pointer-events: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   border-bottom-width: 1px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: none;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   display: block;
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(227,100%,59%,1);
+.c9.c9.c9.c9.c9 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+.c14.c14.c14.c14.c14 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -128,10 +128,10 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -165,8 +165,8 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: transparent;
+  border-bottom-width: 2px;
+  border-bottom-color: hsla(0,0%,100%,0);
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -176,18 +176,25 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(214,28%,84%,1);
+  border-bottom-color: hsla(205,8%,71%,1);
   background-color: hsla(0,0%,100%,0);
+}
+
+.c6.c6.c6.c6.c6:focus-visible {
+  border-radius: 12px;
+  box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
+  border-bottom-color: transparent;
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: hsla(0,0%,100%,0);
+  border-bottom-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
-  border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c6.c6.c6.c6.c6:disabled:hover {
+  border-bottom-color: transparent;
   background-color: hsla(0,0%,100%,0);
 }
 
@@ -200,12 +207,83 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
   transition-duration: 160ms;
 }
 
-.c10.c10.c10.c10.c10 {
+.c8.c8.c8.c8.c8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 4px;
+  padding-bottom: 12px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: hsla(0,0%,100%,0);
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
+}
+
+.c8.c8.c8.c8.c8:hover {
+  border-bottom-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c8.c8.c8.c8.c8:focus-visible {
+  border-radius: 12px;
+  box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0);
+  border-bottom-color: transparent;
+}
+
+.c8.c8.c8.c8.c8:disabled {
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0);
+  border-bottom-color: transparent;
+}
+
+.c8.c8.c8.c8.c8:disabled:hover {
+  border-bottom-color: transparent;
+  background-color: hsla(0,0%,100%,0);
+}
+
+.c8.c8.c8.c8.c8 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+}
+
+.c11.c11.c11.c11.c11 {
   cursor: pointer;
 }
 
-.c10.c10.c10.c10.c10:hover {
-  background-color: hsla(227,100%,59%,0.18);
+.c11.c11.c11.c11.c11:hover {
+  background-color: hsla(218,89%,51%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -219,61 +297,61 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c9.c9.c9.c9.c9 {
+  .c10.c10.c10.c10.c10 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9.c9.c9.c9.c9 {
+  .c10.c10.c10.c10.c10 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9.c9.c9.c9.c9 {
+  .c10.c10.c10.c10.c10 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9.c9.c9.c9.c9 {
+  .c10.c10.c10.c10.c10 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9.c9.c9.c9.c9 {
+  .c10.c10.c10.c10.c10 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11.c11.c11.c11.c11 {
+  .c12.c12.c12.c12.c12 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c12.c12.c12.c12.c12 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11.c11.c11.c11.c11 {
+  .c12.c12.c12.c12.c12 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11.c11.c11.c11.c11 {
+  .c12.c12.c12.c12.c12 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11.c11.c11.c11.c11 {
+  .c12.c12.c12.c12.c12 {
     border-bottom-style: solid;
   }
 }
@@ -316,6 +394,7 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
               <p
                 class="c7"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Payments
               </p>
@@ -323,7 +402,7 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
             <button
               aria-controls="tabs-1-refunds-tabpanel"
               aria-selected="true"
-              class="c6"
+              class="c8"
               data-blade-component="tab-item"
               id="tabs-1-refunds-tabitem"
               role="tab"
@@ -331,8 +410,9 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
               type="button"
             >
               <p
-                class="c8"
+                class="c9"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Refunds
               </p>
@@ -340,14 +420,14 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
           </div>
         </div>
         <div
-          class="c9 c10"
+          class="c10 c11"
           data-blade-component="tab-indicator"
           pointer-events="none"
-          style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
+          style="transition-property:transform, width, height, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)"
         />
       </div>
       <div
-        class="c11"
+        class="c12"
         data-blade-component="base-box"
         style="transform:translateY(-1px)"
       />
@@ -355,15 +435,16 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
     <div
       aria-hidden="true"
       aria-labelledby="tabs-1-payments-tabitem"
-      class="c12"
+      class="c13"
       data-blade-component="tab-panel"
       id="tabs-1-payments-tabpanel"
       role="tabpanel"
       tabindex="0"
     >
       <p
-        class="c13"
+        class="c14"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Payments
       </p>
@@ -371,15 +452,16 @@ exports[`<Tabs /> should render tabs ssr 2`] = `
     <div
       aria-hidden="false"
       aria-labelledby="tabs-1-refunds-tabitem"
-      class="c14"
+      class="c15"
       data-blade-component="tab-panel"
       id="tabs-1-refunds-tabpanel"
       role="tabpanel"
       tabindex="0"
     >
       <p
-        class="c13"
+        class="c14"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Refunds
       </p>

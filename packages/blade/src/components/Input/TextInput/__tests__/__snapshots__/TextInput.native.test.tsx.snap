@@ -82,24 +82,24 @@ exports[`<TextInput /> should render 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(211, 22%, 56%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -156,7 +156,7 @@ exports[`<TextInput /> should render 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -190,7 +190,7 @@ exports[`<TextInput /> should render 1`] = `
           [
             {},
             {
-              "borderRadius": 4,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -205,9 +205,10 @@ exports[`<TextInput /> should render 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 40%, 92%, 1)",
-                "borderRadius": 4,
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -218,8 +219,8 @@ exports[`<TextInput /> should render 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 40%, 92%, 1)",
-                "borderRadius": 4,
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -256,14 +257,14 @@ exports[`<TextInput /> should render 1`] = `
             onFocus={[Function]}
             onKeyPress={[Function]}
             onSubmitEditing={[Function]}
-            placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+            placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
             returnKeyType="default"
             secureTextEntry={false}
             style={
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -272,7 +273,7 @@ exports[`<TextInput /> should render 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -407,24 +408,24 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.gray.muted"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="semibold"
+              fontWeight="medium"
               lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(211, 22%, 56%, 1)",
+                    "color": "hsla(200, 10%, 18%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "600",
+                    "fontWeight": "500",
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -481,7 +482,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(212, 39%, 16%, 1)",
+                      "color": "hsla(0, 0%, 2%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -515,7 +516,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           [
             {},
             {
-              "borderRadius": 4,
+              "borderRadius": 8,
               "width": "100%",
             },
           ]
@@ -530,9 +531,10 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 40%, 92%, 1)",
-                "borderRadius": 4,
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 0,
                 "display": "flex",
@@ -543,8 +545,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               {},
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(214, 40%, 92%, 1)",
-                "borderRadius": 4,
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
                 "borderStyle": "solid",
                 "borderWidth": 1,
               },
@@ -625,7 +627,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                     fill={
                       {
-                        "payload": 4285959847,
+                        "payload": 4284575093,
                         "type": 0,
                       }
                     }
@@ -639,7 +641,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                     fill={
                       {
-                        "payload": 4285959847,
+                        "payload": 4284575093,
                         "type": 0,
                       }
                     }
@@ -654,7 +656,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                     fill={
                       {
-                        "payload": 4285959847,
+                        "payload": 4284575093,
                         "type": 0,
                       }
                     }
@@ -691,7 +693,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(211, 22%, 56%, 1)",
+                      "color": "hsla(204, 9%, 42%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
@@ -748,7 +750,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             onKeyPress={[Function]}
             onSubmitEditing={[Function]}
             placeholder="something"
-            placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+            placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
             prefix="https://"
             returnKeyType="go"
             secureTextEntry={false}
@@ -756,7 +758,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               [
                 {
                   "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                  "color": "hsla(211, 26%, 34%, 1)",
+                  "color": "hsla(0, 0%, 2%, 1)",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -765,7 +767,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   "fontStyle": "normal",
                   "fontWeight": "400",
                   "height": 36,
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -825,7 +827,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(211, 26%, 34%, 1)",
+                      "color": "hsla(200, 10%, 18%, 1)",
                       "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",

@@ -12,8 +12,11 @@ import { ActionList, ActionListItem, ActionListSection } from '~components/Actio
 import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
-import { PlusIcon } from '~components/Icons';
+import { PlusIcon, BankIcon, InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
+import { Badge } from '~components/Badge';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 const propsCategory = {
   BASE_PROPS: 'Input Base Props',
@@ -569,4 +572,424 @@ export const InternalWithValidations = (): React.ReactElement => {
       </DropdownOverlay>
     </Dropdown>
   );
+};
+
+const showcaseCities = [
+  { title: 'Mumbai', value: 'mumbai' },
+  { title: 'Pune', value: 'pune' },
+  { title: 'Bengaluru', value: 'bengaluru' },
+  { title: 'Delhi', value: 'delhi' },
+  { title: 'Chennai', value: 'chennai' },
+  { title: 'Hyderabad', value: 'hyderabad' },
+];
+
+const showcaseCountries = [
+  { title: 'India', value: 'india' },
+  { title: 'United States', value: 'usa' },
+  { title: 'United Kingdom', value: 'uk' },
+  { title: 'Australia', value: 'australia' },
+];
+
+export const AutoCompleteShowcase: StoryFn<typeof AutoComplete> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete label="Default" placeholder="Select city" name="default" />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete label="With Value" defaultValue="mumbai" name="withValue" />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="With Help Text"
+              placeholder="Select city"
+              helpText="This is a helpful message"
+              name="withHelpText"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete label="Disabled" placeholder="Select city" isDisabled name="disabled" />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Error State"
+              defaultValue="invalid"
+              validationState="error"
+              errorText="This field has an error"
+              name="error"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="Success State"
+              defaultValue="mumbai"
+              validationState="success"
+              successText="This field is valid"
+              name="success"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Medium Size"
+              placeholder="Select city"
+              size="medium"
+              name="sizeMedium"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="Large Size"
+              placeholder="Select city"
+              size="large"
+              name="sizeLarge"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Label Top"
+              placeholder="Select city"
+              labelPosition="top"
+              name="labelTop"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="Label Left"
+              placeholder="Select city"
+              labelPosition="left"
+              name="labelLeft"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Required Field"
+              placeholder="Select city"
+              necessityIndicator="required"
+              name="required"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="Optional Field"
+              placeholder="Select city"
+              necessityIndicator="optional"
+              name="optional"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Icons */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Icons
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Leading Icon"
+              placeholder="Select city"
+              icon={BankIcon}
+              name="leadingIcon"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="With Info Icon"
+              placeholder="Select city"
+              icon={InfoIcon}
+              name="infoIcon"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Prefix/Suffix */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Prefix/Suffix
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="With Prefix"
+              placeholder="Select country"
+              prefix="🌍"
+              name="withPrefix"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCountries.map((country) => (
+                  <ActionListItem key={country.value} title={country.title} value={country.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+          <Dropdown>
+            <AutoComplete
+              label="With Suffix"
+              placeholder="Select city"
+              suffix="City"
+              name="withSuffix"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Elements */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Elements
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Dropdown>
+            <AutoComplete
+              label="Leading Badge"
+              placeholder="Select city"
+              prefix={<Badge>+91</Badge>}
+              name="leadingBadge"
+            />
+            <DropdownOverlay>
+              <ActionList>
+                {showcaseCities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <Dropdown>
+          <AutoComplete
+            label="City"
+            placeholder="Select city"
+            labelSuffix={
+              <Tooltip content="Select your city for delivery" placement="right">
+                <TooltipInteractiveWrapper display="flex">
+                  <InfoIcon size="small" color="surface.icon.gray.muted" />
+                </TooltipInteractiveWrapper>
+              </Tooltip>
+            }
+            labelTrailing={<Link size="small">Learn more</Link>}
+            name="labelSuffixTrailing"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              {showcaseCities.map((city) => (
+                <ActionListItem key={city.value} title={city.title} value={city.value} />
+              ))}
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
+AutoCompleteShowcase.storyName = 'Showcase - All Variants';
+AutoCompleteShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all AutoComplete variants including basic states, validation states, sizes, label positions, icons, prefix/suffix, and more.',
+    },
+  },
 };

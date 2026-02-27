@@ -25,6 +25,11 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 const _PreviewHeader = ({
   title,
@@ -36,36 +41,34 @@ const _PreviewHeader = ({
   if (!title) {
     return (
       <BaseBox
-        position="absolute"
-        top="spacing.0"
-        right="spacing.2"
         zIndex={componentZIndices.previewPanel}
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="flex-end"
         padding="spacing.4"
+        backgroundColor="transparent"
+        width="100%"
       >
-        <BaseBox backgroundColor="surface.background.gray.moderate" borderRadius="medium">
+        <BaseBox
+          display="flex"
+          alignItems="center"
+          gap="spacing.3"
+          backgroundColor="transparent"
+          borderRadius="medium"
+        >
           <Button
             icon={isFullScreen ? FullScreenExitIcon : FullScreenEnterIcon}
             variant="tertiary"
             onClick={_onFullScreen}
             accessibilityLabel={isFullScreen ? 'Exit Full Screen' : 'Enter Full Screen'}
           />
+          {trailing}
         </BaseBox>
-        {trailing}
       </BaseBox>
     );
   }
   return (
-    <BaseBox
-      zIndex={componentZIndices.previewPanel}
-      position="absolute"
-      top="spacing.0"
-      left="spacing.0"
-      backgroundColor="surface.background.gray.moderate"
-      width="100%"
-    >
+    <BaseBox zIndex={componentZIndices.previewPanel} backgroundColor="transparent" width="100%">
       <BaseBox
         display="flex"
         alignItems="center"
@@ -124,25 +127,13 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
   return (
     <BaseBox
       display="flex"
-      justifyContent="space-between"
+      justifyContent={trailing ? 'space-between' : 'center'}
       width="100%"
-      backgroundColor="surface.background.gray.moderate"
-      position="absolute"
-      bottom="spacing.0"
-      left="spacing.0"
-      right="spacing.0"
+      backgroundColor="transparent"
       padding="spacing.5"
       zIndex={componentZIndices.previewPanel}
-      borderTopWidth="thin"
-      borderTopColor="surface.border.gray.muted"
     >
-      <BaseBox
-        padding="spacing.2"
-        backgroundColor="surface.background.gray.intense"
-        borderRadius="medium"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-      >
+      <BaseBox padding="spacing.2">
         {showZoomPercentage ? (
           <BaseBox display="flex" alignItems="center" gap="spacing.2">
             <Button
@@ -152,7 +143,9 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
               accessibilityLabel="Zoom In"
               isDisabled={zoom >= 8}
             />
-            <Text size="medium"> {Math.round(zoom * 100)}%</Text>
+            <BaseBox width={makeSize(size[40])} textAlign={'center' as never}>
+              <Text size="medium"> {Math.round(zoom * 100)}%</Text>
+            </BaseBox>
             <Button
               icon={ZoomOutIcon}
               onClick={handleZoomOut}
@@ -222,12 +215,17 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
   transition: cursor 0.1s ease;
 `;
 
-const TransFormWrapperContainer = styled.div`
+const TransFormWrapperContainer = styled.div<{
+  isFullScreen: boolean;
+}>`
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
+  background-color: ${({ isFullScreen, theme }) =>
+    isFullScreen
+      ? getIn(theme.colors, 'surface.background.gray.intense' as DotNotationToken<Theme['colors']>)
+      : 'transparent'};
 `;
 const Preview = ({
   children,
@@ -326,7 +324,7 @@ const Preview = ({
         defaultZoom: defaultZoom ?? 1,
       }}
     >
-      <TransFormWrapperContainer ref={containerRef}>
+      <TransFormWrapperContainer ref={containerRef} isFullScreen={isFullScreen}>
         <TransformWrapper
           onTransformed={handleTransformed}
           minScale={0.1}
@@ -341,14 +339,23 @@ const Preview = ({
           centerOnInit={true}
         >
           {() => (
-            <BaseBox width="100%" height="100%" position="relative" overflow="visible">
-              {previewFooter}
+            <BaseBox
+              width="100%"
+              height="100%"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              overflow="visible"
+            >
               {previewHeader}
-              <ZoomContainer isDragEnabled={!isDragAndZoomDisabled} isDragging={isDragging}>
-                <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
-                  {previewBody}
-                </TransformComponent>
-              </ZoomContainer>
+              <BaseBox flex={1} overflow="hidden" position="relative" width="100%">
+                <ZoomContainer isDragEnabled={!isDragAndZoomDisabled} isDragging={isDragging}>
+                  <TransformComponent wrapperClass="zoom-wrapper" contentClass="zoom-content">
+                    {previewBody}
+                  </TransformComponent>
+                </ZoomContainer>
+              </BaseBox>
+              {previewFooter}
             </BaseBox>
           )}
         </TransformWrapper>

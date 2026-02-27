@@ -2,15 +2,22 @@ import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
-import { TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon, RefreshIcon } from '~components/Icons';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
+import {
+  TrashIcon,
+  EyeIcon,
+  CloseIcon,
+  CheckCircleIcon,
+  RotateClockWiseIcon,
+} from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
-import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { BaseLink } from '~components/Link/BaseLink';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const FileUploadItem = memo(
   ({
@@ -20,6 +27,13 @@ const FileUploadItem = memo(
     onReupload,
     onDismiss,
     size: containerSize,
+    width,
+    minWidth,
+    maxWidth,
+    flexShrink,
+    flexGrow,
+    flexBasis,
+    ...rest
   }: FileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
@@ -33,14 +47,25 @@ const FileUploadItem = memo(
         status={status ?? 'success'}
         borderRadius="medium"
         borderWidth="thin"
+        width={width}
+        minWidth={minWidth}
+        maxWidth={maxWidth}
+        flexShrink={flexShrink}
+        flexGrow={flexGrow}
+        flexBasis={flexBasis}
+        {...getStyledProps(rest)}
       >
         <BaseBox width="100%" display="flex" flexDirection="column">
           <BaseBox
             display="flex"
             flexDirection="row"
-            margin={containerSize === 'large' ? 'spacing.4' : 'spacing.3'}
+            margin={
+              containerSize === 'large'
+                ? 'spacing.4'
+                : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
+            }
           >
-            <BaseBox marginRight="spacing.3">
+            <BaseBox marginRight="spacing.4">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
             <BaseBox flexGrow={1}>
@@ -69,6 +94,7 @@ const FileUploadItem = memo(
                 color={
                   status === 'error' ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'
                 }
+                truncateAfterLines={1}
               >
                 {errorText ??
                   `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${
@@ -89,7 +115,7 @@ const FileUploadItem = memo(
                 <BaseLink
                   marginX="spacing.1"
                   variant="button"
-                  icon={RefreshIcon}
+                  icon={RotateClockWiseIcon}
                   color="negative"
                   size="small"
                   onClick={() => {
@@ -148,4 +174,5 @@ const FileUploadItem = memo(
   },
 );
 
+export type { FileUploadItemProps } from './types';
 export { FileUploadItem };

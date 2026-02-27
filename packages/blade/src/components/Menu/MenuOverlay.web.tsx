@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { MenuOverlayProps } from './types';
-import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingY } from './tokens';
+import { MENU_MIN_WIDTH, overlayPaddingX, overlayPaddingTop, overlayPaddingBottom } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getPopupBoxShadowString, isReactNative, useTheme } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const UnfocussableOverlay = styled(BaseBox)((_props) => {
   return {
@@ -14,6 +16,15 @@ const UnfocussableOverlay = styled(BaseBox)((_props) => {
     },
   };
 });
+
+const StyledMenuOverlayContent = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
+  ({ theme, colorScheme }) => {
+    return {
+      backdropFilter: `blur(${theme.backdropBlur.medium}px)`,
+      boxShadow: isReactNative() ? undefined : getPopupBoxShadowString(theme, colorScheme),
+    };
+  },
+);
 
 const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayProps> = (
   {
@@ -28,6 +39,8 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
   },
   ref,
 ): React.ReactElement => {
+  const { colorScheme } = useTheme();
+
   return (
     <UnfocussableOverlay
       ref={ref as never}
@@ -43,18 +56,18 @@ const _MenuOverlay: React.ForwardRefRenderFunction<BladeElementRef, MenuOverlayP
 
         https://floating-ui.com/docs/usetransition#usetransitionstyles
       */}
-      <BaseBox
-        backgroundColor="popup.background.subtle"
+      <StyledMenuOverlayContent
+        colorScheme={colorScheme}
+        backgroundColor="popup.background.gray.moderate"
         paddingX={overlayPaddingX}
-        paddingY={overlayPaddingY}
-        elevation="midRaised"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
+        paddingTop={overlayPaddingTop}
+        paddingBottom={overlayPaddingBottom}
+        borderWidth="none"
         borderRadius="medium"
         style={_transitionStyle}
       >
         {children}
-      </BaseBox>
+      </StyledMenuOverlayContent>
     </UnfocussableOverlay>
   );
 };

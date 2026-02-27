@@ -41,6 +41,10 @@ type ChartBarProps = {
    */
   hide?: boolean;
   /**
+   * The width of the bar in pixels.
+   */
+  barSize?: RechartsBarProps['barSize'];
+  /**
    * The index of the bar chart.
    * @private
    */

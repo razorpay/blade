@@ -85,7 +85,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
             width={makeSize(size[28])}
             height={makeSize(size[28])}
             flexShrink={0}
-            backgroundColor="popup.background.subtle"
+            backgroundColor="popup.background.gray.subtle"
             borderRadius="max"
             zIndex={100}
           >

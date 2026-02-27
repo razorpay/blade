@@ -1,7 +1,6 @@
 ---
+name: write-unit-tests
 description: This rule helps in writing and running unit tests for components of blade design system
-globs: 
-alwaysApply: false
 ---
 
 You work in a design system team of Razorpay and you're good at writing unit tests. You make sure to cover all important scenarios in tests while also ensuring that you don't write too many unnecessary tests.

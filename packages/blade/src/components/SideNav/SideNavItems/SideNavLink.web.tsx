@@ -4,19 +4,19 @@ import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import { Box } from '~components/Box';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { Box } from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
-import { makeAccessible } from '~utils/makeAccessible';
 import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Text } from '~components/Typography';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 
@@ -57,17 +57,13 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       )}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
-      borderRadius: props.theme.border.radius.medium,
+      borderRadius: props.theme.border.radius.small,
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
       transition: getNavItemTransition(props.theme),
-      '&[aria-current]': {
-        color: props.theme.colors.interactive.text.primary.subtle,
-        backgroundColor: props.theme.colors.interactive.background.primary.faded,
-      },
-      '&[aria-current]:hover': {
-        color: props.theme.colors.interactive.text.primary.normal,
-        backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+      '&[aria-current], &[aria-current]:hover': {
+        color: props.theme.colors.interactive.text.gray.normal,
+        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),
@@ -102,7 +98,7 @@ const NavLinkIconTitle = ({
           <BaseText
             truncateAfterLines={1}
             color="currentColor"
-            fontWeight="medium"
+            fontWeight={isActive ? 'semibold' : 'regular'}
             fontSize={100}
             lineHeight={100}
             as="p"
@@ -126,7 +122,7 @@ const NavLinkIconTitle = ({
           marginLeft="spacing.7"
           textAlign="left"
           weight="medium"
-          color={isActive ? 'interactive.text.primary.muted' : 'interactive.text.gray.muted'}
+          color={isActive ? 'interactive.text.gray.subtle' : 'interactive.text.gray.muted'}
           truncateAfterLines={1}
         >
           {description}
@@ -203,7 +199,7 @@ const CurvedVerticalLine = styled(BaseBox)((props) => {
   const { colors, border, spacing } = props.theme;
   return {
     borderWidth: makeBorderSize(props.theme.border.width.thin),
-    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.primary.muted} ${colors.surface.border.primary.muted}`,
+    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.gray.muted} ${colors.surface.border.gray.muted}`,
     borderStyle: 'solid',
     borderRadius: `${makeBorderSize(border.radius.none)} ${makeBorderSize(
       border.radius.none,

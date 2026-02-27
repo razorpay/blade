@@ -2,14 +2,14 @@
 
 exports[`<Code /> should render Code with color 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -34,6 +34,7 @@ exports[`<Code /> should render Code with color 1`] = `
     <code
       class="c1"
       data-blade-component="base-text"
+      letter-spacing="100"
     >
       TEST_TOKEN
     </code>
@@ -43,14 +44,14 @@ exports[`<Code /> should render Code with color 1`] = `
 
 exports[`<Code /> should render Code with default properties 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -61,7 +62,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -76,6 +77,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
     <code
       class="c1"
       data-blade-component="base-text"
+      letter-spacing="100"
     >
       TEST_TOKEN
     </code>
@@ -85,14 +87,14 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 exports[`<Code /> should render isHighlighted false Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -117,6 +119,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     <code
       class="c1"
       data-blade-component="base-text"
+      letter-spacing="100"
     >
       NON-HIGHLIGHTED
     </code>
@@ -126,14 +129,14 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 
 exports[`<Code /> should render medium Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -144,7 +147,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -159,6 +162,7 @@ exports[`<Code /> should render medium Code 1`] = `
     <code
       class="c1"
       data-blade-component="base-text"
+      letter-spacing="100"
     >
       MEDIUM
     </code>
@@ -168,14 +172,14 @@ exports[`<Code /> should render medium Code 1`] = `
 
 exports[`<Code /> should render small Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -186,7 +190,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -201,6 +205,7 @@ exports[`<Code /> should render small Code 1`] = `
     <code
       class="c1"
       data-blade-component="base-text"
+      letter-spacing="100"
     >
       SMALL
     </code>

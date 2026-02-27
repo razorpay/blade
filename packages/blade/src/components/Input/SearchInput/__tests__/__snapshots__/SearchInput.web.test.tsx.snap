@@ -125,7 +125,6 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -149,18 +148,18 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -172,7 +171,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -180,16 +179,16 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -197,10 +196,10 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   -webkit-flex: 1;
@@ -215,13 +214,14 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c17.c17.c17.c17.c17::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -229,16 +229,16 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -246,16 +246,16 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -263,16 +263,16 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -280,10 +280,10 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -294,7 +294,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -304,22 +304,26 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -329,24 +333,28 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -356,17 +364,21 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -405,19 +417,19 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -462,6 +474,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
                     <p
                       class="c6"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Search here
                     </p>
@@ -472,6 +485,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
                       <p
                         class="c8"
                         data-blade-component="text"
+                        letter-spacing="50"
                       />
                     </div>
                   </div>
@@ -509,7 +523,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
                     clip-rule="evenodd"
                     d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -657,7 +671,6 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -681,18 +694,18 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -704,7 +717,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -712,16 +725,16 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -729,10 +742,10 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   -webkit-flex: 1;
@@ -747,13 +760,14 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c15.c15.c15.c15.c15::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -761,16 +775,16 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -778,16 +792,16 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -795,16 +809,16 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -812,10 +826,10 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -826,7 +840,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -836,22 +850,26 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -861,24 +879,28 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -888,17 +910,21 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -937,19 +963,19 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -994,6 +1020,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
                     <p
                       class="c6"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Search here
                     </p>
@@ -1004,6 +1031,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
                       <p
                         class="c8"
                         data-blade-component="text"
+                        letter-spacing="50"
                       />
                     </div>
                   </div>
@@ -1186,7 +1214,6 @@ exports[`<SearchInput /> should render 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -1210,18 +1237,18 @@ exports[`<SearchInput /> should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1233,7 +1260,7 @@ exports[`<SearchInput /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1241,16 +1268,16 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1258,10 +1285,10 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   -webkit-flex: 1;
@@ -1276,13 +1303,14 @@ exports[`<SearchInput /> should render 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c17.c17.c17.c17.c17::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1290,16 +1318,16 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1307,16 +1335,16 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1324,16 +1352,16 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1341,10 +1369,10 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1355,7 +1383,7 @@ exports[`<SearchInput /> should render 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1365,22 +1393,26 @@ exports[`<SearchInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1390,24 +1422,28 @@ exports[`<SearchInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1417,17 +1453,21 @@ exports[`<SearchInput /> should render 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -1466,19 +1506,19 @@ exports[`<SearchInput /> should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -1523,6 +1563,7 @@ exports[`<SearchInput /> should render 1`] = `
                     <p
                       class="c6"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Search here
                     </p>
@@ -1533,6 +1574,7 @@ exports[`<SearchInput /> should render 1`] = `
                       <p
                         class="c8"
                         data-blade-component="text"
+                        letter-spacing="50"
                       />
                     </div>
                   </div>
@@ -1570,7 +1612,7 @@ exports[`<SearchInput /> should render 1`] = `
                     clip-rule="evenodd"
                     d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -1622,6 +1664,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1748,7 +1791,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c17.c17.c17.c17.c17 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -1772,18 +1814,18 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1795,7 +1837,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1803,16 +1845,16 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1820,10 +1862,10 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   -webkit-flex: 1;
@@ -1838,13 +1880,14 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   height: 36px;
   min-height: 36px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c18.c18.c18.c18.c18::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1852,16 +1895,16 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c18.c18.c18.c18.c18::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1869,16 +1912,16 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c18.c18.c18.c18.c18:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1886,16 +1929,16 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c18.c18.c18.c18.c18::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1903,10 +1946,10 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1916,8 +1959,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c11.c11.c11.c11.c11 {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1927,11 +1970,15 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -1941,8 +1988,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c11.c11.c11.c11.c11:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1952,11 +1999,15 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -1968,8 +2019,8 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c11.c11.c11.c11.c11:focus-within {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1979,11 +2030,15 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(218,89%,51%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -2028,12 +2083,12 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 }
 
 .c10.c10.c10.c10.c10 {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2121,6 +2176,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                         <p
                           class="c7"
                           data-blade-component="text"
+                          letter-spacing="50"
                         >
                           Search here
                         </p>
@@ -2131,6 +2187,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                           <p
                             class="c9"
                             data-blade-component="text"
+                            letter-spacing="50"
                           />
                         </div>
                       </div>
@@ -2168,7 +2225,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                         clip-rule="evenodd"
                         d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                         data-blade-component="svg-path"
-                        fill="hsla(211, 22%, 56%, 1)"
+                        fill="hsla(204, 9%, 42%, 1)"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -2343,7 +2400,6 @@ exports[`<SearchInput /> should render large size 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  margin-top: -4px;
   width: 100%;
   min-width: min(20%,60px);
 }
@@ -2386,18 +2442,18 @@ exports[`<SearchInput /> should render large size 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2409,7 +2465,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2417,16 +2473,16 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2434,17 +2490,18 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2452,10 +2509,10 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   -webkit-flex: 1;
@@ -2470,13 +2527,14 @@ exports[`<SearchInput /> should render large size 1`] = `
   height: 48px;
   min-height: 48px;
   resize: none;
+  box-sizing: border-box;
   outline: none;
   border: none;
   cursor: auto;
 }
 
 .c17.c17.c17.c17.c17::-webkit-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2484,16 +2542,16 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::-moz-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2501,16 +2559,16 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17:-ms-input-placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2518,16 +2576,16 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17::placeholder {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -2535,10 +2593,10 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -2549,7 +2607,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2559,22 +2617,26 @@ exports[`<SearchInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(210,40%,98%,1);
-  border-radius: 4px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2584,24 +2646,28 @@ exports[`<SearchInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,28%,84%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
+  border-radius: 12px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2611,17 +2677,21 @@ exports[`<SearchInput /> should render large size 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(214,40%,92%,1) 0px 0px 0px 1px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
-  transition-easing: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -2660,19 +2730,19 @@ exports[`<SearchInput /> should render large size 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-radius: 4px;
+  border-radius: 12px;
   width: 100%;
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 480ms;
-  transition-duration: 480ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
+  transition-timing-function: cubic-bezier(0.5,0,0,1);
   z-index: 2;
 }
 
@@ -2717,6 +2787,7 @@ exports[`<SearchInput /> should render large size 1`] = `
                     <p
                       class="c6"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Search here
                     </p>
@@ -2727,6 +2798,7 @@ exports[`<SearchInput /> should render large size 1`] = `
                       <p
                         class="c8"
                         data-blade-component="text"
+                        letter-spacing="50"
                       />
                     </div>
                   </div>
@@ -2764,7 +2836,7 @@ exports[`<SearchInput /> should render large size 1`] = `
                     clip-rule="evenodd"
                     d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
                     data-blade-component="svg-path"
-                    fill="hsla(211, 22%, 56%, 1)"
+                    fill="hsla(204, 9%, 42%, 1)"
                     fill-rule="evenodd"
                   />
                 </svg>
@@ -2818,6 +2890,7 @@ exports[`<SearchInput /> should render large size 1`] = `
               <span
                 class="c22"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Enter an item to search
               </span>

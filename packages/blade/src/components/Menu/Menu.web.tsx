@@ -10,6 +10,7 @@ import {
 import * as React from 'react';
 import { MenuContext, useFloatingMenuSetup, useMenu } from './useMenu';
 import type { MenuProps } from './types';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 const MenuTree = ({
   children,
@@ -99,7 +100,7 @@ const MenuTree = ({
                 initialFocus={-1}
                 returnFocus={!isNested}
               >
-                {overlayWithFloatingProps}
+                <TopNavOverlayThemeOverride>{overlayWithFloatingProps}</TopNavOverlayThemeOverride>
               </FloatingFocusManager>
             </FloatingPortal>
           )}

@@ -239,6 +239,16 @@ type SingleDatePickerProps = DatePickerCommonProps<'single'> & {
    * Name for the input for form submission
    */
   name?: string;
+
+  /**
+   * When true, shows a clear button in the input field
+   */
+  showClearButton?: boolean;
+
+  /**
+   * Callback fired when the clear button is clicked
+   */
+  onClearButtonClick?: () => void;
 };
 
 /**
@@ -319,6 +329,16 @@ type RangeDatePickerProps = DatePickerCommonProps<'range'> & {
    * Names for the inputs for form submission
    */
   name?: { start: string; end?: string };
+
+  /**
+   * When true, shows a clear button in the input field
+   */
+  showClearButton?: boolean;
+
+  /**
+   * Callback fired when the clear button is clicked
+   */
+  onClearButtonClick?: () => void;
 };
 
 /**
@@ -464,6 +484,42 @@ const SizeVariantsExample = () => {
 };
 
 export default SizeVariantsExample;
+```
+
+### DatePicker with Clear Button
+
+This example demonstrates the `showClearButton` prop which renders a clear icon button in the input field.
+
+```tsx
+import React, { useState } from 'react';
+import { DatePicker, Box, Text } from '@razorpay/blade/components';
+import dayjs from 'dayjs';
+
+const ClearButtonExample = () => {
+  const [date, setDate] = useState<Date | null>(new Date());
+
+  return (
+    <Box>
+      <Text weight="semibold" marginBottom="spacing.3">
+        DatePicker with Clear Button
+      </Text>
+      <DatePicker
+        selectionType="single"
+        label="Select date"
+        value={date}
+        onChange={setDate}
+        showClearButton
+        onClearButtonClick={() => console.log('Date cleared!')}
+      />
+
+      <Text size="small" marginTop="spacing.2">
+        Selected: {date ? dayjs(date).format('DD MMM YYYY') : 'None'}
+      </Text>
+    </Box>
+  );
+};
+
+export default ClearButtonExample;
 ```
 
 ### Month and Year Pickers
@@ -712,6 +768,10 @@ export default PresetsCompactDisplayExample;
 
 This example demonstrates the FilterChipDatePicker variant for filters and data selection interfaces.
 
+**Note:** When using `onClearButtonClick`, the clear behavior differs based on selection type:
+- `selectionType="single"` → clears to `null`
+- `selectionType="range"` → clears to `[null, null]`
+
 ```tsx
 import React, { useState } from 'react';
 import { FilterChipDatePicker, Box, Text } from '@razorpay/blade/components';
@@ -752,6 +812,7 @@ const FilterChipDatePickerExample = () => {
             selectionType="single"
             value={singleDate}
             onChange={(date) => setSingleDate(date as Date)}
+            onClearButtonClick={() => setSingleDate(null)}
           />
         </Box>
 

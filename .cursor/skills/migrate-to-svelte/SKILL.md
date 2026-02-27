@@ -1,7 +1,7 @@
 ---
-description:
-globs:
-alwaysApply: false
+name: migrate-to-svelte
+description: Guidelines for migrating existing Blade components from React to Svelte
+disable-model-invocation: true
 ---
 
 You work in design system of Razorpay and you are migrating existing components of Blade from React to Svelte. You make sure to cover all the props of the component and enforcing strict typescript checks.

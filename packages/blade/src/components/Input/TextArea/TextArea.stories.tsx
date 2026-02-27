@@ -608,3 +608,306 @@ TextAreaWithLabelSuffixTrailing.args = {
   ),
   labelTrailing: <Link size="small">Learn more</Link>,
 };
+
+export const TextAreaShowcase: StoryFn<typeof TextAreaComponent> = () => {
+  const [tagsWithInitial, setTagsWithInitial] = React.useState<string[]>([
+    'john@example.com',
+    'jane@example.com',
+  ]);
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8">
+      {/* Basic Variants */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Basic Variants
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent label="Default" placeholder="Enter description" name="default" />
+          <TextAreaComponent
+            label="With Value"
+            defaultValue="This is a sample description text that spans multiple lines."
+            name="withValue"
+          />
+          <TextAreaComponent
+            label="With Help Text"
+            placeholder="Enter description"
+            helpText="This is a helpful message"
+            name="withHelpText"
+          />
+          <TextAreaComponent
+            label="Disabled"
+            placeholder="Enter description"
+            isDisabled
+            name="disabled"
+          />
+        </Box>
+      </Box>
+
+      {/* Validation States */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Validation States
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Error State"
+            defaultValue="Invalid description"
+            validationState="error"
+            errorText="This field has an error"
+            name="error"
+          />
+          <TextAreaComponent
+            label="Success State"
+            defaultValue="Valid description"
+            validationState="success"
+            successText="This field is valid"
+            name="success"
+          />
+        </Box>
+      </Box>
+
+      {/* Sizes */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Sizes
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Medium Size"
+            placeholder="Medium size textarea"
+            size="medium"
+            name="sizeMedium"
+          />
+          <TextAreaComponent
+            label="Large Size"
+            placeholder="Large size textarea"
+            size="large"
+            name="sizeLarge"
+          />
+        </Box>
+      </Box>
+
+      {/* Label Positions */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Label Positions
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Label Top"
+            placeholder="Label on top"
+            labelPosition="top"
+            name="labelTop"
+          />
+          <TextAreaComponent
+            label="Label Left"
+            placeholder="Label on left"
+            labelPosition="left"
+            name="labelLeft"
+          />
+        </Box>
+      </Box>
+
+      {/* Necessity Indicators */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Necessity Indicators
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Required Field"
+            placeholder="Enter description"
+            necessityIndicator="required"
+            name="required"
+          />
+          <TextAreaComponent
+            label="Optional Field"
+            placeholder="Enter description"
+            necessityIndicator="optional"
+            name="optional"
+          />
+        </Box>
+      </Box>
+
+      {/* Number of Lines */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          Number of Lines
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="2 Lines (Default)"
+            placeholder="Enter description"
+            numberOfLines={2}
+            name="lines2"
+          />
+          <TextAreaComponent
+            label="3 Lines"
+            placeholder="Enter description"
+            numberOfLines={3}
+            name="lines3"
+          />
+          <TextAreaComponent
+            label="4 Lines"
+            placeholder="Enter description"
+            numberOfLines={4}
+            name="lines4"
+          />
+          <TextAreaComponent
+            label="5 Lines"
+            placeholder="Enter description"
+            numberOfLines={5}
+            name="lines5"
+          />
+        </Box>
+      </Box>
+
+      {/* With Max Characters */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Max Characters
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Max 50 Characters"
+            placeholder="Max 50 characters"
+            maxCharacters={50}
+            name="maxCharacters50"
+          />
+          <TextAreaComponent
+            label="Max 100 Characters"
+            placeholder="Max 100 characters"
+            maxCharacters={100}
+            name="maxCharacters100"
+          />
+          <TextAreaComponent
+            label="Max 200 Characters"
+            defaultValue="This is a sample text that demonstrates the character limit functionality."
+            maxCharacters={200}
+            name="maxCharacters200"
+          />
+        </Box>
+      </Box>
+
+      {/* With Clear Button */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="feedback.text.information.intense"
+        >
+          With Clear Button
+        </Text>
+        <TextAreaComponent
+          label="With Clear Button"
+          defaultValue="Clear me"
+          showClearButton
+          name="clearButton"
+        />
+      </Box>
+
+      {/* With Label Suffix & Trailing */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Label Suffix & Trailing
+        </Text>
+        <TextAreaComponent
+          label="Description"
+          placeholder="Enter description"
+          labelSuffix={
+            <Tooltip
+              content="Your description is used to provide additional context"
+              placement="right"
+            >
+              <TooltipInteractiveWrapper display="flex">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </TooltipInteractiveWrapper>
+            </Tooltip>
+          }
+          labelTrailing={<Link size="small">Learn more</Link>}
+          name="labelSuffixTrailing"
+        />
+      </Box>
+
+      {/* With Tags */}
+      <Box>
+        <Text
+          size="large"
+          weight="semibold"
+          marginBottom="spacing.4"
+          color="surface.text.gray.subtle"
+        >
+          With Tags (Tagged Input)
+        </Text>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <TextAreaComponent
+            label="Email Addresses"
+            placeholder="Enter email and press Enter"
+            isTaggedInput
+            tags={tagsWithInitial}
+            onTagChange={({ tags }) => setTagsWithInitial(tags)}
+            name="withTags"
+          />
+          <TextAreaComponent
+            label="Email Addresses (No Tags)"
+            placeholder="Enter email and press Enter"
+            isTaggedInput
+            name="withoutTags"
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+TextAreaShowcase.storyName = 'Showcase - All Variants';
+TextAreaShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'A comprehensive showcase of all TextArea variants including basic states, validation states, sizes, label positions, number of lines, max characters, and more.',
+    },
+  },
+};
