@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import type { LightBoxProps } from './types';
-import { Text } from '~components/Typography';
 import { logger } from '~utils/logger';
+import { Text } from '~components/Typography';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LightBox = (props: LightBoxProps): React.ReactElement => {
+const _LightBox = (props: LightBoxProps): React.ReactElement => {
   if (__DEV__) {
     logger({
       type: 'warn',
@@ -14,13 +15,11 @@ const LightBox = (props: LightBoxProps): React.ReactElement => {
     });
   }
 
-  return (
-    <Text>
-      LightBox Component is not available for Native mobile apps.
-    </Text>
-  );
+  return <Text>LightBox Component is not available for Native mobile apps.</Text>;
 };
 
-LightBox.displayName = 'LightBox';
+const LightBox = assignWithoutSideEffects(_LightBox, {
+  displayName: 'LightBox',
+});
 
 export { LightBox };

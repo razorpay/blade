@@ -2,15 +2,14 @@
 import React from 'react';
 import type { LightBoxBodyProps } from './types';
 import { Text } from '~components/Typography';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const LightBoxBody = (_props: LightBoxBodyProps): React.ReactElement => {
-  return (
-    <Text>
-      LightBoxBody Component is not available for Native mobile apps.
-    </Text>
-  );
+const _LightBoxBody = (_props: LightBoxBodyProps): React.ReactElement => {
+  return <Text>LightBoxBody Component is not available for Native mobile apps.</Text>;
 };
 
-LightBoxBody.displayName = 'LightBoxBody';
+const LightBoxBody = assignWithoutSideEffects(_LightBoxBody, {
+  displayName: 'LightBoxBody',
+});
 
 export { LightBoxBody };
