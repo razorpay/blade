@@ -2,4 +2,4 @@
 '@razorpay/blade-mcp': patch
 ---
 
-Updated tokens
+npm publish OIDC
