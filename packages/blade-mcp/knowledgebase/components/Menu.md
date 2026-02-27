@@ -146,7 +146,13 @@ type MenuOverlayProps = {
    *
    * Supports Floating UI offset options (`mainAxis`, `crossAxis`, `alignmentAxis`).
    */
-  offset?: OffsetOptions;
+  offset?:
+    | number
+    | {
+        mainAxis?: number;
+        crossAxis?: number;
+        alignmentAxis?: number;
+      };
 } & TestID &
   DataAnalyticsAttribute;
 
