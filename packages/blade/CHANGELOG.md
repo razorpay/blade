@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.89.0
+
+### Minor Changes
+
+- c031c3c49: feat(blade): add amount component support in GenUI
+- c031c3c49: feat(blade): add GenUI Animation
+
 ## 12.88.0
 
 ### Minor Changes
