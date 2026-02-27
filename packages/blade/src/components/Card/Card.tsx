@@ -190,6 +190,9 @@ export type CardProps = {
     web: CSSObject['cursor'];
     native: undefined;
   }>;
+  opacity?: BoxProps['opacity'];
+  transition?: BoxProps['transition'];
+  flexShrink?: BoxProps['flexShrink'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -219,6 +222,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     as,
     size = 'large',
     cursor,
+    opacity,
+    transition,
+    flexShrink,
     ...rest
   },
   ref,
@@ -279,6 +285,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
         cursor={isReactNative() ? undefined : cursor}
+        opacity={opacity}
+        transition={transition}
+        flexShrink={flexShrink}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

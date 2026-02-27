@@ -3,8 +3,8 @@ import React from 'react';
 import type { NavigationButtonProps } from './types';
 import { getNavigationButtonStyles } from './getNavigationButtonStyles';
 import { makeAccessible } from '~utils/makeAccessible';
-import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const StyledPressable = styled.Pressable<
   Pick<NavigationButtonProps, 'variant'> & { isPressed: boolean }

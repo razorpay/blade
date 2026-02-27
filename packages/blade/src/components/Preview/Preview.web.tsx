@@ -8,6 +8,10 @@ import type {
   PreviewBodyProps,
 } from './types';
 import { usePreviewContext, PreviewProvider } from './PreviewContext';
+import { MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import { size } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import {
   FullScreenEnterIcon,
@@ -20,15 +24,11 @@ import { Heading, Text } from '~components/Typography';
 import { ButtonGroup } from '~components/ButtonGroup';
 import { Button } from '~components/Button';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { MetaConstants } from '~utils/metaAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
-import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 
 const _PreviewHeader = ({
@@ -130,7 +130,7 @@ const _PreviewFooter = (PreviewFooterProps: PreviewFooterProps): React.ReactElem
       justifyContent={trailing ? 'space-between' : 'center'}
       width="100%"
       backgroundColor="transparent"
-      padding="spacing.5"
+      padding={{ base: 'spacing.2', m: 'spacing.5' }}
       zIndex={componentZIndices.previewPanel}
     >
       <BaseBox padding="spacing.2">

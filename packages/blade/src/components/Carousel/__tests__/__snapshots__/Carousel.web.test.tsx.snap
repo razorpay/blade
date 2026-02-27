@@ -278,6 +278,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -295,6 +296,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -681,6 +683,7 @@ exports[`Carousel Snapshots should render 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1054,6 +1057,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1444,6 +1448,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1461,6 +1466,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1918,6 +1924,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1935,6 +1942,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -2346,6 +2354,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 2 - 16px * (2 - 1) / 2);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
