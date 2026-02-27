@@ -6,15 +6,31 @@ import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { RayIcon, ThumbsDownIcon, ThumbsUpIcon } from '~components/Icons';
+import { CopyIcon, RayIcon, ThumbsDownIcon, ThumbsUpIcon, ShareIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
-import { Chip, ChipGroup } from '~components/Chip';
 import { Stagger } from '~components/Stagger';
 import { Fade } from '~components/Fade';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { IconButton as IconButtonComponent } from '~components/Button/IconButton';
+import { Divider } from '~components/Divider';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { Chip, ChipGroup } from '~components/Chip';
+import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
+import { Amount } from '~components/Amount';
+import {
+  Table,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from '~components/Table';
+import type { TableData } from '~components/Table';
 
 const Page = (): React.ReactElement => {
   return (
@@ -319,11 +335,39 @@ const ChatMessageWithFooterActionsTemplate: StoryFn<typeof ChatMessage> = () => 
         <ChatMessage
           senderType="other"
           footerActions={
-            <Box>
-              <ChipGroup label="">
-                <Chip value="yes" icon={ThumbsUpIcon} />
-                <Chip value="no" icon={ThumbsDownIcon} />
-              </ChipGroup>
+            <Box display="flex" alignItems="flex-start">
+              <IconButtonComponent
+                icon={ThumbsUpIcon}
+                accessibilityLabel="Thumbs Up"
+                isHighlighted
+                onClick={() => {
+                  console.log('Thumbs Up...');
+                }}
+              />
+              <IconButtonComponent
+                icon={ThumbsDownIcon}
+                accessibilityLabel="Thumbs Down"
+                isHighlighted
+                onClick={() => {
+                  console.log('Thumbs Down...');
+                }}
+              />
+              <IconButtonComponent
+                icon={CopyIcon}
+                accessibilityLabel="Copy"
+                isHighlighted
+                onClick={() => {
+                  console.log('Copying...');
+                }}
+              />
+              <IconButtonComponent
+                icon={ShareIcon}
+                accessibilityLabel="Share"
+                isHighlighted
+                onClick={() => {
+                  console.log('Sharing...');
+                }}
+              />
             </Box>
           }
           leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
@@ -377,3 +421,365 @@ export const ChatMessageWithCustomTypingAnimation = ChatMessageWithCustomTypingA
   {},
 );
 ChatMessageWithCustomTypingAnimation.storyName = 'Chat Message with Custom Typing Animation';
+
+const suggestedQuestions = [
+  'Why is the netbanking pending?',
+  'How do I initiate a refund for failed payment?',
+  'What are the supported payment methods?',
+];
+
+const ChatMessageWithSuggestedQuestionsTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3" maxWidth="400px">
+      <ChatMessage
+        senderType="other"
+        leading={<RayIcon size="large" color="surface.icon.onSea.onSubtle" />}
+        footerActions={
+          <ActionList>
+            {suggestedQuestions.map((question, index) => (
+              <ActionListItem
+                key={index}
+                title={`${index + 1}. ${question}`}
+                value={`suggestion-${index}`}
+                onClick={() => console.log(`Selected: ${question}`)}
+              />
+            ))}
+          </ActionList>
+        }
+      >
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
+            How can I help you next?
+          </Text>
+        </Box>
+      </ChatMessage>
+      <Divider dividerStyle="dashed" marginLeft="24px" />
+    </Box>
+  );
+};
+
+export const ChatMessageWithSuggestedQuestions = ChatMessageWithSuggestedQuestionsTemplate.bind({});
+ChatMessageWithSuggestedQuestions.storyName = 'Chat Message with Suggested Questions';
+
+type PaymentRow = {
+  id: string;
+  status: string;
+  amount: number;
+  col3: string;
+  col4: string;
+  col5: string;
+};
+
+const paymentTableData: TableData<PaymentRow> = {
+  nodes: [
+    {
+      id: '1',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '2',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '3',
+      status: 'Pending',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+    {
+      id: '4',
+      status: 'Captured',
+      amount: 1000,
+      col3: 'Row Title',
+      col4: 'Row Title',
+      col5: '01234',
+    },
+  ],
+};
+
+const HEADING_WORDS = ['Recent', 'payments', 'from', 'pingal@gmail.com'];
+
+const PARAGRAPH_TEXT =
+  "Pingal has 3 recent payments totalling ₹26,000. Two are successful (captured) and have been settled. The third—a netbanking payment—is still pending as we wait for the customer's bank to confirm the transfer.";
+
+const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
+  const footerActions = (
+    <Box display="flex" justifyContent="space-between" alignItems="center" marginTop="spacing.4">
+      <Box display="flex" gap="spacing.4">
+        <IconButtonComponent
+          icon={ThumbsUpIcon}
+          accessibilityLabel="Thumbs Up"
+          onClick={() => console.log('Thumbs Up')}
+        />
+        <IconButtonComponent
+          icon={ThumbsDownIcon}
+          accessibilityLabel="Thumbs Down"
+          onClick={() => console.log('Thumbs Down')}
+        />
+        <IconButtonComponent
+          icon={CopyIcon}
+          accessibilityLabel="Copy"
+          onClick={() => console.log('Copy')}
+        />
+        <IconButtonComponent
+          icon={ShareIcon}
+          accessibilityLabel="Share"
+          onClick={() => console.log('Share')}
+        />
+      </Box>
+      <Text size="small" color="surface.text.gray.muted">
+        5 min ago
+      </Text>
+    </Box>
+  );
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <Box display="flex" flexDirection="column" gap="spacing.5" padding="spacing.6">
+        <Box display="flex" justifyContent="flex-end">
+          <ChatMessage senderType="self" messageType="last">
+            How much was settled into my account today?
+          </ChatMessage>
+        </Box>
+
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          footerActions={footerActions}
+        >
+          <Box display="flex" flexDirection="column" gap="spacing.5" marginTop="spacing.2">
+            <Heading size="small" weight="semibold">
+              {HEADING_WORDS.join(' ')}
+            </Heading>
+
+            <Text color="surface.text.gray.normal" size="medium">
+              {PARAGRAPH_TEXT}
+            </Text>
+
+            <Box>
+              <Table data={paymentTableData}>
+                {(tableData) => (
+                  <>
+                    <TableHeader>
+                      <TableHeaderRow>
+                        <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                        <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL3">Payment ID</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL4">Method</TableHeaderCell>
+                        <TableHeaderCell headerKey="COL5">Reference</TableHeaderCell>
+                      </TableHeaderRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tableData.map((item, index) => (
+                        <TableRow key={index} item={item}>
+                          <TableCell>
+                            <Badge color={item.status === 'Pending' ? 'notice' : 'positive'}>
+                              {item.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Amount value={item.amount} />
+                          </TableCell>
+                          <TableCell>{item.col3}</TableCell>
+                          <TableCell>{item.col4}</TableCell>
+                          <TableCell>{item.col5}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </>
+                )}
+              </Table>
+            </Box>
+
+            <Box>
+              <ChipGroup
+                accessibilityLabel="Select platform"
+                defaultValue="website"
+                onChange={({ values }) => console.log('Platform:', values)}
+              >
+                {[
+                  { value: 'website', label: 'Website' },
+                  { value: 'android', label: 'Android' },
+                  { value: 'ios', label: 'iOS' },
+                  { value: 'social_media', label: 'Social Media' },
+                  { value: 'others', label: 'Others' },
+                ].map(({ value, label }) => (
+                  <Box key={value} display="inline-flex">
+                    <Chip value={value}>{label}</Chip>
+                  </Box>
+                ))}
+              </ChipGroup>
+            </Box>
+
+            <Box display="flex" gap="spacing.3">
+              <Box display="inline-flex">
+                <Button>Button</Button>
+              </Box>
+              <Box display="inline-flex">
+                <Button variant="secondary">Button</Button>
+              </Box>
+            </Box>
+          </Box>
+        </ChatMessage>
+
+        <Box display="flex" flexDirection="column" gap="spacing.0">
+          <ChatMessage
+            senderType="other"
+            leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          >
+            <Box display="flex" flexDirection="column" gap="spacing.3" marginTop="spacing.2">
+              <Text color="surface.text.gray.normal" size="medium">
+                {'How can I help you next?'}
+              </Text>
+              <ActionList>
+                <ActionListItem
+                  title="1. Why is the netbanking pending?"
+                  value="q1"
+                  onClick={() => console.log('Q1 selected')}
+                />
+                <ActionListItem
+                  title="2. How long does settlement take?"
+                  value="q2"
+                  onClick={() => console.log('Q2 selected')}
+                />
+              </ActionList>
+            </Box>
+          </ChatMessage>
+          <Divider dividerStyle="dashed" marginLeft="24px" />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const FullChatExample = FullChatExampleTemplate.bind({});
+FullChatExample.storyName = 'Full Chat Example';
+
+const ImageStoryContainer = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      backgroundColor="surface.background.gray.moderate"
+      width="100%"
+      minHeight="100vh"
+    >
+      {children}
+    </Box>
+  );
+};
+
+const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          {
+            id: 'landscape-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Snowy mountain landscape',
+          },
+          {
+            id: 'landscape-2',
+            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+            alt: 'Forest and mountain view',
+          },
+          {
+            id: 'landscape-3',
+            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+            alt: 'Mountain lake view',
+          },
+        ]}
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
+        }}
+      >
+        Check out these beautiful landscapes!
+      </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithThreeImages = ChatMessageWithThreeImagesTemplate.bind({});
+ChatMessageWithThreeImages.storyName = 'Chat Message with 3 Images';
+
+const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          {
+            id: 'mountain-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Mountain landscape',
+          },
+          {
+            id: 'mountain-2',
+            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+            alt: 'Mountain and forest view',
+          },
+          {
+            id: 'mountain-3',
+            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+            alt: 'Lake with mountains in the background',
+          },
+          {
+            id: 'mountain-4',
+            url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
+            alt: 'Valley and mountain range',
+          },
+          {
+            id: 'mountain-5',
+            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+            alt: 'Forest trail landscape',
+          },
+        ]}
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
+        }}
+      >
+        Example with 5 images (+2 badge)
+      </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithFiveImages = ChatMessageWithFiveImagesTemplate.bind({});
+ChatMessageWithFiveImages.storyName = 'Chat Message with 5 Images';
+
+const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
+  return (
+    <ImageStoryContainer>
+      <ChatMessage
+        senderType="self"
+        thumbnails={[
+          {
+            id: 'single-landscape-1',
+            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            alt: 'Single mountain landscape',
+          },
+        ]}
+        onThumbnailClick={() => {
+          console.log('Thumbnail clicked');
+        }}
+      >
+        ChatMessage with single image
+      </ChatMessage>
+    </ImageStoryContainer>
+  );
+};
+
+export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
+ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';

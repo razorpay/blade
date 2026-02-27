@@ -1,15 +1,18 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useState } from 'react';
+import React, { memo, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
+import { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction } from './GenUIContext';
+import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
+import { createRehypeAnimate } from './rehypeAnimate';
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -68,6 +71,32 @@ import { Amount } from '~components/Amount';
 import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+/**
+ * Global styles for text streaming animations
+ * Applied to [data-animate-word] spans created by rehypeAnimate
+ */
+const TextAnimationStyles = createGlobalStyle`
+  @keyframes animate-fadeIn {
+    from {
+      opacity: 0;
+      color: #48D08C;
+      filter: blur(2px);
+    }
+    to {
+      opacity: 1;
+      color: inherit;
+      filter: blur(0px);
+    }
+  }
+
+  [data-animate-word] {
+    display: inline-block;
+    animation: animate-fadeIn
+      var(--animate-duration, 400ms)
+      var(--animate-easing, ease) both;
+  }
+`;
 
 /**
  * Built-in component types supported by GenUI
@@ -168,6 +197,7 @@ type TableCellDate = {
 type TableCellLink = {
   component: 'LINK';
   text: string;
+  copyable?: boolean;
   action?: {
     type: 'CLICK';
     eventName?: 'link_click';
@@ -389,80 +419,107 @@ const ChartSkeletonLoader = ({
   );
 };
 
-const RenderTextComponent = memo(({ content }: TextComponent) => {
-  if (!content) return null;
-  return (
-    <ReactMarkdown
-      skipHtml
-      rehypePlugins={[]}
-      components={{
-        h1: ({ children }) => (
-          <Heading marginBottom="spacing.4" size="large">
-            {children}
-          </Heading>
-        ),
-        h2: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="medium">
-            {children}
-          </Heading>
-        ),
-        h3: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="small">
-            {children}
-          </Heading>
-        ),
-        h4: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="small">
-            {children}
-          </Heading>
-        ),
-        b: ({ children }) => (
-          <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-        a: ({ href, children }) => (
-          <Link
-            href={href}
-            size="medium"
-            variant="anchor"
-            color="primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {children?.toString() ?? ''}
-          </Link>
-        ),
-        li: ({ children }) => (
-          <Text marginY="spacing.3" size="medium">
-            <DotIcon marginBottom="1px" size="xsmall" /> {children}
-          </Text>
-        ),
-        ol: ({ children }) => (
-          <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-            {children}
-          </Box>
-        ),
-        ul: ({ children }) => (
-          <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-            {children}
-          </Box>
-        ),
-        hr: () => <Divider marginY="spacing.4" />,
-        i: ({ children }) => (
-          <Text size="medium" variant="caption" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-        p: ({ children }) => (
-          <Text marginY="spacing.2" size="medium" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-      }}
+/**
+ * Stable components object for ReactMarkdown to prevent re-renders during streaming.
+ * Defined outside the component to maintain referential equality.
+ */
+const markdownComponents = {
+  h1: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.4" size="large">
+      {children}
+    </Heading>
+  ),
+  h2: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="medium">
+      {children}
+    </Heading>
+  ),
+  h3: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="small">
+      {children}
+    </Heading>
+  ),
+  h4: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="small">
+      {children}
+    </Heading>
+  ),
+  b: ({ children }: { children?: React.ReactNode }) => (
+    <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+    <Link
+      href={href}
+      size="medium"
+      variant="anchor"
+      color="primary"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      {content}
-    </ReactMarkdown>
+      {(children as unknown) as string}
+    </Link>
+  ),
+  li: ({ children }: { children?: React.ReactNode }) => (
+    <Text marginY="spacing.3" size="medium">
+      <DotIcon marginBottom="1px" size="xsmall" /> {children}
+    </Text>
+  ),
+  ol: ({ children }: { children?: React.ReactNode }) => (
+    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
+      {children}
+    </Box>
+  ),
+  ul: ({ children }: { children?: React.ReactNode }) => (
+    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
+      {children}
+    </Box>
+  ),
+  hr: () => <Divider marginY="spacing.4" />,
+  i: ({ children }: { children?: React.ReactNode }) => (
+    <Text size="medium" variant="caption" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+  p: ({ children }: { children?: React.ReactNode }) => (
+    <Text marginY="spacing.2" size="medium" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+};
+
+const RenderTextComponent = memo(({ content }: TextComponent) => {
+  const { isAnimating, animateOptions } = useGenUIAnimation();
+  // Tracks how many words were already animated in the previous render.
+  // Passed to rehypeAnimate as `skipWords` so only truly new words get spans.
+  const prevWordCountRef = useRef(0);
+
+  // useMemo reads prevWordCountRef.current (= previous render's count) at
+  // render time, before useLayoutEffect updates it for the next render.
+  const rehypePlugins = useMemo(() => {
+    if (!isAnimating) return [];
+    return [createRehypeAnimate({ ...animateOptions, skipWords: prevWordCountRef.current })];
+    // `content` is intentionally listed so the memo re-runs per streaming
+    // chunk, picking up the latest prevWordCountRef value each time.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAnimating, animateOptions, content]);
+
+  // After each render, record the current word count so the next render
+  // knows how many words to skip.
+  useLayoutEffect(() => {
+    prevWordCountRef.current = content ? content.split(/\s+/).filter(Boolean).length : 0;
+  }, [content]);
+
+  if (!content) return null;
+
+  return (
+    <>
+      {isAnimating ? <TextAnimationStyles /> : null}
+      <ReactMarkdown skipHtml rehypePlugins={rehypePlugins} components={markdownComponents}>
+        {content}
+      </ReactMarkdown>
+    </>
   );
 });
 
@@ -577,7 +634,7 @@ const RenderChartComponent = memo(
               return numValue.toString();
           }
         } catch (error) {
-          console.error('Error formatting value:', error);
+          console.error('[GenUI Chart]: Error formatting value:', error);
           return numValue.toString();
         }
       }
@@ -691,15 +748,45 @@ const RenderChartComponent = memo(
   },
 );
 
-// Table cell link renderer - fires action for consumer to handle
-const TableCellLinkRenderer = ({ cell }: { cell: TableCellLink }) => {
-  const onActionClick = useGenUIAction();
+// Primitive copy button — just the icon + tooltip, no text label.
+// Compose this inside any cell that needs copy behaviour.
+const Copyable = ({ value }: { value?: string }) => {
+  const [copied, setCopied] = useState(false);
 
-  if (!cell.action) {
-    return <Text size="medium">{cell.text}</Text>;
-  }
+  const handleCopy = () => {
+    void navigator.clipboard.writeText(value ?? '');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
+    <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
+      <TooltipInteractiveWrapper>
+        <IconButton
+          icon={CopyIcon}
+          size="medium"
+          emphasis="intense"
+          accessibilityLabel={`Copy ${value}`}
+          onClick={handleCopy}
+        />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  );
+};
+
+// Text + copy icon
+const CopyableText = ({ value }: { value?: string }) => (
+  <Box display="flex" alignItems="center" gap="spacing.2">
+    <Text size="medium">{value ?? '-'}</Text>
+    <Copyable value={value} />
+  </Box>
+);
+
+// Table cell link renderer - fires action for consumer to handle
+const TableCellLinkRenderer = ({ cell }: { cell?: Partial<TableCellLink> }) => {
+  const onActionClick = useGenUIAction();
+
+  const linkNode = cell?.action ? (
     <Link
       variant="button"
       onClick={() => {
@@ -708,43 +795,26 @@ const TableCellLinkRenderer = ({ cell }: { cell: TableCellLink }) => {
         }
       }}
     >
-      {cell.text}
+      {cell.text ?? ''}
     </Link>
+  ) : (
+    <Text size="medium">{cell?.text}</Text>
   );
-};
 
-// Copyable text component with tooltip feedback
-const CopyableText = ({ value }: { value: string }) => {
-  const [copied, setCopied] = useState(false);
+  if (cell?.copyable && cell?.text) {
+    return (
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        {linkNode}
+        <Copyable value={cell.text} />
+      </Box>
+    );
+  }
 
-  const handleCopy = () => {
-    if (value) {
-      void navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  return (
-    <Box display="flex" alignItems="center" gap="spacing.2">
-      <Text size="medium">{value ?? '-'}</Text>
-      <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
-        <TooltipInteractiveWrapper>
-          <IconButton
-            icon={CopyIcon}
-            size="medium"
-            emphasis="intense"
-            accessibilityLabel={`Copy ${value}`}
-            onClick={handleCopy}
-          />
-        </TooltipInteractiveWrapper>
-      </Tooltip>
-    </Box>
-  );
+  return linkNode;
 };
 
 // Helper to render a single table cell based on its component type
-const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
+const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => {
   if (!cell) {
     return <Text size="medium">-</Text>;
   }
@@ -913,7 +983,69 @@ const TableRowHoverActions = ({
   );
 };
 
+// px per average character at ~14px font size
+const CHAR_WIDTH = 7.5;
+// horizontal cell padding (left + right)
+const CELL_H_PADDING = 8;
+
+// Returns the minimum pixel width hint for a cell based on its content type.
+// Used as the `min` track in `minmax(min, max-content)` so columns never
+// collapse below a sensible floor while still growing to fit real content.
+const getCellMinWidth = (cell?: Partial<TableCellType>): number => {
+  if (!cell?.component) return 80;
+  switch (cell.component) {
+    case 'TEXT':
+      return Math.max(80, Math.min(300, (cell.value?.length ?? 1) * CHAR_WIDTH + CELL_H_PADDING));
+    case 'AMOUNT':
+      // currency symbol + digits + separators
+      return Math.max(
+        100,
+        (String(cell.value?.toString() ?? 0).length + 2) * CHAR_WIDTH + CELL_H_PADDING,
+      );
+    case 'INDICATOR':
+      return Math.max(100, (cell.value?.length ?? 1) * CHAR_WIDTH);
+    case 'BADGE':
+      return Math.max(80, (cell.value?.length ?? 1) * CHAR_WIDTH);
+    case 'DATE': {
+      const dateValue = dayjs(cell.value);
+      if (!dateValue.isValid()) {
+        return (cell.value?.length ?? 0) * CHAR_WIDTH;
+      }
+      const defaultFormat = 'DD MMM YYYY, HH:mm';
+      const formatted = dateValue.format(cell.dateFormat || defaultFormat);
+      return formatted.length * CHAR_WIDTH;
+    }
+    case 'LINK':
+      return Math.max(80, Math.min(250, (cell.text?.length ?? 1) * CHAR_WIDTH + CELL_H_PADDING));
+    default:
+      return 80;
+  }
+};
+
+// Produces one CSS grid track per column as a `fr` value proportional to
+// the estimated content width so columns fill the full table width while
+// still reflecting relative content size (wider content → more space).
+const calculateColumnWidths = (headers: string[], rows: Partial<TableCellType>[][]): string[] => {
+  const weights = headers.map((header, colIndex) => {
+    const headerWeight = header.length * CHAR_WIDTH + CELL_H_PADDING;
+    const cellWeight = rows.reduce((max, row) => {
+      const cell = row[colIndex];
+      return Math.max(max, getCellMinWidth(cell));
+    }, 80);
+    return Math.max(headerWeight, cellWeight);
+  });
+
+  // Normalise to smallest weight so fr numbers stay small and readable
+  const minWeight = Math.min(...weights);
+  return weights.map((w) => `${Math.round((w / minWeight) * 10) / 10}fr`);
+};
+
 const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {
+  const columnWidths = useMemo(
+    () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
+    [headers, rows],
+  );
+
   if (!headers || !rows || headers.length === 0 || rows.length === 0) {
     return null;
   }
@@ -927,14 +1059,13 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      gap="spacing.3"
-      marginY="spacing.4"
-      borderRadius="medium"
-    >
-      <Table data={tableData} backgroundColor="transparent" rowDensity="normal">
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Table
+        data={tableData}
+        backgroundColor="transparent"
+        rowDensity="compact"
+        gridTemplateColumns={columnWidths.join(' ')}
+      >
         {(data) => (
           <>
             <TableHeader>
@@ -980,34 +1111,29 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
   }
 
   return (
-    <Card
-      width="100%"
-      height="100%"
-      marginY="spacing.4"
-      elevation="none"
-      padding="spacing.7"
-      borderRadius="large"
-    >
-      <CardHeader showDivider>
-        <CardHeaderLeading title={title || ''} subtitle={description || ''} />
-      </CardHeader>
+    <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
+      <Card width="100%" height="100%" padding="spacing.7">
+        <CardHeader showDivider>
+          <CardHeaderLeading title={title || ''} subtitle={description || ''} />
+        </CardHeader>
 
-      {children && children.length > 0 ? (
-        <CardBody height="100%">
-          <Box display="flex" flexDirection="column" gap="spacing.5">
-            {children.map((child, index) => {
-              return <GenUIComponentRenderer key={index} component={child} index={index} />;
-            })}
-          </Box>
-        </CardBody>
-      ) : null}
+        {children && children.length > 0 ? (
+          <CardBody height="100%">
+            <Box display="flex" flexDirection="column" gap="spacing.5">
+              {children.map((child, index) => {
+                return <GenUIComponentRenderer key={index} component={child} index={index} />;
+              })}
+            </Box>
+          </CardBody>
+        ) : null}
 
-      {footer ? (
-        <CardFooter showDivider={true}>
-          <CardFooterLeading subtitle={footer} />
-        </CardFooter>
-      ) : null}
-    </Card>
+        {footer ? (
+          <CardFooter showDivider={true}>
+            <CardFooterLeading subtitle={footer} />
+          </CardFooter>
+        ) : null}
+      </Card>
+    </Box>
   );
 });
 
@@ -1190,39 +1316,37 @@ const RenderAlertComponent = memo(
     const Icon = iconMap[validColor];
 
     return (
-      <Box marginY="spacing.3" width="100%">
-        <Alert
-          emphasis="subtle"
-          title={title}
-          icon={Icon}
-          description={description!}
-          color={validColor}
-          isDismissible={false}
-          isFullWidth
-          actions={{
-            primary: actions?.primary?.text
-              ? {
-                  text: actions?.primary?.text,
-                  onClick: () => {
-                    if (actions?.primary?.action && onActionClick) {
-                      onActionClick(actions.primary.action);
-                    }
-                  },
-                }
-              : undefined,
-            secondary: actions?.secondary?.text
-              ? {
-                  text: actions?.secondary?.text,
-                  onClick: () => {
-                    if (actions?.secondary?.action && onActionClick) {
-                      onActionClick(actions.secondary.action);
-                    }
-                  },
-                }
-              : undefined,
-          }}
-        />
-      </Box>
+      <Alert
+        emphasis="subtle"
+        title={title}
+        icon={Icon}
+        description={description!}
+        color={validColor}
+        isDismissible={false}
+        marginY="spacing.4"
+        actions={{
+          primary: actions?.primary?.text
+            ? {
+                text: actions.primary.text,
+                onClick: () => {
+                  if (actions.primary?.action && onActionClick) {
+                    onActionClick(actions.primary.action);
+                  }
+                },
+              }
+            : undefined,
+          secondary: actions?.secondary?.text
+            ? {
+                text: actions.secondary.text,
+                onClick: () => {
+                  if (actions.secondary?.action && onActionClick) {
+                    onActionClick(actions.secondary.action);
+                  }
+                },
+              }
+            : undefined,
+        }}
+      />
     );
   },
 );

@@ -1,14 +1,34 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type DefaultMessageBubbleProps = {
   children: React.ReactNode | string;
   leading?: React.ReactNode;
   isLoading?: boolean;
   onClick?: () => void;
+  thumbnails?: ThumbnailItem[];
+};
+
+type ThumbnailItem = {
+  id?: string;
+  url: string;
+  alt?: string;
+};
+
+type ThumbnailPreviewProps = {
+  thumbnails: ThumbnailItem[];
+  onThumbnailClick?: () => void;
+};
+
+type ResolvedThumbnailItem = {
+  id: string;
+  url: string;
+  alt: string;
+  originalIndex: number;
+  originalThumbnail: ThumbnailItem;
 };
 
 type CommonChatMessageProps = {
@@ -52,6 +72,8 @@ type CommonChatMessageProps = {
    * default: chat message will be shown as default.
    * last: chat message will be shown as last. it will remove border radius from bottom right.
    * messageType prop is only works when senderType is self.
+   *
+   * @deprecated This prop is no longer used by `ChatMessage` and will be removed in a future release.
    */
   messageType?: 'default' | 'last';
   /**
@@ -78,6 +100,15 @@ type CommonChatMessageProps = {
    * *this will only work when children is string*
    */
   wordBreak?: BaseTextProps['wordBreak'];
+  /**
+   * thumbnails prop is used to show image previews in chat message.
+   * Accepts an array of thumbnail objects.
+   */
+  thumbnails?: ThumbnailItem[];
+  /**
+   * onThumbnailClick is called when the image preview is clicked.
+   */
+  onThumbnailClick?: () => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
@@ -101,6 +132,9 @@ type DefaultChatMessageProps = CommonChatMessageProps & {
 type ChatMessageProps = SelfChatMessageProps | DefaultChatMessageProps;
 
 export type {
+  ThumbnailItem,
+  ThumbnailPreviewProps,
+  ResolvedThumbnailItem,
   CommonChatMessageProps,
   ChatMessageProps,
   DefaultMessageBubbleProps,
