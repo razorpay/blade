@@ -988,7 +988,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
       padding="spacing.7"
       borderRadius="large"
     >
-      <CardHeader showDivider={false}>
+      <CardHeader showDivider>
         <CardHeaderLeading title={title || ''} subtitle={description || ''} />
       </CardHeader>
 
