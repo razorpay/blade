@@ -5,8 +5,6 @@ export interface AnimateOptions {
   duration?: number;
   easing?: string;
   sep?: 'word' | 'char';
-  /** Skip wrapping the first N words — they were already animated in a previous render. */
-  skipWords?: number;
 }
 
 const SKIP_TAGS = new Set(['code', 'pre', 'svg', 'math', 'annotation']);
@@ -86,14 +84,8 @@ export function createRehypeAnimate(options?: AnimateOptions): () => (tree: Root
   const duration = options?.duration ?? 300;
   const easing = options?.easing ?? 'ease-in-out';
   const sep = options?.sep ?? 'word';
-  const skipWords = options?.skipWords ?? 0;
 
   return () => (tree: Root) => {
-    // Counts non-whitespace words seen so far across all text nodes.
-    // Words below `skipWords` were already animated in a previous render —
-    // emit them as plain text nodes to avoid re-creating their DOM nodes.
-    let wordsSeen = 0;
-
     visitParents(tree, 'text', (node: Text, ancestors: Node[]) => {
       const parent = ancestors[ancestors.length - 1] as Parent | undefined;
       if (!parent || !('children' in parent)) {
@@ -120,12 +112,7 @@ export function createRehypeAnimate(options?: AnimateOptions): () => (tree: Root
         if (/^\s+$/.test(part)) {
           return { type: 'text', value: part } as Text;
         }
-        const shouldAnimate = wordsSeen >= skipWords;
-        wordsSeen++;
-        if (shouldAnimate) {
-          return makeSpan(part, duration, easing);
-        }
-        return { type: 'text', value: part } as Text;
+        return makeSpan(part, duration, easing);
       });
 
       parent.children.splice(index, 1, ...nodes);

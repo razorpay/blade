@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
@@ -491,25 +491,11 @@ const markdownComponents = {
 
 const RenderTextComponent = memo(({ content }: TextComponent) => {
   const { isAnimating, animateOptions } = useGenUIAnimation();
-  // Tracks how many words were already animated in the previous render.
-  // Passed to rehypeAnimate as `skipWords` so only truly new words get spans.
-  const prevWordCountRef = useRef(0);
 
-  // useMemo reads prevWordCountRef.current (= previous render's count) at
-  // render time, before useLayoutEffect updates it for the next render.
   const rehypePlugins = useMemo(() => {
     if (!isAnimating) return [];
-    return [createRehypeAnimate({ ...animateOptions, skipWords: prevWordCountRef.current })];
-    // `content` is intentionally listed so the memo re-runs per streaming
-    // chunk, picking up the latest prevWordCountRef value each time.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAnimating, animateOptions, content]);
-
-  // After each render, record the current word count so the next render
-  // knows how many words to skip.
-  useLayoutEffect(() => {
-    prevWordCountRef.current = content ? content.split(/\s+/).filter(Boolean).length : 0;
-  }, [content]);
+    return [createRehypeAnimate(animateOptions)];
+  }, [isAnimating, animateOptions]);
 
   if (!content) return null;
 
