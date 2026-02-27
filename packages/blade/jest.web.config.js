@@ -18,7 +18,7 @@ const baseConfig = {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@table-library|unist-util-visit-parents|unist-util-is|unist-util-visit)/)/',
+    '/node_modules/(?!(@table-library|unist-util-visit-parents|unist-util-is|unist-util-visit)/)',
   ],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
