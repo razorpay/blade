@@ -71,12 +71,10 @@ const travelR2 = keyframes`
 const maskReveal = keyframes`
   0% {
     mask-position: 100% 100%;
-    -webkit-mask-position: 100% 100%;
     opacity: 0;
   }
   100% {
     mask-position: 0% 0%;
-    -webkit-mask-position: 0% 0%;
     opacity: 1;
   }
 `;
@@ -138,8 +136,7 @@ const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
   animation: ${travelX} 1s linear infinite, ${travelR} 1s linear infinite,
     ${travelX2} 1s linear infinite, ${travelR2} 1s linear infinite;
   pointer-events: none;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   padding: 1.5px;
   opacity: ${({ $fadeOut }) => ($fadeOut ? 0 : 1)};
@@ -153,12 +150,9 @@ const ContentContainer = styled.div`
   height: 100%;
   /* Diagonal gradient mask for reveal effect - starts hidden, animates to revealed */
   mask-image: linear-gradient(135deg, black 0%, black 45%, transparent 55%);
-  -webkit-mask-image: linear-gradient(135deg, black 0%, black 45%, transparent 55%);
   mask-size: 300% 300%;
-  -webkit-mask-size: 300% 300%;
   /* Start position: fully masked (hidden) */
   mask-position: 100% 100%;
-  -webkit-mask-position: 100% 100%;
   /* Animate to 0% 0% (fully revealed) with ease-out for smooth finish */
   animation: ${maskReveal} 2s ease-out forwards;
   animation-delay: 0.6s;
