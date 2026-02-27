@@ -354,7 +354,7 @@ CustomItems.args = {
 
 const fixedAnchorButtons = ['Payments', 'Settlements', 'Manage Account', 'Support'] as const;
 
-const fixedAnchorMenuItemsByTrigger: Record<(typeof fixedAnchorButtons)[number], string[]> = {
+const fixedAnchorMenuItemsByTrigger: Record<typeof fixedAnchorButtons[number], string[]> = {
   Payments: [
     'Create a payment link for the latest abandoned checkout.',
     'Share a one-time payment page with [email].',
