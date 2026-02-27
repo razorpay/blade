@@ -4,6 +4,11 @@ import { Title } from '@storybook/addon-docs';
 import StoryRouter from 'storybook-react-router';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavProps, SideNavSectionProps } from '../types';
+import {
+  COLLAPSED_L1_WIDTH,
+  SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
+  SIDE_NAV_EXPANDED_L1_WIDTH_XL,
+} from '../tokens';
 import type { SideNavLinkProps } from '..';
 import {
   SideNavBody,
@@ -544,7 +549,15 @@ const SideNavExample = ({
       </SideNav>
 
       <Box
-        marginLeft={{ base: 'spacing.0', m: '300px' }}
+        marginLeft={
+          args.isExpanded === false
+            ? ({ base: 'spacing.0', m: `${COLLAPSED_L1_WIDTH}px` } as const)
+            : ({
+                base: 'spacing.0',
+                m: `${SIDE_NAV_EXPANDED_L1_WIDTH_BASE}px`,
+                xl: `${SIDE_NAV_EXPANDED_L1_WIDTH_XL}px`,
+              } as const)
+        }
         paddingY={showExampleContentPadding ? { base: 'spacing.11', m: 'spacing.0' } : 'spacing.0'}
         paddingX={{ base: 'spacing.4', m: 'spacing.0' }}
       >
@@ -573,6 +586,34 @@ const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
 };
 
 export const Default = SideNavTemplate.bind({});
+
+export const CollapsedSideNav: StoryFn<typeof SideNav> = ({ ...args }) => {
+  return <SideNavExample {...args} isExpanded={false} />;
+};
+
+export const ControlledSideNavExpansion: StoryFn<typeof SideNav> = ({ ...args }) => {
+  const [isExpanded, setIsExpanded] = React.useState(true);
+
+  return (
+    <Box minHeight="500px">
+      <Box
+        display={{ base: 'none', m: 'block' }}
+        position="fixed"
+        top="spacing.4"
+        right="spacing.4"
+      >
+        <Button onClick={() => setIsExpanded((prev) => !prev)}>
+          {isExpanded ? 'Collapse SideNav' : 'Expand SideNav'}
+        </Button>
+      </Box>
+      <SideNavExample
+        {...args}
+        isExpanded={isExpanded}
+        onExpandChange={({ isExpanded }) => setIsExpanded(isExpanded)}
+      />
+    </Box>
+  );
+};
 
 const ActivationCard = (): React.ReactElement => {
   return (

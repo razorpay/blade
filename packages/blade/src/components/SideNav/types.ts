@@ -35,6 +35,18 @@ type SideNavProps = {
    * - When you hover / unhover L1 in collapsed state which can temporarily expand the L1
    */
   onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
+  /**
+   * Controls expansion state of SideNav rail in desktop.
+   *
+   * When false, SideNav stays collapsed and does not temporarily expand on hover / focus.
+   *
+   * @default true
+   */
+  isExpanded?: boolean;
+  /**
+   * Callback for change in SideNav expansion state in desktop.
+   */
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   /**
    * Banner slot for usecases like adding Activation Panel

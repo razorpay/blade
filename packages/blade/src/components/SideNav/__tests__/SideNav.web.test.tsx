@@ -1,4 +1,5 @@
 import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
+import { classes } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
@@ -46,5 +47,12 @@ describe('SideNav', () => {
 
     expect(getByRole('navigation')).toHaveAttribute('data-analytics-side-nav', 'demo-item');
     expect(getByRole('link', { name: 'Home' })).toHaveAttribute('data-analytics-nav-link', 'home');
+  });
+
+  test('should keep SideNav rail collapsed when isExpanded is false', () => {
+    const { container } = renderWithTheme(<SideNavExample display="block" isExpanded={false} />);
+    const l1Menu = container.querySelector('#blade-sidenav-l1');
+
+    expect(l1Menu).toHaveClass(classes.COLLAPSED);
   });
 });
