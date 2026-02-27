@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.24.0
+
+### Minor Changes
+
+- 6d4888305: feat(LightBox): add lightbox component
+
 ## 1.23.6
 
 ### Patch Changes

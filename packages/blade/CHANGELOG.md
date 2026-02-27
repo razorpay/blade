@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.87.0
+
+### Minor Changes
+
+- 6d4888305: feat(LightBox): add lightbox component
+- 864c54f4a: feat(Menu): add `offset` prop
+
 ## 12.86.0
 
 ### Minor Changes
