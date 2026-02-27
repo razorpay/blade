@@ -1,10 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
-import { MetaConstants } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import { size } from '~tokens/global';
 import type {
   PreviewProps,
   PreviewHeaderProps,
@@ -12,6 +8,10 @@ import type {
   PreviewBodyProps,
 } from './types';
 import { usePreviewContext, PreviewProvider } from './PreviewContext';
+import { MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import { size } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import {
   FullScreenEnterIcon,

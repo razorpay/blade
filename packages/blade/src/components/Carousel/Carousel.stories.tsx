@@ -2,9 +2,9 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
 import React from 'react';
-import { isReactNative } from '~utils';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
+import { isReactNative } from '~utils';
 import { Box } from '~components/Box';
 import { Code, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';

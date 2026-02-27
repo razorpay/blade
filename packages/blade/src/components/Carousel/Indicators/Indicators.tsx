@@ -1,7 +1,7 @@
-import { makeAccessible } from '~utils/makeAccessible';
 import { useCarouselContext } from '../CarouselContext';
 import { IndicatorButton } from './IndicatorButton';
 import type { IndicatorsProps } from './types';
+import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 
 const Indicators = (props: IndicatorsProps): React.ReactElement => {

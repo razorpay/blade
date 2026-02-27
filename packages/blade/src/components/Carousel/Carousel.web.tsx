@@ -7,14 +7,6 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
-import getIn from '~utils/lodashButBetter/get';
-import throttle from '~utils/lodashButBetter/throttle';
-import debounce from '~utils/lodashButBetter/debounce';
-import { castWebType, makeMotionTime, useInterval } from '~utils';
-import { makeAccessible } from '~utils/makeAccessible';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
@@ -26,6 +18,14 @@ import {
   componentIds,
   CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
 } from './constants';
+import getIn from '~utils/lodashButBetter/get';
+import throttle from '~utils/lodashButBetter/throttle';
+import debounce from '~utils/lodashButBetter/debounce';
+import { castWebType, makeMotionTime, useInterval } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { useId } from '~utils/useId';
