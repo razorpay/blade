@@ -119,6 +119,7 @@ const ThumbnailPreview = ({
                 elevation="midRaised"
                 border="thin"
                 borderColor="interactive.border.staticWhite.default"
+                backgroundColor="surface.background.gray.moderate"
               >
                 <StyledPreviewImage src={url} alt={alt} />
               </BaseBox>
