@@ -43,6 +43,7 @@ module.exports = {
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
       collectCoverageFrom: ['./src/**/*.ssr.{ts,tsx}'],
       testMatch: ['**/*.ssr.test.{ts,tsx}'],
+      setupFilesAfterEnv: ['./jest-setup.ssr.js'],
     },
     {
       displayName: 'CSR Test',
