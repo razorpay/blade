@@ -38,6 +38,11 @@ const schema = {
         '### Numbered List\n\n1. First item\n2. Second item\n3. Third item with **bold** and *italic*\n4. Fourth item with `code`',
     },
     {
+      component: 'TEXT',
+      content: '### Amount Component\n',
+    },
+    { component: 'AMOUNT', value: 10000, currency: 'INR' },
+    {
       component: 'STACK',
       direction: 'vertical',
       gap: 'medium',
