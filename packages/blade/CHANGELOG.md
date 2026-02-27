@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.89.1
+
+### Patch Changes
+
+- aa123005f: fix(blade): remove word counting from GenUI TEXT component
+
 ## 12.89.0
 
 ### Minor Changes
