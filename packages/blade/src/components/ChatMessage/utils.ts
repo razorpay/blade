@@ -1,5 +1,5 @@
-import type { ColorSchemeNames } from '~tokens/theme';
 import { chatMessageToken } from './token';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const getMessageBubbleBoxShadow = (colorScheme: ColorSchemeNames): { boxShadow: string } => {
   const { boxShadow, boxShadowColor } = chatMessageToken.messageBubble;
