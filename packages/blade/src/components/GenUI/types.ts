@@ -43,7 +43,7 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
   /** Optional: animation name */
   animation?: {
     /** 'gradient-ring-entry' wraps the component in an AnimatedGradientBorder */
-    name: 'gradient-ring-entry' | (string & {});
+    name: 'gradient-ring-entry' | (string & Record<never, never>);
   };
 };
 
