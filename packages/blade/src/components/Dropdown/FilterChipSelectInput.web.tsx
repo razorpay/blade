@@ -118,7 +118,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       setSelectedIndices(newSelectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled, options, listViewSelectedFilters, value, label]);
+  }, [isUnControlled, options]);
 
   const getTitleFromValue = (value: string): string => {
     const option = options.find((option) => option.value === value);
@@ -138,13 +138,13 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
     props.onChange?.({ name: name ?? idBase, values: [] });
-    setUncontrolledInputValue([]);
-    setSelectedIndices([]);
     setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
     setListViewSelectedFilters((prev) => {
       const { [label]: _, ...updatedFilters } = prev;
       return updatedFilters;
     });
+    setUncontrolledInputValue([]);
+    setSelectedIndices([]);
   };
 
   useEffect(() => {
