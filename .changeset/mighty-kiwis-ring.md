@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-feat(blade): add assets folder
+feat(blade): expose blade spark assets
