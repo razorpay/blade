@@ -153,10 +153,10 @@ export const UncontrolledFilterChipSelectInput = (): React.ReactElement => {
         <FilterChipSelectInput
           label="Filter Chip"
           onChange={(value) => {
-            console.log('value1', value);
+            console.log('value', value);
           }}
           onClearButtonClick={(value) => {
-            console.log('value2', value);
+            console.log('value', value);
           }}
         />
         <DropdownOverlay>
