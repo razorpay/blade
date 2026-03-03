@@ -1,5 +1,17 @@
 # @razorpay/blade-mcp
 
+## 1.25.2
+
+### Patch Changes
+
+- 25932a3f4: feat(ChatInput): add onFocus and onBlur
+
+## 1.25.1
+
+### Patch Changes
+
+- 8eaf6e5e5: feat(Menu): add offset prop to Menu knowledgebase
+
 ## 1.25.0
 
 ### Minor Changes

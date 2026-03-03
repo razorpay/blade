@@ -27,7 +27,7 @@ const SelfMessageBubble = ({
     <BaseBox display="flex" flexDirection="column">
       <StyledSelfMessageBubble
         backgroundColor={chatMessageToken.self.backgroundColor.default}
-        padding={isChildText ? 'spacing.5' : 'spacing.0'}
+        padding={isChildText ? 'spacing.4' : 'spacing.0'}
         borderRadius="large"
         width="fit-content"
         height="auto"

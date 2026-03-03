@@ -1,5 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessageProps } from '../types';
 import { Heading } from '~components/Typography/Heading';
@@ -16,7 +17,6 @@ import { Fade } from '~components/Fade';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { IconButton as IconButtonComponent } from '~components/Button/IconButton';
 import { Divider } from '~components/Divider';
-import { ActionList, ActionListItem } from '~components/ActionList';
 import { Chip, ChipGroup } from '~components/Chip';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
@@ -31,7 +31,7 @@ import {
   TableCell,
 } from '~components/Table';
 import type { TableData } from '~components/Table';
-
+import { LightBox, LightBoxBody, LightBoxItem } from '~components/LightBox';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -428,24 +428,57 @@ const suggestedQuestions = [
   'What are the supported payment methods?',
 ];
 
+const StyledSuggestionButton = styled.button(({ theme }) => ({
+  display: 'block',
+  width: '100%',
+  background: 'transparent',
+  border: 'none',
+  padding: `${theme.spacing[3]}px`,
+  cursor: 'pointer',
+  textAlign: 'left',
+  borderRadius: `${theme.border.radius.small}px`,
+  '&:hover': {
+    backgroundColor: theme.colors.interactive.background.gray.default,
+  },
+}));
+
+const SuggestedQuestionItem = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}): React.ReactElement => {
+  return (
+    <StyledSuggestionButton onClick={onClick}>
+      <Text color="surface.text.gray.normal" size="medium">
+        {label}
+      </Text>
+    </StyledSuggestionButton>
+  );
+};
+
+const SuggestedQuestionList = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      {suggestedQuestions.map((question, index) => (
+        <SuggestedQuestionItem
+          key={index}
+          label={`${index + 1}. ${question}`}
+          onClick={() => console.log(`Selected: ${question}`)}
+        />
+      ))}
+    </Box>
+  );
+};
+
 const ChatMessageWithSuggestedQuestionsTemplate: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.3" maxWidth="400px">
       <ChatMessage
         senderType="other"
         leading={<RayIcon size="large" color="surface.icon.onSea.onSubtle" />}
-        footerActions={
-          <ActionList>
-            {suggestedQuestions.map((question, index) => (
-              <ActionListItem
-                key={index}
-                title={`${index + 1}. ${question}`}
-                value={`suggestion-${index}`}
-                onClick={() => console.log(`Selected: ${question}`)}
-              />
-            ))}
-          </ActionList>
-        }
+        footerActions={<SuggestedQuestionList />}
       >
         <Box display="flex" flexDirection="column" gap="spacing.3">
           <Text color="surface.text.gray.normal" weight="regular" variant="body" size="medium">
@@ -641,21 +674,19 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
               <Text color="surface.text.gray.normal" size="medium">
                 {'How can I help you next?'}
               </Text>
-              <ActionList>
-                <ActionListItem
-                  title="1. Why is the netbanking pending?"
-                  value="q1"
+              <Box display="flex" flexDirection="column" gap="spacing.3">
+                <SuggestedQuestionItem
+                  label="1. Why is the netbanking pending?"
                   onClick={() => console.log('Q1 selected')}
                 />
-                <ActionListItem
-                  title="2. How long does settlement take?"
-                  value="q2"
+                <SuggestedQuestionItem
+                  label="2. How long does settlement take?"
                   onClick={() => console.log('Q2 selected')}
                 />
-              </ActionList>
+              </Box>
             </Box>
           </ChatMessage>
-          <Divider dividerStyle="dashed" marginLeft="24px" />
+          <Divider dividerStyle="dashed" marginLeft="24px" marginTop="spacing.2" />
         </Box>
       </Box>
     </Box>
@@ -665,121 +696,329 @@ const FullChatExampleTemplate: StoryFn<typeof ChatMessage> = () => {
 export const FullChatExample = FullChatExampleTemplate.bind({});
 FullChatExample.storyName = 'Full Chat Example';
 
-const ImageStoryContainer = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      backgroundColor="surface.background.gray.moderate"
-      width="100%"
-      minHeight="100vh"
-    >
-      {children}
-    </Box>
-  );
-};
+const THREE_IMAGE_THUMBNAILS = [
+  {
+    id: 'landscape-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Snowy mountain landscape',
+  },
+  {
+    id: 'landscape-2',
+    url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+    alt: 'Forest and mountain view',
+  },
+  {
+    id: 'landscape-3',
+    url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+    alt: 'Mountain lake view',
+  },
+];
 
 const ChatMessageWithThreeImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'landscape-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Snowy mountain landscape',
-          },
-          {
-            id: 'landscape-2',
-            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-            alt: 'Forest and mountain view',
-          },
-          {
-            id: 'landscape-3',
-            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
-            alt: 'Mountain lake view',
-          },
-        ]}
+        thumbnails={THREE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         Check out these beautiful landscapes!
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {THREE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
 export const ChatMessageWithThreeImages = ChatMessageWithThreeImagesTemplate.bind({});
 ChatMessageWithThreeImages.storyName = 'Chat Message with 3 Images';
 
+const FIVE_IMAGE_THUMBNAILS = [
+  {
+    id: 'mountain-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Mountain landscape',
+  },
+  {
+    id: 'mountain-2',
+    url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
+    alt: 'Mountain and forest view',
+  },
+  {
+    id: 'mountain-3',
+    url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
+    alt: 'Lake with mountains in the background',
+  },
+  {
+    id: 'mountain-4',
+    url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
+    alt: 'Valley and mountain range',
+  },
+  {
+    id: 'mountain-5',
+    url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
+    alt: 'Forest trail landscape',
+  },
+];
+
 const ChatMessageWithFiveImagesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'mountain-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Mountain landscape',
-          },
-          {
-            id: 'mountain-2',
-            url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400',
-            alt: 'Mountain and forest view',
-          },
-          {
-            id: 'mountain-3',
-            url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400',
-            alt: 'Lake with mountains in the background',
-          },
-          {
-            id: 'mountain-4',
-            url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400',
-            alt: 'Valley and mountain range',
-          },
-          {
-            id: 'mountain-5',
-            url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400',
-            alt: 'Forest trail landscape',
-          },
-        ]}
+        thumbnails={FIVE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         Example with 5 images (+2 badge)
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {FIVE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
 export const ChatMessageWithFiveImages = ChatMessageWithFiveImagesTemplate.bind({});
 ChatMessageWithFiveImages.storyName = 'Chat Message with 5 Images';
 
+const SINGLE_IMAGE_THUMBNAILS = [
+  {
+    id: 'single-landscape-1',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+    alt: 'Single mountain landscape',
+  },
+];
+
 const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <ImageStoryContainer>
+    <>
       <ChatMessage
         senderType="self"
-        thumbnails={[
-          {
-            id: 'single-landscape-1',
-            url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-            alt: 'Single mountain landscape',
-          },
-        ]}
+        thumbnails={SINGLE_IMAGE_THUMBNAILS}
         onThumbnailClick={() => {
-          console.log('Thumbnail clicked');
+          setActiveIndex(0);
+          setIsLightBoxOpen(true);
         }}
       >
         ChatMessage with single image
       </ChatMessage>
-    </ImageStoryContainer>
+      <LightBox
+        isOpen={isLightBoxOpen}
+        onDismiss={() => setIsLightBoxOpen(false)}
+        activeIndex={activeIndex}
+        onIndexChange={({ index }) => setActiveIndex(index)}
+      >
+        <LightBoxBody>
+          {SINGLE_IMAGE_THUMBNAILS.map((img) => (
+            <LightBoxItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
+        </LightBoxBody>
+      </LightBox>
+    </>
   );
 };
 
 export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
 ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';
+
+// All steps known upfront — only activeStepIndex advances
+const REASONING_STEPS = [
+  { label: 'Searching Central KYC records...', completedLabel: 'Searched Central KYC records' },
+  { label: 'Initiating KYC verification...', completedLabel: 'Initiated KYC verification' },
+  { label: 'Retrieving documents securely...', completedLabel: 'Retrieved documents' },
+  { label: 'Verifying address details...', completedLabel: 'Verified address details' },
+  { label: 'Completing identity checks...', completedLabel: 'Completed identity checks' },
+];
+
+const ChatMessageWithReasoningTracesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [phase, setPhase] = React.useState<'idle' | 'loading' | 'reasoning' | 'complete' | 'done'>(
+    'idle',
+  );
+  const [visibleTraces, setVisibleTraces] = React.useState<typeof REASONING_STEPS>([]);
+  const [reasoningStatus, setReasoningStatus] = React.useState<'loading' | 'complete'>('loading');
+
+  const runSimulation = React.useCallback(() => {
+    setPhase('loading');
+    setVisibleTraces([]);
+    setReasoningStatus('loading');
+
+    // Step 1: show basic loading text for 2s, then start showing reasoning traces
+    const startReasoning = setTimeout(() => {
+      setPhase('reasoning');
+      let stepIndex = 0;
+
+      const addNextStep = (): void => {
+        setVisibleTraces((prev) => [...prev, REASONING_STEPS[stepIndex]]);
+        stepIndex += 1;
+
+        if (stepIndex < REASONING_STEPS.length) {
+          setTimeout(addNextStep, 900);
+        } else {
+          // Step 3 → 4: all steps added, mark complete → triggers auto-collapse
+          setTimeout(() => {
+            setReasoningStatus('complete');
+            setPhase('complete');
+
+            // Step 5: show final message after collapse
+            setTimeout(() => {
+              setPhase('done');
+            }, 800);
+          }, 700);
+        }
+      };
+
+      setTimeout(addNextStep, 400);
+    }, 2000);
+
+    return () => clearTimeout(startReasoning);
+  }, []);
+
+  const isLoading = phase === 'loading' || phase === 'reasoning';
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="480px">
+      <Box display="flex" justifyContent="flex-end">
+        <ChatMessage senderType="self">Verify my KYC details</ChatMessage>
+      </Box>
+
+      {phase !== 'idle' && (
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={isLoading}
+          loadingText={['Thinking...', 'Processing your request...']}
+          reasoningTraces={visibleTraces.length > 0 ? visibleTraces : undefined}
+          reasoningStatus={reasoningStatus}
+          reasoningTitle="Ray AI thought for 3secs"
+        >
+          {phase === 'done' ? (
+            <Text color="surface.text.gray.normal" size="medium">
+              Your KYC has been verified successfully. All documents are in order and your identity
+              has been confirmed.
+            </Text>
+          ) : undefined}
+        </ChatMessage>
+      )}
+
+      {phase === 'idle' && (
+        <Button size="small" onClick={runSimulation}>
+          Run simulation
+        </Button>
+      )}
+      {phase === 'done' && (
+        <Button size="small" variant="secondary" onClick={runSimulation}>
+          Replay
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export const ChatMessageWithReasoningTraces = ChatMessageWithReasoningTracesTemplate.bind({});
+ChatMessageWithReasoningTraces.storyName = 'Chat Message with Reasoning Traces';
+
+const ChatMessageWithUpfrontReasoningTracesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [phase, setPhase] = React.useState<'idle' | 'running' | 'done'>('idle');
+  const [activeStepIndex, setActiveStepIndex] = React.useState(0);
+  const [reasoningStatus, setReasoningStatus] = React.useState<'loading' | 'complete'>('loading');
+
+  const runSimulation = React.useCallback(() => {
+    setPhase('running');
+    setActiveStepIndex(0);
+    setReasoningStatus('loading');
+
+    let current = 0;
+
+    const advance = (): void => {
+      current += 1;
+      if (current < REASONING_STEPS.length) {
+        setActiveStepIndex(current);
+        setTimeout(advance, 900);
+      } else {
+        setReasoningStatus('complete');
+        setTimeout(() => setPhase('done'), 1200);
+      }
+    };
+
+    setTimeout(advance, 900);
+  }, []);
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="480px">
+      <Box display="flex" justifyContent="flex-end">
+        <ChatMessage senderType="self">Verify my KYC details</ChatMessage>
+      </Box>
+
+      {phase !== 'idle' && (
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={phase === 'running'}
+          loadingText={['Thinking...', 'Processing your request...']}
+          reasoningTraces={REASONING_STEPS}
+          reasoningStatus={reasoningStatus}
+          reasoningTitle="Ray AI thought for 3secs"
+          reasoningActiveStepIndex={phase === 'running' ? activeStepIndex : undefined}
+        >
+          {phase === 'done' ? (
+            <Text color="surface.text.gray.normal" size="medium">
+              Your KYC has been verified successfully. All documents are in order and your identity
+              has been confirmed.
+            </Text>
+          ) : undefined}
+        </ChatMessage>
+      )}
+
+      {phase === 'idle' && (
+        <Button size="small" onClick={runSimulation}>
+          Run simulation
+        </Button>
+      )}
+      {phase === 'done' && (
+        <Button size="small" variant="secondary" onClick={runSimulation}>
+          Replay
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export const ChatMessageWithUpfrontReasoningTraces = ChatMessageWithUpfrontReasoningTracesTemplate.bind(
+  {},
+);
+ChatMessageWithUpfrontReasoningTraces.storyName =
+  'Chat Message with Reasoning Traces (Upfront Steps)';

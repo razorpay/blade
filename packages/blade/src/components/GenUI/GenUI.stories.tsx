@@ -407,7 +407,11 @@ const SimpleGenUITemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element
     <Box>
       <GenUIProvider>
         {componentsToRender && componentsToRender.length > 0 ? (
-          <GenUISchemaRenderer isAnimating={true} components={componentsToRender} />
+          <GenUISchemaRenderer
+            isAnimating={false}
+            animateOptions={{ duration: 300, sep: 'word' }}
+            components={componentsToRender}
+          />
         ) : (
           <Box padding="spacing.5">
             <Text color="surface.text.gray.muted">

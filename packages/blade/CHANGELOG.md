@@ -1,5 +1,38 @@
 # @razorpay/blade
 
+## 12.92.0
+
+### Minor Changes
+
+- 8e349cd0a: feat(blade): update chat message padding
+- 032377573: feat(SideNav): add collapsible state to SideNav
+- 25932a3f4: feat(ChatInput): add onFocus and onBlur
+
+## 12.91.0
+
+### Minor Changes
+
+- e957a0375: feat(blade): added reasoning traces for ChatInput component
+
+  Props added:
+
+  - `reasoningTraces`: array of reasoning traces
+  - `reasoningStatus`: status of the reasoning process
+  - `reasoningTitle`: title of the reasoning traces
+  - `reasoningActiveStepIndex`: index of the active step
+
+## 12.90.0
+
+### Minor Changes
+
+- 22345e5c1: feat(blade): fix donut chart tooltip
+
+## 12.89.1
+
+### Patch Changes
+
+- aa123005f: fix(blade): remove word counting from GenUI TEXT component
+
 ## 12.89.0
 
 ### Minor Changes

@@ -62,6 +62,7 @@ const useChatInput = (
   handleFileInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleFileRemove: (file: BladeFile) => void;
   handlePaste: (event: React.ClipboardEvent<HTMLInputElement>) => void;
+  handleInnerMouseDownCapture: (event: React.MouseEvent) => void;
 } => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const textareaRef = React.useRef<BladeElementRef>(null);
@@ -208,6 +209,17 @@ const useChatInput = (
     [files, setFiles, onFileChange],
   );
 
+  const handleInnerMouseDownCapture = React.useCallback((event: React.MouseEvent): void => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    // Allow normal behavior when clicking directly inside textarea.
+    if (target.closest('textarea')) return;
+
+    // Prevent focus from moving to internal controls (submit/upload/file actions).
+    event.preventDefault();
+  }, []);
+
   return {
     fileInputRef,
     mergedRef,
@@ -226,6 +238,7 @@ const useChatInput = (
     handleFileInputChange,
     handleFileRemove,
     handlePaste,
+    handleInnerMouseDownCapture,
   };
 };
 

@@ -1,6 +1,7 @@
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { FormInputOnEvent } from '~components/Form/FormTypes';
 
 type ChatInputProps = {
   /**
@@ -17,6 +18,16 @@ type ChatInputProps = {
    * Callback fired when the text input value changes
    */
   onChange?: ({ value }: { value: string }) => void;
+
+  /**
+   * Callback fired when the text input receives focus
+   */
+  onFocus?: FormInputOnEvent;
+
+  /**
+   * Callback fired when the text input loses focus
+   */
+  onBlur?: FormInputOnEvent;
 
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
