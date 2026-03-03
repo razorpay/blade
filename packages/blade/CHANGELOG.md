@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.90.0
+
+### Minor Changes
+
+- 22345e5c1: feat(blade): fix donut chart tooltip
+
 ## 12.89.1
 
 ### Patch Changes
