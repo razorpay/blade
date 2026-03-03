@@ -1,5 +1,4 @@
 import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
-import { fireEvent } from '@testing-library/react';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 

@@ -1,10 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { BladeElementRef } from '~utils/types';
-import { size as sizeTokens } from '~tokens/global';
-import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { SideNavContext } from './SideNavContext';
 import {
   classes,
@@ -17,6 +12,11 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
 import type { SideNavContextType, SideNavProps } from './types';
+import type { BladeElementRef } from '~utils/types';
+import { size as sizeTokens } from '~tokens/global';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';

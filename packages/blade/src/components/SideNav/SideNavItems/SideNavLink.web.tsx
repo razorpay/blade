@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+import type { SideNavLinkProps } from '../types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import type { SideNavLinkProps } from '../types';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 import { useFirstRender } from '~utils/useFirstRender';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
