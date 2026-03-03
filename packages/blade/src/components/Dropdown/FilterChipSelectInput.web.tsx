@@ -68,8 +68,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const {
     clearFilterCallbackTriggerer,
     setFilterChipGroupSelectedFilters,
-  } =
-    useFilterChipGroupContext();
+  } = useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
