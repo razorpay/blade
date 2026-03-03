@@ -23,13 +23,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 
-const {
-  COLLAPSED,
-  SHOW_WHEN_COLLAPSED,
-  HIDE_WHEN_COLLAPSED,
-  TRANSITIONING,
-  L1_ITEM_WRAPPER,
-} = classes;
+const { COLLAPSED, SHOW_WHEN_COLLAPSED, HIDE_WHEN_COLLAPSED, TRANSITIONING, L1_ITEM_WRAPPER } =
+  classes;
 
 const MobileL1Container = styled(BaseBox)(() => {
   return {
@@ -39,7 +34,7 @@ const MobileL1Container = styled(BaseBox)(() => {
   };
 });
 
-const StyledL1Menu = styled(BaseBox)((props) => {
+const StyledL1Menu = styled(BaseBox)<{ $isSideNavExpandable: boolean }>((props) => {
   const quick = makeMotionTime(props.theme.motion.duration.quick);
   const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
@@ -47,32 +42,39 @@ const StyledL1Menu = styled(BaseBox)((props) => {
   const l1Expand = `width ${xmoderate} ${easing.entrance}`;
   const l1Collapse = `width ${quick} ${easing.exit}`;
 
+  const textVisibilityProps = props.$isSideNavExpandable
+    ? {}
+    : {
+        [`.${SHOW_WHEN_COLLAPSED}`]: {
+          display: 'none',
+        },
+        [`&.${COLLAPSED}`]: {
+          width: makeSize(COLLAPSED_L1_WIDTH),
+          transition: l1Collapse,
+          [`& > .${L1_ITEM_WRAPPER}`]: {
+            padding: `${makeSpace(props.theme.spacing[3])} ${makeSpace(props.theme.spacing[3])}`,
+          },
+          [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
+            display: 'none',
+          },
+          [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
+            display: 'initial',
+          },
+        },
+      };
+
   return {
     width: '100%',
-    transition: l1Expand,
+    // the overall sidenav expands and collapses in this case. No need transition here
+    transition: props.$isSideNavExpandable ? 'none' : l1Expand,
     [`& > .${L1_ITEM_WRAPPER}`]: {
       padding: makeSpace(props.theme.spacing[3]),
     },
-    [`.${SHOW_WHEN_COLLAPSED}`]: {
-      display: 'none',
-    },
-    [`&.${COLLAPSED}`]: {
-      width: makeSize(COLLAPSED_L1_WIDTH),
-      transition: l1Collapse,
-      [`& > .${L1_ITEM_WRAPPER}`]: {
-        padding: `${makeSpace(props.theme.spacing[3])} ${makeSpace(props.theme.spacing[3])}`,
-      },
-      [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
-        display: 'none',
-      },
-      [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
-        display: 'initial',
-      },
-    },
+    ...textVisibilityProps,
   };
 });
 
-const StyledSideNavContainer = styled(BaseBox)((props) => {
+const StyledSideNavContainer = styled(BaseBox)<{ $isSideNavExpandable: boolean }>((props) => {
   const quick = makeMotionTime(props.theme.motion.duration.quick);
   const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
@@ -80,11 +82,35 @@ const StyledSideNavContainer = styled(BaseBox)((props) => {
   const sideNavExpand = `width ${xmoderate} ${easing.entrance}`;
   const sideNavCollapse = `width ${quick} ${easing.exit}`;
 
+  if (!props.$isSideNavExpandable) {
+    return {};
+  }
+
   return {
     transition: sideNavExpand,
     [`&.${COLLAPSED}`]: {
       width: makeSize(COLLAPSED_L1_WIDTH),
       transition: sideNavCollapse,
+      [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
+        opacity: '0',
+        pointerEvents: 'none',
+        transition: `opacity ${quick} ${easing.exit}`,
+      },
+      [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
+        opacity: '1',
+        pointerEvents: 'auto',
+        transition: `opacity ${quick} ${easing.entrance}`,
+      },
+    },
+    [`.${SHOW_WHEN_COLLAPSED}`]: {
+      opacity: '0',
+      pointerEvents: 'none',
+      transition: `opacity ${quick} ${easing.exit}`,
+    },
+    [`.${HIDE_WHEN_COLLAPSED}`]: {
+      opacity: '1',
+      pointerEvents: 'auto',
+      transition: `opacity ${quick} ${easing.entrance}`,
     },
   };
 });
@@ -353,6 +379,7 @@ const _SideNav = (
         </>
       ) : (
         <StyledSideNavContainer
+          $isSideNavExpandable={typeof _isExpanded !== 'undefined'}
           ref={ref as never}
           className={isSideNavFullyCollapsed ? COLLAPSED : ''}
           position="fixed"
@@ -403,6 +430,7 @@ const _SideNav = (
                 isL1Hovered: effectiveIsL1Hovered,
                 isTransitioning,
               })}
+              $isSideNavExpandable={typeof _isExpanded !== 'undefined'}
               position="absolute"
               display="flex"
               flexDirection="column"

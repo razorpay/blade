@@ -614,6 +614,7 @@ export const BasicFourItems: StoryFn<typeof SideNav> = ({ ...args }) => {
               display="flex"
               alignItems="center"
               justifyContent={isBannerExpandedUI ? 'space-between' : 'center'}
+              overflow="hidden"
             >
               {isBannerExpandedUI ? (
                 <Box display="flex" alignItems="center" gap="spacing.3">
