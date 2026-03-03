@@ -52,6 +52,21 @@ if (shouldSkipBuild) {
   }
 }
 
+const dashboardNodeModulesDir = path.join(dashboardPlaygroundDir, 'node_modules');
+if (!fs.existsSync(dashboardNodeModulesDir)) {
+  console.log('Installing blade-dashboard-template dependencies...');
+  try {
+    execSync('yarn install', {
+      cwd: dashboardPlaygroundDir,
+      stdio: 'inherit',
+    });
+    console.log('✓ Dependencies installed successfully');
+  } catch (error) {
+    console.error('✗ Failed to install dashboard playground dependencies:', error.message);
+    process.exit(1);
+  }
+}
+
 // Build the dashboard playground
 console.log('Building blade-dashboard-template...');
 try {
