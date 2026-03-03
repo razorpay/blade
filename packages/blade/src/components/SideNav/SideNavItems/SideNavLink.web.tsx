@@ -277,6 +277,9 @@ const SideNavLink = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
+  const shouldHideActiveL1ItemWithoutIconOnFullCollapse =
+    currentLevel === 1 && !icon && isSideNavFullyCollapsed;
+
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, title }}>
       {isL3Trigger ? (
@@ -306,7 +309,9 @@ const SideNavLink = ({
           >
             <TooltipifyComponent tooltip={tooltip}>
               <BaseBox
-                className={STYLED_NAV_LINK}
+                className={`${STYLED_NAV_LINK} ${
+                  shouldHideActiveL1ItemWithoutIconOnFullCollapse ? HIDE_WHEN_COLLAPSED : ''
+                }`}
                 as={as ?? 'a'}
                 to={href}
                 href={as ? undefined : href}
