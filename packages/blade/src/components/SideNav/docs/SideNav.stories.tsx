@@ -595,6 +595,7 @@ export const BasicFourItems: StoryFn<typeof SideNav> = ({ ...args }) => {
     <Box minHeight="500px">
       <SideNav
         {...args}
+        backgroundColor="surface.background.gray.intense"
         isExpanded={isSideNavFullyExpanded}
         onExpandChange={({ isExpanded }) => {
           setIsSideNavFullyExpanded(isExpanded);

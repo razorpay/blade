@@ -157,6 +157,7 @@ const _SideNav = (
     onExpandChange,
     onExpandTransitionEnd,
     banner,
+    backgroundColor = 'surface.background.gray.moderate',
     testID,
     isExpanded: _isExpanded,
     ...rest
@@ -355,7 +356,7 @@ const _SideNav = (
           ref={ref as never}
           className={isSideNavFullyCollapsed ? COLLAPSED : ''}
           position="fixed"
-          backgroundColor="surface.background.gray.moderate"
+          backgroundColor={backgroundColor}
           height="100%"
           top="spacing.0"
           left="spacing.0"
@@ -384,7 +385,7 @@ const _SideNav = (
             <StyledL2PortalContainer
               position="absolute"
               display={isSideNavFullyCollapsed ? 'none' : 'block'}
-              backgroundColor="surface.background.gray.moderate"
+              backgroundColor={backgroundColor}
               height="100%"
               width="100%"
               top="spacing.0"
@@ -406,7 +407,7 @@ const _SideNav = (
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
-              backgroundColor="surface.background.gray.moderate"
+              backgroundColor={backgroundColor}
               height="100%"
               overflow="hidden"
               top="spacing.0"

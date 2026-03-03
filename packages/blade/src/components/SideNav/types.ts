@@ -1,11 +1,17 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { Theme } from '~components/BladeProvider';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
+
+type SideNavBackgroundColor = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
+>}`;
 
 type SideNavProps = {
   /**
@@ -65,6 +71,12 @@ type SideNavProps = {
    * **IMPORTANT** Avoid adding promotional items in this
    */
   banner?: React.ReactElement;
+  /**
+   * Sets background color of the SideNav surface.
+   *
+   * @default `surface.background.gray.moderate`
+   */
+  backgroundColor?: SideNavBackgroundColor;
 } & StyledPropsBlade &
   TestID;
 
