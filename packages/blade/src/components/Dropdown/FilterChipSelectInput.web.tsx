@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
 import React, { useEffect } from 'react';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
+import type { DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -65,7 +65,10 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
+  const {
+    clearFilterCallbackTriggerer,
+    setFilterChipGroupSelectedFilters,
+  } =
     useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
@@ -96,7 +99,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const savedIndices = listViewSelectedFilters[label] as unknown as number[];
+        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(savedIndices);
         const inputValue = savedIndices.map((selectionIndex) => options[selectionIndex].value);
         setUncontrolledInputValue(inputValue);
@@ -105,7 +108,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         );
       }
     } else if (listViewSelectedFilters[label]) {
-      const savedIndices = listViewSelectedFilters[label] as unknown as number[];
+      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(savedIndices);
       // Sync selected indices when controlled value changes or on first render with options loaded
     } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
