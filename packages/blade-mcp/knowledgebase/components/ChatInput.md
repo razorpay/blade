@@ -39,6 +39,12 @@ type ChatInputProps = {
   /** Callback fired when the text input value changes */
   onChange?: ({ value }: { value: string }) => void;
 
+  /** Callback fired when the text input receives focus */
+  onFocus?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+
+  /** Callback fired when the text input loses focus */
+  onBlur?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
    * Receives the current text value and the list of attached files.
