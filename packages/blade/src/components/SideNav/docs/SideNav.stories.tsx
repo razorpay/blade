@@ -576,7 +576,7 @@ const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
 
 export const Default = SideNavTemplate.bind({});
 
-export const BasicFourItems: StoryFn<typeof SideNav> = ({ ...args }) => {
+export const CollapsibleSideNav: StoryFn<typeof SideNav> = ({ ...args }) => {
   const [isSideNavFullyExpanded, setIsSideNavFullyExpanded] = React.useState(true);
   const [isBannerExpandedUI, setIsBannerExpandedUI] = React.useState(true);
   const handleSideNavToggle = (): void => {

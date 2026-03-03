@@ -312,7 +312,7 @@ const _SideNav = (
       isSideNavCollapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [effectiveIsL1Collapsed, effectiveIsL1Hovered, isSideNavCollapsed],
+    [effectiveIsL1Collapsed, effectiveIsL1Hovered, isSideNavCollapsed, isMobile],
   );
 
   React.useEffect(() => {
