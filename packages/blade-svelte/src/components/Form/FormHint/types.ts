@@ -40,4 +40,3 @@ export type FormHintProps = {
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
-

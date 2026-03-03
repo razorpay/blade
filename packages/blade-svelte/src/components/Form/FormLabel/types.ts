@@ -55,4 +55,3 @@ export type FormLabelProps = {
    */
   accessibilityText?: string;
 };
-

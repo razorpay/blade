@@ -15,4 +15,3 @@ export type CharacterCounterProps = {
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
-

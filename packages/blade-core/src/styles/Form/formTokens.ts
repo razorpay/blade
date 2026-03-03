@@ -95,4 +95,3 @@ export type FormSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type LabelPosition = 'top' | 'left';
 export type NecessityIndicator = 'required' | 'optional' | 'none';
 export type ValidationState = 'none' | 'error' | 'success';
-

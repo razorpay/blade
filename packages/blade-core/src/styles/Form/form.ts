@@ -23,10 +23,7 @@ export type FormHintOptions = {
 export function getFormLabelClasses(options: FormLabelOptions): string {
   const { position, size } = options;
 
-  const classes = [
-    styles.formLabel,
-    styles[`formLabel--${position}`],
-  ];
+  const classes = [styles.formLabel, styles[`formLabel--${position}`]];
 
   if (position === 'left') {
     classes.push(styles[`formLabel--leftWidth-${size}`]);
@@ -93,10 +90,7 @@ export function getHintIconClasses(): string {
  * Get CSS classes for character counter
  */
 export function getCharacterCounterClasses(size: FormSize, hasMarginRight?: boolean): string {
-  const classes = [
-    styles.characterCounter,
-    styles[`characterCounter--marginTop-${size}`],
-  ];
+  const classes = [styles.characterCounter, styles[`characterCounter--marginTop-${size}`]];
 
   if (hasMarginRight) {
     classes.push(styles['characterCounter--marginRight']);
@@ -108,7 +102,7 @@ export function getCharacterCounterClasses(size: FormSize, hasMarginRight?: bool
 /**
  * Get template classes for use in Svelte components
  */
-export function getFormTemplateClasses() {
+export function getFormTemplateClasses(): Record<string, string> {
   return {
     formLabel: styles.formLabel,
     labelTextContainer: styles.labelTextContainer,
@@ -119,4 +113,3 @@ export function getFormTemplateClasses() {
     characterCounter: styles.characterCounter,
   };
 }
-
