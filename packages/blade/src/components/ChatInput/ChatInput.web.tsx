@@ -74,6 +74,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     handleFileInputChange,
     handleFileRemove,
     handlePaste,
+    handleInnerMouseDownCapture,
   } = useChatInput(
     {
       value,
@@ -199,7 +200,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      <BaseBox position="relative" zIndex={1}>
+      <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
           ref={mergedRef}
           as="textarea"

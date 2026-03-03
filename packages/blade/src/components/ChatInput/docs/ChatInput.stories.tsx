@@ -398,15 +398,13 @@ const getMockResponse = (userMessage: string): MockResponseResult => {
   if (/integrate|integration|sdk|api key/i.test(lower)) {
     return {
       type: 'text',
-      text:
-        'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
+      text: 'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
     };
   }
 
   return {
     type: 'text',
-    text:
-      "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
+    text: "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
   };
 };
 
@@ -725,6 +723,8 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
+        onFocus={() => console.log('Focus')}
+        onBlur={() => console.log('Blur')}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onFileReupload={({ file }) => {
           console.log('Re-upload clicked for:', file.name);
