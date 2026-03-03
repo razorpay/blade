@@ -42,6 +42,10 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     maxWidth,
     thumbnails,
     onThumbnailClick,
+    reasoningTraces,
+    reasoningStatus,
+    reasoningTitle,
+    reasoningActiveStepIndex,
     ...props
   }: ChatMessageProps,
   ref: React.Ref<BladeElementRef>,
@@ -94,6 +98,10 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
         isLoading={isLoading}
         footerActions={footerActions}
         isChildText={shouldWrapInText}
+        reasoningTraces={reasoningTraces}
+        reasoningStatus={reasoningStatus}
+        reasoningTitle={reasoningTitle}
+        reasoningActiveStepIndex={reasoningActiveStepIndex}
       />
     );
 

@@ -854,3 +854,171 @@ const ChatMessageWithSingleImageTemplate: StoryFn<typeof ChatMessage> = () => {
 
 export const ChatMessageWithSingleImage = ChatMessageWithSingleImageTemplate.bind({});
 ChatMessageWithSingleImage.storyName = 'Chat Message with Single Image';
+
+// All steps known upfront — only activeStepIndex advances
+const REASONING_STEPS = [
+  { label: 'Searching Central KYC records...', completedLabel: 'Searched Central KYC records' },
+  { label: 'Initiating KYC verification...', completedLabel: 'Initiated KYC verification' },
+  { label: 'Retrieving documents securely...', completedLabel: 'Retrieved documents' },
+  { label: 'Verifying address details...', completedLabel: 'Verified address details' },
+  { label: 'Completing identity checks...', completedLabel: 'Completed identity checks' },
+];
+
+const ChatMessageWithReasoningTracesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [phase, setPhase] = React.useState<'idle' | 'loading' | 'reasoning' | 'complete' | 'done'>(
+    'idle',
+  );
+  const [visibleTraces, setVisibleTraces] = React.useState<typeof REASONING_STEPS>([]);
+  const [reasoningStatus, setReasoningStatus] = React.useState<'loading' | 'complete'>('loading');
+
+  const runSimulation = React.useCallback(() => {
+    setPhase('loading');
+    setVisibleTraces([]);
+    setReasoningStatus('loading');
+
+    // Step 1: show basic loading text for 2s, then start showing reasoning traces
+    const startReasoning = setTimeout(() => {
+      setPhase('reasoning');
+      let stepIndex = 0;
+
+      const addNextStep = (): void => {
+        setVisibleTraces((prev) => [...prev, REASONING_STEPS[stepIndex]]);
+        stepIndex += 1;
+
+        if (stepIndex < REASONING_STEPS.length) {
+          setTimeout(addNextStep, 900);
+        } else {
+          // Step 3 → 4: all steps added, mark complete → triggers auto-collapse
+          setTimeout(() => {
+            setReasoningStatus('complete');
+            setPhase('complete');
+
+            // Step 5: show final message after collapse
+            setTimeout(() => {
+              setPhase('done');
+            }, 800);
+          }, 700);
+        }
+      };
+
+      setTimeout(addNextStep, 400);
+    }, 2000);
+
+    return () => clearTimeout(startReasoning);
+  }, []);
+
+  const isLoading = phase === 'loading' || phase === 'reasoning';
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="480px">
+      <Box display="flex" justifyContent="flex-end">
+        <ChatMessage senderType="self">Verify my KYC details</ChatMessage>
+      </Box>
+
+      {phase !== 'idle' && (
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={isLoading}
+          loadingText={['Thinking...', 'Processing your request...']}
+          reasoningTraces={visibleTraces.length > 0 ? visibleTraces : undefined}
+          reasoningStatus={reasoningStatus}
+          reasoningTitle="Ray AI thought for 3secs"
+        >
+          {phase === 'done' ? (
+            <Text color="surface.text.gray.normal" size="medium">
+              Your KYC has been verified successfully. All documents are in order and your identity
+              has been confirmed.
+            </Text>
+          ) : undefined}
+        </ChatMessage>
+      )}
+
+      {phase === 'idle' && (
+        <Button size="small" onClick={runSimulation}>
+          Run simulation
+        </Button>
+      )}
+      {phase === 'done' && (
+        <Button size="small" variant="secondary" onClick={runSimulation}>
+          Replay
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export const ChatMessageWithReasoningTraces = ChatMessageWithReasoningTracesTemplate.bind({});
+ChatMessageWithReasoningTraces.storyName = 'Chat Message with Reasoning Traces';
+
+const ChatMessageWithUpfrontReasoningTracesTemplate: StoryFn<typeof ChatMessage> = () => {
+  const [phase, setPhase] = React.useState<'idle' | 'running' | 'done'>('idle');
+  const [activeStepIndex, setActiveStepIndex] = React.useState(0);
+  const [reasoningStatus, setReasoningStatus] = React.useState<'loading' | 'complete'>('loading');
+
+  const runSimulation = React.useCallback(() => {
+    setPhase('running');
+    setActiveStepIndex(0);
+    setReasoningStatus('loading');
+
+    let current = 0;
+
+    const advance = (): void => {
+      current += 1;
+      if (current < REASONING_STEPS.length) {
+        setActiveStepIndex(current);
+        setTimeout(advance, 900);
+      } else {
+        setReasoningStatus('complete');
+        setTimeout(() => setPhase('done'), 1200);
+      }
+    };
+
+    setTimeout(advance, 900);
+  }, []);
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="480px">
+      <Box display="flex" justifyContent="flex-end">
+        <ChatMessage senderType="self">Verify my KYC details</ChatMessage>
+      </Box>
+
+      {phase !== 'idle' && (
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={phase === 'running'}
+          loadingText={['Thinking...', 'Processing your request...']}
+          reasoningTraces={REASONING_STEPS}
+          reasoningStatus={reasoningStatus}
+          reasoningTitle="Ray AI thought for 3secs"
+          reasoningActiveStepIndex={phase === 'running' ? activeStepIndex : undefined}
+        >
+          {phase === 'done' ? (
+            <Text color="surface.text.gray.normal" size="medium">
+              Your KYC has been verified successfully. All documents are in order and your identity
+              has been confirmed.
+            </Text>
+          ) : undefined}
+        </ChatMessage>
+      )}
+
+      {phase === 'idle' && (
+        <Button size="small" onClick={runSimulation}>
+          Run simulation
+        </Button>
+      )}
+      {phase === 'done' && (
+        <Button size="small" variant="secondary" onClick={runSimulation}>
+          Replay
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export const ChatMessageWithUpfrontReasoningTraces = ChatMessageWithUpfrontReasoningTracesTemplate.bind(
+  {},
+);
+ChatMessageWithUpfrontReasoningTraces.storyName =
+  'Chat Message with Reasoning Traces (Upfront Steps)';
