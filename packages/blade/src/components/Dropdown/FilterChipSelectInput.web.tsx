@@ -106,6 +106,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         setFilterChipGroupSelectedFilters((prev) =>
           prev.includes(label) ? prev : [...prev, label],
         );
+      } else {
+        setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
       const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
