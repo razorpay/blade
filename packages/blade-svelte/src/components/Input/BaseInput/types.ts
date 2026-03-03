@@ -1,6 +1,6 @@
 import type { Snippet, Component } from 'svelte';
-import type { IconProps } from '../../Icons/types';
 import type { AriaRoles } from '@razorpay/blade-core/utils';
+import type { IconProps } from '../../Icons/types';
 
 // Icon component type
 export type IconComponent = Component<IconProps>;
