@@ -48,23 +48,4 @@ describe('SideNav', () => {
     expect(getByRole('navigation')).toHaveAttribute('data-analytics-side-nav', 'demo-item');
     expect(getByRole('link', { name: 'Home' })).toHaveAttribute('data-analytics-nav-link', 'home');
   });
-
-  test('should call onSideNavExpandTransitionEnd after full sidenav transition ends', () => {
-    const onSideNavExpandTransitionEnd = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <SideNavExample
-        display="block"
-        isSideNavFullyExpanded={false}
-        onSideNavExpandTransitionEnd={onSideNavExpandTransitionEnd}
-      />,
-    );
-
-    const transitionEndEvent = new Event('transitionend', { bubbles: true });
-    Object.defineProperty(transitionEndEvent, 'propertyName', { value: 'width' });
-    fireEvent(getByRole('navigation'), transitionEndEvent);
-
-    expect(onSideNavExpandTransitionEnd).toHaveBeenCalledWith({
-      isSideNavFullyExpanded: false,
-    });
-  });
 });

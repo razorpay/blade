@@ -41,18 +41,14 @@ type SideNavProps = {
    *
    * **Only applicable in desktop**
    */
-  onSideNavExpandChange?: ({ isSideNavFullyExpanded }: { isSideNavFullyExpanded: boolean }) => void;
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   /**
    * Callback that gets triggered when controlled full expand/collapse transition ends.
    *
    * **Only applicable in desktop**
    */
-  onSideNavExpandTransitionEnd?: ({
-    isSideNavFullyExpanded,
-  }: {
-    isSideNavFullyExpanded: boolean;
-  }) => void;
+  onExpandTransitionEnd?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   /**
    * **Only applicable in desktop**
@@ -61,7 +57,7 @@ type SideNavProps = {
    * - `true` (default): existing behavior with hover-based temporary expansion.
    * - `false`: keeps SideNav collapsed and disables hover/focus-based expansion.
    */
-  isSideNavFullyExpanded?: boolean;
+  isExpanded?: boolean;
 
   /**
    * Banner slot for usecases like adding Activation Panel

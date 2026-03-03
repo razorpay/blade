@@ -103,7 +103,7 @@ export default {
     },
   },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/settings/user/home'] })] as unknown,
+  decorators: [StoryRouter(undefined, { initialEntries: ['/app/dashboard'] })] as unknown,
 } as Meta<typeof SideNav>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -595,15 +595,15 @@ export const BasicFourItems: StoryFn<typeof SideNav> = ({ ...args }) => {
     <Box minHeight="500px">
       <SideNav
         {...args}
-        isSideNavFullyExpanded={isSideNavFullyExpanded}
-        onSideNavExpandChange={({ isSideNavFullyExpanded }) => {
-          setIsSideNavFullyExpanded(isSideNavFullyExpanded);
-          if (isSideNavFullyExpanded) {
+        isExpanded={isSideNavFullyExpanded}
+        onExpandChange={({ isExpanded }) => {
+          setIsSideNavFullyExpanded(isExpanded);
+          if (isExpanded) {
             setIsBannerExpandedUI(true);
           }
         }}
-        onSideNavExpandTransitionEnd={({ isSideNavFullyExpanded }) => {
-          if (!isSideNavFullyExpanded) {
+        onExpandTransitionEnd={({ isExpanded }) => {
+          if (!isExpanded) {
             setIsBannerExpandedUI(false);
           }
         }}
@@ -655,7 +655,7 @@ export const BasicFourItems: StoryFn<typeof SideNav> = ({ ...args }) => {
           </SideNavSection>
         </SideNavBody>
       </SideNav>
-      <Box marginLeft={{ base: 'spacing.0', m: '300px' }} padding="spacing.4" />
+      <Box marginLeft={{ base: 'spacing.0', m: '240px' }} padding="spacing.4" />
     </Box>
   );
 };

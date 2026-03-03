@@ -154,11 +154,11 @@ const _SideNav = (
     isOpen,
     onDismiss,
     onVisibleLevelChange,
-    onSideNavExpandChange,
-    onSideNavExpandTransitionEnd,
+    onExpandChange,
+    onExpandTransitionEnd,
     banner,
     testID,
-    isSideNavFullyExpanded: _isSideNavFullyExpanded,
+    isExpanded: _isExpanded,
     ...rest
   }: SideNavProps,
   ref: React.Ref<BladeElementRef>,
@@ -176,7 +176,7 @@ const _SideNav = (
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
 
   const isMobile = useIsMobile();
-  const isSideNavFullyCollapsed = _isSideNavFullyExpanded === false;
+  const isSideNavFullyCollapsed = _isExpanded === false;
 
   const effectiveIsL1Collapsed = isMobile
     ? isMobileL2Open
@@ -315,9 +315,9 @@ const _SideNav = (
 
     if (prevIsSideNavFullyCollapsed !== isSideNavFullyCollapsed) {
       startL1Transition();
-      onSideNavExpandChange?.({ isSideNavFullyExpanded: !isSideNavFullyCollapsed });
+      onExpandChange?.({ isExpanded: !isSideNavFullyCollapsed });
     }
-  }, [isMobile, isSideNavFullyCollapsed, onSideNavExpandChange, startL1Transition]);
+  }, [isMobile, isSideNavFullyCollapsed, onExpandChange, startL1Transition]);
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -374,8 +374,8 @@ const _SideNav = (
               return;
             }
 
-            onSideNavExpandTransitionEnd?.({
-              isSideNavFullyExpanded: !isSideNavFullyCollapsed,
+            onExpandTransitionEnd?.({
+              isExpanded: !isSideNavFullyCollapsed,
             });
           }}
         >
