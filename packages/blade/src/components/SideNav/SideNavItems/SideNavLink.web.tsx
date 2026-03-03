@@ -4,11 +4,14 @@ import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+import type { SideNavLinkProps } from '../types';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
 import { useFirstRender } from '~utils/useFirstRender';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
@@ -16,9 +19,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import type { SideNavLinkProps } from '../types';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -86,6 +87,8 @@ const NavLinkIconTitle = ({
 > & {
   isL1Item: boolean;
 }): React.ReactElement => {
+  const { containerRef, textRef } = useTruncationTitle({ content: title });
+
   return (
     <Box width="100%" textAlign="left">
       <Box display="flex" justifyContent="space-between" width="100%">
@@ -95,17 +98,20 @@ const NavLinkIconTitle = ({
               <Icon size="medium" color="currentColor" />
             </BaseBox>
           ) : null}
-          <BaseText
-            truncateAfterLines={1}
-            color="currentColor"
-            fontWeight={isActive ? 'semibold' : 'regular'}
-            fontSize={100}
-            lineHeight={100}
-            as="p"
-            className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
-          >
-            {title}
-          </BaseText>
+          <Box ref={containerRef as never} flex="1" minWidth="spacing.0">
+            <BaseText
+              ref={textRef as never}
+              truncateAfterLines={1}
+              color="currentColor"
+              fontWeight={isActive ? 'semibold' : 'regular'}
+              fontSize={100}
+              lineHeight={100}
+              as="p"
+              className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
+            >
+              {title}
+            </BaseText>
+          </Box>
           {titleSuffix ? (
             <BaseBox display="flex" alignItems="center">
               {titleSuffix}
