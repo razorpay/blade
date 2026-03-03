@@ -23,8 +23,13 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 
-const { COLLAPSED, SHOW_WHEN_COLLAPSED, HIDE_WHEN_COLLAPSED, TRANSITIONING, L1_ITEM_WRAPPER } =
-  classes;
+const {
+  COLLAPSED,
+  SHOW_WHEN_COLLAPSED,
+  HIDE_WHEN_COLLAPSED,
+  TRANSITIONING,
+  L1_ITEM_WRAPPER,
+} = classes;
 
 const MobileL1Container = styled(BaseBox)(() => {
   return {
