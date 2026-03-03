@@ -34,6 +34,7 @@
     onClick,
     onInput,
     onKeyDown,
+    onSubmit,
   }: StyledBaseInputProps = $props();
 
   // Reference to the input element
@@ -149,6 +150,10 @@
   }
 
   function handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      const target = event.target as HTMLInputElement;
+      onSubmit?.({ name, value: target.value });
+    }
     onKeyDown?.({
       name,
       key: event.key,

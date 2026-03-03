@@ -65,6 +65,7 @@
     onClick,
     onInput,
     onKeyDown,
+    onSubmit,
     ...rest
   }: BaseInputProps = $props();
 
@@ -289,6 +290,7 @@
           onClick={handleClick}
           onInput={handleInput}
           onKeyDown={handleKeyDown}
+          {onSubmit}
         />
 
         <!-- Trailing Visuals -->

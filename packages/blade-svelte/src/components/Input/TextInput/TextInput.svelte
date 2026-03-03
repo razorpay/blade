@@ -10,7 +10,7 @@
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { hintMarginTop } from '@razorpay/blade-core/styles';
   import { MetaConstants } from '@razorpay/blade-core/utils';
-  import { formatValue, stripPatternCharacters, isUserCharacter } from './useFormattedInput';
+  import { createFormattedInputState } from './useFormattedInput.svelte';
 
   let {
     label,
@@ -38,6 +38,7 @@
     autoCapitalize,
     testID,
     size = 'medium',
+    icon,
     leadingIcon,
     trailingIcon,
     type = 'text',
@@ -57,58 +58,62 @@
     onBlur,
     onClick,
     onKeyDown,
+    onSubmit,
   }: TextInputProps = $props();
 
-  // Reference to BaseInput
-  let baseInputRef: BaseInput | undefined = $state();
-
-  // Internal state for clear button visibility
-  let shouldShowClearButton = $state(false);
-
-  // Formatted input state
-  let formattedValue = $state('');
-  let inputElement: HTMLInputElement | null = null;
-  let cursorInfo: { position?: number; endOfSection?: boolean } = {};
-
-  // Track if we're currently processing user input
-  let isProcessingInput = false;
-
-  // Initialize and sync formatted value
-  // Only update when value changes from external source (not from user typing)
+  // Warn about deprecated icon prop
   $effect(() => {
-    if (format && !isProcessingInput) {
-      const initial = value ?? defaultValue ?? '';
-      const raw = stripPatternCharacters(initial);
-      const newFormatted = formatValue(raw, format);
-      
-      // Only update if the formatted result is different
-      if (newFormatted !== formattedValue) {
-        formattedValue = newFormatted;
+    if (icon) {
+      console.warn(
+        '[Blade: TextInput] The `icon` prop is deprecated. Use `leading` instead.',
+      );
+    }
+  });
+
+  // Validate format pattern in dev mode
+  $effect(() => {
+    if (format) {
+      const hasAlphanumeric = /[a-zA-Z0-9]/.test(format);
+      if (hasAlphanumeric) {
+        throw new Error(
+          `[Blade: TextInput] Invalid format "${format}". Only # and special characters are allowed — no letters or numbers.`,
+        );
       }
     }
   });
 
-  // Update clear button visibility
+  // Stable unique ID: use name if provided, else generate one at component init
+  const instanceId = name ?? `textinput-${Math.random().toString(36).slice(2, 9)}`;
+
+  // Reference to BaseInput
+  let baseInputRef: BaseInput | undefined = $state();
+
+  // Internal clear-button visibility
+  let shouldShowClearButton = $state(false);
+
+  // Formatting state — delegates all format logic to the shared utility
+  const formatting = createFormattedInputState({ format, onChange, value, defaultValue });
+
+  // Derived values
+  const inputValue = $derived(format ? formatting.formattedValue : value);
+  const effectiveMaxCharacters = $derived(format ? formatting.maxLength : maxCharacters);
+
+  // Sync clear button visibility whenever inputValue or showClearButton changes
   $effect(() => {
-    const currentValue = format ? formattedValue : (value ?? defaultValue);
-    shouldShowClearButton = Boolean(showClearButton && currentValue);
+    shouldShowClearButton = Boolean(showClearButton && (inputValue ?? defaultValue));
   });
 
-  // Computed values
-  const effectiveMaxCharacters = $derived(format ? format.length : maxCharacters);
-  const inputValue = $derived(format ? formattedValue : value);
-
-  // Determine leading/trailing icons from leading/trailing props
-  const _leadingIcon = $derived.by(() => {
+  // Resolve leadingIcon: explicit prop > deprecated icon > leading if it's a component
+  const _leadingIcon = $derived.by((): IconComponent | undefined => {
     if (leadingIcon) return leadingIcon;
-    // Check if leading is an icon component (has name property typical of components)
+    if (icon) return icon;
     if (leading && typeof leading === 'function' && 'name' in leading) {
       return leading as IconComponent;
     }
     return undefined;
   });
 
-  const _trailingIcon = $derived.by(() => {
+  const _trailingIcon = $derived.by((): IconComponent | undefined => {
     if (trailingIcon) return trailingIcon;
     if (trailing && typeof trailing === 'function' && 'name' in trailing) {
       return trailing as IconComponent;
@@ -116,121 +121,21 @@
     return undefined;
   });
 
-  // Check if leading/trailing are custom elements (snippets)
-  const hasLeadingInteractionElement = $derived(
-    !_leadingIcon && leading && typeof leading === 'function'
-  );
-  const hasTrailingInteractionElement = $derived(
-    !_trailingIcon && trailing && typeof trailing === 'function'
-  );
-
-  // Format validation
-  $effect(() => {
-    if (format && typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      const hasAlphanumeric = /[a-zA-Z0-9]/.test(format);
-      if (hasAlphanumeric) {
-        console.error(
-          `[Blade: TextInput] Invalid format "${format}". Only # and special characters allowed, no letters/numbers.`
-        );
-      }
-    }
-  });
-
-  // Handle formatted input change
-  function handleFormattedChange(event: FormInputOnEvent): void {
-    if (!format) {
-      handleOnChange(event);
-      return;
-    }
-
-    // Mark that we're processing user input to prevent effect from interfering
-    isProcessingInput = true;
-
-    const inputVal = event.value ?? '';
-    const currentValue = formattedValue;
-    const cursorPosition = inputElement?.selectionStart ?? 0;
-    const didDelete = inputVal.length < currentValue.length;
-
-    cursorInfo.position = cursorPosition;
-
-    let newRawValue = stripPatternCharacters(inputVal);
-
-    // Handle delimiter deletion
-    if (didDelete) {
-      const deletedChar = currentValue[cursorPosition] ?? '';
-      const deletedDelimiter = !isUserCharacter(deletedChar);
-
-      if (deletedDelimiter) {
-        const beforeCursor = inputVal.substring(0, cursorPosition);
-        const afterCursor = inputVal.substring(cursorPosition);
-        const rawBefore = stripPatternCharacters(beforeCursor);
-        const rawAfter = stripPatternCharacters(afterCursor);
-
-        newRawValue = rawBefore.slice(0, -1) + rawAfter;
-        cursorInfo.position = beforeCursor.replace(/([\d\w]+)[^\dA-Za-z]+$/, '$1').length - 1;
-      }
-    }
-
-    const newFormattedValue = formatValue(newRawValue, format);
-    cursorInfo.endOfSection = false;
-
-    // Handle cursor positioning when typing
-    if (!didDelete) {
-      const nextChar = newFormattedValue[cursorPosition];
-      const nextIsDelimiter = nextChar ? !isUserCharacter(nextChar) : false;
-
-      const remainingText = newFormattedValue.substring(cursorPosition);
-      const nextUserCharIndex = remainingText.search(/[\dA-Za-z]/);
-      const hasMoreUserChars = nextUserCharIndex !== -1;
-
-      cursorInfo.endOfSection = nextIsDelimiter && !hasMoreUserChars;
-
-      if (nextIsDelimiter && hasMoreUserChars) {
-        const prevChar = newFormattedValue[cursorPosition - 1] ?? '';
-        const prevIsDelimiter = !isUserCharacter(prevChar);
-
-        if (prevIsDelimiter) {
-          cursorInfo.position = cursorPosition + nextUserCharIndex + 1;
-        } else {
-          const delimiterExistedBefore =
-            currentValue[cursorPosition] === newFormattedValue[cursorPosition];
-          if (delimiterExistedBefore) {
-            cursorInfo.position = cursorPosition + 1;
-          }
-        }
-      }
-    }
-
-    formattedValue = newFormattedValue;
-
-    onChange?.({ name: event.name, value: newFormattedValue, rawValue: newRawValue });
-
-    // Apply cursor position
-    if (inputElement && cursorInfo.position !== undefined && !cursorInfo.endOfSection) {
-      requestAnimationFrame(() => {
-        inputElement?.setSelectionRange(cursorInfo.position!, cursorInfo.position!);
-      });
-    }
-
-    // Reset flag after a microtask to allow effect to run for external changes
-    queueMicrotask(() => {
-      isProcessingInput = false;
-    });
-  }
+  // Custom snippet slots (non-icon leading/trailing)
+  const hasLeadingInteractionElement = $derived(!_leadingIcon && Boolean(leading));
+  const hasTrailingInteractionElement = $derived(!_trailingIcon && Boolean(trailing));
 
   // Event handlers
   function handleOnChange(event: FormInputOnEvent): void {
-    if (showClearButton && event.value?.length) {
-      shouldShowClearButton = true;
-    }
-
-    if (shouldShowClearButton && !event.value?.length) {
-      shouldShowClearButton = false;
-    }
-
     if (format) {
-      handleFormattedChange(event);
+      formatting.handleChange(event);
     } else {
+      if (showClearButton && event.value?.length) {
+        shouldShowClearButton = true;
+      }
+      if (shouldShowClearButton && !event.value?.length) {
+        shouldShowClearButton = false;
+      }
       if (value !== undefined) {
         value = event.value;
       }
@@ -247,18 +152,14 @@
   }
 
   function handleOnKeyDown(event: FormInputKeyDownEvent): void {
-    // Capture input element for cursor positioning
-    if (format && event.event?.currentTarget) {
-      inputElement = event.event.currentTarget as HTMLInputElement;
+    if (format) {
+      formatting.handleKeyDown(event.event!);
     }
     onKeyDown?.(event);
   }
 
   function handleClearButtonClick(): void {
     baseInputRef?.clear();
-    if (format) {
-      formattedValue = '';
-    }
     if (value !== undefined) {
       value = '';
     }
@@ -267,7 +168,7 @@
     shouldShowClearButton = false;
   }
 
-  // Export methods
+  // Public imperative API
   export function focus(): void {
     baseInputRef?.focus();
   }
@@ -283,7 +184,7 @@
 
 <BaseInput
   bind:this={baseInputRef}
-  id={name ?? 'textinput'}
+  id={instanceId}
   componentName={MetaConstants.TextInput}
   {name}
   {label}
@@ -297,7 +198,7 @@
   value={inputValue}
   defaultValue={format ? undefined : defaultValue}
   {isDisabled}
-  isRequired={isRequired}
+  {isRequired}
   {necessityIndicator}
   {validationState}
   {helpText}
@@ -319,6 +220,7 @@
   {isPopupExpanded}
   {trailingButton}
   {testID}
+  {onSubmit}
   onChange={handleOnChange}
   onFocus={handleOnFocus}
   onBlur={handleOnBlur}
@@ -373,4 +275,3 @@
     {/if}
   {/snippet}
 </BaseInput>
-

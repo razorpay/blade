@@ -139,6 +139,12 @@ export type TextInputProps = {
 
   /**
    * Leading icon
+   * @deprecated Use `leading` instead. This prop will be removed in the next major version.
+   */
+  icon?: IconComponent;
+
+  /**
+   * Leading icon
    */
   leadingIcon?: IconComponent;
 
@@ -192,11 +198,33 @@ export type TextInputProps = {
   trailingButton?: Snippet;
 
   /**
-   * Format pattern for input formatting
+   * Format pattern where # represents input characters and other symbols act as delimiters.
+   * When provided, input will be automatically formatted and onChange will include rawValue.
+   *
+   * **Note:**
+   * 1. Format pattern should only contain # symbols and special characters as delimiters.
+   *    Alphanumeric characters (letters and numbers) are not allowed in the format pattern.
+   * 2. When format is provided, user input is restricted to alphanumeric characters only.
+   *    Special characters and symbols will be filtered out automatically.
+   *
    * @example "#### #### #### ####" for card numbers
    * @example "##/##" for expiry dates
+   * @example "(###) ###-####" for phone numbers
    */
-  format?: string;
+  format?:
+    | '#### #### #### ####'
+    | '##/##'
+    | '##/##/####'
+    | '(###) ###-####'
+    | '###-##-####'
+    | '##:##'
+    | '##:##:##'
+    | '#### #### ####'
+    | '###.###.###.###'
+    | '## ## ####'
+    | '##-###-##'
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    | (string & {});
 
   // Event handlers
   onChange?: (event: FormInputOnEvent & { rawValue?: string }) => void;
@@ -204,6 +232,10 @@ export type TextInputProps = {
   onBlur?: (event: FormInputOnEvent) => void;
   onClick?: (event: FormInputOnEvent) => void;
   onKeyDown?: (event: FormInputKeyDownEvent) => void;
+  /**
+   * Called when the user presses Enter / submits the input
+   */
+  onSubmit?: (event: FormInputOnEvent) => void;
 
   // ARIA props
   hasPopup?: BaseInputProps['hasPopup'];

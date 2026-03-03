@@ -3,6 +3,7 @@
   import TextInput from './TextInput.svelte';
   import Text from '../../Typography/Text/Text.svelte'
   import Link from '../../Link/Link.svelte';
+  import Badge from '../../Badge/Badge.svelte';
   import { InfoIcon, SearchIcon, CheckIcon, CreditCardIcon } from '../../Icons';
   import ControlledTextInputExample from './ControlledTextInputExample.svelte';
   import TextInputRefExample from './TextInputRefExample.svelte';
@@ -228,6 +229,67 @@
 </Story>
 
 
+<!-- Loading State -->
+<Story name="TextInput with Loading State" args={{
+  label: 'Search',
+  placeholder: 'Searching...',
+  isLoading: true,
+  defaultValue: 'razorpay'
+}} />
+
+<!-- Leading as custom snippet -->
+<Story name="TextInput with Leading Custom Element" asChild>
+  {#snippet children()}
+    {#snippet leadingBadge()}
+      <Badge color="positive" size="small">New</Badge>
+    {/snippet}
+    <TextInput
+      label="Feature Flag"
+      placeholder="Enter flag name"
+      leading={leadingBadge}
+    />
+  {/snippet}
+</Story>
+
+<!-- Trailing as custom snippet -->
+<Story name="TextInput with Trailing Custom Element" asChild>
+  {#snippet children()}
+    {#snippet trailingBadge()}
+      <Badge color="notice" size="small">Beta</Badge>
+    {/snippet}
+    <TextInput
+      label="API Version"
+      placeholder="Enter version"
+      trailing={trailingBadge}
+    />
+  {/snippet}
+</Story>
+
+<!-- Clear button + trailing custom element together -->
+<Story name="TextInput with Clear Button and Trailing Element" asChild>
+  {#snippet children()}
+    {#snippet trailingBadge()}
+      <Badge color="positive" size="small">Verified</Badge>
+    {/snippet}
+    <TextInput
+      label="GSTIN"
+      placeholder="Enter GSTIN"
+      defaultValue="27AAPFU0939F1ZV"
+      showClearButton={true}
+      trailing={trailingBadge}
+    />
+  {/snippet}
+</Story>
+
+<!-- onSubmit usage -->
+<Story name="TextInput with onSubmit" asChild>
+  {#snippet children()}
+    <TextInput
+      label="Search"
+      placeholder="Press Enter to submit"
+      onSubmit={({ name, value }) => alert(`Submitted: ${value}`)}
+    />
+  {/snippet}
+</Story>
+
 <!-- Input Formatting - See TextInput/Format stories for more examples -->
-
-

@@ -250,6 +250,10 @@ export type BaseInputProps = {
   onClick?: (event: FormInputOnEvent) => void;
   onInput?: (event: FormInputOnEvent) => void;
   onKeyDown?: (event: FormInputKeyDownEvent) => void;
+  /**
+   * Called when the user presses Enter / submits the input
+   */
+  onSubmit?: (event: FormInputOnEvent) => void;
 
   // ARIA props
   hasPopup?: 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog' | boolean;
@@ -296,6 +300,7 @@ export type StyledBaseInputProps = {
   onClick?: (event: FormInputOnEvent) => void;
   onInput?: (event: FormInputOnEvent) => void;
   onKeyDown?: (event: FormInputKeyDownEvent) => void;
+  onSubmit?: (event: FormInputOnEvent) => void;
 };
 
 // Input wrapper props
