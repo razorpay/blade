@@ -1,10 +1,7 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Link from './Link.svelte';
-  import { InfoIcon, SearchIcon, PlusIcon } from '../Icons';
-  
-  import { iconMap } from '../Icons';
-  import { InfoIcon, PlusIcon, SearchIcon } from '../Icons';
+  import { iconMap, InfoIcon, SearchIcon, PlusIcon } from '../Icons';
 
   const { Story } = defineMeta({
     title: 'Components/Link',
