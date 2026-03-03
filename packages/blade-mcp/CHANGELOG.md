@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.25.2
+
+### Patch Changes
+
+- 25932a3f4: feat(ChatInput): add onFocus and onBlur
+
 ## 1.25.1
 
 ### Patch Changes

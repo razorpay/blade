@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.92.0
+
+### Minor Changes
+
+- 8e349cd0a: feat(blade): update chat message padding
+- 032377573: feat(SideNav): add collapsible state to SideNav
+- 25932a3f4: feat(ChatInput): add onFocus and onBlur
+
 ## 12.91.0
 
 ### Minor Changes
