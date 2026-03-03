@@ -104,10 +104,7 @@ export function getStyledInputClasses(options: StyledInputOptions): string {
 export function getInputVisualsClasses(options: InputVisualsOptions): string {
   const { type } = options;
 
-  const classes = [
-    styles.inputVisuals,
-    styles[`inputVisuals--${type}`],
-  ];
+  const classes = [styles.inputVisuals, styles[`inputVisuals--${type}`]];
 
   return classes.filter(Boolean).join(' ');
 }
@@ -122,16 +119,17 @@ export function getVisualIconClasses(type: 'leading' | 'trailing'): string {
 /**
  * Get CSS classes for visual text (prefix/suffix)
  */
-export function getVisualTextClasses(
-  type: 'prefix' | 'suffix',
-  hasAdjacentIcon: boolean
-): string {
+export function getVisualTextClasses(type: 'prefix' | 'suffix', hasAdjacentIcon: boolean): string {
   const classes = [styles.visualText];
 
   if (type === 'prefix') {
-    classes.push(hasAdjacentIcon ? styles['visualText--prefixWithIcon'] : styles['visualText--prefix']);
+    classes.push(
+      hasAdjacentIcon ? styles['visualText--prefixWithIcon'] : styles['visualText--prefix'],
+    );
   } else {
-    classes.push(hasAdjacentIcon ? styles['visualText--suffixWithIcon'] : styles['visualText--suffix']);
+    classes.push(
+      hasAdjacentIcon ? styles['visualText--suffixWithIcon'] : styles['visualText--suffix'],
+    );
   }
 
   return classes.filter(Boolean).join(' ');
@@ -142,7 +140,7 @@ export function getVisualTextClasses(
  */
 export function getInteractionElementClasses(
   type: 'leading' | 'trailing',
-  hasOtherTrailingElements?: boolean
+  hasOtherTrailingElements?: boolean,
 ): string {
   const classes = [styles.interactionElement];
 
@@ -152,7 +150,7 @@ export function getInteractionElementClasses(
     classes.push(
       hasOtherTrailingElements
         ? styles['interactionElement--trailingWithOther']
-        : styles['interactionElement--trailing']
+        : styles['interactionElement--trailing'],
     );
   }
 
@@ -203,7 +201,7 @@ export function getTrailingButtonClasses(): string {
  * Get template classes for use in Svelte components
  * This prevents tree-shaking of CSS classes
  */
-export function getBaseInputTemplateClasses() {
+export function getBaseInputTemplateClasses(): Record<string, string> {
   return {
     inputWrapper: styles.inputWrapper,
     focusRingWrapper: styles.focusRingWrapper,
@@ -218,4 +216,3 @@ export function getBaseInputTemplateClasses() {
     trailingButton: styles.trailingButton,
   };
 }
-

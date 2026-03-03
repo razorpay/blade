@@ -134,4 +134,3 @@ export const formHintLeftLabelMarginLeft = {
 
 export type BaseInputSize = keyof typeof baseInputHeight;
 export type BaseInputState = 'default' | 'hover' | 'focus' | 'disabled' | 'error' | 'success';
-
