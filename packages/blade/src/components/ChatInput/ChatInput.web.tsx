@@ -5,23 +5,23 @@ import type { ChatInputProps } from './types';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { castWebType, makeSpace } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import { msToSeconds } from '~utils/msToSeconds';
-import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
-import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
-import { CloseIcon, InfoIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
+import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
+import { CloseIcon, InfoIcon } from '~components/Icons';
+import { BaseInput } from '~components/Input/BaseInput/BaseInput';
+import { Text } from '~components/Typography';
+import { castWebType, makeSpace } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { msToSeconds } from '~utils/msToSeconds';
+import { cssBezierToArray } from '~utils/cssBezierToArray';
 
 const HiddenScrollbarBox = styled(BaseBox)(() => ({
   '&::-webkit-scrollbar': { display: 'none' },
@@ -33,6 +33,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     value,
     defaultValue,
     onChange,
+    onFocus,
+    onBlur,
     onSubmit,
     placeholder = 'Ask a question...',
     isDisabled = false,
@@ -210,6 +212,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           placeholder={showGhostSuggestion ? '' : placeholder}
           value={textValue}
           onChange={handleTextChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           isDisabled={isDisabled}
