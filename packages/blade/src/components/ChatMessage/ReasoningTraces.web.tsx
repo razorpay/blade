@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import type { ReasoningTrace, ReasoningTracesProps } from './types';
+import Rotate from './Rotate';
 import { useTheme } from '~components/BladeProvider';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
@@ -29,16 +30,10 @@ const SparkleIcon: IconComponent = ({ size, color, ...styledProps }) => {
 
 // Spinning sparkle for the active step row (smaller)
 const ActiveStepIcon = (): React.ReactElement => {
-  const { theme } = useTheme();
-  const duration = msToSeconds(theme.motion.duration.gentle) * 4;
   return (
-    <m.div
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      animate={{ rotate: 360 }}
-      transition={{ duration, repeat: Infinity, ease: 'linear' }}
-    >
+    <Rotate animate={true}>
       <SparkleIcon size="xsmall" color="feedback.icon.positive.intense" />
-    </m.div>
+    </Rotate>
   );
 };
 
@@ -180,13 +175,12 @@ const ReasoningTraces = ({
     ease: cssBezierToArray(castWebType(theme.motion.easing.emphasized)),
   };
 
-  // Animate open on first mount in upfront mode
+  // Reset to expanded when status changes back to loading (for replay scenarios)
   useEffect(() => {
-    if (isUpfrontMode) {
+    if (status === 'loading') {
       setIsExpanded(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [status]);
 
   // Auto-collapse once all steps complete
   useEffect(() => {
@@ -230,7 +224,6 @@ const ReasoningTraces = ({
           cursor="pointer"
           style={{ background: 'none', border: 'none' }}
           padding="spacing.0"
-          width="100%"
           textAlign="left"
           marginBottom="spacing.3"
         >
@@ -238,7 +231,7 @@ const ReasoningTraces = ({
             {title}
           </Text>
 
-          <BaseBox marginLeft="auto" display="flex" alignItems="center">
+          <BaseBox display="flex" alignItems="center">
             {isExpanded ? (
               <ChevronUpIcon size="small" color="surface.icon.gray.muted" />
             ) : (
