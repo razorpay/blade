@@ -89,13 +89,17 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     // Compare actual selected values (not just lengths) to detect controlled value changes
     const currentSelectedValues = selectedIndices.map((i) => options[i]?.value);
-    const isValueAndSelectedIndicesSynced =
-      typeof value === 'string'
-        ? currentSelectedValues.length === 1 && currentSelectedValues[0] === value
-        : Array.isArray(value)
-        ? value.length === currentSelectedValues.length &&
-          value.every((v) => currentSelectedValues.includes(v))
-        : false;
+    const isSingleValueSynced =
+      typeof value === 'string' &&
+      currentSelectedValues.length === 1 &&
+      currentSelectedValues[0] === value;
+
+    const isMultiValueSynced =
+      Array.isArray(value) &&
+      value.length === currentSelectedValues.length &&
+      value.every((v) => currentSelectedValues.includes(v));
+
+    const isValueAndSelectedIndicesSynced = isSingleValueSynced || isMultiValueSynced;
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
