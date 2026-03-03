@@ -93,10 +93,6 @@
   });
 </script>
 
-<script>
-  // Link is already imported in the module context
-</script>
-
 <!-- Playground story with all controls -->
 <Story name="Playground" />
 
