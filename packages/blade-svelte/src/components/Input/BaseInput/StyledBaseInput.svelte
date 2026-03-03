@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { StyledBaseInputProps } from './types';
+  import type { FullAutoFill } from 'svelte/elements';
   import { getStyledInputClasses } from '@razorpay/blade-core/styles';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
 
@@ -55,7 +56,7 @@
   });
 
   // Autocomplete mapping
-  const autoCompleteSuggestionTypeMap: Record<string, string> = {
+  const autoCompleteSuggestionTypeMap: Record<string, FullAutoFill> = {
     none: 'off',
     on: 'on',
     name: 'name',

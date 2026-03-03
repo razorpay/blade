@@ -14,4 +14,3 @@ export type {
   InputSize,
   IconComponent,
 } from './types';
-

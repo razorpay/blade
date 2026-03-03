@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Snippet, Component } from 'svelte';
+  import type { Snippet } from 'svelte';
   import type { TextInputProps, IconComponent } from './types';
   import type { FormInputOnEvent, FormInputKeyDownEvent } from '../BaseInput/types';
   import { BaseInput } from '../BaseInput';
@@ -9,9 +9,8 @@
   import { CharacterCounter } from '../../Form';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { hintMarginTop } from '@razorpay/blade-core/styles';
-  import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { MetaConstants } from '@razorpay/blade-core/utils';
   import { formatValue, stripPatternCharacters, isUserCharacter } from './useFormattedInput';
-  import type { IconProps } from '../../Icons/types';
 
   let {
     label,
@@ -66,12 +65,8 @@
   // Internal state for clear button visibility
   let shouldShowClearButton = $state(false);
 
-  // Input focus state
-  let isInputFocused = $state(autoFocus);
-
   // Formatted input state
   let formattedValue = $state('');
-  let rawValue = $state('');
   let inputElement: HTMLInputElement | null = null;
   let cursorInfo: { position?: number; endOfSection?: boolean } = {};
 
@@ -89,7 +84,6 @@
       // Only update if the formatted result is different
       if (newFormatted !== formattedValue) {
         formattedValue = newFormatted;
-        rawValue = raw;
       }
     }
   });
@@ -208,7 +202,6 @@
     }
 
     formattedValue = newFormattedValue;
-    rawValue = newRawValue;
 
     onChange?.({ name: event.name, value: newFormattedValue, rawValue: newRawValue });
 
@@ -246,12 +239,10 @@
   }
 
   function handleOnFocus(event: FormInputOnEvent): void {
-    isInputFocused = true;
     onFocus?.(event);
   }
 
   function handleOnBlur(event: FormInputOnEvent): void {
-    isInputFocused = false;
     onBlur?.(event);
   }
 
@@ -267,7 +258,6 @@
     baseInputRef?.clear();
     if (format) {
       formattedValue = '';
-      rawValue = '';
     }
     if (value !== undefined) {
       value = '';
@@ -337,7 +327,7 @@
 >
   {#snippet leadingInteractionElement()}
     {#if hasLeadingInteractionElement && typeof leading === 'function'}
-      {@render leading()}
+      {@render (leading as Snippet)()}
     {/if}
   {/snippet}
 
@@ -355,7 +345,7 @@
         />
         <Divider orientation="vertical" />
         {#if typeof trailing === 'function'}
-          {@render trailing()}
+          {@render (trailing as Snippet)()}
         {/if}
       </div>
     {:else if shouldShowClearButton}
@@ -367,7 +357,7 @@
         onClick={handleClearButtonClick}
       />
     {:else if hasTrailingInteractionElement && typeof trailing === 'function'}
-      {@render trailing()}
+      {@render (trailing as Snippet)()}
     {/if}
   {/snippet}
 

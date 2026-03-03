@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { IconProps } from '../../Icons/types';
+import type { AriaRoles } from '@razorpay/blade-core/utils';
 
 // Icon component type
 export type IconComponent = Component<IconProps>;
@@ -154,7 +155,7 @@ export type BaseInputProps = {
   /**
    * Autocomplete suggestion type
    */
-  autoCompleteSuggestionType?: 
+  autoCompleteSuggestionType?:
     | 'none'
     | 'on'
     | 'name'
@@ -255,7 +256,7 @@ export type BaseInputProps = {
   popupId?: string;
   isPopupExpanded?: boolean;
   activeDescendant?: string;
-  role?: string;
+  role?: AriaRoles;
   tabIndex?: number;
 
   /**
@@ -323,4 +324,3 @@ export type BaseInputVisualsProps = {
   trailingButton?: Snippet;
   hasOtherTrailingElements?: boolean;
 };
-

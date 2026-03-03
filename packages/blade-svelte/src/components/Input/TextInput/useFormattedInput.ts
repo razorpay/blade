@@ -66,7 +66,9 @@ export type UseFormattedInputResult = {
 /**
  * Creates formatted input state and handlers
  */
-export function createFormattedInputState(options: UseFormattedInputOptions): UseFormattedInputResult {
+export function createFormattedInputState(
+  options: UseFormattedInputOptions,
+): UseFormattedInputResult {
   const { format: pattern, onChange, value, defaultValue = '' } = options;
 
   // Initial formatted value
@@ -74,7 +76,7 @@ export function createFormattedInputState(options: UseFormattedInputOptions): Us
   let formattedValue = $state(formatValue(initialRaw, pattern ?? ''));
   let rawValue = $state(initialRaw);
   let inputElement: HTMLInputElement | null = null;
-  let cursorInfo: { position?: number; endOfSection?: boolean } = {};
+  const cursorInfo: { position?: number; endOfSection?: boolean } = {};
 
   const maxLength = pattern?.length;
 
@@ -172,11 +174,14 @@ export function createFormattedInputState(options: UseFormattedInputOptions): Us
   });
 
   return {
-    get formattedValue() { return formattedValue; },
-    get rawValue() { return rawValue; },
+    get formattedValue() {
+      return formattedValue;
+    },
+    get rawValue() {
+      return rawValue;
+    },
     maxLength,
     handleChange,
     handleKeyDown,
   };
 }
-

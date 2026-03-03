@@ -56,4 +56,3 @@ export type IconButtonProps = {
    */
   onBlur?: (event: FocusEvent) => void;
 };
-

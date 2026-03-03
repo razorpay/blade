@@ -210,4 +210,3 @@ export type TextInputProps = {
   popupId?: string;
   isPopupExpanded?: boolean;
 };
-
