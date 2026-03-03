@@ -560,7 +560,7 @@ exports[`<ChatMessage/> should render error message correctly 1`] = `
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
-  padding: 16px;
+  padding: 12px;
   height: auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -790,7 +790,7 @@ exports[`<ChatMessage/> should render last message correctly 1`] = `
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
-  padding: 16px;
+  padding: 12px;
   height: auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -921,7 +921,7 @@ exports[`<ChatMessage/> should render last message correctly 2`] = `
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
-  padding: 16px;
+  padding: 12px;
   height: auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
