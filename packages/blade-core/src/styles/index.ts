@@ -88,6 +88,38 @@ export type {
   FormHintOptions,
 } from './Form';
 
+// Input styles
+export {
+  baseInputHeight,
+  baseInputWrapperMaxHeight,
+  baseInputBorderColor,
+  baseInputBackgroundColor,
+  baseInputBorderWidth,
+  baseInputPaddingTokens,
+  baseInputIconSize,
+  baseInputTextSize,
+  baseInputBorderBackgroundMotion,
+  formHintLeftLabelMarginLeft,
+  getInputWrapperClasses,
+  getFocusRingWrapperClasses,
+  getStyledInputClasses,
+  getInputVisualsClasses,
+  getVisualIconClasses,
+  getVisualTextClasses,
+  getInteractionElementClasses,
+  getInputContainerClasses,
+  getLabelRowClasses,
+  getHintRowClasses,
+  getTrailingButtonClasses,
+  getBaseInputTemplateClasses,
+} from './Input';
+export type {
+  BaseInputSize,
+  BaseInputState,
+  InputWrapperOptions,
+  StyledInputOptions,
+  InputVisualsOptions,
+} from './Input';
 export {
   badgeStyles,
   getBadgeClasses,
