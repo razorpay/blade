@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import type { SideNavLinkProps } from '../types';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { Box } from '~components/Box';
-import { BaseText } from '~components/Typography/BaseText';
-import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
-import BaseBox from '~components/Box/BaseBox';
-import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { Collapsible, CollapsibleBody } from '~components/Collapsible';
-import { useFirstRender } from '~utils/useFirstRender';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { Text } from '~components/Typography';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
+import { useFirstRender } from '~utils/useFirstRender';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { Collapsible, CollapsibleBody } from '~components/Collapsible';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
+import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+import type { SideNavLinkProps } from '../types';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -234,6 +234,7 @@ const SideNavLink = ({
     onLinkActiveChange,
     closeMobileNav,
     isL1Collapsed,
+    isSideNavFullyCollapsed,
     setIsL1Collapsed,
   } = useSideNav();
   const { level: _prevLevel } = useNavLink();
@@ -334,7 +335,12 @@ const SideNavLink = ({
                   // Which can make L1 to expand when tabs / windows are changed
                   // Adding focus-visible check ensures this behaviour of closing menus is only applicable when there is visible focus ring on it (while tabbing)
                   const hasFocusRing = e.target?.matches(':focus-visible');
-                  if (isL1Collapsed && currentLevel === 1 && hasFocusRing) {
+                  if (
+                    isL1Collapsed &&
+                    !isSideNavFullyCollapsed &&
+                    currentLevel === 1 &&
+                    hasFocusRing
+                  ) {
                     setIsL1Collapsed?.(false);
                   }
                 }}

@@ -1,11 +1,11 @@
 import type React from 'react';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
 import type { TooltipifyComponentProps } from '~utils/TooltipifyComponent';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type SideNavProps = {
   /**
@@ -35,6 +35,33 @@ type SideNavProps = {
    * - When you hover / unhover L1 in collapsed state which can temporarily expand the L1
    */
   onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
+
+  /**
+   * Callback that gets triggered when controlled full expand state changes.
+   *
+   * **Only applicable in desktop**
+   */
+  onSideNavExpandChange?: ({ isSideNavFullyExpanded }: { isSideNavFullyExpanded: boolean }) => void;
+
+  /**
+   * Callback that gets triggered when controlled full expand/collapse transition ends.
+   *
+   * **Only applicable in desktop**
+   */
+  onSideNavExpandTransitionEnd?: ({
+    isSideNavFullyExpanded,
+  }: {
+    isSideNavFullyExpanded: boolean;
+  }) => void;
+
+  /**
+   * **Only applicable in desktop**
+   *
+   * Controls whether SideNav should remain fully expanded.
+   * - `true` (default): existing behavior with hover-based temporary expansion.
+   * - `false`: keeps SideNav collapsed and disables hover/focus-based expansion.
+   */
+  isSideNavFullyExpanded?: boolean;
 
   /**
    * Banner slot for usecases like adding Activation Panel
@@ -176,6 +203,7 @@ type OnLinkActiveChangeArgs = {
 type SideNavContextType = {
   isL1Hovered?: boolean;
   isL1Collapsed?: boolean;
+  isSideNavFullyCollapsed?: boolean;
   setIsL1Collapsed?: (isL1Collapsed: boolean) => void;
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
   onLinkActiveChange?: (args: OnLinkActiveChangeArgs) => void;
