@@ -725,6 +725,8 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
+        onFocus={() => console.log('Focus')}
+        onBlur={() => console.log('Blur')}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onFileReupload={({ file }) => {
           console.log('Re-upload clicked for:', file.name);
