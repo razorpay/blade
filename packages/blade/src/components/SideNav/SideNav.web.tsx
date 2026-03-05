@@ -199,7 +199,7 @@ const _SideNav = (
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
   const mouseOverTimeoutRef = React.useRef<NodeJS.Timeout>();
-  const prevIsSideNavFullyCollapsedRef = React.useRef<boolean>();
+  const prevIsSideNavCollapsedRef = React.useRef<boolean>();
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
   const [isL1Hovered, setIsL1Hovered] = React.useState(false);
@@ -208,14 +208,12 @@ const _SideNav = (
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
 
   const isMobile = useIsMobile();
-  const isSideNavFullyCollapsed = _isExpanded === false;
+  const isSideNavCollapsed = _isExpanded === false;
 
-  const effectiveIsL1Collapsed = isMobile
-    ? isMobileL2Open
-    : isSideNavFullyCollapsed || isL1Collapsed;
+  const effectiveIsL1Collapsed = isMobile ? isMobileL2Open : isSideNavCollapsed || isL1Collapsed;
 
-  const effectiveIsL1Hovered = isSideNavFullyCollapsed ? false : isL1Hovered;
-  const sideNavWidth = isSideNavFullyCollapsed
+  const effectiveIsL1Hovered = isSideNavCollapsed ? false : isL1Hovered;
+  const sideNavWidth = isSideNavCollapsed
     ? makeSize(COLLAPSED_L1_WIDTH)
     : {
         base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
@@ -265,7 +263,7 @@ const _SideNav = (
       return;
     }
 
-    if (isSideNavFullyCollapsed) {
+    if (isSideNavCollapsed) {
       return;
     }
 
@@ -316,10 +314,10 @@ const _SideNav = (
       isL1Collapsed: effectiveIsL1Collapsed,
       setIsL1Collapsed,
       isL1Hovered: effectiveIsL1Hovered,
-      isSideNavFullyCollapsed,
+      isSideNavCollapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [effectiveIsL1Collapsed, effectiveIsL1Hovered, isSideNavFullyCollapsed],
+    [effectiveIsL1Collapsed, effectiveIsL1Hovered, isSideNavCollapsed, isMobile],
   );
 
   React.useEffect(() => {
@@ -332,24 +330,24 @@ const _SideNav = (
   }, []);
 
   React.useEffect(() => {
-    if (!isMobile && isSideNavFullyCollapsed && isL1Hovered) {
+    if (!isMobile && isSideNavCollapsed && isL1Hovered) {
       setIsL1Hovered(false);
     }
-  }, [isMobile, isSideNavFullyCollapsed, isL1Hovered]);
+  }, [isMobile, isSideNavCollapsed, isL1Hovered]);
 
   React.useEffect(() => {
-    const prevIsSideNavFullyCollapsed = prevIsSideNavFullyCollapsedRef.current;
-    prevIsSideNavFullyCollapsedRef.current = isSideNavFullyCollapsed;
+    const prevIsSideNavCollapsed = prevIsSideNavCollapsedRef.current;
+    prevIsSideNavCollapsedRef.current = isSideNavCollapsed;
 
-    if (isMobile || prevIsSideNavFullyCollapsed === undefined) {
+    if (isMobile || prevIsSideNavCollapsed === undefined) {
       return;
     }
 
-    if (prevIsSideNavFullyCollapsed !== isSideNavFullyCollapsed) {
+    if (prevIsSideNavCollapsed !== isSideNavCollapsed) {
       startL1Transition();
-      onExpandChange?.({ isExpanded: !isSideNavFullyCollapsed });
+      onExpandChange?.({ isExpanded: !isSideNavCollapsed });
     }
-  }, [isMobile, isSideNavFullyCollapsed, onExpandChange, startL1Transition]);
+  }, [isMobile, isSideNavCollapsed, onExpandChange, startL1Transition]);
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -386,7 +384,7 @@ const _SideNav = (
         <StyledSideNavContainer
           $isSideNavExpandable={typeof _isExpanded !== 'undefined'}
           ref={ref as never}
-          className={isSideNavFullyCollapsed ? COLLAPSED : ''}
+          className={isSideNavCollapsed ? COLLAPSED : ''}
           position="fixed"
           backgroundColor={backgroundColor}
           height="100%"
@@ -408,7 +406,7 @@ const _SideNav = (
             }
 
             onExpandTransitionEnd?.({
-              isExpanded: !isSideNavFullyCollapsed,
+              isExpanded: !isSideNavCollapsed,
             });
           }}
         >
@@ -416,7 +414,7 @@ const _SideNav = (
           <BaseBox position="relative" display="block" flex="1" width="100%">
             <StyledL2PortalContainer
               position="absolute"
-              display={isSideNavFullyCollapsed ? 'none' : 'block'}
+              display={isSideNavCollapsed ? 'none' : 'block'}
               backgroundColor={backgroundColor}
               height="100%"
               width="100%"
@@ -465,7 +463,7 @@ const _SideNav = (
               // 5. Thus we use `onMouseOver` for hover part and call e.stopPropagation in portal child (SideNavLevel).
               // 6. But in case of unhover/leave, we don't want to trigger mouseOut for all child components individually. We want 1 hover out of L1 menu. Thus we use `onMouseLeave`
               onMouseOver={() => {
-                if (!isMobile && isSideNavFullyCollapsed) {
+                if (!isMobile && isSideNavCollapsed) {
                   return;
                 }
                 if (mouseOverTimeoutRef.current) {
@@ -477,7 +475,7 @@ const _SideNav = (
                 }
               }}
               onMouseLeave={() => {
-                if (!isMobile && isSideNavFullyCollapsed) {
+                if (!isMobile && isSideNavCollapsed) {
                   return;
                 }
                 if (isL1Collapsed && isL1Hovered) {

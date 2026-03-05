@@ -211,7 +211,7 @@ type OnLinkActiveChangeArgs = {
 type SideNavContextType = {
   isL1Hovered?: boolean;
   isL1Collapsed?: boolean;
-  isSideNavFullyCollapsed?: boolean;
+  isSideNavCollapsed?: boolean;
   setIsL1Collapsed?: (isL1Collapsed: boolean) => void;
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
   onLinkActiveChange?: (args: OnLinkActiveChangeArgs) => void;
