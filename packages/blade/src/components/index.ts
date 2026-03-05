@@ -78,3 +78,4 @@ export * from './LightBox';
 export * from './ListView';
 export * from './Preview';
 export * from './GenUI';
+export * from './RazorSense';

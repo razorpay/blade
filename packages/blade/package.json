@@ -26,6 +26,7 @@
     "utils.js",
     "fonts",
     "fonts.css",
+    "assets",
     "utils.native.js",
     "coverageUtils.d.ts"
   ],
