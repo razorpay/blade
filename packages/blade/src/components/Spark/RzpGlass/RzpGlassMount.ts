@@ -15,10 +15,6 @@ import { createProgram, setupFullscreenQuad, Texture } from './webgl-utils';
 import { WebGLPerformanceController, LEVEL_RENDER_SETTINGS } from './PerformanceManager';
 import type { PerformanceLevel } from './PerformanceManager';
 
-// Fixed aspect ratio (3:2 = 1.5, matching video 4500x3000)
-// 3000x2000 = 1.5
-const TARGET_ASPECT_RATIO = 3 / 2;
-
 // Reference resolution for zoom-independent displacement
 const REF_RESOLUTION = { width: 3000, height: 2000 };
 
@@ -73,14 +69,8 @@ const CONFIG_TO_UNIFORM: Record<string, string> = {
   ccContrast: 'uCCContrast',
   zoom: 'uZoom',
   // panX and panY are combined into uPan (vec2) in setUniformValues
+  // backgroundColor is handled separately (needs clear color update)
   edgeFeather: 'uEdgeFeather',
-  // Ripple wave
-  enableRippleWave: 'uEnableRippleWave',
-  rippleSpeed: 'uRippleSpeed',
-  rippleBlend: 'uRippleBlend',
-  rippleAngularPower: 'uRippleAngularPower',
-  rippleRadialFalloff: 'uRippleRadialFalloff',
-  rippleWaitTime: 'uRippleWaitTime',
 };
 
 export class RzpGlassMount {
@@ -185,7 +175,6 @@ export class RzpGlassMount {
       alpha: true,
       powerPreference: 'high-performance',
     })!;
-
     this.gl = gl;
 
     this.performanceController = new WebGLPerformanceController({
@@ -251,8 +240,9 @@ export class RzpGlassMount {
       } else {
         this.video = baseAsset as HTMLVideoElement;
         this.setupVideoTexture();
-        // Set video to start time and begin playback
+        // Set video to start time and apply playback rate before playback
         this.video.currentTime = this.config.startTime;
+        this.video.playbackRate = this.config.playbackRate;
         if (!this.config.paused) {
           await this.video.play().catch((e) => {
             console.warn('Video autoplay failed:', e);
@@ -343,6 +333,7 @@ export class RzpGlassMount {
       'uEdgeFeather',
       'uRefResolution',
       'uVisibleUvBounds', // vec4(minX, minY, maxX, maxY) - visible portion of canvas in UV space
+      'uBackgroundColor', // vec3(r, g, b) - background color to blend with
       // Ripple wave
       'uEnableRippleWave',
       'uRippleSpeed',
@@ -439,14 +430,15 @@ export class RzpGlassMount {
     let canvasWidth: number;
     let canvasHeight: number;
 
-    if (containerAspect > TARGET_ASPECT_RATIO) {
+    const targetAspectRatio = this.config.aspectRatio;
+    if (containerAspect > targetAspectRatio) {
       // Container is wider than target - fit to width, crop top/bottom
       canvasWidth = containerWidth;
-      canvasHeight = containerWidth / TARGET_ASPECT_RATIO;
+      canvasHeight = containerWidth / targetAspectRatio;
     } else {
       // Container is taller than target - fit to height, crop left/right
       canvasHeight = containerHeight;
-      canvasWidth = containerHeight * TARGET_ASPECT_RATIO;
+      canvasWidth = containerHeight * targetAspectRatio;
     }
 
     // Center the canvas (overflow will be hidden by parent)
@@ -563,6 +555,19 @@ export class RzpGlassMount {
     // Reference resolution (constant)
     gl.uniform2f(this.uniformLocations.uRefResolution, REF_RESOLUTION.width, REF_RESOLUTION.height);
 
+    // Background color (or set to -1 if not provided)
+    if (this.config.backgroundColor) {
+      const [r, g, b] = this.config.backgroundColor;
+      gl.uniform3f(this.uniformLocations.uBackgroundColor, r, g, b);
+      // Also set clear color to match
+      gl.clearColor(r, g, b, 1.0);
+    } else {
+      // Set to -1 to indicate no background color blending
+      gl.uniform3f(this.uniformLocations.uBackgroundColor, -1.0, -1.0, -1.0);
+      // Use transparent clear color
+      gl.clearColor(0, 0, 0, 0);
+    }
+
     // Visible UV bounds (where container clips the canvas)
     gl.uniform4f(
       this.uniformLocations.uVisibleUvBounds,
@@ -631,6 +636,25 @@ export class RzpGlassMount {
         gl.uniform2f(this.uniformLocations.uPan, panValue[0], panValue[1]);
       }
     }
+
+    // Handle special backgroundColor uniform (vec3 in fragment shader)
+    if (config.backgroundColor !== undefined) {
+      const bgCacheKey = 'backgroundColor';
+      if (!this.areUniformValuesEqual(this.uniformCache[bgCacheKey], config.backgroundColor)) {
+        this.uniformCache[bgCacheKey] = config.backgroundColor;
+        if (config.backgroundColor) {
+          const [r, g, b] = config.backgroundColor;
+          gl.uniform3f(this.uniformLocations.uBackgroundColor, r, g, b);
+          // Also update clear color to match
+          gl.clearColor(r, g, b, 1.0);
+        } else {
+          // Set to -1 to indicate no background color blending
+          gl.uniform3f(this.uniformLocations.uBackgroundColor, -1.0, -1.0, -1.0);
+          // Use transparent clear color
+          gl.clearColor(0, 0, 0, 0);
+        }
+      }
+    }
   }
 
   /**
@@ -651,6 +675,14 @@ export class RzpGlassMount {
       } else {
         this.video?.play().catch(() => {});
       }
+    }
+
+    if (newConfig.playbackRate !== undefined && this.video) {
+      this.video.playbackRate = newConfig.playbackRate;
+    }
+
+    if (newConfig.aspectRatio !== undefined) {
+      this.handleResize();
     }
   }
 

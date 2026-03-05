@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -25,7 +25,7 @@
  * ```
  */
 
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState, useCallback } from 'react';
 import { RzpGlassMount } from './RzpGlassMount';
 import type {
   RzpGlassProps,
@@ -33,17 +33,37 @@ import type {
   RzpGlassAssets,
   RzpGlassPresetDefinition,
 } from './types';
-import { getPresets, DEFAULT_CDN_PATH } from './presets';
+import { PRESETS } from './presets';
 import type { RzpGlassPreset } from './presets';
-import { useMergeRefs } from '~utils/useMergeRefs';
 
-const getDefaultAssets = (cdnPath: string = DEFAULT_CDN_PATH): Required<RzpGlassAssets> => ({
+const DEFAULT_CDN_PATH =
+  'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark';
+
+const getDefaultAssets = (cdnPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${cdnPath}/spark-base-video.mp4`,
   imageSrc: `${cdnPath}/bottom-frame.jpg`,
   gradientMapSrc: `${cdnPath}/colorama-gradient-map-green.jpg`,
   gradientMap2Src: `${cdnPath}/colorama-gradient-map-blue.jpg`,
   centerGradientMapSrc: `${cdnPath}/colorama-center-gradient-map.jpg`,
 });
+
+/**
+ * Hook to merge multiple refs into one
+ */
+function useMergeRefs<T>(refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> {
+  return useCallback(
+    (value: T) => {
+      refs.forEach((ref) => {
+        if (typeof ref === 'function') {
+          ref(value);
+        } else if (ref != null) {
+          (ref as React.MutableRefObject<T | null>).current = value;
+        }
+      });
+    },
+    [refs],
+  );
+}
 
 /**
  * Extract config from props (exclude non-config props).
@@ -58,11 +78,11 @@ function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
     onLoad: _onLoad,
     onError: _onError,
     preset: _preset,
+    cdnPath: _cdnPath,
     gradientMapSrc: _gradientMapSrc,
     gradientMap2Src: _gradientMap2Src,
     gradientMapCanvas: _gradientMapCanvas,
     imageSrc: _imageSrc,
-    cdnPath: _cdnPath,
     ...config
   } = props;
 
@@ -82,31 +102,20 @@ const ASSET_KEYS = new Set<string>([
 ]);
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return */
-function getPresetDefinition(
-  preset: RzpGlassPreset | undefined,
-  cdnPath?: string,
-): RzpGlassPresetDefinition {
-  if (!preset) return {};
-  const presets = getPresets(cdnPath);
-  if (preset in presets) return { ...presets[preset] };
+function getPresetDefinition(preset: RzpGlassPreset | undefined): RzpGlassPresetDefinition {
+  if (preset && preset in PRESETS) return { ...PRESETS[preset] };
   return {};
 }
 
-function getPresetConfig(
-  preset: RzpGlassPreset | undefined,
-  cdnPath?: string,
-): Partial<RzpGlassConfig> {
-  const def = getPresetDefinition(preset, cdnPath) as Record<string, unknown>;
+function getPresetConfig(preset: RzpGlassPreset | undefined): Partial<RzpGlassConfig> {
+  const def = getPresetDefinition(preset) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => !ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassConfig>;
 }
 
-function getPresetAssets(
-  preset: RzpGlassPreset | undefined,
-  cdnPath?: string,
-): Partial<RzpGlassAssets> {
-  const def = getPresetDefinition(preset, cdnPath) as Record<string, unknown>;
+function getPresetAssets(preset: RzpGlassPreset | undefined): Partial<RzpGlassAssets> {
+  const def = getPresetDefinition(preset) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassAssets>;
@@ -118,7 +127,7 @@ function getPresetAssets(
  */
 function resolveConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
   return {
-    ...getPresetConfig(props.preset, props.cdnPath),
+    ...getPresetConfig(props.preset),
     ...extractConfig(props),
   };
 }
@@ -134,17 +143,20 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     style,
     onLoad,
     onError,
+    cdnPath: cdnPathProp,
     gradientMapCanvas,
     gradientMapSrc: gradientMapSrcProp,
     gradientMap2Src: gradientMap2SrcProp,
     imageSrc: imageSrcProp,
-    cdnPath,
     ...configProps
   } = props;
 
-  // Resolve assets: prop overrides preset, preset overrides default
+  // Get default assets based on cdnPath
+  const cdnPath: string = cdnPathProp ?? DEFAULT_CDN_PATH;
   const defaultAssets = getDefaultAssets(cdnPath);
-  const presetAssets = getPresetAssets(props.preset, cdnPath);
+
+  // Resolve assets: prop overrides preset, preset overrides default
+  const presetAssets = getPresetAssets(props.preset);
   const imageSrc = imageSrcProp ?? presetAssets.imageSrc;
   const videoSrc = imageSrc ? undefined : presetAssets.videoSrc ?? defaultAssets.videoSrc;
   const gradientMapSrc =
@@ -189,7 +201,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
       }
     };
 
-    init();
+    void init();
 
     return () => {
       mountRef.current?.dispose();
@@ -197,6 +209,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
       setIsInitialized(false);
     };
   }, [
+    cdnPath,
     videoSrc,
     imageSrc,
     gradientMapSrc,
@@ -276,7 +289,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     }
   }, [isInitialized, gradientMapCanvas]);
 
-  const mergedRef = useMergeRefs(forwardedRef, divRef);
+  const mergedRef = useMergeRefs([divRef, forwardedRef]);
 
   // Convert width/height to string if number
   const widthStyle = typeof width === 'number' ? `${width}px` : width;

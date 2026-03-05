@@ -96,13 +96,8 @@ uniform vec4 uEdgeFeather;       // Per-side feathering: vec4(top, right, bottom
 uniform vec2 uRefResolution;     // Reference resolution for zoom-independent displacement
 uniform vec4 uVisibleUvBounds;   // vec4(minX, minY, maxX, maxY) - visible portion of canvas in container
 
-// --- 10. RIPPLE WAVE ---
-uniform float uEnableRippleWave;   // Toggle procedural ripple (0 = off, 1 = on)
-uniform float uRippleSpeed;        // Ring expansion duration in seconds
-uniform float uRippleBlend;        // Gaussian ring thickness
-uniform float uRippleAngularPower; // Sharpness of four-way diagonal lobes
-uniform float uRippleRadialFalloff; // Max radius a ring expands to (UV space)
-uniform float uRippleWaitTime;     // Silence gap between bursts in seconds
+// --- 10. BACKGROUND COLOR ---
+uniform vec3 uBackgroundColor;   // Background color to blend with (RGB 0-1)
 
 // UV coordinates from the vertex shader
 varying vec2 vUv;                // Raw screen UV (for screen-space effects)
@@ -512,69 +507,6 @@ float applyShapeToIntensity(
 }
 
 
-// ============================================
-// PROCEDURAL FOUR-WAY RIPPLE BASE
-// ============================================
-// Discrete Gaussian ring pulses with true cubic ease-out timing.
-// Each ring expands from center following 1-(1-t)³, then fades out.
-// Three rings staggered evenly ensure one is always visible.
-float gaussRing(float r, float ringR, float width) {
-    float d = r - ringR;
-    return exp(-(d * d) / (width * width));
-}
-
-float generateFourWayRipple(vec2 uv, float time) {
-    float aspect = iResolution.x / iResolution.y;
-    vec2 centered = uv - 0.5;
-    centered.x *= aspect;
-
-    float r = length(centered);
-    float a = atan(centered.y, centered.x);
-
-    // 4-lobe directional mask on the diagonals (45°, 135°, 225°, 315°)
-    float angular = pow(abs(sin(a * 2.0)), uRippleAngularPower);
-
-    // Bow the wavefronts into gentle arcs along the diagonal directions
-    float curvedR = r - angular * 0.06;
-
-    // uRippleSpeed = expansion duration (how long the ring takes to expand)
-    // uRippleWaitTime = silence gap after expansion before next ring starts
-    // Total cycle      = expansionTime + rippleWaitTime  (fully decoupled)
-    float expansionTime = uRippleSpeed;
-    float totalPeriod   = expansionTime + uRippleWaitTime;
-    float width         = uRippleBlend;
-
-    // Use fract(time/period) to avoid precision drift from mod(largeTime, period) in GLSL
-    float phase = fract(time / totalPeriod);
-    float t     = phase * totalPeriod;  // 0..totalPeriod (same cycle, stable wrap)
-
-    float ripple = 0.0;
-    for (int i = 0; i < 1; i++) {
-        float isActive = step(t, expansionTime);              // 1 during expansion, 0 during wait
-        float localT   = clamp(t / expansionTime, 0.0, 1.0);   // 0→1 within expansion
-
-        float eased     = 1.0 - pow(1.0 - localT, 2.5);
-        float ringR     = eased * uRippleRadialFalloff;
-        float fade      = 1.0 - localT;
-        float innerFade = smoothstep(0.0, 0.02, ringR);  // visible from center (was 0.18)
-        ripple += gaussRing(curvedR, ringR, width) * fade * innerFade * isActive;
-    }
-    ripple = clamp(ripple, 0.0, 1.0);
-
-    // Confine rings to the 4 diagonal beams
-    float wave = ripple * angular;
-
-    // Envelope: small inner hole so ripples start close to center, sharp outer falloff
-    float envelope = smoothstep(0.01, 0.18, r)
-                   * smoothstep(uRippleRadialFalloff, uRippleRadialFalloff * 0.6, r);
-    wave *= envelope;
-
-    // Near-white ambient background
-    float ambient = 0.4;
-
-    return clamp(wave * 0.28 + ambient, 0.0, 1.0);
-}
-
 // AE-style color processing (levels, gamma, contrast). Used in both ripple and normal mode.
 vec3 applyColorCorrection(vec3 color) {
     color = (color - uCCBlackPoint) / (uCCWhitePoint - uCCBlackPoint);
@@ -631,53 +563,6 @@ void main() {
 
     // Calculate aspect ratio for consistent slit angles
     float aspect = iResolution.x / iResolution.y;
-
-    // ============================================
-    // RIPPLE WAVE MODE (short-circuits the standard pipeline)
-    // ============================================
-    if (uEnableRippleWave > 0.5) {
-        // Compute glass-slit displacement (same as standard pipeline) and apply
-        // it to the screen UV so the ripple pattern is seen through the glass slits.
-        float resolutionScale = iResolution.x / uRefResolution.x;
-        vec2 rippleMaxDisplacement = vec2(uDisplacementX, uDisplacementY) * uDpr * resolutionScale;
-
-        vec2 rippleDisplacementData = createStripedDisplacement(
-            vUv, numSegments, angle,
-            1.0, 0.0, 1.0, 0.5, aspect
-        );
-        float rippleSignedDisplacement = rippleDisplacementData.x;
-
-        vec2 rippleUv = vUv;
-        if (uEnableDisplacement > 0.5) {
-            rippleUv = applyDisplacement(vUv, rippleSignedDisplacement, rippleMaxDisplacement, iResolution);
-        }
-
-        float rippleValue = generateFourWayRipple(rippleUv, uTime);
-
-        vec3 rippleColor;
-        if (uEnableColorama > 0.5) {
-            vec3 colorResult1 = applyColoramaWithGradient(
-                uGradientMap, rippleValue,
-                uInputMin, uInputMax, uModifyGamma, uPosterizeLevels,
-                uCycleRepetitions, uPhaseShift, uCycleSpeed,
-                uWrapMode, uReverse
-            );
-            vec3 colorResult2 = applyColoramaWithGradient(
-                uGradientMap2, rippleValue,
-                uInputMin, uInputMax, uModifyGamma, uPosterizeLevels,
-                uCycleRepetitions, uPhaseShift, uCycleSpeed,
-                uWrapMode, uReverse
-            );
-            rippleColor = mix(colorResult1, colorResult2, uGradientMapBlend);
-        } else {
-            rippleColor = vec3(rippleValue);
-        }
-
-        rippleColor = applyColorCorrection(rippleColor);
-        rippleColor = applyEdgeFeathering(rippleColor);
-        gl_FragColor = vec4(rippleColor, 1.0);
-        return;
-    }
 
     // Displacement parameters (in pixels, scaled by DPR)
     // Scale displacement by reference resolution ratio to maintain consistency across browser zoom levels
@@ -1013,6 +898,21 @@ void main() {
     // Color correction and edge feathering (shared with ripple mode)
     color = applyColorCorrection(color);
     color = applyEdgeFeathering(color);
+
+    // Blend with background color if provided (uBackgroundColor.r < 0 means not set)
+    if (uBackgroundColor.r >= 0.0) {
+        // Calculate luminance to determine how bright the pixel is
+        float brightness = luminance(color);
+        
+        // Blend white/bright areas with background color
+        // Bright areas (close to white) become the background color
+        float blendStart = 0.98;  // Start blending at this brightness
+        float blendEnd = 1.0;    // Fully background color at this brightness
+        float blendAmount = smoothstep(blendStart, blendEnd, brightness);
+        
+        // Mix the shader color with background color
+        color = mix(color, uBackgroundColor, blendAmount);
+    }
 
     gl_FragColor = vec4(color, 1.0);
 }

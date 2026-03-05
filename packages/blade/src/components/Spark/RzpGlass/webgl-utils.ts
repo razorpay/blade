@@ -235,4 +235,4 @@ class Texture {
 
 export { createShader, createProgram, setupFullscreenQuad, Texture };
 
-export type { FullscreenQuadBuffers, TextureOptions, TextureParams };
+export type { FullscreenQuadBuffers, TextureOptions, TextureParams, TextureSource };
