@@ -25,6 +25,7 @@
     "utils.d.ts",
     "utils.js",
     "fonts",
+    "assets",
     "fonts.css",
     "utils.native.js",
     "coverageUtils.d.ts"
@@ -37,6 +38,9 @@
     "blade"
   ],
   "exports": {
+    "./assets/*": {
+      "default": "./assets/*"
+    },
     "./fonts.css": {
       "default": "./fonts.css"
     },
