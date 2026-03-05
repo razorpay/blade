@@ -1,3 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-disable @typescript-eslint/no-implicit-any-catch */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable one-var */
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable default-case */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+
 /**
  * RzpGlassMount
  *
@@ -6,7 +15,6 @@
  *
  * @see https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shader-mount.ts
  */
-
 import { rzpGlassVertexShader, rzpGlassFragmentShader } from './rzpGlassShader';
 import type { RzpGlassConfig, RzpGlassAssets } from './types';
 import { DEFAULT_CONFIG } from './presets';

@@ -6,9 +6,9 @@
  * to update the gradient origin reactively, and dispose() to clean up.
  */
 
+import type { FullscreenQuadBuffers } from '../RzpGlass/webgl-utils';
 import { createProgram, setupFullscreenQuad } from '../RzpGlass/webgl-utils';
 import { fragmentShader, FLUID_GRADIENT_LOOP } from './shader';
-import type { FullscreenQuadBuffers } from '../RzpGlass/webgl-utils';
 
 const vertexShader = /* glsl */ `
   precision mediump float;

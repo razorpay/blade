@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable consistent-return */
 import { useEffect, useRef } from 'react';
 import { FluidGradientMount } from './FluidGradientMount';
 

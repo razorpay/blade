@@ -256,6 +256,7 @@ const LEVEL_RENDER_SETTINGS: Record<PerformanceLevel, RenderSettings> = {
  * );
  * ```
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class PerformanceManager {
   /**
    * Detect GPU tier and return a full PerformanceProfile.

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useId } from 'react';
+import React from 'react';
 import { useFluidGradient } from './useFluidGradient';
+import { useId } from '~utils/useId';
 
 // Canvas renders this much larger than the visible area so the gradient
 // fills the logo shape fully rather than fading at the edges.
@@ -67,7 +68,7 @@ export function FluidGradient({
   className,
   style,
 }: FluidGradientProps) {
-  const uid = useId().replace(/:/g, '');
+  const uid = useId('rzp-sense-gradient');
   const maskId = `fg-mask-${uid}`;
 
   // Canvas is larger than the visible area; offset centers it behind the mask
