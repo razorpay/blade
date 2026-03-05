@@ -25,7 +25,7 @@
  * ```
  */
 
-import { forwardRef, useEffect, useRef, useState, useCallback } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { RzpGlassMount } from './RzpGlassMount';
 import type {
   RzpGlassProps,
@@ -35,6 +35,7 @@ import type {
 } from './types';
 import { getPresets, DEFAULT_CDN_PATH } from './presets';
 import type { RzpGlassPreset } from './presets';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 const getDefaultAssets = (cdnPath: string = DEFAULT_CDN_PATH): Required<RzpGlassAssets> => ({
   videoSrc: `${cdnPath}/spark-base-video.mp4`,
@@ -43,24 +44,6 @@ const getDefaultAssets = (cdnPath: string = DEFAULT_CDN_PATH): Required<RzpGlass
   gradientMap2Src: `${cdnPath}/colorama-gradient-map-blue.jpg`,
   centerGradientMapSrc: `${cdnPath}/colorama-center-gradient-map.jpg`,
 });
-
-/**
- * Hook to merge multiple refs into one
- */
-function useMergeRefs<T>(refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> {
-  return useCallback(
-    (value: T) => {
-      refs.forEach((ref) => {
-        if (typeof ref === 'function') {
-          ref(value);
-        } else if (ref != null) {
-          (ref as React.MutableRefObject<T | null>).current = value;
-        }
-      });
-    },
-    [refs],
-  );
-}
 
 /**
  * Extract config from props (exclude non-config props).
@@ -293,7 +276,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     }
   }, [isInitialized, gradientMapCanvas]);
 
-  const mergedRef = useMergeRefs([divRef, forwardedRef]);
+  const mergedRef = useMergeRefs(forwardedRef, divRef);
 
   // Convert width/height to string if number
   const widthStyle = typeof width === 'number' ? `${width}px` : width;
