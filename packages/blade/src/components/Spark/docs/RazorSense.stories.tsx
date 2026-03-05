@@ -336,6 +336,12 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
               <Text weight="semibold">ccGamma</Text> - Output gamma (default: 1.2)
             </ListItemText>
           </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">backgroundColor</Text> - Background color RGB array [0-1, 0-1,
+              0-1] to blend the effect with background color.
+            </ListItemText>
+          </ListItem>
         </List>
       </Box>
 
