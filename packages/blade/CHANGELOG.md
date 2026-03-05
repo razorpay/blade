@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.93.0
+
+### Minor Changes
+
+- 64aa27c4d: feat(blade): add RazorSense component
+
 ## 12.92.1
 
 ### Patch Changes
