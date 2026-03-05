@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.25.3
+
+### Patch Changes
+
+- 06e127d3f: feat(SideNav): MCP update, mobile sidenav bug fix, refactors
+
 ## 1.25.2
 
 ### Patch Changes
