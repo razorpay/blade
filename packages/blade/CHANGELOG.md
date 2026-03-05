@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.92.1
+
+### Patch Changes
+
+- 06e127d3f: feat(SideNav): MCP update, mobile sidenav bug fix, refactors
+- ad0561254: fix(blade): list view changes
+
 ## 12.92.0
 
 ### Minor Changes
