@@ -125,7 +125,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   background-color: hsla(218,89%,51%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 0px 0px 1px hsla(218,89%,51%,1),inset 0 2px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -157,13 +157,13 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
 
 .c5.c5.c5.c5.c5:hover {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 0px 0px 1px hsla(218,87%,43%,1),inset 0 2px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c5.c5.c5.c5.c5:active {
   background-color: hsla(218,87%,43%,1);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: inset 0 0px 0px 1px hsla(218,87%,43%,1),inset 0 2px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
@@ -171,7 +171,7 @@ exports[`<EmptyState /> should render EmptyState with Button children 1`] = `
   background-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(218,87%,43%,1),inset 0 2px 0px 0px hsla(0,0%,100%,0.32),inset 0 -2px 0px 0px hsla(0,0%,100%,0.32);
 }
 
 .c5.c5.c5.c5.c5 * {

@@ -94,16 +94,14 @@ const boxShadow = (
     base: {
       primary: {
         default: [
-          { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
-          { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.default` },
-          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
-          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: 0, blur: 0, spread: 1, color: `interactive.border.${color}.default` },
+          { y: 2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
         ],
         highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: `interactive.border.${color}.highlighted` },
-          { y: 0, blur: 0, spread: 0.5, color: `interactive.border.${color}.highlighted` },
-          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
-          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.faded' },
+          { y: 0, blur: 0, spread: 1, color: `interactive.border.${color}.highlighted` },
+          { y: 2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
         ],
         disabled: [],
       },
@@ -142,12 +140,16 @@ const boxShadow = (
     white: {
       primary: {
         default: [
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
           { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.default' },
         ],
         highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.faded' },
           { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.default' },
         ],
         disabled: [],
       },
