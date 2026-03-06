@@ -7,7 +7,7 @@ import { getPresets } from './presets';
 
 const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
 
-const getDefaultAssets = (assetsPath: string) => ({
+const getDefaultAssets = (assetsPath: string): Record<string, string> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,
   imageSrc: `${assetsPath}/bottom-frame.jpg`,
   gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
