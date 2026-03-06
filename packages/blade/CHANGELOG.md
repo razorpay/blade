@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.95.0
+
+### Minor Changes
+
+- a8823b007: feat(blade): update razorsense cdn path & added preloadRazorSenseAssets utility
+  feat(blade-mcp): add knowledgebase for RazorSense and RazorSenseGradient
+
 ## 12.94.0
 
 ### Minor Changes
