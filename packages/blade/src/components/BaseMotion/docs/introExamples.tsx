@@ -1,4 +1,4 @@
-import { Story } from '@storybook/blocks';
+import { Story } from '@storybook/addon-docs/blocks';
 import { Box } from '~components/Box';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 

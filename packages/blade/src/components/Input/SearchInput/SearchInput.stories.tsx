@@ -1,6 +1,6 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import type { SearchInputProps } from './SearchInput';
 import { SearchInput as SearchInputComponent } from './SearchInput';

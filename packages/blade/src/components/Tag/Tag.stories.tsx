@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Tag } from './Tag';
 import type { TagProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';

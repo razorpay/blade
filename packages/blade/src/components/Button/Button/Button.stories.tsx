@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title, Description, Heading } from '@storybook/blocks';
+import { Title, Description, Heading } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import styled from 'styled-components';

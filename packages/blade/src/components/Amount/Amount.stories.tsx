@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import { getCurrencyList } from '@razorpay/i18nify-js/currency';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import { useState } from 'react';

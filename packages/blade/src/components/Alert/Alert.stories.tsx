@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';

@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/blocks';
+import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';

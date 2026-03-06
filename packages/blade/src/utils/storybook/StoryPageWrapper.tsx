@@ -1,5 +1,5 @@
 import React from 'react';
-import { Controls, Primary, Stories } from '@storybook/blocks';
+import { Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';

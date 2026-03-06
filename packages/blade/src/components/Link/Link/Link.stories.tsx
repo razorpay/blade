@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title, Description } from '@storybook/blocks';
+import { Title, Description } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';

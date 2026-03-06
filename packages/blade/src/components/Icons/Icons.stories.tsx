@@ -1,6 +1,6 @@
 import type { ComponentType, ReactElement } from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title, Description } from '@storybook/blocks';
+import { Title, Description } from '@storybook/addon-docs/blocks';
 import iconMap from './iconMap';
 import PlusIcon from './PlusIcon';
 import type { IconProps } from '.';

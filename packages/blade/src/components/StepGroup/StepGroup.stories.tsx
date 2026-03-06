@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import StoryRouter from 'storybook-react-router';
 import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { Meta, StoryFn } from '@storybook/react-webpack5';
 import React from 'react';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import isChromatic from 'chromatic';
 import { SpotlightPopoverTourStep } from '../TourStep';
 import { SpotlightPopoverTourFooter } from '../TourFooter';

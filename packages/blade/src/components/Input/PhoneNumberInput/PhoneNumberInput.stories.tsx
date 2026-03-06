@@ -2,7 +2,7 @@ import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { PhoneNumberInputProps } from './types';
 import { PhoneNumberInput } from './PhoneNumberInput';
 import { Box } from '~components/Box';

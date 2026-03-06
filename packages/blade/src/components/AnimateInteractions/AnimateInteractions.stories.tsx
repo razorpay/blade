@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import { AnimateInteractions } from './';
 import type { AnimateInteractionsProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

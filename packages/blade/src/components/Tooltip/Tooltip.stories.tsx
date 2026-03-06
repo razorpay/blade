@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { TooltipProps } from './';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
 import { Button } from '~components/Button';

@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import type { InfoGroupProps } from './types';
 import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';

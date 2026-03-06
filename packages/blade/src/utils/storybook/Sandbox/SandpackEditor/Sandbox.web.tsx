@@ -8,7 +8,7 @@ import {
   SandpackCodeEditor,
   SandpackPreview,
 } from '@codesandbox/sandpack-react';
-import { DocsContext } from '@storybook/blocks';
+import { DocsContext } from '@storybook/addon-docs/blocks';
 import dedent from 'dedent';
 import type { RecipeSandboxProps, SandboxProps } from '../types';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON

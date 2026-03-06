@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-webpack5';
-import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/blocks';
+import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { BaseSpinnerProps } from './BaseSpinner';
 import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react-webpack5';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import StoryRouter from 'storybook-react-router';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavProps, SideNavSectionProps } from '../types';
