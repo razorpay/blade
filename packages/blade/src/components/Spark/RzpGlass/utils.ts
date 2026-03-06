@@ -2,6 +2,19 @@
  * RzpGlass Utility Functions
  */
 
+import type { RzpGlassPreset } from './presets';
+import { getPresets } from './presets';
+
+const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
+
+const getDefaultAssets = (assetsPath: string) => ({
+  videoSrc: `${assetsPath}/spark-base-video.mp4`,
+  imageSrc: `${assetsPath}/bottom-frame.jpg`,
+  gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
+  gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
+  centerGradientMapSrc: `${assetsPath}/colorama-center-gradient-map.jpg`,
+});
+
 /**
  * Load an image from URL
  */
@@ -64,4 +77,53 @@ export function bestGuessBrowserZoom(): number {
   if (zoomPercentageRounded === 133) return 4 / 3;
 
   return ratio;
+}
+
+/**
+ * Preload all assets for a given RazorSense preset.
+ * This ensures videos and images are fully loaded before the component mounts,
+ * preventing frame skipping in one-shot animations.
+ *
+ * @param preset - The preset name to preload assets for
+ * @param assetsPath - Optional CDN path for assets (defaults to Blade CDN)
+ * @returns Promise that resolves when all assets are loaded
+ *
+ * @example
+ * ```tsx
+ * // Preload before showing the animation
+ * await preloadRazorSenseAssets('circleSlideUp');
+ *
+ * // Now mount the component - assets are already cached
+ * <RazorSense preset="circleSlideUp" />
+ * ```
+ */
+export async function preloadRazorSenseAssets(
+  preset: RzpGlassPreset = 'default',
+  assetsPath: string = DEFAULT_CDN_PATH,
+): Promise<void> {
+  const presets = getPresets(assetsPath);
+  const presetDef = presets[preset] || {};
+  const defaultAssets = getDefaultAssets(assetsPath);
+
+  const videoSrc = presetDef.videoSrc ?? defaultAssets.videoSrc;
+  const imageSrc = presetDef.imageSrc;
+  const gradientMapSrc = presetDef.gradientMapSrc ?? defaultAssets.gradientMapSrc;
+  const gradientMap2Src = presetDef.gradientMap2Src ?? defaultAssets.gradientMap2Src;
+  const centerGradientMapSrc = presetDef.centerGradientMapSrc ?? defaultAssets.centerGradientMapSrc;
+
+  const loadPromises: Promise<unknown>[] = [];
+
+  if (imageSrc) {
+    loadPromises.push(loadImage(imageSrc));
+  } else if (videoSrc) {
+    loadPromises.push(loadVideo(videoSrc));
+  }
+
+  loadPromises.push(
+    loadImage(gradientMapSrc),
+    loadImage(gradientMap2Src),
+    loadImage(centerGradientMapSrc),
+  );
+
+  await Promise.all(loadPromises);
 }

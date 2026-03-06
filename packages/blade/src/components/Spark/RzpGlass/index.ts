@@ -24,3 +24,9 @@
 export { RzpGlass as RazorSense } from './RzpGlass';
 
 export type { RzpGlassProps as RazorSenseProps } from './types';
+
+// Preload utilities
+export { preloadRazorSenseAssets } from './utils';
+
+// Preset types
+export type { RzpGlassPreset as RazorSensePreset } from './presets';
