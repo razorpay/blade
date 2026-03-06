@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-webpack5';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { AnimateInteractions } from './';
 import type { AnimateInteractionsProps } from './';

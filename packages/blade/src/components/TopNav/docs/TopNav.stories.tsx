@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import storyRouterDecorator from 'storybook-react-router';
 import { Title } from '@storybook/addon-docs/blocks';

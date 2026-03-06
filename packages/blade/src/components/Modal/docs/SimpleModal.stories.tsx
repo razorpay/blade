@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import { Modal, ModalFooter, ModalHeader, ModalBody } from '../Modal';
 import type { ModalProps } from '../index';

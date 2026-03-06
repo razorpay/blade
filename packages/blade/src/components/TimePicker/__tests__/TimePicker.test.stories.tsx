@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-webpack5';
+import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent } from 'storybook/test';
 import { expect, jest } from 'storybook/test';
 import type { Mock } from 'jest-mock';

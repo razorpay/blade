@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react-webpack5';
+import { composeStories } from '@storybook/react-vite';
 import * as boxStories from './Box.stories';
 import { Box as BoxComponent } from '~components/Box';
 import { Heading } from '~components/Typography';

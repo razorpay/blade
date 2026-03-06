@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { EmptyState } from '../EmptyState';
 import type { EmptyStateProps } from '../types';
 import { EmptyStateStoryCode } from './code';

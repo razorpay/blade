@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-webpack5';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import {
   Table,
   TableHeader,

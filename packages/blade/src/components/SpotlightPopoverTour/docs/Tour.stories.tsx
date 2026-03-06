@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Meta, StoryFn } from '@storybook/react-webpack5';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import isChromatic from 'chromatic';

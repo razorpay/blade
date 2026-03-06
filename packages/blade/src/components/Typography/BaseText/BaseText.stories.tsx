@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { BaseText as BaseTextComponent } from './BaseText';
 import type { BaseTextProps } from './types';

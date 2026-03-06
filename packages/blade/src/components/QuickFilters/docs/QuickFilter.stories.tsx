@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { QuickFilterGroup } from '../QuickFilterGroup';
 import type { QuickFilterGroupProps } from '../types';

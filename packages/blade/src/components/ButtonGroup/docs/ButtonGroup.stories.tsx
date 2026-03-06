@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { ButtonGroupProps } from '../ButtonGroup';
 import { ButtonGroup as ButtonGroupComponent } from '../ButtonGroup';
 import { Heading } from '~components/Typography/Heading';

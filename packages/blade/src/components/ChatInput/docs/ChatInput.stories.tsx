@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChatInput } from '../ChatInput';
 import type { ChatInputProps } from '../types';

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import StoryRouter from 'storybook-react-router';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta } from '@storybook/react-webpack5';
+import type { Meta } from '@storybook/react-vite';
 import { FileUpload } from '../FileUpload';
 import {
   CustomPreviewStory,

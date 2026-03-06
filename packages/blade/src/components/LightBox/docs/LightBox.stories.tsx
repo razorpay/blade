@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
 // eslint-disable-next-line import/no-extraneous-dependencies

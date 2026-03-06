@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title as StorybookTitle } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';

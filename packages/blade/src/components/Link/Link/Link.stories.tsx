@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Description } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { LinkProps } from './Link';

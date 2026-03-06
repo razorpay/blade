@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-webpack5';
+import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent } from 'storybook/test';
 import { jest, expect } from 'storybook/test';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react-webpack5';
+import { composeStories } from '@storybook/react-vite';
 import * as cardStories from './Card.stories';
 import * as interactiveCardStories from './CardInteractive.stories';
 import { Box } from '~components/Box';

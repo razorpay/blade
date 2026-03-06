@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import { ListView } from '../ListView';
 import type { ListViewProps } from '../types';

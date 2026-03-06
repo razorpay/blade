@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react-webpack5';
+import { composeStories } from '@storybook/react-vite';
 import * as stepGroupStories from './StepGroup.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';

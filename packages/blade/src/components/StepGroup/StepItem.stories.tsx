@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
 import { Box } from '~components/Box';

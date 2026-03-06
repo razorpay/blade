@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react-webpack5';
+import { composeStories } from '@storybook/react-vite';
 import * as checkboxStories from './Checkbox.stories';
 import * as checkboxGroupStories from './CheckboxGroup.stories';
 import { Box } from '~components/Box';

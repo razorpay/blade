@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import type { ActionListProps } from './ActionList';
 import { ActionList as ActionListComponent } from './ActionList';
