@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
 import type { StoryFn, Meta } from '@storybook/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';
 import type { RazorSenseProps } from '../RzpGlass/index';
@@ -33,6 +33,7 @@ export default {
   args: {},
   tags: ['autodocs'],
   parameters: {
+    layout: 'fullscreen',
     docs: {
       page: Page,
     },
@@ -713,3 +714,282 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 };
 
 export const RippleWaveAnimation = RippleWaveAnimationTemplate.bind({});
+
+// ---------------------------------------------------------------------------
+// Onboarding Playback Controls Story
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// usePhaseControl — generic hook for sequencing animation phases
+// ---------------------------------------------------------------------------
+
+type PhaseConfig = {
+  zoom: number;
+  panX: number;
+  panY: number;
+  paused: boolean;
+  playbackRate: number;
+  edgeFeather: [number, number, number, number];
+  startTime: number;
+  endTime: number;
+  /** When set, the video plays from startTime and auto-pauses once it reaches this video time. */
+  pauseAfterVideoTime?: number;
+};
+
+type PhaseDefinition<P extends string> = {
+  key: P;
+  label: string;
+  description: string;
+};
+
+type UsePhaseControlOptions<P extends string> = {
+  phases: PhaseDefinition<P>[];
+  config: Record<P, PhaseConfig>;
+  initialPhase: P;
+  lerpSpeed?: number;
+};
+
+type UsePhaseControlReturn<P extends string> = {
+  currentPhase: P;
+  setCurrentPhase: (phase: P) => void;
+  goToNextPhase: () => void;
+  phaseConfig: PhaseConfig;
+  effectivePaused: boolean;
+  animValues: { zoom: number; panX: number; panY: number };
+  phases: PhaseDefinition<P>[];
+};
+
+function usePhaseControl<P extends string>({
+  phases,
+  config,
+  initialPhase,
+  lerpSpeed = 0.05,
+}: UsePhaseControlOptions<P>): UsePhaseControlReturn<P> {
+  const [currentPhase, setCurrentPhase] = useState<P>(initialPhase);
+  const [effectivePaused, setEffectivePaused] = useState(false);
+  const [animValues, setAnimValues] = useState({ zoom: 1.0, panX: 0, panY: 0 });
+  const animRef = useRef({ zoom: 1.0, panX: 0, panY: 0 });
+
+  const phaseConfig = config[currentPhase];
+
+  const goToNextPhase = (): void => {
+    setCurrentPhase((prev) => {
+      const idx = phases.findIndex((p) => p.key === prev);
+      return phases[(idx + 1) % phases.length].key;
+    });
+  };
+
+  // Handle pause logic — auto-pause when pauseAfterVideoTime is set
+  useEffect(() => {
+    const cfg = config[currentPhase];
+    if (cfg.pauseAfterVideoTime !== undefined) {
+      setEffectivePaused(false);
+      const travelTime = cfg.pauseAfterVideoTime - cfg.startTime;
+      const delay = (travelTime / cfg.playbackRate) * 1000;
+      const timer = setTimeout(() => setEffectivePaused(true), delay);
+      return () => clearTimeout(timer);
+    }
+    setEffectivePaused(cfg.paused);
+    return undefined;
+  }, [currentPhase, config]);
+
+  // Smoothly interpolate zoom & pan via lerp on every phase change
+  useEffect(() => {
+    const target = config[currentPhase];
+    let running = true;
+    const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+    const isClose = (a: number, b: number): boolean => Math.abs(a - b) < 0.002;
+
+    const tick = (): void => {
+      if (!running) return;
+      const cur = animRef.current;
+      const next = {
+        zoom: lerp(cur.zoom, target.zoom, lerpSpeed),
+        panX: lerp(cur.panX, target.panX, lerpSpeed),
+        panY: lerp(cur.panY, target.panY, lerpSpeed),
+      };
+      const converged =
+        isClose(next.zoom, target.zoom) &&
+        isClose(next.panX, target.panX) &&
+        isClose(next.panY, target.panY);
+      // eslint-disable-next-line prettier/prettier
+      const result = converged ? { zoom: target.zoom, panX: target.panX, panY: target.panY } : next;
+
+      animRef.current = result;
+      setAnimValues(result);
+      if (!converged) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+    return () => {
+      running = false;
+    };
+  }, [currentPhase, config, lerpSpeed]);
+
+  return {
+    currentPhase,
+    setCurrentPhase,
+    goToNextPhase,
+    phaseConfig,
+    effectivePaused,
+    animValues,
+    phases,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Onboarding Playback Controls Story
+// ---------------------------------------------------------------------------
+
+type OnboardingPhase = 'loading' | 'stop' | 'zoomIn' | 'zoomOut';
+
+const ONBOARDING_PHASES: PhaseDefinition<OnboardingPhase>[] = [
+  {
+    key: 'loading',
+    label: 'Phase 1: Loading Loop',
+    description: 'Small initial animation loops continuously',
+  },
+  {
+    key: 'stop',
+    label: 'Phase 2: Resume & Stop',
+    description: 'Animation plays forward until video time ~8s, then pauses',
+  },
+  {
+    key: 'zoomIn',
+    label: 'Phase 3: Zoom In',
+    description: 'Camera zooms into the paused effect',
+  },
+  {
+    key: 'zoomOut',
+    label: 'Phase 4: Zoom Out',
+    description: 'Camera pulls back out',
+  },
+];
+
+const ONBOARDING_PHASE_CONFIG: Record<OnboardingPhase, PhaseConfig> = {
+  loading: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: false,
+    playbackRate: 1.0,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 0,
+    endTime: 3,
+  },
+  stop: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: false,
+    playbackRate: 1.5,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 2,
+    endTime: 14,
+    pauseAfterVideoTime: 8,
+  },
+  zoomIn: {
+    zoom: 2.5,
+    panX: 0,
+    panY: -0.15,
+    paused: true,
+    playbackRate: 1.0,
+    edgeFeather: [0.15, 0.15, 0.15, 0.15],
+    startTime: 0,
+    endTime: 14,
+  },
+  zoomOut: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: true,
+    playbackRate: 1.0,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 0,
+    endTime: 14,
+  },
+};
+
+const OnboardingPlaybackControlsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
+  const {
+    currentPhase,
+    setCurrentPhase,
+    goToNextPhase,
+    phaseConfig,
+    effectivePaused,
+    animValues,
+    phases,
+  } = usePhaseControl({
+    phases: ONBOARDING_PHASES,
+    config: ONBOARDING_PHASE_CONFIG,
+    initialPhase: 'loading',
+  });
+
+  useEffect(() => {
+    preloadRazorSenseAssets('default')
+      .then(() => setAssetsPreloaded(true))
+      .catch(console.error);
+  }, []);
+
+  if (!assetsPreloaded) {
+    return <div>Loading assets...</div>;
+  }
+
+  return (
+    <Box display="flex" flexDirection="column" height="100vh" margin="-40px">
+      {/* Phase Controls */}
+      <Box
+        padding="spacing.5"
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        backgroundColor="surface.background.gray.moderate"
+      >
+        <Button variant="secondary" size="medium" onClick={goToNextPhase}>
+          Go to next phase
+        </Button>
+        <Box display="flex" gap="spacing.3" alignItems="center">
+          {phases.map(({ key, label }) => (
+            <Button
+              key={key}
+              variant={currentPhase === key ? 'primary' : 'tertiary'}
+              size="small"
+              onClick={() => setCurrentPhase(key)}
+            >
+              {label}
+            </Button>
+          ))}
+        </Box>
+        <Text size="medium" color="surface.text.gray.muted" marginLeft="auto">
+          {phases.find((p) => p.key === currentPhase)?.description}
+        </Text>
+      </Box>
+
+      {/* RazorSense Display */}
+      <Box
+        flex="1"
+        position="relative"
+        overflow="hidden"
+        backgroundColor="surface.background.gray.intense"
+      >
+        <RazorSenseComponent
+          width="100%"
+          height="100%"
+          preset="default"
+          paused={effectivePaused}
+          playbackRate={phaseConfig.playbackRate}
+          zoom={animValues.zoom}
+          panX={animValues.panX}
+          panY={animValues.panY}
+          edgeFeather={phaseConfig.edgeFeather}
+          startTime={phaseConfig.startTime}
+          endTime={phaseConfig.endTime}
+          lightStartFrame={currentPhase === 'stop' ? 0 : 140}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+export const OnboardingPlaybackControls = OnboardingPlaybackControlsTemplate.bind({});
