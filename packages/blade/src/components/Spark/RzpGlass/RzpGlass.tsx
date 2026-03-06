@@ -33,18 +33,22 @@ import type {
   RzpGlassAssets,
   RzpGlassPresetDefinition,
 } from './types';
-import { PRESETS } from './presets';
+import { getPresets } from './presets';
 import type { RzpGlassPreset } from './presets';
 
-const DEFAULT_CDN_PATH =
-  'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark';
+// Duration of the component's built-in fade-in transition.
+// The video is kept paused during this window so one-shot animations
+// (e.g. circleSlideUp) don't "waste" frames while the canvas is invisible.
+const FADE_IN_MS = 200;
 
-const getDefaultAssets = (cdnPath: string): Required<RzpGlassAssets> => ({
-  videoSrc: `${cdnPath}/spark-base-video.mp4`,
-  imageSrc: `${cdnPath}/bottom-frame.jpg`,
-  gradientMapSrc: `${cdnPath}/colorama-gradient-map-green.jpg`,
-  gradientMap2Src: `${cdnPath}/colorama-gradient-map-blue.jpg`,
-  centerGradientMapSrc: `${cdnPath}/colorama-center-gradient-map.jpg`,
+const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
+
+const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
+  videoSrc: `${assetsPath}/spark-base-video.mp4`,
+  imageSrc: `${assetsPath}/bottom-frame.jpg`,
+  gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
+  gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
+  centerGradientMapSrc: `${assetsPath}/colorama-center-gradient-map.jpg`,
 });
 
 /**
@@ -78,7 +82,7 @@ function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
     onLoad: _onLoad,
     onError: _onError,
     preset: _preset,
-    cdnPath: _cdnPath,
+    assetsPath: _assetsPath,
     gradientMapSrc: _gradientMapSrc,
     gradientMap2Src: _gradientMap2Src,
     gradientMapCanvas: _gradientMapCanvas,
@@ -102,20 +106,30 @@ const ASSET_KEYS = new Set<string>([
 ]);
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return */
-function getPresetDefinition(preset: RzpGlassPreset | undefined): RzpGlassPresetDefinition {
-  if (preset && preset in PRESETS) return { ...PRESETS[preset] };
+function getPresetDefinition(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): RzpGlassPresetDefinition {
+  const presets = getPresets(assetsPath);
+  if (preset && preset in presets) return { ...presets[preset] };
   return {};
 }
 
-function getPresetConfig(preset: RzpGlassPreset | undefined): Partial<RzpGlassConfig> {
-  const def = getPresetDefinition(preset) as Record<string, unknown>;
+function getPresetConfig(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): Partial<RzpGlassConfig> {
+  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => !ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassConfig>;
 }
 
-function getPresetAssets(preset: RzpGlassPreset | undefined): Partial<RzpGlassAssets> {
-  const def = getPresetDefinition(preset) as Record<string, unknown>;
+function getPresetAssets(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): Partial<RzpGlassAssets> {
+  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassAssets>;
@@ -125,9 +139,9 @@ function getPresetAssets(preset: RzpGlassPreset | undefined): Partial<RzpGlassAs
  * Merge preset config with user-provided config.
  * Preset values are used as base; any explicit prop overrides them.
  */
-function resolveConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
+function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
   return {
-    ...getPresetConfig(props.preset),
+    ...getPresetConfig(props.preset, assetsPath),
     ...extractConfig(props),
   };
 }
@@ -143,7 +157,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     style,
     onLoad,
     onError,
-    cdnPath: cdnPathProp,
+    assetsPath: assetsPathProp,
     gradientMapCanvas,
     gradientMapSrc: gradientMapSrcProp,
     gradientMap2Src: gradientMap2SrcProp,
@@ -151,12 +165,12 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     ...configProps
   } = props;
 
-  // Get default assets based on cdnPath
-  const cdnPath: string = cdnPathProp ?? DEFAULT_CDN_PATH;
-  const defaultAssets = getDefaultAssets(cdnPath);
+  // Get default assets based on assetsPath
+  const assetsPath: string = assetsPathProp ?? DEFAULT_CDN_PATH;
+  const defaultAssets = getDefaultAssets(assetsPath);
 
   // Resolve assets: prop overrides preset, preset overrides default
-  const presetAssets = getPresetAssets(props.preset);
+  const presetAssets = getPresetAssets(props.preset, assetsPath);
   const imageSrc = imageSrcProp ?? presetAssets.imageSrc;
   const videoSrc = imageSrc ? undefined : presetAssets.videoSrc ?? defaultAssets.videoSrc;
   const gradientMapSrc =
@@ -177,7 +191,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
       if (!divRef.current || mountRef.current) return;
 
       try {
-        const config = resolveConfig(props);
+        const config = resolveConfig(props, assetsPath);
 
         mountRef.current = new RzpGlassMount(
           divRef.current,
@@ -192,8 +206,25 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
         );
 
         await mountRef.current.loadAssets();
-        setIsInitialized(true);
-        onLoad?.();
+
+        // Pause the video during the CSS fade-in so one-shot animations
+        // don't burn frames while the component is still transparent.
+        // Only do this when the consumer hasn't explicitly set paused: true.
+        const userWantsPaused = config.paused ?? false;
+        if (!userWantsPaused) {
+          mountRef.current.pause();
+        }
+
+        setIsInitialized(true); // kicks off the CSS opacity 0 → 1 transition
+
+        // After the fade-in completes, resume video and notify the consumer.
+        setTimeout(() => {
+          if (!mountRef.current) return;
+          if (!userWantsPaused) {
+            mountRef.current.play();
+          }
+          onLoad?.();
+        }, FADE_IN_MS);
       } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
         setError(error);
@@ -209,7 +240,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
       setIsInitialized(false);
     };
   }, [
-    cdnPath,
+    assetsPath,
     videoSrc,
     imageSrc,
     gradientMapSrc,
@@ -221,7 +252,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
   // Update uniforms when config props change
   useEffect(() => {
     if (isInitialized && mountRef.current) {
-      const config = resolveConfig(props);
+      const config = resolveConfig(props, assetsPath);
       mountRef.current.setUniforms(config);
     }
   }, [

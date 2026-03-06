@@ -305,7 +305,7 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           </ListItem>
           <ListItem>
             <ListItemText>
-              <Text weight="semibold">cdnPath</Text> - Base CDN path for default assets
+              <Text weight="semibold">assetsPath</Text> - Base CDN path for default assets
             </ListItemText>
           </ListItem>
         </List>
@@ -595,14 +595,25 @@ const motionGStyle = {
 const RayRotate = ({ isRunning = true }: { isRunning?: boolean }) => {
   return (
     <motion.g
-      animate={{ rotate: isRunning ? 90 : 180 }}
-      transition={{
-        duration: 0.7,
-        repeat: isRunning ? Infinity : 0,
-        delay: 0.4,
-        repeatDelay: 1.1,
-        ease: 'easeInOut',
+      animate={isRunning ? 'start' : 'end'}
+      variants={{
+        start: {
+          rotate: [0, 90],
+          transition: {
+            duration: 0.7,
+            delay: 0.4,
+            repeatDelay: 1.1,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
+          },
+        },
+        end: {
+          rotate: 90,
+          transition: { type: 'spring', stiffness: 300, damping: 40 },
+        },
       }}
+      initial="start"
       style={motionGStyle}
     >
       <path
