@@ -10,7 +10,8 @@
     "**/**.stories.internal.tsx",
     "**/**.native.ts",
     "**/**.native.tsx",
-    "**/ThemePlayground/**/**.tsx"
+    "**/ThemePlayground/**/**.tsx",
+    "**/BaseMotion/docs/introExamples.tsx"
   ],
   "compilerOptions": {
     "outDir": "build/generated-types/web",
