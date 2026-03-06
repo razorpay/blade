@@ -5,7 +5,11 @@ import React, { useState, useEffect } from 'react';
 import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';
 import type { RazorSenseProps } from '../RzpGlass/index';
-import { RazorSense as RazorSenseComponent, RazorSenseGradient } from '../';
+import {
+  RazorSense as RazorSenseComponent,
+  RazorSenseGradient,
+  preloadRazorSenseAssets,
+} from '../';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -305,7 +309,7 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           </ListItem>
           <ListItem>
             <ListItemText>
-              <Text weight="semibold">cdnPath</Text> - Base CDN path for default assets
+              <Text weight="semibold">assetsPath</Text> - Base CDN path for default assets
             </ListItemText>
           </ListItem>
         </List>
@@ -369,17 +373,22 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 export const PropsExplanation = PropsExplanationTemplate.bind({});
 
 const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
-  const [countdown, setCountdown] = useState(6);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
 
   useEffect(() => {
-    if (countdown > 0 && isLoaded) {
-      const timer = setTimeout(() => {
-        setCountdown(countdown - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [countdown, isLoaded]);
+    preloadRazorSenseAssets('circleSlideUp')
+      .then(() => {
+        setAssetsPreloaded(true);
+      })
+      .catch((error) => {
+        console.error('Failed to preload assets:', error);
+      });
+  }, []);
+
+  if (!assetsPreloaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box display="flex" flexDirection="column" height="100vh">
@@ -409,7 +418,6 @@ const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = ()
         >
           {/* Success Icon with RzpGlass animation */}
           <Box position="relative" width="80px" height="80px">
-            {/* RzpGlass centered */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -575,7 +583,7 @@ const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = ()
               }}
             >
               <Text size="small" textAlign="center" color="surface.text.gray.muted">
-                Redirecting to your Razorpay home in {countdown} sec
+                Redirecting to your Razorpay home in 15 seconds
               </Text>
             </motion.div>
           </motion.div>
@@ -595,14 +603,25 @@ const motionGStyle = {
 const RayRotate = ({ isRunning = true }: { isRunning?: boolean }) => {
   return (
     <motion.g
-      animate={{ rotate: isRunning ? 90 : 180 }}
-      transition={{
-        duration: 0.7,
-        repeat: isRunning ? Infinity : 0,
-        delay: 0.4,
-        repeatDelay: 1.1,
-        ease: 'easeInOut',
+      animate={isRunning ? 'start' : 'end'}
+      variants={{
+        start: {
+          rotate: [0, 90],
+          transition: {
+            duration: 0.7,
+            delay: 0.4,
+            repeatDelay: 1.1,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
+          },
+        },
+        end: {
+          rotate: 90,
+          transition: { type: 'spring', stiffness: 300, damping: 40 },
+        },
       }}
+      initial="start"
       style={motionGStyle}
     >
       <path
@@ -614,14 +633,25 @@ const RayRotate = ({ isRunning = true }: { isRunning?: boolean }) => {
 };
 
 const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
   const [isRayAnimationRunning, setIsRayAnimationRunning] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (isLoaded) {
-      setIsRayAnimationRunning(true);
-    }
-  }, [isLoaded]);
+    preloadRazorSenseAssets('rippleWave')
+      .then(() => {
+        setAssetsPreloaded(true);
+        requestAnimationFrame(() => {
+          setIsRayAnimationRunning(true);
+        });
+      })
+      .catch((error) => {
+        console.error('Failed to preload assets:', error);
+      });
+  }, []);
+
+  if (!assetsPreloaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -650,7 +680,7 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           >
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: isLoaded && isRayAnimationRunning ? 1 : 0 }}
+              animate={{ opacity: isRayAnimationRunning ? 1 : 0 }}
               transition={{
                 duration: 0.5,
                 ease: 'easeInOut',
@@ -660,12 +690,7 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
                 height: '100%',
               }}
             >
-              <RazorSenseComponent
-                width="100%"
-                height="100%"
-                preset="rippleWave"
-                onLoad={() => setIsLoaded(true)}
-              />
+              <RazorSenseComponent width="100%" height="100%" preset="rippleWave" />
             </motion.div>
           </Box>
           <RazorSenseGradient
@@ -679,7 +704,7 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
             viewBox="0 0 24 24"
             origin={[0.5, 0.5]}
           >
-            <RayRotate isRunning={isLoaded && isRayAnimationRunning} />
+            <RayRotate isRunning={isRayAnimationRunning} />
           </RazorSenseGradient>
         </Box>
       </Box>
