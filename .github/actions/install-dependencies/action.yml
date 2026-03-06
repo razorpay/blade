@@ -4,8 +4,8 @@ description: Installs npm packages and manages it's cache
 runs:
   using: composite
   steps:
-    - name: Install Yarn
-      run: npm install -g yarn
+    - name: Enable Corepack
+      run: corepack enable
       shell: bash
 
     - name: Cache setup for node modules
@@ -13,15 +13,12 @@ runs:
       id: cache
       with:
         path: |
-          ~/.yarn
           ./node_modules
           ./packages/**/node_modules
         key: ${{ runner.os }}-blade-${{ hashFiles('**/yarn.lock') }}
 
-    # cache miss - install packages with `yarn --frozen-lockfile`
-    # cache hit - download packages from the cache and explicitly run postinstall script
-    - name: install packages if cache miss
-      run: yarn --frozen-lockfile
+    - name: Install packages if cache miss
+      run: yarn install --immutable
       shell: bash
       if: steps.cache.outputs.cache-hit != 'true'
 
