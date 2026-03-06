@@ -21,8 +21,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
-      - name: Enable Corepack
-        run: corepack enable
       - name: Pre-Generate Documentation Lock File
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies

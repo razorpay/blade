@@ -20,19 +20,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2. decide what text we’ll put in the file
+      # 2. decide what text we'll put in the file
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '20'
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install Yarn
+        run: npm install --global yarn
 
       - name: Install dependencies
         run: |
          cd packages/blade
-         yarn install --immutable
+         yarn install --frozen-lockfile
       
       - name: Update icons.json
         env:

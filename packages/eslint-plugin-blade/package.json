@@ -1,10 +1,11 @@
 {
   "name": "eslint-plugin-blade",
   "version": "1.0.0",
+  "private": true,
   "main": "build/index.js",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=18.12.1"
   },
   "devDependencies": {
     "@types/jest": "29.5.3",
