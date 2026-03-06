@@ -721,9 +721,6 @@ export class RzpGlassMount {
     const gl = this.gl;
     const video = this.video;
 
-    // Always clear canvas to transparent (even before video is ready)
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
     // Calculate delta time in seconds (framerate independent)
     const currentTimeSeconds = currentTime * 0.001; // Convert ms to seconds
     const deltaTime = currentTimeSeconds - this.lastRenderTime;
@@ -732,8 +729,9 @@ export class RzpGlassMount {
 
     const usingStaticImage = !video && this.videoTexture !== null;
 
-    // Skip rendering if video isn't ready (canvas stays transparent).
-    // Static-image mode bypasses this guard since there's no video element.
+    // Skip rendering if video isn't ready — do NOT clear the canvas here so the
+    // last rendered frame stays visible instead of flashing transparent/black.
+    // This prevents flickering during video native loop boundary frames.
     if (!usingStaticImage) {
       if (!video || video.readyState < video.HAVE_CURRENT_DATA) {
         return;
@@ -751,6 +749,11 @@ export class RzpGlassMount {
         }
       }
     }
+
+    // Clear canvas now that we know we have data to draw.
+    // Doing this after the readyState guard means we keep the last frame
+    // during any brief gaps (e.g. native video loop boundary).
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
     // Animation time: driven by video position for video mode, real elapsed time for static image
     const videoAnimTime = usingStaticImage
