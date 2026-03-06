@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.94.0
+
+### Minor Changes
+
+- d0b1f778c: fix(blade): razorsense animation flicker
+
 ## 12.93.0
 
 ### Minor Changes
