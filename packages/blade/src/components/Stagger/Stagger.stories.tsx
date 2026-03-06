@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
+import { Title } from '@storybook/blocks';
 import StoryRouter from 'storybook-react-router';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import { Stagger } from './';

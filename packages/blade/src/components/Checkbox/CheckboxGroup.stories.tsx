@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/blocks';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
 import { Text } from '~components/Typography';

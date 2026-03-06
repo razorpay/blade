@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import type { BaseBoxProps } from './types';
 import { getBaseBoxArgTypes } from './storybookArgTypes';
 import { BaseBox } from '.';

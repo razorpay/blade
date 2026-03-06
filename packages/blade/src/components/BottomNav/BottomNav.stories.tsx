@@ -1,6 +1,6 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title } from '@storybook/blocks';
 import StoryRouter from 'storybook-react-router';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import { bottomNavWithReactRouter } from './docsCode';
@@ -58,16 +58,22 @@ export default {
   component: BottomNav,
   tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
+
   parameters: {
-    viewport: {
-      defaultViewport: 'iPhone6',
-    },
     docs: {
       page: Page,
-    },
+    }
   },
+
   // eslint-disable-next-line babel/new-cap
   decorators: [StoryRouter(undefined, { initialEntries: ['/payments'] })] as unknown,
+
+  globals: {
+    viewport: {
+      value: 'iPhone6',
+      isRotated: false
+    }
+  }
 } as Meta<typeof BottomNav>;
 
 const bottomNavItems = [

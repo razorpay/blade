@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-webpack5';
 import * as avatarGroupStories from './AvatarGroup.stories';
 import * as avatarStories from './Avatar.stories';
 import { Box } from '~components/Box';

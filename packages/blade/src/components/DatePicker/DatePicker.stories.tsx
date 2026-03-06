@@ -1,7 +1,7 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import dayjs from 'dayjs';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/blocks';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
 import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';

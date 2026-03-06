@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';

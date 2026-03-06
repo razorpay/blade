@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import storyRouterDecorator from 'storybook-react-router';
 
 import {

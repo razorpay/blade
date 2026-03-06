@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
 import isChromatic from 'chromatic/isChromatic';
 import type { BottomSheetHeaderProps, BottomSheetProps } from './';

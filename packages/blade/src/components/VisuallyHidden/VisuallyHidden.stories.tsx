@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title as StorybookTitle } from '@storybook/addon-docs';
-import { Link } from '@storybook/design-system';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title as StorybookTitle } from '@storybook/blocks';
 import type { ReactElement } from 'react';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
 import type { VisuallyHiddenProps } from './types';
@@ -17,14 +16,13 @@ const Page = (): ReactElement => {
       componentName="VisuallyHidden"
       apiDecisionLink={null}
     >
-      <Link
-        withArrow={true}
+      <a
         href="https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#hidden-content"
         target="_blank"
         rel="noreferrer noopener"
       >
         See Hidden Content RFC
-      </Link>
+      </a>
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>

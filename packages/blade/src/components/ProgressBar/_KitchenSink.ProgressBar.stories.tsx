@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-webpack5';
 import * as progressBarStories from './ProgressBar.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';

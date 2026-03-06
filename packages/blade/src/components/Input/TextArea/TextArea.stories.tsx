@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title } from '@storybook/blocks';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';

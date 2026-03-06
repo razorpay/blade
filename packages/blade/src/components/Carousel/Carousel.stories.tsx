@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title as AddonTitle } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title as AddonTitle } from '@storybook/blocks';
 import React from 'react';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';

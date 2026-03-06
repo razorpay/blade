@@ -1,8 +1,7 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Description, Heading } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title, Description, Heading } from '@storybook/blocks';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
@@ -50,7 +49,7 @@ const Page = (): ReactElement => {
       </Sandbox>
       <Heading>Usage with Icon</Heading>
       <Description markdown="`icon` prop accepts an `IconComponent` of Blade which should be used as:" />
-      <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
+      <code>{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n\u003CButton icon={CreditCardIcon}>Pay Now\u003C/Button>`}</code>
       <br />
       <br />
     </StoryPageWrapper>

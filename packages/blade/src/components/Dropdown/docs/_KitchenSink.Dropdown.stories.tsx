@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-webpack5';
 import * as dropddownWithButtonStories from './DropdownWithButton.stories';
 import * as dropddownWithSelectStories from './DropdownWithSelect.stories';
 import { Box } from '~components/Box';

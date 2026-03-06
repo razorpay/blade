@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import type { ChartLabelContentProps } from '~components/Charts';
 import { Box } from '~components/Box';
 import {

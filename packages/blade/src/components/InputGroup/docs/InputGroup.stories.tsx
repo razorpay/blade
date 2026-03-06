@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import type { InputGroupProps } from '../types';
 import { InputGroup as InputGroupComponent } from '../InputGroup';
 import { InputRow } from '../InputRow';

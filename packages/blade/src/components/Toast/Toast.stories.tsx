@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Title } from '@storybook/addon-docs';
-import type { StoryFn, Meta } from '@storybook/react';
+import { Title } from '@storybook/blocks';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
 import { useToast } from './useToast';
 import { Toast } from './Toast';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArgsTable, Primary, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
+import { Controls, Primary, Stories } from '@storybook/blocks';
 import styled from 'styled-components';
 import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';
@@ -179,10 +179,11 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                <ArgsTable
-                  story={props.argTableComponent ? undefined : PRIMARY_STORY}
-                  of={props.argTableComponent}
-                />
+                {props.argTableComponent ? (
+                  <Controls of={props.argTableComponent} />
+                ) : (
+                  <Controls />
+                )}
               </>
             ) : null}
 

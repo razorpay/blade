@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import type { TableProps, TableData, TableEditableCellProps } from '../../index';
 import {
   Table as TableComponent,

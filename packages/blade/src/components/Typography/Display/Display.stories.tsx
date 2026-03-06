@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title as StorybookTitle } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title as StorybookTitle } from '@storybook/blocks';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
 import { Code } from '../Code';

@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-webpack5';
 import * as selectInputStories from './SelectInput.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';

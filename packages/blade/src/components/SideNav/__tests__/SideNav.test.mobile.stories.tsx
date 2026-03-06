@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent, waitFor } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-webpack5';
+import { within, userEvent, waitFor } from 'storybook/test';
+import { expect } from 'storybook/test';
 import type { SideNav } from '../index';
 import { SideNavExample } from './SideNavExample';
 import { Box } from '~components/Box';

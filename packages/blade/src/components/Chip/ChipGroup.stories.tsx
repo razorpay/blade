@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';

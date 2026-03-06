@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';

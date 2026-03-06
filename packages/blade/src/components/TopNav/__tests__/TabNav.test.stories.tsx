@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { jest, expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-webpack5';
+import { within, userEvent } from 'storybook/test';
+import { jest, expect } from 'storybook/test';
 import React from 'react';
 import type { TabNavProps } from '../TabNav';
 import { TabNav, TabNavItem, TabNavItems } from '../TabNav';

@@ -1,10 +1,11 @@
 // .storybook/manager.js
 import React from 'react';
-import { create } from '@storybook/theming';
-import { useGlobals } from '@storybook/api';
-import { Icons, IconButton } from '@storybook/components';
+import { create } from 'storybook/theming';
+import { useGlobals } from 'storybook/manager-api';
+import { IconButton } from 'storybook/internal/components';
+import { LockIcon } from '@storybook/icons';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
-import { addons, types } from '@storybook/manager-api';
+import { addons, types } from 'storybook/manager-api';
 
 const surafaceTextNormal = 'rgba(19, 38, 68, 1)';
 const bladePrimary = 'rgba(21, 102, 241, 1)';
@@ -93,7 +94,7 @@ const InternalStoryAddon = () => {
       title="Show internal components"
       onClick={toggleVisibility}
     >
-      <Icons icon="lock" />
+      <LockIcon />
     </IconButton>
   );
 };

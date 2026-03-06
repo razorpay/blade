@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { useState } from 'react';
 import { DetailedViewStoryCode } from './code';
 import type { TableData, TableProps } from '~components/Table';

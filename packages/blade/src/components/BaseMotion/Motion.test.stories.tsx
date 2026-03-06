@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, waitFor, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-webpack5';
+import { within, waitFor, userEvent } from 'storybook/test';
+import { expect } from 'storybook/test';
 import React from 'react';
 import { Fade } from '~components/Fade';
 import { Badge } from '~components/Badge';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-webpack5';
 
 import * as tabsStories from './SideNav.stories';
 import { Box } from '~components/Box';

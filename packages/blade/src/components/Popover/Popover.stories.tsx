@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
+import { Title } from '@storybook/blocks';
+import { action } from 'storybook/actions';
 import type { PopoverTriggerProps } from './types';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';

@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import { Avatar as AvatarComponent } from '../Avatar';
 import type { AvatarGroupProps } from '../AvatarGroup';
 import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';

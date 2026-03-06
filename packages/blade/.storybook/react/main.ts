@@ -1,4 +1,7 @@
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import { StorybookConfig } from '@storybook/react-webpack5';
+const require = createRequire(import.meta.url);
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
@@ -20,38 +23,39 @@ const config: StorybookConfig = {
     // react-docgen-typescript is slower but more accurate
     reactDocgen: isDevelopment ? false : 'react-docgen-typescript',
   },
+
   refs: {
     '@storybook/design-system': { disable: true },
   },
+
   stories: [
-    '../../docs/**/*.stories.mdx',
+    '../../docs/**/*.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
-    '../../src/**/*.stories.mdx',
+    '../../src/**/*.mdx',
     '../../src/**/*.stories.@(ts|tsx|js|jsx)',
-    '../../src/**/*.internal.stories.mdx',
     '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',
   ],
+
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-docs',
-    '@storybook/addon-a11y',
-    // '@storybook/preset-create-react-app',
-    '@storybook/addon-interactions',
+    getAbsolutePath("@storybook/addon-webpack5-compiler-babel"),
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y")
   ],
+
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {},
   },
+
   env: (config) => ({
     ...config,
     GITHUB_SHA: process.env.GITHUB_SHA || '',
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
-  docs: {
-    autodocs: 'tag',
-  },
+
   staticDirs: ['../../public'],
+
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -82,6 +86,11 @@ const config: StorybookConfig = {
       '.jsx',
       '.json',
     ];
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@storybook/addon-actions': require.resolve('storybook/actions'),
+    };
 
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
@@ -121,6 +130,10 @@ const config: StorybookConfig = {
         return true;
       }),
     };
-  },
+  }
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}

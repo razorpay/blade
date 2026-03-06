@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React, { useState } from 'react';
 import storyRouterDecorator from 'storybook-react-router';
 import { ListView } from '../ListView';

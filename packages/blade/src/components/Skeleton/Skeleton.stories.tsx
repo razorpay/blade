@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React from 'react';
 import type { SkeletonProps } from './';
 import { Skeleton, Skeleton as SkeletonComponent } from './';

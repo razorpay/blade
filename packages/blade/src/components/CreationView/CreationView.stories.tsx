@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
 import React, { useEffect } from 'react';
 import storyRouterDecorator from 'storybook-react-router';
 import dayjs from 'dayjs';

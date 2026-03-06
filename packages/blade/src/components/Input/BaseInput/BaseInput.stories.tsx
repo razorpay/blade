@@ -1,6 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import type { StoryFn, Meta } from '@storybook/react-webpack5';
+import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/blocks';
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
@@ -258,11 +257,11 @@ export default {
           </Subtitle>
           <img src={BaseInputLayoutImage} alt="Base Input Layout" />
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { BaseInput } from '@razorpay/blade/components' \nimport type { BaseInputProps } from '@razorpay/blade/components'`}</Highlight>
+          <code>{`import { BaseInput } from '@razorpay/blade/components' \nimport type { BaseInputProps } from '@razorpay/blade/components'`}</code>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
+          <Controls />
           <Stories />
         </>
       ),

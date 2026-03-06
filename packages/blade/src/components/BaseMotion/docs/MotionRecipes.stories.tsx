@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn } from '@storybook/react';
+import type { StoryFn } from '@storybook/react-webpack5';
 import StoryRouter from 'storybook-react-router';
 import { DashboardWithRoutingExample } from './MotionDashboardComponents';
 import { Code, Text } from '~components/Typography';
