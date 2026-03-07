@@ -1,17 +1,14 @@
-import { create } from 'storybook/theming';
-
-const surfaceTextNormal = 'hsla(0, 0%, 2%, 1)';
-const bladePrimary = 'hsla(218, 89%, 51%, 1)';
-const bladeTextFont =
+export const surfaceTextNormal = 'hsla(217, 56%, 17%, 1)';
+export const bladePrimary = 'hsla(218, 89%, 51%, 1)';
+export const bladeTextFont =
   '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
+export const bladeCodeFont = '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace';
 
-const bladeCodeFont = '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace';
-
-export const theme = create({
-  base: 'light',
+export const themeConfig = {
+  base: 'light' as const,
 
   colorPrimary: bladePrimary,
-  colorSecondary: surfaceTextNormal,
+  colorSecondary: bladePrimary,
 
   // UI
   appBg: '#F1F4F8',
@@ -48,15 +45,4 @@ export const theme = create({
     />
   `,
   brandUrl: 'https://github.com/razorpay/blade',
-});
-
-const hiddenStoryStyle = document.createElement('style');
-hiddenStoryStyle.textContent = `
-  [id*='internal'] {
-    display: none !important;
-  }
-`;
-document.head.append(hiddenStoryStyle);
-
-export const toggleHiddenStoryStyle = (isDisabled: boolean): boolean =>
-  (hiddenStoryStyle.disabled = isDisabled);
+};

@@ -1,14 +1,28 @@
 // .storybook/manager.js
 import React from 'react';
+import { create } from 'storybook/theming';
 import { useGlobals } from 'storybook/manager-api';
 import { IconButton } from 'storybook/internal/components';
 import { LockIcon } from '@storybook/icons';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 import { addons, types } from 'storybook/manager-api';
-import { theme, toggleHiddenStoryStyle } from './storybook-theme';
+import { themeConfig } from './storybook-theme';
+
+const theme = create(themeConfig);
 
 const ADDON_ID = 'internal-components-addon';
 const TOOL_ID = 'internal-components-tool';
+
+const hiddenStoryStyle = document.createElement('style');
+hiddenStoryStyle.textContent = `
+  [id*='internal'] {
+    display: none !important;
+  }
+`;
+document.head.append(hiddenStoryStyle);
+
+const toggleHiddenStoryStyle = (isDisabled: boolean): boolean =>
+  (hiddenStoryStyle.disabled = isDisabled);
 
 const InternalStoryAddon = () => {
   const [globals, updateGlobals] = useGlobals();

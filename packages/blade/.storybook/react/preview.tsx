@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { theme, toggleHiddenStoryStyle } from './storybook-theme';
+import { create } from 'storybook/theming';
+import { themeConfig } from './storybook-theme';
 import { BladeProvider } from '../../src/components';
 import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
@@ -10,6 +11,8 @@ import React from 'react';
 import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import './global.css';
 import { domMax, LazyMotion } from 'framer-motion';
+
+const theme = create(themeConfig);
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -180,7 +183,6 @@ const StoryCanvas = styled.div<{ context }>(
 
 export const decorators = [
   (Story, context) => {
-    toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.brandColor) {
         return createTheme({ brandColor: context.globals.brandColor }).theme;
