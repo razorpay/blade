@@ -14,7 +14,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { CheckIcon } from '~components/Icons';
+import { CheckIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
 
 const Page = (): ReactElement => {
@@ -72,7 +72,7 @@ const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 };
 export const BottomWave = BottomWaveTemplate.bind({});
 
-const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
     <Box padding="spacing.8" maxWidth="800px">
       <Heading size="xlarge" marginBottom="spacing.6">
@@ -371,7 +371,8 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 
-export const PropsExplanation = PropsExplanationTemplate.bind({});
+export const RazorSensePropsExplanation = RazorSensePropsTemplate.bind({});
+RazorSensePropsExplanation.storyName = 'RazorSense Props';
 
 const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -674,7 +675,7 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
             width="100%"
             height="100%"
             position="absolute"
-            top="-30px"
+            top="-40px"
             left="0px"
             right="0px"
             bottom="0px"
@@ -993,3 +994,215 @@ const OnboardingPlaybackControlsTemplate: StoryFn<typeof RazorSenseComponent> = 
 };
 
 export const OnboardingPlaybackControls = OnboardingPlaybackControlsTemplate.bind({});
+
+// ---------------------------------------------------------------------------
+// RazorSenseGradient Examples
+// ---------------------------------------------------------------------------
+
+const RazorSenseGradientBasicTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const origins: Array<{ origin: [number, number]; label: string }> = [
+    { origin: [0, 0], label: 'Top-Left [0,0]' },
+    { origin: [0.5, 0], label: 'Top-Center [0.5,0]' },
+    { origin: [1, 0], label: 'Top-Right [1,0]' },
+    { origin: [0, 0.5], label: 'Middle-Left [0,0.5]' },
+    { origin: [1, 0.5], label: 'Middle-Right [1,0.5]' },
+  ];
+
+  return (
+    <Box padding="spacing.8">
+      <Heading size="large" marginBottom="spacing.6">
+        RazorSenseGradient - Basic Examples
+      </Heading>
+      <Text marginBottom="spacing.6" color="surface.text.gray.muted">
+        RazorSenseGradient renders an animated WebGL gradient clipped to any SVG shape you pass as
+        children. Use fill=&quot;white&quot; for the visible area.
+      </Text>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Shapes
+      </Heading>
+      <Box
+        display="flex"
+        gap="spacing.8"
+        flexWrap="wrap"
+        alignItems="center"
+        marginBottom="spacing.8"
+      >
+        {/* Rounded Rect */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+            <rect x="2" y="2" width="20" height="20" rx="2" fill="white" />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Rounded Rect
+          </Text>
+        </Box>
+
+        {/* Heart Shape */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              fill="white"
+            />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Heart
+          </Text>
+        </Box>
+
+        {/* Razorpay */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 20 20" origin={[0.5, 0.2]}>
+            <RazorpayIcon color="surface.icon.staticWhite.normal" size="large" />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Razorpay
+          </Text>
+        </Box>
+      </Box>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Sizes
+      </Heading>
+      <Text marginBottom="spacing.4" color="surface.text.gray.muted">
+        The size prop controls the side length of the square canvas in CSS pixels.
+      </Text>
+      <Box
+        display="flex"
+        gap="spacing.8"
+        flexWrap="wrap"
+        alignItems="flex-end"
+        marginBottom="spacing.8"
+      >
+        {[40, 60, 80, 120].map((s) => (
+          <Box key={s} display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+            <RazorSenseGradient size={s} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+              <path
+                d="M3 3H7.5H9.74999L12 12L14.25 3H16.5H21V7.5V9.75L12 12L21 14.25V16.5V21H16.5H14.25L12 12L9.74999 21H7.5H3V16.5V14.25L12 12L3 9.75V7.5V3Z"
+                fill="white"
+              />
+            </RazorSenseGradient>
+            <Text size="small" color="surface.text.gray.muted">
+              {s}px
+            </Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Gradient Origins
+      </Heading>
+      <Text marginBottom="spacing.4" color="surface.text.gray.muted">
+        The origin prop controls where the radial gradient originates. [0,0] is top-left, [0.5,0.5]
+        is center, [1,1] is bottom-right.
+      </Text>
+      <Box display="flex" gap="spacing.6" flexWrap="wrap">
+        {origins.map(({ origin, label }) => (
+          <Box
+            key={label}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.3"
+          >
+            <RazorSenseGradient size={80} viewBox="0 0 24 24" origin={origin}>
+              <rect x="2" y="2" width="20" height="20" rx="2" fill="white" />
+            </RazorSenseGradient>
+            <Text size="xsmall" color="surface.text.gray.muted">
+              {label}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+};
+
+export const RazorSenseGradientBasic = RazorSenseGradientBasicTemplate.bind({});
+
+const RazorSenseGradientPropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  return (
+    <Box padding="spacing.8" maxWidth="800px">
+      <Heading size="xlarge" marginBottom="spacing.6">
+        RazorSenseGradient Props
+      </Heading>
+
+      <Box marginBottom="spacing.8">
+        <Heading size="medium" marginBottom="spacing.4">
+          Component Props
+        </Heading>
+        <List>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">children</Text> - SVG elements that define the mask shape. Use
+              fill=&quot;white&quot; for visible areas. Supports motion.* variants from
+              framer-motion.
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">size</Text> - Side length of the square canvas in CSS pixels
+              (default: 200)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">viewBox</Text> - SVG viewBox for the mask coordinate space.
+              Match this to your path&apos;s native coordinate system (default: &quot;0 0 24
+              24&quot;)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">origin</Text> - Origin of the radial gradient in UV space as
+              [x, y] tuple. [0,0]=top-left, [0.5,0.5]=center, [1,1]=bottom-right (default: [0.5,
+              0.0])
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">className</Text> - CSS class name for the container
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">style</Text> - Inline styles for the container
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box marginBottom="spacing.8">
+        <Heading size="medium" marginBottom="spacing.4">
+          Usage Notes
+        </Heading>
+        <List>
+          <ListItem>
+            <ListItemText>
+              Children must be valid SVG elements (path, circle, rect, g, text, etc.)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Use fill=&quot;white&quot; on shapes for them to be visible through the gradient
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              For animations, use framer-motion&apos;s SVG variants: motion.path, motion.g,
+              motion.circle, etc.
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              The gradient uses WebGL canvas internally - ensure browser compatibility
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
+    </Box>
+  );
+};
+
+export const RazorSenseGradientProps = RazorSenseGradientPropsTemplate.bind({});
