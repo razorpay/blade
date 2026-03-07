@@ -42,8 +42,14 @@ export default {
 
 const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   return (
-    <Box width="100%" height="100vh">
-      <RazorSenseComponent width="100%" height="100%" preset={args.preset} {...args} />
+    <Box width="100%" height="100vh" backgroundColor="overlay.background.moderate">
+      <Box width="800px" height="250px">
+        <RazorSenseComponent
+          preset={args.preset}
+          backgroundColor={[222 / 255, 223 / 255, 224 / 255]}
+          {...args}
+        />
+      </Box>
     </Box>
   );
 };
