@@ -42,14 +42,8 @@ export default {
 
 const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   return (
-    <Box width="100%" height="100vh" backgroundColor="overlay.background.moderate">
-      <Box width="800px" height="250px">
-        <RazorSenseComponent
-          preset={args.preset}
-          backgroundColor={[222 / 255, 223 / 255, 224 / 255]}
-          {...args}
-        />
-      </Box>
+    <Box width="100%" height="100vh">
+      <RazorSenseComponent preset={args.preset} {...args} />
     </Box>
   );
 };
@@ -71,8 +65,8 @@ Zoomed.args = {
 
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
-    <Box width="calc(100% + 24px)" height="100vh" marginLeft="-12px" marginRight="-12px">
-      <RazorSenseComponent width="100%" height="250px" preset="bottomWave" />
+    <Box margin="-32px">
+      <RazorSenseComponent width="100%" height="250px" aspectRatio={1.5} preset="bottomWave" />
     </Box>
   );
 };
@@ -110,6 +104,10 @@ const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
             </ListItemText>
           </ListItem>
         </List>
+        <Text size="small" color="surface.text.gray.muted" marginTop="spacing.3">
+          Note: The canvas automatically resizes when the container changes size (via
+          ResizeObserver). It is always centered within the container, with overflow hidden.
+        </Text>
       </Box>
 
       <Box marginBottom="spacing.8">
