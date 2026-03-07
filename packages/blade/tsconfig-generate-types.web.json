@@ -11,7 +11,10 @@
     "**/**.native.ts",
     "**/**.native.tsx",
     "**/ThemePlayground/**/**.tsx",
-    "**/BaseMotion/docs/introExamples.tsx"
+    "**/utils/storybook/**",
+    "**/storybook-recipes/**",
+    "**/components/**/docs/**",
+    "**/*Docs.tsx"
   ],
   "compilerOptions": {
     "outDir": "build/generated-types/web",
