@@ -63,9 +63,22 @@ export const bladeThemeData = {
     'Carousel/Navigation-Buttons': {
       key: 'e3f78706bf5400999cbca416cf26248ae7d0f66e',
     },
+
     Divider: {
       key: '3942574367676524ab7ea045ece704f751984dae',
     },
+    
+    // Chat Message
+    ChatMessage: {
+      key: '2177b8528fee876a39bf2c3642a278ecd7b33b1a',
+    },
+    'ChatMessage/Left': {
+      key: '2745879c3810c5c907e2b8dd1c578b7b0805fead',
+    },
+    'ChatMessage/Right': {
+      key: 'e01c6482fdb3b3905c648e9c0e6433980a5efa5b',
+    },
+    
 
     // Drawer
     Drawer: {
@@ -1740,9 +1753,12 @@ export const bladeThemeData = {
   },
   variables: {
     CardBorderRadius: {
-      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/92004:1632',
-      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/92004:1633',
-      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/92004:1634',
+      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/108189:1686',
+      // medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/73445:31516',
+      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/106885:444',
+      // large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/73445:31517',
+      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/106885:251',
+      // xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/73445:31518',
     },
   },
 };
