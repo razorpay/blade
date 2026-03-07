@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import StoryRouter from 'storybook-react-router';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavProps, SideNavSectionProps } from '../types';
 import type { SideNavLinkProps } from '..';

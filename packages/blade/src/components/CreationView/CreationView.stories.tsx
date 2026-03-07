@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useEffect } from 'react';
-import storyRouterDecorator from 'storybook-react-router';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import styled from 'styled-components';

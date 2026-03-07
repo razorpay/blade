@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StoryFn } from '@storybook/react-vite';
-import StoryRouter from 'storybook-react-router';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import { DashboardWithRoutingExample } from './MotionDashboardComponents';
 import { Code, Text } from '~components/Typography';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';

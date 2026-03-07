@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import StoryRouter from 'storybook-react-router';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import { Route, useHistory } from 'react-router-dom';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta } from '@storybook/react-vite';
-import storyRouterDecorator from 'storybook-react-router';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 
 import {
   BrowserRouter,

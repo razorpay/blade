@@ -3,7 +3,7 @@
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import StoryRouter from 'storybook-react-router';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';
 import type { StepGroupProps, StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';

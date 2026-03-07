@@ -2,7 +2,7 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
-import storyRouterDecorator from 'storybook-react-router';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Title } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
