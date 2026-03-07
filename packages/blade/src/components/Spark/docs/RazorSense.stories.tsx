@@ -14,8 +14,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { CheckIcon, RazorpayIcon } from '~components/Icons';
+import { CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
+import { ChatMessage } from '~components/ChatMessage';
 
 const Page = (): ReactElement => {
   return (
@@ -58,15 +59,43 @@ DefaultPaused.args = {
   lightStartFrame: 0,
 };
 
-export const Zoomed = RazorSenseTemplate.bind({});
-Zoomed.args = {
-  preset: 'zoomed',
+export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
+  return (
+    <Box position="relative" display="flex" alignItems="center" height="400px" width="100%">
+      <Box
+        width="800px"
+        height="250px"
+        position="absolute"
+        top="40px"
+        left="0px"
+        right="0px"
+        bottom="0px"
+        margin="auto"
+        zIndex={0}
+      >
+        <RazorSenseComponent preset="zoomed" width="100%" height="100%" />
+      </Box>
+      <Box marginLeft="200px" position="relative" zIndex={1} maxWidth="500px">
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={true}
+          loadingText={['Thinking...', 'Processing your request...']}
+        >
+          <Text color="surface.text.gray.normal" size="medium">
+            Your KYC has been verified successfully. All documents are in order and your identity
+            has been confirmed.
+          </Text>
+        </ChatMessage>
+      </Box>
+    </Box>
+  );
 };
 
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
     <Box margin="-32px">
-      <RazorSenseComponent width="100%" height="250px" aspectRatio={1.5} preset="bottomWave" />
+      <RazorSenseComponent width="100%" height="250px" preset="bottomWave" />
     </Box>
   );
 };

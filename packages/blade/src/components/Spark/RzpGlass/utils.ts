@@ -4,10 +4,11 @@
 
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
+import { RzpGlassAssets, RzpGlassConfig, RzpGlassPresetDefinition, RzpGlassProps } from './types';
 
 const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
 
-const getDefaultAssets = (assetsPath: string): Record<string, string> => ({
+const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,
   imageSrc: `${assetsPath}/bottom-frame.jpg`,
   gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
@@ -16,9 +17,86 @@ const getDefaultAssets = (assetsPath: string): Record<string, string> => ({
 });
 
 /**
+ * Extract config from props (exclude non-config props).
+ * Strips undefined values so they don't clobber preset defaults.
+ */
+function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
+  const {
+    width: _width,
+    height: _height,
+    className: _className,
+    style: _style,
+    onLoad: _onLoad,
+    onError: _onError,
+    preset: _preset,
+    assetsPath: _assetsPath,
+    gradientMapSrc: _gradientMapSrc,
+    gradientMap2Src: _gradientMap2Src,
+    gradientMapCanvas: _gradientMapCanvas,
+    imageSrc: _imageSrc,
+    ...config
+  } = props;
+
+  // Drop keys with undefined values so preset config isn't overridden by unset props
+  return Object.fromEntries(
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    Object.entries(config).filter(([, v]) => v !== undefined),
+  ) as Partial<RzpGlassConfig>;
+}
+
+const ASSET_KEYS = new Set<string>([
+  'videoSrc',
+  'imageSrc',
+  'gradientMapSrc',
+  'gradientMap2Src',
+  'centerGradientMapSrc',
+]);
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return */
+function getPresetDefinition(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): RzpGlassPresetDefinition {
+  const presets = getPresets(assetsPath);
+  if (preset && preset in presets) return { ...presets[preset] };
+  return {};
+}
+
+function getPresetConfig(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): Partial<RzpGlassConfig> {
+  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
+  return Object.fromEntries(
+    Object.entries(def).filter(([k]) => !ASSET_KEYS.has(k)),
+  ) as Partial<RzpGlassConfig>;
+}
+
+function getPresetAssets(
+  preset: RzpGlassPreset | undefined,
+  assetsPath: string,
+): Partial<RzpGlassAssets> {
+  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
+  return Object.fromEntries(
+    Object.entries(def).filter(([k]) => ASSET_KEYS.has(k)),
+  ) as Partial<RzpGlassAssets>;
+}
+
+/**
+ * Merge preset config with user-provided config.
+ * Preset values are used as base; any explicit prop overrides them.
+ */
+function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
+  return {
+    ...getPresetConfig(props.preset, assetsPath),
+    ...extractConfig(props),
+  };
+}
+
+/**
  * Load an image from URL
  */
-export function loadImage(src: string): Promise<HTMLImageElement> {
+function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -31,7 +109,7 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
 /**
  * Load a video from URL
  */
-export function loadVideo(src: string): Promise<HTMLVideoElement> {
+function loadVideo(src: string): Promise<HTMLVideoElement> {
   return new Promise((resolve, reject) => {
     const video = document.createElement('video');
     video.src = src;
@@ -49,7 +127,7 @@ export function loadVideo(src: string): Promise<HTMLVideoElement> {
 /**
  * Check if browser is Safari
  */
-export function isSafari(): boolean {
+function isSafari(): boolean {
   const ua = navigator.userAgent.toLowerCase();
   return ua.includes('safari') && !ua.includes('chrome') && !ua.includes('android');
 }
@@ -57,7 +135,7 @@ export function isSafari(): boolean {
 /**
  * Best guess browser zoom level (for Safari which doesn't include zoom in devicePixelRatio)
  */
-export function bestGuessBrowserZoom(): number {
+function bestGuessBrowserZoom(): number {
   const viewportScale = visualViewport?.scale ?? 1;
   const viewportWidth = visualViewport?.width ?? window.innerWidth;
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -97,7 +175,7 @@ export function bestGuessBrowserZoom(): number {
  * <RazorSense preset="circleSlideUp" />
  * ```
  */
-export async function preloadRazorSenseAssets(
+async function preloadRazorSenseAssets(
   preset: RzpGlassPreset = 'default',
   assetsPath: string = DEFAULT_CDN_PATH,
 ): Promise<void> {
@@ -127,3 +205,15 @@ export async function preloadRazorSenseAssets(
 
   await Promise.all(loadPromises);
 }
+
+export {
+  DEFAULT_CDN_PATH,
+  getDefaultAssets,
+  loadImage,
+  loadVideo,
+  isSafari,
+  bestGuessBrowserZoom,
+  preloadRazorSenseAssets,
+  getPresetAssets,
+  resolveConfig,
+};

@@ -5,151 +5,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-shadow */
-/**
- * RzpGlass React Component
- *
- * A React wrapper for the RzpGlassMount WebGL shader effect.
- * Manages the component lifecycle with useEffect hooks.
- *
- * @example
- * ```tsx
- * // Uses default assets and config
- * <RzpGlass width="400px" height="300px" />
- *
- * // With custom assets
- * <RzpGlass
- *   videoSrc="/custom_video.mp4"
- *   gradientMapSrc="/custom-gradient.jpg"
- *   enableBloom={true}
- * />
- * ```
- */
-
-import { forwardRef, useEffect, useRef, useState, useCallback } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { RzpGlassMount } from './RzpGlassMount';
-import type {
-  RzpGlassProps,
-  RzpGlassConfig,
-  RzpGlassAssets,
-  RzpGlassPresetDefinition,
-} from './types';
-import { getPresets } from './presets';
-import type { RzpGlassPreset } from './presets';
+import type { RzpGlassProps } from './types';
+import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 // Duration of the component's built-in fade-in transition.
 // The video is kept paused during this window so one-shot animations
 // (e.g. circleSlideUp) don't "waste" frames while the canvas is invisible.
 const FADE_IN_MS = 200;
 
-const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
-
-const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
-  videoSrc: `${assetsPath}/spark-base-video.mp4`,
-  imageSrc: `${assetsPath}/bottom-frame.jpg`,
-  gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
-  gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
-  centerGradientMapSrc: `${assetsPath}/colorama-center-gradient-map.jpg`,
-});
-
-/**
- * Hook to merge multiple refs into one
- */
-function useMergeRefs<T>(refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> {
-  return useCallback(
-    (value: T) => {
-      refs.forEach((ref) => {
-        if (typeof ref === 'function') {
-          ref(value);
-        } else if (ref != null) {
-          (ref as React.MutableRefObject<T | null>).current = value;
-        }
-      });
-    },
-    [refs],
-  );
-}
-
-/**
- * Extract config from props (exclude non-config props).
- * Strips undefined values so they don't clobber preset defaults.
- */
-function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
-  const {
-    width: _width,
-    height: _height,
-    className: _className,
-    style: _style,
-    onLoad: _onLoad,
-    onError: _onError,
-    preset: _preset,
-    assetsPath: _assetsPath,
-    gradientMapSrc: _gradientMapSrc,
-    gradientMap2Src: _gradientMap2Src,
-    gradientMapCanvas: _gradientMapCanvas,
-    imageSrc: _imageSrc,
-    ...config
-  } = props;
-
-  // Drop keys with undefined values so preset config isn't overridden by unset props
-  return Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    Object.entries(config).filter(([, v]) => v !== undefined),
-  ) as Partial<RzpGlassConfig>;
-}
-
-const ASSET_KEYS = new Set<string>([
-  'videoSrc',
-  'imageSrc',
-  'gradientMapSrc',
-  'gradientMap2Src',
-  'centerGradientMapSrc',
-]);
-
-/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return */
-function getPresetDefinition(
-  preset: RzpGlassPreset | undefined,
-  assetsPath: string,
-): RzpGlassPresetDefinition {
-  const presets = getPresets(assetsPath);
-  if (preset && preset in presets) return { ...presets[preset] };
-  return {};
-}
-
-function getPresetConfig(
-  preset: RzpGlassPreset | undefined,
-  assetsPath: string,
-): Partial<RzpGlassConfig> {
-  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
-  return Object.fromEntries(
-    Object.entries(def).filter(([k]) => !ASSET_KEYS.has(k)),
-  ) as Partial<RzpGlassConfig>;
-}
-
-function getPresetAssets(
-  preset: RzpGlassPreset | undefined,
-  assetsPath: string,
-): Partial<RzpGlassAssets> {
-  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
-  return Object.fromEntries(
-    Object.entries(def).filter(([k]) => ASSET_KEYS.has(k)),
-  ) as Partial<RzpGlassAssets>;
-}
-
-/**
- * Merge preset config with user-provided config.
- * Preset values are used as base; any explicit prop overrides them.
- */
-function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
-  return {
-    ...getPresetConfig(props.preset, assetsPath),
-    ...extractConfig(props),
-  };
-}
-
-export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(
-  props,
-  forwardedRef,
-) {
+const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(props, forwardedRef) {
   const {
     width = '100%',
     height = '100%',
@@ -239,15 +106,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
       mountRef.current = null;
       setIsInitialized(false);
     };
-  }, [
-    assetsPath,
-    videoSrc,
-    imageSrc,
-    gradientMapSrc,
-    gradientMap2Src,
-    centerGradientMapSrc,
-    configProps.preset,
-  ]);
+  }, [assetsPath, videoSrc, imageSrc, gradientMapSrc, gradientMap2Src, centerGradientMapSrc, configProps.preset]);
 
   // Update uniforms when config props change
   useEffect(() => {
@@ -320,7 +179,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
     }
   }, [isInitialized, gradientMapCanvas]);
 
-  const mergedRef = useMergeRefs([divRef, forwardedRef]);
+  const mergedRef = useMergeRefs(forwardedRef, divRef);
 
   // Convert width/height to string if number
   const widthStyle = typeof width === 'number' ? `${width}px` : width;
@@ -350,7 +209,7 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
         position: 'relative',
         overflow: 'hidden',
         backgroundColor: 'transparent',
-        transition: '2s opacity',
+        transition: `${FADE_IN_MS}ms opacity`,
         ...(isInitialized ? { opacity: 1 } : { opacity: 0 }),
         ...style,
       }}
@@ -358,4 +217,4 @@ export const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGl
   );
 });
 
-export default RzpGlass;
+export { RzpGlass };

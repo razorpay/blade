@@ -42,6 +42,7 @@ const defaultStyle = `@layer rzp-glass {
       position: absolute;
       z-index: -1;
       border-radius: inherit;
+      pointer-events: none;
     }
   }
 }`;
@@ -185,13 +186,6 @@ export class RzpGlassMount {
     })!;
     this.gl = gl;
 
-    this.performanceController = new WebGLPerformanceController({
-      gl: this.gl,
-      onLevelChange: this.handlePerformanceLevelChange,
-    });
-
-    this.stopIfPotato();
-
     // Flip Y axis when uploading textures (video/images have Y=0 at top, WebGL has Y=0 at bottom)
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
@@ -204,6 +198,15 @@ export class RzpGlassMount {
 
     // Initialize program
     this.initProgram();
+
+    // Initialize performance controller after the initProgram so we don't get a crash when the program is not initialized yet.
+    this.performanceController = new WebGLPerformanceController({
+      gl: this.gl,
+      onLevelChange: this.handlePerformanceLevelChange,
+    });
+
+    this.stopIfPotato();
+
     this.setupPositionAttribute();
     this.setupUniformLocations();
     this.setupResizeObserver();
