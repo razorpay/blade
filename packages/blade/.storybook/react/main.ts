@@ -1,5 +1,11 @@
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const require = createRequire(import.meta.url);
 
 const bladeRoot = resolve(__dirname, '../../');
 
@@ -29,7 +35,6 @@ const config: StorybookConfig = {
   ],
 
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-a11y'),
   ],
@@ -76,7 +81,6 @@ const config: StorybookConfig = {
           '.json',
         ],
         alias: {
-          '@storybook/addon-actions': 'storybook/actions',
           '~utils': resolve(bladeRoot, 'src/utils'),
           '~components': resolve(bladeRoot, 'src/components'),
           '~tokens': resolve(bladeRoot, 'src/tokens'),

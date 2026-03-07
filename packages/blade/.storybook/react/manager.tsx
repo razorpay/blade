@@ -7,8 +7,8 @@ import { LockIcon } from '@storybook/icons';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 import { addons, types } from 'storybook/manager-api';
 
-const surafaceTextNormal = 'rgba(19, 38, 68, 1)';
-const bladePrimary = 'rgba(21, 102, 241, 1)';
+const surfaceTextNormal = 'hsla(0, 0%, 2%, 1)';
+const bladePrimary = 'hsla(218, 89%, 51%, 1)';
 const bladeTextFont =
   '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
 
@@ -18,7 +18,7 @@ export const theme = create({
   base: 'light',
 
   colorPrimary: bladePrimary,
-  colorSecondary: bladePrimary,
+  colorSecondary: surfaceTextNormal,
 
   // UI
   appBg: '#F1F4F8',
@@ -31,19 +31,19 @@ export const theme = create({
   fontCode: bladeCodeFont,
 
   // Text colors
-  textColor: surafaceTextNormal,
+  textColor: surfaceTextNormal,
   textInverseColor: '#FFFFFF',
   textMutedColor: '#666666',
 
   // Toolbar default and active colors
-  barTextColor: surafaceTextNormal,
+  barTextColor: surfaceTextNormal,
   barSelectedColor: bladePrimary,
   barBg: '#FFFFFF',
 
   // Form colors
   inputBg: '#FFFFFF',
   inputBorder: 'rgba(0,0,0,.1)',
-  inputTextColor: surafaceTextNormal,
+  inputTextColor: surfaceTextNormal,
   inputBorderRadius: 2,
 
   // hack for changing height width of brand image

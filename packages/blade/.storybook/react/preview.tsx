@@ -274,6 +274,6 @@ export const globalTypes = {
   },
 };
 
-export const globals = {
+export const initialGlobals = {
   [INTERNAL_STORY_ADDON_PARAM]: false,
 };
