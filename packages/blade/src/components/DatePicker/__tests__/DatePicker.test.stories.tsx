@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
-import type { Mock } from 'jest-mock';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
+import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
@@ -13,10 +13,10 @@ import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
-let onOpenChange: Mock<unknown, unknown[]> | null = null;
+let onOpenChange: Mock | null = null;
 
 export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -38,7 +38,7 @@ DatePickerShouldShow.play = async () => {
 };
 
 export const DatePickerDisabled: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent isDisabled accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
   );
@@ -53,7 +53,7 @@ DatePickerDisabled.play = async () => {
 };
 
 export const DatePickerMinMaxDate: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       minDate={dayjs().subtract(5, 'day').toDate()}
@@ -98,7 +98,7 @@ DatePickerMinMaxDate.play = async () => {
 export const DatePickerSingleSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -127,7 +127,7 @@ DatePickerSingleSelect.play = async () => {
 export const DatePickerSingleSelectCancel: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -279,7 +279,7 @@ DatePickerSingleChangePicker.play = async () => {
 export const DatePickerRangeSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -370,7 +370,7 @@ DatePickerRangeSelectControlled.play = async () => {
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -431,7 +431,7 @@ DatePickerPresets.play = async () => {
 };
 
 const LocaleExample = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   const { setI18nState } = useI18nContext();
 
   return (
@@ -559,7 +559,7 @@ DatePickerRangeSelectAutoFocus.play = async () => {
 export const DatePickerSingleTypingAutoSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -597,7 +597,7 @@ DatePickerSingleTypingAutoSelect.play = async () => {
 export const DatePickerRangeTypingAutoSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -641,7 +641,7 @@ DatePickerRangeTypingAutoSelect.play = async () => {
 export const DatePickerSingleNoFooter: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -682,7 +682,7 @@ DatePickerSingleNoFooter.play = async () => {
 export const DatePickerInvalidDateValidation: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -1018,13 +1018,13 @@ DatePickerRangeCalendarToInput.play = async () => {
   await expect(queryByText('Apply')).toBeNull();
 };
 
-let handleApply: Mock<unknown, unknown[]> | null = null;
+let handleApply: Mock | null = null;
 
 export const DatePickerPresetOnApplyCurrentValues: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  handleApply = jest.fn();
-  const handleChange = jest.fn();
+  handleApply = fn();
+  const handleChange = fn();
 
   return (
     <DatePickerComponent
@@ -1100,14 +1100,14 @@ DatePickerPresetOnApplyCurrentValues.play = async () => {
 };
 
 // Test case for form submission prevention when preset dropdown is clicked
-let handleFormSubmit: Mock<unknown, unknown[]> | null = null;
-let handleApplyForm: Mock<unknown, unknown[]> | null = null;
+let handleFormSubmit: Mock | null = null;
+let handleApplyForm: Mock | null = null;
 
 export const DatePickerPresetFormSubmissionPrevention: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  handleFormSubmit = jest.fn();
-  handleApplyForm = jest.fn();
+  handleFormSubmit = fn();
+  handleApplyForm = fn();
 
   return (
     <form

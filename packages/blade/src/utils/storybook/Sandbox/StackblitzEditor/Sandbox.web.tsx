@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import sdk from '@stackblitz/sdk';
 import dedent from 'dedent';
-import { DocsContext } from '@storybook/addon-docs';
+import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import type { Project, VM } from '@stackblitz/sdk';
 import styled from 'styled-components';

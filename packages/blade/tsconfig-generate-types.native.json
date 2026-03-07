@@ -10,7 +10,11 @@
     "**/**.stories.internal.tsx",
     "**/**.web.ts",
     "**/**.web.tsx",
-    "**/ThemePlayground/**/**.tsx"
+    "**/ThemePlayground/**/**.tsx",
+    "**/utils/storybook/**",
+    "**/storybook-recipes/**",
+    "**/components/**/docs/**",
+    "**/*Docs.tsx"
   ],
   "compilerOptions": {
     "outDir": "build/generated-types/native",

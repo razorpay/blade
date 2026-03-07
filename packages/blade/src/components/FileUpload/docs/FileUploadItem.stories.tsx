@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import type { FileUploadItemProps } from '../FileUploadItem';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../types';

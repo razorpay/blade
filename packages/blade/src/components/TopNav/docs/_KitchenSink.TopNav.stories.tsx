@@ -1,4 +1,4 @@
-import storyRouterDecorator from 'storybook-react-router';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Minimal } from './TopNav.stories';
 
 export const TopNav = Minimal;

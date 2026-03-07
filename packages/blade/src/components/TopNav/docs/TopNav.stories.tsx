@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
-import storyRouterDecorator from 'storybook-react-router';
-import { Title } from '@storybook/addon-docs';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
+import { Title } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';

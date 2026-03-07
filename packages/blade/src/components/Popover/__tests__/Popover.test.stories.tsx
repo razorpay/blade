@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
 import React from 'react';
 import type { PopoverProps, PopoverTriggerProps } from '..';
 import { PopoverInteractiveWrapper, Popover as PopoverComponent } from '..';
@@ -12,7 +12,7 @@ import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
 
-const onOpenChange = jest.fn();
+const onOpenChange = fn();
 
 const PopoverExample = (props: PopoverProps): React.ReactElement => {
   return (

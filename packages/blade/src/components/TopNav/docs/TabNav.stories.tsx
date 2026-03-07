@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { TabNavItemProps } from '../TabNav';
 import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
 import { tabNavExample } from './code';

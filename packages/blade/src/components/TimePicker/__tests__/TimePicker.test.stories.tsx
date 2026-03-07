@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
-import type { Mock } from 'jest-mock';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
+import type { Mock } from '@vitest/spy';
 import React, { useState } from 'react';
 import { TimePicker as TimePickerComponent } from '../';
 import { Box } from '~components/Box';
@@ -21,9 +21,9 @@ const findVisibleByText = (
   selector: string = visibleSelector,
 ): Promise<HTMLElement> => scope.findByText(text, { selector });
 
-let onOpenChange: Mock<void, [{ isOpen: boolean }]> | null = null;
-let onApply: Mock<void, [{ value: Date | null }]> | null = null;
-let onChange: Mock<void, [{ value: Date | null }]> | null = null;
+let onOpenChange: Mock | null = null;
+let onApply: Mock | null = null;
+let onChange: Mock | null = null;
 
 const ControlledTimePicker = ({
   initialValue = null,
@@ -49,7 +49,7 @@ const ControlledTimePicker = ({
 export const TimePickerShouldOpenDropdown: StoryFn<
   typeof TimePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <ControlledTimePicker onOpenChange={onOpenChange} />;
 };
 
@@ -159,7 +159,7 @@ TimePicker24HourFormat.play = async () => {
 export const TimePickerApplyCancelActions: StoryFn<
   typeof TimePickerComponent
 > = (): React.ReactElement => {
-  onApply = jest.fn();
+  onApply = fn();
   return (
     <TimePickerComponent
       label="Select time"
@@ -264,7 +264,7 @@ export const TimePickerControlledState: StoryFn<
     return time;
   });
 
-  onChange = jest.fn((timeValue) => setValue(timeValue.value));
+  onChange = fn((timeValue) => setValue(timeValue.value));
 
   return (
     <Box>
@@ -315,7 +315,7 @@ TimePickerControlledState.play = async () => {
 };
 
 export const TimePickerDisabled: StoryFn<typeof TimePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <TimePickerComponent
       label="Select time"
@@ -340,7 +340,7 @@ TimePickerDisabled.play = async () => {
 export const TimePickerSpinWheelInteraction: StoryFn<
   typeof TimePickerComponent
 > = (): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return (
     <TimePickerComponent
       label="Select time"

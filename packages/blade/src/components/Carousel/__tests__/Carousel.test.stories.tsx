@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
-import type { Mock } from 'jest-mock';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
+import type { Mock } from '@vitest/spy';
 import React from 'react';
 import type { CarouselProps } from '../';
 import { Carousel as CarouselComponent } from '../';
@@ -13,7 +13,7 @@ import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
-let onChange: Mock<unknown, unknown[]> | null = null;
+let onChange: Mock | null = null;
 
 const BasicCarousel = (props: CarouselProps): React.ReactElement => (
   <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
@@ -24,7 +24,7 @@ const BasicCarousel = (props: CarouselProps): React.ReactElement => (
 export const TestCarouselOnChange: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} onChange={onChange} />;
 };
 
@@ -52,7 +52,7 @@ TestCarouselOnChange.play = async ({ canvasElement }) => {
 export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} visibleItems={1} onChange={onChange} />;
 };
 
@@ -69,7 +69,7 @@ TestIndicatorButton.play = async ({ canvasElement }) => {
 export const TestStartOverAfterStartEnd: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} visibleItems={1} onChange={onChange} />;
 };
 
@@ -88,7 +88,7 @@ TestStartOverAfterStartEnd.play = async ({ canvasElement }) => {
 };
 
 export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
 };
 
@@ -102,7 +102,7 @@ TestAutoPlay.play = async ({ canvasElement }) => {
 };
 
 export const TestAutofit: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return (
     <BasicCarousel
       {...props}
@@ -134,7 +134,7 @@ TestAutofit.play = async ({ canvasElement }) => {
 };
 
 export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
 };
 
@@ -150,7 +150,7 @@ TestAutoPlayPause.play = async ({ canvasElement }) => {
 export const TestVisibleItemsOnMobile: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
-  onChange = jest.fn();
+  onChange = fn();
   return <BasicCarousel {...props} visibleItems={3} onChange={onChange} />;
 };
 
@@ -172,7 +172,7 @@ TestVisibleItemsOnMobile.play = async ({ canvasElement }) => {
 
 // Test for onChange fires multiple times on parent component update
 // https://github.com/razorpay/blade/issues/1863
-const multipleOnChange = jest.fn();
+const multipleOnChange = fn();
 export const TestOnChangeParentUpdate: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
@@ -204,7 +204,7 @@ TestOnChangeParentUpdate.play = async ({ canvasElement }) => {
   await expect(multipleOnChange).toBeCalledTimes(2);
 };
 
-const controlledOnChange = jest.fn();
+const controlledOnChange = fn();
 export const TestControlledCarousel: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {

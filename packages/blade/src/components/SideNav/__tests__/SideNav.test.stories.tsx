@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect } from 'storybook/test';
 import type { SideNav } from '../index';
 import { SKIP_NAV_ID } from '../tokens';
 import { SideNavExample } from './SideNavExample';

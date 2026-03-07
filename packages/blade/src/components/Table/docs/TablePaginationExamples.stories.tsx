@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Table } from '../Table';
 import { TableWithClientSidePaginationStory, TableWithServerSidePaginationStory } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';

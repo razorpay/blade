@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
 import React from 'react';
 import { PhoneNumberInput } from '../PhoneNumberInput';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 const label = 'Phone Number';
-const onChangeFn = jest.fn();
+const onChangeFn = fn();
 export const SelectACountry: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
   return <PhoneNumberInput label={label} />;
 };

@@ -1,6 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { BaseText as BaseTextComponent } from './BaseText';
 import type { BaseTextProps } from './types';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -30,7 +29,7 @@ export default {
           componentName="BaseText"
         >
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</Highlight>
+          <code>{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</code>
         </StoryPageWrapper>
       ),
     },

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
-import storyRouterDecorator from 'storybook-react-router';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { ListView } from '../ListView';
 import type { ListViewProps } from '../types';
 import { ListViewFilters } from '../ListViewFilters';
