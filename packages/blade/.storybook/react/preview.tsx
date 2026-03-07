@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, toggleHiddenStoryStyle } from './manager';
+import { theme, toggleHiddenStoryStyle } from './storybook-theme';
 import { BladeProvider } from '../../src/components';
 import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
