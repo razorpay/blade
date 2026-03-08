@@ -360,7 +360,7 @@ const TopNavFullExample = () => {
                       href: '/home',
                       icon: RayIcon,
                       titleSuffix: (
-                        <Badge size="small" emphasis="subtle" color="primary">
+                        <Badge size="small" emphasis="subtle" color="positive">
                           BETA
                         </Badge>
                       ),
