@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-background-primary, #f7f7f7);
+  color: var(--color-text-primary, #131415);
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+[data-theme='dark'] body {
+  background: var(--color-background-primary, #131415);
+  color: var(--color-text-primary, #f7f7f7);
+}
+
+@keyframes animate-fadeIn {
+  from {
+    opacity: 0;
+    color: #131415;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    color: inherit;
+    filter: blur(0px);
+  }
+}
+
+[data-animate-word] {
+  display: inline-block;
+  animation: animate-fadeIn var(--animate-duration, 400ms) var(--animate-easing, ease) both;
+}

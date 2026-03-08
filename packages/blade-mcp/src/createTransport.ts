@@ -13,7 +13,7 @@ export const createStdioTransport = (): StdioServerTransport => {
  * ```
  * import { createServer, createStreamableHttpTransport } from '@razorpay/blade-mcp';
  *
- * const server = createServer();
+ * const server = await createServer();
  *
  * // somewhere in your nodejs server. Refer to https://github.com/modelcontextprotocol/typescript-sdk?tab=readme-ov-file#streamable-http
  * const transport = createStreamableHttpTransport();

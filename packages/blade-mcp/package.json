@@ -20,8 +20,12 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "cross-env NODE_ENV=production sh -c \"tsc && chmod +x dist/server.js && node src/replaceEnv.js\"",
+    "build:ui": "vite build",
+    "build:server": "cross-env NODE_ENV=production sh -c \"tsc && chmod +x dist/server.js && node src/replaceEnv.js\"",
+    "build": "yarn build:ui && yarn build:server",
     "dev": "tsx src/server.ts",
+    "dev:ui": "vite build --watch",
+    "dev:app": "vite",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
     "start": "node dist/server.js",
     "lint": "eslint --ext .ts src/",
@@ -38,6 +42,7 @@
   "author": "Razorpay",
   "license": "MIT",
   "dependencies": {
+    "@modelcontextprotocol/ext-apps": "^1.2.0",
     "@modelcontextprotocol/sdk": "1.26.0",
     "@segment/analytics-node": "2.2.1",
     "@sentry/node": "9.19.0",
@@ -45,10 +50,17 @@
   },
   "devDependencies": {
     "@types/node": "20.12.6",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "cross-env": "7.0.3",
     "dotenv": "16.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsx": "4.7.1",
     "typescript": "5.9.3",
+    "vite": "^6.0.0",
+    "vite-plugin-singlefile": "^2.0.3",
     "vitest": "2.1.9"
   }
 }

@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "base-blade-template"]

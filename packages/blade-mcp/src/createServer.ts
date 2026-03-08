@@ -61,6 +61,7 @@ import {
   publishLinesOfCodeMetricToolSchema,
   publishLinesOfCodeMetricToolCallback,
 } from './tools/publishLinesOfCodeMetric.js';
+import { registerRenderBladeUITool } from './tools/renderBladeUI/index.js';
 import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -123,11 +124,11 @@ const stdioServerTools = (server: McpServer): void => {
     getBladeGeneralDocsStdioCallback,
   );
 };
-export const createServer = ({
+export const createServer = async ({
   transportType = 'stdio',
 }: {
   transportType?: 'stdio' | 'http';
-}): McpServer => {
+}): Promise<McpServer> => {
   const server = new McpServer({
     name: 'Blade MCP',
     version: getPackageJSONVersion(),
@@ -170,6 +171,8 @@ export const createServer = ({
     publishLinesOfCodeMetricToolSchema,
     publishLinesOfCodeMetricToolCallback,
   );
+
+  await registerRenderBladeUITool(server);
 
   return server;
 };
