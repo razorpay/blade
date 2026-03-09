@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.95.2
+
+### Patch Changes
+
+- 14bb86e66: fix(blade): input overflow, modal color in topnav, and card overflow
+- 61c29ed99: fix: remove the elevation prop from StyledDropdownOverlay
+
 ## 12.95.1
 
 ### Patch Changes
