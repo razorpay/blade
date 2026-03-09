@@ -170,7 +170,12 @@ vec3 applyColoramaWithGradient(
     t = mix(t, 1.0 - t, step(0.5, reverse));
 
     // Gradient lookup (1D texture sample)
-    return texture2D(gradientMap, vec2(t, 0.5)).rgb;
+    // Offset t slightly inward to sample from texel centers rather than edges
+    // This ensures the full gradient range is mapped correctly
+    // TODO(before-merge): Check if this is still needed
+    float texelOffset = 0.001;
+    float mappedT = mix(texelOffset, 1.0 - texelOffset, t);
+    return texture2D(gradientMap, vec2(mappedT, 0.5)).rgb;
 }
 
 // ============================================

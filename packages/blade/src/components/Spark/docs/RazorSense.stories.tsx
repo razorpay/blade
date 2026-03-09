@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
 import type { StoryFn, Meta } from '@storybook/react';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';
 import type { RazorSenseProps } from '../RzpGlass/index';
@@ -10,6 +10,7 @@ import {
   RazorSenseGradient,
   preloadRazorSenseAssets,
 } from '../';
+import { GradientEditor } from './GradientEditor';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -17,6 +18,7 @@ import { Button } from '~components/Button';
 import { CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
 import { ChatMessage } from '~components/ChatMessage';
+import { ChatInput } from '~components/ChatInput';
 
 const Page = (): ReactElement => {
   return (
@@ -54,6 +56,9 @@ export const Default = RazorSenseTemplate.bind({});
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
+  zoom: 3,
+  panX: 0.2,
+  panY: 0,
   startTime: 8,
   animateLightIndependently: true,
   lightStartFrame: 0,
@@ -94,8 +99,30 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
 
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
-    <Box margin="-32px">
-      <RazorSenseComponent width="100%" height="250px" preset="bottomWave" />
+    <Box margin="-32px" position="relative" height="100vh">
+      {/* RazorSense at the bottom */}
+      <Box position="absolute" bottom="-40px" left="0px" right="0px">
+        <RazorSenseComponent
+          width="100%"
+          height="250px"
+          preset="bottomWave"
+          backgroundColor={[1, 1, 1]}
+        />
+      </Box>
+      {/* ChatInput in the middle, offset 8px from bottom */}
+      <Box
+        position="absolute"
+        bottom="24px"
+        left="0px"
+        right="0px"
+        display="flex"
+        justifyContent="center"
+        paddingX="spacing.4"
+      >
+        <Box width="100%" maxWidth="600px">
+          <ChatInput placeholder="Ask anything..." />
+        </Box>
+      </Box>
     </Box>
   );
 };
@@ -1239,3 +1266,448 @@ const RazorSenseGradientPropsTemplate: StoryFn<typeof RazorSenseComponent> = () 
 };
 
 export const RazorSenseGradientProps = RazorSenseGradientPropsTemplate.bind({});
+
+// ---------------------------------------------------------------------------
+// Tweakpane Playground Story
+// ---------------------------------------------------------------------------
+
+type TweakpaneControls = {
+  preset: 'default' | 'zoomed' | 'bottomWave' | 'rippleWave' | 'circleSlideUp';
+  paused: boolean;
+  startTime: number;
+  endTime: number;
+  playbackRate: number;
+  animateLightIndependently: boolean;
+  enableDisplacement: boolean;
+  enableColorama: boolean;
+  enableBloom: boolean;
+  enableLightSweep: boolean;
+  enableCenterElement: boolean;
+  zoom: number;
+  panX: number;
+  panY: number;
+  edgeFeatherTop: number;
+  edgeFeatherRight: number;
+  edgeFeatherBottom: number;
+  edgeFeatherLeft: number;
+  gradientMapBlend: number;
+  cycleRepetitions: number;
+  cycleSpeed: number;
+  modifyGamma: number;
+  inputMin: number;
+  inputMax: number;
+  phaseShift: number;
+  posterizeLevels: number;
+  blendWithOriginal: number;
+  numSegments: number;
+  slitAngle: number;
+  displacementX: number;
+  displacementY: number;
+  lightIntensity: number;
+  lightStartFrame: number;
+  ccBlackPoint: number;
+  ccWhitePoint: number;
+  ccGamma: number;
+  ccMidtoneGamma: number;
+  ccContrast: number;
+  centerAnimDuration: number;
+  animateCycleReps: boolean;
+  cycleRepetitionsStart: number;
+  cycleRepetitionsEnd: number;
+  cycleRepetitionsStartFrame: number;
+  cycleRepetitionsDuration: number;
+  aspectRatio: number;
+  bgColorR: number;
+  bgColorG: number;
+  bgColorB: number;
+};
+
+const DEFAULT_CONTROLS: TweakpaneControls = {
+  preset: 'default',
+  paused: false,
+  startTime: 0,
+  endTime: 14,
+  playbackRate: 1.0,
+  animateLightIndependently: false,
+  enableDisplacement: true,
+  enableColorama: true,
+  enableBloom: true,
+  enableLightSweep: true,
+  enableCenterElement: true,
+  zoom: 1.0,
+  panX: 0.0,
+  panY: 0.0,
+  edgeFeatherTop: 0,
+  edgeFeatherRight: 0,
+  edgeFeatherBottom: 0,
+  edgeFeatherLeft: 0,
+  gradientMapBlend: 0.0,
+  cycleRepetitions: 1.0,
+  cycleSpeed: 0.0,
+  modifyGamma: 1.05,
+  inputMin: 0.0,
+  inputMax: 1.0,
+  phaseShift: 0.0,
+  posterizeLevels: 0.0,
+  blendWithOriginal: 0.0,
+  numSegments: 45.0,
+  slitAngle: 0.15,
+  displacementX: -12.0,
+  displacementY: -20.0,
+  lightIntensity: 0.2,
+  lightStartFrame: 140,
+  ccBlackPoint: 0.0,
+  ccWhitePoint: 0.9,
+  ccGamma: 1.2,
+  ccMidtoneGamma: 1.2,
+  ccContrast: 0.0,
+  centerAnimDuration: 6.0,
+  animateCycleReps: true,
+  cycleRepetitionsStart: 1.0,
+  cycleRepetitionsEnd: 1.15,
+  cycleRepetitionsStartFrame: 0,
+  cycleRepetitionsDuration: 140,
+  aspectRatio: 1.5,
+  bgColorR: -1,
+  bgColorG: -1,
+  bgColorB: -1,
+};
+
+const TweakpanePlaygroundTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const paneRef = useRef<any>(null);
+  const controlsRef = useRef<TweakpaneControls>({ ...DEFAULT_CONTROLS });
+  const [controls, setControls] = useState<TweakpaneControls>({ ...DEFAULT_CONTROLS });
+  const [paneLoaded, setPaneLoaded] = useState(false);
+  const [gradientCanvas, setGradientCanvas] = useState<HTMLCanvasElement | null>(null);
+
+  const handleGradientChange = useCallback((canvas: HTMLCanvasElement) => {
+    setGradientCanvas(canvas);
+  }, []);
+
+  useEffect(() => {
+    const initPane = async (): Promise<void> => {
+      const { Pane } = await import('tweakpane');
+
+      if (!containerRef.current || paneRef.current) return;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const pane: any = new Pane({
+        container: containerRef.current,
+        title: 'RazorSense Controls',
+      });
+      paneRef.current = pane;
+
+      // Preset
+      const presetFolder = pane.addFolder({ title: 'Preset', expanded: true });
+      presetFolder.addBinding(controlsRef.current, 'preset', {
+        options: {
+          default: 'default',
+          zoomed: 'zoomed',
+          bottomWave: 'bottomWave',
+          rippleWave: 'rippleWave',
+          circleSlideUp: 'circleSlideUp',
+        },
+      });
+
+      // Playback Controls
+      const playbackFolder = pane.addFolder({ title: 'Playback', expanded: true });
+      playbackFolder.addBinding(controlsRef.current, 'paused');
+      playbackFolder.addBinding(controlsRef.current, 'startTime', { min: 0, max: 14, step: 0.1 });
+      playbackFolder.addBinding(controlsRef.current, 'endTime', { min: 0, max: 14, step: 0.1 });
+      playbackFolder.addBinding(controlsRef.current, 'playbackRate', {
+        min: 0.1,
+        max: 3,
+        step: 0.1,
+      });
+      playbackFolder.addBinding(controlsRef.current, 'animateLightIndependently');
+
+      // Effect Toggles
+      const effectsFolder = pane.addFolder({ title: 'Effect Toggles', expanded: true });
+      effectsFolder.addBinding(controlsRef.current, 'enableDisplacement');
+      effectsFolder.addBinding(controlsRef.current, 'enableColorama');
+      effectsFolder.addBinding(controlsRef.current, 'enableBloom');
+      effectsFolder.addBinding(controlsRef.current, 'enableLightSweep');
+      effectsFolder.addBinding(controlsRef.current, 'enableCenterElement');
+
+      // Zoom & Pan
+      const zoomFolder = pane.addFolder({ title: 'Zoom & Pan', expanded: false });
+      zoomFolder.addBinding(controlsRef.current, 'zoom', { min: 0.5, max: 10, step: 0.1 });
+      zoomFolder.addBinding(controlsRef.current, 'panX', { min: -1, max: 1, step: 0.01 });
+      zoomFolder.addBinding(controlsRef.current, 'panY', { min: -1, max: 1, step: 0.01 });
+      zoomFolder.addBinding(controlsRef.current, 'edgeFeatherTop', {
+        min: 0,
+        max: 5,
+        step: 0.1,
+        label: 'feather top',
+      });
+      zoomFolder.addBinding(controlsRef.current, 'edgeFeatherRight', {
+        min: 0,
+        max: 5,
+        step: 0.1,
+        label: 'feather right',
+      });
+      zoomFolder.addBinding(controlsRef.current, 'edgeFeatherBottom', {
+        min: 0,
+        max: 5,
+        step: 0.1,
+        label: 'feather bottom',
+      });
+      zoomFolder.addBinding(controlsRef.current, 'edgeFeatherLeft', {
+        min: 0,
+        max: 5,
+        step: 0.1,
+        label: 'feather left',
+      });
+
+      // Colorama
+      const coloramaFolder = pane.addFolder({ title: 'Colorama', expanded: false });
+      coloramaFolder.addBinding(controlsRef.current, 'gradientMapBlend', {
+        min: 0,
+        max: 1,
+        step: 0.01,
+      });
+      coloramaFolder.addBinding(controlsRef.current, 'cycleRepetitions', {
+        min: 0.1,
+        max: 5,
+        step: 0.01,
+      });
+      coloramaFolder.addBinding(controlsRef.current, 'cycleSpeed', { min: 0, max: 2, step: 0.01 });
+      coloramaFolder.addBinding(controlsRef.current, 'modifyGamma', {
+        min: 0.1,
+        max: 3,
+        step: 0.01,
+      });
+      coloramaFolder.addBinding(controlsRef.current, 'inputMin', { min: 0, max: 1, step: 0.01 });
+      coloramaFolder.addBinding(controlsRef.current, 'inputMax', { min: 0, max: 1, step: 0.01 });
+      coloramaFolder.addBinding(controlsRef.current, 'phaseShift', { min: 0, max: 1, step: 0.01 });
+      coloramaFolder.addBinding(controlsRef.current, 'posterizeLevels', {
+        min: 0,
+        max: 32,
+        step: 1,
+      });
+      coloramaFolder.addBinding(controlsRef.current, 'blendWithOriginal', {
+        min: 0,
+        max: 1,
+        step: 0.01,
+      });
+
+      // Displacement
+      const displacementFolder = pane.addFolder({ title: 'Displacement', expanded: false });
+      displacementFolder.addBinding(controlsRef.current, 'numSegments', {
+        min: 1,
+        max: 100,
+        step: 1,
+      });
+      displacementFolder.addBinding(controlsRef.current, 'slitAngle', {
+        min: -Math.PI,
+        max: Math.PI,
+        step: 0.01,
+      });
+      displacementFolder.addBinding(controlsRef.current, 'displacementX', {
+        min: -50,
+        max: 50,
+        step: 0.5,
+      });
+      displacementFolder.addBinding(controlsRef.current, 'displacementY', {
+        min: -50,
+        max: 50,
+        step: 0.5,
+      });
+
+      // Light & Color Correction
+      const lightFolder = pane.addFolder({ title: 'Light & Color Correction', expanded: false });
+      lightFolder.addBinding(controlsRef.current, 'lightIntensity', { min: 0, max: 1, step: 0.01 });
+      lightFolder.addBinding(controlsRef.current, 'lightStartFrame', { min: 0, max: 500, step: 1 });
+      lightFolder.addBinding(controlsRef.current, 'ccBlackPoint', { min: 0, max: 1, step: 0.01 });
+      lightFolder.addBinding(controlsRef.current, 'ccWhitePoint', { min: 0, max: 1, step: 0.01 });
+      lightFolder.addBinding(controlsRef.current, 'ccGamma', { min: 0.1, max: 3, step: 0.01 });
+      lightFolder.addBinding(controlsRef.current, 'ccMidtoneGamma', {
+        min: 0.1,
+        max: 3,
+        step: 0.01,
+      });
+      lightFolder.addBinding(controlsRef.current, 'ccContrast', { min: -1, max: 1, step: 0.01 });
+
+      // Center Element
+      const centerFolder = pane.addFolder({ title: 'Center Element', expanded: false });
+      centerFolder.addBinding(controlsRef.current, 'centerAnimDuration', {
+        min: 1,
+        max: 20,
+        step: 0.1,
+      });
+
+      // Cycle Animation
+      const cycleAnimFolder = pane.addFolder({ title: 'Cycle Animation', expanded: false });
+      cycleAnimFolder.addBinding(controlsRef.current, 'animateCycleReps');
+      cycleAnimFolder.addBinding(controlsRef.current, 'cycleRepetitionsStart', {
+        min: 0.1,
+        max: 5,
+        step: 0.01,
+      });
+      cycleAnimFolder.addBinding(controlsRef.current, 'cycleRepetitionsEnd', {
+        min: 0.1,
+        max: 5,
+        step: 0.01,
+      });
+      cycleAnimFolder.addBinding(controlsRef.current, 'cycleRepetitionsStartFrame', {
+        min: 0,
+        max: 500,
+        step: 1,
+      });
+      cycleAnimFolder.addBinding(controlsRef.current, 'cycleRepetitionsDuration', {
+        min: 1,
+        max: 500,
+        step: 1,
+      });
+
+      // Canvas
+      const canvasFolder = pane.addFolder({ title: 'Canvas', expanded: false });
+      canvasFolder.addBinding(controlsRef.current, 'aspectRatio', { min: 0.5, max: 3, step: 0.01 });
+
+      // Background Color
+      const bgFolder = pane.addFolder({ title: 'Background Color', expanded: false });
+      bgFolder.addBinding(controlsRef.current, 'bgColorR', {
+        min: -1,
+        max: 1,
+        step: 0.01,
+        label: 'R (-1 = disabled)',
+      });
+      bgFolder.addBinding(controlsRef.current, 'bgColorG', {
+        min: -1,
+        max: 1,
+        step: 0.01,
+        label: 'G',
+      });
+      bgFolder.addBinding(controlsRef.current, 'bgColorB', {
+        min: -1,
+        max: 1,
+        step: 0.01,
+        label: 'B',
+      });
+
+      pane.on('change', () => {
+        setControls({ ...controlsRef.current });
+      });
+
+      setPaneLoaded(true);
+    };
+
+    void initPane();
+
+    return () => {
+      if (paneRef.current) {
+        paneRef.current.dispose();
+        paneRef.current = null;
+      }
+    };
+  }, []);
+
+  const edgeFeather: [number, number, number, number] = [
+    controls.edgeFeatherTop,
+    controls.edgeFeatherRight,
+    controls.edgeFeatherBottom,
+    controls.edgeFeatherLeft,
+  ];
+
+  const backgroundColor: [number, number, number] | undefined =
+    controls.bgColorR >= 0 ? [controls.bgColorR, controls.bgColorG, controls.bgColorB] : undefined;
+
+  return (
+    <Box display="flex" height="100vh" margin="-32px">
+      {/* Gradient Editor Panel - Left */}
+      <Box
+        position="fixed"
+        top="16px"
+        left="16px"
+        zIndex={1000}
+        width="360px"
+        maxHeight="calc(100vh - 32px)"
+        overflow="auto"
+      >
+        <GradientEditor onChange={handleGradientChange} />
+      </Box>
+
+      {/* Tweakpane Panel - Right */}
+      <Box
+        ref={containerRef}
+        position="fixed"
+        top="16px"
+        right="16px"
+        zIndex={1000}
+        width="300px"
+      />
+
+      {/* Loading State */}
+      {!paneLoaded && (
+        <Box
+          position="fixed"
+          top="16px"
+          right="16px"
+          zIndex={1000}
+          padding="spacing.4"
+          backgroundColor="surface.background.gray.moderate"
+          borderRadius="medium"
+        >
+          <Text>Loading controls...</Text>
+        </Box>
+      )}
+
+      {/* RazorSense Display */}
+      <Box flex="1" position="relative" backgroundColor="surface.background.gray.intense">
+        <RazorSenseComponent
+          width="100%"
+          height="100%"
+          preset={controls.preset}
+          gradientMapCanvas={gradientCanvas}
+          paused={controls.paused}
+          startTime={controls.startTime}
+          endTime={controls.endTime}
+          playbackRate={controls.playbackRate}
+          animateLightIndependently={controls.animateLightIndependently}
+          enableDisplacement={controls.enableDisplacement}
+          enableColorama={controls.enableColorama}
+          enableBloom={controls.enableBloom}
+          enableLightSweep={controls.enableLightSweep}
+          enableCenterElement={controls.enableCenterElement}
+          zoom={controls.zoom}
+          panX={controls.panX}
+          panY={controls.panY}
+          edgeFeather={edgeFeather}
+          gradientMapBlend={controls.gradientMapBlend}
+          cycleRepetitions={controls.cycleRepetitions}
+          cycleSpeed={controls.cycleSpeed}
+          modifyGamma={controls.modifyGamma}
+          inputMin={controls.inputMin}
+          inputMax={controls.inputMax}
+          phaseShift={controls.phaseShift}
+          posterizeLevels={controls.posterizeLevels}
+          blendWithOriginal={controls.blendWithOriginal}
+          numSegments={controls.numSegments}
+          slitAngle={controls.slitAngle}
+          displacementX={controls.displacementX}
+          displacementY={controls.displacementY}
+          lightIntensity={controls.lightIntensity}
+          lightStartFrame={controls.lightStartFrame}
+          ccBlackPoint={controls.ccBlackPoint}
+          ccWhitePoint={controls.ccWhitePoint}
+          ccGamma={controls.ccGamma}
+          ccMidtoneGamma={controls.ccMidtoneGamma}
+          ccContrast={controls.ccContrast}
+          centerAnimDuration={controls.centerAnimDuration}
+          animateCycleReps={controls.animateCycleReps}
+          cycleRepetitionsStart={controls.cycleRepetitionsStart}
+          cycleRepetitionsEnd={controls.cycleRepetitionsEnd}
+          cycleRepetitionsStartFrame={controls.cycleRepetitionsStartFrame}
+          cycleRepetitionsDuration={controls.cycleRepetitionsDuration}
+          aspectRatio={controls.aspectRatio}
+          backgroundColor={backgroundColor}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+export const TweakpanePlayground = TweakpanePlaygroundTemplate.bind({});
+TweakpanePlayground.storyName = 'Tweakpane Playground';
