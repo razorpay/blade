@@ -4,7 +4,7 @@
 
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
-import { RzpGlassAssets, RzpGlassConfig, RzpGlassPresetDefinition, RzpGlassProps } from './types';
+import type { RzpGlassAssets, RzpGlassConfig, RzpGlassPresetDefinition, RzpGlassProps } from './types';
 
 const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
 
