@@ -226,6 +226,7 @@ exports[`<SearchInput /> should render 1`] = `
                   "display": "flex",
                   "flexDirection": "row",
                   "height": "auto",
+                  "overflow": "hidden",
                   "position": "relative",
                   "width": "100%",
                 },

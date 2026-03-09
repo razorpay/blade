@@ -130,6 +130,7 @@ export const getInputBackgroundAndBorderStyles = ({
         ? theme.border.radius.none
         : theme.border.radius[borderRadius ?? baseInputBorderRadius[size]],
     ),
+    overflow: 'hidden',
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
