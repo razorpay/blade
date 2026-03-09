@@ -516,7 +516,7 @@ vec3 applyColorCorrection(vec3 color) {
 }
 
 // Feather at container edges (visible bounds). Used in both ripple and normal mode.
-vec3 applyEdgeFeathering(vec3 color) {
+vec3 applyEdgeFeathering(vec3 color, vec3 bgColor) {
     // Apply edge feathering when zoomed in
     // Feathering is applied at the container edges (visible bounds), not canvas edges
     // uEdgeFeather = vec4(top, right, bottom, left) — clockwise like CSS
@@ -547,7 +547,8 @@ vec3 applyEdgeFeathering(vec3 color) {
         float top    = smoothstep(visMaxY, visMaxY - featherTop,     screenUV.y);
 
         float edgeMask = left * right * bottom * top;
-        color = mix(vec3(1.0), color, edgeMask);
+        // Blend towards background color instead of white to avoid visible edges
+        color = mix(bgColor, color, edgeMask);
     }
     return color;
 }
@@ -897,8 +898,6 @@ void main() {
 
     // Color correction and edge feathering (shared with ripple mode)
     color = applyColorCorrection(color);
-    color = applyEdgeFeathering(color);
-
     // Blend with background color if provided (uBackgroundColor.r < 0 means not set)
     if (uBackgroundColor.r >= 0.0) {
         // Calculate luminance to determine how bright the pixel is
@@ -906,13 +905,17 @@ void main() {
         
         // Blend white/bright areas with background color
         // Bright areas (close to white) become the background color
-        float blendStart = 0.98;  // Start blending at this brightness
+        float blendStart = 0.94;  // Start blending at this brightness
         float blendEnd = 1.0;    // Fully background color at this brightness
         float blendAmount = smoothstep(blendStart, blendEnd, brightness);
         
         // Mix the shader color with background color
         color = mix(color, uBackgroundColor, blendAmount);
     }
+
+    // Use background color for feathering if set, otherwise default to white
+    vec3 featherColor = uBackgroundColor.r >= 0.0 ? uBackgroundColor : vec3(1.0);
+    color = applyEdgeFeathering(color, featherColor);
 
     gl_FragColor = vec4(color, 1.0);
 }

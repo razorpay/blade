@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
 import type { StoryFn, Meta } from '@storybook/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';
 import type { RazorSenseProps } from '../RzpGlass/index';
@@ -14,8 +14,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { CheckIcon } from '~components/Icons';
+import { CheckIcon, RayIcon, RazorpayIcon } from '~components/Icons';
 import { List, ListItem, ListItemText } from '~components/List';
+import { ChatMessage } from '~components/ChatMessage';
 
 const Page = (): ReactElement => {
   return (
@@ -33,6 +34,7 @@ export default {
   args: {},
   tags: ['autodocs'],
   parameters: {
+    layout: 'fullscreen',
     docs: {
       page: Page,
     },
@@ -42,7 +44,7 @@ export default {
 const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   return (
     <Box width="100%" height="100vh">
-      <RazorSenseComponent width="100%" height="100%" preset={args.preset} {...args} />
+      <RazorSenseComponent preset={args.preset} {...args} />
     </Box>
   );
 };
@@ -57,21 +59,49 @@ DefaultPaused.args = {
   lightStartFrame: 0,
 };
 
-export const Zoomed = RazorSenseTemplate.bind({});
-Zoomed.args = {
-  preset: 'zoomed',
+export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
+  return (
+    <Box position="relative" display="flex" alignItems="center" height="400px" width="100%">
+      <Box
+        width="800px"
+        height="250px"
+        position="absolute"
+        top="40px"
+        left="0px"
+        right="0px"
+        bottom="0px"
+        margin="auto"
+        zIndex={0}
+      >
+        <RazorSenseComponent preset="zoomed" width="100%" height="100%" />
+      </Box>
+      <Box marginLeft="200px" position="relative" zIndex={1} maxWidth="500px">
+        <ChatMessage
+          senderType="other"
+          leading={<RayIcon size="xlarge" color="surface.icon.onSea.onSubtle" />}
+          isLoading={true}
+          loadingText={['Thinking...', 'Processing your request...']}
+        >
+          <Text color="surface.text.gray.normal" size="medium">
+            Your KYC has been verified successfully. All documents are in order and your identity
+            has been confirmed.
+          </Text>
+        </ChatMessage>
+      </Box>
+    </Box>
+  );
 };
 
 const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
-    <Box width="calc(100% + 24px)" height="100vh" marginLeft="-12px" marginRight="-12px">
+    <Box margin="-32px">
       <RazorSenseComponent width="100%" height="250px" preset="bottomWave" />
     </Box>
   );
 };
 export const BottomWave = BottomWaveTemplate.bind({});
 
-const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+const RazorSensePropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   return (
     <Box padding="spacing.8" maxWidth="800px">
       <Heading size="xlarge" marginBottom="spacing.6">
@@ -103,6 +133,10 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
             </ListItemText>
           </ListItem>
         </List>
+        <Text size="small" color="surface.text.gray.muted" marginTop="spacing.3">
+          Note: The canvas automatically resizes when the container changes size (via
+          ResizeObserver). It is always centered within the container, with overflow hidden.
+        </Text>
       </Box>
 
       <Box marginBottom="spacing.8">
@@ -370,7 +404,8 @@ const PropsExplanationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   );
 };
 
-export const PropsExplanation = PropsExplanationTemplate.bind({});
+export const RazorSensePropsExplanation = RazorSensePropsTemplate.bind({});
+RazorSensePropsExplanation.storyName = 'RazorSense Props';
 
 const RzpGlassSuccessAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -673,7 +708,7 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
             width="100%"
             height="100%"
             position="absolute"
-            top="-30px"
+            top="-40px"
             left="0px"
             right="0px"
             bottom="0px"
@@ -713,3 +748,494 @@ const RippleWaveAnimationTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 };
 
 export const RippleWaveAnimation = RippleWaveAnimationTemplate.bind({});
+
+// ---------------------------------------------------------------------------
+// Onboarding Playback Controls Story
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// usePhaseControl — generic hook for sequencing animation phases
+// ---------------------------------------------------------------------------
+
+type PhaseConfig = {
+  zoom: number;
+  panX: number;
+  panY: number;
+  paused: boolean;
+  playbackRate: number;
+  edgeFeather: [number, number, number, number];
+  startTime: number;
+  endTime: number;
+  /** When set, the video plays from startTime and auto-pauses once it reaches this video time. */
+  pauseAfterVideoTime?: number;
+};
+
+type PhaseDefinition<P extends string> = {
+  key: P;
+  label: string;
+  description: string;
+};
+
+type UsePhaseControlOptions<P extends string> = {
+  phases: PhaseDefinition<P>[];
+  config: Record<P, PhaseConfig>;
+  initialPhase: P;
+  lerpSpeed?: number;
+};
+
+type UsePhaseControlReturn<P extends string> = {
+  currentPhase: P;
+  setCurrentPhase: (phase: P) => void;
+  goToNextPhase: () => void;
+  phaseConfig: PhaseConfig;
+  effectivePaused: boolean;
+  animValues: { zoom: number; panX: number; panY: number };
+  phases: PhaseDefinition<P>[];
+};
+
+function usePhaseControl<P extends string>({
+  phases,
+  config,
+  initialPhase,
+  lerpSpeed = 0.05,
+}: UsePhaseControlOptions<P>): UsePhaseControlReturn<P> {
+  const [currentPhase, setCurrentPhase] = useState<P>(initialPhase);
+  const [effectivePaused, setEffectivePaused] = useState(false);
+  const [animValues, setAnimValues] = useState({ zoom: 1.0, panX: 0, panY: 0 });
+  const animRef = useRef({ zoom: 1.0, panX: 0, panY: 0 });
+
+  const phaseConfig = config[currentPhase];
+
+  const goToNextPhase = (): void => {
+    setCurrentPhase((prev) => {
+      const idx = phases.findIndex((p) => p.key === prev);
+      return phases[(idx + 1) % phases.length].key;
+    });
+  };
+
+  // Handle pause logic — auto-pause when pauseAfterVideoTime is set
+  useEffect(() => {
+    const cfg = config[currentPhase];
+    if (cfg.pauseAfterVideoTime !== undefined) {
+      setEffectivePaused(false);
+      const travelTime = cfg.pauseAfterVideoTime - cfg.startTime;
+      const delay = (travelTime / cfg.playbackRate) * 1000;
+      const timer = setTimeout(() => setEffectivePaused(true), delay);
+      return () => clearTimeout(timer);
+    }
+    setEffectivePaused(cfg.paused);
+    return undefined;
+  }, [currentPhase, config]);
+
+  // Smoothly interpolate zoom & pan via lerp on every phase change
+  useEffect(() => {
+    const target = config[currentPhase];
+    let running = true;
+    const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+    const isClose = (a: number, b: number): boolean => Math.abs(a - b) < 0.002;
+
+    const tick = (): void => {
+      if (!running) return;
+      const cur = animRef.current;
+      const next = {
+        zoom: lerp(cur.zoom, target.zoom, lerpSpeed),
+        panX: lerp(cur.panX, target.panX, lerpSpeed),
+        panY: lerp(cur.panY, target.panY, lerpSpeed),
+      };
+      const converged =
+        isClose(next.zoom, target.zoom) &&
+        isClose(next.panX, target.panX) &&
+        isClose(next.panY, target.panY);
+      // eslint-disable-next-line prettier/prettier
+      const result = converged ? { zoom: target.zoom, panX: target.panX, panY: target.panY } : next;
+
+      animRef.current = result;
+      setAnimValues(result);
+      if (!converged) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+    return () => {
+      running = false;
+    };
+  }, [currentPhase, config, lerpSpeed]);
+
+  return {
+    currentPhase,
+    setCurrentPhase,
+    goToNextPhase,
+    phaseConfig,
+    effectivePaused,
+    animValues,
+    phases,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Onboarding Playback Controls Story
+// ---------------------------------------------------------------------------
+
+type OnboardingPhase = 'loading' | 'stop' | 'zoomIn' | 'zoomOut';
+
+const ONBOARDING_PHASES: PhaseDefinition<OnboardingPhase>[] = [
+  {
+    key: 'loading',
+    label: 'Phase 1: Loading Loop',
+    description: 'Small initial animation loops continuously',
+  },
+  {
+    key: 'stop',
+    label: 'Phase 2: Resume & Stop',
+    description: 'Animation plays forward until video time ~8s, then pauses',
+  },
+  {
+    key: 'zoomIn',
+    label: 'Phase 3: Zoom In',
+    description: 'Camera zooms into the paused effect',
+  },
+  {
+    key: 'zoomOut',
+    label: 'Phase 4: Zoom Out',
+    description: 'Camera pulls back out',
+  },
+];
+
+const ONBOARDING_PHASE_CONFIG: Record<OnboardingPhase, PhaseConfig> = {
+  loading: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: false,
+    playbackRate: 1.0,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 0,
+    endTime: 3,
+  },
+  stop: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: false,
+    playbackRate: 1.5,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 2,
+    endTime: 14,
+    pauseAfterVideoTime: 8,
+  },
+  zoomIn: {
+    zoom: 2.5,
+    panX: 0,
+    panY: -0.15,
+    paused: true,
+    playbackRate: 1.0,
+    edgeFeather: [0.15, 0.15, 0.15, 0.15],
+    startTime: 0,
+    endTime: 14,
+  },
+  zoomOut: {
+    zoom: 1.0,
+    panX: 0,
+    panY: 0,
+    paused: true,
+    playbackRate: 1.0,
+    edgeFeather: [0, 0, 0, 0],
+    startTime: 0,
+    endTime: 14,
+  },
+};
+
+const OnboardingPlaybackControlsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
+  const {
+    currentPhase,
+    setCurrentPhase,
+    goToNextPhase,
+    phaseConfig,
+    effectivePaused,
+    animValues,
+    phases,
+  } = usePhaseControl({
+    phases: ONBOARDING_PHASES,
+    config: ONBOARDING_PHASE_CONFIG,
+    initialPhase: 'loading',
+  });
+
+  useEffect(() => {
+    preloadRazorSenseAssets('default')
+      .then(() => setAssetsPreloaded(true))
+      .catch(console.error);
+  }, []);
+
+  if (!assetsPreloaded) {
+    return <div>Loading assets...</div>;
+  }
+
+  return (
+    <Box display="flex" flexDirection="column" height="100vh" margin="-40px">
+      {/* Phase Controls */}
+      <Box
+        padding="spacing.5"
+        display="flex"
+        gap="spacing.4"
+        alignItems="center"
+        backgroundColor="surface.background.gray.moderate"
+      >
+        <Button variant="secondary" size="medium" onClick={goToNextPhase}>
+          Go to next phase
+        </Button>
+        <Box display="flex" gap="spacing.3" alignItems="center">
+          {phases.map(({ key, label }) => (
+            <Button
+              key={key}
+              variant={currentPhase === key ? 'primary' : 'tertiary'}
+              size="small"
+              onClick={() => setCurrentPhase(key)}
+            >
+              {label}
+            </Button>
+          ))}
+        </Box>
+        <Text size="medium" color="surface.text.gray.muted" marginLeft="auto">
+          {phases.find((p) => p.key === currentPhase)?.description}
+        </Text>
+      </Box>
+
+      {/* RazorSense Display */}
+      <Box
+        flex="1"
+        position="relative"
+        overflow="hidden"
+        backgroundColor="surface.background.gray.intense"
+      >
+        <RazorSenseComponent
+          width="100%"
+          height="100%"
+          preset="default"
+          paused={effectivePaused}
+          playbackRate={phaseConfig.playbackRate}
+          zoom={animValues.zoom}
+          panX={animValues.panX}
+          panY={animValues.panY}
+          edgeFeather={phaseConfig.edgeFeather}
+          startTime={phaseConfig.startTime}
+          endTime={phaseConfig.endTime}
+          lightStartFrame={currentPhase === 'stop' ? 0 : 140}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+export const OnboardingPlaybackControls = OnboardingPlaybackControlsTemplate.bind({});
+
+// ---------------------------------------------------------------------------
+// RazorSenseGradient Examples
+// ---------------------------------------------------------------------------
+
+const RazorSenseGradientBasicTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  const origins: Array<{ origin: [number, number]; label: string }> = [
+    { origin: [0, 0], label: 'Top-Left [0,0]' },
+    { origin: [0.5, 0], label: 'Top-Center [0.5,0]' },
+    { origin: [1, 0], label: 'Top-Right [1,0]' },
+    { origin: [0, 0.5], label: 'Middle-Left [0,0.5]' },
+    { origin: [1, 0.5], label: 'Middle-Right [1,0.5]' },
+  ];
+
+  return (
+    <Box padding="spacing.8">
+      <Heading size="large" marginBottom="spacing.6">
+        RazorSenseGradient - Basic Examples
+      </Heading>
+      <Text marginBottom="spacing.6" color="surface.text.gray.muted">
+        RazorSenseGradient renders an animated WebGL gradient clipped to any SVG shape you pass as
+        children. Use fill=&quot;white&quot; for the visible area.
+      </Text>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Shapes
+      </Heading>
+      <Box
+        display="flex"
+        gap="spacing.8"
+        flexWrap="wrap"
+        alignItems="center"
+        marginBottom="spacing.8"
+      >
+        {/* Rounded Rect */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+            <rect x="2" y="2" width="20" height="20" rx="2" fill="white" />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Rounded Rect
+          </Text>
+        </Box>
+
+        {/* Heart Shape */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              fill="white"
+            />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Heart
+          </Text>
+        </Box>
+
+        {/* Razorpay */}
+        <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+          <RazorSenseGradient size={100} viewBox="0 0 20 20" origin={[0.5, 0.2]}>
+            <RazorpayIcon color="surface.icon.staticWhite.normal" size="large" />
+          </RazorSenseGradient>
+          <Text size="small" color="surface.text.gray.muted">
+            Razorpay
+          </Text>
+        </Box>
+      </Box>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Sizes
+      </Heading>
+      <Text marginBottom="spacing.4" color="surface.text.gray.muted">
+        The size prop controls the side length of the square canvas in CSS pixels.
+      </Text>
+      <Box
+        display="flex"
+        gap="spacing.8"
+        flexWrap="wrap"
+        alignItems="flex-end"
+        marginBottom="spacing.8"
+      >
+        {[40, 60, 80, 120].map((s) => (
+          <Box key={s} display="flex" flexDirection="column" alignItems="center" gap="spacing.3">
+            <RazorSenseGradient size={s} viewBox="0 0 24 24" origin={[0.5, 0.5]}>
+              <path
+                d="M3 3H7.5H9.74999L12 12L14.25 3H16.5H21V7.5V9.75L12 12L21 14.25V16.5V21H16.5H14.25L12 12L9.74999 21H7.5H3V16.5V14.25L12 12L3 9.75V7.5V3Z"
+                fill="white"
+              />
+            </RazorSenseGradient>
+            <Text size="small" color="surface.text.gray.muted">
+              {s}px
+            </Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Heading size="medium" marginBottom="spacing.4">
+        Gradient Origins
+      </Heading>
+      <Text marginBottom="spacing.4" color="surface.text.gray.muted">
+        The origin prop controls where the radial gradient originates. [0,0] is top-left, [0.5,0.5]
+        is center, [1,1] is bottom-right.
+      </Text>
+      <Box display="flex" gap="spacing.6" flexWrap="wrap">
+        {origins.map(({ origin, label }) => (
+          <Box
+            key={label}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.3"
+          >
+            <RazorSenseGradient size={80} viewBox="0 0 24 24" origin={origin}>
+              <rect x="2" y="2" width="20" height="20" rx="2" fill="white" />
+            </RazorSenseGradient>
+            <Text size="xsmall" color="surface.text.gray.muted">
+              {label}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+};
+
+export const RazorSenseGradientBasic = RazorSenseGradientBasicTemplate.bind({});
+
+const RazorSenseGradientPropsTemplate: StoryFn<typeof RazorSenseComponent> = () => {
+  return (
+    <Box padding="spacing.8" maxWidth="800px">
+      <Heading size="xlarge" marginBottom="spacing.6">
+        RazorSenseGradient Props
+      </Heading>
+
+      <Box marginBottom="spacing.8">
+        <Heading size="medium" marginBottom="spacing.4">
+          Component Props
+        </Heading>
+        <List>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">children</Text> - SVG elements that define the mask shape. Use
+              fill=&quot;white&quot; for visible areas. Supports motion.* variants from
+              framer-motion.
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">size</Text> - Side length of the square canvas in CSS pixels
+              (default: 200)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">viewBox</Text> - SVG viewBox for the mask coordinate space.
+              Match this to your path&apos;s native coordinate system (default: &quot;0 0 24
+              24&quot;)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">origin</Text> - Origin of the radial gradient in UV space as
+              [x, y] tuple. [0,0]=top-left, [0.5,0.5]=center, [1,1]=bottom-right (default: [0.5,
+              0.0])
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">className</Text> - CSS class name for the container
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Text weight="semibold">style</Text> - Inline styles for the container
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box marginBottom="spacing.8">
+        <Heading size="medium" marginBottom="spacing.4">
+          Usage Notes
+        </Heading>
+        <List>
+          <ListItem>
+            <ListItemText>
+              Children must be valid SVG elements (path, circle, rect, g, text, etc.)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Use fill=&quot;white&quot; on shapes for them to be visible through the gradient
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              For animations, use framer-motion&apos;s SVG variants: motion.path, motion.g,
+              motion.circle, etc.
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              The gradient uses WebGL canvas internally - ensure browser compatibility
+            </ListItemText>
+          </ListItem>
+        </List>
+      </Box>
+    </Box>
+  );
+};
+
+export const RazorSenseGradientProps = RazorSenseGradientPropsTemplate.bind({});
