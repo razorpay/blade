@@ -107,6 +107,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     isActive,
     icon,
     trailing,
+    titleSuffix,
     accessibilityLabel,
     href,
     target,
@@ -179,6 +180,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
           />
         ) : null}
         {title}
+        {titleSuffix ? titleSuffix : null}
         {trailing ? trailing : null}
       </StyledTabNavItem>
     </StyledTabNavItemWrapper>

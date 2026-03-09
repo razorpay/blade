@@ -1,5 +1,19 @@
 # @razorpay/blade
 
+## 12.95.1
+
+### Patch Changes
+
+- 331a9a605: feat(TabNavItem): add titleSuffix prop for status badges
+- 054c779e0: fix(blade): RazorSense background color mixing
+
+## 12.95.0
+
+### Minor Changes
+
+- a8823b007: feat(blade): update razorsense cdn path & added preloadRazorSenseAssets utility
+  feat(blade-mcp): add knowledgebase for RazorSense and RazorSenseGradient
+
 ## 12.94.0
 
 ### Minor Changes

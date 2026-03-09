@@ -50,6 +50,7 @@ import { Tooltip } from '~components/Tooltip';
 import { Avatar } from '~components/Avatar';
 import { Text } from '~components/Typography';
 import { Menu, MenuFooter, MenuHeader, MenuItem, MenuOverlay } from '~components/Menu';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from '~components/Modal';
 import { Link as BladeLink } from '~components/Link';
 import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -356,9 +357,14 @@ const TopNavFullExample = () => {
                 <TabNav
                   items={[
                     {
-                      title: 'Ray',
+                      title: 'Ray AI',
                       href: '/home',
                       icon: RayIcon,
+                      titleSuffix: (
+                        <Badge size="small" emphasis="subtle" color="positive">
+                          BETA
+                        </Badge>
+                      ),
                     },
                     {
                       href: '/payroll',
@@ -758,6 +764,7 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isMobile = matchedDeviceType === 'mobile';
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = React.useState(false);
 
   return (
     <DashboardBackground>
@@ -831,7 +838,7 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
                         </Text>
                       </Box>
                     </Box>
-                    <MenuItem>
+                    <MenuItem onClick={() => setIsSettingsModalOpen(true)}>
                       <Text color="surface.text.gray.subtle">Settings</Text>
                     </MenuItem>
                     <MenuItem color="negative">
@@ -866,6 +873,19 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
           </Box>
         </Box>
       </BaseBox>
+      <Modal
+        isOpen={isSettingsModalOpen}
+        onDismiss={() => setIsSettingsModalOpen(false)}
+        size="small"
+      >
+        <ModalHeader title="Settings" />
+        <ModalBody>
+          <Text>This is a basic settings modal.</Text>
+        </ModalBody>
+        <ModalFooter>
+          <Button onClick={() => setIsSettingsModalOpen(false)}>Close</Button>
+        </ModalFooter>
+      </Modal>
     </DashboardBackground>
   );
 };
