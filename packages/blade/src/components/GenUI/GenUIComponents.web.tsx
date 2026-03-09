@@ -969,61 +969,11 @@ const TableRowHoverActions = ({
   );
 };
 
-// px per average character at ~14px font size
-const CHAR_WIDTH = 7.5;
-// horizontal cell padding (left + right)
-const CELL_H_PADDING = 8;
-
-// Returns the minimum pixel width hint for a cell based on its content type.
-// Used as the `min` track in `minmax(min, max-content)` so columns never
-// collapse below a sensible floor while still growing to fit real content.
-const getCellMinWidth = (cell?: Partial<TableCellType>): number => {
-  if (!cell?.component) return 80;
-  switch (cell.component) {
-    case 'TEXT':
-      return Math.max(80, Math.min(300, (cell.value?.length ?? 1) * CHAR_WIDTH + CELL_H_PADDING));
-    case 'AMOUNT':
-      // currency symbol + digits + separators
-      return Math.max(
-        100,
-        (String(cell.value?.toString() ?? 0).length + 2) * CHAR_WIDTH + CELL_H_PADDING,
-      );
-    case 'INDICATOR':
-      return Math.max(100, (cell.value?.length ?? 1) * CHAR_WIDTH);
-    case 'BADGE':
-      return Math.max(80, (cell.value?.length ?? 1) * CHAR_WIDTH);
-    case 'DATE': {
-      const dateValue = dayjs(cell.value);
-      if (!dateValue.isValid()) {
-        return (cell.value?.length ?? 0) * CHAR_WIDTH;
-      }
-      const defaultFormat = 'DD MMM YYYY, HH:mm';
-      const formatted = dateValue.format(cell.dateFormat || defaultFormat);
-      return formatted.length * CHAR_WIDTH;
-    }
-    case 'LINK':
-      return Math.max(80, Math.min(250, (cell.text?.length ?? 1) * CHAR_WIDTH + CELL_H_PADDING));
-    default:
-      return 80;
-  }
-};
-
-// Produces one CSS grid track per column as a `fr` value proportional to
-// the estimated content width so columns fill the full table width while
-// still reflecting relative content size (wider content → more space).
-const calculateColumnWidths = (headers: string[], rows: Partial<TableCellType>[][]): string[] => {
-  const weights = headers.map((header, colIndex) => {
-    const headerWeight = header.length * CHAR_WIDTH + CELL_H_PADDING;
-    const cellWeight = rows.reduce((max, row) => {
-      const cell = row[colIndex];
-      return Math.max(max, getCellMinWidth(cell));
-    }, 80);
-    return Math.max(headerWeight, cellWeight);
-  });
-
-  // Normalise to smallest weight so fr numbers stay small and readable
-  const minWeight = Math.min(...weights);
-  return weights.map((w) => `${Math.round((w / minWeight) * 10) / 10}fr`);
+// Produces column widths using minmax(max-content, 1fr) so columns:
+// 1. Never shrink below their content width (no text wrapping)
+// 2. Expand proportionally to fill available width when space permits
+const calculateColumnWidths = (headers: string[], _rows: Partial<TableCellType>[][]): string[] => {
+  return headers.map(() => 'minmax(max-content, 1fr)');
 };
 
 const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {

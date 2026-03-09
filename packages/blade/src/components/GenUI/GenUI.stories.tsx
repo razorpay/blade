@@ -460,3 +460,277 @@ const SimpleGenUITemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element
 };
 
 export const SimpleGenUI = SimpleGenUITemplate.bind({});
+
+const wideTableSchema = {
+  components: [
+    {
+      component: 'TEXT',
+      content: '# Wide Table Example',
+    },
+    {
+      component: 'TEXT',
+      content:
+        'This example demonstrates a table with many columns. The table is horizontally scrollable when it overflows.',
+    },
+    {
+      component: 'TABLE',
+      headers: [
+        'Transaction ID',
+        'Customer Name',
+        'Email',
+        'Phone',
+        'Status',
+        'Amount',
+        'Currency',
+        'Payment Method',
+        'Date',
+        'Region',
+        'Notes',
+        'Actions',
+      ],
+      rows: [
+        [
+          { component: 'TEXT', value: 'pay_NxGT5fK8mZ2abc', copyable: true },
+          { component: 'TEXT', value: 'Alice Johnson' },
+          { component: 'TEXT', value: 'alice.johnson@example.com', copyable: true },
+          { component: 'TEXT', value: '+91 98765 43210' },
+          { component: 'BADGE', value: 'Captured', color: 'positive' },
+          { component: 'AMOUNT', value: 500000, currency: 'INR' },
+          { component: 'TEXT', value: 'INR' },
+          { component: 'TEXT', value: 'Credit Card' },
+          { component: 'DATE', value: '2024-01-15T14:30:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
+          { component: 'TEXT', value: 'Asia Pacific' },
+          { component: 'TEXT', value: 'Premium customer' },
+          {
+            component: 'LINK',
+            text: 'View Details',
+            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
+          },
+        ],
+        [
+          { component: 'TEXT', value: 'pay_MwFS4eJ7lY1xyz', copyable: true },
+          { component: 'TEXT', value: 'Bob Smith' },
+          { component: 'TEXT', value: 'bob.smith@company.org', copyable: true },
+          { component: 'TEXT', value: '+1 555 123 4567' },
+          { component: 'INDICATOR', value: 'Processing', color: 'notice' },
+          { component: 'AMOUNT', value: 7500, currency: 'USD' },
+          { component: 'TEXT', value: 'USD' },
+          { component: 'TEXT', value: 'Debit Card' },
+          { component: 'DATE', value: '2024-01-14T09:15:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
+          { component: 'TEXT', value: 'North America' },
+          { component: 'TEXT', value: 'First-time buyer' },
+          {
+            component: 'LINK',
+            text: 'View Details',
+            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
+          },
+        ],
+        [
+          { component: 'TEXT', value: 'pay_LvER3dI6kX0def', copyable: true },
+          { component: 'TEXT', value: 'Charlie Brown' },
+          { component: 'TEXT', value: 'charlie.b@email.net', copyable: true },
+          { component: 'TEXT', value: '+60 12 345 6789' },
+          { component: 'BADGE', value: 'Failed', color: 'negative' },
+          { component: 'AMOUNT', value: 25000, currency: 'MYR' },
+          { component: 'TEXT', value: 'MYR' },
+          { component: 'TEXT', value: 'Bank Transfer' },
+          { component: 'DATE', value: '2024-01-13T16:45:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
+          { component: 'TEXT', value: 'Southeast Asia' },
+          { component: 'TEXT', value: 'Insufficient funds' },
+          {
+            component: 'LINK',
+            text: 'View Details',
+            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
+          },
+        ],
+        [
+          { component: 'TEXT', value: 'pay_KuDQ2cH5jW9ghi', copyable: true },
+          { component: 'TEXT', value: 'Diana Ross' },
+          { component: 'TEXT', value: 'diana.ross@music.com', copyable: true },
+          { component: 'TEXT', value: '+44 20 7946 0958' },
+          { component: 'INDICATOR', value: 'Refunded', color: 'information' },
+          { component: 'AMOUNT', value: 150000, currency: 'INR' },
+          { component: 'TEXT', value: 'INR' },
+          { component: 'TEXT', value: 'UPI' },
+          { component: 'DATE', value: '2024-01-12T11:20:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
+          { component: 'TEXT', value: 'Europe' },
+          { component: 'TEXT', value: 'Customer requested refund' },
+          {
+            component: 'LINK',
+            text: 'View Details',
+            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
+          },
+        ],
+      ],
+    },
+  ],
+};
+
+const simpleTableSchema = {
+  components: [
+    {
+      component: 'TEXT',
+      content: '## Simple Table',
+    },
+    {
+      component: 'TEXT',
+      content: 'A basic table with minimal columns that fits within the viewport.',
+    },
+    {
+      component: 'TABLE',
+      headers: ['Name', 'Role', 'Status'],
+      rows: [
+        [
+          { component: 'TEXT', value: 'John Doe' },
+          { component: 'TEXT', value: 'Engineer' },
+          { component: 'BADGE', value: 'Active', color: 'positive' },
+        ],
+        [
+          { component: 'TEXT', value: 'Jane Smith' },
+          { component: 'TEXT', value: 'Designer' },
+          { component: 'BADGE', value: 'Active', color: 'positive' },
+        ],
+        [
+          { component: 'TEXT', value: 'Bob Wilson' },
+          { component: 'TEXT', value: 'Manager' },
+          { component: 'INDICATOR', value: 'Away', color: 'notice' },
+        ],
+      ],
+    },
+  ],
+};
+
+const invoiceTableSchema = {
+  components: [
+    {
+      component: 'TEXT',
+      content: '## Invoice Items Table',
+    },
+    {
+      component: 'TEXT',
+      content: 'A table showing invoice line items with amounts and quantities.',
+    },
+    {
+      component: 'TABLE',
+      headers: ['Item', 'Description', 'Qty', 'Unit Price', 'Total'],
+      rows: [
+        [
+          { component: 'TEXT', value: 'SKU-001' },
+          { component: 'TEXT', value: 'Premium Widget Pro' },
+          { component: 'TEXT', value: '5' },
+          { component: 'AMOUNT', value: 2500, currency: 'INR' },
+          { component: 'AMOUNT', value: 12500, currency: 'INR' },
+        ],
+        [
+          { component: 'TEXT', value: 'SKU-002' },
+          { component: 'TEXT', value: 'Standard Gadget' },
+          { component: 'TEXT', value: '10' },
+          { component: 'AMOUNT', value: 1000, currency: 'INR' },
+          { component: 'AMOUNT', value: 10000, currency: 'INR' },
+        ],
+        [
+          { component: 'TEXT', value: 'SKU-003' },
+          { component: 'TEXT', value: 'Service Fee' },
+          { component: 'TEXT', value: '1' },
+          { component: 'AMOUNT', value: 500, currency: 'INR' },
+          { component: 'AMOUNT', value: 500, currency: 'INR' },
+        ],
+      ],
+    },
+  ],
+};
+
+const settlementTableSchema = {
+  components: [
+    {
+      component: 'TEXT',
+      content: '## Settlement Report',
+    },
+    {
+      component: 'TEXT',
+      content: 'Settlement details with UTR numbers and bank information.',
+    },
+    {
+      component: 'TABLE',
+      headers: [
+        'Settlement ID',
+        'UTR',
+        'Bank Account',
+        'Amount',
+        'Fee',
+        'Net Amount',
+        'Date',
+        'Status',
+      ],
+      rows: [
+        [
+          { component: 'TEXT', value: 'setl_ABC123XYZ', copyable: true },
+          { component: 'TEXT', value: 'UTIB0002345678901234', copyable: true },
+          { component: 'TEXT', value: 'HDFC ****4521' },
+          { component: 'AMOUNT', value: 100000, currency: 'INR' },
+          { component: 'AMOUNT', value: 236, currency: 'INR' },
+          { component: 'AMOUNT', value: 99764, currency: 'INR' },
+          { component: 'DATE', value: '2024-01-15T10:00:00Z', dateFormat: 'DD MMM YYYY' },
+          { component: 'BADGE', value: 'Processed', color: 'positive' },
+        ],
+        [
+          { component: 'TEXT', value: 'setl_DEF456UVW', copyable: true },
+          { component: 'TEXT', value: 'UTIB0009876543210987', copyable: true },
+          { component: 'TEXT', value: 'HDFC ****4521' },
+          { component: 'AMOUNT', value: 250000, currency: 'INR' },
+          { component: 'AMOUNT', value: 590, currency: 'INR' },
+          { component: 'AMOUNT', value: 249410, currency: 'INR' },
+          { component: 'DATE', value: '2024-01-14T10:00:00Z', dateFormat: 'DD MMM YYYY' },
+          { component: 'BADGE', value: 'Processed', color: 'positive' },
+        ],
+        [
+          { component: 'TEXT', value: 'setl_GHI789RST', copyable: true },
+          { component: 'TEXT', value: 'UTIB0001122334455667', copyable: true },
+          { component: 'TEXT', value: 'ICICI ****8832' },
+          { component: 'AMOUNT', value: 75000, currency: 'INR' },
+          { component: 'AMOUNT', value: 177, currency: 'INR' },
+          { component: 'AMOUNT', value: 74823, currency: 'INR' },
+          { component: 'DATE', value: '2024-01-13T10:00:00Z', dateFormat: 'DD MMM YYYY' },
+          { component: 'INDICATOR', value: 'Pending', color: 'notice' },
+        ],
+      ],
+    },
+  ],
+};
+
+const tableExamplesSchema = {
+  components: [
+    {
+      component: 'TEXT',
+      content: '# Table Examples',
+    },
+    {
+      component: 'TEXT',
+      content:
+        'This page showcases various table configurations - from simple tables that fit within the viewport to wide tables that require horizontal scrolling.',
+    },
+    ...simpleTableSchema.components,
+    { component: 'SPACER', size: 'large' },
+    ...invoiceTableSchema.components,
+    { component: 'SPACER', size: 'large' },
+    ...settlementTableSchema.components,
+    { component: 'SPACER', size: 'large' },
+    ...wideTableSchema.components,
+  ],
+};
+
+const TableExamplesTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element => {
+  return (
+    <Box maxWidth="900px">
+      <GenUIProvider>
+        <GenUISchemaRenderer
+          isAnimating={false}
+          animateOptions={{ duration: 300, sep: 'word' }}
+          components={tableExamplesSchema.components}
+        />
+      </GenUIProvider>
+    </Box>
+  );
+};
+
+export const TableExamples = TableExamplesTemplate.bind({});
