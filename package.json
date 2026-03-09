@@ -46,7 +46,8 @@
     "build:eslint-plugin-blade": "lerna run --scope eslint-plugin-blade build",
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
-    "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds"
+    "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
+    "ci:codesandbox": "yarn install --ignore-engines"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",
