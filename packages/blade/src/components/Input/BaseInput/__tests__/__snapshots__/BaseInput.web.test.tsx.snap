@@ -285,6 +285,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
 .c14.c14.c14.c14.c14 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -313,6 +314,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
 .c14.c14.c14.c14.c14:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -343,6 +345,7 @@ exports[`<BaseInput /> should have a label & labelSuffix & labelTrailing 1`] = `
 .c14.c14.c14.c14.c14:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -821,6 +824,7 @@ exports[`<BaseInput /> should render 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -849,6 +853,7 @@ exports[`<BaseInput /> should render 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -879,6 +884,7 @@ exports[`<BaseInput /> should render 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1670,6 +1676,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1698,6 +1705,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1728,6 +1736,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2282,6 +2291,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2311,6 +2321,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2342,6 +2353,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2903,6 +2915,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2931,6 +2944,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2961,6 +2975,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3422,6 +3437,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3450,6 +3466,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3480,6 +3497,7 @@ exports[`<BaseInput /> should support passing data-analytics-* attributes to the
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
