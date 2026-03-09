@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-vite';
 import * as listView from './ListView.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';

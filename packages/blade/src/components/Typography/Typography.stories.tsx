@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useRef, useEffect, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { Display } from './Display';

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
 import { Box } from '~components/Box';
@@ -40,6 +40,7 @@ const markerMapping = { ...indicatorMappings, ...iconMappings };
 export default {
   title: 'Components/StepGroup/Step Item Playground',
   component: StepItem,
+
   argTypes: {
     marker: {
       // weird TS error
@@ -67,7 +68,6 @@ export default {
       },
     },
   },
-  parameters: {},
 } as Meta<StepItemProps>;
 
 const StepItemTemplate: StoryFn<typeof StepItem> = (args) => {

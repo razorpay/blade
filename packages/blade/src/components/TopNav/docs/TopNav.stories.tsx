@@ -2,13 +2,13 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
-import storyRouterDecorator from 'storybook-react-router';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
 import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
 import { topNavFullExample } from './code';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Box } from '~components/Box';
 import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 import {
@@ -356,9 +356,14 @@ const TopNavFullExample = () => {
                 <TabNav
                   items={[
                     {
-                      title: 'Ray',
+                      title: 'Ray AI',
                       href: '/home',
                       icon: RayIcon,
+                      titleSuffix: (
+                        <Badge size="small" emphasis="subtle" color="positive">
+                          BETA
+                        </Badge>
+                      ),
                     },
                     {
                       href: '/payroll',
