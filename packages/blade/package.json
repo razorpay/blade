@@ -4,7 +4,7 @@
   "version": "12.94.0",
   "license": "MIT",
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=20"
   },
   "bin": {
     "migrate-typography": "./codemods/migrate-typography/transformers/migrate-typography.ts"
