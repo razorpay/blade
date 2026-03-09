@@ -240,6 +240,7 @@ exports[`<TextArea /> should render 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -268,6 +269,7 @@ exports[`<TextArea /> should render 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -298,6 +300,7 @@ exports[`<TextArea /> should render 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -711,6 +714,7 @@ exports[`<TextArea /> should render large size 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -739,6 +743,7 @@ exports[`<TextArea /> should render large size 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -769,6 +774,7 @@ exports[`<TextArea /> should render large size 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1176,6 +1182,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1204,6 +1211,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1234,6 +1242,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1625,6 +1634,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1653,6 +1663,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1683,6 +1694,7 @@ exports[`<TextArea /> should support adding data-analytics attribute to the text
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

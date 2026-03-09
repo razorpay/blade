@@ -193,6 +193,18 @@ export type CardProps = {
   opacity?: BoxProps['opacity'];
   transition?: BoxProps['transition'];
   flexShrink?: BoxProps['flexShrink'];
+  /**
+   * Sets the overflow behavior of the card content
+   */
+  overflow?: BoxProps['overflow'];
+  /**
+   * Sets the horizontal overflow behavior of the card content
+   */
+  overflowX?: BoxProps['overflowX'];
+  /**
+   * Sets the vertical overflow behavior of the card content
+   */
+  overflowY?: BoxProps['overflowY'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -225,6 +237,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     opacity,
     transition,
     flexShrink,
+    overflow,
+    overflowX,
+    overflowY,
     ...rest
   },
   ref,
@@ -301,6 +316,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           backgroundColor="surface.background.gray.intense"
           colorScheme={colorScheme}
           isSelected={isSelected}
+          overflow={overflow}
+          overflowX={overflowX}
+          overflowY={overflowY}
         >
           {href ? (
             <LinkOverlay

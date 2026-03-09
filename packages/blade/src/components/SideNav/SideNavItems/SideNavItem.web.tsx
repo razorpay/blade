@@ -55,7 +55,7 @@ const SideNavItem = ({
           <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
             <Text
               truncateAfterLines={1}
-              weight="medium"
+              weight="regular"
               size="medium"
               color="surface.text.gray.subtle"
             >

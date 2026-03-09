@@ -322,6 +322,7 @@ exports[`<CounterInput /> should render 1`] = `
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -350,6 +351,7 @@ exports[`<CounterInput /> should render 1`] = `
 .c13.c13.c13.c13.c13:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -380,6 +382,7 @@ exports[`<CounterInput /> should render 1`] = `
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1040,6 +1043,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1068,6 +1072,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 .c13.c13.c13.c13.c13:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1098,6 +1103,7 @@ exports[`<CounterInput /> should render large size 1`] = `
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1758,6 +1764,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 .c13.c13.c13.c13.c13 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1786,6 +1793,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 .c13.c13.c13.c13.c13:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1816,6 +1824,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 .c13.c13.c13.c13.c13:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
