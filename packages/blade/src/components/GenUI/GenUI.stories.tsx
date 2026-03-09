@@ -720,15 +720,79 @@ const tableExamplesSchema = {
 };
 
 const TableExamplesTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element => {
+  const fullJSONString = JSON.stringify(tableExamplesSchema, null, 2);
+  const totalJSONLength = fullJSONString.length;
+  const [jsonPosition, setJsonPosition] = useState(totalJSONLength);
+  const lastValidComponentsRef = useRef(tableExamplesSchema.components);
+
+  const partialJSONString = fullJSONString.slice(0, jsonPosition);
+  let componentsToRender = lastValidComponentsRef.current;
+
+  try {
+    const repairedJSON = jsonrepair(partialJSONString);
+    const partialSchema = JSON.parse(repairedJSON);
+    if (partialSchema.components && Array.isArray(partialSchema.components)) {
+      lastValidComponentsRef.current = partialSchema.components;
+      componentsToRender = partialSchema.components;
+    }
+  } catch {
+    // If parsing fails, use the last valid components from ref
+  }
+
   return (
-    <Box maxWidth="900px">
-      <GenUIProvider>
-        <GenUISchemaRenderer
-          isAnimating={false}
-          animateOptions={{ duration: 300, sep: 'word' }}
-          components={tableExamplesSchema.components}
-        />
-      </GenUIProvider>
+    <Box>
+      <Box maxWidth="900px">
+        <GenUIProvider>
+          {componentsToRender && componentsToRender.length > 0 ? (
+            <GenUISchemaRenderer
+              isAnimating={false}
+              animateOptions={{ duration: 300, sep: 'word' }}
+              components={componentsToRender}
+            />
+          ) : (
+            <Box padding="spacing.5">
+              <Text color="surface.text.gray.muted">
+                Move the slider to start rendering components from the JSON schema...
+              </Text>
+            </Box>
+          )}
+        </GenUIProvider>
+      </Box>
+      <Box
+        position="fixed"
+        bottom="spacing.5"
+        left="spacing.0"
+        right="spacing.0"
+        display="flex"
+        justifyContent="center"
+        zIndex={1000}
+      >
+        <Box
+          width="400px"
+          padding="spacing.5"
+          backgroundColor="surface.background.gray.intense"
+          borderWidth="thin"
+          borderColor="surface.border.gray.muted"
+          borderRadius="medium"
+          elevation="highRaised"
+        >
+          <Text size="medium" weight="semibold" marginBottom="spacing.2">
+            JSON Progress: {jsonPosition.toLocaleString()} / {totalJSONLength.toLocaleString()}{' '}
+            characters ({Math.round((jsonPosition / totalJSONLength) * 100)}%)
+          </Text>
+          <input
+            type="range"
+            min={0}
+            max={totalJSONLength}
+            value={jsonPosition}
+            onChange={(e) => setJsonPosition(Number(e.target.value))}
+            style={{
+              width: '100%',
+              cursor: 'pointer',
+            }}
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };
