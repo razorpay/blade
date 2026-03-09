@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent, waitFor } from 'storybook/test';
-import { expect } from 'storybook/test';
+import { within, userEvent, waitFor, expect } from 'storybook/test';
 import {
   Dropdown,
   DropdownOverlay,

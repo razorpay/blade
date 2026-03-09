@@ -1,6 +1,5 @@
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent } from 'storybook/test';
-import { expect, fn } from 'storybook/test';
+import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from '..';
 import { Button } from '~components/Button';

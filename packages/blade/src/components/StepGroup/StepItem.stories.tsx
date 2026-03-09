@@ -67,7 +67,7 @@ export default {
         disable: true,
       },
     },
-  }
+  },
 } as Meta<StepItemProps>;
 
 const StepItemTemplate: StoryFn<typeof StepItem> = (args) => {

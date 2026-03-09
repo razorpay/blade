@@ -33,16 +33,14 @@ const LocationLogger = ({ links }: { links?: Links }): null => {
   return null;
 };
 
-const storyRouterDecorator = (
-  links?: Links,
-  routerProps?: MemoryRouterProps,
-): Decorator => {
+const storyRouterDecorator = (links?: Links, routerProps?: MemoryRouterProps): Decorator => {
   const decorator: Decorator = (Story) => (
     <MemoryRouter {...routerProps}>
       <LocationLogger links={links} />
       <Route render={() => <Story />} />
     </MemoryRouter>
   );
+  // eslint-disable-next-line no-restricted-properties
   decorator.displayName = 'StoryRouter';
   return decorator;
 };

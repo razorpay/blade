@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent } from 'storybook/test';
-import { fn, expect } from 'storybook/test';
+import { within, userEvent, fn, expect } from 'storybook/test';
 import React from 'react';
 import type { TabNavProps } from '../TabNav';
 import { TabNav, TabNavItem, TabNavItems } from '../TabNav';

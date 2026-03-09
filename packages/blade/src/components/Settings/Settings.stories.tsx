@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import type { Meta } from '@storybook/react-vite';
-import storyRouterDecorator from '~utils/storybook/StoryRouter';
 
 import {
   BrowserRouter,
@@ -75,6 +74,7 @@ import PaymentsIcon from './assets/png/payments.png';
 import IntegrationsIcon from './assets/png/integrations.png';
 import BusinessProfileIcon from './assets/png/business.png';
 import UserProfileIcon from './assets/png/user.png';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import parameters from '~utils/storybook/recipeParameters';
 
 interface NavLinkProps {

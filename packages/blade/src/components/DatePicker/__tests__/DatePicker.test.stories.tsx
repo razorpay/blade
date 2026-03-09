@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent } from 'storybook/test';
-import { expect, fn } from 'storybook/test';
+import { within, userEvent, expect, fn } from 'storybook/test';
 import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';

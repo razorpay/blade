@@ -28,15 +28,15 @@ export default {
       'storybook/docs/panel': {
         hidden: true,
       },
-    }
+    },
   },
 
   globals: {
     viewport: {
       value: 'iPhone6',
-      isRotated: false
-    }
-  }
+      isRotated: false,
+    },
+  },
 } as Meta<typeof BottomNavItem>;
 
 const bottomNavItems = [

@@ -3,10 +3,10 @@
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import StoryRouter from '~utils/storybook/StoryRouter';
 import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';
 import type { StepGroupProps, StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';

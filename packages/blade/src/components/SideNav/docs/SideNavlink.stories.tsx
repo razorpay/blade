@@ -47,7 +47,7 @@ export default {
       options: Object.keys(trailingMapping),
       mapping: trailingMapping,
     } as unknown,
-  }
+  },
 } as Meta<SideNavLinkProps>;
 
 const SideNavLinkTemplate: StoryFn<typeof SideNavLink> = (args) => {

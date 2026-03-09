@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import StoryRouter from '~utils/storybook/StoryRouter';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import { Move } from './';
 import type { MoveProps } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';

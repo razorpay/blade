@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
-import storyRouterDecorator from '~utils/storybook/StoryRouter';
-import { Title } from '@storybook/addon-docs/blocks';
+import storyRouterDecorator from 'storybook-react-router';
+import { Title } from '@storybook/addon-docs';
 import styled from 'styled-components';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
@@ -356,9 +356,14 @@ const TopNavFullExample = () => {
                 <TabNav
                   items={[
                     {
-                      title: 'Ray',
+                      title: 'Ray AI',
                       href: '/home',
                       icon: RayIcon,
+                      titleSuffix: (
+                        <Badge size="small" emphasis="subtle" color="positive">
+                          BETA
+                        </Badge>
+                      ),
                     },
                     {
                       href: '/payroll',

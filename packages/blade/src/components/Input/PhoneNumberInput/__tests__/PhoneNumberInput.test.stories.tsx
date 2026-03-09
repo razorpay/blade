@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
 import type { StoryFn } from '@storybook/react-vite';
-import { within, userEvent } from 'storybook/test';
-import { expect, fn } from 'storybook/test';
+import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import { PhoneNumberInput } from '../PhoneNumberInput';
 

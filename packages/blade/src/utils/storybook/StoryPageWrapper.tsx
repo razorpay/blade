@@ -179,11 +179,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                {props.argTableComponent ? (
-                  <Controls of={props.argTableComponent} />
-                ) : (
-                  <Controls />
-                )}
+                {props.argTableComponent ? <Controls of={props.argTableComponent} /> : <Controls />}
               </>
             ) : null}
 

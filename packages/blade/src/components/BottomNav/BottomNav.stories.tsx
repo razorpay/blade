@@ -1,11 +1,11 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import StoryRouter from '~utils/storybook/StoryRouter';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';
 import { bottomNavWithReactRouter } from './docsCode';
 import { BottomNav, BottomNavItem } from '.';
 import type { BottomNavItemProps, BottomNavProps } from '.';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -62,7 +62,7 @@ export default {
   parameters: {
     docs: {
       page: Page,
-    }
+    },
   },
 
   // eslint-disable-next-line babel/new-cap
@@ -71,9 +71,9 @@ export default {
   globals: {
     viewport: {
       value: 'iPhone6',
-      isRotated: false
-    }
-  }
+      isRotated: false,
+    },
+  },
 } as Meta<typeof BottomNav>;
 
 const bottomNavItems = [
