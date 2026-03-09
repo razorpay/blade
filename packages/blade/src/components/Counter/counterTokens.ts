@@ -12,6 +12,12 @@ const counterHeight: Record<NonNullable<CounterProps['size']>, number> = {
   large: size[24],
 };
 
+const counterMinWidth: Record<NonNullable<CounterProps['size']>, number> = {
+  small: size[16],
+  medium: size[20],
+  large: size[24],
+};
+
 const horizontalPadding: Record<
   NonNullable<CounterProps['size']>,
   DotNotationSpacingStringToken
@@ -26,4 +32,4 @@ const maxWidth: Record<NonNullable<TypographyPlatforms>, CounterMaxWidth> = {
   onDesktop: size[120],
 };
 
-export { maxWidth, counterHeight, horizontalPadding };
+export { maxWidth, counterHeight, counterMinWidth, horizontalPadding };

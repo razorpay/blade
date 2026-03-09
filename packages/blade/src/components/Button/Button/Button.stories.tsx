@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 import { BaseText } from '~components/Typography/BaseText';
-import { CreditCardIcon } from '~components/Icons';
+import { ArrowRightIcon, CreditCardIcon, UserIcon } from '~components/Icons';
 import { Text, Heading as HeadingComponent } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
@@ -19,6 +19,7 @@ import {
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -445,3 +446,294 @@ ButtonRef.parameters = {
     },
   },
 };
+
+export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
+  const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+  const sizes: ButtonProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
+  // positive/negative colors only support primary and secondary variants
+  const colorVariants: ButtonProps['variant'][] = ['primary', 'secondary'];
+  const colors: Array<{ color: ButtonProps['color']; label: string }> = [
+    { color: 'white', label: 'White' },
+    { color: 'positive', label: 'Positive' },
+    { color: 'negative', label: 'Negative' },
+  ];
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.7">
+      {variants.map((variant) => (
+        <BaseBox key={variant} display="flex" flexDirection="column" gap="spacing.4">
+          <HeadingComponent size="medium" textTransform="capitalize">
+            {variant}
+          </HeadingComponent>
+          {/* Default */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Default
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size}>
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Disabled */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Disabled
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size} isDisabled>
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Loading */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Loading
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size} isLoading>
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Icon Left */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Left
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent
+                key={size}
+                variant={variant}
+                size={size}
+                icon={ArrowRightIcon}
+                iconPosition="left"
+              >
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Icon Right */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Right
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent
+                key={size}
+                variant={variant}
+                size={size}
+                icon={ArrowRightIcon}
+                iconPosition="right"
+              >
+                Pay Now
+              </ButtonComponent>
+            ))}
+          </BaseBox>
+          {/* Icon only */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Only
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} />
+            ))}
+          </BaseBox>
+        </BaseBox>
+      ))}
+
+      {/* Positive and Negative color buttons */}
+      {colors.map(({ color, label }) => (
+        <BaseBox
+          key={color}
+          display="flex"
+          flexDirection="column"
+          gap="spacing.4"
+          padding={color === 'white' ? 'spacing.5' : undefined}
+          backgroundColor={color === 'white' ? 'surface.background.primary.intense' : undefined}
+          borderRadius={color === 'white' ? 'medium' : undefined}
+        >
+          <HeadingComponent
+            size="medium"
+            color={color === 'white' ? 'surface.text.staticWhite.normal' : undefined}
+          >
+            {label}
+          </HeadingComponent>
+          {colorVariants.map((variant) => (
+            <BaseBox key={variant} display="flex" flexDirection="column" gap="spacing.3">
+              <Text
+                size="small"
+                color={
+                  color === 'white' ? 'surface.text.staticWhite.muted' : 'surface.text.gray.muted'
+                }
+                textTransform="capitalize"
+              >
+                {variant}
+              </Text>
+              {/* Default */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Default
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent key={size} variant={variant} color={color} size={size}>
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Disabled */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Disabled
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    isDisabled
+                  >
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Loading */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Loading
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent key={size} variant={variant} color={color} size={size} isLoading>
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Icon Left */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Left
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={ArrowRightIcon}
+                    iconPosition="left"
+                  >
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Icon Right */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Right
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={ArrowRightIcon}
+                    iconPosition="right"
+                  >
+                    Pay Now
+                  </ButtonComponent>
+                ))}
+              </BaseBox>
+              {/* Icon only */}
+              <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+                <Box width="60px">
+                  <Text
+                    size="small"
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.muted'
+                    }
+                  >
+                    Icon Only
+                  </Text>
+                </Box>
+                {sizes.map((size) => (
+                  <ButtonComponent
+                    key={size}
+                    variant={variant}
+                    color={color}
+                    size={size}
+                    icon={UserIcon}
+                  />
+                ))}
+              </BaseBox>
+            </BaseBox>
+          ))}
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+AllVariantsAndSizes.storyName = 'All Variants & Sizes';

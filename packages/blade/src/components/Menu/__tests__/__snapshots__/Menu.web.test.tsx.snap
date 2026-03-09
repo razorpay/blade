@@ -29,23 +29,21 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 12px;
   padding-right: 8px;
   padding-left: 8px;
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.94);
+  border-radius: 12px;
+  border-width: 0px;
   border-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c8.c8.c8.c8.c8 {
-  margin-bottom: 8px;
 }
 
 .c9.c9.c9.c9.c9 {
+  margin-bottom: 8px;
+}
+
+.c10.c10.c10.c10.c10 {
   padding-right: 8px;
   padding-left: 8px;
   margin-bottom: 8px;
@@ -53,7 +51,7 @@ exports[`Menu renders a Menu 1`] = `
   touch-action: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,7 +66,7 @@ exports[`Menu renders a Menu 1`] = `
   user-select: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -87,13 +85,13 @@ exports[`Menu renders a Menu 1`] = `
   margin-right: auto;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,7 +104,7 @@ exports[`Menu renders a Menu 1`] = `
   flex-shrink: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -125,20 +123,20 @@ exports[`Menu renders a Menu 1`] = `
   width: 100%;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   width: 100%;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   margin-bottom: 2px;
   margin-top: 2px;
   margin-right: -8px;
   margin-left: -8px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,7 +152,7 @@ exports[`Menu renders a Menu 1`] = `
   width: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -170,7 +168,7 @@ exports[`Menu renders a Menu 1`] = `
   height: 20px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -182,7 +180,7 @@ exports[`Menu renders a Menu 1`] = `
   padding-left: 0px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -197,11 +195,11 @@ exports[`Menu renders a Menu 1`] = `
   height: 20px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   margin-left: auto;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -213,15 +211,15 @@ exports[`Menu renders a Menu 1`] = `
   padding-left: 8px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   margin-top: 8px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   padding: 8px 8px 0px 8px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -232,9 +230,7 @@ exports[`Menu renders a Menu 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
@@ -242,13 +238,13 @@ exports[`Menu renders a Menu 1`] = `
   padding: 4px;
 }
 
-.c21.c21.c21.c21.c21:hover:not([aria-disabled=true]),
-.c21.c21.c21.c21.c21[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
+.c22.c22.c22.c22.c22[aria-expanded="true"] {
+  background-color: hsla(206,10%,29%,0.06);
 }
 
-.c21.c21.c21.c21.c21:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c22.c22.c22.c22.c22:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -259,15 +255,12 @@ exports[`Menu renders a Menu 1`] = `
   z-index: 2;
 }
 
-.c21.c21.c21.c21.c21[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
+.c22.c22.c22.c22.c22[aria-selected=true],
+.c22.c22.c22.c22.c22[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
-.c21.c21.c21.c21.c21[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -278,9 +271,7 @@ exports[`Menu renders a Menu 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
@@ -288,13 +279,13 @@ exports[`Menu renders a Menu 1`] = `
   padding: 4px;
 }
 
-.c30.c30.c30.c30.c30:hover:not([aria-disabled=true]),
-.c30.c30.c30.c30.c30[aria-expanded="true"] {
-  background-color: hsla(4,74%,49%,0.09);
+.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),
+.c31.c31.c31.c31.c31[aria-expanded="true"] {
+  background-color: hsla(4,85%,44%,0.09);
 }
 
-.c30.c30.c30.c30.c30:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c31.c31.c31.c31.c31:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -305,12 +296,9 @@ exports[`Menu renders a Menu 1`] = `
   z-index: 2;
 }
 
-.c30.c30.c30.c30.c30[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c30.c30.c30.c30.c30[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+.c31.c31.c31.c31.c31[aria-selected=true],
+.c31.c31.c31.c31.c31[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -329,10 +317,12 @@ exports[`Menu renders a Menu 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c14.c14.c14.c14.c14 {
-  color: hsla(212,39%,16%,1);
+.c15.c15.c15.c15.c15 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -340,35 +330,35 @@ exports[`Menu renders a Menu 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
   margin-top: 1px;
 }
 
-.c15.c15.c15.c15.c15 {
-  color: hsla(211,22%,56%,1);
+.c16.c16.c16.c16.c16 {
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
-  color: hsla(212,39%,16%,1);
+.c21.c21.c21.c21.c21 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -376,16 +366,16 @@ exports[`Menu renders a Menu 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c26.c26.c26.c26.c26 {
-  color: hsla(212,39%,16%,1);
+.c27.c27.c27.c27.c27 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -408,8 +398,8 @@ exports[`Menu renders a Menu 1`] = `
   word-break: break-all;
 }
 
-.c29.c29.c29.c29.c29 {
-  color: hsla(211,22%,56%,1);
+.c30.c30.c30.c30.c30 {
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -417,16 +407,16 @@ exports[`Menu renders a Menu 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c31.c31.c31.c31.c31 {
-  color: hsla(4,74%,49%,1);
+.c32.c32.c32.c32.c32 {
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -453,7 +443,13 @@ exports[`Menu renders a Menu 1`] = `
   outline: none;
 }
 
-.c19.c19.c19.c19.c19 {
+.c8.c8.c8.c8.c8 {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+}
+
+.c20.c20.c20.c20.c20 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -467,15 +463,14 @@ exports[`Menu renders a Menu 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -491,8 +486,9 @@ exports[`Menu renders a Menu 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -501,20 +497,22 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -577,43 +575,43 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c21.c21.c21.c21.c21 {
+  .c22.c22.c22.c22.c22 {
     padding: 8px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c30.c30.c30.c30.c30 {
+  .c31.c31.c31.c31.c31 {
     padding: 8px;
   }
 }
@@ -689,13 +687,12 @@ exports[`Menu renders a Menu 1`] = `
       tabindex="-1"
     >
       <div
-        class="c7"
+        class="c7 c8"
         data-blade-component="base-box"
-        elevation="midRaised"
         style="transform: translateY(-8px); opacity: 0;"
       >
         <div
-          class="c8"
+          class="c9"
           data-blade-component="box"
         >
           <div
@@ -703,35 +700,37 @@ exports[`Menu renders a Menu 1`] = `
             data-blade-component="menu-header"
           >
             <div
-              class="c9"
+              class="c10"
               data-blade-component="base-box"
             >
               <div
-                class="c10"
+                class="c11"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c11"
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12"
+                    class="c13"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c13"
+                      class="c14"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c14"
+                        class="c15"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Header Title
                       </p>
                     </div>
                     <p
-                      class="c15"
+                      class="c16"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Subtitle
                     </p>
@@ -739,18 +738,18 @@ exports[`Menu renders a Menu 1`] = `
                 </div>
               </div>
               <div
-                class="c16"
+                class="c17"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c18"
                   data-blade-component="box"
                 />
               </div>
             </div>
           </div>
           <div
-            class="c18 c19"
+            class="c19 c20"
             data-blade-component="divider"
             role="separator"
           />
@@ -760,37 +759,38 @@ exports[`Menu renders a Menu 1`] = `
           data-blade-component="box"
         >
           <p
-            class="c20"
+            class="c21"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Custom Slot
           </p>
         </div>
         <a
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           href="/accounts"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Account
@@ -801,31 +801,32 @@ exports[`Menu renders a Menu 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c15"
+                  class="c16"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Accounts
                 </p>
               </div>
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </a>
         <button
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <svg
@@ -841,26 +842,26 @@ exports[`Menu renders a Menu 1`] = `
                   clip-rule="evenodd"
                   d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z"
                   data-blade-component="svg-path"
-                  fill="hsla(212, 39%, 16%, 1)"
+                  fill="hsla(0, 0%, 2%, 1)"
                   fill-rule="evenodd"
                 />
                 <path
                   d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
                   data-blade-component="svg-path"
-                  fill="hsla(212, 39%, 16%, 1)"
+                  fill="hsla(0, 0%, 2%, 1)"
                 />
               </svg>
             </div>
             <div
-              class="c28"
+              class="c29"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Profile
@@ -872,35 +873,35 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </button>
         <button
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Settings
@@ -912,12 +913,13 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             >
               <p
-                class="c29"
+                class="c30"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Cmd + S
               </p>
@@ -927,30 +929,30 @@ exports[`Menu renders a Menu 1`] = `
         <button
           aria-expanded="false"
           aria-haspopup="menu"
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           id=":r6:"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Share
@@ -962,7 +964,7 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             >
               <svg
@@ -978,7 +980,7 @@ exports[`Menu renders a Menu 1`] = `
                   clip-rule="evenodd"
                   d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
                   data-blade-component="svg-path"
-                  fill="hsla(211, 22%, 56%, 1)"
+                  fill="hsla(0, 0%, 2%, 1)"
                   fill-rule="evenodd"
                 />
               </svg>
@@ -986,29 +988,29 @@ exports[`Menu renders a Menu 1`] = `
           </div>
         </button>
         <button
-          class=" c30"
+          class=" c31"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c31"
+                  class="c32"
                   data-blade-component="text"
                 >
                   Log Out
@@ -1020,27 +1022,28 @@ exports[`Menu renders a Menu 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </button>
         <div
-          class="c32"
+          class="c33"
           data-blade-component="box"
         >
           <div
-            class="c18 c19"
+            class="c19 c20"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c33"
+            class="c34"
             data-blade-component="menu-footer"
           >
             <p
-              class="c20"
+              class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Footer slot
             </p>
@@ -1089,23 +1092,21 @@ exports[`Menu should support data-analytics attribute 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  padding-top: 12px;
+  padding-top: 8px;
   padding-bottom: 12px;
   padding-right: 8px;
   padding-left: 8px;
-  background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0.94);
+  border-radius: 12px;
+  border-width: 0px;
   border-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c8.c8.c8.c8.c8 {
-  margin-bottom: 8px;
 }
 
 .c9.c9.c9.c9.c9 {
+  margin-bottom: 8px;
+}
+
+.c10.c10.c10.c10.c10 {
   padding-right: 8px;
   padding-left: 8px;
   margin-bottom: 8px;
@@ -1113,7 +1114,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   touch-action: none;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1128,7 +1129,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   user-select: none;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1147,13 +1148,13 @@ exports[`Menu should support data-analytics attribute 1`] = `
   margin-right: auto;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1166,7 +1167,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   flex-shrink: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1185,20 +1186,20 @@ exports[`Menu should support data-analytics attribute 1`] = `
   width: 100%;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   width: 100%;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   margin-bottom: 2px;
   margin-top: 2px;
   margin-right: -8px;
   margin-left: -8px;
-  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1214,7 +1215,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   width: 100%;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1230,7 +1231,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   height: 20px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1242,7 +1243,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   padding-left: 0px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1257,11 +1258,11 @@ exports[`Menu should support data-analytics attribute 1`] = `
   height: 20px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   margin-left: auto;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1273,15 +1274,15 @@ exports[`Menu should support data-analytics attribute 1`] = `
   padding-left: 8px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   margin-top: 8px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   padding: 8px 8px 0px 8px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1292,9 +1293,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
@@ -1302,13 +1301,13 @@ exports[`Menu should support data-analytics attribute 1`] = `
   padding: 4px;
 }
 
-.c21.c21.c21.c21.c21:hover:not([aria-disabled=true]),
-.c21.c21.c21.c21.c21[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
+.c22.c22.c22.c22.c22[aria-expanded="true"] {
+  background-color: hsla(206,10%,29%,0.06);
 }
 
-.c21.c21.c21.c21.c21:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c22.c22.c22.c22.c22:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1319,15 +1318,12 @@ exports[`Menu should support data-analytics attribute 1`] = `
   z-index: 2;
 }
 
-.c21.c21.c21.c21.c21[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
+.c22.c22.c22.c22.c22[aria-selected=true],
+.c22.c22.c22.c22.c22[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
-.c21.c21.c21.c21.c21[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
-}
-
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   border-width: 0px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1338,9 +1334,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
@@ -1348,13 +1342,13 @@ exports[`Menu should support data-analytics attribute 1`] = `
   padding: 4px;
 }
 
-.c30.c30.c30.c30.c30:hover:not([aria-disabled=true]),
-.c30.c30.c30.c30.c30[aria-expanded="true"] {
-  background-color: hsla(4,74%,49%,0.09);
+.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),
+.c31.c31.c31.c31.c31[aria-expanded="true"] {
+  background-color: hsla(4,85%,44%,0.09);
 }
 
-.c30.c30.c30.c30.c30:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c31.c31.c31.c31.c31:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1365,12 +1359,9 @@ exports[`Menu should support data-analytics attribute 1`] = `
   z-index: 2;
 }
 
-.c30.c30.c30.c30.c30[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c30.c30.c30.c30.c30[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+.c31.c31.c31.c31.c31[aria-selected=true],
+.c31.c31.c31.c31.c31[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1389,10 +1380,12 @@ exports[`Menu should support data-analytics attribute 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c14.c14.c14.c14.c14 {
-  color: hsla(212,39%,16%,1);
+.c15.c15.c15.c15.c15 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -1400,35 +1393,35 @@ exports[`Menu should support data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
   margin-top: 1px;
 }
 
-.c15.c15.c15.c15.c15 {
-  color: hsla(211,22%,56%,1);
+.c16.c16.c16.c16.c16 {
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
-  color: hsla(212,39%,16%,1);
+.c21.c21.c21.c21.c21 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1436,16 +1429,16 @@ exports[`Menu should support data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c26.c26.c26.c26.c26 {
-  color: hsla(212,39%,16%,1);
+.c27.c27.c27.c27.c27 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1468,8 +1461,8 @@ exports[`Menu should support data-analytics attribute 1`] = `
   word-break: break-all;
 }
 
-.c29.c29.c29.c29.c29 {
-  color: hsla(211,22%,56%,1);
+.c30.c30.c30.c30.c30 {
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1477,16 +1470,16 @@ exports[`Menu should support data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c31.c31.c31.c31.c31 {
-  color: hsla(4,74%,49%,1);
+.c32.c32.c32.c32.c32 {
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1513,7 +1506,13 @@ exports[`Menu should support data-analytics attribute 1`] = `
   outline: none;
 }
 
-.c19.c19.c19.c19.c19 {
+.c8.c8.c8.c8.c8 {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+}
+
+.c20.c20.c20.c20.c20 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1527,15 +1526,14 @@ exports[`Menu should support data-analytics attribute 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1551,8 +1549,9 @@ exports[`Menu should support data-analytics attribute 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1561,20 +1560,22 @@ exports[`Menu should support data-analytics attribute 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1637,43 +1638,43 @@ exports[`Menu should support data-analytics attribute 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c18.c18.c18.c18.c18 {
+  .c19.c19.c19.c19.c19 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c21.c21.c21.c21.c21 {
+  .c22.c22.c22.c22.c22 {
     padding: 8px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c30.c30.c30.c30.c30 {
+  .c31.c31.c31.c31.c31 {
     padding: 8px;
   }
 }
@@ -1750,13 +1751,12 @@ exports[`Menu should support data-analytics attribute 1`] = `
       tabindex="-1"
     >
       <div
-        class="c7"
+        class="c7 c8"
         data-blade-component="base-box"
-        elevation="midRaised"
         style="transition-property: transform,opacity; transition-duration: 200ms;"
       >
         <div
-          class="c8"
+          class="c9"
           data-blade-component="box"
         >
           <div
@@ -1765,35 +1765,37 @@ exports[`Menu should support data-analytics attribute 1`] = `
             data-blade-component="menu-header"
           >
             <div
-              class="c9"
+              class="c10"
               data-blade-component="base-box"
             >
               <div
-                class="c10"
+                class="c11"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c11"
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12"
+                    class="c13"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c13"
+                      class="c14"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c14"
+                        class="c15"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Header Title
                       </p>
                     </div>
                     <p
-                      class="c15"
+                      class="c16"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Subtitle
                     </p>
@@ -1801,18 +1803,18 @@ exports[`Menu should support data-analytics attribute 1`] = `
                 </div>
               </div>
               <div
-                class="c16"
+                class="c17"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c17"
+                  class="c18"
                   data-blade-component="box"
                 />
               </div>
             </div>
           </div>
           <div
-            class="c18 c19"
+            class="c19 c20"
             data-blade-component="divider"
             role="separator"
           />
@@ -1822,14 +1824,15 @@ exports[`Menu should support data-analytics attribute 1`] = `
           data-blade-component="box"
         >
           <p
-            class="c20"
+            class="c21"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Custom Slot
           </p>
         </div>
         <a
-          class=" c21"
+          class=" c22"
           data-analytics-menu-item="account"
           data-blade-component="base-box"
           href="/accounts"
@@ -1837,23 +1840,23 @@ exports[`Menu should support data-analytics attribute 1`] = `
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Account
@@ -1864,31 +1867,32 @@ exports[`Menu should support data-analytics attribute 1`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c15"
+                  class="c16"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Accounts
                 </p>
               </div>
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </a>
         <button
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             >
               <svg
@@ -1904,26 +1908,26 @@ exports[`Menu should support data-analytics attribute 1`] = `
                   clip-rule="evenodd"
                   d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z"
                   data-blade-component="svg-path"
-                  fill="hsla(212, 39%, 16%, 1)"
+                  fill="hsla(0, 0%, 2%, 1)"
                   fill-rule="evenodd"
                 />
                 <path
                   d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
                   data-blade-component="svg-path"
-                  fill="hsla(212, 39%, 16%, 1)"
+                  fill="hsla(0, 0%, 2%, 1)"
                 />
               </svg>
             </div>
             <div
-              class="c28"
+              class="c29"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Profile
@@ -1935,35 +1939,35 @@ exports[`Menu should support data-analytics attribute 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </button>
         <button
-          class=" c21"
+          class=" c22"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c26"
+                  class="c27"
                   data-blade-component="text"
                 >
                   Settings
@@ -1975,12 +1979,13 @@ exports[`Menu should support data-analytics attribute 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             >
               <p
-                class="c29"
+                class="c30"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Cmd + S
               </p>
@@ -1988,29 +1993,29 @@ exports[`Menu should support data-analytics attribute 1`] = `
           </div>
         </button>
         <button
-          class=" c30"
+          class=" c31"
           data-blade-component="base-box"
           role="menuitem"
           type="button"
         >
           <div
-            class="c22"
+            class="c23"
             data-blade-component="box"
           >
             <div
-              class="c23"
+              class="c24"
               data-blade-component="box"
             />
             <div
-              class="c24"
+              class="c25"
               data-blade-component="box"
             >
               <div
-                class="c25"
+                class="c26"
                 data-blade-component="box"
               >
                 <p
-                  class="c31"
+                  class="c32"
                   data-blade-component="text"
                 >
                   Log Out
@@ -2022,28 +2027,29 @@ exports[`Menu should support data-analytics attribute 1`] = `
               />
             </div>
             <div
-              class="c27"
+              class="c28"
               data-blade-component="box"
             />
           </div>
         </button>
         <div
-          class="c32"
+          class="c33"
           data-blade-component="box"
         >
           <div
-            class="c18 c19"
+            class="c19 c20"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c33"
+            class="c34"
             data-analytics-menu-footer="true"
             data-blade-component="menu-footer"
           >
             <p
-              class="c20"
+              class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Footer slot
             </p>

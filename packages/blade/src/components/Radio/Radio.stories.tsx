@@ -9,6 +9,7 @@ import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
@@ -333,4 +334,96 @@ radioRef.parameters = {
         'Radio component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+const radioShowcaseColumns: Array<{
+  id: string;
+  label: string;
+  groupProps: Partial<RadioGroupProps>;
+}> = [
+  { id: 'unchecked', label: 'Unchecked', groupProps: {} },
+  { id: 'checked', label: 'Checked', groupProps: { defaultValue: 'option' } },
+];
+
+const radioShowcaseRows: Array<{
+  id: string;
+  label: string;
+  rowProps: Partial<RadioGroupProps>;
+}> = [
+  { id: 'default', label: 'Default', rowProps: {} },
+  { id: 'disabled', label: 'Disabled', rowProps: { isDisabled: true } },
+  {
+    id: 'error',
+    label: 'Error',
+    rowProps: { validationState: 'error' },
+  },
+];
+
+const radioShowcaseSizes: Array<{
+  id: string;
+  label: string;
+  size: RadioGroupProps['size'];
+}> = [
+  { id: 'small', label: 'Size Small', size: 'small' },
+  { id: 'medium', label: 'Size Medium', size: 'medium' },
+  { id: 'large', label: 'Size Large', size: 'large' },
+];
+
+const RadioShowcase = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7">
+      {radioShowcaseSizes.map(({ id: sizeId, label, size }) => (
+        <Box key={sizeId} display="flex" flexDirection="column" gap="spacing.4">
+          <Text weight="semibold">{label}</Text>
+          <Box
+            display="grid"
+            gridTemplateColumns="140px repeat(2, minmax(160px, 1fr))"
+            rowGap="spacing.4"
+            columnGap="spacing.4"
+            alignItems="center"
+            justifyItems="center"
+          >
+            <Box />
+            {radioShowcaseColumns.map((column) => (
+              <Text key={column.id} size="small" textAlign="center" weight="medium">
+                {column.label}
+              </Text>
+            ))}
+            {radioShowcaseRows.map((row) => (
+              <React.Fragment key={row.id}>
+                <Box display="flex" justifyContent="flex-end" width="100%">
+                  <Text size="small" weight="medium">
+                    {row.label}
+                  </Text>
+                </Box>
+                {radioShowcaseColumns.map((column) => (
+                  <Box
+                    key={`${row.id}-${column.id}`}
+                    padding="spacing.3"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <RadioGroupComponent
+                      label=""
+                      name={`showcase-${sizeId}-${row.id}-${column.id}`}
+                      size={size}
+                      {...column.groupProps}
+                      {...row.rowProps}
+                    >
+                      <RadioComponent value="option">Option</RadioComponent>
+                    </RadioGroupComponent>
+                  </Box>
+                ))}
+              </React.Fragment>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const Showcase: StoryFn<typeof RadioGroupComponent> = () => {
+  return <RadioShowcase />;
 };

@@ -10,6 +10,13 @@ type MenuTriggerProps = {
   onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
 };
 
+type TabNavIconProp =
+  | IconComponent
+  | {
+      default: IconComponent;
+      selected: IconComponent;
+    };
+
 type TabNavItemProps = {
   /**
    * href of the link
@@ -41,10 +48,20 @@ type TabNavItemProps = {
   isActive?: boolean;
   /**
    * Leading icon for TabNavItem.
+   * Accepts a single IconComponent or an object with `default` and `selected` variants.
+   *
+   * @example
+   * ```jsx
+   * // Single icon
+   * <TabNavItem icon={HomeIcon} />
+   *
+   * // With selected state variant
+   * <TabNavItem icon={{ default: HomeIcon, selected: HomeFilledIcon }} />
+   * ```
    *
    * @default undefined
    */
-  icon?: IconComponent;
+  icon?: TabNavIconProp;
   /**
    * Element to render after the navigation item.
    *
@@ -78,4 +95,4 @@ type TabNavProps = {
   }) => React.ReactElement;
 };
 
-export type { TabNavItemProps, TabNavItemData, TabNavProps };
+export type { TabNavItemProps, TabNavItemData, TabNavProps, TabNavIconProp };

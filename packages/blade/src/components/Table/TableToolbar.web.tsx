@@ -4,16 +4,16 @@ import { ComponentIds } from './componentIds';
 import { tableToolbar } from './tokens';
 import { useTableContext } from './TableContext';
 import type { TableToolbarProps, TableToolbarActionsProps } from './types';
+import { makeMotionTime, makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
-import { makeMotionTime, makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * TableToolbarActions is a component that is used to render actions in the TableToolbar.
@@ -56,11 +56,11 @@ const _TableToolbar = ({
   selectedTitle: controlledSelectedTitle,
 }: TableToolbarProps): React.ReactElement => {
   const {
+    selectionType,
     selectedRows,
     deselectAllRows,
     currentPaginationState,
     totalItems,
-    backgroundColor,
     tableToolbarPlacement,
   } = useTableContext();
   const { platform } = useTheme();
@@ -86,7 +86,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={backgroundColor}>
+    <BaseBox>
       <ToolbarWrapper
         display="flex"
         backgroundColor={tableToolbar.backgroundColor}
@@ -94,9 +94,6 @@ const _TableToolbar = ({
         flexWrap="wrap"
         flexDirection={onMobile && tableToolbarPlacement === 'inline' ? 'column' : 'row'}
         gap="spacing.5"
-        borderWidth="thin"
-        borderColor="surface.border.gray.muted"
-        borderBottomWidth="none"
         minHeight={makeSize(tableToolbar.minHeight)}
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
@@ -110,10 +107,12 @@ const _TableToolbar = ({
             </Text>
           </BaseBox>
 
-          <BaseBox display="flex" marginLeft="spacing.3" height="100%">
-            <Divider orientation="vertical" thickness="thick" />
-            {deselectButton}
-          </BaseBox>
+          {selectionType !== 'none' && (
+            <BaseBox display="flex" marginLeft="spacing.3" height="spacing.6">
+              <Divider orientation="vertical" thickness="thick" />
+              {deselectButton}
+            </BaseBox>
+          )}
         </BaseBox>
         {children}
       </ToolbarWrapper>

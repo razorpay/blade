@@ -1,20 +1,22 @@
 import React from 'react';
+import { TopNavContext, useTopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
+import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import { size } from '~tokens/global';
+import { bladeTheme } from '~tokens/theme';
 import { makeSize } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 
 const TOP_NAV_HEIGHT = size[56];
-const CONTENT_RIGHT_GAP = size[80];
 
 type TopNavProps = {
   children: React.ReactNode;
@@ -44,25 +46,35 @@ const _TopNav = (
   { children, ...rest }: TopNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
+  const { colorScheme } = useTheme();
+
   return (
-    <BaseBox
-      ref={ref as never}
-      display="grid"
-      gridTemplateColumns="auto minmax(0, 1fr) auto"
-      alignItems="center"
-      position="sticky"
-      top="0px"
-      width="100%"
-      paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
-      paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
-      height={makeSize(TOP_NAV_HEIGHT)}
-      zIndex={componentZIndices.topnav}
-      {...rest}
-      {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {children}
-    </BaseBox>
+    <TopNavContext.Provider value={{ colorScheme }}>
+      {/* We are forcing the theme to dark here because the TopNav is always in dark mode. 
+       we also want components inside the TopNav to be in the same theme as the TopNav.
+      */}
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <BaseBox
+          ref={ref as never}
+          display="grid"
+          gridTemplateColumns="auto minmax(0, 1fr) auto"
+          alignItems="center"
+          position="sticky"
+          top="0px"
+          width="100%"
+          paddingY={{ base: 'spacing.3', m: 'spacing.0' }}
+          paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
+          height={makeSize(TOP_NAV_HEIGHT)}
+          zIndex={componentZIndices.topnav}
+          backgroundColor="interactive.background.staticBlack.default"
+          {...rest}
+          {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          {children}
+        </BaseBox>
+      </BladeProvider>
+    </TopNavContext.Provider>
   );
 };
 
@@ -72,16 +84,15 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
   return (
     <BaseBox
       flexDirection="row"
-      marginTop="spacing.4"
       width={{
         base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
       {...metaAttribute({ name: MetaConstants.TopNavBrand })}
+      paddingY="spacing.5"
+      marginLeft="spacing.6"
     >
-      <BaseBox width="100%" textAlign="center">
-        {children}
-      </BaseBox>
+      <BaseBox width="100%">{children}</BaseBox>
     </BaseBox>
   );
 };
@@ -91,8 +102,8 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
     <BaseBox
       display="flex"
       alignItems="center"
-      alignSelf="end"
-      paddingRight={{ base: 'spacing.0', m: makeSize(CONTENT_RIGHT_GAP) }}
+      alignSelf="center"
+      justifyContent="center"
       {...metaAttribute({ name: MetaConstants.TopNavContent })}
     >
       {children}
@@ -101,20 +112,35 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 };
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return (
+  const topNavContext = useTopNavContext();
+  const { colorScheme } = useTheme();
+  const topNavActions = (
     <BaseBox
-      alignSelf="end"
+      alignSelf="flex-start"
       display="flex"
       gap="spacing.3"
       alignItems="center"
       marginTop="spacing.1"
       padding="spacing.3"
+      paddingRight="spacing.2"
       borderTopLeftRadius="medium"
       borderTopRightRadius="medium"
       {...metaAttribute({ name: MetaConstants.TopNavActions })}
     >
       {children}
     </BaseBox>
+  );
+
+  if (topNavContext) {
+    return topNavActions;
+  }
+
+  return (
+    <TopNavContext.Provider value={{ colorScheme }}>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        {topNavActions}
+      </BladeProvider>
+    </TopNavContext.Provider>
   );
 };
 

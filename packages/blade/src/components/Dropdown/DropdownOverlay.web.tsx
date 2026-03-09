@@ -14,17 +14,19 @@ import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { useTheme } from '~components/BladeProvider';
-// Reading directly because its not possible to get theme object on top level to be used in keyframes
-import { size } from '~tokens/global';
-import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeSize } from '~utils';
+import { size } from '~tokens/global';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+// Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { componentZIndices } from '~utils/componentZIndices';
 import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { OverlayContextReset } from '~components/OverlayContextReset';
 
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
 
@@ -46,7 +48,7 @@ const _DropdownOverlay = ({
   ...dataAnalyticsProps
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
@@ -117,27 +119,34 @@ const _DropdownOverlay = ({
 
   return (
     <FloatingPortal>
-      <BaseBox
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={refs.setFloating as any}
-        style={floatingStyles}
-        zIndex={zIndex}
-        display={isMounted ? 'flex' : 'none'}
-        {...getFloatingProps()}
-      >
-        <StyledDropdownOverlay
-          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
-          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
-          style={{ ...styles }}
-          width={width ? width : '100%'}
-          minWidth={minWidth}
-          maxWidth={maxWidth}
-          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
-          {...makeAnalyticsAttribute(dataAnalyticsProps)}
-        >
-          {children}
-        </StyledDropdownOverlay>
-      </BaseBox>
+      <TopNavOverlayThemeOverride>
+        <OverlayContextReset>
+          <BaseBox
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ref={refs.setFloating as any}
+            style={floatingStyles}
+            zIndex={zIndex}
+            display={isMounted ? 'flex' : 'none'}
+            {...getFloatingProps()}
+          >
+            <StyledDropdownOverlay
+              isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+              colorScheme={colorScheme}
+              elevation={
+                bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'
+              }
+              style={{ ...styles }}
+              width={width ? width : '100%'}
+              minWidth={minWidth}
+              maxWidth={maxWidth}
+              {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+              {...makeAnalyticsAttribute(dataAnalyticsProps)}
+            >
+              {children}
+            </StyledDropdownOverlay>
+          </BaseBox>
+        </OverlayContextReset>
+      </TopNavOverlayThemeOverride>
     </FloatingPortal>
   );
 };

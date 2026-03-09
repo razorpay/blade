@@ -3,15 +3,14 @@
 exports[`<Card /> should render a clickable Card 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -25,6 +24,39 @@ exports[`<Card /> should render a clickable Card 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -83,7 +115,6 @@ exports[`<Card /> should render a clickable Card 1`] = `
     <div
       class="c2 c3"
       data-blade-component="base-box"
-      elevation="lowRaised"
     >
       <button
         aria-pressed="false"
@@ -104,15 +135,14 @@ exports[`<Card /> should render a clickable Card 1`] = `
 exports[`<Card /> should render a linkable Card 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -126,6 +156,39 @@ exports[`<Card /> should render a linkable Card 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -185,7 +248,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
     <div
       class="c2 c3"
       data-blade-component="base-box"
-      elevation="lowRaised"
     >
       <a
         class="c4"
@@ -206,15 +268,14 @@ exports[`<Card /> should render a linkable Card 1`] = `
 exports[`<Card /> should render a linkable Card with onClick 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -228,6 +289,39 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: inset 0px 0px 0px 1px hsla(204,8%,88%,1),0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -287,7 +381,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
     <div
       class="c2 c3"
       data-blade-component="base-box"
-      elevation="lowRaised"
     >
       <a
         class="c4"
@@ -308,15 +401,14 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 exports[`<Card /> should render an interactive Card 1`] = `
 .c0.c0.c0.c0.c0 {
   display: block;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 4px;
-  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
+  border-radius: 12px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -330,6 +422,39 @@ exports[`<Card /> should render an interactive Card 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
+  border: none;
+  isolation: isolate;
+}
+
+.c3.c3.c3.c3.c3::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: -1;
+}
+
+.c3.c3.c3.c3.c3::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 16px;
+  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -356,7 +481,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  box-shadow: 0px 0px 0px 2px hsla(227,100%,59%,1);
+  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,1);
   cursor: initial;
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
@@ -401,7 +526,6 @@ exports[`<Card /> should render an interactive Card 1`] = `
     <div
       class="c2 c3"
       data-blade-component="base-box"
-      elevation="lowRaised"
     >
       <button
         aria-pressed="true"

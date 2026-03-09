@@ -71,7 +71,7 @@ export default {
   },
 } as Meta<LinkProps>;
 
-const LinkTemplate: StoryFn<typeof LinkComponent> = ({ children = 'Learn More', ...args }) => {
+const LinkTemplate: StoryFn<typeof LinkComponent> = ({ children = 'Link', ...args }) => {
   return <LinkComponent {...args}>{children}</LinkComponent>;
 };
 
@@ -357,6 +357,238 @@ IconOnlyLinkButton.parameters = {
   docs: {
     description: {
       story: '`anchor` & `button` variants of Link with only an Icon',
+    },
+  },
+};
+
+export const LinkShowcase: StoryFn<typeof LinkComponent> = () => {
+  const colors = ['primary', 'white', 'neutral', 'positive', 'negative'] as const;
+  const sizes = ['large', 'medium', 'small', 'xsmall'] as const;
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.8">
+      {/* Anchor Variant Section */}
+      <BaseBox>
+        <Heading size="large" marginBottom="spacing.4">
+          Anchor Variant
+        </Heading>
+        <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+          {colors.map((color) => (
+            <BaseBox
+              key={color}
+              padding="spacing.5"
+              borderRadius="medium"
+              backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : undefined}
+            >
+              <Text
+                size="small"
+                weight="semibold"
+                marginBottom="spacing.3"
+                color={color === 'white' ? 'surface.text.staticWhite.normal' : undefined}
+              >
+                Color: {color}
+              </Text>
+              <BaseBox display="flex" flexDirection="row" gap="spacing.6" alignItems="center">
+                {sizes.map((size) => (
+                  <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.2">
+                    <BaseText
+                      fontSize={75}
+                      color={
+                        color === 'white'
+                          ? 'surface.text.staticWhite.muted'
+                          : 'surface.text.gray.subtle'
+                      }
+                    >
+                      {size}
+                    </BaseText>
+                    <LinkComponent
+                      variant="anchor"
+                      color={color}
+                      size={size}
+                      href="https://razorpay.com"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Link
+                    </LinkComponent>
+                  </BaseBox>
+                ))}
+                {/* With Icon */}
+                <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
+                    with icon
+                  </BaseText>
+                  <LinkComponent
+                    variant="anchor"
+                    color={color}
+                    size="medium"
+                    href="https://razorpay.com"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    icon={DownloadIcon}
+                  >
+                    Link
+                  </LinkComponent>
+                </BaseBox>
+                {/* Icon Only */}
+                <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
+                    icon only
+                  </BaseText>
+                  <LinkComponent
+                    variant="anchor"
+                    color={color}
+                    size="medium"
+                    href="https://razorpay.com"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    icon={DownloadIcon}
+                    accessibilityLabel="Download"
+                  />
+                </BaseBox>
+              </BaseBox>
+            </BaseBox>
+          ))}
+        </BaseBox>
+      </BaseBox>
+
+      {/* Button Variant Section */}
+      <BaseBox>
+        <Heading size="large" marginBottom="spacing.4">
+          Button Variant
+        </Heading>
+        <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+          {colors.map((color) => (
+            <BaseBox
+              key={color}
+              padding="spacing.5"
+              borderRadius="medium"
+              backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : undefined}
+            >
+              <Text
+                size="small"
+                weight="semibold"
+                marginBottom="spacing.3"
+                color={color === 'white' ? 'surface.text.staticWhite.normal' : undefined}
+              >
+                Color: {color}
+              </Text>
+              <BaseBox display="flex" flexDirection="row" gap="spacing.6" alignItems="center">
+                {sizes.map((size) => (
+                  <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.2">
+                    <BaseText
+                      fontSize={75}
+                      color={
+                        color === 'white'
+                          ? 'surface.text.staticWhite.muted'
+                          : 'surface.text.gray.subtle'
+                      }
+                    >
+                      {size}
+                    </BaseText>
+                    <LinkComponent
+                      variant="button"
+                      color={color}
+                      size={size}
+                      onClick={() => console.log('clicked')}
+                    >
+                      Link
+                    </LinkComponent>
+                  </BaseBox>
+                ))}
+                {/* With Icon */}
+                <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
+                    with icon
+                  </BaseText>
+                  <LinkComponent
+                    variant="button"
+                    color={color}
+                    size="medium"
+                    onClick={() => console.log('clicked')}
+                    icon={DownloadIcon}
+                  >
+                    Link
+                  </LinkComponent>
+                </BaseBox>
+                {/* Icon Only */}
+                <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
+                    icon only
+                  </BaseText>
+                  <LinkComponent
+                    variant="button"
+                    color={color}
+                    size="medium"
+                    onClick={() => console.log('clicked')}
+                    icon={DownloadIcon}
+                    accessibilityLabel="Download"
+                  />
+                </BaseBox>
+                {/* Disabled */}
+                <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+                  <BaseText
+                    fontSize={75}
+                    color={
+                      color === 'white'
+                        ? 'surface.text.staticWhite.muted'
+                        : 'surface.text.gray.subtle'
+                    }
+                  >
+                    disabled
+                  </BaseText>
+                  <LinkComponent
+                    variant="button"
+                    color={color}
+                    size="medium"
+                    onClick={() => console.log('clicked')}
+                    isDisabled
+                  >
+                    Link
+                  </LinkComponent>
+                </BaseBox>
+              </BaseBox>
+            </BaseBox>
+          ))}
+        </BaseBox>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+LinkShowcase.storyName = 'Showcase';
+LinkShowcase.parameters = {
+  docs: {
+    description: {
+      story: 'A comprehensive showcase of all Link variants, colors, and sizes.',
     },
   },
 };

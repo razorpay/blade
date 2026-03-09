@@ -39,7 +39,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -53,7 +53,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -75,7 +75,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -97,7 +97,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -109,52 +109,52 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -201,6 +201,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -227,6 +228,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -253,6 +255,7 @@ exports[`<AvatarGroup /> should accept data-analytics attribute 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -303,7 +306,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   height: 48px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -317,7 +320,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -339,7 +342,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -361,7 +364,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   width: 48px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -373,7 +376,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -381,16 +384,16 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -398,16 +401,16 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -415,10 +418,10 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -463,6 +466,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -489,6 +493,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -515,6 +520,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size large 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -565,7 +571,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -579,7 +585,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -601,7 +607,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -623,7 +629,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
   width: 36px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -635,52 +641,52 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -725,6 +731,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -751,6 +758,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -777,6 +785,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size medium 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -827,7 +836,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   height: 28px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -841,7 +850,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -863,7 +872,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -885,7 +894,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
   width: 28px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -897,52 +906,52 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -987,6 +996,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -1013,6 +1023,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -1039,6 +1050,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size small 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>
@@ -1089,7 +1101,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   height: 56px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1103,7 +1115,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -1125,7 +1137,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -1147,7 +1159,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
   width: 56px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -1159,7 +1171,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1176,7 +1188,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1193,7 +1205,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xlarge 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 600;
@@ -1351,7 +1363,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  outline: 0.5px solid hsla(214,28%,84%,1);
+  outline: 0.5px solid hsla(204,8%,88%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1365,7 +1377,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(200,84%,44%,0.09);
+  background-color: hsla(200,100%,41%,0.09);
 }
 
 .c4.c4.c4.c4.c4 img {
@@ -1387,7 +1399,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c7.c7.c7.c7.c7 img {
@@ -1409,7 +1421,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
   width: 20px;
   border: none;
   border-radius: 9999px;
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c9.c9.c9.c9.c9 img {
@@ -1421,52 +1433,52 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(200,84%,37%,1);
+  color: hsla(200,100%,33%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
@@ -1511,6 +1523,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c6"
               data-blade-component="text"
+              letter-spacing="50"
             >
               NK
             </p>
@@ -1537,6 +1550,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c8"
               data-blade-component="text"
+              letter-spacing="50"
             >
               AN
             </p>
@@ -1563,6 +1577,7 @@ exports[`<AvatarGroup /> should render AvatarGroup with size xsmall 1`] = `
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               RB
             </p>

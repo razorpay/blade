@@ -57,7 +57,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
       style={
         [
           {
-            "borderRadius": 4,
+            "borderRadius": 12,
             "display": "block",
           },
           {
@@ -72,12 +72,11 @@ exports[`<Card /> should render a clickable Card 1`] = `
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
-        elevation="lowRaised"
         style={
           [
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderRadius": 4,
+              "borderRadius": 12,
               "paddingBottom": 24,
               "paddingLeft": 24,
               "paddingRight": 24,
@@ -85,22 +84,13 @@ exports[`<Card /> should render a clickable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 8,
-              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-              "shadowOffset": {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 4,
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
             },
-            [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "width": "100%",
-              },
-            ],
           ]
         }
         textAlign="left"
@@ -178,11 +168,11 @@ exports[`<Card /> should render a interactive Card 1`] = `
       style={
         [
           {
-            "borderRadius": 4,
+            "borderRadius": 12,
             "display": "block",
           },
           {
-            "borderColor": "hsla(227, 100%, 59%, 1)",
+            "borderColor": "hsla(218, 89%, 51%, 1)",
             "borderStyle": "solid",
             "borderWidth": 2,
           },
@@ -193,12 +183,11 @@ exports[`<Card /> should render a interactive Card 1`] = `
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
-        elevation="lowRaised"
         style={
           [
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderRadius": 4,
+              "borderRadius": 12,
               "paddingBottom": 24,
               "paddingLeft": 24,
               "paddingRight": 24,
@@ -206,22 +195,13 @@ exports[`<Card /> should render a interactive Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 8,
-              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-              "shadowOffset": {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 4,
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
             },
-            [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "width": "100%",
-              },
-            ],
           ]
         }
         textAlign="left"
@@ -300,7 +280,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
       style={
         [
           {
-            "borderRadius": 4,
+            "borderRadius": 12,
             "display": "block",
           },
           {
@@ -315,12 +295,11 @@ exports[`<Card /> should render a linkable Card 1`] = `
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
-        elevation="lowRaised"
         style={
           [
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderRadius": 4,
+              "borderRadius": 12,
               "paddingBottom": 24,
               "paddingLeft": 24,
               "paddingRight": 24,
@@ -328,22 +307,13 @@ exports[`<Card /> should render a linkable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 8,
-              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-              "shadowOffset": {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 4,
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
             },
-            [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "width": "100%",
-              },
-            ],
           ]
         }
         textAlign="left"
@@ -422,7 +392,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       style={
         [
           {
-            "borderRadius": 4,
+            "borderRadius": 12,
             "display": "block",
           },
           {
@@ -437,12 +407,11 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
         backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
-        elevation="lowRaised"
         style={
           [
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderRadius": 4,
+              "borderRadius": 12,
               "paddingBottom": 24,
               "paddingLeft": 24,
               "paddingRight": 24,
@@ -450,22 +419,13 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 8,
-              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-              "shadowOffset": {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 4,
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
             },
-            [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "width": "100%",
-              },
-            ],
           ]
         }
         textAlign="left"

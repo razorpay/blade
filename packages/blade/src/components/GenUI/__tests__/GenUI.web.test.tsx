@@ -1685,20 +1685,23 @@ describe('<GenUI />', () => {
       expect(container.textContent).toBe('');
     });
 
-    it('should show unsupported component message for invalid types', () => {
+    it('should warn and render nothing for invalid component types', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
       const components: GenUIComponent[] = [
         {
           component: 'INVALID_COMPONENT' as any,
         },
       ];
 
-      const { getByText } = renderWithTheme(
+      const { container } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
 
-      expect(getByText(/Unsupported component/)).toBeInTheDocument();
+      expect(warnSpy).toHaveBeenCalledWith('[GenUI]: Unsupported component: INVALID_COMPONENT');
+      expect(container.textContent).toBe('');
+      warnSpy.mockRestore();
     });
 
     it('should handle mixed valid and partial components', () => {

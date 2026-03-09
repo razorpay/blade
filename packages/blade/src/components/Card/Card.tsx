@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import type { CSSObject } from 'styled-components';
@@ -18,7 +19,7 @@ import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { isReactNative, useTheme } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -57,23 +58,25 @@ export type CardProps = {
    * Sets the background color of the Card
    *
    * @default `surface.background.gray.intense`
+   *
+   * @deprecated The `backgroundColor` prop is deprecated and is a no-op. The Card always uses `surface.background.gray.intense`. This prop will be removed in a future major version.
    */
   backgroundColor?: CardSurfaceBackgroundColors;
   /**
    * Sets the border radius of the Card
    *
    * @default `medium`
+   *
+   * @deprecated The `borderRadius` prop is deprecated and is a no-op. The Card always uses `medium` borderRadius. This prop will be removed in a future major version.
    */
   borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
   /**
    * Sets the elevation for Cards
    *
-   * eg: `theme.elevation.midRaised`
-   *
-   * @default `theme.elevation.lowRaised`
-   *
    * **Links:**
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--docs
+   *
+   * @deprecated The `elevation` prop is deprecated and is a no-op. The Card always uses a custom elevation. This prop will be removed in a future major version.
    */
   elevation?: keyof Elevation;
   /**
@@ -187,6 +190,9 @@ export type CardProps = {
     web: CSSObject['cursor'];
     native: undefined;
   }>;
+  opacity?: BoxProps['opacity'];
+  transition?: BoxProps['transition'];
+  flexShrink?: BoxProps['flexShrink'];
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -194,7 +200,8 @@ export type CardProps = {
 const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   {
     children,
-    backgroundColor = 'surface.background.gray.intense',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    backgroundColor,
     borderRadius = 'medium',
     elevation = 'lowRaised',
     testID,
@@ -215,11 +222,15 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     as,
     size = 'large',
     cursor,
+    opacity,
+    transition,
+    flexShrink,
     ...rest
   },
   ref,
 ): React.ReactElement => {
   const [isFocused, setIsFocused] = React.useState(false);
+  const { colorScheme } = useTheme();
 
   useVerifyAllowedChildren({
     children,
@@ -258,7 +269,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         as={as}
         ref={ref as never}
         display={'block' as never}
-        borderRadius={borderRadius}
+        borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
         isSelected={isSelected}
@@ -274,6 +285,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
         cursor={isReactNative() ? undefined : cursor}
+        opacity={opacity}
+        transition={transition}
+        flexShrink={flexShrink}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -282,10 +296,11 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           height={height}
           minHeight={minHeight}
           padding={padding}
-          borderRadius={borderRadius}
-          elevation={elevation}
+          borderRadius="medium"
           textAlign={'left' as never}
-          backgroundColor={backgroundColor}
+          backgroundColor="surface.background.gray.intense"
+          colorScheme={colorScheme}
+          isSelected={isSelected}
         >
           {href ? (
             <LinkOverlay

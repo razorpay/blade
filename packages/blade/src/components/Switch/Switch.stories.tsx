@@ -248,3 +248,87 @@ SwitchRef.parameters = {
     },
   },
 };
+
+// Showcase story showing all Switch variants
+const showcaseSizes: Array<'medium' | 'small'> = ['medium', 'small'];
+const showcaseCheckedStates = [false, true];
+const showcaseStates: Array<{ label: string; isDisabled: boolean }> = [
+  { label: 'Default', isDisabled: false },
+  { label: 'Disabled', isDisabled: true },
+];
+
+const capitalize = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
+
+const ShowcaseSwitchInstance = ({
+  size,
+  isChecked,
+  isDisabled,
+}: {
+  size: 'medium' | 'small';
+  isChecked: boolean;
+  isDisabled: boolean;
+}): React.ReactElement => {
+  return (
+    <SwitchComponent
+      size={size}
+      isChecked={isChecked}
+      isDisabled={isDisabled}
+      accessibilityLabel={`Switch ${size} ${isChecked ? 'checked' : 'unchecked'} ${
+        isDisabled ? 'disabled' : 'default'
+      }`}
+      onChange={() => {
+        console.log('onChange');
+      }}
+    />
+  );
+};
+
+const ShowcaseTemplate: StoryFn<typeof SwitchComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.11">
+      {showcaseSizes.map((size) => (
+        <Box key={size} display="flex" flexDirection="column" gap="spacing.7">
+          <Text size="large" weight="semibold">
+            Size: {capitalize(size)}
+          </Text>
+
+          <Box display="flex" flexDirection="row" gap="spacing.11">
+            {showcaseCheckedStates.map((isChecked) => (
+              <Box key={String(isChecked)} display="flex" flexDirection="column" gap="spacing.7">
+                <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+                  isChecked: {String(isChecked)}
+                </Text>
+
+                <Box display="flex" flexDirection="column" gap="spacing.7">
+                  {showcaseStates.map(({ label, isDisabled }) => (
+                    <Box
+                      key={label}
+                      display="flex"
+                      flexDirection="row"
+                      alignItems="center"
+                      gap="spacing.5"
+                    >
+                      <Box width="80px">
+                        <Text size="small" color="surface.text.gray.muted">
+                          {label}
+                        </Text>
+                      </Box>
+                      <ShowcaseSwitchInstance
+                        size={size}
+                        isChecked={isChecked}
+                        isDisabled={isDisabled}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const Showcase = ShowcaseTemplate.bind({});
+Showcase.storyName = 'Showcase';

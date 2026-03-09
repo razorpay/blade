@@ -4,10 +4,11 @@ import { PopoverContentWrapper } from './PopoverContentWrapper';
 import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
 import { usePopoverContext } from './PopoverContext';
+import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { isReactNative } from '~utils';
 import { useIsMobile } from '~utils/useIsMobile';
+import { useTheme } from '~components/BladeProvider';
 
 type PopoverHeaderProps = {
   title?: string;
@@ -29,8 +30,8 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         borderRadius="max"
         position="absolute"
         padding="spacing.2"
-        top="spacing.2"
-        right="spacing.2"
+        top="spacing.3"
+        right="spacing.3"
         zIndex={1}
       >
         <PopoverCloseButton />
@@ -47,7 +48,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
       gap="spacing.3"
     >
       {titleLeading
-        ? React.cloneElement(titleLeading as React.ReactElement, { size: 'large' })
+        ? React.cloneElement(titleLeading as React.ReactElement, { size: 'medium' })
         : null}
       {title ? (
         <BaseBox id={titleId} paddingRight="spacing.4">
@@ -68,6 +69,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
     const isMobile = useIsMobile();
+    const { colorScheme } = useTheme();
     return (
       <PopoverContentWrapper
         ref={ref as never}
@@ -75,10 +77,13 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         side={side}
         isVisible={isVisible}
         isMobile={isMobile}
+        colorScheme={colorScheme}
       >
-        <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-          <PopoverHeader title={title} titleLeading={titleLeading} />
-          <BaseBox>{children}</BaseBox>
+        <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
+          <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+            <PopoverHeader title={title} titleLeading={titleLeading} />
+            <BaseBox>{children}</BaseBox>
+          </BaseBox>
           {footer ? <BaseBox>{footer}</BaseBox> : null}
         </BaseBox>
         {arrow}

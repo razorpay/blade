@@ -48,6 +48,7 @@ import {
   TestIcon,
   GlobeIcon,
   DollarIcon,
+  RayIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -60,6 +61,7 @@ import { ProgressBar } from '~components/ProgressBar';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
 import { Badge } from '~components/Badge';
+import { IconButton } from '~components/Button/IconButton';
 
 const DocsPage = (): React.ReactElement => {
   return (
@@ -101,7 +103,7 @@ export default {
     },
   },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/settings/user/home'] })] as unknown,
+  decorators: [StoryRouter(undefined, { initialEntries: ['/app/dashboard'] })] as unknown,
 } as Meta<typeof SideNav>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -573,6 +575,92 @@ const SideNavTemplate: StoryFn<typeof SideNav> = ({ ...args }) => {
 };
 
 export const Default = SideNavTemplate.bind({});
+
+export const CollapsibleSideNav: StoryFn<typeof SideNav> = ({ ...args }) => {
+  const [isSideNavFullyExpanded, setIsSideNavFullyExpanded] = React.useState(true);
+  const [isBannerExpandedUI, setIsBannerExpandedUI] = React.useState(true);
+  const handleSideNavToggle = (): void => {
+    setIsSideNavFullyExpanded((prevIsSideNavFullyExpanded) => {
+      const nextIsSideNavFullyExpanded = !prevIsSideNavFullyExpanded;
+
+      if (nextIsSideNavFullyExpanded) {
+        setIsBannerExpandedUI(true);
+      }
+
+      return nextIsSideNavFullyExpanded;
+    });
+  };
+
+  return (
+    <Box minHeight="500px">
+      <SideNav
+        {...args}
+        backgroundColor="surface.background.gray.intense"
+        isExpanded={isSideNavFullyExpanded}
+        onExpandChange={({ isExpanded }) => {
+          setIsSideNavFullyExpanded(isExpanded);
+          if (isExpanded) {
+            setIsBannerExpandedUI(true);
+          }
+        }}
+        onExpandTransitionEnd={({ isExpanded }) => {
+          if (!isExpanded) {
+            setIsBannerExpandedUI(false);
+          }
+        }}
+        banner={
+          <Box display="flex" flexDirection="column" gap="spacing.3">
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent={isBannerExpandedUI ? 'space-between' : 'center'}
+              overflow="hidden"
+            >
+              {isBannerExpandedUI ? (
+                <Box display="flex" alignItems="center" gap="spacing.3">
+                  <RayIcon size="medium" />
+                  <Text truncateAfterLines={1} size="large" weight="semibold">
+                    Ray AI
+                  </Text>
+                </Box>
+              ) : null}
+              <IconButton
+                onClick={handleSideNavToggle}
+                size="medium"
+                icon={MenuIcon}
+                margin="spacing.2"
+                accessibilityLabel="Toggle SideNav"
+              />
+            </Box>
+            <Box display="flex" alignItems="center" justifyContent="center">
+              <Button
+                variant="secondary"
+                size="small"
+                icon={PlusIcon}
+                isFullWidth={isBannerExpandedUI}
+                accessibilityLabel="New chat"
+              >
+                {isBannerExpandedUI ? 'New chat' : undefined}
+              </Button>
+            </Box>
+          </Box>
+        }
+      >
+        <SideNavBody>
+          <SideNavSection>
+            <NavItem title="How to center div in CSS" href="/chat/center-div" />
+            <NavItem title="How to get promoted to CTO in Razorpay?" href="/chat/promotion" />
+            <NavItem title="Will Anurag take over AI's job?" href="/chat/anurag-ai" />
+            <NavItem title="How to learn JavaScript in 2 minutes?" href="/chat/javascript" />
+            <NavItem title="Claude Code plugins to cure depression" href="/chat/depression" />
+            <NavItem title="Can Blade MCP fix my life?" href="/chat/mcp" />
+          </SideNavSection>
+        </SideNavBody>
+      </SideNav>
+      <Box marginLeft={{ base: 'spacing.0', m: '240px' }} padding="spacing.4" />
+    </Box>
+  );
+};
 
 const ActivationCard = (): React.ReactElement => {
   return (

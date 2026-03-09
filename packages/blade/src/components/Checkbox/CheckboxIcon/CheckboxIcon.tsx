@@ -88,7 +88,10 @@ const CheckboxIcon = ({
   size,
 }: CheckboxIconProps) => {
   const { theme } = useTheme();
-  const iconColor = getIn(theme, 'colors.interactive.icon.onPrimary.normal');
+  const iconColor = isDisabled
+    ? getIn(theme, 'colors.interactive.icon.staticWhite.disabled')
+    : getIn(theme, 'colors.interactive.icon.onPrimary.normal');
+
   return (
     <CheckboxIconWrapper
       size={size}
