@@ -356,9 +356,14 @@ const TopNavFullExample = () => {
                 <TabNav
                   items={[
                     {
-                      title: 'Ray',
+                      title: 'Ray AI',
                       href: '/home',
                       icon: RayIcon,
+                      titleSuffix: (
+                        <Badge size="small" emphasis="subtle" color="positive">
+                          BETA
+                        </Badge>
+                      ),
                     },
                     {
                       href: '/payroll',
