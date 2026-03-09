@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.95.3
+
+### Patch Changes
+
+- 9a0e38d40: feat(Card): pass elevation prop to CardSurface
+
 ## 12.95.2
 
 ### Patch Changes
