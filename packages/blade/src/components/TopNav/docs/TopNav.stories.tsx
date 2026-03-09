@@ -2,7 +2,7 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
 import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
 import type { TabNavItemProps } from '../TabNav';
