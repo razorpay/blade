@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.0
+
+### Minor Changes
+
+- 4df852372: feat(GenUI): added badge support in InfoGroup component & component error fallbacks
+
 ## 12.95.5
 
 ### Patch Changes
