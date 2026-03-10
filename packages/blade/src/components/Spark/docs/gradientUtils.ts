@@ -29,11 +29,7 @@ const DEFAULT_GRADIENT_STOPS: GradientStop[] = [
  *
  * WebGL reads this left-to-right: position 0 = dark input, position 1 = bright input.
  */
-function generateGradientCanvas(
-  stops: GradientStop[],
-  width = 512,
-  height = 1,
-): HTMLCanvasElement {
+function generateGradientCanvas(stops: GradientStop[], width = 512, height = 1): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
