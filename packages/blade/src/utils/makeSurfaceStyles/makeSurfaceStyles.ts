@@ -96,7 +96,7 @@ export const getSurfaceGradients = (colorScheme: ColorSchemeNames): SurfaceGradi
 export const getSurfaceStyles = (
   theme: Theme,
   colorScheme: ColorSchemeNames,
-  options?: { beforeGradientZIndex?: number; afterGradientZIndex?: number; hideBorder?: boolean },
+  options?: { hideBorder?: boolean },
 ): Record<string, unknown> => {
   const isDarkMode = colorScheme === 'dark';
   const { border, elevation, top } = getSurfaceBoxShadow(theme, colorScheme);
@@ -104,41 +104,27 @@ export const getSurfaceStyles = (
     ? `${elevation}, ${top}`
     : `${border}, ${elevation}, ${top}`;
   const { top: topGradientColor, bottom: bottomGradientColor } = getSurfaceGradients(colorScheme);
-  const beforeGradientZIndex = options?.beforeGradientZIndex ?? -1;
-  const afterGradientZIndex = options?.afterGradientZIndex ?? -1;
+
+  const gradientHeight = makeSpace(size[16]);
+  const bottomInset = isDarkMode ? 1 : 2;
+  const xInset = 2;
 
   return {
     boxShadow,
     border: 'none',
     borderTop: isDarkMode ? `1px solid ${theme.colors.surface.border.gray.subtle}` : '',
-    isolation: 'isolate',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: isDarkMode ? 0 : 1,
-      left: 1,
-      right: 1,
-      height: makeSpace(size[16]),
-      background: `linear-gradient(${topGradientColor.start} 0%, ${topGradientColor.end} 100%)`,
-      pointerEvents: 'none',
-      borderRadius: 'inherit',
-      borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 0,
-      zIndex: beforeGradientZIndex,
-    },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: isDarkMode ? 1 : 2,
-      left: 1,
-      right: 1,
-      height: makeSpace(size[16]),
-      background: `linear-gradient(${bottomGradientColor.start} 0%, ${bottomGradientColor.end} 100%)`,
-      pointerEvents: 'none',
-      borderRadius: 'inherit',
-      borderTopLeftRadius: 0,
-      borderTopRightRadius: 0,
-      zIndex: afterGradientZIndex,
-    },
+    backgroundImage: `
+      linear-gradient(to bottom, ${topGradientColor.start} 0%, ${topGradientColor.end} 100%),
+      linear-gradient(to bottom, ${bottomGradientColor.start} 0%, ${bottomGradientColor.end} 100%)
+    `,
+    backgroundPosition: `
+      center top,
+      center calc(100% - ${bottomInset}px)
+    `,
+    backgroundSize: `
+      calc(100% - ${xInset}px) ${gradientHeight},
+      calc(100% - ${xInset}px) ${gradientHeight}
+    `,
+    backgroundRepeat: 'no-repeat',
   };
 };
