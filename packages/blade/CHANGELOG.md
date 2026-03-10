@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.95.4
+
+### Patch Changes
+
+- e75dcee43: feat(blade): update RazorSense bottomwave animation slightly
+
 ## 12.95.3
 
 ### Patch Changes
