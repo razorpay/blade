@@ -9,7 +9,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 const _BaseBox = styled.div
   .attrs<BaseBoxProps>((props) => {
     return {
-      elevation: props.$isCard ? props.elevation : undefined,
       ...metaAttribute({
         name: (props as never)['data-blade-component'] || MetaConstants.BaseBox,
         testID: (props as never)['data-testid'] || props.testID,
