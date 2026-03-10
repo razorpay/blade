@@ -125,7 +125,7 @@ const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDe
   },
   bottomWave: {
     // TODO: upload to CDN
-    imageSrc: `/assets/spark/bottom-frame.jpg`,
+    imageSrc: `${assetsPath}/bottom-frame.jpg`,
     gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
     gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
     gradientMapBlend: 0,
