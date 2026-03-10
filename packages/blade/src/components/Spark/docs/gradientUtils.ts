@@ -6,14 +6,14 @@
  * replacing the static JPEG gradient map.
  */
 
-export type GradientStop = {
+type GradientStop = {
   /** CSS color string (hex, rgb, hsl, etc.) */
   color: string;
   /** Position in the gradient: 0 = left (dark), 1 = right (bright) */
   position: number;
 };
 
-export const DEFAULT_GRADIENT_STOPS: GradientStop[] = [
+const DEFAULT_GRADIENT_STOPS: GradientStop[] = [
   { color: '#8a8fa8', position: 0 },
   { color: '#1535cc', position: 0.2 },
   { color: '#2255ff', position: 0.35 },
@@ -29,7 +29,7 @@ export const DEFAULT_GRADIENT_STOPS: GradientStop[] = [
  *
  * WebGL reads this left-to-right: position 0 = dark input, position 1 = bright input.
  */
-export function generateGradientCanvas(
+function generateGradientCanvas(
   stops: GradientStop[],
   width = 512,
   height = 1,
@@ -59,7 +59,7 @@ export function generateGradientCanvas(
  * Unlike generateGradientCanvas which is a 1×N texture, this renders to
  * whatever size the canvas already is.
  */
-export function renderGradientPreview(canvas: HTMLCanvasElement, stops: GradientStop[]): void {
+function renderGradientPreview(canvas: HTMLCanvasElement, stops: GradientStop[]): void {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -74,3 +74,6 @@ export function renderGradientPreview(canvas: HTMLCanvasElement, stops: Gradient
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, width, height);
 }
+
+export { generateGradientCanvas, renderGradientPreview, DEFAULT_GRADIENT_STOPS };
+export type { GradientStop };

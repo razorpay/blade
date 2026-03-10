@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -5,8 +6,8 @@ import {
   generateGradientCanvas,
   renderGradientPreview,
   DEFAULT_GRADIENT_STOPS,
-} from '../RzpGlass/gradientUtils';
-import type { GradientStop } from '../RzpGlass/gradientUtils';
+} from './gradientUtils';
+import type { GradientStop } from './gradientUtils';
 
 type GradientEditorProps = {
   onChange: (canvas: HTMLCanvasElement) => void;
@@ -580,10 +581,7 @@ export function GradientEditor({ onChange }: GradientEditorProps): React.ReactEl
             </div>
 
             {/* Hex input */}
-            <HexColorInput
-              value={color}
-              onChange={(newColor) => updateColor(origIdx, newColor)}
-            />
+            <HexColorInput value={color} onChange={(newColor) => updateColor(origIdx, newColor)} />
 
             {/* Position slider */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }}>
