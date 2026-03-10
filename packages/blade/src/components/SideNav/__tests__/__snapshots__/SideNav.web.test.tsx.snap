@@ -203,7 +203,6 @@ exports[`SideNav should render 1`] = `
   border-top-width: 1px;
   border-top-color: hsla(206,10%,29%,0.12);
   border-top-style: solid;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c35.c35.c35.c35.c35 {
@@ -1489,7 +1488,6 @@ exports[`SideNav should render 1`] = `
         <div
           class="c34 l1-item-wrapper"
           data-blade-component="base-box"
-          elevation="lowRaised"
         >
           <div
             class="c35 c36"

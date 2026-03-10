@@ -22,15 +22,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   width: 100%;
 }
 
-.c3.c3.c3.c3.c3 {
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
-}
-
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   border-radius: 16px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +37,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,7 +52,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   width: 100%;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -75,7 +71,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 16px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -89,7 +85,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   align-items: center;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,7 +97,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding-right: 4px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,7 +119,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   z-index: 1;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,7 +134,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   justify-content: center;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   position: absolute;
   z-index: 0;
   right: 0px;
@@ -146,7 +142,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   left: 0px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +164,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   border-top-right-radius: 12px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   min-height: 32px;
   height: 32px;
   width: 32px;
@@ -205,24 +201,24 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: relative;
 }
 
-.c15.c15.c15.c15.c15:hover {
+.c14.c14.c14.c14.c14:hover {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c15.c15.c15.c15.c15:active {
+.c14.c14.c14.c14.c14:active {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c15.c15.c15.c15.c15:focus-visible {
+.c14.c14.c14.c14.c14:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c15.c15.c15.c15.c15 * {
+.c14.c14.c14.c14.c14 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -231,7 +227,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -241,7 +237,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-timing-function: 160px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -259,7 +255,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c23.c23.c23.c23.c23 {
+.c22.c22.c22.c22.c22 {
   color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -282,11 +278,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   overflow-wrap: break-word;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   opacity: 1;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -304,19 +300,19 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-duration: 80ms;
 }
 
-.c11.c11.c11.c11.c11 .content-container {
+.c10.c10.c10.c10.c10 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 4px;
 }
 
-.c11.c11.c11.c11.c11:focus-visible .content-container {
+.c10.c10.c10.c10.c10:focus-visible .content-container {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
 }
 
-.c11.c11.c11.c11.c11 * {
+.c10.c10.c10.c10.c10 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -325,7 +321,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-duration: 80ms;
 }
 
-.c22.c22.c22.c22.c22 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -347,7 +343,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   border-top-right-radius: 12px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -379,7 +375,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   cursor: auto;
 }
 
-.c9.c9.c9.c9.c9::-webkit-input-placeholder {
+.c8.c8.c8.c8.c8::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -396,7 +392,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9::-moz-placeholder {
+.c8.c8.c8.c8.c8::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -413,7 +409,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9:-ms-input-placeholder {
+.c8.c8.c8.c8.c8:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -430,7 +426,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9::placeholder {
+.c8.c8.c8.c8.c8::placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -447,11 +443,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9:focus {
+.c8.c8.c8.c8.c8:focus {
   outline: none;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -480,7 +476,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c6.c6.c6.c6.c6:hover {
+.c5.c5.c5.c5.c5:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -511,7 +507,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6.c6.c6.c6.c6:focus-within {
+.c5.c5.c5.c5.c5:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
   overflow: hidden;
@@ -540,12 +536,12 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   border-radius: 16px;
   width: 100%;
 }
 
-.c4.c4.c4.c4.c4:focus-within {
+.c3.c3.c3.c3.c3:focus-within {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -581,20 +577,19 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c3 c4 focus-ring-wrapper"
+            class=" c3 focus-ring-wrapper"
             data-blade-component="base-box"
-            elevation="highRaised"
           >
             <div
-              class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c5 c6 __blade-base-input-wrapper"
+              class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c4 c5 __blade-base-input-wrapper"
               data-blade-component="base-box"
             >
               <div
-                class="c7"
+                class="c6"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8"
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <textarea
@@ -603,7 +598,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                     aria-invalid="false"
                     aria-label="Chat input"
                     aria-required="false"
-                    class="c9"
+                    class="c8"
                     data-blade-component="styled-base-input"
                     id="chat-input-1-input-2"
                     placeholder="Ask a question..."
@@ -613,22 +608,22 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                   />
                 </div>
                 <div
-                  class="c10"
+                  class="c9"
                   data-blade-component="base-box"
                 >
                   <button
                     aria-disabled="false"
-                    class="c11"
+                    class="c10"
                     data-blade-component="link"
                     role="button"
                     type="button"
                   >
                     <span
-                      class="c12 content-container"
+                      class="c11 content-container"
                       data-blade-component="base-box"
                     >
                       <span
-                        class="c13"
+                        class="c12"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -648,7 +643,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                         </svg>
                       </span>
                       <span
-                        class="c14"
+                        class="c13"
                         data-blade-component="base-text"
                       >
                         Upload file
@@ -661,22 +656,22 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                   >
                     <button
                       aria-label="Submit"
-                      class="c15"
+                      class="c14"
                       data-blade-component="button"
                       disabled=""
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c16"
+                        class=" c15"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c17 c18"
+                          class="c16 c17"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c19"
+                            class="c18"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -707,11 +702,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
       </div>
     </div>
     <div
-      class="c20"
+      class="c19"
       data-blade-component="base-box"
     >
       <div
-        class="c21 c22"
+        class="c20 c21"
         data-blade-component="base-box"
         role="alert"
         style="opacity: 0;"
@@ -744,7 +739,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
           />
         </svg>
         <p
-          class="c23"
+          class="c22"
           data-blade-component="text"
           letter-spacing="50"
         />

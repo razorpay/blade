@@ -14,7 +14,6 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
   width: 90%;
   background-color: hsla(0,0%,100%,1);
   border-radius: 0px;
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -381,7 +380,6 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
   aria-modal="true"
   class="c0 c1"
   data-blade-component="base-box"
-  elevation="highRaised"
   role="dialog"
   tabindex="-1"
 >
@@ -516,7 +514,6 @@ exports[`Drawer renders a Drawer 1`] = `
   width: 90%;
   background-color: hsla(0,0%,100%,1);
   border-radius: 0px;
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1048,7 +1045,6 @@ exports[`Drawer renders a Drawer 1`] = `
   aria-modal="true"
   class="c0 c1"
   data-blade-component="base-box"
-  elevation="highRaised"
   role="dialog"
   tabindex="-1"
 >
@@ -1271,7 +1267,6 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
   width: 90%;
   background-color: hsla(0,0%,100%,1);
   border-radius: 0px;
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1502,7 +1497,6 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
   aria-modal="true"
   class="c0 c1"
   data-blade-component="base-box"
-  elevation="highRaised"
   role="dialog"
   tabindex="-1"
 >
