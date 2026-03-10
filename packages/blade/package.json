@@ -305,7 +305,8 @@
     "tsc-alias": "^1.8.8",
     "typescript": "4.9",
     "wait-on": "7.2.0",
-    "jsonrepair": "3.13.2"
+    "jsonrepair": "3.13.2",
+    "tweakpane": "4.0.5"
   },
   "peerDependencies": {
     "@floating-ui/react-native": "^0.10.0",
