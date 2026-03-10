@@ -59,9 +59,6 @@ export const Default = RazorSenseTemplate.bind({});
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
-  zoom: 3,
-  panX: 0.2,
-  panY: 0,
   startTime: 8,
   animateLightIndependently: true,
   lightStartFrame: 0,
