@@ -1099,7 +1099,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
   return (
     <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
       <Card width="100%" height="100%" padding="spacing.7">
-        <CardHeader showDivider={false}>
+        <CardHeader showDivider>
           <CardHeaderLeading title={title || ''} subtitle={description || ''} />
         </CardHeader>
 
@@ -1174,6 +1174,7 @@ const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: St
       paddingY="spacing.3"
       flexDirection={direction === 'vertical' ? 'column' : 'row'}
       gap={sizeMap[gap ?? 'small']}
+      alignItems={direction === 'horizontal' ? 'center' : undefined}
     >
       {children.map((child, index) => (
         <GenUIComponentRenderer key={index} component={child} index={index} />
