@@ -102,6 +102,7 @@ const Modal = ({
       isDismissible,
       defaultInitialFocusRef,
       isVisible,
+      isInsideModal: true,
     }),
     [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible],
   );
