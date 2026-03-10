@@ -85,7 +85,7 @@ export type RzpGlassPreset = 'default' | 'zoomed' | 'bottomWave' | 'rippleWave' 
  * Asset URLs in presets will use the provided assetsPath.
  */
 const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDefinition> => ({
-  /** Baseline — with displacement animation enabled */
+  /** Baseline — identical to DEFAULT_CONFIG, no overrides */
   default: {},
 
   /**
@@ -124,7 +124,6 @@ const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDe
     cycleRepetitionsDuration: 140,
   },
   bottomWave: {
-    // TODO: upload to CDN
     imageSrc: `${assetsPath}/bottom-frame.jpg`,
     gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
     gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
