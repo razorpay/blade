@@ -145,8 +145,52 @@ const schema = {
           ],
         },
         {
+          component: 'CARD',
+          children: [
+            {
+              component: 'TEXT',
+              content:
+                'This card demonstrates optional title/subtitle. It only contains body content without a CardHeader.',
+            },
+            {
+              component: 'BADGE',
+              text: 'No Header',
+              color: 'notice',
+            },
+          ],
+        },
+        {
           component: 'TABLE',
           headers: ['Transaction ID', 'Customer', 'Status', 'Amount', 'Date', 'Details'],
+          rowActions: [
+            {
+              type: 'ICON_BUTTON',
+              icon: 'view',
+              accessibilityLabel: 'View transaction',
+              action: {
+                type: 'TABLE_ROW_ACTION',
+                eventName: 'view_transaction',
+              },
+            },
+            {
+              type: 'ICON_BUTTON',
+              icon: 'edit',
+              accessibilityLabel: 'Edit transaction',
+              action: {
+                type: 'TABLE_ROW_ACTION',
+                eventName: 'edit_transaction',
+              },
+            },
+            {
+              type: 'ICON_BUTTON',
+              icon: 'delete',
+              accessibilityLabel: 'Delete transaction',
+              action: {
+                type: 'TABLE_ROW_ACTION',
+                eventName: 'delete_transaction',
+              },
+            },
+          ],
           rows: [
             [
               {
@@ -297,35 +341,6 @@ const schema = {
               },
             ],
           ],
-          rowActions: [
-            {
-              type: 'ICON_BUTTON',
-              icon: 'view',
-              accessibilityLabel: 'View transaction details',
-              action: {
-                type: 'TABLE_ROW_ACTION',
-                eventName: 'view_transaction',
-              },
-            },
-            {
-              type: 'ICON_BUTTON',
-              icon: 'copy',
-              accessibilityLabel: 'Copy transaction ID',
-              action: {
-                type: 'TABLE_ROW_ACTION',
-                eventName: 'copy_transaction_id',
-              },
-            },
-            {
-              type: 'ICON_BUTTON',
-              icon: 'download',
-              accessibilityLabel: 'Download receipt',
-              action: {
-                type: 'TABLE_ROW_ACTION',
-                eventName: 'download_receipt',
-              },
-            },
-          ],
         },
         {
           component: 'ALERT',
@@ -363,15 +378,22 @@ const schema = {
             {
               component: 'CARD',
               title: 'Summary Card 1',
-              description: 'Key metric: 75%',
-              footer: 'Last updated: Today',
-              children: [],
+              children: [
+                {
+                  component: 'TEXT',
+                  content: 'Key metric: 75%',
+                },
+              ],
             },
             {
               component: 'CARD',
               title: 'Summary Card 2',
-              description: 'Revenue: $50,000',
-              footer: 'Last updated',
+              children: [
+                {
+                  component: 'TEXT',
+                  content: 'Revenue: $50,000',
+                },
+              ],
             },
           ],
         },
@@ -461,6 +483,36 @@ const SimpleGenUITemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element
 
 export const SimpleGenUI = SimpleGenUITemplate.bind({});
 
+const defaultTableRowActions = [
+  {
+    type: 'ICON_BUTTON',
+    icon: 'view',
+    accessibilityLabel: 'View details',
+    action: {
+      type: 'TABLE_ROW_ACTION',
+      eventName: 'view_row',
+    },
+  },
+  {
+    type: 'ICON_BUTTON',
+    icon: 'edit',
+    accessibilityLabel: 'Edit row',
+    action: {
+      type: 'TABLE_ROW_ACTION',
+      eventName: 'edit_row',
+    },
+  },
+  {
+    type: 'ICON_BUTTON',
+    icon: 'delete',
+    accessibilityLabel: 'Delete row',
+    action: {
+      type: 'TABLE_ROW_ACTION',
+      eventName: 'delete_row',
+    },
+  },
+];
+
 const wideTableSchema = {
   components: [
     {
@@ -486,8 +538,8 @@ const wideTableSchema = {
         'Date',
         'Region',
         'Notes',
-        'Actions',
       ],
+      rowActions: defaultTableRowActions,
       rows: [
         [
           { component: 'TEXT', value: 'pay_NxGT5fK8mZ2abc', copyable: true },
@@ -501,29 +553,19 @@ const wideTableSchema = {
           { component: 'DATE', value: '2024-01-15T14:30:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
           { component: 'TEXT', value: 'Asia Pacific' },
           { component: 'TEXT', value: 'Premium customer' },
-          {
-            component: 'LINK',
-            text: 'View Details',
-            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
-          },
         ],
         [
           { component: 'TEXT', value: 'pay_MwFS4eJ7lY1xyz', copyable: true },
           { component: 'TEXT', value: 'Bob Smith' },
           { component: 'TEXT', value: 'bob.smith@company.org', copyable: true },
           { component: 'TEXT', value: '+1 555 123 4567' },
-          { component: 'INDICATOR', value: 'Processing', color: 'notice' },
+          { component: 'BADGE', value: 'Processing', color: 'notice' },
           { component: 'AMOUNT', value: 7500, currency: 'USD' },
           { component: 'TEXT', value: 'USD' },
           { component: 'TEXT', value: 'Debit Card' },
           { component: 'DATE', value: '2024-01-14T09:15:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
           { component: 'TEXT', value: 'North America' },
           { component: 'TEXT', value: 'First-time buyer' },
-          {
-            component: 'LINK',
-            text: 'View Details',
-            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
-          },
         ],
         [
           { component: 'TEXT', value: 'pay_LvER3dI6kX0def', copyable: true },
@@ -537,29 +579,19 @@ const wideTableSchema = {
           { component: 'DATE', value: '2024-01-13T16:45:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
           { component: 'TEXT', value: 'Southeast Asia' },
           { component: 'TEXT', value: 'Insufficient funds' },
-          {
-            component: 'LINK',
-            text: 'View Details',
-            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
-          },
         ],
         [
           { component: 'TEXT', value: 'pay_KuDQ2cH5jW9ghi', copyable: true },
           { component: 'TEXT', value: 'Diana Ross' },
           { component: 'TEXT', value: 'diana.ross@music.com', copyable: true },
           { component: 'TEXT', value: '+44 20 7946 0958' },
-          { component: 'INDICATOR', value: 'Refunded', color: 'information' },
+          { component: 'BADGE', value: 'Refunded', color: 'information' },
           { component: 'AMOUNT', value: 150000, currency: 'INR' },
           { component: 'TEXT', value: 'INR' },
           { component: 'TEXT', value: 'UPI' },
           { component: 'DATE', value: '2024-01-12T11:20:00Z', dateFormat: 'DD MMM YYYY, HH:mm' },
           { component: 'TEXT', value: 'Europe' },
           { component: 'TEXT', value: 'Customer requested refund' },
-          {
-            component: 'LINK',
-            text: 'View Details',
-            action: { type: 'CLICK', eventName: 'link_click', data: { url: '#' } },
-          },
         ],
       ],
     },
@@ -579,6 +611,7 @@ const simpleTableSchema = {
     {
       component: 'TABLE',
       headers: ['Name', 'Role', 'Status'],
+      rowActions: defaultTableRowActions,
       rows: [
         [
           { component: 'TEXT', value: 'John Doe' },
@@ -593,7 +626,7 @@ const simpleTableSchema = {
         [
           { component: 'TEXT', value: 'Bob Wilson' },
           { component: 'TEXT', value: 'Manager' },
-          { component: 'INDICATOR', value: 'Away', color: 'notice' },
+          { component: 'BADGE', value: 'Away', color: 'notice' },
         ],
       ],
     },
@@ -613,6 +646,7 @@ const invoiceTableSchema = {
     {
       component: 'TABLE',
       headers: ['Item', 'Description', 'Qty', 'Unit Price', 'Total'],
+      rowActions: defaultTableRowActions,
       rows: [
         [
           { component: 'TEXT', value: 'SKU-001' },
@@ -662,6 +696,7 @@ const settlementTableSchema = {
         'Date',
         'Status',
       ],
+      rowActions: defaultTableRowActions,
       rows: [
         [
           { component: 'TEXT', value: 'setl_ABC123XYZ', copyable: true },
@@ -691,7 +726,7 @@ const settlementTableSchema = {
           { component: 'AMOUNT', value: 177, currency: 'INR' },
           { component: 'AMOUNT', value: 74823, currency: 'INR' },
           { component: 'DATE', value: '2024-01-13T10:00:00Z', dateFormat: 'DD MMM YYYY' },
-          { component: 'INDICATOR', value: 'Pending', color: 'notice' },
+          { component: 'BADGE', value: 'Pending', color: 'notice' },
         ],
       ],
     },

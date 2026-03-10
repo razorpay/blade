@@ -1016,6 +1016,8 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
                 <TableRow
                   key={rowIndex}
                   item={item}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
                   hoverActions={
                     rowActions && rowActions.length > 0 ? (
                       <TableRowHoverActions
@@ -1042,16 +1044,16 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
 });
 
 const RenderCardComponent = memo(({ title, description, footer, children }: CardComponent) => {
-  if (!title && !description) {
-    return null;
-  }
+  const hasHeader = title || description;
 
   return (
     <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
       <Card width="100%" height="100%" padding="spacing.7">
-        <CardHeader showDivider={false}>
-          <CardHeaderLeading title={title || ''} subtitle={description || ''} />
-        </CardHeader>
+        {hasHeader ? (
+          <CardHeader>
+            <CardHeaderLeading title={title || ''} subtitle={description || ''} />
+          </CardHeader>
+        ) : null}
 
         {children && children.length > 0 ? (
           <CardBody height="100%">
