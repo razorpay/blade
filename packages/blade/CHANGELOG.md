@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.2
+
+### Patch Changes
+
+- ca87948d5: fix(Modal): search in modal in topnav
+
 ## 12.96.1
 
 ### Patch Changes
