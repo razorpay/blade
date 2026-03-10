@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.95.5
+
+### Patch Changes
+
+- e8d4a815b: fix(GenUI): update scroll behaviour for Table & add divider in Card & make title/subtitle option in Card
+
 ## 12.95.4
 
 ### Patch Changes
