@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.1
+
+### Patch Changes
+
+- b2f53f2bb: fix(blade): remove unneeded boxShadow in card
+
 ## 12.96.0
 
 ### Minor Changes
