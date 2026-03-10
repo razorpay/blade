@@ -2,4 +2,4 @@
 '@razorpay/blade': patch
 ---
 
-feat(blade): update bottomwave animation slightly
+feat(blade): update RazorSense bottomwave animation slightly
