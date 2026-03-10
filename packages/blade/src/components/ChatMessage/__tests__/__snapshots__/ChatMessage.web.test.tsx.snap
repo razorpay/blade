@@ -52,7 +52,6 @@ exports[`<ChatMessage/> should render body correctly 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1209,7 +1208,6 @@ exports[`<ChatMessage/> should render last message correctly 4`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c10.c10.c10.c10.c10 {
