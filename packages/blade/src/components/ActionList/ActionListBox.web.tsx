@@ -102,10 +102,11 @@ const getVirtualItemParams = ({
   actionListBoxHeight: number;
 } => {
   const itemHeightResponsive = getActionListItemHeight(theme);
+  const actionListItemVerticalMargin = theme.spacing[1] * 2;
   const actionListPadding = getActionListPadding(theme);
-  const actionListItemHeight = isMobile
-    ? itemHeightResponsive.itemHeightMobile
-    : itemHeightResponsive.itemHeightDesktop;
+  const actionListItemHeight =
+    (isMobile ? itemHeightResponsive.itemHeightMobile : itemHeightResponsive.itemHeightDesktop) +
+    actionListItemVerticalMargin;
   const shouldCalculateMinimumHeight = itemCount <= 10;
   const actionListBoxHeight = actionListMaxHeight - actionListPadding * 2;
   const actionListBoxMinHeight = shouldCalculateMinimumHeight
