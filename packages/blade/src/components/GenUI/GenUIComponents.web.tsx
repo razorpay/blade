@@ -1127,7 +1127,6 @@ const RenderStackComponent = memo(({ direction = 'vertical', gap, children }: St
       width="100%"
       paddingY="spacing.3"
       flexDirection={direction === 'vertical' ? 'column' : 'row'}
-      alignItems={direction === 'horizontal' ? 'center' : undefined}
       gap={sizeMap[gap ?? 'small']}
     >
       {children.map((child, index) => (
