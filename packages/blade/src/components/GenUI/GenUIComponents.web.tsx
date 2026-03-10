@@ -1169,10 +1169,12 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
   }
 
   // Filter out invalid items during streaming
-  const validItems = items.filter(
-    (item) =>
-      item.key?.children && item.value && 'children' in item.value && item.value.children != null,
-  );
+  // Filters out: null, undefined, and empty string children
+  const validItems = items.filter((item) => {
+    const children = item.value?.children;
+    if (!item.key?.children || children == null) return false;
+    return typeof children !== 'string' || children !== '';
+  });
 
   if (validItems.length === 0) {
     return null;
