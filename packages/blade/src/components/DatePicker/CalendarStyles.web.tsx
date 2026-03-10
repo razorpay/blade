@@ -77,16 +77,16 @@ const selectedCell = {
 
 const inRangeCell = {
   background: {
-    default: 'surface.background.primary.subtle',
-    hover: 'interactive.background.primary.faded',
+    default: 'interactive.background.gray.fadedHighlighted',
+    hover: 'interactive.background.gray.fadedHighlighted',
   },
   border: {
-    default: 'interactive.border.primary.default',
-    hover: 'interactive.border.primary.default',
+    default: 'interactive.border.gray.default',
+    hover: 'interactive.border.gray.default',
   },
   text: {
-    default: 'interactive.text.primary.normal',
-    hover: 'interactive.text.primary.normal',
+    default: 'interactive.text.gray.normal',
+    hover: 'interactive.text.gray.normal',
   },
 } as const;
 

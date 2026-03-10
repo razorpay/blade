@@ -316,6 +316,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           backgroundColor="surface.background.gray.intense"
           colorScheme={colorScheme}
           isSelected={isSelected}
+          elevation={elevation}
           overflow={overflow}
           overflowX={overflowX}
           overflowY={overflowY}

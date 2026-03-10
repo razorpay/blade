@@ -1792,6 +1792,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c45.c45.c45.c45.c45:hover:not([aria-disabled=true]),

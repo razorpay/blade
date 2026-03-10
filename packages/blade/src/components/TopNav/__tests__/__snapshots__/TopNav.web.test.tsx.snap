@@ -206,7 +206,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 .c12.c12.c12.c12.c12 {
   position: relative;
   width: 100%;
-  height: 1px;
+  height: 0.5px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -951,7 +951,7 @@ exports[`TopNav should render 1`] = `
 .c12.c12.c12.c12.c12 {
   position: relative;
   width: 100%;
-  height: 1px;
+  height: 0.5px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -1696,7 +1696,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
 .c12.c12.c12.c12.c12 {
   position: relative;
   width: 100%;
-  height: 1px;
+  height: 0.5px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }

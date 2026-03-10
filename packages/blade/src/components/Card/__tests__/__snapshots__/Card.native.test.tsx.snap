@@ -32,6 +32,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -44,13 +45,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -655,6 +668,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -667,13 +681,25 @@ exports[`<Card /> should render a Card with Header 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1263,6 +1289,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -1275,13 +1302,25 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1333,6 +1372,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="none"
       style={
         [
           {
@@ -1345,13 +1385,25 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 0,
+            "shadowColor": "",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1436,6 +1488,7 @@ exports[`<Card /> should render a plain Card 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="highRaised"
       style={
         [
           {
@@ -1448,13 +1501,25 @@ exports[`<Card /> should render a plain Card 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 24,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 8,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 12,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
