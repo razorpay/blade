@@ -30,6 +30,7 @@ import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+import { OverlayContextReset } from '~components/OverlayContextReset';
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {
@@ -102,6 +103,7 @@ const Modal = ({
       isDismissible,
       defaultInitialFocusRef,
       isVisible,
+      isInsideModal: true,
     }),
     [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible],
   );

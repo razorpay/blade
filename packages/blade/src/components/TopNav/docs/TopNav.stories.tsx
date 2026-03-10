@@ -849,6 +849,20 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
               </TopNavActions>
             </>
           )}
+          <Modal
+            isOpen={isSettingsModalOpen}
+            onDismiss={() => setIsSettingsModalOpen(false)}
+            size="small"
+          >
+            <ModalHeader title="Settings" />
+            <ModalBody>
+              <SearchInput label="xyz" placeholder="Search in settings" />
+              <Text>This is a basic settings modal.</Text>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={() => setIsSettingsModalOpen(false)}>Close</Button>
+            </ModalFooter>
+          </Modal>
         </TopNav>
         <Box
           overflow="hidden"
@@ -873,19 +887,6 @@ const TopNavSearchDropdownTemplate: StoryFn<typeof TopNav> = () => {
           </Box>
         </Box>
       </BaseBox>
-      <Modal
-        isOpen={isSettingsModalOpen}
-        onDismiss={() => setIsSettingsModalOpen(false)}
-        size="small"
-      >
-        <ModalHeader title="Settings" />
-        <ModalBody>
-          <Text>This is a basic settings modal.</Text>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={() => setIsSettingsModalOpen(false)}>Close</Button>
-        </ModalFooter>
-      </Modal>
     </DashboardBackground>
   );
 };
