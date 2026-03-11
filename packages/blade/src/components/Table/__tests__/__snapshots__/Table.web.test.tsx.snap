@@ -68,40 +68,13 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1262,40 +1235,13 @@ exports[`<Table /> should render table 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2972,40 +2918,13 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -4464,40 +4383,13 @@ exports[`<Table /> should render table with column spanning 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -5278,40 +5170,13 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -6380,40 +6245,13 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -7482,40 +7320,13 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -8380,40 +8191,13 @@ exports[`<Table /> should render table with grouping 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -9210,40 +8994,13 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -10909,40 +10666,13 @@ exports[`<Table /> should render table with header spanning 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -11655,40 +11385,13 @@ exports[`<Table /> should render table with isLoading 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -11864,40 +11567,13 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -13173,40 +12849,13 @@ exports[`<Table /> should render table with multi select 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -15945,40 +15594,13 @@ exports[`<Table /> should render table with multi select 2`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -18739,40 +18361,13 @@ exports[`<Table /> should render table with multi select 3`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -21283,40 +20878,13 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -22004,40 +21572,13 @@ exports[`<Table /> should render table with row spanning 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -22777,40 +22318,13 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -23901,40 +23415,13 @@ exports[`<Table /> should render table with single select 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -25420,40 +24907,13 @@ exports[`<Table /> should render table with sticky header, footer & first column
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -27844,40 +27304,13 @@ exports[`<Table /> should render virtualized table 1`] = `
   box-shadow: 0px 6px 32px 4px hsla(205,8%,71%,0.06),inset 0px -1.5px 0px 1px hsla(0,0%,100%,1);
   border: none;
   border-top: 1px solid hsla(204,8%,88%,1);
-  isolation: isolate;
+  background-image: linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%), linear-gradient(to bottom,hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
   border-left: 1px solid hsla(204,8%,88%,1);
   border-right: 1px solid hsla(204,8%,88%,1);
   border-bottom: 1px solid hsla(204,8%,88%,1);
-}
-
-.c1.c1.c1.c1.c1::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  z-index: -1;
-}
-
-.c1.c1.c1.c1.c1::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  right: 1px;
-  height: 16px;
-  background: linear-gradient(hsla(0,0%,100%,1) 0%,hsla(0,0%,97%,1) 100%);
-  pointer-events: none;
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  z-index: -1;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
