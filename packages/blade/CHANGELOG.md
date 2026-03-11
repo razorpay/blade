@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.96.3
+
+### Patch Changes
+
+- d1d70cac5: fix: use transient prop in Table cell styled components
+- 9e2e502e4: fix(blade): redo card effects with backgroundImage to avoid zIndexing and isolation issues
+
 ## 12.96.2
 
 ### Patch Changes
