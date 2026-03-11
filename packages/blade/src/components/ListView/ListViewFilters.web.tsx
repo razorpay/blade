@@ -60,7 +60,6 @@ const ListViewFilters = ({
       }}
     >
       <BaseBox
-        backgroundColor="surface.background.gray.intense"
         paddingX="spacing.3"
         paddingTop="spacing.3"
         paddingBottom={children ? 'spacing.0' : 'spacing.3'}
