@@ -11,7 +11,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -552,7 +551,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1117,7 +1115,6 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   padding: 0px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1196,7 +1193,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: none;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1275,7 +1271,6 @@ exports[`<Card /> should render a plain Card 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1354,7 +1349,6 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
-  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {

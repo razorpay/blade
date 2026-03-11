@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 12.96.2
+
+### Patch Changes
+
+- ca87948d5: fix(Modal): search in modal in topnav
+
+## 12.96.1
+
+### Patch Changes
+
+- b2f53f2bb: fix(blade): remove unneeded boxShadow in card
+
+## 12.96.0
+
+### Minor Changes
+
+- 4df852372: feat(GenUI): added badge support in InfoGroup component & component error fallbacks
+
 ## 12.95.5
 
 ### Patch Changes

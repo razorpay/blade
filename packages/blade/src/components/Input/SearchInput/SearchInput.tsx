@@ -25,6 +25,7 @@ import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+import { useModalContext } from '~components/Modal/ModalContext';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -153,6 +154,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  const modalContext = useModalContext();
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
@@ -328,7 +331,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   );
 
   return (
-    <TopNavOverlayThemeOverride shouldOverrideTheme={isSearchFocused}>
+    <TopNavOverlayThemeOverride
+      shouldOverrideTheme={modalContext.isInsideModal ? true : isSearchFocused}
+    >
       {searchContent}
     </TopNavOverlayThemeOverride>
   );

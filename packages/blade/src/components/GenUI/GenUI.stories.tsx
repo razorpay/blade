@@ -371,6 +371,46 @@ const schema = {
           },
         },
         {
+          component: 'CARD',
+          title: 'Payment Link Created',
+          description: 'Your new payment link is ready',
+          footer: null,
+          children: [
+            {
+              component: 'STACK',
+              direction: 'vertical',
+              gap: 'medium',
+              children: [
+                {
+                  component: 'INFO_GROUP',
+                  items: [
+                    {
+                      key: { children: 'Amount' },
+                      value: { children: { component: 'AMOUNT', value: 100, currency: 'INR' } },
+                    },
+                    {
+                      key: { children: 'Status' },
+                      value: {
+                        children: { component: 'BADGE', text: 'Created', color: 'positive' },
+                      },
+                    },
+                    { key: { children: 'Link ID' }, value: { children: 'plink_SP2rJtPRhJ5gZu' } },
+                  ],
+                },
+                {
+                  component: 'LINK',
+                  text: 'Open Payment Link',
+                  action: {
+                    type: 'CLICK',
+                    eventName: 'link_click',
+                    data: { url: 'https://rzp.io/rzp/8nMpkJZ' },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
           component: 'STACK',
           direction: 'horizontal',
           gap: 'medium',

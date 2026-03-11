@@ -320,6 +320,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           overflow={overflow}
           overflowX={overflowX}
           overflowY={overflowY}
+          $isCard={true}
         >
           {href ? (
             <LinkOverlay

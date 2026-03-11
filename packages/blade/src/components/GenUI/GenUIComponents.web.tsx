@@ -291,6 +291,11 @@ type CardComponent = GenUIBaseComponent & {
   children?: GenUIComponent[];
 };
 
+type InfoGroupItemValue = {
+  helpText?: string;
+  children: string | GenUIComponent;
+};
+
 type InfoGroupComponent = GenUIBaseComponent & {
   component: typeof ComponentType.INFO_GROUP;
   items?: Array<{
@@ -298,10 +303,7 @@ type InfoGroupComponent = GenUIBaseComponent & {
       helpText?: string;
       children: string;
     };
-    value?: {
-      helpText?: string;
-      children: string;
-    };
+    value?: InfoGroupItemValue;
   }>;
 };
 
@@ -1166,7 +1168,12 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
   }
 
   // Filter out invalid items during streaming
-  const validItems = items.filter((item) => item.key?.children && item.value?.children);
+  // Filters out: null, undefined, and empty string children
+  const validItems = items.filter((item) => {
+    const children = item.value?.children;
+    if (!item.key?.children || children == null) return false;
+    return typeof children !== 'string' || children !== '';
+  });
 
   if (validItems.length === 0) {
     return null;
@@ -1174,12 +1181,28 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
 
   return (
     <InfoGroup marginY="spacing.3" itemOrientation="horizontal" size="medium" valueAlign="left">
-      {validItems.map((item, index) => (
-        <InfoItem key={index}>
-          <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
-          <InfoItemValue helpText={item?.value?.helpText}>{item?.value?.children}</InfoItemValue>
-        </InfoItem>
-      ))}
+      {validItems.map((item, index) => {
+        const value = item.value!;
+        const isString = typeof value.children === 'string';
+
+        if (isString) {
+          return (
+            <InfoItem key={index}>
+              <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
+              <InfoItemValue helpText={value.helpText}>{value.children as string}</InfoItemValue>
+            </InfoItem>
+          );
+        }
+
+        return (
+          <InfoItem key={index}>
+            <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
+            <InfoItemValue helpText={value.helpText}>
+              <GenUIComponentRenderer component={value.children as GenUIComponent} index={index} />
+            </InfoItemValue>
+          </InfoItem>
+        );
+      })}
     </InfoGroup>
   );
 });

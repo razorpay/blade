@@ -22,6 +22,10 @@ type ModalContextProps = {
    * Indicates if the Modal is visible according to the usePresence hook
    */
   isVisible: boolean;
+  /**
+   * Indicates if the Modal is inside a Modal
+   */
+  isInsideModal: boolean;
 };
 
 const ModalContext = React.createContext<ModalContextProps>({
@@ -31,6 +35,7 @@ const ModalContext = React.createContext<ModalContextProps>({
   defaultInitialFocusRef: { current: null },
   isOpen: false,
   isVisible: false,
+  isInsideModal: false,
 });
 
 const useModalContext = (): ModalContextProps => {
