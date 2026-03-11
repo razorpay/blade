@@ -22482,7 +22482,6 @@ exports[`<Table /> should render table with row spanning 1`] = `
               class="td c11 has-row-spanning css-12b6i54-CELL_CONTAINER_STYLE-Cell"
               data-blade-component="table-cell"
               data-table-library_td=""
-              gridrow="2 / 4"
               role="cell"
               tabindex="0"
             >
