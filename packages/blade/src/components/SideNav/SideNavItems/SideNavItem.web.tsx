@@ -44,7 +44,7 @@ const SideNavItem = ({
         cursor={as === 'label' ? 'pointer' : undefined}
         {...makeAnalyticsAttribute(rest)}
       >
-        <Box display="inline-flex" alignItems="center" gap="spacing.3">
+        <Box display="inline-flex" alignItems="center" gap={Icon ? 'spacing.2' : 'spacing.3'}>
           {Icon ? (
             <BaseBox display="flex" alignItems="center" paddingX="spacing.2">
               <Icon size="medium" color="interactive.icon.gray.subtle" />
