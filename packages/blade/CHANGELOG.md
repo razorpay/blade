@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.4
+
+### Patch Changes
+
+- 149635160: fix(SideNav): text alignment in sidenavitem
+
 ## 12.96.3
 
 ### Patch Changes
