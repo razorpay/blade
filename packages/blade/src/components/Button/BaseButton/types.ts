@@ -6,7 +6,6 @@ import type { BorderRadiusValues, SpacingValues } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeCommonEvents } from '~components/types';
 import type { IconProps, IconSize } from '~components/Icons';
-import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import type { Theme } from '~components/BladeProvider';
 import type { DataAnalyticsAttribute, DotNotationSpacingStringToken } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -19,7 +18,6 @@ export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
 export type BaseButtonStyleProps = {
   iconSize: IconSize;
-  spinnerSize: BaseSpinnerProps['size'];
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;

@@ -9,18 +9,17 @@ import {
   textColor,
   backgroundGradient,
   boxShadow,
-  spinnerColor,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
-  buttonSizeToSpinnerSizeMap,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
 } from './buttonTokens';
 import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
+import { BouncyLoader } from './BouncyLoader';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
@@ -34,7 +33,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type {
@@ -293,7 +291,6 @@ const getProps = ({
 
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
-    spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
@@ -419,10 +416,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const childrenString = getStringFromReactText(children);
   const isChildrenComponent = React.isValidElement(children);
 
-  // Button cannot be disabled when its rendered as Link
-  // button should be allowed to be disabled in any case...
-  // either through button group or we should allow to disable an individual button
-  const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  // Visual disabled styles apply when explicitly disabled (not when just loading)
+  const visuallyDisabled = buttonGroupProps.isDisabled || isDisabled;
+  // Functional disabled state - prevents interaction. Links don't support disabled attribute,
+  // so we only set it for non-links, but loading always makes it non-interactive
+  const disabled = isLoading || (visuallyDisabled && !isLink);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -460,7 +458,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hoverIconColor,
     iconColor,
     iconSize,
-    spinnerSize,
     lineHeight,
     text,
     textColor,
@@ -470,7 +467,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
-    isDisabled: disabled,
+    isDisabled: visuallyDisabled,
     size: buttonGroupProps.size ?? size,
     variant: buttonGroupProps.variant ?? variant,
     theme,
@@ -606,17 +603,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner
-              accessibilityLabel="Loading"
-              size={spinnerSize}
-              color={
-                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
-                  ? spinnerColor[color as keyof typeof spinnerColor][
-                      variant as 'primary' | 'secondary'
-                    ]
-                  : spinnerColor.base[variant]
-              }
-            />
+            <BouncyLoader color={textColor as DotNotationToken<Theme['colors']>} />
           </BaseBox>
         ) : null}
         <ButtonContent
