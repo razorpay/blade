@@ -41,6 +41,7 @@ import type { ActionStates } from '~utils/useInteraction';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
+  FormInputHandleOnPasteEvent,
 } from '~components/Form/FormTypes';
 import type {
   BladeElementRef,
@@ -145,6 +146,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * For React Native this will call `onEndEditing` event since we want to get the last value of the input field
      */
     onBlur?: FormInputOnEvent;
+    /**
+     * The callback function to be invoked when value is pasted into the input field
+     */
+    onPaste?: FormInputHandleOnPasteEvent;
     /**
      * Ignores the blur event animation (Used in Select to ignore blur animation when item in option is clicked)
      */
@@ -574,6 +579,7 @@ const useInput = ({
   onSubmit,
   onInput,
   onKeyDown,
+  onPaste,
   onInputKeydownTagHandler,
 }: Pick<
   BaseInputProps,
@@ -586,6 +592,7 @@ const useInput = ({
   | 'onKeyDown'
   | 'onClick'
   | 'onSubmit'
+  | 'onPaste'
 > & {
   onInputKeydownTagHandler: OnInputKeydownTagHandlerType;
 }): {
@@ -596,6 +603,7 @@ const useInput = ({
   handleOnSubmit: FormInputHandleOnEvent;
   handleOnInput: FormInputHandleOnEvent;
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
+  handleOnPaste: FormInputHandleOnPasteEvent;
   inputValue?: string;
 } => {
   if (__DEV__) {
@@ -687,6 +695,16 @@ const useInput = ({
     [onBlur],
   );
 
+  const handleOnPaste: FormInputHandleOnPasteEvent = React.useCallback(
+    ({ name, value }) => {
+      onPaste?.({
+        name,
+        value,
+      });
+    },
+    [onPaste],
+  );
+
   const handleOnChange: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
@@ -747,6 +765,7 @@ const useInput = ({
     handleOnSubmit,
     handleOnInput,
     handleOnKeyDown,
+    handleOnPaste,
     inputValue,
   };
 };
@@ -984,6 +1003,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     handleOnSubmit,
     handleOnInput,
     handleOnKeyDown,
+    handleOnPaste,
     inputValue,
   } = useInput({
     defaultValue,
@@ -995,6 +1015,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     onSubmit,
     onInput,
     onKeyDown,
+    onPaste,
     onInputKeydownTagHandler,
   });
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
@@ -1177,6 +1198,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 handleOnKeyDown={handleOnKeyDown}
                 onPaste={onPaste}
                 handleOnClick={handleOnClick}
+                handleOnPaste={handleOnPaste}
                 leadingIcon={leadingIcon}
                 prefix={prefix}
                 trailingInteractionElement={trailingInteractionElement}
