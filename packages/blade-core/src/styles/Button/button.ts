@@ -5,14 +5,30 @@ import styles from './button.module.css';
 
 export type ButtonVariants = {
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative' | 'transparent';
+  color?:
+    | 'primary'
+    | 'white'
+    | 'positive'
+    | 'negative'
+    | 'information'
+    | 'notice'
+    | 'neutral'
+    | 'transparent';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isIconOnly?: boolean;
 };
 
-export type ButtonColor = 'primary' | 'white' | 'positive' | 'negative' | 'transparent';
+export type ButtonColor =
+  | 'primary'
+  | 'white'
+  | 'positive'
+  | 'negative'
+  | 'information'
+  | 'notice'
+  | 'neutral'
+  | 'transparent';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
@@ -268,6 +284,9 @@ export const buttonStyles = cva(styles.btn, {
       white: styles['color-white'],
       positive: styles['color-positive'],
       negative: styles['color-negative'],
+      information: styles['color-information'],
+      notice: styles['color-notice'],
+      neutral: styles['color-neutral'],
       transparent: styles['color-transparent'],
     },
     size: {

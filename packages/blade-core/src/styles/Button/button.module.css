@@ -279,6 +279,105 @@
   }
 }
 
+/* Color variants - Information */
+.color-information {
+  &.primary {
+    background-color: var(--interactive-background-information-default);
+    border-color: var(--interactive-border-information-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-information-highlighted);
+      border-color: var(--interactive-border-information-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-information-disabled);
+      border-color: var(--interactive-border-information-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--interactive-background-information-faded);
+    border-color: var(--interactive-border-information-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-information-faded-highlighted);
+      border-color: var(--interactive-border-information-default);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-information-disabled);
+      border-color: var(--interactive-border-information-disabled);
+    }
+  }
+}
+
+/* Color variants - Notice */
+.color-notice {
+  &.primary {
+    background-color: var(--interactive-background-notice-default);
+    border-color: var(--interactive-border-notice-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-notice-highlighted);
+      border-color: var(--interactive-border-notice-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-notice-disabled);
+      border-color: var(--interactive-border-notice-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--interactive-background-notice-faded);
+    border-color: var(--interactive-border-notice-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-notice-faded-highlighted);
+      border-color: var(--interactive-border-notice-default);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-notice-disabled);
+      border-color: var(--interactive-border-notice-disabled);
+    }
+  }
+}
+
+/* Color variants - Neutral */
+.color-neutral {
+  &.primary {
+    background-color: var(--interactive-background-neutral-default);
+    border-color: var(--interactive-border-neutral-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-neutral-highlighted);
+      border-color: var(--interactive-border-neutral-highlighted);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-neutral-disabled);
+      border-color: var(--interactive-border-neutral-disabled);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--interactive-background-neutral-faded);
+    border-color: var(--interactive-border-neutral-default);
+
+    &:hover:not([disabled]) {
+      background-color: var(--interactive-background-neutral-faded-highlighted);
+      border-color: var(--interactive-border-neutral-default);
+    }
+
+    &[disabled] {
+      background-color: var(--interactive-background-neutral-disabled);
+      border-color: var(--interactive-border-neutral-disabled);
+    }
+  }
+}
+
 /* Color variants - Transparent (only for tertiary) */
 .color-transparent {
   &.tertiary {
