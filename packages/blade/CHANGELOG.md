@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.5
+
+### Patch Changes
+
+- 95802377c: fix(blade): fix encoding of blade spark video
+
 ## 12.96.4
 
 ### Patch Changes
