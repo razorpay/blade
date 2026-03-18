@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.96.6
+
+### Patch Changes
+
+- 2b7f5eaa6: chore(blade): point jsdelivr url to the latest release
+
 ## 12.96.5
 
 ### Patch Changes
