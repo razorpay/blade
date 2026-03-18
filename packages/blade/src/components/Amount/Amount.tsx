@@ -344,7 +344,8 @@ const _Amount = (
   const currencyPosition = isPrefixSymbol ? 'left' : 'right';
   const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
 
-  // Get currency font size - use subtle sizes when isAffixSubtle, otherwise hardcoded values
+  // Get currency font size - use subtle sizes when isAffixSubtle.
+  // For non-subtle, body uses corresponding body token sizes while heading/display use hardcoded sizes.
   const getCurrencyFontProps = (): {
     fontSize: keyof FontSize | undefined;
     style: { fontSize: string } | undefined;
@@ -352,6 +353,13 @@ const _Amount = (
     if (isAffixSubtle) {
       return {
         fontSize: subtleFontSizes[type][size],
+        style: undefined,
+      };
+    }
+
+    if (type === 'body') {
+      return {
+        fontSize: normalAmountSizes[type][size],
         style: undefined,
       };
     }
