@@ -112,9 +112,12 @@ type AmountCommonProps = {
   /**
    * Controls the number of decimal places to display when suffix is 'decimals'.
    *
+   * Set to `'auto'` to automatically determine decimal places based on the currency
+   * (e.g. JPY → 0 decimals, INR → 2 decimals, KWD → 3 decimals).
+   *
    * @default 2
    */
-  fractionDigits?: number;
+  fractionDigits?: number | 'auto';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -205,7 +208,7 @@ type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
   currency: AmountProps['currency'];
-  fractionDigits?: number;
+  fractionDigits?: number | 'auto';
 };
 
 /**
@@ -231,11 +234,15 @@ export const getAmountByParts = ({
   try {
     switch (suffix) {
       case 'decimals': {
+        const intlOptions =
+          fractionDigits === 'auto'
+            ? { style: 'currency' }
+            : {
+                maximumFractionDigits: fractionDigits,
+                minimumFractionDigits: fractionDigits,
+              };
         const options = {
-          intlOptions: {
-            maximumFractionDigits: fractionDigits,
-            minimumFractionDigits: fractionDigits,
-          },
+          intlOptions,
           currency,
         } as const;
         return pollyfilledFormatNumberByParts(value, options);
