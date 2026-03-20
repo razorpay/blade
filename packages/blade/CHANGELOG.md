@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.97.0
+
+### Minor Changes
+
+- 7113c390d: feat(Amount): add `fractionDigits="auto"` to automatically determine decimal places based on currency (e.g. JPY → 0, INR → 2, KWD → 3)
+
 ## 12.96.6
 
 ### Patch Changes
