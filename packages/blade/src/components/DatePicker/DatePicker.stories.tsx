@@ -1256,9 +1256,9 @@ export const DatePickerWithTimePicker: StoryFn<typeof DatePickerComponent> = () 
   return (
     <Box>
       <Text marginBottom="spacing.5">
-        Combine <Code size="medium">DatePicker</Code> and <Code size="medium">TimePicker</Code> on
-        a single page for scheduling use cases like booking appointments, creating events, or
-        setting deadlines.
+        Combine <Code size="medium">DatePicker</Code> and <Code size="medium">TimePicker</Code> on a
+        single page for scheduling use cases like booking appointments, creating events, or setting
+        deadlines.
       </Text>
       <DateTimePickerFields {...state} />
     </Box>
@@ -1282,10 +1282,7 @@ export const DatePickerWithTimePickerInModal: StoryFn<typeof DatePickerComponent
       <Button onClick={() => setIsOpen(true)}>Schedule Event</Button>
 
       <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
-        <ModalHeader
-          title="Schedule an Event"
-          subtitle="Pick a date and time for your event"
-        />
+        <ModalHeader title="Schedule an Event" subtitle="Pick a date and time for your event" />
         <ModalBody>
           <DateTimePickerFields {...state} />
         </ModalBody>
