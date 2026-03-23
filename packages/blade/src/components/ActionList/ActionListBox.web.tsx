@@ -186,6 +186,16 @@ const useFilteredItems = (
   };
 };
 
+/**
+ * Custom outer element for VirtualizedList that enables scroll inside BottomSheet.
+ * The data-allow-scroll attribute tells BottomSheet to allow scroll events
+ * on this element instead of capturing them for drag gestures.
+ */
+const BottomSheetCompatibleOuterElement = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>((props, ref) => <div ref={ref} {...props} data-allow-scroll="true" />);
+
 const VirtualListItem = React.memo(
   ({
     index,
@@ -279,6 +289,9 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             setVisibleStartIndex(visibleStartIndex);
             setVisibleStopIndex(visibleStopIndex);
           }}
+          // When inside BottomSheet, allow scroll events to pass through
+          // This enables VirtualizedList scrolling inside BottomSheet
+          outerElementType={isInBottomSheet ? BottomSheetCompatibleOuterElement : undefined}
         >
           {useCallback(
             ({ index, style, data }) => {

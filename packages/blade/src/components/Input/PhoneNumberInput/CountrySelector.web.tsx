@@ -50,7 +50,7 @@ const CountrySelector = ({
   const isMobile = useIsMobile();
 
   const actionList = (
-    <ActionList isVirtualized={!isMobile}>
+    <ActionList isVirtualized={true}>
       {countryData.map((country) => {
         return (
           <ActionListItem
