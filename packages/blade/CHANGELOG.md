@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.97.1
+
+### Patch Changes
+
+- 7b617af17: fix(TimePicker): fix timepicker's dropdown z-index and focus management when rendered inside modal
+
 ## 12.97.0
 
 ### Minor Changes
