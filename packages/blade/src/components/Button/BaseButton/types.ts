@@ -42,6 +42,7 @@ export type BaseButtonStyleProps = {
   borderRadius: BorderRadiusValues;
   height?: string;
   width?: string;
+  isIconOnly: boolean;
 };
 
 export type StyledBaseButtonProps = Omit<

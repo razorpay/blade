@@ -4,6 +4,8 @@ import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
+import type { BladeElementRef } from '~utils/types';
+import { castWebType } from '~utils';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 import { BaseText } from '~components/Typography/BaseText';
@@ -13,12 +15,10 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/types';
 import {
   getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
-import { castWebType } from '~utils';
 import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
@@ -377,6 +377,28 @@ IconOnlyButton.parameters = {
   },
 };
 
+export const IconOnlyLoadingButton = ButtonWithVariantTemplate.bind({});
+IconOnlyLoadingButton.storyName = 'Icon Only Loading';
+IconOnlyLoadingButton.args = {
+  icon: CreditCardIcon,
+  children: '',
+  isLoading: true,
+};
+IconOnlyLoadingButton.parameters = {
+  docs: {
+    description: {
+      story: 'Primary, Secondary & Tertiary buttons with only an Icon in loading state',
+    },
+    source: {
+      code: `<Button variant='primary' icon={CreditCardIcon} isLoading />
+      \n<Button variant='secondary' icon={CreditCardIcon} isLoading />
+      \n<Button variant='tertiary' icon={CreditCardIcon} isLoading />`,
+      language: 'jsx',
+      type: 'code',
+    },
+  },
+};
+
 const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   const [loading, setLoading] = useState(false);
 
@@ -551,6 +573,17 @@ export const AllVariantsAndSizes: StoryFn<typeof ButtonComponent> = () => {
             </Box>
             {sizes.map((size) => (
               <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} />
+            ))}
+          </BaseBox>
+          {/* Icon only loading */}
+          <BaseBox display="flex" flexDirection="row" gap="spacing.5" alignItems="center">
+            <Box width="60px">
+              <Text size="small" color="surface.text.gray.muted">
+                Icon Only Loading
+              </Text>
+            </Box>
+            {sizes.map((size) => (
+              <ButtonComponent key={size} variant={variant} size={size} icon={UserIcon} isLoading />
             ))}
           </BaseBox>
         </BaseBox>

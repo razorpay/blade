@@ -9,6 +9,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 type BouncyLoaderProps = {
   color: DotNotationToken<Theme['colors']>;
   dotSize?: number;
+  gap?: 'spacing.1' | 'spacing.2';
 };
 
 const bounce = keyframes`
@@ -32,12 +33,16 @@ const Dot = styled.span<{ delay: number; color: string; dotSize: number }>(
   `,
 );
 
-const BouncyLoader = ({ color, dotSize = 4 }: BouncyLoaderProps): React.ReactElement => {
+const BouncyLoader = ({
+  color,
+  dotSize = 4,
+  gap = 'spacing.2',
+}: BouncyLoaderProps): React.ReactElement => {
   const { theme } = useTheme();
   const resolvedColor = getIn(theme.colors, color);
 
   return (
-    <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+    <BaseBox display="flex" flexDirection="row" alignItems="center" gap={gap}>
       <Dot delay={0} color={resolvedColor} dotSize={dotSize} />
       <Dot delay={100} color={resolvedColor} dotSize={dotSize} />
       <Dot delay={200} color={resolvedColor} dotSize={dotSize} />

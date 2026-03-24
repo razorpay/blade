@@ -342,6 +342,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
+    isIconOnly,
   };
 
   if (isDisabled) {
@@ -464,6 +465,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     borderRadius,
     motionDuration,
     motionEasing,
+    isIconOnly,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
@@ -597,13 +599,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             justifyContent="center"
             alignItems="center"
             position="absolute"
-            top="0px"
+            top="-1px"
             left="0px"
             bottom="0px"
             right="0px"
             zIndex={1}
           >
-            <BouncyLoader color={textColor as DotNotationToken<Theme['colors']>} />
+            <BouncyLoader
+              color={textColor as DotNotationToken<Theme['colors']>}
+              dotSize={isIconOnly ? 3 : 4}
+              gap={isIconOnly ? 'spacing.1' : 'spacing.2'}
+            />
           </BaseBox>
         ) : null}
         <ButtonContent
