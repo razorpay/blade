@@ -133,6 +133,26 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  /**
+   * Regression test for: isAffixSubtle=false not working for body type currency prefix.
+   * When isAffixSubtle=false, the currency symbol (₹) must render at the same font-size
+   * as the amount integer — not at the subtle (smaller) size.
+   *
+   * Root cause: currencyHardcodedSizes.body had pixel values equal to the subtle sizes
+   * (10px) that were being incorrectly applied to body type even when isAffixSubtle=false,
+   * making the currency symbol smaller than the amount number.
+   *
+   * @see https://app.devrev.ai/razorpay/works/TKT-4549930
+   */
+  it('should render currency prefix at same size as amount when isAffixSubtle={false} and type="body"', () => {
+    const { container } = renderWithTheme(
+      <Amount type="body" size="medium" isAffixSubtle={false} value={12500.45} />,
+    );
+    // Snapshot verifies both currency (₹) and amount spans share the same CSS class
+    // (same font-size: 0.875rem), not the subtle smaller size (0.625rem).
+    expect(container).toMatchSnapshot();
+  });
+
   for (const currency of ['USD', 'MYR', 'AED']) {
     it(`should render ${currency} currency Amount`, () => {
       const { container } = renderWithTheme(
