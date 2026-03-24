@@ -188,13 +188,26 @@ const useFilteredItems = (
 
 /**
  * Custom outer element for VirtualizedList that enables scroll inside BottomSheet.
- * The data-allow-scroll attribute tells BottomSheet to allow scroll events
- * on this element instead of capturing them for drag gestures.
+ * - data-allow-scroll attribute tells BottomSheet to allow scroll events
+ *   on this element instead of capturing them for drag gestures.
+ * - touchAction: 'pan-y' overrides the parent's 'none' to enable vertical scrolling
+ * - overscrollBehavior: 'contain' prevents scroll chaining to parent
  */
 const BottomSheetCompatibleOuterElement = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement>
->((props, ref) => <div ref={ref} {...props} data-allow-scroll="true" />);
+>(({ style, ...props }, ref) => (
+  <div
+    ref={ref}
+    {...props}
+    data-allow-scroll="true"
+    style={{
+      ...style,
+      touchAction: 'pan-y',
+      overscrollBehavior: 'contain',
+    }}
+  />
+));
 
 const VirtualListItem = React.memo(
   ({
