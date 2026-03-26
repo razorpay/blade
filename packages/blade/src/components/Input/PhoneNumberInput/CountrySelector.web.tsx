@@ -11,11 +11,11 @@ import {
 } from '~components/ActionList';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import type { DropdownOverlayProps } from '~components/Dropdown';
-import { Dropdown, DropdownHeader, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
-import { useDropdown } from '~components/Dropdown/useDropdown';
+import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { useIsMobile } from '~utils/useIsMobile';
 import { TextInput } from '~components/Input/TextInput';
 import { SearchIcon } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -40,46 +40,6 @@ const flagSize = {
   large: makeSize(sizes[24]),
 } as const;
 
-/**
- * Inner component that lives inside Dropdown context.
- * Registers as an autocomplete-in-header so the Dropdown does not
- * preventDefault on mouse-down events inside the header (which would
- * prevent the TextInput from receiving focus).
- */
-const DesktopSearchHeader = ({
-  searchQuery,
-  onSearch,
-  isDropdownOpen,
-}: {
-  searchQuery: string;
-  onSearch: (value: string) => void;
-  isDropdownOpen: boolean;
-}): React.ReactElement => {
-  const { setHasAutoCompleteInHeader } = useDropdown();
-
-  React.useEffect(() => {
-    setHasAutoCompleteInHeader(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <DropdownHeader>
-      <TextInput
-        label=""
-        accessibilityLabel="Search countries"
-        placeholder="Search by country or dial code"
-        value={searchQuery}
-        onChange={({ value }) => onSearch(value ?? '')}
-        onClearButtonClick={() => onSearch('')}
-        leadingIcon={SearchIcon}
-        size="small"
-        // eslint-disable-next-line jsx-a11y/no-autofocus
-        autoFocus={isDropdownOpen}
-      />
-    </DropdownHeader>
-  );
-};
-
 const CountrySelector = ({
   isDisabled,
   selectedCountry,
@@ -92,11 +52,21 @@ const CountrySelector = ({
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
   const isMobile = useIsMobile();
+  const searchInputRef = React.useRef<HTMLElement | null>(null);
 
   // Reset search whenever the dropdown / bottom-sheet closes
   React.useEffect(() => {
     if (!isDropdownOpen) setSearchQuery('');
   }, [isDropdownOpen]);
+
+  // Auto-focus search on desktop when the dropdown opens.
+  // This runs after DropdownOverlay's useEffect (child effects run first in React),
+  // so it wins the focus race against DropdownOverlay's triggererRef.focus() call.
+  React.useEffect(() => {
+    if (isDropdownOpen && !isMobile) {
+      searchInputRef.current?.focus();
+    }
+  }, [isDropdownOpen, isMobile]);
 
   // Filter countries by name, ISO country code, or dial code (with or without leading "+")
   const filteredCountries = React.useMemo(() => {
@@ -173,11 +143,25 @@ const CountrySelector = ({
         </BottomSheet>
       ) : (
         <DropdownOverlay referenceRef={inputWrapperRef}>
-          <DesktopSearchHeader
-            searchQuery={searchQuery}
-            onSearch={setSearchQuery}
-            isDropdownOpen={isDropdownOpen}
-          />
+          <BaseBox
+            padding="spacing.3"
+            // Prevent click/mousedown from bubbling through the React portal tree
+            // to BaseInput's onClick handler, which focuses the phone number input
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
+          >
+            <TextInput
+              ref={searchInputRef}
+              label=""
+              accessibilityLabel="Search countries"
+              placeholder="Search by country or dial code"
+              value={searchQuery}
+              onChange={({ value }) => setSearchQuery(value ?? '')}
+              onClearButtonClick={() => setSearchQuery('')}
+              leadingIcon={SearchIcon}
+              size="small"
+            />
+          </BaseBox>
           {actionList}
         </DropdownOverlay>
       )}
