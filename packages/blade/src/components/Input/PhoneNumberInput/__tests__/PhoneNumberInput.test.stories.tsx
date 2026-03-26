@@ -25,11 +25,11 @@ SelectACountry.play = async () => {
   await userEvent.click(getByRole('button', { name: /select country/i }));
   await sleep(300);
 
-  // Use arrow keys to navigate to a country
+  // Search is auto-focused on open; arrow-down moves focus into the list
   await userEvent.keyboard('{arrowdown}');
   await userEvent.keyboard('{arrowdown}');
 
-  // Click on the country to select it
+  // Select the focused country
   await userEvent.keyboard('{enter}');
   await sleep(300);
 
@@ -177,12 +177,7 @@ AutoFocus.play = async () => {
 };
 
 export const SearchByCountryName: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  return (
-    <PhoneNumberInput
-      label={label}
-      allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']}
-    />
-  );
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
 };
 
 SearchByCountryName.play = async () => {
@@ -203,11 +198,11 @@ SearchByCountryName.play = async () => {
   await sleep(200);
 
   // Germany should be visible, India should not
-  await expect(getByRole('option', { name: /germany/i })).toBeInTheDocument();
-  await expect(queryByRole('option', { name: /india/i })).not.toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /india/i })).not.toBeInTheDocument();
 
   // Select Germany
-  await userEvent.click(getByRole('option', { name: /germany/i }));
+  await userEvent.click(getByRole('menuitem', { name: /germany/i }));
   await sleep(300);
 
   // Dropdown should close
@@ -221,12 +216,7 @@ SearchByCountryName.play = async () => {
 };
 
 export const SearchByDialCode: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  return (
-    <PhoneNumberInput
-      label={label}
-      allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']}
-    />
-  );
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
 };
 
 SearchByDialCode.play = async () => {
@@ -244,17 +234,12 @@ SearchByDialCode.play = async () => {
   await userEvent.type(searchInput, '+91');
   await sleep(200);
 
-  await expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
-  await expect(queryByRole('option', { name: /germany/i })).not.toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /germany/i })).not.toBeInTheDocument();
 };
 
 export const SearchResetOnClose: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  return (
-    <PhoneNumberInput
-      label={label}
-      allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']}
-    />
-  );
+  return <PhoneNumberInput label={label} allowedCountries={['IN', 'US', 'GB', 'AU', 'DE']} />;
 };
 
 SearchResetOnClose.play = async () => {
@@ -269,7 +254,7 @@ SearchResetOnClose.play = async () => {
   const searchInput = getByRole('textbox', { name: /search countries/i });
   await userEvent.type(searchInput, 'india');
   await sleep(200);
-  await expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
 
   // Close via Escape
   await userEvent.keyboard('{Escape}');
@@ -282,9 +267,9 @@ SearchResetOnClose.play = async () => {
   // Search should be cleared — all allowed countries should appear
   const reopenedSearch = getByRole('textbox', { name: /search countries/i });
   await expect(reopenedSearch).toHaveValue('');
-  await expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
-  await expect(getByRole('option', { name: /germany/i })).toBeInTheDocument();
-  await expect(queryByRole('option', { name: /zzzznotacountry/i })).not.toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
+  await expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
+  await expect(queryByRole('menuitem', { name: /zzzznotacountry/i })).not.toBeInTheDocument();
 };
 
 export default {

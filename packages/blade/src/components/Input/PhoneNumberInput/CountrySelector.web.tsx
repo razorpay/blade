@@ -113,12 +113,7 @@ const CountrySelector = ({
   }, [countryData, searchQuery]);
 
   const actionList = (
-    /*
-     * Virtualization is intentionally disabled on mobile because enabling it
-     * inside a BottomSheet conflicts with the sheet's own scroll behaviour and
-     * causes rendering artefacts. On desktop the full virtual list is safe to use.
-     */
-    <ActionList isVirtualized={!isMobile}>
+    <ActionList>
       {filteredCountries.map((country) => {
         return (
           <ActionListItem

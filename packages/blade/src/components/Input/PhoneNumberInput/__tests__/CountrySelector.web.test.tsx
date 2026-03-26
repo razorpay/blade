@@ -16,7 +16,7 @@ afterAll(() => jest.restoreAllMocks());
 // A small, deterministic set of countries used across all tests
 const ALLOWED = ['IN', 'US', 'GB', 'AU', 'DE'] as const;
 // Corresponding expected display names (derived from Intl.DisplayNames)
-const COUNTRY_NAMES: Record<(typeof ALLOWED)[number], string> = {
+const COUNTRY_NAMES: Record<typeof ALLOWED[number], string> = {
   IN: 'India',
   US: 'United States',
   GB: 'United Kingdom',
@@ -61,12 +61,12 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, 'india');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
     });
 
     // Other countries should no longer be visible
-    expect(queryByRole('option', { name: /australia/i })).not.toBeInTheDocument();
-    expect(queryByRole('option', { name: /germany/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /australia/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /germany/i })).not.toBeInTheDocument();
   });
 
   it('filters countries by ISO country code', async () => {
@@ -81,10 +81,10 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, 'AU');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /australia/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /australia/i })).toBeInTheDocument();
     });
 
-    expect(queryByRole('option', { name: /india/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /india/i })).not.toBeInTheDocument();
   });
 
   it('filters countries by dial code without leading plus', async () => {
@@ -99,11 +99,11 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, '91');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
     });
 
-    expect(queryByRole('option', { name: /united states/i })).not.toBeInTheDocument();
-    expect(queryByRole('option', { name: /australia/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /united states/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /australia/i })).not.toBeInTheDocument();
   });
 
   it('filters countries by dial code with leading plus', async () => {
@@ -118,10 +118,10 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, '+49');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /germany/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
     });
 
-    expect(queryByRole('option', { name: /india/i })).not.toBeInTheDocument();
+    expect(queryByRole('menuitem', { name: /india/i })).not.toBeInTheDocument();
   });
 
   it('shows all countries when search query is cleared', async () => {
@@ -135,7 +135,7 @@ describe('<CountrySelector /> search', () => {
     // Type something to narrow down
     await user.type(searchInput, 'india');
     await waitFor(() => {
-      expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
     });
 
     // Clear the input
@@ -144,7 +144,7 @@ describe('<CountrySelector /> search', () => {
     // All countries should be visible again
     await waitFor(() => {
       for (const name of Object.values(COUNTRY_NAMES)) {
-        expect(getByRole('option', { name: new RegExp(name, 'i') })).toBeInTheDocument();
+        expect(getByRole('menuitem', { name: new RegExp(name, 'i') })).toBeInTheDocument();
       }
     });
   });
@@ -161,7 +161,7 @@ describe('<CountrySelector /> search', () => {
 
     await waitFor(() => {
       for (const name of Object.values(COUNTRY_NAMES)) {
-        expect(queryByRole('option', { name: new RegExp(name, 'i') })).not.toBeInTheDocument();
+        expect(queryByRole('menuitem', { name: new RegExp(name, 'i') })).not.toBeInTheDocument();
       }
     });
   });
@@ -177,7 +177,7 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, 'india');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /india/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /india/i })).toBeInTheDocument();
     });
 
     // Close by pressing Escape
@@ -194,8 +194,21 @@ describe('<CountrySelector /> search', () => {
 
     await waitFor(() => {
       for (const name of Object.values(COUNTRY_NAMES)) {
-        expect(getByRole('option', { name: new RegExp(name, 'i') })).toBeInTheDocument();
+        expect(getByRole('menuitem', { name: new RegExp(name, 'i') })).toBeInTheDocument();
       }
+    });
+  });
+
+  it('auto-focuses search input when dropdown opens', async () => {
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(
+      <PhoneNumberInput label="Phone" allowedCountries={[...ALLOWED]} />,
+    );
+
+    const searchInput = await openAndGetSearchInput(user, getByRole);
+
+    await waitFor(() => {
+      expect(searchInput).toHaveFocus();
     });
   });
 
@@ -215,10 +228,10 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, 'germany');
 
     await waitFor(() => {
-      expect(getByRole('option', { name: /germany/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
     });
 
-    await user.click(getByRole('option', { name: /germany/i }));
+    await user.click(getByRole('menuitem', { name: /germany/i }));
 
     // Dropdown should be closed after selection
     await waitFor(() => {
