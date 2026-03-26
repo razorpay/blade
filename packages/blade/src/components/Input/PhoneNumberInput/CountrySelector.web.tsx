@@ -40,6 +40,36 @@ const flagSize = {
   large: makeSize(sizes[24]),
 } as const;
 
+type SearchInputProps = {
+  value: string;
+  onChange: (value: string) => void;
+  onClearButtonClick: () => void;
+};
+
+const SearchInput = React.forwardRef<HTMLElement, SearchInputProps>(
+  ({ value, onChange, onClearButtonClick }, ref) => {
+    return (
+      <BaseBox
+        padding="spacing.3"
+        // Prevent the click from bubbling to BaseInput's onClick, which focuses the phone input
+        onClick={(e) => e.stopPropagation()}
+      >
+        <TextInput
+          ref={ref}
+          label=""
+          accessibilityLabel="Search countries"
+          placeholder="Search by country or dial code"
+          value={value}
+          onChange={({ value: inputValue }) => onChange(inputValue ?? '')}
+          onClearButtonClick={onClearButtonClick}
+          leadingIcon={SearchIcon}
+          size="small"
+        />
+      </BaseBox>
+    );
+  },
+);
+
 const CountrySelector = ({
   isDisabled,
   selectedCountry,
@@ -59,14 +89,14 @@ const CountrySelector = ({
     if (!isDropdownOpen) setSearchQuery('');
   }, [isDropdownOpen]);
 
-  // Auto-focus search on desktop when the dropdown opens.
+  // Auto-focus search when the dropdown / bottom-sheet opens.
   // This runs after DropdownOverlay's useEffect (child effects run first in React),
   // so it wins the focus race against DropdownOverlay's triggererRef.focus() call.
   React.useEffect(() => {
-    if (isDropdownOpen && !isMobile) {
+    if (isDropdownOpen) {
       searchInputRef.current?.focus();
     }
-  }, [isDropdownOpen, isMobile]);
+  }, [isDropdownOpen]);
 
   // Filter countries by name, ISO country code, or dial code (with or without leading "+")
   const filteredCountries = React.useMemo(() => {
@@ -128,40 +158,23 @@ const CountrySelector = ({
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country">
-            <TextInput
-              label=""
-              accessibilityLabel="Search countries"
-              placeholder="Search by country or dial code"
+            <SearchInput
+              ref={searchInputRef}
               value={searchQuery}
-              onChange={({ value }) => setSearchQuery(value ?? '')}
+              onChange={setSearchQuery}
               onClearButtonClick={() => setSearchQuery('')}
-              leadingIcon={SearchIcon}
-              size="small"
             />
           </BottomSheetHeader>
           <BottomSheetBody>{actionList}</BottomSheetBody>
         </BottomSheet>
       ) : (
         <DropdownOverlay referenceRef={inputWrapperRef}>
-          <BaseBox
-            padding="spacing.3"
-            // Prevent click/mousedown from bubbling through the React portal tree
-            // to BaseInput's onClick handler, which focuses the phone number input
-            onClick={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-          >
-            <TextInput
-              ref={searchInputRef}
-              label=""
-              accessibilityLabel="Search countries"
-              placeholder="Search by country or dial code"
-              value={searchQuery}
-              onChange={({ value }) => setSearchQuery(value ?? '')}
-              onClearButtonClick={() => setSearchQuery('')}
-              leadingIcon={SearchIcon}
-              size="small"
-            />
-          </BaseBox>
+          <SearchInput
+            ref={searchInputRef}
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClearButtonClick={() => setSearchQuery('')}
+          />
           {actionList}
         </DropdownOverlay>
       )}
