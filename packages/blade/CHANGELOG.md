@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 12.98.0
+
+### Minor Changes
+
+- f4b7c371a: feat(blade): add reticle icon
+
+### Patch Changes
+
+- ea50bce32: fix(blade): bottomsheet not scrolling in virtualized action list
+- 65bf2998d: fix(blade): phone number input bottomsheet issue
+
 ## 12.97.1
 
 ### Patch Changes
