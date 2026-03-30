@@ -14,6 +14,17 @@ Below are the props that the TopNav component and its subcomponents accept. Thes
 // Main TopNav Component Types
 type TopNavProps = {
   children: React.ReactNode;
+  /**
+   * Sets the background color variant of the TopNav.
+   *
+   * - `'neutral'` (default): Uses the static black background (`interactive.background.staticBlack.default`).
+   * - `'primary'`: Uses the primary brand background (`interactive.background.primary.default`).
+   *
+   * Passing an explicit `backgroundColor` prop will override this variant.
+   *
+   * @default 'neutral'
+   */
+  variant?: 'primary' | 'neutral';
 } & Pick<
   BoxProps,
   | 'padding'

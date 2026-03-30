@@ -20,6 +20,17 @@ const TOP_NAV_HEIGHT = size[56];
 
 type TopNavProps = {
   children: React.ReactNode;
+  /**
+   * Sets the background color variant of the TopNav.
+   *
+   * - `'neutral'` (default): Uses the static black background (`interactive.background.staticBlack.default`).
+   * - `'primary'`: Uses the primary brand background (`interactive.background.primary.default`).
+   *
+   * Passing an explicit `backgroundColor` prop will override this variant.
+   *
+   * @default 'neutral'
+   */
+  variant?: 'primary' | 'neutral';
 } & Pick<
   BoxProps,
   | 'padding'
@@ -42,15 +53,24 @@ type TopNavProps = {
   TestID &
   StyledPropsBlade;
 
+const TOP_NAV_BACKGROUND_COLOR: Record<
+  NonNullable<TopNavProps['variant']>,
+  BoxProps['backgroundColor']
+> = {
+  neutral: 'interactive.background.staticBlack.default',
+  primary: 'interactive.background.primary.default',
+};
+
 const _TopNav = (
-  { children, ...rest }: TopNavProps,
+  { children, variant = 'neutral', backgroundColor, ...rest }: TopNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { colorScheme } = useTheme();
+  const resolvedBackgroundColor = backgroundColor ?? TOP_NAV_BACKGROUND_COLOR[variant];
 
   return (
     <TopNavContext.Provider value={{ colorScheme }}>
-      {/* We are forcing the theme to dark here because the TopNav is always in dark mode. 
+      {/* We are forcing the theme to dark here because the TopNav is always in dark mode.
        we also want components inside the TopNav to be in the same theme as the TopNav.
       */}
       <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
@@ -66,7 +86,7 @@ const _TopNav = (
           paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
           height={makeSize(TOP_NAV_HEIGHT)}
           zIndex={componentZIndices.topnav}
-          backgroundColor="interactive.background.staticBlack.default"
+          backgroundColor={resolvedBackgroundColor}
           {...rest}
           {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
           {...makeAnalyticsAttribute(rest)}

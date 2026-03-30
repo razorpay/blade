@@ -1064,3 +1064,61 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
 
 export const WithButton = TopNavWithButtonTemplate.bind({});
 WithButton.storyName = 'With Button';
+
+const TopNavNeutralVariantTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <DashboardBackground>
+      <TopNav variant="neutral">
+        <TopNavBrand>
+          <RazorpayLogoWhite />
+        </TopNavBrand>
+        <TopNavContent>
+          <TabNav items={[{ title: 'Home', href: '/home', icon: HomeIcon }]}>
+            {({ items }) => (
+              <TabNavItems>
+                {items.map((item) => (
+                  <TabNavItemLink key={item.title} {...item} />
+                ))}
+              </TabNavItems>
+            )}
+          </TabNav>
+        </TopNavContent>
+        <TopNavActions>
+          <Avatar size="small" name="Anurag Hazra" />
+        </TopNavActions>
+      </TopNav>
+    </DashboardBackground>
+  );
+};
+
+export const NeutralVariant = TopNavNeutralVariantTemplate.bind({});
+NeutralVariant.storyName = 'Neutral Variant';
+
+const TopNavPrimaryVariantTemplate: StoryFn<typeof TopNav> = () => {
+  return (
+    <DashboardBackground>
+      <TopNav variant="primary">
+        <TopNavBrand>
+          <RazorpayLogoWhite />
+        </TopNavBrand>
+        <TopNavContent>
+          <TabNav items={[{ title: 'Home', href: '/home', icon: HomeIcon }]}>
+            {({ items }) => (
+              <TabNavItems>
+                {items.map((item) => (
+                  <TabNavItemLink key={item.title} {...item} />
+                ))}
+              </TabNavItems>
+            )}
+          </TabNav>
+        </TopNavContent>
+        <TopNavActions>
+          <Avatar size="small" name="Anurag Hazra" />
+        </TopNavActions>
+      </TopNav>
+    </DashboardBackground>
+  );
+};
+
+export const PrimaryVariant = TopNavPrimaryVariantTemplate.bind({});
+PrimaryVariant.storyName = 'Primary Variant';
