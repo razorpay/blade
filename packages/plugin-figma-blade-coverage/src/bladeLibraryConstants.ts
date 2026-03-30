@@ -67,7 +67,7 @@ export const bladeThemeData = {
     Divider: {
       key: '3942574367676524ab7ea045ece704f751984dae',
     },
-    
+
     // Chat Message
     ChatMessage: {
       key: '2177b8528fee876a39bf2c3642a278ecd7b33b1a',
@@ -78,7 +78,11 @@ export const bladeThemeData = {
     'ChatMessage/Right': {
       key: 'e01c6482fdb3b3905c648e9c0e6433980a5efa5b',
     },
-    
+
+    // Chat Input
+    ChatInput: {
+      key: 'd8fe45485e1287846fa651b74c016775f1a853b2',
+    },
 
     // Drawer
     Drawer: {
