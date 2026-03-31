@@ -79,7 +79,6 @@ const CountrySelector = ({
 
   const searchInput = (
     <AutoComplete
-      label=""
       accessibilityLabel="Search countries"
       placeholder="Search by country or dial code"
       onInputValueChange={handleInputValueChange}
