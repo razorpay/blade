@@ -45,7 +45,7 @@ export function getLinkColorToken({
   const map: Record<ActionStatesType, ColorType> = {
     default: 'normal',
     hover: 'subtle',
-    focus: 'normal',
+    focus: 'subtle',
     disabled: 'disabled',
   };
 
