@@ -3,6 +3,7 @@ import type { ColorSchemeNames } from '~tokens/theme';
 
 type TopNavContextProps = {
   colorScheme: ColorSchemeNames;
+  variant?: 'primary' | 'neutral';
 };
 
 const TopNavContext = React.createContext<TopNavContextProps | null>(null);

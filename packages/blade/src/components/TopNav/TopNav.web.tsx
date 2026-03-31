@@ -24,8 +24,8 @@ type TopNavProps = {
   /**
    * Sets the background color variant of the TopNav.
    *
-   * - `'neutral'` (default): Uses the static black background (`interactive.background.staticBlack.default`).
-   * - `'primary'`: Uses the primary brand background (`interactive.background.primary.default`).
+   * - `'neutral'` (default): Uses the static black background. Existing behavior.
+   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`).
    *
    * Passing an explicit `backgroundColor` prop will override this variant.
    *
@@ -59,7 +59,7 @@ const TOP_NAV_BACKGROUND_COLOR: Record<
   BaseBoxProps['backgroundColor']
 > = {
   neutral: 'interactive.background.staticBlack.default',
-  primary: 'interactive.background.primary.default',
+  primary: 'surface.background.primary.intense',
 };
 
 const _TopNav = (
@@ -70,7 +70,7 @@ const _TopNav = (
   const resolvedBackgroundColor = backgroundColor ?? TOP_NAV_BACKGROUND_COLOR[variant];
 
   return (
-    <TopNavContext.Provider value={{ colorScheme }}>
+    <TopNavContext.Provider value={{ colorScheme, variant }}>
       {/* We are forcing the theme to dark here because the TopNav is always in dark mode.
        we also want components inside the TopNav to be in the same theme as the TopNav.
       */}

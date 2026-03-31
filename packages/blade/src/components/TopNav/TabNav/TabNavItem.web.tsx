@@ -5,6 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import type { TabNavItemProps, TabNavIconProp } from './types';
 import { useTabNavContext } from './TabNavContext';
+import { useTopNavContext } from '../TopNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
@@ -121,6 +122,7 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
 ): React.ReactElement => {
   const { setControlledItems } = useTabNavContext();
   const { theme } = useTheme();
+  const topNavContext = useTopNavContext();
   const bodyRef = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -152,6 +154,8 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
 
   const glowColor = isRayIcon(icon)
     ? theme.colors.surface.icon.onSea.onSubtle
+    : topNavContext?.variant === 'primary'
+    ? theme.colors.surface.icon.staticWhite.normal
     : theme.colors.surface.background.primary.intense;
 
   return (

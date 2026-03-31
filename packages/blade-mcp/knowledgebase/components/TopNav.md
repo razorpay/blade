@@ -17,8 +17,8 @@ type TopNavProps = {
   /**
    * Sets the background color variant of the TopNav.
    *
-   * - `'neutral'` (default): Uses the static black background (`interactive.background.staticBlack.default`).
-   * - `'primary'`: Uses the primary brand background (`interactive.background.primary.default`).
+   * - `'neutral'` (default): Uses the static black background. Existing behavior.
+   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`). The selected tab indicator glow becomes white.
    *
    * Passing an explicit `backgroundColor` prop will override this variant.
    *
