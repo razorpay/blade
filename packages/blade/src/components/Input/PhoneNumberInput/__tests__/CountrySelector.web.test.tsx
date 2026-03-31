@@ -149,9 +149,10 @@ describe('<CountrySelector /> search', () => {
     });
   });
 
-  it('shows no results when search does not match any country', async () => {
+  // ── Bug 3 regression: empty state ───────────────────────────────────────────
+  it('shows a "No Search Result Found" message when search does not match any country', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByRole } = renderWithTheme(
+    const { getByRole, queryByRole, getByText } = renderWithTheme(
       <PhoneNumberInput label="Phone" allowedCountries={[...ALLOWED]} />,
     );
 
@@ -160,9 +161,30 @@ describe('<CountrySelector /> search', () => {
     await user.type(searchInput, 'zzzzzzzznotacountry');
 
     await waitFor(() => {
+      // All country items should be gone
       for (const name of Object.values(COUNTRY_NAMES)) {
         expect(queryByRole('menuitem', { name: new RegExp(name, 'i') })).not.toBeInTheDocument();
       }
+      // A meaningful empty-state message should appear
+      expect(getByText(/no search result found/i)).toBeInTheDocument();
+    });
+  });
+
+  // ── Bug 4 regression: dropdown must stay visible when there are no results ──
+  it('keeps the dropdown overlay open (does not close it) when search has no results', async () => {
+    const user = userEvent.setup();
+    const { getByRole, queryByRole } = renderWithTheme(
+      <PhoneNumberInput label="Phone" allowedCountries={[...ALLOWED]} />,
+    );
+
+    const searchInput = await openAndGetSearchInput(user, getByRole);
+
+    // Type something that won't match
+    await user.type(searchInput, 'zzzznotacountry');
+
+    // The search textbox should still be visible — the overlay is still open
+    await waitFor(() => {
+      expect(queryByRole('textbox', { name: /search countries/i })).toBeInTheDocument();
     });
   });
 
@@ -239,6 +261,76 @@ describe('<CountrySelector /> search', () => {
     });
 
     // Callback should have been called with the selected country code
+    expect(onCountryChange).toHaveBeenCalledWith({ country: 'DE' });
+  });
+
+  // ── Bug 2 regression: TypeAhead state-desync ────────────────────────────────
+  it('does not change the selected country while typing in the search box (no typeahead desync)', async () => {
+    const user = userEvent.setup();
+    const onCountryChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <PhoneNumberInput
+        label="Phone"
+        allowedCountries={[...ALLOWED]}
+        onCountryChange={onCountryChange}
+        // Default country is India (IN), which is in ALLOWED
+      />,
+    );
+
+    const searchInput = await openAndGetSearchInput(user, getByRole);
+
+    // Type a query that also matches other countries but NOT "India"
+    // e.g. "au" matches Australia and United States but not India
+    await user.type(searchInput, 'au');
+
+    await waitFor(() => {
+      expect(getByRole('menuitem', { name: /australia/i })).toBeInTheDocument();
+    });
+
+    // onCountryChange should NOT have been called — merely searching must not
+    // select a country
+    expect(onCountryChange).not.toHaveBeenCalled();
+
+    // The trigger button's accessible name should still reference India (the
+    // initial selection), not Australia or any other visible result
+    const trigger = getByRole('button', { name: /select country/i });
+    expect(trigger).toHaveAccessibleName(/india - select country/i);
+  });
+
+  // ── Bug 1 regression: arrow-key navigation from the search input ─────────────
+  it('navigates the filtered list with ArrowDown / ArrowUp and selects with Enter', async () => {
+    const user = userEvent.setup();
+    const onCountryChange = jest.fn();
+    const { getByRole, queryByRole } = renderWithTheme(
+      <PhoneNumberInput
+        label="Phone"
+        // Use a fixed 2-item subset so navigation is predictable
+        allowedCountries={['AU', 'DE']}
+        onCountryChange={onCountryChange}
+      />,
+    );
+
+    const searchInput = await openAndGetSearchInput(user, getByRole);
+
+    // Both countries should be visible initially
+    await waitFor(() => {
+      expect(getByRole('menuitem', { name: /australia/i })).toBeInTheDocument();
+      expect(getByRole('menuitem', { name: /germany/i })).toBeInTheDocument();
+    });
+
+    // Arrow down twice to move focus to the first item, then second item
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowDown}');
+
+    // Press Enter to select the currently focused item (Germany, the second item)
+    await user.keyboard('{Enter}');
+
+    // Dropdown should close after selection
+    await waitFor(() => {
+      expect(queryByRole('textbox', { name: /search countries/i })).not.toBeInTheDocument();
+    });
+
+    // Germany should be selected
     expect(onCountryChange).toHaveBeenCalledWith({ country: 'DE' });
   });
 });
