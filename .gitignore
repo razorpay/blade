@@ -95,5 +95,6 @@ buck-out/
 **/ios/Pods/
 
 knowledgebase-ts-errors.json
+.cursor/artifacts/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
