@@ -36,6 +36,7 @@ const ChatInputActionBar = ({
         icon={PlusIcon}
         onClick={onUploadClick}
         isDisabled={isDisabled}
+        data-analytics-name="chat-input-upload-file"
       >
         Upload file
       </Link>
@@ -47,6 +48,7 @@ const ChatInputActionBar = ({
             accessibilityLabel="Stop generation"
             onClick={() => onStop?.()}
             size="small"
+            data-analytics-name="chat-input-stop"
           />
         ) : (
           <Button
@@ -58,6 +60,7 @@ const ChatInputActionBar = ({
             // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
             isDisabled={isSubmitDisabled || isDisabled}
             size="small"
+            data-analytics-name="chat-input-submit"
           />
         )}
       </BaseBox>

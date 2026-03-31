@@ -619,6 +619,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                   <button
                     aria-disabled="false"
                     class="c11"
+                    data-analytics-name="chat-input-upload-file"
                     data-blade-component="link"
                     role="button"
                     type="button"
@@ -662,6 +663,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                     <button
                       aria-label="Submit"
                       class="c15"
+                      data-analytics-name="chat-input-submit"
                       data-blade-component="button"
                       disabled=""
                       role="button"
