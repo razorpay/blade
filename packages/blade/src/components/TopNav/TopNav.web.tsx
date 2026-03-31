@@ -3,6 +3,7 @@ import { TopNavContext, useTopNavContext } from './TopNavContext';
 import type { BoxProps } from '~components/Box';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import type { BaseBoxProps } from '~components/Box/BaseBox/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
@@ -55,7 +56,7 @@ type TopNavProps = {
 
 const TOP_NAV_BACKGROUND_COLOR: Record<
   NonNullable<TopNavProps['variant']>,
-  BoxProps['backgroundColor']
+  BaseBoxProps['backgroundColor']
 > = {
   neutral: 'interactive.background.staticBlack.default',
   primary: 'interactive.background.primary.default',
