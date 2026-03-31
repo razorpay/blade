@@ -1,7 +1,7 @@
+import { TopNav, TopNavContent } from '../TopNav';
 import { TopNavExample } from './TopNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
-import { TopNav, TopNavBrand, TopNavContent, TopNavActions } from '../TopNav';
 
 // There is not much logic in TopNav itself, so we are just testing if it renders correctly
 
