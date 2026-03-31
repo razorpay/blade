@@ -80,7 +80,11 @@ const DEFAULT_CONFIG: Required<RzpGlassConfig> = {
 // ============================================
 export type RzpGlassPreset = 'default' | 'zoomed' | 'bottomWave' | 'rippleWave' | 'circleSlideUp';
 
-const PRESETS: Record<RzpGlassPreset, RzpGlassPresetDefinition> = {
+/**
+ * Get preset definitions with dynamic CDN path support.
+ * Asset URLs in presets will use the provided assetsPath.
+ */
+const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDefinition> => ({
   /** Baseline — identical to DEFAULT_CONFIG, no overrides */
   default: {},
 
@@ -120,22 +124,19 @@ const PRESETS: Record<RzpGlassPreset, RzpGlassPresetDefinition> = {
     cycleRepetitionsDuration: 140,
   },
   bottomWave: {
-    imageSrc:
-      'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark/bottom-frame.jpg',
-    gradientMapSrc:
-      'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark/colorama-gradient-map-green.jpg',
-    gradientMap2Src:
-      'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark/colorama-gradient-map-blue.jpg',
+    imageSrc: `${assetsPath}/bottom-frame.jpg`,
+    gradientMapSrc: `${assetsPath}/colorama-gradient-map-green.jpg`,
+    gradientMap2Src: `${assetsPath}/colorama-gradient-map-blue.jpg`,
     gradientMapBlend: 0,
+    modifyGamma: 0.97,
     edgeFeather: [0.3, 0, 3, 0],
-    panY: -0.04,
+    panY: 0.03,
     numSegments: 30,
     enableBloom: false,
     slitAngle: (15 * Math.PI) / 180,
   },
   rippleWave: {
-    videoSrc:
-      'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark/ray-pulse.mp4',
+    videoSrc: `${assetsPath}/ray-pulse.mp4`,
     aspectRatio: 1.61,
     playbackRate: 0.7,
     slitAngle: (15 * Math.PI) / 180,
@@ -151,8 +152,7 @@ const PRESETS: Record<RzpGlassPreset, RzpGlassPresetDefinition> = {
     zoom: 2,
   },
   circleSlideUp: {
-    videoSrc:
-      'https://cdn.jsdelivr.net/gh/razorpay/blade@feat/expose-assets-folder/packages/blade/assets/spark/success-animation-circle.mp4',
+    videoSrc: `${assetsPath}/success-animation-circle.mp4`,
     aspectRatio: 1.61,
     playbackRate: 0.85,
     slitAngle: (15 * Math.PI) / 180,
@@ -164,6 +164,6 @@ const PRESETS: Record<RzpGlassPreset, RzpGlassPresetDefinition> = {
     animateCycleReps: false,
     zoom: 1,
   },
-};
+});
 
-export { DEFAULT_CONFIG, PRESETS };
+export { DEFAULT_CONFIG, getPresets };

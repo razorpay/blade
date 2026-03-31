@@ -44,6 +44,10 @@ float vnoise(vec2 p) {
 }
 
 void main() {
+  // Envelope controls: how the gradient fades from center outward
+  const float FADE_OUTER_EDGE = 1.4;   // distance where gradient fully fades to black
+  const float FADE_INNER_EDGE = 0.4;  // distance where gradient is at full opacity
+
   vec2 uv = vUv - uOrigin;
   float angle = atan(uv.y, uv.x);
   float r = length(uv);
@@ -71,9 +75,12 @@ void main() {
   float phase = w * 0.5 + 0.5;
   vec3 color = gradientColor(phase);
 
-  float envelope  = smoothstep(0.75, 0.42, r);
-  float centerFill = smoothstep(0.06, 0.0, r);
-  color = mix(color * envelope, gradientColor(0.0), centerFill);
+  float envelope = smoothstep(FADE_OUTER_EDGE, FADE_INNER_EDGE, r);
+  color = color * envelope;
+
+  // Film grain effect
+  float grain = hash(vUv * 500.0 + fract(uTime * 0.5)) * 2.0 - 1.0;
+  color += grain * 0.0002;
 
   gl_FragColor = vec4(color, 1.0);
 }

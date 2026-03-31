@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.94.0",
+  "version": "12.98.0",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -296,7 +296,9 @@
     "typescript": "4.9",
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^6.1.1",
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "jsonrepair": "3.13.2",
+    "tweakpane": "4.0.5"
   },
   "peerDependencies": {
     "@floating-ui/react-native": "^0.10.0",

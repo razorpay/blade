@@ -475,6 +475,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
@@ -516,6 +518,8 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c25.c25.c25.c25.c25:hover:not([aria-disabled=true]),

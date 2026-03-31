@@ -220,14 +220,14 @@ export const globalTypes = {
   version: {
     name: 'Blade Documentation Version',
     description: 'Version of the Blade',
-    defaultValue: '11',
+    defaultValue: '12',
     toolbar: {
       icon: 'time',
-      title: ' v11 - Rebranded',
+      title: ' v12 - Spark',
       // Array of plain string values or MenuItem shape (see below)
       items: [
         { value: '10', title: ' v10 - Old' },
-        { value: '11', title: ' v11 - Rebranded', default: true },
+        { value: '12', title: ' v12 - Spark', default: true },
       ],
       dynamicTitle: true,
       // Property that specifies if the name of the item will be displayed

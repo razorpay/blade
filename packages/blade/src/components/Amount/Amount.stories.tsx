@@ -255,6 +255,43 @@ CustomFractionDigits.args = {
 };
 CustomFractionDigits.storyName = 'Custom Fraction Digits';
 
+const AutoFractionDigitsCurrencies = [
+  { currency: 'INR', label: 'INR (Indian Rupee) — 2 decimals' },
+  { currency: 'JPY', label: 'JPY (Japanese Yen) — 0 decimals' },
+  { currency: 'KWD', label: 'KWD (Kuwaiti Dinar) — 3 decimals' },
+  { currency: 'USD', label: 'USD (US Dollar) — 2 decimals' },
+  { currency: 'BHD', label: 'BHD (Bahraini Dinar) — 3 decimals' },
+] as const;
+
+const AutoFractionDigitsTemplate: StoryFn<typeof AmountComponent> = (args) => {
+  return (
+    <BaseBox justifyContent="flex-start">
+      {AutoFractionDigitsCurrencies.map(({ currency, label }) => (
+        <BaseBox
+          display="flex"
+          key={currency}
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingBottom="spacing.3"
+          flexDirection="column"
+        >
+          <Text marginBottom="spacing.2" size="small" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+          <AmountComponent {...args} currency={currency} />
+        </BaseBox>
+      ))}
+    </BaseBox>
+  );
+};
+
+export const AutoFractionDigits = AutoFractionDigitsTemplate.bind({});
+AutoFractionDigits.args = {
+  value: 12500,
+  fractionDigits: 'auto',
+};
+AutoFractionDigits.storyName = 'Auto Fraction Digits';
+
 // TODO: Replace below with i18nify getDefaultLocales API
 const localeList = [
   {

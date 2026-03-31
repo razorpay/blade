@@ -1,5 +1,110 @@
 # @razorpay/blade
 
+## 12.98.0
+
+### Minor Changes
+
+- f4b7c371a: feat(blade): add reticle icon
+
+### Patch Changes
+
+- ea50bce32: fix(blade): bottomsheet not scrolling in virtualized action list
+- 65bf2998d: fix(blade): phone number input bottomsheet issue
+
+## 12.97.1
+
+### Patch Changes
+
+- 7b617af17: fix(TimePicker): fix timepicker's dropdown z-index and focus management when rendered inside modal
+
+## 12.97.0
+
+### Minor Changes
+
+- 7113c390d: feat(Amount): add `fractionDigits="auto"` to automatically determine decimal places based on currency (e.g. JPY → 0, INR → 2, KWD → 3)
+
+## 12.96.6
+
+### Patch Changes
+
+- 2b7f5eaa6: chore(blade): point jsdelivr url to the latest release
+
+## 12.96.5
+
+### Patch Changes
+
+- 95802377c: fix(blade): fix encoding of blade spark video
+
+## 12.96.4
+
+### Patch Changes
+
+- 149635160: fix(SideNav): text alignment in sidenavitem
+
+## 12.96.3
+
+### Patch Changes
+
+- d1d70cac5: fix: use transient prop in Table cell styled components
+- 9e2e502e4: fix(blade): redo card effects with backgroundImage to avoid zIndexing and isolation issues
+
+## 12.96.2
+
+### Patch Changes
+
+- ca87948d5: fix(Modal): search in modal in topnav
+
+## 12.96.1
+
+### Patch Changes
+
+- b2f53f2bb: fix(blade): remove unneeded boxShadow in card
+
+## 12.96.0
+
+### Minor Changes
+
+- 4df852372: feat(GenUI): added badge support in InfoGroup component & component error fallbacks
+
+## 12.95.5
+
+### Patch Changes
+
+- e8d4a815b: fix(GenUI): update scroll behaviour for Table & add divider in Card & make title/subtitle option in Card
+
+## 12.95.4
+
+### Patch Changes
+
+- e75dcee43: feat(blade): update RazorSense bottomwave animation slightly
+
+## 12.95.3
+
+### Patch Changes
+
+- 9a0e38d40: feat(Card): pass elevation prop to CardSurface
+
+## 12.95.2
+
+### Patch Changes
+
+- 14bb86e66: fix(blade): input overflow, modal color in topnav, and card overflow
+- 61c29ed99: fix: remove the elevation prop from StyledDropdownOverlay
+
+## 12.95.1
+
+### Patch Changes
+
+- 331a9a605: feat(TabNavItem): add titleSuffix prop for status badges
+- 054c779e0: fix(blade): RazorSense background color mixing
+
+## 12.95.0
+
+### Minor Changes
+
+- a8823b007: feat(blade): update razorsense cdn path & added preloadRazorSenseAssets utility
+  feat(blade-mcp): add knowledgebase for RazorSense and RazorSenseGradient
+
 ## 12.94.0
 
 ### Minor Changes
