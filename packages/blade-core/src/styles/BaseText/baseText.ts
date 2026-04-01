@@ -20,7 +20,7 @@ export type BaseTextVariants = {
     | 'full-width'
     | 'full-size-kana';
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
-  letterSpacing?: 50 | 100;
+  letterSpacing?: 25 | 50 | 100;
   numberOfLines?: number;
   color?: string;
   opacity?: number;
@@ -101,6 +101,7 @@ export const baseTextStyles = cva(styles.base, {
       'break-word': styles['word-break-break-word'],
     },
     letterSpacing: {
+      25: styles['letter-spacing-25'],
       50: styles['letter-spacing-50'],
       100: styles['letter-spacing-100'],
     },
