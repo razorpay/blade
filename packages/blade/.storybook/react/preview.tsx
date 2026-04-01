@@ -1,17 +1,18 @@
 import styled from 'styled-components';
-import { theme, toggleHiddenStoryStyle } from './manager';
-import { global } from '@storybook/design-system';
+import { create } from 'storybook/theming';
+import { themeConfig } from './storybook-theme';
 import { BladeProvider } from '../../src/components';
 import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
-const { GlobalStyle } = global;
-import { DocsContainer } from '@storybook/addon-docs';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import './global.css';
 import { domMax, LazyMotion } from 'framer-motion';
+
+const theme = create(themeConfig);
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -24,13 +25,13 @@ export const parameters = {
     canvas: { title: 'Stories', index: 1 },
   },
   backgrounds: {
-    disable: true,
     grid: {
       disable: true,
     },
+    disabled: true,
   },
   viewport: {
-    viewports: {
+    options: {
       ...MINIMAL_VIEWPORTS,
       iPhone6: {
         name: 'iPhone 6',
@@ -45,7 +46,6 @@ export const parameters = {
   // on development setting it to undefined so that on 'live reload' it won't switch
   // to docs panel while developing the component
   viewMode: process.env.NODE_ENV === 'development' ? undefined : 'docs',
-  actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
       method: 'alphabetical',
@@ -92,27 +92,29 @@ export const parameters = {
     },
   },
   docs: {
-    container: ({ children, context }) => {
+    container: ({ children, context, ...rest }) => {
+      const globals = context.store.userGlobals?.globals ?? {};
+
       const getThemeTokens = () => {
-        if (context.store.globals.globals.brandColor) {
-          return createTheme({ brandColor: context.store.globals.globals.brandColor }).theme;
+        if (globals.brandColor) {
+          return createTheme({ brandColor: globals.brandColor }).theme;
         }
         return bladeTheme;
       };
 
-      if (context.store.globals.globals.version === '10' && window.top) {
+      if (globals.version === '10' && window.top) {
         window.top.location.href =
           'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
           window.top.location.pathname +
           window.top.location.search;
       }
       return (
-        <DocsContainer context={context}>
+        <DocsContainer context={context} {...rest}>
           <LazyMotion strict features={domMax}>
             <BladeProvider
-              key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
+              key={`${globals.themeTokenName}-${globals.colorScheme}`}
               themeTokens={getThemeTokens()}
-              colorScheme={context.store.globals.globals.colorScheme}
+              colorScheme={globals.colorScheme}
             >
               {children}
             </BladeProvider>
@@ -181,7 +183,6 @@ const StoryCanvas = styled.div<{ context }>(
 
 export const decorators = [
   (Story, context) => {
-    toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
       if (context.globals.brandColor) {
         return createTheme({ brandColor: context.globals.brandColor }).theme;
@@ -198,7 +199,6 @@ export const decorators = [
 
     return (
       <ErrorBoundary>
-        <GlobalStyle />
         {/* strict in LazyMotion will make sure we don't use excessive `motion` component in blade components and instead use light weight `m` */}
         <LazyMotion strict features={domMax}>
           <BladeProvider
@@ -276,6 +276,6 @@ export const globalTypes = {
   },
 };
 
-export const globals = {
+export const initialGlobals = {
   [INTERNAL_STORY_ADDON_PARAM]: false,
 };

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { jest, expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent, fn, expect } from 'storybook/test';
 import React from 'react';
 import type { TabNavProps } from '../TabNav';
 import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
@@ -121,9 +120,9 @@ TestOverflow.play = async ({ canvasElement }) => {
   // so we need to mock it
   if (isSafari) {
     global.ResizeObserver = class ResizeObserver {
-      observe = jest.fn();
-      unobserve = jest.fn();
-      disconnect = jest.fn();
+      observe = fn();
+      unobserve = fn();
+      disconnect = fn();
     };
   }
 
@@ -190,9 +189,9 @@ ShouldNotShowMore.play = async ({ canvasElement }) => {
 
   if (isSafari) {
     global.ResizeObserver = class ResizeObserver {
-      observe = jest.fn();
-      unobserve = jest.fn();
-      disconnect = jest.fn();
+      observe = fn();
+      unobserve = fn();
+      disconnect = fn();
     };
   }
 

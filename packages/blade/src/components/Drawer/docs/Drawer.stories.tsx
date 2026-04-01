@@ -1,6 +1,6 @@
 import React from 'react';
-import type { StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { DrawerProps } from '../';
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader } from '../';
 import { DrawerStackingStory } from './stories';

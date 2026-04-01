@@ -9,7 +9,11 @@
     "**/**.web.tsx",
     "**/**.web.test.ts",
     "**/**.web.test.tsx",
-    "**/ThemePlayground/**/**.tsx"
+    "**/ThemePlayground/**/**.tsx",
+    "**/utils/storybook/**",
+    "**/storybook-recipes/**",
+    "**/components/**/docs/**",
+    "**/*Docs.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,

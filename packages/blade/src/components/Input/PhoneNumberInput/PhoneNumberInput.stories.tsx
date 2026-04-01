@@ -1,8 +1,8 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { PhoneNumberInputProps } from './types';
 import { PhoneNumberInput } from './PhoneNumberInput';
 import { Box } from '~components/Box';

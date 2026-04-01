@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';

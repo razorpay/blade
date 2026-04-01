@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
-import type { StoryFn, Meta } from '@storybook/react';
-import StoryRouter from 'storybook-react-router';
+import { Title } from '@storybook/addon-docs/blocks';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';
 import type { StepGroupProps, StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
