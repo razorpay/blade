@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.98.1
+
+### Patch Changes
+
+- 14beb5447: fix(blade): remove country name from dial code selector in PhoneNumberInput
+
 ## 12.98.0
 
 ### Minor Changes
