@@ -52,7 +52,12 @@ export {
   spinnerIconClass,
 } from './Spinner';
 export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './Spinner';
-export { subtleFontSizes, normalAmountSizes, currencyHardcodedSizes, amountLineHeights } from './Amount';
+export {
+  subtleFontSizes,
+  normalAmountSizes,
+  currencyHardcodedSizes,
+  amountLineHeights,
+} from './Amount';
 export type {
   AmountTypeProps,
   AmountBodyProps,
