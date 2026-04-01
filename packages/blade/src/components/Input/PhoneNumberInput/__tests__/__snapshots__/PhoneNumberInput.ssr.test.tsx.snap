@@ -118,15 +118,15 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   height: 100%;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   padding-left: 12px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   margin-left: 0px;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -193,25 +193,8 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   color: hsla(204,9%,42%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
-  margin: 0;
-  padding: 0;
-}
-
-.c15.c15.c15.c15.c15 {
-  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -289,7 +272,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   outline-offset: 0px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -322,7 +305,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   cursor: auto;
 }
 
-.c18.c18.c18.c18.c18::-webkit-input-placeholder {
+.c17.c17.c17.c17.c17::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -339,7 +322,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18::-moz-placeholder {
+.c17.c17.c17.c17.c17::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -356,7 +339,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18:-ms-input-placeholder {
+.c17.c17.c17.c17.c17:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -373,7 +356,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18::placeholder {
+.c17.c17.c17.c17.c17::placeholder {
   color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -390,7 +373,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18:focus {
+.c17.c17.c17.c17.c17:focus {
   outline: none;
 }
 
@@ -607,13 +590,6 @@ exports[`<PhoneNumberInput /> should render 2`] = `
                         src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/in.svg"
                         width="20px"
                       />
-                      <p
-                        class="c15"
-                        data-blade-component="text"
-                        letter-spacing="50"
-                      >
-                        India
-                      </p>
                       <svg
                         aria-hidden="true"
                         class="Svgweb__StyledSvg-vcmjs8-0"
@@ -640,11 +616,11 @@ exports[`<PhoneNumberInput /> should render 2`] = `
               </div>
             </div>
             <div
-              class="c16"
+              class="c15"
               data-blade-component="base-box"
             >
               <p
-                class="c17"
+                class="c16"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -659,7 +635,7 @@ exports[`<PhoneNumberInput /> should render 2`] = `
             aria-label="Enter phone number"
             aria-required="false"
             autocomplete="off"
-            class="c18"
+            class="c17"
             data-blade-component="styled-base-input"
             enterkeyhint="done"
             id="phone-number-input-3-input-4"
@@ -673,11 +649,11 @@ exports[`<PhoneNumberInput /> should render 2`] = `
       </div>
     </div>
     <div
-      class="c19"
+      class="c18"
       data-blade-component="base-box"
     >
       <div
-        class="c20"
+        class="c19"
         data-blade-component="base-box"
       />
     </div>
