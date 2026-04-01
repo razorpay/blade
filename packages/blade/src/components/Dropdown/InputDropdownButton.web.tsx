@@ -78,11 +78,11 @@ type BaseInputDropDownButtonProps = {
    */
   leading?: React.ReactNode;
   /**
-   * hideDisplayValue hides the selected value text in the trigger button.
-   * Useful when only the leading element (e.g., a flag) should be shown.
-   * @default false
+   * showDisplayValue shows the selected value text in the trigger button.
+   * When false, only the leading element (e.g., a flag) is shown.
+   * @default true
    */
-  hideDisplayValue?: boolean;
+  showDisplayValue?: boolean;
   /**
    * size is the size of the dropdown button (inherited from parent input)
    * @default 'medium'
@@ -163,7 +163,7 @@ const _InputDropdownButton = ({
   defaultValue,
   icon: Icon,
   leading,
-  hideDisplayValue = false,
+  showDisplayValue = true,
   size = 'medium',
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
@@ -260,7 +260,7 @@ const _InputDropdownButton = ({
           />
         )}
 
-        {!hideDisplayValue && (
+        {showDisplayValue && (
           <Text
             variant="body"
             size="medium"

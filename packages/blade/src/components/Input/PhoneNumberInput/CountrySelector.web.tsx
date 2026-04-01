@@ -86,7 +86,7 @@ const CountrySelector = ({
         isDisabled={isDisabled}
         size={size}
         leading={flagImage}
-        hideDisplayValue={true}
+        showDisplayValue={false}
       />
       {isMobile ? (
         <BottomSheet>
