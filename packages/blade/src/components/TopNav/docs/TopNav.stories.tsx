@@ -222,10 +222,10 @@ const ExploreItem = ({
   );
 };
 
-const DashboardBackground = styled.div(() => {
+const DashboardBackground = styled.div<{ background?: string }>(({ background }) => {
   return {
     height: '100vh',
-    background: '#000000',
+    background: background ?? '#000000',
   };
 });
 
@@ -326,7 +326,7 @@ const MobileTopNav = (): React.ReactElement => {
   );
 };
 
-const TopNavFullExample = () => {
+const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neutral' }) => {
   const history = useHistory();
   const { theme } = useTheme();
   const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({
@@ -342,10 +342,15 @@ const TopNavFullExample = () => {
     setSelectedProduct(activeUrl);
   }, [activeUrl]);
 
+  const dashboardBgColor =
+    variant === 'primary'
+      ? (theme.colors.surface.background.primary.intense as string)
+      : '#000000';
+
   return (
-    <DashboardBackground>
+    <DashboardBackground background={dashboardBgColor}>
       <BaseBox>
-        <TopNav>
+        <TopNav variant={variant}>
           {isMobile ? (
             <MobileTopNav />
           ) : (
@@ -1065,200 +1070,16 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
 export const WithButton = TopNavWithButtonTemplate.bind({});
 WithButton.storyName = 'With Button';
 
-const TopNavNeutralVariantTemplate: StoryFn<typeof TopNav> = () => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isMobile = matchedDeviceType === 'mobile';
-
-  return (
-    <DashboardBackground>
-      <BaseBox>
-        <TopNav variant="neutral">
-          {isMobile ? (
-            <MobileTopNav />
-          ) : (
-            <>
-              <TopNavBrand>
-                <RazorpayLogoWhite />
-              </TopNavBrand>
-              <TopNavContent>
-                <TabNav
-                  items={[
-                    { title: 'Home', href: '/home', icon: HomeIcon },
-                    {
-                      href: '/payments',
-                      title: 'Payments',
-                      icon: { default: AcceptPaymentsIcon, selected: AcceptPaymentsFilledIcon },
-                      description: 'Manage payments effortlessly.',
-                    },
-                    {
-                      href: '/magic-checkout',
-                      title: 'Magic Checkout',
-                      icon: { default: ShoppingBagIcon, selected: MagicCheckoutFilledIcon },
-                      description: 'Fast, one-click checkout.',
-                    },
-                  ]}
-                >
-                  {({ items }) => (
-                    <TabNavItems>
-                      {items.map((item) => (
-                        <TabNavItemLink key={item.title} {...item} />
-                      ))}
-                    </TabNavItems>
-                  )}
-                </TabNav>
-              </TopNavContent>
-              <TopNavActions>
-                <Tooltip content="View Announcements">
-                  <IconButton
-                    icon={AnnouncementIcon}
-                    onClick={noop}
-                    isHighlighted={true}
-                    size="medium"
-                    accessibilityLabel="View Announcements"
-                  />
-                </Tooltip>
-                <Menu openInteraction="click">
-                  <Avatar size="small" name="Anurag Hazra" />
-                  <MenuOverlay>
-                    <MenuHeader title="Profile" />
-                    <MenuItem>
-                      <Text color="surface.text.gray.subtle">Settings</Text>
-                    </MenuItem>
-                    <MenuItem color="negative">
-                      <Text color="feedback.text.negative.intense">Logout</Text>
-                    </MenuItem>
-                  </MenuOverlay>
-                </Menu>
-              </TopNavActions>
-            </>
-          )}
-        </TopNav>
-        <Box
-          overflow="hidden"
-          position="relative"
-          borderRadius={{ base: 'none', m: 'large' }}
-          borderTopRightRadius={{ base: 'none', m: 'large' }}
-          borderBottomLeftRadius="none"
-          borderBottomRightRadius="none"
-          height="100%"
-          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
-        >
-          <Box
-            height="calc(100vh - 58px)"
-            padding="spacing.5"
-            backgroundColor="surface.background.gray.moderate"
-          >
-            <Text margin="spacing.5">
-              This is the neutral variant (default) of TopNav — static black background.
-            </Text>
-          </Box>
-        </Box>
-      </BaseBox>
-    </DashboardBackground>
-  );
-};
+const TopNavNeutralVariantTemplate: StoryFn<typeof TopNav> = () => (
+  <TopNavFullExample variant="neutral" />
+);
 
 export const NeutralVariant = TopNavNeutralVariantTemplate.bind({});
 NeutralVariant.storyName = 'Neutral Variant';
 
-const TopNavPrimaryVariantTemplate: StoryFn<typeof TopNav> = () => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isMobile = matchedDeviceType === 'mobile';
-
-  return (
-    <DashboardBackground>
-      <BaseBox>
-        <TopNav variant="primary">
-          {isMobile ? (
-            <MobileTopNav />
-          ) : (
-            <>
-              <TopNavBrand>
-                <RazorpayLogoWhite />
-              </TopNavBrand>
-              <TopNavContent>
-                <TabNav
-                  items={[
-                    { title: 'Home', href: '/home', icon: HomeIcon },
-                    {
-                      href: '/payments',
-                      title: 'Payments',
-                      icon: { default: AcceptPaymentsIcon, selected: AcceptPaymentsFilledIcon },
-                      description: 'Manage payments effortlessly.',
-                    },
-                    {
-                      href: '/magic-checkout',
-                      title: 'Magic Checkout',
-                      icon: { default: ShoppingBagIcon, selected: MagicCheckoutFilledIcon },
-                      description: 'Fast, one-click checkout.',
-                    },
-                  ]}
-                >
-                  {({ items }) => (
-                    <TabNavItems>
-                      {items.map((item) => (
-                        <TabNavItemLink key={item.title} {...item} />
-                      ))}
-                    </TabNavItems>
-                  )}
-                </TabNav>
-              </TopNavContent>
-              <TopNavActions>
-                <Tooltip content="View Announcements">
-                  <IconButton
-                    icon={AnnouncementIcon}
-                    onClick={noop}
-                    isHighlighted={true}
-                    size="medium"
-                    accessibilityLabel="View Announcements"
-                  />
-                </Tooltip>
-                <Menu openInteraction="click">
-                  <Avatar size="small" name="Anurag Hazra" />
-                  <MenuOverlay>
-                    <MenuHeader title="Profile" />
-                    <MenuItem>
-                      <Text color="surface.text.gray.subtle">Settings</Text>
-                    </MenuItem>
-                    <MenuItem color="negative">
-                      <Text color="feedback.text.negative.intense">Logout</Text>
-                    </MenuItem>
-                  </MenuOverlay>
-                </Menu>
-              </TopNavActions>
-            </>
-          )}
-        </TopNav>
-        <Box
-          overflow="hidden"
-          position="relative"
-          borderRadius={{ base: 'none', m: 'large' }}
-          borderTopRightRadius={{ base: 'none', m: 'large' }}
-          borderBottomLeftRadius="none"
-          borderBottomRightRadius="none"
-          height="100%"
-          marginX={{ base: 'spacing.0', m: 'spacing.3' }}
-        >
-          <Box
-            height="calc(100vh - 58px)"
-            padding="spacing.5"
-            backgroundColor="surface.background.gray.moderate"
-          >
-            <Text margin="spacing.5">
-              This is the primary variant of TopNav — uses{' '}
-              <Text as="span" weight="semibold">
-                surface.background.primary.intense
-              </Text>{' '}
-              as the background. The selected tab indicator glow is white.
-            </Text>
-          </Box>
-        </Box>
-      </BaseBox>
-    </DashboardBackground>
-  );
-};
+const TopNavPrimaryVariantTemplate: StoryFn<typeof TopNav> = () => (
+  <TopNavFullExample variant="primary" />
+);
 
 export const PrimaryVariant = TopNavPrimaryVariantTemplate.bind({});
 PrimaryVariant.storyName = 'Primary Variant';
