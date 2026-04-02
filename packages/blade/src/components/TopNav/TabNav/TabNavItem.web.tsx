@@ -3,19 +3,20 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import type { TabNavItemProps, TabNavIconProp } from './types';
-import { useTabNavContext } from './TabNavContext';
-import { useTopNavContext } from '../TopNavContext';
-import BaseBox from '~components/Box/BaseBox';
-import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { opacity } from '~tokens/global';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import { useTopNavContext } from '../TopNavContext';
+import type { TabNavItemProps, TabNavIconProp } from './types';
+import { useTabNavContext } from './TabNavContext';
+import BaseBox from '~components/Box/BaseBox';
+import getTextStyles from '~components/Typography/Text/getTextStyles';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useTheme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import { RayIcon } from '~components/Icons';
 
@@ -29,6 +30,20 @@ const isRayIcon = (icon?: TabNavIconProp): boolean => {
   if (!icon) return false;
   const defaultIcon = isIconObjectProp(icon) ? icon.default : icon;
   return defaultIcon === RayIcon;
+};
+
+const getGlowColor = ({
+  icon,
+  isPrimaryVariant,
+  theme,
+}: {
+  icon?: TabNavIconProp;
+  isPrimaryVariant: boolean;
+  theme: Theme;
+}): string => {
+  if (isRayIcon(icon) && !isPrimaryVariant) return theme.colors.surface.icon.onSea.onSubtle;
+  if (isPrimaryVariant) return theme.colors.surface.icon.staticWhite.normal;
+  return theme.colors.surface.background.primary.intense;
 };
 
 const StyledTabNavItem = styled.a<{ $isActive?: boolean }>(({ theme, $isActive }) => {
@@ -152,11 +167,8 @@ const _TabNavItem: React.ForwardRefRenderFunction<HTMLAnchorElement, TabNavItemP
     }
   }
 
-  const glowColor = isRayIcon(icon)
-    ? theme.colors.surface.icon.onSea.onSubtle
-    : topNavContext?.variant === 'primary'
-    ? theme.colors.surface.icon.staticWhite.normal
-    : theme.colors.surface.background.primary.intense;
+  const isPrimaryVariant = topNavContext?.variant === 'primary';
+  const glowColor = getGlowColor({ icon, isPrimaryVariant, theme });
 
   return (
     <StyledTabNavItemWrapper
