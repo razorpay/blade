@@ -885,7 +885,7 @@ exports[`TopNav renders with variant="primary" applying primary background color
   height: 56px;
   width: 100%;
   top: 0px;
-  background-color: hsla(218,100%,63%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c1.c1.c1.c1.c1 {

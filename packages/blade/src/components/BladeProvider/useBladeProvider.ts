@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import type { Theme } from './index';
 import { useColorScheme, useBreakpoint } from '~utils';
 import type { ColorSchemeNames, ColorSchemeNamesInput, ThemeTokens } from '~tokens/theme';
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { TypographyPlatforms } from '~tokens/global';
 import type { ColorSchemeModes } from '~tokens/theme/theme';
 import { throwBladeError } from '~utils/logger';
-import type { Theme } from './index';
 import { toTitleCase } from '~utils/toTitleCase';
 
 type ThemeContextValue = {

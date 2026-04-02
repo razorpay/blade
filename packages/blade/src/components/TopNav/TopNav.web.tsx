@@ -1,10 +1,10 @@
 import React from 'react';
+import { TopNavContext, useTopNavContext } from './TopNavContext';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { TopNavContext, useTopNavContext } from './TopNavContext';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BoxProps } from '~components/Box';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
