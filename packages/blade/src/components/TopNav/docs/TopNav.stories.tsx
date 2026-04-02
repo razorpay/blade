@@ -343,9 +343,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
   }, [activeUrl]);
 
   const dashboardBgColor =
-    variant === 'primary'
-      ? (theme.colors.surface.background.primary.intense as string)
-      : '#000000';
+    variant === 'primary' ? (theme.colors.surface.background.primary.intense as string) : '#000000';
 
   return (
     <DashboardBackground background={dashboardBgColor}>
@@ -469,6 +467,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
                       icon={SearchIcon}
                       onClick={noop}
                       accessibilityLabel="Search in payments"
+                      emphasis={variant === 'primary' ? 'subtle' : undefined}
                     />
                   </Tooltip>
                 ) : (
@@ -481,6 +480,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
                     onClick={noop}
                     accessibilityLabel="View Ecosystem Health"
                     isHighlighted={true}
+                    emphasis={variant === 'primary' ? 'subtle' : undefined}
                   />
                 </Tooltip>
                 <Tooltip content="View Announcements">
@@ -488,6 +488,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
                     size={isMobile ? 'small' : 'medium'}
                     icon={AnnouncementIcon}
                     onClick={noop}
+                    emphasis={variant === 'primary' ? 'subtle' : undefined}
                     accessibilityLabel="View Announcements"
                     isHighlighted={true}
                   />

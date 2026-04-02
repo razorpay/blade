@@ -1,5 +1,11 @@
 import React from 'react';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { TopNavContext, useTopNavContext } from './TopNavContext';
+import { componentZIndices } from '~utils/componentZIndices';
 import type { BoxProps } from '~components/Box';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -9,13 +15,6 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
-import { size } from '~tokens/global';
-import { bladeTheme } from '~tokens/theme';
-import { makeSize } from '~utils';
-import { componentZIndices } from '~utils/componentZIndices';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 
 const TOP_NAV_HEIGHT = size[56];
 
@@ -66,15 +65,15 @@ const _TopNav = (
   { children, variant = 'neutral', backgroundColor, ...rest }: TopNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const { colorScheme } = useTheme();
+  const { colorScheme, themeTokens } = useTheme();
   const resolvedBackgroundColor = backgroundColor ?? TOP_NAV_BACKGROUND_COLOR[variant];
 
   return (
-    <TopNavContext.Provider value={{ colorScheme, variant }}>
+    <TopNavContext.Provider value={{ colorScheme, themeTokens, variant }}>
       {/* We are forcing the theme to dark here because the TopNav is always in dark mode.
        we also want components inside the TopNav to be in the same theme as the TopNav.
       */}
-      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <BladeProvider themeTokens={themeTokens} colorScheme="dark">
         <BaseBox
           ref={ref as never}
           display="grid"
@@ -134,7 +133,7 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const topNavContext = useTopNavContext();
-  const { colorScheme } = useTheme();
+  const { colorScheme, themeTokens } = useTheme();
   const topNavActions = (
     <BaseBox
       alignSelf="flex-start"
@@ -153,12 +152,19 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
   );
 
   if (topNavContext) {
-    return topNavActions;
+    return (
+      <BladeProvider
+        themeTokens={topNavContext.themeTokens}
+        colorScheme={topNavContext.variant === 'primary' ? 'light' : 'dark'}
+      >
+        {topNavActions}
+      </BladeProvider>
+    );
   }
 
   return (
-    <TopNavContext.Provider value={{ colorScheme }}>
-      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+    <TopNavContext.Provider value={{ colorScheme, themeTokens }}>
+      <BladeProvider themeTokens={themeTokens} colorScheme="dark">
         {topNavActions}
       </BladeProvider>
     </TopNavContext.Provider>
