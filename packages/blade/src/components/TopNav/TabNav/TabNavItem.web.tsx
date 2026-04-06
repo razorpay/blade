@@ -3,13 +3,13 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
+import { useTopNavContext } from '../TopNavContext';
+import type { TabNavItemProps, TabNavIconProp } from './types';
+import { useTabNavContext } from './TabNavContext';
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { opacity } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-import { useTopNavContext } from '../TopNavContext';
-import type { TabNavItemProps, TabNavIconProp } from './types';
-import { useTabNavContext } from './TabNavContext';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
