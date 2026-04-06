@@ -254,13 +254,13 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
  */
 export function getButtonSpinnerSize(): Record<
   'xsmall' | 'small' | 'medium' | 'large',
-  'medium' | 'large' | 'xlarge'
+  'medium' | 'large'
 > {
   return {
     xsmall: 'medium',
-    small: 'large',
-    medium: 'large',
-    large: 'xlarge',
+    small: 'medium',
+    medium: 'medium',
+    large: 'large',
   } as const;
 }
 

@@ -7,11 +7,17 @@
   cursor: pointer;
   display: inline-block;
   border-radius: var(--border-radius-small);
-  transition-property: box-shadow, color, fill;
+  transition-property: box-shadow;
   transition-timing-function: var(--easing-standard);
   transition-duration: var(--duration-2xquick);
 
-  /* PostCSS nesting support */
+  /* Transition color and fill on all children */
+  & * {
+    transition-property: color, fill;
+    transition-timing-function: var(--easing-standard);
+    transition-duration: var(--duration-2xquick);
+  }
+
   &[disabled] {
     cursor: not-allowed;
   }

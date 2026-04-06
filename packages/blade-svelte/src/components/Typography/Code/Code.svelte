@@ -33,7 +33,7 @@
     }
   });
 
-  const { fontSize, lineHeight } = $derived(getCodeFontSizeAndLineHeight(finalSize));
+  const { fontSize, lineHeight, letterSpacing } = $derived(getCodeFontSizeAndLineHeight(finalSize));
   const codeTextColor = $derived(getCodeColor({ isHighlighted: finalIsHighlighted, color }) as TextColors);
 
   // Extract styled props and convert to classes
@@ -76,6 +76,7 @@
     fontWeight={finalWeight}
     as="code"
     lineHeight={lineHeight}
+    {letterSpacing}
     textTransform={textTransform}
   >
     {#if typeof children === 'string'}

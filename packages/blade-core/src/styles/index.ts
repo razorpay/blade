@@ -8,6 +8,7 @@ export {
   baseLinkIconClass,
   getLinkColorToken,
   getLinkTextSizes,
+  getLinkIconSizeMap,
 } from './BaseLink';
 export type {
   BaseLinkVariants,
