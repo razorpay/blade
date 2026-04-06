@@ -222,10 +222,10 @@ const ExploreItem = ({
   );
 };
 
-const DashboardBackground = styled.div(() => {
+const DashboardBackground = styled.div<{ background?: string }>(({ background }) => {
   return {
     height: '100vh',
-    background: '#000000',
+    background: background ?? '#000000',
   };
 });
 
@@ -326,7 +326,7 @@ const MobileTopNav = (): React.ReactElement => {
   );
 };
 
-const TopNavFullExample = () => {
+const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neutral' }) => {
   const history = useHistory();
   const { theme } = useTheme();
   const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({
@@ -342,10 +342,13 @@ const TopNavFullExample = () => {
     setSelectedProduct(activeUrl);
   }, [activeUrl]);
 
+  const dashboardBgColor =
+    variant === 'primary' ? (theme.colors.surface.background.primary.intense as string) : '#000000';
+
   return (
-    <DashboardBackground>
+    <DashboardBackground background={dashboardBgColor}>
       <BaseBox>
-        <TopNav>
+        <TopNav variant={variant}>
           {isMobile ? (
             <MobileTopNav />
           ) : (
@@ -464,6 +467,7 @@ const TopNavFullExample = () => {
                       icon={SearchIcon}
                       onClick={noop}
                       accessibilityLabel="Search in payments"
+                      emphasis={variant === 'primary' ? 'subtle' : undefined}
                     />
                   </Tooltip>
                 ) : (
@@ -476,6 +480,7 @@ const TopNavFullExample = () => {
                     onClick={noop}
                     accessibilityLabel="View Ecosystem Health"
                     isHighlighted={true}
+                    emphasis={variant === 'primary' ? 'subtle' : undefined}
                   />
                 </Tooltip>
                 <Tooltip content="View Announcements">
@@ -483,6 +488,7 @@ const TopNavFullExample = () => {
                     size={isMobile ? 'small' : 'medium'}
                     icon={AnnouncementIcon}
                     onClick={noop}
+                    emphasis={variant === 'primary' ? 'subtle' : undefined}
                     accessibilityLabel="View Announcements"
                     isHighlighted={true}
                   />
@@ -1064,3 +1070,17 @@ const TopNavWithButtonTemplate: StoryFn<typeof TopNav> = () => {
 
 export const WithButton = TopNavWithButtonTemplate.bind({});
 WithButton.storyName = 'With Button';
+
+const TopNavNeutralVariantTemplate: StoryFn<typeof TopNav> = () => (
+  <TopNavFullExample variant="neutral" />
+);
+
+export const NeutralVariant = TopNavNeutralVariantTemplate.bind({});
+NeutralVariant.storyName = 'Neutral Variant';
+
+const TopNavPrimaryVariantTemplate: StoryFn<typeof TopNav> = () => (
+  <TopNavFullExample variant="primary" />
+);
+
+export const PrimaryVariant = TopNavPrimaryVariantTemplate.bind({});
+PrimaryVariant.storyName = 'Primary Variant';
