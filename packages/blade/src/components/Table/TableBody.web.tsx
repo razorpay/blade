@@ -342,6 +342,7 @@ const _TableRow = <Item,>({
     setHasHoverActions,
     isVirtualized,
     isGrouped,
+    multiSelectTrigger,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -397,7 +398,7 @@ const _TableRow = <Item,>({
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => {
         onClick?.({ item });
-        if (selectionType !== 'none' && !isDisabled) {
+        if (selectionType !== 'none' && !isDisabled && multiSelectTrigger !== 'checkbox') {
           toggleRowSelectionById(item.id);
         }
       }}
