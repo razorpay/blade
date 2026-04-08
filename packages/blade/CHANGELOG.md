@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.99.1
+
+### Patch Changes
+
+- cbfd2e804: fix(Table): hide Deselect when nothing selected; decouple row & checkbox click
+
 ## 12.99.0
 
 ### Minor Changes
