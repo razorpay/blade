@@ -1,9 +1,10 @@
 import dayjs from 'dayjs';
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ListView } from '../ListView';
 import type { ListViewProps } from '../types';
 import { ListViewFilters } from '../ListViewFilters';
+import { ListViewSkeleton } from '../ListViewSkeleton';
 import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -2719,3 +2720,159 @@ const WithDropDownSearchExample: StoryFn<typeof ListView> = (args) => {
 };
 export const WithDropDownSearchExampleStory = WithDropDownSearchExample.bind({});
 WithDropDownSearchExampleStory.storyName = 'With Dropdown in Search Example';
+
+// ── ListViewSkeleton stories ─────────────────────────────────────────────────
+
+export const SkeletonDefault: StoryFn<typeof ListViewSkeleton> = () => (
+  <BaseBox height="100%">
+    <ListViewSkeleton rows={7} columns={5} />
+  </BaseBox>
+);
+SkeletonDefault.storyName = 'Skeleton — Default';
+
+export const SkeletonTableOnly: StoryFn<typeof ListViewSkeleton> = () => (
+  <BaseBox height="100%">
+    <ListViewSkeleton rows={6} columns={5} showFilters={false} showPagination={false} />
+  </BaseBox>
+);
+SkeletonTableOnly.storyName = 'Skeleton — Table Only (no filters, no pagination)';
+
+export const SkeletonManyColumns: StoryFn<typeof ListViewSkeleton> = () => (
+  <BaseBox height="100%">
+    <ListViewSkeleton rows={7} columns={6} />
+  </BaseBox>
+);
+SkeletonManyColumns.storyName = 'Skeleton — Many Columns (6)';
+
+// Simulates a real loading → data transition
+type SkeletonPaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: 'Completed' | 'Pending' | 'Failed';
+  date: Date;
+  method: string;
+};
+const skeletonMockNodes: SkeletonPaymentItem[] = Array.from({ length: 20 }, (_, i) => ({
+  id: (i + 1).toString(),
+  paymentId: `rzp${100000 + i}`,
+  amount: Number(((i + 1) * 432.5).toFixed(2)),
+  status: (['Completed', 'Pending', 'Failed'] as const)[i % 3],
+  date: new Date(2025, i % 12, (i % 28) + 1),
+  method: ['Bank Transfer', 'Credit Card', 'UPI'][i % 3],
+}));
+
+const SkeletonToListViewTransitionExample = (): React.ReactElement => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [tableData, setTableData] = useState<{ nodes: SkeletonPaymentItem[] }>({
+    nodes: skeletonMockNodes,
+  });
+  const [quickFilter, setQuickFilter] = useState('All');
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const getCount = (s: string): number => skeletonMockNodes.filter((n) => n.status === s).length;
+
+  if (isLoading) {
+    return <ListViewSkeleton rows={7} columns={5} />;
+  }
+
+  return (
+    <BaseBox height="100%">
+      <ListView>
+        <ListViewFilters
+          quickFilters={
+            <QuickFilterGroup
+              selectionType="single"
+              defaultValue="All"
+              value={quickFilter}
+              onChange={({ values }) => {
+                const v = values[0];
+                setQuickFilter(v);
+                setTableData(
+                  v === 'All'
+                    ? { nodes: skeletonMockNodes }
+                    : { nodes: skeletonMockNodes.filter((n) => n.status === v) },
+                );
+              }}
+            >
+              {(['All', 'Pending', 'Failed', 'Completed'] as const).map((s) => (
+                <QuickFilter
+                  key={s}
+                  title={s}
+                  value={s}
+                  trailing={
+                    <Counter
+                      value={s === 'All' ? skeletonMockNodes.length : getCount(s)}
+                      color="neutral"
+                    />
+                  }
+                />
+              ))}
+            </QuickFilterGroup>
+          }
+        />
+        <Table
+          data={tableData}
+          pagination={
+            <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
+          }
+        >
+          {(rows) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
+                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {rows.map((item) => (
+                  <TableRow key={item.id} item={item}>
+                    <TableCell>
+                      <Code size="small">{item.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={item.amount} />
+                    </TableCell>
+                    <TableCell>
+                      {item.date.toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </TableCell>
+                    <TableCell>{item.method}</TableCell>
+                    <TableCell>
+                      <Badge
+                        size="xsmall"
+                        color={
+                          item.status === 'Completed'
+                            ? 'positive'
+                            : item.status === 'Pending'
+                            ? 'notice'
+                            : 'negative'
+                        }
+                      >
+                        {item.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      </ListView>
+    </BaseBox>
+  );
+};
+
+export const SkeletonToListViewTransition = SkeletonToListViewTransitionExample.bind({});
+SkeletonToListViewTransition.storyName = 'Skeleton → ListView transition (reload to replay)';
