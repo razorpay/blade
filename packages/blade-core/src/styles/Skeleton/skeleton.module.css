@@ -1,0 +1,33 @@
+@keyframes skeleton-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-color: var(--interactive-background-gray-default);
+  }
+  25% {
+    background-color: var(--interactive-background-gray-default);
+  }
+  100% {
+    background-color: var(--interactive-background-gray-highlighted);
+  }
+}
+
+.skeleton {
+  opacity: 0;
+  background-color: var(--interactive-background-gray-default);
+  animation-name: skeleton-fade-in, skeleton-pulse;
+  animation-duration: var(--duration-2xgentle), calc(var(--duration-xmoderate) + var(--duration-2xgentle));
+  animation-delay: 0ms, var(--duration-2xgentle);
+  animation-timing-function: var(--easing-standard), var(--easing-standard);
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
+  animation-fill-mode: forwards;
+  cursor: progress;
+}

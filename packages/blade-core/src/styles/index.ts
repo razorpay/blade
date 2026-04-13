@@ -77,3 +77,4 @@ export {
 export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export { skeletonStyles, getSkeletonClasses, getSkeletonTemplateClasses } from './Skeleton';

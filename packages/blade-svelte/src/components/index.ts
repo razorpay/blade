@@ -31,5 +31,8 @@ export { default as Badge } from './Badge/Badge.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Skeleton
+export { default as Skeleton } from './Skeleton/Skeleton.svelte';
+
 // BladeProvider
 export * from './BladeProvider';
