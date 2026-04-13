@@ -53,6 +53,7 @@ export type TextPropsResult = {
   fontWeight: TextWeight;
   fontStyle: 'normal';
   lineHeight: LineHeight;
+  letterSpacing?: 25 | 50 | 100;
   fontFamily: 'text';
   componentName: 'text';
   testID?: string;
@@ -118,18 +119,22 @@ export function getTextProps({
     if (size === 'xsmall') {
       props.fontSize = 25;
       props.lineHeight = 25;
+      props.letterSpacing = 50;
     }
     if (size === 'small') {
       props.fontSize = 75;
       props.lineHeight = 75;
+      props.letterSpacing = 50;
     }
     if (size === 'medium') {
       props.fontSize = 100;
       props.lineHeight = 100;
+      props.letterSpacing = 50;
     }
     if (size === 'large') {
       props.fontSize = 200;
       props.lineHeight = 200;
+      props.letterSpacing = 25;
     }
   }
   if (variant === 'caption') {
@@ -137,11 +142,13 @@ export function getTextProps({
       props.fontSize = 50;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
+      props.letterSpacing = 50;
     }
     if (size === 'medium') {
       props.fontSize = 100;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
+      props.letterSpacing = 50;
     }
   }
 
