@@ -49,6 +49,9 @@ const normalAmountSizes: Record<
  * These values provide precise visual alignment that standard tokens cannot achieve.
  *
  * Used when `isAffixSubtle={false}` - currency symbols are slightly smaller than main number.
+ *
+ * TODO: Reuse blade-core common tokens across svelte and react codebases.
+ * These tokens are currently duplicated — blade-react should import and use these directly.
  */
 const currencyHardcodedSizes: Record<
   'body' | 'heading' | 'display',

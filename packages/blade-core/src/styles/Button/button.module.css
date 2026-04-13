@@ -23,13 +23,21 @@
   }
 }
 
-/* Variants */
-.primary {}
-.secondary {}
-.tertiary {}
+/*
+ * Variant class anchors — intentionally empty.
+ * Keeping standalone declarations here decouples the export from the CSS rules declared later in the file —
+ * if a compound selector is removed, the class name still gets exported.
+ */
+.primary {
+}
+.secondary {
+}
+.tertiary {
+}
 
-/* Sizes */
+/* Sizes — each sets --btn-gradient-size for the filled variant's radial highlight */
 .xsmall {
+  --btn-gradient-size: 48px;
   min-height: 28px;
   padding-left: var(--spacing-3);
   padding-right: var(--spacing-3);
@@ -38,6 +46,7 @@
 }
 
 .small {
+  --btn-gradient-size: 56px;
   min-height: 32px;
   padding-left: var(--spacing-3);
   padding-right: var(--spacing-3);
@@ -46,6 +55,7 @@
 }
 
 .medium {
+  --btn-gradient-size: 64px;
   min-height: 36px;
   padding-left: var(--spacing-4);
   padding-right: var(--spacing-4);
@@ -54,6 +64,7 @@
 }
 
 .large {
+  --btn-gradient-size: 72px;
   min-height: 48px;
   border-radius: var(--border-radius-medium);
   padding-left: var(--spacing-5);
@@ -89,130 +100,122 @@
   }
 }
 
-/* ===== Color variant: Primary ===== */
+/*
+ * ===== Accent Color Definitions =====
+ * CSS custom properties parameterize the filled button pattern by accent color,
+ * eliminating repetition across primary, positive, and negative color variants.
+ */
 .color-primary {
-  &.primary {
-    background-color: var(--interactive-background-primary-default);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-primary-highlighted),
-      inset 0 0 0 0.5px var(--interactive-border-primary-default),
+  --btn-accent-bg-default: var(--interactive-background-primary-default);
+  --btn-accent-bg-highlighted: var(--interactive-background-primary-highlighted);
+  --btn-accent-bg-disabled: var(--interactive-background-primary-disabled);
+  --btn-accent-border-default: var(--interactive-border-primary-default);
+  --btn-accent-border-highlighted: var(--interactive-border-primary-highlighted);
+}
+
+.color-positive {
+  --btn-accent-bg-default: var(--interactive-background-positive-default);
+  --btn-accent-bg-highlighted: var(--interactive-background-positive-highlighted);
+  --btn-accent-bg-disabled: var(--interactive-background-positive-disabled);
+  --btn-accent-border-default: var(--interactive-border-positive-default);
+  --btn-accent-border-highlighted: var(--interactive-border-positive-highlighted);
+}
+
+.color-negative {
+  --btn-accent-bg-default: var(--interactive-background-negative-default);
+  --btn-accent-bg-highlighted: var(--interactive-background-negative-highlighted);
+  --btn-accent-bg-disabled: var(--interactive-background-negative-disabled);
+  --btn-accent-border-default: var(--interactive-border-negative-default);
+  --btn-accent-border-highlighted: var(--interactive-border-negative-highlighted);
+}
+
+/* ===== Filled button (primary variant) — shared across accent colors ===== */
+.color-primary.primary,
+.color-positive.primary,
+.color-negative.primary {
+  background-color: var(--btn-accent-bg-default);
+  background-image: radial-gradient(
+    var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
+    var(--interactive-background-static-white-faded) 0%,
+    transparent 100%
+  );
+  box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+    inset 0 0 0 0.5px var(--btn-accent-border-default),
+    inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
+    inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+
+  &:hover:not([disabled]) {
+    background-color: var(--btn-accent-bg-highlighted);
+    background-image: none;
+    box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+      inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
       inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
       inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-
-    &:hover:not([disabled]) {
-      background-color: var(--interactive-background-primary-highlighted);
-      background-image: none;
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-primary-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-primary-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &:active:not([disabled]) {
-      background-color: var(--interactive-background-primary-highlighted);
-      background-image: none;
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-primary-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-primary-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--interactive-background-primary-highlighted);
-      background-image: none;
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1.5px 0 0 var(--interactive-border-primary-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-primary-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-primary-disabled);
-      box-shadow: none;
-    }
   }
 
-  &.secondary {
-    background-color: var(--surface-background-gray-intense);
-    box-shadow:
-      inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-      inset 0 0 0 1px var(--interactive-border-gray-default),
-      inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-
-    &:hover:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &:active:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-static-white-ghost);
-      box-shadow: inset 0 0 0 1px var(--interactive-border-gray-disabled);
-    }
+  &:active:not([disabled]) {
+    background-color: var(--btn-accent-bg-highlighted);
+    background-image: none;
+    box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+      inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
+      inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
+      inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
   }
 
-  &.tertiary {
+  &:focus-visible:not([disabled]) {
+    background-color: var(--btn-accent-bg-highlighted);
+    background-image: none;
+    outline: 1px solid var(--surface-background-primary-subtle);
+    box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
+      inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+      inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
+      inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
+      inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+  }
+
+  &[disabled] {
+    background-color: var(--btn-accent-bg-disabled);
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+/* ===== Outlined button (secondary/tertiary) — shared across accent colors ===== */
+.color-primary.secondary,
+.color-primary.tertiary,
+.color-positive.secondary,
+.color-negative.secondary {
+  background-color: var(--surface-background-gray-intense);
+  box-shadow: inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
+    inset 0 0 0 1px var(--interactive-border-gray-default),
+    inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
+
+  &:hover:not([disabled]) {
     background-color: var(--surface-background-gray-intense);
-    box-shadow:
-      inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-      inset 0 0 0 1px var(--interactive-border-gray-default),
+    box-shadow: inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
+      inset 0 0 0 1px var(--interactive-border-gray-highlighted),
       inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
+  }
 
-    &:hover:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
+  &:active:not([disabled]) {
+    background-color: var(--surface-background-gray-intense);
+    box-shadow: inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
+      inset 0 0 0 1px var(--interactive-border-gray-highlighted),
+      inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
+  }
 
-    &:active:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
+  &:focus-visible:not([disabled]) {
+    background-color: var(--surface-background-gray-intense);
+    outline: 1px solid var(--surface-background-primary-subtle);
+    box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
+      inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
+      inset 0 0 0 1px var(--interactive-border-gray-highlighted),
+      inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
+  }
 
-    &:focus-visible:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-static-white-ghost);
-      box-shadow: inset 0 0 0 1px var(--interactive-border-gray-disabled);
-    }
+  &[disabled] {
+    background-color: var(--interactive-background-static-white-ghost);
+    box-shadow: inset 0 0 0 1px var(--interactive-border-gray-disabled);
   }
 }
 
@@ -220,99 +223,66 @@
 .color-white {
   &.primary {
     background-color: var(--interactive-background-static-white-default);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+    background-image: radial-gradient(
+      var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
+      var(--interactive-background-static-white-faded) 0%,
+      transparent 100%
+    );
+    box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
       inset 0 0 0 0.5px var(--interactive-border-static-white-default);
 
     &:hover:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+      background-image: none;
+      box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
     }
 
     &:active:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+      background-image: none;
+      box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
     }
 
     &:focus-visible:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
+      background-image: none;
       outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
+      box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
         inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
     }
 
     &[disabled] {
       background-color: var(--interactive-background-static-white-disabled);
+      background-image: none;
       box-shadow: none;
     }
   }
 
-  &.secondary {
-    background-color: var(--interactive-background-static-white-faded);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
-      inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
-
-    &:hover:not([disabled]) {
-      background-color: var(--interactive-background-static-black-faded);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
-    }
-
-    &:active:not([disabled]) {
-      background-color: var(--interactive-background-static-black-faded);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--interactive-background-static-black-faded);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-gray-disabled);
-      box-shadow: inset 0 0 0 1px var(--interactive-border-static-white-disabled);
-    }
-  }
-
+  &.secondary,
   &.tertiary {
     background-color: var(--interactive-background-static-white-faded);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+    box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
       inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
 
     &:hover:not([disabled]) {
       background-color: var(--interactive-background-static-black-faded);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+      box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
     }
 
     &:active:not([disabled]) {
       background-color: var(--interactive-background-static-black-faded);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
+      box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
     }
 
     &:focus-visible:not([disabled]) {
       background-color: var(--interactive-background-static-black-faded);
       outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
+      box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
         inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 1px var(--interactive-border-static-white-highlighted);
     }
@@ -320,142 +290,6 @@
     &[disabled] {
       background-color: var(--interactive-background-gray-disabled);
       box-shadow: inset 0 0 0 1px var(--interactive-border-static-white-disabled);
-    }
-  }
-}
-
-/* ===== Color variant: Positive ===== */
-.color-positive {
-  &.primary {
-    background-color: var(--interactive-background-positive-default);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-positive-highlighted),
-      inset 0 0 0 0.5px var(--interactive-border-positive-default),
-      inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-      inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-
-    &:hover:not([disabled]) {
-      background-color: var(--interactive-background-positive-highlighted);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-positive-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-positive-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--interactive-background-positive-highlighted);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1.5px 0 0 var(--interactive-border-positive-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-positive-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-positive-disabled);
-      box-shadow: none;
-    }
-  }
-
-  &.secondary {
-    background-color: var(--surface-background-gray-intense);
-    box-shadow:
-      inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-      inset 0 0 0 1px var(--interactive-border-gray-default),
-      inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-
-    &:hover:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-static-white-ghost);
-      box-shadow: inset 0 0 0 1px var(--interactive-border-gray-disabled);
-    }
-  }
-}
-
-/* ===== Color variant: Negative ===== */
-.color-negative {
-  &.primary {
-    background-color: var(--interactive-background-negative-default);
-    box-shadow:
-      inset 0 -1.5px 0 0 var(--interactive-border-negative-highlighted),
-      inset 0 0 0 0.5px var(--interactive-border-negative-default),
-      inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-      inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-
-    &:hover:not([disabled]) {
-      background-color: var(--interactive-background-negative-highlighted);
-      box-shadow:
-        inset 0 -1.5px 0 0 var(--interactive-border-negative-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-negative-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--interactive-background-negative-highlighted);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1.5px 0 0 var(--interactive-border-negative-highlighted),
-        inset 0 0 0 0.5px var(--interactive-border-negative-highlighted),
-        inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
-        inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-negative-disabled);
-      box-shadow: none;
-    }
-  }
-
-  &.secondary {
-    background-color: var(--surface-background-gray-intense);
-    box-shadow:
-      inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-      inset 0 0 0 1px var(--interactive-border-gray-default),
-      inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-
-    &:hover:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      box-shadow:
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &:focus-visible:not([disabled]) {
-      background-color: var(--surface-background-gray-intense);
-      outline: 1px solid var(--surface-background-primary-subtle);
-      box-shadow:
-        0px 0px 0px 4px var(--surface-border-primary-muted),
-        inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
-        inset 0 0 0 1px var(--interactive-border-gray-highlighted),
-        inset 0 -1.5px 0 0 var(--interactive-border-gray-default);
-    }
-
-    &[disabled] {
-      background-color: var(--interactive-background-static-white-ghost);
-      box-shadow: inset 0 0 0 1px var(--interactive-border-gray-disabled);
     }
   }
 }
@@ -514,31 +348,12 @@
   flex-shrink: 0;
 }
 
-/* Icon padding for left-positioned icons (medium/large default) */
+/* Icon-to-text spacing — spacing.2 (4px) for all sizes. */
 .icon-left {
-  padding-right: var(--spacing-3);
-}
-
-/* Icon padding for right-positioned icons (medium/large default) */
-.icon-right {
-  padding-left: var(--spacing-3);
-}
-
-/* Size-specific icon padding - xsmall uses spacing.1 (4px) */
-.xsmall .icon-left {
-  padding-right: var(--spacing-1);
-}
-
-.xsmall .icon-right {
-  padding-left: var(--spacing-1);
-}
-
-/* Size-specific icon padding - small uses spacing.2 (8px) */
-.small .icon-left {
   padding-right: var(--spacing-2);
 }
 
-.small .icon-right {
+.icon-right {
   padding-left: var(--spacing-2);
 }
 
