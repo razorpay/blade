@@ -1,11 +1,7 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import * as Sentry from '@sentry/node';
-import {
-  SKILL_VERSION_STRING,
-  KNOWLEDGEBASE_DIRECTORY,
-  PROJECT_ROOT_DIRECTORY,
-} from './tokens.js';
+import { SKILL_VERSION_STRING, KNOWLEDGEBASE_DIRECTORY, PROJECT_ROOT_DIRECTORY } from './tokens.js';
 
 const hasOutdatedSkill = (skillFilePath: string): boolean => {
   const skillFileContent = readFileSync(skillFilePath, 'utf8');

@@ -9,7 +9,7 @@ const analyticsToolCallEventName = 'Blade MCP Tool Called';
 
 // Skill Tokens
 const SKILL_VERSION = '0.0.8';
-const SKILL_VERSION_STRING = `skill_version: ${SKILL_VERSION}`;
+const SKILL_VERSION_STRING = `version: "${SKILL_VERSION}"`;
 
 const SKILL_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'skillTemplate');
 const BLADE_SKILL_FILE_PATH = join(SKILL_TEMPLATE_DIRECTORY, 'SKILL.md');
@@ -25,7 +25,7 @@ const CHECK_SKILL_VERSION_DESCRIPTION = `Get the version from the blade skill fi
 
 Use this exact grep command:
 \`\`\`grep
-grep -o "skill_version: [0-9.]*" .agents/skills/blade-usage-guidelines/SKILL.md
+grep -o 'version: "[0-9.]*"' .agents/skills/blade-usage-guidelines/SKILL.md
 \`\`\`
 `;
 
