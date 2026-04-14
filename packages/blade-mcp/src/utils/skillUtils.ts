@@ -2,10 +2,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 // eslint-disable-next-line import/no-cycle
 import { createBladeSkillToolName } from '../tools/createBladeSkill.js';
-import {
-  SKILL_VERSION,
-  CONSUMER_SKILL_RELATIVE_PATH,
-} from './tokens.js';
+import { SKILL_VERSION, CONSUMER_SKILL_RELATIVE_PATH } from './tokens.js';
 import { hasOutdatedSkill } from './generalUtils.js';
 import { handleError } from './analyticsUtils.js';
 import type { McpToolResponse } from './types.js';

@@ -67,11 +67,7 @@ const createBladeSkillCore = ({
       };
     }
 
-    const skillDir = join(
-      currentProjectRootDirectory,
-      '.agents/skills',
-      SKILL_DIRECTORY_NAME,
-    );
+    const skillDir = join(currentProjectRootDirectory, '.agents/skills', SKILL_DIRECTORY_NAME);
     const skillFilePath = join(skillDir, 'SKILL.md');
 
     if (existsSync(skillFilePath)) {
@@ -80,7 +76,9 @@ const createBladeSkillCore = ({
         unlinkSync(skillFilePath);
       } else {
         return {
-          content: [{ type: 'text', text: 'Blade skill already exists and is up to date. Doing nothing' }],
+          content: [
+            { type: 'text', text: 'Blade skill already exists and is up to date. Doing nothing' },
+          ],
         };
       }
     }
@@ -117,10 +115,7 @@ const createBladeSkillCore = ({
 
     if (!existsSync(symlinkPath)) {
       // Relative symlink: .claude/skills/ui-code-guidelines -> ../../.agents/skills/ui-code-guidelines
-      symlinkSync(
-        join('..', '..', '.agents', 'skills', SKILL_DIRECTORY_NAME),
-        symlinkPath,
-      );
+      symlinkSync(join('..', '..', '.agents', 'skills', SKILL_DIRECTORY_NAME), symlinkPath);
     }
 
     sendAnalytics({
