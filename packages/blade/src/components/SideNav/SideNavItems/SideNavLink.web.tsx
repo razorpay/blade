@@ -2,23 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import type { SideNavLinkProps } from '../types';
 import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import { Box } from '~components/Box';
+import type { SideNavLinkProps } from '../types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
-import { BaseText } from '~components/Typography/BaseText';
-import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
-import BaseBox from '~components/Box/BaseBox';
-import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { useFirstRender } from '~utils/useFirstRender';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { Text } from '~components/Typography';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
+import { useFirstRender } from '~utils/useFirstRender';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
+import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { Collapsible, CollapsibleBody } from '~components/Collapsible';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
+import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 
@@ -57,17 +58,13 @@ const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((pr
       )}`,
       margin: `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[0])}`,
       color: props.theme.colors.interactive.text.gray.subtle,
-      borderRadius: props.theme.border.radius.medium,
+      borderRadius: props.theme.border.radius.small,
       borderWidth: makeBorderSize(props.theme.border.width.none),
       backgroundColor: props.theme.colors.transparent,
       transition: getNavItemTransition(props.theme),
-      '&[aria-current]': {
-        color: props.theme.colors.interactive.text.primary.subtle,
-        backgroundColor: props.theme.colors.interactive.background.primary.faded,
-      },
-      '&[aria-current]:hover': {
-        color: props.theme.colors.interactive.text.primary.normal,
-        backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+      '&[aria-current], &[aria-current]:hover': {
+        color: props.theme.colors.interactive.text.gray.normal,
+        backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
       },
       '&:focus-visible': {
         ...getFocusRingStyles({ theme: props.theme }),
@@ -90,6 +87,8 @@ const NavLinkIconTitle = ({
 > & {
   isL1Item: boolean;
 }): React.ReactElement => {
+  const { containerRef, textRef } = useTruncationTitle({ content: title });
+
   return (
     <Box width="100%" textAlign="left">
       <Box display="flex" justifyContent="space-between" width="100%">
@@ -99,17 +98,20 @@ const NavLinkIconTitle = ({
               <Icon size="medium" color="currentColor" />
             </BaseBox>
           ) : null}
-          <BaseText
-            truncateAfterLines={1}
-            color="currentColor"
-            fontWeight="medium"
-            fontSize={100}
-            lineHeight={100}
-            as="p"
-            className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
-          >
-            {title}
-          </BaseText>
+          <Box ref={containerRef as never} flex="1" minWidth="spacing.0">
+            <BaseText
+              ref={textRef as never}
+              truncateAfterLines={1}
+              color="currentColor"
+              fontWeight={isActive ? 'semibold' : 'regular'}
+              fontSize={100}
+              lineHeight={100}
+              as="p"
+              className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
+            >
+              {title}
+            </BaseText>
+          </Box>
           {titleSuffix ? (
             <BaseBox display="flex" alignItems="center">
               {titleSuffix}
@@ -126,7 +128,7 @@ const NavLinkIconTitle = ({
           marginLeft="spacing.7"
           textAlign="left"
           weight="medium"
-          color={isActive ? 'interactive.text.primary.muted' : 'interactive.text.gray.muted'}
+          color={isActive ? 'interactive.text.gray.subtle' : 'interactive.text.gray.muted'}
           truncateAfterLines={1}
         >
           {description}
@@ -203,7 +205,7 @@ const CurvedVerticalLine = styled(BaseBox)((props) => {
   const { colors, border, spacing } = props.theme;
   return {
     borderWidth: makeBorderSize(props.theme.border.width.thin),
-    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.primary.muted} ${colors.surface.border.primary.muted}`,
+    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.gray.muted} ${colors.surface.border.gray.muted}`,
     borderStyle: 'solid',
     borderRadius: `${makeBorderSize(border.radius.none)} ${makeBorderSize(
       border.radius.none,
@@ -238,6 +240,7 @@ const SideNavLink = ({
     onLinkActiveChange,
     closeMobileNav,
     isL1Collapsed,
+    isSideNavCollapsed,
     setIsL1Collapsed,
   } = useSideNav();
   const { level: _prevLevel } = useNavLink();
@@ -280,6 +283,8 @@ const SideNavLink = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
+  const shouldHideL1Item = currentLevel === 1 && !icon && isSideNavCollapsed;
+
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, title }}>
       {isL3Trigger ? (
@@ -309,7 +314,7 @@ const SideNavLink = ({
           >
             <TooltipifyComponent tooltip={tooltip}>
               <BaseBox
-                className={STYLED_NAV_LINK}
+                className={`${STYLED_NAV_LINK} ${shouldHideL1Item ? HIDE_WHEN_COLLAPSED : ''}`}
                 as={as ?? 'a'}
                 to={href}
                 href={as ? undefined : href}
@@ -338,7 +343,7 @@ const SideNavLink = ({
                   // Which can make L1 to expand when tabs / windows are changed
                   // Adding focus-visible check ensures this behaviour of closing menus is only applicable when there is visible focus ring on it (while tabbing)
                   const hasFocusRing = e.target?.matches(':focus-visible');
-                  if (isL1Collapsed && currentLevel === 1 && hasFocusRing) {
+                  if (isL1Collapsed && !isSideNavCollapsed && currentLevel === 1 && hasFocusRing) {
                     setIsL1Collapsed?.(false);
                   }
                 }}

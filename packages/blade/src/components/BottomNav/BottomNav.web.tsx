@@ -1,17 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { BottomNavItemProps, BottomNavProps } from './types';
-import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styledProps';
-import { Text } from '~components/Typography';
-import { makeMotionTime, makeSpace } from '~utils';
-import { componentZIndices } from '~utils/componentZIndices';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { throwBladeError } from '~utils/logger';
+import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { colors as globalColors } from '~tokens/global';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import { Text } from '~components/Typography';
+import { componentZIndices } from '~utils/componentZIndices';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+const StyledBottomNav = styled(BaseBox)(() => {
+  const { colorScheme } = useTheme();
+
+  const boxShadowColor =
+    colorScheme === 'light'
+      ? globalColors.neutral.blueGrayLight.a912
+      : globalColors.neutral.black[100];
+  return {
+    boxShadow: `0px -8px 24px 0px ${boxShadowColor}`,
+  };
+});
 
 /**
  * ### BottomNav component
@@ -68,13 +81,12 @@ const _BottomNav = (
   }
 
   return (
-    <BaseBox
+    <StyledBottomNav
       ref={ref as never}
       role="navigation"
       position="fixed"
       bottom="spacing.0"
       left="spacing.0"
-      elevation="midRaised"
       width="100%"
       backgroundColor="surface.background.gray.intense"
       borderTopWidth="thin"
@@ -91,7 +103,7 @@ const _BottomNav = (
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
-    </BaseBox>
+    </StyledBottomNav>
   );
 };
 

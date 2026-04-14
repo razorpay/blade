@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
 import type { BaseLinkProps } from './BaseLink';
 import BaseLinkComponent from './BaseLink';
 import iconMap from '~components/Icons/iconMap';
@@ -37,7 +37,7 @@ export default {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
+          <Controls />
           <Stories />
         </>
       ),

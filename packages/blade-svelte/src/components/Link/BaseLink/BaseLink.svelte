@@ -6,7 +6,7 @@
   import type { TextColors } from '../../Typography/BaseText/types';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, type ActionStatesType } from '@razorpay/blade-core/styles';
+  import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, getLinkIconSizeMap, type ActionStatesType } from '@razorpay/blade-core/styles';
   import type { IconProps, IconColor } from '../../Icons/types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
@@ -155,7 +155,7 @@
         currentInteraction: currentInteraction as ActionStatesType,
         isDisabled,
       }) as IconColor,
-      iconSize: size as IconProps['size'],
+      iconSize: getLinkIconSizeMap()[size],
       
       // Style props
       cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',

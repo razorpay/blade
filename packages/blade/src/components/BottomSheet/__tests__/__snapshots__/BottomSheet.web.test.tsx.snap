@@ -4,6 +4,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -190,7 +191,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -200,12 +201,12 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c16.c16.c16.c16.c16:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c16.c16.c16.c16.c16:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -214,15 +215,16 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c16.c16.c16.c16.c16:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -237,10 +239,12 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -264,7 +268,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c26.c26.c26.c26.c26 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -329,7 +333,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -337,7 +341,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -371,15 +375,14 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.12);
-  border-color: hsla(214,40%,92%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -395,8 +398,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -405,17 +409,22 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(211,20%,52%,0.18);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -460,23 +469,23 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
 .c18.c18.c18.c18.c18[aria-expanded="true"] {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c18.c18.c18.c18.c18:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -487,12 +496,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 2;
 }
 
-.c18.c18.c18.c18.c18[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
+.c18.c18.c18.c18.c18[aria-selected=true],
 .c18.c18.c18.c18.c18[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 .c25.c25.c25.c25.c25 {
@@ -506,23 +512,23 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-direction: column;
   text-align: left;
   background-color: transparent;
-  border-radius: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  border-radius: 8px;
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c25.c25.c25.c25.c25:hover:not([aria-disabled=true]),
 .c25.c25.c25.c25.c25[aria-expanded="true"] {
-  background-color: hsla(4,74%,49%,0.09);
+  background-color: hsla(4,85%,44%,0.09);
 }
 
 .c25.c25.c25.c25.c25:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -533,12 +539,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 2;
 }
 
-.c25.c25.c25.c25.c25[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
+.c25.c25.c25.c25.c25[aria-selected=true],
 .c25.c25.c25.c25.c25[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(206,10%,29%,0.09);
 }
 
 @media screen and (min-width:768px) {
@@ -922,11 +925,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c15.c15.c15.c15.c15 {
   min-height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  min-width: 20px;
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c17.c17.c17.c17.c17 {
@@ -946,11 +957,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c27.c27.c27.c27.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -969,16 +978,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: 100%;
 }
 
-.c26.c26.c26.c26.c26 {
+.c28.c28.c28.c28.c28 {
   width: 100%;
 }
 
-.c27.c27.c27.c27.c27 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+.c29.c29.c29.c29.c29 {
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c29.c29.c29.c29.c29 {
+.c31.c31.c31.c31.c31 {
   overflow: auto;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -989,7 +998,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 1;
 }
 
-.c30.c30.c30.c30.c30 {
+.c32.c32.c32.c32.c32 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -997,7 +1006,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 16px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c34.c34.c34.c34.c34 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -1008,11 +1017,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c33.c33.c33.c33.c33 {
+.c35.c35.c35.c35.c35 {
   padding: 16px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c38.c38.c38.c38.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1050,12 +1059,40 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c21.c21.c21.c21.c21 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c22.c22.c22.c22.c22 {
   text-align: left;
   height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c26.c26.c26.c26.c26 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1073,7 +1110,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -1082,13 +1119,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24.c24.c24.c24.c24:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+.c26.c26.c26.c26.c26:hover:not([disabled]) {
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c24.c24.c24.c24.c24:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c26.c26.c26.c26.c26:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1097,14 +1134,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
-.c24.c24.c24.c24.c24:active {
-  color: hsla(211,26%,34%,1);
+.c26.c26.c26.c26.c26:active {
+  color: hsla(200,10%,18%,1);
 }
 
-.c28.c28.c28.c28.c28 {
+.c30.c30.c30.c30.c30 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1115,7 +1153,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -1123,10 +1161,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -1134,18 +1172,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1158,24 +1196,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c19.c19.c19.c19.c19 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c31.c31.c31.c31.c31 {
-  color: hsla(212,39%,16%,1);
+.c33.c33.c33.c33.c33 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1183,16 +1221,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c38.c38.c38.c38.c38 {
-  color: hsla(227,100%,59%,1);
+.c40.c40.c40.c40.c40 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1207,21 +1245,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c23.c23.c23.c23.c23 {
-  color: hsla(150,100%,27%,1);
+.c25.c25.c25.c25.c25 {
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1230,6 +1270,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1274,7 +1316,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -1282,7 +1324,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -1313,13 +1355,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c16.c16.c16.c16.c16 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -1328,19 +1378,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: fit-content;
 }
 
-.c34.c34.c34.c34.c34 {
+.c36.c36.c36.c36.c36 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1356,8 +1405,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: none;
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1365,24 +1415,26 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c34.c34.c34.c34.c34:hover {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+.c36.c36.c36.c36.c36:hover {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c34.c34.c34.c34.c34:active {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
+.c36.c36.c36.c36.c36:active {
+  background-color: hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-image: none;
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
-  background-color: hsla(227,100%,59%,0.09);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c36.c36.c36.c36.c36:focus-visible {
+  background-color: hsla(0,0%,100%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c34.c34.c34.c34.c34 * {
+.c36.c36.c36.c36.c36 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -1391,7 +1443,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35.c35.c35.c35.c35 {
+.c37.c37.c37.c37.c37 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1401,12 +1453,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: 160px;
 }
 
-.c37.c37.c37.c37.c37 {
+.c39.c39.c39.c39.c39 {
   opacity: 1;
 }
 
-.c22.c22.c22.c22.c22 {
-  background-color: hsla(150,100%,32%,0.09);
+.c23.c23.c23.c23.c23 {
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1430,37 +1482,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:320px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c27.c27.c27.c27.c27 {
+  .c29.c29.c29.c29.c29 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c33.c33.c33.c33.c33 {
+  .c35.c35.c35.c35.c35 {
     padding: 20px;
   }
 }
@@ -1520,6 +1572,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                       <p
                         class="c11"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Address Details
                       </p>
@@ -1546,6 +1599,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                                 <p
                                   class="c18"
                                   data-blade-component="text"
+                                  letter-spacing="50"
                                 >
                                   2
                                 </p>
@@ -1558,6 +1612,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                     <p
                       class="c19"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Saving addresses will improve your checkout experience
                     </p>
@@ -1572,20 +1627,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                     data-blade-component="box"
                   >
                     <div
-                      class="c14"
+                      class="c21"
                       data-blade-component="badge"
                     >
                       <div
-                        class="c21 c22"
+                        class="c22 c23"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c17"
+                          class="c24"
                           data-blade-component="base-box"
                         >
                           <p
-                            class="c23"
+                            class="c25"
                             data-blade-component="text"
+                            letter-spacing="50"
                           >
                             Action Needed
                           </p>
@@ -1600,7 +1656,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                 >
                   <button
                     aria-label="Close"
-                    class="c24"
+                    class="c26"
                     data-blade-component="icon-button"
                     type="button"
                   >
@@ -1623,69 +1679,70 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                 </div>
               </div>
               <div
-                class="c25"
+                class="c27"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c26"
+                  class="c28"
                   data-blade-component="box"
                 />
               </div>
             </div>
             <div
-              class="c27 c28"
+              class="c29 c30"
               data-blade-component="divider"
               role="separator"
             />
           </div>
         </div>
         <div
-          class="c29"
+          class="c31"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
           style="user-select: auto;"
         >
           <div
-            class="c30"
+            class="c32"
             data-blade-component="base-box"
           >
             <p
-              class="c31"
+              class="c33"
               data-blade-component="text"
+              letter-spacing="50"
             >
               BottomSheet body
             </p>
           </div>
         </div>
         <div
-          class="c32"
+          class="c34"
           data-blade-component="bottom-sheet-footer"
         >
           <div
-            class="c27 c28"
+            class="c29 c30"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c33"
+            class="c35"
             data-blade-component="base-box"
           >
             <button
-              class="c34"
+              class="c36"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class=" c35"
+                class=" c37"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c36 c37"
+                  class="c38 c39"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c38"
+                    class="c40"
                     data-blade-component="base-text"
                   >
                     Remove address
@@ -1802,7 +1859,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -1812,12 +1869,12 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1826,15 +1883,16 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
 .c8.c8.c8.c8.c8:active {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1842,10 +1900,10 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1892,7 +1950,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   border-radius: 16px;
 }
 
@@ -1900,7 +1958,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.09);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -2004,6 +2062,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
             <p
               class="c11"
               data-blade-component="text"
+              letter-spacing="50"
             >
               BottomSheet body
             </p>

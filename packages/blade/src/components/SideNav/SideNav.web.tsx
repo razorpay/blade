@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
-import type { SideNavContextType, SideNavProps } from './types';
 import {
   classes,
   COLLAPSED_L1_WIDTH,
@@ -12,16 +11,17 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
 } from './tokens';
-import BaseBox from '~components/Box/BaseBox';
+import type { SideNavContextType, SideNavProps } from './types';
+import type { BladeElementRef } from '~utils/types';
+import { size as sizeTokens } from '~tokens/global';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useIsMobile } from '~utils/useIsMobile';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
-import { useIsMobile } from '~utils/useIsMobile';
-import { getStyledProps } from '~components/Box/styledProps';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { size as sizeTokens } from '~tokens/global';
 
 const {
   COLLAPSED,
@@ -39,7 +39,7 @@ const MobileL1Container = styled(BaseBox)(() => {
   };
 });
 
-const StyledL1Menu = styled(BaseBox)((props) => {
+const StyledL1Menu = styled(BaseBox)<{ $isSideNavExpandable: boolean }>((props) => {
   const quick = makeMotionTime(props.theme.motion.duration.quick);
   const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
   const easing = props.theme.motion.easing;
@@ -47,27 +47,75 @@ const StyledL1Menu = styled(BaseBox)((props) => {
   const l1Expand = `width ${xmoderate} ${easing.entrance}`;
   const l1Collapse = `width ${quick} ${easing.exit}`;
 
+  const textVisibilityProps = props.$isSideNavExpandable
+    ? {}
+    : {
+        [`.${SHOW_WHEN_COLLAPSED}`]: {
+          display: 'none',
+        },
+        [`&.${COLLAPSED}`]: {
+          width: makeSize(COLLAPSED_L1_WIDTH),
+          transition: l1Collapse,
+          [`& > .${L1_ITEM_WRAPPER}`]: {
+            padding: `${makeSpace(props.theme.spacing[3])} ${makeSpace(props.theme.spacing[3])}`,
+          },
+          [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
+            display: 'none',
+          },
+          [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
+            display: 'initial',
+          },
+        },
+      };
+
   return {
     width: '100%',
-    transition: l1Expand,
+    // the overall sidenav expands and collapses in this case. No need transition here
+    transition: props.$isSideNavExpandable ? 'none' : l1Expand,
     [`& > .${L1_ITEM_WRAPPER}`]: {
       padding: makeSpace(props.theme.spacing[3]),
     },
-    [`.${SHOW_WHEN_COLLAPSED}`]: {
-      display: 'none',
-    },
+    ...textVisibilityProps,
+  };
+});
+
+const StyledSideNavContainer = styled(BaseBox)<{ $isSideNavExpandable: boolean }>((props) => {
+  const quick = makeMotionTime(props.theme.motion.duration.quick);
+  const xmoderate = makeMotionTime(props.theme.motion.duration.xmoderate);
+  const easing = props.theme.motion.easing;
+
+  const sideNavExpand = `width ${xmoderate} ${easing.entrance}`;
+  const sideNavCollapse = `width ${quick} ${easing.exit}`;
+
+  if (!props.$isSideNavExpandable) {
+    return {};
+  }
+
+  return {
+    transition: sideNavExpand,
     [`&.${COLLAPSED}`]: {
       width: makeSize(COLLAPSED_L1_WIDTH),
-      transition: l1Collapse,
-      [`& > .${L1_ITEM_WRAPPER}`]: {
-        padding: `${makeSpace(props.theme.spacing[3])} ${makeSpace(props.theme.spacing[3])}`,
-      },
+      transition: sideNavCollapse,
       [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
-        display: 'none',
+        opacity: '0',
+        pointerEvents: 'none',
+        transition: `opacity ${quick} ${easing.exit}`,
       },
       [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
-        display: 'initial',
+        opacity: '1',
+        pointerEvents: 'auto',
+        transition: `opacity ${quick} ${easing.entrance}`,
       },
+    },
+    [`.${SHOW_WHEN_COLLAPSED}`]: {
+      opacity: '0',
+      pointerEvents: 'none',
+      transition: `opacity ${quick} ${easing.exit}`,
+    },
+    [`.${HIDE_WHEN_COLLAPSED}`]: {
+      opacity: '1',
+      pointerEvents: 'auto',
+      transition: `opacity ${quick} ${easing.entrance}`,
     },
   };
 });
@@ -132,13 +180,26 @@ const BannerContainer = styled(BaseBox)((props) => {
  *
  */
 const _SideNav = (
-  { children, isOpen, onDismiss, onVisibleLevelChange, banner, testID, ...rest }: SideNavProps,
+  {
+    children,
+    isOpen,
+    onDismiss,
+    onVisibleLevelChange,
+    onExpandChange,
+    onExpandTransitionEnd,
+    banner,
+    backgroundColor = 'surface.background.gray.moderate',
+    testID,
+    isExpanded: _isExpanded,
+    ...rest
+  }: SideNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const timeoutIdsRef = React.useRef<NodeJS.Timeout[]>([]);
   const mouseOverTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const prevIsSideNavCollapsedRef = React.useRef<boolean>();
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
   const [isL1Hovered, setIsL1Hovered] = React.useState(false);
@@ -147,6 +208,17 @@ const _SideNav = (
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
 
   const isMobile = useIsMobile();
+  const isSideNavCollapsed = _isExpanded === false;
+
+  const effectiveIsL1Collapsed = isMobile ? isMobileL2Open : isSideNavCollapsed || isL1Collapsed;
+
+  const effectiveIsL1Hovered = isSideNavCollapsed ? false : isL1Hovered;
+  const sideNavWidth = isSideNavCollapsed
+    ? makeSize(COLLAPSED_L1_WIDTH)
+    : {
+        base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
+        xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
+      };
 
   const closeMobileNav = (): void => {
     if (isMobile) {
@@ -156,14 +228,19 @@ const _SideNav = (
     }
   };
 
-  const cleanupTransition = (): void => {
+  const cleanupTransition = React.useCallback((): void => {
     const clearTransitionTimeout = setTimeout(() => {
-      if (isTransitioning) {
-        setIsTransitioning(false);
-      }
+      setIsTransitioning((isCurrentlyTransitioning) =>
+        isCurrentlyTransitioning ? false : isCurrentlyTransitioning,
+      );
     }, TRANSITION_CLEANUP_DELAY);
     timeoutIdsRef.current.push(clearTransitionTimeout);
-  };
+  }, []);
+
+  const startL1Transition = React.useCallback((): void => {
+    setIsTransitioning(true);
+    cleanupTransition();
+  }, [cleanupTransition]);
 
   const collapseL1 = (title: string): void => {
     if (isMobile) {
@@ -185,6 +262,11 @@ const _SideNav = (
       onVisibleLevelChange?.({ visibleLevel: 1 });
       return;
     }
+
+    if (isSideNavCollapsed) {
+      return;
+    }
+
     // Ensures that if Normal L1 item is clicked, the L1 stays expanded
     if (isL1Collapsed) {
       setIsL1Collapsed(false);
@@ -208,8 +290,7 @@ const _SideNav = (
 
         // `args.isFirstRender` checks if the item that triggered this change, triggered it during first render or during subsequent change
         if (!args.isFirstRender) {
-          setIsTransitioning(true);
-          cleanupTransition();
+          startL1Transition();
           setIsL1Hovered(false);
           setIsHoverAgainEnabled(false);
           // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
@@ -230,12 +311,13 @@ const _SideNav = (
       l2PortalContainerRef,
       onLinkActiveChange,
       closeMobileNav,
-      isL1Collapsed: isMobile ? isMobileL2Open : isL1Collapsed,
+      isL1Collapsed: effectiveIsL1Collapsed,
       setIsL1Collapsed,
-      isL1Hovered,
+      isL1Hovered: effectiveIsL1Hovered,
+      isSideNavCollapsed,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL1Collapsed, isMobile, isMobileL2Open, isL1Hovered],
+    [effectiveIsL1Collapsed, effectiveIsL1Hovered, isSideNavCollapsed, isMobile],
   );
 
   React.useEffect(() => {
@@ -246,6 +328,26 @@ const _SideNav = (
       timeoutIdsRef.current = [];
     };
   }, []);
+
+  React.useEffect(() => {
+    if (!isMobile && isSideNavCollapsed && isL1Hovered) {
+      setIsL1Hovered(false);
+    }
+  }, [isMobile, isSideNavCollapsed, isL1Hovered]);
+
+  React.useEffect(() => {
+    const prevIsSideNavCollapsed = prevIsSideNavCollapsedRef.current;
+    prevIsSideNavCollapsedRef.current = isSideNavCollapsed;
+
+    if (isMobile || prevIsSideNavCollapsed === undefined) {
+      return;
+    }
+
+    if (prevIsSideNavCollapsed !== isSideNavCollapsed) {
+      startL1Transition();
+      onExpandChange?.({ isExpanded: !isSideNavCollapsed });
+    }
+  }, [isMobile, isSideNavCollapsed, onExpandChange, startL1Transition]);
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -279,19 +381,18 @@ const _SideNav = (
           </Drawer>
         </>
       ) : (
-        <BaseBox
+        <StyledSideNavContainer
+          $isSideNavExpandable={typeof _isExpanded !== 'undefined'}
           ref={ref as never}
+          className={isSideNavCollapsed ? COLLAPSED : ''}
           position="fixed"
-          backgroundColor="surface.background.gray.moderate"
+          backgroundColor={backgroundColor}
           height="100%"
           top="spacing.0"
           left="spacing.0"
           display={{ base: 'none', m: 'flex' }}
           flexDirection="column"
-          width={{
-            base: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_BASE),
-            xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
-          }}
+          width={sideNavWidth}
           as="nav"
           {...metaAttribute({
             name: MetaConstants.SideNav,
@@ -299,12 +400,22 @@ const _SideNav = (
           })}
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}
+          onTransitionEnd={(e) => {
+            if (e.target !== e.currentTarget || e.propertyName !== 'width' || isMobile) {
+              return;
+            }
+
+            onExpandTransitionEnd?.({
+              isExpanded: !isSideNavCollapsed,
+            });
+          }}
         >
           {banner ? <BannerContainer>{banner}</BannerContainer> : null}
           <BaseBox position="relative" display="block" flex="1" width="100%">
             <StyledL2PortalContainer
               position="absolute"
-              backgroundColor="surface.background.gray.moderate"
+              display={isSideNavCollapsed ? 'none' : 'block'}
+              backgroundColor={backgroundColor}
               height="100%"
               width="100%"
               top="spacing.0"
@@ -317,12 +428,17 @@ const _SideNav = (
             <StyledL1Menu
               ref={l1ContainerRef}
               id="blade-sidenav-l1"
-              className={getL1MenuClassName({ isL1Collapsed, isL1Hovered, isTransitioning })}
+              className={getL1MenuClassName({
+                isL1Collapsed: effectiveIsL1Collapsed,
+                isL1Hovered: effectiveIsL1Hovered,
+                isTransitioning,
+              })}
+              $isSideNavExpandable={typeof _isExpanded !== 'undefined'}
               position="absolute"
               display="flex"
               flexDirection="column"
               justifyContent="space-between"
-              backgroundColor="surface.background.gray.moderate"
+              backgroundColor={backgroundColor}
               height="100%"
               overflow="hidden"
               top="spacing.0"
@@ -347,6 +463,9 @@ const _SideNav = (
               // 5. Thus we use `onMouseOver` for hover part and call e.stopPropagation in portal child (SideNavLevel).
               // 6. But in case of unhover/leave, we don't want to trigger mouseOut for all child components individually. We want 1 hover out of L1 menu. Thus we use `onMouseLeave`
               onMouseOver={() => {
+                if (!isMobile && isSideNavCollapsed) {
+                  return;
+                }
                 if (mouseOverTimeoutRef.current) {
                   clearTimeout(mouseOverTimeoutRef.current);
                 }
@@ -356,11 +475,13 @@ const _SideNav = (
                 }
               }}
               onMouseLeave={() => {
+                if (!isMobile && isSideNavCollapsed) {
+                  return;
+                }
                 if (isL1Collapsed && isL1Hovered) {
                   mouseOverTimeoutRef.current = setTimeout(() => {
                     setIsL1Hovered(false);
-                    setIsTransitioning(true);
-                    cleanupTransition();
+                    startL1Transition();
                     onVisibleLevelChange?.({ visibleLevel: 2 });
                   }, L1_EXIT_HOVER_DELAY);
                 }
@@ -376,7 +497,7 @@ const _SideNav = (
             </StyledL1Menu>
             <SkipNavContent id={SKIP_NAV_ID} />
           </BaseBox>
-        </BaseBox>
+        </StyledSideNavContainer>
       )}
     </SideNavContext.Provider>
   );

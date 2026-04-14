@@ -18,12 +18,11 @@ exports[`BottomNav should render 1`] = `
   left: 0px;
   background-color: hsla(0,0%,100%,1);
   border-top-width: 1px;
-  border-top-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(206,10%,29%,0.12);
   border-top-style: solid;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,7 +47,7 @@ exports[`BottomNav should render 1`] = `
   cursor: pointer;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: currentColor;
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -56,11 +55,11 @@ exports[`BottomNav should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -71,10 +70,14 @@ exports[`BottomNav should render 1`] = `
   overflow-wrap: break-word;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  box-shadow: 0px -8px 24px 0px hsla(206,10%,29%,0.12);
+}
+
+.c3.c3.c3.c3.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
   border: none;
   padding-left: 0px;
@@ -83,12 +86,12 @@ exports[`BottomNav should render 1`] = `
   transition: color 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2[aria-current="page"] {
-  color: hsla(227,100%,59%,1);
+.c3.c3.c3.c3.c3[aria-current="page"] {
+  color: hsla(218,89%,51%,1);
 }
 
-.c2.c2.c2.c2.c2:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c3.c3.c3.c3.c3:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -131,14 +134,13 @@ exports[`BottomNav should render 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 c1"
     data-blade-component="bottomnav"
-    elevation="midRaised"
     role="navigation"
   >
     <a
       aria-current="page"
-      class="c1 c2"
+      class="c2 c3"
       data-blade-component="bottomnav-item"
       href="/payments"
     >
@@ -160,14 +162,15 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c4"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Payments
       </p>
     </a>
     <a
-      class="c1 c2"
+      class="c2 c3"
       data-blade-component="bottomnav-item"
       href="/transactions"
     >
@@ -187,14 +190,15 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c4"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Transactions
       </p>
     </a>
     <a
-      class="c1 c2"
+      class="c2 c3"
       data-blade-component="bottomnav-item"
       href="/payment-links"
     >
@@ -216,14 +220,15 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c4"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Links
       </p>
     </a>
     <button
-      class="c1 c2"
+      class="c2 c3"
       data-blade-component="bottomnav-item"
     >
       <svg
@@ -244,8 +249,9 @@ exports[`BottomNav should render 1`] = `
         />
       </svg>
       <p
-        class="c3"
+        class="c4"
         data-blade-component="text"
+        letter-spacing="50"
       >
         More
       </p>

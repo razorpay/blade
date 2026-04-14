@@ -35,10 +35,11 @@ const ThumbIcon = ({
   const finalHeight = isNumber(height) ? makeSize(height) : makeSpace(getIn(theme, height));
   const variant = isDisabled ? 'disabled' : 'default';
   const fillColor = getIn(theme, switchColors.thumbIcon[variant].fill);
-
+  // If the switch is checked and not disabled, then only it is effectively checked. and we should the icon then only.
+  const isEffectivelyChecked = Boolean(isChecked) && !isDisabled;
   return (
     <AnimatedThumbIcon
-      isChecked={Boolean(isChecked)}
+      isChecked={isEffectivelyChecked}
       width={finalWidth}
       height={finalHeight}
       // Switch uses a custom svg, this viewbox is copied from design

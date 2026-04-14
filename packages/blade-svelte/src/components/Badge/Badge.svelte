@@ -10,7 +10,7 @@
   import {
     getBadgeClasses,
     getBadgeTemplateClasses,
-    getBadgeIconPaddingClass,
+    getBadgeTextMarginClass,
     badgeTextSizes,
     badgeIconSize,
     getBadgeTextColorToken,
@@ -74,8 +74,8 @@
   // Get text sizes based on badge size
   const textSize = $derived(badgeTextSizes[size]);
 
-  // Get icon padding class based on size
-  const iconPaddingClass = $derived(getBadgeIconPaddingClass(size));
+  // Get text margin class based on size
+  const textMarginClass = $derived(getBadgeTextMarginClass(size));
 
   // Generate badge classes from blade-core
   const badgeClassNames = $derived(
@@ -111,7 +111,7 @@
 >
   <div class={badgeClasses.content}>
     {#if Icon}
-      <span class="{badgeClasses.icon} {iconPaddingClass}">
+      <span class={badgeClasses.icon}>
         <Icon size={iconSize} color={iconColorToken} />
       </span>
     {/if}
@@ -123,6 +123,7 @@
       fontFamily="text"
       fontWeight="medium"
       truncateAfterLines={1}
+      className={textMarginClass}
     >
       {#if isStringChildren}
         {children}

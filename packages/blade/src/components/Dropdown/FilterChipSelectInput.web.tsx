@@ -5,11 +5,11 @@ import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
+import type { DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import type { BaseFilterChipProps } from '~components/FilterChip/types';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { useId } from '~utils/useId';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFirstRender } from '~utils/useFirstRender';
@@ -85,32 +85,45 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     const valueNotEmpty =
       (typeof value === 'string' && value.trim() !== '') ||
       (Array.isArray(value) && value.length > 0);
-    // since we need to sync state only one time so skipping value checking.
-    const isValueAndSelectedOptoinsSynced =
-      (typeof value === 'string' && value && selectedIndices.length === 1) ||
-      (Array.isArray(value) && value.length === selectedIndices.length);
+
+    // Compare actual selected values (not just lengths) to detect controlled value changes
+    const currentSelectedValues = selectedIndices.map((i) => options[i]?.value);
+    const isSingleValueSynced =
+      typeof value === 'string' &&
+      currentSelectedValues.length === 1 &&
+      currentSelectedValues[0] === value;
+
+    const isMultiValueSynced =
+      Array.isArray(value) &&
+      value.length === currentSelectedValues.length &&
+      value.every((v) => currentSelectedValues.includes(v));
+
+    const isValueAndSelectedIndicesSynced = isSingleValueSynced || isMultiValueSynced;
+
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const value = (listViewSelectedFilters[label] as unknown) as number[];
-        setSelectedIndices(value);
-        const inputValue = value.map((selectionIndex) => options[selectionIndex].value);
+        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+        setSelectedIndices(savedIndices);
+        const inputValue = savedIndices.map((selectionIndex) => options[selectionIndex].value);
         setUncontrolledInputValue(inputValue);
         setFilterChipGroupSelectedFilters((prev) =>
           prev.includes(label) ? prev : [...prev, label],
         );
+      } else {
+        setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
-      const value = (listViewSelectedFilters[label] as unknown) as number[];
-      setSelectedIndices(value);
-      // This would be the case when filterChipSelectInput is controlled and are being opened first time
-    } else if (valueNotEmpty && !isValueAndSelectedOptoinsSynced && options.length > 0) {
-      const selectedIndices =
+      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+      setSelectedIndices(savedIndices);
+      // Sync selected indices when controlled value changes or on first render with options loaded
+    } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
+      const newSelectedIndices =
         typeof value === 'string'
           ? [options.findIndex((option) => option.value === value)]
           : options
               .map((option, index) => (value.includes(option.value) ? index : -1))
               .filter((index) => index !== -1);
-      setSelectedIndices(selectedIndices);
+      setSelectedIndices(newSelectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options]);
@@ -133,15 +146,12 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
     props.onChange?.({ name: name ?? idBase, values: [] });
-    if (isUnControlled) {
-      setUncontrolledInputValue([]);
-      setSelectedIndices([]);
-    }
     setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
     setListViewSelectedFilters((prev) => {
       const { [label]: _, ...updatedFilters } = prev;
       return updatedFilters;
     });
+    setUncontrolledInputValue([]);
     setSelectedIndices([]);
   };
 
@@ -197,7 +207,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       onTriggerClick();
     }
   };
-
   return (
     <BaseFilterChip
       label={label}

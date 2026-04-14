@@ -1435,6 +1435,119 @@ describe('<GenUI />', () => {
       // Should filter out incomplete items
       expect(container.textContent).toBe('');
     });
+
+    it('should filter out items with null children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Valid' },
+              value: { children: 'Valid Value' },
+            },
+            {
+              key: { children: 'Invalid' },
+              value: { children: null } as any,
+            },
+          ],
+        },
+      ];
+
+      const { getByText, queryByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Valid')).toBeInTheDocument();
+      expect(getByText('Valid Value')).toBeInTheDocument();
+      expect(queryByText('Invalid')).not.toBeInTheDocument();
+    });
+
+    it('should filter out items with undefined children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Valid' },
+              value: { children: 'Valid Value' },
+            },
+            {
+              key: { children: 'Invalid' },
+              value: { children: undefined } as any,
+            },
+          ],
+        },
+      ];
+
+      const { getByText, queryByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Valid')).toBeInTheDocument();
+      expect(getByText('Valid Value')).toBeInTheDocument();
+      expect(queryByText('Invalid')).not.toBeInTheDocument();
+    });
+
+    it('should render items with component as children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Amount' },
+              value: { children: { component: 'AMOUNT', value: 100, currency: 'INR' } },
+            },
+            {
+              key: { children: 'Status' },
+              value: { children: { component: 'BADGE', text: 'Active', color: 'positive' } },
+            },
+          ],
+        },
+      ];
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Amount')).toBeInTheDocument();
+      expect(getByText('Status')).toBeInTheDocument();
+      expect(getByText('Active')).toBeInTheDocument();
+    });
+
+    it('should handle mixed string and component children values', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Link ID' },
+              value: { children: 'plink_SP2rJtPRhJ5gZu' },
+            },
+            {
+              key: { children: 'Status' },
+              value: { children: { component: 'BADGE', text: 'Created', color: 'positive' } },
+            },
+          ],
+        },
+      ];
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Link ID')).toBeInTheDocument();
+      expect(getByText('plink_SP2rJtPRhJ5gZu')).toBeInTheDocument();
+      expect(getByText('Status')).toBeInTheDocument();
+      expect(getByText('Created')).toBeInTheDocument();
+    });
   });
 
   describe('STACK Component', () => {
@@ -1685,20 +1798,23 @@ describe('<GenUI />', () => {
       expect(container.textContent).toBe('');
     });
 
-    it('should show unsupported component message for invalid types', () => {
+    it('should warn and render nothing for invalid component types', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
       const components: GenUIComponent[] = [
         {
           component: 'INVALID_COMPONENT' as any,
         },
       ];
 
-      const { getByText } = renderWithTheme(
+      const { container } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
 
-      expect(getByText(/Unsupported component/)).toBeInTheDocument();
+      expect(warnSpy).toHaveBeenCalledWith('[GenUI]: Unsupported component: INVALID_COMPONENT');
+      expect(container.textContent).toBe('');
+      warnSpy.mockRestore();
     });
 
     it('should handle mixed valid and partial components', () => {
