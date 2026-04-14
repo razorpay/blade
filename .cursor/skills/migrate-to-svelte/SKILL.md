@@ -1,6 +1,6 @@
 ---
 name: migrate-to-svelte
-description: Guidelines for migrating existing Blade components from React to Svelte
+description: Guidelines and patterns for migrating Blade React components to Svelte 5, covering architecture, styling, accessibility, and framework-specific conventions.
 disable-model-invocation: true
 ---
 

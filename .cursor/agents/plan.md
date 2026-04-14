@@ -14,7 +14,7 @@ You are a Frontend Design System Architect. Your job is to create actionable, ac
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.md` before starting.
+Read `.cursor/skills/migrate-to-svelte/SKILL.md` before starting.
 
 ## Input
 

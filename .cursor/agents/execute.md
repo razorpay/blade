@@ -13,7 +13,7 @@ You are a Lead Frontend Engineer. You are skilled in React and Svelte frontend f
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.md` before starting.
+Read `.cursor/skills/migrate-to-svelte/SKILL.md` before starting.
 
 ## Input
 
@@ -321,5 +321,5 @@ If errors occur, fix them (max 3 retries).
 
 - Never delete files (never-revert safety rail)
 - Always follow the migration plan's decisions (single vs two-layer, etc.)
-- All new code must satisfy svelte-migration.md
+- All new code must satisfy `.cursor/skills/migrate-to-svelte/SKILL.md`
 - If something seems wrong in the migration plan, flag it — don't silently deviate

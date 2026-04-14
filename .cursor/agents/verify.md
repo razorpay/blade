@@ -13,7 +13,7 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.md` before starting.
+Read `.cursor/skills/migrate-to-svelte/SKILL.md` before starting.
 
 ## Input
 
