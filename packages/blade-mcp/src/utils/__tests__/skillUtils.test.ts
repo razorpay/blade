@@ -23,7 +23,7 @@ describe('skillUtils', () => {
     it('should return true when skill version does not match latest version', () => {
       expect(isSkillOutdated('0.0.7')).toBe(true);
       expect(isSkillOutdated('0.0.1')).toBe(true);
-      expect(isSkillOutdated('1.0.0')).toBe(true);
+      expect(isSkillOutdated('99.99.99')).toBe(true);
     });
 
     it('should return false when skill version matches latest version', () => {
@@ -66,7 +66,7 @@ describe('skillUtils', () => {
     });
 
     it('should return content with update instructions when skill is outdated', () => {
-      const outdatedVersion = '1.0.0';
+      const outdatedVersion = '0.0.1';
       const result = shouldCreateOrUpdateSkill(
         outdatedVersion,
         mockProjectRootDirectory,
@@ -103,7 +103,7 @@ describe('skillUtils', () => {
     describe('with skipLocalSkillChecks = true', () => {
       it('should return undefined when version matches SKILL_VERSION', () => {
         const result = shouldCreateOrUpdateSkill(
-          '0.0.8',
+          SKILL_VERSION,
           mockProjectRootDirectory,
           true, // skipLocalSkillChecks = true
         );
