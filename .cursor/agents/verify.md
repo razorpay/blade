@@ -172,7 +172,7 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
    - Missing stories with descriptions
    - Missing exports with expected paths
    - Missing event handlers with signatures
-2. Invoke Execute agent in **patch mode** (see `.cursor/subagents/execute.md`)
+2. Invoke Execute agent in **patch mode** (see `.cursor/agents/execute.md`)
 3. After patch applied → return to Step 1 (re-verify everything)
 4. Append to Iteration History: "API parity gap → triggered patch mode"
 

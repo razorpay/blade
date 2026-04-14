@@ -11,7 +11,7 @@ User types: /migrate-to-svelte → "Alert"
   │
   ▼
 ┌─────────────────────────────────────────────────┐
-│  ORCHESTRATOR (.cursor/subagents/orchestrator.md) │
+│  ORCHESTRATOR (.cursor/agents/orchestrator.md) │
 │  1. Validate component exists                     │
 │  2. Classify tier (suggest + confirm with user)   │
 │  3. Resolve dependencies (up to 3 levels deep)    │
@@ -57,7 +57,7 @@ User types: /migrate-to-svelte → "Alert"
 .cursor/
 ├── commands/
 │   └── migrate-to-svelte.md       # /migrate-to-svelte slash command
-├── subagents/
+├── agents/
 │   ├── orchestrator.md            # Pipeline controller
 │   ├── plan.md                    # Phase 1 — analyze React + plan migration (merged Discovery + Research)
 │   ├── execute.md                 # Phase 2 — create files (+ patch mode)
