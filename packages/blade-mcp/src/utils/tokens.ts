@@ -9,7 +9,7 @@ const analyticsToolCallEventName = 'Blade MCP Tool Called';
 
 // Skill Tokens
 const SKILL_VERSION = '1.0.0';
-const SKILL_VERSION_STRING = `version: "${SKILL_VERSION}"`;
+const SKILL_VERSION_STRING = `version: '${SKILL_VERSION}'`;
 
 const SKILL_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'skillTemplate');
 const BLADE_SKILL_FILE_PATH = join(SKILL_TEMPLATE_DIRECTORY, 'SKILL.md');
