@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createBladeCursorRulesHttpCallback } from '../createBladeCursorRules.js';
+import { createBladeSkillHttpCallback } from '../createBladeSkill.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
-import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
+import * as skillUtils from '../../utils/skillUtils.js';
 
 // Mock the analytics and utility functions
 vi.mock('../../utils/analyticsUtils.js');
-vi.mock('../../utils/cursorRulesUtils.js');
+vi.mock('../../utils/skillUtils.js');
 
 // Create a mock context object for tool callbacks
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,20 +16,20 @@ const createMockContext = (): any => ({
   sendRequest: vi.fn().mockResolvedValue({}),
 });
 
-describe('createBladeCursorRules Tool', () => {
+describe('createBladeSkill Tool', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('should return cursor rule creation instructions', () => {
+  it('should return skill creation instructions', () => {
     const mockCurrentProjectRootDirectory = '/Users/test/project';
-    const mockInstructions = 'Mock instructions for creating cursor rules';
+    const mockInstructions = 'Mock instructions for creating blade skill';
 
-    // Mock the cursorRuleCreationInstructions function
-    vi.spyOn(cursorRulesUtils, 'cursorRuleCreationInstructions').mockReturnValue(mockInstructions);
+    // Mock the skillCreationInstructions function
+    vi.spyOn(skillUtils, 'skillCreationInstructions').mockReturnValue(mockInstructions);
 
     // Call the HTTP callback directly with arguments and context (HTTP returns instructions)
-    const result = createBladeCursorRulesHttpCallback(
+    const result = createBladeSkillHttpCallback(
       {
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
       },
@@ -40,8 +40,8 @@ describe('createBladeCursorRules Tool', () => {
     expect(analyticsUtils.sendAnalytics).toHaveBeenCalledWith({
       eventName: expect.any(String),
       properties: {
-        toolName: 'create_blade_cursor_rules',
-        cursorRulesVersion: expect.any(String),
+        toolName: 'create_blade_skill',
+        skillVersion: expect.any(String),
         rootDirectoryName: expect.any(String),
       },
     });
@@ -56,8 +56,8 @@ describe('createBladeCursorRules Tool', () => {
       }
     }
 
-    // Verify cursorRuleCreationInstructions was called with correct parameter
-    expect(cursorRulesUtils.cursorRuleCreationInstructions).toHaveBeenCalledWith({
+    // Verify skillCreationInstructions was called with correct parameter
+    expect(skillUtils.skillCreationInstructions).toHaveBeenCalledWith({
       currentProjectRootDirectory: mockCurrentProjectRootDirectory,
     });
   });

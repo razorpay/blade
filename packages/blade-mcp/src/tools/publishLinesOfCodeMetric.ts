@@ -5,7 +5,7 @@ import { sendAnalytics, handleError } from '../utils/analyticsUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 import { hiBladeToolName } from './hiBlade.js';
 import { createNewBladeProjectToolName } from './createNewBladeProject.js';
-import { createBladeCursorRulesToolName } from './createBladeCursorRules.js';
+import { createBladeSkillToolName } from './createBladeSkill.js';
 import { getBladePatternDocsToolName } from './getBladePatternDocs.js';
 import { getBladeGeneralDocsToolName } from './getBladeGeneralDocs.js';
 import { getFigmaToCodeToolName } from './getFigmaToCode.js';
@@ -15,7 +15,7 @@ import { getChangelogToolName } from './getChangelog.js';
 const bladeMcpToolNames = [
   hiBladeToolName,
   createNewBladeProjectToolName,
-  createBladeCursorRulesToolName,
+  createBladeSkillToolName,
   getBladeComponentDocsToolName,
   getBladePatternDocsToolName,
   getBladeGeneralDocsToolName,

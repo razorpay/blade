@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getBladeGeneralDocsHttpCallback } from '../getBladeGeneralDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
-import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
+import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
-import { CURSOR_RULES_VERSION } from '../../utils/tokens.js';
+import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
 vi.mock('../../utils/analyticsUtils.js', async () => {
@@ -14,7 +14,7 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
     sendAnalytics: vi.fn(),
   };
 });
-vi.mock('../../utils/cursorRulesUtils.js');
+vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
 vi.mock('../../utils/generalUtils.js', () => ({
   getBladeDocsList: vi.fn(() => ['AvailableIcons', 'ChartColorSystem', 'Usage', 'WhiteLabelling']),
@@ -43,7 +43,7 @@ describe('getBladeGeneralDocs Tool', () => {
       'Usage',
       'WhiteLabelling',
     ]);
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
   });
 
   it('should return general docs for valid topics', () => {
@@ -65,7 +65,7 @@ describe('getBladeGeneralDocs Tool', () => {
         topicsList: mockTopicsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -77,7 +77,7 @@ describe('getBladeGeneralDocs Tool', () => {
         toolName: 'get_blade_general_docs',
         topicsList: mockTopicsList,
         rootDirectoryName: 'project',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
         clientName: 'cursor',
       },
     });
@@ -112,7 +112,7 @@ describe('getBladeGeneralDocs Tool', () => {
         topicsList: mockTopicsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -168,8 +168,8 @@ describe('getBladeGeneralDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladeGeneralDocsHttpCallback;
@@ -180,7 +180,7 @@ describe('getBladeGeneralDocs Tool', () => {
         topicsList: testTopicsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -222,8 +222,8 @@ describe('getBladeGeneralDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladeGeneralDocsHttpCallback;
@@ -234,7 +234,7 @@ describe('getBladeGeneralDocs Tool', () => {
         topicsList: testTopicsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
