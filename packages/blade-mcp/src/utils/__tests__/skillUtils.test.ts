@@ -127,7 +127,9 @@ describe('skillUtils', () => {
     });
 
     it('should return undefined when skill version matches SKILL_VERSION', () => {
-      expect(shouldCreateOrUpdateSkill(SKILL_VERSION, mockProjectRootDirectory, true)).toBeUndefined();
+      expect(
+        shouldCreateOrUpdateSkill(SKILL_VERSION, mockProjectRootDirectory, true),
+      ).toBeUndefined();
     });
 
     it('should return undefined when skill is up to date (version "0.0.0" outdated)', () => {
