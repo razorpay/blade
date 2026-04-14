@@ -13,9 +13,10 @@ const SKILL_VERSION_STRING = `version: "${SKILL_VERSION}"`;
 
 const SKILL_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'skillTemplate');
 const BLADE_SKILL_FILE_PATH = join(SKILL_TEMPLATE_DIRECTORY, 'SKILL.md');
+const SKILL_REFERENCES_DIRECTORY = join(SKILL_TEMPLATE_DIRECTORY, 'references');
 
 const SKILL_FILE_NAME = 'SKILL.md';
-const SKILL_DIRECTORY_NAME = 'blade-usage-guidelines';
+const SKILL_DIRECTORY_NAME = 'ui-code-guidelines';
 
 const CONSUMER_SKILL_RELATIVE_PATH = `.agents/skills/${SKILL_DIRECTORY_NAME}/${SKILL_FILE_NAME}`;
 const CONSUMER_SKILL_SYMLINK_RELATIVE_PATH = `.claude/skills/${SKILL_DIRECTORY_NAME}`;
@@ -25,7 +26,7 @@ const CHECK_SKILL_VERSION_DESCRIPTION = `Get the version from the blade skill fi
 
 Use this exact grep command:
 \`\`\`grep
-grep -o 'version: "[0-9.]*"' .agents/skills/blade-usage-guidelines/SKILL.md
+grep -o 'version: "[0-9.]*"' .agents/skills/ui-code-guidelines/SKILL.md
 \`\`\`
 `;
 
@@ -59,6 +60,7 @@ export {
   SKILL_VERSION_STRING,
   SKILL_TEMPLATE_DIRECTORY,
   BLADE_SKILL_FILE_PATH,
+  SKILL_REFERENCES_DIRECTORY,
   SKILL_FILE_NAME,
   SKILL_DIRECTORY_NAME,
   CONSUMER_SKILL_RELATIVE_PATH,
