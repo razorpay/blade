@@ -3,6 +3,7 @@ name: create-draft-pr
 description: Create a draft pull request with conventional commit message and structured PR body targeting master branch
 disable-model-invocation: true
 ---
+
 # Create Draft PR
 
 Create a draft pull request with your changes.
@@ -14,6 +15,7 @@ Create a draft pull request with your changes.
 ```
 
 **Example:**
+
 ```
 /create-draft-pr Popover update design tokens and add new placement
 /create-draft-pr Button add new variant and fix padding
@@ -34,6 +36,7 @@ git commit -m "feat(<ComponentName>): <brief description>"
 **Important:** Commit messages must follow [Conventional Commits](https://www.conventionalcommits.org/) specification.
 
 **Commit Prefixes:**
+
 - `feat:` - New feature or enhancement
 - `fix:` - Bug fix
 - `docs:` - Documentation changes
@@ -42,6 +45,7 @@ git commit -m "feat(<ComponentName>): <brief description>"
 - `chore:` - Build/tooling changes
 
 **Examples:**
+
 - `feat(Popover): add new placement options`
 - `fix(Button): correct padding in small variant`
 - `docs(Tooltip): update knowledgebase with new props`
@@ -96,6 +100,7 @@ gh pr ready
 ### Step 5: Verify PR Checks
 
 After creating the PR, verify:
+
 - ✅ PR title check passes
 - ✅ Lint and validation checks pass
 - ✅ Unit tests pass
