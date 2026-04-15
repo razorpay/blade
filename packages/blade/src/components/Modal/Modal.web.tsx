@@ -29,6 +29,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {
@@ -101,6 +102,7 @@ const Modal = ({
       isDismissible,
       defaultInitialFocusRef,
       isVisible,
+      isInsideModal: true,
     }),
     [isOpen, onDismiss, isDismissible, defaultInitialFocusRef, isVisible],
   );
@@ -122,41 +124,43 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
-              <ModalBackdrop />
-              <ModalContent
-                {...metaAttribute({
-                  name: MetaConstants.Modal,
-                })}
-                {...makeAccessible({
-                  role: 'dialog',
-                  modal: true,
-                  label: accessibilityLabel,
-                })}
-                {...makeAnalyticsAttribute(rest)}
-                maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
-                minWidth={makeSize(modalMinWidth)}
-                maxHeight={modalMaxHeight[size]}
-                width={
-                  size === 'full'
-                    ? `calc(100vw - ${makeSize(modalMargin[size] * 2)})`
-                    : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
-                }
-                borderRadius={modalBorderRadius}
-                backgroundColor="popup.background.gray.subtle"
-                display="flex"
-                flexDirection="column"
-                top="50%"
-                left="50%"
-                onKeyDown={handleKeyDown}
-                isVisible={isVisible}
-                size={size}
-                ref={refs.setFloating}
-                overflow="hidden"
-              >
-                {children}
-              </ModalContent>
-            </Box>
+            <TopNavOverlayThemeOverride>
+              <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
+                <ModalBackdrop />
+                <ModalContent
+                  {...metaAttribute({
+                    name: MetaConstants.Modal,
+                  })}
+                  {...makeAccessible({
+                    role: 'dialog',
+                    modal: true,
+                    label: accessibilityLabel,
+                  })}
+                  {...makeAnalyticsAttribute(rest)}
+                  maxWidth={size === 'full' ? '100%' : makeSize(modalMaxWidth[size])}
+                  minWidth={makeSize(modalMinWidth)}
+                  maxHeight={modalMaxHeight[size]}
+                  width={
+                    size === 'full'
+                      ? `calc(100vw - ${makeSize(modalMargin[size] * 2)})`
+                      : `calc(100vw - ${makeSize(modalResponsiveScreenGap)})`
+                  }
+                  borderRadius={modalBorderRadius}
+                  backgroundColor="popup.background.gray.subtle"
+                  display="flex"
+                  flexDirection="column"
+                  top="50%"
+                  left="50%"
+                  onKeyDown={handleKeyDown}
+                  isVisible={isVisible}
+                  size={size}
+                  ref={refs.setFloating}
+                  overflow="hidden"
+                >
+                  {children}
+                </ModalContent>
+              </Box>
+            </TopNavOverlayThemeOverride>
           </FloatingFocusManager>
         ) : null}
       </ModalContext.Provider>

@@ -1,8 +1,10 @@
 import React from 'react';
-import type { ColorSchemeNames } from '~tokens/theme';
+import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 
 type TopNavContextProps = {
   colorScheme: ColorSchemeNames;
+  themeTokens: ThemeTokens;
+  variant?: 'primary' | 'neutral';
 };
 
 const TopNavContext = React.createContext<TopNavContextProps | null>(null);

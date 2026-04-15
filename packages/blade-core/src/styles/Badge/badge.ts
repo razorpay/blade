@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+import { utilityClasses } from '../utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './badge.module.css';
 
@@ -27,9 +28,20 @@ export const badgeHeight: Record<BadgeSize, number> = {
  */
 export const badgeHorizontalPadding: Record<BadgeSize, string> = {
   xsmall: 'spacing.2',
-  small: 'spacing.3',
-  medium: 'spacing.3',
-  large: 'spacing.4',
+  small: 'spacing.2',
+  medium: 'spacing.2',
+  large: 'spacing.3',
+};
+
+/**
+ * Badge text horizontal margin tokens mapped to size
+ * Applied as marginX on the text element for spacing between icon and text edges
+ */
+export const badgeTextHorizontalMargin: Record<BadgeSize, string> = {
+  xsmall: 'spacing.1',
+  small: 'spacing.1',
+  medium: 'spacing.2',
+  large: 'spacing.2',
 };
 
 /**
@@ -150,6 +162,19 @@ export const badgeIconClass = styles.icon;
  */
 export function getBadgeIconPaddingClass(size: BadgeSize): string {
   return styles[`icon-padding-${size}`];
+}
+
+/**
+ * Get text margin class based on size, using utility classes
+ */
+export function getBadgeTextMarginClass(size: BadgeSize): string {
+  const marginMap: Record<BadgeSize, string> = {
+    xsmall: 'margin-x-spacing-1',
+    small: 'margin-x-spacing-1',
+    medium: 'margin-x-spacing-2',
+    large: 'margin-x-spacing-2',
+  };
+  return utilityClasses[marginMap[size] as keyof typeof utilityClasses];
 }
 
 /**

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { RecipeSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import parameters from '~utils/storybook/recipeParameters';
 

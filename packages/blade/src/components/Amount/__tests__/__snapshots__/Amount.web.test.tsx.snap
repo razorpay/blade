@@ -2189,7 +2189,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
         class="c2"
         data-blade-component="base-text"
         opacity="1"
-        style="font-size: 10px;"
       >
         ₹
       </span>

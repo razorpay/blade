@@ -17,6 +17,7 @@ import { usePopup } from '~components/DatePicker/usePopup';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size as sizeTokens } from '~tokens/global';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const _BaseTimePicker = ({
   value,
@@ -46,6 +47,7 @@ const _BaseTimePicker = ({
   labelSuffix,
   labelTrailing,
   testID,
+  zIndex = componentZIndices.popover,
   ...props
 }: TimePickerProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const referenceRef = useRef<HTMLElement>(null);
@@ -212,12 +214,14 @@ const _BaseTimePicker = ({
           <FloatingFocusManager
             initialFocus={-1}
             context={context}
-            guards={false}
+            guards={true}
             order={['reference', 'content']}
+            returnFocus
           >
             <BaseBox
               ref={refs.setFloating}
               style={floatingStyles}
+              zIndex={zIndex}
               {...getFloatingProps()}
               {...makeAccessible({ labelledBy: titleId })}
             >

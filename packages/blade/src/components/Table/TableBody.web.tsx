@@ -81,12 +81,12 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 
 export const StyledCell = styled(Cell)<{
   $backgroundColor: TableBackgroundColors;
-  gridRow?: string;
-}>(({ theme, $backgroundColor, gridRow }) => ({
+  $gridRow?: string;
+}>(({ theme, $backgroundColor, $gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
-    gridRow,
+    gridRow: $gridRow,
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -150,7 +150,7 @@ const _TableCell = ({
       $backgroundColor={backgroundColor}
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
-      gridRow={gridRowValue}
+      $gridRow={gridRowValue}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >
@@ -342,6 +342,7 @@ const _TableRow = <Item,>({
     setHasHoverActions,
     isVirtualized,
     isGrouped,
+    multiSelectTrigger,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -397,7 +398,7 @@ const _TableRow = <Item,>({
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => {
         onClick?.({ item });
-        if (selectionType !== 'none' && !isDisabled) {
+        if (selectionType !== 'none' && !isDisabled && multiSelectTrigger !== 'checkbox') {
           toggleRowSelectionById(item.id);
         }
       }}

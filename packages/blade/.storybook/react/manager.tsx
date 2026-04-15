@@ -1,63 +1,18 @@
 // .storybook/manager.js
 import React from 'react';
-import { create } from '@storybook/theming';
-import { useGlobals } from '@storybook/api';
-import { Icons, IconButton } from '@storybook/components';
+import { create } from 'storybook/theming';
+import { useGlobals } from 'storybook/manager-api';
+import { IconButton } from 'storybook/internal/components';
+import { LockIcon } from '@storybook/icons';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
-import { addons, types } from '@storybook/manager-api';
+import { addons, types } from 'storybook/manager-api';
+import { themeConfig } from './storybook-theme';
 
-const surafaceTextNormal = 'rgba(19, 38, 68, 1)';
-const bladePrimary = 'rgba(21, 102, 241, 1)';
-const bladeTextFont =
-  '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
-
-const bladeCodeFont = '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace';
-
-export const theme = create({
-  base: 'light',
-
-  colorPrimary: bladePrimary,
-  colorSecondary: bladePrimary,
-
-  // UI
-  appBg: '#F1F4F8',
-  appContentBg: '#FFFFFF',
-  appBorderColor: 'rgba(0,0,0,.02)',
-  appBorderRadius: 4,
-
-  // Typography
-  fontBase: bladeTextFont,
-  fontCode: bladeCodeFont,
-
-  // Text colors
-  textColor: surafaceTextNormal,
-  textInverseColor: '#FFFFFF',
-  textMutedColor: '#666666',
-
-  // Toolbar default and active colors
-  barTextColor: surafaceTextNormal,
-  barSelectedColor: bladePrimary,
-  barBg: '#FFFFFF',
-
-  // Form colors
-  inputBg: '#FFFFFF',
-  inputBorder: 'rgba(0,0,0,.1)',
-  inputTextColor: surafaceTextNormal,
-  inputBorderRadius: 2,
-
-  // hack for changing height width of brand image
-  brandTitle: `
-    <img
-      width="90px"
-      alt="Blade logo" 
-      src="https://raw.githubusercontent.com/razorpay/blade/348012984e5039265ff8197e73c258ec00c7606e/branding/blade-logo-name.min.svg" 
-    />
-  `,
-  brandUrl: 'https://github.com/razorpay/blade',
-});
+const theme = create(themeConfig);
 
 const ADDON_ID = 'internal-components-addon';
 const TOOL_ID = 'internal-components-tool';
+
 const hiddenStoryStyle = document.createElement('style');
 hiddenStoryStyle.textContent = `
   [id*='internal'] {
@@ -66,7 +21,8 @@ hiddenStoryStyle.textContent = `
 `;
 document.head.append(hiddenStoryStyle);
 
-export const toggleHiddenStoryStyle = (isDisabled) => (hiddenStoryStyle.disabled = isDisabled);
+const toggleHiddenStoryStyle = (isDisabled: boolean): boolean =>
+  (hiddenStoryStyle.disabled = isDisabled);
 
 const InternalStoryAddon = () => {
   const [globals, updateGlobals] = useGlobals();
@@ -93,7 +49,7 @@ const InternalStoryAddon = () => {
       title="Show internal components"
       onClick={toggleVisibility}
     >
-      <Icons icon="lock" />
+      <LockIcon />
     </IconButton>
   );
 };

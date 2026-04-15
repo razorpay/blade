@@ -1,6 +1,8 @@
 export type Opacity = Readonly<{
   /**0: 0 */
   0: number;
+  /**1: 0.01 */
+  1: number;
   /**50: 0.06 */
   50: number;
   /**100: 0.09 */
@@ -25,12 +27,15 @@ export type Opacity = Readonly<{
   1000: number;
   /**1100: 0.88 */
   1100: number;
-  /**1200: 1.0 */
+  /**1200: 0.94 */
   1200: number;
+  /**1300: 1.0 */
+  1300: number;
 }>;
 
 export const opacity: Opacity = {
   0: 0.0,
+  1: 0.01,
   50: 0.06,
   100: 0.09,
   200: 0.12,
@@ -43,5 +48,6 @@ export const opacity: Opacity = {
   900: 0.72,
   1000: 0.8,
   1100: 0.88,
-  1200: 1.0,
+  1200: 0.94,
+  1300: 1.0,
 };

@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import type { ToastProps } from '../types';
 import { useToast } from '../useToast';
@@ -11,7 +10,7 @@ import type { Toast } from '../Toast';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 
-const onDismissButtonClick = jest.fn();
+const onDismissButtonClick = fn();
 const ToastExample = (props: ToastProps): React.ReactElement => {
   const toast = useToast();
 

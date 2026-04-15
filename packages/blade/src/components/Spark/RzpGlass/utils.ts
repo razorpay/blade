@@ -11,7 +11,7 @@ import type {
   RzpGlassProps,
 } from './types';
 
-const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade/assets/spark';
+const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/assets/spark';
 
 const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,

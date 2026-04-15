@@ -23,7 +23,7 @@ const StyledTabNavIndicatorLine = styled(BaseBox)(({ theme }) => {
   return {
     position: 'relative',
     width: '100%',
-    height: makeSpace(theme.border.width.thin),
+    height: makeSpace(theme.border.width.thinner),
     borderTopLeftRadius: makeBorderSize(theme.border.radius.medium),
     borderTopRightRadius: makeBorderSize(theme.border.radius.medium),
   };

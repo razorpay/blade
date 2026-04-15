@@ -249,6 +249,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "height": "auto",
+                      "overflow": "hidden",
                       "position": "relative",
                       "width": "100%",
                     },

@@ -57,16 +57,22 @@ export function getButtonBackgroundColorToken({
       return `interactive.${property}.staticWhite.${_state}`;
     }
     if (variant === 'secondary') {
-      return isBorder
-        ? 'interactive.border.staticWhite.highlighted'
-        : _state === 'default'
-        ? 'transparent'
-        : 'interactive.background.staticWhite.faded';
+      if (isBorder) {
+        return 'interactive.border.staticWhite.highlighted';
+      }
+      return _state === 'default'
+        ? 'interactive.background.staticWhite.faded'
+        : _state === 'disabled'
+        ? 'interactive.background.gray.disabled'
+        : 'interactive.background.staticBlack.faded';
     }
     if (variant === 'tertiary') {
-      return `interactive.background.staticWhite.faded${
-        _state === 'highlighted' ? 'Highlighted' : ''
-      }`;
+      if (_state === 'disabled') {
+        return 'interactive.background.gray.disabled';
+      }
+      return _state === 'highlighted'
+        ? 'interactive.background.staticBlack.faded'
+        : 'interactive.background.staticWhite.faded';
     }
   }
 
@@ -102,14 +108,16 @@ export function getButtonBackgroundColorToken({
     return `interactive.${property}.primary.${_state}`;
   }
   if (variant === 'secondary') {
-    return isBorder
-      ? 'interactive.border.primary.default'
-      : _state === 'default'
-      ? 'transparent'
-      : 'interactive.background.primary.faded';
+    if (isBorder) {
+      return 'interactive.border.primary.default';
+    }
+    return 'surface.background.gray.intense';
   }
   if (variant === 'tertiary') {
-    return `interactive.${property}.gray.${_state}`;
+    if (_state === 'disabled') {
+      return 'interactive.background.staticWhite.ghost';
+    }
+    return 'surface.background.gray.intense';
   }
 
   return `interactive.${property}.primary.${_state}`;
@@ -184,7 +192,7 @@ export function getButtonTextColorToken({
     return `interactive.${property}.onPrimary.normal`;
   }
   if (variant === 'secondary') {
-    return `interactive.${property}.primary.${state === 'disabled' ? 'disabled' : 'subtle'}`;
+    return `interactive.${property}.gray.${state === 'disabled' ? 'disabled' : 'normal'}`;
   }
   if (variant === 'tertiary') {
     return `interactive.${property}.gray.${stateSuffix}`;
@@ -262,13 +270,13 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
  */
 export function getButtonSpinnerSize(): Record<
   'xsmall' | 'small' | 'medium' | 'large',
-  'medium' | 'large' | 'xlarge'
+  'medium' | 'large'
 > {
   return {
     xsmall: 'medium',
-    small: 'large',
-    medium: 'large',
-    large: 'xlarge',
+    small: 'medium',
+    medium: 'medium',
+    large: 'large',
   } as const;
 }
 
