@@ -37,7 +37,7 @@ const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         description={description}
         leading={leading}
         trailing={
-          _isMenuTrigger ? <ChevronRightIcon color="interactive.icon.gray.muted" /> : trailing
+          _isMenuTrigger ? <ChevronRightIcon color="interactive.icon.gray.normal" /> : trailing
         }
         as={as ?? defaultAs}
         href={href}

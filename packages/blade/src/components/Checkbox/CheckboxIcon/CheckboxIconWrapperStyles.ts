@@ -6,6 +6,7 @@ import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import { size as sizeToken } from '~tokens/global';
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
@@ -16,6 +17,7 @@ const getCheckboxIconWrapperStyles = ({
   isChecked,
   isDisabled,
   isNegative,
+  isIndeterminate,
   size,
 }: CheckboxRectProps & { theme: Theme }): CSSObject => {
   let variant: 'default' | 'disabled' | 'negative' = 'default';
@@ -26,6 +28,7 @@ const getCheckboxIconWrapperStyles = ({
   const border = checkboxIconColors.variants[variant].border[checked];
   const backgroundColor = getIn(theme, background);
   const borderColor = getIn(theme, border);
+  const _borderWidth = size === 'large' ? theme.border.width.thicker : theme.border.width.thick;
 
   return {
     position: 'relative',
@@ -35,12 +38,13 @@ const getCheckboxIconWrapperStyles = ({
     flexShrink: 0,
     width: makeSpace(checkboxSizes.icon[size].width),
     height: makeSpace(checkboxSizes.icon[size].height),
-    borderWidth: makeBorderSize(theme.border.width.thick),
+    borderWidth: makeBorderSize(_borderWidth),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[1]),
-    borderRadius: makeSize(theme.border.radius.small),
+    borderRadius: makeSize(theme.border.radius.xsmall),
     backgroundColor,
     borderColor,
+    paddingTop: size === 'small' && !isIndeterminate ? makeSize(sizeToken['1']) : 0,
   };
 };
 

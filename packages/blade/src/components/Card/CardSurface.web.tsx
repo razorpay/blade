@@ -1,18 +1,20 @@
 import styled from 'styled-components';
+import type { ColorSchemeNames } from '~tokens/theme';
+import { getSurfaceStyles } from '~utils/makeSurfaceStyles';
 import BaseBox from '~components/Box/BaseBox';
-import { makeBorderSize } from '~utils';
 
-const CardSurface = styled(BaseBox)(({ elevation, theme }) => {
-  return {
-    width: '100%',
-    display: 'flex',
-    position: 'relative',
-    flexDirection: 'column',
-    borderWidth: elevation === 'none' ? makeBorderSize(theme.border.width.thin) : undefined,
-    borderStyle: elevation === 'none' ? 'solid' : undefined,
-    borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.muted}` : undefined,
-    boxSizing: 'border-box',
-  };
-});
+type CardSurfaceProps = {
+  colorScheme: ColorSchemeNames;
+  isSelected?: boolean;
+};
+
+const CardSurface = styled(BaseBox)<CardSurfaceProps>(({ theme, colorScheme, isSelected }) => ({
+  width: '100%',
+  display: 'flex',
+  position: 'relative',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  ...getSurfaceStyles(theme, colorScheme, { hideBorder: isSelected }),
+}));
 
 export { CardSurface };

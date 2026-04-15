@@ -27,7 +27,7 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -35,10 +35,10 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -69,7 +69,7 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(211, 33%, 21%, 1)"
+          fill="hsla(200, 10%, 18%, 1)"
           r="5"
         />
       </svg>
@@ -80,6 +80,7 @@ exports[`<Indicator /> should accept data-analytics attribute 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -114,7 +115,7 @@ exports[`<Indicator /> should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -122,10 +123,10 @@ exports[`<Indicator /> should render 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -155,7 +156,7 @@ exports[`<Indicator /> should render 1`] = `
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(211, 33%, 21%, 1)"
+          fill="hsla(200, 10%, 18%, 1)"
           r="5"
         />
       </svg>
@@ -166,6 +167,7 @@ exports[`<Indicator /> should render 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -200,25 +202,25 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
@@ -226,10 +228,10 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -259,7 +261,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(25, 85%, 42%, 1)"
+          fill="hsla(25, 100%, 39%, 1)"
           r="5"
         />
       </svg>
@@ -270,6 +272,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -297,7 +300,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(150, 100%, 27%, 1)"
+          fill="hsla(150, 100%, 23%, 1)"
           r="5"
         />
       </svg>
@@ -308,6 +311,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -335,7 +339,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(4, 74%, 49%, 1)"
+          fill="hsla(4, 85%, 44%, 1)"
           r="5"
         />
       </svg>
@@ -346,6 +350,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -373,7 +378,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(200, 84%, 37%, 1)"
+          fill="hsla(200, 100%, 33%, 1)"
           r="5"
         />
       </svg>
@@ -384,6 +389,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
         <p
           class="c4"
           data-blade-component="text"
+          letter-spacing="50"
         />
       </div>
     </div>
@@ -418,18 +424,18 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -459,14 +465,14 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(150, 100%, 32%, 0.09)"
+          fill="hsla(150, 100%, 28%, 0.09)"
           r="5"
         />
         <circle
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(150, 100%, 27%, 1)"
+          fill="hsla(150, 100%, 23%, 1)"
           r="2.5"
         />
       </svg>
@@ -477,6 +483,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
         <p
           class="c3"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Success
         </p>
