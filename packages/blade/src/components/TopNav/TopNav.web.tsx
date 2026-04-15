@@ -100,7 +100,14 @@ const _TopNav = (
 
 const TopNav = React.forwardRef(_TopNav);
 
-const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+type TopNavBrandProps = {
+  children: React.ReactNode;
+} & Pick<BoxProps, 'paddingY'>;
+
+const TopNavBrand = ({
+  children,
+  paddingY = 'spacing.5',
+}: TopNavBrandProps): React.ReactElement => {
   return (
     <BaseBox
       flexDirection="row"
@@ -109,7 +116,7 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
       {...metaAttribute({ name: MetaConstants.TopNavBrand })}
-      paddingY="spacing.5"
+      paddingY={paddingY}
       marginLeft="spacing.6"
     >
       <BaseBox width="100%">{children}</BaseBox>
@@ -172,4 +179,4 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
 };
 
 export { TopNav, TopNavBrand, TopNavContent, TopNavActions };
-export type { TopNavProps };
+export type { TopNavProps, TopNavBrandProps };
