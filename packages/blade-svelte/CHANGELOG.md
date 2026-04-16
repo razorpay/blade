@@ -1,5 +1,16 @@
 # @razorpay/blade-svelte
 
+## 0.5.0
+
+### Minor Changes
+
+- 142949f30: feat: blade spark redesign for blade-core and blade-svelte.
+
+### Patch Changes
+
+- Updated dependencies [142949f30]
+  - @razorpay/blade-core@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes
