@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.100.0
+
+### Minor Changes
+
+- d93fbc833: feat(TopNav): add paddingY prop to TopNavBrand component
+
 ## 12.99.1
 
 ### Patch Changes
