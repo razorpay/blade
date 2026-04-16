@@ -1,4 +1,4 @@
-import { TopNav, TopNavContent } from '../TopNav';
+import { TopNav, TopNavBrand, TopNavContent } from '../TopNav';
 import { TopNavExample } from './TopNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
@@ -41,6 +41,20 @@ describe('TopNav', () => {
   test('renders with variant="primary" applying primary background color', () => {
     const { container } = renderWithTheme(
       <TopNav variant="primary">
+        <TopNavContent>
+          <></>
+        </TopNavContent>
+      </TopNav>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  test('TopNavBrand renders with custom paddingY', () => {
+    const { container } = renderWithTheme(
+      <TopNav>
+        <TopNavBrand paddingY="spacing.3">
+          <span>Brand</span>
+        </TopNavBrand>
         <TopNavContent>
           <></>
         </TopNavContent>
