@@ -733,7 +733,12 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         fileList={files}
         onFileChange={({ fileList }) => setFiles(fileList)}
         onFileRemove={({ file }) => {
-          console.log('File removed/dismissed:', file.name);
+          console.log('onFileRemove (trash icon):', file.name);
+          setFiles((prev) => prev.filter((f) => f.id !== file.id));
+        }}
+        onFileDismiss={({ file }) => {
+          console.log('onFileDismiss (✕ on uploading file):', file.name);
+          // Cancel your in-flight upload here, e.g. abortController.abort()
           setFiles((prev) => prev.filter((f) => f.id !== file.id));
         }}
         onSubmit={({ value, fileList }) => {
@@ -742,11 +747,15 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
         }}
       />
       <Text size="small" color="surface.text.gray.muted">
-        Click the ✕ on the uploading file to dismiss it. The{' '}
+        ✕ on the uploading file fires{' '}
+        <Text as="span" size="small" weight="semibold">
+          onFileDismiss
+        </Text>
+        . Trash on the success file fires{' '}
         <Text as="span" size="small" weight="semibold">
           onFileRemove
-        </Text>{' '}
-        callback fires for both trash (success) and dismiss (uploading) actions.
+        </Text>
+        . Check the console.
       </Text>
     </Box>
   );
