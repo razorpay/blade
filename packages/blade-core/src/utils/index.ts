@@ -17,6 +17,7 @@ export * from './logger';
 export * from './makeAccessible';
 export * from './makeAnalyticsAttribute';
 export * from './makeBezier';
+export * from './makeBorderSize';
 export * from './makeLetterSpacing';
 export * from './makeTypographySize';
 export * from './metaAttribute';

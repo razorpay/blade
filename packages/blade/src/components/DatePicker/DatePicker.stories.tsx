@@ -1,7 +1,7 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import dayjs from 'dayjs';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import { I18nProvider } from '@razorpay/i18nify-react';
 import type { DatePickerProps, DatesRangeValue } from './types';
 import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
@@ -14,6 +14,8 @@ import { Button } from '~components/Button';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+import { TimePicker } from '~components/TimePicker';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',
@@ -407,6 +409,15 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
         minDate={dayjs().subtract(1, 'week').toDate()}
         maxDate={dayjs().add(1, 'week').toDate()}
       />
+      <Box marginTop="spacing.8">
+        <Text marginBottom="spacing.3">Single DatePicker with min/max:</Text>
+        <DatePickerComponent
+          label="Select a date"
+          selectionType="single"
+          minDate={dayjs().subtract(1, 'month').toDate()}
+          maxDate={dayjs().add(1, 'month').toDate()}
+        />
+      </Box>
     </Box>
   );
 };
@@ -1037,3 +1048,262 @@ export const ClearButtonControlledDisplayCompact: StoryFn<typeof DatePickerCompo
 };
 
 ClearButtonControlledDisplayCompact.storyName = 'Clear Button (Controlled ) (Display Compact)';
+
+export const DatePickerWithCardsShowcase: StoryFn<typeof DatePickerComponent> = () => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.7"
+      backgroundColor="surface.background.gray.moderate"
+      padding="spacing.8"
+      minHeight="100vh"
+    >
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Date"
+          selectionType="single"
+          defaultValue={new Date()}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Range"
+          selectionType="range"
+          defaultValue={[new Date(), new Date()]}
+          onChange={(date) => console.log(date)}
+        />
+      </Box>
+
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Date
+      </Button>
+
+      <Box maxWidth="320px">
+        <DatePickerComponent
+          label="Select Range"
+          selectionType="range"
+          defaultValue={[new Date(), new Date()]}
+          onChange={(date) => console.log(date)}
+          presets={[
+            {
+              label: 'Today',
+              value: (date) => [dayjs(date).startOf('day').toDate(), date],
+            },
+            {
+              label: 'Yesterday',
+              value: (date) => [dayjs(date).subtract(1, 'day').startOf('day').toDate(), date],
+            },
+            {
+              label: 'Past 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'Past 15 days',
+              value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            },
+            {
+              label: 'Past month',
+              value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            },
+            {
+              label: 'Past year',
+              value: (date) => [dayjs(date).subtract(1, 'year').toDate(), date],
+            },
+            {
+              label: 'Past financial year',
+              value: (date) => {
+                const d = dayjs(date);
+                const year = d.month() >= 3 ? d.year() : d.year() - 1;
+
+                return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
+              },
+            },
+            {
+              label: 'Custom',
+              value: () => [null, null] as DatesRangeValue,
+            },
+          ]}
+        />
+      </Box>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="positive"
+      >
+        {' '}
+        Change Date
+      </Button>
+      <Button
+        onClick={() => {
+          console.log('Change Date');
+        }}
+        marginTop="spacing.5"
+        color="negative"
+      >
+        {' '}
+        Change Date
+      </Button>
+    </Box>
+  );
+};
+
+DatePickerWithCardsShowcase.storyName = 'With Cards (Backdrop Showcase)';
+
+const useDateTimePickerState = (): {
+  selectedDate: Date | null;
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  selectedTime: Date | null;
+  setSelectedTime: React.Dispatch<React.SetStateAction<Date | null>>;
+  combinedDateTime: Date | null;
+} => {
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date());
+  const [selectedTime, setSelectedTime] = React.useState<Date | null>(() => {
+    const now = new Date();
+    now.setHours(10, 0, 0, 0);
+    return now;
+  });
+
+  const combinedDateTime = React.useMemo(() => {
+    if (!selectedDate || !selectedTime) return null;
+    const combined = new Date(selectedDate);
+    combined.setHours(selectedTime.getHours(), selectedTime.getMinutes(), 0, 0);
+    return combined;
+  }, [selectedDate, selectedTime]);
+
+  return { selectedDate, setSelectedDate, selectedTime, setSelectedTime, combinedDateTime };
+};
+
+const DateTimePickerFields = ({
+  selectedDate,
+  setSelectedDate,
+  selectedTime,
+  setSelectedTime,
+  combinedDateTime,
+}: ReturnType<typeof useDateTimePickerState>): React.ReactElement => (
+  <Box display="flex" flexDirection="column" gap="spacing.5">
+    <DatePickerComponent
+      label="Event Date"
+      selectionType="single"
+      value={selectedDate}
+      onChange={(date) => setSelectedDate(date)}
+    />
+    <TimePicker
+      label="Event Time"
+      value={selectedTime}
+      onChange={({ value }) => setSelectedTime(value)}
+      timeFormat="12h"
+      minuteStep={15}
+    />
+    {combinedDateTime && (
+      <Box
+        padding="spacing.4"
+        backgroundColor="feedback.background.positive.subtle"
+        borderRadius="medium"
+      >
+        <Text weight="semibold" size="small">
+          Scheduled for:
+        </Text>
+        <Text size="small" marginTop="spacing.2">
+          {dayjs(combinedDateTime).format('dddd, MMMM D, YYYY [at] h:mm A')}
+        </Text>
+      </Box>
+    )}
+  </Box>
+);
+
+export const DatePickerWithTimePicker: StoryFn<typeof DatePickerComponent> = () => {
+  const state = useDateTimePickerState();
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        Combine <Code size="medium">DatePicker</Code> and <Code size="medium">TimePicker</Code> on a
+        single page for scheduling use cases like booking appointments, creating events, or setting
+        deadlines.
+      </Text>
+      <DateTimePickerFields {...state} />
+    </Box>
+  );
+};
+
+DatePickerWithTimePicker.storyName = 'DatePicker with TimePicker';
+
+export const DatePickerWithTimePickerInModal: StoryFn<typeof DatePickerComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const state = useDateTimePickerState();
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        Combine <Code size="medium">DatePicker</Code> and <Code size="medium">TimePicker</Code>{' '}
+        inside a <Code size="medium">Modal</Code> for scheduling use cases like booking
+        appointments, creating events, or setting deadlines.
+      </Text>
+
+      <Button onClick={() => setIsOpen(true)}>Schedule Event</Button>
+
+      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
+        <ModalHeader title="Schedule an Event" subtitle="Pick a date and time for your event" />
+        <ModalBody>
+          <DateTimePickerFields {...state} />
+        </ModalBody>
+        <ModalFooter>
+          <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                console.log('Event scheduled:', state.combinedDateTime);
+                setIsOpen(false);
+              }}
+            >
+              Confirm
+            </Button>
+          </Box>
+        </ModalFooter>
+      </Modal>
+    </Box>
+  );
+};
+
+DatePickerWithTimePickerInModal.storyName = 'DatePicker with TimePicker (Modal)';

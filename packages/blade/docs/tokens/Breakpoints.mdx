@@ -1,0 +1,100 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs/blocks';
+import { Unstyled } from '@storybook/addon-docs/blocks';
+import { useTheme, BladeProvider, Code, Text, Alert } from '../../src/components';
+import { bladeTheme } from '../../src/tokens';
+import { getMediaQuery } from '../../src/utils';
+
+<Meta
+  title="Tokens/Breakpoints"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const colorScheme = context.store.globals.globals.colorScheme;
+        
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={colorScheme}
+              themeTokens={bladeTheme}
+              colorScheme={colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 📏 Breakpoints
+
+export const breakpointScreenMapping = {
+  base: 'Base styles',
+  xs: 'Small Mobiles',
+  s: 'Mobiles and Small Tablets',
+  m: 'Medium and Large Tablets <br/>(This breakpoint can be used for desktop styling)',
+  l: 'Medium Desktop',
+  xl: 'HD Desktop',
+};
+
+export const Breakpoints = () => {
+  const { theme } = useTheme();
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Token Name</th>
+          <th>Token Value</th>
+          <th>Corresponding Media Query</th>
+          <th>Corresponding Screen</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.entries(theme.breakpoints).map(([key, value]) => (
+          <tr key={key}>
+            <td>{`theme.breakpoints.${key}`}</td>
+            <td>{value}</td>
+            <td>
+              <Unstyled>
+                {value === 0 ? (
+                  <Text>Base styles without media query</Text>
+                ) : (
+                  <Code>@media {getMediaQuery({ min: value })}</Code>
+                )}
+              </Unstyled>
+            </td>
+            <td dangerouslySetInnerHTML={{ __html: breakpointScreenMapping[key] }} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+{' '}
+
+<Breakpoints />
+
+{/* 
+// TODO(Rebranding): remove after alert is migrated
+<Unstyled>
+  <Alert
+    description="The corresponding screens mentioned in the table are under assumption that you're using min-width query over token values. Internally in Blade we use min-width queries for responsive props in Box and in useBreakpoint hook. If you're importing breakpoint tokens and using some other media query, the corresponding screen may change"
+    isFullWidth
+    marginY="spacing.6"
+    isDismissible={false}
+  />
+</Unstyled> */}
+
+## `useBreakpoint` hook
+
+You can use `useBreakpoint` hook to know about the current breakpoint and the matchedDevice
+
+```tsx
+import { useBreakpoint } from '@razorpay/blade/utils';
+
+const { matchedBreakpoint, matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+// matchedBreakpoint can have values like `xs`, `s`, `m`, etc
+// matchedDevice can be `mobile` or `desktop` (small tablets are considered as mobile)
+```

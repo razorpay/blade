@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
@@ -29,6 +30,7 @@ const getWebInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
+      padding: props.$padding,
       valueComponentType: props.valueComponentType,
       isTableInputCell: props.isTableInputCell,
       hasLeadingDropdown: props.hasLeadingDropdown,
@@ -38,6 +40,7 @@ const getWebInputStyles = (
     }),
     outline: 'none',
     border: 'none',
+    caretColor: props.$caretColor ? getIn(props.theme.colors, props.$caretColor) : undefined,
     '::placeholder': {
       ...getTextStyles({
         size: props.$size,
@@ -205,7 +208,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       <BaseBox display="flex" alignItems="center" gap="spacing.3">
         <Text
           color={
-            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+            props.value && !isDisabled
+              ? 'interactive.text.gray.normal'
+              : 'surface.text.gray.disabled'
           }
           truncateAfterLines={1}
           textAlign={props.textAlign}

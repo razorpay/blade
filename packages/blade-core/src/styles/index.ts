@@ -8,6 +8,7 @@ export {
   baseLinkIconClass,
   getLinkColorToken,
   getLinkTextSizes,
+  getLinkIconSizeMap,
 } from './BaseLink';
 export type {
   BaseLinkVariants,
@@ -52,7 +53,12 @@ export {
   spinnerIconClass,
 } from './Spinner';
 export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './Spinner';
-export { subtleFontSizes, normalAmountSizes, amountLineHeights } from './Amount';
+export {
+  subtleFontSizes,
+  normalAmountSizes,
+  currencyHardcodedSizes,
+  amountLineHeights,
+} from './Amount';
 export type {
   AmountTypeProps,
   AmountBodyProps,
@@ -64,6 +70,7 @@ export {
   getBadgeClasses,
   getBadgeTemplateClasses,
   getBadgeIconPaddingClass,
+  getBadgeTextMarginClass,
   badgeContentClass,
   badgeIconClass,
   badgeHeight,
@@ -88,3 +95,5 @@ export {
   chipIconSizes,
 } from './Chip';
 export type { ChipColor, ChipSize } from './Chip';
+export { dividerStyles, getDividerClasses } from './Divider';
+export type { DividerVariants } from './Divider';

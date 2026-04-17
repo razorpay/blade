@@ -1,5 +1,109 @@
 # @razorpay/blade-mcp
 
+## 1.26.1
+
+### Patch Changes
+
+- f243e927e: feat(blade): add `variant` prop for primary and neutral backgrounds in TopNav
+
+  Added a new `variant` prop to `TopNav` component with two options:
+
+  - `variant="neutral"` (default) — existing dark/black background, fully backward-compatible
+  - `variant="primary"` — uses brand primary color background (Razorpay blue)
+
+  The explicit `backgroundColor` prop still takes precedence over `variant`, preserving the escape hatch for custom backgrounds.
+
+  **Usage:**
+
+  ```jsx
+  // Default neutral variant (existing behavior)
+  <TopNav>...</TopNav>
+
+  // Primary brand color variant
+  <TopNav variant="primary">...</TopNav>
+
+  // Custom background still works
+  <TopNav backgroundColor="surface.background.gray.intense">...</TopNav>
+  ```
+
+## 1.26.0
+
+### Minor Changes
+
+- a8823b007: feat(blade): update razorsense cdn path & added preloadRazorSenseAssets utility
+  feat(blade-mcp): add knowledgebase for RazorSense and RazorSenseGradient
+
+## 1.25.3
+
+### Patch Changes
+
+- 06e127d3f: feat(SideNav): MCP update, mobile sidenav bug fix, refactors
+
+## 1.25.2
+
+### Patch Changes
+
+- 25932a3f4: feat(ChatInput): add onFocus and onBlur
+
+## 1.25.1
+
+### Patch Changes
+
+- 8eaf6e5e5: feat(Menu): add offset prop to Menu knowledgebase
+
+## 1.25.0
+
+### Minor Changes
+
+- 61297d8e0: feat(blade-mcp): update mcp docs
+
+## 1.24.0
+
+### Minor Changes
+
+- 6d4888305: feat(LightBox): add lightbox component
+
+## 1.23.6
+
+### Patch Changes
+
+- b6d980719: npm publish OIDC
+
+## 1.23.5
+
+### Patch Changes
+
+- a6fd747df: feat(ChatInput): add onFileReupload to ChatInput knowledgebase of blade mcp
+
+## 1.23.4
+
+### Patch Changes
+
+- efba04492: feat(ChatInput): add mcp knowledgebase
+
+## 1.23.3
+
+### Patch Changes
+
+- 2eddc691a: chore: add changeset
+
+## 1.23.2
+
+### Patch Changes
+
+- 72a1704ee: feat: update blade mcp docs
+
+## 1.23.1
+
+### Patch Changes
+
+- 84180580d: fix(blade): chart UX improvements and recharts upgrade
+
+  - Updated recharts from 3.1.2 to 3.7.0
+  - BarChart: Fixed unwanted re-animation on tooltip hover
+  - LineChart: Update auto color logic - single data indicator now defaults to gray.moderate
+  - Updated chart documentation
+
 ## 1.23.0
 
 ### Minor Changes

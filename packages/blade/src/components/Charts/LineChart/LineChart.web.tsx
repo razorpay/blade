@@ -1,4 +1,11 @@
-import React, { useState, useMemo, useEffect, isValidElement, cloneElement } from 'react';
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  isValidElement,
+  cloneElement,
+} from 'react';
 import {
   LineChart as RechartsLineChart,
   Line as RechartsLine,
@@ -16,12 +23,12 @@ import { componentId as commonComponentIds } from '../CommonChartComponents/toke
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
 import { LineChartContext, useLineChartContext } from './LineChartContext';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import getIn from '~utils/lodashButBetter/get';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -74,13 +81,34 @@ const Line: React.FC<ChartLineProps> = ({
     return () => controls.stop();
   }, [targetOpacity]);
 
-  // activeDot config with hover handlers
-  const activeDotConfig = activeDot
-    ? {
-        onMouseEnter: () => !hide && setHoveredDataKey?.(dataKey as string),
-        onMouseLeave: () => !hide && setHoveredDataKey?.(null),
+  const updateHoveredDataKey = useCallback(
+    (key: string | null) => {
+      if (!hide) {
+        setHoveredDataKey?.(key);
       }
-    : false;
+    },
+    [hide, setHoveredDataKey],
+  );
+
+  const handleMouseEnter = useCallback(() => {
+    updateHoveredDataKey(dataKey as string);
+  }, [dataKey, updateHoveredDataKey]);
+
+  const handleMouseLeave = useCallback(() => {
+    updateHoveredDataKey(null);
+  }, [updateHoveredDataKey]);
+
+  // activeDot config with hover handlers
+  const activeDotConfig = useMemo(
+    () =>
+      activeDot
+        ? {
+            onMouseEnter: () => updateHoveredDataKey(dataKey as string),
+            onMouseLeave: () => updateHoveredDataKey(null),
+          }
+        : false,
+    [activeDot, dataKey, updateHoveredDataKey],
+  );
 
   return (
     <>
@@ -92,8 +120,8 @@ const Line: React.FC<ChartLineProps> = ({
         strokeWidth={15}
         dot={false}
         activeDot={false}
-        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
-        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         connectNulls
         legendType="none"
         tooltipType="none"
@@ -113,8 +141,8 @@ const Line: React.FC<ChartLineProps> = ({
         animationDuration={animationDuration}
         strokeLinecap="round"
         strokeLinejoin="round"
-        onMouseEnter={() => !hide && setHoveredDataKey?.(dataKey as string)}
-        onMouseLeave={() => !hide && setHoveredDataKey?.(null)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         hide={hide}
         // Animated opacity using framer-motion
         strokeOpacity={animatedOpacity}
@@ -190,7 +218,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         return cloneElement(child, {
           _index: LineChartIndex++,
           _colorTheme: colorTheme,
-          _totaLine: totalLines,
+          _totalLines: totalLines,
           hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartLineProps>);
       }

@@ -80,8 +80,8 @@ const StyledFooterCell = styled(FooterCell)<{
   $backgroundColor: TableBackgroundColors;
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $textAlign?: string;
-  gridRow?: string;
-}>(({ theme, $backgroundColor, $rowDensity, $textAlign, gridRow }) => ({
+  $gridRow?: string;
+}>(({ theme, $backgroundColor, $rowDensity, $textAlign, $gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
@@ -91,7 +91,7 @@ const StyledFooterCell = styled(FooterCell)<{
     borderTopColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
-    gridRow,
+    gridRow: $gridRow,
     '> div': {
       backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
       display: 'flex',
@@ -126,7 +126,7 @@ const _TableFooterCell = ({
       className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
-      gridRow={gridRowValue}
+      $gridRow={gridRowValue}
       $backgroundColor={backgroundColor}
       $rowDensity={rowDensity}
       $textAlign={textAlign}

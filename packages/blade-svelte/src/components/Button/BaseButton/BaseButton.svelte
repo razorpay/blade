@@ -12,9 +12,12 @@
     getButtonTextColorToken,
     getButtonTextSizes,
     getButtonSpinnerSize,
+    getButtonIconSize,
+    getButtonIconOnlySize,
     type ActionStatesType as ButtonActionStatesType,
     type SpinnerColor,
   } from '@razorpay/blade-core/styles';
+  import type { IconColor } from '../../Icons/types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
   const buttonClasses = getButtonTemplateClasses();
@@ -70,9 +73,7 @@
   const disabled = $derived(isLoading || (isDisabled && isButton));
 
   // Create interaction state using $state
-  let currentInteraction = $state<ButtonActionStatesType>(
-    disabled ? 'disabled' : 'default',
-  );
+  let currentInteraction = $state<ButtonActionStatesType>('default');
 
   // Pressed state for animation
   let isPressed = $state(false);
@@ -104,9 +105,15 @@
     typeof children === 'string' ? children : undefined,
   );
 
+  // Check if children has any content (string or Snippet)
+  const hasChildren = $derived(
+    (typeof children === 'string' && children.trim().length > 0) ||
+    (typeof children === 'function')  // Snippet is a function
+  );
+
   // Check if icon-only button
   const isIconOnly = $derived(
-    Boolean(Icon) && (!childrenString || childrenString.trim().length === 0),
+    Boolean(Icon) && !hasChildren,
   );
 
   // Get text sizes
@@ -123,15 +130,22 @@
   });
 
   // Compute icon color token reactively
-  // Note: Currently unused but will be needed when Icon component is implemented
-  // @ts-ignore - intentionally unused until Icon component is implemented
-  const _iconColorToken = $derived(
-    getButtonTextColorToken({
+  const iconColorToken = $derived.by((): IconColor => {
+    return getButtonTextColorToken({
       variant,
       color,
       state: currentInteraction,
       property: 'icon',
-    }),
+    }) as IconColor;
+  });
+
+  // Get icon size maps
+  const buttonIconSizeMap = getButtonIconSize();
+  const buttonIconOnlySizeMap = getButtonIconOnlySize();
+
+  // Compute icon size based on button size and whether it's icon-only
+  const iconSize = $derived(
+    isIconOnly ? buttonIconOnlySizeMap[size] : buttonIconSizeMap[size]
   );
 
   // Get text sizes
@@ -362,9 +376,8 @@
     {/if}
     <span class={buttonClasses.content + (isLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
       {#if Icon && iconPosition === 'left'}
-        <span class={buttonClasses.icon}>
-          <!-- TODO: Render Icon component when available -->
-          <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+        <span class={buttonClasses.icon + (hasChildren ? ' ' + buttonClasses.iconLeft : '')}>
+          <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
       {#if childrenString}
@@ -395,9 +408,8 @@
         </BaseText>
       {/if}
       {#if Icon && iconPosition === 'right'}
-        <span class={buttonClasses.icon}>
-          <!-- TODO: Render Icon component when available -->
-          <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+        <span class={buttonClasses.icon + (hasChildren ? ' ' + buttonClasses.iconRight : '')}>
+          <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
     </span>

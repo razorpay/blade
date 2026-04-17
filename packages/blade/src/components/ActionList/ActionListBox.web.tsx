@@ -102,10 +102,11 @@ const getVirtualItemParams = ({
   actionListBoxHeight: number;
 } => {
   const itemHeightResponsive = getActionListItemHeight(theme);
+  const actionListItemVerticalMargin = theme.spacing[1] * 2;
   const actionListPadding = getActionListPadding(theme);
-  const actionListItemHeight = isMobile
-    ? itemHeightResponsive.itemHeightMobile
-    : itemHeightResponsive.itemHeightDesktop;
+  const actionListItemHeight =
+    (isMobile ? itemHeightResponsive.itemHeightMobile : itemHeightResponsive.itemHeightDesktop) +
+    actionListItemVerticalMargin;
   const shouldCalculateMinimumHeight = itemCount <= 10;
   const actionListBoxHeight = actionListMaxHeight - actionListPadding * 2;
   const actionListBoxMinHeight = shouldCalculateMinimumHeight
@@ -184,6 +185,30 @@ const useFilteredItems = (
     itemCount: items.length,
   };
 };
+
+/**
+ * Custom outer element for VirtualizedList that enables scrolling inside BottomSheet.
+ * - data-allow-scroll: tells BottomSheet's useDrag to not capture touch events on this element
+ * - data-body-scroll-lock-ignore: allows this element to scroll even when body scroll is locked
+ * - touchAction: 'pan-y' enables vertical touch scrolling (overrides parent's 'none')
+ * - overscrollBehavior: 'contain' prevents scroll chaining to parent elements
+ */
+const BottomSheetCompatibleOuterElement = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>(({ style, ...props }, ref) => (
+  <div
+    ref={ref}
+    {...props}
+    data-allow-scroll="true"
+    data-body-scroll-lock-ignore="true"
+    style={{
+      ...style,
+      touchAction: 'pan-y',
+      overscrollBehavior: 'contain',
+    }}
+  />
+));
 
 const VirtualListItem = React.memo(
   ({
@@ -278,6 +303,7 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             setVisibleStartIndex(visibleStartIndex);
             setVisibleStopIndex(visibleStopIndex);
           }}
+          outerElementType={isInBottomSheet ? BottomSheetCompatibleOuterElement : undefined}
         >
           {useCallback(
             ({ index, style, data }) => {

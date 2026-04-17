@@ -20,9 +20,9 @@ import {
   useTransitionStyles,
 } from '@floating-ui/react';
 import type { MenuContextType, UseFloatingMenuProps, UseFloatingMenuReturnType } from './types';
-import { useControllableState } from '~utils/useControllable';
-import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
 import { makeSize, useTheme } from '~utils';
+import { OVERLAY_OFFSET, OVERLAY_TRANSITION_OFFSET } from '~components/BaseMenu/tokens';
+import { useControllableState } from '~utils/useControllable';
 
 const MenuContext = React.createContext<MenuContextType>({
   getItemProps: () => ({}),
@@ -41,6 +41,7 @@ const useFloatingMenuSetup = ({
   openInteraction,
   onOpenChange,
   isOpen,
+  overlayOffset,
 }: UseFloatingMenuProps): UseFloatingMenuReturnType => {
   const [isControllableOpen, setIsControllableOpen] = useControllableState({
     value: isOpen,
@@ -56,6 +57,10 @@ const useFloatingMenuSetup = ({
   const { theme } = useTheme();
 
   const isNested = parentId != null;
+  const resolvedDefaultOffset = {
+    mainAxis: isNested ? 12 : OVERLAY_OFFSET,
+    alignmentAxis: isNested ? -16 : 0,
+  };
 
   const { floatingStyles, refs, context } = useFloating<HTMLButtonElement>({
     nodeId,
@@ -63,7 +68,7 @@ const useFloatingMenuSetup = ({
     onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
-      offset({ mainAxis: isNested ? 12 : OVERLAY_OFFSET, alignmentAxis: isNested ? -16 : 0 }),
+      offset(overlayOffset ?? resolvedDefaultOffset),
       flip(),
       shift(),
       size({

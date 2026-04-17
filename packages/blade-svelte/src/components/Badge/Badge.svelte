@@ -10,7 +10,7 @@
   import {
     getBadgeClasses,
     getBadgeTemplateClasses,
-    getBadgeIconPaddingClass,
+    getBadgeTextMarginClass,
     badgeTextSizes,
     badgeIconSize,
     getBadgeTextColorToken,
@@ -18,6 +18,7 @@
   } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
   import type { TextColors } from '../Typography/BaseText/types';
+  import type { IconColor } from '../Icons/types';
   import type { BadgeProps } from './types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
@@ -63,18 +64,18 @@
   );
 
   // Get icon color token based on color and emphasis
-  // @ts-expect-error - Currently unused but will be needed when Icon component is implemented
-  const iconColorToken = $derived(getBadgeIconColorToken({ color, emphasis }));
+  const iconColorToken = $derived(
+    getBadgeIconColorToken({ color, emphasis }) as IconColor,
+  );
 
   // Get icon size based on badge size
-  // @ts-expect-error - Currently unused but will be needed when Icon component is implemented
   const iconSize = $derived(badgeIconSize[size]);
 
   // Get text sizes based on badge size
   const textSize = $derived(badgeTextSizes[size]);
 
-  // Get icon padding class based on size
-  const iconPaddingClass = $derived(getBadgeIconPaddingClass(size));
+  // Get text margin class based on size
+  const textMarginClass = $derived(getBadgeTextMarginClass(size));
 
   // Generate badge classes from blade-core
   const badgeClassNames = $derived(
@@ -110,9 +111,8 @@
 >
   <div class={badgeClasses.content}>
     {#if Icon}
-      <span class="{badgeClasses.icon} {iconPaddingClass}">
-        <!-- TODO: Render Icon component when available -->
-        <!-- <Icon size={iconSize} color={iconColorToken} /> -->
+      <span class={badgeClasses.icon}>
+        <Icon size={iconSize} color={iconColorToken} />
       </span>
     {/if}
     <BaseText
@@ -123,6 +123,7 @@
       fontFamily="text"
       fontWeight="medium"
       truncateAfterLines={1}
+      className={textMarginClass}
     >
       {#if isStringChildren}
         {children}

@@ -45,7 +45,7 @@ export function getLinkColorToken({
   const map: Record<ActionStatesType, ColorType> = {
     default: 'normal',
     hover: 'subtle',
-    focus: 'normal',
+    focus: 'subtle',
     disabled: 'disabled',
   };
 
@@ -89,26 +89,30 @@ export function getLinkTextSizes(): {
   };
 }
 
+/**
+ * Maps link size to icon size based on Figma design specs.
+ * Matches React's linkSizeToIconSizeMap in BaseLink.tsx.
+ */
+export function getLinkIconSizeMap(): Record<
+  'xsmall' | 'small' | 'medium' | 'large',
+  'small' | 'medium'
+> {
+  return {
+    xsmall: 'small',
+    small: 'small',
+    medium: 'medium',
+    large: 'medium',
+  } as const;
+}
+
 export const baseLinkStyles = cva(styles.base, {
   variants: {
-    variant: {
-      anchor: styles.anchor,
-      button: styles.button,
-    },
-    size: {
-      xsmall: styles.xsmall,
-      small: styles.small,
-      medium: styles.medium,
-      large: styles.large,
-    },
     isDisabled: {
       true: utilityClasses['cursor-not-allowed'],
       false: utilityClasses['cursor-pointer'],
     },
   },
   defaultVariants: {
-    variant: 'anchor',
-    size: 'medium',
     isDisabled: false,
   },
 });
@@ -124,12 +128,14 @@ export const baseLinkIconClass = styles.icon;
  *
  * @example
  * const linkClasses = getBaseLinkTemplateClasses();
- * // Use: linkClasses.content, linkClasses.icon
+ * // Use: linkClasses.content, linkClasses.icon, linkClasses.iconLeft, linkClasses.iconRight
  */
 export function getBaseLinkTemplateClasses(): Record<string, string> {
   return {
     content: baseLinkContentClass,
     icon: baseLinkIconClass,
+    iconLeft: styles['icon-left'],
+    iconRight: styles['icon-right'],
   } as const;
 }
 

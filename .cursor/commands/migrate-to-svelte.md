@@ -8,14 +8,14 @@
 Before you take ANY action, confirm you understand:
 
 - [ ] I will ONLY use the **Shell tool** to run `run-agent` commands for spawning any sub-agent
-- [ ] I will NOT read any `.cursor/subagents/*.md` files before running them
+- [ ] I will NOT read any `.cursor/agents/*.md` files before running them
 - [ ] I will NOT execute any phase work myself (Plan/Execute/Verify)
 
 **Your ONLY Valid Action Pattern:**
 
 ```bash
 # Use Shell tool with this command:
-run-agent .cursor/subagents/PHASE.md "CONTEXT: ..."
+run-agent .cursor/agents/PHASE.md "CONTEXT: ..."
 ```
 
 ## ⚠️ Your Role
@@ -63,7 +63,7 @@ Read these before starting:
 **YOUR ACTION:** Use Shell tool to run this command (replace `{Name}` with actual component name):
 
 ```bash
-run-agent .cursor/subagents/plan.md "CONTEXT: Component={Name}"
+run-agent .cursor/agents/plan.md "CONTEXT: Component={Name}"
 ```
 
 **WAIT** for completion, then verify both artifacts were created:
@@ -92,7 +92,7 @@ Read the dependencies section of the discovery report. For any dependency marked
 **YOUR ACTION:** Use Shell tool to run this command:
 
 ```bash
-run-agent .cursor/subagents/execute.md "CONTEXT: MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
+run-agent .cursor/agents/execute.md "CONTEXT: MigrationPlan=.cursor/artifacts/{Name}/migration-plan.md"
 ```
 
 **WAIT** for completion. before moving to verify phase.
@@ -102,7 +102,7 @@ run-agent .cursor/subagents/execute.md "CONTEXT: MigrationPlan=.cursor/artifacts
 **YOUR ACTION:** Use Shell tool to run this command:
 
 ```bash
-run-agent .cursor/subagents/verify.md "CONTEXT: DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
+run-agent .cursor/agents/verify.md "CONTEXT: DiscoveryReport=.cursor/artifacts/{Name}/discovery-report.md"
 ```
 
 **WAIT** for completion.
@@ -110,7 +110,7 @@ run-agent .cursor/subagents/verify.md "CONTEXT: DiscoveryReport=.cursor/artifact
 If Verify reports API parity gaps needing a patch, run Execute in patch mode then re-run Verify:
 
 ```bash
-run-agent .cursor/subagents/execute.md "CONTEXT: Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
+run-agent .cursor/agents/execute.md "CONTEXT: Mode=patch, PatchRequest=.cursor/artifacts/{Name}/patch-request.md"
 ```
 
 ## Step 6: Human Gate — Final Review

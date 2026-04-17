@@ -583,6 +583,8 @@ const _ChartDonut: React.FC<ChartDonutProps> = ({
         legendType="none"
         tooltipType="none"
         paddingAngle={1.5}
+        // ToolTip is already disabled here.. need to disable pointer events to prevent the tooltip from being shown when the user hovers over the donut chart in some cases
+        style={{ pointerEvents: 'none' }}
       >
         {modifiedExternalDonutChildren}
       </RechartsPie>
