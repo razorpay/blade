@@ -13,16 +13,19 @@ import React from 'react';
 import type { View } from 'react-native';
 import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
 import type { TooltipContentWrapperProps } from './types';
+import type { ColorSchemeNames } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { castNativeType } from '~utils';
 
-const StyledTooltipContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles: CSSProperties }>(
-  ({ theme, styles }) => {
-    return getTooltipContentWrapperStyles({ theme, styles });
-  },
-);
+const StyledTooltipContentWrapper = styled(BaseBox)<{
+  collapse?: boolean;
+  styles: CSSProperties;
+  colorScheme?: ColorSchemeNames;
+}>(({ theme, styles, colorScheme = 'light' }) => {
+  return getTooltipContentWrapperStyles({ theme, styles, colorScheme });
+});
 
 const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {

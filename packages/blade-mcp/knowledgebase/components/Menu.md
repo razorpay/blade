@@ -140,6 +140,19 @@ type MenuOverlayProps = {
    * maxWidth override
    */
   maxWidth?: string | number;
+
+  /**
+   * Offset for overlay positioning relative to trigger.
+   *
+   * Supports Floating UI offset options (`mainAxis`, `crossAxis`, `alignmentAxis`).
+   */
+  offset?:
+    | number
+    | {
+        mainAxis?: number;
+        crossAxis?: number;
+        alignmentAxis?: number;
+      };
 } & TestID &
   DataAnalyticsAttribute;
 

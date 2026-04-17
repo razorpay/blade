@@ -81,7 +81,7 @@ exports[`<Switch /> should render switch 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -106,7 +106,7 @@ exports[`<Switch /> should render switch 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -118,7 +118,7 @@ exports[`<Switch /> should render switch 1`] = `
 }
 
 .c2.c2.c2.c2.c2:hover + div {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -181,7 +181,7 @@ exports[`<Switch /> should render switch 1`] = `
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
-                fill="hsla(0, 0%, 0%, 1)"
+                fill="hsla(218, 89%, 51%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -274,7 +274,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -299,7 +299,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -367,7 +367,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
-                fill="hsla(0, 0%, 0%, 0.32)"
+                fill="hsla(218, 89%, 51%, 0.32)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -460,7 +460,7 @@ exports[`<Switch /> should support adding data-analytics attribute 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -485,7 +485,7 @@ exports[`<Switch /> should support adding data-analytics attribute 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -497,7 +497,7 @@ exports[`<Switch /> should support adding data-analytics attribute 1`] = `
 }
 
 .c2.c2.c2.c2.c2:hover + div {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
@@ -562,7 +562,7 @@ exports[`<Switch /> should support adding data-analytics attribute 1`] = `
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
-                fill="hsla(0, 0%, 0%, 1)"
+                fill="hsla(218, 89%, 51%, 1)"
                 fill-rule="evenodd"
               />
             </svg>

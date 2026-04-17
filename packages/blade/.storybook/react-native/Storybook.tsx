@@ -13,7 +13,7 @@ const App = () => {
     shouldPersistSelection: true,
     // keeping in comments becuase this is not documented properly in the docs
     theme: {
-      backgroundColor: bladeTheme.colors.onLight.surface.background.gray.subtle,
+      backgroundColor: bladeTheme.colors.onLight.surface.background.gray.moderate,
       // headerTextColor: 'black',
       // labelColor: 'black',
       // borderColor: '#e6e6e6',

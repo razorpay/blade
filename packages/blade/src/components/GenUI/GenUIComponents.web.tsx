@@ -1,15 +1,18 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
+import { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction } from './GenUIContext';
+import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
+import { createRehypeAnimate } from './rehypeAnimate';
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -70,6 +73,32 @@ import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 /**
+ * Global styles for text streaming animations
+ * Applied to [data-animate-word] spans created by rehypeAnimate
+ */
+const TextAnimationStyles = createGlobalStyle`
+  @keyframes animate-fadeIn {
+    from {
+      opacity: 0;
+      color: #48D08C;
+      filter: blur(2px);
+    }
+    to {
+      opacity: 1;
+      color: inherit;
+      filter: blur(0px);
+    }
+  }
+
+  [data-animate-word] {
+    display: inline-block;
+    animation: animate-fadeIn
+      var(--animate-duration, 400ms)
+      var(--animate-easing, ease) both;
+  }
+`;
+
+/**
  * Built-in component types supported by GenUI
  */
 const ComponentType = {
@@ -86,6 +115,7 @@ const ComponentType = {
   BUTTON: 'BUTTON',
   LINK: 'LINK',
   ALERT: 'ALERT',
+  AMOUNT: 'AMOUNT',
 } as const;
 
 /**
@@ -167,6 +197,7 @@ type TableCellDate = {
 type TableCellLink = {
   component: 'LINK';
   text: string;
+  copyable?: boolean;
   action?: {
     type: 'CLICK';
     eventName?: 'link_click';
@@ -260,6 +291,11 @@ type CardComponent = GenUIBaseComponent & {
   children?: GenUIComponent[];
 };
 
+type InfoGroupItemValue = {
+  helpText?: string;
+  children: string | GenUIComponent;
+};
+
 type InfoGroupComponent = GenUIBaseComponent & {
   component: typeof ComponentType.INFO_GROUP;
   items?: Array<{
@@ -267,10 +303,7 @@ type InfoGroupComponent = GenUIBaseComponent & {
       helpText?: string;
       children: string;
     };
-    value?: {
-      helpText?: string;
-      children: string;
-    };
+    value?: InfoGroupItemValue;
   }>;
 };
 
@@ -309,6 +342,12 @@ type AlertComponent = GenUIBaseComponent & {
   };
 };
 
+type AmountComponent = GenUIBaseComponent & {
+  component: typeof ComponentType.AMOUNT;
+  value?: number;
+  currency?: string;
+};
+
 /**
  * Union type of all built-in UI components
  */
@@ -325,7 +364,8 @@ type GenUIBuiltInUIComponent =
   | InfoGroupComponent
   | ButtonComponent
   | LinkComponent
-  | AlertComponent;
+  | AlertComponent
+  | AmountComponent;
 
 /**
  * Generic UI component type - can be extended with custom components
@@ -381,80 +421,93 @@ const ChartSkeletonLoader = ({
   );
 };
 
-const RenderTextComponent = memo(({ content }: TextComponent) => {
-  if (!content) return null;
-  return (
-    <ReactMarkdown
-      skipHtml
-      rehypePlugins={[]}
-      components={{
-        h1: ({ children }) => (
-          <Heading marginBottom="spacing.4" size="large">
-            {children}
-          </Heading>
-        ),
-        h2: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="medium">
-            {children}
-          </Heading>
-        ),
-        h3: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="small">
-            {children}
-          </Heading>
-        ),
-        h4: ({ children }) => (
-          <Heading marginBottom="spacing.3" size="small">
-            {children}
-          </Heading>
-        ),
-        b: ({ children }) => (
-          <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-        a: ({ href, children }) => (
-          <Link
-            href={href}
-            size="medium"
-            variant="anchor"
-            color="primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {children?.toString() ?? ''}
-          </Link>
-        ),
-        li: ({ children }) => (
-          <Text marginY="spacing.3" size="medium">
-            <DotIcon marginBottom="1px" size="xsmall" /> {children}
-          </Text>
-        ),
-        ol: ({ children }) => (
-          <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-            {children}
-          </Box>
-        ),
-        ul: ({ children }) => (
-          <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-            {children}
-          </Box>
-        ),
-        hr: () => <Divider marginY="spacing.4" />,
-        i: ({ children }) => (
-          <Text size="medium" variant="caption" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-        p: ({ children }) => (
-          <Text marginY="spacing.2" size="medium" color="surface.text.gray.subtle">
-            {children}
-          </Text>
-        ),
-      }}
+/**
+ * Stable components object for ReactMarkdown to prevent re-renders during streaming.
+ * Defined outside the component to maintain referential equality.
+ */
+const markdownComponents = {
+  h1: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.4" size="large">
+      {children}
+    </Heading>
+  ),
+  h2: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="medium">
+      {children}
+    </Heading>
+  ),
+  h3: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="small">
+      {children}
+    </Heading>
+  ),
+  h4: ({ children }: { children?: React.ReactNode }) => (
+    <Heading marginBottom="spacing.3" size="small">
+      {children}
+    </Heading>
+  ),
+  b: ({ children }: { children?: React.ReactNode }) => (
+    <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+    <Link
+      href={href}
+      size="medium"
+      variant="anchor"
+      color="primary"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      {content}
-    </ReactMarkdown>
+      {(children as unknown) as string}
+    </Link>
+  ),
+  li: ({ children }: { children?: React.ReactNode }) => (
+    <Text marginY="spacing.3" size="medium">
+      <DotIcon marginBottom="1px" size="xsmall" /> {children}
+    </Text>
+  ),
+  ol: ({ children }: { children?: React.ReactNode }) => (
+    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
+      {children}
+    </Box>
+  ),
+  ul: ({ children }: { children?: React.ReactNode }) => (
+    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
+      {children}
+    </Box>
+  ),
+  hr: () => <Divider marginY="spacing.4" />,
+  i: ({ children }: { children?: React.ReactNode }) => (
+    <Text size="medium" variant="caption" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+  p: ({ children }: { children?: React.ReactNode }) => (
+    <Text marginY="spacing.2" size="medium" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+};
+
+const RenderTextComponent = memo(({ content }: TextComponent) => {
+  const { isAnimating, animateOptions } = useGenUIAnimation();
+
+  const rehypePlugins = useMemo(() => {
+    if (!isAnimating) return [];
+    return [createRehypeAnimate(animateOptions)];
+  }, [isAnimating, animateOptions]);
+
+  if (!content) return null;
+
+  return (
+    <>
+      {isAnimating ? <TextAnimationStyles /> : null}
+      <ReactMarkdown skipHtml rehypePlugins={rehypePlugins} components={markdownComponents}>
+        {content}
+      </ReactMarkdown>
+    </>
   );
 });
 
@@ -569,7 +622,7 @@ const RenderChartComponent = memo(
               return numValue.toString();
           }
         } catch (error) {
-          console.error('Error formatting value:', error);
+          console.error('[GenUI Chart]: Error formatting value:', error);
           return numValue.toString();
         }
       }
@@ -683,15 +736,45 @@ const RenderChartComponent = memo(
   },
 );
 
-// Table cell link renderer - fires action for consumer to handle
-const TableCellLinkRenderer = ({ cell }: { cell: TableCellLink }) => {
-  const onActionClick = useGenUIAction();
+// Primitive copy button — just the icon + tooltip, no text label.
+// Compose this inside any cell that needs copy behaviour.
+const Copyable = ({ value }: { value?: string }) => {
+  const [copied, setCopied] = useState(false);
 
-  if (!cell.action) {
-    return <Text size="medium">{cell.text}</Text>;
-  }
+  const handleCopy = () => {
+    void navigator.clipboard.writeText(value ?? '');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
+    <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
+      <TooltipInteractiveWrapper>
+        <IconButton
+          icon={CopyIcon}
+          size="medium"
+          emphasis="intense"
+          accessibilityLabel={`Copy ${value}`}
+          onClick={handleCopy}
+        />
+      </TooltipInteractiveWrapper>
+    </Tooltip>
+  );
+};
+
+// Text + copy icon
+const CopyableText = ({ value }: { value?: string }) => (
+  <Box display="flex" alignItems="center" gap="spacing.2">
+    <Text size="medium">{value ?? '-'}</Text>
+    <Copyable value={value} />
+  </Box>
+);
+
+// Table cell link renderer - fires action for consumer to handle
+const TableCellLinkRenderer = ({ cell }: { cell?: Partial<TableCellLink> }) => {
+  const onActionClick = useGenUIAction();
+
+  const linkNode = cell?.action ? (
     <Link
       variant="button"
       onClick={() => {
@@ -700,43 +783,26 @@ const TableCellLinkRenderer = ({ cell }: { cell: TableCellLink }) => {
         }
       }}
     >
-      {cell.text}
+      {cell.text ?? ''}
     </Link>
+  ) : (
+    <Text size="medium">{cell?.text}</Text>
   );
-};
 
-// Copyable text component with tooltip feedback
-const CopyableText = ({ value }: { value: string }) => {
-  const [copied, setCopied] = useState(false);
+  if (cell?.copyable && cell?.text) {
+    return (
+      <Box display="flex" alignItems="center" gap="spacing.2">
+        {linkNode}
+        <Copyable value={cell.text} />
+      </Box>
+    );
+  }
 
-  const handleCopy = () => {
-    if (value) {
-      void navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  return (
-    <Box display="flex" alignItems="center" gap="spacing.2">
-      <Text size="medium">{value ?? '-'}</Text>
-      <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
-        <TooltipInteractiveWrapper>
-          <IconButton
-            icon={CopyIcon}
-            size="medium"
-            emphasis="intense"
-            accessibilityLabel={`Copy ${value}`}
-            onClick={handleCopy}
-          />
-        </TooltipInteractiveWrapper>
-      </Tooltip>
-    </Box>
-  );
+  return linkNode;
 };
 
 // Helper to render a single table cell based on its component type
-const RenderTableCellContent = ({ cell }: { cell: TableCellType }) => {
+const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => {
   if (!cell) {
     return <Text size="medium">-</Text>;
   }
@@ -905,7 +971,19 @@ const TableRowHoverActions = ({
   );
 };
 
+// Produces column widths using minmax(max-content, 1fr) so columns:
+// 1. Never shrink below their content width (no text wrapping)
+// 2. Expand proportionally to fill available width when space permits
+const calculateColumnWidths = (headers: string[], _rows: Partial<TableCellType>[][]): string[] => {
+  return headers.map(() => 'minmax(max-content, 1fr)');
+};
+
 const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {
+  const columnWidths = useMemo(
+    () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
+    [headers, rows],
+  );
+
   if (!headers || !rows || headers.length === 0 || rows.length === 0) {
     return null;
   }
@@ -919,14 +997,13 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      gap="spacing.3"
-      marginY="spacing.4"
-      borderRadius="medium"
-    >
-      <Table data={tableData} backgroundColor="transparent" rowDensity="normal">
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Table
+        data={tableData}
+        backgroundColor="transparent"
+        rowDensity="compact"
+        gridTemplateColumns={columnWidths.join(' ')}
+      >
         {(data) => (
           <>
             <TableHeader>
@@ -941,6 +1018,8 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
                 <TableRow
                   key={rowIndex}
                   item={item}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
                   hoverActions={
                     rowActions && rowActions.length > 0 ? (
                       <TableRowHoverActions
@@ -967,39 +1046,34 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
 });
 
 const RenderCardComponent = memo(({ title, description, footer, children }: CardComponent) => {
-  if (!title && !description) {
-    return null;
-  }
+  const hasHeader = title || description;
 
   return (
-    <Card
-      width="100%"
-      height="100%"
-      marginY="spacing.4"
-      elevation="none"
-      padding="spacing.7"
-      borderRadius="large"
-    >
-      <CardHeader showDivider={false}>
-        <CardHeaderLeading title={title || ''} subtitle={description || ''} />
-      </CardHeader>
+    <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
+      <Card width="100%" height="100%" padding="spacing.7">
+        {hasHeader ? (
+          <CardHeader>
+            <CardHeaderLeading title={title || ''} subtitle={description || ''} />
+          </CardHeader>
+        ) : null}
 
-      {children && children.length > 0 ? (
-        <CardBody height="100%">
-          <Box display="flex" flexDirection="column" gap="spacing.5">
-            {children.map((child, index) => {
-              return <GenUIComponentRenderer key={index} component={child} index={index} />;
-            })}
-          </Box>
-        </CardBody>
-      ) : null}
+        {children && children.length > 0 ? (
+          <CardBody height="100%">
+            <Box display="flex" flexDirection="column" gap="spacing.5">
+              {children.map((child, index) => {
+                return <GenUIComponentRenderer key={index} component={child} index={index} />;
+              })}
+            </Box>
+          </CardBody>
+        ) : null}
 
-      {footer ? (
-        <CardFooter showDivider={true}>
-          <CardFooterLeading subtitle={footer} />
-        </CardFooter>
-      ) : null}
-    </Card>
+        {footer ? (
+          <CardFooter showDivider={true}>
+            <CardFooterLeading subtitle={footer} />
+          </CardFooter>
+        ) : null}
+      </Card>
+    </Box>
   );
 });
 
@@ -1094,7 +1168,12 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
   }
 
   // Filter out invalid items during streaming
-  const validItems = items.filter((item) => item.key?.children && item.value?.children);
+  // Filters out: null, undefined, and empty string children
+  const validItems = items.filter((item) => {
+    const children = item.value?.children;
+    if (!item.key?.children || children == null) return false;
+    return typeof children !== 'string' || children !== '';
+  });
 
   if (validItems.length === 0) {
     return null;
@@ -1102,12 +1181,28 @@ const RenderInfoGroupComponent = memo(({ items }: InfoGroupComponent) => {
 
   return (
     <InfoGroup marginY="spacing.3" itemOrientation="horizontal" size="medium" valueAlign="left">
-      {validItems.map((item, index) => (
-        <InfoItem key={index}>
-          <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
-          <InfoItemValue helpText={item?.value?.helpText}>{item?.value?.children}</InfoItemValue>
-        </InfoItem>
-      ))}
+      {validItems.map((item, index) => {
+        const value = item.value!;
+        const isString = typeof value.children === 'string';
+
+        if (isString) {
+          return (
+            <InfoItem key={index}>
+              <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
+              <InfoItemValue helpText={value.helpText}>{value.children as string}</InfoItemValue>
+            </InfoItem>
+          );
+        }
+
+        return (
+          <InfoItem key={index}>
+            <InfoItemKey helpText={item?.key?.helpText}>{item?.key?.children}</InfoItemKey>
+            <InfoItemValue helpText={value.helpText}>
+              <GenUIComponentRenderer component={value.children as GenUIComponent} index={index} />
+            </InfoItemValue>
+          </InfoItem>
+        );
+      })}
     </InfoGroup>
   );
 });
@@ -1181,42 +1276,49 @@ const RenderAlertComponent = memo(
     const Icon = iconMap[validColor];
 
     return (
-      <Box marginY="spacing.3" width="100%">
-        <Alert
-          emphasis="subtle"
-          title={title}
-          icon={Icon}
-          description={description!}
-          color={validColor}
-          isDismissible={false}
-          isFullWidth
-          actions={{
-            primary: actions?.primary?.text
-              ? {
-                  text: actions?.primary?.text,
-                  onClick: () => {
-                    if (actions?.primary?.action && onActionClick) {
-                      onActionClick(actions.primary.action);
-                    }
-                  },
-                }
-              : undefined,
-            secondary: actions?.secondary?.text
-              ? {
-                  text: actions?.secondary?.text,
-                  onClick: () => {
-                    if (actions?.secondary?.action && onActionClick) {
-                      onActionClick(actions.secondary.action);
-                    }
-                  },
-                }
-              : undefined,
-          }}
-        />
-      </Box>
+      <Alert
+        emphasis="subtle"
+        title={title}
+        icon={Icon}
+        description={description!}
+        color={validColor}
+        isDismissible={false}
+        marginY="spacing.4"
+        actions={{
+          primary: actions?.primary?.text
+            ? {
+                text: actions.primary.text,
+                onClick: () => {
+                  if (actions.primary?.action && onActionClick) {
+                    onActionClick(actions.primary.action);
+                  }
+                },
+              }
+            : undefined,
+          secondary: actions?.secondary?.text
+            ? {
+                text: actions.secondary.text,
+                onClick: () => {
+                  if (actions.secondary?.action && onActionClick) {
+                    onActionClick(actions.secondary.action);
+                  }
+                },
+              }
+            : undefined,
+        }}
+      />
     );
   },
 );
+
+const RenderAmountComponent = memo(({ value, currency }: AmountComponent) => {
+  const resolvedCurrency = currency || 'INR';
+  const numValue = typeof value === 'string' ? parseFloat(value) : value;
+  if (typeof numValue !== 'number' || isNaN(numValue)) {
+    return <Text size="medium">-</Text>;
+  }
+  return <Amount value={numValue} currency={resolvedCurrency as 'INR' | 'MYR'} />;
+});
 
 // Alias for internal use in built-in renderers
 const GenUIComponentRenderer = ComponentRenderer;
@@ -1264,6 +1366,9 @@ const createBuiltInRegistry = (): GenUIComponentRegistry => ({
   },
   [ComponentType.ALERT]: {
     renderer: RenderAlertComponent as GenUIComponentRenderer,
+  },
+  [ComponentType.AMOUNT]: {
+    renderer: RenderAmountComponent as GenUIComponentRenderer,
   },
 });
 

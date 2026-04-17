@@ -73,7 +73,7 @@
 
 .color-neutral {
   .spinner-icon {
-    color: var(--interactive-icon-gray-subtle);
+    color: var(--interactive-icon-gray-muted);
   }
 }
 

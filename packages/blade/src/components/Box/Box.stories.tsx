@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import React from 'react';
 import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import type { BoxRefType } from './BaseBox/types';

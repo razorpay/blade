@@ -307,6 +307,28 @@ describe('<Amount />', () => {
       expect(getByTestId('amount-test')).toHaveTextContent(item.output);
     },
   );
+  it('should automatically determine fraction digits based on currency when fractionDigits="auto"', () => {
+    setState({ locale: 'en-IN' });
+
+    // JPY has 0 decimal places
+    const { getByTestId: getJPY } = renderWithTheme(
+      <Amount value={1000} currency="JPY" fractionDigits="auto" testID="amount-jpy" />,
+    );
+    expect(getJPY('amount-jpy')).toHaveTextContent('¥1,000');
+
+    // INR has 2 decimal places
+    const { getByTestId: getINR } = renderWithTheme(
+      <Amount value={1000} currency="INR" fractionDigits="auto" testID="amount-inr" />,
+    );
+    expect(getINR('amount-inr')).toHaveTextContent('₹1,000.00');
+
+    // KWD has 3 decimal places
+    const { getByTestId: getKWD } = renderWithTheme(
+      <Amount value={1000} currency="KWD" fractionDigits="auto" testID="amount-kwd" />,
+    );
+    expect(getKWD('amount-kwd')).toHaveTextContent('1,000.000');
+  });
+
   it('should render amount with data-analytics attributes', () => {
     const { getByTestId } = renderWithTheme(
       <Amount value={1000} testID="amount-test" data-analytics-test="dummy" />,

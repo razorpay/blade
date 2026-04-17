@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Title } from '@storybook/addon-docs';
-import type { StoryFn, Meta } from '@storybook/react';
+import { Title } from '@storybook/addon-docs/blocks';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { useToast } from './useToast';
 import { Toast } from './Toast';
@@ -83,7 +83,8 @@ const texts = {
   negative: 'Unable to fetch merchant details',
   positive: 'Customer details failed successfully',
   notice: 'Your KYC is pending',
-  information: 'Your transaction will be settled in 3 business days',
+  information:
+    'Your transaction will be settled in 3 business days, this is a long message to test the toast container overflow behavior',
   neutral: 'Your transaction will be settled in 3 business days',
 } as const;
 
