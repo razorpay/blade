@@ -107,6 +107,8 @@ export {
   getAlertTextColorToken,
   getAlertIconColorToken,
   getAlertActionButtonColor,
+  getAlertActionButtonVariant,
+  getAlertLinkColor,
 } from './Alert';
 export type { AlertVariants, AlertColor, AlertEmphasis } from './Alert';
 export {
@@ -124,11 +126,7 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './Avatar';
-export type {
-  AvatarWrapperVariants,
-  AvatarButtonVariants,
-  AvatarGroupVariants,
-} from './Avatar';
+export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './Avatar';
 export {
   breadcrumbNavClass,
   breadcrumbListClass,

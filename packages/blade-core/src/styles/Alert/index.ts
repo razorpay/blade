@@ -21,5 +21,7 @@ export {
   getAlertTextColorToken,
   getAlertIconColorToken,
   getAlertActionButtonColor,
+  getAlertActionButtonVariant,
+  getAlertLinkColor,
 } from './alert';
 export type { AlertVariants, AlertColor, AlertEmphasis } from './alert';

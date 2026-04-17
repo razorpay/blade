@@ -117,14 +117,34 @@ export function getAlertIconColorToken({
 }
 
 /**
- * Get action button color based on emphasis and alert color
+ * TODO: consume this util in react Alert component
+ * */
+/**
+ * Get primary action button color based on emphasis
  */
 export function getAlertActionButtonColor({
-  color,
   emphasis,
 }: {
   color: AlertColor;
   emphasis: AlertEmphasis;
-}): 'white' | AlertColor {
-  return emphasis === 'intense' ? 'white' : color;
+}): 'white' | 'primary' {
+  return emphasis === 'intense' ? 'white' : 'primary';
+}
+
+/**
+ * Get primary action button variant based on emphasis
+ */
+export function getAlertActionButtonVariant({
+  emphasis,
+}: {
+  emphasis: AlertEmphasis;
+}): 'primary' | 'secondary' {
+  return emphasis === 'intense' ? 'primary' : 'secondary';
+}
+
+/**
+ * Get secondary action (link) color based on emphasis
+ */
+export function getAlertLinkColor({ emphasis }: { emphasis: AlertEmphasis }): 'white' | 'neutral' {
+  return emphasis === 'intense' ? 'white' : 'neutral';
 }

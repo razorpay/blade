@@ -13,6 +13,8 @@
     getAlertTextColorToken,
     getAlertIconColorToken,
     getAlertActionButtonColor,
+    getAlertActionButtonVariant,
+    getAlertLinkColor,
     alertIconWrapperClass,
     alertContentClass,
     alertContentFullWidthClass,
@@ -90,12 +92,15 @@
     getAlertIconColorToken({ color, emphasis }) as IconColor,
   );
 
-  // Action button/link color derived from alert color + emphasis
+  // Action button color/variant and link color derived from emphasis
   const buttonActionColor = $derived(
     getAlertActionButtonColor({ color, emphasis }),
   );
+  const buttonActionVariant = $derived(
+    getAlertActionButtonVariant({ emphasis }),
+  );
   const linkActionColor = $derived(
-    getAlertActionButtonColor({ color, emphasis }),
+    getAlertLinkColor({ emphasis }),
   );
 
   // Icon offset class based on layout context
@@ -226,7 +231,7 @@
                 size="small"
                 onClick={actions.primary.onClick}
                 color={buttonActionColor}
-                variant="secondary"
+                variant={buttonActionVariant}
               >
                 {actions.primary.text}
               </BaseButton>
@@ -259,7 +264,7 @@
               size="small"
               onClick={actions.primary.onClick}
               color={buttonActionColor}
-              variant="secondary"
+              variant={buttonActionVariant}
             >
               {actions.primary.text}
             </BaseButton>
