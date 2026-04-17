@@ -71,9 +71,15 @@ type ChatInputProps = {
   onFileChange?: ({ fileList }: { fileList: BladeFileList }) => void;
 
   /**
-   * Callback fired when a file is removed from the attachment previews
+   * Callback fired when a file is removed (trash icon on a success-status file)
    */
   onFileRemove?: ({ file }: { file: BladeFile }) => void;
+
+  /**
+   * Callback fired when the dismiss (✕) button is clicked on an uploading-status file.
+   * Use this to cancel an in-flight upload request.
+   */
+  onFileDismiss?: ({ file }: { file: BladeFile }) => void;
 
   /**
    * Callback fired when the re-upload button is clicked on a file with error status
