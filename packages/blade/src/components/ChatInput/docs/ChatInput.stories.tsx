@@ -709,6 +709,50 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
 };
 ProductUsecaseChatExperience.storyName = 'Product Usecase: Chat Experience';
 
+export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    {
+      name: 'report.pdf',
+      size: 204800,
+      status: 'uploading',
+      uploadPercent: 45,
+      id: 'file-uploading-1',
+    } as BladeFileList[0],
+    {
+      name: 'screenshot.png',
+      size: 76160,
+      status: 'success',
+      id: 'file-success-1',
+    } as BladeFileList[0],
+  ]);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileRemove={({ file }) => {
+          console.log('File removed/dismissed:', file.name);
+          setFiles((prev) => prev.filter((f) => f.id !== file.id));
+        }}
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        Click the ✕ on the uploading file to dismiss it. The{' '}
+        <Text as="span" size="small" weight="semibold">
+          onFileRemove
+        </Text>{' '}
+        callback fires for both trash (success) and dismiss (uploading) actions.
+      </Text>
+    </Box>
+  );
+};
+WithFileDismissDuringUpload.storyName = 'With File Dismiss During Upload';
+
 export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = React.useState<BladeFileList>([
     {

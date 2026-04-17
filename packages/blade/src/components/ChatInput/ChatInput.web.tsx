@@ -160,6 +160,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
                 key={file.id ?? file.name}
                 file={file}
                 onRemove={() => handleFileRemove(file)}
+                onDismiss={() => handleFileRemove(file)}
                 onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
               />
             ))}
