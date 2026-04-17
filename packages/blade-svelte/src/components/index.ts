@@ -31,5 +31,16 @@ export { default as Badge } from './Badge/Badge.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Alert
+export { default as Alert } from './Alert/Alert.svelte';
+
+// Avatar
+export { default as Avatar } from './Avatar/Avatar.svelte';
+export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
+
+// Breadcrumb
+export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
+export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
+
 // BladeProvider
 export * from './BladeProvider';
