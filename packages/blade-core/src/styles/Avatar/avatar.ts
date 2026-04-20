@@ -28,6 +28,13 @@ export const avatarWrapperStyles = cva(styles['avatar-wrapper'], {
       false: '',
     },
   },
+  compoundVariants: [
+    { variant: 'square', size: 'xsmall', class: styles['square-xsmall'] },
+    { variant: 'square', size: 'small', class: styles['square-small'] },
+    { variant: 'square', size: 'medium', class: styles['square-medium'] },
+    { variant: 'square', size: 'large', class: styles['square-large'] },
+    { variant: 'square', size: 'xlarge', class: styles['square-xlarge'] },
+  ],
   defaultVariants: {
     size: 'medium',
     variant: 'circle',
@@ -79,6 +86,13 @@ export const avatarButtonStyles = cva(styles['avatar-btn'], {
       false: '',
     },
   },
+  compoundVariants: [
+    { variant: 'square', size: 'xsmall', class: styles['btn-square-xsmall'] },
+    { variant: 'square', size: 'small', class: styles['btn-square-small'] },
+    { variant: 'square', size: 'medium', class: styles['btn-square-medium'] },
+    { variant: 'square', size: 'large', class: styles['btn-square-large'] },
+    { variant: 'square', size: 'xlarge', class: styles['btn-square-xlarge'] },
+  ],
   defaultVariants: {
     size: 'medium',
     variant: 'circle',

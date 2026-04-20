@@ -38,6 +38,27 @@
 }
 
 .variant-square {
+  /* border-radius applied via size-specific compound classes below */
+}
+
+/* Square variant border-radius scales with size (matches React avatarBorderRadiusTokens) */
+.square-xsmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.square-small {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.square-medium {
+  border-radius: var(--border-radius-small);
+}
+
+.square-large {
+  border-radius: var(--border-radius-small);
+}
+
+.square-xlarge {
   border-radius: var(--border-radius-medium);
 }
 
@@ -130,6 +151,43 @@
 }
 
 .btn-variant-square {
+  /* border-radius applied via size-specific compound classes below */
+}
+
+/* Button square variant border-radius scales with size */
+.btn-square-xsmall {
+  border-radius: var(--border-radius-xsmall);
+
+  & img {
+    border-radius: var(--border-radius-xsmall);
+  }
+}
+
+.btn-square-small {
+  border-radius: var(--border-radius-xsmall);
+
+  & img {
+    border-radius: var(--border-radius-xsmall);
+  }
+}
+
+.btn-square-medium {
+  border-radius: var(--border-radius-small);
+
+  & img {
+    border-radius: var(--border-radius-small);
+  }
+}
+
+.btn-square-large {
+  border-radius: var(--border-radius-small);
+
+  & img {
+    border-radius: var(--border-radius-small);
+  }
+}
+
+.btn-square-xlarge {
   border-radius: var(--border-radius-medium);
 
   & img {
