@@ -123,9 +123,7 @@ export function getChipWrapperClasses({
   classes.push(cls[size] || '');
 
   // Padding
-  const paddingKey = hasIcon
-    ? `paddingWithIcon-${size}`
-    : `paddingWithoutIcon-${size}`;
+  const paddingKey = hasIcon ? `paddingWithIcon-${size}` : `paddingWithoutIcon-${size}`;
   classes.push(cls[paddingKey] || '');
 
   // Color / state
@@ -297,16 +295,9 @@ export function getChipGroupLabelClasses({
 /**
  * Returns the CSS class string for ChipGroup chips container.
  */
-export function getChipGroupContainerClasses({
-  size,
-}: {
-  size: ChipSize;
-}): string {
+export function getChipGroupContainerClasses({ size }: { size: ChipSize }): string {
   const cls = getChipTemplateClasses();
-  return [
-    cls.chipGroupContainer,
-    cls[`chipGroupGap-${size}`] || cls['chipGroupGap-small'],
-  ]
+  return [cls.chipGroupContainer, cls[`chipGroupGap-${size}`] || cls['chipGroupGap-small']]
     .filter(Boolean)
     .join(' ');
 }
