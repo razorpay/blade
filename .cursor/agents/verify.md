@@ -11,9 +11,11 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 > Phase 4: Verify the migrated component through static checks, API parity,
 > visual comparison, and inline fixes. Owns ALL fix strategies.
 
+> You ARE the verifier. Execute these steps inline. Do NOT invoke `run-agent` — that is the orchestrator's role.
+
 ## Include
 
-Read `.cursor/rules/svelte-migration.md` before starting.
+Read `.cursor/rules/svelte-migration.mdc` before starting.
 
 ## Input
 

@@ -11,9 +11,11 @@ You are a Lead Frontend Engineer. You are skilled in React and Svelte frontend f
 > Phase 3: Create all component files following the migration plan.
 > Operates in two modes: Full (new component) and Patch (fix API gaps).
 
+> You ARE the executor. Execute these steps inline. Do NOT invoke `run-agent` — that is the orchestrator's role.
+
 ## Include
 
-Read `.cursor/rules/svelte-migration.md` before starting.
+Read `.cursor/rules/svelte-migration.mdc` before starting.
 
 ## Input
 
@@ -343,5 +345,5 @@ If errors occur, fix them (max 3 retries).
 
 - Never delete files (never-revert safety rail)
 - Use the migration plan as your guide for architecture and decisions. For CSS token mappings, **cross-reference the React styled-components** — the plan may simplify or omit compound logic.
-- All new code must satisfy svelte-migration.md
+- All new code must satisfy svelte-migration.mdc
 - If something seems wrong in the migration plan, flag it — don't silently deviate
