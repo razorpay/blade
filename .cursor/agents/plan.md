@@ -44,7 +44,7 @@ Read `.cursor/rules/svelte-migration.md` before starting.
 
 ### 1. Read React source files
 
-Read the following files from `packages/blade/src/components/{Name}/`:
+Start from these known entry points in `packages/blade/src/components/{Name}/`:
 
 ```
 {Name}.tsx          — or {Name}.web.tsx if platform-split
@@ -52,7 +52,17 @@ types.ts            — or check for inline types in main file
 {Name}.stories.tsx  — story definitions
 ```
 
-If the component has sub-components (e.g., `Card/CardHeader.tsx`), read those too.
+Then **follow all imports recursively** that resolve to files within the component directory (`packages/blade/src/components/{Name}/`). This captures styled-components (`Styled*.tsx`), token maps (`*Tokens.ts`, `tokens.ts`), style-computation functions (`get*Styles*.ts`), sub-component files, and any other module that contributes to the component's visual or behavioral logic — regardless of naming convention.
+
+**Traversal boundary:** Do NOT follow imports that resolve outside the component directory:
+
+- `~utils/` — shared utilities, already framework-agnostic in blade-core
+- `~tokens/` — design tokens, exposed as CSS variables in Svelte
+- `~components/{Other}` — other Blade components, noted as dependencies in Step 3
+- `styled-components`, `~components/BladeProvider` — React-specific, replaced by CSS modules + CSS variables
+- Third-party imports
+
+Note these external imports as dependencies but do not read their source.
 
 ### 2. Extract props
 
@@ -62,6 +72,19 @@ From `types.ts` or the main component file:
 - Categorize each prop: `visual` | `behavior` | `event` | `a11y` | `content`
 - Note any props that use `Platform.Select` — these need web-only type conversion
 - Note any props extending `StyledPropsBlade`, `TestID`, `DataAnalyticsAttribute`
+
+### 2.5. Extract style token mappings
+
+Across all component-local files discovered via import traversal in Step 1, find every CSS property that uses conditional logic depending on props. This includes:
+
+- Ternary expressions: `color: isDisabled ? tokens.disabled : tokens.active`
+- Object lookups keyed by prop values: `borderRadius: tokens.radius[size]`
+- Nested lookups (compound): `borderRadius: tokens[variant][size]`
+- Function parameters that become CSS values: `({ size, theme }) => ({ width: sizes[size] })`
+
+For each, document the full mapping. Flag any **compound mappings** where the CSS value depends on 2+ props.
+
+Record findings in the discovery report's "Style Token Mappings" section.
 
 ### 3. Find dependencies
 
@@ -194,6 +217,7 @@ List all files with action (create / update) and notes.
 
 - Does this component need a new CSS module in blade-core?
 - What CVA variants are needed? (map from props that affect styling)
+- For each compound mapping flagged in Step 2.5, add a row to the migration plan's Compound CVA Variants table
 - What token variables will be used?
 - How are disabled/interaction states handled in CSS?
 

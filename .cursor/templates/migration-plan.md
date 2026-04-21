@@ -42,6 +42,15 @@
 |---------|---------|------------|
 | {variant} | {option1, option2, ...} | `.{class1}`, `.{class2}` |
 
+**Compound CVA Variants:**
+
+<!-- Required when a CSS property depends on 2+ variant axes.
+     Source: Style Token Mappings in discovery report. -->
+
+| Condition                    | Class            | CSS Override                                 |
+| ---------------------------- | ---------------- | -------------------------------------------- |
+| {variant=X + size=Y}        | `.{class-name}`  | `{css-property}: var(--{token})`             |
+
 **Token Variables Used:**
 - `var(--{token-name})` — {what it's for}
 

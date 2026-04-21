@@ -19,7 +19,8 @@ Read `.cursor/rules/svelte-migration.md` before starting.
 
 **Full Mode:**
 
-- `.cursor/artifacts/{Name}/migration-plan.md` (from Research agent)
+- `.cursor/artifacts/{Name}/migration-plan.md` (guide)
+- `packages/blade/src/components/{Name}/` (source of truth)
 
 **Patch Mode:**
 
@@ -40,6 +41,7 @@ Create files in this exact order (types before components, base before wrapper):
 
 1. **Types** — `blade-svelte/src/components/{Name}/types.ts`
 2. **Base types** (if two-layer) — `blade-svelte/src/components/{Name}/Base{Name}/types.ts`
+2.5. **Styled-Component Cross-Reference** — read React source before writing CSS (see below)
 3. **CSS module** — `blade-core/src/styles/{Name}/{name}.module.css`
 4. **CVA wrapper** — `blade-core/src/styles/{Name}/{name}.ts`
 5. **Base component** (if two-layer) — `blade-svelte/src/components/{Name}/Base{Name}/Base{Name}.svelte`
@@ -68,6 +70,26 @@ export interface {Name}Props extends StyledPropsBlade {
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
 }
+```
+
+#### Step 2.5: Styled-Component Cross-Reference
+
+Before writing any CSS module or CVA config, traverse the React component directory (`packages/blade/src/components/{Name}/`) starting from the entry file and following local imports. Read every file within that directory boundary — styled-components, token maps, style functions, and sub-component files. Do NOT follow imports outside the directory (`~utils/`, `~tokens/`, `~components/{Other}`, etc.).
+
+For every prop-dependent style computation (conditional ternary, object lookup by prop, nested lookups), translate it into the CVA config. If a CSS property depends on 2+ props, use CVA `compoundVariants`:
+
+```typescript
+export const get{Name}Classes = cva(styles.base, {
+  variants: {
+    variant: { circle: styles.circle, square: styles.square },
+    size: { xsmall: null, small: null, medium: null },
+  },
+  compoundVariants: [
+    { variant: 'square', size: 'xsmall', class: styles.squareXsmall },
+    { variant: 'square', size: 'small', class: styles.squareSmall },
+    // ... one entry per compound combination
+  ],
+});
 ```
 
 #### CVA Setup (blade-core)
@@ -320,6 +342,6 @@ If errors occur, fix them (max 3 retries).
 ## Constraints
 
 - Never delete files (never-revert safety rail)
-- Always follow the migration plan's decisions (single vs two-layer, etc.)
+- Use the migration plan as your guide for architecture and decisions. For CSS token mappings, **cross-reference the React styled-components** — the plan may simplify or omit compound logic.
 - All new code must satisfy svelte-migration.md
 - If something seems wrong in the migration plan, flag it — don't silently deviate

@@ -134,6 +134,37 @@ Every `var(--...)` reference in the component's CSS module must resolve to an ac
 
 **Classify unresolved variables as P0** — they cause properties to silently fall back to browser defaults (e.g., `transition-duration: 0s`, `box-shadow: none`).
 
+### Step 1.75: Compound Variant Audit
+
+The React source is the authoritative reference — not the discovery report. Traverse the React component directory independently so this step catches both **executor bugs** (documented mapping not implemented) and **planner bugs** (mapping exists in source but missing from discovery report).
+
+**Procedure:**
+
+1. **Traverse React source.** Starting from `packages/blade/src/components/{Name}/{Name}.tsx`, follow all local imports that resolve to files within the component directory. Do NOT follow external imports (`~utils/`, `~tokens/`, `~components/{Other}`, etc.).
+
+2. **Scan for compound patterns.** Across all traversed files, identify prop-dependent style computations where the CSS value depends on 2+ props. Patterns to look for:
+
+   - Nested object lookups: `tokens[propA][propB]`, `theme.x.y[propA][propB]`
+   - Conditional with indexed access: `(cond ? a : b)[propB]`, `tokens[propA === 'X' ? 'y' : 'z']`
+   - Style functions with multiple prop params that compute a single CSS property from 2+ of them
+
+3. **Cross-reference against Svelte CVA.** For each compound mapping found in the source, check `blade-core/src/styles/{Name}/{name}.ts` for a matching `compoundVariants` entry.
+
+4. **Cross-reference against discovery report.** For each compound mapping found in the source, check if it's documented in the discovery report's Style Token Mappings table.
+
+5. **Build a results table:**
+
+| CSS Property | Depends On | React Source | In Discovery Report | In Svelte CVA `compoundVariants` | Status |
+|---|---|---|---|---|---|
+| `border-radius` | variant, size | `avatarBorderRadiusTokens.square[size]` | ✅ | ✅ | ✅ |
+| `width` | deviceType, size | `switchSizes.track[deviceType][size].width` | ❌ | ❌ | ❌ P1 |
+
+**On all matched:** Log "Compound Variant Audit: all N compound mappings covered" → continue to Step 2.
+
+**On missing `compoundVariants` (executor gap):** Classify as **P1**. Write to patch-request.md with the missing compound variant entries and trigger Execute agent in patch mode. Append to Iteration History: "Compound variant gap → triggered patch mode". Return to Step 1.
+
+**On missing from discovery report (planner gap):** Classify as **P1** and flag a distinct issue class: "Planner gap: compound mapping not documented". Append to Iteration History with the file/line where the mapping was found in the React source. This feedback is critical for improving future runs of the planner. Fix the implementation via patch mode regardless, but log the planner gap separately so it doesn't get lost.
+
 ### Step 2: API Parity Check
 
 Read `discovery-report.md` as the source of truth. Compare against actual implementation:
@@ -267,7 +298,7 @@ For each pair:
 
 ### Step 3.5: Computed Style Spot-Checks
 
-Screenshots miss invisible failures (e.g., `box-shadow: none` on white-on-white, `transition-duration: 0s`). Compare computed styles between Svelte and React on the **primary story**.
+Screenshots miss invisible failures (e.g., `box-shadow: none` on white-on-white, `transition-duration: 0s`). Compare computed styles between Svelte and React on the **primary story** AND on any story that exercises non-default variant combinations (e.g., square variant at all sizes). At minimum, run checks on one story per variant axis that has compound token mappings per the discovery report.
 
 **Procedure:**
 
