@@ -1,11 +1,11 @@
+import type { DotNotationSpacingStringToken } from '~utils/types';
+import { size } from '~tokens/global';
+import type { DurationString, EasingString } from '~tokens/global';
 import type { ChipGroupProps } from './ChipGroup';
 import type { ChipBorderColors, ChipBackgroundColors } from './types';
-import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { DurationString, EasingString } from '~tokens/global';
-import { size } from '~tokens/global';
 
 const chipGroupGapTokens = {
   xsmall: {

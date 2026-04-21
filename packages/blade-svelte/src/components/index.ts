@@ -31,5 +31,9 @@ export { default as Badge } from './Badge/Badge.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Chip
+export { default as Chip } from './Chip/Chip.svelte';
+export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+
 // BladeProvider
 export * from './BladeProvider';

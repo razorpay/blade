@@ -1,0 +1,194 @@
+/* Outer wrapper */
+.chipWrapper {
+  display: inline-flex;
+}
+
+/* Label */
+.label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.labelDisabled {
+  cursor: not-allowed;
+}
+
+/* Visually hidden input */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.srOnly:focus-visible ~ .animatedChip {
+  outline: 2px solid var(--interactive-border-primary-default);
+  outline-offset: 2px;
+}
+
+/* ── AnimatedChip (outer): border + scale animation ── */
+/* Note: border-width, border-radius, and border-color are applied via utility
+ * classes (utilities.module.css) at the call site (see animatedChipCva).
+ */
+.animatedChip {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  text-overflow: ellipsis;
+  width: 100%;
+  border-style: solid;
+  background-color: transparent;
+  transition-property: transform;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.pressed {
+  transform: scale(0.92);
+}
+
+/* AnimatedChip max-width: desktop vs mobile */
+@media (min-width: 768px) {
+  .animatedChip {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 767px) {
+  .animatedChip {
+    max-width: 280px;
+  }
+}
+
+/* ── StyledChipWrapper (inner): background + inner border + hover ── */
+.chipInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  border-style: solid;
+  border-color: transparent;
+  transition-property: background-color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+/* ChipInner size: height, padding, inner border-radius */
+/* Note: border-width comes from a utility class applied via chipInnerCva.
+ * border-radius uses calc() so it can't be replaced by a plain utility.
+ */
+.innerXsmall {
+  height: 24px;
+  border-radius: calc(var(--border-radius-small) - var(--border-width-thin));
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.innerSmall {
+  height: 28px;
+  border-radius: calc(var(--border-radius-small) - var(--border-width-thin));
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.innerMedium {
+  height: 36px;
+  border-radius: calc(var(--border-radius-small) - var(--border-width-thin));
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.innerLarge {
+  height: 48px;
+  border-radius: calc(var(--border-radius-medium) - var(--border-width-thin));
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+}
+
+/* ChipInner unchecked: inner border stays transparent */
+.innerUnchecked {
+  background-color: var(--surface-background-gray-intense);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--interactive-background-gray-faded);
+  }
+}
+
+/* ChipInner checked: inner border becomes visible (same color as outer) */
+.innerPrimaryChecked {
+  background-color: var(--interactive-background-primary-faded);
+  border-color: var(--interactive-border-primary-default);
+
+  &:hover {
+    background-color: var(--interactive-background-primary-faded-highlighted);
+  }
+}
+
+.innerPositiveChecked {
+  background-color: var(--interactive-background-positive-faded);
+  border-color: var(--interactive-border-positive-default);
+
+  &:hover {
+    background-color: var(--interactive-background-positive-faded-highlighted);
+  }
+}
+
+.innerNegativeChecked {
+  background-color: var(--interactive-background-negative-faded);
+  border-color: var(--interactive-border-negative-default);
+
+  &:hover {
+    background-color: var(--interactive-background-negative-faded-highlighted);
+  }
+}
+
+/* ChipInner disabled + unchecked: inner border transparent */
+.innerUncheckedDisabled {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* ChipInner disabled + checked: inner border uses disabled color */
+.innerPrimaryDisabled {
+  background-color: var(--interactive-background-primary-disabled);
+  border-color: var(--interactive-border-primary-disabled);
+}
+
+.innerPositiveDisabled {
+  background-color: var(--interactive-background-positive-disabled);
+  border-color: var(--interactive-border-positive-disabled);
+}
+
+.innerNegativeDisabled {
+  background-color: var(--interactive-background-negative-disabled);
+  border-color: var(--interactive-border-negative-disabled);
+}
+
+/* Icon container */
+.chipIcon {
+  display: flex;
+}
+
+/* Text wrapper */
+.chipText {
+  padding-left: var(--spacing-2);
+  padding-right: var(--spacing-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
