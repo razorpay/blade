@@ -16,6 +16,7 @@
     "dist",
     "knowledgebase",
     "cursorRules",
+    "skillTemplate",
     "base-blade-template"
   ],
   "scripts": {

@@ -7,11 +7,11 @@ import { analyticsToolCallEventName, PATTERNS_KNOWLEDGEBASE_DIRECTORY } from '..
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
-import { shouldCreateOrUpdateCursorRule } from '../utils/cursorRulesUtils.js';
+import { shouldCreateOrUpdateSkill } from '../utils/skillUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
 import {
   commonBladeMCPToolSchema,
-  httpTransportCursorRuleVersionSchema,
+  httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 
@@ -40,21 +40,21 @@ const getBladePatternDocsStdioSchema = {
 // Schema for HTTP transport
 const getBladePatternDocsHttpSchema = {
   ...getBladePatternDocsStdioSchema,
-  ...httpTransportCursorRuleVersionSchema,
+  ...httpTransportSkillVersionSchema,
 };
 
 // Core business logic function
 const getBladePatternDocsCore = ({
   patternsList,
   currentProjectRootDirectory,
-  skipLocalCursorRuleChecks = false,
-  cursorRuleVersion,
+  skipLocalSkillChecks = false,
+  skillVersion,
   clientName,
 }: {
   patternsList: string;
   currentProjectRootDirectory?: string;
-  skipLocalCursorRuleChecks?: boolean;
-  cursorRuleVersion?: string;
+  skipLocalSkillChecks?: boolean;
+  skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
   const components = patternsList.split(',').map((s) => s.trim());
@@ -70,17 +70,16 @@ const getBladePatternDocsCore = ({
     });
   }
 
-  // Check cursor rules using shouldCreateOrUpdateCursorRule which handles both file system and version checks
+  // Check skill using shouldCreateOrUpdateSkill which handles both file system and version checks
   if (currentProjectRootDirectory) {
-    const createOrUpdateCursorRule = shouldCreateOrUpdateCursorRule(
-      cursorRuleVersion,
-      clientName,
+    const createOrUpdateSkill = shouldCreateOrUpdateSkill(
+      skillVersion,
       currentProjectRootDirectory,
-      skipLocalCursorRuleChecks,
+      skipLocalSkillChecks,
       getBladePatternDocsToolName,
     );
-    if (createOrUpdateCursorRule) {
-      return createOrUpdateCursorRule;
+    if (createOrUpdateSkill) {
+      return createOrUpdateSkill;
     }
   }
 
@@ -99,7 +98,7 @@ const getBladePatternDocsCore = ({
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
-        cursorRuleVersion,
+        skillVersion,
         clientName,
       },
     });
@@ -129,7 +128,7 @@ const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsS
   return getBladePatternDocsCore({
     patternsList,
     currentProjectRootDirectory,
-    skipLocalCursorRuleChecks: false, // Perform cursor rule checks for stdio
+    skipLocalSkillChecks: false, // Perform skill checks for stdio
     clientName,
   });
 };
@@ -137,15 +136,15 @@ const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsS
 // Callback for HTTP transport
 const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHttpSchema> = ({
   patternsList,
-  cursorRuleVersion,
+  skillVersion,
   clientName,
   currentProjectRootDirectory,
 }) => {
   return getBladePatternDocsCore({
     patternsList,
     currentProjectRootDirectory,
-    skipLocalCursorRuleChecks: true, // Skip cursor rule checks for HTTP
-    cursorRuleVersion,
+    skipLocalSkillChecks: true, // Skip local skill checks for HTTP
+    skillVersion,
     clientName,
   });
 };
