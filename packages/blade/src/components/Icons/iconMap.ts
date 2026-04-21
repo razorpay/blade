@@ -318,6 +318,7 @@ import RefreshIconComponent from './RefreshIcon';
 import RepeatIconComponent from './RepeatIcon';
 import ReportsIconComponent from './ReportsIcon';
 import ResizerIconComponent from './ResizerIcon';
+import ReticleIconComponent from './ReticleIcon';
 import RewindIconComponent from './RewindIcon';
 import RotateClockWiseIconComponent from './RotateClockWiseIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
@@ -760,6 +761,7 @@ const iconMap: Record<string, IconComponent> = {
   RepeatIcon: RepeatIconComponent,
   ReportsIcon: ReportsIconComponent,
   ResizerIcon: ResizerIconComponent,
+  ReticleIcon: ReticleIconComponent,
   RewindIcon: RewindIconComponent,
   RotateClockWiseIcon: RotateClockWiseIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,

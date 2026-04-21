@@ -512,12 +512,21 @@
 .background-interactive-background-gray-disabled { background-color: var(--interactive-background-gray-disabled); }
 .background-interactive-background-gray-faded { background-color: var(--interactive-background-gray-faded); }
 .background-interactive-background-gray-faded-highlighted { background-color: var(--interactive-background-gray-faded-highlighted); }
+.background-interactive-background-gray-ghost { background-color: var(--interactive-background-gray-ghost); }
 
 .background-interactive-background-staticWhite-default { background-color: var(--interactive-background-static-white-default); }
 .background-interactive-background-staticWhite-highlighted { background-color: var(--interactive-background-static-white-highlighted); }
 .background-interactive-background-staticWhite-disabled { background-color: var(--interactive-background-static-white-disabled); }
 .background-interactive-background-staticWhite-faded { background-color: var(--interactive-background-static-white-faded); }
 .background-interactive-background-staticWhite-faded-highlighted { background-color: var(--interactive-background-static-white-faded-highlighted); }
+.background-interactive-background-staticWhite-ghost { background-color: var(--interactive-background-static-white-ghost); }
+
+.background-interactive-background-staticBlack-default { background-color: var(--interactive-background-static-black-default); }
+.background-interactive-background-staticBlack-highlighted { background-color: var(--interactive-background-static-black-highlighted); }
+.background-interactive-background-staticBlack-disabled { background-color: var(--interactive-background-static-black-disabled); }
+.background-interactive-background-staticBlack-faded { background-color: var(--interactive-background-static-black-faded); }
+.background-interactive-background-staticBlack-faded-highlighted { background-color: var(--interactive-background-static-black-faded-highlighted); }
+.background-interactive-background-staticBlack-ghost { background-color: var(--interactive-background-static-black-ghost); }
 
 /* Interactive Border Colors */
 .border-interactive-border-primary-default { border-color: var(--interactive-border-primary-default); }
@@ -539,6 +548,12 @@
 
 .border-interactive-border-staticWhite-highlighted { border-color: var(--interactive-border-static-white-highlighted); }
 .border-interactive-border-staticWhite-disabled { border-color: var(--interactive-border-static-white-disabled); }
+.border-interactive-border-staticWhite-faded-highlighted { border-color: var(--interactive-border-static-white-faded-highlighted); }
+
+.border-interactive-border-staticBlack-default { border-color: var(--interactive-border-static-black-default); }
+.border-interactive-border-staticBlack-highlighted { border-color: var(--interactive-border-static-black-highlighted); }
+.border-interactive-border-staticBlack-disabled { border-color: var(--interactive-border-static-black-disabled); }
+.border-interactive-border-staticBlack-faded-highlighted { border-color: var(--interactive-border-static-black-faded-highlighted); }
 
 /* Transparent */
 .background-transparent { background-color: transparent; }

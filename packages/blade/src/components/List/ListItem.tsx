@@ -79,7 +79,7 @@ const ListItemContentChildren = ({
       {children.map((child, index) => {
         if (typeof child === 'string') {
           return (
-            <Text key={index} variant="body" size={size}>
+            <Text key={index} variant="body" size={size} color="surface.text.gray.subtle">
               {child}
             </Text>
           );
@@ -88,7 +88,7 @@ const ListItemContentChildren = ({
       })}
     </BaseBox>
   ) : (
-    <Text variant="body" size={size}>
+    <Text variant="body" size={size} color="surface.text.gray.subtle">
       {children}
     </Text>
   );

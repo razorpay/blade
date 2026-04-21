@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
 import { SingleFileUploadStory } from './stories';

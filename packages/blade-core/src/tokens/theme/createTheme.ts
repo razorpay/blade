@@ -174,7 +174,7 @@ const getOnLightOverrides = (
       background: {
         primary: {
           intense: brandColors[600],
-          subtle: brandColors[200],
+          subtle: brandColors.a150,
         },
       },
       border: {
@@ -279,7 +279,7 @@ const getOnDarkOverrides = (
       background: {
         primary: {
           intense: brandColors[600],
-          subtle: brandColors[200],
+          subtle: brandColors.a150,
         },
       },
       border: {

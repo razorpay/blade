@@ -242,6 +242,10 @@
 }
 
 /* Letter spacing variants - using CSS variables */
+.letter-spacing-25 {
+  letter-spacing: var(--letter-spacing-25);
+}
+
 .letter-spacing-50 {
   letter-spacing: var(--letter-spacing-50);
 }

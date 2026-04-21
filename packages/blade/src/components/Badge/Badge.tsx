@@ -2,7 +2,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
-import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
+import { textHorizontalMargin, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
@@ -164,11 +164,17 @@ const _Badge = (
           overflow="hidden"
         >
           {Icon ? (
-            <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+            <BaseBox display="flex">
               <Icon color={iconColor} size={iconSize[size]} />
             </BaseBox>
           ) : null}
-          <Text {...badgeTextSizes[size]} weight="medium" truncateAfterLines={1} color={textColor}>
+          <Text
+            {...badgeTextSizes[size]}
+            weight={emphasis === 'intense' ? 'regular' : 'medium'}
+            truncateAfterLines={1}
+            color={textColor}
+            marginX={textHorizontalMargin[size]}
+          >
             {children}
           </Text>
         </BaseBox>

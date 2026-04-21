@@ -30,6 +30,7 @@ packages/blade/public/docs-yarn-lock.yaml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+debug-storybook.log
 
 
 # React Native Specific:
@@ -95,6 +96,6 @@ buck-out/
 **/ios/Pods/
 
 knowledgebase-ts-errors.json
-.cursor/rules/frontend-blade-rules.mdc
 .cursor/artifacts/
+.cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
