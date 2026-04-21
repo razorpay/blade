@@ -132,7 +132,7 @@ describe('skillUtils', () => {
       ).toBeUndefined();
     });
 
-    it('should return undefined when skill is up to date (version "0.0.0" outdated)', () => {
+    it('should return outdated error when version is "0.0.0"', () => {
       const result = shouldCreateOrUpdateSkill('0.0.0', mockProjectRootDirectory, true);
 
       expect(result).toMatchObject({

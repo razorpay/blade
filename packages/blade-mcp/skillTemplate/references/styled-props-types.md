@@ -2,10 +2,10 @@
 
 These are the types supported in components that accept styled props.
 
-```ts
+````ts
 type SpacingValueType =
   | `spacing.${keyof Spacing}`
-  | `${string}${'px' | '%' | 'vh' 'vw'}`
+  | `${string}${'px' | '%' | 'vh' | 'vw'}`
   | `calc(${string})`
   | 'auto'
   | `min(${string})`
@@ -156,4 +156,4 @@ type Spacing = Readonly<{
   /** 11: 56px */
   11: 56;
 }>;
-```
+````

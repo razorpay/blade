@@ -26,7 +26,7 @@ const CHECK_SKILL_VERSION_DESCRIPTION = `Get the version from the blade skill fi
 
 Use this exact grep command:
 \`\`\`grep
-grep -o 'version: "[0-9.]*"' .agents/skills/ui-code-guidelines/SKILL.md
+grep -o "version: '[0-9.]*'" .agents/skills/ui-code-guidelines/SKILL.md
 \`\`\`
 `;
 
