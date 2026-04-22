@@ -1,15 +1,11 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import * as Sentry from '@sentry/node';
-import {
-  CURSOR_RULES_VERSION_STRING,
-  KNOWLEDGEBASE_DIRECTORY,
-  PROJECT_ROOT_DIRECTORY,
-} from './tokens.js';
+import { SKILL_VERSION_STRING, KNOWLEDGEBASE_DIRECTORY, PROJECT_ROOT_DIRECTORY } from './tokens.js';
 
-const hasOutDatedRules = (ruleFilePath: string): boolean => {
-  const ruleFileContent = readFileSync(ruleFilePath, 'utf8');
-  return !ruleFileContent.includes(CURSOR_RULES_VERSION_STRING);
+const hasOutdatedSkill = (skillFilePath: string): boolean => {
+  const skillFileContent = readFileSync(skillFilePath, 'utf8');
+  return !skillFileContent.includes(SKILL_VERSION_STRING);
 };
 
 const getPackageJSONVersion = (): string => {
@@ -43,5 +39,5 @@ const getBladeDocsList = (documentationType: DocumentationType): string[] => {
   return bladeDocsList;
 };
 
-export { hasOutDatedRules, getPackageJSONVersion, getBladeDocsList };
+export { hasOutdatedSkill, getPackageJSONVersion, getBladeDocsList };
 export type { DocumentationType };
