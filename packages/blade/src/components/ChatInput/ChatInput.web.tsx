@@ -43,6 +43,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     fileList,
     onFileChange,
     onFileRemove,
+    onFileDismiss,
     onFileReupload,
     accept,
     suggestions,
@@ -73,6 +74,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     handleUploadClick,
     handleFileInputChange,
     handleFileRemove,
+    handleFileDismiss,
     handlePaste,
     handleInnerMouseDownCapture,
   } = useChatInput(
@@ -87,6 +89,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       fileList,
       onFileChange,
       onFileRemove,
+      onFileDismiss,
       accept,
       suggestions,
       onSuggestionAccept,
@@ -160,6 +163,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
                 key={file.id ?? file.name}
                 file={file}
                 onRemove={() => handleFileRemove(file)}
+                onDismiss={() => handleFileDismiss(file)}
                 onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
               />
             ))}

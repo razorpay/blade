@@ -709,6 +709,59 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
 };
 ProductUsecaseChatExperience.storyName = 'Product Usecase: Chat Experience';
 
+export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    {
+      name: 'report.pdf',
+      size: 204800,
+      status: 'uploading',
+      uploadPercent: 45,
+      id: 'file-uploading-1',
+    } as BladeFileList[0],
+    {
+      name: 'screenshot.png',
+      size: 76160,
+      status: 'success',
+      id: 'file-success-1',
+    } as BladeFileList[0],
+  ]);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileRemove={({ file }) => {
+          console.log('onFileRemove (trash icon):', file.name);
+          setFiles((prev) => prev.filter((f) => f.id !== file.id));
+        }}
+        onFileDismiss={({ file }) => {
+          console.log('onFileDismiss (✕ on uploading file):', file.name);
+          // Cancel your in-flight upload here, e.g. abortController.abort()
+          setFiles((prev) => prev.filter((f) => f.id !== file.id));
+        }}
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        ✕ on the uploading file fires{' '}
+        <Text as="span" size="small" weight="semibold">
+          onFileDismiss
+        </Text>
+        . Trash on the success file fires{' '}
+        <Text as="span" size="small" weight="semibold">
+          onFileRemove
+        </Text>
+        . Check the console.
+      </Text>
+    </Box>
+  );
+};
+WithFileDismissDuringUpload.storyName = 'With File Dismiss During Upload';
+
 export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = React.useState<BladeFileList>([
     {

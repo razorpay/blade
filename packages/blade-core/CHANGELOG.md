@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.4.0
+
+### Minor Changes
+
+- 142949f30: feat: blade spark redesign for blade-core and blade-svelte.
+
 ## 0.3.0
 
 ### Minor Changes

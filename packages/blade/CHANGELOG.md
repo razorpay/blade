@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.101.0
+
+### Minor Changes
+
+- c25481570: fix(ChatInput): wire onDismiss so close button works on uploading files
+
+## 12.100.0
+
+### Minor Changes
+
+- d93fbc833: feat(TopNav): add paddingY prop to TopNavBrand component
+
 ## 12.99.1
 
 ### Patch Changes
