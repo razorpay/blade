@@ -3,7 +3,13 @@ import { cva } from 'class-variance-authority';
 import styles from './counter.module.css';
 
 export type CounterSize = 'small' | 'medium' | 'large';
-export type CounterColor = 'neutral' | 'positive' | 'negative' | 'notice' | 'information' | 'primary';
+export type CounterColor =
+  | 'neutral'
+  | 'positive'
+  | 'negative'
+  | 'notice'
+  | 'information'
+  | 'primary';
 export type CounterEmphasis = 'subtle' | 'intense';
 
 export type CounterVariants = {
@@ -38,7 +44,10 @@ export const counterHorizontalPadding: Record<CounterSize, string> = {
  * - body small: fontSize 75, lineHeight 75
  * - body medium: fontSize 100, lineHeight 100
  */
-export const counterTextSizes: Record<CounterSize, { fontSize: 25 | 75 | 100; lineHeight: 25 | 75 | 100 }> = {
+export const counterTextSizes: Record<
+  CounterSize,
+  { fontSize: 25 | 75 | 100; lineHeight: 25 | 75 | 100 }
+> = {
   small: { fontSize: 25, lineHeight: 25 },
   medium: { fontSize: 75, lineHeight: 75 },
   large: { fontSize: 100, lineHeight: 100 },
