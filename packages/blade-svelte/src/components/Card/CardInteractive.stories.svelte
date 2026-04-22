@@ -58,9 +58,6 @@
         control: { type: 'text' },
         table: propCategory,
       },
-      elevation: {
-        table: propCategory,
-      },
       padding: {
         table: propCategory,
       },
@@ -69,7 +66,6 @@
       accessibilityLabel: 'Payment Pages Card',
       isSelected: false,
       shouldScaleOnHover: true,
-      elevation: 'midRaised',
       padding: 'spacing.7',
     },
   });
@@ -186,7 +182,6 @@
     onHover={() => console.log('Hovered')}
     shouldScaleOnHover
     accessibilityLabel="Payment Pages Card"
-    elevation="midRaised"
     width="400px"
   >
     <CardHeader>

@@ -6,7 +6,6 @@
 .cardRoot {
   display: block;
   position: relative;
-  overflow: hidden;
   box-sizing: border-box;
   cursor: initial;
 }
@@ -18,11 +17,13 @@
 
 /* Focused state via data attribute (added on top of selected) */
 .cardRoot[data-focused='true'] {
-  box-shadow: 0px 0px 0px var(--border-width-thicker) transparent, 0px 0px 0px 4px var(--surface-border-primary-muted);
+  box-shadow: 0px 0px 0px var(--border-width-thicker) transparent,
+    0px 0px 0px 4px var(--surface-border-primary-muted);
 }
 
 .cardRoot[data-selected='true'][data-focused='true'] {
-  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal), 0px 0px 0px 4px var(--surface-border-primary-muted);
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal),
+    0px 0px 0px 4px var(--surface-border-primary-muted);
 }
 
 /* Validation state: error */
@@ -31,7 +32,8 @@
 }
 
 .cardRoot[data-validation='error'][data-focused='true'] {
-  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default),
+    0px 0px 0px 4px var(--surface-border-primary-muted);
 }
 
 /* Validation state: success */
@@ -40,7 +42,8 @@
 }
 
 .cardRoot[data-validation='success'][data-focused='true'] {
-  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default), 0px 0px 0px 4px var(--surface-border-primary-muted);
+  box-shadow: 0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default),
+    0px 0px 0px 4px var(--surface-border-primary-muted);
 }
 
 /* As label cursor */
@@ -75,12 +78,18 @@
   position: relative;
 }
 
-.cardRoot label:not(a[data-blade-component='card-link-overlay']):not(button[data-blade-component='card-link-overlay']) {
+.cardRoot
+  label:not(a[data-blade-component='card-link-overlay']):not(button[data-blade-component='card-link-overlay']) {
   z-index: 2;
   position: relative;
 }
 
-/* --- CardSurface --- */
+/* --- CardSurface ---
+   Mirrors packages/blade/src/utils/makeSurfaceStyles/makeSurfaceStyles.ts
+   (getSurfaceStyles). Paired with a three-layer box-shadow: border inner ring + surface elevation +
+   top inset "lip". Values are inlined (not theme CSS vars) because React
+   uses raw palette colors (colors.neutral.blueGrayLight/blueGrayDark) that
+   don't exist as CSS custom properties in blade-core/tokens. */
 .cardSurface {
   width: 100%;
   display: flex;
@@ -88,6 +97,42 @@
   flex-direction: column;
   box-sizing: border-box;
   text-align: left;
+  border: none;
+  background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%),
+    linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    0px 6px 32px 4px hsla(205, 8%, 71%, 0.06),
+    inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
+}
+
+/* Hide the border inner ring when the card is selected — matches React's
+   getSurfaceStyles({ hideBorder: isSelected }) behavior. */
+.cardRoot[data-selected='true'] .cardSurface {
+  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06),
+    inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
+}
+
+/* Dark theme overrides for the CardSurface visual treatment. Scoped to
+   body[data-theme='dark'] to stay consistent with how blade-core/tokens/
+   theme.css gates dark mode; no theme.css changes required. */
+:root body[data-theme='dark'] .cardSurface {
+  border-top: 1px solid var(--surface-border-gray-subtle);
+  background-image: linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%),
+    linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%);
+  background-position: center top, center calc(100% - 1px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    0px 6px 12px 4px hsla(0, 0%, 0%, 0.06),
+    inset 0px 0px 0px 1px var(--surface-background-gray-intense);
+}
+
+:root body[data-theme='dark'] .cardRoot[data-selected='true'] .cardSurface {
+  box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06),
+    inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
 /* --- LinkOverlay --- */

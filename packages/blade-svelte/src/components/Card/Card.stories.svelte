@@ -19,10 +19,6 @@
         control: 'select',
         options: ['medium', 'large', 'xlarge'],
       },
-      elevation: {
-        control: 'select',
-        options: ['none', 'lowRaised', 'midRaised', 'highRaised'],
-      },
       padding: {
         control: 'radio',
         options: ['spacing.0', 'spacing.3', 'spacing.4', 'spacing.5', 'spacing.7'],
@@ -31,7 +27,6 @@
     args: {
       backgroundColor: 'surface.background.gray.intense',
       borderRadius: 'medium',
-      elevation: 'lowRaised',
       padding: 'spacing.7',
     },
   });
@@ -55,92 +50,191 @@
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon } from '../Icons';
 </script>
 
-<!-- Story 1: Card Example -->
+<!-- Story 1: Card Example
+     React renders a split light+dark layout via a scoped <BladeProvider colorScheme="dark">.
+     Svelte's BladeProvider isn't migrated yet and dark tokens are body-scoped in theme.css,
+     so we keep React's split-pane structure (gray.moderate backdrops, two cards side by side)
+     but render both halves in light mode. TODO: re-enable dark half once Svelte BladeProvider
+     (or a scoped theme primitive) ships. -->
 <Story name="Card Example" asChild>
-  <Card>
-    <CardHeader>
-      <CardHeaderLeading
-        title="Payment Links"
-        subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
-      >
-        {#snippet prefix()}
-          <CardHeaderIcon icon={CreditCardIcon} />
-        {/snippet}
-        {#snippet suffix()}
-          <CardHeaderCounter value={12} />
-        {/snippet}
-      </CardHeaderLeading>
-      <CardHeaderTrailing>
-        {#snippet visual()}
-          <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
-        {/snippet}
-      </CardHeaderTrailing>
-    </CardHeader>
-    <CardBody>
-      <Text>
-        Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
-      <CardFooterTrailing
-        actions={{
-          primary: {
-            text: 'Learn More',
-            onClick: () => console.log('Primary Action Clicked'),
-          },
-          secondary: {
-            text: 'Try Demo',
-            onClick: () => console.log('Secondary Action Clicked'),
-          },
-        }}
-      />
-    </CardFooter>
-  </Card>
+  <div style="display: flex;">
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Payment Links"
+            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+          >
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CreditCardIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Payment Links"
+            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+          >
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CreditCardIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
+  </div>
 </Story>
 
-<!-- Story 2: Figma Example -->
+<!-- Story 2: Figma Example — same layout note as Story 1 (dark half intentionally omitted). -->
 <Story name="Figma Example" asChild>
-  <Card>
-    <CardHeader>
-      <CardHeaderLeading
-        title="Header Title"
-        subtitle="Header Subtitle"
-      >
-        {#snippet prefix()}
-          <CardHeaderIcon icon={CheckIcon} />
-        {/snippet}
-        {#snippet suffix()}
-          <CardHeaderCounter value={12} />
-        {/snippet}
-      </CardHeaderLeading>
-      <CardHeaderTrailing>
-        {#snippet visual()}
-          <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
-        {/snippet}
-      </CardHeaderTrailing>
-    </CardHeader>
-    <CardBody>
-      <Text>
-        Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <CardFooterLeading title="Footer Title" subtitle="Footer Subtitle" />
-      <CardFooterTrailing
-        actions={{
-          primary: {
-            text: 'Learn More',
-            onClick: () => console.log('Primary Action Clicked'),
-          },
-          secondary: {
-            text: 'Try Demo',
-            onClick: () => console.log('Secondary Action Clicked'),
-          },
-        }}
-      />
-    </CardFooter>
-  </Card>
+  <div style="display: flex;">
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading title="Header Title" subtitle="Header Subtitle">
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CheckIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Footer Title" subtitle="Footer Subtitle" />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading title="Header Title" subtitle="Header Subtitle">
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CheckIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Footer Title" subtitle="Footer Subtitle" />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
+  </div>
 </Story>
 
 <!-- Story 3: Card Body Content -->
@@ -229,7 +323,7 @@
 
 <!-- Story 4: Card Without Padding -->
 <Story name="Card Without Padding" asChild>
-  <Card elevation="highRaised" padding="spacing.0">
+  <Card padding="spacing.0">
     <CardBody>
       <div style="display: flex; flex-direction: row;">
         <img
@@ -349,4 +443,48 @@
       </div>
     </CardBody>
   </Card>
+</Story>
+
+<!-- Story 7: Card With Overflow -->
+<Story name="Card With Overflow" asChild>
+  <div style="display: flex; flex-direction: column; gap: 24px;">
+    <Heading>Card with overflow="auto"</Heading>
+    <Card height="200px" overflow="auto" maxWidth="400px">
+      <CardHeader>
+        <CardHeaderLeading title="Scrollable Content" />
+      </CardHeader>
+      <CardBody>
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Text>
+        <Text marginTop="spacing.5">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </Text>
+      </CardBody>
+    </Card>
+
+    <Heading>Card with overflow="hidden"</Heading>
+    <Card height="200px" overflow="hidden" maxWidth="400px">
+      <CardHeader>
+        <CardHeaderLeading title="Hidden Overflow" />
+      </CardHeader>
+      <CardBody>
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Text>
+      </CardBody>
+    </Card>
+
+    <Heading>Card with overflowY="scroll"</Heading>
+    <Card height="200px" overflowY="scroll" maxWidth="400px">
+      <CardHeader>
+        <CardHeaderLeading title="Vertical Scroll Only" />
+      </CardHeader>
+      <CardBody>
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Text>
+      </CardBody>
+    </Card>
+  </div>
 </Story>

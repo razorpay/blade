@@ -43,7 +43,6 @@ export const cardRootStyles = cva(styles.cardRoot, {
 // --- CardSurface CVA ---
 
 export type CardSurfaceVariants = {
-  elevation?: 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
   backgroundColor?:
     | 'surface.background.gray.subtle'
     | 'surface.background.gray.moderate'
@@ -52,14 +51,12 @@ export type CardSurfaceVariants = {
   borderRadius?: 'medium' | 'large' | 'xlarge';
 };
 
+// `elevation` is intentionally NOT a CVA variant here — the Card's surface
+// elevation is baked into .cardSurface's multi-layer box-shadow in
+// card.module.css. The public `elevation` prop on <Card> is preserved as a
+// deprecated no-op for API parity with React's Card.
 export const cardSurfaceStyles = cva(styles.cardSurface, {
   variants: {
-    elevation: {
-      none: utilityClasses['elevation-none'],
-      lowRaised: utilityClasses['elevation-lowRaised'],
-      midRaised: utilityClasses['elevation-midRaised'],
-      highRaised: utilityClasses['elevation-highRaised'],
-    },
     backgroundColor: {
       'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
       'surface.background.gray.moderate': utilityClasses['background-surface-gray-moderate'],
@@ -79,7 +76,6 @@ export const cardSurfaceStyles = cva(styles.cardSurface, {
     },
   },
   defaultVariants: {
-    elevation: 'lowRaised',
     backgroundColor: 'surface.background.gray.intense',
     padding: 'spacing.7',
     borderRadius: 'medium',

@@ -10,7 +10,10 @@
     children: cardContent,
     backgroundColor = 'surface.background.gray.intense',
     borderRadius = 'medium',
-    elevation = 'lowRaised',
+    /* `elevation` is deprecated and a no-op (matches React). Kept in the
+       destructure so it's swallowed rather than forwarded onto the DOM
+       via {...rest} — the surface elevation is baked into .cardSurface. */
+    elevation: _deprecatedElevation,
     padding = 'spacing.7',
     width,
     height,
@@ -28,6 +31,9 @@
     onClick,
     as,
     cursor,
+    overflow,
+    overflowX,
+    overflowY,
     validationState = 'none',
     testID,
     ...rest
@@ -78,8 +84,10 @@
       {minHeight}
       {padding}
       {borderRadius}
-      {elevation}
       {backgroundColor}
+      {overflow}
+      {overflowX}
+      {overflowY}
     >
       {#snippet children()}
         {#if href}

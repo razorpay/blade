@@ -35,7 +35,10 @@ export type CardProps = {
   /**
    * Sets the elevation for Cards
    *
-   * @default 'lowRaised'
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--docs
+   *
+   * @deprecated The `elevation` prop is deprecated and is a no-op. The Card always uses a custom elevation. This prop will be removed in a future major version.
    */
   elevation?: 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
   /**
@@ -119,6 +122,19 @@ export type CardProps = {
    * CSS cursor value for the card
    */
   cursor?: string;
+  /**
+   * Sets the overflow behavior of the card content.
+   * Passed through to CardSurface. Mirrors React `CardProps['overflow']`.
+   */
+  overflow?: 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
+  /**
+   * Sets the horizontal overflow behavior of the card content.
+   */
+  overflowX?: 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
+  /**
+   * Sets the vertical overflow behavior of the card content.
+   */
+  overflowY?: 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
   /**
    * Validation state for the card border
    *
