@@ -297,6 +297,7 @@
 .opacity-0 { opacity: 0; }
 .opacity-25 { opacity: 0.25; }
 .opacity-50 { opacity: 0.5; }
+.opacity-56 { opacity: 0.56; } /* matches opacity[700] token - used by muted link variants */
 .opacity-64 { opacity: 0.64; }
 .opacity-75 { opacity: 0.75; }
 .opacity-100 { opacity: 1; }

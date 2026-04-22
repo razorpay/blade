@@ -30,6 +30,9 @@
     alertCloseButtonClass,
     alertIconOffset1Class,
     alertIconOffset2Class,
+    alertIconWrapperCenterClass,
+    alertIconOffsetDescriptionOnlyClass,
+    alertCloseButtonDescriptionOnlyClass,
   } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
   import BaseButton from '../Button/BaseButton/BaseButton.svelte';
@@ -103,14 +106,32 @@
     getAlertLinkColor({ emphasis }),
   );
 
-  // Icon offset class based on layout context
-  // Web-only: when not fullWidth and has title → spacing.2, when fullWidth and no title → spacing.2, else spacing.1
+  // Has actions
+  const hasActions = $derived(!!actions?.primary || !!actions?.secondary);
+
+  // Description-only alerts (no title, no actions) render the icon centered
+  // with a 1px top offset, matching React's `isDescriptionOnly` branch.
+  const isDescriptionOnly = $derived(!title && !hasActions);
+
+  // Full-width alerts without a title also center-align the icon
+  // (matches React's `shouldCenterAlign`).
+  const shouldCenterAlign = $derived(isFullWidth && !title);
+
+  // Icon offset class based on layout context.
+  // Note: .icon-offset-2 is breakpoint-aware in CSS (spacing.1 on desktop,
+  // spacing.2 on mobile) so we can pick it unconditionally for cases that
+  // only need the mobile bump on React.
   const iconOffsetClass = $derived.by(() => {
+    if (isDescriptionOnly) return alertIconOffsetDescriptionOnlyClass;
     if (!isFullWidth && title) return alertIconOffset2Class;
     if (isFullWidth && !title) return alertIconOffset2Class;
-    if (isFullWidth) return alertIconOffset1Class;
     return alertIconOffset1Class;
   });
+
+  // Icon alignment class — center for description-only and full-width w/o title.
+  const iconAlignClass = $derived(
+    isDescriptionOnly || shouldCenterAlign ? alertIconWrapperCenterClass : '',
+  );
 
   // Content classes
   const contentClasses = $derived.by(() => {
@@ -124,8 +145,13 @@
     title ? alertDescriptionWithTitleClass : alertDescriptionClass,
   );
 
-  // Has actions
-  const hasActions = $derived(!!actions?.primary || !!actions?.secondary);
+  // Close button classes — apply a slight top offset for description-only alerts
+  // so the dismiss icon stays visually centered with the single line of text.
+  const closeButtonClasses = $derived.by(() => {
+    const classes = [alertCloseButtonClass];
+    if (isDescriptionOnly) classes.push(alertCloseButtonDescriptionOnlyClass);
+    return classes.join(' ');
+  });
 
   // Primary action needs trailing space if secondary action or dismiss button follows
   const primaryActionClasses = $derived.by(() => {
@@ -182,7 +208,7 @@
     {...analyticsAttrs}
   >
     <!-- Leading Icon -->
-    <div class="{alertIconWrapperClass} {iconOffsetClass}">
+    <div class="{alertIconWrapperClass} {iconOffsetClass} {iconAlignClass}">
       <Icon size="medium" color={iconColorToken} />
     </div>
 
@@ -290,7 +316,7 @@
     <!-- Close/Dismiss Button -->
     {#if isDismissible}
       <button
-        class={alertCloseButtonClass}
+        class={closeButtonClasses}
         onclick={handleDismiss}
         {...makeAccessible({ label: 'Dismiss alert' })}
       >

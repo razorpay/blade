@@ -3,6 +3,7 @@ export type { BaseTextVariants } from './BaseText';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkContentClasses,
   getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
@@ -104,6 +105,9 @@ export {
   alertCloseButtonClass,
   alertIconOffset1Class,
   alertIconOffset2Class,
+  alertIconWrapperCenterClass,
+  alertIconOffsetDescriptionOnlyClass,
+  alertCloseButtonDescriptionOnlyClass,
   getAlertTextColorToken,
   getAlertIconColorToken,
   getAlertActionButtonColor,

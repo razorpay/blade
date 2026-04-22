@@ -110,15 +110,8 @@
       {onClick}
       accessibilityProps={{ label: accessibilityLabel }}
       {...analyticsAttrs}
-    >
-      {#if isStringChildren}
-        {children ?? ''}
-      {:else if snippetChildren}
-        {@render snippetChildren()}
-      {:else}
-        {''}
-      {/if}
-    </BaseLink>
+      {children}
+    />
   {/if}
 
   <!-- Separator (hidden for last item via CSS, shown if showLastSeparator) -->

@@ -65,6 +65,9 @@ export const alertActionSecondaryWithDismissClass = styles['action-secondary-wit
 export const alertCloseButtonClass = styles['close-button'];
 export const alertIconOffset1Class = styles['icon-offset-1'];
 export const alertIconOffset2Class = styles['icon-offset-2'];
+export const alertIconWrapperCenterClass = styles['icon-wrapper-center'];
+export const alertIconOffsetDescriptionOnlyClass = styles['icon-offset-description-only'];
+export const alertCloseButtonDescriptionOnlyClass = styles['close-button-description-only'];
 
 /**
  * Get all Alert component template classes as an object.
@@ -90,6 +93,9 @@ export function getAlertTemplateClasses(): Record<string, string> {
     closeButton: alertCloseButtonClass,
     iconOffset1: alertIconOffset1Class,
     iconOffset2: alertIconOffset2Class,
+    iconWrapperCenter: alertIconWrapperCenterClass,
+    iconOffsetDescriptionOnly: alertIconOffsetDescriptionOnlyClass,
+    closeButtonDescriptionOnly: alertCloseButtonDescriptionOnlyClass,
   } as const;
 }
 
