@@ -393,7 +393,6 @@ const _MetricsCard = ({
     >
       <BaseBox
         display="flex"
-        // flexDirection={{ base: 'column', xl: 'row' }}
         alignItems={{ base: 'stretch', xl: 'center' }}
         gap="spacing.4"
         width="100%"
@@ -402,14 +401,11 @@ const _MetricsCard = ({
       >
         <BaseBox
           ref={metricsGridRef}
-          // display="grid"
           flex="1"
           display="flex"
           overflowX={{ base: 'scroll', xl: 'hidden' }}
-          // flexDirection={{ base: 'column', xl: 'row' }}
           gap="spacing.4"
           width="100%"
-          // gridTemplateColumns={`repeat(${metricsGridColumns}, minmax(0, 1fr))`}
         >
           {metrics.map((metric) => {
             const trendAppearance = getTrendAppearance(metric.change?.trend);
