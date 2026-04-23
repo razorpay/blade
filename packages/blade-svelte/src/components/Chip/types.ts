@@ -35,13 +35,13 @@ type ChipCommonProps = {
 type ChipWithoutIconProps = ChipCommonProps & {
   icon?: undefined;
   /** Text content for the chip. Required when no icon is provided. */
-  children: Snippet | string;
+  children: Snippet;
 };
 
 type ChipWithIconProps = ChipCommonProps & {
   icon: IconComponent;
   /** Text content for the chip. Optional when icon is provided. */
-  children?: Snippet | string;
+  children?: Snippet;
 };
 
 export type ChipProps = (ChipWithoutIconProps | ChipWithIconProps) & DataAnalyticsAttribute;

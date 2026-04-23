@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -106,11 +105,6 @@
   const letterSpacing = $derived(textSizes.letterSpacing[_size]);
   const iconSize = $derived(iconSizes[_size]);
 
-  const isStringChildren = $derived(typeof children === 'string');
-  const snippetChildren = $derived(
-    !isStringChildren ? (children as Snippet | undefined) : undefined,
-  );
-
   const metaAttrs = metaAttribute({ name: MetaConstants.Chip, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
@@ -166,7 +160,7 @@
             <Icon size={iconSize} color={iconColorToken} />
           </span>
         {/if}
-        {#if isStringChildren}
+        {#if children}
           <span class={templateClasses.chipText}>
             <BaseText
               as="span"
@@ -178,22 +172,7 @@
               fontWeight="regular"
               truncateAfterLines={1}
             >
-              {children as string}
-            </BaseText>
-          </span>
-        {:else if snippetChildren}
-          <span class={templateClasses.chipText}>
-            <BaseText
-              as="span"
-              color={textColorToken}
-              {fontSize}
-              {lineHeight}
-              {letterSpacing}
-              fontFamily="text"
-              fontWeight="regular"
-              truncateAfterLines={1}
-            >
-              {@render snippetChildren()}
+              {@render children()}
             </BaseText>
           </span>
         {/if}

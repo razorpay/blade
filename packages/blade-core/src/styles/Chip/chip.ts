@@ -99,11 +99,6 @@ export function getChipInnerClasses(props: ChipInnerVariants): string {
   return chipInnerCva(props);
 }
 
-/** @deprecated Use getAnimatedChipClasses + getChipInnerClasses instead */
-export function getChipClasses(props: ChipInnerVariants): string {
-  return getChipInnerClasses(props);
-}
-
 export function getChipTemplateClasses(): Record<string, string> {
   return {
     chipWrapper: chipStyles.chipWrapper,

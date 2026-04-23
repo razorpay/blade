@@ -89,7 +89,6 @@ export {
   getAnimatedChipClasses,
   chipInnerCva,
   getChipInnerClasses,
-  getChipClasses,
   getChipTemplateClasses,
   getChipColorVariant,
   getChipTextColorToken,
