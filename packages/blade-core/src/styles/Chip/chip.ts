@@ -172,10 +172,12 @@ export function getChipIconColorToken(
 export function getChipTextSizes(): {
   fontSize: Record<ChipSize, 75 | 100 | 200>;
   lineHeight: Record<ChipSize, 75 | 100 | 200>;
+  letterSpacing: Record<ChipSize, 25 | 50>;
 } {
   return {
     fontSize: { xsmall: 75, small: 100, medium: 200, large: 200 },
     lineHeight: { xsmall: 75, small: 100, medium: 200, large: 200 },
+    letterSpacing: { xsmall: 50, small: 50, medium: 25, large: 25 },
   };
 }
 

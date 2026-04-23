@@ -103,6 +103,7 @@
   );
   const fontSize = $derived(textSizes.fontSize[_size]);
   const lineHeight = $derived(textSizes.lineHeight[_size]);
+  const letterSpacing = $derived(textSizes.letterSpacing[_size]);
   const iconSize = $derived(iconSizes[_size]);
 
   const isStringChildren = $derived(typeof children === 'string');
@@ -172,6 +173,7 @@
               color={textColorToken}
               {fontSize}
               {lineHeight}
+              {letterSpacing}
               fontFamily="text"
               fontWeight="regular"
               truncateAfterLines={1}
@@ -186,6 +188,7 @@
               color={textColorToken}
               {fontSize}
               {lineHeight}
+              {letterSpacing}
               fontFamily="text"
               fontWeight="regular"
               truncateAfterLines={1}
