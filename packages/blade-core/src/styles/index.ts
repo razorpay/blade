@@ -85,8 +85,10 @@ export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badg
 export {
   counterStyles,
   getCounterClasses,
+  getCounterContentClasses,
   getCounterTemplateClasses,
   counterContentClass,
+  counterContentPaddingClass,
   counterHeight,
   counterHorizontalPadding,
   counterTextSizes,

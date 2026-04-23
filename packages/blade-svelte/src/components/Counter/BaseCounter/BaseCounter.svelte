@@ -7,7 +7,7 @@
   } from '@razorpay/blade-core/utils';
   import {
     getCounterClasses,
-    getCounterTemplateClasses,
+    getCounterContentClasses,
     counterTextSizes,
     getCounterTextColorToken,
   } from '@razorpay/blade-core/styles';
@@ -25,9 +25,6 @@
     ...rest
   }: BaseCounterProps = $props();
 
-  // Get template classes via function to prevent tree-shaking
-  const templateClasses = getCounterTemplateClasses();
-
   // Format the counter content
   const content = $derived(() => {
     if (max !== undefined && value > max) {
@@ -35,6 +32,13 @@
     }
     return `${value}`;
   });
+
+  // Apply horizontal padding only for multi-digit values.
+  const hasHorizontalPadding = $derived(value > 9);
+
+  const contentClasses = $derived(
+    getCounterContentClasses({ size, hasHorizontalPadding }),
+  );
 
   // Get text color based on color and emphasis
   const textColor = $derived(
@@ -72,7 +76,7 @@
 </script>
 
 <div class={combinedClasses()} {...metaAttrs} {...analyticsAttrs}>
-  <div class={templateClasses.content}>
+  <div class={contentClasses}>
     <BaseText
       fontSize={textSize.fontSize}
       lineHeight={textSize.lineHeight}

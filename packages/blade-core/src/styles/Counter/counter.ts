@@ -109,6 +109,16 @@ export const counterStyles = cva(styles.counter, {
 export const counterContentClass = styles.content;
 
 /**
+ * CSS module classes for conditional horizontal padding on the Counter content
+ * wrapper.
+ */
+export const counterContentPaddingClass: Record<CounterSize, string> = {
+  small: styles['content-padding-small'],
+  medium: styles['content-padding-medium'],
+  large: styles['content-padding-large'],
+};
+
+/**
  * Get all Counter component template classes as an object.
  * Use this function in Svelte components to prevent tree-shaking from removing
  * class imports that are only used in templates.
@@ -116,7 +126,29 @@ export const counterContentClass = styles.content;
 export function getCounterTemplateClasses(): Record<string, string> {
   return {
     content: counterContentClass,
+    contentPaddingSmall: counterContentPaddingClass.small,
+    contentPaddingMedium: counterContentPaddingClass.medium,
+    contentPaddingLarge: counterContentPaddingClass.large,
   } as const;
+}
+
+/**
+ * Compute the class list for the Counter content wrapper.
+ * Returns the base content class, plus the size-specific padding class when
+ * the counter should render with horizontal padding (multi-digit values).
+ */
+export function getCounterContentClasses({
+  size,
+  hasHorizontalPadding,
+}: {
+  size: CounterSize;
+  hasHorizontalPadding: boolean;
+}): string {
+  const classes = [counterContentClass];
+  if (hasHorizontalPadding) {
+    classes.push(counterContentPaddingClass[size]);
+  }
+  return classes.filter(Boolean).join(' ');
 }
 
 /**
