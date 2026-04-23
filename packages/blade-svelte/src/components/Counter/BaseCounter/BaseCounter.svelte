@@ -25,40 +25,28 @@
     ...rest
   }: BaseCounterProps = $props();
 
-  // Format the counter content
-  const content = $derived(() => {
-    if (max !== undefined && value > max) {
-      return `${max}+`;
-    }
-    return `${value}`;
-  });
+  const content = $derived(
+    max !== undefined && value > max ? `${max}+` : `${value}`,
+  );
 
-  // Apply horizontal padding only for multi-digit values.
   const hasHorizontalPadding = $derived(value > 9);
 
   const contentClasses = $derived(
     getCounterContentClasses({ size, hasHorizontalPadding }),
   );
 
-  // Get text color based on color and emphasis
   const textColor = $derived(
     getCounterTextColorToken({ color, emphasis }) as TextColors,
   );
 
-  // Get text sizes for the current size
   const textSize = $derived(counterTextSizes[size]);
 
-  // Generate counter classes
-  const counterClasses = $derived(() => {
-    return getCounterClasses({ size, color, emphasis });
-  });
+  const counterClasses = $derived(getCounterClasses({ size, color, emphasis }));
 
-  // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes
-  const combinedClasses = $derived(() => {
-    const classes = [counterClasses()];
+  const combinedClasses = $derived.by(() => {
+    const classes = [counterClasses];
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
@@ -75,7 +63,7 @@
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 </script>
 
-<div class={combinedClasses()} {...metaAttrs} {...analyticsAttrs}>
+<div class={combinedClasses} {...metaAttrs} {...analyticsAttrs}>
   <div class={contentClasses}>
     <BaseText
       fontSize={textSize.fontSize}
@@ -86,7 +74,7 @@
       truncateAfterLines={1}
       textAlign="center"
     >
-      {content()}
+      {content}
     </BaseText>
   </div>
 </div>

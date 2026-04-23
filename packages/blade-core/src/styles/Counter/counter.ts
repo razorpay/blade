@@ -19,24 +19,6 @@ export type CounterVariants = {
 };
 
 /**
- * Counter height tokens mapped to size
- */
-export const counterHeight: Record<CounterSize, number> = {
-  small: 16,
-  medium: 20,
-  large: 24,
-};
-
-/**
- * Counter horizontal padding tokens mapped to size
- */
-export const counterHorizontalPadding: Record<CounterSize, string> = {
-  small: 'spacing.2',
-  medium: 'spacing.3',
-  large: 'spacing.3',
-};
-
-/**
  * Counter text size mapping
  * Returns fontSize and lineHeight values for BaseText
  * Maps to React's Text component: variant='body' with size='xsmall'|'small'|'medium'
@@ -117,20 +99,6 @@ export const counterContentPaddingClass: Record<CounterSize, string> = {
   medium: styles['content-padding-medium'],
   large: styles['content-padding-large'],
 };
-
-/**
- * Get all Counter component template classes as an object.
- * Use this function in Svelte components to prevent tree-shaking from removing
- * class imports that are only used in templates.
- */
-export function getCounterTemplateClasses(): Record<string, string> {
-  return {
-    content: counterContentClass,
-    contentPaddingSmall: counterContentPaddingClass.small,
-    contentPaddingMedium: counterContentPaddingClass.medium,
-    contentPaddingLarge: counterContentPaddingClass.large,
-  } as const;
-}
 
 /**
  * Compute the class list for the Counter content wrapper.
