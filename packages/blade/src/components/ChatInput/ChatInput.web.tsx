@@ -165,15 +165,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <FileUploadItem
-                flexShrink={0}
-                width="200px"
-                key={file.id ?? file.name}
-                file={file}
-                onRemove={() => handleFileRemove(file)}
-                onDismiss={() => handleFileDismiss(file)}
-                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
-              />
+              <BaseBox key={file.id ?? file.name} flexShrink={0} width="200px">
+                <FileUploadItem
+                  file={file}
+                  onRemove={() => handleFileRemove(file)}
+                  onDismiss={() => handleFileDismiss(file)}
+                  onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
+                />
+              </BaseBox>
             ))}
           </HiddenScrollbarBox>
         </BaseMotionBox>
