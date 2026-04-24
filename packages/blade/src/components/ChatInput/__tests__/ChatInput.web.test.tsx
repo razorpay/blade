@@ -53,43 +53,24 @@ describe('<ChatInput />', () => {
     expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
 
-  it('should keep submit button disabled when isSubmitDisabled is true, even with text', async () => {
-    const user = userEvent.setup();
-
-    const { getByRole } = renderWithTheme(
-      <ChatInput accessibilityLabel={accessibilityLabel} isSubmitDisabled />,
-    );
-
-    const textarea = getByRole('textbox', { name: accessibilityLabel });
-    await user.type(textarea, 'Hello world');
-
-    expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
-  });
-
-  it('should keep submit button disabled when isSubmitDisabled is true, even with files', () => {
+  it('should keep submit button disabled when a file is in error state', () => {
     const file = new File(['content'], 'test.png', { type: 'image/png' });
-    Object.assign(file, { id: 'file-1' });
+    Object.assign(file, { id: 'file-1', status: 'error' });
 
     const { getByRole } = renderWithTheme(
-      <ChatInput
-        accessibilityLabel={accessibilityLabel}
-        fileList={[file as never]}
-        isSubmitDisabled
-      />,
+      <ChatInput accessibilityLabel={accessibilityLabel} fileList={[file as never]} />,
     );
 
     expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
 
-  it('should enable submit button when isSubmitDisabled is false and there is text', async () => {
-    const user = userEvent.setup();
+  it('should enable submit button when files exist and none are in error state', () => {
+    const file = new File(['content'], 'test.png', { type: 'image/png' });
+    Object.assign(file, { id: 'file-1', status: 'success' });
 
     const { getByRole } = renderWithTheme(
-      <ChatInput accessibilityLabel={accessibilityLabel} isSubmitDisabled={false} />,
+      <ChatInput accessibilityLabel={accessibilityLabel} fileList={[file as never]} />,
     );
-
-    const textarea = getByRole('textbox', { name: accessibilityLabel });
-    await user.type(textarea, 'Hello world');
 
     expect(getByRole('button', { name: 'Submit' })).toBeEnabled();
   });

@@ -47,14 +47,6 @@ type ChatInputProps = {
   isDisabled?: boolean;
 
   /**
-   * Disables only the submit button regardless of whether there is text or files.
-   * Use this when you want to prevent submission for reasons beyond empty input
-   * (e.g. a required field in the page is not filled, or an async validation is pending).
-   * @default false
-   */
-  isSubmitDisabled?: boolean;
-
-  /**
    * Whether the AI is currently generating a response.
    * When true, the submit button changes to a stop button.
    * @default false

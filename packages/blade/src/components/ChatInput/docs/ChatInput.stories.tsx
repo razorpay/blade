@@ -14,7 +14,6 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
-import { Checkbox } from '~components/Checkbox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -85,24 +84,6 @@ Disabled.args = {
   placeholder: 'Ask a question...',
   isDisabled: true,
 };
-
-export const SubmitDisabled: StoryFn<typeof ChatInput> = () => {
-  const [agreedToTerms, setAgreedToTerms] = React.useState(false);
-
-  return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
-      <Checkbox isChecked={agreedToTerms} onChange={({ isChecked }) => setAgreedToTerms(isChecked)}>
-        I agree to the terms and conditions
-      </Checkbox>
-      <ChatInput
-        placeholder="Ask a question..."
-        isSubmitDisabled={!agreedToTerms}
-        onSubmit={({ value }) => console.log('Submitted:', value)}
-      />
-    </Box>
-  );
-};
-SubmitDisabled.storyName = 'Submit Disabled';
 
 export const WithGhostSuggestions: StoryFn<typeof ChatInput> = () => {
   return (
