@@ -53,6 +53,47 @@ describe('<ChatInput />', () => {
     expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
 
+  it('should keep submit button disabled when isSubmitDisabled is true, even with text', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} isSubmitDisabled />,
+    );
+
+    const textarea = getByRole('textbox', { name: accessibilityLabel });
+    await user.type(textarea, 'Hello world');
+
+    expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
+  });
+
+  it('should keep submit button disabled when isSubmitDisabled is true, even with files', () => {
+    const file = new File(['content'], 'test.png', { type: 'image/png' });
+    Object.assign(file, { id: 'file-1' });
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        fileList={[file as never]}
+        isSubmitDisabled
+      />,
+    );
+
+    expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
+  });
+
+  it('should enable submit button when isSubmitDisabled is false and there is text', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} isSubmitDisabled={false} />,
+    );
+
+    const textarea = getByRole('textbox', { name: accessibilityLabel });
+    await user.type(textarea, 'Hello world');
+
+    expect(getByRole('button', { name: 'Submit' })).toBeEnabled();
+  });
+
   it('should show stop button when isGenerating is true and call onStop', async () => {
     const user = userEvent.setup();
     const onStop = jest.fn();

@@ -86,7 +86,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onSubmit,
       isDisabled,
       isGenerating,
-      isSubmitDisabled: isSubmitDisabledProp,
       onStop,
       fileList,
       onFileChange,
@@ -98,6 +97,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
     ref,
   );
+
+  const _isSubmitDisabled = isSubmitDisabled || isSubmitDisabledProp;
 
   const errorSlideVariants: MotionVariantsType = {
     initial: { opacity: 0 },
@@ -190,7 +191,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     <ChatInputActionBar
       isDisabled={isDisabled}
       isGenerating={isGenerating}
-      isSubmitDisabled={isSubmitDisabled}
+      isSubmitDisabled={_isSubmitDisabled}
       onUploadClick={handleUploadClick}
       onSubmit={handleSubmit}
       onStop={onStop}

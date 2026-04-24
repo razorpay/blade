@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
 import { FileUpload } from '../FileUpload';
+import { FileUploadItem } from '../FileUploadItem';
 import { Box } from '~components/Box';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -171,5 +172,43 @@ describe('<FileUpload />', () => {
 
     expect(handleChange).toBeCalled();
     expect(handleInput).toBeCalled();
+  });
+});
+
+describe('<FileUploadItem />', () => {
+  const errorFile = {
+    id: 'file-1',
+    name: 'test.png',
+    size: 1024,
+    status: 'error' as const,
+    errorText: 'Upload failed',
+  };
+
+  it('should show trash icon button in error state when onRemove is provided', () => {
+    const onRemove = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <FileUploadItem file={errorFile} onRemove={onRemove} />,
+    );
+
+    expect(getByRole('button', { name: 'Remove File' })).toBeTruthy();
+  });
+
+  it('should NOT show trash icon button in error state when onRemove is not provided', () => {
+    const { queryByRole } = renderWithTheme(<FileUploadItem file={errorFile} />);
+
+    expect(queryByRole('button', { name: 'Remove File' })).toBeNull();
+  });
+
+  it('should call onRemove when trash icon is clicked in error state', async () => {
+    const user = userEvent.setup();
+    const onRemove = jest.fn();
+
+    const { getByRole } = renderWithTheme(
+      <FileUploadItem file={errorFile} onRemove={onRemove} />,
+    );
+
+    await user.click(getByRole('button', { name: 'Remove File' }));
+
+    expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
   });
 });
