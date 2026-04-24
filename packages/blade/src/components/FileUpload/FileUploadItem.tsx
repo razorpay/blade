@@ -105,7 +105,7 @@ const FileUploadItem = memo(
             {status === 'uploading' ? (
               <BaseBox display="flex" alignItems="center">
                 <IconButton
-                  accessibilityLabel="Remove File"
+                  accessibilityLabel={`Remove ${name}`}
                   icon={CloseIcon}
                   onClick={() => onDismiss?.({ file })}
                 />
@@ -127,7 +127,7 @@ const FileUploadItem = memo(
                 </BaseLink>
                 {onRemove ? (
                   <IconButton
-                    accessibilityLabel="Remove File"
+                    accessibilityLabel={`Remove ${name}`}
                     icon={TrashIcon}
                     onClick={() => onRemove({ file })}
                   />
@@ -144,20 +144,20 @@ const FileUploadItem = memo(
                     gap="spacing.3"
                   >
                     <IconButton
-                      accessibilityLabel="Preview File"
+                      accessibilityLabel={`Preview ${name}`}
                       icon={EyeIcon}
                       onClick={() => onPreview?.({ file })}
                     />
                     <Divider orientation="vertical" thickness="thinner" variant="normal" />
                     <IconButton
-                      accessibilityLabel="Remove File"
+                      accessibilityLabel={`Remove ${name}`}
                       icon={TrashIcon}
                       onClick={() => onRemove?.({ file })}
                     />
                   </BaseBox>
                 ) : (
                   <IconButton
-                    accessibilityLabel="Remove File"
+                    accessibilityLabel={`Remove ${name}`}
                     icon={TrashIcon}
                     onClick={() => onRemove?.({ file })}
                   />

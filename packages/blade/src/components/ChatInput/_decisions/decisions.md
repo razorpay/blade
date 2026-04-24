@@ -425,14 +425,29 @@ const FullFeaturedChat = () => {
 
 ### Fixed Width per File Item
 
-Each `FileUploadItem` inside the ChatInput file preview row has a fixed width of `200px`. This gives the row a consistent, predictable layout regardless of file name length or count.
+Each `FileUploadItem` inside the ChatInput file preview row has a fixed width of `200px` (defined as `chatInputFilePreviewItemWidth` in `chatInputTokens.ts`). This gives the row a consistent, predictable layout regardless of file name length or count.
 
-- `minWidth` and `maxWidth` are not used here — a single fixed `width="200px"` is applied to every item.
+- `minWidth` and `maxWidth` are not used here — a single fixed `width` token is applied to every item.
 - The row scrolls horizontally when the total width of all items exceeds the container width.
 
 ### Autoscroll to Latest File
 
 Whenever files are added (or the list changes), the file preview row automatically scrolls to the rightmost position so the most recently added file is always visible. This is implemented by setting `scrollLeft = scrollWidth` on the scroll container after each render in which `files` changes.
+
+## Submit Disabled Behaviour
+
+### Implicit Disable on Error or Uploading Files
+
+The submit button (and Enter key) is blocked whenever:
+- There is no text **and** no files, **or**
+- Any attached file has `status === 'error'`, **or**
+- Any attached file has `status === 'uploading'`
+
+The uploading guard prevents `onSubmit` from receiving a not-yet-ready file in `fileList`.
+
+### No Extra Tooltip or Error Text for the File-Driven Disable
+
+When submit is disabled because of an error or uploading file, no additional tooltip or `errorText` is surfaced on the submit button itself. The visual feedback is already present on the `FileUploadItem` chip (red error state, spinner for uploading). Adding a redundant tooltip or `errorText` slot message would duplicate that signal without adding clarity. If a consumer needs custom messaging they can use the `validationState` / `errorText` props.
 
 ## Accessibility
 
