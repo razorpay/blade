@@ -186,9 +186,7 @@ describe('<FileUploadItem />', () => {
 
   it('should show trash icon button in error state when onRemove is provided', () => {
     const onRemove = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <FileUploadItem file={errorFile} onRemove={onRemove} />,
-    );
+    const { getByRole } = renderWithTheme(<FileUploadItem file={errorFile} onRemove={onRemove} />);
 
     expect(getByRole('button', { name: 'Remove File' })).toBeTruthy();
   });
@@ -203,9 +201,7 @@ describe('<FileUploadItem />', () => {
     const user = userEvent.setup();
     const onRemove = jest.fn();
 
-    const { getByRole } = renderWithTheme(
-      <FileUploadItem file={errorFile} onRemove={onRemove} />,
-    );
+    const { getByRole } = renderWithTheme(<FileUploadItem file={errorFile} onRemove={onRemove} />);
 
     await user.click(getByRole('button', { name: 'Remove File' }));
 
