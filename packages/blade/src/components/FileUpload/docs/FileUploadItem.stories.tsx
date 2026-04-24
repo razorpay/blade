@@ -129,6 +129,7 @@ ErrorStateReuploadOnly.args = {
   }),
   size: 'medium',
   onReupload: ({ file }) => action('onReupload')(file.name),
+  onRemove: undefined,
 };
 
 // Large Size
