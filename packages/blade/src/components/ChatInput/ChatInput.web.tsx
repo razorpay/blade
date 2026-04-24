@@ -147,7 +147,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     const prevCount = prevFileCountRef.current;
     prevFileCountRef.current = files.length;
     if (files.length > prevCount && fileScrollRef.current) {
-      fileScrollRef.current.scrollTo({ left: fileScrollRef.current.scrollWidth, behavior: 'smooth' });
+      fileScrollRef.current.scrollTo({
+        left: fileScrollRef.current.scrollWidth,
+        behavior: 'smooth',
+      });
     }
   }, [files]);
 
