@@ -18,6 +18,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import { BaseLink } from '~components/Link/BaseLink';
 import { getStyledProps } from '~components/Box/styledProps';
+import { Link } from '~components/Link';
 
 const FileUploadItem = memo(
   ({
