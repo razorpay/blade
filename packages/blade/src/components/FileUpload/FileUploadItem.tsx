@@ -126,14 +126,11 @@ const FileUploadItem = memo(
                   Re-upload
                 </BaseLink>
                 {onRemove ? (
-                  <>
-                    <Divider orientation="vertical" thickness="thinner" variant="normal" />
-                    <IconButton
-                      accessibilityLabel="Remove File"
-                      icon={TrashIcon}
-                      onClick={() => onRemove({ file })}
-                    />
-                  </>
+                  <IconButton
+                    accessibilityLabel="Remove File"
+                    icon={TrashIcon}
+                    onClick={() => onRemove({ file })}
+                  />
                 ) : null}
               </BaseBox>
             ) : (
