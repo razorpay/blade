@@ -84,3 +84,14 @@ export {
 export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export {
+  getAccordionWrapperClasses,
+  getAccordionButtonClasses,
+  getAccordionButtonBorderClasses,
+  getAccordionTemplateClasses,
+} from './Accordion';
+export type {
+  AccordionWrapperVariants,
+  AccordionButtonVariants,
+  AccordionButtonBorderVariants,
+} from './Accordion';

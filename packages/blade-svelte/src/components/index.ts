@@ -31,5 +31,13 @@ export { default as Badge } from './Badge/Badge.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Accordion
+export {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+} from './Accordion';
+
 // BladeProvider
 export * from './BladeProvider';

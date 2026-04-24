@@ -3,6 +3,7 @@ export * from './types';
 
 // Stroked Icons
 export { CheckIcon } from './CheckIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
 export { InfoIcon } from './InfoIcon';
