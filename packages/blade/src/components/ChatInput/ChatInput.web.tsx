@@ -141,12 +141,15 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   };
 
   const fileScrollRef = useRef<HTMLDivElement>(null);
+  const prevFileCountRef = useRef(files.length);
 
   useEffect(() => {
-    if (hasFiles && fileScrollRef.current) {
-      fileScrollRef.current.scrollLeft = fileScrollRef.current.scrollWidth;
+    const prevCount = prevFileCountRef.current;
+    prevFileCountRef.current = files.length;
+    if (files.length > prevCount && fileScrollRef.current) {
+      fileScrollRef.current.scrollTo({ left: fileScrollRef.current.scrollWidth, behavior: 'smooth' });
     }
-  }, [hasFiles, files]);
+  }, [files]);
 
   const filePreviewContent = (
     <AnimatePresence>
