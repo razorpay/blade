@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
@@ -140,11 +140,20 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  const fileScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (hasFiles && fileScrollRef.current) {
+      fileScrollRef.current.scrollLeft = fileScrollRef.current.scrollWidth;
+    }
+  }, [hasFiles, files]);
+
   const filePreviewContent = (
     <AnimatePresence>
       {hasFiles ? (
         <BaseMotionBox motionVariants={filePreviewMotionVariants}>
           <HiddenScrollbarBox
+            ref={fileScrollRef}
             display="flex"
             flexDirection="row"
             gap="spacing.3"
@@ -158,10 +167,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             {files.map((file) => (
               <FileUploadItem
                 flexShrink={0}
-                flexGrow={1}
-                flexBasis={1}
-                minWidth="160px"
-                maxWidth="200px"
+                width="200px"
                 key={file.id ?? file.name}
                 file={file}
                 onRemove={() => handleFileRemove(file)}

@@ -823,3 +823,39 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithFileReupload.storyName = 'With File Reupload';
+
+export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    { name: 'document-1.pdf', size: 102400, status: 'success', id: 'file-1' } as BladeFileList[0],
+    { name: 'report-q1.xlsx', size: 204800, status: 'success', id: 'file-2' } as BladeFileList[0],
+    { name: 'screenshot.png', size: 76160, status: 'success', id: 'file-3' } as BladeFileList[0],
+    { name: 'invoice.pdf', size: 512000, status: 'success', id: 'file-4' } as BladeFileList[0],
+    {
+      name: 'presentation.pptx',
+      size: 1048576,
+      status: 'success',
+      id: 'file-5',
+    } as BladeFileList[0],
+  ]);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        accept=".jpg,.png,.pdf,.xlsx,.pptx"
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+      <Text size="small" color="surface.text.gray.muted">
+        Each file item is exactly 200px wide. The list autoscrolls to the latest file when a new
+        file is added.
+      </Text>
+    </Box>
+  );
+};
+WithManyFiles.storyName = 'With Many Files (Autoscroll)';

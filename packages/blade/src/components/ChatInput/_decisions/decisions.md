@@ -421,6 +421,19 @@ const FullFeaturedChat = () => {
 };
 ```
 
+## File Preview Behaviour
+
+### Fixed Width per File Item
+
+Each `FileUploadItem` inside the ChatInput file preview row has a fixed width of `200px`. This gives the row a consistent, predictable layout regardless of file name length or count.
+
+- `minWidth` and `maxWidth` are not used here — a single fixed `width="200px"` is applied to every item.
+- The row scrolls horizontally when the total width of all items exceeds the container width.
+
+### Autoscroll to Latest File
+
+Whenever files are added (or the list changes), the file preview row automatically scrolls to the rightmost position so the most recently added file is always visible. This is implemented by setting `scrollLeft = scrollWidth` on the scroll container after each render in which `files` changes.
+
 ## Accessibility
 
 - **Keyboard Navigation:**
