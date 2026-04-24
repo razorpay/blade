@@ -16,6 +16,7 @@ type UseChatInputProps = Pick<
   | 'onSubmit'
   | 'isDisabled'
   | 'isGenerating'
+  | 'isSubmitDisabled'
   | 'onStop'
   | 'fileList'
   | 'onFileChange'
@@ -32,6 +33,7 @@ const useChatInput = (
     defaultValue,
     onChange,
     onSubmit,
+    isSubmitDisabled: isSubmitDisabledProp,
     fileList: controlledFileList,
     onFileChange,
     onFileRemove,
@@ -90,7 +92,7 @@ const useChatInput = (
 
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
-  const isSubmitDisabled = !hasText && !hasFiles;
+  const isSubmitDisabled = (!hasText && !hasFiles) || Boolean(isSubmitDisabledProp);
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
   const adjustTextareaHeight = React.useCallback(() => {

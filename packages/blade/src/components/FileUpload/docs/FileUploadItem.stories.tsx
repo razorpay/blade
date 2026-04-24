@@ -116,6 +116,19 @@ ErrorState.args = {
   }),
   size: 'medium',
   onReupload: ({ file }) => action('onReupload')(file.name),
+  onRemove: ({ file }) => action('onRemove')(file.name),
+};
+
+// Error State without remove (re-upload only)
+export const ErrorStateReuploadOnly = FileUploadItemTemplate.bind({});
+ErrorStateReuploadOnly.storyName = 'Error State (Re-upload only)';
+ErrorStateReuploadOnly.args = {
+  file: createMockFile('failed-upload.xlsx', 1024 * 1024 * 5, {
+    status: 'error',
+    errorText: 'Upload failed. Please try again.',
+  }),
+  size: 'medium',
+  onReupload: ({ file }) => action('onReupload')(file.name),
 };
 
 // Large Size
@@ -172,6 +185,7 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
         file={errorFile}
         size="medium"
         onReupload={({ file }) => setLastAction(`onReupload: ${file.name}`)}
+        onRemove={({ file }) => setLastAction(`onRemove: ${file.name}`)}
       />
     </Box>
   );

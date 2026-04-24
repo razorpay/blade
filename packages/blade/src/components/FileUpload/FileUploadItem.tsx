@@ -111,7 +111,7 @@ const FileUploadItem = memo(
                 />
               </BaseBox>
             ) : status === 'error' ? (
-              <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
                 <BaseLink
                   marginX="spacing.1"
                   variant="button"
@@ -125,6 +125,16 @@ const FileUploadItem = memo(
                 >
                   Re-upload
                 </BaseLink>
+                {onRemove ? (
+                  <>
+                    <Divider orientation="vertical" thickness="thinner" variant="normal" />
+                    <IconButton
+                      accessibilityLabel="Remove File"
+                      icon={TrashIcon}
+                      onClick={() => onRemove({ file })}
+                    />
+                  </>
+                ) : null}
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center">

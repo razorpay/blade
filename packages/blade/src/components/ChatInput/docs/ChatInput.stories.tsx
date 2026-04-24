@@ -85,6 +85,29 @@ Disabled.args = {
   isDisabled: true,
 };
 
+export const SubmitDisabled: StoryFn<typeof ChatInput> = () => {
+  const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+        <input
+          type="checkbox"
+          checked={agreedToTerms}
+          onChange={(e) => setAgreedToTerms(e.target.checked)}
+        />
+        I agree to the terms and conditions
+      </label>
+      <ChatInput
+        placeholder="Ask a question..."
+        isSubmitDisabled={!agreedToTerms}
+        onSubmit={({ value }) => console.log('Submitted:', value)}
+      />
+    </Box>
+  );
+};
+SubmitDisabled.storyName = 'Submit Disabled';
+
 export const WithGhostSuggestions: StoryFn<typeof ChatInput> = () => {
   return (
     <Box maxWidth="600px">
