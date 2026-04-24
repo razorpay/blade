@@ -14,6 +14,7 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { Checkbox } from '~components/Checkbox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -90,14 +91,9 @@ export const SubmitDisabled: StoryFn<typeof ChatInput> = () => {
 
   return (
     <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
-      <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-        <input
-          type="checkbox"
-          checked={agreedToTerms}
-          onChange={(e) => setAgreedToTerms(e.target.checked)}
-        />
+      <Checkbox isChecked={agreedToTerms} onChange={({ isChecked }) => setAgreedToTerms(isChecked)}>
         I agree to the terms and conditions
-      </label>
+      </Checkbox>
       <ChatInput
         placeholder="Ask a question..."
         isSubmitDisabled={!agreedToTerms}
