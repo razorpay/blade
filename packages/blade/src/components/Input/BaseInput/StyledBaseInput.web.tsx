@@ -110,6 +110,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     handleOnInput,
     handleOnKeyDown,
     handleOnClick,
+    handleOnPaste,
     keyboardType,
     keyboardReturnKeyType,
     autoCompleteSuggestionType,
@@ -147,6 +148,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     },
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
       handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
+    },
+    onPaste: (event: React.ClipboardEvent<HTMLInputElement>): void => {
+      handleOnPaste?.({ name, value: event });
     },
     disabled: isDisabled,
     enterKeyHint: keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType,
