@@ -1310,6 +1310,22 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'MetricsCard',
+    description:
+      'MetricsCard component for displaying dashboard summary metrics with optional comparison charts and footer actions.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.102.0',
+        storybookLink: 'Components/MetricsCard',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };
