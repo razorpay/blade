@@ -391,7 +391,9 @@ const _TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       $isSelectable={isDisabled ? false : isSelectable}
-      $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
+      $isHoverable={
+        isDisabled ? false : Boolean(onHover) || Boolean(onClick) || Boolean(hoverActions)
+      }
       $showBorderedCells={showBorderedCells}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
