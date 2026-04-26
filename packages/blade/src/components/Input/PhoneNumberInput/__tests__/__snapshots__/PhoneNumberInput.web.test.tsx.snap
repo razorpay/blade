@@ -500,7 +500,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="phone-number-input-157-input-158"
+          for="phone-number-input-265-input-266"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -567,7 +567,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
                   data-blade-component="base-box"
                 >
                   <button
-                    aria-controls="dropdown-163-actionlist"
+                    aria-controls="dropdown-271-actionlist"
                     aria-expanded="false"
                     aria-haspopup="menu"
                     aria-label="India - Select Country"
@@ -636,7 +636,7 @@ exports[`<PhoneNumberInput /> should accept data-analytics attributes 1`] = `
             data-analytics-value="phone-input-value"
             data-blade-component="styled-base-input"
             enterkeyhint="done"
-            id="phone-number-input-157-input-158"
+            id="phone-number-input-265-input-266"
             inputmode="decimal"
             placeholder="1234 567890"
             prefix="+91"
@@ -1816,7 +1816,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="phone-number-input-27-input-28"
+          for="phone-number-input-45-input-46"
           style="width: 100%; flex-shrink: 0; margin-right: 0px;"
         >
           <div
@@ -1883,7 +1883,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                   data-blade-component="base-box"
                 >
                   <button
-                    aria-controls="dropdown-33-actionlist"
+                    aria-controls="dropdown-51-actionlist"
                     aria-expanded="false"
                     aria-haspopup="menu"
                     aria-label="India - Select Country"
@@ -1950,7 +1950,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
             class="c17"
             data-blade-component="styled-base-input"
             enterkeyhint="done"
-            id="phone-number-input-27-input-28"
+            id="phone-number-input-45-input-46"
             inputmode="decimal"
             placeholder="1234 567890"
             prefix="+91"
