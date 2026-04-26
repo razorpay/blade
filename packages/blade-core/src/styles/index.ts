@@ -65,6 +65,35 @@ export type {
   AmountDisplayProps,
   AmountHeadingProps,
 } from './Amount';
+
+// Form styles
+export {
+  labelTextSize,
+  labelOptionalIndicatorTextSize,
+  hintTextSize,
+  hintIconSize,
+  hintMarginTop,
+  labelMarginBottom,
+  labelWidth,
+  labelLeftMarginRight,
+  getFormLabelClasses,
+  getLabelTextContainerClasses,
+  getLabelSuffixClasses,
+  getLabelTrailingClasses,
+  getFormHintClasses,
+  getHintIconClasses,
+  getCharacterCounterClasses,
+  getFormTemplateClasses,
+} from './Form';
+export type {
+  FormSize,
+  LabelPosition,
+  NecessityIndicator,
+  ValidationState,
+  FormLabelOptions,
+  FormHintOptions,
+} from './Form';
+
 export {
   badgeStyles,
   getBadgeClasses,
