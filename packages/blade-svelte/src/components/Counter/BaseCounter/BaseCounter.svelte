@@ -7,7 +7,7 @@
   } from '@razorpay/blade-core/utils';
   import {
     getCounterClasses,
-    getCounterTemplateClasses,
+    getCounterContentClasses,
     counterTextSizes,
     getCounterTextColorToken,
   } from '@razorpay/blade-core/styles';
@@ -25,36 +25,28 @@
     ...rest
   }: BaseCounterProps = $props();
 
-  // Get template classes via function to prevent tree-shaking
-  const templateClasses = getCounterTemplateClasses();
+  const content = $derived(
+    max !== undefined && value > max ? `${max}+` : `${value}`,
+  );
 
-  // Format the counter content
-  const content = $derived(() => {
-    if (max !== undefined && value > max) {
-      return `${max}+`;
-    }
-    return `${value}`;
-  });
+  const hasHorizontalPadding = $derived(value > 9);
 
-  // Get text color based on color and emphasis
+  const contentClasses = $derived(
+    getCounterContentClasses({ size, hasHorizontalPadding }),
+  );
+
   const textColor = $derived(
     getCounterTextColorToken({ color, emphasis }) as TextColors,
   );
 
-  // Get text sizes for the current size
   const textSize = $derived(counterTextSizes[size]);
 
-  // Generate counter classes
-  const counterClasses = $derived(() => {
-    return getCounterClasses({ size, color, emphasis });
-  });
+  const counterClasses = $derived(getCounterClasses({ size, color, emphasis }));
 
-  // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes
-  const combinedClasses = $derived(() => {
-    const classes = [counterClasses()];
+  const combinedClasses = $derived.by(() => {
+    const classes = [counterClasses];
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
@@ -71,8 +63,8 @@
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 </script>
 
-<div class={combinedClasses()} {...metaAttrs} {...analyticsAttrs}>
-  <div class={templateClasses.content}>
+<div class={combinedClasses} {...metaAttrs} {...analyticsAttrs}>
+  <div class={contentClasses}>
     <BaseText
       fontSize={textSize.fontSize}
       lineHeight={textSize.lineHeight}
@@ -82,7 +74,7 @@
       truncateAfterLines={1}
       textAlign="center"
     >
-      {content()}
+      {content}
     </BaseText>
   </div>
 </div>

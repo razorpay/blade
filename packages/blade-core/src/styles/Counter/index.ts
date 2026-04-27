@@ -1,10 +1,9 @@
 export {
   counterStyles,
   getCounterClasses,
-  getCounterTemplateClasses,
+  getCounterContentClasses,
   counterContentClass,
-  counterHeight,
-  counterHorizontalPadding,
+  counterContentPaddingClass,
   counterTextSizes,
   getCounterTextColorToken,
 } from './counter';

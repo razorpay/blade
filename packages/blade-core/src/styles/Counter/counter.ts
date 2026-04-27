@@ -19,24 +19,6 @@ export type CounterVariants = {
 };
 
 /**
- * Counter height tokens mapped to size
- */
-export const counterHeight: Record<CounterSize, number> = {
-  small: 16,
-  medium: 20,
-  large: 24,
-};
-
-/**
- * Counter horizontal padding tokens mapped to size
- */
-export const counterHorizontalPadding: Record<CounterSize, string> = {
-  small: 'spacing.2',
-  medium: 'spacing.3',
-  large: 'spacing.3',
-};
-
-/**
  * Counter text size mapping
  * Returns fontSize and lineHeight values for BaseText
  * Maps to React's Text component: variant='body' with size='xsmall'|'small'|'medium'
@@ -109,14 +91,32 @@ export const counterStyles = cva(styles.counter, {
 export const counterContentClass = styles.content;
 
 /**
- * Get all Counter component template classes as an object.
- * Use this function in Svelte components to prevent tree-shaking from removing
- * class imports that are only used in templates.
+ * CSS module classes for conditional horizontal padding on the Counter content
+ * wrapper.
  */
-export function getCounterTemplateClasses(): Record<string, string> {
-  return {
-    content: counterContentClass,
-  } as const;
+export const counterContentPaddingClass: Record<CounterSize, string> = {
+  small: styles['content-padding-small'],
+  medium: styles['content-padding-medium'],
+  large: styles['content-padding-large'],
+};
+
+/**
+ * Compute the class list for the Counter content wrapper.
+ * Returns the base content class, plus the size-specific padding class when
+ * the counter should render with horizontal padding (multi-digit values).
+ */
+export function getCounterContentClasses({
+  size,
+  hasHorizontalPadding,
+}: {
+  size: CounterSize;
+  hasHorizontalPadding: boolean;
+}): string {
+  const classes = [counterContentClass];
+  if (hasHorizontalPadding) {
+    classes.push(counterContentPaddingClass[size]);
+  }
+  return classes.filter(Boolean).join(' ');
 }
 
 /**

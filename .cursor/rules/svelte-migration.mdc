@@ -34,6 +34,7 @@ alwaysApply: false
 - Never use inline styles or `style:` directive
 - Call `get*TemplateClasses()` functions to prevent Svelte tree-shaking
 - Design tokens via CSS variables (`var(--spacing-4)`, `var(--colors-...)`)
+- When React computes a CSS value from 2+ props (e.g., `theme.border.radius[tokens[variant][size]]`), use CVA `compoundVariants`. To find these patterns, traverse the React component directory following local imports — the logic may live in `Styled*.tsx`, `get*Styles*.ts`, `*Tokens.ts`, `tokens.ts`, or any other component-local module.
 - SCSS features: nesting, `&` parent selector in `.module.css`
 
 ## Quality
