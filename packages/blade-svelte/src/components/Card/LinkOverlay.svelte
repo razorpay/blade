@@ -52,6 +52,7 @@
 
 {#if as === 'button'}
   <button
+    type="button"
     class={templateClasses.linkOverlay}
     onclick={handleClick}
     onfocus={handleFocus}

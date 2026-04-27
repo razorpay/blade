@@ -92,14 +92,6 @@ export type CardProps = {
    */
   accessibilityLabel?: string;
   /**
-   * If `true`, the card will scale up on hover.
-   * On mobile devices it will scale down on press.
-   *
-   * @deprecated This prop is deprecated in favour of motion presets released in v12
-   * @default false
-   */
-  shouldScaleOnHover?: boolean;
-  /**
    * Callback triggered when the card is hovered
    */
   onHover?: () => void;

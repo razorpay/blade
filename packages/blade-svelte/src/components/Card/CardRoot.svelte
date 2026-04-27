@@ -9,7 +9,6 @@
     children,
     as,
     borderRadius = 'medium',
-    shouldScaleOnHover = false,
     isSelected = false,
     isFocused = false,
     validationState = 'none',
@@ -27,7 +26,6 @@
     children: Snippet;
     as?: 'label';
     borderRadius?: 'medium' | 'large' | 'xlarge';
-    shouldScaleOnHover?: boolean;
     isSelected?: boolean;
     isFocused?: boolean;
     validationState?: 'none' | 'error' | 'success';
@@ -42,19 +40,15 @@
     testID?: string;
   } & StyledPropsBlade = $props();
 
-  let isPressed = $state(false);
-
   const rootClasses = $derived(
     cardRootStyles({
       borderRadius,
-      shouldScaleOnHover,
-      isPressed: shouldScaleOnHover ? isPressed : false,
       asLabel: as === 'label',
     })
   );
 
   const styledProps = $derived(getStyledPropsClasses(rest));
-  const combinedClasses = $derived(() => {
+  const combinedClasses = $derived.by(() => {
     const classes = [rootClasses];
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
@@ -87,35 +81,11 @@
   function handleMouseEnter(): void {
     onHover?.();
   }
-
-  function handleMouseDown(): void {
-    if (shouldScaleOnHover) {
-      isPressed = true;
-    }
-  }
-
-  function handleMouseUp(): void {
-    if (shouldScaleOnHover) {
-      isPressed = false;
-    }
-  }
-
-  function handleTouchStart(): void {
-    if (shouldScaleOnHover) {
-      isPressed = true;
-    }
-  }
-
-  function handleTouchEnd(): void {
-    if (shouldScaleOnHover) {
-      isPressed = false;
-    }
-  }
 </script>
 
 <svelte:element
   this={as === 'label' ? 'label' : 'div'}
-  class={combinedClasses()}
+  class={combinedClasses}
   data-selected={dataSelected}
   data-focused={dataFocused}
   data-validation={dataValidation}
@@ -129,10 +99,6 @@
   {...a11yAttrs}
   {...analyticsAttrs}
   onmouseenter={handleMouseEnter}
-  onmousedown={handleMouseDown}
-  onmouseup={handleMouseUp}
-  ontouchstart={handleTouchStart}
-  ontouchend={handleTouchEnd}
 >
   {@render children()}
 </svelte:element>

@@ -46,10 +46,6 @@
         control: { type: 'boolean' },
         table: propCategory,
       },
-      shouldScaleOnHover: {
-        control: { type: 'boolean' },
-        table: propCategory,
-      },
       href: {
         control: { type: 'text' },
         table: propCategory,
@@ -65,7 +61,6 @@
     args: {
       accessibilityLabel: 'Payment Pages Card',
       isSelected: false,
-      shouldScaleOnHover: true,
       padding: 'spacing.7',
     },
   });
@@ -180,7 +175,6 @@
 <Story name="Default" asChild>
   <Card
     onHover={() => console.log('Hovered')}
-    shouldScaleOnHover
     accessibilityLabel="Payment Pages Card"
     width="400px"
   >
@@ -273,31 +267,7 @@
   </div>
 </Story>
 
-<!-- Story 3: Hoverable Card -->
-<Story name="Hoverable Card" asChild>
-  <div>
-    <Text marginBottom="spacing.6">
-      By passing the <Code size="medium">shouldScaleOnHover</Code> prop, the card will scale up on
-      hover. (on mobile devices the interaction will happen on press and the card will scale down instead)
-    </Text>
-    <Card shouldScaleOnHover width="400px">
-      <CardHeader>
-        <CardHeaderLeading
-          title="Payment Links"
-          subtitle="Collect faster payments on UPI Payment Links with upto 50% lower fees"
-        />
-      </CardHeader>
-      <CardBody>
-        <Text>
-          Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
-          Accepting payments from customers is now just a link away.
-        </Text>
-      </CardBody>
-    </Card>
-  </div>
-</Story>
-
-<!-- Story 4: Linkable Card -->
+<!-- Story 3: Linkable Card -->
 <Story name="Linkable Card" asChild>
   <div>
     <div style="margin-bottom: 24px;">
@@ -311,7 +281,6 @@
     <Card
       href="https://razorpay.com/payment-links"
       accessibilityLabel="Payment Links"
-      shouldScaleOnHover
       width="400px"
     >
       <CardHeader>
@@ -347,7 +316,6 @@
       <Card
         as="label"
         accessibilityLabel="Free Tier"
-        shouldScaleOnHover
         isSelected={singleSelected === 'free'}
         minHeight="100%"
       >
@@ -373,7 +341,6 @@
       <Card
         as="label"
         accessibilityLabel="Standard Tier"
-        shouldScaleOnHover
         isSelected={singleSelected === 'standard'}
         minHeight="100%"
       >
@@ -399,7 +366,6 @@
       <Card
         as="label"
         accessibilityLabel="Premium Tier"
-        shouldScaleOnHover
         isSelected={singleSelected === 'premium'}
         minHeight="100%"
       >
@@ -435,7 +401,7 @@
       to the <Code size="medium">Card</Code>.
     </Text>
     <div style="display: flex; gap: 16px; flex-direction: row; align-items: stretch;">
-      <Card as="label" shouldScaleOnHover isSelected={multiSelected.includes('free')} minHeight="100%">
+      <Card as="label" isSelected={multiSelected.includes('free')} minHeight="100%">
         <CardBody>
           <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;">
             <input type="checkbox" value="free" checked={multiSelected.includes('free')} onchange={() => handleMultiToggle('free')} />
@@ -447,7 +413,7 @@
           </div>
         </CardBody>
       </Card>
-      <Card as="label" shouldScaleOnHover isSelected={multiSelected.includes('standard')} minHeight="100%">
+      <Card as="label" isSelected={multiSelected.includes('standard')} minHeight="100%">
         <CardBody>
           <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;">
             <input type="checkbox" value="standard" checked={multiSelected.includes('standard')} onchange={() => handleMultiToggle('standard')} />
@@ -459,7 +425,7 @@
           </div>
         </CardBody>
       </Card>
-      <Card as="label" shouldScaleOnHover isSelected={multiSelected.includes('premium')} minHeight="100%">
+      <Card as="label" isSelected={multiSelected.includes('premium')} minHeight="100%">
         <CardBody>
           <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;">
             <input type="checkbox" value="premium" checked={multiSelected.includes('premium')} onchange={() => handleMultiToggle('premium')} />

@@ -51,22 +51,6 @@
   cursor: pointer;
 }
 
-/* Scale on hover (desktop) */
-.shouldScaleOnHover {
-  transition-duration: var(--duration-xquick);
-  transition-timing-function: var(--easing-standard);
-  transition-property: transform, box-shadow;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-/* Pressed state (mobile scale down) */
-.cardRootPressed {
-  transform: scale(0.95);
-}
-
 /* Uplift nested interactive elements above link overlay */
 .cardRoot a[href]:not(a[data-blade-component='card-link-overlay']) {
   z-index: 2;

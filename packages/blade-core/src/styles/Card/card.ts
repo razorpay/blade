@@ -7,8 +7,6 @@ import styles from './card.module.css';
 
 export type CardRootVariants = {
   borderRadius?: 'medium' | 'large' | 'xlarge';
-  shouldScaleOnHover?: boolean;
-  isPressed?: boolean;
   asLabel?: boolean;
 };
 
@@ -19,14 +17,6 @@ export const cardRootStyles = cva(styles.cardRoot, {
       large: utilityClasses['border-radius-large'],
       xlarge: utilityClasses['border-radius-xlarge'],
     },
-    shouldScaleOnHover: {
-      true: styles.shouldScaleOnHover,
-      false: '',
-    },
-    isPressed: {
-      true: styles.cardRootPressed,
-      false: '',
-    },
     asLabel: {
       true: styles.cardRootLabel,
       false: '',
@@ -34,8 +24,6 @@ export const cardRootStyles = cva(styles.cardRoot, {
   },
   defaultVariants: {
     borderRadius: 'medium',
-    shouldScaleOnHover: false,
-    isPressed: false,
     asLabel: false,
   },
 });

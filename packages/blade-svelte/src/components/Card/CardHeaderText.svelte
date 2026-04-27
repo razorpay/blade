@@ -1,15 +1,14 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
   import Text from '../Typography/Text/Text.svelte';
+  import type { TextBodyVariant, TextCaptionVariant } from '../Typography/Text/types';
   import { useCardContext } from './CardContext';
+
+  type CardHeaderTextProps = TextBodyVariant | TextCaptionVariant;
 
   // Verify inside Card
   useCardContext('CardHeaderText');
 
-  let { children, ...props }: {
-    children: Snippet | string;
-    [key: string]: unknown;
-  } = $props();
+  let { children, ...props }: CardHeaderTextProps = $props();
 </script>
 
 <Text textAlign="left" {...props}>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { cardSurfaceStyles } from '@razorpay/blade-core/styles';
+  import type { CardSurfaceVariants } from '@razorpay/blade-core/styles';
 
   type OverflowValue = 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
 
@@ -16,9 +17,9 @@
     overflowY,
   }: {
     children: Snippet;
-    backgroundColor?: string;
-    padding?: string;
-    borderRadius?: 'medium' | 'large' | 'xlarge';
+    backgroundColor?: CardSurfaceVariants['backgroundColor'];
+    padding?: CardSurfaceVariants['padding'];
+    borderRadius?: CardSurfaceVariants['borderRadius'];
     height?: string;
     minHeight?: string;
     overflow?: OverflowValue;

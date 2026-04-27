@@ -25,7 +25,6 @@
     target,
     rel,
     accessibilityLabel,
-    shouldScaleOnHover = false,
     onHover,
     size = 'large',
     onClick,
@@ -62,7 +61,6 @@
 <CardRoot
   {as}
   {borderRadius}
-  {shouldScaleOnHover}
   {isSelected}
   {isFocused}
   {validationState}
