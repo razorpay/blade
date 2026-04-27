@@ -6,7 +6,7 @@
   import type { TextColors } from '../../Typography/BaseText/types';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { getBaseLinkClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, getLinkIconSizeMap, type ActionStatesType } from '@razorpay/blade-core/styles';
+  import { getBaseLinkClasses, getBaseLinkContentClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, getLinkIconSizeMap, type ActionStatesType } from '@razorpay/blade-core/styles';
   import type { IconProps, IconColor } from '../../Icons/types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
@@ -187,6 +187,10 @@
     }),
   );
 
+  // Content-span classes. Opacity is applied here (not on the outer
+  // element) so the focus ring on the anchor/button is not dimmed.
+  const contentClasses = $derived(getBaseLinkContentClasses({ opacity }));
+
 
   // Accessibility attributes
   const accessibilityAttrs = $derived(
@@ -211,7 +215,7 @@
   
   // Combine classes with styled props classes
   // styledProps.inlineStyles is intentionally ignored to maintain pure class-based styling
-  const combinedClasses = $derived(() => {
+  const combinedClasses = $derived.by(() => {
     const classes = [
       baseLinkClasses,
       'focus-ring-parent', // Focus ring utility from theme.css
@@ -267,7 +271,7 @@
 
 <svelte:element
   this={elementTag}
-  class={combinedClasses()}
+  class={combinedClasses}
   title={htmlTitle}
   {...accessibilityAttrs}
   {...metaAttrs}
@@ -290,7 +294,7 @@
   target={!isButton ? target : undefined}
   rel={!isButton ? (rel ?? defaultRel) : undefined}
 >
-  <span class={linkClasses.content + ' focus-ring-child'}>
+  <span class={contentClasses + ' focus-ring-child'}>
     {#if Icon && iconPosition === 'left'}
       <span class={linkClasses.icon + (hasChildren ? ' ' + linkClasses.iconLeft : '')}>
         <Icon size={iconSize} color={iconColor} />

@@ -1,0 +1,45 @@
+/* Breadcrumb Nav Wrapper */
+.breadcrumb-nav {
+  display: block;
+}
+
+/* Breadcrumb Ordered List */
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  align-items: center;
+  list-style: none;
+  margin: var(--spacing-0);
+  padding: var(--spacing-0);
+}
+
+/* Breadcrumb List Item */
+.breadcrumb-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Separator Wrapper */
+.separator-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide separator on the last item by default */
+.breadcrumb-list-item:last-child > .separator-wrapper {
+  display: none;
+}
+
+/* Show separator on the last item when showLastSeparator is true */
+.show-last-separator > .breadcrumb-list-item:last-child > .separator-wrapper {
+  display: flex;
+}
+
+/* Current Page Wrapper */
+.current-page-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}

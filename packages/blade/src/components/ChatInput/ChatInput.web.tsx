@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
+import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
@@ -138,11 +139,26 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  const fileScrollRef = useRef<HTMLDivElement>(null);
+  const prevFileCountRef = useRef(files.length);
+
+  useEffect(() => {
+    const prevCount = prevFileCountRef.current;
+    prevFileCountRef.current = files.length;
+    if (files.length > prevCount && fileScrollRef.current) {
+      fileScrollRef.current.scrollTo({
+        left: fileScrollRef.current.scrollWidth,
+        behavior: 'smooth',
+      });
+    }
+  }, [files]);
+
   const filePreviewContent = (
     <AnimatePresence>
       {hasFiles ? (
         <BaseMotionBox motionVariants={filePreviewMotionVariants}>
           <HiddenScrollbarBox
+            ref={fileScrollRef}
             display="flex"
             flexDirection="row"
             gap="spacing.3"
@@ -154,18 +170,18 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <FileUploadItem
-                flexShrink={0}
-                flexGrow={1}
-                flexBasis={1}
-                minWidth="160px"
-                maxWidth="200px"
+              <BaseBox
                 key={file.id ?? file.name}
-                file={file}
-                onRemove={() => handleFileRemove(file)}
-                onDismiss={() => handleFileDismiss(file)}
-                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
-              />
+                flexShrink={0}
+                width={chatInputFilePreviewItemWidth}
+              >
+                <FileUploadItem
+                  file={file}
+                  onRemove={() => handleFileRemove(file)}
+                  onDismiss={() => handleFileDismiss(file)}
+                  onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
+                />
+              </BaseBox>
             ))}
           </HiddenScrollbarBox>
         </BaseMotionBox>

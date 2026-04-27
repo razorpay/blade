@@ -90,7 +90,8 @@ const useChatInput = (
 
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
-  const isSubmitDisabled = !hasText && !hasFiles;
+  const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
+  const isSubmitDisabled = (!hasText && !hasFiles) || hasErrorFiles;
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
   const adjustTextareaHeight = React.useCallback(() => {
