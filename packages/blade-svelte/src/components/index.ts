@@ -34,5 +34,13 @@ export { default as Counter } from './Counter/Counter.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Accordion
+export {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+} from './Accordion';
+
 // BladeProvider
 export * from './BladeProvider';

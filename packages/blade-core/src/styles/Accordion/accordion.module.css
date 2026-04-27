@@ -1,0 +1,251 @@
+/* Accordion wrapper (outer container) */
+.wrapper {
+  width: 100%;
+}
+
+/* Filled variant wrapper */
+.filled {
+  background-color: var(--surface-background-gray-intense);
+  border-radius: var(--border-radius-medium);
+  border-width: var(--border-width-thinner);
+  border-style: solid;
+  border-color: var(--surface-border-gray-subtle);
+}
+
+/* Transparent variant wrapper */
+.transparent {
+  background-color: transparent;
+}
+
+/* Accordion button base */
+.button {
+  padding: var(--spacing-0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--transparent);
+  transition-property: background-color, box-shadow, border-radius, color;
+  transition-duration: var(--duration-2xquick);
+  transition-timing-function: var(--easing-standard);
+  cursor: pointer;
+  color: var(--interactive-icon-gray-muted);
+  width: 100%;
+  border: none;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--interactive-background-gray-faded);
+    color: var(--interactive-icon-gray-subtle);
+
+    & [data-blade-component='divider'] {
+      opacity: 0;
+    }
+  }
+
+  &:focus-visible {
+    outline: var(--border-width-thin) solid var(--interactive-border-primary-faded);
+    outline-offset: 0;
+    border-radius: var(--border-radius-small);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--interactive-icon-gray-disabled);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--transparent);
+      color: var(--interactive-icon-gray-disabled);
+    }
+  }
+}
+
+/* Button expanded state — chevron color change */
+.buttonExpanded {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+/* Compound: filled + first item — hover/focus radius */
+.filledFirstItem {
+  &:hover,
+  &:focus-visible {
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + last item + collapsed — hover/focus radius */
+.filledLastItemCollapsed {
+  &:hover,
+  &:focus-visible {
+    border-bottom-left-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + single item (first+last) + collapsed — hover/focus full radius */
+.filledSingleItemCollapsed {
+  &:hover,
+  &:focus-visible {
+    border-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + single item (first+last) + expanded — hover/focus top radius only */
+.filledSingleItemExpanded {
+  &:hover,
+  &:focus-visible {
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Accordion header layout */
+.headerContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * React's BaseHeader wraps each slot (title, titleSuffix, leading, trailing,
+ * chevron) in a fixed-height "centerBox" so every slot aligns to a consistent
+ * baseline. For size='large' the centerBox is 28px tall; for size='medium' it
+ * is 20px tall. We replicate that with a CSS custom property on .headerContent
+ * that each slot references via min-height.
+ */
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+  --header-slot-height: 28px;
+}
+
+.headerContentMedium {
+  --header-slot-height: 20px;
+}
+
+.headerContentCentered {
+  align-items: center;
+}
+
+.headerLeading {
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--header-slot-height);
+}
+
+.headerLeadingLarge {
+  max-height: 32px;
+  max-width: 32px;
+}
+
+.headerLeadingMedium {
+  max-height: 24px;
+  max-width: 24px;
+}
+
+.headerLeadingIcon {
+  margin-right: var(--spacing-3);
+}
+
+.headerLeadingSlot {
+  margin-right: var(--spacing-3);
+}
+
+.headerMain {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/*
+ * React's BaseHeader adds marginTop=1px (size token '1', raw pixel)
+ * to the title Text element to align it optically against the 28px
+ * centerBox wrapping the titleSuffix/chevron/leading slots.
+ */
+.headerTitleText {
+  margin-top: 1px;
+}
+
+.headerTrailing {
+  display: flex;
+  align-items: center;
+  margin-left: var(--spacing-4);
+  flex-shrink: 0;
+  min-height: var(--header-slot-height);
+}
+
+.headerChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: var(--spacing-3);
+  min-height: var(--header-slot-height);
+  transition: transform var(--duration-2xquick) var(--easing-standard);
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}
+
+/* Header divider shown when expanded */
+.headerDivider {
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+}
+
+/* Collapsible body content */
+.collapsibleContent {
+  overflow-y: hidden;
+  transition-property: height, opacity;
+  transition-duration: var(--duration-2xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+/* Accordion item body */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
+  margin-left: var(--spacing-5);
+  margin-right: var(--spacing-5);
+}
+
+/* Responsive width defaults */
+.accordionOuter {
+  min-width: 200px;
+  max-width: calc(100vw - 40px);
+}
+
+@media (min-width: 480px) {
+  .accordionOuter {
+    min-width: 360px;
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .accordionOuter {
+    min-width: 360px;
+    max-width: 800px;
+  }
+}
