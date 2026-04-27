@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.0
+
+### Minor Changes
+
+- c25481570: fix(ChatInput): wire onDismiss so close button works on uploading files
+
 ## 12.100.0
 
 ### Minor Changes

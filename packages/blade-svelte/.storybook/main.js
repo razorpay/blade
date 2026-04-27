@@ -38,6 +38,9 @@ const config = {
     name: '@storybook/svelte-vite',
     options: {},
   },
+  docs: {
+    autodocs: true,
+  },
   viteFinal: async (config) => {
     // Resolve blade-core imports directly to source files for better re-export handling
     // Note: We use a custom resolve function to handle exact matches only

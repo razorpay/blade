@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CHECK_CURSOR_RULES_DESCRIPTION } from '../utils/tokens.js';
+import { CHECK_SKILL_VERSION_DESCRIPTION } from '../utils/tokens.js';
 
 /**
  * Common schema fields shared across Blade MCP tools
@@ -19,10 +19,10 @@ const commonBladeMCPToolSchema = {
 };
 
 /**
- * Schema field for HTTP transport that includes cursor rule version check
+ * Schema field for HTTP transport that includes skill version check
  */
-const httpTransportCursorRuleVersionSchema = {
-  cursorRuleVersion: z.string().describe(CHECK_CURSOR_RULES_DESCRIPTION),
+const httpTransportSkillVersionSchema = {
+  skillVersion: z.string().describe(CHECK_SKILL_VERSION_DESCRIPTION),
 };
 
-export { httpTransportCursorRuleVersionSchema, commonBladeMCPToolSchema };
+export { httpTransportSkillVersionSchema, commonBladeMCPToolSchema };

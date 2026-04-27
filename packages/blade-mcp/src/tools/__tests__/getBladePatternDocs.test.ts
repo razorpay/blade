@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getBladePatternDocsHttpCallback } from '../getBladePatternDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
-import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
+import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
-import { CURSOR_RULES_VERSION } from '../../utils/tokens.js';
+import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
 vi.mock('../../utils/analyticsUtils.js', async () => {
@@ -14,7 +14,7 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
     sendAnalytics: vi.fn(),
   };
 });
-vi.mock('../../utils/cursorRulesUtils.js');
+vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
 vi.mock('../../utils/generalUtils.js', () => ({
   getBladeDocsList: vi.fn(() => ['ListView', 'DetailedView', 'FormGroup']),
@@ -42,7 +42,7 @@ describe('getBladePatternDocs Tool', () => {
       'DetailedView',
       'FormGroup',
     ]);
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
   });
 
   it('should return pattern docs for valid patterns', () => {
@@ -64,7 +64,7 @@ describe('getBladePatternDocs Tool', () => {
         patternsList: mockPatternsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -76,7 +76,7 @@ describe('getBladePatternDocs Tool', () => {
         toolName: 'get_blade_pattern_docs',
         patternsList: mockPatternsList,
         rootDirectoryName: 'project',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
         clientName: 'cursor',
       },
     });
@@ -112,7 +112,7 @@ describe('getBladePatternDocs Tool', () => {
         patternsList: mockPatternsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -168,8 +168,8 @@ describe('getBladePatternDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladePatternDocsHttpCallback;
@@ -180,7 +180,7 @@ describe('getBladePatternDocs Tool', () => {
         patternsList: testPatternsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -222,8 +222,8 @@ describe('getBladePatternDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladePatternDocsHttpCallback;
@@ -234,7 +234,7 @@ describe('getBladePatternDocs Tool', () => {
         patternsList: testPatternsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
