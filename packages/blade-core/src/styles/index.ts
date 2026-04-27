@@ -96,6 +96,32 @@ export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
 export {
+  animatedChipCva,
+  getAnimatedChipClasses,
+  chipInnerCva,
+  getChipInnerClasses,
+  getChipTemplateClasses,
+  getChipColorVariant,
+  getChipTextColorToken,
+  getChipIconColorToken,
+  getChipTextSizes,
+  getChipIconSizes,
+  chipGroupFieldCva,
+  chipGroupGapCva,
+  getChipGroupFieldClasses,
+  getChipGroupGapClasses,
+  getChipGroupTemplateClasses,
+  getChipGroupLabelSizeClass,
+} from './Chip';
+export type {
+  AnimatedChipVariants,
+  ChipInnerVariants,
+  ChipColorVariant,
+  ChipGroupVariants,
+  ChipSize,
+  ChipColor,
+} from './Chip';
+export {
   alertStyles,
   getAlertClasses,
   getAlertTemplateClasses,
