@@ -151,3 +151,28 @@ export function getBaseLinkClasses(props: BaseLinkVariants & { className?: strin
 
   return classes;
 }
+
+/**
+ * Map an opacity number to its corresponding utility class.
+ * Only values exposed in `utilities.module.css` under the Opacity Utilities
+ * section are supported (0, 0.25, 0.5, 0.56, 0.64, 0.75, 1). Unsupported
+ * values fall back to no class (i.e. full opacity / inherited).
+ *
+ */
+function getOpacityUtilityClass(opacity: number | undefined): string | undefined {
+  if (opacity === undefined || opacity === 1) return undefined;
+  const percent = Math.round(opacity * 100);
+  const key = `opacity-${percent}` as keyof typeof utilityClasses;
+  return utilityClasses[key];
+}
+
+/**
+ * Classes for the inner content wrapper of a BaseLink (the span that wraps
+ * icon + text). Accepts an optional `opacity` so consumers like Breadcrumb
+ * can dim inactive items without affecting the focus ring on the outer
+ * anchor/button element.
+ *
+ */
+export function getBaseLinkContentClasses({ opacity }: { opacity?: number } = {}): string {
+  return [baseLinkContentClass, getOpacityUtilityClass(opacity)].filter(Boolean).join(' ');
+}

@@ -10,7 +10,15 @@ export interface BaseButtonProps extends StyledPropsBlade {
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative' | 'transparent';
+  color?:
+    | 'primary'
+    | 'white'
+    | 'positive'
+    | 'negative'
+    | 'notice'
+    | 'information'
+    | 'neutral'
+    | 'transparent';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
   isFullWidth?: boolean;

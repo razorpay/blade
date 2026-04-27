@@ -3,6 +3,7 @@ export type { BaseTextVariants } from './BaseText';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkContentClasses,
   getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
@@ -94,3 +95,59 @@ export {
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export {
+  alertStyles,
+  getAlertClasses,
+  getAlertTemplateClasses,
+  alertIconWrapperClass,
+  alertContentClass,
+  alertContentFullWidthClass,
+  alertContentHorizontalActionsClass,
+  alertTitleClass,
+  alertDescriptionClass,
+  alertDescriptionWithTitleClass,
+  alertActionsVerticalClass,
+  alertActionsHorizontalClass,
+  alertActionPrimaryClass,
+  alertActionPrimaryWithTrailingClass,
+  alertActionSecondaryClass,
+  alertActionSecondaryWithDismissClass,
+  alertCloseButtonClass,
+  alertIconOffset1Class,
+  alertIconOffset2Class,
+  alertIconWrapperCenterClass,
+  alertIconOffsetDescriptionOnlyClass,
+  alertCloseButtonDescriptionOnlyClass,
+  getAlertTextColorToken,
+  getAlertIconColorToken,
+  getAlertActionButtonColor,
+  getAlertActionButtonVariant,
+  getAlertLinkColor,
+} from './Alert';
+export type { AlertVariants, AlertColor, AlertEmphasis } from './Alert';
+export {
+  avatarWrapperStyles,
+  getAvatarWrapperClasses,
+  avatarButtonStyles,
+  getAvatarButtonClasses,
+  avatarGroupStyles,
+  getAvatarGroupClasses,
+  avatarIconSizeTokens,
+  avatarTextSizeMapping,
+  avatarToBottomAddonSize,
+  avatarToIndicatorSize,
+  getAvatarTemplateClasses,
+  getTopAddonClass,
+  getBottomAddonClass,
+} from './Avatar';
+export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './Avatar';
+export {
+  breadcrumbNavClass,
+  breadcrumbListClass,
+  breadcrumbListItemClass,
+  separatorWrapperClass,
+  currentPageWrapperClass,
+  showLastSeparatorClass,
+  getBreadcrumbTemplateClasses,
+  getBreadcrumbTextSizes,
+} from './Breadcrumb';
