@@ -4,10 +4,10 @@ import {
   getBladeComponentDocsStdioCallback,
 } from '../getBladeComponentDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
-import * as cursorRulesUtils from '../../utils/cursorRulesUtils.js';
+import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
-import { CURSOR_RULES_VERSION } from '../../utils/tokens.js';
+import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
 vi.mock('../../utils/analyticsUtils.js', async () => {
@@ -17,7 +17,7 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
     sendAnalytics: vi.fn(),
   };
 });
-vi.mock('../../utils/cursorRulesUtils.js');
+vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
 vi.mock('../../utils/generalUtils.js', () => ({
   getBladeDocsList: vi.fn(() => ['Button', 'Accordion', 'Input']),
@@ -37,7 +37,7 @@ describe('getBladeComponentDocs Tool', () => {
     vi.clearAllMocks();
     // Setup default mocks
     vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button', 'Accordion', 'Input']);
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
   });
 
   it('should return component docs for valid components', () => {
@@ -59,7 +59,7 @@ describe('getBladeComponentDocs Tool', () => {
         componentsList: mockComponentsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -71,7 +71,7 @@ describe('getBladeComponentDocs Tool', () => {
         toolName: 'get_blade_component_docs',
         componentsList: mockComponentsList,
         rootDirectoryName: 'project',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
         clientName: 'cursor',
       },
     });
@@ -109,7 +109,7 @@ describe('getBladeComponentDocs Tool', () => {
         componentsList: mockComponentsList,
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -160,8 +160,8 @@ describe('getBladeComponentDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladeComponentDocsHttpCallback;
@@ -172,7 +172,7 @@ describe('getBladeComponentDocs Tool', () => {
         componentsList: testComponentsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -209,8 +209,8 @@ describe('getBladeComponentDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the HTTP callback
     const httpCallback = getBladeComponentDocsHttpCallback;
@@ -221,7 +221,7 @@ describe('getBladeComponentDocs Tool', () => {
         componentsList: testComponentsList,
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
-        cursorRuleVersion: CURSOR_RULES_VERSION,
+        skillVersion: SKILL_VERSION,
       },
       createMockContext(),
     );
@@ -258,8 +258,8 @@ describe('getBladeComponentDocs Tool', () => {
       );
     }
 
-    // Mock cursor rules as not needing update
-    vi.spyOn(cursorRulesUtils, 'shouldCreateOrUpdateCursorRule').mockReturnValue(undefined);
+    // Mock skill as not needing update
+    vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
 
     // Get the stdio callback
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
