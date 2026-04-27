@@ -53,9 +53,11 @@
     ...rest
   }: AvatarProps = $props();
 
-  // Group context overrides size
+  // Group context overrides size and tracks whether this avatar is hidden by `maxCount`.
   const groupProps = getAvatarGroupContext();
+  const groupRegistration = groupProps?.register();
   const avatarSize = $derived(groupProps?.size ?? size);
+  const isHiddenByGroup = $derived(groupRegistration?.isHidden ?? false);
 
   const isInteractive = $derived(Boolean(onClick || href));
 
@@ -139,6 +141,7 @@
 
 <div
   class={combinedClasses}
+  style:display={isHiddenByGroup ? 'none' : null}
   {...metaAttrs}
   {...analyticsAttrs}
 >

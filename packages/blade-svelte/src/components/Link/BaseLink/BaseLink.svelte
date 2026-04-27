@@ -215,7 +215,7 @@
   
   // Combine classes with styled props classes
   // styledProps.inlineStyles is intentionally ignored to maintain pure class-based styling
-  const combinedClasses = $derived(() => {
+  const combinedClasses = $derived.by(() => {
     const classes = [
       baseLinkClasses,
       'focus-ring-parent', // Focus ring utility from theme.css
@@ -271,7 +271,7 @@
 
 <svelte:element
   this={elementTag}
-  class={combinedClasses()}
+  class={combinedClasses}
   title={htmlTitle}
   {...accessibilityAttrs}
   {...metaAttrs}

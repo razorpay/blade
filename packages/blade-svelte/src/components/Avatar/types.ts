@@ -297,8 +297,21 @@ export type AvatarGroupProps = {
 };
 
 /**
+ * Registration handle returned to a child Avatar from its AvatarGroup.
+ * `isHidden` is reactive — it tracks the avatar's index against the group's `maxCount`.
+ */
+export type AvatarGroupRegistration = {
+  readonly isHidden: boolean;
+};
+
+/**
  * Context type for AvatarGroup.
  */
 export type AvatarGroupContextType = {
   size?: AvatarSize;
+  /**
+   * Each child Avatar calls this once during setup to claim an index in the group.
+   * The returned registration's `isHidden` flips reactively based on `maxCount`.
+   */
+  register: () => AvatarGroupRegistration;
 };

@@ -18,4 +18,9 @@
  */
 export { default as Breadcrumb } from './Breadcrumb.svelte';
 export { default as BreadcrumbItem } from './BreadcrumbItem.svelte';
-export type { BreadcrumbProps, BreadcrumbItemProps, BreadcrumbSize, BreadcrumbColor } from './types';
+export type {
+  BreadcrumbProps,
+  BreadcrumbItemProps,
+  BreadcrumbSize,
+  BreadcrumbColor,
+} from './types';

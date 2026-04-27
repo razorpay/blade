@@ -19,4 +19,11 @@
  * ```
  */
 export { default as Alert } from './Alert.svelte';
-export type { AlertProps, AlertActions, AlertColor, AlertEmphasis, PrimaryAction, SecondaryAction } from './types';
+export type {
+  AlertProps,
+  AlertActions,
+  AlertColor,
+  AlertEmphasis,
+  PrimaryAction,
+  SecondaryAction,
+} from './types';

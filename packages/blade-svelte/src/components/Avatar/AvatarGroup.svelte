@@ -12,7 +12,7 @@
     getAvatarButtonClasses,
   } from '@razorpay/blade-core/styles';
   import { setAvatarGroupContext } from './avatarContext';
-  import type { AvatarGroupProps } from './types';
+  import type { AvatarGroupProps, AvatarGroupRegistration } from './types';
 
   // Prevent tree-shaking
   const templateClasses = getAvatarTemplateClasses();
@@ -25,13 +25,35 @@
     ...rest
   }: AvatarGroupProps = $props();
 
-  // Set context for child Avatars (reactive getter pattern)
-  setAvatarGroupContext(() => ({ size }));
+  // Children-driven registry: each Avatar calls `register()` during its setup
+  // and gets back a registration whose `isHidden` flag tracks its index vs `maxCount`.
+  // We keep a reactive count of mounted Avatars, and assign a stable index per
+  // registration via a non-reactive monotonic counter.
+  let registeredCount = $state(0);
+  let nextIndex = 0;
+
+  function register(): AvatarGroupRegistration {
+    const myIndex = nextIndex;
+    nextIndex += 1;
+    registeredCount += 1;
+
+    $effect(() => {
+      return () => {
+        registeredCount -= 1;
+      };
+    });
+
+    return {
+      get isHidden() {
+        return maxCount !== undefined && myIndex >= maxCount;
+      },
+    };
+  }
+
+  setAvatarGroupContext(() => ({ size, register }));
 
   // Group classes
-  const groupClasses = $derived(
-    getAvatarGroupClasses({ size }),
-  );
+  const groupClasses = $derived(getAvatarGroupClasses({ size }));
 
   // Meta & analytics attributes
   const metaAttrs = metaAttribute({ name: MetaConstants.AvatarGroup, testID });
@@ -52,58 +74,16 @@
     }),
   );
 
-  // DOM-based maxCount management
-  let groupEl: HTMLDivElement | undefined = $state(undefined);
-  let overflowCount = $state(0);
-  let showOverflow = $state(false);
-
-  $effect(() => {
-    if (!groupEl || !maxCount) {
-      showOverflow = false;
-      overflowCount = 0;
-      return;
-    }
-
-    // Get direct children (Avatar wrappers)
-    const childElements = Array.from(groupEl.children).filter(
-      (el) => !el.hasAttribute('data-avatar-overflow'),
-    );
-    const totalChildren = childElements.length;
-
-    if (maxCount >= totalChildren) {
-      // No overflow needed
-      showOverflow = false;
-      overflowCount = 0;
-      childElements.forEach((el) => {
-        (el as HTMLElement).style.display = '';
-      });
-      return;
-    }
-
-    // Hide children beyond maxCount
-    childElements.forEach((el, index) => {
-      if (index >= maxCount) {
-        (el as HTMLElement).style.display = 'none';
-      } else {
-        (el as HTMLElement).style.display = '';
-      }
-    });
-
-    overflowCount = totalChildren - maxCount;
-    showOverflow = true;
-  });
+  const overflowCount = $derived(
+    maxCount !== undefined && registeredCount > maxCount ? registeredCount - maxCount : 0,
+  );
+  const showOverflow = $derived(overflowCount > 0);
 </script>
 
-<div
-  bind:this={groupEl}
-  class={groupClasses}
-  {...metaAttrs}
-  {...analyticsAttrs}
-  {...a11yAttrs}
->
+<div class={groupClasses} {...metaAttrs} {...analyticsAttrs} {...a11yAttrs}>
   {@render children()}
-  {#if showOverflow && overflowCount > 0}
-    <div class={overflowWrapperClasses} data-avatar-overflow>
+  {#if showOverflow}
+    <div class={overflowWrapperClasses}>
       <div class={overflowBtnClasses}>
         <div class={templateClasses.btnContent}>
           +{overflowCount}

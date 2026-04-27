@@ -1,5 +1,4 @@
-import type { Snippet } from 'svelte';
-import type { Component } from 'svelte';
+import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { IconProps } from '../Icons/types';
 
