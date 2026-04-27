@@ -236,9 +236,7 @@ export function getChipGroupTemplateClasses(): Record<string, string> {
   };
 }
 
-export function getChipGroupLabelSizeClass(
-  size: ChipSize,
-): string {
+export function getChipGroupLabelSizeClass(size: ChipSize): string {
   const map: Record<ChipSize, string> = {
     xsmall: chipGroupStyles.labelSmall,
     small: chipGroupStyles.labelMedium,
