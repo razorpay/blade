@@ -32,6 +32,15 @@
 |------|------|---------|----------|----------|
 | {name} | {type} | {default or —} | {yes/no} | {visual / behavior / event / a11y} |
 
+## Style Token Mappings
+
+<!-- Extract from Styled*.tsx and *Tokens.ts. Document any CSS property
+     that depends on props, especially compound mappings (2+ props). -->
+
+| CSS Property  | Depends On    | Mapping                                                                                               | Compound |
+| ------------- | ------------- | ----------------------------------------------------------------------------------------------------- | -------- |
+| {property}    | {prop1, prop2}| {mapping description}                                                                                 | {yes/no} |
+
 ## Event Handlers
 
 <!-- List all callback/handler props -->
