@@ -1,5 +1,13 @@
 # @razorpay/blade-svelte
 
+## 0.5.1
+
+### Patch Changes
+
+- 8aedb0d26: feat(blade-svelte): add counter component
+- Updated dependencies [8aedb0d26]
+  - @razorpay/blade-core@0.4.1
+
 ## 0.5.0
 
 ### Minor Changes
