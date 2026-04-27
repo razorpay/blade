@@ -95,17 +95,6 @@ export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
 export {
-  counterStyles,
-  getCounterClasses,
-  getCounterTemplateClasses,
-  counterContentClass,
-  counterHeight,
-  counterHorizontalPadding,
-  counterTextSizes,
-  getCounterTextColorToken,
-} from './Counter';
-export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
-export {
   cardRootStyles,
   cardSurfaceStyles,
   getCardHeaderClasses,
