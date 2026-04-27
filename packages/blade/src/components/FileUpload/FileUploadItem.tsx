@@ -111,26 +111,27 @@ const FileUploadItem = memo(
                 />
               </BaseBox>
             ) : status === 'error' ? (
-              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                 <BaseLink
                   marginX="spacing.1"
                   variant="button"
                   icon={RotateClockWiseIcon}
                   color="negative"
-                  size="small"
+                  size="medium"
                   onClick={() => {
                     onReupload?.({ file });
                   }}
                   data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-                >
-                  Re-upload
-                </BaseLink>
+                />
                 {onRemove ? (
-                  <IconButton
-                    accessibilityLabel={`Remove ${name}`}
-                    icon={TrashIcon}
-                    onClick={() => onRemove({ file })}
-                  />
+                  <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+                    <Divider orientation="vertical" thickness="thin" variant="normal" />
+                    <IconButton
+                      accessibilityLabel={`Remove ${name}`}
+                      icon={TrashIcon}
+                      onClick={() => onRemove({ file })}
+                    />
+                  </BaseBox>
                 ) : null}
               </BaseBox>
             ) : (
