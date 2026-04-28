@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { TabNavContext } from './TabNavContext';
 import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
+import { useTopNavContext } from '../TopNavContext';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -43,6 +44,8 @@ const TabNav = ({
 }: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
   const itemsRowRef = React.useRef<HTMLDivElement>(null);
+  const topNavContext = useTopNavContext();
+  const isPrimaryVariant = topNavContext?.variant === 'primary';
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
@@ -109,7 +112,7 @@ const TabNav = ({
             position="relative"
           >
             {children({ items: _items, overflowingItems })}
-            <TabNavIndicator containerRef={itemsRowRef} />
+            <TabNavIndicator containerRef={itemsRowRef} showGlow={!isPrimaryVariant} />
           </BaseBox>
         </BaseBox>
       </BaseBox>

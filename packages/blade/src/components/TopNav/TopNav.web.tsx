@@ -1,7 +1,7 @@
 import React from 'react';
 import { TopNavContext, useTopNavContext } from './TopNavContext';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
-import { size } from '~tokens/global';
+import { size, backdropBlur } from '~tokens/global';
 import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -17,6 +17,8 @@ import {
 } from '~components/SideNav/tokens';
 
 const TOP_NAV_HEIGHT = size[56];
+
+const OVERLAY_HEIGHT = size[24];
 
 type TopNavProps = {
   children: React.ReactNode;
@@ -92,6 +94,22 @@ const _TopNav = (
           {...makeAnalyticsAttribute(rest)}
         >
           {children}
+          {variant === 'primary' && (
+            <BaseBox
+              display={{ base: 'none', m: 'block' }}
+              position="absolute"
+              bottom="0px"
+              left="0px"
+              right="0px"
+              height={makeSize(OVERLAY_HEIGHT)}
+              gridColumn="1 / -1"
+              style={{
+                background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.28))',
+                filter: `blur(${backdropBlur.medium}px)`,
+                pointerEvents: 'none',
+              }}
+            />
+          )}
         </BaseBox>
       </BladeProvider>
     </TopNavContext.Provider>

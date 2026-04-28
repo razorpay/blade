@@ -523,6 +523,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
         <Box
           overflow="hidden"
           position="relative"
+          zIndex={1}
           borderRadius={{ base: 'none', m: 'large' }}
           borderTopRightRadius={{ base: 'none', m: 'large' }}
           borderBottomLeftRadius="none"
