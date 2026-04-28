@@ -9,6 +9,7 @@ import {
   typography,
   elevation,
   opacity,
+  zIndex,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
@@ -1400,6 +1401,7 @@ const bladeTheme: ThemeTokens = {
   spacing,
   elevation,
   typography,
+  zIndex,
 };
 
 export default bladeTheme;

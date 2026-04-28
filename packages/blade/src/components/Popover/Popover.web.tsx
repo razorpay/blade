@@ -160,7 +160,6 @@ const _Popover = ({
                 <BaseBox
                   ref={refs.setFloating}
                   style={floatingStyles}
-                  // TODO: Tokenize zIndex values
                   zIndex={zIndex}
                   {...getFloatingProps()}
                   {...metaAttribute({ name: MetaConstants.Popover })}

@@ -105,7 +105,6 @@ const Tooltip = ({
               // this happens because measure is async and it takes few miliseconds to calculate the positions.
               left: floatingStyles.left || -200,
               top: floatingStyles.top || -200,
-              // TODO: Tokenize zIndex values
               zIndex,
             }}
             arrow={

@@ -7,6 +7,7 @@ import type {
   Spacing,
   TypographyWithPlatforms,
   ElevationWithColorModes,
+  ZIndex,
 } from '~tokens/global';
 import type { ColorChromaticScale, ColorNeutralGrayScale } from '~tokens/global/colors';
 
@@ -174,6 +175,7 @@ export type ThemeTokens = {
   elevation: ElevationWithColorModes;
   spacing: Spacing;
   typography: TypographyWithPlatforms;
+  zIndex: ZIndex;
 };
 
 export type SpacingValues = `${Spacing[keyof Spacing]}px`;
