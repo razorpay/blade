@@ -2,10 +2,10 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useTopNavContext } from '../TopNavContext';
 import { TabNavContext } from './TabNavContext';
 import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
-import { useTopNavContext } from '../TopNavContext';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
