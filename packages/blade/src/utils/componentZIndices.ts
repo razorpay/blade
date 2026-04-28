@@ -1,13 +1,14 @@
-// TODO: Move these properly to tokens at some point
+import { zIndex } from '~tokens/global';
+
 export const componentZIndices = {
-  bottomSheet: 100,
-  bottomNav: 100, // should be behind drawer since sidenav opens in drawer in mobile
-  modal: 1000,
-  drawer: 1001,
-  dropdownOverlay: 1002,
-  tourMask: 1100,
-  popover: 1100,
-  tooltip: 1100,
-  topnav: 100,
-  previewPanel: 1100,
+  bottomSheet: zIndex.sticky,
+  bottomNav: zIndex.sticky, // should be behind drawer since sidenav opens in drawer in mobile
+  modal: zIndex.overlay,
+  drawer: zIndex.drawer,
+  dropdownOverlay: zIndex.dropdown,
+  tourMask: zIndex.popover,
+  popover: zIndex.popover,
+  tooltip: zIndex.popover,
+  topnav: zIndex.sticky,
+  previewPanel: zIndex.popover,
 };

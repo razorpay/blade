@@ -24,3 +24,5 @@ export type { Size } from './size';
 export { size } from './size';
 export type { Elevation, ElevationWithColorModes } from './elevation';
 export { elevation } from './elevation';
+export type { ZIndex } from './zIndex';
+export { zIndex } from './zIndex';
