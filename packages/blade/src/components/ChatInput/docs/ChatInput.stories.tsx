@@ -14,6 +14,7 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { Button } from '~components/Button';
 
 const Page = (): React.ReactElement => {
   return (
@@ -836,3 +837,110 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+export const WithAutoscrollOnUpload: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    { name: 'document-1.pdf', size: 102400, status: 'success', id: 'file-1' } as BladeFileList[0],
+    { name: 'report-q1.xlsx', size: 204800, status: 'success', id: 'file-2' } as BladeFileList[0],
+    { name: 'screenshot.png', size: 76160, status: 'success', id: 'file-3' } as BladeFileList[0],
+    { name: 'invoice.pdf', size: 512000, status: 'success', id: 'file-4' } as BladeFileList[0],
+    {
+      name: 'presentation.pptx',
+      size: 1048576,
+      status: 'success',
+      id: 'file-5',
+    } as BladeFileList[0],
+  ]);
+  const fileCountRef = React.useRef(6);
+
+  const addFileAsSuccess = (): void => {
+    const id = `file-${fileCountRef.current++}`;
+    setFiles((prev) => [
+      ...prev,
+      { name: `added-${id}.pdf`, size: 102400, status: 'success', id } as BladeFileList[0],
+    ]);
+  };
+
+  const addFileAsUploading = (): void => {
+    const id = `file-${fileCountRef.current++}`;
+    setFiles((prev) => [
+      ...prev,
+      { name: `uploading-${id}.pdf`, size: 204800, status: 'uploading', id } as BladeFileList[0],
+    ]);
+    setTimeout(() => {
+      setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, status: 'success' } : f)));
+    }, 2000);
+  };
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onFileDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+      />
+      <Box display="flex" gap="spacing.3">
+        <Button onClick={addFileAsSuccess} variant="secondary" size="small">
+          Add file (no scroll)
+        </Button>
+        <Button onClick={addFileAsUploading} size="small">
+          Add uploading file (scrolls)
+        </Button>
+      </Box>
+      <Text size="small" color="surface.text.gray.muted">
+        Add file adds a file in success state — no autoscroll. Add uploading file transitions a file
+        to uploading — autoscrolls to it.
+      </Text>
+    </Box>
+  );
+};
+WithAutoscrollOnUpload.storyName = 'With Autoscroll On Upload';
+
+export const WithMixedFileStates: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    {
+      name: 'invoice.pdf',
+      size: 512000,
+      status: 'success',
+      id: 'file-success',
+    } as BladeFileList[0],
+    {
+      name: 'err.pdf',
+      size: 204800,
+      status: 'error',
+      errorText: 'Upload failed. Please try again.',
+      id: 'file-error',
+    } as BladeFileList[0],
+    {
+      name: 'report.pdf',
+      size: 1048576,
+      status: 'uploading',
+      uploadPercent: 60,
+      id: 'file-uploading',
+    } as BladeFileList[0],
+  ]);
+
+  return (
+    <Box maxWidth="600px">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onFileDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onFileReupload={({ file }) =>
+          setFiles((prev) =>
+            prev.map((f) =>
+              f.id === file.id ? { ...f, status: 'uploading', errorText: undefined } : f,
+            ),
+          )
+        }
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+    </Box>
+  );
+};
+WithMixedFileStates.storyName = 'With Mixed File States (Success / Error / Uploading)';

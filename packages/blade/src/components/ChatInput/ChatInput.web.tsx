@@ -140,12 +140,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   };
 
   const fileScrollRef = useRef<HTMLDivElement>(null);
-  const prevFileCountRef = useRef(files.length);
+  const prevUploadingCountRef = useRef(files.filter((f) => f.status === 'uploading').length);
 
   useEffect(() => {
-    const prevCount = prevFileCountRef.current;
-    prevFileCountRef.current = files.length;
-    if (files.length > prevCount && fileScrollRef.current) {
+    const currentCount = files.filter((f) => f.status === 'uploading').length;
+    const hasNewUploading = currentCount > prevUploadingCountRef.current;
+    prevUploadingCountRef.current = currentCount;
+    if (hasNewUploading && fileScrollRef.current) {
       fileScrollRef.current.scrollTo({
         left: fileScrollRef.current.scrollWidth,
         behavior: 'smooth',
@@ -170,18 +171,16 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <BaseBox
+              <FileUploadItem
                 key={file.id ?? file.name}
-                flexShrink={0}
                 width={chatInputFilePreviewItemWidth}
-              >
-                <FileUploadItem
-                  file={file}
-                  onRemove={() => handleFileRemove(file)}
-                  onDismiss={() => handleFileDismiss(file)}
-                  onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
-                />
-              </BaseBox>
+                flexShrink={0}
+                flexGrow={0}
+                file={file}
+                onRemove={() => handleFileRemove(file)}
+                onDismiss={() => handleFileDismiss(file)}
+                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
+              />
             ))}
           </HiddenScrollbarBox>
         </BaseMotionBox>

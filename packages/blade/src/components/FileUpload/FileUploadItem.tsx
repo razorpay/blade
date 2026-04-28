@@ -27,7 +27,7 @@ const FileUploadItem = memo(
     onReupload,
     onDismiss,
     size: containerSize,
-    width,
+    width = '100%',
     minWidth,
     maxWidth,
     flexShrink,
