@@ -836,3 +836,51 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+export const WithMixedFileStates: StoryFn<typeof ChatInput> = () => {
+  const [files, setFiles] = React.useState<BladeFileList>([
+    {
+      name: 'invoice.pdf',
+      size: 512000,
+      status: 'success',
+      id: 'file-success',
+    } as BladeFileList[0],
+    {
+      name: 'err.pdf',
+      size: 204800,
+      status: 'error',
+      errorText: 'Upload failed. Please try again.',
+      id: 'file-error',
+    } as BladeFileList[0],
+    {
+      name: 'report.pdf',
+      size: 1048576,
+      status: 'uploading',
+      uploadPercent: 60,
+      id: 'file-uploading',
+    } as BladeFileList[0],
+  ]);
+
+  return (
+    <Box maxWidth="600px">
+      <ChatInput
+        placeholder="Ask a question..."
+        fileList={files}
+        onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onFileDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onFileReupload={({ file }) =>
+          setFiles((prev) =>
+            prev.map((f) =>
+              f.id === file.id ? { ...f, status: 'uploading', errorText: undefined } : f,
+            ),
+          )
+        }
+        onSubmit={({ value, fileList }) => {
+          console.log('Submitted:', value, 'Files:', fileList);
+          setFiles([]);
+        }}
+      />
+    </Box>
+  );
+};
+WithMixedFileStates.storyName = 'With Mixed File States (Success / Error / Uploading)';
