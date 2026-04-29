@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
-import { throwBladeError } from '~utils/logger';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
+import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
+import { throwBladeError } from '~utils/logger';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
