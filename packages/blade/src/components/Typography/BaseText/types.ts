@@ -28,7 +28,8 @@ type As =
   | 'cite'
   | 'figcaption'
   | 'div'
-  | 'label';
+  | 'label'
+  | 'li';
 
 export type BaseTextProps = {
   id?: string;

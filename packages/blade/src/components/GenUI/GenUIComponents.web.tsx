@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
 import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
@@ -52,7 +52,6 @@ import {
 } from '~components/Table';
 import { Link } from '~components/Link';
 import {
-  DotIcon,
   InfoIcon,
   CheckCircleIcon,
   AlertTriangleIcon,
@@ -71,6 +70,7 @@ import { Amount } from '~components/Amount';
 import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 /**
  * Global styles for text streaming animations
@@ -421,6 +421,22 @@ const ChartSkeletonLoader = ({
   );
 };
 
+const _OrderedList = styled.ol`
+  padding-left: 24px;
+`;
+const OrderedList = assignWithoutSideEffects(_OrderedList, {
+  componentId: 'genui-markdown-ordered-list',
+  displayName: 'OrderedList',
+});
+
+const _UnorderedList = styled.ul`
+  padding-left: 24px;
+`;
+const UnorderedList = assignWithoutSideEffects(_UnorderedList, {
+  componentId: 'genui-markdown-unordered-list',
+  displayName: 'UnorderedList',
+});
+
 /**
  * Stable components object for ReactMarkdown to prevent re-renders during streaming.
  * Defined outside the component to maintain referential equality.
@@ -463,21 +479,17 @@ const markdownComponents = {
       {(children as unknown) as string}
     </Link>
   ),
-  li: ({ children }: { children?: React.ReactNode }) => (
-    <Text marginY="spacing.3" size="medium">
-      <DotIcon marginBottom="1px" size="xsmall" /> {children}
-    </Text>
-  ),
-  ol: ({ children }: { children?: React.ReactNode }) => (
-    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-      {children}
-    </Box>
-  ),
-  ul: ({ children }: { children?: React.ReactNode }) => (
-    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-      {children}
-    </Box>
-  ),
+  li: ({ children }: { children?: React.ReactNode }) => {
+    return (
+      <Text as="li" size="medium">
+        {children}
+      </Text>
+    );
+  },
+  ol: ({ children }: { children?: React.ReactNode }) => {
+    return <OrderedList>{children}</OrderedList>;
+  },
+  ul: ({ children }: { children?: React.ReactNode }) => <UnorderedList>{children}</UnorderedList>,
   hr: () => <Divider marginY="spacing.4" />,
   i: ({ children }: { children?: React.ReactNode }) => (
     <Text size="medium" variant="caption" color="surface.text.gray.subtle">
