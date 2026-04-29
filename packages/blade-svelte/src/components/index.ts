@@ -33,8 +33,6 @@ export { default as Badge } from './Badge/Badge.svelte';
 export { default as Counter } from './Counter/Counter.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
-// Counter
-export { default as Counter } from './Counter/Counter.svelte';
 
 // Card
 export {
