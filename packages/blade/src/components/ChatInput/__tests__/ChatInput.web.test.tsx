@@ -53,6 +53,28 @@ describe('<ChatInput />', () => {
     expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
   });
 
+  it('should keep submit button disabled when a file is in error state', () => {
+    const file = new File(['content'], 'test.png', { type: 'image/png' });
+    Object.assign(file, { id: 'file-1', status: 'error' });
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} fileList={[file as never]} />,
+    );
+
+    expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
+  });
+
+  it('should enable submit button when files exist and none are in error state', () => {
+    const file = new File(['content'], 'test.png', { type: 'image/png' });
+    Object.assign(file, { id: 'file-1', status: 'success' });
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput accessibilityLabel={accessibilityLabel} fileList={[file as never]} />,
+    );
+
+    expect(getByRole('button', { name: 'Submit' })).toBeEnabled();
+  });
+
   it('should show stop button when isGenerating is true and call onStop', async () => {
     const user = userEvent.setup();
     const onStop = jest.fn();

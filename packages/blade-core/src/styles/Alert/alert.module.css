@@ -1,0 +1,214 @@
+/* Alert Base Styles */
+.alert {
+  display: flex;
+  flex-direction: row;
+  padding: var(--spacing-4);
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+.alert:not(.full-width) {
+  max-width: 584px;
+  border-radius: var(--border-radius-medium);
+}
+
+/* Full Width Variant */
+.full-width {
+  width: 100%;
+  border-radius: var(--border-radius-none);
+}
+
+/* Color × Emphasis compound variants */
+.color-neutral.emphasis-subtle {
+  background-color: var(--feedback-background-neutral-subtle);
+}
+
+.color-neutral.emphasis-intense {
+  background-color: var(--feedback-background-neutral-intense);
+}
+
+.color-positive.emphasis-subtle {
+  background-color: var(--feedback-background-positive-subtle);
+}
+
+.color-positive.emphasis-intense {
+  background-color: var(--feedback-background-positive-intense);
+}
+
+.color-negative.emphasis-subtle {
+  background-color: var(--feedback-background-negative-subtle);
+}
+
+.color-negative.emphasis-intense {
+  background-color: var(--feedback-background-negative-intense);
+}
+
+.color-notice.emphasis-subtle {
+  background-color: var(--feedback-background-notice-subtle);
+}
+
+.color-notice.emphasis-intense {
+  background-color: var(--feedback-background-notice-intense);
+}
+
+.color-information.emphasis-subtle {
+  background-color: var(--feedback-background-information-subtle);
+}
+
+.color-information.emphasis-intense {
+  background-color: var(--feedback-background-information-intense);
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+  display: flex;
+  align-self: flex-start;
+}
+
+/* Center-align the icon (used for description-only alerts, and for
+ * full-width alerts without a title — matches React's shouldCenterAlign /
+ * isDescriptionOnly branches).
+ */
+.icon-wrapper-center {
+  align-self: center;
+}
+
+/* Icon offset: aligns the leading icon with the first line of text.
+ * On desktop web the offset is always spacing.1 (2px).
+ * On mobile web, spacing.2 (4px) is used for cases where the title/description
+ * line-height shifts the visual baseline (matches React's useBreakpoint logic).
+ */
+.icon-offset-1 {
+  margin-top: var(--spacing-1);
+}
+
+.icon-offset-2 {
+  margin-top: var(--spacing-1);
+}
+
+@media (max-width: 767px) {
+  .icon-offset-2 {
+    margin-top: var(--spacing-2);
+  }
+}
+
+/* isDescriptionOnly: 1px offset + center align (matches React makeSize(1)) */
+.icon-offset-description-only {
+  margin-top: 1px;
+}
+
+/* Close button gets a slight offset when the alert is description-only,
+ * matching React's `marginTop={isDescriptionOnly ? makeSize(2) : 'spacing.0'}`.
+ */
+.close-button-description-only {
+  margin-top: 2px;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-2);
+}
+
+.content-full-width {
+  padding-left: var(--spacing-4);
+}
+
+.content-horizontal-actions {
+  padding-right: var(--spacing-4);
+}
+
+/* Title wrapper */
+.title {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Description wrapper */
+.description {
+  margin-top: var(--spacing-1);
+}
+
+.description-with-title {
+  margin-top: var(--spacing-0);
+}
+
+/* Actions layout - vertical (mobile / non-full-width) */
+.actions-vertical {
+  margin-top: var(--spacing-4);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Actions layout - horizontal (desktop full-width) */
+.actions-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Action item spacing */
+.action-primary {
+  display: inline-flex;
+}
+
+.action-primary-with-trailing {
+  margin-right: var(--spacing-5);
+}
+
+.action-secondary {
+  display: inline-flex;
+}
+
+.action-secondary-with-dismiss {
+  margin-right: var(--spacing-4);
+}
+
+/* Close/Dismiss Button */
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-medium);
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.close-button:hover {
+  opacity: 0.8;
+}
+
+.close-button:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default);
+  outline-offset: 2px;
+}
+
+/* Responsive behavior for full-width alerts */
+/* Default (mobile): actions vertical, icon align flex-start */
+.full-width .actions-horizontal {
+  display: none;
+}
+
+.full-width .actions-vertical {
+  display: flex;
+}
+
+/* Desktop: full-width alerts get horizontal actions + center alignment */
+@media (min-width: 768px) {
+  .alert.full-width {
+    align-items: center;
+  }
+
+  .full-width .actions-horizontal {
+    display: flex;
+  }
+
+  .full-width .actions-vertical {
+    display: none;
+  }
+}

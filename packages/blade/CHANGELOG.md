@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.1
+
+### Patch Changes
+
+- 24a2fff2e: feat(ChatInput, FileUploadItem): disabled submit on file error, trash icon in error state, autoscroll, fixed file item width
+
 ## 12.101.0
 
 ### Minor Changes

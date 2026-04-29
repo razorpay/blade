@@ -1,0 +1,358 @@
+/* ===== StyledAvatar (outer wrapper) ===== */
+.avatar-wrapper {
+  display: flex;
+  position: relative;
+  background-color: var(--surface-background-gray-intense);
+  outline: var(--border-width-thinner) solid var(--surface-border-gray-subtle);
+}
+
+/* Size variants for outer wrapper */
+.size-xsmall {
+  width: 20px;
+  height: 20px;
+}
+
+.size-small {
+  width: 28px;
+  height: 28px;
+}
+
+.size-medium {
+  width: 36px;
+  height: 36px;
+}
+
+.size-large {
+  width: 48px;
+  height: 48px;
+}
+
+.size-xlarge {
+  width: 56px;
+  height: 56px;
+}
+
+/* Shape variants for outer wrapper */
+.variant-circle {
+  border-radius: var(--border-radius-max);
+}
+
+.variant-square {
+  /* border-radius applied via size-specific compound classes below */
+}
+
+/* Square variant border-radius scales with size (matches React avatarBorderRadiusTokens) */
+.square-xsmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.square-small {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.square-medium {
+  border-radius: var(--border-radius-small);
+}
+
+.square-large {
+  border-radius: var(--border-radius-small);
+}
+
+.square-xlarge {
+  border-radius: var(--border-radius-medium);
+}
+
+/* Interactive hover on outer wrapper */
+.interactive {
+  &:hover {
+    outline: var(--border-width-thick) solid var(--surface-border-gray-muted);
+    background-color: var(--surface-background-gray-moderate);
+  }
+}
+
+/* ===== AvatarButton (inner element) ===== */
+.avatar-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: none;
+  cursor: default;
+  overflow: hidden;
+
+  & img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* AvatarButton size variants */
+.btn-size-xsmall {
+  min-height: 20px;
+  height: 20px;
+  width: 20px;
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+.btn-size-small {
+  min-height: 28px;
+  height: 28px;
+  width: 28px;
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+.btn-size-medium {
+  min-height: 36px;
+  height: 36px;
+  width: 36px;
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+.btn-size-large {
+  min-height: 48px;
+  height: 48px;
+  width: 48px;
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+.btn-size-xlarge {
+  min-height: 56px;
+  height: 56px;
+  width: 56px;
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+/* AvatarButton shape variants */
+.btn-variant-circle {
+  border-radius: var(--border-radius-max);
+
+  & img {
+    border-radius: var(--border-radius-max);
+  }
+}
+
+.btn-variant-square {
+  /* border-radius applied via size-specific compound classes below */
+}
+
+/* Button square variant border-radius scales with size */
+.btn-square-xsmall {
+  border-radius: var(--border-radius-xsmall);
+
+  & img {
+    border-radius: var(--border-radius-xsmall);
+  }
+}
+
+.btn-square-small {
+  border-radius: var(--border-radius-xsmall);
+
+  & img {
+    border-radius: var(--border-radius-xsmall);
+  }
+}
+
+.btn-square-medium {
+  border-radius: var(--border-radius-small);
+
+  & img {
+    border-radius: var(--border-radius-small);
+  }
+}
+
+.btn-square-large {
+  border-radius: var(--border-radius-small);
+
+  & img {
+    border-radius: var(--border-radius-small);
+  }
+}
+
+.btn-square-xlarge {
+  border-radius: var(--border-radius-medium);
+
+  & img {
+    border-radius: var(--border-radius-medium);
+  }
+}
+
+/* AvatarButton color variants (background) */
+.btn-color-primary {
+  background-color: var(--interactive-background-primary-faded);
+}
+
+.btn-color-positive {
+  background-color: var(--interactive-background-positive-faded);
+}
+
+.btn-color-negative {
+  background-color: var(--interactive-background-negative-faded);
+}
+
+.btn-color-notice {
+  background-color: var(--interactive-background-notice-faded);
+}
+
+.btn-color-information {
+  background-color: var(--interactive-background-information-faded);
+}
+
+.btn-color-neutral {
+  background-color: var(--interactive-background-neutral-faded);
+}
+
+/* AvatarButton interactive state */
+.btn-interactive {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 1px solid var(--surface-background-primary-subtle);
+    box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted);
+  }
+}
+
+/* AvatarButton selected state */
+.btn-selected {
+  border: var(--border-width-thicker) solid var(--surface-border-primary-normal);
+}
+
+/* ===== Inner content container ===== */
+.btn-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  height: 100%;
+}
+
+/* ===== Addon containers ===== */
+.addon-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.top-addon {
+  position: absolute;
+  z-index: 2;
+}
+
+.bottom-addon {
+  position: absolute;
+  z-index: 2;
+}
+
+/* Top addon offsets for circle variant */
+.top-addon-circle-xsmall {
+  right: 0px;
+  top: 0px;
+}
+
+.top-addon-circle-small {
+  right: 1px;
+  top: 1px;
+}
+
+.top-addon-circle-medium {
+  right: 1px;
+  top: 2px;
+}
+
+.top-addon-circle-large {
+  right: 4px;
+  top: 2px;
+}
+
+.top-addon-circle-xlarge {
+  right: 4px;
+  top: 2px;
+}
+
+/* Top addon offsets for square variant */
+.top-addon-square-xsmall {
+  right: -2px;
+  top: -2px;
+}
+
+.top-addon-square-small {
+  right: -2px;
+  top: -2px;
+}
+
+.top-addon-square-medium {
+  right: -2px;
+  top: -2px;
+}
+
+.top-addon-square-large {
+  right: -3px;
+  top: -3px;
+}
+
+.top-addon-square-xlarge {
+  right: -4px;
+  top: -4px;
+}
+
+/* Bottom addon offsets for circle variant */
+.bottom-addon-circle {
+  bottom: 0%;
+  right: 0%;
+}
+
+/* Bottom addon offsets for square variant */
+.bottom-addon-square {
+  bottom: -10%;
+  right: -10%;
+}
+
+/* ===== AvatarGroup ===== */
+.avatar-group {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.avatar-group > :not(:first-child) {
+  z-index: 2;
+}
+
+/* AvatarGroup size variants (negative margin overlap) */
+.group-size-xsmall > :not(:first-child) {
+  margin-left: -10px;
+}
+
+.group-size-small > :not(:first-child) {
+  margin-left: -14px;
+}
+
+.group-size-medium > :not(:first-child) {
+  margin-left: -18px;
+}
+
+.group-size-large > :not(:first-child) {
+  margin-left: -24px;
+}
+
+.group-size-xlarge > :not(:first-child) {
+  margin-left: -28px;
+}

@@ -1,0 +1,113 @@
+/* ChipGroup field layout */
+.chipGroupField {
+  display: flex;
+}
+
+.labelTop {
+  flex-direction: column;
+}
+
+.labelLeft {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+/* Chips flex container */
+.chipsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Gap + bottom margin per size */
+.gapXsmall {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+.gapSmall {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+}
+
+.gapMedium {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.gapLarge {
+  column-gap: var(--spacing-3);
+  row-gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Label sizes */
+.labelSmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.labelMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.labelLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* Group label */
+.groupLabel {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--surface-text-gray-normal);
+  margin-bottom: var(--spacing-3);
+}
+
+/* Necessity indicator */
+.necessityRequired::after {
+  content: ' *';
+  color: var(--feedback-text-negative-intense);
+}
+
+.necessityOptional::after {
+  content: ' (optional)';
+  color: var(--surface-text-gray-muted);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Help text */
+.helpText {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-muted);
+}
+
+/* Error text */
+.errorText {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--feedback-text-negative-intense);
+}
+
+/* Screen reader only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
