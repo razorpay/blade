@@ -34,6 +34,25 @@ export { default as Counter } from './Counter/Counter.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Card
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+  CardHeaderAmount,
+  CardHeaderText,
+  CardHeaderLink,
+  CardHeaderIconButton,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from './Card';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
