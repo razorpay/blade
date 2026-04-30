@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Blade Svelte Migration — Critical Rules
 
-> Include this file at the start of every sub-agent prompt.
+> Include this file at the start of every agent prompt.
 
 ## Architecture
 

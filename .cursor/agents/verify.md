@@ -11,16 +11,26 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 > Phase 4: Verify the migrated component through static checks, API parity,
 > visual comparison, and inline fixes. Owns ALL fix strategies.
 
-> You ARE the verifier. Execute these steps inline. Do NOT invoke `run-agent` — that is the orchestrator's role.
+> You ARE the verifier. Execute these steps inline. Do NOT spawn additional Task agents (other than triggering Execute in patch mode through the orchestrator-defined flow) — that is the orchestrator's role.
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.mdc` before starting.
+Read these before starting:
+
+1. `.cursor/rules/svelte-migration.mdc`
+2. `.cursor/rules/agent-base-directory.mdc`
 
 ## Input
 
+The orchestrator passes these via your prompt:
+
 - Component name
-- `.cursor/artifacts/{Name}/discovery-report.md` (source of truth for expected API, props, stories, DOM structure)
+- **`Worktree`**: absolute path to the component's git worktree
+- Discovery report: `{Worktree}/.cursor/artifacts/{Name}/discovery-report.md` (source of truth for expected API, props, stories, DOM structure)
+- **`ReactPort`** (optional, default `9009`): port for the React Storybook (matches blade's `react:storybook` script default)
+- **`SveltePort`** (optional, default `6007`): port for the Svelte Storybook (matches blade-svelte's `storybook` script default)
+
+> **Base directory:** Path examples in this file (`packages/blade*`, `.cursor/artifacts/{Name}/...`) resolve relative to the base directory described in `.cursor/rules/agent-base-directory.mdc`. Storybook commands run inside the base's `packages/blade*` subdirectories so they pick up the right source.
 
 ## Output
 
@@ -35,27 +45,31 @@ Read `.cursor/rules/svelte-migration.mdc` before starting.
 
 ## Step 0: Ensure Storybooks Are Running
 
-Before any visual verification, ensure both Storybooks are running:
+Before any visual verification, ensure both Storybooks are running on the **assigned ports** (`ReactPort` and `SveltePort` from Input — defaults `9009` and `6007`).
 
-1. **React Storybook (port 6006):**
+1. **React Storybook (port `{ReactPort}`):**
 
-   - `curl -s http://localhost:6006` → check for HTML response
+   - `curl -s http://localhost:{ReactPort}` → check for HTML response
    - If running → reuse
-   - If not running → `cd packages/blade && npm run storybook` (background)
+   - If not running → `cd packages/blade && yarn react:storybook -p {ReactPort}` (background)
+     - blade's React Storybook script is `react:storybook` (the trailing `-p` overrides the script's hardcoded `-p 9009`).
    - If port occupied by non-Storybook → warn user, ask to free port
 
-2. **Svelte Storybook (port 6007):**
+2. **Svelte Storybook (port `{SveltePort}`):**
 
-   - `curl -s http://localhost:6007` → check for HTML response
+   - `curl -s http://localhost:{SveltePort}` → check for HTML response
    - If running → reuse
-   - If not running → `cd packages/blade-svelte && npm run dev` (background)
+   - If not running → `cd packages/blade-svelte && yarn storybook -p {SveltePort}` (background)
+     - Use `storybook`, not `dev`. `dev` runs `storybook` in parallel with `dev:blade-core` via `npm-run-all`, which does not forward `-p` to the inner storybook process. If blade-core CSS changes during this run, run `yarn build` in `packages/blade-core` separately to refresh.
    - If port occupied by non-Storybook → warn user, ask to free port
 
 3. **Poll both ports** until responsive (max 60s, check every 5s)
 
    - If timeout → log error, skip visual comparison (Steps 3-4)
 
-4. **After pipeline completes:** Do NOT kill Storybook processes. Log: "Storybooks still running on ports 6006/6007 for manual verification"
+4. **After pipeline completes:** Do NOT kill Storybook processes. Log: "Storybooks still running on ports {ReactPort}/{SveltePort} for manual verification"
+
+> When this agent runs from the orchestrator pipeline, the Storybook processes started here are scoped to the worktree's source files (the Shell calls have `working_directory` = `{Worktree}/packages/...`). Another worktree running concurrently will be using its own port pair, so multiple verifies can run in parallel without conflict.
 
 ---
 
@@ -86,8 +100,8 @@ iteration = 1
 Run these commands:
 
 ```bash
-cd packages/blade-svelte && npm run svelte-check
-cd packages/blade-svelte && npm run build
+cd packages/blade-svelte && yarn svelte-check
+cd packages/blade-svelte && yarn build
 ```
 
 **On pass:** Update report Static Checks table → continue to Step 2.
@@ -119,10 +133,10 @@ Every `var(--...)` reference in the component's CSS module must resolve to an ac
 4. For each extracted variable, check if `--<name>:` exists as a declaration in the theme
 5. Build a results table:
 
-| CSS Variable | Used In (file:line) | Exists in Theme | Status |
-|---|---|---|---|
-| `--elevation-low-raised` | card.module.css:115 | Yes | ✅ |
-| `--motion-duration-xquick` | card.module.css:66 | **No** | ❌ |
+| CSS Variable               | Used In (file:line) | Exists in Theme | Status |
+| -------------------------- | ------------------- | --------------- | ------ |
+| `--elevation-low-raised`   | card.module.css:115 | Yes             | ✅     |
+| `--motion-duration-xquick` | card.module.css:66  | **No**          | ❌     |
 
 **On all found:** Log "CSS Variable Audit: all N variables resolve" → continue to Step 2.
 
@@ -156,10 +170,10 @@ The React source is the authoritative reference — not the discovery report. Tr
 
 5. **Build a results table:**
 
-| CSS Property | Depends On | React Source | In Discovery Report | In Svelte CVA `compoundVariants` | Status |
-|---|---|---|---|---|---|
-| `border-radius` | variant, size | `avatarBorderRadiusTokens.square[size]` | ✅ | ✅ | ✅ |
-| `width` | deviceType, size | `switchSizes.track[deviceType][size].width` | ❌ | ❌ | ❌ P1 |
+| CSS Property    | Depends On       | React Source                                | In Discovery Report | In Svelte CVA `compoundVariants` | Status |
+| --------------- | ---------------- | ------------------------------------------- | ------------------- | -------------------------------- | ------ |
+| `border-radius` | variant, size    | `avatarBorderRadiusTokens.square[size]`     | ✅                  | ✅                               | ✅     |
+| `width`         | deviceType, size | `switchSizes.track[deviceType][size].width` | ❌                  | ❌                               | ❌ P1  |
 
 **On all matched:** Log "Compound Variant Audit: all N compound mappings covered" → continue to Step 2.
 
@@ -216,10 +230,11 @@ If not running, re-run Step 0 before proceeding.
 
 **Storybook URL pattern:**
 
-Stories are addressed via iframe URLs for clean, isolated screenshots (no Storybook chrome):
+Stories are addressed via iframe URLs for clean, isolated screenshots (no Storybook chrome). Use the `ReactPort` / `SveltePort` from Input:
 
 ```
-http://localhost:{port}/iframe.html?id={story-id}
+http://localhost:{SveltePort}/iframe.html?id={story-id}    # Svelte
+http://localhost:{ReactPort}/iframe.html?id={story-id}     # React
 ```
 
 The `story-id` is constructed from the story's `title` and `name`:
@@ -239,23 +254,23 @@ Rules:
 
 **Examples from Badge:**
 
-| Story Name | Svelte URL (6007)                                                   | React URL (6006)                                                    |
+| Story Name | Svelte URL (`SveltePort`)                                           | React URL (`ReactPort`)                                             |
 | ---------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Playground | `http://localhost:6007/iframe.html?id=components-badge--playground` | `http://localhost:6006/iframe.html?id=components-badge--default`    |
-| Sizes      | `http://localhost:6007/iframe.html?id=components-badge--sizes`      | `http://localhost:6006/iframe.html?id=components-badge--small-size` |
+| Playground | `http://localhost:6007/iframe.html?id=components-badge--playground` | `http://localhost:9009/iframe.html?id=components-badge--default`    |
+| Sizes      | `http://localhost:6007/iframe.html?id=components-badge--sizes`      | `http://localhost:9009/iframe.html?id=components-badge--small-size` |
 
 > **Note:** Svelte and React story names may differ (e.g., "Playground" vs "Default").
 > Use the discovery report's Stories table to find the matching React story name for each Svelte story.
 
 **For each story in the discovery report's Stories table:**
 
-1. Construct the Svelte story URL using the pattern above (port 6007)
+1. Construct the Svelte story URL using the pattern above (port `{SveltePort}`)
 2. Navigate to the URL using Playwright
 3. Wait for the page to be idle (network and animations settled)
 4. Locate the story root element: `#storybook-root` or `#root` (the component container div)
    - Note: when we navigate to `/iframe.html?id=...`, the story content is in the main page context (no iframe switching needed)
 5. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/svelte-{story-slug}.png`
-6. Construct the matching React story URL (port 6006) — use discovery report for the React story name
+6. Construct the matching React story URL (port `{ReactPort}`) — use discovery report for the React story name
 7. Navigate, wait for idle, locate story root element
 8. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/react-{story-slug}.png`
 
@@ -304,28 +319,28 @@ Screenshots miss invisible failures (e.g., `box-shadow: none` on white-on-white,
 
 **Procedure:**
 
-1. Navigate to the Svelte primary story (port 6007), use `browser_evaluate` + `getComputedStyle()` to collect values from key elements
-2. Navigate to the matching React story (port 6006), collect the same values
+1. Navigate to the Svelte primary story (port `{SveltePort}`), use `browser_evaluate` + `getComputedStyle()` to collect values from key elements
+2. Navigate to the matching React story (port `{ReactPort}`), collect the same values
 3. Compare and build a results table
 
 **What to check:**
 
-| Element | Properties | Compare Method |
-|---|---|---|
-| Component root (`[data-blade-component]`) | `border-radius`, `overflow`, `box-shadow` | Exact match with React |
-| Visual surface (child with elevation/bg) | `box-shadow`, `background-color`, `padding` | Exact match with React |
-| Elements with transitions | `transition-duration`, `transition-property` | Sanity: duration > `0s`, property non-empty |
-| Storybook canvas (`#storybook-root`) | `background-color` | Exact match with React |
-| Elements with styled props (e.g., `marginBottom`) | The styled CSS property | Must be non-zero when prop is set |
+| Element                                           | Properties                                   | Compare Method                              |
+| ------------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| Component root (`[data-blade-component]`)         | `border-radius`, `overflow`, `box-shadow`    | Exact match with React                      |
+| Visual surface (child with elevation/bg)          | `box-shadow`, `background-color`, `padding`  | Exact match with React                      |
+| Elements with transitions                         | `transition-duration`, `transition-property` | Sanity: duration > `0s`, property non-empty |
+| Storybook canvas (`#storybook-root`)              | `background-color`                           | Exact match with React                      |
+| Elements with styled props (e.g., `marginBottom`) | The styled CSS property                      | Must be non-zero when prop is set           |
 
 Both Svelte and React use `data-blade-component` attributes, so the same query works on both ports. For child elements, query by position rather than class names.
 
 **Results table format:**
 
-| Element | Property | React | Svelte | Status |
-|---|---|---|---|---|
-| Root | border-radius | 4px | 4px | ✅ |
-| Surface | box-shadow | rgba(...) 0px 2px 16px | none | ❌ P1 |
+| Element | Property      | React                  | Svelte | Status |
+| ------- | ------------- | ---------------------- | ------ | ------ |
+| Root    | border-radius | 4px                    | 4px    | ✅     |
+| Surface | box-shadow    | rgba(...) 0px 2px 16px | none   | ❌ P1  |
 
 **Severity:** Exact-match failures → **P1**. Differences ≤ 2px → **P2**.
 
@@ -387,12 +402,12 @@ iteration += 1
 
 ## Exit Conditions
 
-| Condition                                       | Result                                      |
-| ----------------------------------------------- | ------------------------------------------- |
-| All checks pass (static + API + visual + computed) | **PASS**                                  |
-| All pass with P2 warnings only                  | **PASS WITH WARNINGS**                      |
-| 3 consecutive static failures in same iteration | **FAIL**                                    |
-| `iteration > 6`                                 | **FAIL** (safety cap, full report produced) |
+| Condition                                          | Result                                      |
+| -------------------------------------------------- | ------------------------------------------- |
+| All checks pass (static + API + visual + computed) | **PASS**                                    |
+| All pass with P2 warnings only                     | **PASS WITH WARNINGS**                      |
+| 3 consecutive static failures in same iteration    | **FAIL**                                    |
+| `iteration > 6`                                    | **FAIL** (safety cap, full report produced) |
 
 ---
 

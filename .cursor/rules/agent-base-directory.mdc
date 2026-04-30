@@ -1,0 +1,18 @@
+---
+description: How sub-agents in the Svelte migration pipeline resolve paths relative to a base directory.
+globs:
+alwaysApply: false
+---
+
+# Agent Base Directory
+
+All paths in your agent file are relative to a **base directory**:
+
+- **Orchestrated:** base = `{Worktree}` (absolute path from your prompt).
+- **Standalone:** base = the Cursor workspace root. No `{Worktree}` in your prompt.
+
+## Rules
+
+- Set `working_directory` to the base on every Shell call. Verify may use a `packages/...` subdirectory of the base for Storybook commands.
+- Prefix Read / Write / StrReplace / Glob / Grep paths with the absolute base path.
+- Do not read or write outside the base.

@@ -8,20 +8,24 @@ You are a Frontend Design System Architect. Your job is to create actionable, ac
 
 # Planner Agent
 
-> Phase 1: Analyze the React component and produce both the discovery report
-> (source of truth for Verify) and the migration plan (instructions for Execute).
-> This agent reads React source + one reference Svelte component in a single pass.
-
-> You ARE the planner. Execute these steps inline. Do NOT invoke `run-agent` — that is the orchestrator's role.
+> You are a Planner agent that reads React source + one reference Svelte component in a single pass.
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.mdc` before starting.
+Read these before starting:
+
+1. `.cursor/rules/svelte-migration.mdc`
+2. `.cursor/rules/agent-base-directory.mdc`
 
 ## Input
 
+The orchestrator passes these via your prompt:
+
 - Component name (e.g., `Alert`)
-- React source path: `packages/blade/src/components/{Name}/`
+- **`Worktree`**: absolute path to the component's git worktree (e.g., `/Users/.../blade/.cursor/worktrees/Alert`)
+- React source path inside the worktree: `{Worktree}/packages/blade/src/components/{Name}/`
+
+> **Base directory:** Path examples in this file (`packages/blade/...`, `.cursor/artifacts/{Name}/...`) resolve relative to the base directory described in `.cursor/rules/agent-base-directory.mdc`.
 
 ## Output
 
