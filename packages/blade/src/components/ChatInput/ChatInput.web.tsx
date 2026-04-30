@@ -140,16 +140,25 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   };
 
   const fileScrollRef = useRef<HTMLDivElement>(null);
-  const prevUploadingCountRef = useRef(files.filter((f) => f.status === 'uploading').length);
+  const fileItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const prevUploadingIdsRef = useRef(
+    new Set(files.filter((f) => f.status === 'uploading').map((f) => f.id ?? f.name ?? '')),
+  );
 
   useEffect(() => {
-    const currentCount = files.filter((f) => f.status === 'uploading').length;
-    const hasNewUploading = currentCount > prevUploadingCountRef.current;
-    prevUploadingCountRef.current = currentCount;
-    if (hasNewUploading && fileScrollRef.current) {
-      fileScrollRef.current.scrollTo({
-        left: fileScrollRef.current.scrollWidth,
+    const currentUploadingIds = new Set(
+      files.filter((f) => f.status === 'uploading').map((f) => f.id ?? f.name ?? ''),
+    );
+    const newUploadingId = [...currentUploadingIds].find(
+      (id) => !prevUploadingIdsRef.current.has(id),
+    );
+    prevUploadingIdsRef.current = currentUploadingIds;
+
+    if (newUploadingId) {
+      fileItemRefs.current[newUploadingId]?.scrollIntoView({
         behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest',
       });
     }
   }, [files]);
@@ -170,18 +179,24 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             overflowY="hidden"
             flexWrap="nowrap"
           >
-            {files.map((file) => (
-              <FileUploadItem
-                key={file.id ?? file.name}
-                width={chatInputFilePreviewItemWidth}
-                flexShrink={0}
-                flexGrow={0}
-                file={file}
-                onRemove={() => handleFileRemove(file)}
-                onDismiss={() => handleFileDismiss(file)}
-                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
-              />
-            ))}
+            {files.map((file) => {
+              const fileKey = file.id ?? file.name ?? '';
+              return (
+                <FileUploadItem
+                  key={fileKey}
+                  ref={(el) => {
+                    fileItemRefs.current[fileKey] = el;
+                  }}
+                  width={chatInputFilePreviewItemWidth}
+                  flexShrink={0}
+                  flexGrow={0}
+                  file={file}
+                  onRemove={() => handleFileRemove(file)}
+                  onDismiss={() => handleFileDismiss(file)}
+                  onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
+                />
+              );
+            })}
           </HiddenScrollbarBox>
         </BaseMotionBox>
       ) : null}

@@ -851,25 +851,43 @@ export const WithAutoscrollOnUpload: StoryFn<typeof ChatInput> = () => {
       id: 'file-5',
     } as BladeFileList[0],
   ]);
-  const fileCountRef = React.useRef(6);
 
-  const addFileAsSuccess = (): void => {
-    const id = `file-${fileCountRef.current++}`;
-    setFiles((prev) => [
-      ...prev,
-      { name: `added-${id}.pdf`, size: 102400, status: 'success', id } as BladeFileList[0],
-    ]);
-  };
+  const handleFileChange = ({ fileList }: { fileList: BladeFileList }): void => {
+    // Normalize newly picked File objects (name/size are prototype getters, not own properties)
+    const normalized = fileList.map((f) =>
+      !f.status
+        ? ({
+            id: f.id ?? f.name,
+            name: f.name,
+            size: f.size,
+            status: undefined,
+          } as BladeFileList[0])
+        : f,
+    );
+    setFiles(normalized);
 
-  const addFileAsUploading = (): void => {
-    const id = `file-${fileCountRef.current++}`;
-    setFiles((prev) => [
-      ...prev,
-      { name: `uploading-${id}.pdf`, size: 204800, status: 'uploading', id } as BladeFileList[0],
-    ]);
-    setTimeout(() => {
-      setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, status: 'success' } : f)));
-    }, 2000);
+    normalized
+      .filter((f, i) => !fileList[i].status)
+      .forEach((f) => {
+        const uploadDelay = Math.random() * 1500;
+        const successDelay = uploadDelay + 1000 + Math.random() * 2500;
+
+        setTimeout(() => {
+          setFiles((prev) =>
+            prev.map((file) =>
+              file.id === f.id ? ({ ...file, status: 'uploading' } as BladeFileList[0]) : file,
+            ),
+          );
+        }, uploadDelay);
+
+        setTimeout(() => {
+          setFiles((prev) =>
+            prev.map((file) =>
+              file.id === f.id ? ({ ...file, status: 'success' } as BladeFileList[0]) : file,
+            ),
+          );
+        }, successDelay);
+      });
   };
 
   return (
@@ -877,20 +895,17 @@ export const WithAutoscrollOnUpload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
+        onFileChange={handleFileChange}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onFileDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
+        onSubmit={({ value, fileList: submittedFiles }) => {
+          console.log('Submitted:', value, 'Files:', submittedFiles);
+          setFiles([]);
+        }}
       />
-      <Box display="flex" gap="spacing.3">
-        <Button onClick={addFileAsSuccess} variant="secondary" size="small">
-          Add file (no scroll)
-        </Button>
-        <Button onClick={addFileAsUploading} size="small">
-          Add uploading file (scrolls)
-        </Button>
-      </Box>
       <Text size="small" color="surface.text.gray.muted">
-        Add file adds a file in success state — no autoscroll. Add uploading file transitions a file
-        to uploading — autoscrolls to it.
+        Pick any file — it starts in uploading state and autoscrolls to it, then transitions to
+        success after 2 seconds.
       </Text>
     </Box>
   );

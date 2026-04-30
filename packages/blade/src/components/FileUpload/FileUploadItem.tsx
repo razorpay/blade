@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, forwardRef } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
@@ -20,7 +20,7 @@ import { BaseLink } from '~components/Link/BaseLink';
 import { getStyledProps } from '~components/Box/styledProps';
 
 const FileUploadItem = memo(
-  ({
+  forwardRef<HTMLDivElement, FileUploadItemProps>(({
     file,
     onPreview,
     onRemove,
@@ -34,7 +34,7 @@ const FileUploadItem = memo(
     flexGrow,
     flexBasis,
     ...rest
-  }: FileUploadItemProps): React.ReactElement => {
+  }, ref) => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
@@ -43,6 +43,7 @@ const FileUploadItem = memo(
 
     return (
       <StyledFileUploadItemWrapper
+        ref={ref}
         size={containerSize ?? 'medium'}
         status={status ?? 'success'}
         borderRadius="medium"
@@ -179,7 +180,7 @@ const FileUploadItem = memo(
         </BaseBox>
       </StyledFileUploadItemWrapper>
     );
-  },
+  }),
 );
 
 export type { FileUploadItemProps } from './types';
