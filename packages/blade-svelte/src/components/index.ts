@@ -67,5 +67,14 @@ export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
 export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
 export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
 
+// Tooltip
+export { default as Tooltip } from './Tooltip/Tooltip.svelte';
+export { default as TooltipInteractiveWrapper } from './Tooltip/TooltipInteractiveWrapper.svelte';
+export type {
+  TooltipProps,
+  TooltipPlacement,
+  TooltipInteractiveWrapperProps,
+} from './Tooltip/types';
+
 // BladeProvider
 export * from './BladeProvider';

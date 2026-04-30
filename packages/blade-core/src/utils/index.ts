@@ -11,6 +11,7 @@ export * from './lodashButBetter/isNumber';
 export * from './lodashButBetter/isUndefined';
 export * from './lodashButBetter/kebabCase';
 export * from './lodashButBetter/throttle';
+export * from './getFloatingPlacementParts';
 export * from './hasSameObjectStructure';
 export * from './isPartialMatchObjectKeys';
 export * from './logger';

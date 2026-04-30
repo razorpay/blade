@@ -50,6 +50,7 @@
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.0",
     "@razorpay/blade-core": ">=0.4.1",
     "@razorpay/i18nify-js": "1.12.3",
     "class-variance-authority": "^0.7.0"
