@@ -1,5 +1,5 @@
 ---
-description: Enforce sub-agent boundaries when the orchestrator is running a migration pipeline
+description: Enforce agent boundaries when the orchestrator is running a migration pipeline
 globs:
 alwaysApply: false
 ---
@@ -10,30 +10,60 @@ alwaysApply: false
 
 **You are the coordinator.** Your job is simple:
 
-1. **Run sub-agents** via Shell tool:
+1. **Set up worktrees + branches** via Shell tool (one per component):
 
    ```bash
-   run-agent .cursor/agents/plan.md
-   run-agent .cursor/agents/execute.md
-   run-agent .cursor/agents/verify.md
+   git worktree add -B feat/blade-svelte/{Name} .cursor/worktrees/{Name} origin/master
    ```
 
-2. **Wait** for artifacts to appear in `.cursor/artifacts/`
+2. **Spawn agents in parallel** via the Task tool, where the pipeline allows. To run a phase across N components in parallel, send **one message containing N Task tool calls**:
 
-3. **Present** artifacts to user for approval
+   ```text
+   Task(subagent_type: "planner", description: "Plan {Name}",   prompt: "<...>", run_in_background: false)
+   Task(subagent_type: "execute", description: "Execute {Name}", prompt: "<...>", run_in_background: false)
+   Task(subagent_type: "verify",  description: "Verify {Name}",  prompt: "<...>", run_in_background: false)
+   ```
 
-**That's your entire workflow. Each phase is delegated to a specialized sub-agent.**
+   Each Task agent file is loaded automatically by the matching `subagent_type` (`planner` → `.cursor/agents/plan.md`, `execute` → `.cursor/agents/execute.md`, `verify` → `.cursor/agents/verify.md`). You do not need to read those files yourself.
+
+3. **Pass the worktree absolute path** to each agent in its prompt. The Task tool does not accept a `working_directory` parameter, so the agent uses the absolute path as the prefix for all its file/shell operations.
+
+4. **Read artifacts** each agent produces (discovery report, migration plan, verification report) from `.cursor/worktrees/{Name}/.cursor/artifacts/{Name}/...` and present them at human gates.
+
+5. **Open one PR per component** via `git push` + `gh pr create`, run inside the worktree.
+
+6. **Update** `.cursor/artifacts/batch-status.md` (in the **main checkout**) after every state change.
+
+**That's your entire workflow.** Each phase is delegated to a specialized agent running in an isolated worktree.
 
 ## ❌ What You DON'T DO
 
-**You don't execute phase work.** The sub-agents do that.
+- **Don't read `.cursor/agents/*.md` to follow the steps yourself.** Spawn the matching `subagent_type` via the Task tool.
+- **Don't run agents from the main checkout's perspective.** Always pass the component's worktree absolute path in the prompt so the agent scopes its tool calls there.
+- **Don't `git worktree remove` until the user asks.** Leave worktrees in place after the run.
 
 ## 🛡️ Self-Check
 
-**Before any action, ask:** "Am I running `run-agent` via Shell?"
+**Before any action, ask:** "Am I delegating phase work to a Task agent with the worktree absolute path in its prompt?"
 
-- ✅ Yes → Proceed
-- ❌ No → Stop. You're violating the boundary.
+If yes → proceed.
+If no → **stop**. You're violating the boundary.
 
-**Common mistake:** Reading `plan.md` and following its steps.
-**Correct action:** Run `run-agent .cursor/agents/plan.md` and wait.
+## 🔁 Parallelism Boundaries
+
+| Phase           | Mode              | How                                                                   |
+| --------------- | ----------------- | --------------------------------------------------------------------- |
+| Plan            | All in parallel   | One message, N `subagent_type: planner` Task calls.                   |
+| Plan Gate       | Sequential        | Requires human input.                                                 |
+| Execute         | All in parallel   | One message, N `subagent_type: execute` Task calls.                   |
+| Verify          | All in parallel   | One message, N `subagent_type: verify` Task calls. Each Verify agent boots its own Storybook pair on per-slot ports. |
+| Final Gate + PR | Per-component, parallel | Each verified component opens its own PR independently.               |
+
+## 🔗 Dependency Ordering
+
+If component A depends on component B and both are in the same batch:
+
+- Both run Plan in parallel.
+- Step 2 detects the edge and marks A `🟡 deferred-to-next-batch`.
+- Only B continues through Execute / Verify / PR.
+- User re-runs A as a follow-up batch after B's PR merges.
