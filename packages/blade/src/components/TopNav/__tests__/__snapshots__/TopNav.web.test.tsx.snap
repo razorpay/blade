@@ -3,6 +3,7 @@
 exports[`TopNav TopNavBrand renders with custom paddingY 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -97,6 +98,7 @@ exports[`TopNav TopNavBrand renders with custom paddingY 1`] = `
 exports[`TopNav explicit backgroundColor prop overrides variant 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -136,11 +138,10 @@ exports[`TopNav explicit backgroundColor prop overrides variant 1`] = `
 .c2.c2.c2.c2.c2 {
   display: none;
   position: absolute;
-  grid-column: 1 / -1;
-  height: 24px;
-  right: 0px;
+  height: 20px;
+  right: 16px;
   bottom: 0px;
-  left: 0px;
+  left: 16px;
 }
 
 @media screen and (min-width:768px) {
@@ -184,6 +185,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -924,6 +926,7 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 exports[`TopNav renders with variant="neutral" (default) applying static black background 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -985,6 +988,7 @@ exports[`TopNav renders with variant="neutral" (default) applying static black b
 exports[`TopNav renders with variant="primary" applying primary background color 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1024,11 +1028,10 @@ exports[`TopNav renders with variant="primary" applying primary background color
 .c2.c2.c2.c2.c2 {
   display: none;
   position: absolute;
-  grid-column: 1 / -1;
-  height: 24px;
-  right: 0px;
+  height: 20px;
+  right: 16px;
   bottom: 0px;
-  left: 0px;
+  left: 16px;
 }
 
 @media screen and (min-width:768px) {
@@ -1072,6 +1075,7 @@ exports[`TopNav should render 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1817,6 +1821,7 @@ exports[`TopNav should support data analytics attributes 1`] = `
 
 .c1.c1.c1.c1.c1 {
   display: grid;
+  overflow: hidden;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

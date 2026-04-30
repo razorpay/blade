@@ -18,7 +18,7 @@ import {
 
 const TOP_NAV_HEIGHT = size[56];
 
-const OVERLAY_HEIGHT = size[24];
+const OVERLAY_HEIGHT = size[20];
 
 type TopNavProps = {
   children: React.ReactNode;
@@ -89,6 +89,7 @@ const _TopNav = (
           height={makeSize(TOP_NAV_HEIGHT)}
           zIndex={componentZIndices.topnav}
           backgroundColor={resolvedBackgroundColor}
+          overflow="hidden"
           {...rest}
           {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
           {...makeAnalyticsAttribute(rest)}
@@ -99,10 +100,9 @@ const _TopNav = (
               display={{ base: 'none', m: 'block' }}
               position="absolute"
               bottom="0px"
-              left="0px"
-              right="0px"
+              left="spacing.5"
+              right="spacing.5"
               height={makeSize(OVERLAY_HEIGHT)}
-              gridColumn="1 / -1"
               style={{
                 background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.28))',
                 filter: `blur(${backdropBlur.medium}px)`,
