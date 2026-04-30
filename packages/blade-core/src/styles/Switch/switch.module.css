@@ -1,0 +1,220 @@
+/* Switch outer wrapper */
+.switch {
+  display: inline-block;
+}
+
+/* Label wraps the visually-hidden input + track. Drives cursor + click target. */
+.label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/* Visually-hidden native input — kept as a sibling of `.track` so adjacent
+   sibling selectors (`+ .track`) handle hover and focus-visible. */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Track */
+.track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  pointer-events: none;
+  margin: var(--spacing-1);
+  padding: var(--spacing-1);
+  border-radius: var(--border-radius-max);
+  transition-property: background-color, outline;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-2xquick);
+}
+
+/* Track sizes — desktop */
+.size-small {
+  width: 28px;
+  height: var(--spacing-5);
+}
+
+.size-medium {
+  width: 36px;
+  height: var(--spacing-6);
+}
+
+/* Track background — checked / unchecked × default / disabled */
+.checked {
+  background-color: var(--interactive-background-primary-default);
+
+  &[data-disabled] {
+    background-color: var(--interactive-background-primary-faded);
+  }
+}
+
+.unchecked {
+  background-color: var(--interactive-background-gray-default);
+
+  &[data-disabled] {
+    background-color: var(--interactive-background-gray-disabled);
+  }
+}
+
+/* Hover — driven by the surrounding label so the entire control responds. */
+.label:hover .track.checked:not([data-disabled]) {
+  background-color: var(--interactive-background-primary-highlighted);
+}
+
+.label:hover .track.unchecked:not([data-disabled]) {
+  background-color: var(--interactive-background-gray-highlighted);
+}
+
+/* Focus ring — adjacent sibling: input + track */
+.input:focus-visible + .track {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 1px;
+}
+
+/* Thumb — wrapper aligning the animated thumb inside the track */
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.thumb.size-small {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+.thumb.size-medium {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+}
+
+/*
+ * Class anchors — intentionally empty so CSS Modules emits a scoped class name
+ * even when the class only appears inside compound selectors below.
+ */
+.pressed {
+}
+.effective-checked {
+}
+
+/* Animated thumb — handles checked translate + pressed width/left expansion */
+.animated-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  transform: translateX(0%);
+  border-radius: var(--border-radius-max);
+  background-color: var(--interactive-background-static-white-default);
+  transition-property: width, left, transform, background-color;
+  transition-duration: var(--duration-quick);
+  transition-timing-function: var(--easing-standard);
+  will-change: transform, left, width;
+}
+
+.animated-thumb.checked {
+  transform: translateX(100%);
+}
+
+.animated-thumb.pressed.checked {
+  width: 125%;
+  left: -39%;
+}
+
+.animated-thumb.pressed.unchecked {
+  width: 125%;
+  left: 12.5%;
+}
+
+.animated-thumb[data-disabled] {
+  background-color: var(--interactive-background-static-white-disabled);
+}
+
+/* Thumb checkmark icon */
+.thumb-icon {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--duration-quick);
+  transition-timing-function: var(--easing-standard);
+  transition-delay: 0ms;
+}
+
+.thumb-icon.effective-checked {
+  opacity: 1;
+  transition-delay: var(--delay-2xquick);
+}
+
+.thumb-icon path {
+  fill: var(--interactive-icon-primary-subtle);
+}
+
+.label[data-disabled] .thumb-icon path {
+  fill: var(--interactive-icon-primary-disabled);
+}
+
+/* Icon dimensions — desktop */
+.thumb-icon.size-small {
+  width: 6px;
+  height: 6px;
+}
+
+.thumb-icon.size-medium {
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+}
+
+/* Mobile overrides — match React's useBreakpoint behaviour at <= breakpoint-s */
+@media (max-width: 480px) {
+  .size-small {
+    width: 36px;
+    height: var(--spacing-6);
+  }
+
+  .size-medium {
+    width: 44px;
+    height: var(--spacing-7);
+  }
+
+  .thumb.size-small {
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+  }
+
+  .thumb.size-medium {
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+  }
+
+  .thumb-icon.size-small {
+    width: var(--spacing-3);
+    height: var(--spacing-3);
+  }
+
+  .thumb-icon.size-medium {
+    width: 10px;
+    height: 10px;
+  }
+}

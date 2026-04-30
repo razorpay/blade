@@ -34,6 +34,10 @@ export { default as Counter } from './Counter/Counter.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 
+// Switch
+export { default as Switch } from './Switch/Switch.svelte';
+export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';

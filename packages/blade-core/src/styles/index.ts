@@ -95,6 +95,8 @@ export {
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
+export type { SwitchSize, SwitchVariants } from './Switch';
 export {
   animatedChipCva,
   getAnimatedChipClasses,
