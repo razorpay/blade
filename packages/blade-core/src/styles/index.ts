@@ -96,6 +96,18 @@ export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
 export {
+  skeletonStyles,
+  skeletonClass,
+  getSkeletonClasses,
+  getSkeletonInlineStyle,
+} from './Skeleton';
+export type {
+  SkeletonVariants,
+  SkeletonBorderRadius,
+  SkeletonFlexProps,
+  SkeletonInlineStyleProps,
+} from './Skeleton';
+export {
   animatedChipCva,
   getAnimatedChipClasses,
   chipInnerCva,

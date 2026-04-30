@@ -33,6 +33,9 @@ export { default as Badge } from './Badge/Badge.svelte';
 export { default as Counter } from './Counter/Counter.svelte';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
+// Skeleton
+export { default as Skeleton } from './Skeleton/Skeleton.svelte';
+export type { SkeletonProps } from './Skeleton/types';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
