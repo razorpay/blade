@@ -1,0 +1,79 @@
+/* Toast container — fixed-positioned outer wrapper that bounds the stack
+ * to a max-width and routes pointer events through to the page in the
+ * gaps between toasts.
+ *
+ * The container exposes runtime values via CSS custom properties on each
+ * `.toast-wrapper` (set inline as `style="--toast-offset: …"`). Keeping the
+ * `transform` / `opacity` declarations here means the visual contract stays
+ * in CSS even though the numeric inputs are JS-driven.
+ */
+.toast-container {
+  position: fixed;
+  bottom: var(--toast-container-gutter, 24px);
+  left: var(--toast-container-gutter, 24px);
+  right: var(--toast-container-gutter, 24px);
+  width: calc(100% - var(--toast-container-gutter-double, 48px));
+  max-width: 360px;
+  pointer-events: none;
+  z-index: var(--toast-container-zindex, 2001);
+}
+
+@media (max-width: 767px) {
+  .toast-container {
+    --toast-container-gutter: 16px;
+    --toast-container-gutter-double: 32px;
+  }
+}
+
+/* Hover capture region — fills the gaps between toasts so mouseleave does not
+ * fire when the cursor crosses one of the small spacing.3 gutters. Sized via
+ * --hover-region-bottom / --hover-region-height set inline.
+ */
+.hover-region {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: var(--hover-region-bottom, 0px);
+  height: var(--hover-region-height, 0px);
+  z-index: -100;
+}
+
+.hover-region[data-expanded='true'] {
+  pointer-events: all;
+}
+
+.hover-region[data-expanded='false'] {
+  pointer-events: none;
+}
+
+/* Per-toast wrapper.
+ * Reads the runtime CSS vars and applies the `transform`/`opacity`/`height`
+ * here in CSS. Keeps the `style:` directive ban intact while still letting
+ * us drive layout from JS.
+ */
+.toast-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  transform-origin: center;
+  transition:
+    transform var(--duration-gentle) var(--easing-standard),
+    opacity var(--duration-gentle) var(--easing-standard),
+    height var(--duration-gentle) var(--easing-standard);
+  bottom: 0;
+  transform: translateY(calc(var(--toast-offset, 0px) * -1)) scale(var(--toast-scale, 1));
+  z-index: var(--toast-zindex, 0);
+  height: var(--toast-height, auto);
+  opacity: var(--toast-opacity, 1);
+  overflow: hidden;
+}
+
+.toast-wrapper > * {
+  pointer-events: auto;
+}
+
+.toast-wrapper[data-visible='false'] > * {
+  pointer-events: none;
+}

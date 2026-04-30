@@ -48,5 +48,20 @@ export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
 export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
 export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
 
+// Toast
+export { default as Toast } from './Toast/Toast.svelte';
+export { default as ToastContainer } from './Toast/ToastContainer.svelte';
+export { useToast } from './Toast/useToast';
+export type {
+  ToastProps,
+  ToastContainerProps,
+  ToastType,
+  ToastColor,
+  ToastAction,
+  ToastCallbackPayload,
+  BladeToast,
+  UseToastReturn,
+} from './Toast/types';
+
 // BladeProvider
 export * from './BladeProvider';
