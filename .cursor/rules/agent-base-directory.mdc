@@ -6,13 +6,13 @@ alwaysApply: false
 
 # Agent Base Directory
 
-All paths in your agent file are relative to a **base directory**:
+`{Worktree}` is the **absolute prefix** for every file/shell op in the agent.
 
-- **Orchestrated:** base = `{Worktree}` (absolute path from your prompt).
-- **Standalone:** base = the Cursor workspace root. No `{Worktree}` in your prompt.
+- **Orchestrated:** `{Worktree}` comes from your prompt (the worktree's absolute path).
+- **Standalone:** no `{Worktree}` in prompt → run `pwd`, use that as `{Worktree}`.
 
 ## Rules
 
-- Set `working_directory` to the base on every Shell call. Verify may use a `packages/...` subdirectory of the base for Storybook commands.
-- Prefix Read / Write / StrReplace / Glob / Grep paths with the absolute base path.
-- Do not read or write outside the base.
+- **Read / Write / StrReplace / Glob / Grep:** paths MUST start with `{Worktree}`. Bare relative paths (`.cursor/artifacts/...`) silently resolve to the **parent agent's CWD** (the main checkout) — your writes land in the wrong place and the orchestrator can't find them.
+- **Shell:** set `working_directory: {Worktree}` (or `{Worktree}/packages/...` for Storybook). Commands then use shell-relative paths normally.
+- Never read or write outside `{Worktree}`.

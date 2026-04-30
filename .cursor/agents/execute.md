@@ -34,12 +34,12 @@ The orchestrator passes these via your prompt:
 
 - Patch request: `{Worktree}/.cursor/artifacts/{Name}/patch-request.md` (from Verify agent)
 
-> **Base directory:** Path examples in this file (`blade-svelte/...`, `blade-core/...`, `.cursor/artifacts/{Name}/...`) resolve relative to the base directory described in `.cursor/rules/agent-base-directory.mdc`.
-
 ## Output
 
-- All component files created/updated on disk (inside the worktree)
+- All component files created/updated under `{Worktree}/packages/...`
 - Returns control to Verify agent
+
+> Path resolution: see `agent-base-directory.mdc`. All Read/Write/StrReplace paths MUST be prefixed with `{Worktree}`. Shell commands use `working_directory: {Worktree}` (or a `{Worktree}/packages/...` subdirectory for builds).
 
 ---
 
@@ -312,7 +312,7 @@ Triggered by the Verify agent when API parity check finds missing items.
 
 ### Input
 
-Read `.cursor/artifacts/{Name}/patch-request.md`:
+Read `{Worktree}/.cursor/artifacts/{Name}/patch-request.md`:
 
 ```markdown
 ## Patch Request for {ComponentName}

@@ -25,13 +25,13 @@ The orchestrator passes these via your prompt:
 - **`Worktree`**: absolute path to the component's git worktree (e.g., `/Users/.../blade/.cursor/worktrees/Alert`)
 - React source path inside the worktree: `{Worktree}/packages/blade/src/components/{Name}/`
 
-> **Base directory:** Path examples in this file (`packages/blade/...`, `.cursor/artifacts/{Name}/...`) resolve relative to the base directory described in `.cursor/rules/agent-base-directory.mdc`.
-
 ## Output
 
-- `.cursor/artifacts/{Name}/discovery-report.md` (using template at `.cursor/templates/discovery-report.md`)
-- `.cursor/artifacts/{Name}/migration-plan.md` (using template at `.cursor/templates/migration-plan.md`)
-- Reference examples: `.cursor/examples/badge-discovery-report.md`, `.cursor/examples/badge-migration-plan.md`
+Write to absolute paths under `{Worktree}` (see `agent-base-directory.mdc`):
+
+- `{Worktree}/.cursor/artifacts/{Name}/discovery-report.md` (template: `{Worktree}/.cursor/templates/discovery-report.md`)
+- `{Worktree}/.cursor/artifacts/{Name}/migration-plan.md` (template: `{Worktree}/.cursor/templates/migration-plan.md`)
+- Examples: `{Worktree}/.cursor/examples/badge-{discovery-report,migration-plan}.md`
 
 ---
 
@@ -265,13 +265,11 @@ Then add any other decisions:
 
 ### 14. Write discovery report
 
-Fill in the template at `.cursor/templates/discovery-report.md` with all data extracted in Part A (Steps 1-7).
-Save to `.cursor/artifacts/{Name}/discovery-report.md`.
+Fill `{Worktree}/.cursor/templates/discovery-report.md` with data from Part A. Save to `{Worktree}/.cursor/artifacts/{Name}/discovery-report.md`.
 
 ### 15. Write migration plan
 
-Fill in the template at `.cursor/templates/migration-plan.md` with all decisions from Part B (Steps 8-13).
-Save to `.cursor/artifacts/{Name}/migration-plan.md`.
+Fill `{Worktree}/.cursor/templates/migration-plan.md` with decisions from Part B. Save to `{Worktree}/.cursor/artifacts/{Name}/migration-plan.md`.
 
 ---
 

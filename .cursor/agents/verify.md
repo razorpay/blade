@@ -11,7 +11,7 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 > Phase 4: Verify the migrated component through static checks, API parity,
 > visual comparison, and inline fixes. Owns ALL fix strategies.
 
-> You ARE the verifier. Execute these steps inline. Do NOT spawn additional Task agents (other than triggering Execute in patch mode through the orchestrator-defined flow) — that is the orchestrator's role.
+> You ARE the verifier. You own the convergent loop. When parity gaps are found, spawn Execute (patch mode) via the Task tool yourself.
 
 ## Include
 
@@ -30,16 +30,18 @@ The orchestrator passes these via your prompt:
 - **`ReactPort`** (optional, default `9009`): port for the React Storybook (matches blade's `react:storybook` script default)
 - **`SveltePort`** (optional, default `6007`): port for the Svelte Storybook (matches blade-svelte's `storybook` script default)
 
-> **Base directory:** Path examples in this file (`packages/blade*`, `.cursor/artifacts/{Name}/...`) resolve relative to the base directory described in `.cursor/rules/agent-base-directory.mdc`. Storybook commands run inside the base's `packages/blade*` subdirectories so they pick up the right source.
-
 ## Output
 
-- `.cursor/artifacts/{Name}/verification-report.md` (using template at `.cursor/templates/verification-report.md`)
-- Screenshots in `.cursor/artifacts/{Name}/screenshots/`
+Write to absolute paths under `{Worktree}` (see `agent-base-directory.mdc`):
+
+- `{Worktree}/.cursor/artifacts/{Name}/verification-report.md` (template: `{Worktree}/.cursor/templates/verification-report.md`)
+- Screenshots: `{Worktree}/.cursor/artifacts/{Name}/screenshots/`
+
+> Storybook commands run with `working_directory: {Worktree}/packages/blade*` so they pick up the worktree's source.
 
 ## Reference
 
-- Example: `.cursor/examples/badge-verification-report.md`
+- Example: `{Worktree}/.cursor/examples/badge-verification-report.md`
 
 ---
 
@@ -75,7 +77,7 @@ Before any visual verification, ensure both Storybooks are running on the **assi
 
 ## Verification Report State Protocol
 
-The report at `.cursor/artifacts/{Name}/verification-report.md` is this loop's persistent state.
+The report at `{Worktree}/.cursor/artifacts/{Name}/verification-report.md` is this loop's persistent state.
 
 **At loop start:** Read existing report → extract iteration number, previous issues.
 
@@ -177,7 +179,7 @@ The React source is the authoritative reference — not the discovery report. Tr
 
 **On all matched:** Log "Compound Variant Audit: all N compound mappings covered" → continue to Step 2.
 
-**On missing `compoundVariants` (executor gap):** Classify as **P1**. Write to patch-request.md with the missing compound variant entries and trigger Execute agent in patch mode. Append to Iteration History: "Compound variant gap → triggered patch mode". Return to Step 1.
+**On missing `compoundVariants` (executor gap):** Classify as **P1**. Write the missing entries to patch-request.md, then spawn Execute via the Task tool (same call as Step 2's "On missing items"). Append to Iteration History: "Compound variant gap → triggered patch mode". Return to Step 1.
 
 **On missing from discovery report (planner gap):** Classify as **P1** and flag a distinct issue class: "Planner gap: compound mapping not documented". Append to Iteration History with the file/line where the mapping was found in the React source. This feedback is critical for improving future runs of the planner. Fix the implementation via patch mode regardless, but log the planner gap separately so it doesn't get lost.
 
@@ -214,13 +216,27 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
 
 **On missing items:**
 
-1. Write `.cursor/artifacts/{Name}/patch-request.md` listing:
+1. Write `{Worktree}/.cursor/artifacts/{Name}/patch-request.md` listing:
    - Missing props with types and defaults
    - Missing stories with descriptions
    - Missing exports with expected paths
    - Missing event handlers with signatures
-2. Invoke Execute agent in **patch mode** (see `.cursor/agents/execute.md`)
-3. After patch applied → return to Step 1 (re-verify everything)
+2. Spawn Execute (`subagent_type: "execute"`, `run_in_background: false`) via the Task tool with this prompt:
+
+   ```text
+   Apply the patch request for {Name}.
+
+   - Component name: {Name}
+   - Mode: Patch
+   - Worktree (absolute base): {Worktree}
+
+   ALWAYS use absolute paths prefixed with the worktree.
+   - Patch request: {Worktree}/.cursor/artifacts/{Name}/patch-request.md
+
+   Follow the Patch mode steps in your agent definition.
+   ```
+
+3. After it returns → go back to Step 1 (re-verify everything).
 4. Append to Iteration History: "API parity gap → triggered patch mode"
 
 ### Step 3: Visual Comparison (LLM-driven reasoning)
@@ -269,10 +285,10 @@ Rules:
 3. Wait for the page to be idle (network and animations settled)
 4. Locate the story root element: `#storybook-root` or `#root` (the component container div)
    - Note: when we navigate to `/iframe.html?id=...`, the story content is in the main page context (no iframe switching needed)
-5. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/svelte-{story-slug}.png`
+5. Take screenshot scoped to that element → save to `{Worktree}/.cursor/artifacts/{Name}/screenshots/svelte-{story-slug}.png`
 6. Construct the matching React story URL (port `{ReactPort}`) — use discovery report for the React story name
 7. Navigate, wait for idle, locate story root element
-8. Take screenshot scoped to that element → save to `.cursor/artifacts/{Name}/screenshots/react-{story-slug}.png`
+8. Take screenshot scoped to that element → save to `{Worktree}/.cursor/artifacts/{Name}/screenshots/react-{story-slug}.png`
 
 **Compare screenshots using visual reasoning:**
 

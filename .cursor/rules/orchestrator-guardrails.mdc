@@ -57,12 +57,13 @@ If no → **stop**. You're violating the boundary.
 | Plan Gate       | Sequential        | Requires human input.                                                 |
 | Execute         | All in parallel   | One message, N `subagent_type: execute` Task calls.                   |
 | Verify          | All in parallel   | One message, N `subagent_type: verify` Task calls. Each Verify agent boots its own Storybook pair on per-slot ports. |
-| Final Gate + PR | Topological order | Dependent PRs must wait for their dep's PR to merge in the batch.     |
+| Final Gate + PR | Per-component, parallel | Each verified component opens its own PR independently.               |
 
 ## 🔗 Dependency Ordering
 
 If component A depends on component B and both are in the same batch:
 
-- A and B run Plan agent in parallel as usual.
-- Hold the execution of the dependent component A for the next batch.
-- Once we have successfully migrated B and human verification is done, ask the user to start a new migration worktree for A.
+- Both run Plan in parallel.
+- Step 2 detects the edge and marks A `🟡 deferred-to-next-batch`.
+- Only B continues through Execute / Verify / PR.
+- User re-runs A as a follow-up batch after B's PR merges.

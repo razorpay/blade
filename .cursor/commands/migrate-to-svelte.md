@@ -3,7 +3,7 @@
 > Main entry point for component migration. Parses input, sets up
 > isolated git worktrees per component, runs Plan/Execute/Verify in
 > parallel where safe, manages per-component human gates, and opens one
-> PR per component (honoring intra-batch dependency ordering).
+> PR per component.
 
 ## ⚠️ PRE-FLIGHT CHECKLIST — Acknowledge Before Starting
 
@@ -56,8 +56,7 @@ You are the **orchestrator**. You coordinate the migration pipeline by spawning 
 
 Read these before starting:
 
-1. `.cursor/rules/svelte-migration.mdc`
-2. `.cursor/rules/orchestrator-guardrails.mdc`
+1. `.cursor/rules/orchestrator-guardrails.mdc`
 
 ## Input
 
@@ -67,7 +66,7 @@ Read these before starting:
 
 - One git worktree per component at `.cursor/worktrees/{Name}/`.
 - One branch per component: `feat/blade-svelte/{Name}` (based on `origin/master`).
-- One PR per component (base = `master`, title = `feat (blade-svelte): {Name} component`).
+- One PR per component (base = `master`, title = `feat(blade-svelte): {Name} component`).
 - Per-component artifacts at `.cursor/worktrees/{Name}/.cursor/artifacts/{Name}/`.
 - Live batch tracker at `.cursor/artifacts/batch-status.md` (in the **main checkout**, not in any worktree).
 
@@ -114,14 +113,15 @@ rm -rf "$WT/node_modules" \
        "$WT/packages/blade-svelte/node_modules" \
        "$WT/packages/blade-core/node_modules"
 
-# APFS only: `cp -c` returns non-zero on non-APFS filesystems, so every clone fails
-# fast and we fall through to `yarn install` per worktree (~30–60s each).
-if cp -cR "$(pwd)/node_modules" "$WT/node_modules" 2>/dev/null; then
+# APFS only: `cp -c` returns non-zero on non-APFS filesystems, so we fall through
+# to `yarn install` per worktree (~30–60s each). Stderr is logged, not swallowed.
+if cp -cR "$(pwd)/node_modules" "$WT/node_modules" 2>>/tmp/blade-migration-clone.log; then
   [ -d packages/blade/node_modules ]        && cp -cR "$(pwd)/packages/blade/node_modules"        "$WT/packages/blade/node_modules"
   [ -d packages/blade-svelte/node_modules ] && cp -cR "$(pwd)/packages/blade-svelte/node_modules" "$WT/packages/blade-svelte/node_modules"
   [ -d packages/blade-core/node_modules ]   && cp -cR "$(pwd)/packages/blade-core/node_modules"   "$WT/packages/blade-core/node_modules"
 else
-  # Fallback: non-APFS filesystem. Install fresh inside the worktree.
+  # Fallback: non-APFS filesystem (or other clone failure).
+  echo "APFS clone failed; see /tmp/blade-migration-clone.log, falling back to yarn install"
   ( cd "$WT" && yarn install --prefer-offline --frozen-lockfile )
 fi
 ```
@@ -172,42 +172,64 @@ Per Task call:
 Plan the migration of the {Name} React component to Svelte 5.
 
 - Component name: {Name}
-- Worktree: {WorktreeAbs}
+- Worktree (absolute base): {WorktreeAbs}
+
+ALWAYS use absolute paths prefixed with the worktree. Write artifacts to:
+- {WorktreeAbs}/.cursor/artifacts/{Name}/discovery-report.md
+- {WorktreeAbs}/.cursor/artifacts/{Name}/migration-plan.md
 
 Follow the steps in your agent definition.
 ```
 
 `{WorktreeAbs}` = `<main checkout absolute path>/.cursor/worktrees/{Name}`.
 
-After all Plan agents return, verify both artifacts exist for each component (paths inside the worktree):
+After all Plan agents return, verify both artifacts exist at:
 
-- `.cursor/worktrees/{Name}/.cursor/artifacts/{Name}/discovery-report.md`
-- `.cursor/worktrees/{Name}/.cursor/artifacts/{Name}/migration-plan.md`
+- `{WorktreeAbs}/.cursor/artifacts/{Name}/discovery-report.md`
+- `{WorktreeAbs}/.cursor/artifacts/{Name}/migration-plan.md`
 
 Update batch-status.md per component:
 
 - On success: `Status = ✅ planned`, fill `Tier` from the discovery report.
 - On failure: `Status = ❌ plan-failed`, capture the failure reason in `Notes`.
 
-## Step 2: Dependency Resolution & Topological Order
+## Step 1.5: Self-heal misplaced artifacts
 
-After all Plans complete, read every successful component's `discovery-report.md` and build a dependency graph.
+If either artifact is missing from `{WorktreeAbs}/.cursor/artifacts/{Name}/`, check the main-checkout fallback at `<MainCheckout>/.cursor/artifacts/{Name}/`. If found there, the agent resolved a relative path against its CWD instead of the worktree — move them in before marking failure:
+
+```bash
+mkdir -p {WorktreeAbs}/.cursor/artifacts/{Name}
+mv <MainCheckout>/.cursor/artifacts/{Name}/{discovery-report,migration-plan}.md \
+   {WorktreeAbs}/.cursor/artifacts/{Name}/ 2>/dev/null
+```
+
+If still missing → `❌ plan-failed`. Apply the same fallback to Execute (`patch-request.md`) and Verify (`verification-report.md`, `screenshots/`) outputs.
+
+## Step 2: Dependency Resolution
+
+After all Plans complete, read every successful component's `discovery-report.md` and build the per-component dependency list.
+
+**Dependency workarounds** (deps with workarounds do **not** require migration; skip them when resolving the graph):
+
+| Dependency             | Workaround                                                |
+| ---------------------- | --------------------------------------------------------- |
+| `Box` / `BaseBox`      | use `<div>` with classes (no migration needed)            |
+| `Icons`                | placeholder prop type (`IconComponent = unknown`)         |
+| `blade-core` (`~utils/`, `~tokens/`) | already framework-agnostic, import directly |
 
 For each component:
 
 1. Read its dependencies list from the discovery report.
 2. For every unmigrated dependency:
-   - Check the workarounds list in `svelte-migration.mdc` (e.g., `Box → div`, `Icons → placeholder`). Skip deps with known workarounds.
-   - If the dep is **also in this batch** → record an intra-batch edge `{Name} → {Dep}` (this affects PR merge order).
-   - If the dep is **not in this batch and has no workaround** → mark this component as `❌ blocked-by-dep` with the dep name in `Notes`. The user is told to migrate the dep first.
+   - Matches the workarounds table → skip it.
+   - **Also in this batch** → mark this component `🟡 deferred-to-next-batch` (dep name in `Notes`), drop it from the active set, tell the user to re-run it after the dep's PR merges.
+   - **Not in this batch, no workaround** → mark `❌ blocked-by-dep` (dep name in `Notes`); tell the user to migrate the dep first.
 
-Compute a topological ordering of the un-blocked components. This ordering controls Step 6 (PR creation order).
-
-Detect cycles → mark all members of the cycle `❌ dep-cycle` and skip.
+Remaining components proceed independently.
 
 ## Step 3: Plan Gate (per-component, sequential)
 
-For each successfully-planned, non-blocked component (in topological order):
+For each successfully-planned, non-deferred, non-blocked component:
 
 1. **Skip the gate** if the component's tier is `simple`. Auto-approve and continue.
 2. **Otherwise**, present the component's `migration-plan.md` to the user and ask for approval.
@@ -234,7 +256,11 @@ Implement the {Name} Svelte component.
 
 - Component name: {Name}
 - Mode: Full
-- Worktree: {WorktreeAbs}
+- Worktree (absolute base): {WorktreeAbs}
+
+ALWAYS use absolute paths prefixed with the worktree.
+- Migration plan: {WorktreeAbs}/.cursor/artifacts/{Name}/migration-plan.md
+- React source: {WorktreeAbs}/packages/blade/src/components/{Name}/
 
 Follow the Full mode steps in your agent definition.
 ```
@@ -261,57 +287,33 @@ Per Task call:
 Verify the {Name} Svelte component.
 
 - Component name: {Name}
-- Worktree: {WorktreeAbs}
+- Worktree (absolute base): {WorktreeAbs}
 - React Storybook port: {ReactPort}
 - Svelte Storybook port: {SveltePort}
 
-Follow the steps in your agent definition. Boot the React and Svelte Storybooks
-on the assigned ports if they aren't already running. Do NOT kill them when
-finished — the orchestrator needs them up for the final review gate.
+ALWAYS use absolute paths prefixed with the worktree.
+- Discovery report: {WorktreeAbs}/.cursor/artifacts/{Name}/discovery-report.md
+- Write report to: {WorktreeAbs}/.cursor/artifacts/{Name}/verification-report.md
+
+Boot Storybooks on the assigned ports if not already running. Do NOT kill them
+when finished — the orchestrator needs them up for the final review gate.
+Follow the steps in your agent definition.
 ```
 
 `{ReactPort}` and `{SveltePort}` come from Step 0.2 (e.g., `9209` / `6207`).
 
-If Verify reports API parity gaps requiring a patch, it writes `patch-request.md`. Re-spawn Execute in patch mode for that component, then re-spawn Verify:
-
-**Execute Patch mode prompt:**
-
-```text
-Apply the patch request for {Name}.
-
-- Component name: {Name}
-- Mode: Patch
-- Worktree: {WorktreeAbs}
-
-Follow the Patch mode steps in your agent definition.
-```
+Verify spawns Execute(patch) itself when it finds parity gaps. You only see the terminal status.
 
 Update batch-status.md per component:
 
 - PASS / PASS-WITH-WARNINGS → `Status = ✅ verified`.
 - FAIL → `Status = ❌ verify-failed`.
 
-## Step 6: Final Gate + PR (per-component, ordered by dep graph)
+## Step 6: Final Gate + PR (per-component, parallel)
 
-Process components in **topological order** (deps before dependents). For each verified component:
+For each verified component:
 
-### 6.1 Wait for prerequisite PRs to merge (intra-batch deps only)
-
-If this component has intra-batch dependencies recorded in Step 2:
-
-1. For each dep, poll `gh pr view {DepNumber} --json mergedAt,state` until `state == MERGED`.
-2. Use `AwaitShell` with sleep-style polling (e.g., 60-second blocks) so the user sees progress.
-3. Once all deps are merged, rebase this component's worktree onto fresh master:
-
-   ```bash
-   # Inside .cursor/worktrees/{Name}
-   git fetch origin master
-   git rebase origin/master
-   ```
-
-   On rebase conflict: stop, surface the conflict to the user, ask how to proceed.
-
-### 6.2 Final review
+### 6.1 Final review
 
 Present `verification-report.md` + screenshots to the user. Include the Storybook URL pattern so they can spot-check:
 
@@ -321,47 +323,73 @@ The Verify agent leaves Storybooks running on the worktree's ports for manual in
 
 On reject: ask the user what to fix. Re-spawn Verify (or Execute → Verify) as appropriate. Max 2 reject cycles, then mark `❌ final-rejected` and continue.
 
-### 6.3 Commit, push, open PR
+### 6.2 Commit, push, open PR
 
 On approve, run inside the worktree:
 
 ```bash
+# Generate changeset (bump types follow recent solo-component precedent: patch/patch).
+mkdir -p .changeset
+cat > .changeset/blade-svelte-{name}-component.md <<'EOF'
+---
+'@razorpay/blade-core': patch
+'@razorpay/blade-svelte': patch
+---
+
+feat(blade-svelte): add {Name} component
+EOF
+
 # Stage migrated files. Exact paths come from the discovery report's "File Plan" section.
 git add packages/blade-svelte/src/components/{Name} \
         packages/blade-core/src/styles/{Name} \
         packages/blade-svelte/src/components/index.ts \
-        packages/blade-core/src/styles/index.ts
+        packages/blade-core/src/styles/index.ts \
+        .changeset/blade-svelte-{name}-component.md
 
 # (Add any other modified files surfaced by `git status` that belong to this component.)
 
-git commit -m "feat (blade-svelte): {Name} component"
+git commit -m "feat(blade-svelte): {Name} component"
 git push -u origin feat/blade-svelte/{Name}
 
 gh pr create \
   --base master \
-  --title "feat (blade-svelte): {Name} component" \
+  --title "feat(blade-svelte): {Name} component" \
   --body "$(cat <<'EOF'
-## Summary
+## Description
 
 Migrates the React {Name} component to Svelte 5.
 
-## Artifacts
+## Changes
+
+- Adds `packages/blade-svelte/src/components/{Name}/`
+- Adds `packages/blade-core/src/styles/{Name}/`
+- Re-exports {Name} from `packages/blade-svelte/src/components/index.ts`
+- Re-exports CSS from `packages/blade-core/src/styles/index.ts`
+
+## Additional Information
+
+Artifacts (in worktree):
 
 - Discovery report: `.cursor/artifacts/{Name}/discovery-report.md`
 - Migration plan: `.cursor/artifacts/{Name}/migration-plan.md`
 - Verification report: `.cursor/artifacts/{Name}/verification-report.md`
+- Screenshots: `.cursor/artifacts/{Name}/screenshots/`
 
-## Verification
+See the verification report for the full validation summary.
 
-See attached verification report and screenshots in the artifacts directory.
+## Component Checklist
+
+- [ ] Update Component Status Page
+- [ ] Perform Manual Testing in Other Browsers
+- [ ] Add KitchenSink Story
+- [ ] Add Interaction Tests (if applicable)
+- [x] Add changeset
 
 EOF
 )"
 ```
 
 Capture the PR URL from `gh pr create` output and update batch-status.md `PR` column.
-
-If this component has dependents waiting in the batch, mark them `🟡 awaiting-dep-merge` so the user knows they will start once this PR merges.
 
 ## Step 7: Cleanup (manual, after all PRs merge)
 
@@ -395,15 +423,13 @@ processes listed in the terminals folder, or close the terminals.
 | Execute agent fails (incl. retries)    | `❌ execute-failed`                                               | Continue         |
 | Verify agent FAIL (after 6 iterations) | `❌ verify-failed`                                                | Continue         |
 | User rejects final review 2 times      | `❌ final-rejected`                                               | Continue         |
-| Rebase conflict during PR opening      | Pause, ask user                                                   | Continue         |
-| Intra-batch dep PR never merges        | Stays `🟡 awaiting-dep-merge` indefinitely; user resumes manually | Continue         |
 
 A failed component in any phase **does not block the others**. The orchestrator records the failure in `batch-status.md` and continues processing the remaining components.
 
 ## Status Vocabulary
 
 `⏳ plan-pending` → `✅ planned` / `❌ plan-failed`
-`🟢 plan-approved` / `❌ blocked-by-dep` / `❌ dep-cycle` / `❌ plan-rejected`
+`🟢 plan-approved` / `🟡 deferred-to-next-batch` / `❌ blocked-by-dep` / `❌ dep-cycle` / `❌ plan-rejected`
 `🛠️ executed` / `❌ execute-failed`
 `✅ verified` / `❌ verify-failed`
-`🟡 awaiting-dep-merge` → `🚀 pr-opened` / `❌ final-rejected`
+`🚀 pr-opened` / `❌ final-rejected`

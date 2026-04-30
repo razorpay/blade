@@ -60,6 +60,8 @@ These Blade dependencies do NOT need migration — use the listed workaround:
 - `Icons` → placeholder prop type (`IconComponent = unknown`)
 - `blade-core` (`~utils/`, `~tokens/`) → already framework-agnostic, import directly
 
+When editing this list, mirror the change in `.cursor/commands/migrate-to-svelte.md` Step 2.
+
 ## Key References
 
 - Existing Svelte components: `packages/blade-svelte/src/components/`
