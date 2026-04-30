@@ -12,8 +12,7 @@ const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
     width: makeSize(size[56]),
     height: makeSize(size[4]),
     backgroundColor: theme.colors.interactive.background.gray.faded,
-    // TODO: we do not have 16px radius token
-    borderRadius: makeSpace(theme.spacing[5]),
+    borderRadius: makeSpace(theme.border.radius.large),
   };
 };
 const getBottomSheetGrabHandleStyles = ({
