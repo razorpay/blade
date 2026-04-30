@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.2
+
+### Patch Changes
+
+- 97a47b788: feat(blade-svelte): add Chip component
+
 ## 12.101.1
 
 ### Patch Changes
