@@ -1,0 +1,145 @@
+/* ----------------------------------------------------------------------------
+ * Tooltip Styles
+ *
+ * Visual parity with React `Tooltip.web.tsx` + `getTooltipContentWrapperStyles`.
+ *
+ * Token notes (see migration plan, Decision #8):
+ *   - `popup.background.gray.intense` ≈ hsla(0, 0%, 0%, 0.72) (black 300)
+ *     Same in light + dark mode in React theme.
+ *   - `popup.border.gray.intense` (dark mode) is hardcoded below.
+ *   - `elevation.lowRaised` and `backdropBlur.high` are not yet exposed as
+ *     CSS variables in @razorpay/blade-core/tokens; values inlined as a
+ *     follow-up TODO.
+ * ------------------------------------------------------------------------- */
+
+/* ===== Trigger Wrapper =====
+ * Wraps the user's children + owns the floating-ui reference + hover/focus
+ * handlers (Svelte cannot React.cloneElement). `display: inline-block` keeps
+ * inline layout intact; tabindex is left to the inner focusable child.
+ */
+.trigger {
+  display: inline-block;
+}
+
+/* ===== Interactive Wrapper =====
+ * Mirrors React's <BaseBox display="inline-block" tabIndex={-1}> used for
+ * wrapping non-interactive triggers (icons, badges, counters).
+ */
+.interactive-wrapper {
+  display: inline-block;
+}
+
+/* ===== Portal Root =====
+ * Container appended to document.body. Hosts the bubble + arrow and is the
+ * positioning surface for floating-ui (`strategy: 'fixed'`).
+ * z-index is bound to the `zIndex` prop via `--tooltip-z-index`.
+ */
+.portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max-content;
+  pointer-events: none;
+  z-index: var(--tooltip-z-index, 1100);
+}
+
+/* ===== Bubble =====
+ * The dark popup container. Same background tone in light + dark mode.
+ * In dark mode an additional 1px border is applied for separation.
+ */
+.bubble {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: var(--spacing-4);
+  gap: var(--spacing-2);
+  max-width: 200px;
+  border-radius: var(--border-radius-medium);
+  background-color: hsla(0, 0%, 0%, 0.72);
+  /* React parity: theme.elevation.lowRaised (onLight). TODO: replace with
+   * var(--elevation-low-raised) once exposed in @razorpay/blade-core tokens. */
+  box-shadow: 0 2px 4px 0 hsla(200, 10%, 18%, 0.06);
+  /* React parity: blur(theme.backdropBlur.high) === 12px. TODO: replace with
+   * var(--backdrop-blur-high) once exposed in @razorpay/blade-core tokens. */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--duration-quick) ease-in-out,
+    transform var(--duration-quick) ease-in-out;
+}
+
+[data-color-scheme='dark'] .bubble {
+  border: var(--border-width-thin) solid hsla(218, 9%, 30%, 1);
+}
+
+/* ===== Open / Closed Animation =====
+ * Initial transform is set per `placementSide` CVA variant (axis + sign so the
+ * bubble slides in *toward* the trigger). On open, transform resets to 0 and
+ * opacity goes to 1.
+ */
+.bubble[data-state='closed'] {
+  opacity: 0;
+}
+
+.bubble[data-state='open'] {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Side-driven enter/exit translate axis. spacing.5 = 16px (matches React
+ * `size[4]` initial offset). */
+.side-top[data-state='closed'] {
+  transform: translateY(16px);
+}
+
+.side-bottom[data-state='closed'] {
+  transform: translateY(-16px);
+}
+
+.side-left[data-state='closed'] {
+  transform: translateX(16px);
+}
+
+.side-right[data-state='closed'] {
+  transform: translateX(-16px);
+}
+
+/* ===== Arrow ===== */
+.arrow {
+  position: absolute;
+  pointer-events: none;
+  fill: hsla(0, 0%, 0%, 0.72);
+  stroke: transparent;
+  stroke-width: 0;
+}
+
+[data-color-scheme='dark'] .arrow {
+  stroke: hsla(218, 9%, 30%, 1);
+  stroke-width: 1;
+}
+
+/* ===== Content Typography =====
+ * Title + body copy use static white tokens to render legibly on the dark
+ * bubble. Sizes match React `Typography` body/medium combos used by
+ * `TooltipContent.tsx`.
+ */
+.title {
+  color: var(--surface-text-static-white-normal);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.content {
+  color: var(--surface-text-static-white-subtle);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  font-weight: var(--font-weight-regular);
+  word-break: break-word;
+  margin: 0;
+}

@@ -177,3 +177,16 @@ export {
   getBreadcrumbTemplateClasses,
   getBreadcrumbTextSizes,
 } from './Breadcrumb';
+export {
+  tooltipStyles,
+  getTooltipClasses,
+  getTooltipTemplateClasses,
+  tooltipTriggerClass,
+  tooltipInteractiveWrapperClass,
+  tooltipPortalClass,
+  tooltipBubbleClass,
+  tooltipArrowClass,
+  tooltipTitleClass,
+  tooltipContentClass,
+} from './Tooltip';
+export type { TooltipVariants, TooltipPlacementSide } from './Tooltip';
