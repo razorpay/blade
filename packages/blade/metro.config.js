@@ -1,4 +1,5 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { withStorybook } = require('@storybook/react-native/metro/withStorybook');
 
 /**
  * Metro configuration
@@ -6,8 +7,6 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
  *
  * @type {import('metro-config').MetroConfig}
  */
-
-// eslint-disable-next-line import/no-extraneous-dependencies
 
 const config = {
   resetCache: true,
@@ -25,4 +24,7 @@ const config = {
   },
 };
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+module.exports = withStorybook(mergeConfig(getDefaultConfig(__dirname), config), {
+  enabled: process.env.FRAMEWORK === 'REACT_NATIVE',
+  configPath: './.storybook/react-native',
+});
