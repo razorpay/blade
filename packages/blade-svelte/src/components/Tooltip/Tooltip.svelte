@@ -37,6 +37,24 @@
   const GAP = 4;
   const ARROW_WIDTH = 14;
   const ARROW_HEIGHT = 8;
+  /* React's `PopupArrow` passes `tipRadius={theme.border.radius['2xsmall']}`
+   * which resolves to 2px (see blade/src/tokens/global/border.ts). */
+  const ARROW_TIP_RADIUS = 2;
+
+  /* Rounded-apex SVG path, mirroring `@floating-ui/react`'s `FloatingArrow`.
+   * The triangle's apex is replaced by a quadratic Bezier whose control point
+   * sits at the would-be sharp tip; the curve's actual peak lands halfway
+   * between the chord and the control, giving a smooth rounded apex.
+   *   svgX = ARROW_WIDTH/2 * (tipRadius / -8 + 1)  → horizontal inset
+   *   svgY = ARROW_HEIGHT/2 * tipRadius / 4         → vertical inset
+   * For (14, 8, 2): svgX = 5.25, svgY = 2 → `M0,0 H14 L8.75,6 Q7,8 5.25,6 Z`. */
+  const _ARROW_SVG_X = (ARROW_WIDTH / 2) * (ARROW_TIP_RADIUS / -8 + 1);
+  const _ARROW_SVG_Y = ((ARROW_HEIGHT / 2) * ARROW_TIP_RADIUS) / 4;
+  const ARROW_PATH =
+    `M0,0 H${ARROW_WIDTH}` +
+    ` L${ARROW_WIDTH - _ARROW_SVG_X},${ARROW_HEIGHT - _ARROW_SVG_Y}` +
+    ` Q${ARROW_WIDTH / 2},${ARROW_HEIGHT} ${_ARROW_SVG_X},${ARROW_HEIGHT - _ARROW_SVG_Y}` +
+    ' Z';
 
   let {
     title,
@@ -60,14 +78,12 @@
   let floatingEl = $state<HTMLDivElement | null>(null);
   let arrowEl = $state<SVGSVGElement | null>(null);
 
-  // Position state written by floating-ui's `computePosition`.
   let resolvedPlacement = $state<TooltipPlacement>(placement);
   let floatingX = $state(0);
   let floatingY = $state(0);
   let arrowX = $state<number | null>(null);
   let arrowY = $state<number | null>(null);
 
-  // Stable per-instance id used for `aria-describedby` linking.
   const tooltipId = `blade-tooltip-${Math.random().toString(36).slice(2, 10)}`;
 
   const isHorizontal = $derived(
@@ -163,8 +179,6 @@
     return autoUpdate(ref, float, update);
   });
 
-  // Trigger element wires aria-describedby + label so SR reads the tooltip
-  // content even when not visually open.
   const triggerA11y = $derived(makeAccessible({ describedBy: tooltipId, label: content }));
 
   const bubbleClasses = $derived(getTooltipClasses({ placementSide: resolvedSide }));
@@ -179,15 +193,14 @@
     ].join(';'),
   );
 
-  /* Arrow rotation per resolved side so the triangle points at the trigger.
-   * Coordinates from floating-ui's arrow middleware go on whichever axis
-   * matches the side. */
+  /* Rotate the base ▼ path so the apex points at the trigger; anchor with
+   * `[side]: 100%` so the base stays flush with the bubble edge on all sides. */
   const arrowStyle = $derived.by(() => {
     const sideOffset: Record<'top' | 'right' | 'bottom' | 'left', string> = {
-      top: `bottom:-${ARROW_HEIGHT - 1}px;transform:rotate(180deg)`,
-      bottom: `top:-${ARROW_HEIGHT - 1}px;transform:rotate(0deg)`,
-      left: `right:-${ARROW_WIDTH - 1}px;transform:rotate(90deg)`,
-      right: `left:-${ARROW_WIDTH - 1}px;transform:rotate(-90deg)`,
+      top: 'top:100%;transform:rotate(0deg)',
+      bottom: 'bottom:100%;transform:rotate(180deg)',
+      left: 'left:100%;transform:rotate(-90deg)',
+      right: 'right:100%;transform:rotate(90deg)',
     };
     const parts: string[] = [sideOffset[resolvedSide]];
     if (arrowX !== null) parts.push(`left:${arrowX}px`);
@@ -199,9 +212,6 @@
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
-<!-- Trigger wrapper: owns floating-ui reference + interaction handlers.
-     Inline-block keeps inline layout intact (deliberate +1 DOM node vs React,
-     see migration plan Decision #4). -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
   bind:this={referenceEl}
@@ -241,11 +251,11 @@
         class={tooltipArrowClass}
         style={arrowStyle}
         width={ARROW_WIDTH}
-        height={ARROW_HEIGHT}
-        viewBox="0 0 14 8"
+        height={ARROW_WIDTH}
+        viewBox="0 0 {ARROW_WIDTH} {ARROW_WIDTH}"
         aria-hidden="true"
       >
-        <path d="M7 8L0 0H14L7 8Z" />
+        <path d={ARROW_PATH} />
       </svg>
     </div>
   </div>
