@@ -31,12 +31,6 @@
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(!isStringChildren ? (children as Snippet) : undefined);
 
-  // Mirrors React behavior: string/primitive children are wrapped in BaseText so
-  // they pick up the body description text style. In Svelte 5, text content placed
-  // between component tags is a snippet (not a string), so we also wrap snippet
-  // children by default — users rendering custom components should pass their own
-  // typography wrapper inside the snippet.
-
   let bodyRef: HTMLDivElement | undefined = $state(undefined);
   let isInitialRender = true;
 
@@ -121,7 +115,7 @@
 >
   <div class={templateClasses.body}>
     <BaseText
-      as="p"
+      as="div"
       color="surface.text.gray.subtle"
       fontSize={descriptionFontSize}
       lineHeight={descriptionLineHeight}

@@ -45,9 +45,12 @@
   }
 
   &:focus-visible {
-    outline: var(--border-width-thin) solid var(--interactive-border-primary-faded);
-    outline-offset: 0;
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
     border-radius: var(--border-radius-small);
+    transition-property: outline-width;
+    transition-duration: var(--duration-2xquick);
+    transition-timing-function: var(--easing-standard);
   }
 
   &[disabled] {
@@ -198,11 +201,11 @@
   flex-shrink: 0;
   margin-left: var(--spacing-3);
   min-height: var(--header-slot-height);
-  transition: transform var(--duration-2xquick) var(--easing-standard);
+  transition: transform var(--duration-moderate) var(--easing-standard);
 }
 
 .chevronExpanded {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 /* Header divider shown when expanded */
@@ -215,7 +218,7 @@
 .collapsibleContent {
   overflow-y: hidden;
   transition-property: height, opacity;
-  transition-duration: var(--duration-2xquick);
+  transition-duration: var(--duration-moderate);
   transition-timing-function: var(--easing-standard);
 }
 
