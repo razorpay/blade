@@ -157,7 +157,17 @@
     });
 
     let toastHeight = toast.height;
-    if (index > MAX_TOASTS - 1 && !isPromotional && !isExpanded) {
+    // Only force-size a back toast to `frontToastHeight` once it has been
+    // measured. If an unmeasured toast were force-sized first, its initial
+    // `clientHeight` reading would be the forced value (often 0 before the
+    // front toast has measured) and `syncHeight` would lock that in as its
+    // natural height — clipping the toast forever after.
+    if (
+      index > MAX_TOASTS - 1 &&
+      !isPromotional &&
+      !isExpanded &&
+      typeof toast.height === 'number'
+    ) {
       toastHeight = frontToastHeight;
     }
     const wrapperZIndex = -1 * index;
@@ -187,10 +197,17 @@
     handleToastClick();
   }
 
-  // ResizeObserver wiring: bind:clientHeight pushes new heights into the
-  // store so layout math sees the latest measurement.
+  // Mirror the React reference (`ToastContainer.web.tsx`): measure each toast
+  // exactly once on first paint. The wrapper's `height` is driven by
+  // `--toast-height` (set from `toast.height`), and in collapsed view the
+  // wrapper is force-sized to `frontToastHeight`. If we kept reacting to every
+  // `clientHeight` change, that forced (smaller) value would be written back
+  // into the store, clobbering the toast's true natural height — taller toasts
+  // would then be clipped to the height of the newest one.
   function syncHeight(id: string, height: number | null | undefined): void {
     if (typeof height !== 'number' || Number.isNaN(height)) return;
+    const current = toasts.find((t) => t.id === id);
+    if (!current || typeof current.height === 'number') return;
     updateToastHeight(id, height);
   }
 

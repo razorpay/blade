@@ -57,6 +57,16 @@
   right: 0;
   display: flex;
   justify-content: flex-start;
+  /* Anchor the inner Toast at the top of the wrapper instead of stretching
+   * it to the wrapper's height. In collapsed view the wrapper is force-sized
+   * to `frontToastHeight`, which is smaller than a multi-line toast's natural
+   * height. With the default `align-items: stretch`, the Toast gets squashed
+   * and its `align-items: center` would re-position the (taller) text content
+   * across the top edge — leaking text into the peek band above the front
+   * toast. Mirrors the React reference, which wraps the toast message in a
+   * `height: fit-content` BaseBox to prevent the same stretch.
+   */
+  align-items: flex-start;
   transform-origin: center;
   transition:
     transform var(--duration-gentle) var(--easing-standard),
