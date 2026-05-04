@@ -83,12 +83,12 @@ Read these before starting:
 
 ### 0.2 Allocate slots and ports
 
-Number the surviving components `1..N` (in input order). For each component at slot `i`:
+Number the surviving components `1..N` (in input order).
 
-- React Storybook port: `9000 + i*100 + 9` → slot 1 = `9109`, slot 2 = `9209`, …, slot 5 = `9509`.
-- Svelte Storybook port: `6000 + i*100 + 7` → slot 1 = `6107`, slot 2 = `6207`, …, slot 5 = `6507`.
+- **React Storybook port (shared, all slots): `9009`** (the script's default).
+- **Svelte Storybook port (per slot `i`): `6000 + i*100 + 7`** → slot 1 = `6107`, slot 2 = `6207`, …, slot 5 = `6507`.
 
-The main checkout reserves `9009` (React, `yarn react:storybook` in `packages/blade`) and `6007` (Svelte, `yarn storybook` in `packages/blade-svelte`); the `i*100` offset keeps every slot clear of those defaults and of every other worktree.
+The pipeline owns `9009` for the duration of the batch — if you need to run `yarn react:storybook` in your main checkout concurrently, pass `-p` to override its port.
 
 ### 0.3 Create worktrees + clone node_modules
 
@@ -135,18 +135,32 @@ Load-bearing preconditions for the clone-based approach. If any stop holding, re
 - **Yarn 1.x classic with `nohoist: ["**"]`and relative workspace symlinks.** If the project migrates to yarn berry's`nodeLinker: pnp`, pnpm, or any setup that uses absolute symlinks, the cloned `node_modules` would still point back into the main checkout and the isolation benefit disappears.
 - **macOS APFS filesystem.** Linux/CI takes the `yarn install` fallback per worktree.
 
-### 0.4 Initialize batch-status.md
+### 0.4 Start the shared React Storybook
+
+From the first surviving slot's worktree (`{Name1}`), boot the React Storybook on `9009`:
+
+```bash
+( cd .cursor/worktrees/{Name1}/packages/blade && yarn react:storybook ) (background)
+```
+
+Poll `curl -s http://localhost:9009` every 5s up to 60s. Once it returns HTML, continue.
+
+On timeout, log to `batch-status.md` notes and continue (Verify skips Step 3, other gates still run).
+
+### 0.5 Initialize batch-status.md
 
 Write `.cursor/artifacts/batch-status.md` in the **main checkout** with this layout:
 
 ```markdown
 # Batch Migration Status
 
-| #   | Component | Tier | Worktree                   | Branch                     | Ports (R/S) | Status          | Iteration | PR  | Notes |
+React Storybook (shared): http://localhost:9009
+
+| #   | Component | Tier | Worktree                   | Branch                     | Svelte Port | Status          | Iteration | PR  | Notes |
 | --- | --------- | ---- | -------------------------- | -------------------------- | ----------- | --------------- | --------- | --- | ----- |
-| 1   | Alert     | -    | .cursor/worktrees/Alert    | feat/blade-svelte/Alert    | 9109/6107   | ⏳ plan-pending | -         | -   | -     |
-| 2   | Card      | -    | .cursor/worktrees/Card     | feat/blade-svelte/Card     | 9209/6207   | ⏳ plan-pending | -         | -   | -     |
-| 3   | Checkbox  | -    | .cursor/worktrees/Checkbox | feat/blade-svelte/Checkbox | 9309/6307   | ⏳ plan-pending | -         | -   | -     |
+| 1   | Alert     | -    | .cursor/worktrees/Alert    | feat/blade-svelte/Alert    | 6107        | ⏳ plan-pending | -         | -   | -     |
+| 2   | Card      | -    | .cursor/worktrees/Card     | feat/blade-svelte/Card     | 6207        | ⏳ plan-pending | -         | -   | -     |
+| 3   | Checkbox  | -    | .cursor/worktrees/Checkbox | feat/blade-svelte/Checkbox | 6307        | ⏳ plan-pending | -         | -   | -     |
 ```
 
 `Tier` is filled in after Plan completes. `PR` is filled in after Step 6.
@@ -211,11 +225,11 @@ After all Plans complete, read every successful component's `discovery-report.md
 
 **Dependency workarounds** (deps with workarounds do **not** require migration; skip them when resolving the graph):
 
-| Dependency             | Workaround                                                |
-| ---------------------- | --------------------------------------------------------- |
-| `Box` / `BaseBox`      | use `<div>` with classes (no migration needed)            |
-| `Icons`                | placeholder prop type (`IconComponent = unknown`)         |
-| `blade-core` (`~utils/`, `~tokens/`) | already framework-agnostic, import directly |
+| Dependency                           | Workaround                                        |
+| ------------------------------------ | ------------------------------------------------- |
+| `Box` / `BaseBox`                    | use `<div>` with classes (no migration needed)    |
+| `Icons`                              | placeholder prop type (`IconComponent = unknown`) |
+| `blade-core` (`~utils/`, `~tokens/`) | already framework-agnostic, import directly       |
 
 For each component:
 
@@ -300,7 +314,7 @@ when finished — the orchestrator needs them up for the final review gate.
 Follow the steps in your agent definition.
 ```
 
-`{ReactPort}` and `{SveltePort}` come from Step 0.2 (e.g., `9209` / `6207`).
+`{ReactPort}` = `9009` (shared, started by Step 0.4). `{SveltePort}` is the slot's Svelte port from Step 0.2 (e.g., `6207`).
 
 Verify spawns Execute(patch) itself when it finds parity gaps. You only see the terminal status.
 
@@ -315,11 +329,12 @@ For each verified component:
 
 ### 6.1 Final review
 
-Present `verification-report.md` + screenshots to the user. Include the Storybook URL pattern so they can spot-check:
+Present `verification-report.md` + screenshots to the user. Storybook URLs for spot-check:
 
 - Svelte: `http://localhost:{SveltePort}/iframe.html?id=components-{name}--{story}`
+- React: `http://localhost:9009/iframe.html?id=components-{name}--{story}`
 
-The Verify agent leaves Storybooks running on the worktree's ports for manual inspection.
+Both Storybooks remain running.
 
 On reject: ask the user what to fix. Re-spawn Verify (or Execute → Verify) as appropriate. Max 2 reject cycles, then mark `❌ final-rejected` and continue.
 
@@ -366,17 +381,6 @@ Migrates the React {Name} component to Svelte 5.
 - Re-exports {Name} from `packages/blade-svelte/src/components/index.ts`
 - Re-exports CSS from `packages/blade-core/src/styles/index.ts`
 
-## Additional Information
-
-Artifacts (in worktree):
-
-- Discovery report: `.cursor/artifacts/{Name}/discovery-report.md`
-- Migration plan: `.cursor/artifacts/{Name}/migration-plan.md`
-- Verification report: `.cursor/artifacts/{Name}/verification-report.md`
-- Screenshots: `.cursor/artifacts/{Name}/screenshots/`
-
-See the verification report for the full validation summary.
-
 ## Component Checklist
 
 - [ ] Update Component Status Page
@@ -404,25 +408,28 @@ To remove a worktree after its PR merges:
 
   git worktree remove .cursor/worktrees/{Name}
 
-Storybooks may still be running on the per-component ports. Stop them via the
-processes listed in the terminals folder, or close the terminals.
+Storybooks still running:
+- React (shared) on port 9009, hosted by .cursor/worktrees/{Name1}/packages/blade
+- Svelte per worktree on its slot's port (6107, 6207, ...)
+
+Remove the React-host worktree last — it kills the shared server for everyone.
 ```
 
 ---
 
 ## Failure Handling Summary
 
-| Scenario                               | Effect on this component                                          | Effect on others |
-| -------------------------------------- | ----------------------------------------------------------------- | ---------------- |
-| Component already migrated             | Dropped at Step 0                                                 | Continue         |
-| React source not found                 | Dropped at Step 0                                                 | Continue         |
-| Plan agent fails                       | `❌ plan-failed`                                                  | Continue         |
-| Unmigrated dependency, no workaround   | `❌ blocked-by-dep`                                               | Continue         |
-| Dependency cycle detected              | `❌ dep-cycle` (all in cyc)                                       | Continue         |
-| User rejects plan 3 times              | `❌ plan-rejected`                                                | Continue         |
-| Execute agent fails (incl. retries)    | `❌ execute-failed`                                               | Continue         |
-| Verify agent FAIL (after 6 iterations) | `❌ verify-failed`                                                | Continue         |
-| User rejects final review 2 times      | `❌ final-rejected`                                               | Continue         |
+| Scenario                               | Effect on this component    | Effect on others |
+| -------------------------------------- | --------------------------- | ---------------- |
+| Component already migrated             | Dropped at Step 0           | Continue         |
+| React source not found                 | Dropped at Step 0           | Continue         |
+| Plan agent fails                       | `❌ plan-failed`            | Continue         |
+| Unmigrated dependency, no workaround   | `❌ blocked-by-dep`         | Continue         |
+| Dependency cycle detected              | `❌ dep-cycle` (all in cyc) | Continue         |
+| User rejects plan 3 times              | `❌ plan-rejected`          | Continue         |
+| Execute agent fails (incl. retries)    | `❌ execute-failed`         | Continue         |
+| Verify agent FAIL (after 6 iterations) | `❌ verify-failed`          | Continue         |
+| User rejects final review 2 times      | `❌ final-rejected`         | Continue         |
 
 A failed component in any phase **does not block the others**. The orchestrator records the failure in `batch-status.md` and continues processing the remaining components.
 

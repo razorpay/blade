@@ -8,8 +8,6 @@ alwaysApply: false
 
 ## ✅ What You DO
 
-**You are the coordinator.** Your job is simple:
-
 1. **Set up worktrees + branches** via Shell tool (one per component):
 
    ```bash
@@ -34,30 +32,14 @@ alwaysApply: false
 
 6. **Update** `.cursor/artifacts/batch-status.md` (in the **main checkout**) after every state change.
 
-**That's your entire workflow.** Each phase is delegated to a specialized agent running in an isolated worktree.
-
 ## ❌ What You DON'T DO
 
 - **Don't read `.cursor/agents/*.md` to follow the steps yourself.** Spawn the matching `subagent_type` via the Task tool.
-- **Don't run agents from the main checkout's perspective.** Always pass the component's worktree absolute path in the prompt so the agent scopes its tool calls there.
-- **Don't `git worktree remove` until the user asks.** Leave worktrees in place after the run.
+- **Don't `git worktree remove` until the user asks.**
 
-## 🛡️ Self-Check
+## 🔁 Phase Ordering
 
-**Before any action, ask:** "Am I delegating phase work to a Task agent with the worktree absolute path in its prompt?"
-
-If yes → proceed.
-If no → **stop**. You're violating the boundary.
-
-## 🔁 Parallelism Boundaries
-
-| Phase           | Mode              | How                                                                   |
-| --------------- | ----------------- | --------------------------------------------------------------------- |
-| Plan            | All in parallel   | One message, N `subagent_type: planner` Task calls.                   |
-| Plan Gate       | Sequential        | Requires human input.                                                 |
-| Execute         | All in parallel   | One message, N `subagent_type: execute` Task calls.                   |
-| Verify          | All in parallel   | One message, N `subagent_type: verify` Task calls. Each Verify agent boots its own Storybook pair on per-slot ports. |
-| Final Gate + PR | Per-component, parallel | Each verified component opens its own PR independently.               |
+Plan, Execute, and Verify each run all-in-parallel via one Task batch per phase. Plan Gate and Final Gate are sequential and require human input. Each verified component opens its PR independently.
 
 ## 🔗 Dependency Ordering
 
