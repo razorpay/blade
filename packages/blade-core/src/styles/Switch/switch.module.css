@@ -186,8 +186,10 @@
   height: var(--spacing-3);
 }
 
-/* Mobile overrides — match React's useBreakpoint behaviour at <= breakpoint-s */
-@media (max-width: 480px) {
+/* Mobile overrides — React treats `base` / `xs` / `s` breakpoints (< 768px)
+   as `deviceType === 'mobile'`, so mobile dimensions kick in below 768px.
+   See `useBreakpoint` in blade and theme.css typography overrides. */
+@media (max-width: 767px) {
   .size-small {
     width: 36px;
     height: var(--spacing-6);
