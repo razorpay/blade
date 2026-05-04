@@ -58,12 +58,13 @@
   import TooltipInteractiveWrapper from './TooltipInteractiveWrapper.svelte';
 </script>
 
-<!-- Story 1: Default -->
+<!-- Story 1: Default
+     Uses `min-height: 100vh` (minus the iframe body padding) to mirror React's
+     `<Center>` wrapper, which fills the storybook iframe height via
+     `<Box width="100%" height="100%">` so the trigger is vertically centered. -->
 <Story name="Default">
   {#snippet template(args)}
-    <div
-      style="width:100%;min-height:240px;display:flex;align-items:center;justify-content:center"
-    >
+    <div class="tooltip-story-center">
       <Tooltip {...args}>
         {#snippet children()}
           <Button>Hover over me</Button>
@@ -76,9 +77,7 @@
 <!-- Story 2: With Title -->
 <Story name="With Title" args={{ title: 'Refund successful' }}>
   {#snippet template(args)}
-    <div
-      style="width:100%;min-height:240px;display:flex;align-items:center;justify-content:center"
-    >
+    <div class="tooltip-story-center">
       <Tooltip {...args}>
         {#snippet children()}
           <Button>Hover over me</Button>
@@ -88,23 +87,33 @@
   {/snippet}
 </Story>
 
-<!-- Story 3: Placement (8 placements in a 3-column grid) -->
+<!-- Story 3: Placement (mirrors React's 3-column placement layout)
+     Notes:
+     - Each column uses `align-items: stretch` so the Tooltip's inline-block
+       trigger span stretches to the column's natural width. This makes all
+       boxes in a column share the same width (matching React's PlacementBox
+       with `flex={1}` + `width="100%"` under React's wrapper-less Tooltip).
+     - The trigger span gets `flex:1` (via the `:global` rule in the <style>
+       block at the bottom of this file) so columns with fewer boxes
+       (top/bottom) still stretch boxes vertically to match the tallest column. -->
 <Story name="Placement" asChild>
-  <div
-    style="width:100%;min-height:480px;display:flex;align-items:center;justify-content:center"
-  >
+  <div class="tooltip-story-center">
     <div
-      style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%"
+      class="tooltip-placement-grid"
+      style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--spacing-4)"
     >
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div
+        class="tooltip-placement-column"
+        style="display:flex;flex-direction:column;align-items:stretch;gap:var(--spacing-4)"
+      >
         <Tooltip placement="top-start" content="Hello world">
           {#snippet children()}
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              top-start
+              <Text>top-start</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -113,9 +122,9 @@
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              left
+              <Text>left</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -124,22 +133,25 @@
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              bottom-start
+              <Text>bottom-start</Text>
             </div>
           {/snippet}
         </Tooltip>
       </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div
+        class="tooltip-placement-column"
+        style="display:flex;flex-direction:column;align-items:stretch;gap:var(--spacing-4)"
+      >
         <Tooltip placement="top" content="Hello world">
           {#snippet children()}
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              top
+              <Text>top</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -148,22 +160,25 @@
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              bottom
+              <Text>bottom</Text>
             </div>
           {/snippet}
         </Tooltip>
       </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div
+        class="tooltip-placement-column"
+        style="display:flex;flex-direction:column;align-items:stretch;gap:var(--spacing-4)"
+      >
         <Tooltip placement="top-end" content="Hello world">
           {#snippet children()}
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              top-end
+              <Text>top-end</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -172,9 +187,9 @@
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              right
+              <Text>right</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -183,9 +198,9 @@
             <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
             <div
               tabindex="0"
-              style="display:flex;justify-content:center;align-items:center;width:100%;padding:16px;background:var(--surface-background-gray-moderate);border-radius:4px"
+              style="display:flex;justify-content:center;align-items:center;height:100%;padding:var(--spacing-5);background:var(--surface-background-gray-moderate)"
             >
-              bottom-end
+              <Text>bottom-end</Text>
             </div>
           {/snippet}
         </Tooltip>
@@ -202,13 +217,15 @@
         When using non-interactive elements as Tooltip triggers, like Icons, Badges, Counters
       </Text>
       <Text>You can wrap the element in TooltipInteractiveWrapper component provided by blade</Text>
-      <div style="margin-top:16px;display:flex;align-items:center;gap:4px">
+      <div
+        style="margin-top:var(--spacing-5);display:flex;align-items:center;gap:var(--spacing-2)"
+      >
         <Text>Refunds</Text>
         <Tooltip {...args} placement="bottom-start">
           {#snippet children()}
             <TooltipInteractiveWrapper>
               {#snippet children()}
-                <span style="margin-top:4px;display:inline-flex">
+                <span style="margin-top:var(--spacing-2);display:inline-flex">
                   <InfoIcon size="medium" />
                 </span>
               {/snippet}
@@ -223,22 +240,22 @@
 <!-- Story 5: Tooltip Triggers -->
 <Story name="Tooltip Triggers">
   {#snippet template(args)}
-    <div
-      style="width:100%;min-height:240px;display:flex;align-items:center;justify-content:center"
-    >
-      <div style="display:flex;gap:56px;align-items:center;flex-wrap:wrap">
+    <div class="tooltip-story-center">
+      <div
+        style="display:flex;gap:var(--spacing-11);align-items:center;flex-wrap:wrap"
+      >
         <Tooltip {...args} placement="top">
           {#snippet children()}
             <Button>button</Button>
           {/snippet}
         </Tooltip>
-
+        <div style="margin-top:var(--spacing-8)"></div>
         <Tooltip {...args} placement="top">
           {#snippet children()}
             <Link href="#" onClick={() => console.log(1)}>Link</Link>
           {/snippet}
         </Tooltip>
-
+        <div style="margin-top:var(--spacing-8)"></div>
         <Tooltip {...args} content="With IconButton" placement="top-end">
           {#snippet children()}
             <button
@@ -251,7 +268,7 @@
             </button>
           {/snippet}
         </Tooltip>
-
+        <div style="margin-top:var(--spacing-8)"></div>
         <Tooltip {...args} content="With non-interactive icon" placement="bottom">
           {#snippet children()}
             <TooltipInteractiveWrapper>
@@ -274,8 +291,8 @@
     </Text>
     <ul>
       <li>
-        Make sure to forward the DOM ref from your custom component (Svelte:
-        <Code size="medium">bind:this</Code>)
+        Make sure to expose ref from the custom component via
+        <Code size="medium">bind:this</Code>
       </li>
       <li>
         Make sure that your component can receive focus
@@ -296,12 +313,12 @@
         </ul>
       </li>
     </ul>
-    <div style="margin-bottom:12px">
+    <div style="margin-bottom:var(--spacing-4)">
       <Text>
         Alternatively you can just spread the props to the trigger, instead of adding them 1 by 1
       </Text>
     </div>
-    <div style="margin-bottom:12px">
+    <div style="margin-bottom:var(--spacing-4)">
       <Text>
         If you are using TypeScript you can import the types for these events from blade as
         <Code size="medium">BladeCommonEvents</Code>
@@ -312,11 +329,36 @@
         <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <div
           tabindex="0"
-          style="display:inline-block;align-self:flex-start;padding:12px;border-radius:12px;background:var(--surface-background-gray-intense);color:var(--surface-text-static-white-normal)"
+          style="display:inline-block;align-self:flex-start;padding:var(--spacing-4);border-radius:var(--border-radius-medium);background:var(--surface-background-gray-intense)"
         >
-          Hover over me
+          <Text color="surface.text.gray.normal">Hover over me</Text>
         </div>
       {/snippet}
     </Tooltip>
   </div>
 </Story>
+
+<style>
+  /* Center the trigger vertically inside the storybook iframe to mirror
+     React's `<Center>` wrapper (`<Box width="100%" height="100%">`). Storybook's
+     iframe body has ~16px padding on each side, so we subtract `var(--spacing-7)`
+     (32px) from 100vh to keep the wrapper inside the visible area. */
+  :global(.tooltip-story-center) {
+    width: 100%;
+    min-height: calc(100vh - var(--spacing-7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Stretch the Tooltip's inline-block trigger wrapper inside the placement
+     story so each PlacementBox fills the column's main axis. Needed because
+     Svelte's Tooltip wraps the trigger in a `<span style="display:inline-block">`
+     while React's Tooltip uses cloneElement with no wrapper. The vite CSS
+     module class is hashed (e.g. `_trigger_2qh6h_20`), so we target it via an
+     attribute selector. */
+  :global(.tooltip-placement-column > [class*='_trigger_']) {
+    flex: 1;
+    display: block;
+  }
+</style>
