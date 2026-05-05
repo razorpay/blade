@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { Writable } from 'svelte/store';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../Icons';
 
@@ -150,7 +151,7 @@ export type BladeToast = ToastProps & {
 export type UseToastReturn = {
   show: (props: ToastProps) => string;
   dismiss: (id?: string) => void;
-  toasts: import('svelte/store').Writable<BladeToast[]>;
+  toasts: Writable<BladeToast[]>;
 };
 
 export interface ToastContainerProps extends StyledPropsBlade {
