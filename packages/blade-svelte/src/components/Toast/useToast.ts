@@ -61,4 +61,3 @@ export function useToast(): UseToastReturn {
     toasts: toastStore,
   };
 }
-
