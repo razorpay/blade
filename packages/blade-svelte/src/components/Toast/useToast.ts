@@ -3,6 +3,8 @@ import { logger } from '@razorpay/blade-core/utils';
 import { toastStore, showToast, dismissToast, generateId } from './toastStore';
 import type { ToastProps, UseToastReturn } from './types';
 
+declare const __DEV__: boolean;
+
 const INFORMATIONAL_DURATION = 4000;
 const PROMOTIONAL_DURATION = 8000;
 
@@ -60,4 +62,3 @@ export function useToast(): UseToastReturn {
   };
 }
 
-declare const __DEV__: boolean;
