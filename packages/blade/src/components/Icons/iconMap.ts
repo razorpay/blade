@@ -139,6 +139,7 @@ import CustomersIconComponent from './CustomersIcon';
 import CutIconComponent from './CutIcon';
 import DashboardIconComponent from './DashboardIcon';
 import DeleteIconComponent from './DeleteIcon';
+import DiamondBlocksIconComponent from './DiamondBlocksIcon';
 import DigitalLendingFilledIconComponent from './DigitalLendingFilledIcon';
 import DigitalLendingIconComponent from './DigitalLendingIcon';
 import DisbursePaymentsFilledIconComponent from './DisbursePaymentsFilledIcon';
@@ -199,6 +200,7 @@ import HeartIconComponent from './HeartIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import HistoryIconComponent from './HistoryIcon';
 import HomeIconComponent from './HomeIcon';
+import HorizontalBlocksIconComponent from './HorizontalBlocksIcon';
 import ImageIconComponent from './ImageIcon';
 import InboxIconComponent from './InboxIcon';
 import IndiaFlagIconComponent from './IndiaFlagIcon';
@@ -416,6 +418,7 @@ import UserXIconComponent from './UserXIcon';
 import UsersIconComponent from './UsersIcon';
 import VendorPaymentsFilledIconComponent from './VendorPaymentsFilledIcon';
 import VendorPaymentsIconComponent from './VendorPaymentsIcon';
+import VerticalBlocksIconComponent from './VerticalBlocksIcon';
 import VideoIconComponent from './VideoIcon';
 import VideoOffIconComponent from './VideoOffIcon';
 import ViewLiveDemoFilledIconComponent from './ViewLiveDemoFilledIcon';
@@ -582,6 +585,7 @@ const iconMap: Record<string, IconComponent> = {
   CutIcon: CutIconComponent,
   DashboardIcon: DashboardIconComponent,
   DeleteIcon: DeleteIconComponent,
+  DiamondBlocksIcon: DiamondBlocksIconComponent,
   DigitalLendingFilledIcon: DigitalLendingFilledIconComponent,
   DigitalLendingIcon: DigitalLendingIconComponent,
   DisbursePaymentsFilledIcon: DisbursePaymentsFilledIconComponent,
@@ -642,6 +646,7 @@ const iconMap: Record<string, IconComponent> = {
   HelpCircleIcon: HelpCircleIconComponent,
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
+  HorizontalBlocksIcon: HorizontalBlocksIconComponent,
   ImageIcon: ImageIconComponent,
   InboxIcon: InboxIconComponent,
   IndiaFlagIcon: IndiaFlagIconComponent,
@@ -859,6 +864,7 @@ const iconMap: Record<string, IconComponent> = {
   UsersIcon: UsersIconComponent,
   VendorPaymentsFilledIcon: VendorPaymentsFilledIconComponent,
   VendorPaymentsIcon: VendorPaymentsIconComponent,
+  VerticalBlocksIcon: VerticalBlocksIconComponent,
   VideoIcon: VideoIconComponent,
   VideoOffIcon: VideoOffIconComponent,
   ViewLiveDemoFilledIcon: ViewLiveDemoFilledIconComponent,

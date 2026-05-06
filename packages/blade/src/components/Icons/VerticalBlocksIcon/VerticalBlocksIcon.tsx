@@ -1,0 +1,31 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _VerticalBlocksIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M20 2C21.1046 2 22 2.89543 22 4V9C22 10.1046 21.1046 11 20 11H4C2.89543 11 2 10.1046 2 9V4C2 2.89543 2.89543 2 4 2H20ZM4.5 4C4.22386 4 4 4.22386 4 4.5V8.5C4 8.77614 4.22386 9 4.5 9H19.5C19.7761 9 20 8.77614 20 8.5V4.5C20 4.22386 19.7761 4 19.5 4H4.5Z"
+        fill={iconColor}
+      />
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M20 13C21.1046 13 22 13.8954 22 15V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V15C2 13.8954 2.89543 13 4 13H20ZM4.5 15C4.22386 15 4 15.2239 4 15.5V19.5C4 19.7761 4.22386 20 4.5 20H19.5C19.7761 20 20 19.7761 20 19.5V15.5C20 15.2239 19.7761 15 19.5 15H4.5Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const VerticalBlocksIcon = assignWithoutSideEffects(_VerticalBlocksIcon, {
+  componentId: 'VerticalBlocksIcon',
+});
+
+export default VerticalBlocksIcon;
