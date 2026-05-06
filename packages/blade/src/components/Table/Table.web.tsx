@@ -588,17 +588,15 @@ const _Table = <Item,>({
             <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
           </BaseBox>
         ) : (
-          <BaseBox
-            flex={1}
-            display="flex"
-            flexDirection="column"
-            {...getStyledProps(rest)}
-            {...metaAttribute({ name: MetaConstants.Table })}
-            width={isVirtualized ? `100%` : undefined}
-            {...makeAnalyticsAttribute(rest)}
-          >
-            {/* Inner box wrapping only toolbar + table so the refresh overlay never covers the pagination */}
-            <BaseBox flex={1} position="relative">
+          <>
+            <BaseBox
+              flex={1}
+              position="relative"
+              {...getStyledProps(rest)}
+              {...metaAttribute({ name: MetaConstants.Table })}
+              width={isVirtualized ? `100%` : undefined}
+              {...makeAnalyticsAttribute(rest)}
+            >
               {isRefreshSpinnerMounted && (
                 <RefreshWrapper
                   position="absolute"
@@ -647,10 +645,11 @@ const _Table = <Item,>({
                 {children}
               </StyledReactTable>
             </BaseBox>
-            {/* Pagination is rendered outside the refresh overlay so it stays accessible
-                even when the table is refreshing or in an error/retry state */}
+            {/* Pagination is rendered as a sibling outside the position:relative BaseBox so the
+                refresh overlay (position:absolute, height:100%) never covers it.
+                This keeps pagination interactive even when the table is loading or in an error state. */}
             {pagination}
-          </BaseBox>
+          </>
         )}
       </TableSurface>
     </TableContext.Provider>

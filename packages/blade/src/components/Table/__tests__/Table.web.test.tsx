@@ -1597,10 +1597,10 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should keep pagination accessible when table is refreshing', async () => {
+  it('should keep pagination accessible when table is refreshing', () => {
     const onPageChange = jest.fn();
     const onPageSizeChange = jest.fn();
-    const { getByLabelText, getByTestId, queryByText } = renderWithTheme(
+    const { getByLabelText, getByTestId } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 10) }}
         isRefreshing={true}
