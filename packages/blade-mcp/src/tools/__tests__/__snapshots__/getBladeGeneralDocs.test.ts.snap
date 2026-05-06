@@ -123,395 +123,451 @@ import {
 
 - If the icon is expected to be clickable, use \`IconButton\` component.
 - If the icon clickable and looks like a link, use \`<Link icon={IconName} href="" />\`
+- Many icons have a \`Filled\` variant (solid fill style) alongside the regular (outline) variant.
 
 ## List of Available Icons
 
-- AcceptPaymentsIcon
-- ActivityIcon
-- AddressBookIcon
-- AffordabilityIcon
-- AirplayIcon
-- AlertCircleIcon
-- AlertOctagonIcon
-- AlertOnlyIcon
-- AlertTriangleIcon
-- AlignCenterIcon
-- AlignJustifyIcon
-- AlignLeftIcon
-- AlignRightIcon
-- AnchorIcon
-- AndroidIcon
-- AnnouncementIcon
-- ApertureIcon
-- AppStoreIcon
-- AppleIcon
-- ArrowDownIcon
-- ArrowDownLeftIcon
-- ArrowDownRightIcon
-- ArrowLeftIcon
-- ArrowRightIcon
-- ArrowSquareDownIcon
-- ArrowSquareDownLeftIcon
-- ArrowSquareDownRightIcon
-- ArrowSquareLeftIcon
-- ArrowSquareRightIcon
-- ArrowSquareUpIcon
-- ArrowSquareUpLeftIcon
-- ArrowSquareUpRightIcon
-- ArrowUpIcon
-- ArrowUpLeftIcon
-- ArrowUpRightIcon
-- AtSignIcon
-- AttachmentIcon
-- AutomateAccountingIcon
-- AutomatePayrollIcon
-- AwardIcon
-- BankAccountVerificationIcon
-- BankIcon
-- BarChartAltIcon
-- BarChartIcon
-- BarCodeIcon
-- Battery100PercentIcon
-- Battery20PercentIcon
-- Battery40PercentIcon
-- Battery60PercentIcon
-- Battery80PercentIcon
-- BatteryChargingIcon
-- BatteryIcon
-- BellIcon
-- BellOffIcon
-- BfsiIcon
-- BillIcon
-- BillMeIcon
-- BluetoothIcon
-- BoldIcon
-- BookIcon
-- BookmarkIcon
-- BoxIcon
-- BriefcaseIcon
-- BugIcon
-- BuildingIcon
-- BulkPayoutsIcon
-- BusinessBankingIcon
-- BusinessSpendManagementIcon
-- CalendarIcon
-- CameraIcon
-- CameraOffIcon
-- CashIcon
-- CastIcon
-- CheckCircle2Icon
-- CheckCircleIcon
-- CheckIcon
-- CheckSquareIcon
-- ChevronDownIcon
-- ChevronLeftIcon
-- ChevronRightIcon
-- ChevronUpIcon
-- ChevronsDownIcon
-- ChevronsLeftIcon
-- ChevronsRightIcon
-- ChevronsUpIcon
-- ChromeIcon
-- CircleIcon
-- ClipboardIcon
-- ClockIcon
-- CloseIcon
-- ClosedCaptioningIcon
-- CloudDrizzleIcon
-- CloudIcon
-- CloudLightningIcon
-- CloudOffIcon
-- CloudRainIcon
-- CloudSnowIcon
-- CodeSnippetIcon
-- CodepenIcon
-- CoinIcon
-- CoinsIcon
-- CommandIcon
-- CompanyRegistrationIcon
-- CompassIcon
-- ConfettiIcon
-- ContactlessPaymentIcon
-- CookieIcon
-- CopyIcon
-- CopyrightIcon
-- CornerDownLeftIcon
-- CornerDownRightIcon
-- CornerLeftDownIcon
-- CornerLeftUpIcon
-- CornerRightDownIcon
-- CornerRightUpIcon
-- CornerUpLeftIcon
-- CornerUpRightIcon
-- CpuIcon
-- CreditCardIcon
-- CreditsAndLoansIcon
-- CropIcon
-- CrosshairIcon
-- CurrentAccountIcon
-- CustomersIcon
-- CutIcon
-- DashboardIcon
-- DeleteIcon
-- DigitalLendingIcon
-- DisbursePaymentsIcon
-- DiscIcon
-- DollarIcon
-- DollarsIcon
-- DotIcon
-- DownloadCloudIcon
-- DownloadIcon
-- DragHandleIcon
-- DropletIcon
-- EcommerceIcon
-- EditComposeIcon
-- EditIcon
-- EditInlineIcon
-- EducationIcon
-- EngageIcon
-- EqualsIcon
-- EscrowAccountIcon
-- ExportIcon
-- ExternalLinkIcon
-- EyeIcon
-- EyeOffIcon
-- FacebookIcon
-- FastForwardIcon
-- FeatherIcon
-- FigmaIcon
-- FileIcon
-- FileMinusIcon
-- FilePlusIcon
-- FileTextIcon
-- FileZipIcon
-- FilmIcon
-- FilterIcon
-- FlagIcon
-- FlaskIcon
-- FolderIcon
-- ForexManagementIcon
-- FreelanceIcon
-- FullScreenEnterIcon
-- FullScreenExitIcon
-- GithubIcon
-- GitlabIcon
-- GlobeIcon
-- GridIcon
-- HashIcon
-- HeadphoneIcon
-- HeadphonesIcon
-- HeadsetIcon
-- HeartIcon
-- HelpCircleIcon
-- HistoryIcon
-- HomeIcon
-- ImageIcon
-- InboxIcon
-- IndiaFlagIcon
-- InfoIcon
-- InstagramIcon
-- InstantSettlementIcon
-- InternationalPaymentsIcon
-- InvoicesIcon
-- ItalicIcon
-- KeyIcon
-- KeyboardIcon
-- LayersIcon
-- LayoutIcon
-- LeftCircularCornerIcon
-- LifeBuoyIcon
-- LinkIcon
-- ListIcon
-- ListSearchIcon
-- LoaderIcon
-- LoansForBusinessesIcon
-- LockIcon
-- LogInIcon
-- LogOutIcon
-- MagicCheckoutIcon
-- MagicKonnectIcon
-- MailIcon
-- MailOpenIcon
-- MapIcon
-- MapPinIcon
-- MaximizeIcon
-- MenuDotsIcon
-- MenuIcon
-- MessageCircleIcon
-- MessageSquareIcon
-- MicIcon
-- MicOffIcon
-- MinimizeIcon
-- MinusCircleIcon
-- MinusIcon
-- MinusSquareIcon
-- MobileAppIcon
-- MonitorIcon
-- MoonIcon
-- MoreHorizontalIcon
-- MoreIcon
-- MoreVerticalIcon
-- MoveIcon
-- MusicIcon
-- MyAccountIcon
-- NavigationIcon
-- NoSignalIcon
-- OctagonIcon
-- OffersIcon
-- OptimizerIcon
-- PackageIcon
-- PaperclipIcon
-- PauseCircleIcon
-- PauseIcon
-- PaymentButtonIcon
-- PaymentButtonsIcon
-- PaymentGatewayIcon
-- PaymentLinkIcon
-- PaymentLinksIcon
-- PaymentPagesIcon
-- PayoutLinkIcon
-- PayrollAddonsIcon
-- PayrollForCaIcon
-- PayrollForStartupOrSmeIcon
-- PercentIcon
-- PettyCashBudgetIcon
-- PhoneCallIcon
-- PhoneForwardedIcon
-- PhoneIcon
-- PhoneIncomingIcon
-- PhoneMissedIcon
-- PhoneOffIcon
-- PhoneOutgoingIcon
-- PictureInPictureIcon
-- PieChartIcon
-- PinIcon
-- PlayCircleIcon
-- PlayIcon
-- PlusCircleIcon
-- PlusIcon
-- PlusSquareIcon
-- PocketIcon
-- PosIcon
-- PowerIcon
-- PrinterIcon
-- PromptIcon
-- QRCodeIcon
-- RadioIcon
-- RayIcon
-- RazorpayIcon
-- RazorpayXIcon
-- RazorpayxPayrollIcon
-- RefreshIcon
-- RepeatIcon
-- ReportsIcon
-- ResizerIcon
-- RewindIcon
-- RotateClockWiseIcon
-- RotateCounterClockWiseIcon
-- RouteIcon
-- RoutesIcon
-- RupeeIcon
-- RupeesIcon
-- SaasIcon
-- SaveIcon
-- ScissorsIcon
-- SearchIcon
-- SendIcon
-- ServerIcon
-- SettingsIcon
-- SettlementsIcon
-- ShareIcon
-- ShieldIcon
-- ShoppingBagIcon
-- ShoppingCartIcon
-- ShuffleIcon
-- SidebarIcon
-- Signal1BarIcon
-- Signal2BarIcon
-- Signal3BarIcon
-- Signal4BarIcon
-- SignalIcon
-- SimCardIcon
-- SkipBackIcon
-- SkipForwardIcon
-- SlackIcon
-- SlashIcon
-- SlidersIcon
-- SmartCollectIcon
-- SmartphoneIcon
-- SolutionsIcon
-- SortIcon
-- SourceToPayIcon
-- SparklesIcon
-- SpeakerIcon
-- SquareIcon
-- StampIcon
-- StarIcon
-- StopCircleIcon
-- StorefrontIcon
-- SubscriptionsIcon
-- SunIcon
-- SunriseIcon
-- SunsetIcon
-- TabletIcon
-- TagIcon
-- TargetIcon
-- TaxPaymentsIcon
-- TestIcon
-- ThermometerIcon
-- ThumbsDownIcon
-- ThumbsUpIcon
-- TicketIcon
-- ToggleLeftIcon
-- ToggleRightIcon
-- TokenHqIcon
-- TopLeftRoundedCornerIcon
-- TopLeftSharpCornerIcon
-- TrademarkIcon
-- TrademarkRegisteredIcon
-- TransactionsIcon
-- TranslateIcon
-- TrashIcon
-- TrendingDownIcon
-- TrendingUpIcon
-- TriangleIcon
-- TvIcon
-- TwitterIcon
-- TypeIcon
-- UmbrellaIcon
-- UnderlineIcon
-- UnlockIcon
-- UpiAutopayIcon
-- UpiIcon
-- UploadCloudIcon
-- UploadIcon
-- UserCheckIcon
-- UserIcon
-- UserMinusIcon
-- UserPlusIcon
-- UserXIcon
-- UsersIcon
-- VendorPaymentsIcon
-- VideoIcon
-- VideoOffIcon
-- ViewLiveDemoIcon
-- VoicemailIcon
-- VolumeHighIcon
-- VolumeIcon
-- VolumeLowIcon
-- VolumeMuteIcon
-- WalletIcon
-- WatchIcon
-- WifiIcon
-- WifiOffIcon
-- WindIcon
-- WorldwideIcon
-- XCircleIcon
-- XSquareIcon
-- YoutubeIcon
-- ZapIcon
-- ZoomInIcon
-- ZoomOutIcon",
+| Icon Name | Description |
+|-----------|-------------|
+| AcceptPaymentsIcon | Razorpay product icon for accepting payments |
+| AcceptPaymentsFilledIcon | Filled variant of AcceptPaymentsIcon |
+| ActivityIcon | Heart-rate/pulse line representing activity or health monitoring |
+| AddressBookIcon | Contact book for managing addresses or contacts |
+| AffordabilityIcon | Razorpay product icon for affordability solutions (EMI, pay later) |
+| AffordabilityFilledIcon | Filled variant of AffordabilityIcon |
+| AirplayIcon | Screen mirroring or wireless display streaming |
+| AlertCircleIcon | Exclamation mark in a circle for warnings or alerts |
+| AlertOctagonIcon | Exclamation mark in an octagon for critical alerts |
+| AlertOnlyIcon | Standalone alert/exclamation indicator |
+| AlertTriangleIcon | Exclamation mark in a triangle for caution warnings |
+| AlignCenterIcon | Text alignment to center |
+| AlignJustifyIcon | Text alignment justified (both edges) |
+| AlignLeftIcon | Text alignment to left |
+| AlignRightIcon | Text alignment to right |
+| AnchorIcon | Anchor symbol, used for links or nautical reference |
+| AndroidIcon | Android robot logo |
+| AnnouncementIcon | Megaphone/bullhorn for announcements or broadcasts |
+| ApertureIcon | Camera aperture for photography or lens settings |
+| AppStoreIcon | App store marketplace icon |
+| AppleIcon | Apple logo |
+| ArrowDownIcon | Downward pointing arrow |
+| ArrowDownLeftIcon | Arrow pointing down-left (diagonal) |
+| ArrowDownRightIcon | Arrow pointing down-right (diagonal) |
+| ArrowLeftIcon | Left pointing arrow |
+| ArrowRightIcon | Right pointing arrow |
+| ArrowSquareDownIcon | Downward arrow inside a square |
+| ArrowSquareDownLeftIcon | Down-left arrow inside a square |
+| ArrowSquareDownRightIcon | Down-right arrow inside a square |
+| ArrowSquareLeftIcon | Left arrow inside a square |
+| ArrowSquareRightIcon | Right arrow inside a square |
+| ArrowSquareUpIcon | Upward arrow inside a square |
+| ArrowSquareUpLeftIcon | Up-left arrow inside a square |
+| ArrowSquareUpRightIcon | Up-right arrow inside a square |
+| ArrowUpIcon | Upward pointing arrow |
+| ArrowUpLeftIcon | Arrow pointing up-left (diagonal) |
+| ArrowUpRightIcon | Arrow pointing up-right (diagonal) |
+| AtSignIcon | @ symbol for email or mentions |
+| AttachmentIcon | Paperclip for file attachments |
+| AutomateAccountingIcon | Razorpay product icon for automated accounting |
+| AutomatePayrollIcon | Razorpay product icon for payroll automation |
+| AutomatePayrollFilledIcon | Filled variant of AutomatePayrollIcon |
+| AwardIcon | Ribbon/medal award icon for achievements |
+| BankAccountVerificationIcon | Razorpay product icon for bank account verification |
+| BankAccountVerificationFilledIcon | Filled variant of BankAccountVerificationIcon |
+| BankIcon | Bank building for financial institutions |
+| BarChartAltIcon | Alternative bar chart for data visualization |
+| BarChartIcon | Bar chart for data/statistics visualization |
+| BarCodeIcon | Barcode for product scanning or identification |
+| Battery100PercentIcon | Full battery indicator |
+| Battery20PercentIcon | Battery at 20% level |
+| Battery40PercentIcon | Battery at 40% level |
+| Battery60PercentIcon | Battery at 60% level |
+| Battery80PercentIcon | Battery at 80% level |
+| BatteryChargingIcon | Battery with charging indicator |
+| BatteryIcon | Empty/default battery indicator |
+| BellIcon | Notification bell |
+| BellOffIcon | Muted/disabled notification bell |
+| BfsiIcon | Razorpay product icon for BFSI (Banking, Financial Services, Insurance) |
+| BfsiFilledIcon | Filled variant of BfsiIcon |
+| BillIcon | Bill or invoice document |
+| BillMeIcon | Razorpay BillMe product icon |
+| BillMeFilledIcon | Filled variant of BillMeIcon |
+| BluetoothIcon | Bluetooth wireless connectivity symbol |
+| BoldIcon | Bold text formatting (B) |
+| BookIcon | Open book for reading or documentation |
+| BookmarkIcon | Bookmark flag for saving items |
+| BoxIcon | 3D box or package |
+| BriefcaseIcon | Briefcase for business or work |
+| BugIcon | Bug for error reporting or debugging |
+| BuildingIcon | Office building for company or organization |
+| BulkPayoutsIcon | Razorpay product icon for bulk payouts |
+| BulkPayoutsFilledIcon | Filled variant of BulkPayoutsIcon |
+| BusinessBankingIcon | Razorpay product icon for business banking |
+| BusinessSpendManagementIcon | Razorpay product icon for business spend management |
+| BusinessSpendManagementFilledIcon | Filled variant of BusinessSpendManagementIcon |
+| CalendarIcon | Calendar for dates and scheduling |
+| CameraIcon | Camera for photos or screenshots |
+| CameraOffIcon | Disabled camera |
+| CashIcon | Cash/banknotes for money |
+| CastIcon | Screen casting or broadcasting |
+| CheckCircle2Icon | Checkmark in a circle (alternate style) |
+| CheckCircleIcon | Checkmark in a circle for success or completion |
+| CheckIcon | Simple checkmark for confirmation |
+| CheckSquareIcon | Checkmark in a square (checkbox checked) |
+| ChevronDownIcon | Small downward arrow/caret |
+| ChevronLeftIcon | Small left arrow/caret |
+| ChevronRightIcon | Small right arrow/caret |
+| ChevronUpDownIcon | Up and down carets for sorting or expand/collapse |
+| ChevronUpIcon | Small upward arrow/caret |
+| ChevronsDownIcon | Double downward chevrons |
+| ChevronsLeftIcon | Double left chevrons |
+| ChevronsRightIcon | Double right chevrons |
+| ChevronsUpIcon | Double upward chevrons |
+| ChromeIcon | Google Chrome browser logo |
+| CircleIcon | Simple circle shape |
+| ClipboardIcon | Clipboard for copy/paste operations |
+| ClockIcon | Clock for time or schedule |
+| CloseIcon | X mark for closing or dismissing |
+| ClosedCaptioningIcon | CC symbol for subtitles/closed captions |
+| CloudDrizzleIcon | Cloud with light rain/drizzle |
+| CloudIcon | Cloud for cloud services or weather |
+| CloudLightningIcon | Cloud with lightning for storms |
+| CloudOffIcon | Disabled/disconnected cloud |
+| CloudRainIcon | Cloud with rain |
+| CloudSnowIcon | Cloud with snowfall |
+| CodeSnippetIcon | Code brackets for code snippets or programming |
+| CodepenIcon | CodePen platform logo |
+| CoinIcon | Single coin for currency or money |
+| CoinsIcon | Multiple coins/stack of coins |
+| CommandIcon | Command key symbol (⌘) |
+| CompanyRegistrationIcon | Razorpay product icon for company registration |
+| CompanyRegistrationFilledIcon | Filled variant of CompanyRegistrationIcon |
+| CompassIcon | Compass for navigation or direction |
+| ConfettiIcon | Confetti/celebration particles |
+| ContactlessPaymentIcon | NFC/contactless payment tap symbol |
+| CookieIcon | Cookie for browser cookies or consent |
+| CopyIcon | Copy icon for duplicating content |
+| CopyrightIcon | Copyright symbol (©) |
+| CornerDownLeftIcon | Arrow curving down then left |
+| CornerDownRightIcon | Arrow curving down then right |
+| CornerLeftDownIcon | Arrow curving left then down |
+| CornerLeftUpIcon | Arrow curving left then up |
+| CornerRightDownIcon | Arrow curving right then down |
+| CornerRightUpIcon | Arrow curving right then up |
+| CornerUpLeftIcon | Arrow curving up then left |
+| CornerUpRightIcon | Arrow curving up then right |
+| CpuIcon | CPU/processor chip |
+| CreditCardIcon | Credit/debit card for payments |
+| CreditsAndLoansIcon | Razorpay product icon for credits and loans |
+| CreditsAndLoansFilledIcon | Filled variant of CreditsAndLoansIcon |
+| CropIcon | Crop tool for image editing |
+| CrosshairIcon | Crosshair/target reticle |
+| CurrentAccountIcon | Razorpay product icon for current account |
+| CurrentAccountFilledIcon | Filled variant of CurrentAccountIcon |
+| CustomersIcon | People/users representing customers |
+| CutIcon | Scissors for cut operation |
+| DashboardIcon | Dashboard/gauge for overview or control panel |
+| DeleteIcon | Trash/delete action icon |
+| DigitalLendingIcon | Razorpay product icon for digital lending |
+| DigitalLendingFilledIcon | Filled variant of DigitalLendingIcon |
+| DisbursePaymentsIcon | Razorpay product icon for disbursing payments |
+| DisbursePaymentsFilledIcon | Filled variant of DisbursePaymentsIcon |
+| DiscIcon | Disc/CD for media or storage |
+| DollarIcon | Dollar currency symbol ($) |
+| DollarsIcon | Multiple dollar signs for money/revenue |
+| DotIcon | Small dot indicator |
+| DownloadCloudIcon | Cloud with download arrow |
+| DownloadIcon | Download arrow for saving files |
+| DragHandleIcon | Grip dots for drag-and-drop reordering |
+| DropletIcon | Water droplet |
+| EcommerceIcon | Razorpay product icon for e-commerce solutions |
+| EcommerceFilledIcon | Filled variant of EcommerceIcon |
+| EditComposeIcon | Pen/pencil for composing or writing new content |
+| EditIcon | Pencil for editing content |
+| EditInlineIcon | Inline edit pencil for in-place editing |
+| EducationIcon | Razorpay product icon for education sector |
+| EducationFilledIcon | Filled variant of EducationIcon |
+| EngageIcon | Razorpay Engage product icon for customer engagement |
+| EngageFilledIcon | Filled variant of EngageIcon |
+| EqualsIcon | Equals sign (=) |
+| EscrowAccountIcon | Razorpay product icon for escrow accounts |
+| EscrowAccountFilledIcon | Filled variant of EscrowAccountIcon |
+| ExportIcon | Export/share arrow for exporting data |
+| ExternalLinkIcon | Arrow pointing out of a box for opening external links |
+| EyeIcon | Eye for visibility or show/view action |
+| EyeOffIcon | Eye with line through for hide/invisible |
+| FacebookIcon | Facebook social media logo |
+| FastForwardIcon | Double right arrows for fast forward |
+| FeatherIcon | Feather for lightweight or writing |
+| FigmaIcon | Figma design tool logo |
+| FileIcon | Generic file document |
+| FileMinusIcon | File with minus sign (remove file) |
+| FilePlusIcon | File with plus sign (add file) |
+| FileTextIcon | File with text lines |
+| FileZipIcon | Compressed/zipped file |
+| FilmIcon | Film strip for video or cinema |
+| FilterIcon | Funnel for filtering content |
+| FlagIcon | Flag for marking, reporting, or milestones |
+| FlaskIcon | Laboratory flask for experiments or testing |
+| FolderIcon | Folder for file organization |
+| ForexManagementIcon | Razorpay product icon for forex/currency management |
+| ForexManagementFilledIcon | Filled variant of ForexManagementIcon |
+| FreelanceIcon | Razorpay product icon for freelance solutions |
+| FreelanceFilledIcon | Filled variant of FreelanceIcon |
+| FullScreenEnterIcon | Expand arrows for entering fullscreen mode |
+| FullScreenExitIcon | Compress arrows for exiting fullscreen mode |
+| GithubIcon | GitHub platform logo |
+| GitlabIcon | GitLab platform logo |
+| GlobeIcon | Globe/earth for international or web |
+| GridIcon | Grid layout of squares |
+| HashIcon | Hash/pound symbol (#) |
+| HeadphoneIcon | Single headphone for audio |
+| HeadphonesIcon | Headphones for audio or music |
+| HeadsetIcon | Headset with microphone for support or calls |
+| HeartIcon | Heart for favorites or likes |
+| HelpCircleIcon | Question mark in circle for help or FAQ |
+| HistoryIcon | Clock with arrow for history or recent items |
+| HomeIcon | House for home page or main screen |
+| ImageIcon | Image/picture placeholder for photos |
+| InboxIcon | Inbox tray for messages or email |
+| IndiaFlagIcon | Indian national flag |
+| InfoIcon | Information "i" in circle |
+| InstagramIcon | Instagram social media logo |
+| InstantSettlementIcon | Razorpay product icon for instant settlements |
+| InstantSettlementFilledIcon | Filled variant of InstantSettlementIcon |
+| InternationalPaymentsIcon | Razorpay product icon for international payments |
+| InternationalPaymentsFilledIcon | Filled variant of InternationalPaymentsIcon |
+| InvoicesIcon | Razorpay product icon for invoices |
+| InvoicesFilledIcon | Filled variant of InvoicesIcon |
+| ItalicIcon | Italic text formatting (I) |
+| KeyIcon | Key for security, access, or authentication |
+| KeyboardIcon | Keyboard for input or typing |
+| LayersIcon | Stacked layers for design or organization |
+| LayoutIcon | Layout grid for page structure |
+| LeftCircularCornerIcon | Left circular corner shape |
+| LifeBuoyIcon | Life buoy ring for help or support |
+| LinkIcon | Chain link for URLs or connections |
+| ListIcon | Bulleted list for content organization |
+| ListSearchIcon | List with magnifying glass for searching within lists |
+| LoaderIcon | Spinning loader for loading states |
+| LoansForBusinessesIcon | Razorpay product icon for business loans |
+| LoansForBusinessesFilledIcon | Filled variant of LoansForBusinessesIcon |
+| LockIcon | Locked padlock for security or restricted access |
+| LogInIcon | Arrow entering box for sign-in |
+| LogOutIcon | Arrow leaving box for sign-out |
+| MagicCheckoutIcon | Razorpay Magic Checkout product icon |
+| MagicCheckoutFilledIcon | Filled variant of MagicCheckoutIcon |
+| MagicKonnectIcon | Razorpay MagicKonnect product icon |
+| MagicKonnectFilledIcon | Filled variant of MagicKonnectIcon |
+| MailIcon | Email envelope |
+| MailOpenIcon | Opened email envelope |
+| MapIcon | Folded map for location or navigation |
+| MapPinIcon | Map pin/marker for locations |
+| MaximizeIcon | Expand/maximize window |
+| MenuDotsIcon | Three dots menu (horizontal or vertical kebab) |
+| MenuIcon | Hamburger menu (three horizontal lines) |
+| MessageCircleIcon | Speech bubble (circular) for chat or comments |
+| MessageSquareIcon | Speech bubble (square) for messages |
+| MicIcon | Microphone for audio recording |
+| MicOffIcon | Muted/disabled microphone |
+| MinimizeIcon | Shrink/minimize window |
+| MinusCircleIcon | Minus sign in circle for removal |
+| MinusIcon | Minus/subtract sign |
+| MinusSquareIcon | Minus sign in square |
+| MobileAppIcon | Razorpay product icon for mobile app solutions |
+| MobileAppFilledIcon | Filled variant of MobileAppIcon |
+| MonitorIcon | Desktop monitor/display screen |
+| MoonIcon | Crescent moon for dark mode or night |
+| MoreFilledIcon | Filled variant of MoreIcon (three dots) |
+| MoreHorizontalIcon | Three horizontal dots for more options |
+| MoreIcon | Three dots for additional options menu |
+| MoreVerticalIcon | Three vertical dots for more options |
+| MoveIcon | Four-directional arrows for moving/dragging |
+| MusicIcon | Music note for audio or music |
+| MyAccountIcon | Person silhouette for account/profile |
+| NavigationIcon | Navigation arrow/pointer |
+| NoSignalIcon | No signal/connectivity indicator |
+| OctagonIcon | Octagon shape (like a stop sign) |
+| OffersIcon | Tag/label for offers or discounts |
+| OptimizerIcon | Razorpay Optimizer product icon for payment optimization |
+| OptimizerFilledIcon | Filled variant of OptimizerIcon |
+| PackageIcon | Package/box for shipping or delivery |
+| PaperclipIcon | Paperclip for attachments |
+| PauseCircleIcon | Pause symbol in circle |
+| PauseIcon | Pause (two vertical bars) for media controls |
+| PaymentButtonIcon | Razorpay product icon for payment buttons |
+| PaymentButtonFilledIcon | Filled variant of PaymentButtonIcon |
+| PaymentButtonsIcon | Razorpay product icon for payment buttons (alternate) |
+| PaymentGatewayIcon | Razorpay product icon for payment gateway |
+| PaymentGatewayFilledIcon | Filled variant of PaymentGatewayIcon |
+| PaymentLinkIcon | Razorpay product icon for payment links |
+| PaymentLinkFilledIcon | Filled variant of PaymentLinkIcon |
+| PaymentLinksIcon | Razorpay product icon for payment links (alternate) |
+| PaymentPagesIcon | Razorpay product icon for payment pages |
+| PaymentPagesFilledIcon | Filled variant of PaymentPagesIcon |
+| PayoutLinkIcon | Razorpay product icon for payout links |
+| PayrollAddonsIcon | Razorpay product icon for payroll add-ons |
+| PayrollAddonsFilledIcon | Filled variant of PayrollAddonsIcon |
+| PayrollForCaIcon | Razorpay product icon for payroll for chartered accountants |
+| PayrollForCaFilledIcon | Filled variant of PayrollForCaIcon |
+| PayrollForStartupOrSmeIcon | Razorpay product icon for payroll for startups/SMEs |
+| PayrollForStartupOrSmeFilledIcon | Filled variant of PayrollForStartupOrSmeIcon |
+| PercentIcon | Percent symbol (%) for discounts or rates |
+| PettyCashBudgetIcon | Razorpay product icon for petty cash budget management |
+| PettyCashBudgetFilledIcon | Filled variant of PettyCashBudgetIcon |
+| PhoneCallIcon | Phone with signal for active call |
+| PhoneForwardedIcon | Phone with forward arrow for call forwarding |
+| PhoneIcon | Telephone handset |
+| PhoneIncomingIcon | Phone with incoming arrow for incoming calls |
+| PhoneMissedIcon | Phone with X for missed calls |
+| PhoneOffIcon | Disabled/disconnected phone |
+| PhoneOutgoingIcon | Phone with outgoing arrow for outgoing calls |
+| PictureInPictureIcon | Picture-in-picture floating window |
+| PieChartIcon | Pie chart for data visualization |
+| PinIcon | Pin/thumbtack for pinning items |
+| PlayCircleIcon | Play button in circle |
+| PlayIcon | Play triangle for media playback |
+| PlusCircleIcon | Plus sign in circle for adding |
+| PlusIcon | Plus/add sign |
+| PlusSquareIcon | Plus sign in square |
+| PocketIcon | Pocket save-for-later icon |
+| PosIcon | Razorpay product icon for point-of-sale |
+| PosFilledIcon | Filled variant of PosIcon |
+| PowerIcon | Power on/off button |
+| PrinterIcon | Printer for printing documents |
+| PromptIcon | Prompt/terminal cursor for command input |
+| QRCodeIcon | QR code for scanning |
+| RadioIcon | Radio/broadcast for streaming |
+| RayIcon | Razorpay Ray product icon |
+| RazorpayIcon | Razorpay logo |
+| RazorpayXIcon | RazorpayX business banking product logo |
+| RazorpayxPayrollIcon | Razorpay Payroll product icon |
+| RazorpayxPayrollFilledIcon | Filled variant of RazorpayxPayrollIcon |
+| RefreshIcon | Circular arrows for refresh/reload |
+| RepeatIcon | Repeat/loop arrows for repeating actions |
+| ReportsIcon | Document with chart for reports and analytics |
+| ResizerIcon | Diagonal resize handle for resizable elements |
+| RewindIcon | Double left arrows for rewind |
+| RotateClockWiseIcon | Clockwise rotation arrow |
+| RotateCounterClockWiseIcon | Counter-clockwise rotation arrow |
+| RouteIcon | Path/route line for routing or navigation |
+| RouteFilledIcon | Filled variant of RouteIcon |
+| RoutesIcon | Multiple route paths |
+| RupeeIcon | Indian Rupee currency symbol (₹) |
+| RupeesIcon | Multiple Rupee symbols for money/payments |
+| SaasIcon | Razorpay product icon for SaaS solutions |
+| SaasFilledIcon | Filled variant of SaasIcon |
+| SaveIcon | Floppy disk for saving |
+| ScissorsIcon | Scissors for cutting |
+| SearchIcon | Magnifying glass for search |
+| SendIcon | Paper plane for sending messages |
+| ServerIcon | Server hardware for hosting or infrastructure |
+| SettingsIcon | Gear/cog for settings and preferences |
+| SettlementsIcon | Razorpay product icon for settlements |
+| ShareIcon | Share arrow for sharing content |
+| ShieldIcon | Shield for security or protection |
+| ShoppingBagIcon | Shopping bag for retail or e-commerce |
+| ShoppingCartIcon | Shopping cart for adding items to purchase |
+| ShuffleIcon | Crossing arrows for shuffle/randomize |
+| SidebarIcon | Sidebar panel layout |
+| Signal1BarIcon | 1 bar signal strength |
+| Signal2BarIcon | 2 bar signal strength |
+| Signal3BarIcon | 3 bar signal strength |
+| Signal4BarIcon | 4 bar (full) signal strength |
+| SignalIcon | Signal/connectivity indicator |
+| SimCardIcon | SIM card for mobile connectivity |
+| SkipBackIcon | Skip to previous track |
+| SkipForwardIcon | Skip to next track |
+| SlackIcon | Slack messaging platform logo |
+| SlashIcon | Forward slash or prohibition symbol |
+| SlidersIcon | Adjustment sliders for controls or settings |
+| SmartCollectIcon | Razorpay Smart Collect product icon for automated reconciliation |
+| SmartCollectFilledIcon | Filled variant of SmartCollectIcon |
+| SmartphoneIcon | Smartphone/mobile phone device |
+| SolutionsIcon | Razorpay product icon for business solutions |
+| SolutionsFilledIcon | Filled variant of SolutionsIcon |
+| SortIcon | Up/down arrows for sorting |
+| SourceToPayIcon | Razorpay product icon for source-to-pay workflow |
+| SourceToPayFilledIcon | Filled variant of SourceToPayIcon |
+| SparklesIcon | Sparkle stars for AI, magic, or new features |
+| SpeakerIcon | Speaker for audio output |
+| SquareIcon | Simple square shape |
+| StampIcon | Rubber stamp for approval or verification |
+| StarIcon | Star for ratings or favorites |
+| StopCircleIcon | Stop symbol in circle for media controls |
+| StorefrontIcon | Storefront/shop for retail or marketplace |
+| SubscriptionsIcon | Razorpay product icon for subscription management |
+| SubscriptionsFilledIcon | Filled variant of SubscriptionsIcon |
+| SunIcon | Sun for light mode or brightness |
+| SunriseIcon | Sunrise on horizon |
+| SunsetIcon | Sunset on horizon |
+| TabletIcon | Tablet device |
+| TagIcon | Label tag for categorization or pricing |
+| TargetIcon | Bullseye target for goals or objectives |
+| TaxPaymentsIcon | Razorpay product icon for tax payments |
+| TaxPaymentsFilledIcon | Filled variant of TaxPaymentsIcon |
+| TestIcon | Test tube or testing indicator |
+| ThermometerIcon | Thermometer for temperature |
+| ThumbsDownIcon | Thumbs down for dislike or rejection |
+| ThumbsUpIcon | Thumbs up for like or approval |
+| TicketIcon | Ticket for events or support tickets |
+| ToggleLeftIcon | Toggle switch in off/left position |
+| ToggleRightIcon | Toggle switch in on/right position |
+| TokenHqIcon | Razorpay TokenHQ product icon for tokenization |
+| TokenHqFilledIcon | Filled variant of TokenHqIcon |
+| TopLeftRoundedCornerIcon | Rounded corner shape (top-left) |
+| TopLeftSharpCornerIcon | Sharp corner shape (top-left) |
+| TrademarkIcon | Trademark symbol (™) |
+| TrademarkRegisteredIcon | Registered trademark symbol (®) |
+| TransactionsIcon | Razorpay icon for transactions or payment history |
+| TranslateIcon | Language translation (A with character) |
+| TrashIcon | Trash can for deleting items |
+| TrendingDownIcon | Downward trending arrow for declining metrics |
+| TrendingUpIcon | Upward trending arrow for growing metrics |
+| TriangleIcon | Triangle shape |
+| TvIcon | Television/display for video or streaming |
+| TwitterIcon | Twitter/X social media logo |
+| TypeIcon | Type/text formatting (T) |
+| UmbrellaIcon | Umbrella for protection or insurance |
+| UnderlineIcon | Underline text formatting (U) |
+| UnlockIcon | Unlocked padlock for open access |
+| UpiAutopayIcon | Razorpay product icon for UPI Autopay recurring payments |
+| UpiAutopayFilledIcon | Filled variant of UpiAutopayIcon |
+| UpiIcon | UPI (Unified Payments Interface) logo |
+| UploadCloudIcon | Cloud with upload arrow |
+| UploadIcon | Upload arrow for sending files |
+| UserCheckIcon | Person with checkmark for verified user |
+| UserIcon | Single person silhouette |
+| UserMinusIcon | Person with minus sign for removing user |
+| UserPlusIcon | Person with plus sign for adding user |
+| UserXIcon | Person with X for blocked or removed user |
+| UsersIcon | Multiple people for groups or teams |
+| VendorPaymentsIcon | Razorpay product icon for vendor payments |
+| VendorPaymentsFilledIcon | Filled variant of VendorPaymentsIcon |
+| VideoIcon | Video camera for recording |
+| VideoOffIcon | Disabled video camera |
+| ViewLiveDemoIcon | Razorpay icon for viewing live demos |
+| ViewLiveDemoFilledIcon | Filled variant of ViewLiveDemoIcon |
+| VoicemailIcon | Voicemail indicator |
+| VolumeHighIcon | Speaker at high volume |
+| VolumeIcon | Speaker/volume default |
+| VolumeLowIcon | Speaker at low volume |
+| VolumeMuteIcon | Muted speaker with X |
+| VolumeOffIcon | Speaker turned off |
+| VolumeOnIcon | Speaker turned on |
+| WalletIcon | Wallet for payments or money |
+| WatchIcon | Wristwatch or smartwatch |
+| WhatsAppIcon | WhatsApp messaging platform logo |
+| WifiIcon | WiFi connectivity signal |
+| WifiOffIcon | Disabled WiFi |
+| WindIcon | Wind/breeze lines |
+| WorldwideIcon | Globe with meridians for worldwide/global |
+| XCircleIcon | X mark in circle for error or cancel |
+| XSquareIcon | X mark in square for close or remove |
+| YoutubeIcon | YouTube video platform logo |
+| ZapIcon | Lightning bolt for quick actions or energy |
+| ZoomInIcon | Magnifying glass with plus for zoom in |
+| ZoomOutIcon | Magnifying glass with minus for zoom out |",
       "type": "text",
     },
   ],
@@ -641,395 +697,451 @@ import {
 
 - If the icon is expected to be clickable, use \`IconButton\` component.
 - If the icon clickable and looks like a link, use \`<Link icon={IconName} href="" />\`
+- Many icons have a \`Filled\` variant (solid fill style) alongside the regular (outline) variant.
 
 ## List of Available Icons
 
-- AcceptPaymentsIcon
-- ActivityIcon
-- AddressBookIcon
-- AffordabilityIcon
-- AirplayIcon
-- AlertCircleIcon
-- AlertOctagonIcon
-- AlertOnlyIcon
-- AlertTriangleIcon
-- AlignCenterIcon
-- AlignJustifyIcon
-- AlignLeftIcon
-- AlignRightIcon
-- AnchorIcon
-- AndroidIcon
-- AnnouncementIcon
-- ApertureIcon
-- AppStoreIcon
-- AppleIcon
-- ArrowDownIcon
-- ArrowDownLeftIcon
-- ArrowDownRightIcon
-- ArrowLeftIcon
-- ArrowRightIcon
-- ArrowSquareDownIcon
-- ArrowSquareDownLeftIcon
-- ArrowSquareDownRightIcon
-- ArrowSquareLeftIcon
-- ArrowSquareRightIcon
-- ArrowSquareUpIcon
-- ArrowSquareUpLeftIcon
-- ArrowSquareUpRightIcon
-- ArrowUpIcon
-- ArrowUpLeftIcon
-- ArrowUpRightIcon
-- AtSignIcon
-- AttachmentIcon
-- AutomateAccountingIcon
-- AutomatePayrollIcon
-- AwardIcon
-- BankAccountVerificationIcon
-- BankIcon
-- BarChartAltIcon
-- BarChartIcon
-- BarCodeIcon
-- Battery100PercentIcon
-- Battery20PercentIcon
-- Battery40PercentIcon
-- Battery60PercentIcon
-- Battery80PercentIcon
-- BatteryChargingIcon
-- BatteryIcon
-- BellIcon
-- BellOffIcon
-- BfsiIcon
-- BillIcon
-- BillMeIcon
-- BluetoothIcon
-- BoldIcon
-- BookIcon
-- BookmarkIcon
-- BoxIcon
-- BriefcaseIcon
-- BugIcon
-- BuildingIcon
-- BulkPayoutsIcon
-- BusinessBankingIcon
-- BusinessSpendManagementIcon
-- CalendarIcon
-- CameraIcon
-- CameraOffIcon
-- CashIcon
-- CastIcon
-- CheckCircle2Icon
-- CheckCircleIcon
-- CheckIcon
-- CheckSquareIcon
-- ChevronDownIcon
-- ChevronLeftIcon
-- ChevronRightIcon
-- ChevronUpIcon
-- ChevronsDownIcon
-- ChevronsLeftIcon
-- ChevronsRightIcon
-- ChevronsUpIcon
-- ChromeIcon
-- CircleIcon
-- ClipboardIcon
-- ClockIcon
-- CloseIcon
-- ClosedCaptioningIcon
-- CloudDrizzleIcon
-- CloudIcon
-- CloudLightningIcon
-- CloudOffIcon
-- CloudRainIcon
-- CloudSnowIcon
-- CodeSnippetIcon
-- CodepenIcon
-- CoinIcon
-- CoinsIcon
-- CommandIcon
-- CompanyRegistrationIcon
-- CompassIcon
-- ConfettiIcon
-- ContactlessPaymentIcon
-- CookieIcon
-- CopyIcon
-- CopyrightIcon
-- CornerDownLeftIcon
-- CornerDownRightIcon
-- CornerLeftDownIcon
-- CornerLeftUpIcon
-- CornerRightDownIcon
-- CornerRightUpIcon
-- CornerUpLeftIcon
-- CornerUpRightIcon
-- CpuIcon
-- CreditCardIcon
-- CreditsAndLoansIcon
-- CropIcon
-- CrosshairIcon
-- CurrentAccountIcon
-- CustomersIcon
-- CutIcon
-- DashboardIcon
-- DeleteIcon
-- DigitalLendingIcon
-- DisbursePaymentsIcon
-- DiscIcon
-- DollarIcon
-- DollarsIcon
-- DotIcon
-- DownloadCloudIcon
-- DownloadIcon
-- DragHandleIcon
-- DropletIcon
-- EcommerceIcon
-- EditComposeIcon
-- EditIcon
-- EditInlineIcon
-- EducationIcon
-- EngageIcon
-- EqualsIcon
-- EscrowAccountIcon
-- ExportIcon
-- ExternalLinkIcon
-- EyeIcon
-- EyeOffIcon
-- FacebookIcon
-- FastForwardIcon
-- FeatherIcon
-- FigmaIcon
-- FileIcon
-- FileMinusIcon
-- FilePlusIcon
-- FileTextIcon
-- FileZipIcon
-- FilmIcon
-- FilterIcon
-- FlagIcon
-- FlaskIcon
-- FolderIcon
-- ForexManagementIcon
-- FreelanceIcon
-- FullScreenEnterIcon
-- FullScreenExitIcon
-- GithubIcon
-- GitlabIcon
-- GlobeIcon
-- GridIcon
-- HashIcon
-- HeadphoneIcon
-- HeadphonesIcon
-- HeadsetIcon
-- HeartIcon
-- HelpCircleIcon
-- HistoryIcon
-- HomeIcon
-- ImageIcon
-- InboxIcon
-- IndiaFlagIcon
-- InfoIcon
-- InstagramIcon
-- InstantSettlementIcon
-- InternationalPaymentsIcon
-- InvoicesIcon
-- ItalicIcon
-- KeyIcon
-- KeyboardIcon
-- LayersIcon
-- LayoutIcon
-- LeftCircularCornerIcon
-- LifeBuoyIcon
-- LinkIcon
-- ListIcon
-- ListSearchIcon
-- LoaderIcon
-- LoansForBusinessesIcon
-- LockIcon
-- LogInIcon
-- LogOutIcon
-- MagicCheckoutIcon
-- MagicKonnectIcon
-- MailIcon
-- MailOpenIcon
-- MapIcon
-- MapPinIcon
-- MaximizeIcon
-- MenuDotsIcon
-- MenuIcon
-- MessageCircleIcon
-- MessageSquareIcon
-- MicIcon
-- MicOffIcon
-- MinimizeIcon
-- MinusCircleIcon
-- MinusIcon
-- MinusSquareIcon
-- MobileAppIcon
-- MonitorIcon
-- MoonIcon
-- MoreHorizontalIcon
-- MoreIcon
-- MoreVerticalIcon
-- MoveIcon
-- MusicIcon
-- MyAccountIcon
-- NavigationIcon
-- NoSignalIcon
-- OctagonIcon
-- OffersIcon
-- OptimizerIcon
-- PackageIcon
-- PaperclipIcon
-- PauseCircleIcon
-- PauseIcon
-- PaymentButtonIcon
-- PaymentButtonsIcon
-- PaymentGatewayIcon
-- PaymentLinkIcon
-- PaymentLinksIcon
-- PaymentPagesIcon
-- PayoutLinkIcon
-- PayrollAddonsIcon
-- PayrollForCaIcon
-- PayrollForStartupOrSmeIcon
-- PercentIcon
-- PettyCashBudgetIcon
-- PhoneCallIcon
-- PhoneForwardedIcon
-- PhoneIcon
-- PhoneIncomingIcon
-- PhoneMissedIcon
-- PhoneOffIcon
-- PhoneOutgoingIcon
-- PictureInPictureIcon
-- PieChartIcon
-- PinIcon
-- PlayCircleIcon
-- PlayIcon
-- PlusCircleIcon
-- PlusIcon
-- PlusSquareIcon
-- PocketIcon
-- PosIcon
-- PowerIcon
-- PrinterIcon
-- PromptIcon
-- QRCodeIcon
-- RadioIcon
-- RayIcon
-- RazorpayIcon
-- RazorpayXIcon
-- RazorpayxPayrollIcon
-- RefreshIcon
-- RepeatIcon
-- ReportsIcon
-- ResizerIcon
-- RewindIcon
-- RotateClockWiseIcon
-- RotateCounterClockWiseIcon
-- RouteIcon
-- RoutesIcon
-- RupeeIcon
-- RupeesIcon
-- SaasIcon
-- SaveIcon
-- ScissorsIcon
-- SearchIcon
-- SendIcon
-- ServerIcon
-- SettingsIcon
-- SettlementsIcon
-- ShareIcon
-- ShieldIcon
-- ShoppingBagIcon
-- ShoppingCartIcon
-- ShuffleIcon
-- SidebarIcon
-- Signal1BarIcon
-- Signal2BarIcon
-- Signal3BarIcon
-- Signal4BarIcon
-- SignalIcon
-- SimCardIcon
-- SkipBackIcon
-- SkipForwardIcon
-- SlackIcon
-- SlashIcon
-- SlidersIcon
-- SmartCollectIcon
-- SmartphoneIcon
-- SolutionsIcon
-- SortIcon
-- SourceToPayIcon
-- SparklesIcon
-- SpeakerIcon
-- SquareIcon
-- StampIcon
-- StarIcon
-- StopCircleIcon
-- StorefrontIcon
-- SubscriptionsIcon
-- SunIcon
-- SunriseIcon
-- SunsetIcon
-- TabletIcon
-- TagIcon
-- TargetIcon
-- TaxPaymentsIcon
-- TestIcon
-- ThermometerIcon
-- ThumbsDownIcon
-- ThumbsUpIcon
-- TicketIcon
-- ToggleLeftIcon
-- ToggleRightIcon
-- TokenHqIcon
-- TopLeftRoundedCornerIcon
-- TopLeftSharpCornerIcon
-- TrademarkIcon
-- TrademarkRegisteredIcon
-- TransactionsIcon
-- TranslateIcon
-- TrashIcon
-- TrendingDownIcon
-- TrendingUpIcon
-- TriangleIcon
-- TvIcon
-- TwitterIcon
-- TypeIcon
-- UmbrellaIcon
-- UnderlineIcon
-- UnlockIcon
-- UpiAutopayIcon
-- UpiIcon
-- UploadCloudIcon
-- UploadIcon
-- UserCheckIcon
-- UserIcon
-- UserMinusIcon
-- UserPlusIcon
-- UserXIcon
-- UsersIcon
-- VendorPaymentsIcon
-- VideoIcon
-- VideoOffIcon
-- ViewLiveDemoIcon
-- VoicemailIcon
-- VolumeHighIcon
-- VolumeIcon
-- VolumeLowIcon
-- VolumeMuteIcon
-- WalletIcon
-- WatchIcon
-- WifiIcon
-- WifiOffIcon
-- WindIcon
-- WorldwideIcon
-- XCircleIcon
-- XSquareIcon
-- YoutubeIcon
-- ZapIcon
-- ZoomInIcon
-- ZoomOutIcon",
+| Icon Name | Description |
+|-----------|-------------|
+| AcceptPaymentsIcon | Razorpay product icon for accepting payments |
+| AcceptPaymentsFilledIcon | Filled variant of AcceptPaymentsIcon |
+| ActivityIcon | Heart-rate/pulse line representing activity or health monitoring |
+| AddressBookIcon | Contact book for managing addresses or contacts |
+| AffordabilityIcon | Razorpay product icon for affordability solutions (EMI, pay later) |
+| AffordabilityFilledIcon | Filled variant of AffordabilityIcon |
+| AirplayIcon | Screen mirroring or wireless display streaming |
+| AlertCircleIcon | Exclamation mark in a circle for warnings or alerts |
+| AlertOctagonIcon | Exclamation mark in an octagon for critical alerts |
+| AlertOnlyIcon | Standalone alert/exclamation indicator |
+| AlertTriangleIcon | Exclamation mark in a triangle for caution warnings |
+| AlignCenterIcon | Text alignment to center |
+| AlignJustifyIcon | Text alignment justified (both edges) |
+| AlignLeftIcon | Text alignment to left |
+| AlignRightIcon | Text alignment to right |
+| AnchorIcon | Anchor symbol, used for links or nautical reference |
+| AndroidIcon | Android robot logo |
+| AnnouncementIcon | Megaphone/bullhorn for announcements or broadcasts |
+| ApertureIcon | Camera aperture for photography or lens settings |
+| AppStoreIcon | App store marketplace icon |
+| AppleIcon | Apple logo |
+| ArrowDownIcon | Downward pointing arrow |
+| ArrowDownLeftIcon | Arrow pointing down-left (diagonal) |
+| ArrowDownRightIcon | Arrow pointing down-right (diagonal) |
+| ArrowLeftIcon | Left pointing arrow |
+| ArrowRightIcon | Right pointing arrow |
+| ArrowSquareDownIcon | Downward arrow inside a square |
+| ArrowSquareDownLeftIcon | Down-left arrow inside a square |
+| ArrowSquareDownRightIcon | Down-right arrow inside a square |
+| ArrowSquareLeftIcon | Left arrow inside a square |
+| ArrowSquareRightIcon | Right arrow inside a square |
+| ArrowSquareUpIcon | Upward arrow inside a square |
+| ArrowSquareUpLeftIcon | Up-left arrow inside a square |
+| ArrowSquareUpRightIcon | Up-right arrow inside a square |
+| ArrowUpIcon | Upward pointing arrow |
+| ArrowUpLeftIcon | Arrow pointing up-left (diagonal) |
+| ArrowUpRightIcon | Arrow pointing up-right (diagonal) |
+| AtSignIcon | @ symbol for email or mentions |
+| AttachmentIcon | Paperclip for file attachments |
+| AutomateAccountingIcon | Razorpay product icon for automated accounting |
+| AutomatePayrollIcon | Razorpay product icon for payroll automation |
+| AutomatePayrollFilledIcon | Filled variant of AutomatePayrollIcon |
+| AwardIcon | Ribbon/medal award icon for achievements |
+| BankAccountVerificationIcon | Razorpay product icon for bank account verification |
+| BankAccountVerificationFilledIcon | Filled variant of BankAccountVerificationIcon |
+| BankIcon | Bank building for financial institutions |
+| BarChartAltIcon | Alternative bar chart for data visualization |
+| BarChartIcon | Bar chart for data/statistics visualization |
+| BarCodeIcon | Barcode for product scanning or identification |
+| Battery100PercentIcon | Full battery indicator |
+| Battery20PercentIcon | Battery at 20% level |
+| Battery40PercentIcon | Battery at 40% level |
+| Battery60PercentIcon | Battery at 60% level |
+| Battery80PercentIcon | Battery at 80% level |
+| BatteryChargingIcon | Battery with charging indicator |
+| BatteryIcon | Empty/default battery indicator |
+| BellIcon | Notification bell |
+| BellOffIcon | Muted/disabled notification bell |
+| BfsiIcon | Razorpay product icon for BFSI (Banking, Financial Services, Insurance) |
+| BfsiFilledIcon | Filled variant of BfsiIcon |
+| BillIcon | Bill or invoice document |
+| BillMeIcon | Razorpay BillMe product icon |
+| BillMeFilledIcon | Filled variant of BillMeIcon |
+| BluetoothIcon | Bluetooth wireless connectivity symbol |
+| BoldIcon | Bold text formatting (B) |
+| BookIcon | Open book for reading or documentation |
+| BookmarkIcon | Bookmark flag for saving items |
+| BoxIcon | 3D box or package |
+| BriefcaseIcon | Briefcase for business or work |
+| BugIcon | Bug for error reporting or debugging |
+| BuildingIcon | Office building for company or organization |
+| BulkPayoutsIcon | Razorpay product icon for bulk payouts |
+| BulkPayoutsFilledIcon | Filled variant of BulkPayoutsIcon |
+| BusinessBankingIcon | Razorpay product icon for business banking |
+| BusinessSpendManagementIcon | Razorpay product icon for business spend management |
+| BusinessSpendManagementFilledIcon | Filled variant of BusinessSpendManagementIcon |
+| CalendarIcon | Calendar for dates and scheduling |
+| CameraIcon | Camera for photos or screenshots |
+| CameraOffIcon | Disabled camera |
+| CashIcon | Cash/banknotes for money |
+| CastIcon | Screen casting or broadcasting |
+| CheckCircle2Icon | Checkmark in a circle (alternate style) |
+| CheckCircleIcon | Checkmark in a circle for success or completion |
+| CheckIcon | Simple checkmark for confirmation |
+| CheckSquareIcon | Checkmark in a square (checkbox checked) |
+| ChevronDownIcon | Small downward arrow/caret |
+| ChevronLeftIcon | Small left arrow/caret |
+| ChevronRightIcon | Small right arrow/caret |
+| ChevronUpDownIcon | Up and down carets for sorting or expand/collapse |
+| ChevronUpIcon | Small upward arrow/caret |
+| ChevronsDownIcon | Double downward chevrons |
+| ChevronsLeftIcon | Double left chevrons |
+| ChevronsRightIcon | Double right chevrons |
+| ChevronsUpIcon | Double upward chevrons |
+| ChromeIcon | Google Chrome browser logo |
+| CircleIcon | Simple circle shape |
+| ClipboardIcon | Clipboard for copy/paste operations |
+| ClockIcon | Clock for time or schedule |
+| CloseIcon | X mark for closing or dismissing |
+| ClosedCaptioningIcon | CC symbol for subtitles/closed captions |
+| CloudDrizzleIcon | Cloud with light rain/drizzle |
+| CloudIcon | Cloud for cloud services or weather |
+| CloudLightningIcon | Cloud with lightning for storms |
+| CloudOffIcon | Disabled/disconnected cloud |
+| CloudRainIcon | Cloud with rain |
+| CloudSnowIcon | Cloud with snowfall |
+| CodeSnippetIcon | Code brackets for code snippets or programming |
+| CodepenIcon | CodePen platform logo |
+| CoinIcon | Single coin for currency or money |
+| CoinsIcon | Multiple coins/stack of coins |
+| CommandIcon | Command key symbol (⌘) |
+| CompanyRegistrationIcon | Razorpay product icon for company registration |
+| CompanyRegistrationFilledIcon | Filled variant of CompanyRegistrationIcon |
+| CompassIcon | Compass for navigation or direction |
+| ConfettiIcon | Confetti/celebration particles |
+| ContactlessPaymentIcon | NFC/contactless payment tap symbol |
+| CookieIcon | Cookie for browser cookies or consent |
+| CopyIcon | Copy icon for duplicating content |
+| CopyrightIcon | Copyright symbol (©) |
+| CornerDownLeftIcon | Arrow curving down then left |
+| CornerDownRightIcon | Arrow curving down then right |
+| CornerLeftDownIcon | Arrow curving left then down |
+| CornerLeftUpIcon | Arrow curving left then up |
+| CornerRightDownIcon | Arrow curving right then down |
+| CornerRightUpIcon | Arrow curving right then up |
+| CornerUpLeftIcon | Arrow curving up then left |
+| CornerUpRightIcon | Arrow curving up then right |
+| CpuIcon | CPU/processor chip |
+| CreditCardIcon | Credit/debit card for payments |
+| CreditsAndLoansIcon | Razorpay product icon for credits and loans |
+| CreditsAndLoansFilledIcon | Filled variant of CreditsAndLoansIcon |
+| CropIcon | Crop tool for image editing |
+| CrosshairIcon | Crosshair/target reticle |
+| CurrentAccountIcon | Razorpay product icon for current account |
+| CurrentAccountFilledIcon | Filled variant of CurrentAccountIcon |
+| CustomersIcon | People/users representing customers |
+| CutIcon | Scissors for cut operation |
+| DashboardIcon | Dashboard/gauge for overview or control panel |
+| DeleteIcon | Trash/delete action icon |
+| DigitalLendingIcon | Razorpay product icon for digital lending |
+| DigitalLendingFilledIcon | Filled variant of DigitalLendingIcon |
+| DisbursePaymentsIcon | Razorpay product icon for disbursing payments |
+| DisbursePaymentsFilledIcon | Filled variant of DisbursePaymentsIcon |
+| DiscIcon | Disc/CD for media or storage |
+| DollarIcon | Dollar currency symbol ($) |
+| DollarsIcon | Multiple dollar signs for money/revenue |
+| DotIcon | Small dot indicator |
+| DownloadCloudIcon | Cloud with download arrow |
+| DownloadIcon | Download arrow for saving files |
+| DragHandleIcon | Grip dots for drag-and-drop reordering |
+| DropletIcon | Water droplet |
+| EcommerceIcon | Razorpay product icon for e-commerce solutions |
+| EcommerceFilledIcon | Filled variant of EcommerceIcon |
+| EditComposeIcon | Pen/pencil for composing or writing new content |
+| EditIcon | Pencil for editing content |
+| EditInlineIcon | Inline edit pencil for in-place editing |
+| EducationIcon | Razorpay product icon for education sector |
+| EducationFilledIcon | Filled variant of EducationIcon |
+| EngageIcon | Razorpay Engage product icon for customer engagement |
+| EngageFilledIcon | Filled variant of EngageIcon |
+| EqualsIcon | Equals sign (=) |
+| EscrowAccountIcon | Razorpay product icon for escrow accounts |
+| EscrowAccountFilledIcon | Filled variant of EscrowAccountIcon |
+| ExportIcon | Export/share arrow for exporting data |
+| ExternalLinkIcon | Arrow pointing out of a box for opening external links |
+| EyeIcon | Eye for visibility or show/view action |
+| EyeOffIcon | Eye with line through for hide/invisible |
+| FacebookIcon | Facebook social media logo |
+| FastForwardIcon | Double right arrows for fast forward |
+| FeatherIcon | Feather for lightweight or writing |
+| FigmaIcon | Figma design tool logo |
+| FileIcon | Generic file document |
+| FileMinusIcon | File with minus sign (remove file) |
+| FilePlusIcon | File with plus sign (add file) |
+| FileTextIcon | File with text lines |
+| FileZipIcon | Compressed/zipped file |
+| FilmIcon | Film strip for video or cinema |
+| FilterIcon | Funnel for filtering content |
+| FlagIcon | Flag for marking, reporting, or milestones |
+| FlaskIcon | Laboratory flask for experiments or testing |
+| FolderIcon | Folder for file organization |
+| ForexManagementIcon | Razorpay product icon for forex/currency management |
+| ForexManagementFilledIcon | Filled variant of ForexManagementIcon |
+| FreelanceIcon | Razorpay product icon for freelance solutions |
+| FreelanceFilledIcon | Filled variant of FreelanceIcon |
+| FullScreenEnterIcon | Expand arrows for entering fullscreen mode |
+| FullScreenExitIcon | Compress arrows for exiting fullscreen mode |
+| GithubIcon | GitHub platform logo |
+| GitlabIcon | GitLab platform logo |
+| GlobeIcon | Globe/earth for international or web |
+| GridIcon | Grid layout of squares |
+| HashIcon | Hash/pound symbol (#) |
+| HeadphoneIcon | Single headphone for audio |
+| HeadphonesIcon | Headphones for audio or music |
+| HeadsetIcon | Headset with microphone for support or calls |
+| HeartIcon | Heart for favorites or likes |
+| HelpCircleIcon | Question mark in circle for help or FAQ |
+| HistoryIcon | Clock with arrow for history or recent items |
+| HomeIcon | House for home page or main screen |
+| ImageIcon | Image/picture placeholder for photos |
+| InboxIcon | Inbox tray for messages or email |
+| IndiaFlagIcon | Indian national flag |
+| InfoIcon | Information "i" in circle |
+| InstagramIcon | Instagram social media logo |
+| InstantSettlementIcon | Razorpay product icon for instant settlements |
+| InstantSettlementFilledIcon | Filled variant of InstantSettlementIcon |
+| InternationalPaymentsIcon | Razorpay product icon for international payments |
+| InternationalPaymentsFilledIcon | Filled variant of InternationalPaymentsIcon |
+| InvoicesIcon | Razorpay product icon for invoices |
+| InvoicesFilledIcon | Filled variant of InvoicesIcon |
+| ItalicIcon | Italic text formatting (I) |
+| KeyIcon | Key for security, access, or authentication |
+| KeyboardIcon | Keyboard for input or typing |
+| LayersIcon | Stacked layers for design or organization |
+| LayoutIcon | Layout grid for page structure |
+| LeftCircularCornerIcon | Left circular corner shape |
+| LifeBuoyIcon | Life buoy ring for help or support |
+| LinkIcon | Chain link for URLs or connections |
+| ListIcon | Bulleted list for content organization |
+| ListSearchIcon | List with magnifying glass for searching within lists |
+| LoaderIcon | Spinning loader for loading states |
+| LoansForBusinessesIcon | Razorpay product icon for business loans |
+| LoansForBusinessesFilledIcon | Filled variant of LoansForBusinessesIcon |
+| LockIcon | Locked padlock for security or restricted access |
+| LogInIcon | Arrow entering box for sign-in |
+| LogOutIcon | Arrow leaving box for sign-out |
+| MagicCheckoutIcon | Razorpay Magic Checkout product icon |
+| MagicCheckoutFilledIcon | Filled variant of MagicCheckoutIcon |
+| MagicKonnectIcon | Razorpay MagicKonnect product icon |
+| MagicKonnectFilledIcon | Filled variant of MagicKonnectIcon |
+| MailIcon | Email envelope |
+| MailOpenIcon | Opened email envelope |
+| MapIcon | Folded map for location or navigation |
+| MapPinIcon | Map pin/marker for locations |
+| MaximizeIcon | Expand/maximize window |
+| MenuDotsIcon | Three dots menu (horizontal or vertical kebab) |
+| MenuIcon | Hamburger menu (three horizontal lines) |
+| MessageCircleIcon | Speech bubble (circular) for chat or comments |
+| MessageSquareIcon | Speech bubble (square) for messages |
+| MicIcon | Microphone for audio recording |
+| MicOffIcon | Muted/disabled microphone |
+| MinimizeIcon | Shrink/minimize window |
+| MinusCircleIcon | Minus sign in circle for removal |
+| MinusIcon | Minus/subtract sign |
+| MinusSquareIcon | Minus sign in square |
+| MobileAppIcon | Razorpay product icon for mobile app solutions |
+| MobileAppFilledIcon | Filled variant of MobileAppIcon |
+| MonitorIcon | Desktop monitor/display screen |
+| MoonIcon | Crescent moon for dark mode or night |
+| MoreFilledIcon | Filled variant of MoreIcon (three dots) |
+| MoreHorizontalIcon | Three horizontal dots for more options |
+| MoreIcon | Three dots for additional options menu |
+| MoreVerticalIcon | Three vertical dots for more options |
+| MoveIcon | Four-directional arrows for moving/dragging |
+| MusicIcon | Music note for audio or music |
+| MyAccountIcon | Person silhouette for account/profile |
+| NavigationIcon | Navigation arrow/pointer |
+| NoSignalIcon | No signal/connectivity indicator |
+| OctagonIcon | Octagon shape (like a stop sign) |
+| OffersIcon | Tag/label for offers or discounts |
+| OptimizerIcon | Razorpay Optimizer product icon for payment optimization |
+| OptimizerFilledIcon | Filled variant of OptimizerIcon |
+| PackageIcon | Package/box for shipping or delivery |
+| PaperclipIcon | Paperclip for attachments |
+| PauseCircleIcon | Pause symbol in circle |
+| PauseIcon | Pause (two vertical bars) for media controls |
+| PaymentButtonIcon | Razorpay product icon for payment buttons |
+| PaymentButtonFilledIcon | Filled variant of PaymentButtonIcon |
+| PaymentButtonsIcon | Razorpay product icon for payment buttons (alternate) |
+| PaymentGatewayIcon | Razorpay product icon for payment gateway |
+| PaymentGatewayFilledIcon | Filled variant of PaymentGatewayIcon |
+| PaymentLinkIcon | Razorpay product icon for payment links |
+| PaymentLinkFilledIcon | Filled variant of PaymentLinkIcon |
+| PaymentLinksIcon | Razorpay product icon for payment links (alternate) |
+| PaymentPagesIcon | Razorpay product icon for payment pages |
+| PaymentPagesFilledIcon | Filled variant of PaymentPagesIcon |
+| PayoutLinkIcon | Razorpay product icon for payout links |
+| PayrollAddonsIcon | Razorpay product icon for payroll add-ons |
+| PayrollAddonsFilledIcon | Filled variant of PayrollAddonsIcon |
+| PayrollForCaIcon | Razorpay product icon for payroll for chartered accountants |
+| PayrollForCaFilledIcon | Filled variant of PayrollForCaIcon |
+| PayrollForStartupOrSmeIcon | Razorpay product icon for payroll for startups/SMEs |
+| PayrollForStartupOrSmeFilledIcon | Filled variant of PayrollForStartupOrSmeIcon |
+| PercentIcon | Percent symbol (%) for discounts or rates |
+| PettyCashBudgetIcon | Razorpay product icon for petty cash budget management |
+| PettyCashBudgetFilledIcon | Filled variant of PettyCashBudgetIcon |
+| PhoneCallIcon | Phone with signal for active call |
+| PhoneForwardedIcon | Phone with forward arrow for call forwarding |
+| PhoneIcon | Telephone handset |
+| PhoneIncomingIcon | Phone with incoming arrow for incoming calls |
+| PhoneMissedIcon | Phone with X for missed calls |
+| PhoneOffIcon | Disabled/disconnected phone |
+| PhoneOutgoingIcon | Phone with outgoing arrow for outgoing calls |
+| PictureInPictureIcon | Picture-in-picture floating window |
+| PieChartIcon | Pie chart for data visualization |
+| PinIcon | Pin/thumbtack for pinning items |
+| PlayCircleIcon | Play button in circle |
+| PlayIcon | Play triangle for media playback |
+| PlusCircleIcon | Plus sign in circle for adding |
+| PlusIcon | Plus/add sign |
+| PlusSquareIcon | Plus sign in square |
+| PocketIcon | Pocket save-for-later icon |
+| PosIcon | Razorpay product icon for point-of-sale |
+| PosFilledIcon | Filled variant of PosIcon |
+| PowerIcon | Power on/off button |
+| PrinterIcon | Printer for printing documents |
+| PromptIcon | Prompt/terminal cursor for command input |
+| QRCodeIcon | QR code for scanning |
+| RadioIcon | Radio/broadcast for streaming |
+| RayIcon | Razorpay Ray product icon |
+| RazorpayIcon | Razorpay logo |
+| RazorpayXIcon | RazorpayX business banking product logo |
+| RazorpayxPayrollIcon | Razorpay Payroll product icon |
+| RazorpayxPayrollFilledIcon | Filled variant of RazorpayxPayrollIcon |
+| RefreshIcon | Circular arrows for refresh/reload |
+| RepeatIcon | Repeat/loop arrows for repeating actions |
+| ReportsIcon | Document with chart for reports and analytics |
+| ResizerIcon | Diagonal resize handle for resizable elements |
+| RewindIcon | Double left arrows for rewind |
+| RotateClockWiseIcon | Clockwise rotation arrow |
+| RotateCounterClockWiseIcon | Counter-clockwise rotation arrow |
+| RouteIcon | Path/route line for routing or navigation |
+| RouteFilledIcon | Filled variant of RouteIcon |
+| RoutesIcon | Multiple route paths |
+| RupeeIcon | Indian Rupee currency symbol (₹) |
+| RupeesIcon | Multiple Rupee symbols for money/payments |
+| SaasIcon | Razorpay product icon for SaaS solutions |
+| SaasFilledIcon | Filled variant of SaasIcon |
+| SaveIcon | Floppy disk for saving |
+| ScissorsIcon | Scissors for cutting |
+| SearchIcon | Magnifying glass for search |
+| SendIcon | Paper plane for sending messages |
+| ServerIcon | Server hardware for hosting or infrastructure |
+| SettingsIcon | Gear/cog for settings and preferences |
+| SettlementsIcon | Razorpay product icon for settlements |
+| ShareIcon | Share arrow for sharing content |
+| ShieldIcon | Shield for security or protection |
+| ShoppingBagIcon | Shopping bag for retail or e-commerce |
+| ShoppingCartIcon | Shopping cart for adding items to purchase |
+| ShuffleIcon | Crossing arrows for shuffle/randomize |
+| SidebarIcon | Sidebar panel layout |
+| Signal1BarIcon | 1 bar signal strength |
+| Signal2BarIcon | 2 bar signal strength |
+| Signal3BarIcon | 3 bar signal strength |
+| Signal4BarIcon | 4 bar (full) signal strength |
+| SignalIcon | Signal/connectivity indicator |
+| SimCardIcon | SIM card for mobile connectivity |
+| SkipBackIcon | Skip to previous track |
+| SkipForwardIcon | Skip to next track |
+| SlackIcon | Slack messaging platform logo |
+| SlashIcon | Forward slash or prohibition symbol |
+| SlidersIcon | Adjustment sliders for controls or settings |
+| SmartCollectIcon | Razorpay Smart Collect product icon for automated reconciliation |
+| SmartCollectFilledIcon | Filled variant of SmartCollectIcon |
+| SmartphoneIcon | Smartphone/mobile phone device |
+| SolutionsIcon | Razorpay product icon for business solutions |
+| SolutionsFilledIcon | Filled variant of SolutionsIcon |
+| SortIcon | Up/down arrows for sorting |
+| SourceToPayIcon | Razorpay product icon for source-to-pay workflow |
+| SourceToPayFilledIcon | Filled variant of SourceToPayIcon |
+| SparklesIcon | Sparkle stars for AI, magic, or new features |
+| SpeakerIcon | Speaker for audio output |
+| SquareIcon | Simple square shape |
+| StampIcon | Rubber stamp for approval or verification |
+| StarIcon | Star for ratings or favorites |
+| StopCircleIcon | Stop symbol in circle for media controls |
+| StorefrontIcon | Storefront/shop for retail or marketplace |
+| SubscriptionsIcon | Razorpay product icon for subscription management |
+| SubscriptionsFilledIcon | Filled variant of SubscriptionsIcon |
+| SunIcon | Sun for light mode or brightness |
+| SunriseIcon | Sunrise on horizon |
+| SunsetIcon | Sunset on horizon |
+| TabletIcon | Tablet device |
+| TagIcon | Label tag for categorization or pricing |
+| TargetIcon | Bullseye target for goals or objectives |
+| TaxPaymentsIcon | Razorpay product icon for tax payments |
+| TaxPaymentsFilledIcon | Filled variant of TaxPaymentsIcon |
+| TestIcon | Test tube or testing indicator |
+| ThermometerIcon | Thermometer for temperature |
+| ThumbsDownIcon | Thumbs down for dislike or rejection |
+| ThumbsUpIcon | Thumbs up for like or approval |
+| TicketIcon | Ticket for events or support tickets |
+| ToggleLeftIcon | Toggle switch in off/left position |
+| ToggleRightIcon | Toggle switch in on/right position |
+| TokenHqIcon | Razorpay TokenHQ product icon for tokenization |
+| TokenHqFilledIcon | Filled variant of TokenHqIcon |
+| TopLeftRoundedCornerIcon | Rounded corner shape (top-left) |
+| TopLeftSharpCornerIcon | Sharp corner shape (top-left) |
+| TrademarkIcon | Trademark symbol (™) |
+| TrademarkRegisteredIcon | Registered trademark symbol (®) |
+| TransactionsIcon | Razorpay icon for transactions or payment history |
+| TranslateIcon | Language translation (A with character) |
+| TrashIcon | Trash can for deleting items |
+| TrendingDownIcon | Downward trending arrow for declining metrics |
+| TrendingUpIcon | Upward trending arrow for growing metrics |
+| TriangleIcon | Triangle shape |
+| TvIcon | Television/display for video or streaming |
+| TwitterIcon | Twitter/X social media logo |
+| TypeIcon | Type/text formatting (T) |
+| UmbrellaIcon | Umbrella for protection or insurance |
+| UnderlineIcon | Underline text formatting (U) |
+| UnlockIcon | Unlocked padlock for open access |
+| UpiAutopayIcon | Razorpay product icon for UPI Autopay recurring payments |
+| UpiAutopayFilledIcon | Filled variant of UpiAutopayIcon |
+| UpiIcon | UPI (Unified Payments Interface) logo |
+| UploadCloudIcon | Cloud with upload arrow |
+| UploadIcon | Upload arrow for sending files |
+| UserCheckIcon | Person with checkmark for verified user |
+| UserIcon | Single person silhouette |
+| UserMinusIcon | Person with minus sign for removing user |
+| UserPlusIcon | Person with plus sign for adding user |
+| UserXIcon | Person with X for blocked or removed user |
+| UsersIcon | Multiple people for groups or teams |
+| VendorPaymentsIcon | Razorpay product icon for vendor payments |
+| VendorPaymentsFilledIcon | Filled variant of VendorPaymentsIcon |
+| VideoIcon | Video camera for recording |
+| VideoOffIcon | Disabled video camera |
+| ViewLiveDemoIcon | Razorpay icon for viewing live demos |
+| ViewLiveDemoFilledIcon | Filled variant of ViewLiveDemoIcon |
+| VoicemailIcon | Voicemail indicator |
+| VolumeHighIcon | Speaker at high volume |
+| VolumeIcon | Speaker/volume default |
+| VolumeLowIcon | Speaker at low volume |
+| VolumeMuteIcon | Muted speaker with X |
+| VolumeOffIcon | Speaker turned off |
+| VolumeOnIcon | Speaker turned on |
+| WalletIcon | Wallet for payments or money |
+| WatchIcon | Wristwatch or smartwatch |
+| WhatsAppIcon | WhatsApp messaging platform logo |
+| WifiIcon | WiFi connectivity signal |
+| WifiOffIcon | Disabled WiFi |
+| WindIcon | Wind/breeze lines |
+| WorldwideIcon | Globe with meridians for worldwide/global |
+| XCircleIcon | X mark in circle for error or cancel |
+| XSquareIcon | X mark in square for close or remove |
+| YoutubeIcon | YouTube video platform logo |
+| ZapIcon | Lightning bolt for quick actions or energy |
+| ZoomInIcon | Magnifying glass with plus for zoom in |
+| ZoomOutIcon | Magnifying glass with minus for zoom out |",
       "type": "text",
     },
   ],
