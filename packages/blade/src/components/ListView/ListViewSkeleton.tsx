@@ -1,7 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Skeleton } from '~components/Skeleton';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
+import { makeSpace } from '~utils';
 
 type ListViewSkeletonProps = {
   /**
@@ -37,6 +40,26 @@ const CELL_WIDTHS = {
 };
 
 const FILTER_TAB_WIDTHS: SpacingValueType[] = ['80px', '64px', '72px', '70px'];
+
+// Box only allows display "flex"|"none", so we use a styled-component for grid
+// layout — the same pattern used by Table's internal row components.
+// $spacingKey selects which theme.spacing index to use for paddingY:
+//   3 → 8px (header row), 4 → 12px (data rows)
+const StyledGridRow = styled(BaseBox)<{ $columns: number; $spacingKey: 3 | 4 }>(
+  ({ theme, $columns, $spacingKey }) => ({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${$columns}, minmax(100px, 1fr))`,
+    paddingLeft: makeSpace(theme.spacing[5]),
+    paddingRight: makeSpace(theme.spacing[5]),
+    paddingTop: makeSpace(theme.spacing[$spacingKey]),
+    paddingBottom: makeSpace(theme.spacing[$spacingKey]),
+    borderBottomWidth: makeSpace(theme.border.width.thin),
+    borderBottomColor: theme.colors.surface.border.gray.muted,
+    borderBottomStyle: 'solid',
+    gap: makeSpace(theme.spacing[4]),
+    alignItems: 'center',
+  }),
+);
 
 /**
  * `ListViewSkeleton` renders an animated shimmer placeholder that mirrors the
@@ -93,15 +116,10 @@ const ListViewSkeleton = ({
       )}
 
       {/* ── Table header ───────────────────────────────────────────── */}
-      <Box
+      <StyledGridRow
         testID="list-view-skeleton-header"
-        display="grid"
-        gridTemplateColumns={`repeat(${columns}, minmax(100px, 1fr))`}
-        paddingX="spacing.5"
-        paddingY="spacing.3"
-        borderBottomWidth="thin"
-        borderBottomColor="surface.border.gray.muted"
-        gap="spacing.4"
+        $columns={columns}
+        $spacingKey={3}
       >
         {Array.from({ length: columns }).map((_, i) => (
           <Skeleton
@@ -111,22 +129,16 @@ const ListViewSkeleton = ({
             borderRadius="medium"
           />
         ))}
-      </Box>
+      </StyledGridRow>
 
       {/* ── Table rows ─────────────────────────────────────────────── */}
       <Box testID="list-view-skeleton-rows">
         {Array.from({ length: rows }).map((_, rowIdx) => (
-          <Box
+          <StyledGridRow
             key={rowIdx}
             testID={`list-view-skeleton-row-${rowIdx}`}
-            display="grid"
-            gridTemplateColumns={`repeat(${columns}, minmax(100px, 1fr))`}
-            paddingX="spacing.5"
-            paddingY="spacing.4"
-            borderBottomWidth="thin"
-            borderBottomColor="surface.border.gray.muted"
-            gap="spacing.4"
-            alignItems="center"
+            $columns={columns}
+            $spacingKey={4}
           >
             {Array.from({ length: columns }).map((_, colIdx) => {
               const width =
@@ -137,7 +149,7 @@ const ListViewSkeleton = ({
                   : CELL_WIDTHS.middle;
               return <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />;
             })}
-          </Box>
+          </StyledGridRow>
         ))}
       </Box>
 
