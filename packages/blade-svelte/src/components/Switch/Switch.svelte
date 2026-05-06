@@ -52,6 +52,21 @@
       internalChecked = next;
     }
     onChange?.({ isChecked: next, value, event });
+    /* Reconcile the DOM checkbox with the source-of-truth.
+     *
+     * The browser flips `inputEl.checked` synchronously on click, _before_
+     * `onChange` fires. In controlled mode the consumer may choose NOT to
+     * update `isChecked` in their handler (i.e. reject the toggle) — when
+     * that happens, `isCheckedState` does not change, so Svelte's
+     * `checked={isCheckedState}` attribute binding does not re-sync, and
+     * the DOM checkbox is left visually toggled while the source-of-truth
+     * stays at the previous value. Re-asserting the value here keeps the
+     * DOM aligned with whatever the source-of-truth ended up at after
+     * `onChange` ran (uncontrolled → `internalChecked`, controlled → the
+     * parent-supplied `isChecked`). */
+    if (inputEl && inputEl.checked !== isCheckedState) {
+      inputEl.checked = isCheckedState;
+    }
   }
 
   function handlePointerPressedIn(): void {
