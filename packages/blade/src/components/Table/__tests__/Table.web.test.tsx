@@ -1607,7 +1607,7 @@ describe('<Table />', () => {
         pagination={
           <TablePagination
             onPageChange={onPageChange}
-            defaultPageSize={5}
+            defaultPageSize={10}
             onPageSizeChange={onPageSizeChange}
             showPageSizePicker
             showPageNumberSelector
