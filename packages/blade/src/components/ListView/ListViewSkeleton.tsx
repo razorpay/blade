@@ -1,6 +1,7 @@
 import React from 'react';
 import { Skeleton } from '~components/Skeleton';
 import { Box } from '~components/Box';
+import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 
 type ListViewSkeletonProps = {
   /**
@@ -25,12 +26,17 @@ type ListViewSkeletonProps = {
   showPagination?: boolean;
 };
 
-// Widths varied per column position to look like real data
-const getCellWidth = (colIdx: number, total: number): string => {
-  if (colIdx === 0) return '70%';
-  if (colIdx === total - 1) return '50%';
-  return '75%';
+// Widths typed as SpacingValueType so they satisfy Box/Skeleton prop constraints.
+// Values are varied per column position to look like real data rather than a uniform grid.
+const CELL_WIDTHS = {
+  first: '70%' as SpacingValueType,
+  last: '50%' as SpacingValueType,
+  middle: '75%' as SpacingValueType,
+  headerFirst: '80%' as SpacingValueType,
+  headerRest: '60%' as SpacingValueType,
 };
+
+const FILTER_TAB_WIDTHS: SpacingValueType[] = ['80px', '64px', '72px', '70px'];
 
 /**
  * `ListViewSkeleton` renders an animated shimmer placeholder that mirrors the
@@ -59,12 +65,7 @@ const ListViewSkeleton = ({
   showPagination = true,
 }: ListViewSkeletonProps): React.ReactElement => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      width="100%"
-      testID="list-view-skeleton"
-    >
+    <Box display="flex" flexDirection="column" width="100%" testID="list-view-skeleton">
       {/* ── Filter bar ─────────────────────────────────────────────── */}
       {showFilters && (
         <Box
@@ -81,8 +82,8 @@ const ListViewSkeleton = ({
         >
           {/* QuickFilter pill-shaped tab skeletons */}
           <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="center">
-            {([80, 64, 72, 70] as const).map((width, i) => (
-              <Skeleton key={i} width={`${width}px`} height="32px" borderRadius="max" />
+            {FILTER_TAB_WIDTHS.map((width, i) => (
+              <Skeleton key={i} width={width} height="32px" borderRadius="max" />
             ))}
           </Box>
 
@@ -95,7 +96,6 @@ const ListViewSkeleton = ({
       <Box
         testID="list-view-skeleton-header"
         display="grid"
-        // @ts-expect-error gridTemplateColumns is a valid CSS grid property supported via BaseBox
         gridTemplateColumns={`repeat(${columns}, minmax(100px, 1fr))`}
         paddingX="spacing.5"
         paddingY="spacing.3"
@@ -106,7 +106,7 @@ const ListViewSkeleton = ({
         {Array.from({ length: columns }).map((_, i) => (
           <Skeleton
             key={i}
-            width={i === 0 ? '80%' : '60%'}
+            width={i === 0 ? CELL_WIDTHS.headerFirst : CELL_WIDTHS.headerRest}
             height="16px"
             borderRadius="medium"
           />
@@ -120,7 +120,6 @@ const ListViewSkeleton = ({
             key={rowIdx}
             testID={`list-view-skeleton-row-${rowIdx}`}
             display="grid"
-            // @ts-expect-error gridTemplateColumns is a valid CSS grid property supported via BaseBox
             gridTemplateColumns={`repeat(${columns}, minmax(100px, 1fr))`}
             paddingX="spacing.5"
             paddingY="spacing.4"
@@ -129,14 +128,15 @@ const ListViewSkeleton = ({
             gap="spacing.4"
             alignItems="center"
           >
-            {Array.from({ length: columns }).map((_, colIdx) => (
-              <Skeleton
-                key={colIdx}
-                width={getCellWidth(colIdx, columns)}
-                height="14px"
-                borderRadius="medium"
-              />
-            ))}
+            {Array.from({ length: columns }).map((_, colIdx) => {
+              const width =
+                colIdx === 0
+                  ? CELL_WIDTHS.first
+                  : colIdx === columns - 1
+                  ? CELL_WIDTHS.last
+                  : CELL_WIDTHS.middle;
+              return <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />;
+            })}
           </Box>
         ))}
       </Box>
