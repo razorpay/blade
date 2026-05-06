@@ -590,54 +590,65 @@ const _Table = <Item,>({
         ) : (
           <BaseBox
             flex={1}
-            position="relative"
+            display="flex"
+            flexDirection="column"
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             width={isVirtualized ? `100%` : undefined}
             {...makeAnalyticsAttribute(rest)}
           >
-            {isRefreshSpinnerMounted && (
-              <RefreshWrapper
-                position="absolute"
-                width="100%"
-                height="100%"
-                zIndex={refreshWrapperZIndex}
-                backgroundColor="overlay.background.subtle"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
-                isRefreshSpinnerEntering={isRefreshSpinnerEntering}
-                isRefreshSpinnerExiting={isRefreshSpinnerExiting}
-                isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+            {/* Inner box wrapping only toolbar + table so the refresh overlay never covers the pagination */}
+            <BaseBox flex={1} position="relative">
+              {isRefreshSpinnerMounted && (
+                <RefreshWrapper
+                  position="absolute"
+                  width="100%"
+                  height="100%"
+                  zIndex={refreshWrapperZIndex}
+                  backgroundColor="overlay.background.subtle"
+                  justifyContent="center"
+                  alignItems="center"
+                  display="flex"
+                  isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+                  isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+                  isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+                >
+                  <Spinner
+                    color="white"
+                    accessibilityLabel="Refreshing Table"
+                    size="large"
+                    testID="table-refreshing-overlay-spinner"
+                  />
+                </RefreshWrapper>
+              )}
+              {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
+              <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
+              <StyledReactTable
+                role="table"
+                layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
+                data={data}
+                // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+                theme={tableTheme}
+                select={selectionType !== 'none' ? rowSelectConfig : null}
+                sort={sortFunctions ? sort : null}
+                tree={isGrouped ? tree : null}
+                $styledProps={{
+                  height,
+                  width: isVirtualized ? `100%` : undefined,
+                  isVirtualized,
+                  isSelectable: selectionType !== 'none',
+                  showStripedRows,
+                }}
+                pagination={hasPagination ? paginationConfig : null}
+                {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+                {...metaAttribute({ name: MetaConstants.Table })}
+                {...makeAnalyticsAttribute(rest)}
               >
-                <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
-              </RefreshWrapper>
-            )}
-            {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
-            <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
-            <StyledReactTable
-              role="table"
-              layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
-              data={data}
-              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-              theme={tableTheme}
-              select={selectionType !== 'none' ? rowSelectConfig : null}
-              sort={sortFunctions ? sort : null}
-              tree={isGrouped ? tree : null}
-              $styledProps={{
-                height,
-                width: isVirtualized ? `100%` : undefined,
-                isVirtualized,
-                isSelectable: selectionType !== 'none',
-                showStripedRows,
-              }}
-              pagination={hasPagination ? paginationConfig : null}
-              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
-              {...metaAttribute({ name: MetaConstants.Table })}
-              {...makeAnalyticsAttribute(rest)}
-            >
-              {children}
-            </StyledReactTable>
+                {children}
+              </StyledReactTable>
+            </BaseBox>
+            {/* Pagination is rendered outside the refresh overlay so it stays accessible
+                even when the table is refreshing or in an error/retry state */}
             {pagination}
           </BaseBox>
         )}
