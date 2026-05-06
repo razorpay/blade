@@ -1,3 +1,14 @@
+<script module lang="ts">
+  /* Module-level monotonically-increasing counter for AccordionItem ids.
+   *
+   * Using `Math.random()` here would (a) produce different ids on the server
+   * and the client (SSR hydration mismatch on the `id` / `aria-controls`
+   * pair) and (b) collide with non-zero probability. A module-level counter
+   * is deterministic in component-tree order, so SSR and CSR agree, and
+   * collisions are impossible inside a single module load. */
+  let nextAccordionItemUid = 0;
+</script>
+
 <script lang="ts">
   import {
     metaAttribute,
@@ -32,7 +43,8 @@
   );
   const showDivider = $derived(!isLastItem || variant === 'transparent');
 
-  const collapsibleBodyId = `accordion-body-${Math.random().toString(36).slice(2, 9)}`;
+  nextAccordionItemUid += 1;
+  const collapsibleBodyId = `accordion-body-${nextAccordionItemUid}`;
 
   const toggle = () => {
     if (isDisabled) return;
