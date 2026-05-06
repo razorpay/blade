@@ -1,0 +1,6 @@
+packages/blade/src/components/FileUpload/FileUploadItem.tsx
+  f3961d93-6c12-42be-8877-392588dc2ed0:2026-04-27T09:46:13.545Z 114,129-134
+packages/blade/src/components/FileUpload/__tests__/FileUpload.web.test.tsx
+  5c3ed511-54d1-4a9b-83a4-315d786a5601:2026-04-27T10:11:27.951Z 5,186,192,198,207
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"f3961d93-6c12-42be-8877-392588dc2ed0:2026-04-27T09:46:13.545Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 9, "overriden_lines": 0}, "5c3ed511-54d1-4a9b-83a4-315d786a5601:2026-04-27T10:11:27.951Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 5, "overriden_lines": 0}}}
