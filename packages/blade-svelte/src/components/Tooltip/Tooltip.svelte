@@ -147,13 +147,36 @@
   /* Mount the bubble as soon as it should open and keep it mounted until the
    * close transition finishes. We toggle `data-state` so CSS handles the
    * fade/slide; `isMounted` controls whether the DOM node exists at all. */
+  let unmountTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  /* Fallback unmount delay — slightly longer than `--duration-quick` (180ms)
+   * so the `transitionend` listener wins in the happy path, but the bubble
+   * still unmounts when transitions are skipped (`prefers-reduced-motion`,
+   * `--duration-quick: 0s`, or an interrupted transition). Without this,
+   * `isMounted` would remain `true` and leak the portal node. */
+  const UNMOUNT_FALLBACK_MS = 240;
+
   $effect(() => {
+    if (unmountTimeoutId !== null) {
+      clearTimeout(unmountTimeoutId);
+      unmountTimeoutId = null;
+    }
     if (!isOpen) {
       dataState = 'closed';
-      return () => {};
+      if (isMounted) {
+        unmountTimeoutId = setTimeout(() => {
+          unmountTimeoutId = null;
+          if (!isOpen) isMounted = false;
+        }, UNMOUNT_FALLBACK_MS);
+      }
+      return () => {
+        if (unmountTimeoutId !== null) {
+          clearTimeout(unmountTimeoutId);
+          unmountTimeoutId = null;
+        }
+      };
     }
     isMounted = true;
-    // Defer to next frame so `data-state="closed"` paints before "open".
     const id = requestAnimationFrame(() => {
       dataState = 'open';
     });
@@ -162,6 +185,10 @@
 
   function handleBubbleTransitionEnd(): void {
     if (!isOpen && dataState === 'closed') {
+      if (unmountTimeoutId !== null) {
+        clearTimeout(unmountTimeoutId);
+        unmountTimeoutId = null;
+      }
       isMounted = false;
     }
   }
@@ -280,8 +307,8 @@
         class={tooltipArrowClass}
         style={arrowStyle}
         width={ARROW_WIDTH}
-        height={ARROW_WIDTH}
-        viewBox="0 0 {ARROW_WIDTH} {ARROW_WIDTH}"
+        height={ARROW_HEIGHT}
+        viewBox="0 0 {ARROW_WIDTH} {ARROW_HEIGHT}"
         aria-hidden="true"
       >
         <path d={ARROW_PATH} />

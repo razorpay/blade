@@ -71,7 +71,11 @@
   transition: opacity var(--duration-quick) ease, transform var(--duration-quick) ease;
 }
 
-[data-color-scheme='dark'] .bubble {
+/* Dark mode border. Matches the convention in
+ * `@razorpay/blade-core/tokens/theme.css` (`body[data-theme='dark']`),
+ * which the blade-svelte preview script sets on `<body>`. The bubble is
+ * portaled to `document.body`, so this selector resolves correctly. */
+body[data-theme='dark'] .bubble {
   border: var(--border-width-thin) solid hsla(218, 9%, 30%, 1);
 }
 
@@ -115,7 +119,7 @@
   stroke-width: 0;
 }
 
-[data-color-scheme='dark'] .arrow {
+body[data-theme='dark'] .arrow {
   stroke: hsla(218, 9%, 30%, 1);
   stroke-width: 1;
 }
