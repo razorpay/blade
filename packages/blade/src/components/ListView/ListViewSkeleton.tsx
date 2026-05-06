@@ -116,11 +116,7 @@ const ListViewSkeleton = ({
       )}
 
       {/* ── Table header ───────────────────────────────────────────── */}
-      <StyledGridRow
-        testID="list-view-skeleton-header"
-        $columns={columns}
-        $spacingKey={3}
-      >
+      <StyledGridRow testID="list-view-skeleton-header" $columns={columns} $spacingKey={3}>
         {Array.from({ length: columns }).map((_, i) => (
           <Skeleton
             key={i}
