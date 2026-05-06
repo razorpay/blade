@@ -93,6 +93,13 @@
 
   const resolvedSide = $derived(getFloatingPlacementParts(resolvedPlacement)[0]);
 
+  /* Hover open/close delay — mirrors React's BladeProvider FloatingDelayGroup:
+   *   const tooltipDelays = { open: 300, close: 300 }
+   * Focus events bypass the delay (same as floating-ui's useFocus). */
+  const HOVER_OPEN_DELAY = 300;
+  const HOVER_CLOSE_DELAY = 300;
+  let hoverTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
   function notifyOpenChange(next: boolean): void {
     if (isOpen === next) return;
     isOpen = next;
@@ -100,20 +107,42 @@
   }
 
   function handleMouseEnter(): void {
-    notifyOpenChange(true);
+    if (hoverTimeoutId !== null) clearTimeout(hoverTimeoutId);
+    hoverTimeoutId = setTimeout(() => {
+      hoverTimeoutId = null;
+      notifyOpenChange(true);
+    }, HOVER_OPEN_DELAY);
   }
 
   function handleMouseLeave(): void {
-    notifyOpenChange(false);
+    if (hoverTimeoutId !== null) {
+      clearTimeout(hoverTimeoutId);
+      hoverTimeoutId = null;
+    }
+    hoverTimeoutId = setTimeout(() => {
+      hoverTimeoutId = null;
+      notifyOpenChange(false);
+    }, HOVER_CLOSE_DELAY);
   }
 
   function handleFocusIn(): void {
+    if (hoverTimeoutId !== null) {
+      clearTimeout(hoverTimeoutId);
+      hoverTimeoutId = null;
+    }
     notifyOpenChange(true);
   }
 
   function handleFocusOut(): void {
     notifyOpenChange(false);
   }
+
+  /* Clear any pending hover timeout when the component unmounts. */
+  $effect(() => {
+    return () => {
+      if (hoverTimeoutId !== null) clearTimeout(hoverTimeoutId);
+    };
+  });
 
   /* Mount the bubble as soon as it should open and keep it mounted until the
    * close transition finishes. We toggle `data-state` so CSS handles the

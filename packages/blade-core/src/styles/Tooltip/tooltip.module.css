@@ -65,9 +65,10 @@
   -webkit-backdrop-filter: blur(12px);
   pointer-events: none;
   opacity: 0;
-  transition:
-    opacity var(--duration-quick) ease-in-out,
-    transform var(--duration-quick) ease-in-out;
+  /* React parity: `useTransitionStyles` from `@floating-ui/react` does not set
+   * `transition-timing-function`, so the browser default `ease` is used. Match
+   * that here instead of `ease-in-out`. */
+  transition: opacity var(--duration-quick) ease, transform var(--duration-quick) ease;
 }
 
 [data-color-scheme='dark'] .bubble {
@@ -88,22 +89,21 @@
   transform: translate(0, 0);
 }
 
-/* Side-driven enter/exit translate axis. spacing.5 = 16px (matches React
- * `size[4]` initial offset). */
+/* Side-driven enter/exit translate axis. */
 .side-top[data-state='closed'] {
-  transform: translateY(16px);
+  transform: translateY(4px);
 }
 
 .side-bottom[data-state='closed'] {
-  transform: translateY(-16px);
+  transform: translateY(-4px);
 }
 
 .side-left[data-state='closed'] {
-  transform: translateX(16px);
+  transform: translateX(4px);
 }
 
 .side-right[data-state='closed'] {
-  transform: translateX(-16px);
+  transform: translateX(-4px);
 }
 
 /* ===== Arrow ===== */
