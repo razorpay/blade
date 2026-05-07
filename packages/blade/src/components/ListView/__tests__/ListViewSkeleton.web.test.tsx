@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import { ListViewSkeleton } from '../ListViewSkeleton';
+import { ListView } from '../ListView.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ListViewSkeleton />', () => {
@@ -41,6 +42,43 @@ describe('<ListViewSkeleton />', () => {
   it('renders correct number of rows when rows=1', () => {
     const { getByTestId } = renderWithTheme(<ListViewSkeleton rows={1} />);
     expect(getByTestId('list-view-skeleton-row-0')).toBeInTheDocument();
+  });
+
+  // ── columns — context-driven (inside ListView) ──────────────────────────
+
+  it('inherits columns from ListView context when no columns prop is given', () => {
+    const { getAllByTestId } = renderWithTheme(
+      <ListView columns={3}>
+        <ListViewSkeleton rows={1} showFilters={false} showPagination={false} />
+      </ListView>,
+    );
+    // 1 header row + 1 data row = 2 rows total, each with 3 skeleton cells
+    const headerCells = getAllByTestId('list-view-skeleton-header')[0].querySelectorAll(
+      '[data-blade-component="skeleton"]',
+    );
+    expect(headerCells).toHaveLength(3);
+  });
+
+  it('explicit columns prop overrides ListView context', () => {
+    const { getAllByTestId } = renderWithTheme(
+      <ListView columns={3}>
+        <ListViewSkeleton rows={1} columns={2} showFilters={false} showPagination={false} />
+      </ListView>,
+    );
+    const headerCells = getAllByTestId('list-view-skeleton-header')[0].querySelectorAll(
+      '[data-blade-component="skeleton"]',
+    );
+    expect(headerCells).toHaveLength(2);
+  });
+
+  it('falls back to default 5 columns when outside ListView and no columns prop', () => {
+    const { getByTestId } = renderWithTheme(
+      <ListViewSkeleton rows={1} showFilters={false} showPagination={false} />,
+    );
+    const headerCells = getByTestId('list-view-skeleton-header').querySelectorAll(
+      '[data-blade-component="skeleton"]',
+    );
+    expect(headerCells).toHaveLength(5);
   });
 
   // ── showFilters prop ────────────────────────────────────────────────────
@@ -91,9 +129,11 @@ describe('<ListViewSkeleton />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot with showFilters=false and showPagination=false', () => {
+  it('matches snapshot inside ListView with columns from context', () => {
     const { container } = renderWithTheme(
-      <ListViewSkeleton showFilters={false} showPagination={false} rows={3} columns={4} />,
+      <ListView columns={3}>
+        <ListViewSkeleton showFilters={false} showPagination={false} rows={2} />
+      </ListView>,
     );
     expect(container).toMatchSnapshot();
   });

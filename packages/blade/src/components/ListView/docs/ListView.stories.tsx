@@ -2722,24 +2722,33 @@ export const WithDropDownSearchExampleStory = WithDropDownSearchExample.bind({})
 WithDropDownSearchExampleStory.storyName = 'With Dropdown in Search Example';
 
 // ── ListViewSkeleton stories ─────────────────────────────────────────────────
+// Recommended pattern: wrap <ListViewSkeleton> inside <ListView columns={N}>.
+// The skeleton reads the column count from context automatically — no `columns`
+// prop needed on the skeleton itself.
 
 export const SkeletonDefault: StoryFn<typeof ListViewSkeleton> = () => (
   <BaseBox height="100%">
-    <ListViewSkeleton rows={7} columns={5} />
+    <ListView columns={5}>
+      <ListViewSkeleton rows={7} />
+    </ListView>
   </BaseBox>
 );
 SkeletonDefault.storyName = 'Skeleton — Default';
 
 export const SkeletonTableOnly: StoryFn<typeof ListViewSkeleton> = () => (
   <BaseBox height="100%">
-    <ListViewSkeleton rows={6} columns={5} showFilters={false} showPagination={false} />
+    <ListView columns={5}>
+      <ListViewSkeleton rows={6} showFilters={false} showPagination={false} />
+    </ListView>
   </BaseBox>
 );
 SkeletonTableOnly.storyName = 'Skeleton — Table Only (no filters, no pagination)';
 
 export const SkeletonManyColumns: StoryFn<typeof ListViewSkeleton> = () => (
   <BaseBox height="100%">
-    <ListViewSkeleton rows={7} columns={6} />
+    <ListView columns={6}>
+      <ListViewSkeleton rows={7} />
+    </ListView>
   </BaseBox>
 );
 SkeletonManyColumns.storyName = 'Skeleton — Many Columns (6)';
@@ -2776,13 +2785,15 @@ const SkeletonToListViewTransitionExample = (): React.ReactElement => {
 
   const getCount = (s: string): number => skeletonMockNodes.filter((n) => n.status === s).length;
 
-  if (isLoading) {
-    return <ListViewSkeleton rows={7} columns={5} />;
-  }
-
+  // columns={5} is defined once on ListView — the skeleton reads it from context
+  // automatically, so it always renders exactly 5 columns to match the table.
   return (
     <BaseBox height="100%">
-      <ListView>
+      <ListView columns={5}>
+        {isLoading ? (
+          <ListViewSkeleton rows={7} />
+        ) : (
+          <>
         <ListViewFilters
           quickFilters={
             <QuickFilterGroup
@@ -2869,6 +2880,8 @@ const SkeletonToListViewTransitionExample = (): React.ReactElement => {
             </>
           )}
         </Table>
+          </>
+        )}
       </ListView>
     </BaseBox>
   );

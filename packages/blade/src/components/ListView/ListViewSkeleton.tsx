@@ -5,6 +5,7 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 import { makeSpace } from '~utils';
+import { useListViewContext } from './ListViewContext';
 
 type ListViewSkeletonProps = {
   /**
@@ -14,7 +15,15 @@ type ListViewSkeletonProps = {
   rows?: number;
   /**
    * Number of skeleton table columns to render.
-   * @default 5
+   *
+   * When `<ListViewSkeleton>` is placed inside `<ListView columns={N}>`, this
+   * value is automatically inherited from the ListView context — you do **not**
+   * need to pass it manually.
+   *
+   * Only set this explicitly when rendering `<ListViewSkeleton>` outside of a
+   * `<ListView>` wrapper.
+   *
+   * @default inherited from `<ListView columns>` context, or 5
    */
   columns?: number;
   /**
@@ -66,27 +75,45 @@ const StyledGridRow = styled(BaseBox)<{ $columns: number; $spacingKey: 3 | 4 }>(
  * full structure of a `ListView` — QuickFilter tabs, search action area, table
  * header, table rows, and pagination.
  *
- * Use it as a drop-in replacement for `<ListView>` while data is loading.
+ * ### Recommended usage — inside `<ListView>`
  *
- * ### Usage
+ * Place `<ListViewSkeleton>` as a child of `<ListView columns={N}>`. The column
+ * count is inherited automatically via context, so the skeleton always matches
+ * the real table without any extra props.
+ *
  * ```tsx
- * if (isLoading) {
- *   return <ListViewSkeleton rows={7} columns={5} />;
- * }
- * return (
- *   <ListView>
- *     <ListViewFilters ... />
- *     <Table ... />
- *   </ListView>
- * );
+ * <ListView columns={4}>
+ *   {isLoading ? (
+ *     <ListViewSkeleton />
+ *   ) : (
+ *     <>
+ *       <ListViewFilters ... />
+ *       <Table> ... </Table>
+ *     </>
+ *   )}
+ * </ListView>
+ * ```
+ *
+ * ### Standalone usage — outside `<ListView>`
+ *
+ * Pass `columns` explicitly if rendering the skeleton outside a `<ListView>`:
+ *
+ * ```tsx
+ * if (isLoading) return <ListViewSkeleton columns={4} rows={7} />;
+ * return <ListView columns={4}>...</ListView>;
  * ```
  */
 const ListViewSkeleton = ({
   rows = 7,
-  columns = 5,
+  columns: columnsProp,
   showFilters = true,
   showPagination = true,
 }: ListViewSkeletonProps): React.ReactElement => {
+  // When inside a <ListView columns={N}>, inherit the column count automatically.
+  // The explicit prop overrides context (useful for standalone usage outside ListView).
+  const { columns: contextColumns } = useListViewContext();
+  const columns = columnsProp ?? contextColumns;
+
   return (
     <Box display="flex" flexDirection="column" width="100%" testID="list-view-skeleton">
       {/* ── Filter bar ─────────────────────────────────────────────── */}
