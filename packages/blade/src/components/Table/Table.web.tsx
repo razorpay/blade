@@ -589,9 +589,17 @@ const _Table = <Item,>({
           </BaseBox>
         ) : hasPagination ? (
           // When pagination is present, wrap the table content in its own positioned
-          // container so RefreshWrapper (position:absolute, height:100%) is scoped to
-          // the table area only. Pagination sits outside that container as a sibling,
-          // remaining visible and interactive even while the overlay is active.
+          // container so RefreshWrapper is scoped to the table area only. Pagination
+          // sits outside that container as a sibling, remaining visible and interactive
+          // even while the overlay is active.
+          //
+          // Two CSS issues are addressed here:
+          // 1. z-index stacking context: inner BaseBox gets zIndex={0} so it creates
+          //    its own stacking context. Without this, RefreshWrapper's z-index would
+          //    participate in the outer context and paint above the pagination sibling.
+          // 2. height resolution: using top/right/bottom/left (inset) instead of
+          //    height:"100%" because percentage heights require an explicit height on
+          //    the containing block. Inset positioning works regardless.
           <BaseBox
             flex={1}
             display="flex"
@@ -601,12 +609,14 @@ const _Table = <Item,>({
             width={isVirtualized ? `100%` : undefined}
             {...makeAnalyticsAttribute(rest)}
           >
-            <BaseBox flex={1} position="relative">
+            <BaseBox flex={1} position="relative" zIndex={0}>
               {isRefreshSpinnerMounted && (
                 <RefreshWrapper
                   position="absolute"
-                  width="100%"
-                  height="100%"
+                  top="0px"
+                  right="0px"
+                  bottom="0px"
+                  left="0px"
                   zIndex={refreshWrapperZIndex}
                   backgroundColor="overlay.background.subtle"
                   justifyContent="center"
