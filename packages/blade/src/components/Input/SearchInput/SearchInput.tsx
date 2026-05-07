@@ -24,6 +24,8 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+import { useModalContext } from '~components/Modal/ModalContext';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -151,6 +153,10 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  const modalContext = useModalContext();
+
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
@@ -179,6 +185,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     return React.cloneElement(trailingDropdown as React.ReactElement, {
       selectionType: 'single',
       isOpen: isTrailingDropDownOpen,
+      height: '100%',
       onOpenChange: (isOpen: boolean) => {
         setIsTrailingDropDownOpen(isOpen);
       },
@@ -188,6 +195,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           if (child.type === InputDropdownButton) {
             return React.cloneElement(child, {
               _isInsideSearchInput: true,
+              size,
             });
           }
           if (child.type === DropdownOverlay) {
@@ -250,7 +258,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     return null;
   };
 
-  return (
+  const searchContent = (
     <BaseBox position="relative">
       <BaseInput
         id="searchinput"
@@ -295,8 +303,14 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
           }
           onClick?.(e);
         }}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={(e) => {
+          setIsSearchFocused(true);
+          onFocus?.(e);
+        }}
+        onBlur={(e) => {
+          setIsSearchFocused(false);
+          onBlur?.(e);
+        }}
         onSubmit={onSubmit}
         isDisabled={isDisabled}
         leadingIcon={showSearchIcon ? SearchIcon : undefined}
@@ -314,6 +328,14 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         {...rest}
       />
     </BaseBox>
+  );
+
+  return (
+    <TopNavOverlayThemeOverride
+      shouldOverrideTheme={modalContext.isInsideModal ? true : isSearchFocused}
+    >
+      {searchContent}
+    </TopNavOverlayThemeOverride>
   );
 };
 

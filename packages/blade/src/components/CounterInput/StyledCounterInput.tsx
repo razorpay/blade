@@ -44,11 +44,11 @@ const StyledCounterInput = styled(BaseBox)`
 
   /* Animation classes */
   &.__blade-counter-input .__blade-counter-input-animate-slide-up {
-    animation: ${slideUp} 0.3s ease-out;
+    animation: ${slideUp} 0.2s ease-out;
   }
 
   &.__blade-counter-input .__blade-counter-input-animate-slide-down {
-    animation: ${slideDown} 0.3s ease-out;
+    animation: ${slideDown} 0.2s ease-out;
   }
 
   /* Hide number input arrows */

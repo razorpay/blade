@@ -221,7 +221,7 @@ const _InfoItemValue = (
         leading={leading}
         trailing={trailing}
         helpText={helpText}
-        titleWeight="semibold"
+        titleWeight="medium"
         titleColor="surface.text.gray.subtle"
         truncateAfterLines={truncateAfterLines}
         paddingLeft={isHighlighted && itemOrientation === 'vertical' ? 'spacing.4' : 'spacing.0'}

@@ -6,6 +6,7 @@ import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -31,6 +32,7 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
   const { isOpen, close } = useDropdown();
+  const { colorScheme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   return (
@@ -44,6 +46,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
       >
         <AnimatedDropdownOverlay
           isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+          colorScheme={colorScheme}
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"

@@ -1,4 +1,9 @@
-export { subtleFontSizes, normalAmountSizes, amountLineHeights } from './amountTokens';
+export {
+  subtleFontSizes,
+  normalAmountSizes,
+  currencyHardcodedSizes,
+  amountLineHeights,
+} from './amountTokens';
 export type {
   AmountTypeProps,
   AmountBodyProps,

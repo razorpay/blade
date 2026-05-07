@@ -6,7 +6,11 @@
     "**/**.test.tsx",
     "__tests__",
     "**/**.stories.tsx",
-    "**/**.stories.internal.tsx"
+    "**/**.stories.internal.tsx",
+    "**/utils/storybook/**",
+    "**/storybook-recipes/**",
+    "**/components/**/docs/**",
+    "**/*Docs.tsx"
   ],
   "compilerOptions": {
     "declaration": true /* Generates corresponding '.d.ts' file. */,

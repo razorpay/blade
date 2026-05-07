@@ -61,7 +61,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -82,22 +82,25 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
+}
+
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -136,10 +139,11 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -190,7 +194,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -202,7 +206,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -211,7 +215,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -219,16 +223,16 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+.c14.c14.c14.c14.c14 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -236,10 +240,10 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -333,6 +337,7 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -378,12 +383,18 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -427,12 +438,18 @@ exports[`<Chip /> should accept data-analytics-* 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -507,7 +524,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -528,22 +545,25 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
+}
+
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -582,10 +602,11 @@ exports[`<Chip /> should render chip 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -636,7 +657,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -648,7 +669,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -657,7 +678,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -665,16 +686,16 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  color: hsla(211,26%,34%,1);
+.c14.c14.c14.c14.c14 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -682,10 +703,10 @@ exports[`<Chip /> should render chip 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -778,6 +799,7 @@ exports[`<Chip /> should render chip 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -822,12 +844,18 @@ exports[`<Chip /> should render chip 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -870,12 +898,18 @@ exports[`<Chip /> should render chip 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -950,7 +984,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -971,15 +1005,13 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -990,10 +1022,15 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: flex;
 }
 
+.c14.c14.c14.c14.c14 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1032,10 +1069,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
 .c12.c12.c12.c12.c12:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1086,7 +1124,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1098,7 +1136,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1107,7 +1145,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1115,16 +1153,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
-  color: hsla(211,26%,34%,1);
+.c15.c15.c15.c15.c15 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1132,10 +1170,10 @@ exports[`<Chip /> should render chip with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1228,6 +1266,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -1288,28 +1327,34 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           <path
                             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                           />
                           <path
                             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                           />
                           <path
                             clip-rule="evenodd"
                             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
                       </div>
-                      <p
+                      <div
                         class="c14"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c15"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1368,28 +1413,34 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           <path
                             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                           />
                           <path
                             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                           />
                           <path
                             clip-rule="evenodd"
                             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                             data-blade-component="svg-path"
-                            fill="hsla(211, 26%, 34%, 1)"
+                            fill="hsla(200, 10%, 18%, 1)"
                             fill-rule="evenodd"
                           />
                         </svg>
                       </div>
-                      <p
+                      <div
                         class="c14"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c15"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1464,7 +1515,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   border-style: solid;
 }
 
@@ -1485,24 +1536,27 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   border-style: solid;
 }
 
-.c15.c15.c15.c15.c15 {
-  border-color: hsla(211,20%,52%,0.18);
+.c13.c13.c13.c13.c13 {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c16.c16.c16.c16.c16 {
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1519,22 +1573,20 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
 .c10.c10.c10.c10.c10 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(214,40%,92%,1);
+  border-radius: 8px;
+  border-color: hsla(204,8%,88%,1);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1567,10 +1619,10 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1609,18 +1661,20 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
-.c18.c18.c18.c18.c18:hover {
-  background-color: hsla(211,20%,52%,0.06);
+.c19.c19.c19.c19.c19:hover {
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -1671,7 +1725,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1682,7 +1736,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   z-index: 2;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1699,8 +1753,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c14.c14.c14.c14.c14:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c15.c15.c15.c15.c15:focus-visible + div {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1711,8 +1765,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   z-index: 2;
 }
 
-.c14.c14.c14.c14.c14:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+.c15.c15.c15.c15.c15:hover + div {
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1721,7 +1775,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1729,16 +1783,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
-  color: hsla(211,20%,52%,0.32);
+.c14.c14.c14.c14.c14 {
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1746,33 +1800,10 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c19.c19.c19.c19.c19 {
-  color: hsla(211,26%,34%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1783,6 +1814,29 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   overflow-wrap: break-word;
 }
 
+.c20.c20.c20.c20.c20 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
 @media screen and (min-width:320px) {
   .c9.c9.c9.c9.c9 {
     border-style: solid;
@@ -1844,61 +1898,61 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c15.c15.c15.c15.c15 {
+  .c16.c16.c16.c16.c16 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c17.c17.c17.c17.c17 {
+  .c18.c18.c18.c18.c18 {
     border-style: solid;
   }
 }
@@ -1925,6 +1979,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Select fruits
           </p>
@@ -1970,12 +2025,18 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       class="c11 c12"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c13"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c14"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2005,25 +2066,31 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     aria-disabled="false"
                     aria-invalid="false"
                     aria-required="false"
-                    class="c14"
+                    class="c15"
                     role="radio"
                     type="radio"
                     value="mango"
                   />
                   <div
-                    class="c15 c16"
+                    class="c16 c17"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c17 c18"
+                      class="c18 c19"
                       data-blade-component="base-box"
                     >
-                      <p
-                        class="c19"
-                        data-blade-component="text"
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c20"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

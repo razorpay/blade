@@ -40,6 +40,11 @@ type GenUIComponentDefinition<T extends GenUIBaseComponent = GenUIBaseComponent>
   renderer: GenUIComponentRenderer<T>;
   /** Optional: validate if the component name is a valid partial (for streaming) */
   isValidPartial?: (partialName: string) => boolean;
+  /** Optional: animation name */
+  animation?: {
+    /** 'gradient-ring-entry' wraps the component in an AnimatedGradientBorder */
+    name: 'gradient-ring-entry' | (string & Record<never, never>);
+  };
 };
 
 /**

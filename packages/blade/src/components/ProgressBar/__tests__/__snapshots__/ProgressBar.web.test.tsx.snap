@@ -34,11 +34,12 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -58,9 +59,10 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -75,18 +77,18 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -108,6 +110,7 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
         <label
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -118,6 +121,7 @@ exports[`<ProgressBar /> should accept data-analytics attribute 1`] = `
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -185,11 +189,12 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -209,9 +214,10 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 50%;
+  border-radius: 4px;
 }
 
 <div>
@@ -349,7 +355,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -358,7 +364,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="32.98672286269283"
               stroke-width="3px"
@@ -421,36 +427,36 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 0px;
@@ -505,7 +511,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -514,7 +520,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="52.778756580308524"
               stroke-width="3px"
@@ -528,12 +534,14 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
             <p
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               20
               %
@@ -591,25 +599,25 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -617,13 +625,13 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
-  fill: hsla(212,39%,16%,1);
+  fill: hsla(0,0%,2%,1);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -675,7 +683,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               data-blade-component="svg-circle"
               fill="none"
               r="32.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="7px"
             />
             <circle
@@ -684,7 +692,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               cy="36"
               fill="none"
               r="32.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="204.20352248333654"
               stroke-dashoffset="163.36281798666923"
               stroke-width="7px"
@@ -708,6 +716,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
             <p
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
@@ -764,39 +773,39 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
-  fill: hsla(212,39%,16%,1);
+  fill: hsla(0,0%,2%,1);
 }
 
 .c2.c2.c2.c2.c2 {
@@ -848,7 +857,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               data-blade-component="svg-circle"
               fill="none"
               r="21.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="5px"
             />
             <circle
@@ -857,7 +866,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               cy="24"
               fill="none"
               r="21.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="135.0884841043611"
               stroke-dashoffset="108.07078728348888"
               stroke-width="5px"
@@ -881,6 +890,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
             <p
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
@@ -937,36 +947,36 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 0px;
@@ -1021,7 +1031,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -1030,7 +1040,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="52.778756580308524"
               stroke-width="3px"
@@ -1044,12 +1054,14 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
             <p
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               20
               %
@@ -1096,11 +1108,12 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1120,9 +1133,10 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1137,18 +1151,18 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1173,6 +1187,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1243,11 +1258,12 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1267,9 +1283,10 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(200,84%,44%,1);
+  background-color: hsla(200,100%,41%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1284,18 +1301,18 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1320,6 +1337,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1390,11 +1408,12 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1414,9 +1433,10 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1431,18 +1451,18 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1467,6 +1487,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1537,11 +1558,12 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1561,9 +1583,10 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(4,74%,49%,1);
+  background-color: hsla(4,85%,44%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1578,18 +1601,18 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1614,6 +1637,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1684,11 +1708,12 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1708,9 +1733,10 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1725,18 +1751,18 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1761,6 +1787,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1831,11 +1858,12 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1855,9 +1883,10 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,29%,26%,1);
+  background-color: hsla(200,10%,18%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1872,18 +1901,18 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1908,6 +1937,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -1978,11 +2008,12 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2002,9 +2033,10 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2019,18 +2051,18 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2055,6 +2087,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2125,11 +2158,12 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2149,9 +2183,10 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(25,90%,48%,1);
+  background-color: hsla(25,100%,44%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2166,18 +2201,18 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2202,6 +2237,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2272,11 +2308,12 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2296,9 +2333,10 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2313,18 +2351,18 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2349,6 +2387,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2419,11 +2458,12 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2443,9 +2483,10 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(150,100%,32%,1);
+  background-color: hsla(150,100%,28%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -2460,18 +2501,18 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2496,6 +2537,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
           <p
             class="c3"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2566,11 +2608,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2590,24 +2633,25 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2628,6 +2672,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
         <label
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -2638,6 +2683,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2708,11 +2754,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
   overflow: hidden;
   position: relative;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2732,24 +2779,25 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2770,6 +2818,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
         <label
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -2780,6 +2829,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2850,11 +2900,12 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c6.c6.c6.c6.c6 {
@@ -2874,24 +2925,25 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
+  border-radius: 4px;
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2912,6 +2964,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
         <label
           class="c2"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -2922,6 +2975,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
           <p
             class="c2"
             data-blade-component="text"
+            letter-spacing="50"
           >
             20%
           </p>
@@ -2988,11 +3042,12 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3012,9 +3067,10 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 70%;
+  border-radius: 4px;
 }
 
 <div>
@@ -3106,18 +3162,18 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
@@ -3167,7 +3223,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -3176,7 +3232,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="19.792033717615702"
               stroke-width="3px"
@@ -3190,6 +3246,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               70
               %
@@ -3258,11 +3315,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c10.c10.c10.c10.c10 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -3282,9 +3340,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
+  border-radius: 4px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3303,21 +3362,23 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -3326,15 +3387,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3350,8 +3410,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3360,20 +3421,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3438,6 +3501,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         <label
           class="c7"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -3448,6 +3512,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             0%
           </p>
@@ -3540,11 +3605,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   overflow: hidden;
   position: relative;
   height: 2px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 4px;
 }
 
 .c10.c10.c10.c10.c10 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -3564,9 +3630,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  background-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
+  border-radius: 4px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -3585,21 +3652,23 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -3608,15 +3677,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3632,8 +3700,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3642,20 +3711,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3720,6 +3791,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         <label
           class="c7"
           data-blade-component="text"
+          letter-spacing="50"
         >
           Label
         </label>
@@ -3730,6 +3802,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           <p
             class="c7"
             data-blade-component="text"
+            letter-spacing="50"
           >
             0%
           </p>
@@ -3848,39 +3921,41 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 0px;
@@ -3901,15 +3976,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3925,8 +3999,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -3935,20 +4010,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4035,7 +4112,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -4044,7 +4121,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="65.97344572538566"
               stroke-width="3px"
@@ -4058,12 +4135,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             <p
               class="c9"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               0
               %
@@ -4158,39 +4237,41 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 8px;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   margin-top: 0px;
@@ -4211,15 +4292,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -4235,8 +4315,9 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -4245,20 +4326,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -4345,7 +4428,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               data-blade-component="svg-circle"
               fill="none"
               r="10.5"
-              stroke="hsla(211, 20%, 52%, 0.09)"
+              stroke="hsla(206, 10%, 29%, 0.09)"
               stroke-width="3px"
             />
             <circle
@@ -4354,7 +4437,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               cy="12"
               fill="none"
               r="10.5"
-              stroke="hsla(227, 100%, 59%, 1)"
+              stroke="hsla(218, 89%, 51%, 1)"
               stroke-dasharray="65.97344572538566"
               stroke-dashoffset="65.97344572538566"
               stroke-width="3px"
@@ -4368,12 +4451,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             <p
               class="c9"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Label
             </p>
             <p
               class="c10"
               data-blade-component="text"
+              letter-spacing="50"
             >
               0
               %

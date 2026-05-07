@@ -2,11 +2,11 @@ import type { ReactElement } from 'react';
 import React from 'react';
 import type { NavigationButtonProps } from './types';
 import { StyledNavigationButton } from './StyledNavigationButton';
-import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
-import { useTheme } from '~components/BladeProvider';
 import { isReactNative } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
+import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
+import { useTheme } from '~components/BladeProvider';
 
 const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): ReactElement => {
   const { platform } = useTheme();
@@ -30,7 +30,12 @@ const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): Re
 
   return (
     <StyledNavigationButton
-      onClick={onClick}
+      onClick={(e) => {
+        if (e) {
+          e.stopPropagation();
+        }
+        onClick?.(e);
+      }}
       variant={variant}
       {...metaAttribute({ name: 'NavigationButton' })}
       {...makeAccessible({ label: type === 'previous' ? 'Previous Slide' : 'Next Slide' })}

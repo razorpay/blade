@@ -105,18 +105,22 @@ const getTextProps = <T extends { variant: TextVariant }>({
     if (size === 'xsmall') {
       props.fontSize = 25;
       props.lineHeight = 25;
+      props.letterSpacing = 50;
     }
     if (size === 'small') {
       props.fontSize = 75;
       props.lineHeight = 75;
+      props.letterSpacing = 50;
     }
     if (size === 'medium') {
       props.fontSize = 100;
       props.lineHeight = 100;
+      props.letterSpacing = 50;
     }
     if (size === 'large') {
       props.fontSize = 200;
       props.lineHeight = 200;
+      props.letterSpacing = 25;
     }
   }
   if (variant === 'caption') {
@@ -124,11 +128,13 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.fontSize = 50;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
+      props.letterSpacing = 50;
     }
     if (size === 'medium') {
       props.fontSize = 100;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
+      props.letterSpacing = 50;
     }
   }
 

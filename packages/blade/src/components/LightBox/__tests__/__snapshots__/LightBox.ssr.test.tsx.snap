@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LightBox /> should render LightBox in SSR 1`] = `"<div id="root"></div>"`;
+
+exports[`<LightBox /> should render LightBox in SSR 2`] = `
+<div
+  id="root"
+/>
+`;

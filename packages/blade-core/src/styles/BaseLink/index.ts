@@ -5,11 +5,13 @@ import './baseLink.module.css';
 export {
   baseLinkStyles,
   getBaseLinkClasses,
+  getBaseLinkContentClasses,
   getBaseLinkTemplateClasses,
   baseLinkContentClass,
   baseLinkIconClass,
   getLinkColorToken,
   getLinkTextSizes,
+  getLinkIconSizeMap,
 } from './baseLink';
 export type {
   BaseLinkVariants,

@@ -6,13 +6,13 @@ import React from 'react';
 import type { CarouselProps } from './types';
 import { useCarouselContext } from './CarouselContext';
 import { componentIds } from './constants';
-import BaseBox from '~components/Box/BaseBox';
-import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
@@ -65,6 +65,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexGrow: 0,
       flexShrink: 0,
       width: calculatedWidth,
+      height: '100%',
       minHeight: '100%',
       scrollSnapAlign: snapAlign ?? 'start',
       marginLeft: calculatedMarginLeft,

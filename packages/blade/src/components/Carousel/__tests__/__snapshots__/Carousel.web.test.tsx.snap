@@ -6,7 +6,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -24,7 +24,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -40,7 +40,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -58,7 +58,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 .c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -144,7 +144,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -169,7 +169,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -178,7 +178,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -245,7 +245,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -263,7 +263,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;
@@ -278,6 +278,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -295,6 +296,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -449,7 +451,7 @@ exports[`Carousel Snapshots should render 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -467,7 +469,7 @@ exports[`Carousel Snapshots should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -483,7 +485,7 @@ exports[`Carousel Snapshots should render 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -501,7 +503,7 @@ exports[`Carousel Snapshots should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -583,7 +585,7 @@ exports[`Carousel Snapshots should render 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -608,7 +610,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -617,7 +619,7 @@ exports[`Carousel Snapshots should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -681,6 +683,7 @@ exports[`Carousel Snapshots should render 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -831,7 +834,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -849,7 +852,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -865,7 +868,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -883,7 +886,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -956,7 +959,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -981,7 +984,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c2.c2.c2.c2.c2:hover {
@@ -990,7 +993,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 .c2.c2.c2.c2.c2:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1054,6 +1057,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1204,7 +1208,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1222,7 +1226,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1238,7 +1242,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1256,7 +1260,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c12.c12.c12.c12.c12:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1346,7 +1350,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -1371,7 +1375,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c9.c9.c9.c9.c9:hover {
@@ -1380,7 +1384,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1444,6 +1448,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1461,6 +1466,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1646,7 +1652,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1664,7 +1670,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1680,7 +1686,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1698,7 +1704,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1784,7 +1790,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -1809,7 +1815,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -1818,7 +1824,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1885,7 +1891,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1903,7 +1909,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1918,6 +1924,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1935,6 +1942,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 1 - 16px * (1 - 1) / 1);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -2114,7 +2122,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,22%,56%,1);
+  background-color: hsla(204,9%,42%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -2132,7 +2140,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2148,7 +2156,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(211,20%,52%,0.32);
+  background-color: hsla(206,10%,29%,0.18);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -2166,7 +2174,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2248,7 +2256,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(0,0%,100%,0);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,1);
   color: hsla(0,0%,0%,0.72);
   padding: 8px;
@@ -2273,7 +2281,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 160ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -2282,7 +2290,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2346,6 +2354,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: calc(100% / 2 - 16px * (2 - 1) / 2);
+  height: 100%;
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;

@@ -5,7 +5,8 @@ import { makeSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 
 const overlayPaddingX = 'spacing.3';
-const overlayPaddingY = 'spacing.4';
+const overlayPaddingTop = 'spacing.3';
+const overlayPaddingBottom = 'spacing.4';
 const headerMarginBottom = 'spacing.3';
 const footerPaddingTop = 'spacing.3';
 
@@ -31,7 +32,8 @@ const MENU_MIN_WIDTH = {
 
 export {
   overlayPaddingX,
-  overlayPaddingY,
+  overlayPaddingTop,
+  overlayPaddingBottom,
   MENU_MIN_WIDTH,
   getDividerMarginTokens,
   headerMarginBottom,

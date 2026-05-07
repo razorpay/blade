@@ -24,10 +24,11 @@ const TabList = ({
   ...rest
 }: { children: React.ReactNode } & StyledPropsBlade &
   DataAnalyticsAttribute): React.ReactElement => {
-  const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
+  const { setSelectedValue, selectedValue, variant, isVertical, size } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
+  const isCompact = size === 'small' && !isVertical;
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -83,12 +84,12 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: 'medium',
-                        borderWidth: 'thin',
+                        borderRadius: isCompact ? 'large' : 'medium',
+                        borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
-                        padding: 'spacing.2',
+                        padding: isCompact ? 'spacing.1' : 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
-                        backgroundColor: 'surface.background.gray.intense',
+                        backgroundColor: 'interactive.background.gray.faded',
                       }
                     : {
                         padding: 'spacing.0',
@@ -101,7 +102,9 @@ const TabList = ({
             );
           }}
         />
-        {!isVertical ? <TabIndicator tabListContainerRef={tabListContainerRef} /> : null}
+        {!(isVertical && isFilled) ? (
+          <TabIndicator tabListContainerRef={tabListContainerRef} />
+        ) : null}
       </ScrollableArea>
       {/*
         Adding border bottom with an div element, we can't put it on the outer Box of tablist because 

@@ -1,5 +1,5 @@
-import { BaseMenuItem } from '~components/BaseMenu';
 import { isReactNative } from '~utils';
+import { BaseMenuItem } from '~components/BaseMenu';
 
 type QuickSelectionItemProps = {
   children: string;

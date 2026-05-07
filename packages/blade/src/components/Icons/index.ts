@@ -319,6 +319,7 @@ export { default as RefreshIcon } from './RefreshIcon';
 export { default as RepeatIcon } from './RepeatIcon';
 export { default as ReportsIcon } from './ReportsIcon';
 export { default as ResizerIcon } from './ResizerIcon';
+export { default as ReticleIcon } from './ReticleIcon';
 export { default as RewindIcon } from './RewindIcon';
 export { default as RotateClockWiseIcon } from './RotateClockWiseIcon';
 export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseIcon';

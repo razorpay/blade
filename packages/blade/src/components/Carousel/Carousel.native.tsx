@@ -6,17 +6,17 @@ import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
+import type { BladeElementRef } from '~utils/types';
+import { size } from '~tokens/global';
+import { logger } from '~utils/logger';
+import { castNativeType } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { useInterval } from '~utils/useInterval';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
-import { castNativeType } from '~utils';
 import { useId } from '~utils/useId';
-import { logger } from '~utils/logger';
-import { size } from '~tokens/global';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
-import type { BladeElementRef } from '~utils/types';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {

@@ -1,5 +1,39 @@
 # @razorpay/blade-svelte
 
+## 0.6.0
+
+### Minor Changes
+
+- 7cd21cb8a: feat(blade-svelte): add Alert, Avatar, AvatarGroup and Breadcrumb components
+- ae81d7723: feat(blade-svelte): adds card component to blade-svelte
+
+### Patch Changes
+
+- 97a47b788: feat(blade-svelte): add Chip component
+- Updated dependencies [97a47b788]
+- Updated dependencies [7cd21cb8a]
+- Updated dependencies [ae81d7723]
+  - @razorpay/blade-core@0.5.0
+
+## 0.5.1
+
+### Patch Changes
+
+- 8aedb0d26: feat(blade-svelte): add counter component
+- Updated dependencies [8aedb0d26]
+  - @razorpay/blade-core@0.4.1
+
+## 0.5.0
+
+### Minor Changes
+
+- 142949f30: feat: blade spark redesign for blade-core and blade-svelte.
+
+### Patch Changes
+
+- Updated dependencies [142949f30]
+  - @razorpay/blade-core@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes

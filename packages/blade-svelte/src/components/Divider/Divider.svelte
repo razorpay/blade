@@ -46,4 +46,4 @@
   role="separator"
   {...metaAttrs}
   {...rest}
-/>
+></div>
