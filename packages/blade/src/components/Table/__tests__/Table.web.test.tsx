@@ -1602,7 +1602,7 @@ describe('<Table />', () => {
     const onPageSizeChange = jest.fn();
     const { getByLabelText, getByTestId } = renderWithTheme(
       <Table
-        data={{ nodes: nodes.slice(0, 10) }}
+        data={{ nodes }}
         isRefreshing={true}
         pagination={
           <TablePagination
