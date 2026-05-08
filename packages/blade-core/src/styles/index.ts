@@ -109,6 +109,18 @@ export type {
   AccordionButtonBorderVariants,
 } from './Accordion';
 export {
+  skeletonStyles,
+  skeletonClass,
+  getSkeletonClasses,
+  getSkeletonInlineStyle,
+} from './Skeleton';
+export type {
+  SkeletonVariants,
+  SkeletonBorderRadius,
+  SkeletonFlexProps,
+  SkeletonInlineStyleProps,
+} from './Skeleton';
+export {
   cardRootStyles,
   cardSurfaceStyles,
   getCardHeaderClasses,
