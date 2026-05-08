@@ -1,0 +1,172 @@
+/* Toast Base Styles */
+.toast {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding-inline: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-sizing: border-box;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+}
+
+/* Type modifiers */
+.type-informational {
+  /* base spacing already set in .toast */
+}
+
+.type-promotional {
+  background-color: var(--popup-background-gray-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-gray-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+  padding-block: var(--spacing-4);
+}
+
+/* Color × Type compound variants — informational only.
+ * Promotional ignores `color` (matches React: `isPromotional ? gray : color`).
+ */
+.type-informational.color-neutral {
+  background-color: var(--popup-background-neutral-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-neutral-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+}
+
+.type-informational.color-positive {
+  background-color: var(--popup-background-positive-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-positive-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+}
+
+.type-informational.color-negative {
+  background-color: var(--popup-background-negative-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-negative-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+}
+
+.type-informational.color-notice {
+  background-color: var(--popup-background-notice-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-notice-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+}
+
+.type-informational.color-information {
+  background-color: var(--popup-background-information-moderate);
+  box-shadow:
+    inset 0 0 0 1px var(--popup-border-information-moderate),
+    inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted);
+}
+
+/* Icon wrapper — leading icon column.
+ * Informational: vertically centered.
+ * Promotional: top-aligned with a small spacing.1 (2px) push down.
+ */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.type-promotional .icon-wrapper {
+  align-self: flex-start;
+  margin-top: var(--spacing-1);
+}
+
+/* Content column */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding-block: var(--spacing-2);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.type-promotional .content {
+  padding-block: var(--spacing-0);
+}
+
+/* Trailing column — action button + dismiss button */
+.trailing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-left: auto;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.type-promotional .trailing {
+  align-self: flex-start;
+}
+
+/* Dismiss button — mirrors IconButton look (transparent bg, rounded, focus ring) */
+.dismiss-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-medium);
+  color: inherit;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--interactive-border-primary-default);
+    outline-offset: 2px;
+  }
+}
+
+/* Enter / Exit animations.
+ * Driven by `.toast-enter` / `.toast-exit` toggled from `isVisible` in the
+ * Svelte template. Keeps animation declarations in CSS — JS only flips classes.
+ */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.toast-enter {
+  opacity: 0;
+  animation: toastSlideIn var(--duration-gentle) var(--easing-entrance) forwards;
+}
+
+.toast-exit {
+  opacity: 1;
+  animation: toastSlideOut var(--duration-moderate) var(--easing-exit) forwards;
+}
