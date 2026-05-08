@@ -35,12 +35,7 @@ export { default as Counter } from './Counter/Counter.svelte';
 export { default as Divider } from './Divider/Divider.svelte';
 
 // Accordion
-export {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeader,
-  AccordionItemBody,
-} from './Accordion';
+export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
 
 // Switch
 export { default as Switch } from './Switch/Switch.svelte';
