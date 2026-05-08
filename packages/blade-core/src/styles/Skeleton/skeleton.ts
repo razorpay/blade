@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority';
 import { utilityClasses } from '../utilities';
-import { getSpacingValue } from '~utils/styledProps/spacingUtils';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './skeleton.module.css';
+import { getSpacingValue } from '~utils/styledProps/spacingUtils';
 
 export type SkeletonBorderRadius =
   | 'none'
