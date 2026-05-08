@@ -38,6 +38,25 @@ export { default as Divider } from './Divider/Divider.svelte';
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
 
+// Card
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+  CardHeaderAmount,
+  CardHeaderText,
+  CardHeaderLink,
+  CardHeaderIconButton,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from './Card';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';

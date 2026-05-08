@@ -98,6 +98,19 @@ export type { DividerVariants } from './Divider';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
+  cardRootStyles,
+  cardSurfaceStyles,
+  getCardHeaderClasses,
+  getCardFooterClasses,
+  getCardTemplateClasses,
+} from './Card';
+export type {
+  CardRootVariants,
+  CardSurfaceVariants,
+  CardHeaderVariants,
+  CardFooterVariants,
+} from './Card';
+export {
   animatedChipCva,
   getAnimatedChipClasses,
   chipInnerCva,
