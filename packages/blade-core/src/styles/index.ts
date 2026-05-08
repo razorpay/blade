@@ -98,6 +98,18 @@ export type { DividerVariants } from './Divider';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
+  skeletonStyles,
+  skeletonClass,
+  getSkeletonClasses,
+  getSkeletonInlineStyle,
+} from './Skeleton';
+export type {
+  SkeletonVariants,
+  SkeletonBorderRadius,
+  SkeletonFlexProps,
+  SkeletonInlineStyleProps,
+} from './Skeleton';
+export {
   cardRootStyles,
   cardSurfaceStyles,
   getCardHeaderClasses,
