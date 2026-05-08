@@ -108,6 +108,19 @@ export type {
   SkeletonInlineStyleProps,
 } from './Skeleton';
 export {
+  cardRootStyles,
+  cardSurfaceStyles,
+  getCardHeaderClasses,
+  getCardFooterClasses,
+  getCardTemplateClasses,
+} from './Card';
+export type {
+  CardRootVariants,
+  CardSurfaceVariants,
+  CardHeaderVariants,
+  CardFooterVariants,
+} from './Card';
+export {
   animatedChipCva,
   getAnimatedChipClasses,
   chipInnerCva,

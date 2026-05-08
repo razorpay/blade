@@ -37,6 +37,25 @@ export { default as Divider } from './Divider/Divider.svelte';
 export { default as Skeleton } from './Skeleton/Skeleton.svelte';
 export type { SkeletonProps } from './Skeleton/types';
 
+// Card
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+  CardHeaderAmount,
+  CardHeaderText,
+  CardHeaderLink,
+  CardHeaderIconButton,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+} from './Card';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
