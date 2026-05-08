@@ -1,0 +1,6 @@
+packages/blade/.storybook/react-native/Storybook.tsx
+  579c84dc-10a9-4236-b64b-e3a101836df8:2026-05-08T15:36:37.310Z 4,11-29,36
+packages/blade/metro.config.js
+  579c84dc-10a9-4236-b64b-e3a101836df8:2026-05-08T15:56:59.540Z 1,3,5,23-26,28,30-55,57
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"579c84dc-10a9-4236-b64b-e3a101836df8:2026-05-08T15:36:37.310Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 21, "overriden_lines": 0}, "579c84dc-10a9-4236-b64b-e3a101836df8:2026-05-08T15:56:59.540Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 35, "overriden_lines": 0}}}
