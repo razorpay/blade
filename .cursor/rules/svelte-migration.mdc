@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Blade Svelte Migration — Critical Rules
 
-> Include this file at the start of every sub-agent prompt.
+> Include this file at the start of every agent prompt.
 
 ## Architecture
 
@@ -59,6 +59,8 @@ These Blade dependencies do NOT need migration — use the listed workaround:
 - `Box` / `BaseBox` → use `<div>` with classes (no migration needed)
 - `Icons` → placeholder prop type (`IconComponent = unknown`)
 - `blade-core` (`~utils/`, `~tokens/`) → already framework-agnostic, import directly
+
+When editing this list, mirror the change in `.cursor/commands/migrate-to-svelte.md` Step 2.
 
 ## Key References
 

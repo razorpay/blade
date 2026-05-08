@@ -57,7 +57,10 @@ if (typeof window !== 'undefined') {
 /** @type { import('@storybook/svelte-vite').Preview } */
 const preview = {
   parameters: {
-    // Disable snapshot by default (similar to React setup)
+    // Opt out of Storybook's default `.sb-main-padded` 1rem body padding so the
+    // canvas chrome defined in preview.css (`#storybook-root` / `.docs-story`)
+    // is the single source of truth — matches React blade's StoryCanvas decorator.
+    layout: 'fullscreen',
     chromatic: {
       disableSnapshot: true,
       pauseAnimationAtEnd: true,

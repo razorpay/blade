@@ -42,6 +42,10 @@ export {
   AccordionItemBody,
 } from './Accordion';
 
+// Switch
+export { default as Switch } from './Switch/Switch.svelte';
+export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
+
 // Card
 export {
   Card,
@@ -74,6 +78,21 @@ export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
 // Breadcrumb
 export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
 export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
+
+// Toast
+export { default as Toast } from './Toast/Toast.svelte';
+export { default as ToastContainer } from './Toast/ToastContainer.svelte';
+export { useToast } from './Toast/useToast';
+export type {
+  ToastProps,
+  ToastContainerProps,
+  ToastType,
+  ToastColor,
+  ToastAction,
+  ToastCallbackPayload,
+  BladeToast,
+  UseToastReturn,
+} from './Toast/types';
 
 // BladeProvider
 export * from './BladeProvider';
