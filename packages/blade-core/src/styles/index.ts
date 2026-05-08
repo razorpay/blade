@@ -95,6 +95,21 @@ export {
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
+export type { SwitchSize, SwitchVariants } from './Switch';
+export {
+  cardRootStyles,
+  cardSurfaceStyles,
+  getCardHeaderClasses,
+  getCardFooterClasses,
+  getCardTemplateClasses,
+} from './Card';
+export type {
+  CardRootVariants,
+  CardSurfaceVariants,
+  CardHeaderVariants,
+  CardFooterVariants,
+} from './Card';
 export {
   animatedChipCva,
   getAnimatedChipClasses,
@@ -190,3 +205,39 @@ export {
   tooltipContentClass,
 } from './Tooltip';
 export type { TooltipVariants, TooltipPlacementSide } from './Tooltip';
+export {
+  toastStyles,
+  getToastClasses,
+  getToastTemplateClasses,
+  getToastContainerTemplateClasses,
+  getToastIconColorToken,
+  getToastTextColorToken,
+  getToastActionButtonProps,
+  getToastWrapperOpacity,
+  calculateToastYPosition,
+  toastIconWrapperClass,
+  toastContentClass,
+  toastTrailingClass,
+  toastDismissButtonClass,
+  toastEnterClass,
+  toastExitClass,
+  toastContainerClass,
+  toastHoverRegionClass,
+  toastWrapperClass,
+  TOAST_MAX_WIDTH,
+  TOAST_Z_INDEX,
+  GUTTER,
+  PEEK_GUTTER,
+  CONTAINER_GUTTER_MOBILE,
+  CONTAINER_GUTTER_DESKTOP,
+  SCALE_FACTOR,
+  MAX_TOASTS,
+  MIN_TOAST_MOBILE,
+  MIN_TOAST_DESKTOP,
+  PEEKS,
+} from './Toast';
+export type {
+  ToastVariants,
+  ToastColor as ToastColorVariant,
+  ToastType as ToastTypeVariant,
+} from './Toast';

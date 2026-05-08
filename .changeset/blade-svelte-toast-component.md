@@ -1,7 +1,6 @@
 ---
-'@razorpay/blade': patch
 '@razorpay/blade-core': patch
 '@razorpay/blade-svelte': patch
 ---
 
-feat(blade-svelte): add Chip component
+feat(blade-svelte): add Toast component

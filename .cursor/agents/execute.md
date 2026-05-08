@@ -8,30 +8,38 @@ You are a Lead Frontend Engineer. You are skilled in React and Svelte frontend f
 
 # Execute Agent
 
-> Phase 3: Create all component files following the migration plan.
-> Operates in two modes: Full (new component) and Patch (fix API gaps).
-
-> You ARE the executor. Execute these steps inline. Do NOT invoke `run-agent` — that is the orchestrator's role.
+> You ARE the executor. Operates in two modes: Full (new component) and Patch (fix API gaps).
 
 ## Include
 
-Read `.cursor/rules/svelte-migration.mdc` before starting.
+Read these before starting:
+
+1. `.cursor/rules/svelte-migration.mdc`
+2. `.cursor/rules/agent-base-directory.mdc`
 
 ## Input
 
+The orchestrator passes these via your prompt:
+
+- Component name
+- Mode: `Full` or `Patch`
+- **`Worktree`**: absolute path to the component's git worktree
+
 **Full Mode:**
 
-- `.cursor/artifacts/{Name}/migration-plan.md` (guide)
-- `packages/blade/src/components/{Name}/` (source of truth)
+- Migration plan: `{Worktree}/.cursor/artifacts/{Name}/migration-plan.md` (guide)
+- React source: `{Worktree}/packages/blade/src/components/{Name}/` (source of truth)
 
 **Patch Mode:**
 
-- `.cursor/artifacts/{Name}/patch-request.md` (from Verify agent)
+- Patch request: `{Worktree}/.cursor/artifacts/{Name}/patch-request.md` (from Verify agent)
 
 ## Output
 
-- All component files created/updated on disk
+- All component files created/updated under `{Worktree}/packages/...`
 - Returns control to Verify agent
+
+> Path resolution: see `agent-base-directory.mdc`. All Read/Write/StrReplace paths MUST be prefixed with `{Worktree}`. Shell commands use `working_directory: {Worktree}` (or a `{Worktree}/packages/...` subdirectory for builds).
 
 ---
 
@@ -43,7 +51,7 @@ Create files in this exact order (types before components, base before wrapper):
 
 1. **Types** — `blade-svelte/src/components/{Name}/types.ts`
 2. **Base types** (if two-layer) — `blade-svelte/src/components/{Name}/Base{Name}/types.ts`
-2.5. **Styled-Component Cross-Reference** — read React source before writing CSS (see below)
+   2.5. **Styled-Component Cross-Reference** — read React source before writing CSS (see below)
 3. **CSS module** — `blade-core/src/styles/{Name}/{name}.module.css`
 4. **CVA wrapper** — `blade-core/src/styles/{Name}/{name}.ts`
 5. **Base component** (if two-layer) — `blade-svelte/src/components/{Name}/Base{Name}/Base{Name}.svelte`
@@ -285,9 +293,9 @@ Also check `blade-core/src/utils/index.ts` if any new utilities were created.
 After creating all files, run:
 
 ```bash
-cd packages/blade-core && npm run build
-cd packages/blade-svelte && npm run svelte-check
-cd packages/blade-svelte && npm run build
+cd packages/blade-core && yarn build
+cd packages/blade-svelte && yarn svelte-check
+cd packages/blade-svelte && yarn build
 ```
 
 If errors occur, fix them (max 3 retries). Common fixes:
@@ -304,7 +312,7 @@ Triggered by the Verify agent when API parity check finds missing items.
 
 ### Input
 
-Read `.cursor/artifacts/{Name}/patch-request.md`:
+Read `{Worktree}/.cursor/artifacts/{Name}/patch-request.md`:
 
 ```markdown
 ## Patch Request for {ComponentName}
@@ -335,8 +343,8 @@ Read `.cursor/artifacts/{Name}/patch-request.md`:
 After applying patches, run:
 
 ```bash
-cd packages/blade-core && npm run build
-cd packages/blade-svelte && npm run svelte-check
+cd packages/blade-core && yarn build
+cd packages/blade-svelte && yarn svelte-check
 ```
 
 If errors occur, fix them (max 3 retries).

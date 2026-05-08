@@ -1,11 +1,13 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { AnimatePresence, m as motion } from 'framer-motion';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { InlineColorPicker } from './ColorPicker';
 import {
+  DEFAULT_GRADIENT_STOPS,
   generateGradientCanvas,
   renderGradientPreview,
-  DEFAULT_GRADIENT_STOPS,
 } from './gradientUtils';
 import type { GradientStop } from './gradientUtils';
 
@@ -239,6 +241,8 @@ export function GradientEditor({ onChange }: GradientEditorProps): React.ReactEl
   const [draggingIdx, setDraggingIdx] = useState<number | null>(null);
   const [saveLabel, setSaveLabel] = useState('');
   const [showSaveInput, setShowSaveInput] = useState(false);
+  // Which stop's colour picker is currently expanded (by origIdx). null = none.
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const previewRef = useRef<HTMLCanvasElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const saveLabelRef = useRef<HTMLInputElement>(null);
@@ -533,102 +537,123 @@ export function GradientEditor({ onChange }: GradientEditorProps): React.ReactEl
           display: 'flex',
           flexDirection: 'column',
           gap: '6px',
-          maxHeight: '240px',
+          maxHeight: '480px',
           overflowY: 'auto',
         }}
       >
-        {sorted.map(({ color, position, origIdx }) => (
-          <div
-            key={`${origIdx}-${color}-${position}`}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#16213e',
-              borderRadius: '8px',
-              padding: '6px 10px',
-            }}
-          >
-            {/* Color swatch / picker */}
-            <div style={{ position: 'relative', flexShrink: 0 }}>
+        {sorted.map(({ color, position, origIdx }) => {
+          const isOpen = openIdx === origIdx;
+          return (
+            <div key={`${origIdx}-${color}-${position}`}>
+              {/* ── Stop row ── */}
               <div
                 style={{
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '6px',
-                  background: color,
-                  border: '2px solid #444',
-                  cursor: 'pointer',
-                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: '#16213e',
+                  // Square the bottom corners when the picker is open so the
+                  // expanded section attaches flush to the row.
+                  borderRadius: isOpen ? '8px 8px 0 0' : '8px',
+                  padding: '6px 10px',
+                  transition: 'border-radius 0.15s',
                 }}
               >
-                <input
-                  type="color"
-                  value={color}
-                  onChange={(e) => updateColor(origIdx, e.target.value)}
+                {/* Colour swatch — clicking toggles the inline picker */}
+                <button
+                  title={isOpen ? 'Close colour picker' : 'Open colour picker'}
+                  onClick={() => setOpenIdx(isOpen ? null : origIdx)}
                   style={{
-                    opacity: 0,
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
+                    width: '28px',
+                    height: '28px',
+                    flexShrink: 0,
+                    borderRadius: '6px',
+                    background: color,
+                    border: `2px solid ${isOpen ? '#6060a8' : '#444'}`,
                     cursor: 'pointer',
                     padding: 0,
-                    border: 'none',
+                    transition: 'border-color 0.15s, box-shadow 0.15s',
+                    boxShadow: isOpen ? '0 0 0 3px rgba(96,96,168,0.25)' : 'none',
                   }}
                 />
+
+                {/* Hex input — stays in sync with the inline picker */}
+                <HexColorInput
+                  value={color}
+                  onChange={(newColor) => updateColor(origIdx, newColor)}
+                />
+
+                {/* Position slider */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }}>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={Math.round(position * 100)}
+                    onChange={(e) => updatePosition(origIdx, parseInt(e.target.value, 10) / 100)}
+                    style={{ flex: 1, accentColor: '#7c3aed' }}
+                  />
+                  <span
+                    style={{
+                      color: '#8892a4',
+                      fontSize: '11px',
+                      minWidth: '30px',
+                      textAlign: 'right',
+                    }}
+                  >
+                    {Math.round(position * 100)}%
+                  </span>
+                </div>
+
+                {/* Remove button */}
+                <button
+                  onClick={() => {
+                    if (isOpen) setOpenIdx(null);
+                    removeStop(origIdx);
+                  }}
+                  disabled={stops.length <= 2}
+                  title={stops.length <= 2 ? 'Need at least 2 stops' : 'Remove stop'}
+                  style={{
+                    background: stops.length <= 2 ? 'transparent' : '#2a1a1a',
+                    border: `1px solid ${stops.length <= 2 ? '#2a2a2a' : '#6b2222'}`,
+                    color: stops.length <= 2 ? '#333' : '#f87171',
+                    cursor: stops.length <= 2 ? 'not-allowed' : 'pointer',
+                    fontSize: '14px',
+                    lineHeight: 1,
+                    padding: '5px 8px',
+                    borderRadius: '6px',
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  🗑
+                </button>
               </div>
+
+              {/* ── Inline colour picker (expands below the row) ── */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key={`picker-${origIdx}`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <InlineColorPicker
+                      value={color}
+                      onChange={(hex) => updateColor(origIdx, hex)}
+                      onRequestClose={() => setOpenIdx(null)}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-
-            {/* Hex input */}
-            <HexColorInput value={color} onChange={(newColor) => updateColor(origIdx, newColor)} />
-
-            {/* Position slider */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }}>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={Math.round(position * 100)}
-                onChange={(e) => updatePosition(origIdx, parseInt(e.target.value, 10) / 100)}
-                style={{ flex: 1, accentColor: '#7c3aed' }}
-              />
-              <span
-                style={{
-                  color: '#8892a4',
-                  fontSize: '11px',
-                  minWidth: '30px',
-                  textAlign: 'right',
-                }}
-              >
-                {Math.round(position * 100)}%
-              </span>
-            </div>
-
-            {/* Remove button */}
-            <button
-              onClick={() => removeStop(origIdx)}
-              disabled={stops.length <= 2}
-              title={stops.length <= 2 ? 'Need at least 2 stops' : 'Remove stop'}
-              style={{
-                background: stops.length <= 2 ? 'transparent' : '#2a1a1a',
-                border: `1px solid ${stops.length <= 2 ? '#2a2a2a' : '#6b2222'}`,
-                color: stops.length <= 2 ? '#333' : '#f87171',
-                cursor: stops.length <= 2 ? 'not-allowed' : 'pointer',
-                fontSize: '14px',
-                lineHeight: 1,
-                padding: '5px 8px',
-                borderRadius: '6px',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              🗑
-            </button>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Built-in feedback state presets */}
