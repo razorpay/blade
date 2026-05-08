@@ -1,8 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { AnimatePresence } from 'framer-motion';
-import { m as motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { InlineColorPicker } from './ColorPicker';
 import {
