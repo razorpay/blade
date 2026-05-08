@@ -52,7 +52,12 @@ export const getAccordionButtonBorderClasses = cva('', {
   },
   compoundVariants: [
     { variant: 'filled', isFirstItem: true, class: styles.filledFirstItem },
-    { variant: 'filled', isLastItem: true, isExpanded: false, class: styles.filledLastItemCollapsed },
+    {
+      variant: 'filled',
+      isLastItem: true,
+      isExpanded: false,
+      class: styles.filledLastItemCollapsed,
+    },
     {
       variant: 'filled',
       isFirstItem: true,
@@ -70,7 +75,7 @@ export const getAccordionButtonBorderClasses = cva('', {
   ],
 });
 
-export const getAccordionTemplateClasses = () => ({
+export const getAccordionTemplateClasses = (): Record<string, string> => ({
   wrapper: styles.wrapper,
   filled: styles.filled,
   transparent: styles.transparent,
