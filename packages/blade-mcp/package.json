@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-mcp",
-  "version": "1.26.1",
+  "version": "1.27.0",
   "description": "Model Context Protocol server for Blade",
   "main": "dist/exports.js",
   "type": "module",
@@ -16,6 +16,7 @@
     "dist",
     "knowledgebase",
     "cursorRules",
+    "skillTemplate",
     "base-blade-template"
   ],
   "scripts": {

@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useTopNavContext } from '../TopNavContext';
 import { TabNavContext } from './TabNavContext';
 import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
@@ -43,6 +44,8 @@ const TabNav = ({
 }: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
   const itemsRowRef = React.useRef<HTMLDivElement>(null);
+  const topNavContext = useTopNavContext();
+  const isPrimaryVariant = topNavContext?.variant === 'primary';
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
@@ -109,7 +112,7 @@ const TabNav = ({
             position="relative"
           >
             {children({ items: _items, overflowingItems })}
-            <TabNavIndicator containerRef={itemsRowRef} />
+            <TabNavIndicator containerRef={itemsRowRef} showGlow={!isPrimaryVariant} />
           </BaseBox>
         </BaseBox>
       </BaseBox>

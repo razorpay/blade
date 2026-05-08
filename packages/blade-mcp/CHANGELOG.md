@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.27.0
+
+### Minor Changes
+
+- 8f0547610: feat(blade-mcp): move from cursor to claude-code compatible guidelines
+
 ## 1.26.1
 
 ### Patch Changes
