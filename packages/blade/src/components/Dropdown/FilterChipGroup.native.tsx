@@ -1,12 +1,61 @@
-import { throwBladeError } from '~utils/logger';
+import { useState } from 'react';
+import { useListViewFilterContext } from '../ListView/ListViewFiltersContext.native';
+import type { FilterChipGroupProps } from './types';
+import { FilterChipGroupProvider } from './FilterChipGroupContext.native';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import BaseBox from '~components/Box/BaseBox';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { Link } from '~components/Link';
 
-const FilterChipGroup = (_props: unknown): React.ReactElement => {
-  throwBladeError({
-    message: 'FilterChipGroup is not yet implemented for native',
-    moduleName: 'FilterChipGroup',
-  });
-
-  return <></>;
+const FilterChipGroup = ({
+  testID,
+  children,
+  showClearButton = true,
+  onClearButtonClick,
+  ...rest
+}: FilterChipGroupProps): React.ReactElement => {
+  const [filterChipGroupSelectedFilters, setFilterChipGroupSelectedFilters] = useState<string[]>(
+    [],
+  );
+  const [clearFilterCallbackTriggerer, setClearFilterCallbackTriggerer] = useState<number>(0);
+  const { selectedFiltersCount, setListViewSelectedFilters } = useListViewFilterContext();
+  const handleClearButtonClick = (): void => {
+    onClearButtonClick?.();
+    setListViewSelectedFilters({});
+    setFilterChipGroupSelectedFilters([]);
+    setClearFilterCallbackTriggerer((prev) => prev + 1);
+  };
+  return (
+    <FilterChipGroupProvider
+      value={{
+        filterChipGroupSelectedFilters,
+        setFilterChipGroupSelectedFilters,
+        clearFilterCallbackTriggerer,
+        setClearFilterCallbackTriggerer,
+      }}
+    >
+      <BaseBox
+        {...metaAttribute({ name: MetaConstants.FilterChipGroup, testID })}
+        {...makeAnalyticsAttribute(rest)}
+        display="flex"
+        flexDirection="row"
+        padding={['spacing.4', 'spacing.1']}
+        alignItems="center"
+        justifyContent="flex-start"
+        width="100%"
+        gap="spacing.3"
+        flexWrap="wrap"
+      >
+        {children}
+        {showClearButton &&
+        (filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0) ? (
+          <Link size="xsmall" color="neutral" onClick={handleClearButtonClick}>{`Clear Filter${
+            filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1 ? 's' : ''
+          }`}</Link>
+        ) : null}
+      </BaseBox>
+    </FilterChipGroupProvider>
+  );
 };
 
 export { FilterChipGroup };

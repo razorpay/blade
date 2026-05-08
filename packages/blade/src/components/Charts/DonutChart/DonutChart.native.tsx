@@ -1,10 +1,11 @@
 import React from 'react';
 import type { ChartDonutWrapperProps, ChartDonutProps, ChartDonutCellProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ChartDonutWrapper = (_prop: ChartDonutWrapperProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartDonutWrapper is not yet implemented for native',
     moduleName: 'ChartDonutWrapper',
   });
@@ -13,7 +14,8 @@ const ChartDonutWrapper = (_prop: ChartDonutWrapperProps): React.ReactElement =>
 };
 
 const ChartDonut = (_prop: ChartDonutProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartDonut is not yet implemented for native',
     moduleName: 'ChartDonut',
   });
@@ -22,7 +24,8 @@ const ChartDonut = (_prop: ChartDonutProps): React.ReactElement => {
 };
 
 const ChartDonutCell = (_prop: ChartDonutCellProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartDonutCell is not yet implemented for native',
     moduleName: 'ChartDonutCell',
   });

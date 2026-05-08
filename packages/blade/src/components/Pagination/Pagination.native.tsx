@@ -1,10 +1,11 @@
 import React from 'react';
 import type { PaginationProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const Pagination = (_prop: PaginationProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'Pagination is not yet implemented for native',
     moduleName: 'Pagination',
   });

@@ -1,13 +1,8 @@
+const path = require('path');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { withStorybook } = require('@storybook/react-native/metro/withStorybook');
 
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * @type {import('metro-config').MetroConfig}
- */
-
-// eslint-disable-next-line import/no-extraneous-dependencies
+const defaultConfig = getDefaultConfig(__dirname);
 
 const config = {
   resetCache: true,
@@ -25,4 +20,38 @@ const config = {
   },
 };
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+const merged = withStorybook(mergeConfig(defaultConfig, config), {
+  enabled: true,
+  configPath: path.resolve(__dirname, '.storybook/react-native'),
+});
+
+const originalResolveRequest = merged.resolver.resolveRequest;
+
+merged.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName.endsWith('.css')) {
+    return { type: 'empty' };
+  }
+  if (moduleName === 'react-pdf' || moduleName.startsWith('react-pdf/')) {
+    return {
+      type: 'sourceFile',
+      filePath: path.resolve(__dirname, '.storybook/react-native/mocks/react-pdf.js'),
+    };
+  }
+  if (moduleName === 'pdfjs-dist' || moduleName.startsWith('pdfjs-dist/')) {
+    return { type: 'empty' };
+  }
+  // Fix: @storybook/react-native self-references @storybook/react/entry-preview-docs
+  // but withStorybook rewrites it incorrectly. Resolve directly to the actual file.
+  if (moduleName.includes('entry-preview-docs')) {
+    return {
+      type: 'sourceFile',
+      filePath: path.resolve(__dirname, 'node_modules/@storybook/react/dist/entry-preview-docs.js'),
+    };
+  }
+  if (originalResolveRequest) {
+    return originalResolveRequest(context, moduleName, platform);
+  }
+  return context.resolveRequest(context, moduleName, platform);
+};
+
+module.exports = merged;

@@ -7,20 +7,18 @@ import type {
   ChartLegendProps,
   ChartCartesianGridProps,
 } from './types';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 import { Text } from '~components/Typography';
 
 const ChartXAxis: React.FC<ChartXAxisProps> = () => {
-  throwBladeError({
-    message: 'XAxis is not yet implemented for native',
-    moduleName: 'XAxis',
-  });
+  logger({ type: 'warn', message: 'XAxis is not yet implemented for native', moduleName: 'XAxis' });
 
   return <Text>LineChart is not available for Native mobile apps.</Text>;
 };
 
 const ChartYAxis: React.FC<ChartYAxisProps> = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartYAxis is not yet implemented for native',
     moduleName: 'ChartYAxis',
   });
@@ -29,7 +27,8 @@ const ChartYAxis: React.FC<ChartYAxisProps> = () => {
 };
 
 const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartCartesianGrid is not yet implemented for native',
     moduleName: 'ChartCartesianGrid',
   });
@@ -38,7 +37,8 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = () => {
 };
 
 const ChartTooltip: React.FC<ChartTooltipProps> = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartTooltip is not yet implemented for native',
     moduleName: 'ChartTooltip',
   });
@@ -47,7 +47,8 @@ const ChartTooltip: React.FC<ChartTooltipProps> = () => {
 };
 
 const ChartLegend: React.FC<ChartLegendProps> = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartLegend is not yet implemented for native',
     moduleName: 'ChartLegend',
   });
@@ -56,10 +57,7 @@ const ChartLegend: React.FC<ChartLegendProps> = () => {
 };
 
 const ChartReferenceLine: React.FC<ChartReferenceLineProps> = () => {
-  throwBladeError({
-    message: 'XAxis is not yet implemented for native',
-    moduleName: 'XAxis',
-  });
+  logger({ type: 'warn', message: 'XAxis is not yet implemented for native', moduleName: 'XAxis' });
 
   return <Text>XAxis is not available for Native mobile apps.</Text>;
 };

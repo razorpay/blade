@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const TimePicker = (_props: any): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'TimePicker is not yet implemented for native',
     moduleName: 'TimePicker',
   });

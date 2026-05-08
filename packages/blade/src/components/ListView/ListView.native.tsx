@@ -1,10 +1,11 @@
 import React from 'react';
 import type { ListViewProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ListView = (_prop: ListViewProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ListView is not yet implemented for native',
     moduleName: 'ListView',
   });

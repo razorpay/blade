@@ -1,9 +1,10 @@
 import type { SideNavFooterProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const SideNavFooter = (_props: SideNavFooterProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'SideNavFooter is not yet implemented for native',
     moduleName: 'SideNavFooter',
   });

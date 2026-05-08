@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import type { FileUploadProps } from './types';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const FileUpload = (_props: FileUploadProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'FileUpload is not yet implemented for React Native',
     moduleName: 'FileUpload',
   });

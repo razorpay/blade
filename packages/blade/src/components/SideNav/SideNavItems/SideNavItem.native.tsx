@@ -1,9 +1,10 @@
 import type { SideNavItemProps } from '../types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const SideNavItem = (_props: SideNavItemProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'SideNavItem is not yet implemented for native',
     moduleName: 'SideNavItem',
   });

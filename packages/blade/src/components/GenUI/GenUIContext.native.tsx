@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { GenUIAction } from './types';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 type GenUIContextValue = any;
 const GenUIContext = React.createContext<GenUIContextValue | null>(null);
@@ -11,7 +11,8 @@ const GenUIContext = React.createContext<GenUIContextValue | null>(null);
  * @throws Error if used outside GenUIProvider
  */
 const useGenUI = (): GenUIContextValue => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'useGenUI is not yet implemented for React Native',
     moduleName: 'useGenUI',
   });
@@ -22,7 +23,8 @@ const useGenUI = (): GenUIContextValue => {
  * Hook to access action click handler (safe version that doesn't throw)
  */
 const useGenUIAction = (): ((action: GenUIAction) => void) | undefined => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'useGenUIAction is not yet implemented for React Native',
     moduleName: 'useGenUIAction',
   });

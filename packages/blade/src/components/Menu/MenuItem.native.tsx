@@ -1,9 +1,10 @@
 import type { MenuItemProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const MenuItem = (_props: MenuItemProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'MenuItem is not yet implemented for native',
     moduleName: 'MenuItem',
   });

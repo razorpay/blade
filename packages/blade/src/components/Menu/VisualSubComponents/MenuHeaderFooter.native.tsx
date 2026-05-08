@@ -1,9 +1,10 @@
 import type { MenuHeaderProps, MenuFooterProps } from '../types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const MenuHeader = (_props: MenuHeaderProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'MenuHeader is not yet implemented for native',
     moduleName: 'MenuHeader',
   });
@@ -12,7 +13,8 @@ const MenuHeader = (_props: MenuHeaderProps): React.ReactElement => {
 };
 
 const MenuFooter = (_props: MenuFooterProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'MenuFooter is not yet implemented for native',
     moduleName: 'MenuFooter',
   });

@@ -1,9 +1,10 @@
 import type { StepItemProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const StepItem = (_props: StepItemProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'StepItem is not yet implemented for native',
     moduleName: 'StepItem',
   });

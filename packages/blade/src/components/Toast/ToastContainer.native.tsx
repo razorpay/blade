@@ -1,7 +1,8 @@
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ToastContainer = (): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ToastContainer is not yet implemented for native',
     moduleName: 'ToastContainer',
   });

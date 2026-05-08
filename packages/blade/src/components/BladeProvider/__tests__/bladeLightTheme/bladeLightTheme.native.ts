@@ -10,7 +10,6 @@ const bladeLightTheme: Theme = {
   breakpoints: bladeTheme.breakpoints,
   elevation: bladeTheme.elevation.onLight,
   typography: bladeTheme.typography.onMobile,
-  backdropBlur: bladeTheme.backdropBlur,
   motion: {
     ...bladeTheme.motion,
     easing: {

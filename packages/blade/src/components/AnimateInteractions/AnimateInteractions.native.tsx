@@ -1,9 +1,10 @@
 import type { AnimateInteractionsProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const AnimateInteractions = (_props: AnimateInteractionsProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'AnimateInteractions is not yet implemented for native',
     moduleName: 'AnimateInteractions',
   });

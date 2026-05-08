@@ -1,9 +1,10 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const MenuDivider = (_styledProps: StyledPropsBlade): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'MenuDivider is not yet implemented for native',
     moduleName: 'MenuDivider',
   });

@@ -4,7 +4,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 // Type definitions for React Native (placeholder)
 type GenUIProviderProps = any;
@@ -17,7 +17,8 @@ type GenUICustomComponent = any;
 type GenUIAction = any;
 
 const GenUIProvider = (_props: GenUIProviderProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'GenUIProvider is not yet implemented for React Native',
     moduleName: 'GenUIProvider',
   });
@@ -26,7 +27,8 @@ const GenUIProvider = (_props: GenUIProviderProps): React.ReactElement => {
 };
 
 const useGenUI = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'useGenUI is not yet implemented for React Native',
     moduleName: 'useGenUI',
   });
@@ -38,7 +40,8 @@ const useGenUI = () => {
 };
 
 const useGenUIAction = () => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'useGenUIAction is not yet implemented for React Native',
     moduleName: 'useGenUIAction',
   });

@@ -1,9 +1,10 @@
 import type { SideNavBodyProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const SideNavBody = (_props: SideNavBodyProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'SideNavBody is not yet implemented for native',
     moduleName: 'SideNavBody',
   });

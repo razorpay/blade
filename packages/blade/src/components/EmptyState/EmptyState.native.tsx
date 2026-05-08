@@ -1,16 +1,70 @@
 import React from 'react';
-/* eslint-disable react/jsx-no-useless-fragment */
+import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
-import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import type { BladeElementRef } from '~utils/types';
+import BaseBox from '~components/Box/BaseBox';
+import { Heading, Text } from '~components/Typography';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const EmptyState = (_props: EmptyStateProps): React.ReactElement => {
-  throwBladeError({
-    message: 'EmptyState is not yet implemented for native',
-    moduleName: 'EmptyState',
-  });
+const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStateProps> = (
+  { asset, title, description, children, size = 'medium', testID, ...props },
+  ref,
+) => {
+  const tokens = emptyStateSizeTokens[size];
 
-  return <Text>EmptyState Component is not available for Native mobile apps.</Text>;
+  return (
+    <BaseBox
+      ref={ref as never}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      gap={tokens.gapBetweenSections}
+      {...metaAttribute({ name: MetaConstants.EmptyState, testID })}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
+    >
+      {asset ? (
+        <BaseBox maxWidth={tokens.assetMaxWidth} maxHeight={tokens.assetMaxHeight}>
+          {asset}
+        </BaseBox>
+      ) : null}
+      <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
+        {title ? (
+          <Heading
+            textAlign="center"
+            size={tokens.titleSize}
+            weight="semibold"
+            color="surface.text.gray.subtle"
+          >
+            {title}
+          </Heading>
+        ) : null}
+
+        {description ? (
+          <Text
+            textAlign="center"
+            size={tokens.descriptionSize}
+            color="surface.text.gray.muted"
+            weight="regular"
+            variant="body"
+          >
+            {description}
+          </Text>
+        ) : null}
+      </BaseBox>
+
+      {children}
+    </BaseBox>
+  );
 };
+
+const EmptyState = assignWithoutSideEffects(React.forwardRef(_EmptyState), {
+  displayName: 'EmptyState',
+  componentId: 'EmptyState',
+});
 
 export { EmptyState };

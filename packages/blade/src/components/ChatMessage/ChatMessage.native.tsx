@@ -1,10 +1,11 @@
 import React from 'react';
 import type { ChatMessageProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ChatMessage = (_prop: ChatMessageProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChatMessage is not yet implemented for native',
     moduleName: 'ChatMessage',
   });

@@ -1,9 +1,10 @@
 import type { SideNavLinkProps } from '../types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const SideNavLink = (_props: SideNavLinkProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'SideNavLink is not yet implemented for native',
     moduleName: 'SideNavLink',
   });

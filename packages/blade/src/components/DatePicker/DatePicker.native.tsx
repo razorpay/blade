@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const DatePicker = (_props: any): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'DatePicker is not yet implemented for native',
     moduleName: 'DatePicker',
   });

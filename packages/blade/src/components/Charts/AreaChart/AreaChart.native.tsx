@@ -1,9 +1,10 @@
 import type { ChartAreaWrapperProps, ChartAreaProps } from './types';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 import { Text } from '~components/Typography';
 
 const ChartAreaWrapper = (_prop: ChartAreaProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartAreaWrapper is not yet implemented for native',
     moduleName: 'ChartAreaWrapper',
   });
@@ -12,7 +13,8 @@ const ChartAreaWrapper = (_prop: ChartAreaProps): React.ReactElement => {
 };
 
 const ChartArea = (_prop: ChartAreaWrapperProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartArea is not yet implemented for native',
     moduleName: 'ChartArea',
   });

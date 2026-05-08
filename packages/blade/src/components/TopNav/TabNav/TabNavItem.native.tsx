@@ -1,8 +1,9 @@
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const TabNavItem = (_props: never): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'TabNavItem is not yet implemented for native',
     moduleName: 'TabNavItem',
   });

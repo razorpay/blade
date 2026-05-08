@@ -1,10 +1,11 @@
 import React from 'react';
 import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const DrawerHeader = (_props: DrawerHeaderProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'DrawerHeader is not yet implemented for native',
     moduleName: 'DrawerHeader',
   });
@@ -13,7 +14,8 @@ const DrawerHeader = (_props: DrawerHeaderProps): React.ReactElement => {
 };
 
 const DrawerBody = (_props: { children: React.ReactNode }): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'DrawerBody is not yet implemented for native',
     moduleName: 'DrawerBody',
   });
@@ -22,7 +24,8 @@ const DrawerBody = (_props: { children: React.ReactNode }): React.ReactElement =
 };
 
 const DrawerFooter = (_props: DrawerFooterProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'DrawerFooter is not yet implemented for native',
     moduleName: 'DrawerFooter',
   });

@@ -1,8 +1,9 @@
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const StepLine = (_props: unknown): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'StepLine is not yet implemented for native',
     moduleName: 'StepLine',
   });

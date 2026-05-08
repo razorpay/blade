@@ -1,9 +1,10 @@
 import type { BottomNavProps, BottomNavItemProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const BottomNav = (_props: BottomNavProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'BottomNav is not yet implemented for native',
     moduleName: 'BottomNav',
   });
@@ -12,7 +13,8 @@ const BottomNav = (_props: BottomNavProps): React.ReactElement => {
 };
 
 const BottomNavItem = (_props: BottomNavItemProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'BottomNavItem is not yet implemented for native',
     moduleName: 'BottomNavItem',
   });

@@ -1,9 +1,10 @@
 import type { ElevateProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const Elevate = (_props: ElevateProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'Elevate is not yet implemented for native',
     moduleName: 'Elevate',
   });

@@ -1,10 +1,11 @@
 import React from 'react';
 import type { ListViewFilterProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ListViewFilters = (_prop: ListViewFilterProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ListViewFilter is not yet implemented for native',
     moduleName: 'ListViewFilter',
   });

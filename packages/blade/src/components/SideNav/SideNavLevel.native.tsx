@@ -1,9 +1,10 @@
 import type { SideNavLevelProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const SideNavLevel = (_props: SideNavLevelProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'SideNavLevel is not yet implemented for native',
     moduleName: 'SideNavLevel',
   });

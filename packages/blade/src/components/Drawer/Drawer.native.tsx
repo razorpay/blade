@@ -1,9 +1,10 @@
 import type { DrawerProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const Drawer = (_props: DrawerProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'Drawer is not yet implemented for native',
     moduleName: 'Drawer',
   });

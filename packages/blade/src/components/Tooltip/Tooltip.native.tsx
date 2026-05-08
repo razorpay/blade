@@ -21,7 +21,7 @@ const Tooltip = ({
   onOpenChange,
   zIndex = componentZIndices.tooltip,
 }: TooltipProps): React.ReactElement => {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
   const [isOpen, setIsOpen] = React.useState(false);
 
   const gap = theme.spacing[2];
@@ -97,7 +97,6 @@ const Tooltip = ({
             isVisible={isOpen}
             ref={refs.setFloating}
             side={side}
-            colorScheme={colorScheme}
             style={{
               ...floatingStyles,
               // To avoid flash of floating ui content at top, this only happens in RN <70
@@ -114,8 +113,8 @@ const Tooltip = ({
                 context={context}
                 width={ARROW_WIDTH}
                 height={ARROW_HEIGHT}
-                fillColor={theme.colors.popup.background.gray.intense}
-                strokeColor={theme.colors.popup.border.gray.intense}
+                fillColor={theme.colors.popup.background.intense}
+                strokeColor={theme.colors.popup.border.intense}
               />
             }
           >

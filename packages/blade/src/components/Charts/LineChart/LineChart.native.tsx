@@ -1,10 +1,11 @@
 import React from 'react';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 
 const ChartLineWrapper = (_prop: ChartLineWrapperProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartLineWrapper is not yet implemented for native',
     moduleName: 'ChartLineWrapper',
   });
@@ -13,7 +14,8 @@ const ChartLineWrapper = (_prop: ChartLineWrapperProps): React.ReactElement => {
 };
 
 const ChartLine = (_prop: ChartLineProps): React.ReactElement => {
-  throwBladeError({
+  logger({
+    type: 'warn',
     message: 'ChartLine is not yet implemented for native',
     moduleName: 'ChartLine',
   });
