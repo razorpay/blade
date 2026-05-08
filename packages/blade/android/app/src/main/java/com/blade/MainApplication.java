@@ -9,11 +9,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
-
+import com.facebook.react.soloader.OpenSourceMergedSoMapping;
 import java.util.List;
 
 import com.facebook.react.views.text.ReactFontManager;
-import com.facebook.react.bridge.JSIModulePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,8 +27,6 @@ public class MainApplication extends Application implements ReactApplication {
                 protected List<ReactPackage> getPackages() {
                     @SuppressWarnings("UnnecessaryLocalVariable")
                     List<ReactPackage> packages = new PackageList(this).getPackages();
-                    // Packages that cannot be autolinked yet can be added manually here, for example:
-                    // packages.add(new MyReactNativePackage());
                     return packages;
                 }
 
@@ -59,11 +56,13 @@ public class MainApplication extends Application implements ReactApplication {
         ReactFontManager.getInstance().addCustomFont(this, "Inter", R.font.inter);
         ReactFontManager.getInstance().addCustomFont(this, "TASA Orbiter Display", R.font.tasa);
         super.onCreate();
-        SoLoader.init(this, /* native exopackage */ false);
+        try {
+            SoLoader.init(this, OpenSourceMergedSoMapping.INSTANCE);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
-            // If you opted-in for the New Architecture, we load the native entry point for this app.
             DefaultNewArchitectureEntryPoint.load();
         }
-        ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     }
 }

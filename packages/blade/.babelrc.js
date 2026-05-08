@@ -13,7 +13,7 @@ const alias = {
 const configs = {
   reactNative: {
     test: {
-      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
+      presets: ['@babel/preset-typescript', 'module:@react-native/babel-preset'],
       plugins: [
         '@babel/plugin-proposal-class-static-block',
         '@babel/plugin-transform-shorthand-properties',
@@ -40,7 +40,7 @@ const configs = {
       ],
     },
     development: {
-      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
+      presets: ['@babel/preset-typescript', 'module:@react-native/babel-preset'],
       plugins: [
         '@babel/plugin-proposal-class-static-block',
         [
@@ -61,7 +61,7 @@ const configs = {
     production: {
       presets: [
         '@babel/preset-typescript',
-        ['module:metro-react-native-babel-preset', { disableImportExportTransform: true }],
+        ['module:@react-native/babel-preset', { disableImportExportTransform: true }],
       ],
       plugins: [
         '@babel/plugin-proposal-class-static-block',
