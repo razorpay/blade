@@ -37,6 +37,9 @@ export { default as Divider } from './Divider/Divider.svelte';
 export { default as Skeleton } from './Skeleton/Skeleton.svelte';
 export type { SkeletonProps } from './Skeleton/types';
 
+// Accordion
+export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
+
 // Switch
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';

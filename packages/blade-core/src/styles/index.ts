@@ -98,6 +98,17 @@ export type { DividerVariants } from './Divider';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
+  getAccordionWrapperClasses,
+  getAccordionButtonClasses,
+  getAccordionButtonBorderClasses,
+  getAccordionTemplateClasses,
+} from './Accordion';
+export type {
+  AccordionWrapperVariants,
+  AccordionButtonVariants,
+  AccordionButtonBorderVariants,
+} from './Accordion';
+export {
   skeletonStyles,
   skeletonClass,
   getSkeletonClasses,

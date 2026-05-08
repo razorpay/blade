@@ -6,6 +6,7 @@ export { AlertOctagonIcon } from './AlertOctagonIcon';
 export { AlertTriangleIcon } from './AlertTriangleIcon';
 export { CheckCircleIcon } from './CheckCircleIcon';
 export { CheckIcon } from './CheckIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
