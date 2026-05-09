@@ -1,3 +1,4 @@
+const path = require('path');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
 /**
@@ -7,7 +8,7 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
  * @type {import('metro-config').MetroConfig}
  */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
+const mocksDir = path.resolve(__dirname, '.storybook/react-native/mocks');
 
 const config = {
   resetCache: true,
@@ -21,7 +22,28 @@ const config = {
     }),
   },
   resolver: {
-    resolverMainFields: ['browser', 'main'],
+    resolverMainFields: ['react-native', 'browser', 'main'],
+    resolveRequest: (context, moduleName, platform) => {
+      if (moduleName.endsWith('.css')) {
+        return { type: 'empty' };
+      }
+      if (moduleName === 'react-pdf' || moduleName.startsWith('react-pdf/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'react-pdf.js'),
+        };
+      }
+      if (moduleName === 'pdfjs-dist' || moduleName.startsWith('pdfjs-dist/')) {
+        return { type: 'empty' };
+      }
+      if (moduleName === 'storybook-react-router') {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-react-router.js'),
+        };
+      }
+      return context.resolveRequest(context, moduleName, platform);
+    },
   },
 };
 
