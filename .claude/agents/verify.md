@@ -15,7 +15,7 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 
 ## Include
 
-Read these before starting:
+Use the Read tool to load these files before starting:
 
 1. `.claude/rules/svelte-migration.md`
 2. `.claude/rules/agent-base-directory.md`
@@ -53,7 +53,7 @@ Before any visual verification, ensure both Storybooks are running on the **assi
 
    - `curl -s http://localhost:{ReactPort}` → check for HTML response
    - If running → reuse
-   - If not running → `cd {Worktree}/packages/blade && yarn react:storybook -p {ReactPort}` (background via Bash)
+   - If not running → run `cd {Worktree}/packages/blade && yarn react:storybook -p {ReactPort}` via Bash tool with `run_in_background: true`
      - blade's React Storybook script is `react:storybook` (the trailing `-p` overrides the script's hardcoded `-p 9009`).
    - If port occupied by non-Storybook → warn user, ask to free port
 
@@ -61,7 +61,7 @@ Before any visual verification, ensure both Storybooks are running on the **assi
 
    - `curl -s http://localhost:{SveltePort}` → check for HTML response
    - If running → reuse
-   - If not running → `cd {Worktree}/packages/blade-svelte && yarn storybook -p {SveltePort}` (background via Bash)
+   - If not running → run `cd {Worktree}/packages/blade-svelte && yarn storybook -p {SveltePort}` via Bash tool with `run_in_background: true`
      - Use `storybook`, not `dev`. `dev` runs `storybook` in parallel with `dev:blade-core` via `npm-run-all`, which does not forward `-p` to the inner storybook process. If blade-core CSS changes during this run, run `yarn build` in `packages/blade-core` separately to refresh.
    - If port occupied by non-Storybook → warn user, ask to free port
 

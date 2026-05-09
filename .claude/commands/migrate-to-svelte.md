@@ -1,3 +1,7 @@
+---
+description: Orchestrate parallel migration of Blade React components to Svelte 5 — sets up isolated git worktrees, runs Plan/Execute/Verify agents in parallel, and opens one PR per component.
+---
+
 # Orchestrator — Parallel Migration Pipeline Controller
 
 > Main entry point for component migration. Parses input, sets up
@@ -54,7 +58,7 @@ You are the **orchestrator**. You coordinate the migration pipeline by spawning 
 
 ## Include
 
-Read these before starting:
+Use the Read tool to load these files before starting:
 
 1. `.claude/rules/orchestrator-guardrails.md`
 
@@ -142,7 +146,7 @@ From the first surviving slot's worktree (`{Name1}`), boot the React Storybook o
 ```bash
 cd .claude/worktrees/{Name1}/packages/blade && yarn react:storybook
 ```
-(Run in background via Bash tool.)
+Run via Bash tool with `run_in_background: true`.
 
 Poll `curl -s http://localhost:9009` every 5s up to 60s. Once it returns HTML, continue.
 

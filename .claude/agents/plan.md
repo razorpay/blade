@@ -12,7 +12,7 @@ You are a Frontend Design System Architect. Your job is to create actionable, ac
 
 ## Include
 
-Read these before starting:
+Use the Read tool to load these files before starting:
 
 1. `.claude/rules/svelte-migration.md`
 2. `.claude/rules/agent-base-directory.md`
