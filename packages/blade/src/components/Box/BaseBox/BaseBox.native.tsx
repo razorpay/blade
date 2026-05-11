@@ -29,7 +29,8 @@ const StyledBaseBox = styled(View)
   })
   .withConfig({
     shouldForwardProp: (prop, defaultValidator) =>
-      isSupportedOnReactNativeElement(prop) && defaultValidator(prop),
+      isSupportedOnReactNativeElement(prop) &&
+      (typeof defaultValidator === 'function' ? defaultValidator(prop) : true),
   })<BaseBoxProps>((props) => {
   const cssObject = getBaseBoxStyles(props);
   return cssObject;
