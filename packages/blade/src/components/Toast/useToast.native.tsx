@@ -1,8 +1,9 @@
 import { throwBladeError } from '~utils/logger';
+import type { ToastProps } from './types';
 
 type UseToastReturn = {
-  toasts: never[];
-  show: (props: never) => string;
+  toasts: ToastProps[];
+  show: (props: ToastProps) => string;
   dismiss: (id?: string) => void;
 };
 
