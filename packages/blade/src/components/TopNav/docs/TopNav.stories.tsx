@@ -38,7 +38,6 @@ import {
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
   RazorpayxPayrollFilledIcon,
-  RayIcon,
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';

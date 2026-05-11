@@ -126,7 +126,8 @@ const TabNav = ({
             right="0px"
             height={makeSize(size[20])}
             style={{
-              background: 'radial-gradient(ellipse at center bottom, rgba(0, 0, 0, 0.4), transparent 100%)',
+              background:
+                'radial-gradient(ellipse at center bottom, rgba(0, 0, 0, 0.4), transparent 100%)',
               filter: `blur(${backdropBlur.medium}px)`,
               pointerEvents: 'none',
             }}
