@@ -38,6 +38,7 @@ import {
   PaymentPagesIcon,
   RazorpayxPayrollIcon,
   RazorpayxPayrollFilledIcon,
+  RayIcon,
 } from '~components/Icons';
 import { RazorpayLogoWhite } from '~components/SideNav/docs/RazorpayLogo';
 import { SearchInput } from '~components/Input/SearchInput';
@@ -334,7 +335,7 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
   const isTablet = matchedBreakpoint === 'm';
   const isMobile = matchedDeviceType === 'mobile';
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
-  const [selectedProduct, setSelectedProduct] = React.useState<string | null>('/payroll');
+  const [selectedProduct, setSelectedProduct] = React.useState<string | null>(null);
 
   const activeUrl = useLocation().pathname;
   React.useEffect(() => {
@@ -358,6 +359,16 @@ const TopNavFullExample = ({ variant = 'neutral' }: { variant?: 'primary' | 'neu
               <TopNavContent>
                 <TabNav
                   items={[
+                    {
+                      title: 'Ray AI',
+                      href: '/home',
+                      icon: RayIcon,
+                      titleSuffix: (
+                        <Badge size="small" emphasis="subtle" color="positive">
+                          BETA
+                        </Badge>
+                      ),
+                    },
                     {
                       href: '/payroll',
                       title: 'Payroll',
