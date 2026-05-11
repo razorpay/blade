@@ -14,6 +14,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import { size, backdropBlur } from '~tokens/global';
+import { makeSize } from '~utils';
 
 const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
@@ -115,6 +117,21 @@ const TabNav = ({
             <TabNavIndicator containerRef={itemsRowRef} showGlow={!isPrimaryVariant} />
           </BaseBox>
         </BaseBox>
+        {isPrimaryVariant && (
+          <BaseBox
+            display={{ base: 'none', m: 'block' }}
+            position="absolute"
+            bottom="-4px"
+            left="spacing.3"
+            right="0px"
+            height={makeSize(size[20])}
+            style={{
+              background: 'radial-gradient(ellipse at center bottom, rgba(0, 0, 0, 0.4), transparent 100%)',
+              filter: `blur(${backdropBlur.medium}px)`,
+              pointerEvents: 'none',
+            }}
+          />
+        )}
       </BaseBox>
     </TabNavContext.Provider>
   );
