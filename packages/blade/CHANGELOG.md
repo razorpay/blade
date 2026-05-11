@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.3
+
+### Patch Changes
+
+- 376037488: fix(topnav): scope primary overlay and align global styles
+
 ## 12.101.2
 
 ### Patch Changes
