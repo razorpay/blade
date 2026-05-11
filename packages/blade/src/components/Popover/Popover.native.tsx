@@ -129,7 +129,6 @@ const Popover = ({
           side={computedSide}
           style={{
             ...floatingStyles,
-            // TODO: Tokenize zIndex values
             zIndex,
           }}
           arrow={

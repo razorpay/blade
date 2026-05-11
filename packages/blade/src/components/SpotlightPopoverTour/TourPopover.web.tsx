@@ -145,7 +145,6 @@ const TourPopover = ({
             <BaseBox
               ref={refs.setFloating}
               style={{ ...floatingStyles, pointerEvents: isMounted ? 'auto' : 'none' }}
-              // TODO: Tokenize zIndex values
               zIndex={zIndex}
               {...getFloatingProps()}
               {...metaAttribute({ name: MetaConstants.TourPopover })}
