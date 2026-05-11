@@ -182,6 +182,7 @@ const getNativeConfig = (inputs) => {
 
   return {
     input: inputs,
+    treeshake: false,
     output: [
       {
         dir: `${outputRootDirectory}/${libDirectory}/${platform}`,
@@ -192,6 +193,10 @@ const getNativeConfig = (inputs) => {
       },
     ],
     plugins: [
+      pluginReplace({
+        "typeof window !== 'undefined' && 'HTMLElement' in window": 'false',
+        preventAssignment: true,
+      }),
       pluginPeerDepsExternal(),
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: nativeExtensions }),
