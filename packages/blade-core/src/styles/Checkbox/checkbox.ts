@@ -227,7 +227,6 @@ export function getCheckboxTemplateClasses(): {
   iconSvg: string;
   iconSvgVisible: string;
   groupWrapper: string;
-  srOnly: string;
 } {
   return {
     checkbox: styles.checkbox,
@@ -237,6 +236,5 @@ export function getCheckboxTemplateClasses(): {
     iconSvg: styles['icon-svg'],
     iconSvgVisible: styles.visible,
     groupWrapper: styles['group-wrapper'],
-    srOnly: styles['sr-only'],
   };
 }
