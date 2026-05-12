@@ -1,0 +1,346 @@
+/* Checkbox outer wrapper */
+.checkbox {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/* Label — click target, drives cursor */
+.label {
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/* Visually-hidden native input — kept as sibling of .row so
+   adjacent sibling selectors (.input:focus-visible ~ .row) work */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Row that holds the icon-wrapper + label text */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* The visible checkbox box */
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--interactive-border-gray-highlighted);
+  border-radius: var(--border-radius-small);
+  background-color: transparent;
+  transition-property: background-color, border-color;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-2xquick);
+  /* Align top of box with first line of label text */
+  margin-top: 2px;
+}
+
+/* Icon wrapper sizes */
+.icon-wrapper.size-small {
+  width: 12px;
+  height: 12px;
+}
+
+.icon-wrapper.size-medium {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-wrapper.size-large {
+  width: 20px;
+  height: 20px;
+}
+
+/* Checked state */
+.icon-wrapper.checked {
+  border-color: var(--interactive-border-primary-default);
+  background-color: var(--interactive-background-primary-default);
+}
+
+/* Indeterminate — same visual as checked */
+.icon-wrapper.indeterminate {
+  border-color: var(--interactive-border-primary-default);
+  background-color: var(--interactive-background-primary-default);
+}
+
+/* Error / negative state */
+.icon-wrapper.negative {
+  border-color: var(--interactive-border-negative-default);
+}
+
+.icon-wrapper.negative.checked,
+.icon-wrapper.negative.indeterminate {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-negative-default);
+}
+
+/* Disabled */
+.icon-wrapper[data-disabled] {
+  border-color: var(--interactive-border-gray-disabled);
+  background-color: transparent;
+}
+
+.icon-wrapper.checked[data-disabled],
+.icon-wrapper.indeterminate[data-disabled] {
+  border-color: transparent;
+  background-color: var(--interactive-background-primary-disabled);
+}
+
+/* Hover — driven by the label so the entire control responds */
+.label:hover .icon-wrapper:not([data-disabled]) {
+  border-color: var(--interactive-border-gray-highlighted);
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.label:hover .icon-wrapper.checked:not([data-disabled]),
+.label:hover .icon-wrapper.indeterminate:not([data-disabled]) {
+  border-color: var(--interactive-background-primary-highlighted);
+  background-color: var(--interactive-background-primary-highlighted);
+}
+
+/* Focus ring — input is preceding sibling of .row inside the label */
+.input:focus-visible ~ .row .icon-wrapper {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 1px;
+}
+
+/* Icon SVGs — positioned absolutely inside the icon-wrapper */
+.icon-svg {
+  position: absolute;
+  display: flex;
+  color: var(--interactive-icon-on-primary-normal);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-2xquick);
+  opacity: 0;
+}
+
+.icon-svg.visible {
+  opacity: 1;
+}
+
+/* Disabled icon tint */
+.label[data-disabled] .icon-svg {
+  color: var(--interactive-icon-static-white-disabled);
+}
+
+/* Label text */
+.label-text {
+  margin-left: var(--spacing-3);
+  color: var(--surface-text-gray-normal);
+  font-family: var(--font-family-text);
+}
+
+.label-text.size-small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.label-text.size-medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.label-text.size-large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.label-text[data-disabled] {
+  color: var(--surface-text-gray-disabled);
+}
+
+/* Supporting text wrapper — indented to align with label text
+   (icon-width + spacing-3 margin-left on label-text) */
+.supporting-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+/* small: 12px icon + 8px (spacing-3) gap */
+.supporting-text-wrapper.size-small {
+  margin-left: 20px;
+}
+
+/* medium: 16px icon + 8px gap */
+.supporting-text-wrapper.size-medium {
+  margin-left: 24px;
+}
+
+/* large: 20px icon + 8px gap */
+.supporting-text-wrapper.size-large {
+  margin-left: 28px;
+}
+
+/* Help text */
+.help-text {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-muted);
+}
+
+.help-text.size-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+/* Error text — rendered outside label so it spans full width */
+.error-text {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--feedback-text-negative-intense);
+}
+
+.error-text.size-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+/* -----------------------------------------------------------------------
+   CheckboxGroup styles
+   ----------------------------------------------------------------------- */
+
+.group-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.group-field {
+  display: flex;
+}
+
+.group-field.label-position-top {
+  flex-direction: column;
+}
+
+.group-field.label-position-left {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+/* Group label */
+.group-label {
+  font-family: var(--font-family-text);
+  color: var(--surface-text-gray-subtle);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-4);
+}
+
+.group-label.label-position-left {
+  margin-bottom: 0;
+  padding-top: var(--spacing-1);
+  white-space: nowrap;
+}
+
+.group-label.size-small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.group-label.size-medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.group-label.size-large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* Necessity indicator */
+.group-label.necessity-required::after {
+  content: ' *';
+  color: var(--feedback-text-negative-intense);
+}
+
+.group-label.necessity-optional::after {
+  content: ' (optional)';
+  font-size: var(--font-size-75);
+  color: var(--surface-text-gray-muted);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Children container */
+.group-items {
+  display: flex;
+}
+
+.group-items.orientation-vertical {
+  flex-direction: column;
+}
+
+.group-items.orientation-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Gap between items per size */
+.group-items.gap-small {
+  gap: var(--spacing-2);
+}
+
+.group-items.gap-medium {
+  gap: var(--spacing-3);
+}
+
+.group-items.gap-large {
+  gap: var(--spacing-3);
+}
+
+/* Group hint/error text */
+.group-hint {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  margin-top: var(--spacing-3);
+}
+
+.group-hint.size-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.group-hint-error {
+  color: var(--feedback-text-negative-intense);
+}
+
+.group-hint-help {
+  color: var(--surface-text-gray-muted);
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
