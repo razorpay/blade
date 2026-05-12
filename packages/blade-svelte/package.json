@@ -62,6 +62,8 @@
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",
     "@rollup/plugin-node-resolve": "15.2.1",
+    "@storybook/addon-docs": "~10.2.0",
+    "@storybook/addon-links": "~10.2.0",
     "@storybook/addon-svelte-csf": "^5.0.10",
     "@storybook/svelte-vite": "^10.1.2",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
