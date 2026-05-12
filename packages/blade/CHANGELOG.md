@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.4
+
+### Patch Changes
+
+- b18c31986: fix(OTPInput): match placeholder font size to input value font size
+
 ## 12.101.3
 
 ### Patch Changes
