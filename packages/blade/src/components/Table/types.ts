@@ -210,6 +210,16 @@ type TableProps<Item> = {
   height?: BoxProps['height'];
 
   /**
+   * The minHeight prop is a responsive styled prop that determines the minimum height of the table.
+   **/
+  minHeight?: BoxProps['minHeight'];
+
+  /**
+   * The maxHeight prop is a responsive styled prop that determines the maximum height of the table.
+   **/
+  maxHeight?: BoxProps['maxHeight'];
+
+  /**
    * The showStripedRows prop determines whether the table should have striped rows or not.
    * The default value is `false`.
    **/

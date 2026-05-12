@@ -15,6 +15,7 @@ import {
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
   TableWithEditableCellsStory,
+  TableWithMinMaxHeightStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -137,6 +138,14 @@ export const TableWithEditableCells = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {TableWithEditableCellsStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithMinMaxHeight = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {TableWithMinMaxHeightStory}
     </Sandbox>
   );
 };

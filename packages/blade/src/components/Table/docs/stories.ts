@@ -1883,6 +1883,125 @@ function App() {
 export default App;
 `;
 
+const TableWithMinMaxHeightStory = `
+import {
+  Table,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Text,
+  Amount,
+} from '@razorpay/blade/components';
+import React from 'react';
+
+const fewNodes = [
+  ...Array.from({ length: 3 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    method: ['Bank Transfer', 'Credit Card', 'UPI'][Math.floor(Math.random() * 3)],
+  })),
+];
+
+const manyNodes = [
+  ...Array.from({ length: 20 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    method: ['Bank Transfer', 'Credit Card', 'UPI'][Math.floor(Math.random() * 3)],
+  })),
+];
+
+const TableColumns = () => (
+  <TableHeader>
+    <TableHeaderRow>
+      <TableHeaderCell>ID</TableHeaderCell>
+      <TableHeaderCell>Amount</TableHeaderCell>
+      <TableHeaderCell>Status</TableHeaderCell>
+      <TableHeaderCell>Method</TableHeaderCell>
+    </TableHeaderRow>
+  </TableHeader>
+);
+
+function App() {
+  return (
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.5"
+      overflow="auto"
+      display="flex"
+      flexDirection="column"
+      gap="spacing.8"
+    >
+      <Box>
+        <Box paddingBottom="spacing.4">
+          <Heading>minHeight — 3 rows, table fills to 300px</Heading>
+          <Text size="small" color="surface.text.gray.subtle" marginTop="spacing.2">
+            Even with only 3 rows the table body won&apos;t collapse below 300px.
+          </Text>
+        </Box>
+        <Table data={{ nodes: fewNodes }} minHeight="300px">
+          {(tableData) => (
+            <>
+              <TableColumns />
+              <TableBody>
+                {tableData.map((item, index) => (
+                  <TableRow key={index} item={item}>
+                    <TableCell>{item.paymentId}</TableCell>
+                    <TableCell>
+                      <Amount value={item.amount} />
+                    </TableCell>
+                    <TableCell>{item.status}</TableCell>
+                    <TableCell>{item.method}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      </Box>
+
+      <Box>
+        <Box paddingBottom="spacing.4">
+          <Heading>maxHeight — 20 rows, table scrolls after 300px</Heading>
+          <Text size="small" color="surface.text.gray.subtle" marginTop="spacing.2">
+            The table body scrolls once content exceeds the 300px cap.
+          </Text>
+        </Box>
+        <Table data={{ nodes: manyNodes }} maxHeight="300px">
+          {(tableData) => (
+            <>
+              <TableColumns />
+              <TableBody>
+                {tableData.map((item, index) => (
+                  <TableRow key={index} item={item}>
+                    <TableCell>{item.paymentId}</TableCell>
+                    <TableCell>
+                      <Amount value={item.amount} />
+                    </TableCell>
+                    <TableCell>{item.status}</TableCell>
+                    <TableCell>{item.method}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      </Box>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1899,4 +2018,5 @@ export {
   TableWithClientSidePaginationStory,
   TableWithServerSidePaginationStory,
   TableWithEditableCellsStory,
+  TableWithMinMaxHeightStory,
 };
