@@ -50,12 +50,14 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible]);
 
-    // @ts-expect-error types aren't liking the dynamic object prop `[transform]`
+    // Avoid computed property keys inside useAnimatedStyle — Babel compiles them to
+    // _defineProperty() which is not a worklet and crashes Reanimated v4 on the UI thread.
     const animatedStyles = useAnimatedStyle(() => {
-      const transform = isHorizontal ? 'translateX' : 'translateY';
       return {
         opacity: opacity.value,
-        transform: [{ [transform]: translate.value }],
+        transform: isHorizontal
+          ? [{ translateX: translate.value }]
+          : [{ translateY: translate.value }],
       };
     }, [isVisible]);
 
