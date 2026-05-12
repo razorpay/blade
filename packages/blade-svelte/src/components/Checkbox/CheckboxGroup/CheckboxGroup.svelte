@@ -1,3 +1,8 @@
+<script context="module" lang="ts">
+  // Fix #6: module-scope counter so each CheckboxGroup instance gets a unique ID prefix
+  let idCounter = 0;
+</script>
+
 <script lang="ts">
   import {
     metaAttribute,
@@ -40,9 +45,9 @@
 
   // ─── IDs ──────────────────────────────────────────────────────────────────────
 
-  let idCounter = 0;
   const idBase = `checkbox-group-${++idCounter}-${Math.random().toString(36).slice(2, 6)}`;
   const labelId = `${idBase}-label`;
+  const hintId = `${idBase}-hint`;
   const fallbackName = name ?? idBase;
 
   // ─── Selection state ──────────────────────────────────────────────────────────
@@ -66,23 +71,25 @@
     isChecked(val: string): boolean {
       return checkedValues.includes(val);
     },
+    // Fix #4: capture next value locally so onChange receives the updated array
     addValue(val: string) {
       if (isDisabled) return;
-      if (!checkedValues.includes(val)) {
-        checkedValues = [...checkedValues, val];
-      }
-      onChange?.({ values: checkedValues, name: fallbackName });
+      const next = checkedValues.includes(val) ? checkedValues : [...checkedValues, val];
+      checkedValues = next;
+      onChange?.({ values: next, name: fallbackName });
     },
     removeValue(val: string) {
       if (isDisabled) return;
-      if (checkedValues.includes(val)) {
-        checkedValues = checkedValues.filter((v) => v !== val);
-      }
-      onChange?.({ values: checkedValues, name: fallbackName });
+      const next = checkedValues.filter((v) => v !== val);
+      checkedValues = next;
+      onChange?.({ values: next, name: fallbackName });
     },
   };
 
-  const contextValue: CheckboxGroupContextType = {
+  // Fix #3: inline the object inside the getter so reactive prop reads happen at
+  // call time — prop changes (isDisabled, validationState, size, etc.) are always
+  // reflected in child Checkboxes instead of being frozen at mount time.
+  setCheckboxGroupContext(() => ({
     name: fallbackName,
     isDisabled,
     isRequired,
@@ -90,14 +97,15 @@
     validationState,
     size,
     state: groupState,
-  };
-
-  setCheckboxGroupContext(() => contextValue);
+    // Fix #7: pass hintId so children can include it in aria-describedby
+    hintId: (validationState === 'error' && errorText) || helpText ? hintId : undefined,
+  }));
 
   // ─── Derived UI state ─────────────────────────────────────────────────────────
 
   const showError = $derived(validationState === 'error' && errorText);
   const showHelpText = $derived(!showError && helpText);
+  const showHint = $derived(showError || showHelpText);
 
   // ─── Classes ──────────────────────────────────────────────────────────────────
 
@@ -144,10 +152,11 @@
         {@render children()}
       </div>
 
-      {#if showError}
-        <span class={hintClasses}>{errorText}</span>
-      {:else if showHelpText}
-        <span class={hintClasses}>{helpText}</span>
+      <!-- Fix #7: hint span has a stable ID so child Checkboxes can reference it -->
+      {#if showHint}
+        <span id={hintId} class={hintClasses}>
+          {showError ? errorText : helpText}
+        </span>
       {/if}
     </div>
   </div>
