@@ -86,10 +86,15 @@ const Toast = (
   return (
     <Animated.View style={{ opacity, transform: [{ translateY }] }}>
       <Box
+        // Native Box validates background tokens at runtime (rejects anything
+        // outside `transparent` / `surface.background.*` / `overlay.*` /
+        // `feedback.background.*`). Web's `popup.background.*` choices map to:
+        //   - promotional → `surface.background.gray.intense` (dark surface)
+        //   - color variants → `feedback.background.${color}.subtle`
         backgroundColor={
           isPromotional
-            ? 'popup.background.gray.intense'
-            : `popup.background.${color}.subtle`
+            ? 'surface.background.gray.intense'
+            : (`feedback.background.${color}.subtle` as 'feedback.background.positive.subtle')
         }
         borderRadius="medium"
         padding="spacing.4"
@@ -103,7 +108,7 @@ const Toast = (
             size="medium"
             color={
               isPromotional
-                ? 'staticWhite'
+                ? 'surface.icon.staticWhite.normal'
                 : (`feedback.icon.${color}.intense` as 'feedback.icon.positive.intense')
             }
           />

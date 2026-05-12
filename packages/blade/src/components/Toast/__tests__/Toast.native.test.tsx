@@ -1,15 +1,41 @@
+import React from 'react';
+import { Toast } from '../Toast.native';
+import { ToastContainer } from '../ToastContainer.native';
 import { toastStore, TOAST_REJECTED } from '../useToast.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
-// NOTE: rendering tests for <Toast /> are not included here because the
-// `popup.background.*` / `staticWhite` tokens used in Toast.native.tsx are
-// not accepted by Box's runtime token validator and IconColors respectively.
-// Those are pre-existing issues that pre-date this PR. Tracking a follow-up
-// to migrate Toast.native to validator-accepted tokens. The toastStore
-// behaviour below is fully covered and is the most failure-prone surface.
+describe('<Toast /> (native)', () => {
+  it('renders a positive informational toast', () => {
+    const { toJSON } = renderWithTheme(
+      <Toast content="Saved successfully" color="positive" />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders a promotional toast', () => {
+    const { toJSON } = renderWithTheme(
+      <Toast content="New feature available" type="promotional" />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+});
+
+describe('<ToastContainer /> (native)', () => {
+  beforeEach(() => {
+    // Reset state between tests.
+    while (toastStore.getSnapshot().length > 0) {
+      toastStore.dismiss(toastStore.getSnapshot()[0].id);
+    }
+  });
+
+  it('renders nothing when there are no toasts', () => {
+    const { toJSON } = renderWithTheme(<ToastContainer />);
+    expect(toJSON()).toBeNull();
+  });
+});
 
 describe('toastStore (native)', () => {
   beforeEach(() => {
-    // Reset state between tests so leftover toasts don't bleed.
     while (toastStore.getSnapshot().length > 0) {
       toastStore.dismiss(toastStore.getSnapshot()[0].id);
     }
@@ -37,7 +63,7 @@ describe('toastStore (native)', () => {
     expect(toastStore.getSnapshot().filter((t) => t.visible)).toHaveLength(0);
   });
 
-  it('dismiss(id) cancels any auto-dismiss timer for that toast', () => {
+  it('dismiss(id) cancels the auto-dismiss timer for that toast', () => {
     jest.useFakeTimers();
     const id = toastStore.show({ content: 'Hello', duration: 1000 });
     expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(true);
