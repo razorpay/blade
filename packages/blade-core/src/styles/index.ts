@@ -264,3 +264,11 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export {
+  getDropdownOverlayClasses,
+  getDropdownTemplateClasses,
+  dropdownContainerClass,
+  dropdownOverlayPortalClass,
+  dropdownHeaderClass,
+  dropdownFooterClass,
+} from './Dropdown';
