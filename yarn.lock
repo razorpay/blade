@@ -6713,10 +6713,30 @@
     react-dom "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-docs@~10.2.0":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-10.2.19.tgz#e6071ee91b4c326176367621d0ea76c759a918cb"
+  integrity sha512-tXugthdzjX5AkGWDSP4pnRgA/CWlOaEKp/+y9JOGXHLQmm1GHjW+4brNvNkKbjBl06LALXwlcTOyU4lyVRDLAw==
+  dependencies:
+    "@mdx-js/react" "^3.0.0"
+    "@storybook/csf-plugin" "10.2.19"
+    "@storybook/icons" "^2.0.1"
+    "@storybook/react-dom-shim" "10.2.19"
+    react "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+    react-dom "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+    ts-dedent "^2.0.0"
+
 "@storybook/addon-links@10.2.16":
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-10.2.16.tgz#da0ef51971b4ad18564ccd4a70df2b20b2d6a6f1"
   integrity sha512-UERo185b0+AOfVUkh/Ho33Bq5s/sntVxqh3WXGjWZsaz4ng5UG943S+Tzm1eobLaD82+phXuS1ZBaW5cfioduA==
+  dependencies:
+    "@storybook/global" "^5.0.0"
+
+"@storybook/addon-links@~10.2.0":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-10.2.19.tgz#f630dd393c53ecd5df518dfc74b75aea53445e97"
+  integrity sha512-3uZqbjlEmPg+X82nkwjBHshaCjDKLT75/NnbscvXPBiIl7ew+lhKDnufYLhChQmuAKQqfqBhdtwa2ISzw+O1XQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
@@ -6797,6 +6817,13 @@
   dependencies:
     unplugin "^2.3.5"
 
+"@storybook/csf-plugin@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-10.2.19.tgz#2c08da16808eddf4b759488e812ae665b9ff9c53"
+  integrity sha512-BpjYIOdyQn/Rm6MjUAc5Gl8HlARZrskD/OhUNShiOh2fznb523dHjiE5mbU1kKM/+L1uvRlEqqih40rTx+xCrg==
+  dependencies:
+    unplugin "^2.3.5"
+
 "@storybook/csf@^0.1.13":
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/csf/-/csf-0.1.13.tgz#c8a9bea2ae518a3d9700546748fa30a8b07f7f80"
@@ -6818,6 +6845,11 @@
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-10.2.16.tgz#03978efc84c754501e5de651df95d90be30d8a1a"
   integrity sha512-waDfcEx8OW78qH8COQLKD2nDtDEXzw1zwXm47VPrRKiyhdea5z8OwO/SIk3y1lcoFMCT1RVJKBdYUPeVAoIB6w==
+
+"@storybook/react-dom-shim@10.2.19":
+  version "10.2.19"
+  resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-10.2.19.tgz#7971868fc0eb6a3101190251c46640b44fbdde28"
+  integrity sha512-BXCEfBGVBRYBTYeBeH/PJsy0Bq5MERe/HiaylR+ah/XrvIr2Z9bkne1J8yYiXCjiyq5HQa7Bj11roz0+vyUaEw==
 
 "@storybook/react-native-theming@^10.2.3":
   version "10.2.3"
