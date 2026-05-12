@@ -71,12 +71,23 @@
 
   let inputEl: HTMLInputElement | undefined = $state();
 
+  // Fix #2: Set the native `indeterminate` DOM property (cannot be set via HTML attribute)
+  $effect(() => {
+    if (inputEl) {
+      inputEl.indeterminate = isIndeterminate ?? false;
+    }
+  });
+
   // ─── IDs for accessibility ────────────────────────────────────────────────────
 
   const idBase = `checkbox-${Math.random().toString(36).slice(2, 7)}`;
   const helpTextId = helpText ? `${idBase}-help` : undefined;
   const errorTextId = errorText ? `${idBase}-error` : undefined;
-  const describedBy = [helpTextId, errorTextId].filter(Boolean).join(' ') || undefined;
+
+  // Fix #7: Include group-level hint ID so screen readers read group error/help per-checkbox
+  const describedBy = $derived(
+    [helpTextId, errorTextId, groupCtx?.hintId].filter(Boolean).join(' ') || undefined,
+  );
 
   // ─── Event handlers ──────────────────────────────────────────────────────────
 
@@ -96,10 +107,8 @@
 
     onChange?.({ isChecked: next, value, event });
 
-    // Keep DOM in sync with source-of-truth (mirrors Switch pattern)
-    if (inputEl && inputEl.checked !== isCheckedState) {
-      inputEl.checked = isCheckedState;
-    }
+    // Fix #5: removed stale DOM sync block — Svelte's checked={isCheckedState}
+    // binding reconciles the DOM after the reactive graph settles.
   }
 
   // ─── Derived classes ──────────────────────────────────────────────────────────
@@ -134,10 +143,11 @@
   const labelMetaAttrs = metaAttribute({ name: MetaConstants.CheckboxLabel });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 
+  // Fix #1: Do NOT pass `checked` to makeAccessible — we set aria-checked explicitly below
+  // so it correctly emits "mixed" for indeterminate. The spread is placed before the
+  // explicit aria-checked so the explicit value always wins.
   const inputA11y = $derived(
     makeAccessible({
-      label: undefined, // label element wraps the input — no explicit aria-label needed
-      checked: isCheckedState || isIndeterminate,
       disabled: effectiveDisabled,
       required: effectiveRequired,
     }),
@@ -174,16 +184,16 @@
       bind:this={inputEl}
       class={templateClasses.input}
       type="checkbox"
-      {name}
+      name={effectiveName}
       {value}
       checked={isCheckedState}
       disabled={effectiveDisabled}
       required={effectiveRequired}
       tabindex={tabIndex}
+      {...inputA11y}
       aria-checked={isIndeterminate ? 'mixed' : isCheckedState}
       aria-describedby={describedBy}
       onchange={handleChange}
-      {...inputA11y}
     />
 
     <div class={templateClasses.row}>
