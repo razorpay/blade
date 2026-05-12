@@ -308,7 +308,7 @@
 }
 
 .group-items.gap-large {
-  gap: var(--spacing-3);
+  gap: var(--spacing-4);
 }
 
 /* Group hint/error text */
