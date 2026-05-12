@@ -19,6 +19,8 @@ export interface CheckboxGroupContextType {
   validationState?: 'error' | 'none';
   size?: CheckboxSize;
   state: CheckboxGroupState;
+  /** ID of the group-level hint/error span so children can link it via aria-describedby */
+  hintId?: string;
 }
 
 export interface CheckboxGroupProps extends StyledPropsBlade {
