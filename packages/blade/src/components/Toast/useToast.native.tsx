@@ -10,6 +10,19 @@ type UseToastReturn = {
   dismiss: (id?: string) => void;
 };
 
+// Mirrors the exit animation duration in Toast.native.tsx + a small grace
+// window so the Animated.View has time to fade before the entry is removed
+// from the list (otherwise the user sees a single-frame "pop" as the row
+// disappears).
+const EXIT_DURATION_MS = 200;
+const REMOVAL_GRACE_MS = 50;
+const REMOVAL_DELAY_MS = EXIT_DURATION_MS + REMOVAL_GRACE_MS;
+
+// Sentinel returned by `show()` when a promotional toast is rejected because
+// another promo is already visible. Consumers can compare against this to
+// distinguish rejection from a real toast id.
+const TOAST_REJECTED = '';
+
 /**
  * Native Toast store.
  *
@@ -23,6 +36,10 @@ class ToastStore {
   private listeners = new Set<() => void>();
   private toasts: ToastEntry[] = [];
   private idCounter = 0;
+  // Tracks both auto-dismiss timers (queued during `show`) and removal timers
+  // (queued during `dismiss`). A `show` immediately after `dismiss` with the
+  // same id would otherwise let the pending removal nuke the freshly created
+  // toast.
   private timers = new Map<string, ReturnType<typeof setTimeout>>();
 
   subscribe = (listener: () => void): (() => void) => {
@@ -47,7 +64,7 @@ class ToastStore {
           moduleName: 'Toast',
         });
       }
-      return '';
+      return TOAST_REJECTED;
     }
 
     const autoDismiss = props.autoDismiss ?? !isPromo;
@@ -57,6 +74,15 @@ class ToastStore {
     }
 
     const id = props.id ?? `toast-${this.idCounter++}`;
+
+    // If a removal timer is pending against this id (re-shown faster than the
+    // exit animation finishes), cancel it so the new toast survives.
+    const pendingTimer = this.timers.get(id);
+    if (pendingTimer) {
+      clearTimeout(pendingTimer);
+      this.timers.delete(id);
+    }
+
     const entry: ToastEntry = {
       ...props,
       type,
@@ -77,10 +103,12 @@ class ToastStore {
   };
 
   dismiss = (id?: string): void => {
+    // No id — match `react-hot-toast.toast.dismiss()`: dismiss every visible
+    // toast, not just the most recent one.
     if (!id) {
-      const last = [...this.toasts].reverse().find((t) => t.visible);
-      if (!last) return;
-      this.dismiss(last.id);
+      const visibleIds = this.toasts.filter((t) => t.visible).map((t) => t.id);
+      if (visibleIds.length === 0) return;
+      visibleIds.forEach((vid) => this.dismiss(vid));
       return;
     }
     const timer = this.timers.get(id);
@@ -90,11 +118,14 @@ class ToastStore {
     }
     this.toasts = this.toasts.map((t) => (t.id === id ? { ...t, visible: false } : t));
     this.notify();
-    // Remove from list after exit animation completes.
-    setTimeout(() => {
+    // Remove from list after exit animation completes. Track the timer so a
+    // re-show with the same id can cancel it before it fires.
+    const removalTimer = setTimeout(() => {
+      this.timers.delete(id);
       this.toasts = this.toasts.filter((t) => t.id !== id);
       this.notify();
-    }, 250);
+    }, REMOVAL_DELAY_MS);
+    this.timers.set(id, removalTimer);
   };
 
   private notify(): void {
@@ -114,4 +145,4 @@ const useToast = (): UseToastReturn => {
 };
 
 export type { UseToastReturn };
-export { useToast, toastStore };
+export { useToast, toastStore, TOAST_REJECTED };

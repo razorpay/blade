@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -18,21 +15,42 @@ import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
+import { throwBladeError } from '~utils/logger';
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-const getTabs = (node: React.ReactNode): React.ReactElement[] => {
+type TabListChildProps = { children: React.ReactElement[] };
+type TabPanelChildProps = { value: string; children: React.ReactNode };
+type TabChildProps = {
+  value: string;
+  children: React.ReactNode;
+  // `React.ComponentType<any>` is the canonical type for polymorphic icon
+  // components in Blade — they accept the props the host component decides to
+  // pass.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  leading?: React.ComponentType<any>;
+  trailing?: React.ReactNode;
+};
+
+const getTabs = (node: React.ReactNode): React.ReactElement<TabChildProps>[] => {
   const children = React.Children.toArray(node);
   const tabList = children.find((child) => getComponentId(child) === 'TabList');
   if (!tabList || !React.isValidElement(tabList)) {
-    throw new Error('TabList is required');
+    throwBladeError({
+      message:
+        '<TabList> is required as a direct child of <Tabs>. Wrap <Tab> elements inside <TabList>.',
+      moduleName: 'Tabs',
+    });
+    // throwBladeError throws in __DEV__ and no-ops in prod; rely on the
+    // empty fallback for prod resilience.
+    return [];
   }
-  return tabList.props.children;
+  return (tabList as React.ReactElement<TabListChildProps>).props.children;
 };
 
 const getTabPanels = (node: React.ReactNode): { value: string; children: React.ReactNode }[] => {
-  const children = React.Children.toArray(node) as React.ReactElement[];
+  const children = React.Children.toArray(node) as React.ReactElement<TabPanelChildProps>[];
   return children
     .filter((child) => getComponentId(child) === 'TabPanel')
     .map((child) => ({ value: child.props.value, children: child.props.children }));
@@ -42,11 +60,12 @@ type Route = {
   value: string;
   index: number;
   title: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   leading?: React.ComponentType<any>;
   trailing?: React.ReactNode;
 };
 
-const getRoutes = (tabs: React.ReactElement[]): Route[] =>
+const getRoutes = (tabs: React.ReactElement<TabChildProps>[]): Route[] =>
   tabs.map((TabComponent, index) => ({
     index,
     title: TabComponent.props.children,
@@ -348,13 +367,13 @@ const _Tabs = (
     isFullWidthTabItem,
   };
 
-  const handleTabPress = React.useCallback(
-    (index: number) => {
-      setIndex(index);
-      pagerRef.current?.setPage(index);
-    },
-    [setIndex],
-  );
+  // Tab press: ask the PagerView to animate to the target page. The pager
+  // fires `onPageSelected` once the transition is committed, which is the
+  // single source of truth that updates our state — driving it from both
+  // sides would double-update on every tap.
+  const handleTabPress = React.useCallback((index: number) => {
+    pagerRef.current?.setPage(index);
+  }, []);
 
   const handlePageSelected = React.useCallback(
     (e: { nativeEvent: { position: number } }) => {
@@ -375,6 +394,20 @@ const _Tabs = (
           isFullWidthTabItem={isFullWidthTabItem}
           isFilled={isFilled}
         />
+        {/*
+          PagerView APIs we depend on: `setPage`, `initialPage`,
+          `onPageSelected`, `scrollEnabled`. All four are stable across the
+          v6 → v8 release line (confirmed against react-native-pager-view
+          CHANGELOG); broadening the peer-range did not change the surface
+          we consume.
+
+          Panel state preservation: when `isLazy=false` (default), all panels
+          render as siblings inside PagerView — React preserves the mounted
+          tree across tab switches, so form inputs, scroll positions, etc.
+          survive. When `isLazy=true`, off-screen panels render `null` and
+          unmount; state is lost on each switch. This matches the documented
+          lazy semantics on web.
+        */}
         <PagerView
           ref={pagerRef}
           style={styles.pagerView}

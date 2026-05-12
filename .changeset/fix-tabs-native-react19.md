@@ -1,8 +1,13 @@
 ---
-'@razorpay/blade': patch
+'@razorpay/blade': minor
 ---
 
 fix(Tabs.native): drop react-native-tab-view, rebuild on react-native-pager-view
+
+> **Why minor (not patch):** this changeset removes `react-native-tab-view` from
+> `peerDependencies` and broadens the `react-native-pager-view` peer range to
+> `^6.2.1 || ^8.0.0`. Both are peer-dep contract changes that consumers must
+> react to, which by convention warrants a minor bump.
 
 Replaces the `react-native-tab-view@3.x` dependency (which declares `react: ~16.13.1` in devDeps
 and triggers an "Invalid hook call" crash on React 19.2 + RN 0.85) with a direct

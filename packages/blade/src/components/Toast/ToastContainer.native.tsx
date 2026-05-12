@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Toast } from './Toast.native';
 import { useToast } from './useToast.native';
+import { useTheme } from '~components/BladeProvider';
 
 /**
  * ToastContainer for React Native.
@@ -15,26 +16,26 @@ import { useToast } from './useToast.native';
  * native `<Toast>` component for each visible toast.
  */
 const ToastContainer = (): React.ReactElement | null => {
+  const { theme } = useTheme();
   const { toasts } = useToast();
 
   if (toasts.length === 0) return null;
 
   return (
-    <View style={styles.container} pointerEvents="box-none">
+    <View
+      style={{
+        position: 'absolute',
+        left: theme.spacing[5],
+        right: theme.spacing[5],
+        bottom: theme.spacing[8],
+      }}
+      pointerEvents="box-none"
+    >
       {toasts.map((entry) => (
         <Toast key={entry.id} {...entry} isVisible={entry.visible} />
       ))}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    left: 16,
-    right: 16,
-    bottom: 32,
-  },
-});
 
 export { ToastContainer };

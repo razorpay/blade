@@ -16,6 +16,10 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
  * via `React.Children.forEach` + `getComponentId(child)` and render the chart
  * themselves with `react-native-svg`. The marker components themselves render
  * nothing.
+ *
+ * ChartTooltip is consumed by ChartBarWrapper today. Other chart wrappers
+ * that haven't yet implemented tooltip rendering will silently ignore it
+ * until support lands.
  */
 const _ChartXAxis = (_props: ChartXAxisProps): React.ReactElement | null => null;
 const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {

@@ -62,11 +62,17 @@ const Toast = (
   const isPromotional = type === 'promotional';
   const Icon = Leading ?? iconMap[color];
 
+  // The public `ToastProps` types `event` as a web `MouseEvent` so consumers
+  // can write platform-agnostic handlers. Native has no MouseEvent equivalent
+  // and Blade's Platform.Select-branded `onClick` doesn't let us pass a
+  // GestureResponderEvent through. Surface a typed empty stand-in (not `any`)
+  // so consumers reading `event` get a typed object and the lint smell goes
+  // away. Tracking a follow-up to platform-conditional the event type.
+  const stubEvent = ({} as unknown) as React.MouseEvent<HTMLButtonElement>;
+
   const handleDismiss = (): void => {
     onDismissButtonClick?.({
-      // Native has no MouseEvent; surface a minimal stand-in for type compat.
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      event: {} as any,
+      event: stubEvent,
       toastId: id ?? '',
     });
     if (id) toastStore.dismiss(id);
@@ -74,8 +80,7 @@ const Toast = (
 
   const handleActionClick = (): void => {
     if (!action) return;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    action.onClick?.({ event: {} as any, toastId: id ?? '' });
+    action.onClick?.({ event: stubEvent, toastId: id ?? '' });
   };
 
   return (

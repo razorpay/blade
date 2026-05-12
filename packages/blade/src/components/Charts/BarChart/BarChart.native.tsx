@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Svg, Rect, Line, Text as SvgText, G } from 'react-native-svg';
-import { View } from 'react-native';
-import type { LayoutChangeEvent } from 'react-native';
+import { Pressable, View } from 'react-native';
+import type { GestureResponderEvent, LayoutChangeEvent } from 'react-native';
 import { BarChartContext } from './BarChartContext';
 import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
@@ -10,24 +10,46 @@ import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,
 } from '../CommonChartComponents';
-import type { DataColorMapping, ChartXAxisProps, ChartYAxisProps } from '../CommonChartComponents';
+import type {
+  DataColorMapping,
+  ChartXAxisProps,
+  ChartYAxisProps,
+  ChartReferenceLineProps,
+  ChartTooltipProps,
+} from '../CommonChartComponents';
 import getIn from '~utils/lodashButBetter/get';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import { useTheme } from '~components/BladeProvider';
+import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { logger } from '~utils/logger';
 
+// Plot padding is in raw SVG pixels because react-native-svg works in pixel
+// space; it does not consume Blade's spacing tokens directly. The values
+// roughly correspond to spacing.4 (top/right), spacing.6 (bottom), and
+// spacing.8 (left to fit Y-axis ticks).
 const PLOT_PADDING = { top: 16, right: 16, bottom: 32, left: 40 };
 const Y_TICK_COUNT = 4;
 const LEGEND_HEIGHT = 28;
 const LEGEND_DOT_SIZE = 10;
 const TICK_FONT_SIZE = 10;
 const AXIS_LABEL_FONT_SIZE = 11;
-const SECONDARY_LABEL_FONT_SIZE = 9;
+const SECONDARY_LABEL_FONT_SIZE = 10;
+// Spacing between secondary tick labels and the X-axis title.
+const X_AXIS_TITLE_GAP = 6;
+
+type ReferenceLineSlot = {
+  y: number;
+  label?: string;
+};
+
+type TooltipFormatter = NonNullable<ChartTooltipProps['formatter']>;
 
 type ChildSlots = {
   bars: { dataKey: string; name?: string; color?: string; stackId?: string; hide?: boolean }[];
@@ -41,6 +63,9 @@ type ChildSlots = {
   yLabel?: string;
   hasLegend: boolean;
   hasGrid: boolean;
+  referenceLines: ReferenceLineSlot[];
+  hasTooltip: boolean;
+  tooltipFormatter?: TooltipFormatter;
 };
 
 const readChildSlots = (children: React.ReactNode): ChildSlots => {
@@ -50,6 +75,8 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
     hasYAxis: false,
     hasLegend: false,
     hasGrid: false,
+    referenceLines: [],
+    hasTooltip: false,
   };
 
   React.Children.forEach(children, (child) => {
@@ -80,6 +107,30 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       slots.hasLegend = true;
     } else if (id === commonComponentIds.chartCartesianGrid) {
       slots.hasGrid = true;
+    } else if (id === commonComponentIds.chartTooltip) {
+      slots.hasTooltip = true;
+      const props = child.props as ChartTooltipProps;
+      if (typeof props.formatter === 'function') {
+        slots.tooltipFormatter = props.formatter;
+      }
+    } else if (id === commonComponentIds.chartReferenceLine) {
+      const props = child.props as ChartReferenceLineProps;
+      // Native MVP supports horizontal reference lines (constant Y). The web
+      // component also takes `x` for vertical lines — see the DEV warning below
+      // and follow-up work for the vertical case.
+      if (typeof props.y === 'number') {
+        slots.referenceLines.push({
+          y: props.y,
+          label: typeof props.label === 'string' ? props.label : undefined,
+        });
+      } else if (__DEV__) {
+        logger({
+          type: 'warn',
+          moduleName: 'ChartReferenceLine',
+          message:
+            'Only horizontal reference lines (numeric `y` prop) are supported on native. The provided line will not be rendered.',
+        });
+      }
     }
   });
 
@@ -129,6 +180,21 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     width: 0,
     height: 0,
   });
+  const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
+
+  const verticalWarned = useRef(false);
+  useEffect(() => {
+    if (!__DEV__) return;
+    if (layout === 'vertical' && !verticalWarned.current) {
+      verticalWarned.current = true;
+      logger({
+        type: 'warn',
+        moduleName: 'BarChart',
+        message:
+          '`layout="vertical"` is not yet implemented on native — falling back to horizontal. Track support in the native ChartBar roadmap.',
+      });
+    }
+  }, [layout]);
 
   const onLayout = (e: LayoutChangeEvent): void => {
     const { width, height } = e.nativeEvent.layout;
@@ -203,7 +269,18 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   }, [yMax]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
-  const padding = showAxes ? PLOT_PADDING : { top: 0, right: 0, bottom: 0, left: 0 };
+  // Expand bottom padding when both the primary tick label and a secondary
+  // tick label AND the X-axis title are all rendered — otherwise the title
+  // text bleeds into the secondary labels with only a few pixels of gap.
+  const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
+  const padding = showAxes
+    ? {
+        ...PLOT_PADDING,
+        bottom: needsExtraBottomPad
+          ? PLOT_PADDING.bottom + SECONDARY_LABEL_FONT_SIZE + X_AXIS_TITLE_GAP
+          : PLOT_PADDING.bottom,
+      }
+    : { top: 0, right: 0, bottom: 0, left: 0 };
   const legendH = slots.hasLegend ? LEGEND_HEIGHT : 0;
 
   const plotWidth = Math.max(0, size.width - padding.left - padding.right);
@@ -222,6 +299,76 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
   const gridColor = getIn(theme.colors, 'surface.border.gray.subtle');
 
+  // Map a tap's local x-coordinate to a bar-group index. Returns undefined if
+  // the tap fell outside the plotting region.
+  const groupAtX = (localX: number): number | undefined => {
+    if (groupCount === 0 || groupSlot === 0) return undefined;
+    const plotX = localX - padding.left;
+    if (plotX < 0 || plotX > plotWidth) return undefined;
+    return Math.min(groupCount - 1, Math.max(0, Math.floor(plotX / groupSlot)));
+  };
+
+  const handleChartPress = (e: GestureResponderEvent): void => {
+    if (!slots.hasTooltip) return;
+    const next = groupAtX(e.nativeEvent.locationX);
+    setActiveIndex((prev) => (prev === next ? undefined : next));
+  };
+
+  const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
+  const activeLabelRaw =
+    activeRow && slots.xDataKey ? String(activeRow[slots.xDataKey] ?? activeIndex) : undefined;
+  const activeLabel = activeLabelRaw
+    ? slots.xTickFormatter
+      ? slots.xTickFormatter(activeLabelRaw, activeIndex ?? 0)
+      : activeLabelRaw
+    : undefined;
+
+  const tooltipRows = useMemo(() => {
+    if (!activeRow) return [];
+    return visibleBars.map((bar) => {
+      const rawValue = Number(activeRow[bar.dataKey]) || 0;
+      const fillToken = dataColorMapping[bar.dataKey]?.colorToken ?? bar.color;
+      const fillColor = fillToken ? getIn(theme.colors, fillToken) : tickColor;
+      let displayValue: string = String(rawValue);
+      let displayName: string = bar.name ?? bar.dataKey;
+      const formatter = slots.tooltipFormatter;
+      if (formatter) {
+        // Recharts' formatter signature is (value, name, item, index, payload) =>
+        // string | [value, name]. Honor either shape on native.
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const formatted = (formatter as any)(rawValue, bar.dataKey, undefined, activeIndex, activeRow);
+          if (Array.isArray(formatted)) {
+            if (formatted[0] !== undefined && formatted[0] !== null) {
+              displayValue = String(formatted[0]);
+            }
+            if (formatted[1] !== undefined && formatted[1] !== null) {
+              displayName = String(formatted[1]);
+            }
+          } else if (formatted !== undefined && formatted !== null) {
+            displayValue = String(formatted);
+          }
+        } catch {
+          // Formatter threw — fall back to the raw value silently.
+        }
+      }
+      return {
+        key: bar.dataKey,
+        color: fillColor,
+        displayValue,
+        displayName,
+      };
+    });
+  }, [
+    activeRow,
+    visibleBars,
+    dataColorMapping,
+    theme.colors,
+    tickColor,
+    slots.tooltipFormatter,
+    activeIndex,
+  ]);
+
   return (
     <CommonChartComponentsContext.Provider
       value={{
@@ -234,7 +381,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       <BarChartContext.Provider
         value={{
           layout,
-          activeIndex: undefined,
+          activeIndex,
           colorTheme,
           totalBars: visibleBars.length,
         }}
@@ -246,8 +393,26 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
           height="100%"
           {...restProps}
         >
-          <View style={{ flex: 1, width: '100%' }} onLayout={onLayout}>
-            {size.width > 0 && size.height > 0 ? (
+          <Pressable
+            style={{ flex: 1, width: '100%' }}
+            onLayout={onLayout}
+            onPress={handleChartPress}
+            // Hide ripple/highlight visuals so the chart still looks like a chart.
+            android_disableSound={true}
+          >
+            {data.length === 0 ? (
+              <Box
+                flex={1}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                padding="spacing.6"
+              >
+                <Text size="small" color="surface.text.gray.muted">
+                  No data to display
+                </Text>
+              </Box>
+            ) : size.width > 0 && size.height > 0 ? (
               <Svg width={size.width} height={size.height}>
                 <G x={padding.left} y={padding.top}>
                   {slots.hasGrid &&
@@ -349,6 +514,35 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                     );
                   })}
 
+                  {slots.referenceLines.map((line, idx) => {
+                    if (line.y > yMax || line.y < 0) return null;
+                    const y = plotHeight - (line.y / yMax) * plotHeight;
+                    return (
+                      <G key={`refline-${idx}`}>
+                        <Line
+                          x1={0}
+                          x2={plotWidth}
+                          y1={y}
+                          y2={y}
+                          stroke={getIn(theme.colors, 'surface.border.gray.normal')}
+                          strokeWidth={1}
+                          strokeDasharray="4 4"
+                        />
+                        {line.label ? (
+                          <SvgText
+                            x={plotWidth - 4}
+                            y={y - 4}
+                            fontSize={TICK_FONT_SIZE}
+                            fill={tickColor}
+                            textAnchor="end"
+                          >
+                            {line.label}
+                          </SvgText>
+                        ) : null}
+                      </G>
+                    );
+                  })}
+
                   {slots.hasXAxis && (
                     <>
                       <Line
@@ -443,7 +637,70 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                 )}
               </Svg>
             ) : null}
-          </View>
+
+            {slots.hasTooltip && activeIndex !== undefined && tooltipRows.length > 0 && size.width > 0 ? (
+              <View
+                pointerEvents="none"
+                style={{
+                  position: 'absolute',
+                  top: padding.top,
+                  left: Math.max(
+                    padding.left,
+                    Math.min(
+                      size.width - 160 - padding.right,
+                      padding.left + activeIndex * groupSlot + groupSlot / 2 - 80,
+                    ),
+                  ),
+                  minWidth: 120,
+                  maxWidth: 200,
+                  backgroundColor: getIn(theme.colors, 'popup.background.gray.intense'),
+                  borderRadius: theme.border.radius.medium,
+                  paddingHorizontal: theme.spacing[3],
+                  paddingVertical: theme.spacing[3],
+                  shadowColor: '#000',
+                  shadowOpacity: 0.2,
+                  shadowRadius: 4,
+                  shadowOffset: { width: 0, height: 2 },
+                  elevation: 4,
+                }}
+              >
+                {activeLabel ? (
+                  <Box paddingBottom="spacing.2">
+                    <Text size="small" weight="semibold" color="surface.text.staticWhite.normal">
+                      {activeLabel}
+                    </Text>
+                  </Box>
+                ) : null}
+                {tooltipRows.map((row) => (
+                  <Box
+                    key={row.key}
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    paddingY="spacing.1"
+                  >
+                    <View
+                      style={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: 2,
+                        backgroundColor: row.color,
+                        marginRight: theme.spacing[2],
+                      }}
+                    />
+                    <Box flex={1}>
+                      <Text size="xsmall" color="surface.text.staticWhite.normal">
+                        {row.displayName}
+                      </Text>
+                    </Box>
+                    <Text size="xsmall" weight="semibold" color="surface.text.staticWhite.normal">
+                      {row.displayValue}
+                    </Text>
+                  </Box>
+                ))}
+              </View>
+            ) : null}
+          </Pressable>
         </BaseBox>
       </BarChartContext.Provider>
     </CommonChartComponentsContext.Provider>
