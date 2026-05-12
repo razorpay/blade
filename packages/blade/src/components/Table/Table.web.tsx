@@ -96,6 +96,8 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
 const StyledReactTable = styled(ReactTable)<{
   $styledProps?: {
     height?: BoxProps['height'];
+    minHeight?: BoxProps['minHeight'];
+    maxHeight?: BoxProps['maxHeight'];
     width?: BoxProps['width'];
     isVirtualized?: boolean;
     isSelectable?: boolean;
@@ -106,6 +108,8 @@ const StyledReactTable = styled(ReactTable)<{
   const styledPropsCSSObject = getBaseBoxStyles({
     theme,
     height: $styledProps?.height,
+    minHeight: $styledProps?.minHeight,
+    maxHeight: $styledProps?.maxHeight,
     ...($styledProps?.isVirtualized && {
       width: '100%',
     }),
@@ -162,6 +166,8 @@ const _Table = <Item,>({
   toolbar,
   pagination,
   height,
+  minHeight,
+  maxHeight,
   showStripedRows,
   gridTemplateColumns,
   isLoading = false,
@@ -580,6 +586,8 @@ const _Table = <Item,>({
             alignItems="center"
             justifyContent="center"
             height={height}
+            minHeight={minHeight}
+            maxHeight={maxHeight}
             paddingY="spacing.11"
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
@@ -626,6 +634,8 @@ const _Table = <Item,>({
               tree={isGrouped ? tree : null}
               $styledProps={{
                 height,
+                minHeight,
+                maxHeight,
                 width: isVirtualized ? `100%` : undefined,
                 isVirtualized,
                 isSelectable: selectionType !== 'none',
