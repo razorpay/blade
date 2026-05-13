@@ -3,6 +3,7 @@ import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { CSSProperties } from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import type { ColorSchemeNames } from '~tokens/theme/theme';
 
 type TooltipProps = {
   /**
@@ -36,6 +37,7 @@ type TooltipContentProps = {
   children: string;
   style: CSSProperties;
   arrow: React.ReactNode;
+  colorScheme: ColorSchemeNames;
   /**
    * react-native only
    */
@@ -50,6 +52,7 @@ type TooltipContentWrapperProps = {
   styles: CSSProperties;
   side?: Side;
   isVisible?: boolean;
+  colorScheme?: ColorSchemeNames;
 } & BaseBoxProps;
 
 export type { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };

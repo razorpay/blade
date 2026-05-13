@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
@@ -103,7 +103,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
         toolbar={
           <TableToolbar>
             <TableToolbarActions {...args}>
-              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
+              <Button variant="secondary" marginRight="spacing.3" isFullWidth={onMobile}>
                 Export
               </Button>
               <Button isFullWidth={onMobile}>Payout</Button>

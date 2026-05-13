@@ -235,6 +235,12 @@ type TimePickerProps = Omit<
      * When not provided, falls back to label prop
      */
     accessibilityLabel?: string;
+
+    /**
+     * z-index of the TimePicker dropdown
+     * @default componentZIndices.popover (1100)
+     */
+    zIndex?: number;
   };
 
 /**

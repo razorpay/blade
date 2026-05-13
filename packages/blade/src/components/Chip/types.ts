@@ -242,6 +242,7 @@ type AnimatedChipProps = {
   width?: BoxProps['width'];
   maxWidth?: BoxProps['maxWidth'];
   minWidth?: BoxProps['minWidth'];
+  size?: ChipGroupProps['size'];
 };
 
 type StyledChipWrapperProps = {
@@ -251,6 +252,7 @@ type StyledChipWrapperProps = {
   isDisabled?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  size?: ChipGroupProps['size'];
 };
 
 export type {

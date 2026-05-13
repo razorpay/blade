@@ -37,6 +37,7 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
           size={hintTextSize[size]}
           variant="caption"
           wordBreak="break-word"
+          marginTop={size === 'large' && Icon ? 'spacing.1' : 'spacing.0'}
         >
           {children}
         </Text>

@@ -1,9 +1,10 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
-import type { MenuProps } from '..';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from '..';
+import type { MenuProps } from '..';
 import { CustomMenuItem, CustomMenuTrigger, MenuTrigger, navMenuItems } from './CustomMenu';
+import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import {
@@ -27,6 +28,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { BladeProvider } from '~components/BladeProvider';
 
 const Page = (): React.ReactElement => {
   return (
@@ -229,6 +231,23 @@ const MenuTemplate: StoryFn<TemplateProps> = ({ trigger, ...args }) => {
         {trigger}
         <MenuOverlay>{accountsMenuOverlayContent}</MenuOverlay>
       </Menu>
+      <Text marginTop="spacing.9">Open Menu to know why these random blocks are here</Text>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <Box
+          marginTop="spacing.4"
+          marginLeft="-12px"
+          backgroundColor="feedback.background.negative.intense"
+          height="100px"
+          width="100px"
+        />
+        <Box
+          marginLeft="200px"
+          borderRadius="round"
+          backgroundColor="feedback.background.negative.intense"
+          height="100px"
+          width="100px"
+        />
+      </BladeProvider>
     </Box>
   );
 };
@@ -331,6 +350,109 @@ WithAvatarIcon.args = {
 export const CustomItems = CustomOverlayMenuTemplate.bind({});
 CustomItems.args = {
   openInteraction: 'hover',
+};
+
+const fixedAnchorButtons = ['Payments', 'Settlements', 'Manage Account', 'Support'] as const;
+
+const fixedAnchorMenuItemsByTrigger: Record<typeof fixedAnchorButtons[number], string[]> = {
+  Payments: [
+    'Create a payment link for the latest abandoned checkout.',
+    'Share a one-time payment page with [email].',
+    'Retry the failed auto-debit for invoice #INV-2031.',
+    'Generate a reminder for overdue payment #PAY-7782.',
+  ],
+  Settlements: [
+    'Show today’s expected settlement timeline.',
+    'Reconcile payout #PAYOUT-1147 with bank statement.',
+    'Download T+1 settlement report for this week.',
+    'Investigate deduction marked as adjustment #ADJ-902.',
+  ],
+  'Manage Account': [
+    'Enable AMEX cards on my checkout page.',
+    'Update the business name on my billing label.',
+    'Add [email] as a Finance user.',
+    "Disable 'Cash on Delivery' for orders above ₹5,000.",
+  ],
+  Support: [
+    'Why was chargeback #CB-4451 raised?',
+    'Escalate open ticket #SUP-982 to priority support.',
+    'Share dispute evidence checklist with my team.',
+    'Draft a status update for customer [email].',
+  ],
+};
+
+export const MenuWithCustomOffsets = (props: MenuProps): React.ReactElement => {
+  type TriggerAnchorElement = { getBoundingClientRect: () => DOMRect };
+  const anchorRefs = React.useRef<(TriggerAnchorElement | null)[]>([]);
+  const [crossAxisOffsets, setCrossAxisOffsets] = React.useState<number[]>([]);
+  const [overlayWidth, setOverlayWidth] = React.useState<number | null>(null);
+
+  React.useLayoutEffect(() => {
+    const computeOffsets = (): void => {
+      const anchorRects = fixedAnchorButtons.map((_, index) =>
+        anchorRefs.current[index]?.getBoundingClientRect(),
+      );
+      const anchorLeft = anchorRects[0]?.left;
+      const lastAnchorRight = anchorRects[anchorRects.length - 1]?.right;
+
+      if (anchorLeft == null || lastAnchorRight == null) {
+        return;
+      }
+
+      setCrossAxisOffsets(
+        anchorRects.map((rect) => {
+          if (!rect) {
+            return 0;
+          }
+
+          return Math.round(anchorLeft - rect.left);
+        }),
+      );
+
+      setOverlayWidth(Math.round(lastAnchorRight - anchorLeft));
+    };
+
+    computeOffsets();
+    window.addEventListener('resize', computeOffsets);
+
+    return () => {
+      window.removeEventListener('resize', computeOffsets);
+    };
+  }, []);
+
+  return (
+    <Box paddingTop="spacing.10">
+      <Box display="flex" gap="spacing.4">
+        {fixedAnchorButtons.map((buttonLabel, index) => {
+          return (
+            <Box
+              key={buttonLabel}
+              ref={(element) => {
+                if (element && 'getBoundingClientRect' in element) {
+                  anchorRefs.current[index] = element;
+                  return;
+                }
+
+                anchorRefs.current[index] = null;
+              }}
+            >
+              <Menu {...props}>
+                <MenuTrigger>{buttonLabel}</MenuTrigger>
+                <MenuOverlay
+                  width={overlayWidth != null ? `${overlayWidth}px` : undefined}
+                  offset={{ mainAxis: 12, crossAxis: crossAxisOffsets[index] ?? 0 }}
+                >
+                  {fixedAnchorMenuItemsByTrigger[buttonLabel].map((menuItemTitle) => (
+                    <MenuItem key={`${buttonLabel}-${menuItemTitle}`} title={menuItemTitle} />
+                  ))}
+                </MenuOverlay>
+              </Menu>
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
 };
 
 export const WithDifferentTriggers = (props: MenuProps): React.ReactElement => {

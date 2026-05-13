@@ -23,14 +23,10 @@ const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
-// With OIDC trusted publishers, npm CLI uses the workflow's OIDC token; NPM_TOKEN is not needed.
-// Only add _authToken when NPM_TOKEN is set (e.g. fallback or non-OIDC environments).
-const authLine = process.env.NPM_TOKEN
-  ? `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}\n`
-  : '';
-const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
-//registry.npmjs.org/:always-auth=true
-${authLine}`;
+// With OIDC trusted publishers, npm CLI handles auth automatically via the OIDC token exchange.
+// We only need to point the @razorpay scope at the npm registry; adding auth lines here would
+// overwrite the OIDC-managed .npmrc that setup-node generates and break authentication.
+const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/\n`;
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 

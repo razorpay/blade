@@ -1,6 +1,5 @@
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent, expect } from 'storybook/test';
 import React, { useState } from 'react';
 import type { BladeFileList, BladeFile, FileUploadProps } from '~components/FileUpload';
 import { FileUpload } from '~components/FileUpload';

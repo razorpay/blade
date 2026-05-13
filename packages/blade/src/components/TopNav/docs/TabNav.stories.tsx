@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { TabNavItemProps } from '../TabNav';
 import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
 import { tabNavExample } from './code';
@@ -40,8 +40,22 @@ const trailingMapping = {
   '<Badge color="positive">NEW</Badge>': <Badge color="positive">NEW</Badge>,
 };
 
+const titleSuffixMapping = {
+  '<Badge size="small" color="primary">BETA</Badge>': (
+    <Badge size="small" emphasis="subtle" color="primary">
+      BETA
+    </Badge>
+  ),
+  '<Badge size="small" color="positive">NEW</Badge>': (
+    <Badge size="small" emphasis="subtle" color="positive">
+      NEW
+    </Badge>
+  ),
+};
+
 const propsCategory = {
   TAB_NAV_ITEM: 'TabNavItem Props',
+  TAB_NAV: 'TabNav Props',
   ITEM_DATA: 'Extra props for "item" data',
 };
 
@@ -79,6 +93,12 @@ export default {
       name: 'trailing',
       type: 'select',
       options: Object.keys(trailingMapping),
+      table: { category: propsCategory.TAB_NAV_ITEM },
+    } as unknown,
+    titleSuffix: {
+      name: 'titleSuffix',
+      type: 'select',
+      options: Object.keys(titleSuffixMapping),
       table: { category: propsCategory.TAB_NAV_ITEM },
     } as unknown,
     isAlwaysOverflowing: {
@@ -136,6 +156,8 @@ const TabNavTemplate: StoryFn<any> = (
 ) => {
   const icon = iconMap[(args.icon as unknown) as keyof typeof iconMap];
   const trailing = trailingMapping[(args.trailing as unknown) as keyof typeof trailingMapping];
+  const titleSuffix =
+    titleSuffixMapping[(args.titleSuffix as unknown) as keyof typeof titleSuffixMapping];
 
   return (
     <Box padding="spacing.4">
@@ -186,6 +208,7 @@ const TabNavTemplate: StoryFn<any> = (
             title: args.title,
             icon,
             trailing,
+            titleSuffix,
             isActive: args.isActive,
             isAlwaysOverflowing: args.isAlwaysOverflowing,
             description: args.description,
@@ -224,6 +247,7 @@ const TabNavTemplate: StoryFn<any> = (
                       icon={item.icon}
                       isActive={item.isActive}
                       trailing={item.trailing}
+                      titleSuffix={item.titleSuffix}
                     />
                   );
                 })}
@@ -233,7 +257,10 @@ const TabNavTemplate: StoryFn<any> = (
                   <TabNavItem title="More" trailing={<ChevronDownIcon />} />
                   <MenuOverlay>
                     {overflowingItems.map((item) => {
-                      const Icon = item.icon;
+                      const Icon =
+                        item.icon && typeof item.icon === 'object' && 'default' in item.icon
+                          ? item.icon.default
+                          : item.icon;
                       return (
                         <MenuItem
                           key={item.href}

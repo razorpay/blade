@@ -96,7 +96,7 @@
 <Story name="With Icon" asChild>
   <div style="display: flex; flex-direction: column; gap: 24px;">
     <div>
-      <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--color-feedback-text-neutral-intense);">Subtle Emphasis</p>
+      <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--feedback-text-neutral-intense);">Subtle Emphasis</p>
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         {#each colors as color}
           <Badge {color} emphasis="subtle" icon={InfoIcon}>{color}</Badge>
@@ -104,7 +104,7 @@
       </div>
     </div>
     <div>
-      <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--color-feedback-text-neutral-intense);">Intense Emphasis</p>
+      <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--feedback-text-neutral-intense);">Intense Emphasis</p>
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         {#each colors as color}
           <Badge {color} emphasis="intense" icon={InfoIcon}>{color}</Badge>

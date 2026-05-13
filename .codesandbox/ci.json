@@ -1,5 +1,6 @@
 {
   "node": "20",
+  "installCommand": "ci:codesandbox",
   "packages": ["packages/blade"],
   "//": "we don't want to build since post install and prepublish our build automatically runs",
   "buildCommand": false,

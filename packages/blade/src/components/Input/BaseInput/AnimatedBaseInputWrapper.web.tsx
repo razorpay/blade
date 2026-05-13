@@ -22,6 +22,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isDropdownTrigger'
     | 'maxTagRows'
     | 'isTableInputCell'
+    | 'size'
+    | 'borderRadius'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -32,6 +34,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
+    size: props.size,
+    borderRadius: props.borderRadius,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -43,6 +47,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
       isTableInputCell: props.isTableInputCell,
+      size: props.size,
+      borderRadius: props.borderRadius,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -57,6 +63,8 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDropdownTrigger: props.isDropdownTrigger,
       isTextArea: props.isTextArea,
       isTableInputCell: props.isTableInputCell,
+      size: props.size,
+      borderRadius: props.borderRadius,
     }),
   },
 }));

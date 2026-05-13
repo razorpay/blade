@@ -30,7 +30,7 @@ const BottomSheetFooter = ({
       width="100%"
       flexShrink={0}
       marginTop="auto"
-      backgroundColor="popup.background.subtle"
+      backgroundColor="popup.background.gray.subtle"
       touchAction="none"
       zIndex={2}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}

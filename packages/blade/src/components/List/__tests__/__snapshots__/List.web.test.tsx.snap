@@ -35,7 +35,7 @@ exports[`<List /> should render List with default properties 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -43,10 +43,10 @@ exports[`<List /> should render List with default properties 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -94,7 +94,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 cx="3px"
                 cy="3px"
                 data-blade-component="svg-circle"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 fill-opacity="0.48"
                 r="3px"
               />
@@ -103,6 +103,7 @@ exports[`<List /> should render List with default properties 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -142,13 +143,14 @@ exports[`<List /> should render List with default properties 1`] = `
                       cy="3px"
                       data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(211, 22%, 56%, 1)"
+                      stroke="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -185,7 +187,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -196,6 +198,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -247,7 +250,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -255,23 +258,23 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
+  line-height: 0.8125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -282,7 +285,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 
 .c5.c5.c5.c5.c5 {
   padding: 0px 4px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -328,7 +331,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 cx="3px"
                 cy="3px"
                 data-blade-component="svg-circle"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 fill-opacity="0.48"
                 r="3px"
               />
@@ -337,6 +340,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1 
             <span
@@ -346,6 +350,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <code
                 class="c6"
                 data-blade-component="base-text"
+                letter-spacing="100"
               >
                 Google
               </code>
@@ -378,7 +383,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 cx="3px"
                 cy="3px"
                 data-blade-component="svg-circle"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 fill-opacity="0.48"
                 r="3px"
               />
@@ -387,6 +392,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -432,7 +438,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -440,16 +446,16 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(218,87%,43%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -457,10 +463,10 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -504,7 +510,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                 cx="3px"
                 cy="3px"
                 data-blade-component="svg-circle"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 fill-opacity="0.48"
                 r="3px"
               />
@@ -513,10 +519,12 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             <span
               class="c5"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Level 1
             </span>
@@ -594,7 +602,7 @@ exports[`<List /> should render large ordered List 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -602,16 +610,16 @@ exports[`<List /> should render large ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -619,10 +627,10 @@ exports[`<List /> should render large ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -660,6 +668,7 @@ exports[`<List /> should render large ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="25"
             >
               1.
             </p>
@@ -667,6 +676,7 @@ exports[`<List /> should render large ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -706,13 +716,14 @@ exports[`<List /> should render large ordered List 1`] = `
                       cy="3px"
                       data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(211, 22%, 56%, 1)"
+                      stroke="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="25"
                 >
                   Level 2
                 </p>
@@ -749,7 +760,7 @@ exports[`<List /> should render large ordered List 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -760,6 +771,7 @@ exports[`<List /> should render large ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Level 3
                       </p>
@@ -821,29 +833,29 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   margin-right: 8px;
   height: 24px;
   width: 24px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -851,10 +863,10 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -888,6 +900,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -895,6 +908,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -915,6 +929,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -922,6 +937,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 2
           </p>
@@ -942,6 +958,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -949,6 +966,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 3
           </p>
@@ -1006,7 +1024,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -1014,10 +1032,10 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
 }
@@ -1064,13 +1082,14 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               <path
                 d="M14.7071 5.29289C14.3166 4.90237 13.6834 4.90237 13.2929 5.29289C12.9024 5.68342 12.9024 6.31658 13.2929 6.70711L17.5858 11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H17.5858L13.2929 17.2929C12.9024 17.6834 12.9024 18.3166 13.2929 18.7071C13.6834 19.0976 14.3166 19.0976 14.7071 18.7071L20.7071 12.7071C21.0976 12.3166 21.0976 11.6834 20.7071 11.2929L14.7071 5.29289Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
               />
             </svg>
           </div>
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="25"
           >
             Level 1
           </p>
@@ -1108,13 +1127,14 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     <path
                       d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(211, 22%, 56%, 1)"
+                      fill="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="25"
                 >
                   Level 2
                 </p>
@@ -1151,7 +1171,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -1162,6 +1182,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="25"
                       >
                         Level 3
                       </p>
@@ -1244,7 +1265,7 @@ exports[`<List /> should render medium ordered List 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1252,16 +1273,16 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1269,10 +1290,10 @@ exports[`<List /> should render medium ordered List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1310,6 +1331,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1.
             </p>
@@ -1317,6 +1339,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1356,13 +1379,14 @@ exports[`<List /> should render medium ordered List 1`] = `
                       cy="3px"
                       data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(211, 22%, 56%, 1)"
+                      stroke="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -1399,7 +1423,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -1410,6 +1434,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -1471,29 +1496,29 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-right: 8px;
   height: 20px;
   width: 20px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1501,10 +1526,10 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1538,6 +1563,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -1545,6 +1571,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1565,6 +1592,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -1572,6 +1600,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -1592,6 +1621,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -1599,6 +1629,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 3
           </p>
@@ -1656,7 +1687,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1664,10 +1695,10 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1714,13 +1745,14 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               <path
                 d="M14.7071 5.29289C14.3166 4.90237 13.6834 4.90237 13.2929 5.29289C12.9024 5.68342 12.9024 6.31658 13.2929 6.70711L17.5858 11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H17.5858L13.2929 17.2929C12.9024 17.6834 12.9024 18.3166 13.2929 18.7071C13.6834 19.0976 14.3166 19.0976 14.7071 18.7071L20.7071 12.7071C21.0976 12.3166 21.0976 11.6834 20.7071 11.2929L14.7071 5.29289Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
               />
             </svg>
           </div>
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -1758,13 +1790,14 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     <path
                       d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(211, 22%, 56%, 1)"
+                      fill="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -1801,7 +1834,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -1812,6 +1845,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -1894,35 +1928,35 @@ exports[`<List /> should render small ordered List 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -1960,6 +1994,7 @@ exports[`<List /> should render small ordered List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1.
             </p>
@@ -1967,6 +2002,7 @@ exports[`<List /> should render small ordered List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2006,13 +2042,14 @@ exports[`<List /> should render small ordered List 1`] = `
                       cy="3px"
                       data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(211, 22%, 56%, 1)"
+                      stroke="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2049,7 +2086,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -2060,6 +2097,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       <p
                         class="c5"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -2121,40 +2159,40 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-right: 8px;
   height: 18px;
   width: 18px;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(206,10%,29%,0.09);
   border-radius: 9999px;
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 0.875rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
   margin: 0;
   padding: 0;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2188,6 +2226,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               1
             </p>
@@ -2195,6 +2234,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2215,6 +2255,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               2
             </p>
@@ -2222,6 +2263,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 2
           </p>
@@ -2242,6 +2284,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             <p
               class="c4"
               data-blade-component="text"
+              letter-spacing="50"
             >
               3
             </p>
@@ -2249,6 +2292,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <p
             class="c5"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 3
           </p>
@@ -2306,18 +2350,18 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2364,13 +2408,14 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               <path
                 d="M14.7071 5.29289C14.3166 4.90237 13.6834 4.90237 13.2929 5.29289C12.9024 5.68342 12.9024 6.31658 13.2929 6.70711L17.5858 11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H17.5858L13.2929 17.2929C12.9024 17.6834 12.9024 18.3166 13.2929 18.7071C13.6834 19.0976 14.3166 19.0976 14.7071 18.7071L20.7071 12.7071C21.0976 12.3166 21.0976 11.6834 20.7071 11.2929L14.7071 5.29289Z"
                 data-blade-component="svg-path"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
               />
             </svg>
           </div>
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2408,13 +2453,14 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     <path
                       d="M12.7071 3.29289C12.3166 2.90237 11.6834 2.90237 11.2929 3.29289L5.29289 9.29289C4.90237 9.68342 4.90237 10.3166 5.29289 10.7071C5.68342 11.0976 6.31658 11.0976 6.70711 10.7071L11 6.41421V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V6.41421L17.2929 10.7071C17.6834 11.0976 18.3166 11.0976 18.7071 10.7071C19.0976 10.3166 19.0976 9.68342 18.7071 9.29289L12.7071 3.29289Z"
                       data-blade-component="svg-path"
-                      fill="hsla(150, 100%, 27%, 1)"
+                      fill="hsla(150, 100%, 23%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2451,7 +2497,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -2462,6 +2508,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>
@@ -2513,18 +2560,18 @@ exports[`<List /> should render unordered List of small size 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
@@ -2572,7 +2619,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 cx="3px"
                 cy="3px"
                 data-blade-component="svg-circle"
-                fill="hsla(211, 22%, 56%, 1)"
+                fill="hsla(204, 9%, 42%, 1)"
                 fill-opacity="0.48"
                 r="3px"
               />
@@ -2581,6 +2628,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           <p
             class="c4"
             data-blade-component="text"
+            letter-spacing="50"
           >
             Level 1
           </p>
@@ -2620,13 +2668,14 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       cy="3px"
                       data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(211, 22%, 56%, 1)"
+                      stroke="hsla(204, 9%, 42%, 1)"
                     />
                   </svg>
                 </div>
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Level 2
                 </p>
@@ -2663,7 +2712,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         >
                           <rect
                             data-blade-component="svg-rect"
-                            fill="hsla(211, 22%, 56%, 1)"
+                            fill="hsla(204, 9%, 42%, 1)"
                             fill-opacity="0.48"
                             height="6px"
                             rx="1px"
@@ -2674,6 +2723,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       <p
                         class="c4"
                         data-blade-component="text"
+                        letter-spacing="50"
                       >
                         Level 3
                       </p>

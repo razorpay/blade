@@ -73,9 +73,7 @@
   const disabled = $derived(isLoading || (isDisabled && isButton));
 
   // Create interaction state using $state
-  let currentInteraction = $state<ButtonActionStatesType>(
-    disabled ? 'disabled' : 'default',
-  );
+  let currentInteraction = $state<ButtonActionStatesType>('default');
 
   // Pressed state for animation
   let isPressed = $state(false);

@@ -94,6 +94,18 @@ describe('<LineChart />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render LineChart with sequential colors', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={mockData}>
+          <ChartLine dataKey="sales" color="data.background.sequential.blue.400" />
+          <ChartLine dataKey="profit" color="data.background.sequential.green.600" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render LineChart with dots enabled', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">

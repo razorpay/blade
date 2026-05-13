@@ -1,13 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type {
+  OffsetOptions,
+  UseFloatingReturn,
+  UseInteractionsReturn,
+  useListItem,
+} from '@floating-ui/react';
 import type React from 'react';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
-import type { FeedbackColors } from '~tokens/theme/theme';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
@@ -139,6 +144,13 @@ type MenuOverlayProps = {
   maxWidth?: BoxProps['maxWidth'];
 
   /**
+   * Offset for overlay positioning relative to trigger.
+   *
+   * Supports Floating UI offset options (`mainAxis`, `crossAxis`, `alignmentAxis`).
+   */
+  offset?: OffsetOptions;
+
+  /**
    * @private Internal Prop. Do not override or you'll be fired
    */
   _transitionStyle?: React.CSSProperties;
@@ -167,6 +179,7 @@ type MenuContextType = {
 
 type UseFloatingMenuProps = Pick<MenuProps, 'openInteraction' | 'onOpenChange' | 'isOpen'> & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
+  overlayOffset?: OffsetOptions;
 };
 
 type UseFloatingMenuReturnType = Pick<

@@ -16,9 +16,12 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
 >((props) => {
   const styledPropsCSSObject = useStyledProps(props);
+  // boxShadow with inset values is not supported in React Native (css-to-react-native
+  // cannot parse multiple inset shadows), so we exclude it from native styles.
+  const { boxShadow: _boxShadow, ...nativeButtonStyles } = getStyledBaseButtonStyles(props);
 
   return {
-    ...getStyledBaseButtonStyles(props),
+    ...nativeButtonStyles,
     alignSelf: 'center',
     display: 'flex',
     flexDirection: 'row',
@@ -87,18 +90,24 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
   const easing = getIn(theme.motion, motionEasing);
 
   const animatedStyles = useAnimatedStyle(() => {
-    return {
+    const styles: {
+      backgroundColor: string;
+      borderColor?: string;
+    } = {
       backgroundColor: withTiming(isPressed.value ? focusBackgroundColor : defaultBackgroundColor, {
         duration,
         easing,
-      }),
-      ...(variant !== 'tertiary' && {
-        borderColor: withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
-          duration,
-          easing,
-        }),
-      }),
+      }) as string,
     };
+
+    if (variant !== 'tertiary' && defaultBorderColor && focusBorderColor) {
+      styles.borderColor = withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
+        duration,
+        easing,
+      }) as string;
+    }
+
+    return styles;
   });
 
   const handleOnPress = (event: GestureResponderEvent): void => {

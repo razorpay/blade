@@ -192,19 +192,20 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
+              size={_size}
             >
               <StyledChipWrapper
                 borderColor={chipBorderColor}
                 isChecked={_isChecked}
                 isDisabled={_isDisabled}
                 color={chipColor}
+                size={_size}
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
                 backgroundColor={chipBackgroundColor}
-                borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
                   chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
@@ -217,7 +218,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
-                gap="spacing.3"
                 width="100%"
               >
                 {Icon ? (
@@ -226,9 +226,11 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   </BaseBox>
                 ) : null}
                 {children ? (
-                  <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
-                    {children}
-                  </Text>
+                  <BaseBox paddingLeft="spacing.2" paddingRight="spacing.2">
+                    <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
+                      {children}
+                    </Text>
+                  </BaseBox>
                 ) : null}
               </StyledChipWrapper>
             </AnimatedChip>

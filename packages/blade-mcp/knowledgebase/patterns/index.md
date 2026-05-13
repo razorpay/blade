@@ -26,3 +26,7 @@ Settings is a pattern that provides a structured way to organize application con
 ## Dashboard Template
 
 Dashboard Template is a full dashboard template with SideNav, TopNav and main workspace area. It also includes a navigation structure with sections and items implemented via react-router-dom. 
+
+## Spark Animation
+
+Spark Animation combines RazorSense (WebGL glass refraction background) and RazorSenseGradient (animated gradient icon mask) to create rich visual treatments for success states, loading screens, and branded moments. Use this pattern when you need animated WebGL backgrounds with coordinated icon overlays, asset preloading, and framer-motion entrance animations.

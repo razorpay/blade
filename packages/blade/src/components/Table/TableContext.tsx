@@ -42,6 +42,7 @@ export type TableContextType<Item> = {
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
   hasHoverActions: boolean;
   setHasHoverActions: (hasHoverActions: boolean) => void;
+  multiSelectTrigger?: TableProps<unknown>['multiSelectTrigger'];
   columnCount: number;
   gridTemplateColumns: string | undefined;
   isVirtualized?: boolean;
@@ -74,6 +75,7 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   showBorderedCells: false,
   hasHoverActions: false,
   setHasHoverActions: () => {},
+  multiSelectTrigger: 'row',
   columnCount: 0,
   gridTemplateColumns: undefined,
   isVirtualized: false,

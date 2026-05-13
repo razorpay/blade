@@ -8,6 +8,7 @@ import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { size as sizeToken } from '~tokens/global';
 
 export type RadioRectProps = RadioIconProps;
 
@@ -39,6 +40,7 @@ const getRadioIconWrapperStyles = ({
     borderWidth: makeBorderSize(theme.border.width.thick),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[1]),
+    marginTop: size === 'small' ? makeSize(sizeToken['3']) : undefined,
     borderRadius: makeSize(theme.border.radius.max),
     backgroundColor,
     borderColor,

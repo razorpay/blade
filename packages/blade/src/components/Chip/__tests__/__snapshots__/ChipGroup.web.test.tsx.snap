@@ -108,7 +108,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c13.c13.c13.c13.c13 {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -129,22 +129,25 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
+}
+
+.c17.c17.c17.c17.c17 {
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c14.c14.c14.c14.c14 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -183,10 +186,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
 .c16.c16.c16.c16.c16:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -237,7 +241,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c12.c12.c12.c12.c12:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -249,7 +253,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c12.c12.c12.c12.c12:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -258,18 +262,18 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -281,7 +285,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -289,16 +293,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+.c18.c18.c18.c18.c18 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -306,10 +310,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -415,6 +419,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Select fruits
                 </p>
@@ -425,6 +430,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   <p
                     class="c6"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -443,6 +449,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           <p
             class="c6"
             data-blade-component="text"
+            letter-spacing="50"
           />
         </div>
         <div
@@ -484,12 +491,18 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -531,12 +544,18 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -578,12 +597,18 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Orange
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Orange
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -705,7 +730,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c13.c13.c13.c13.c13 {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
 }
 
@@ -726,22 +751,25 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 8px;
+  padding-left: 8px;
   height: 28px;
   width: 100%;
-  gap: 8px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   border-style: solid;
+}
+
+.c17.c17.c17.c17.c17 {
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c14.c14.c14.c14.c14 {
   background-color: transparent;
-  border-radius: 9999px;
-  border-color: hsla(211,20%,52%,0.18);
+  border-radius: 8px;
+  border-color: hsla(206,10%,29%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -780,10 +808,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   display: -ms-flexbox;
   display: flex;
   border-color: transparent;
+  border-radius: 7px;
 }
 
 .c16.c16.c16.c16.c16:hover {
-  background-color: hsla(211,20%,52%,0.06);
+  background-color: hsla(206,10%,29%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -834,7 +863,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c12.c12.c12.c12.c12:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -846,7 +875,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c12.c12.c12.c12.c12:hover + div {
-  border-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(206,10%,29%,0.18);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -855,18 +884,18 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -878,7 +907,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -886,16 +915,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
-  color: hsla(211,26%,34%,1);
+.c18.c18.c18.c18.c18 {
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -903,10 +932,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1012,6 +1041,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                 <p
                   class="c4"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Select fruits
                 </p>
@@ -1022,6 +1052,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   <p
                     class="c6"
                     data-blade-component="text"
+                    letter-spacing="50"
                   />
                 </div>
               </div>
@@ -1040,6 +1071,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           <p
             class="c6"
             data-blade-component="text"
+            letter-spacing="50"
           />
         </div>
         <div
@@ -1082,12 +1114,18 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Apple
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Apple
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1130,12 +1168,18 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Mango
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Mango
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1178,12 +1222,18 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       class="c15 c16"
                       data-blade-component="base-box"
                     >
-                      <p
+                      <div
                         class="c17"
-                        data-blade-component="text"
+                        data-blade-component="base-box"
                       >
-                        Orange
-                      </p>
+                        <p
+                          class="c18"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Orange
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

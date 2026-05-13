@@ -3,6 +3,8 @@ export {
   getBadgeClasses,
   getBadgeTemplateClasses,
   getBadgeIconPaddingClass,
+  getBadgeTextMarginClass,
+  badgeTextHorizontalMargin,
   badgeContentClass,
   badgeIconClass,
   badgeHeight,

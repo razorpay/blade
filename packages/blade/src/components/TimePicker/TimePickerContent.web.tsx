@@ -14,6 +14,7 @@ import { makeSize } from '~utils/makeSize';
 // Styled container with fade overlay
 const StyledFadeContainer = styled(BaseBox)`
   position: relative;
+  border-radius: ${({ theme }) => theme.border.radius.small}px;
 
   /* Fade overlay that sits above content */
   &::before {
@@ -32,6 +33,7 @@ const StyledFadeContainer = styled(BaseBox)`
     );
     pointer-events: none;
     z-index: 10;
+    border-radius: ${({ theme }) => theme.border.radius.small}px;
   }
 `;
 
@@ -171,7 +173,7 @@ const TimePickerContent = ({
         flexDirection="row"
         justifyContent="center"
         alignItems="flex-start"
-        margin={['spacing.4', 'spacing.0']}
+        margin={['spacing.4', makeSize(size[1])]}
         onKeyDown={handleContainerKeyDown}
         onFocus={handleContainerFocus}
       >

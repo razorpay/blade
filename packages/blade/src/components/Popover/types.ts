@@ -3,6 +3,7 @@ import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { CSSProperties } from 'react';
 import type React from 'react';
 import type { GestureResponderEvent } from 'react-native';
+import type { ColorSchemeNames } from '~tokens/theme';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
 import type { DataAnalyticsAttribute } from '~utils/types';
@@ -87,6 +88,7 @@ type PopoverContentWrapperProps = {
   side?: Side;
   isVisible?: boolean;
   isMobile: boolean;
+  colorScheme: ColorSchemeNames;
 } & BaseBoxProps;
 
 /**

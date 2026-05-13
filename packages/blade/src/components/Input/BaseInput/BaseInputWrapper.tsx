@@ -3,6 +3,7 @@ import React from 'react';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
 import type { BaseInputWrapperProps } from './types';
 import type { ContainerElementType } from '~utils/types';
+import BaseBox from '~components/Box/BaseBox';
 
 const _BaseInputWrapper: React.ForwardRefRenderFunction<
   ContainerElementType,
@@ -21,10 +22,16 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
     maxTagRows,
     numberOfLines,
     isTableInputCell,
+    topContent,
+    bottomContent,
+    inputRowOverlay,
     ...props
   },
   ref,
 ): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const hasExtraContent = Boolean(topContent || bottomContent || inputRowOverlay);
+
   return (
     <AnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unnecessary-type-assertion
@@ -39,7 +46,24 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       isTableInputCell={isTableInputCell}
       {...props}
     >
-      {children}
+      {hasExtraContent ? (
+        <BaseBox display="flex" flexDirection="column" width="100%">
+          {topContent}
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            width="100%"
+            alignItems={isTextArea ? 'flex-start' : 'center'}
+            position={inputRowOverlay ? 'relative' : undefined}
+          >
+            {children}
+            {inputRowOverlay}
+          </BaseBox>
+          {bottomContent}
+        </BaseBox>
+      ) : (
+        children
+      )}
     </AnimatedBaseInputWrapper>
   );
 };

@@ -17,7 +17,9 @@ const baseConfig = {
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
-  transformIgnorePatterns: ['/node_modules/(?!(@table-library)/)'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@table-library|unist-util-visit-parents|unist-util-is|unist-util-visit)/)',
+  ],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
   moduleNameMapper: {
@@ -41,6 +43,7 @@ module.exports = {
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
       collectCoverageFrom: ['./src/**/*.ssr.{ts,tsx}'],
       testMatch: ['**/*.ssr.test.{ts,tsx}'],
+      setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.ssr.js'],
     },
     {
       displayName: 'CSR Test',
