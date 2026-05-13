@@ -214,11 +214,11 @@ Update batch-status.md per component:
 
 ## Step 1.5: Self-heal misplaced artifacts
 
-If either artifact is missing from `{WorktreeAbs}/.claude/artifacts/{Name}/`, check the main-checkout fallback at `<MainCheckout>/.claude/artifacts/{Name}/`. If found there, the agent resolved a relative path against its CWD instead of the worktree — move them in before marking failure:
+If either artifact is missing from `{WorktreeAbs}/.claude/artifacts/{Name}/`, check the main-checkout fallback at `{MainCheckout}/.claude/artifacts/{Name}/`. If found there, the agent resolved a relative path against its CWD instead of the worktree — move them in before marking failure:
 
 ```bash
 mkdir -p {WorktreeAbs}/.claude/artifacts/{Name}
-mv <MainCheckout>/.claude/artifacts/{Name}/{discovery-report,migration-plan}.md \
+mv {MainCheckout}/.claude/artifacts/{Name}/{discovery-report,migration-plan}.md \
    {WorktreeAbs}/.claude/artifacts/{Name}/ 2>/dev/null
 ```
 
