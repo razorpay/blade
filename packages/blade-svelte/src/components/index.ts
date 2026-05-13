@@ -14,6 +14,8 @@ export { default as Code } from './Typography/Code/Code.svelte';
 
 // Button
 export { default as Button } from './Button/Button.svelte';
+export { IconButton } from './Button/IconButton';
+export type { IconButtonProps } from './Button/IconButton';
 
 // Link
 export { default as Link } from './Link/Link.svelte';
@@ -31,8 +33,11 @@ export { default as Badge } from './Badge/Badge.svelte';
 
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
+
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
+export type { DividerProps } from './Divider';
+
 // Skeleton
 export { default as Skeleton } from './Skeleton/Skeleton.svelte';
 export type { SkeletonProps } from './Skeleton/types';
@@ -103,3 +108,18 @@ export type {
 
 // BladeProvider
 export * from './BladeProvider';
+
+// Form
+export { FormLabel, FormHint, CharacterCounter } from './Form';
+export type { FormLabelProps, FormHintProps, CharacterCounterProps } from './Form';
+
+// Input
+export { BaseInput, TextInput } from './Input';
+export type {
+  BaseInputProps,
+  TextInputProps,
+  FormInputOnEvent,
+  FormInputKeyDownEvent,
+  ValidationState,
+  InputSize,
+} from './Input';
