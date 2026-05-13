@@ -111,47 +111,47 @@
 </script>
 
 <!-- 1. Default — args-only playground -->
-<Story name="Default">
+<Story name="Default" asChild>
   <Checkbox>I agree to the terms and conditions</Checkbox>
 </Story>
 
 <!-- 2. Checked — controlled -->
-<Story name="Checked">
+<Story name="Checked" asChild>
   <Checkbox isChecked={true} onChange={(e) => console.log('onChange', e)}>
     Controlled checkbox
   </Checkbox>
 </Story>
 
 <!-- 3. DefaultChecked — uncontrolled -->
-<Story name="DefaultChecked">
+<Story name="DefaultChecked" asChild>
   <Checkbox defaultChecked>
     Uncontrolled checkbox (starts checked)
   </Checkbox>
 </Story>
 
 <!-- 4. Indeterminate -->
-<Story name="Indeterminate">
+<Story name="Indeterminate" asChild>
   <Checkbox isIndeterminate>
     Indeterminate state
   </Checkbox>
 </Story>
 
 <!-- 5. WithHelpText -->
-<Story name="WithHelpText">
+<Story name="WithHelpText" asChild>
   <Checkbox helpText="You can change this setting later.">
     Receive marketing emails
   </Checkbox>
 </Story>
 
 <!-- 6. WithError -->
-<Story name="WithError">
+<Story name="WithError" asChild>
   <Checkbox validationState="error" errorText="You must accept the terms to continue.">
     I agree to the terms and conditions
   </Checkbox>
 </Story>
 
 <!-- 7. Disabled -->
-<Story name="Disabled">
+<Story name="Disabled" asChild>
   <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
     <Checkbox isDisabled>Disabled unchecked</Checkbox>
     <Checkbox isDisabled isChecked={true} onChange={() => {}}>Disabled checked</Checkbox>
@@ -160,7 +160,7 @@
 </Story>
 
 <!-- 8. Sizes -->
-<Story name="Sizes">
+<Story name="Sizes" asChild>
   <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
     <Checkbox size="small">Small checkbox</Checkbox>
     <Checkbox size="medium">Medium checkbox</Checkbox>

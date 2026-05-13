@@ -4,9 +4,10 @@
   flex-direction: column;
 }
 
-/* Label — click target, drives cursor */
+/* Label — click target, drives cursor. Stacks the row + supporting text vertically. */
 .label {
   display: inline-flex;
+  flex-direction: column;
   cursor: pointer;
   user-select: none;
   margin: 0;
@@ -45,20 +46,25 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 2px solid var(--interactive-border-gray-highlighted);
-  border-radius: var(--border-radius-small);
+  border-width: var(--border-width-thick);
+  border-style: solid;
+  border-color: var(--interactive-border-gray-highlighted);
+  border-radius: var(--border-radius-xsmall);
   background-color: transparent;
   transition-property: background-color, border-color;
   transition-timing-function: var(--easing-standard);
   transition-duration: var(--duration-2xquick);
-  /* Align top of box with first line of label text */
-  margin-top: 2px;
+  margin: var(--spacing-1);
 }
 
 /* Icon wrapper sizes */
 .icon-wrapper.size-small {
   width: 12px;
   height: 12px;
+}
+
+.icon-wrapper.size-small:not(.indeterminate) {
+  padding-top: 1px;
 }
 
 .icon-wrapper.size-medium {
@@ -69,6 +75,7 @@
 .icon-wrapper.size-large {
   width: 20px;
   height: 20px;
+  border-width: var(--border-width-thicker);
 }
 
 /* Checked state */
@@ -106,14 +113,16 @@
   background-color: var(--interactive-background-primary-disabled);
 }
 
-/* Hover — driven by the label so the entire control responds */
-.label:hover .icon-wrapper:not([data-disabled]) {
+/* Hover — driven by the label so the entire control responds.
+   Mirrors React `SelectorInput.web.tsx`: hover is suppressed entirely when
+   `isDisabled || hasError`, so `.negative` and `[data-disabled]` must opt out. */
+.label:hover .icon-wrapper:not([data-disabled]):not(.negative) {
   border-color: var(--interactive-border-gray-highlighted);
   background-color: var(--interactive-background-gray-faded);
 }
 
-.label:hover .icon-wrapper.checked:not([data-disabled]),
-.label:hover .icon-wrapper.indeterminate:not([data-disabled]) {
+.label:hover .icon-wrapper.checked:not([data-disabled]):not(.negative),
+.label:hover .icon-wrapper.indeterminate:not([data-disabled]):not(.negative) {
   border-color: var(--interactive-background-primary-highlighted);
   background-color: var(--interactive-background-primary-highlighted);
 }
@@ -146,8 +155,8 @@
 
 /* Label text */
 .label-text {
-  margin-left: var(--spacing-3);
-  color: var(--surface-text-gray-normal);
+  margin-left: var(--spacing-2);
+  color: var(--surface-text-gray-subtle);
   font-family: var(--font-family-text);
 }
 
@@ -295,7 +304,7 @@
 
 .group-items.orientation-horizontal {
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 /* Gap between items per size */
@@ -308,7 +317,7 @@
 }
 
 .group-items.gap-large {
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
 }
 
 /* Group hint/error text */

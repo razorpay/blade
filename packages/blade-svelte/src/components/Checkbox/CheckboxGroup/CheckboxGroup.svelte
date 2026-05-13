@@ -19,7 +19,7 @@
     getCheckboxTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { setCheckboxGroupContext } from './checkboxGroupContext';
-  import type { CheckboxGroupProps, CheckboxGroupContextType, CheckboxGroupState } from './types';
+  import type { CheckboxGroupProps, CheckboxGroupState } from './types';
 
   const templateClasses = getCheckboxTemplateClasses();
 
