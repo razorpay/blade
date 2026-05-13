@@ -1,5 +1,24 @@
 # @razorpay/blade-svelte
 
+## 0.7.0
+
+### Minor Changes
+
+- 0d86166df: feat(blade-svelte): Accordion component
+
+### Patch Changes
+
+- 2a93ee201: feat(blade-svelte): add Skeleton component
+- b955db9c6: feat(blade-svelte): add Switch component
+- 684ad1fe5: feat(blade-svelte): add Toast component
+- 67150149c: feat(blade-svelte): add Tooltip component
+- Updated dependencies [2a93ee201]
+- Updated dependencies [b955db9c6]
+- Updated dependencies [684ad1fe5]
+- Updated dependencies [67150149c]
+- Updated dependencies [0d86166df]
+  - @razorpay/blade-core@0.6.0
+
 ## 0.6.0
 
 ### Minor Changes

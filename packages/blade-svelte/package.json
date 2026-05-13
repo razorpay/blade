@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-svelte",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
@@ -50,7 +50,8 @@
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
-    "@razorpay/blade-core": ">=0.5.0",
+    "@floating-ui/dom": "^1.6.0",
+    "@razorpay/blade-core": ">=0.6.0",
     "@razorpay/i18nify-js": "1.12.3",
     "class-variance-authority": "^0.7.0"
   },
@@ -61,6 +62,8 @@
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",
     "@rollup/plugin-node-resolve": "15.2.1",
+    "@storybook/addon-docs": "~10.2.0",
+    "@storybook/addon-links": "~10.2.0",
     "@storybook/addon-svelte-csf": "^5.0.10",
     "@storybook/svelte-vite": "^10.1.2",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",

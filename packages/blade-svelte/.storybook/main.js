@@ -13,29 +13,14 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
-  features: {
-    experimentalComponentsManifest: true, // Enable manifest generation for the docs toolset, only supported in React-based setups.
-  },
   stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
-    '@storybook/addon-svelte-csf',
-    {
-      name: '@storybook/addon-mcp',
-      options: {
-        toolsets: {
-          dev: true, // Tools for story URL retrieval and UI building instructions (default: true)
-          docs: true, // Tools for component manifest and documentation (default: true, requires experimental feature flag below 👇)
-        },
-        experimentalFormat: 'markdown', // Output format: 'markdown' (default) or 'xml'
-      },
-    },
+    getAbsolutePath('@storybook/addon-svelte-csf'),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-links'),
   ],
   framework: {
-    name: '@storybook/svelte-vite',
+    name: getAbsolutePath('@storybook/svelte-vite'),
     options: {},
   },
   docs: {

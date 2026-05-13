@@ -1,6 +1,7 @@
 import type { Component } from 'svelte';
 import type { IconProps } from './types';
 import { CheckIcon } from './CheckIcon';
+import { ChevronDownIcon } from './ChevronDownIcon';
 import { CloseIcon } from './CloseIcon';
 import { CreditCardIcon } from './CreditCardIcon';
 import { InfoIcon } from './InfoIcon';
@@ -22,6 +23,7 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   BuildingIcon,
   HomeIcon,
   CheckIcon,
+  ChevronDownIcon,
   CloseIcon,
   CreditCardIcon,
   InfoIcon,
