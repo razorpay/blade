@@ -234,17 +234,8 @@ const StyledRow = styled(Row)<{
   $showBorderedCells: boolean;
   $isGrouped: boolean;
   $isGroupHeader: boolean;
-  $checkboxDisplay: NonNullable<TableProps<unknown>['checkboxDisplay']>;
-}>(({
-  theme,
-  $isSelectable,
-  $isHoverable,
-  $showBorderedCells,
-  $isGrouped,
-  $isGroupHeader,
-  $checkboxDisplay,
-}) => {
-  const { hasHoverActions } = useTableContext();
+}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
+  const { hasHoverActions, checkboxDisplay } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -329,11 +320,11 @@ const StyledRow = styled(Row)<{
         },
       }),
       // When checkboxDisplay="on-hover", hide the first td (checkbox cell) by default.
-      // Reveal it on row hover, on keyboard focus, or when the row is already selected
-      // (.row-select-selected class added by @table-library/react-table-library).
-      // The checkbox is always kept in the DOM so keyboard navigation and screen readers
-      // are unaffected — only the visual opacity changes.
-      ...($checkboxDisplay === 'on-hover' && {
+      // Reveal on row hover, keyboard focus, or when the row is already selected
+      // (.row-select-selected class is added by @table-library/react-table-library).
+      // Opacity-only change keeps the checkbox in the DOM so keyboard nav and
+      // screen readers remain unaffected.
+      ...(checkboxDisplay === 'on-hover' && {
         '& td:first-child': {
           opacity: 0,
           transition: `opacity ${makeMotionTime(
@@ -368,7 +359,6 @@ const _TableRow = <Item,>({
     isVirtualized,
     isGrouped,
     multiSelectTrigger,
-    checkboxDisplay,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -434,7 +424,6 @@ const _TableRow = <Item,>({
       $isVirtualized={isVirtualized}
       $isGrouped={isGrouped}
       $isGroupHeader={isGroupHeader}
-      $checkboxDisplay={checkboxDisplay}
     >
       {isMultiSelect && (
         <TableCheckboxCell
