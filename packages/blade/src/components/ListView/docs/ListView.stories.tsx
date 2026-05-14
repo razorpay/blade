@@ -2794,92 +2794,92 @@ const SkeletonToListViewTransitionExample = (): React.ReactElement => {
           <ListViewSkeleton rows={7} />
         ) : (
           <>
-        <ListViewFilters
-          quickFilters={
-            <QuickFilterGroup
-              selectionType="single"
-              defaultValue="All"
-              value={quickFilter}
-              onChange={({ values }) => {
-                const v = values[0];
-                setQuickFilter(v);
-                setTableData(
-                  v === 'All'
-                    ? { nodes: skeletonMockNodes }
-                    : { nodes: skeletonMockNodes.filter((n) => n.status === v) },
-                );
-              }}
-            >
-              {(['All', 'Pending', 'Failed', 'Completed'] as const).map((s) => (
-                <QuickFilter
-                  key={s}
-                  title={s}
-                  value={s}
-                  trailing={
-                    <Counter
-                      value={s === 'All' ? skeletonMockNodes.length : getCount(s)}
-                      color="neutral"
+            <ListViewFilters
+              quickFilters={
+                <QuickFilterGroup
+                  selectionType="single"
+                  defaultValue="All"
+                  value={quickFilter}
+                  onChange={({ values }) => {
+                    const v = values[0];
+                    setQuickFilter(v);
+                    setTableData(
+                      v === 'All'
+                        ? { nodes: skeletonMockNodes }
+                        : { nodes: skeletonMockNodes.filter((n) => n.status === v) },
+                    );
+                  }}
+                >
+                  {(['All', 'Pending', 'Failed', 'Completed'] as const).map((s) => (
+                    <QuickFilter
+                      key={s}
+                      title={s}
+                      value={s}
+                      trailing={
+                        <Counter
+                          value={s === 'All' ? skeletonMockNodes.length : getCount(s)}
+                          color="neutral"
+                        />
+                      }
                     />
-                  }
-                />
-              ))}
-            </QuickFilterGroup>
-          }
-        />
-        <Table
-          data={tableData}
-          pagination={
-            <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
-          }
-        >
-          {(rows) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
-                  <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                  <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                  <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                  <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {rows.map((item) => (
-                  <TableRow key={item.id} item={item}>
-                    <TableCell>
-                      <Code size="small">{item.paymentId}</Code>
-                    </TableCell>
-                    <TableCell>
-                      <Amount value={item.amount} />
-                    </TableCell>
-                    <TableCell>
-                      {item.date.toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      })}
-                    </TableCell>
-                    <TableCell>{item.method}</TableCell>
-                    <TableCell>
-                      <Badge
-                        size="xsmall"
-                        color={
-                          item.status === 'Completed'
-                            ? 'positive'
-                            : item.status === 'Pending'
-                            ? 'notice'
-                            : 'negative'
-                        }
-                      >
-                        {item.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </>
-          )}
-        </Table>
+                  ))}
+                </QuickFilterGroup>
+              }
+            />
+            <Table
+              data={tableData}
+              pagination={
+                <TablePagination defaultPageSize={10} showPageSizePicker showPageNumberSelector />
+              }
+            >
+              {(rows) => (
+                <>
+                  <TableHeader>
+                    <TableHeaderRow>
+                      <TableHeaderCell headerKey="PAYMENT_ID">Payment ID</TableHeaderCell>
+                      <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                      <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                      <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                      <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                    </TableHeaderRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((item) => (
+                      <TableRow key={item.id} item={item}>
+                        <TableCell>
+                          <Code size="small">{item.paymentId}</Code>
+                        </TableCell>
+                        <TableCell>
+                          <Amount value={item.amount} />
+                        </TableCell>
+                        <TableCell>
+                          {item.date.toLocaleDateString('en-IN', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                          })}
+                        </TableCell>
+                        <TableCell>{item.method}</TableCell>
+                        <TableCell>
+                          <Badge
+                            size="xsmall"
+                            color={
+                              item.status === 'Completed'
+                                ? 'positive'
+                                : item.status === 'Pending'
+                                ? 'notice'
+                                : 'negative'
+                            }
+                          >
+                            {item.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </>
+              )}
+            </Table>
           </>
         )}
       </ListView>
