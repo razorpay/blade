@@ -8,32 +8,36 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { switchColors, switchMotion, switchSizes } from './switchTokens';
-import type { AnimatedThumbProps } from './types';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import getIn from '~utils/lodashButBetter/get';
 import { useBreakpoint } from '~utils';
-import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { AnimatedThumbProps } from './types';
+import { switchColors, switchMotion, switchSizes } from './switchTokens';
+import { useTheme } from '~components/BladeProvider';
 
-const StyledAnimatedThumb = styled(Animated.View)<{ isDisabled?: boolean }>(
-  ({ theme, isDisabled }) => {
-    const variant = isDisabled ? 'disabled' : 'default';
-    const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
+const StyledAnimatedThumb = styled(Animated.View)<{
+  isDisabled?: boolean;
+  _thumbWidth?: number;
+  _thumbHeight?: number;
+}>(({ theme, isDisabled, _thumbWidth, _thumbHeight }) => {
+  const variant = isDisabled ? 'disabled' : 'default';
+  const backgroundColor = getIn(theme, switchColors.thumb[variant].background);
 
-    return {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: makeBorderSize(theme.border.radius.max),
-      backgroundColor,
-      position: 'absolute',
-    };
-  },
-);
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    // Explicit dimensions prevent '100%' from resolving to the track size (not Thumb)
+    // which would produce an oval. Falls back to '100%' before device type is resolved.
+    width: _thumbWidth || ('100%' as never),
+    height: _thumbHeight || ('100%' as never),
+    borderRadius: makeBorderSize(theme.border.radius.max),
+    backgroundColor,
+    position: 'absolute',
+  };
+});
 
 const AnimatedThumb = ({
   isChecked,
@@ -50,8 +54,14 @@ const AnimatedThumb = ({
 
   const easing = getIn(theme, switchMotion.easing.thumb);
   const duration = getIn(theme, switchMotion.duration.thumb);
-  const thumbWidth = switchSizes.thumb[matchedDeviceType][size].width;
-  const finalWidth = isNumber(thumbWidth) ? thumbWidth : getIn(theme, thumbWidth);
+  const thumbWidthToken = switchSizes.thumb[matchedDeviceType][size].width;
+  const thumbHeightToken = switchSizes.thumb[matchedDeviceType][size].height;
+  const finalWidth = isNumber(thumbWidthToken)
+    ? thumbWidthToken
+    : (getIn(theme, thumbWidthToken) as number);
+  const finalHeight = isNumber(thumbHeightToken)
+    ? thumbHeightToken
+    : (getIn(theme, thumbHeightToken) as number);
 
   React.useEffect(() => {
     sharedLeft.value = withTiming(isChecked ? 1 : 0, {
@@ -71,6 +81,8 @@ const AnimatedThumb = ({
     sharedShouldShiftOffset.value = Boolean(isChecked && isPressed);
   }, [isChecked, isPressed]);
 
+  // finalWidth must be in deps: useBreakpoint initialises with 'desktop' then updates to 'mobile'
+  // after mount, so the worklet would otherwise capture a stale desktop finalWidth value.
   const thumbAnimation = useAnimatedStyle(() => {
     return {
       width: interpolate(
@@ -91,10 +103,15 @@ const AnimatedThumb = ({
         },
       ],
     };
-  }, []);
+  }, [finalWidth]);
 
   return (
-    <StyledAnimatedThumb style={thumbAnimation} isDisabled={isDisabled}>
+    <StyledAnimatedThumb
+      style={thumbAnimation}
+      isDisabled={isDisabled}
+      _thumbWidth={finalWidth}
+      _thumbHeight={finalHeight}
+    >
       {children}
     </StyledAnimatedThumb>
   );
