@@ -234,7 +234,16 @@ const StyledRow = styled(Row)<{
   $showBorderedCells: boolean;
   $isGrouped: boolean;
   $isGroupHeader: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
+  $checkboxDisplay: NonNullable<TableProps<unknown>['checkboxDisplay']>;
+}>(({
+  theme,
+  $isSelectable,
+  $isHoverable,
+  $showBorderedCells,
+  $isGrouped,
+  $isGroupHeader,
+  $checkboxDisplay,
+}) => {
   const { hasHoverActions } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
@@ -319,6 +328,22 @@ const StyledRow = styled(Row)<{
           border: 'none',
         },
       }),
+      // When checkboxDisplay="on-hover", hide the first td (checkbox cell) by default.
+      // Reveal it on row hover, on keyboard focus, or when the row is already selected
+      // (.row-select-selected class added by @table-library/react-table-library).
+      // The checkbox is always kept in the DOM so keyboard navigation and screen readers
+      // are unaffected — only the visual opacity changes.
+      ...($checkboxDisplay === 'on-hover' && {
+        '& td:first-child': {
+          opacity: 0,
+          transition: `opacity ${makeMotionTime(
+            getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+          )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+        },
+        '&:hover td:first-child, &:focus td:first-child, &.row-select-selected td:first-child': {
+          opacity: 1,
+        },
+      }),
     },
   };
 });
@@ -343,6 +368,7 @@ const _TableRow = <Item,>({
     isVirtualized,
     isGrouped,
     multiSelectTrigger,
+    checkboxDisplay,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -408,6 +434,7 @@ const _TableRow = <Item,>({
       $isVirtualized={isVirtualized}
       $isGrouped={isGrouped}
       $isGroupHeader={isGroupHeader}
+      $checkboxDisplay={checkboxDisplay}
     >
       {isMultiSelect && (
         <TableCheckboxCell
