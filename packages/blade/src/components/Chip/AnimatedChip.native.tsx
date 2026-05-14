@@ -1,21 +1,26 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import getIn from '~utils/lodashButBetter/get';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
 import { chipMotionTokens } from './chipTokens';
-import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 
-const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>((props) => {
-  return {
-    ...getAnimatedChipStyles(props),
-    alignSelf: 'center',
-  };
-});
+const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
+  ({ theme, backgroundColor, ...props }) => {
+    return {
+      ...getAnimatedChipStyles({ theme, ...props }),
+      alignSelf: 'center',
+      overflow: 'hidden',
+      backgroundColor: backgroundColor ? getIn(theme.colors, backgroundColor) : 'transparent',
+    };
+  },
+);
 
 const AnimatedChip = ({
   borderColor,
+  backgroundColor,
   children,
   isPressed,
   isDisabled,
@@ -39,7 +44,12 @@ const AnimatedChip = ({
   }, [isPressed]);
 
   return (
-    <StyledAnimatedChip borderColor={borderColor} isDisabled={isDisabled} style={chipAnimation}>
+    <StyledAnimatedChip
+      borderColor={borderColor}
+      backgroundColor={backgroundColor}
+      isDisabled={isDisabled}
+      style={chipAnimation}
+    >
       {children}
     </StyledAnimatedChip>
   );
