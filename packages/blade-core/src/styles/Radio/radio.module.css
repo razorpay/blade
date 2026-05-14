@@ -122,6 +122,17 @@
   background-color: var(--interactive-background-negative-default);
 }
 
+/* Hover — error/negative state overrides the generic blue hover above */
+.label:hover .negative:not([data-disabled]) {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.label:hover .negative.checked:not([data-disabled]) {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-negative-default);
+}
+
 /* ── Dot (checked indicator SVG) ── */
 .dot {
   position: absolute;
