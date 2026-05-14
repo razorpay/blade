@@ -1,194 +1,453 @@
 ---
 name: migrate-to-svelte
-description: Guidelines for migrating existing Blade components from React to Svelte
-disable-model-invocation: true
+description: >
+  Orchestrate parallel migration of Blade React components to Svelte 5.
+  Sets up isolated git worktrees, runs Plan/Execute/Verify agents in
+  parallel, and opens one PR per component. Use when user says
+  "migrate <component> to svelte", "/migrate-to-svelte", or similar.
 ---
 
-You work in design system of Razorpay and you are migrating existing components of Blade from React to Svelte. You make sure to cover all the props of the component and enforcing strict typescript checks.
+# Orchestrator — Parallel Migration Pipeline Controller
 
-- You refer to existing components for expected props and HTML structure
-- You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
-- Before writing the component refer to the corresponding React component written in - `packages/blade/src/components` folder
-- Wherever you are unsure about some practice, just ask for confirmation
-- Before writing the component, you discuss the approach on how you are writing the component and only write post confirmation
-- The API structure of the components should clean and easier to understand and integrate
-- Some component might be using another component like Link or Button component uses Icon or BaseText. Wherever this case is there confirm whether to make a migration for that or not for the imported components like Icons
-Don't use createEventDispatcher for event handlers like on:click etc. Instead use a prop based mechanism expect and pass a prop
-- Any utility function like - `packages/blade/src/utils/makeBorderSize/index.ts` should be placed in blade core util directory - `packages/blade-core/src/utils` and not within the blade-svelte directory.
-- Whenever any utility import is encountered check in - `packages/blade-core/src/utils` directory, if the util file is not present or same function is not present ask for a confirmation before adding.
-- Check for global utilities imported from blade-core package specially theme utilities or theme types and constants and use those in svelte component. 
-- Ensure most of the styles are written using css classes. Component classes can be written in css files for that comonent's folder. Use Class-Variance-Authority for writing conditional css classes. Any global classes for styling props should go in common theme.css so that accessible by all components.
+> Main entry point for component migration. Parses input, sets up
+> isolated git worktrees per component, runs Plan/Execute/Verify in
+> parallel where safe, manages per-component human gates, and opens one
+> PR per component.
 
+## ⚠️ PRE-FLIGHT CHECKLIST — Acknowledge Before Starting
 
-## Blade Component Svelte Guidelines
-### Key Examples for references
-- Study the props of the React component which you are trying to migrate to Svelte. Props should remain consistent throughout Svelte and React components.
+Before you take ANY action, confirm you understand:
 
-## Directory Structure
+- [ ] I will spawn agents via the **Agent tool** (`subagent_type: planner | execute | verify`).
+- [ ] I will NOT read `.claude/agents/*.md` myself — those files are loaded by the Agent tool when the matching `subagent_type` is invoked.
+- [ ] I will pass each component's worktree absolute path in the Agent `prompt` so the agent can scope all its file/shell operations to that worktree.
+- [ ] To run agents in parallel for a phase, I will send **one message containing multiple Agent tool calls** (one per component). All N agents execute concurrently and the orchestrator only proceeds once they all return.
 
-Components should be created in the following structure:
+**Your ONLY Valid Action Patterns:**
 
-```
-packages/
-└── blade-svelte/
-    └── src/
-        └── components/
-            ├── Button/
-            │   ├── Button.svelte
-            │   └── types.ts
-            ├── Link/
-            │   ├── BaseLink/
-            │   │   ├── BaseLink.svelte
-            |   │   └── types.ts
-            │   └── Link.svelte
-            └── ... (other components)
+```text
+# Spawn an agent in the worktree (parent waits for all parallel calls in the
+# same message to complete):
+Agent(
+  subagent_type: "planner" | "execute" | "verify",
+  description: "<short, distinct title>",
+  prompt: "<see prompt templates in Steps 1, 4, 5>",
+  run_in_background: false,
+)
 ```
 
-### Naming Conventions
-- Component directories: `PascalCase` (e.g., `Button/`, `Link/`)
-- Component files: `PascalCase.svelte` (e.g., `Button.svelte`, `BaseLink.svelte`)
-- CSS files: `camelCase.css` (e.g., `button.css`, `baseLink.css`)
-- For nested/base components, create a subdirectory with the component name (e.g., `Link/BaseLink/`)
-
-### Styling Guidelines
-
-- Only CSS classes should be used to supply styles to the component. Avoid inline styles of the html elements. Please confirm on any use case where inline styling need is coming up.
-- All CSS classes should be written inside CSS module and should follow scss styling.
-- All the CSS should be written inside `packages/blade-core/src` directory. Refer the directory structure below
-
-```
-packages/
-└── blade-core/
-    └── src/
-        └── styles/
-            ├── Button/
-            │   ├── button.module.css
-            │   └── button.ts
-            ├── Link/
-            │   ├── BaseLink/
-            │   │   ├── baselink.module.css
-            │   │   └── baselink.ts
-``` 
-- Use the props of the component to generate dynamic css classes using Class Variance Authority similar to this 
-
-```
-// packages/blade-core/src/styles/button.ts
-import cva from 'class-variance-authority';
-import styles from './button.module.css';
-
-export const buttonStyles = cva(
-  styles.base,  {
-    variants: {
-      size: {
-        small: styles.small,
-        medium: styles.medium,
-      },
-variant: {
-        primary: styles.primary,
-        secondary: styles.secondary,
-      },
-      isDisabled: {
-        true: styles.disabled,
-        false: null,
-      },
-      margin: {
-         "spacing.2": "m-2"
-      }
-    },
-    defaultVariants: {
-      size: 'medium',
-      isDisabled: false,
-    },
-  }
-);
+```bash
+# Worktree management (Bash tool):
+git worktree add -B feat/blade-svelte/{Name} .claude/worktrees/{Name} origin/master
+git worktree remove .claude/worktrees/{Name}
 ```
 
-- Define the correspinding styes to the class in CSS module 
-```
-.base {
-  border-radius: var(--border-radius-medium);
-  padding: var(--spacing-4) var(--spacing-8);
-  ... etc
-}
-
-.base .container {
-  display: flex;
-  gap: var(--spacing-4);
-}
-
-.primary {
-  background-color: var(--colors-interactive-background-primary-normal);
-  
-  &:hover {
-    background-color: var(--colors-interactive-background-primary-highlighted);
-  }
-}
-```
-- The component can then make use of the class generator and applying styles like this
-
-```
-import { buttonStyles } from '@razorpay/blade-core/styles';
-
-<button className={buttonStyles({ variant, size, isDisabled })}>
-  <div className="flex gap-4">
-    {children}
-    <Icon />
-  </div>
-</button>
-```
-- Ensure the layout classes like display, margin, padding are stored on a global css and not component specific css. `packages/blade-core/src/styles/utilities.ts` would be the right place for the same 
-
-- Ensure there are no inline styling markup in elements. All the styles should come via classes.
-
-- Any styling utility should come from blade-core so as to ensure platform agnostic use case.
-
-## Blade Component Svelte Guidelines
-### Key Examples for references
-- Study the props of the React component which you are trying to migrate to Svelte. Props should remain consistent throughout Svelte and React components.
-
-## Directory Structure
-
-Components should be created in the following structure:
-
-```
-packages/
-└── blade-svelte/
-    └── src/
-        └── components/
-            ├── Button/
-            │   ├── Button.svelte
-            │   └── types.ts
-            ├── Link/
-            │   ├── BaseLink/
-            │   │   ├── BaseLink.svelte
-            |   │   └── types.ts
-            │   └── Link.svelte
-            └── ... (other components)
+```bash
+# Per-component PR creation (Bash tool, run inside the worktree):
+cd .claude/worktrees/{Name} && git push -u origin feat/blade-svelte/{Name}
+cd .claude/worktrees/{Name} && gh pr create --base master --title "..." --body "..."
 ```
 
-### Naming Conventions
-- Component directories: `PascalCase` (e.g., `Button/`, `Link/`)
-- Component files: `PascalCase.svelte` (e.g., `Button.svelte`, `BaseLink.svelte`)
-- CSS files: `camelCase.css` (e.g., `button.css`, `baseLink.css`)
-- For nested/base components, create a subdirectory with the component name (e.g., `Link/BaseLink/`)
+## ⚠️ Your Role
 
-## Import Guidelines
-- Components in svelte directory have all the blade tokens listed in `packages/blade-svelte/src/theme/theme.css`
-- There is an existing example at `packages/blade-svelte/src/components/Button/` which you can refer to for any example
-- You can use common function from `packages/blade-core` if needed. However do confirm before you implement
+You are the **orchestrator**. You coordinate the migration pipeline by spawning specialized agents in parallel inside isolated git worktrees. You do NOT execute any phase work yourself.
 
-## Testing Guidelines
-Create the necessary stories required for the component as well which will be a testing playground for testing whether component is behaving as expected or not
+**Your ONLY job:**
 
-## Accessibility and CSS Patterns
+1. Set up one git worktree + one branch per component.
+2. Spawn Plan/Execute/Verify agents in parallel via the Agent tool, passing each component's worktree absolute path in the prompt.
+3. Read the artifacts each agent produces.
+4. Present artifacts to the user at human gates.
+5. Open one PR per migrated component.
+6. Maintain `.claude/artifacts/batch-status.md` as the live source of truth.
 
-#### Implementation Guidelines
+## Include
 
-- Always set the `disabled` attribute on the element when the component is disabled
-- Use `[disabled]` attribute selector in CSS instead of adding/removing classes
-- This pattern applies to buttons, links, and other interactive elements that support disabled states
+Use the Read tool to load these files before starting:
 
-## Accessibility and CSS Patterns
+1. `.claude/rules/orchestrator-guardrails.md`
 
-- Avoid passing styles via style prop or attribute to svelte component
-- Use CVA to generate classes based on props passed to the component
+## Input
+
+- Component name(s): single name or comma-separated list (e.g., `Alert` or `Alert, Card, Checkbox`).
+
+## Output
+
+- One git worktree per component at `.claude/worktrees/{Name}/`.
+- One branch per component: `feat/blade-svelte/{Name}` (based on `origin/master`).
+- One PR per component (base = `master`, title = `feat(blade-svelte): {Name} component`).
+- Per-component artifacts at `.claude/worktrees/{Name}/.claude/artifacts/{Name}/`.
+- Live batch tracker at `.claude/artifacts/batch-status.md` (in the **main checkout**, not in any worktree).
+
+---
+
+## Step 0: Setup — Worktrees, Branches, Port Allocation
+
+### 0.1 Parse and validate input
+
+1. Parse component name(s) from user input. Trim whitespace, dedupe.
+2. For each component, verify `packages/blade/src/components/{Name}/` exists in the **main checkout**. If missing → drop from batch and warn user.
+3. Check `packages/blade-svelte/src/components/index.ts` in the main checkout. If `{Name}` is already exported → drop from batch with "already migrated".
+4. Capture the **main checkout absolute path** (`pwd`) once. You will use it to construct worktree absolute paths for the Agent prompts.
+
+### 0.2 Allocate slots and ports
+
+Number the surviving components `1..N` (in input order).
+
+- **React Storybook port (shared, all slots): `9009`** (the script's default).
+- **Svelte Storybook port (per slot `i`): `6000 + i*100 + 7`** → slot 1 = `6107`, slot 2 = `6207`, …, slot 5 = `6507`. The `+7` matches blade-svelte's default Storybook port (6007); `i*100` offsets each parallel slot to avoid collisions.
+
+The pipeline owns `9009` for the duration of the batch — if you need to run `yarn react:storybook` in your main checkout concurrently, pass `-p` to override its port.
+
+### 0.3 Create worktrees + clone node_modules
+
+For each component, run (via Bash tool, sequential — these are quick):
+
+```bash
+git worktree add -B feat/blade-svelte/{Name} .claude/worktrees/{Name} origin/master
+```
+
+Then **APFS-clone** the dependency directories from the main checkout into the worktree so each worktree gets a fully private, mutable `node_modules` tree (see Assumptions below for the non-APFS fallback).
+
+```bash
+# Run from the main checkout root.
+WT=.claude/worktrees/{Name}
+
+# Idempotency guard: cp -cR onto an existing directory nests the clone inside it
+# (e.g. $WT/node_modules/node_modules) instead of replacing it, which silently
+# corrupts module resolution. Strip any prior copies before re-cloning.
+# (Worktree is fresh out of `git worktree add` on the happy path — these only fire on retry.)
+rm -rf "$WT/node_modules" \
+       "$WT/packages/blade/node_modules" \
+       "$WT/packages/blade-svelte/node_modules" \
+       "$WT/packages/blade-core/node_modules"
+
+# APFS only: `cp -c` returns non-zero on non-APFS filesystems, so we fall through
+# to `yarn install` per worktree (~30–60s each). Stderr is logged, not swallowed.
+if cp -cR "$(pwd)/node_modules" "$WT/node_modules" 2>>/tmp/blade-migration-clone.log; then
+  [ -d packages/blade/node_modules ]        && cp -cR "$(pwd)/packages/blade/node_modules"        "$WT/packages/blade/node_modules"
+  [ -d packages/blade-svelte/node_modules ] && cp -cR "$(pwd)/packages/blade-svelte/node_modules" "$WT/packages/blade-svelte/node_modules"
+  [ -d packages/blade-core/node_modules ]   && cp -cR "$(pwd)/packages/blade-core/node_modules"   "$WT/packages/blade-core/node_modules"
+else
+  # Fallback: non-APFS filesystem (or other clone failure).
+  echo "APFS clone failed; see /tmp/blade-migration-clone.log, falling back to yarn install"
+  ( cd "$WT" && yarn install --prefer-offline --frozen-lockfile )
+fi
+```
+
+If cloning fails for any other reason (corrupt `node_modules`, permissions, etc.), fall back to running `yarn install` inside the worktree.
+
+#### Assumptions
+
+Load-bearing preconditions for the clone-based approach. If any stop holding, revisit this step:
+
+- **Yarn 1.x classic with `nohoist: ["**"]`and relative workspace symlinks.** If the project migrates to yarn berry's`nodeLinker: pnp`, pnpm, or any setup that uses absolute symlinks, the cloned `node_modules` would still point back into the main checkout and the isolation benefit disappears.
+- **macOS APFS filesystem.** Linux/CI takes the `yarn install` fallback per worktree.
+
+### 0.4 Start the shared React Storybook
+
+From the first surviving slot's worktree (`{Name1}`), boot the React Storybook on `9009`:
+
+```bash
+cd .claude/worktrees/{Name1}/packages/blade && yarn react:storybook
+```
+Run via Bash tool with `run_in_background: true`.
+
+Poll `curl -s http://localhost:9009` every 5s up to 60s. Once it returns HTML, continue.
+
+On timeout, log to `batch-status.md` notes and continue (Verify skips Step 3, other gates still run).
+
+### 0.5 Initialize batch-status.md
+
+Write `.claude/artifacts/batch-status.md` in the **main checkout** with this layout:
+
+```markdown
+# Batch Migration Status
+
+React Storybook (shared): http://localhost:9009
+
+| #   | Component | Tier | Worktree                  | Branch                     | Svelte Port | Status          | Iteration | PR  | Notes |
+| --- | --------- | ---- | ------------------------- | -------------------------- | ----------- | --------------- | --------- | --- | ----- |
+| 1   | Alert     | -    | .claude/worktrees/Alert   | feat/blade-svelte/Alert    | 6107        | ⏳ plan-pending | -         | -   | -     |
+| 2   | Card      | -    | .claude/worktrees/Card    | feat/blade-svelte/Card     | 6207        | ⏳ plan-pending | -         | -   | -     |
+| 3   | Checkbox  | -    | .claude/worktrees/Checkbox| feat/blade-svelte/Checkbox | 6307        | ⏳ plan-pending | -         | -   | -     |
+```
+
+`Tier` is filled in after Plan completes. `PR` is filled in after Step 6.
+
+Update this file after every status change.
+
+---
+
+## Step 1: Plan (parallel)
+
+Spawn one Plan agent per component (parallel pattern — see pre-flight).
+
+Per Agent call:
+
+- `subagent_type`: `planner`
+- `description`: `Plan {Name} migration`
+- `run_in_background`: `false`
+- `prompt`: see template below
+
+**Prompt template:**
+
+```text
+Plan the migration of the {Name} React component to Svelte 5.
+
+- Component name: {Name}
+- Worktree (absolute base): {WorktreeAbs}
+
+ALWAYS use absolute paths prefixed with the worktree. Write artifacts to:
+- {WorktreeAbs}/.claude/artifacts/{Name}/discovery-report.md
+- {WorktreeAbs}/.claude/artifacts/{Name}/migration-plan.md
+
+Follow the steps in your agent definition.
+```
+
+`{WorktreeAbs}` = `<main checkout absolute path>/.claude/worktrees/{Name}`.
+
+After all Plan agents return, verify both artifacts exist at:
+
+- `{WorktreeAbs}/.claude/artifacts/{Name}/discovery-report.md`
+- `{WorktreeAbs}/.claude/artifacts/{Name}/migration-plan.md`
+
+Update batch-status.md per component:
+
+- On success: `Status = ✅ planned`, fill `Tier` from the discovery report.
+- On failure: `Status = ❌ plan-failed`, capture the failure reason in `Notes`.
+
+## Step 1.5: Self-heal misplaced artifacts
+
+If either artifact is missing from `{WorktreeAbs}/.claude/artifacts/{Name}/`, check the main-checkout fallback at `{MainCheckout}/.claude/artifacts/{Name}/`. If found there, the agent resolved a relative path against its CWD instead of the worktree — move them in before marking failure:
+
+```bash
+mkdir -p {WorktreeAbs}/.claude/artifacts/{Name}
+mv {MainCheckout}/.claude/artifacts/{Name}/{discovery-report,migration-plan}.md \
+   {WorktreeAbs}/.claude/artifacts/{Name}/ 2>/dev/null
+```
+
+If still missing → `❌ plan-failed`. Apply the same fallback to Execute (`patch-request.md`) and Verify (`verification-report.md`, `screenshots/`) outputs.
+
+## Step 2: Dependency Resolution
+
+After all Plans complete, read every successful component's `discovery-report.md` and build the per-component dependency list.
+
+**Dependency workarounds** (deps with workarounds do **not** require migration; skip them when resolving the graph):
+
+| Dependency                           | Workaround                                        |
+| ------------------------------------ | ------------------------------------------------- |
+| `Box` / `BaseBox`                    | use `<div>` with classes (no migration needed)    |
+| `Icons`                              | placeholder prop type (`IconComponent = unknown`) |
+| `blade-core` (`~utils/`, `~tokens/`) | already framework-agnostic, import directly       |
+
+For each component:
+
+1. Read its dependencies list from the discovery report.
+2. For every unmigrated dependency:
+   - Matches the workarounds table → skip it.
+   - **Also in this batch** → mark this component `🟡 deferred-to-next-batch` (dep name in `Notes`), drop it from the active set, tell the user to re-run it after the dep's PR merges.
+   - **Not in this batch, no workaround** → mark `❌ blocked-by-dep` (dep name in `Notes`); tell the user to migrate the dep first.
+
+Remaining components proceed independently.
+
+## Step 3: Plan Gate (per-component, sequential)
+
+For each successfully-planned, non-deferred, non-blocked component:
+
+1. **Skip the gate** if the component's tier is `simple`. Auto-approve and continue.
+2. **Otherwise**, present the component's `migration-plan.md` to the user and ask for approval.
+3. On reject: re-run that component's Plan (Step 1) with the user feedback appended to the prompt. Max 3 reject cycles per component; after 3 → mark `❌ plan-rejected` and continue with the others.
+4. On approve: mark `Status = 🟢 plan-approved`.
+
+This gate is sequential because it requires human input. The components themselves run independently afterwards.
+
+## Step 4: Execute (parallel)
+
+Spawn one Execute agent per plan-approved component (parallel pattern — see pre-flight).
+
+Per Agent call:
+
+- `subagent_type`: `execute`
+- `description`: `Execute {Name} migration`
+- `run_in_background`: `false`
+- `prompt`: see template below
+
+**Prompt template (Full mode):**
+
+```text
+Implement the {Name} Svelte component.
+
+- Component name: {Name}
+- Mode: Full
+- Worktree (absolute base): {WorktreeAbs}
+
+ALWAYS use absolute paths prefixed with the worktree.
+- Migration plan: {WorktreeAbs}/.claude/artifacts/{Name}/migration-plan.md
+- React source: {WorktreeAbs}/packages/blade/src/components/{Name}/
+
+Follow the Full mode steps in your agent definition.
+```
+
+Update batch-status.md as each finishes:
+
+- Success → `Status = 🛠️ executed`.
+- Failure → `Status = ❌ execute-failed`, capture reason.
+
+## Step 5: Verify (parallel)
+
+Spawn one Verify agent per executed component (parallel pattern — see pre-flight).
+
+Per Agent call:
+
+- `subagent_type`: `verify`
+- `description`: `Verify {Name} migration`
+- `run_in_background`: `false`
+- `prompt`: see template below
+
+**Prompt template:**
+
+```text
+Verify the {Name} Svelte component.
+
+- Component name: {Name}
+- Worktree (absolute base): {WorktreeAbs}
+- React Storybook port: {ReactPort}
+- Svelte Storybook port: {SveltePort}
+
+ALWAYS use absolute paths prefixed with the worktree.
+- Discovery report: {WorktreeAbs}/.claude/artifacts/{Name}/discovery-report.md
+- Write report to: {WorktreeAbs}/.claude/artifacts/{Name}/verification-report.md
+
+Boot Storybooks on the assigned ports if not already running. Do NOT kill them
+when finished — the orchestrator needs them up for the final review gate.
+Follow the steps in your agent definition.
+```
+
+`{ReactPort}` = `9009` (shared, started by Step 0.4). `{SveltePort}` is the slot's Svelte port from Step 0.2 (e.g., `6207`).
+
+Verify spawns Execute(patch) itself when it finds parity gaps. You only see the terminal status.
+
+Update batch-status.md per component:
+
+- PASS / PASS-WITH-WARNINGS → `Status = ✅ verified`.
+- FAIL → `Status = ❌ verify-failed`.
+
+## Step 6: Final Gate + PR (per-component, parallel)
+
+For each verified component:
+
+### 6.1 Final review
+
+Present `verification-report.md` + screenshots to the user. Storybook URLs for spot-check:
+
+- Svelte: `http://localhost:{SveltePort}/iframe.html?id=components-{name}--{story}`
+- React: `http://localhost:9009/iframe.html?id=components-{name}--{story}`
+
+Both Storybooks remain running.
+
+On reject: ask the user what to fix. Re-spawn Verify (or Execute → Verify) as appropriate. Max 2 reject cycles, then mark `❌ final-rejected` and continue.
+
+### 6.2 Commit, push, open PR
+
+On approve, run inside the worktree:
+
+```bash
+# Generate changeset (bump types follow recent solo-component precedent: patch/patch).
+cd .claude/worktrees/{Name}
+mkdir -p .changeset
+cat > .changeset/blade-svelte-{name}-component.md <<'EOF'
+---
+'@razorpay/blade-core': patch
+'@razorpay/blade-svelte': patch
+---
+
+feat(blade-svelte): add {Name} component
+EOF
+
+# Stage migrated files. Exact paths come from the discovery report's "File Plan" section.
+git add packages/blade-svelte/src/components/{Name} \
+        packages/blade-core/src/styles/{Name} \
+        packages/blade-svelte/src/components/index.ts \
+        packages/blade-core/src/styles/index.ts \
+        .changeset/blade-svelte-{name}-component.md
+
+# (Add any other modified files surfaced by `git status` that belong to this component.)
+
+git commit -m "feat(blade-svelte): {Name} component"
+git push -u origin feat/blade-svelte/{Name}
+
+gh pr create \
+  --base master \
+  --title "feat(blade-svelte): {Name} component" \
+  --body "$(cat <<'EOF'
+## Description
+
+Migrates the React {Name} component to Svelte 5.
+
+## Changes
+
+- Adds `packages/blade-svelte/src/components/{Name}/`
+- Adds `packages/blade-core/src/styles/{Name}/`
+- Re-exports {Name} from `packages/blade-svelte/src/components/index.ts`
+- Re-exports CSS from `packages/blade-core/src/styles/index.ts`
+
+## Component Checklist
+
+- [ ] Update Component Status Page
+- [ ] Perform Manual Testing in Other Browsers
+- [ ] Add KitchenSink Story
+- [ ] Add Interaction Tests (if applicable)
+- [x] Add changeset
+
+EOF
+)"
+```
+
+Capture the PR URL from `gh pr create` output and update batch-status.md `PR` column.
+
+## Step 7: Cleanup (manual, after all PRs merge)
+
+Do **not** auto-remove worktrees. The user may want to keep them for hotfixes.
+
+Print a summary at the end of the run:
+
+```
+Pipeline complete.
+Worktrees still in place at .claude/worktrees/{Name}/.
+To remove a worktree after its PR merges:
+
+  git worktree remove .claude/worktrees/{Name}
+
+Storybooks still running:
+- React (shared) on port 9009, hosted by .claude/worktrees/{Name1}/packages/blade
+- Svelte per worktree on its slot's port (6107, 6207, ...)
+
+Remove the React-host worktree last — it kills the shared server for everyone.
+```
+
+---
+
+## Failure Handling Summary
+
+| Scenario                               | Effect on this component    | Effect on others |
+| -------------------------------------- | --------------------------- | ---------------- |
+| Component already migrated             | Dropped at Step 0           | Continue         |
+| React source not found                 | Dropped at Step 0           | Continue         |
+| Plan agent fails                       | `❌ plan-failed`            | Continue         |
+| Unmigrated dependency, no workaround   | `❌ blocked-by-dep`         | Continue         |
+| Dependency cycle detected              | `❌ dep-cycle` (all in cyc) | Continue         |
+| User rejects plan 3 times              | `❌ plan-rejected`          | Continue         |
+| Execute agent fails (incl. retries)    | `❌ execute-failed`         | Continue         |
+| Verify agent FAIL (after 6 iterations) | `❌ verify-failed`          | Continue         |
+| User rejects final review 2 times      | `❌ final-rejected`         | Continue         |
+
+A failed component in any phase **does not block the others**. The orchestrator records the failure in `batch-status.md` and continues processing the remaining components.
+
+## Status Vocabulary
+
+`⏳ plan-pending` → `✅ planned` / `❌ plan-failed`
+`🟢 plan-approved` / `🟡 deferred-to-next-batch` / `❌ blocked-by-dep` / `❌ dep-cycle` / `❌ plan-rejected`
+`🛠️ executed` / `❌ execute-failed`
+`✅ verified` / `❌ verify-failed`
+`🚀 pr-opened` / `❌ final-rejected`
