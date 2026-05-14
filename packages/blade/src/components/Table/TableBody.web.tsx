@@ -319,21 +319,23 @@ const StyledRow = styled(Row)<{
           border: 'none',
         },
       }),
-      // When checkboxDisplay="on-hover", hide the first td (checkbox cell) by default.
+      // When checkboxDisplay="on-hover", hide only the checkbox content inside the
+      // first td. We target .cell-wrapper > * (the BaseBox wrapping the Checkbox)
+      // rather than the td itself so that the cell-wrapper's border-bottom — which
+      // draws the row separator line — stays fully visible.
       // Reveal on row hover, keyboard focus, or when the row is already selected
       // (.row-select-selected class is added by @table-library/react-table-library).
-      // Opacity-only change keeps the checkbox in the DOM so keyboard nav and
-      // screen readers remain unaffected.
       ...(checkboxDisplay === 'on-hover' && selectionType === 'multiple' && {
-        '& td:first-child': {
+        '& td:first-child .cell-wrapper > *': {
           opacity: 0,
           transition: `opacity ${makeMotionTime(
             getIn(theme.motion, tableRow.backgroundColorMotionDuration),
           )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
         },
-        '&:hover td:first-child, &:focus td:first-child, &.row-select-selected td:first-child': {
-          opacity: 1,
-        },
+        '&:hover td:first-child .cell-wrapper > *, &:focus td:first-child .cell-wrapper > *, &.row-select-selected td:first-child .cell-wrapper > *':
+          {
+            opacity: 1,
+          },
       }),
     },
   };
