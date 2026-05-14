@@ -235,7 +235,7 @@ const StyledRow = styled(Row)<{
   $isGrouped: boolean;
   $isGroupHeader: boolean;
 }>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
-  const { hasHoverActions, checkboxDisplay } = useTableContext();
+  const { hasHoverActions, checkboxDisplay, selectionType } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -324,7 +324,7 @@ const StyledRow = styled(Row)<{
       // (.row-select-selected class is added by @table-library/react-table-library).
       // Opacity-only change keeps the checkbox in the DOM so keyboard nav and
       // screen readers remain unaffected.
-      ...(checkboxDisplay === 'on-hover' && {
+      ...(checkboxDisplay === 'on-hover' && selectionType === 'multiple' && {
         '& td:first-child': {
           opacity: 0,
           transition: `opacity ${makeMotionTime(
