@@ -170,6 +170,7 @@ const _Table = <Item,>({
   defaultSelectedIds = [],
   backgroundColor = tableBackgroundColor,
   isGrouped = false,
+  checkboxDisplay = 'always',
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -528,6 +529,7 @@ const _Table = <Item,>({
       tableData: data.nodes,
       isGrouped,
       tableToolbarPlacement: toolbar?.props?.placement ?? 'inline',
+      checkboxDisplay,
     }),
     [
       selectionType,
@@ -559,6 +561,7 @@ const _Table = <Item,>({
       isVirtualized,
       data,
       isGrouped,
+      checkboxDisplay,
     ],
   );
 
