@@ -3,28 +3,6 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type ListViewCommonProps = {
   children: React.ReactNode;
-  /**
-   * Number of columns in the table inside this ListView.
-   * This value is passed through `ListViewContext` so that `<ListViewSkeleton />`
-   * placed inside `<ListView>` automatically renders the same number of columns
-   * without any additional props.
-   *
-   * @default 5
-   * @example
-   * ```tsx
-   * <ListView columns={4}>
-   *   {isLoading ? (
-   *     <ListViewSkeleton /> // automatically renders 4 columns
-   *   ) : (
-   *     <>
-   *       <ListViewFilters ... />
-   *       <Table> // your table with 4 columns
-   *     </>
-   *   )}
-   * </ListView>
-   * ```
-   */
-  columns?: number;
 };
 
 type ListViewProps = ListViewCommonProps & TestID & DataAnalyticsAttribute;
