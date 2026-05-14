@@ -52,6 +52,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     validationState,
     errorText,
     onErrorDismiss,
+    hideFileUpload = false,
+    autoFocus = false,
     accessibilityLabel = 'Chat input',
     testID,
     ...rest
@@ -139,6 +141,16 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  useEffect(() => {
+    if (autoFocus) {
+      const el = (mergedRef as React.MutableRefObject<BladeElementRef>)?.current;
+      if (el && 'focus' in el) {
+        (el as HTMLElement).focus();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const fileScrollRef = useRef<HTMLDivElement>(null);
   const prevFileCountRef = useRef(files.length);
 
@@ -194,6 +206,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
+      hideFileUpload={hideFileUpload}
       onUploadClick={handleUploadClick}
       onSubmit={handleSubmit}
       onStop={onStop}
