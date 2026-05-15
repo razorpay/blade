@@ -2,6 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Svg, Rect, Line, Text as SvgText, G } from 'react-native-svg';
 import { Pressable, View } from 'react-native';
 import type { GestureResponderEvent, LayoutChangeEvent } from 'react-native';
+import getIn from '~utils/lodashButBetter/get';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import type { TestID, DataAnalyticsAttribute } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { logger } from '~utils/logger';
+import { metaAttribute } from '~utils/metaAttribute';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
 import {
   CommonChartComponentsContext,
@@ -14,21 +20,19 @@ import type {
   ChartReferenceLineProps,
   ChartTooltipProps,
 } from '../CommonChartComponents';
+import type {
+  ChartsCategoricalColorToken,
+  ChartSequentialColorToken,
+} from '../CommonChartComponents/types';
 import { BarChartContext } from './BarChartContext';
 import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
 import type { ChartBarProps, ChartBarWrapperProps } from './types';
-import getIn from '~utils/lodashButBetter/get';
-import isNumber from '~utils/lodashButBetter/isNumber';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import type { TestID, DataAnalyticsAttribute } from '~utils/types';
-import { metaAttribute } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { logger } from '~utils/logger';
 
 // Plot padding is in raw SVG pixels because react-native-svg works in pixel
 // space; it does not consume Blade's spacing tokens directly. The values
@@ -55,7 +59,7 @@ type ChildSlots = {
   bars: {
     dataKey: string;
     name?: string;
-    color?: DataColorMapping[string]['colorToken'];
+    color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
     stackId?: string;
     hide?: boolean;
   }[];

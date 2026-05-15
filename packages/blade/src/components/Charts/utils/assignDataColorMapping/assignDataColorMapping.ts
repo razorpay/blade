@@ -1,10 +1,10 @@
-import type { ChartsCategoricalColorToken } from '../types';
+import type { ChartsCategoricalColorToken, ChartSequentialColorToken } from '../types';
 import { DEFAULT_COLOR } from '../tokens';
 
 type DataColorMapping = Record<
   string,
   {
-    colorToken?: ChartsCategoricalColorToken | undefined;
+    colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken | undefined;
     isCustomColor: boolean;
   }
 >;
