@@ -52,7 +52,13 @@ type ReferenceLineSlot = {
 type TooltipFormatter = NonNullable<ChartTooltipProps['formatter']>;
 
 type ChildSlots = {
-  bars: { dataKey: string; name?: string; color?: string; stackId?: string; hide?: boolean }[];
+  bars: {
+    dataKey: string;
+    name?: string;
+    color?: DataColorMapping[string]['colorToken'];
+    stackId?: string;
+    hide?: boolean;
+  }[];
   hasXAxis: boolean;
   xDataKey?: string;
   xSecondaryDataKey?: string;
@@ -87,7 +93,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       slots.bars.push({
         dataKey: props.dataKey as string,
         name: props.name as string | undefined,
-        color: props.color,
+        color: props.color as DataColorMapping[string]['colorToken'] | undefined,
         stackId: props.stackId as string | undefined,
         hide: props.hide,
       });
@@ -216,7 +222,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     const mapping: DataColorMapping = {};
     visibleBars.forEach((bar) => {
       mapping[bar.dataKey] = {
-        colorToken: bar.color! as DataColorMapping[string]['colorToken'],
+        colorToken: bar.color!,
         isCustomColor: Boolean(bar.color),
       };
     });
