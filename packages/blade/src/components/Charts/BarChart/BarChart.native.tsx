@@ -216,7 +216,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     const mapping: DataColorMapping = {};
     visibleBars.forEach((bar) => {
       mapping[bar.dataKey] = {
-        colorToken: bar.color!,
+        colorToken: bar.color! as DataColorMapping[string]['colorToken'],
         isCustomColor: Boolean(bar.color),
       };
     });
