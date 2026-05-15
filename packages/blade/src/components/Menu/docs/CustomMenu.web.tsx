@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MenuItem } from '../';
+
 import { Box } from '~components/Box';
 import {
   BusinessBankingIcon,
@@ -11,10 +11,13 @@ import {
   PaymentLinksIcon,
   PaymentPagesIcon,
 } from '~components/Icons';
-import type { IconComponent } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { MenuItem } from '../';
+
+import type { IconComponent } from '~components/Icons';
 
 const CustomMenuTrigger = styled.button<{ isTransparent?: boolean }>((props) => {
   return {

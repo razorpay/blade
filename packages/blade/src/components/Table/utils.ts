@@ -1,9 +1,10 @@
-import { classes, tableRow, tableBackgroundColor } from './tokens';
-import type { Theme } from '~components/BladeProvider';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
-
 import { makeMotionTime } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+
+import { classes, tableRow, tableBackgroundColor } from './tokens';
+
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 const getTableRowBackgroundTransition = (theme: Theme): string => {
   const rowBackgroundTransition = `background-color ${makeMotionTime(

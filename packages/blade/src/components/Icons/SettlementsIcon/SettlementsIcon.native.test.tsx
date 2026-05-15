@@ -1,5 +1,6 @@
-import SettlementsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SettlementsIcon from '.';
 
 describe('<SettlementsIcon />', () => {
   it('should render SettlementsIcon', () => {

@@ -1,5 +1,6 @@
-import CpuIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CpuIcon from './';
 
 describe('<CpuIcon />', () => {
   it('should render CpuIcon', () => {

@@ -1,5 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
 import { PreviewBody, PreviewHeader, Preview, PreviewFooter } from '../Preview';

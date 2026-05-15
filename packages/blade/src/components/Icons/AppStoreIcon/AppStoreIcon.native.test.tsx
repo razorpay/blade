@@ -1,5 +1,6 @@
-import AppStoreIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AppStoreIcon from '.';
 
 describe('<AppStoreIcon />', () => {
   it('should render AppStoreIcon', () => {

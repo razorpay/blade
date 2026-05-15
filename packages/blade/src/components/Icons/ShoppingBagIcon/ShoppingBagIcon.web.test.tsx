@@ -1,5 +1,6 @@
-import ShoppingBagIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ShoppingBagIcon from './';
 
 describe('<ShoppingBagIcon />', () => {
   it('should render ShoppingBagIcon', () => {

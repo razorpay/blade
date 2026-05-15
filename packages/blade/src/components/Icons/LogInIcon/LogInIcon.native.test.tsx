@@ -1,5 +1,6 @@
-import LogInIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import LogInIcon from '.';
 
 describe('<LogInIcon />', () => {
   it('should render LogInIcon', () => {

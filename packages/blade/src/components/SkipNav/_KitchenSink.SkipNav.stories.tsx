@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as skipNavStories from './SkipNav.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as skipNavStories from './SkipNav.stories';
 
 const allStories = Object.values(composeStories(skipNavStories));
 

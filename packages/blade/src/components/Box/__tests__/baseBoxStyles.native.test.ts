@@ -1,3 +1,5 @@
+import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme';
+
 import {
   getBaseBoxStyles,
   getSpacingValue,
@@ -5,9 +7,10 @@ import {
   getAllProps,
 } from '../BaseBox/baseBoxStyles';
 import { getResponsiveValue } from '../BaseBox/getResponsiveValue.native';
-import type { BaseBoxProps } from '../BaseBox';
+
 import { removeUndefinedValues } from './baseBoxStyles.test';
-import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme';
+
+import type { BaseBoxProps } from '../BaseBox';
 import type { Theme } from '~components/BladeProvider';
 
 describe('getResponsiveValue', () => {

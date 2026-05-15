@@ -1,5 +1,6 @@
-import DragHandleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import DragHandleIcon from '.';
 
 describe('<DragHandleIcon />', () => {
   it('should render DragHandleIcon', () => {

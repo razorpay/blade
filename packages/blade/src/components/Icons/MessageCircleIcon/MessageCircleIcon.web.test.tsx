@@ -1,5 +1,6 @@
-import MessageCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MessageCircleIcon from './';
 
 describe('<MessageCircleIcon />', () => {
   it('should render MessageCircleIcon', () => {

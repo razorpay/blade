@@ -8,7 +8,6 @@ import {
   writeFileSync,
   readdirSync,
 } from 'fs';
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import {
   BLADE_SKILL_FILE_PATH,
@@ -20,6 +19,8 @@ import {
 
 import { hasOutdatedSkill } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 // eslint-disable-next-line import/no-cycle
 import { skillCreationInstructions } from '../utils/skillUtils.js';
 import type { McpToolResponse } from '../utils/types.js';

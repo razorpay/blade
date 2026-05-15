@@ -2,15 +2,16 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
-import type { CSSObject } from 'styled-components';
-import type { PopupArrowProps } from './types';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { useTheme } from '~components/BladeProvider';
-import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { logger } from '~utils/logger';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
+
+import type { CSSObject } from 'styled-components';
+import type { PopupArrowProps } from './types';
+import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 
 const StyledSvg = styled(Svg)<{ styles?: CSSObject }>(({ styles }) => {
   return styles;

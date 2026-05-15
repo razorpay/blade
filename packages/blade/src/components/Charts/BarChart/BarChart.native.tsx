@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChartBarProps, ChartBarWrapperProps } from './types';
 
 const ChartBar = (_prop: ChartBarProps): React.ReactElement => {
   throwBladeError({

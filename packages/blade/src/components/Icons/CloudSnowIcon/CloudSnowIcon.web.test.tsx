@@ -1,5 +1,6 @@
-import CloudSnowIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CloudSnowIcon from './';
 
 describe('<CloudSnowIcon />', () => {
   it('should render CloudSnowIcon', () => {

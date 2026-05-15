@@ -1,5 +1,6 @@
-import ThermometerIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ThermometerIcon from './';
 
 describe('<ThermometerIcon />', () => {
   it('should render ThermometerIcon', () => {

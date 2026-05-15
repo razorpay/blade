@@ -1,4 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { useTheme } from 'styled-components';
 import {
@@ -15,6 +14,8 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { ChipGroup, Chip } from '~components/Chip';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const Page = (): React.ReactElement => {
   return (

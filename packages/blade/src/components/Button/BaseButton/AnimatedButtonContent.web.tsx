@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import type { AnimatedButtonContentProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { AnimatedButtonContentProps } from './types';
 
 const AnimatedButtonContent = styled(BaseBox)<AnimatedButtonContentProps>((props) => {
   return {

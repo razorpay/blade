@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import type { BaseBoxProps } from './types';
-import { useMemoizedStyles } from './useMemoizedStyles';
+
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { useMemoizedStyles } from './useMemoizedStyles';
+
+import type { BaseBoxProps } from './types';
 
 const _BaseBox = styled.div
   .attrs<BaseBoxProps>((props) => {

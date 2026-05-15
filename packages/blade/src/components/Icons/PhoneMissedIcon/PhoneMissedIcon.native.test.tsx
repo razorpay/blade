@@ -1,5 +1,6 @@
-import PhoneMissedIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PhoneMissedIcon from '.';
 
 describe('<PhoneMissedIcon />', () => {
   it('should render PhoneMissedIcon', () => {

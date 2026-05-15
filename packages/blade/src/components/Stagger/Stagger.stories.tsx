@@ -1,9 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { InternalCardExample } from '../Card/InternalCardExample';
-import { Stagger } from './';
-import type { StaggerProps } from './';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
@@ -14,9 +11,16 @@ import { Slide } from '~components/Slide';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { Text } from '~components/Typography';
 import { StepperRouterExample } from '~components/BaseMotion/docs/StepperRouterExample';
-import type { StepItemProps } from '~components/StepGroup';
 import { ChipGroup, Chip } from '~components/Chip';
 import { StaggerSandbox } from '~components/BaseMotion/docs/codeExamples';
+
+import { InternalCardExample } from '../Card/InternalCardExample';
+
+import { Stagger } from './';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { StaggerProps } from './';
+import type { StepItemProps } from '~components/StepGroup';
 
 const Page = (): React.ReactElement => {
   return (

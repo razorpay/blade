@@ -1,7 +1,5 @@
 import React, { forwardRef } from 'react';
-import type { QuickFilterProps, QuickFilterContentProps } from './types';
-import { useQuickFilterGroupContext } from './QuickFilterGroup';
-import { StyledQuickFilterWrapper } from './StyledQuickFilterWrapper';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Radio } from '~components/Radio';
@@ -9,6 +7,11 @@ import { Checkbox } from '~components/Checkbox';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
+
+import { useQuickFilterGroupContext } from './QuickFilterGroup';
+import { StyledQuickFilterWrapper } from './StyledQuickFilterWrapper';
+
+import type { QuickFilterProps, QuickFilterContentProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const QuickFilterContent = ({

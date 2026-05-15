@@ -1,5 +1,6 @@
-import EcommerceFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EcommerceFilledIcon from '.';
 
 describe('<EcommerceFilledIcon />', () => {
   it('should render EcommerceFilledIcon', () => {

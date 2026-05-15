@@ -1,5 +1,6 @@
-import Battery60PercentIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import Battery60PercentIcon from '.';
 
 describe('<Battery60PercentIcon />', () => {
   it('should render Battery60PercentIcon', () => {

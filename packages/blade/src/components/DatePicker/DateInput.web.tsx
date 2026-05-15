@@ -3,7 +3,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useDatesContext } from '@mantine/dates';
-import type { DatePickerInputProps, DateInputProps } from './types';
+
+import BaseBox from '~components/Box/BaseBox';
+import { TextInput } from '~components/Input/TextInput';
+import { isReactNative } from '~utils';
+import { CalendarIcon } from '~components/Icons';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import {
   getFormattedDate,
   rangeFormattedValue,
@@ -14,12 +20,9 @@ import {
   stripDelimiters,
 } from './utils';
 import { useDatePickerContext } from './DatePickerContext';
-import BaseBox from '~components/Box/BaseBox';
-import { TextInput } from '~components/Input/TextInput';
-import { isReactNative } from '~utils';
+
+import type { DatePickerInputProps, DateInputProps } from './types';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
-import { CalendarIcon } from '~components/Icons';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 /**
  * CRITICAL BEHAVIOR CASES - Verify when making changes:

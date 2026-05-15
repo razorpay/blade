@@ -3,23 +3,7 @@ import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import usePresence from 'use-presence';
-import { ModalHeader } from './ModalHeader';
-import type { ModalHeaderProps } from './ModalHeader';
-import { ModalFooter } from './ModalFooter';
-import type { ModalFooterProps } from './ModalFooter';
-import { ModalBody } from './ModalBody';
-import type { ModalBodyProps } from './ModalBody';
-import { ModalContext } from './ModalContext';
-import { ModalBackdrop } from './ModalBackdrop';
-import {
-  modalBorderRadius,
-  modalMaxHeight,
-  modalMaxWidth,
-  modalMinWidth,
-  modalResponsiveScreenGap,
-  modalMargin,
-} from './modalTokens';
-import type { ModalProps } from './types';
+
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -30,6 +14,25 @@ import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+
+import { ModalHeader } from './ModalHeader';
+import { ModalFooter } from './ModalFooter';
+import { ModalBody } from './ModalBody';
+import { ModalContext } from './ModalContext';
+import { ModalBackdrop } from './ModalBackdrop';
+import {
+  modalBorderRadius,
+  modalMaxHeight,
+  modalMaxWidth,
+  modalMinWidth,
+  modalResponsiveScreenGap,
+  modalMargin,
+} from './modalTokens';
+
+import type { ModalHeaderProps } from './ModalHeader';
+import type { ModalFooterProps } from './ModalFooter';
+import type { ModalBodyProps } from './ModalBody';
+import type { ModalProps } from './types';
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean; size: NonNullable<ModalProps['size']> }>(
   ({ isVisible, theme, size }) => {

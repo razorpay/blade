@@ -1,21 +1,24 @@
-import type { ReactElement } from 'react';
 import { useEffect } from 'react';
-import type { PressableProps } from 'react-native';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { StyledAccordionButton } from './StyledAccordionButton.native';
-import type { AccordionButtonProps } from './types';
-import { useAccordion } from './AccordionContext';
-import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
-import { AccordionItemHeader } from './AccordionItemHeader';
-import { Text } from '~components/Typography';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { castNativeType } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+import { Text } from '~components/Typography';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
+
+import { StyledAccordionButton } from './StyledAccordionButton.native';
+import { useAccordion } from './AccordionContext';
+import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
+import { AccordionItemHeader } from './AccordionItemHeader';
+
+import type { ReactElement } from 'react';
+import type { PressableProps } from 'react-native';
+import type { AccordionButtonProps } from './types';
 
 const _AccordionButton = ({
   index,

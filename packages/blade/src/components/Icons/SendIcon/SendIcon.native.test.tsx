@@ -1,5 +1,6 @@
-import SendIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SendIcon from '.';
 
 describe('<SendIcon />', () => {
   it('should render SendIcon', () => {

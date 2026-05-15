@@ -1,11 +1,14 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { StaggerContext } from './StaggerProvider';
-import type { StaggerProps } from './types';
+
 import { BaseMotionBox } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~utils';
+
+import { StaggerContext } from './StaggerProvider';
+
+import type { StaggerProps } from './types';
+import type { MotionVariantsType } from '~components/BaseMotion';
 
 /**
  * ## Stagger

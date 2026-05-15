@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components';
-import { switchColors, switchMotion } from './switchTokens';
-import type { AnimatedThumbProps } from './types';
+
 import getIn from '~utils/lodashButBetter/get';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeBorderSize } from '~utils/makeBorderSize';
+
+import { switchColors, switchMotion } from './switchTokens';
+
+import type { AnimatedThumbProps } from './types';
 
 const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
   ({ theme, isChecked, isDisabled, isPressed }) => {

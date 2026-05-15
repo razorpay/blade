@@ -1,6 +1,7 @@
-import { Breadcrumb, BreadcrumbItem } from '../';
 import { HomeIcon } from '~components/Icons';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Breadcrumb, BreadcrumbItem } from '../';
 
 describe('<Breadcrumb />', () => {
   it('should render breadcrumb', () => {

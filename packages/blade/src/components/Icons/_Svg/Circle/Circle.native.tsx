@@ -1,7 +1,8 @@
-import type { ReactElement } from 'react';
 import { Circle as CircleNative } from 'react-native-svg';
-import type { CircleProps } from './types';
 import { metaAttribute } from '~utils/metaAttribute';
+
+import type { ReactElement } from 'react';
+import type { CircleProps } from './types';
 
 const Circle = ({ cx, cy, x, y, r, fill, stroke, strokeWidth }: CircleProps): ReactElement => {
   return (

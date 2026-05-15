@@ -1,10 +1,13 @@
 import { fireEvent } from '@testing-library/react';
-import type { BaseLinkProps } from '../BaseLink';
-import BaseLink from '../BaseLink';
+
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import { bladeTheme } from '~tokens/theme';
+
+import BaseLink from '../BaseLink';
+
+import type { BaseLinkProps } from '../BaseLink';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

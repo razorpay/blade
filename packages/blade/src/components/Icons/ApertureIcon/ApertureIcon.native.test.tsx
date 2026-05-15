@@ -1,5 +1,6 @@
-import ApertureIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ApertureIcon from '.';
 
 describe('<ApertureIcon />', () => {
   it('should render ApertureIcon', () => {

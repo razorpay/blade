@@ -1,8 +1,9 @@
-import type { RenderOptions, RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
-import type { ReactElement } from 'react';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+
+import type { RenderOptions, RenderResult } from '@testing-library/react';
+import type { ReactElement } from 'react';
 
 const renderWithTheme = (ui: ReactElement, options: RenderOptions = {}): RenderResult =>
   render(

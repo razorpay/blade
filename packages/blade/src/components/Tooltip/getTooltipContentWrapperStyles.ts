@@ -1,6 +1,7 @@
+import { makeBorderSize, castWebType, isReactNative } from '~utils';
+
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
-import { makeBorderSize, castWebType, isReactNative } from '~utils';
 import type { ColorSchemeNames } from '~tokens/theme/theme';
 import type { Theme } from '~components/BladeProvider';
 

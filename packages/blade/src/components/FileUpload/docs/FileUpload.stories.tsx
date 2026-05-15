@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
-import { FileUpload as FileUploadComponent } from '../FileUpload';
-import { SingleFileUploadStory } from './stories';
+
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -12,6 +9,13 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
 import { Modal, ModalHeader, ModalBody } from '~components/Modal';
+
+import { FileUpload as FileUploadComponent } from '../FileUpload';
+
+import { SingleFileUploadStory } from './stories';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 
 const Page = (): React.ReactElement => {
   return (

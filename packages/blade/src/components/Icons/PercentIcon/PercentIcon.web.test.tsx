@@ -1,5 +1,6 @@
-import PercentIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PercentIcon from './';
 
 describe('<PercentIcon />', () => {
   it('should render PercentIcon', () => {

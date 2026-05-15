@@ -1,5 +1,6 @@
-import type { StepGroupProps } from './types';
 import { size as sizeTokens } from '~tokens/global';
+
+import type { StepGroupProps } from './types';
 
 const markerLineDotWidth = sizeTokens['2'];
 const markerLineDotSpacing = sizeTokens['4'];

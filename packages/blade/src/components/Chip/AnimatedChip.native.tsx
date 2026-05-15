@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { getAnimatedChipStyles } from './getAnimatedChipStyles';
-import type { AnimatedChipProps } from './types';
-import { chipMotionTokens } from './chipTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+
+import { getAnimatedChipStyles } from './getAnimatedChipStyles';
+import { chipMotionTokens } from './chipTokens';
+
+import type { AnimatedChipProps } from './types';
 
 const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>((props) => {
   return {

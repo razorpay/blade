@@ -1,5 +1,6 @@
-import type { Platform } from '~utils';
 import { makeBezier } from '~utils/makeBezier';
+
+import type { Platform } from '~utils';
 
 type Duration = {
   /** `80` milliseconds */

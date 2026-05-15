@@ -1,17 +1,20 @@
 import React from 'react';
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
+
+import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime } from '~utils';
+
 import { Tag } from './Tag';
-import type { AnimatedTagProps } from './types';
 import {
   TAG_MAX_WIDTH_END,
   TAG_MAX_WIDTH_START,
   TAG_OPACITY_END,
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
-import BaseBox from '~components/Box/BaseBox';
-import { useTheme } from '~components/BladeProvider';
-import { makeMotionTime } from '~utils';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { AnimatedTagProps } from './types';
 
 const tagDissappearKeyframe = keyframes`
   0% {

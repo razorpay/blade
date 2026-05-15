@@ -1,12 +1,15 @@
 import { Link, MemoryRouter, useLocation, matchPath } from 'react-router-dom';
-import { BottomNavItem, BottomNav } from '../index';
-import type { BottomNavItemProps, BottomNavProps } from '../index';
+
 import {
   MenuDotsIcon,
   PaymentGatewayIcon,
   PaymentLinkIcon,
   TransactionsIcon,
 } from '~components/Icons';
+
+import { BottomNavItem, BottomNav } from '../index';
+
+import type { BottomNavItemProps, BottomNavProps } from '../index';
 
 const isItemActive = (
   location: { pathname: string },

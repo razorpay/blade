@@ -1,9 +1,12 @@
 import { fireEvent } from '@testing-library/react';
-import type { LinkProps } from '../Link';
-import Link from '../Link';
+
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
+
+import Link from '../Link';
+
+import type { LinkProps } from '../Link';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

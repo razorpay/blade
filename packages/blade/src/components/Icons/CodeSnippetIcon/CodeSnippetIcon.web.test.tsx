@@ -1,5 +1,6 @@
-import CodeSnippetIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CodeSnippetIcon from './';
 
 describe('<CodeSnippetIcon />', () => {
   it('should render CodeSnippetIcon', () => {

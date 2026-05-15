@@ -1,7 +1,9 @@
 import Defs from '..';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Defs />', () => {
   it('should render react-native-svg Defs component', () => {

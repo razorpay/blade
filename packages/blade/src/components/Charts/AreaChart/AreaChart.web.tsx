@@ -4,25 +4,28 @@ import {
   Area as RechartsArea,
   ResponsiveContainer,
 } from 'recharts';
-import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
-import type {
-  DataColorMapping,
-  SecondaryLabelMap,
-  ChartXAxisProps,
-} from '../CommonChartComponents';
-import { CommonChartComponentsContext } from '../CommonChartComponents';
-import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
-import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
-import { componentIds } from './componentIds';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+
+import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
+import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+
+import { componentIds } from './componentIds';
+
+import type {
+  DataColorMapping,
+  SecondaryLabelMap,
+  ChartXAxisProps,
+} from '../CommonChartComponents';
+import type { ChartAreaProps, ChartAreaWrapperProps, ChartColorGradientProps } from './types';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 const Area: React.FC<ChartAreaProps> = ({
   color,

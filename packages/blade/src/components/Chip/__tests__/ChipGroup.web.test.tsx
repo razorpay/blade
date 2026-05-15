@@ -1,9 +1,12 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import { Chip } from '../Chip';
-import type { ChipGroupProps } from '../ChipGroup';
-import { ChipGroup } from '../ChipGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
+
+import type { ChipGroupProps } from '../ChipGroup';
 
 const selectionTypes: ChipGroupProps['selectionType'][] = ['single', 'multiple'];
 const sizes: ChipGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];

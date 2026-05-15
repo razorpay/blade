@@ -1,21 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-alert */
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
-import type { CardProps } from './Card';
-import {
-  CardBody,
-  Card,
-  CardFooter,
-  CardFooterLeading,
-  CardFooterTrailing,
-  CardHeader,
-  CardHeaderLeading,
-  CardHeaderTrailing,
-  CardHeaderIcon,
-  CardHeaderCounter,
-  CardHeaderBadge,
-} from '.';
+
 import { Code, Text, Heading } from '~components/Typography';
 import { RupeeIcon, RazorpayIcon } from '~components/Icons';
 import { Link } from '~components/Link';
@@ -31,6 +17,23 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
 import { Divider } from '~components/Divider';
 import { List, ListItem, ListItemText } from '~components/List';
+
+import {
+  CardBody,
+  Card,
+  CardFooter,
+  CardFooterLeading,
+  CardFooterTrailing,
+  CardHeader,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+  CardHeaderIcon,
+  CardHeaderCounter,
+  CardHeaderBadge,
+} from '.';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { CardProps } from './Card';
 
 const Page = (): React.ReactElement => {
   return (

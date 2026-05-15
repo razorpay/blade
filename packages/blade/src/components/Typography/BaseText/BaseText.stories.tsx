@@ -1,9 +1,12 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { BaseText as BaseTextComponent } from './BaseText';
-import type { BaseTextProps } from './types';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { BaseText as BaseTextComponent } from './BaseText';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BaseTextProps } from './types';
 
 export default {
   title: 'Components/Typography/BaseText (Internal)',

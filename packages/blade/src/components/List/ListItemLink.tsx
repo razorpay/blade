@@ -1,8 +1,10 @@
-import { useListContext } from './ListContext';
-import type { LinkProps } from '~components/Link';
 import { Link } from '~components/Link';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { useListContext } from './ListContext';
+
+import type { LinkProps } from '~components/Link';
 
 type ListItemLinkProps = Exclude<LinkProps, 'size' | 'variant' | 'isDisabled'>;
 

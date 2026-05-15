@@ -1,5 +1,6 @@
-import PocketIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PocketIcon from './';
 
 describe('<PocketIcon />', () => {
   it('should render PocketIcon', () => {

@@ -1,12 +1,15 @@
 import React from 'react';
-import type { TabsProps } from './types';
-import { TabsContext } from './TabsContext';
+
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { TabsContext } from './TabsContext';
+
+import type { TabsProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _Tabs = (
   {

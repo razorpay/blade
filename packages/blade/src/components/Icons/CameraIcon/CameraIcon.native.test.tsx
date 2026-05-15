@@ -1,5 +1,6 @@
-import CameraIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CameraIcon from '.';
 
 describe('<CameraIcon />', () => {
   it('should render CameraIcon', () => {

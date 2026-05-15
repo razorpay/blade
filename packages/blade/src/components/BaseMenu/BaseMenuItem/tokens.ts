@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
+
+import type { Theme } from '~components/BladeProvider';
 
 const itemFirstRowHeight = size[20];
 const actionListItemPadding = 8;

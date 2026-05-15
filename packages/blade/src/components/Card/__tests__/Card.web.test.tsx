@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { InfoIcon } from '~components/Icons';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import { Text } from '~components/Typography';
+
 import {
   CardBody,
   Card,
@@ -14,10 +20,6 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { InfoIcon } from '~components/Icons';
-import assertAccessible from '~utils/testing/assertAccessible.web';
-import { Text } from '~components/Typography';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {

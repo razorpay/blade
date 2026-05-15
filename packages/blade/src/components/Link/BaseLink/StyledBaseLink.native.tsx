@@ -1,14 +1,17 @@
 import React from 'react';
-import type { ReactElement } from 'react';
-import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
-import type { StyledBaseLinkProps } from './types';
-import getStyledLinkStyles from './getStyledLinkStyles';
+
 import { useStyledProps } from '~components/Box/styledProps';
-import type { BladeElementRef } from '~utils/types';
 import { castNativeType } from '~utils';
 import { logger } from '~utils/logger';
+
+import getStyledLinkStyles from './getStyledLinkStyles';
+
+import type { ReactElement } from 'react';
+import type { GestureResponderEvent } from 'react-native';
+import type { StyledBaseLinkProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);

@@ -1,15 +1,18 @@
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+
+import { castNativeType } from '~utils';
+import { ChevronDownIcon } from '~components/Icons';
+import { useTheme } from '~components/BladeProvider';
+import { makeAccessible } from '~utils/makeAccessible';
+
 import { useCollapsible } from './CollapsibleContext';
 import {
   getCollapsibleChevronIconTransforms,
   getTransitionDuration,
   getTransitionEasing,
 } from './commonStyles';
-import { castNativeType } from '~utils';
+
 import type { IconComponent } from '~components/Icons';
-import { ChevronDownIcon } from '~components/Icons';
-import { useTheme } from '~components/BladeProvider';
-import { makeAccessible } from '~utils/makeAccessible';
 
 // Not really an IconComponent, a wrapper is needed for animating the icon inside
 const CollapsibleChevronIcon: IconComponent = (props) => {

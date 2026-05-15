@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable consistent-return */
 import React from 'react';
-import { useTourContext } from './TourContext';
-import type { SpotlightPopoverTourStepProps } from './types';
+
 import { mergeRefs } from '~utils/useMergeRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { useTourContext } from './TourContext';
+
+import type { SpotlightPopoverTourStepProps } from './types';
 
 const _SpotlightPopoverTourStep = ({
   name,

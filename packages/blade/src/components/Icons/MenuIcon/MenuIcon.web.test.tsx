@@ -1,5 +1,6 @@
-import MenuIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MenuIcon from './';
 
 describe('<MenuIcon />', () => {
   it('should render MenuIcon', () => {

@@ -1,7 +1,4 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-import { useModalContext } from './ModalContext';
-import { componentIds } from './constants';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -11,8 +8,13 @@ import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useModalContext } from './ModalContext';
+import { componentIds } from './constants';
+
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ModalHeaderProps = Pick<
   BaseHeaderProps,

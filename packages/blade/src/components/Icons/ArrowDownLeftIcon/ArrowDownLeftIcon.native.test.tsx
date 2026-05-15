@@ -1,5 +1,6 @@
-import ArrowDownLeftIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ArrowDownLeftIcon from '.';
 
 describe('<ArrowDownLeftIcon />', () => {
   it('should render ArrowDownLeftIcon', () => {

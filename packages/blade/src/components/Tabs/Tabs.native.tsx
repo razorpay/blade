@@ -5,13 +5,7 @@
 import React from 'react';
 import { TabBar, TabView } from 'react-native-tab-view';
 import { Dimensions } from 'react-native';
-import type { TabsProps } from './types';
-import { TabsContext } from './TabsContext';
-import { StyledTabButton } from './TabItem.native';
-import { iconColor, textColor, trackColor } from './tabTokens';
-import { iconSizeMap, useTabsItemPropRestriction } from './utils';
-import { TabIndicator } from './TabIndicator';
-import { SafeSceneMap } from './SafeSceneMap.native';
+
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
@@ -20,6 +14,15 @@ import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
+
+import { TabsContext } from './TabsContext';
+import { StyledTabButton } from './TabItem.native';
+import { iconColor, textColor, trackColor } from './tabTokens';
+import { iconSizeMap, useTabsItemPropRestriction } from './utils';
+import { TabIndicator } from './TabIndicator';
+import { SafeSceneMap } from './SafeSceneMap.native';
+
+import type { TabsProps } from './types';
 
 const initialLayout = {
   height: 0,

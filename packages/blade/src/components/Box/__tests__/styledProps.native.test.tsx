@@ -1,9 +1,12 @@
 import { Text } from 'react-native';
 import styled from 'styled-components';
-import BaseBox from '../BaseBox';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BaseBox from '../BaseBox';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type MyComponentWithStyledProps = {
   test: 'working???';

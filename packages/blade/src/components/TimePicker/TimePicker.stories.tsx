@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { TimePicker } from '~components/TimePicker';
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
@@ -10,6 +9,8 @@ import { Link } from '~components/Link';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const propsCategory = {
   BASE_PROPS: 'TimePicker Props',

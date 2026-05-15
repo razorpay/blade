@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import { FormGroupStoryCode } from './code';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -9,7 +8,6 @@ import { TextInput } from '~components/Input/TextInput';
 import { TextArea } from '~components/Input/TextArea';
 import { ArrowRightIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Alert } from '~components/Alert';
 import { PasswordInput } from '~components/Input/PasswordInput';
@@ -17,8 +15,13 @@ import { useToast, ToastContainer } from '~components/Toast';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
+
+import { FormGroupStoryCode } from './code';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BoxProps } from '~components/Box';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export default {
   title: 'Patterns/FormGroup',

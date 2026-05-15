@@ -1,14 +1,17 @@
 import React from 'react';
-import { StyledAvatarButton } from './StyledAvatarButton';
-import type { AvatarButtonProps } from './types';
-import { avatarTextSizeMapping, avatarIconSizeTokens } from './avatarTokens';
+
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+
+import { StyledAvatarButton } from './StyledAvatarButton';
+import { avatarTextSizeMapping, avatarIconSizeTokens } from './avatarTokens';
+
+import type { AvatarButtonProps } from './types';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 
 const _AvatarButton: React.ForwardRefRenderFunction<BladeElementRef, AvatarButtonProps> = (

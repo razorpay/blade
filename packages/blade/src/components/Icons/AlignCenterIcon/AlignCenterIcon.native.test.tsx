@@ -1,5 +1,6 @@
-import AlignCenterIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AlignCenterIcon from '.';
 
 describe('<AlignCenterIcon />', () => {
   it('should render AlignCenterIcon', () => {

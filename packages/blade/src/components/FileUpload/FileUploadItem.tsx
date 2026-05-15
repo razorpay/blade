@@ -1,7 +1,5 @@
 import { memo } from 'react';
-import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
-import type { FileUploadItemProps } from './types';
-import { FileUploadItemIcon } from './FileUploadItemIcon';
+
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import {
@@ -18,6 +16,11 @@ import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import { BaseLink } from '~components/Link/BaseLink';
 import { getStyledProps } from '~components/Box/styledProps';
+
+import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
+import { FileUploadItemIcon } from './FileUploadItemIcon';
+
+import type { FileUploadItemProps } from './types';
 
 const FileUploadItem = memo(
   ({

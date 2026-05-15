@@ -1,14 +1,17 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-import type { PaginationProps } from './types';
-import { Pagination as PaginationComponent } from './Pagination';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Pagination as PaginationComponent } from './Pagination';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { PaginationProps } from './types';
 
 const Page = (): ReactElement => {
   return (

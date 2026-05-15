@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
-import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
+
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -10,6 +9,10 @@ import { SearchInput } from '~components/Input/SearchInput';
 import { useId } from '~utils/useId';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+
+import { ListViewFiltersProvider } from './ListViewFiltersContext.web';
+
+import type { ListViewFilterProps, ListViewSelectedFiltersType } from './types';
 
 const StyledQuickFilterContainer = styled(BaseBox)({
   /* For Webkit (Chrome, Safari) */

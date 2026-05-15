@@ -1,5 +1,6 @@
-import MoreIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MoreIcon from './';
 
 describe('<MoreIcon />', () => {
   it('should render MoreIcon', () => {

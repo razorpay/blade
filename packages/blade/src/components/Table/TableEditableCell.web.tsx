@@ -1,16 +1,6 @@
 import styled from 'styled-components';
-import { CellWrapper, StyledCell } from './TableBody';
-import { useTableContext } from './TableContext';
-import type { TableEditableCellProps, TableEditableDropdownCellProps, TableProps } from './types';
-import {
-  rowDensityToIsTableInputCellMapping,
-  tableEditableCellRowDensityToInputSizeMap,
-  validationStateToInputTrailingIconMap,
-} from './tokens';
-import { ComponentIds } from './componentIds';
-import { TableEditableCellContext } from './TableEditableCellContext';
+
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
@@ -19,6 +9,19 @@ import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Dropdown } from '~components/Dropdown';
 import { getKeyboardAndAutocompleteProps } from '~components/Input/BaseInput/utils';
+
+import { CellWrapper, StyledCell } from './TableBody';
+import { useTableContext } from './TableContext';
+import {
+  rowDensityToIsTableInputCellMapping,
+  tableEditableCellRowDensityToInputSizeMap,
+  validationStateToInputTrailingIconMap,
+} from './tokens';
+import { ComponentIds } from './componentIds';
+import { TableEditableCellContext } from './TableEditableCellContext';
+
+import type { TableEditableCellProps, TableEditableDropdownCellProps, TableProps } from './types';
+import type { MarginProps } from '~components/Box/BaseBox/types/spacingTypes';
 
 const StyledEditableCell = styled(StyledCell)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;

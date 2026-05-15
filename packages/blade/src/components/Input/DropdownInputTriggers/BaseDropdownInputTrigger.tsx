@@ -1,14 +1,10 @@
 import React from 'react';
-import { BaseInput } from '../BaseInput';
-import type { BaseInputProps } from '../BaseInput';
-import { InputChevronIcon } from './InputChevronIcon';
-import type { BaseDropdownInputTriggerProps } from './types';
+
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
-import type { BladeElementRef } from '~utils/types';
 import { useTableContext } from '~components/Table/TableContext';
 import {
   rowDensityToIsTableInputCellMapping,
@@ -19,6 +15,14 @@ import { useTableEditableCell } from '~components/Table/TableEditableCellContext
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
+
+import { BaseInput } from '../BaseInput';
+
+import { InputChevronIcon } from './InputChevronIcon';
+
+import type { BaseInputProps } from '../BaseInput';
+import type { BaseDropdownInputTriggerProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _BaseDropdownInputTrigger = (
   props: BaseDropdownInputTriggerProps,

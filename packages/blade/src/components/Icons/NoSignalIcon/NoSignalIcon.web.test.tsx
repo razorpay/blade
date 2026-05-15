@@ -1,5 +1,6 @@
-import NoSignalIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import NoSignalIcon from './';
 
 describe('<NoSignalIcon />', () => {
   it('should render NoSignalIcon', () => {

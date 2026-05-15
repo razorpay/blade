@@ -1,5 +1,6 @@
-import TokenHqFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import TokenHqFilledIcon from '.';
 
 describe('<TokenHqFilledIcon />', () => {
   it('should render TokenHqFilledIcon', () => {

@@ -1,5 +1,6 @@
-import ChromeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ChromeIcon from './';
 
 describe('<ChromeIcon />', () => {
   it('should render ChromeIcon', () => {

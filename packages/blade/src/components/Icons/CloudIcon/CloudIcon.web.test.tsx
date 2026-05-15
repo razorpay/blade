@@ -1,5 +1,6 @@
-import CloudIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CloudIcon from './';
 
 describe('<CloudIcon />', () => {
   it('should render CloudIcon', () => {

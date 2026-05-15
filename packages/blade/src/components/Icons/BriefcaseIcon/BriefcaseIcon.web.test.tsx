@@ -1,5 +1,6 @@
-import BriefcaseIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BriefcaseIcon from './';
 
 describe('<BriefcaseIcon />', () => {
   it('should render BriefcaseIcon', () => {

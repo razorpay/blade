@@ -1,6 +1,7 @@
-import type { MenuOverlayProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { MenuOverlayProps } from './types';
 
 const MenuOverlay = (_props: MenuOverlayProps): React.ReactElement => {
   throwBladeError({

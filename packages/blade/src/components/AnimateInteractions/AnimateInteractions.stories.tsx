@@ -1,8 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { AnimateInteractions } from './';
-import type { AnimateInteractionsProps } from './';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -13,6 +11,11 @@ import { Card, CardBody } from '~components/Card';
 import { ExternalLinkIcon } from '~components/Icons';
 import { Scale } from '~components/Scale';
 import { AnimateInteractionsSandbox } from '~components/BaseMotion/docs/codeExamples';
+
+import { AnimateInteractions } from './';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { AnimateInteractionsProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

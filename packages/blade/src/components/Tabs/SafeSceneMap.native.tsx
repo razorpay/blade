@@ -5,8 +5,9 @@
 // https://github.com/react-navigation/react-navigation/blob/main/packages/react-native-tab-view/src/SceneMap.tsx
 
 import React from 'react';
-import type { SceneRendererProps } from 'react-native-tab-view/src/types';
 import { logger } from '~utils/logger';
+
+import type { SceneRendererProps } from 'react-native-tab-view/src/types';
 
 type SafeSceneProps = {
   route: any;

@@ -4,13 +4,10 @@ import {
   FloatingPortal,
   useFloating,
 } from '@floating-ui/react';
-import type { CSSProperties } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
-import { drawerComponentIds } from './drawerComponentIds';
-import { DrawerContext } from './DrawerContext';
-import type { DrawerProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, getMediaQuery, makeMotionTime, useTheme } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -21,8 +18,14 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { mergeRefs } from '~utils/useMergeRefs';
+
+import { drawerComponentIds } from './drawerComponentIds';
+import { DrawerContext } from './DrawerContext';
+
+import type { CSSProperties } from 'react';
+import type { DrawerProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const SHOW_DRAWER = 'show-drawer';
 

@@ -1,4 +1,7 @@
 import React from 'react';
+import { throwBladeError } from '~utils/logger';
+import { Text } from '~components/Typography';
+
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -7,8 +10,6 @@ import type {
   ChartLegendProps,
   ChartCartesianGridProps,
 } from './types';
-import { throwBladeError } from '~utils/logger';
-import { Text } from '~components/Typography';
 
 const ChartXAxis: React.FC<ChartXAxisProps> = () => {
   throwBladeError({

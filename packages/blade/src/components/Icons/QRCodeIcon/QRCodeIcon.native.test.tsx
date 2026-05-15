@@ -1,5 +1,6 @@
-import QRCodeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import QRCodeIcon from '.';
 
 describe('<QRCodeIcon />', () => {
   it('should render QRCodeIcon', () => {

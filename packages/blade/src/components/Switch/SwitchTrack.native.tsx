@@ -6,11 +6,14 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import type { TrackProps } from './types';
-import { getTrackStyles } from './getTrackStyles';
-import { switchColors, switchMotion } from './switchTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+
+import { getTrackStyles } from './getTrackStyles';
+import { switchColors, switchMotion } from './switchTokens';
+
+import type { TrackProps } from './types';
 
 const StyledSwitchTrack = styled(Animated.View)<TrackProps>(
   ({ theme, size, deviceType, isDisabled, isChecked }) => {

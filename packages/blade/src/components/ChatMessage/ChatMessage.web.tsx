@@ -1,8 +1,5 @@
 import React from 'react';
-import { SelfMessageBubble } from './SelfMessageBubble.web';
-import { DefaultMessageBubble } from './DefaultMessageBubble.web';
-import type { ChatMessageProps } from './types';
-import { ThumbnailPreview } from './ThumbnailPreview.web';
+
 import { RollingText } from '~components/RollingText';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -11,6 +8,12 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStringFromReactText } from '~utils/getStringChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+
+import { SelfMessageBubble } from './SelfMessageBubble.web';
+import { DefaultMessageBubble } from './DefaultMessageBubble.web';
+import { ThumbnailPreview } from './ThumbnailPreview.web';
+
+import type { ChatMessageProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const ButtonResetCss = {

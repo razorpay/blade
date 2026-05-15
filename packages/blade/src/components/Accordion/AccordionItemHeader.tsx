@@ -1,19 +1,22 @@
 import React from 'react';
-import { useAccordion, useAccordionItemIndex } from './AccordionContext';
-import { componentIds } from './componentIds';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { size as sizeToken } from '~tokens/global';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
-import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { DataAnalyticsAttribute } from '~utils/types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { isIconComponent } from '~utils/isIconComponent';
-import type { BoxProps } from '~components/Box';
 import { makeSize } from '~utils/makeSize';
-import { size as sizeToken } from '~tokens/global';
+import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
+
+import { useAccordion, useAccordionItemIndex } from './AccordionContext';
+import { componentIds } from './componentIds';
+
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 const getLeadingElementMaxHeightAndWidth = (
   size: BaseHeaderProps['size'],

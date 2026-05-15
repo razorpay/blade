@@ -1,6 +1,7 @@
-import type { ScaleProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ScaleProps } from './types';
 
 const Scale = (_props: ScaleProps): React.ReactElement => {
   throwBladeError({

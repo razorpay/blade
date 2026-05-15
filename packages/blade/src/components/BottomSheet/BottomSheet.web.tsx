@@ -7,18 +7,7 @@ import styled from 'styled-components';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
 import { clearAllBodyScrollLocks, enableBodyScroll } from 'body-scroll-lock-upgrade';
-import { BottomSheetHeader } from './BottomSheetHeader';
-import { BottomSheetFooter } from './BottomSheetFooter';
-import { BottomSheetBody } from './BottomSheetBody';
-import type { SnapPoints } from './utils';
-import { computeMaxContent, computeSnapPointBounds } from './utils';
-import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import type { BottomSheetContextProps } from './BottomSheetContext';
-import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
-import { ComponentIds } from './componentIds';
-import type { BottomSheetProps } from './types';
-import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
-import { useBottomSheetStack } from './BottomSheetStack';
+
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useScrollLock } from '~utils/useScrollLock';
@@ -33,6 +22,20 @@ import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetFooter } from './BottomSheetFooter';
+import { BottomSheetBody } from './BottomSheetBody';
+import { computeMaxContent, computeSnapPointBounds } from './utils';
+import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
+import { ComponentIds } from './componentIds';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
+import { useBottomSheetStack } from './BottomSheetStack';
+
+import type { SnapPoints } from './utils';
+import type { BottomSheetContextProps } from './BottomSheetContext';
+import type { BottomSheetProps } from './types';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;

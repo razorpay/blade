@@ -1,6 +1,8 @@
 import React from 'react';
-import { Heading } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Heading } from '../';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

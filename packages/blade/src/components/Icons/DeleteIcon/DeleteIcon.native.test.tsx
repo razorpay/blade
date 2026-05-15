@@ -1,5 +1,6 @@
-import DeleteIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import DeleteIcon from '.';
 
 describe('<DeleteIcon />', () => {
   it('should render DeleteIcon', () => {

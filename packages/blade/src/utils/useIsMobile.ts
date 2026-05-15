@@ -1,5 +1,6 @@
-import { useBreakpoint } from './useBreakpoint';
 import { useTheme } from '~components/BladeProvider';
+
+import { useBreakpoint } from './useBreakpoint';
 
 const useIsMobile = (): boolean => {
   const { theme } = useTheme();

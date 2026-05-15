@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils';
+
+import type { StringChildrenType, TestID } from '~utils/types';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {

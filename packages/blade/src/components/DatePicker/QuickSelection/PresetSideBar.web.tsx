@@ -1,5 +1,3 @@
-import type { PresetSideBarProps } from './types';
-import { QuickSelectionItem } from './QuickSelectionItem.web';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Chip, ChipGroup } from '~components/Chip';
@@ -7,6 +5,10 @@ import { Divider } from '~components/Divider';
 import { size } from '~tokens/global';
 import { makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+
+import { QuickSelectionItem } from './QuickSelectionItem.web';
+
+import type { PresetSideBarProps } from './types';
 
 const PresetSideBar = ({
   onSelection,

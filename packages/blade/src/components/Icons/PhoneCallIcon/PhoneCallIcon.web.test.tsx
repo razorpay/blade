@@ -1,5 +1,6 @@
-import PhoneCallIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PhoneCallIcon from './';
 
 describe('<PhoneCallIcon />', () => {
   it('should render PhoneCallIcon', () => {

@@ -1,5 +1,6 @@
-import WorldwideIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import WorldwideIcon from './';
 
 describe('<WorldwideIcon />', () => {
   it('should render WorldwideIcon', () => {

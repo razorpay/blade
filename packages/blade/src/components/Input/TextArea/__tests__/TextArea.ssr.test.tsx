@@ -1,5 +1,6 @@
-import { TextArea } from '../';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { TextArea } from '../';
 
 describe('<TextArea />', () => {
   it('should render TextArea on server and have autofocus on client', () => {

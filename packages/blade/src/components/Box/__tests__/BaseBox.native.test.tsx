@@ -1,7 +1,8 @@
-import BaseBox from '../BaseBox';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography';
+
+import BaseBox from '../BaseBox';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {

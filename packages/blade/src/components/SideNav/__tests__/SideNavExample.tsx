@@ -1,14 +1,5 @@
 import { Link, MemoryRouter, useLocation, matchPath } from 'react-router-dom';
-import {
-  SideNav,
-  SideNavBody,
-  SideNavFooter,
-  SideNavSection,
-  SideNavLink,
-  SideNavItem,
-  SideNavLevel,
-} from '../index';
-import type { SideNavLinkProps, SideNavProps } from '../index';
+
 import { Indicator } from '~components/Indicator';
 import { Switch } from '~components/Switch';
 import {
@@ -19,6 +10,18 @@ import {
   PaymentLinkIcon,
   PaymentPagesIcon,
 } from '~components/Icons';
+
+import {
+  SideNav,
+  SideNavBody,
+  SideNavFooter,
+  SideNavSection,
+  SideNavLink,
+  SideNavItem,
+  SideNavLevel,
+} from '../index';
+
+import type { SideNavLinkProps, SideNavProps } from '../index';
 
 const isItemActive = (
   location: { pathname: string },

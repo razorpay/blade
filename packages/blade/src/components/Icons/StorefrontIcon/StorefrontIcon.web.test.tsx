@@ -1,5 +1,6 @@
-import StorefrontIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import StorefrontIcon from './';
 
 describe('<StorefrontIcon />', () => {
   it('should render StorefrontIcon', () => {

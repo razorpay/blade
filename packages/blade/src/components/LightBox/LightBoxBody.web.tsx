@@ -1,11 +1,14 @@
 import React from 'react';
-import type { LightBoxBodyProps, LightBoxItemProps } from './types';
+
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Box } from '~components/Box';
+
 import { useLightBoxContext } from './LightBoxContext';
 import { LightBoxItem } from './LightBoxItem';
 import { LightBoxMainView } from './LightBoxMainView.web';
 import { LightBoxThumbnailStrip } from './LightBoxThumbnailStrip.web';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { Box } from '~components/Box';
+
+import type { LightBoxBodyProps, LightBoxItemProps } from './types';
 
 const _LightBoxBody = ({ children }: LightBoxBodyProps): React.ReactElement => {
   const { activeIndex, handleIndexChange } = useLightBoxContext();

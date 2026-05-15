@@ -1,14 +1,17 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { IndicatorProps } from './Indicator';
-import { Indicator as IndicatorComponent } from './Indicator';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { getPlatformType } from '~utils';
+
+import { Indicator as IndicatorComponent } from './Indicator';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { IndicatorProps } from './Indicator';
 
 const Page = (): ReactElement => {
   return (

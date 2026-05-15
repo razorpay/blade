@@ -1,5 +1,6 @@
-import UmbrellaIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import UmbrellaIcon from './';
 
 describe('<UmbrellaIcon />', () => {
   it('should render UmbrellaIcon', () => {

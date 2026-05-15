@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, waitFor, userEvent, expect } from 'storybook/test';
 import React from 'react';
 import { Fade } from '~components/Fade';
@@ -16,6 +15,8 @@ import { AnimateInteractions } from '~components/AnimateInteractions';
 import { Scale } from '~components/Scale';
 import { Stagger } from '~components/Stagger';
 import { Chip, ChipGroup } from '~components/Chip';
+
+import type { StoryFn } from '@storybook/react-vite';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

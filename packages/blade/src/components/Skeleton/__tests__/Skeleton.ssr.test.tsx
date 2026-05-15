@@ -1,6 +1,8 @@
 import React from 'react';
-import { Skeleton } from '../Skeleton';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Skeleton } from '../Skeleton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

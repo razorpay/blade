@@ -1,8 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import type { InfoGroupProps } from './types';
-import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';
+
 import {
   UserIcon,
   BankIcon,
@@ -28,6 +26,11 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
 import { Collapsible, CollapsibleBody, CollapsibleLink } from '~components/Collapsible';
 import { Card, CardHeader, CardBody, CardHeaderLeading } from '~components/Card';
 import { Divider } from '~components/Divider';
+
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from './InfoGroup';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { InfoGroupProps } from './types';
 
 const Page = (): React.ReactElement => {
   return (

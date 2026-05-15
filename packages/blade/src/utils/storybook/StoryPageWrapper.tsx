@@ -1,17 +1,20 @@
 import React from 'react';
 import { Controls, Primary, Stories } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
-import { SandboxHighlighter } from './Sandbox/SandpackEditor';
-import { componentData } from './componentStatusData';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
-import type { HeadingProps } from '~components/Typography';
 import { Display, Heading } from '~components/Typography';
 import { AnnouncementIcon, FigmaIcon, FileTextIcon } from '~components/Icons';
 import { Button } from '~components/Button';
+
+import { SandboxHighlighter } from './Sandbox/SandpackEditor';
+import { componentData } from './componentStatusData';
+
+import type { HeadingProps } from '~components/Typography';
 
 const Subtitle = (props: HeadingProps): React.ReactElement => {
   return (

@@ -1,17 +1,6 @@
 import React from 'react';
-import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '..';
-import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
-import { DropdownIconButton } from '../DropdownIconButton';
-import {
-  WithControlledMenuStory,
-  WithControlledMultiSelectMenuStory,
-  WithLinkStory,
-  WithAutoPositioningMenuStory,
-  WithSimpleMenuStory,
-  WithIconButtonStory,
-  WithTooltipStory,
-} from './stories';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
@@ -31,6 +20,20 @@ import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
 import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { DropdownButton } from '../DropdownButton';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
+import { DropdownIconButton } from '../DropdownIconButton';
+
+import {
+  WithControlledMenuStory,
+  WithControlledMultiSelectMenuStory,
+  WithLinkStory,
+  WithAutoPositioningMenuStory,
+  WithSimpleMenuStory,
+  WithIconButtonStory,
+  WithTooltipStory,
+} from './stories';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',

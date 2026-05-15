@@ -1,5 +1,6 @@
-import BuildingIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BuildingIcon from '.';
 
 describe('<BuildingIcon />', () => {
   it('should render BuildingIcon', () => {

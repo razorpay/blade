@@ -1,5 +1,6 @@
-import type { CSSObject } from 'styled-components';
 import { getBaseBoxStyles } from './baseBoxStyles';
+
+import type { CSSObject } from 'styled-components';
 import type { BaseBoxProps, StyledPropsBlade } from './types';
 import type { Theme } from '~components/BladeProvider';
 

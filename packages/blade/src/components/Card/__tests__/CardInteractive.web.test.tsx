@@ -3,11 +3,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { CardBody, Card } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box';
 import { VisuallyHidden } from '~components/VisuallyHidden/VisuallyHidden';
 import { Text } from '~components/Typography';
+
+import { CardBody, Card } from '../';
 
 const HiddenInput = ({
   onChange,

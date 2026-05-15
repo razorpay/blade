@@ -1,5 +1,6 @@
-import StarIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import StarIcon from '.';
 
 describe('<StarIcon />', () => {
   it('should render StarIcon', () => {

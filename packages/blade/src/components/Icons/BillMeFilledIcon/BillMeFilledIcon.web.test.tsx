@@ -1,5 +1,6 @@
-import BillMeFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BillMeFilledIcon from './';
 
 describe('<BillMeFilledIcon />', () => {
   it('should render BillMeFilledIcon', () => {

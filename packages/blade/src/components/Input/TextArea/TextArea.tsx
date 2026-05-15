@@ -1,26 +1,29 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
-import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
-import { useTaggedInput } from '../BaseInput/useTaggedInput';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { hintMarginTop } from '~components/Form/formTokens';
+
+import { BaseInput } from '../BaseInput';
+import { useTaggedInput } from '../BaseInput/useTaggedInput';
+
+import type { TextInput as TextInputReactNative } from 'react-native';
+import type { BaseInputProps } from '../BaseInput';
+import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type {
   BladeElementRef,
   BladeElementRefWithValue,
   DataAnalyticsAttribute,
 } from '~utils/types';
-import { hintMarginTop } from '~components/Form/formTokens';
 import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 type TextAreaCommonProps = Pick<

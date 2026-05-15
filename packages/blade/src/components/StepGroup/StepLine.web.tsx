@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { StepItemProps } from './types';
+import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import Svg, { Path } from '~components/Icons/_Svg';
+import { makeSize, useTheme } from '~utils';
+import { throwBladeError } from '~utils/logger';
+
 import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
 import {
@@ -9,13 +14,10 @@ import {
   markerLineDotWidth,
   markerLineWidth,
 } from './tokens';
-import { Box } from '~components/Box';
+
+import type { StepItemProps } from './types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import Svg, { Path } from '~components/Icons/_Svg';
-import { makeSize, useTheme } from '~utils';
-import { throwBladeError } from '~utils/logger';
 
 // universal base64 encode
 const encode = (svgString: string): string => {

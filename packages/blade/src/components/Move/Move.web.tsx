@@ -1,10 +1,11 @@
 import React from 'react';
-import type { MoveProps } from './types';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, makeSpace, useTheme } from '~utils';
+
+import type { MoveProps } from './types';
+import type { MotionVariantsType } from '~components/BaseMotion';
 
 /**
  * ## Move

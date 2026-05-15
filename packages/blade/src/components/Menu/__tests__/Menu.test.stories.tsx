@@ -1,15 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, waitFor, expect } from 'storybook/test';
-import { Menu, MenuOverlay, MenuItem, MenuHeader, MenuFooter } from '../';
-import type { MenuProps } from '../';
+
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { UserIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { Menu, MenuOverlay, MenuItem, MenuHeader, MenuFooter } from '../';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { MenuProps } from '../';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

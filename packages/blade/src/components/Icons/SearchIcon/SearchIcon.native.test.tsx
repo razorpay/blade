@@ -1,5 +1,6 @@
-import SearchIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SearchIcon from '.';
 
 describe('<SearchIcon />', () => {
   it('should render SearchIcon', () => {

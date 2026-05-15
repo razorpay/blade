@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { ComponentIds } from './componentIds';
-import { useBottomSheetContext } from './BottomSheetContext';
-import type { BottomSheetBodyProps } from './types';
+
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/ActionList/componentIds';
@@ -10,6 +8,11 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { ComponentIds } from './componentIds';
+import { useBottomSheetContext } from './BottomSheetContext';
+
+import type { BottomSheetBodyProps } from './types';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',

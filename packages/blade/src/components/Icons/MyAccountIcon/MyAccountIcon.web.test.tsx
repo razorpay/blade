@@ -1,5 +1,6 @@
-import MyAccountIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MyAccountIcon from './';
 
 describe('<MyAccountIcon />', () => {
   it('should render MyAccountIcon', () => {

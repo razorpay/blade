@@ -2,12 +2,15 @@ import React from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { mergeRefs } from '@mantine/hooks';
-import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
-import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
+
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
-import type { BladeElementRef } from '~utils/types';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
+
+import { makeAnimationVariables, useMotionVariants } from './baseMotionUtils';
+
+import type { BaseMotionBoxProps, MotionMeta, BaseMotionEntryExitProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import type { Theme } from '~components/BladeProvider';
 

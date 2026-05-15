@@ -1,11 +1,14 @@
 import React from 'react';
-import type { CSSObject } from 'styled-components';
+
+import { useTheme } from '~components/BladeProvider';
+import { logger } from '~utils/logger';
+
 import { getBaseBoxStyles } from './baseBoxStyles';
+
+import type { CSSObject } from 'styled-components';
 import type { BaseBoxProps } from './types';
 import type { Theme } from '~components/BladeProvider';
-import { useTheme } from '~components/BladeProvider';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { logger } from '~utils/logger';
 
 const getMemoDependency = (
   props: BaseBoxProps & { theme?: Theme } & { colorScheme: ColorSchemeNames },

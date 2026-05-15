@@ -1,9 +1,11 @@
-import { listItemCodeSize } from './listTokens';
-import { useListContext } from './ListContext';
-import type { CodeProps } from '~components/Typography';
 import { Code } from '~components/Typography';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { listItemCodeSize } from './listTokens';
+import { useListContext } from './ListContext';
+
+import type { CodeProps } from '~components/Typography';
 
 type ListItemCodeProps = Exclude<CodeProps, 'size'>;
 

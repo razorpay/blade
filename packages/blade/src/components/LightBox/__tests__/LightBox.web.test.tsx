@@ -1,9 +1,11 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
-import { LightBox, LightBoxBody, LightBoxItem } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { LightBox, LightBoxBody, LightBoxItem } from '../index';
 
 beforeAll(() => {
   Object.defineProperty(window.Element.prototype, 'scroll', {

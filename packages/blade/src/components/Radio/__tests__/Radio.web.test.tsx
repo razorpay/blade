@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import { Radio } from '../Radio';
-import { RadioGroup } from '../RadioGroup/RadioGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
+
+import { Radio } from '../Radio';
+import { RadioGroup } from '../RadioGroup/RadioGroup';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

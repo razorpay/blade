@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { LinkToStorybook } from './LinkToStorybook';
 
-import type { ComponentStatuses } from './componentStatusData';
-import { componentData } from './componentStatusData';
-import type { IconComponent } from '~components/Icons';
 import {
   CloseIcon,
   StampIcon,
@@ -16,11 +12,17 @@ import {
 } from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
-import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 import { makeSpace } from '~utils/makeSpace';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { LinkToStorybook } from './LinkToStorybook';
+import { componentData } from './componentStatusData';
+
+import type { ComponentStatuses } from './componentStatusData';
+import type { IconComponent } from '~components/Icons';
+import type { BadgeProps } from '~components/Badge';
 
 const Table = styled.table`
   width: 100%;

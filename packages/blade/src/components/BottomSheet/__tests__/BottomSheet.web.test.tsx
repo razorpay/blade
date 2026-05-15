@@ -4,8 +4,7 @@ import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { fireEvent, waitFor, within } from '@testing-library/react';
-import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
-import { Counter } from '../../Counter';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
@@ -13,6 +12,9 @@ import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
+
+import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
+import { Counter } from '../../Counter';
 
 jest.mock('~utils/useId', () => ({
   useId: () => 'dropdown-456',

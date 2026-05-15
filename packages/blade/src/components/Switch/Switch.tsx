@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React from 'react';
-import { ThumbIcon } from './ThumbIcon';
-import type { SwitchProps } from './types';
-import { switchHoverTokens } from './switchTokens';
-import { Thumb } from './Thumb';
-import { AnimatedThumb } from './AnimatedThumb';
-import { SwitchTrack } from './SwitchTrack';
+
 import { useTheme } from '~components/BladeProvider';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
@@ -14,12 +9,20 @@ import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
-import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getStyledProps } from '~components/Box/styledProps';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { ThumbIcon } from './ThumbIcon';
+import { switchHoverTokens } from './switchTokens';
+import { Thumb } from './Thumb';
+import { AnimatedThumb } from './AnimatedThumb';
+import { SwitchTrack } from './SwitchTrack';
+
+import type { SwitchProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   {

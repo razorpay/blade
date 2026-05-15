@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text } from '../';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Text } from '../';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

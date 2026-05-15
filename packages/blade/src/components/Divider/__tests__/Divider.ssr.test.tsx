@@ -1,6 +1,7 @@
-import { Divider } from '../Divider';
 import { Box } from '~components/Box';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Divider } from '../Divider';
 
 describe('<Divider />', () => {
   it('should render Divider on server', () => {

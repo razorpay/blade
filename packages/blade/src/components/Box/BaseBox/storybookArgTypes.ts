@@ -1,7 +1,8 @@
 import { makeBoxProps } from '../Box';
 import { makeStyledProps } from '../styledProps';
-import type { BaseBoxProps, BoxProps, StyledPropsBlade } from './types';
 import { validBoxAsValues } from './types/propsTypes';
+
+import type { BaseBoxProps, BoxProps, StyledPropsBlade } from './types';
 
 type StorybookArgTypes<T> = {
   [P in keyof T]: {

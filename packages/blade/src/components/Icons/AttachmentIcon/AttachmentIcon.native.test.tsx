@@ -1,5 +1,6 @@
-import AttachmentIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AttachmentIcon from '.';
 
 describe('<AttachmentIcon />', () => {
   it('should render AttachmentIcon', () => {

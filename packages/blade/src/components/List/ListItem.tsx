@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 import React from 'react';
+
+import getIn from '~utils/lodashButBetter/get';
+import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { getPlatformType } from '~utils/getPlatformType';
+import { throwBladeError } from '~utils/logger';
+
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
@@ -10,19 +21,11 @@ import {
   listItemMarginBottom,
   listItemMarginLeft,
 } from './listTokens';
-import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
-import getIn from '~utils/lodashButBetter/get';
-import { Text } from '~components/Typography';
+
+import type { ListProps } from './List';
 import type { IconComponent } from '~components/Icons';
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { TestID } from '~utils/types';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { getPlatformType } from '~utils/getPlatformType';
-import { throwBladeError } from '~utils/logger';
 
 type ListItemProps = {
   /**

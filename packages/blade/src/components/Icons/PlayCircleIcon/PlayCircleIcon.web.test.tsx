@@ -1,5 +1,6 @@
-import PlayCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PlayCircleIcon from './';
 
 describe('<PlayCircleIcon />', () => {
   it('should render PlayCircleIcon', () => {

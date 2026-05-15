@@ -1,11 +1,14 @@
 import tinycolor from 'tinycolor2';
-import type { WCAG2Options, ColorInput } from 'tinycolor2';
-import type { ThemeTokens } from './theme';
+
+import { colors as globalColors, opacity } from '~tokens/global';
+import { throwBladeError } from '~utils/logger';
+
 import overrideTheme from './overrideTheme';
 import bladeTheme from './bladeTheme';
-import { colors as globalColors, opacity } from '~tokens/global';
+
+import type { WCAG2Options, ColorInput } from 'tinycolor2';
+import type { ThemeTokens } from './theme';
 import type { ColorChromaticScale } from '~tokens/global/colors';
-import { throwBladeError } from '~utils/logger';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
 // WCAG2ContrastOptions are the options used to determine if a color is readable

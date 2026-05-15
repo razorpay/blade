@@ -1,14 +1,17 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TableData, TableProps } from '../../types';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell } from '../../TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+
 import { Amount } from '~components/Amount';
 import { Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableBody, TableRow, TableCell } from '../../TableBody';
+import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableData, TableProps } from '../../types';
 
 export default {
   title: 'Components/Table/Spanning',

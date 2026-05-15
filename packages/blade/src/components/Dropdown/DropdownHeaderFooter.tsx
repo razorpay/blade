@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { useDropdown } from './useDropdown';
+
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { isReactNative } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useDropdown } from './useDropdown';
+
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type DropdownHeaderProps = Pick<
   BaseHeaderProps,

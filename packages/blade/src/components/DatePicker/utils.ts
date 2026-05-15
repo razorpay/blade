@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { DatePickerType, DatePickerValue } from '@mantine/dates';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+import type { DatePickerType, DatePickerValue } from '@mantine/dates';
 
 dayjs.extend(customParseFormat);
 

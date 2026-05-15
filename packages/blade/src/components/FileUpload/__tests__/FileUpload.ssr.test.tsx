@@ -1,6 +1,8 @@
 import React from 'react';
-import { FileUpload } from '../FileUpload';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { FileUpload } from '../FileUpload';
 
 describe('<FileUpload />', () => {
   it('should render in SSR', () => {

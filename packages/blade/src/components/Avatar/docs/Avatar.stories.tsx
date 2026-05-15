@@ -1,8 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { AvatarProps } from '../Avatar';
-import { Avatar as AvatarComponent } from '../Avatar';
-import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
-import { TrustedBadgeIcon } from '../TrustedBadgeIcon';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -12,6 +7,13 @@ import { BuildingIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import { Indicator } from '~components/Indicator';
 import { Text } from '~components/Typography';
+
+import { Avatar as AvatarComponent } from '../Avatar';
+import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
+import { TrustedBadgeIcon } from '../TrustedBadgeIcon';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { AvatarProps } from '../Avatar';
 
 const Page = (): React.ReactElement => {
   return (

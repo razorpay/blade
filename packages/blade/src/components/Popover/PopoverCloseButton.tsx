@@ -1,6 +1,7 @@
-import { usePopoverContext } from './PopoverContext';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
+
+import { usePopoverContext } from './PopoverContext';
 
 const PopoverCloseButton = (): React.ReactElement => {
   const { close, defaultInitialFocusRef } = usePopoverContext();

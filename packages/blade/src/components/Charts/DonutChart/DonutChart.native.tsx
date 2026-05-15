@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ChartDonutWrapperProps, ChartDonutProps, ChartDonutCellProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChartDonutWrapperProps, ChartDonutProps, ChartDonutCellProps } from './types';
 
 const ChartDonutWrapper = (_prop: ChartDonutWrapperProps): React.ReactElement => {
   throwBladeError({

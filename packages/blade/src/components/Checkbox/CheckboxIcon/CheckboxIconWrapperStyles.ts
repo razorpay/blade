@@ -1,12 +1,14 @@
-import type { CSSObject } from 'styled-components';
-import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
-import type { CheckboxIconProps } from './CheckboxIcon';
 import getIn from '~utils/lodashButBetter/get';
-import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { size as sizeToken } from '~tokens/global';
+
+import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
+
+import type { CSSObject } from 'styled-components';
+import type { CheckboxIconProps } from './CheckboxIcon';
+import type { Theme } from '~components/BladeProvider';
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;

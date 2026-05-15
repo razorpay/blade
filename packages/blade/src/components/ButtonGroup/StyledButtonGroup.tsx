@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import type { StyledButtonGroupProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize } from '~utils';
 import { buttonBorderRadius } from '~components/Button/BaseButton/buttonTokens';
+
+import type { StyledButtonGroupProps } from './types';
 
 const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
   ({ theme, variant = 'primary', isFullWidth, size = 'medium' }) => {

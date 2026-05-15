@@ -1,5 +1,6 @@
-import NavigationIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import NavigationIcon from './';
 
 describe('<NavigationIcon />', () => {
   it('should render NavigationIcon', () => {

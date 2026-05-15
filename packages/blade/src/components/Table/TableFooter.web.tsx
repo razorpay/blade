@@ -1,16 +1,7 @@
 import React from 'react';
 import { Footer, FooterRow, FooterCell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
-import { tableFooter, tableRow, classes } from './tokens';
-import { ComponentIds } from './componentIds';
-import type {
-  TableFooterProps,
-  TableFooterRowProps,
-  TableFooterCellProps,
-  TableBackgroundColors,
-  TableProps,
-} from './types';
-import { useTableContext } from './TableContext';
+
 import { Text } from '~components/Typography';
 import { makeSize, makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -18,6 +9,18 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { size } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { tableFooter, tableRow, classes } from './tokens';
+import { ComponentIds } from './componentIds';
+import { useTableContext } from './TableContext';
+
+import type {
+  TableFooterProps,
+  TableFooterRowProps,
+  TableFooterCellProps,
+  TableBackgroundColors,
+  TableProps,
+} from './types';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {

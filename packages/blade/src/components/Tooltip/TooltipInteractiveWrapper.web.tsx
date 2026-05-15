@@ -1,8 +1,11 @@
 import React from 'react';
-import { useTooltipContext } from './TooltipContext';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+
+import { useTooltipContext } from './TooltipContext';
+
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const TooltipInteractiveWrapper = React.forwardRef<HTMLDivElement, Omit<BaseBoxProps, 'as'>>(
   (props, ref) => {

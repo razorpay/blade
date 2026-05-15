@@ -1,12 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { Indicators } from './Indicators/Indicators';
-import { NavigationButton } from './NavigationButton';
-import type { CarouselProps } from './types';
-import type { CarouselContextProps } from './CarouselContext';
-import { CarouselContext } from './CarouselContext';
-import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
-import type { BladeElementRef } from '~utils/types';
+
 import { size } from '~tokens/global';
 import { logger } from '~utils/logger';
 import { castNativeType } from '~utils';
@@ -17,6 +11,15 @@ import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
 import { useId } from '~utils/useId';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
+
+import { Indicators } from './Indicators/Indicators';
+import { NavigationButton } from './NavigationButton';
+import { CarouselContext } from './CarouselContext';
+import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
+
+import type { CarouselProps } from './types';
+import type { CarouselContextProps } from './CarouselContext';
+import type { BladeElementRef } from '~utils/types';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {

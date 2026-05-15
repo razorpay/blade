@@ -1,5 +1,6 @@
-import ReportsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ReportsIcon from './';
 
 describe('<ReportsIcon />', () => {
   it('should render ReportsIcon', () => {

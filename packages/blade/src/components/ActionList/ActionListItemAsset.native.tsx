@@ -1,8 +1,11 @@
 import { Image } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
-import { componentIds } from './componentIds';
+
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
+
+import { componentIds } from './componentIds';
+
+import type { ImageSourcePropType } from 'react-native';
 
 type ActionListItemAssetProps = {
   /**

@@ -1,7 +1,8 @@
-import type { CSSObject } from 'styled-components';
 import getBaseTextStyles from '../BaseText/getBaseTextStyles';
-import type { HeadingProps } from './Heading';
 import { getHeadingProps } from './Heading';
+
+import type { CSSObject } from 'styled-components';
+import type { HeadingProps } from './Heading';
 import type { Theme } from '~components/BladeProvider';
 
 const getHeadingStyles = ({

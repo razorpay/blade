@@ -1,8 +1,5 @@
 import React from 'react';
-import { DropdownContext } from './useDropdown';
-import type { DropdownContextType } from './useDropdown';
-import type { DropdownProps } from './types';
-import { dropdownComponentIds } from './dropdownComponentIds';
+
 import { useId } from '~utils/useId';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
@@ -12,10 +9,16 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
-import type { BladeElementRef, ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { DropdownContext } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { DropdownContextType } from './useDropdown';
+import type { DropdownProps } from './types';
+import type { BladeElementRef, ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed

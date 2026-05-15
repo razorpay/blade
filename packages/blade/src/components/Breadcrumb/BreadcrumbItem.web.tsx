@@ -1,11 +1,14 @@
 import React from 'react';
-import type { BreadcrumbItemProps } from './types';
-import { BreadcrumbContext } from './BreadcrumbContext';
+
 import { BaseLink } from '~components/Link/BaseLink';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { opacity } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BreadcrumbContext } from './BreadcrumbContext';
+
+import type { BreadcrumbItemProps } from './types';
 
 const BreadcrumbItem = ({
   children,

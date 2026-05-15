@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ResolvedThumbnailItem, ThumbnailPreviewProps } from './types';
-import { chatMessageToken } from './token';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+
+import { chatMessageToken } from './token';
+
+import type { ResolvedThumbnailItem, ThumbnailPreviewProps } from './types';
 
 const imagePreviewToken = chatMessageToken.imagePreview;
 

@@ -3,13 +3,15 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import { useTabsContext } from './TabsContext';
+
 import { castWebType, makeMotionTime } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
+
+import { useTabsContext } from './TabsContext';
 
 const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {

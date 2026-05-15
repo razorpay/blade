@@ -1,13 +1,17 @@
 import React from 'react';
-import type { Meta } from '@storybook/react-vite';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+
 import { Drawer } from '../Drawer';
+
 import {
   BasicDrawerStory,
   DrawerStackingStory,
   DrawerWithTableStory,
   ScrollableContentStory,
 } from './stories';
-import { Sandbox } from '~utils/storybook/Sandbox';
+
+import type { Meta } from '@storybook/react-vite';
 
 const DrawerMeta: Meta = {
   title: 'Components/Drawer/Examples',

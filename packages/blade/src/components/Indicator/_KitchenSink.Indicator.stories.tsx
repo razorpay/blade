@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as indicatorStories from './Indicator.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as indicatorStories from './Indicator.stories';
 
 const allStories = Object.values(composeStories(indicatorStories));
 

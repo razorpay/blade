@@ -1,5 +1,6 @@
-import DotIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DotIcon from './';
 
 describe('<DotIcon />', () => {
   it('should render DotIcon', () => {

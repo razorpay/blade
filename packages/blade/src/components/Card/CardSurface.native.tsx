@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import BaseBox from '~components/Box/BaseBox';
+import { castNativeType, makeBorderSize } from '~utils';
+
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { castNativeType, makeBorderSize } from '~utils';
 
 const CardSurfaceStyled = styled(BaseBox)(({ theme }) => {
   return {

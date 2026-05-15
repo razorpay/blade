@@ -1,5 +1,6 @@
-import CheckIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CheckIcon from './';
 
 describe('<CheckIcon />', () => {
   it('should render CheckIcon', () => {

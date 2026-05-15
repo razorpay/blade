@@ -1,8 +1,10 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { ChatInput } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { ChatInput } from '../index';
 
 const accessibilityLabel = 'Chat input';
 

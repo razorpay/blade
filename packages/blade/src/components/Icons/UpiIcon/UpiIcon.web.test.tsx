@@ -1,5 +1,6 @@
-import UpiIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import UpiIcon from './';
 
 describe('<UpiIcon />', () => {
   it('should render UpiIcon', () => {

@@ -1,10 +1,9 @@
 //ignore file for ts check
 import React from 'react';
-import { BasicExample } from './examples';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
 import { Box } from '~components/Box';
-import type { TableData } from '~components/Table';
 import {
   Table,
   TableBody,
@@ -20,6 +19,10 @@ import { Popover, PopoverInteractiveWrapper } from '~components/Popover';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Sandbox } from '~utils/storybook/Sandbox/StackblitzEditor/Sandbox';
 import { castWebType } from '~utils';
+
+import { BasicExample } from './examples';
+
+import type { TableData } from '~components/Table';
 
 type Item = {
   id: string;

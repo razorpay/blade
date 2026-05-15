@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SimpleDrawer } from './Drawer.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import { SimpleDrawer } from './Drawer.stories';
 
 // At once, only 1 Drawer is visible (or 2 with stacking) so no point of rendering all stories as they are anyway hidden visually
 

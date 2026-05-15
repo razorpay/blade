@@ -1,9 +1,11 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { StepGroup, StepItem, StepItemIndicator } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Collapsible, CollapsibleLink, CollapsibleBody } from '~components/Collapsible';
 import { Badge } from '~components/Badge';
+
+import { StepGroup, StepItem, StepItemIndicator } from '../';
 
 describe('<StepGroup />', () => {
   it('should render nested StepGroup', () => {

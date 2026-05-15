@@ -1,5 +1,6 @@
-import ChevronUpDownIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ChevronUpDownIcon from '.';
 
 describe('<ChevronUpDownIcon />', () => {
   it('should render ChevronUpDownIcon', () => {

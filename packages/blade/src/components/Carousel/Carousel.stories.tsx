@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title as AddonTitle } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import type { CarouselProps } from './';
-import { Carousel as CarouselComponent, CarouselItem } from './';
+
 import { isReactNative } from '~utils';
 import { Box } from '~components/Box';
 import { Code, Heading, Text } from '~components/Typography';
@@ -16,6 +14,11 @@ import { Link } from '~components/Link';
 import { useTheme } from '~components/BladeProvider';
 import { Button } from '~components/Button';
 import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
+
+import { Carousel as CarouselComponent, CarouselItem } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { CarouselProps } from './';
 import type { IconComponent, IconColors } from '~components/Icons';
 
 const Page = (): React.ReactElement => {

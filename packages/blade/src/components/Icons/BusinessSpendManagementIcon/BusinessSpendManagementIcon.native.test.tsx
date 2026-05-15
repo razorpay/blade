@@ -1,5 +1,6 @@
-import BusinessSpendManagementIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BusinessSpendManagementIcon from '.';
 
 describe('<BusinessSpendManagementIcon />', () => {
   it('should render BusinessSpendManagementIcon', () => {

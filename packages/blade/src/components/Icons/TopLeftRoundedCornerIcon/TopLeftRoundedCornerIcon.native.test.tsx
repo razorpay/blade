@@ -1,5 +1,6 @@
-import TopLeftRoundedCornerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import TopLeftRoundedCornerIcon from '.';
 
 describe('<TopLeftRoundedCornerIcon />', () => {
   it('should render TopLeftRoundedCornerIcon', () => {

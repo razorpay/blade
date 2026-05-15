@@ -1,7 +1,9 @@
 import G from '..';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<G />', () => {
   it('should render react-native-svg G component', () => {

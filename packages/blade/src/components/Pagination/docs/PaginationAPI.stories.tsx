@@ -1,8 +1,10 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import { Pagination } from '../Pagination';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+
+import { Pagination } from '../Pagination';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 export default {
   title: 'Components/Pagination/API',

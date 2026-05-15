@@ -1,7 +1,8 @@
-import type { CSSObject, DefaultTheme } from 'styled-components';
-import type { NavigationButtonProps } from './types';
 import { castWebType, isReactNative, makeMotionTime, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import type { CSSObject, DefaultTheme } from 'styled-components';
+import type { NavigationButtonProps } from './types';
 
 const getNavigationButtonStyles = (props: {
   theme: DefaultTheme;

@@ -1,5 +1,6 @@
-import AppleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AppleIcon from './';
 
 describe('<AppleIcon />', () => {
   it('should render AppleIcon', () => {

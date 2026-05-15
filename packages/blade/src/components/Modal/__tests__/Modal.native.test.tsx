@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
-import { Modal, ModalBody } from '../Modal';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Text } from '~components/Typography';
+
+import { Modal, ModalBody } from '../Modal';
 
 describe('Modal', () => {
   it('renders proper information on unavailability of Modal on native', () => {

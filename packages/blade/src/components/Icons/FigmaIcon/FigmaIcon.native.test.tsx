@@ -1,5 +1,6 @@
-import FigmaIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FigmaIcon from '.';
 
 describe('<FigmaIcon />', () => {
   it('should render FigmaIcon', () => {

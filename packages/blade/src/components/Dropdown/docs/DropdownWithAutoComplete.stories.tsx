@@ -1,6 +1,16 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Dropdown, DropdownOverlay } from '..';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListItemText,
+} from '~components/ActionList';
+import { HomeIcon } from '~components/Icons';
+
 import {
   getSimpleAutoComplete,
   controlledFiltering,
@@ -14,15 +24,7 @@ import {
   withSizes,
 } from './autoCompleteStories';
 
-import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import {
-  ActionList,
-  ActionListItem,
-  ActionListItemIcon,
-  ActionListItemText,
-} from '~components/ActionList';
-import { HomeIcon } from '~components/Icons';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With AutoComplete',

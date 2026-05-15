@@ -1,5 +1,6 @@
-import SunsetIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SunsetIcon from './';
 
 describe('<SunsetIcon />', () => {
   it('should render SunsetIcon', () => {

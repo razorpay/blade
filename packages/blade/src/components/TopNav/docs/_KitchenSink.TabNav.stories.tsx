@@ -1,7 +1,8 @@
 import { composeStories } from '@storybook/react-vite';
 
-import * as tabNavStories from './TabNav.stories';
 import { Box } from '~components/Box';
+
+import * as tabNavStories from './TabNav.stories';
 
 const allStories = Object.values(composeStories(tabNavStories));
 

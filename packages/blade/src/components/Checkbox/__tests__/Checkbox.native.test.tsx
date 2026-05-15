@@ -3,8 +3,10 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import { Checkbox } from '../Checkbox';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Checkbox } from '../Checkbox';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {

@@ -1,6 +1,3 @@
-import type { SwitchProps } from './types';
-import { AnimatedThumbIcon } from './AnimatedThumbIcon';
-import { switchColors } from './switchTokens';
 import getIn from '~utils/lodashButBetter/get';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import { useTheme } from '~components/BladeProvider';
@@ -9,6 +6,11 @@ import { Path } from '~components/Icons/_Svg';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import { makeSpace } from '~utils/makeSpace';
+
+import { AnimatedThumbIcon } from './AnimatedThumbIcon';
+import { switchColors } from './switchTokens';
+
+import type { SwitchProps } from './types';
 
 const switchIconSize = {
   desktop: {

@@ -1,5 +1,6 @@
-import RouteFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RouteFilledIcon from '.';
 
 describe('<RouteFilledIcon />', () => {
   it('should render RouteFilledIcon', () => {

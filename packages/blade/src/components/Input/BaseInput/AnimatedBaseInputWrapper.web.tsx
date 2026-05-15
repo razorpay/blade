@@ -1,15 +1,18 @@
 import React from 'react';
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import type { BaseInputWrapperProps } from './types';
+
+import BaseBox from '~components/Box/BaseBox';
+import { motion } from '~tokens/global';
+import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
+
 import {
   getAnimatedBaseInputWrapperMaxHeight,
   getInputBackgroundAndBorderStyles,
 } from './baseInputStyles';
 import { baseInputHeight, baseInputWrapperMaxHeight } from './baseInputTokens';
-import BaseBox from '~components/Box/BaseBox';
-import { motion } from '~tokens/global';
-import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { BaseInputWrapperProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledBaseInputWrapper = styled(BaseBox)<

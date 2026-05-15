@@ -1,5 +1,6 @@
-import LoansForBusinessesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import LoansForBusinessesIcon from '.';
 
 describe('<LoansForBusinessesIcon />', () => {
   it('should render LoansForBusinessesIcon', () => {

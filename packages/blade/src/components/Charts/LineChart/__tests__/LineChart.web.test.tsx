@@ -1,4 +1,9 @@
 import React from 'react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import { Box } from '~components/Box/Box';
+
 import { ChartLineWrapper, ChartLine } from '../LineChart';
 import {
   ChartXAxis,
@@ -7,9 +12,6 @@ import {
   ChartTooltip,
   ChartLegend,
 } from '../../CommonChartComponents';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import assertAccessible from '~utils/testing/assertAccessible.web';
-import { Box } from '~components/Box/Box';
 
 const mockData = [
   { name: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },

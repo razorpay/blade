@@ -1,4 +1,3 @@
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from '..';
@@ -6,6 +5,8 @@ import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { StoryFn } from '@storybook/react-vite';
 import type { BladeCommonEvents } from '~components/types';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));

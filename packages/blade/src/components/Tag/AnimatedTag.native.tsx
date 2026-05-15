@@ -1,5 +1,4 @@
 import React from 'react';
-import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
   Easing,
   useSharedValue,
@@ -8,7 +7,10 @@ import Animated, {
   runOnJS,
   Keyframe,
 } from 'react-native-reanimated';
-import type { ReanimatedKeyframe } from 'react-native-reanimated/lib/typescript/reanimated2/layoutReanimation/animationBuilder/Keyframe';
+
+import { castNativeType, makeMotionTime } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+
 import { Tag } from './Tag';
 import {
   TAG_MAX_WIDTH_END,
@@ -16,9 +18,10 @@ import {
   TAG_OPACITY_END,
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
+
+import type { EasingFn } from 'react-native-reanimated';
+import type { ReanimatedKeyframe } from 'react-native-reanimated/lib/typescript/reanimated2/layoutReanimation/animationBuilder/Keyframe';
 import type { AnimatedTagProps } from './types';
-import { castNativeType, makeMotionTime } from '~utils';
-import { useTheme } from '~components/BladeProvider';
 
 const useAnimatedTag = (
   onAnimationEndCallback: () => void,

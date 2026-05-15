@@ -1,6 +1,7 @@
-import { QuickFilterGroup, QuickFilter } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Counter } from '~components/Counter';
+
+import { QuickFilterGroup, QuickFilter } from '../index';
 
 describe('<QuickFilters/>', () => {
   it('should render Values Correctly', () => {

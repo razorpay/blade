@@ -1,9 +1,10 @@
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import React from 'react';
-import type { TextInput } from 'react-native';
-import type { AnimatedButtonContentProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+
+import type { TextInput } from 'react-native';
+import type { AnimatedButtonContentProps } from './types';
 
 const AnimatedButtonContent: React.ForwardRefRenderFunction<
   TextInput,

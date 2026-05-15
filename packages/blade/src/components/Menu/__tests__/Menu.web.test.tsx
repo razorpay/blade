@@ -2,14 +2,17 @@
 import userEvents from '@testing-library/user-event';
 import { act, waitFor } from '@testing-library/react';
 import React from 'react';
-import type { MenuProps } from '../';
-import { Menu, MenuOverlay, MenuItem, MenuHeader, MenuFooter } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { UserIcon } from '~components/Icons';
+
+import { Menu, MenuOverlay, MenuItem, MenuHeader, MenuFooter } from '../';
+
+import type { MenuProps } from '../';
 
 const BasicMenu = (props: Partial<MenuProps>): React.ReactElement => {
   return (

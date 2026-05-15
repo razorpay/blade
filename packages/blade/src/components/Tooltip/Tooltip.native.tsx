@@ -2,16 +2,19 @@
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
-import { TooltipContent } from './TooltipContent';
-import type { TooltipProps } from './types';
-import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { TooltipContext } from './TooltipContext';
+
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+
+import { TooltipContent } from './TooltipContent';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { TooltipContext } from './TooltipContext';
+
+import type { TooltipProps } from './types';
 
 const Tooltip = ({
   title,

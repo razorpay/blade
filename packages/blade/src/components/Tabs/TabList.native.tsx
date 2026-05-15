@@ -1,6 +1,8 @@
 import React from 'react';
-import { componentIds } from './utils';
+
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { componentIds } from './utils';
 
 const _TabList = (_props: { children: React.ReactNode }): React.ReactElement => {
   return <></>;

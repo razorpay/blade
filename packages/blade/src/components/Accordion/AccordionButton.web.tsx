@@ -1,16 +1,18 @@
-import type { ReactElement } from 'react';
-import { StyledAccordionButton } from './StyledAccordionButton';
-import type { AccordionButtonProps } from './types';
-import { useAccordion } from './AccordionContext';
-import { AccordionItemHeader } from './AccordionItemHeader';
-import { BaseBox } from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import { Text } from '~components/Typography';
-import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { makeAccessible } from '~utils/makeAccessible';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+import { BaseBox } from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { StyledAccordionButton } from './StyledAccordionButton';
+import { useAccordion } from './AccordionContext';
+import { AccordionItemHeader } from './AccordionItemHeader';
+
+import type { ReactElement } from 'react';
+import type { AccordionButtonProps } from './types';
 
 const _AccordionButton = ({
   index,

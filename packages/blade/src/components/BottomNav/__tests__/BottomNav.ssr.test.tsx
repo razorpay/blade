@@ -1,6 +1,8 @@
 import React from 'react';
-import { BottomNavExample } from './BottomNavExample';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { BottomNavExample } from './BottomNavExample';
 
 describe('<BottomNav />', () => {
   it('should render BottomNav ssr', () => {

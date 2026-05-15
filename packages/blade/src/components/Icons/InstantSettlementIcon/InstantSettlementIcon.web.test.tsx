@@ -1,5 +1,6 @@
-import InstantSettlementIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import InstantSettlementIcon from './';
 
 describe('<InstantSettlementIcon />', () => {
   it('should render InstantSettlementIcon', () => {

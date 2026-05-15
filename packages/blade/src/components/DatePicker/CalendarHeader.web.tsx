@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
 import dayjs from 'dayjs';
 import { useI18nContext } from '@razorpay/i18nify-react';
-import type { PickerType, DateValue, DatesRangeValue } from './types';
-import { convertIntlToDayjsLocale } from './utils';
+
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+
+import { convertIntlToDayjsLocale } from './utils';
+
+import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
+import type { PickerType, DateValue, DatesRangeValue } from './types';
 
 type CalendarHeaderProps = {
   isRange: boolean;

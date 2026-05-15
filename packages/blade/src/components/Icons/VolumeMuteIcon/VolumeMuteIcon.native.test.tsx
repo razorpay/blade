@@ -1,5 +1,6 @@
-import VolumeMuteIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VolumeMuteIcon from '.';
 
 describe('<VolumeMuteIcon />', () => {
   it('should render VolumeMuteIcon', () => {

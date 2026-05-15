@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import type { SpotlightPopoverStepRenderProps } from './types';
-import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
+
+import type { SpotlightPopoverStepRenderProps } from './types';
+import type { ButtonProps } from '~components/Button';
 
 type SpotlightPopoverFooterAction = {
   text?: string;

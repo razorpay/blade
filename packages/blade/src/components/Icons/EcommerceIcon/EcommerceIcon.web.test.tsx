@@ -1,5 +1,6 @@
-import EcommerceIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import EcommerceIcon from './';
 
 describe('<EcommerceIcon />', () => {
   it('should render EcommerceIcon', () => {

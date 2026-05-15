@@ -1,14 +1,17 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { SpinnerProps } from './Spinner';
-import { Spinner as SpinnerComponent } from './Spinner';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Spinner as SpinnerComponent } from './Spinner';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { SpinnerProps } from './Spinner';
 
 const Page = (): ReactElement => {
   return (

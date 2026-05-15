@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Radio />', () => {
   it('should render radio with label', () => {

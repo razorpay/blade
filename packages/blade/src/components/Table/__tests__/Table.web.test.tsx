@@ -1,6 +1,13 @@
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { Amount } from '~components/Amount';
+import { Box } from '~components/Box';
+import { Code } from '~components/Typography';
+import { Badge } from '~components/Badge';
+
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow, TableVirtualizedWrapper } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
@@ -8,11 +15,6 @@ import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import { TableEditableCell } from '../TableEditableCell';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { Amount } from '~components/Amount';
-import { Box } from '~components/Box';
-import { Code } from '~components/Typography';
-import { Badge } from '~components/Badge';
 
 type Item = {
   id: string;

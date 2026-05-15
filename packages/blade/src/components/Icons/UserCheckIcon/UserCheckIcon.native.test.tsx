@@ -1,5 +1,6 @@
-import UserCheckIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import UserCheckIcon from '.';
 
 describe('<UserCheckIcon />', () => {
   it('should render UserCheckIcon', () => {

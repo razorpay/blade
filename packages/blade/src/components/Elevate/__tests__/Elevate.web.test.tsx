@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
-import { Elevate } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Tag } from '~components/Tag';
+
+import { Elevate } from '../index';
 
 // Jest is unable to add style attributes to preset children.
 // Thus writing major tests inside E2E

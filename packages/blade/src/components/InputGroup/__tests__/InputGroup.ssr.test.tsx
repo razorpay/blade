@@ -1,9 +1,11 @@
 import React from 'react';
-import { InputGroup } from '../';
-import { InputRow } from '../InputRow';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { TextInput } from '~components/Input/TextInput';
 import { PasswordInput } from '~components/Input/PasswordInput';
+
+import { InputGroup } from '../';
+import { InputRow } from '../InputRow';
 
 describe('InputGroup', () => {
   it('should render Inputgroup with default properties', () => {

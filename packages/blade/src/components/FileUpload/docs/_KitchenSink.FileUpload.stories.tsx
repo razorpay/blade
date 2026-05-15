@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as fileUploadStories from './FileUpload.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as fileUploadStories from './FileUpload.stories';
 
 const allStories = Object.values(composeStories(fileUploadStories));
 

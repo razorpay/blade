@@ -1,5 +1,6 @@
-import ArrowSquareDownLeftIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ArrowSquareDownLeftIcon from './';
 
 describe('<ArrowSquareDownLeftIcon />', () => {
   it('should render ArrowSquareDownLeftIcon', () => {

@@ -1,5 +1,6 @@
-import MobileAppIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MobileAppIcon from '.';
 
 describe('<MobileAppIcon />', () => {
   it('should render MobileAppIcon', () => {

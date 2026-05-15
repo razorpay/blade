@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
 import React from 'react';
-import type { GestureResponderEvent } from 'react-native';
+
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
 import StyledIconButton from './StyledIconButton';
+
+import type { GestureResponderEvent } from 'react-native';
 import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type IconButtonProps = {
   /**

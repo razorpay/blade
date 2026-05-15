@@ -1,5 +1,6 @@
-import VoicemailIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VoicemailIcon from '.';
 
 describe('<VoicemailIcon />', () => {
   it('should render VoicemailIcon', () => {

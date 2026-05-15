@@ -1,8 +1,9 @@
 import React from 'react';
-import type { TabsProps } from './types';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { logger, throwBladeError } from '~utils/logger';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
+import type { TabsProps } from './types';
 
 const iconSizeMap = {
   small: 'medium',

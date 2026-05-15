@@ -1,5 +1,6 @@
-import MagicKonnectIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MagicKonnectIcon from '.';
 
 describe('<MagicKonnectIcon />', () => {
   it('should render MagicKonnectIcon', () => {

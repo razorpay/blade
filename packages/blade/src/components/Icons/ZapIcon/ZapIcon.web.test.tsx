@@ -1,5 +1,6 @@
-import ZapIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ZapIcon from './';
 
 describe('<ZapIcon />', () => {
   it('should render ZapIcon', () => {

@@ -1,5 +1,6 @@
-import MicOffIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MicOffIcon from './';
 
 describe('<MicOffIcon />', () => {
   it('should render MicOffIcon', () => {

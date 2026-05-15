@@ -1,10 +1,13 @@
 import styled from 'styled-components/native';
-import { getBaseActionListStyles } from './getBaseActionListStyles';
-import type { StyledActionListProps } from './getBaseActionListStyles';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+
 import BaseBox from '~components/Box/BaseBox';
 import { castNativeType } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+
+import { getBaseActionListStyles } from './getBaseActionListStyles';
+
+import type { StyledActionListProps } from './getBaseActionListStyles';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const BaseStyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
   return {

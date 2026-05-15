@@ -1,5 +1,6 @@
-import MinusCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MinusCircleIcon from './';
 
 describe('<MinusCircleIcon />', () => {
   it('should render MinusCircleIcon', () => {

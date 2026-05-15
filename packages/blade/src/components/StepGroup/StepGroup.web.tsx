@@ -1,16 +1,19 @@
 import React from 'react';
-import type { StepGroupContextType, StepGroupProps } from './types';
-import { StepGroupContext, useStepGroup } from './StepGroupContext';
-import { componentIds } from './componentIds';
+
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { componentIds as collapsibleComponentIds } from '~components/Collapsible/componentIds';
 import { throwBladeError } from '~utils/logger';
+
+import { StepGroupContext, useStepGroup } from './StepGroupContext';
+import { componentIds } from './componentIds';
+
+import type { StepGroupContextType, StepGroupProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,

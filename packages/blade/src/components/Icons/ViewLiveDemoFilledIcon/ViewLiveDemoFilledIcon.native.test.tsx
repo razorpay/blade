@@ -1,5 +1,6 @@
-import ViewLiveDemoFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ViewLiveDemoFilledIcon from '.';
 
 describe('<ViewLiveDemoFilledIcon />', () => {
   it('should render ViewLiveDemoFilledIcon', () => {

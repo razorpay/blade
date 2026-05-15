@@ -1,13 +1,16 @@
 import styled from 'styled-components';
-import type { StyledAccordionButtonProps } from './types';
+
+import { castWebType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
 import {
   getBackgroundColor,
   getCommonAccordionButtonStyles,
   getTransitionDuration,
   getTransitionEasing,
 } from './commonStyles';
-import { castWebType } from '~utils';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import type { StyledAccordionButtonProps } from './types';
 
 const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded, disabled, variant, isFirstItem, isLastItem } = props;

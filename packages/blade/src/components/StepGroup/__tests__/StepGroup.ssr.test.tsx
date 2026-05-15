@@ -1,6 +1,8 @@
 import React from 'react';
-import { StepGroup, StepItem, StepItemIndicator } from '../';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { StepGroup, StepItem, StepItemIndicator } from '../';
 
 describe('<StepGroup />', () => {
   it('should render nested StepGroup', () => {

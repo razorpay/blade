@@ -1,5 +1,6 @@
-import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
+
+import type { Dispatch, SetStateAction } from 'react';
 
 export type ActionStates = 'default' | 'hover' | 'focus' | 'disabled';
 const useInteraction = (): {

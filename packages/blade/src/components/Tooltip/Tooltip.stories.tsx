@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { TooltipProps } from './';
-import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
+
 import { Button } from '~components/Button';
 import { BankIcon, InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
@@ -16,8 +14,13 @@ import { IconButton } from '~components/Button/IconButton';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeCommonEvents } from '~components/types';
 import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
+
+import { TooltipInteractiveWrapper, Tooltip as TooltipComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TooltipProps } from './';
+import type { BladeCommonEvents } from '~components/types';
 
 const Page = (): React.ReactElement => {
   return (

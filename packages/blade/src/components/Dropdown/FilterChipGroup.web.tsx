@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { useListViewFilterContext } from '../ListView/ListViewFiltersContext.web';
-import type { FilterChipGroupProps } from './types';
-import { FilterChipGroupProvider } from './FilterChipGroupContext.web';
+
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { Link } from '~components/Link';
+
+import { useListViewFilterContext } from '../ListView/ListViewFiltersContext.web';
+
+import { FilterChipGroupProvider } from './FilterChipGroupContext.web';
+
+import type { FilterChipGroupProps } from './types';
 
 const FilterChipGroup = ({
   testID,

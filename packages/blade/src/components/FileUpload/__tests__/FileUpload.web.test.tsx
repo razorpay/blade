@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
-import { FileUpload } from '../FileUpload';
-import { FileUploadItem } from '../FileUploadItem';
-import type { BladeFile } from '../FileUpload.web';
+
 import { Box } from '~components/Box';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { FileUpload } from '../FileUpload';
+import { FileUploadItem } from '../FileUploadItem';
+
+import type { BladeFile } from '../FileUpload.web';
 
 describe('<FileUpload />', () => {
   it('should render FileUpload', () => {

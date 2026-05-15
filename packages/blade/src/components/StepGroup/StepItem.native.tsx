@@ -1,6 +1,7 @@
-import type { StepItemProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { StepItemProps } from './types';
 
 const StepItem = (_props: StepItemProps): React.ReactElement => {
   throwBladeError({

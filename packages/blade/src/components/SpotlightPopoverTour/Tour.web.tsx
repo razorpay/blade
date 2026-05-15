@@ -3,6 +3,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState, useCallback, useMemo } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
+
+import { useTheme } from '~components/BladeProvider';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
 import { TourContext } from './TourContext';
 import { TourPopover } from './TourPopover';
 import {
@@ -12,11 +16,10 @@ import {
   useIsTransitioningBetweenSteps,
   useLockBodyScroll,
 } from './utils';
-import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
-import { useTheme } from '~components/BladeProvider';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
+import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 
 const SpotlightPopoverTour = ({
   steps,

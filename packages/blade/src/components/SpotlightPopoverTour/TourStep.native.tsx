@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import type { SpotlightPopoverTourStepProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { SpotlightPopoverTourStepProps } from './types';
 
 const SpotlightPopoverTourStep = (_props: SpotlightPopoverTourStepProps): React.ReactElement => {
   throwBladeError({

@@ -1,5 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import { BottomNav, BottomNavItem } from '.';
 import iconMap from '~components/Icons/iconMap';
 import {
   PaymentButtonIcon,
@@ -8,6 +6,10 @@ import {
   PaymentPagesIcon,
   TransactionsIcon,
 } from '~components/Icons';
+
+import { BottomNav, BottomNavItem } from '.';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 export default {
   title: 'Components/BottomNav/BottomNavItem Playground',

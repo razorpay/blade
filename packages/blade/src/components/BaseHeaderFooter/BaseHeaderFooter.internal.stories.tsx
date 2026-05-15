@@ -1,15 +1,17 @@
-import { BaseHeader } from './BaseHeader';
-import { BaseFooter } from './BaseFooter';
+import { isReactNative } from '~utils';
 import { Amount } from '~components/Amount';
 import { Badge } from '~components/Badge';
 import { AnnouncementIcon, DownloadIcon, StarIcon } from '~components/Icons';
-import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
-import { isReactNative } from '~utils';
 import { Link } from '~components/Link';
 import { Text } from '~components/Typography';
+
+import { BaseHeader } from './BaseHeader';
+import { BaseFooter } from './BaseFooter';
+
+import type { BoxProps } from '~components/Box';
 
 const HeaderContainer = ({ children }: { children: BoxProps['children'] }): React.ReactElement => {
   return <Box padding={{ base: 'spacing.0', m: 'spacing.2' }}>{children}</Box>;

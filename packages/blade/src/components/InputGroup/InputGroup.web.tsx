@@ -1,9 +1,6 @@
 import React, { useMemo } from 'react';
-import type { InputGroupProps } from './types';
-import { StyledInputGroup } from './StyledInputGroup';
-import { InputGroupProvider } from './InputGroupContext';
+
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
-import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
@@ -18,6 +15,12 @@ import { useId } from '~utils/useId';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { getOuterMotionRef } from '~utils/getMotionRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { StyledInputGroup } from './StyledInputGroup';
+import { InputGroupProvider } from './InputGroupContext';
+
+import type { InputGroupProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _InputGroup: React.ForwardRefRenderFunction<BladeElementRef, InputGroupProps> = (
   {

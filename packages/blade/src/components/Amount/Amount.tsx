@@ -1,31 +1,34 @@
-import type { ReactElement } from 'react';
 import React from 'react';
-import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 import { formatNumberByParts } from '@razorpay/i18nify-js/currency';
-import type { AmountTypeProps } from './amountTokens';
-import {
-  normalAmountSizes,
-  subtleFontSizes,
-  currencyHardcodedSizes,
-  amountLineHeights,
-} from './amountTokens';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
+
 import BaseBox from '~components/Box/BaseBox';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
-import type { FontFamily, FontSize } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils/useBreakpoint';
+
+import {
+  normalAmountSizes,
+  subtleFontSizes,
+  currencyHardcodedSizes,
+  amountLineHeights,
+} from './amountTokens';
+
+import type { ReactElement } from 'react';
+import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
+import type { AmountTypeProps } from './amountTokens';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { FontFamily, FontSize } from '~tokens/global';
 
 /**
  * Pollyfill function to get around the node 18 error

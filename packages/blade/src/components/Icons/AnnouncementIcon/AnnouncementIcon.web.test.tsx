@@ -1,5 +1,6 @@
-import AnnouncementIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AnnouncementIcon from './';
 
 describe('<AnnouncementIcon />', () => {
   it('should render AnnouncementIcon', () => {

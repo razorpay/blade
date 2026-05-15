@@ -1,8 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import type { TextAreaProps } from './TextArea';
-import { TextArea as TextAreaComponent } from './TextArea';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -14,6 +12,11 @@ import { ToastContainer, useToast } from '~components/Toast';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+
+import { TextArea as TextAreaComponent } from './TextArea';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TextAreaProps } from './TextArea';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',

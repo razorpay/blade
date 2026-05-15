@@ -1,11 +1,14 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import type { ReactElement } from 'react';
 import { waitFor, screen } from '@testing-library/react';
-import { TextArea } from '../TextArea';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
+
+import { TextArea } from '../TextArea';
+
+import type { ReactElement } from 'react';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

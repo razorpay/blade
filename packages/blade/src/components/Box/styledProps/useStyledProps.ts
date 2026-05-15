@@ -1,6 +1,7 @@
-import type { CSSObject } from 'styled-components';
 import { useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
 import { getStyledProps, removeUndefinedStyledProps } from './getStyledProps';
+
+import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
 
 /**

@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as accordionStories from './Accordion.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as accordionStories from './Accordion.stories';
 
 const allStories = Object.values(composeStories(accordionStories));
 

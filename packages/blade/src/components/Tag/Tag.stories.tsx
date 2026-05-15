@@ -1,9 +1,6 @@
 import React from 'react';
-import type { DOMAttributes } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { Tag } from './Tag';
-import type { TagProps } from './';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -13,6 +10,12 @@ import { isReactNative } from '~utils';
 import { TextInput } from '~components/Input/TextInput';
 import { Button } from '~components/Button';
 import { PlusIcon } from '~components/Icons';
+
+import { Tag } from './Tag';
+
+import type { DOMAttributes } from 'react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { TagProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

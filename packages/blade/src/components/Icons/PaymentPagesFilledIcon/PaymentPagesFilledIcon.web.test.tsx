@@ -1,5 +1,6 @@
-import PaymentPagesFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PaymentPagesFilledIcon from './';
 
 describe('<PaymentPagesFilledIcon />', () => {
   it('should render PaymentPagesFilledIcon', () => {

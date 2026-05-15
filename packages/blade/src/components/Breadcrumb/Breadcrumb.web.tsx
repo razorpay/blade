@@ -1,14 +1,17 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-role */
 import React from 'react';
-import type { BreadcrumbProps } from './types';
-import { BreadcrumbContext } from './BreadcrumbContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BreadcrumbContext } from './BreadcrumbContext';
+
+import type { BreadcrumbProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const Separator = ({
   size,

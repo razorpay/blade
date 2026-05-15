@@ -1,12 +1,15 @@
 import React from 'react';
-import type { ChatInputProps } from './types';
-import { chatInputMaxTextAreaHeight } from './chatInputTokens';
-import type { BladeElementRef } from '~utils/types';
-import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
+
 import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
+
+import { chatInputMaxTextAreaHeight } from './chatInputTokens';
+
+import type { ChatInputProps } from './types';
+import type { BladeElementRef } from '~utils/types';
+import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 
 type UseChatInputProps = Pick<
   ChatInputProps,

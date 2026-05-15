@@ -8,19 +8,7 @@ import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import { MantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
-import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
-import { Calendar } from './Calendar.web';
-import { CalendarFooter } from './CalendarFooter.web';
-import { DatePickerInput } from './DateInput.web';
-import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
-import { renderPresetDropdown } from './QuickSelection/renderPresetDropdown.web';
-import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
-import { usePresetState } from './QuickSelection/usePresetState';
-import { shiftTimezone } from './shiftTimezone';
-import { useDatesState } from './useDatesState';
-import { usePopup } from './usePopup';
-import { convertIntlToDayjsLocale, loadScript } from './utils';
-import { DatePickerProvider } from './DatePickerContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { getPopupBoxShadowString, useTheme } from '~utils';
@@ -34,15 +22,30 @@ import {
   BottomSheetHeader,
 } from '~components/BottomSheet';
 import { logger } from '~utils/logger';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
+
+import { Calendar } from './Calendar.web';
+import { CalendarFooter } from './CalendarFooter.web';
+import { DatePickerInput } from './DateInput.web';
+import { DatePickerFilterChip } from './FilterChipDatePicker/DatePickerFilterChip.web';
+import { renderPresetDropdown } from './QuickSelection/renderPresetDropdown.web';
+import { PresetSideBar } from './QuickSelection/PresetSideBar.web';
+import { usePresetState } from './QuickSelection/usePresetState';
+import { shiftTimezone } from './shiftTimezone';
+import { useDatesState } from './useDatesState';
+import { usePopup } from './usePopup';
+import { convertIntlToDayjsLocale, loadScript } from './utils';
+import { DatePickerProvider } from './DatePickerContext';
+
+import type { DatesRangeValue, DatePickerProps, DateSelectionType, PickerType } from './types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 // Calendar dimensions for consistent layout
 const CALENDAR_HEIGHTS = {

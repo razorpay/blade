@@ -6,6 +6,15 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
   Label,
 } from 'recharts';
+
+import { metaAttribute } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+
 import {
   useChartsColorTheme,
   getHighestColorInRange,
@@ -17,13 +26,7 @@ import {
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from '../CommonChartComponents';
-import type { DataColorMapping } from '../CommonChartComponents/types';
-import type {
-  ChartDonutWrapperProps,
-  ChartDonutCellProps,
-  ChartDonutProps,
-  ChartRadius,
-} from './types';
+
 import {
   RADIUS_MAPPING,
   BASE_CONTAINER_SIZE,
@@ -32,14 +35,15 @@ import {
   LABEL_DISTANCE_FROM_CENTER,
   LABEL_FONT_STYLES,
 } from './tokens';
+
+import type { DataColorMapping } from '../CommonChartComponents/types';
+import type {
+  ChartDonutWrapperProps,
+  ChartDonutCellProps,
+  ChartDonutProps,
+  ChartRadius,
+} from './types';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { metaAttribute } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { getComponentId } from '~utils/isValidAllowedChildren';
 
 // Context to share container dimensions for responsive radius calculation
 type DonutContainerContextType = {

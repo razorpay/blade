@@ -1,6 +1,7 @@
 import React from 'react';
-import type { NavLinkContextType, SideNavContextType } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { NavLinkContextType, SideNavContextType } from './types';
 
 const SideNavContext = React.createContext<SideNavContextType>({});
 

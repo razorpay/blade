@@ -1,5 +1,6 @@
-import GithubIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import GithubIcon from './';
 
 describe('<GithubIcon />', () => {
   it('should render GithubIcon', () => {

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { VisuallyHidden } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { VisuallyHidden } from '../';
 
 describe('<VisuallyHidden />', () => {
   it('should render VisuallyHidden content', () => {

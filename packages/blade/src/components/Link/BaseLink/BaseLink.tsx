@@ -1,43 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { SyntheticEvent } from 'react';
 import React from 'react';
-import type { CSSObject } from 'styled-components';
-import type { GestureResponderEvent } from 'react-native';
-import StyledBaseLink from './StyledBaseLink';
+
 import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
-import type { IconColors, IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseText } from '~components/Typography/BaseText';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { isReactNative } from '~utils';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import StyledBaseLink from './StyledBaseLink';
+
+import type { SyntheticEvent } from 'react';
+import type { CSSObject } from 'styled-components';
+import type { GestureResponderEvent } from 'react-native';
+import type { IconColors, IconComponent, IconProps, IconSize } from '~components/Icons';
+import type { Theme } from '~components/BladeProvider';
 import type {
   DotNotationSpacingStringToken,
   StringChildrenType,
   TestID,
   BladeElementRef,
 } from '~utils/types';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type {
   BaseTextProps,
   BaseTextSizes,
   TextColors,
 } from '~components/Typography/BaseText/types';
-import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getStyledProps } from '~components/Box/styledProps';
 import type { AccessibilityProps } from '~utils/makeAccessible';
-import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { throwBladeError } from '~utils/logger';
 import type { ActionStates } from '~utils/useInteraction';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseLinkCommonProps = {
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';

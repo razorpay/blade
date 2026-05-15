@@ -1,5 +1,6 @@
-import LoaderIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import LoaderIcon from './';
 
 describe('<LoaderIcon />', () => {
   it('should render LoaderIcon', () => {

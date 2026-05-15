@@ -1,7 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { useState } from 'react';
-import { DetailedViewStoryCode } from './code';
-import type { TableData, TableProps } from '~components/Table';
+
 import {
   Table as TableComponent,
   TableHeader,
@@ -55,6 +53,11 @@ import {
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Alert } from '~components/Alert';
 import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '~components/InfoGroup';
+
+import { DetailedViewStoryCode } from './code';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableData, TableProps } from '~components/Table';
 
 export default {
   title: 'Patterns/DetailedView',

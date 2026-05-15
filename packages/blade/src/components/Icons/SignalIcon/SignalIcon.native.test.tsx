@@ -1,5 +1,6 @@
-import SignalIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SignalIcon from '.';
 
 describe('<SignalIcon />', () => {
   it('should render SignalIcon', () => {

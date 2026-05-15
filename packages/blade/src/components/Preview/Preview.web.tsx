@@ -1,16 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { TransformWrapper, TransformComponent, useControls } from 'react-zoom-pan-pinch';
 import styled from 'styled-components';
-import type {
-  PreviewProps,
-  PreviewHeaderProps,
-  PreviewFooterProps,
-  PreviewBodyProps,
-} from './types';
-import { usePreviewContext, PreviewProvider } from './PreviewContext';
+
 import { MetaConstants } from '~utils/metaAttribute';
 import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import { size } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import {
@@ -28,8 +21,18 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
 import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { Theme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
+
+import { usePreviewContext, PreviewProvider } from './PreviewContext';
+
+import type {
+  PreviewProps,
+  PreviewHeaderProps,
+  PreviewFooterProps,
+  PreviewBodyProps,
+} from './types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
 
 const _PreviewHeader = ({
   title,

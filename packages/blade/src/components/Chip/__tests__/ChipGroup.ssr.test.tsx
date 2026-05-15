@@ -1,8 +1,10 @@
 import React from 'react';
-import { Chip } from '../Chip';
-import { ChipGroup } from '../ChipGroup';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Box } from '~components/Box';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
 
 describe('<ChipGroup />', () => {
   it('should render with selectionType="single"', () => {

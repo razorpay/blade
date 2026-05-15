@@ -1,13 +1,16 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { AlertProps } from './Alert';
-import { Alert as AlertComponent } from './Alert';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Alert as AlertComponent } from './Alert';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { AlertProps } from './Alert';
 
 const Page = (): ReactElement => {
   return (

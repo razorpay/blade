@@ -1,5 +1,6 @@
-import PhoneOffIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PhoneOffIcon from './';
 
 describe('<PhoneOffIcon />', () => {
   it('should render PhoneOffIcon', () => {

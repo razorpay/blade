@@ -1,8 +1,8 @@
+import { size } from '~tokens/global';
+
 import type { CounterProps } from './Counter';
 import type { TypographyPlatforms, Size } from '~tokens/global';
 import type { DotNotationSpacingStringToken } from '~utils/types';
-
-import { size } from '~tokens/global';
 
 type CounterMaxWidth = Size[100] | Size[120];
 

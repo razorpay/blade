@@ -1,6 +1,8 @@
-import type { CounterProps } from '../Counter';
-import { Counter } from '../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Counter } from '../Counter';
+
+import type { CounterProps } from '../Counter';
 
 const colors: CounterProps['color'][] = [
   'primary',

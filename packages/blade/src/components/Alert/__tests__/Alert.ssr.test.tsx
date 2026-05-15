@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Alert } from '../';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Alert } from '../';
 
 describe('<Alert />', () => {
   it('should render Alert on server', () => {

@@ -1,5 +1,6 @@
-import FileZipIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FileZipIcon from '.';
 
 describe('<FileZipIcon />', () => {
   it('should render FileZipIcon', () => {

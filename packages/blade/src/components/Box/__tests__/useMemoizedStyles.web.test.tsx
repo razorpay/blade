@@ -1,8 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { getMemoDependency, useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
+
 import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme.web';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+
+import { getMemoDependency, useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
 
 const BladeThemeProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (

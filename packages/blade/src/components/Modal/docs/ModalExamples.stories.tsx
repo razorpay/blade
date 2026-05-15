@@ -1,6 +1,9 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+
 import { Modal } from '../Modal';
+
 import {
   BasicModalStory,
   ModalWithNoBodyPaddingStory,
@@ -13,7 +16,8 @@ import {
   InformationalModalStory,
   NonDismissibleModalStory,
 } from './stories';
-import { Sandbox } from '~utils/storybook/Sandbox';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const ModalMeta: Meta = {
   title: 'Components/Modal/Examples',

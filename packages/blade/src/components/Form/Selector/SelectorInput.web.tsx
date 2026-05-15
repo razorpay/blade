@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
-import type { HoverProps, SelectorInputProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
-import type { Theme } from '~components/BladeProvider';
 import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import type { CSSObject } from 'styled-components';
+import type { HoverProps, SelectorInputProps } from './types';
+import type { Theme } from '~components/BladeProvider';
+import type { BladeElementRef } from '~utils/types';
 
 const getHoverStyles = ({
   theme,

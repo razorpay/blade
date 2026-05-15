@@ -1,5 +1,6 @@
-import CodepenIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CodepenIcon from './';
 
 describe('<CodepenIcon />', () => {
   it('should render CodepenIcon', () => {

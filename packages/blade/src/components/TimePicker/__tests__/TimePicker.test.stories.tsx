@@ -1,11 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
-import type { Mock } from '@vitest/spy';
 import React, { useState } from 'react';
-import { TimePicker as TimePickerComponent } from '../';
+
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+
+import { TimePicker as TimePickerComponent } from '../';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { Mock } from '@vitest/spy';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

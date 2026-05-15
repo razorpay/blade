@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
-import type { SpinWheelProps } from './types';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import debounce from '~utils/lodashButBetter/debounce';
+
+import type { SpinWheelProps } from './types';
 
 // Styled scroll container with scroll snap
 const StyledScrollContainer = styled(BaseBox)`

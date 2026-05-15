@@ -1,5 +1,6 @@
-import MaximizeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MaximizeIcon from './';
 
 describe('<MaximizeIcon />', () => {
   it('should render MaximizeIcon', () => {

@@ -1,5 +1,6 @@
-import OffersIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import OffersIcon from './';
 
 describe('<OffersIcon />', () => {
   it('should render OffersIcon', () => {

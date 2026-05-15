@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { ComponentIds } from './componentIds';
-import { useBottomSheetAndDropdownGlue, useBottomSheetContext } from './BottomSheetContext';
-import type { BottomSheetHeaderProps } from './types';
-import { BottomSheetEmptyHeader } from './BottomSheetCommon';
+
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { ComponentIds } from './componentIds';
+import { useBottomSheetAndDropdownGlue, useBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
+
+import type { BottomSheetHeaderProps } from './types';
 
 const _BottomSheetHeader = ({
   title,

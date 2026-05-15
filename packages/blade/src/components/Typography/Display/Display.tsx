@@ -1,13 +1,16 @@
 import React from 'react';
-import type { ReactElement } from 'react';
-import { BaseText } from '../BaseText';
-import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
-import { useValidateAsProp } from '../utils';
+
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BaseText } from '../BaseText';
+import { useValidateAsProp } from '../utils';
+
+import type { ReactElement } from 'react';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeElementRef, TestID, ElementTiming } from '~utils/types';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type DisplayProps = {

@@ -1,5 +1,13 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TableData, TableProps } from '../types';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Box } from '~components/Box';
+import { Amount } from '~components/Amount';
+import { Code } from '~components/Typography';
+import { Badge } from '~components/Badge';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Button } from '~components/Button';
+import { IconButton } from '~components/Button/IconButton';
+import { CheckIcon, CloseIcon } from '~components/Icons';
+
 import {
   Table as TableComponent,
   TableEditableCell,
@@ -16,15 +24,9 @@ import {
   TableFooterCell,
   TablePagination,
 } from '../../Table';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Box } from '~components/Box';
-import { Amount } from '~components/Amount';
-import { Code } from '~components/Typography';
-import { Badge } from '~components/Badge';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { Button } from '~components/Button';
-import { IconButton } from '~components/Button/IconButton';
-import { CheckIcon, CloseIcon } from '~components/Icons';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableData, TableProps } from '../types';
 
 export default {
   title: 'Components/Table',

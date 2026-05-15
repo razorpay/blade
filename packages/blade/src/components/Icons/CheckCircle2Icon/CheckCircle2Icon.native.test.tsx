@@ -1,5 +1,6 @@
-import CheckCircle2Icon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CheckCircle2Icon from '.';
 
 describe('<CheckCircle2Icon />', () => {
   it('should render CheckCircle2Icon', () => {

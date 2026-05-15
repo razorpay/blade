@@ -1,5 +1,6 @@
-import BaseLink from '../BaseLink';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import BaseLink from '../BaseLink';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

@@ -1,15 +1,11 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { NavLink, matchPath, Route, Switch, useLocation } from 'react-router-dom';
-import { bottomNavWithReactRouter } from './docsCode';
-import { BottomNav, BottomNavItem } from '.';
-import type { BottomNavItemProps, BottomNavProps } from '.';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import type { SideNavLinkProps } from '~components/SideNav';
 import { SideNav, SideNavBody, SideNavLink } from '~components/SideNav';
 import {
   CurrentAccountIcon,
@@ -25,6 +21,13 @@ import {
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 import { Alert } from '~components/Alert';
+
+import { bottomNavWithReactRouter } from './docsCode';
+import { BottomNav, BottomNavItem } from '.';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BottomNavItemProps, BottomNavProps } from '.';
+import type { SideNavLinkProps } from '~components/SideNav';
 
 const Page = (): React.ReactElement => {
   return (

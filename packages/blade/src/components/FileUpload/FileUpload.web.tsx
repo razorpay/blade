@@ -1,20 +1,5 @@
 import { useState, useCallback, useMemo, useRef, forwardRef } from 'react';
-import type {
-  FileUploadProps,
-  BladeFile,
-  BladeFileList,
-  FileUploadVariableSizeProps,
-} from './types';
-import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
-import {
-  fileUploadColorTokens,
-  fileUploadHeightTokens,
-  fileUploadLinkBorderTokens,
-  getFileUploadInputHoverTokens,
-} from './fileUploadTokens';
-import { FileUploadItem } from './FileUploadItem';
-import { isFileAccepted } from './isFileAccepted';
-import { FileUploadItemIcon } from './FileUploadItemIcon';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -27,7 +12,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { makeSize, useTheme } from '~utils';
 import { Text } from '~components/Typography';
-import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
@@ -36,6 +20,25 @@ import { useControllableState } from '~utils/useControllable';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { throwBladeError } from '~utils/logger';
+
+import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
+import {
+  fileUploadColorTokens,
+  fileUploadHeightTokens,
+  fileUploadLinkBorderTokens,
+  getFileUploadInputHoverTokens,
+} from './fileUploadTokens';
+import { FileUploadItem } from './FileUploadItem';
+import { isFileAccepted } from './isFileAccepted';
+import { FileUploadItemIcon } from './FileUploadItemIcon';
+
+import type {
+  FileUploadProps,
+  BladeFile,
+  BladeFileList,
+  FileUploadVariableSizeProps,
+} from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {

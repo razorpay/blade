@@ -1,17 +1,20 @@
-import type { ReactElement } from 'react';
 import React, { useCallback, useMemo, useState, cloneElement, Children } from 'react';
-import type { AccordionContextState } from './AccordionContext';
-import { AccordionContext } from './AccordionContext';
-import { MAX_WIDTH } from './styles';
-import type { AccordionProps } from './types';
-import { BaseBox } from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styledProps';
-import type { BoxProps } from '~components/Box';
+
 import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { BaseBox } from '~components/Box/BaseBox';
+
+import { AccordionContext } from './AccordionContext';
+import { MAX_WIDTH } from './styles';
+
+import type { ReactElement } from 'react';
+import type { AccordionContextState } from './AccordionContext';
+import type { AccordionProps } from './types';
+import type { BoxProps } from '~components/Box';
+import type { BladeElementRef } from '~utils/types';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(sizeTokens[200]),

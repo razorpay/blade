@@ -16,11 +16,12 @@
  * @see https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shader-mount.ts
  */
 import { rzpGlassVertexShader, rzpGlassFragmentShader } from './rzpGlassShader';
-import type { RzpGlassConfig, RzpGlassAssets } from './types';
 import { DEFAULT_CONFIG } from './presets';
 import { loadImage, loadVideo, isSafari, bestGuessBrowserZoom } from './utils';
 import { createProgram, setupFullscreenQuad, Texture } from './webgl-utils';
 import { WebGLPerformanceController, LEVEL_RENDER_SETTINGS } from './PerformanceManager';
+
+import type { RzpGlassConfig, RzpGlassAssets } from './types';
 import type { PerformanceLevel } from './PerformanceManager';
 
 // Reference resolution for zoom-independent displacement

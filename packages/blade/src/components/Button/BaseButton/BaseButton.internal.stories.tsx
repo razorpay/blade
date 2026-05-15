@@ -1,9 +1,11 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { BaseButtonProps } from './BaseButton';
-import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import BaseButtonComponent from './BaseButton';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BaseButtonProps } from './BaseButton';
 
 export default {
   title: 'Components/Button/BaseButton (Internal)',

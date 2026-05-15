@@ -1,11 +1,12 @@
 import React from 'react';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { metaAttribute } from '~utils/metaAttribute';
+
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseFooterProps = {
   children: React.ReactNode;

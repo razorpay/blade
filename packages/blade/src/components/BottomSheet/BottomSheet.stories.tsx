@@ -2,16 +2,9 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import isChromatic from 'chromatic/isChromatic';
-import type { BottomSheetHeaderProps, BottomSheetProps } from './';
-import {
-  BottomSheetBody,
-  BottomSheet as BottomSheetComponent,
-  BottomSheetFooter,
-  BottomSheetHeader,
-} from './';
+
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -47,6 +40,16 @@ import { OTPInput } from '~components/Input/OTPInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox } from '~components/Checkbox';
 import { TextInput } from '~components/Input/TextInput';
+
+import {
+  BottomSheetBody,
+  BottomSheet as BottomSheetComponent,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BottomSheetHeaderProps, BottomSheetProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

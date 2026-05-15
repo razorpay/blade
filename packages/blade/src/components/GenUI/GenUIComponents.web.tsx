@@ -9,10 +9,7 @@ import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
 import { createGlobalStyle } from 'styled-components';
-import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
-import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
-import { ComponentRenderer } from './GenUISchemaRenderer';
-import { createRehypeAnimate } from './rehypeAnimate';
+
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -71,6 +68,12 @@ import { Amount } from '~components/Amount';
 import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
+import { ComponentRenderer } from './GenUISchemaRenderer';
+import { createRehypeAnimate } from './rehypeAnimate';
+
+import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
 
 /**
  * Global styles for text streaming animations

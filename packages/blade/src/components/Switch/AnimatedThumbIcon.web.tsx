@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { switchMotion } from './switchTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import Svg from '~components/Icons/_Svg';
 import { makeMotionTime } from '~utils/makeMotionTime';
+
+import { switchMotion } from './switchTokens';
 
 const AnimatedThumbIcon = styled(Svg)<{ isChecked?: boolean }>(({ isChecked, theme }) => {
   const easing = getIn(theme, switchMotion.easing.thumbIcon);

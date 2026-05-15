@@ -1,5 +1,6 @@
-import { Counter } from '../Counter';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Counter } from '../Counter';
 
 describe('<Counter />', () => {
   it('should limit value with max prop', () => {

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import type { CSSProperties } from 'react';
 import styled from 'styled-components/native';
-import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -10,14 +8,19 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import type { View } from 'react-native';
-import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
-import type { PopoverContentWrapperProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
-import type { ColorSchemeNames } from '~tokens/theme';
 import { castNativeType } from '~utils';
+
+import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
+
+import type { CSSProperties } from 'react';
+import type { EasingFn } from 'react-native-reanimated';
+import type { View } from 'react-native';
+import type { PopoverContentWrapperProps } from './types';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const StyledPopoverContentWrapper = styled(BaseBox)<{
   collapse?: boolean;

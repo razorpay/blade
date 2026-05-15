@@ -1,5 +1,6 @@
-import TrashIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import TrashIcon from '.';
 
 describe('<TrashIcon />', () => {
   it('should render TrashIcon', () => {

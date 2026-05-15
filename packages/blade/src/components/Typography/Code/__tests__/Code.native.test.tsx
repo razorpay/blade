@@ -1,7 +1,9 @@
 import React from 'react';
-import { Code } from '../Code';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { typography } from '~tokens/global';
+
+import { Code } from '../Code';
 
 describe('<Code />', () => {
   it('should render Code with default properties', () => {

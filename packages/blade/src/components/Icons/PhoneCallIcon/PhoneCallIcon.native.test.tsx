@@ -1,5 +1,6 @@
-import PhoneCallIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PhoneCallIcon from '.';
 
 describe('<PhoneCallIcon />', () => {
   it('should render PhoneCallIcon', () => {

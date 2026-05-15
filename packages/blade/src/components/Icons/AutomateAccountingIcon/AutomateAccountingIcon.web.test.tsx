@@ -1,5 +1,6 @@
-import AutomateAccountingIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AutomateAccountingIcon from './';
 
 describe('<AutomateAccountingIcon />', () => {
   it('should render AutomateAccountingIcon', () => {

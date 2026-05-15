@@ -1,5 +1,6 @@
-import PrinterIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PrinterIcon from './';
 
 describe('<PrinterIcon />', () => {
   it('should render PrinterIcon', () => {

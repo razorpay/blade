@@ -1,5 +1,6 @@
-import DollarsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DollarsIcon from './';
 
 describe('<DollarsIcon />', () => {
   it('should render DollarsIcon', () => {

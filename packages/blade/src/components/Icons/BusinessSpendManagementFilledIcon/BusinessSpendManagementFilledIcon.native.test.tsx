@@ -1,5 +1,6 @@
-import BusinessSpendManagementFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BusinessSpendManagementFilledIcon from '.';
 
 describe('<BusinessSpendManagementFilledIcon />', () => {
   it('should render BusinessSpendManagementFilledIcon', () => {

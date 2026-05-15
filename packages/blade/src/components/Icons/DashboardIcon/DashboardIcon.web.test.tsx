@@ -1,5 +1,6 @@
-import DashboardIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DashboardIcon from './';
 
 describe('<DashboardIcon />', () => {
   it('should render DashboardIcon', () => {

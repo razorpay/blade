@@ -1,5 +1,6 @@
-import AlignRightIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AlignRightIcon from '.';
 
 describe('<AlignRightIcon />', () => {
   it('should render AlignRightIcon', () => {

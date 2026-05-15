@@ -1,7 +1,5 @@
 import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
-import type { BaseBoxProps } from './BaseBox';
-import BaseBox from './BaseBox';
-import { Box } from '.';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
 import {
@@ -14,6 +12,11 @@ import { Link } from '~components/Link';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
+
+import BaseBox from './BaseBox';
+import { Box } from '.';
+
+import type { BaseBoxProps } from './BaseBox';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();

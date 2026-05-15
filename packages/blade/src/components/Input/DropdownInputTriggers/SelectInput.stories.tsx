@@ -1,8 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import { SelectInput } from './SelectInput';
+
 import { bladeTheme } from '~tokens/theme';
 import { BladeProvider } from '~components/BladeProvider';
 import { Badge } from '~components/Badge';
@@ -16,6 +15,10 @@ import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { SelectInput } from './SelectInput';
+
+import type { StoryFn } from '@storybook/react-vite';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',

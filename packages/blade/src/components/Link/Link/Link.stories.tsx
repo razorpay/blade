@@ -1,8 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Description } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { LinkProps } from './Link';
-import LinkComponent from './Link';
+
 import iconMap from '~components/Icons/iconMap';
 import { DownloadIcon, InfoIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
@@ -14,6 +11,12 @@ import {
   getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
+
+import LinkComponent from './Link';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { LinkProps } from './Link';
 
 const Page = (): ReactElement => {
   return (

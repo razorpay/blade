@@ -1,5 +1,6 @@
-import AirplayIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AirplayIcon from './';
 
 describe('<AirplayIcon />', () => {
   it('should render AirplayIcon', () => {

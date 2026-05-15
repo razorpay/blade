@@ -1,15 +1,11 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import type { CounterInputProps } from './types';
-import { StyledCounterInput } from './StyledCounterInput';
-import { COUNTER_INPUT_TOKEN } from './token';
-import { CounterInputProvider } from './CounterInputContext';
+
 import { BaseInput } from '~components/Input/BaseInput';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import { getOuterMotionRef } from '~utils/getMotionRefs';
 import BaseBox from '~components/Box/BaseBox';
@@ -23,6 +19,13 @@ import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { StyledCounterInput } from './StyledCounterInput';
+import { COUNTER_INPUT_TOKEN } from './token';
+import { CounterInputProvider } from './CounterInputContext';
+
+import type { CounterInputProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledCounterButton = styled.button<{
   disabled?: boolean;

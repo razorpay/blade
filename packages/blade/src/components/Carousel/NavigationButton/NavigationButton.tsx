@@ -1,12 +1,15 @@
-import type { ReactElement } from 'react';
 import React from 'react';
-import type { NavigationButtonProps } from './types';
-import { StyledNavigationButton } from './StyledNavigationButton';
+
 import { isReactNative } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
 import { useTheme } from '~components/BladeProvider';
+
+import { StyledNavigationButton } from './StyledNavigationButton';
+
+import type { ReactElement } from 'react';
+import type { NavigationButtonProps } from './types';
 
 const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): ReactElement => {
   const { platform } = useTheme();

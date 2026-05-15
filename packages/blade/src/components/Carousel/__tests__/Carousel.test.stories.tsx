@@ -1,14 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
-import type { Mock } from '@vitest/spy';
 import React from 'react';
-import type { CarouselProps } from '../';
-import { Carousel as CarouselComponent } from '../';
-import { CarouselExample } from '../Carousel.stories';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
+
+import { Carousel as CarouselComponent } from '../';
+import { CarouselExample } from '../Carousel.stories';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { Mock } from '@vitest/spy';
+import type { CarouselProps } from '../';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

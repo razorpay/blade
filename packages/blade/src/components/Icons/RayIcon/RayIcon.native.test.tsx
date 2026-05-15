@@ -1,5 +1,6 @@
-import RayIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RayIcon from '.';
 
 describe('<RayIcon />', () => {
   it('should render RayIcon', () => {

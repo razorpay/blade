@@ -1,8 +1,9 @@
 import React from 'react';
-import type { PressableProps, View } from 'react-native';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import { useTooltipContext } from './TooltipContext';
+
+import type { PressableProps, View } from 'react-native';
 
 const StyledPressable = styled(Pressable)(() => {
   return { alignSelf: 'flex-start' };

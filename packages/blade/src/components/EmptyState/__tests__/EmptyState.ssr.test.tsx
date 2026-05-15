@@ -1,6 +1,8 @@
 import React from 'react';
-import { EmptyState } from '../index';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { EmptyState } from '../index';
 
 const TestAsset = (): React.ReactElement => (
   <img

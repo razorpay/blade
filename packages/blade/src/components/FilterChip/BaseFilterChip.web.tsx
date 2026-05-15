@@ -1,12 +1,8 @@
 import React from 'react';
-import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import { FILTER_CHIP_HEIGHT } from './tokens';
-import type { BaseFilterChipProps } from './types';
+
 import { makeBorderSize, makeSpace } from '~utils';
-import type { Theme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Box } from '~components/Box';
@@ -18,6 +14,13 @@ import { Text } from '~components/Typography';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { FILTER_CHIP_HEIGHT } from './tokens';
+
+import type { CSSObject } from 'styled-components';
+import type { BaseFilterChipProps } from './types';
+import type { Theme } from '~components/BladeProvider';
+import type { BladeElementRef } from '~utils/types';
 
 const getInteractiveFilterItemStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {

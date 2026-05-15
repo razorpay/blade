@@ -1,23 +1,11 @@
 import React from 'react';
-import { useChipGroupContext } from './ChipGroupContext';
-import {
-  chipIconSizes,
-  chipTextSizes,
-  chipColorTokens,
-  getChipInputHoverTokens,
-  chipHeightTokens,
-  chipHorizontalPaddingTokens,
-} from './chipTokens';
-import type { ChipProps } from './types';
-import { AnimatedChip } from './AnimatedChip';
-import { StyledChipWrapper } from './StyledChipWrapper';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
@@ -27,6 +15,21 @@ import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useChipGroupContext } from './ChipGroupContext';
+import {
+  chipIconSizes,
+  chipTextSizes,
+  chipColorTokens,
+  getChipInputHoverTokens,
+  chipHeightTokens,
+  chipHorizontalPaddingTokens,
+} from './chipTokens';
+import { AnimatedChip } from './AnimatedChip';
+import { StyledChipWrapper } from './StyledChipWrapper';
+
+import type { ChipProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 type OnChange = ({
   isChecked,

@@ -1,5 +1,6 @@
-import MessageSquareIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MessageSquareIcon from './';
 
 describe('<MessageSquareIcon />', () => {
   it('should render MessageSquareIcon', () => {

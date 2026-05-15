@@ -1,6 +1,7 @@
-import type { SideNavFooterProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { SideNavFooterProps } from './types';
 
 const SideNavFooter = (_props: SideNavFooterProps): React.ReactElement => {
   throwBladeError({

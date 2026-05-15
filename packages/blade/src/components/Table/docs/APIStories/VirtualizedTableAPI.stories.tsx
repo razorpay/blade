@@ -1,16 +1,19 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TableData } from '../../types';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableRow, TableCell, TableVirtualizedWrapper, TableBody } from '../../TableBody';
-import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
+
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableRow, TableCell, TableVirtualizedWrapper, TableBody } from '../../TableBody';
+import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableData } from '../../types';
 
 export default {
   title: 'Components/Table/API',

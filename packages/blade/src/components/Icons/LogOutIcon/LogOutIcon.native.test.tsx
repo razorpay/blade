@@ -1,5 +1,6 @@
-import LogOutIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import LogOutIcon from '.';
 
 describe('<LogOutIcon />', () => {
   it('should render LogOutIcon', () => {

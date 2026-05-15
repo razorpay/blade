@@ -1,6 +1,7 @@
 import React from 'react';
-import type { TabsProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { TabsProps } from './types';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
 type TabsContextProps =

@@ -1,10 +1,8 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import dayjs from 'dayjs';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import { I18nProvider } from '@razorpay/i18nify-react';
-import type { DatePickerProps, DatesRangeValue } from './types';
-import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
+
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -16,6 +14,11 @@ import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { TimePicker } from '~components/TimePicker';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
+
+import { DatePicker as DatePickerComponent, FilterChipDatePicker } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { DatePickerProps, DatesRangeValue } from './types';
 
 const propsCategory = {
   BASE_PROPS: 'DatePicker Props',

@@ -1,7 +1,9 @@
 import userEvents from '@testing-library/user-event';
-import { BottomNavExample } from './BottomNavExample';
+
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
+
+import { BottomNavExample } from './BottomNavExample';
 
 describe('BottomNav', () => {
   test('should render', () => {

@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
 import { Link, matchPath, useHistory, useLocation } from 'react-router-dom';
 import { Title } from '@storybook/addon-docs/blocks';
 import styled from 'styled-components';
-import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
-import type { TabNavItemProps } from '../TabNav';
-import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
-import { topNavFullExample } from './code';
+
 import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Box } from '~components/Box';
-import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 import {
   SideNav,
   SideNavBody,
@@ -18,7 +13,6 @@ import {
   SideNavLink,
   SideNavSection,
 } from '~components/SideNav';
-import type { IconComponent } from '~components/Icons';
 import {
   SearchIcon,
   AcceptPaymentsIcon,
@@ -55,7 +49,6 @@ import { Link as BladeLink } from '~components/Link';
 import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-
 import { Alert } from '~components/Alert';
 import { List, ListItem } from '~components/List';
 import { makeSize, useBreakpoint, useTheme } from '~utils';
@@ -64,6 +57,16 @@ import {
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
 import BaseBox from '~components/Box/BaseBox';
+
+import { TopNav, TopNavActions, TopNavContent, TopNavBrand } from '../TopNav';
+import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
+
+import { topNavFullExample } from './code';
+
+import type { StoryFn, Meta } from '@storybook/react';
+import type { TabNavItemProps } from '../TabNav';
+import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
+import type { IconComponent } from '~components/Icons';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};

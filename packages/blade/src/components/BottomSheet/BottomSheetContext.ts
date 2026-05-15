@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import React from 'react';
+
+import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 
 type BottomSheetContextProps = {
   headerHeight: number;

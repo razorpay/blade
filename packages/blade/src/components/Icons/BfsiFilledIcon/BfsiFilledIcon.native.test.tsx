@@ -1,5 +1,6 @@
-import BfsiFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BfsiFilledIcon from '.';
 
 describe('<BfsiFilledIcon />', () => {
   it('should render BfsiFilledIcon', () => {

@@ -1,6 +1,7 @@
-import type { MenuItemProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { MenuItemProps } from './types';
 
 const MenuItem = (_props: MenuItemProps): React.ReactElement => {
   throwBladeError({

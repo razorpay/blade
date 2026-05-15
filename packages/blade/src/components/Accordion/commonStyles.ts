@@ -1,7 +1,8 @@
+import { makeMotionTime } from '~utils';
+
 import type { CSSObject, StyledProps } from 'styled-components';
 import type { StyledAccordionButtonProps } from './types';
 import type { Theme } from '~components/BladeProvider';
-import { makeMotionTime } from '~utils';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getTransitionDuration = (theme: Theme) => makeMotionTime(theme.motion.duration['2xquick']);

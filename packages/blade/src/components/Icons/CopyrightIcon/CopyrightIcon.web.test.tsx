@@ -1,5 +1,6 @@
-import CopyrightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CopyrightIcon from './';
 
 describe('<CopyrightIcon />', () => {
   it('should render CopyrightIcon', () => {

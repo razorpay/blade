@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '../InfoGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { UserIcon, BankIcon, CheckIcon, InfoIcon, CopyIcon } from '~components/Icons';
@@ -9,6 +9,8 @@ import { Avatar } from '~components/Avatar';
 import { Link } from '~components/Link';
 import { Code } from '~components/Typography';
 import { Box } from '~components/Box';
+
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '../InfoGroup';
 
 describe('<InfoGroup />', () => {
   it('should render simple InfoGroup', () => {

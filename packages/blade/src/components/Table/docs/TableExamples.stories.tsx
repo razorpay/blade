@@ -1,6 +1,9 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+
 import { Table } from '../Table';
+
 import {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -16,7 +19,8 @@ import {
   TableWithIsRefreshingStory,
   TableWithEditableCellsStory,
 } from './stories';
-import { Sandbox } from '~utils/storybook/Sandbox';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const TableMeta: Meta = {
   title: 'Components/Table/Examples',

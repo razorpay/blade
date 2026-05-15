@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { act, fireEvent } from '@testing-library/react-native';
-import { Carousel } from '../Carousel.native';
-import { CarouselItem } from '../CarouselItem.native';
-import { useCarouselContext } from '../CarouselContext';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+
+import { Carousel } from '../Carousel.native';
+import { CarouselItem } from '../CarouselItem.native';
+import { useCarouselContext } from '../CarouselContext';
 
 const TestimonialCard = (): React.ReactElement => {
   const { activeSlide } = useCarouselContext();

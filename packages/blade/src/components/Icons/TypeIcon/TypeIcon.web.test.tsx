@@ -1,5 +1,6 @@
-import TypeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TypeIcon from './';
 
 describe('<TypeIcon />', () => {
   it('should render TypeIcon', () => {

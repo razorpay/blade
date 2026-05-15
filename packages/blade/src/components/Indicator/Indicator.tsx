@@ -1,12 +1,21 @@
 import React from 'react';
-import type { ReactElement, Ref } from 'react';
-import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
+
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
+
+import type { ReactElement, Ref } from 'react';
 import type {
   DataAnalyticsAttribute,
   BladeElementRef,
@@ -14,13 +23,7 @@ import type {
   TestID,
 } from '~utils/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import { isReactNative } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { makeAccessible } from '~utils/makeAccessible';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type IndicatorProps = {
   /**

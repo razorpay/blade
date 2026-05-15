@@ -1,6 +1,7 @@
-import { isIconComponent } from '.';
 import { IconButton } from '~components/Button/IconButton';
 import { BankIcon } from '~components/Icons';
+
+import { isIconComponent } from '.';
 
 describe('isIconComponent', () => {
   it('isIconComponent -> BankIcon', () => {

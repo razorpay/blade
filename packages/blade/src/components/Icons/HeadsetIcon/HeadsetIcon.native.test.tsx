@@ -1,5 +1,6 @@
-import HeadsetIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import HeadsetIcon from '.';
 
 describe('<HeadsetIcon />', () => {
   it('should render HeadsetIcon', () => {

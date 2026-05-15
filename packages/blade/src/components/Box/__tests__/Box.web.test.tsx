@@ -1,8 +1,10 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { Box } from '../Box';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
+
+import { Box } from '../Box';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {

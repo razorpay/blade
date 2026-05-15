@@ -1,10 +1,12 @@
 import React from 'react';
-import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownOverlay } from '..';
-import { FilterChipSelectInput } from '../FilterChipSelectInput';
+
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+
+import { DropdownButton } from '../DropdownButton';
+import { FilterChipSelectInput } from '../FilterChipSelectInput';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Filter Chip',

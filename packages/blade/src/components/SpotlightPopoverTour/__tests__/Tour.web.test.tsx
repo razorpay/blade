@@ -2,16 +2,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { act, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { SpotlightPopoverTour } from '../Tour.web';
-import { SpotlightPopoverTourStep } from '../TourStep.web';
-import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
-import { SpotlightPopoverTourFooter } from '../TourFooter.web';
+
 import { Button } from '~components/Button';
 import { bladeTheme } from '~tokens/theme';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { SpotlightPopoverTour } from '../Tour.web';
+import { SpotlightPopoverTourStep } from '../TourStep.web';
+import { SpotlightPopoverTourFooter } from '../TourFooter.web';
+
+import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
 
 const animationDuration = bladeTheme.motion.duration.gentle;
 const nextButtonText = 'Next';

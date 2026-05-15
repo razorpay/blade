@@ -1,7 +1,9 @@
-import type { BadgeProps } from '../Badge';
-import { Badge } from '../Badge';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
+
+import { Badge } from '../Badge';
+
+import type { BadgeProps } from '../Badge';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

@@ -1,5 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { Platform as RNPlatform } from 'react-native';
+
+import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { size as sizeToken } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
+import BaseBox from '~components/Box/BaseBox';
+
+import { getBaseInputStyles } from './baseInputStyles';
+import { baseInputHeight } from './baseInputTokens';
+
 import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
 import type {
   TextInputProps,
@@ -8,18 +20,9 @@ import type {
   GestureResponderEvent,
   TextInput,
 } from 'react-native';
-import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
-import { getBaseInputStyles } from './baseInputStyles';
-import { baseInputHeight } from './baseInputTokens';
-import { Text } from '~components/Typography';
-import { useTheme } from '~components/BladeProvider';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { size as sizeToken } from '~tokens/global';
-import { makeSize } from '~utils/makeSize';
 import type { Platform } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'

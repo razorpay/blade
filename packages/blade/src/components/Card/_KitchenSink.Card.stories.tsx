@@ -1,8 +1,10 @@
 import { composeStories } from '@storybook/react-vite';
-import * as cardStories from './Card.stories';
-import * as interactiveCardStories from './CardInteractive.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as cardStories from './Card.stories';
+import * as interactiveCardStories from './CardInteractive.stories';
 
 const allStories = [
   ...Object.values(composeStories(cardStories)),

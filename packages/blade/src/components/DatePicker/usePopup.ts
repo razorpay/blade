@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { UseFloatingOptions } from '@floating-ui/react';
 import {
   autoUpdate,
   flip,
@@ -15,6 +14,8 @@ import {
 import { size, spacing } from '~tokens/global';
 import { useTheme } from '~utils';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
+
+import type { UseFloatingOptions } from '@floating-ui/react';
 
 type UsePopupProps = {
   enabled?: boolean;

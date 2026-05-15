@@ -1,5 +1,6 @@
-import UnlockIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import UnlockIcon from '.';
 
 describe('<UnlockIcon />', () => {
   it('should render UnlockIcon', () => {

@@ -1,7 +1,8 @@
-import type { ActionListItemProps, ActionListSectionProps } from '../ActionListItem';
-import type { ActionListProps } from '../ActionList';
 import { Code } from '~components/Typography';
 import { ScrollLink } from '~utils/storybook/ScrollLink';
+
+import type { ActionListItemProps, ActionListSectionProps } from '../ActionListItem';
+import type { ActionListProps } from '../ActionList';
 
 type PropsTableType<T> = Record<
   keyof Omit<

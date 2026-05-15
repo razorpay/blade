@@ -1,13 +1,15 @@
-import type { ReactElement } from 'react';
-import { CollapsibleBodyContent } from './CollapsibleBodyContent';
-import { useCollapsible } from './CollapsibleContext';
-import type { CollapsibleBodyProps } from './types';
-import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { CollapsibleBodyContent } from './CollapsibleBodyContent';
+import { useCollapsible } from './CollapsibleContext';
+import { componentIds } from './componentIds';
+
+import type { ReactElement } from 'react';
+import type { CollapsibleBodyProps } from './types';
 
 const _CollapsibleBody = ({
   children,

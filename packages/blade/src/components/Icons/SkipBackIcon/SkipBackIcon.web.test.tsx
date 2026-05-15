@@ -1,5 +1,6 @@
-import SkipBackIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SkipBackIcon from './';
 
 describe('<SkipBackIcon />', () => {
   it('should render SkipBackIcon', () => {

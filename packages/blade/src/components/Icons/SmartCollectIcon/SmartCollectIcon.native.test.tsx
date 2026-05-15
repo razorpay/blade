@@ -1,5 +1,6 @@
-import SmartCollectIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SmartCollectIcon from '.';
 
 describe('<SmartCollectIcon />', () => {
   it('should render SmartCollectIcon', () => {

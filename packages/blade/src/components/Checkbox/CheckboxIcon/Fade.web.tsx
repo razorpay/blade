@@ -2,12 +2,13 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import type { FadeProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { FadeProps } from './types';
 
 const fadeIn = keyframes`
   from {

@@ -1,9 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import type { BaseInputProps } from './BaseInput';
-import { BaseInput as BaseInputComponent } from './BaseInput';
-import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
+
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
@@ -12,6 +9,12 @@ import { Tag } from '~components/Tag';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
+
+import { BaseInput as BaseInputComponent } from './BaseInput';
+import BaseInputLayoutImage from './_decisions/base-inputfield-layout.png';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BaseInputProps } from './BaseInput';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',

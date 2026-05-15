@@ -1,9 +1,12 @@
 import React from 'react';
-import { TooltipContentWrapper } from './TooltipContentWrapper';
-import type { TooltipContentProps } from './types';
+
 import { Text } from '~components/Typography';
 import { isReactNative, makeSize } from '~utils';
 import { size } from '~tokens/global';
+
+import { TooltipContentWrapper } from './TooltipContentWrapper';
+
+import type { TooltipContentProps } from './types';
 
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ children, title, arrow, side, style, isVisible, colorScheme }, ref) => {

@@ -2,10 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useLocale } from '@react-aria/i18n';
 import { useTimeField, useDateSegment } from '@react-aria/datepicker';
-import type { TimeValue } from '@react-aria/datepicker';
 import { useTimeFieldState } from '@react-stately/datepicker';
-import type { TimePickerInputProps, TimeSegmentProps } from './types';
-import type { BladeElementRef } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import { spacing } from '~tokens/global';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -14,6 +11,10 @@ import { ClockIcon } from '~components/Icons';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { makeSpace } from '~utils/makeSpace';
+
+import type { TimeValue } from '@react-aria/datepicker';
+import type { TimePickerInputProps, TimeSegmentProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledTimeSegment = styled.div`
   padding-left: ${makeSpace(spacing[1])};

@@ -1,5 +1,6 @@
-import CashIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CashIcon from './';
 
 describe('<CashIcon />', () => {
   it('should render CashIcon', () => {

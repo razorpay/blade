@@ -1,10 +1,15 @@
-import type { ReactElement, SyntheticEvent } from 'react';
 import React from 'react';
-import type { BaseLinkProps } from '../BaseLink';
+
+import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import { BaseLink } from '../BaseLink';
+
+import type { ReactElement, SyntheticEvent } from 'react';
+import type { BaseLinkProps } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getStyledProps } from '~components/Box/styledProps';
 import type {
   StringChildrenType,
   TestID,
@@ -12,9 +17,7 @@ import type {
   DataAnalyticsAttribute,
 } from '~utils/types';
 import type { Platform } from '~utils';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';

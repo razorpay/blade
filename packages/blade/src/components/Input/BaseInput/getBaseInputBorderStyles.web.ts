@@ -1,8 +1,10 @@
-import type { CSSObject } from 'styled-components';
-import { baseInputBorderBackgroundMotion } from './baseInputTokens';
-import type { Theme } from '~components/BladeProvider';
 import { castWebType, makeBorderSize, makeMotionTime } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+
+import { baseInputBorderBackgroundMotion } from './baseInputTokens';
+
+import type { CSSObject } from 'styled-components';
+import type { Theme } from '~components/BladeProvider';
 
 const getBaseInputBorderStyles = ({
   theme,

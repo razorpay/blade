@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 
+import { makeAccessible } from '~utils/makeAccessible';
+import { castNativeType } from '~utils';
+
 import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
 import type { Emphasis, SubtleOrIntense } from '~tokens/theme/theme';
-import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
-import { castNativeType } from '~utils';
 
 type IconColorStates = keyof Pick<Emphasis, 'muted' | 'subtle' | 'disabled'>;
 type EmphasisIconColorsType = 'staticWhite' | 'gray';

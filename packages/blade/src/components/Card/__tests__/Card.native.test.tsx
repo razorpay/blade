@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+import { InfoIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
+
 import {
   CardBody,
   Card,
@@ -13,10 +19,6 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
-import { InfoIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
-import BaseBox from '~components/Box/BaseBox';
 
 describe('<Card />', () => {
   it('should render a plain Card', () => {

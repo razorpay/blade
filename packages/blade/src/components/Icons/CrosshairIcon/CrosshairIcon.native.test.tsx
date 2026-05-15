@@ -1,5 +1,6 @@
-import CrosshairIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CrosshairIcon from '.';
 
 describe('<CrosshairIcon />', () => {
   it('should render CrosshairIcon', () => {

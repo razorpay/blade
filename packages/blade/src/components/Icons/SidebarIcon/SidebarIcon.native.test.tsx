@@ -1,5 +1,6 @@
-import SidebarIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SidebarIcon from '.';
 
 describe('<SidebarIcon />', () => {
   it('should render SidebarIcon', () => {

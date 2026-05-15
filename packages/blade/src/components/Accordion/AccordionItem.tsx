@@ -1,20 +1,23 @@
-import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
+
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { isReactNative } from '~utils';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { Divider } from '~components/Divider';
+import { BaseBox } from '~components/Box/BaseBox';
+import { Collapsible } from '~components/Collapsible/Collapsible';
+import { CollapsibleBody } from '~components/Collapsible';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+
 import { AccordionButton } from './AccordionButton';
 import { AccordionItemContext, useAccordion } from './AccordionContext';
 import { AccordionItemBody } from './AccordionItemBody';
 import { componentIds } from './componentIds';
-import { Divider } from '~components/Divider';
-import { BaseBox } from '~components/Box/BaseBox';
+
+import type { ReactElement, ReactNode } from 'react';
 import type { IconComponent } from '~components/Icons';
-import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import { isReactNative } from '~utils';
-import { Collapsible } from '~components/Collapsible/Collapsible';
-import { CollapsibleBody } from '~components/Collapsible';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
-import { getComponentId } from '~utils/isValidAllowedChildren';
-import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type AccordionItemProps = {
   /**

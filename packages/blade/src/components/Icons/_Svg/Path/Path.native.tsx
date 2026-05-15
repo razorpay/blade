@@ -1,7 +1,8 @@
-import type { ReactElement } from 'react';
 import { Path as PathNative } from 'react-native-svg';
-import type { Exact, PathProps } from './types';
 import { metaAttribute } from '~utils/metaAttribute';
+
+import type { ReactElement } from 'react';
+import type { Exact, PathProps } from './types';
 
 const Path = <Props extends Exact<PathProps, Props>>({
   d,

@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs/blocks';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import type { CheckboxProps } from './';
-import { Checkbox as CheckboxComponent } from './';
+
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -11,6 +9,11 @@ import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Checkbox as CheckboxComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { CheckboxProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

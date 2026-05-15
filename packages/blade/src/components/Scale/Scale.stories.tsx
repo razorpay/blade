@@ -1,14 +1,18 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { InternalCardExample } from '../Card/InternalCardExample';
-import qrCodesImage from './docs-qrcodes.svg';
-import { Scale } from './';
-import type { ScaleProps } from './';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { ScaleSandbox } from '~components/BaseMotion/docs/codeExamples';
+
+import { InternalCardExample } from '../Card/InternalCardExample';
+
+import qrCodesImage from './docs-qrcodes.svg';
+import { Scale } from './';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { ScaleProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

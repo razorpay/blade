@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ChatInputProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChatInputProps } from './types';
 
 const ChatInput = (_props: ChatInputProps): React.ReactElement => {
   throwBladeError({

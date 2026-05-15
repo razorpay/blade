@@ -1,5 +1,6 @@
-import TokenHqIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TokenHqIcon from './';
 
 describe('<TokenHqIcon />', () => {
   it('should render TokenHqIcon', () => {

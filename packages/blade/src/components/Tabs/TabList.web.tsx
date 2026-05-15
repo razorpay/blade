@@ -1,16 +1,19 @@
 import React from 'react';
 import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
-import { useTabsContext } from './TabsContext';
-import { TabIndicator } from './TabIndicator';
-import { trackColor } from './tabTokens';
+
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Box } from '~components/Box';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useTabsContext } from './TabsContext';
+import { TabIndicator } from './TabIndicator';
+import { trackColor } from './tabTokens';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
 const ScrollableArea = styled(BaseBox)(() => {

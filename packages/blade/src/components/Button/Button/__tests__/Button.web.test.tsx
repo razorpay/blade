@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
 import { useRef } from 'react';
-import type { ButtonProps } from '../Button';
-import Button from '../Button';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CreditCardIcon } from '~components/Icons';
+
+import Button from '../Button';
+
+import type { ButtonProps } from '../Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

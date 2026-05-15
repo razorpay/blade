@@ -2,9 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingOverlay } from '@floating-ui/react';
-import { useModalContext } from './ModalContext';
+
 import { castWebType, makeMotionTime } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+
+import { useModalContext } from './ModalContext';
 
 const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
   const { isVisible } = useModalContext();

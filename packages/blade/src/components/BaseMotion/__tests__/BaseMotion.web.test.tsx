@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import '@testing-library/jest-dom';
-import { BaseMotionBox, BaseMotionEnhancerBox } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import '@testing-library/jest-dom';
+
+import { BaseMotionBox, BaseMotionEnhancerBox } from '../index';
 
 let mockMotionProps: Record<string, any> = {};
 jest.mock('framer-motion', () => ({

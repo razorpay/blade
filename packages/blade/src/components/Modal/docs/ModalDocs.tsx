@@ -1,5 +1,5 @@
 import React from 'react';
-import { Playground } from './stories';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -8,6 +8,8 @@ import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { List, ListItem } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
+
+import { Playground } from './stories';
 
 const ModalDocs = (): React.ReactElement => {
   return (

@@ -1,5 +1,6 @@
-import PlusCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PlusCircleIcon from './';
 
 describe('<PlusCircleIcon />', () => {
   it('should render PlusCircleIcon', () => {

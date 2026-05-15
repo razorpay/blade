@@ -1,5 +1,6 @@
-import type { LightBoxItemProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import type { LightBoxItemProps } from './types';
 
 /**
  * LightBoxItem renders null — it is a declarative data container.

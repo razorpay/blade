@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import { Text } from '../';
 
 describe('<Text />', () => {
   it('should render Text with default properties', () => {

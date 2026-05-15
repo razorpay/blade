@@ -1,5 +1,6 @@
-import RazorpayXIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RazorpayXIcon from '.';
 
 describe('<RazorpayXIcon />', () => {
   it('should render RazorpayXIcon', () => {

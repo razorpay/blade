@@ -1,13 +1,14 @@
 import React from 'react';
-import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative, makeBorderSize } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { BladeElementRef, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
+
+import type { CSSObject } from 'styled-components';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeElementRef, TestID } from '~utils/types';
 
 type DividerProps = {
   /**

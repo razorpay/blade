@@ -1,5 +1,6 @@
-import TabletIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TabletIcon from './';
 
 describe('<TabletIcon />', () => {
   it('should render TabletIcon', () => {

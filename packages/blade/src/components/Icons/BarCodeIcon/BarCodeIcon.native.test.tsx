@@ -1,5 +1,6 @@
-import BarCodeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BarCodeIcon from '.';
 
 describe('<BarCodeIcon />', () => {
   it('should render BarCodeIcon', () => {

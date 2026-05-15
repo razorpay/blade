@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import type { DefaultTheme, Keyframes } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
+
+import type { DefaultTheme, Keyframes } from 'styled-components';
 
 const pulseKeyframes = ({ theme }: { theme: DefaultTheme }): Keyframes => keyframes`
   0% {

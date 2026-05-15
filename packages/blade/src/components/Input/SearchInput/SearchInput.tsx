@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import type { ReactElement, ReactNode } from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
-import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { CloseIcon, SearchIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type {
-  BladeElementRef,
-  BladeElementRefWithValue,
-  DataAnalyticsAttribute,
-} from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
@@ -26,6 +16,19 @@ import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 import { useModalContext } from '~components/Modal/ModalContext';
+
+import { BaseInput } from '../BaseInput';
+import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
+
+import type { ReactElement, ReactNode } from 'react';
+import type { TextInput as TextInputReactNative } from 'react-native';
+import type { BaseInputProps } from '../BaseInput';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type {
+  BladeElementRef,
+  BladeElementRefWithValue,
+  DataAnalyticsAttribute,
+} from '~utils/types';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,

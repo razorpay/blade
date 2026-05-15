@@ -3,7 +3,15 @@
 import styled from 'styled-components';
 import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
-import type { TabItemProps, TabsProps } from './types';
+
+import { Text } from '~components/Typography';
+import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import useInteraction from '~utils/useInteraction';
+import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import { useTabsContext } from './TabsContext';
 import {
   backgroundColor,
@@ -20,13 +28,8 @@ import {
   needsStackingContext,
 } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
-import { Text } from '~components/Typography';
-import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
-import useInteraction from '~utils/useInteraction';
-import { makeAccessible } from '~utils/makeAccessible';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import type { TabItemProps, TabsProps } from './types';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];

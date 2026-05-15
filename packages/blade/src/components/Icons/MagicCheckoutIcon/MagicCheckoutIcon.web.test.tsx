@@ -1,5 +1,6 @@
-import MagicCheckoutIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MagicCheckoutIcon from './';
 
 describe('<MagicCheckoutIcon />', () => {
   it('should render MagicCheckoutIcon', () => {

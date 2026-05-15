@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
+
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconSize } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
-import { size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import { makeSize } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48];

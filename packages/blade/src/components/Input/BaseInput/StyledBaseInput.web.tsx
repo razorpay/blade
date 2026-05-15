@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
-import { getBaseInputStyles } from './baseInputStyles';
-import type { StyledBaseInputProps } from './types';
+
 import getIn from '~utils/lodashButBetter/get';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+
+import { getBaseInputStyles } from './baseInputStyles';
+
+import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
+import type { StyledBaseInputProps } from './types';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &

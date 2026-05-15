@@ -1,17 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
-import { checkboxCellWidth, tableHeader, tableRow, classes } from './tokens';
-import { useTableContext } from './TableContext';
-import { ComponentIds } from './componentIds';
-import type {
-  TableHeaderRowProps,
-  TableHeaderCellProps,
-  TableBackgroundColors,
-  TableProps,
-  TableToolbarPlacement,
-} from './types';
-import type { CheckboxProps } from '~components/Checkbox';
+
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
@@ -24,6 +14,19 @@ import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { size } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { checkboxCellWidth, tableHeader, tableRow, classes } from './tokens';
+import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
+
+import type {
+  TableHeaderRowProps,
+  TableHeaderCellProps,
+  TableBackgroundColors,
+  TableProps,
+  TableToolbarPlacement,
+} from './types';
+import type { CheckboxProps } from '~components/Checkbox';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',

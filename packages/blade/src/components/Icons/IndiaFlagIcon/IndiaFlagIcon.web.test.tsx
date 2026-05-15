@@ -1,5 +1,6 @@
-import IndiaFlagIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import IndiaFlagIcon from './';
 
 describe('<IndiaFlagIcon />', () => {
   it('should render IndiaFlagIcon', () => {

@@ -1,29 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { ReactNode } from 'react';
 import styled from 'styled-components';
-import { StyledBaseInput } from './StyledBaseInput';
-import { BaseInputVisuals } from './BaseInputVisuals';
-import { BaseInputWrapper } from './BaseInputWrapper';
-import { BaseInputTagSlot } from './BaseInputTagSlot';
-import type { InputWrapperRef } from './types';
-import {
-  baseInputBorderBackgroundMotion,
-  baseInputBorderRadius,
-  formHintLeftLabelMarginLeft,
-} from './baseInputTokens';
-import type {
-  FormInputLabelProps,
-  FormInputValidationProps,
-  FormInputHandleOnEvent,
-  FormInputOnEvent,
-  FormHintProps,
-} from '~components/Form';
+
 import { FormHint, FormLabel } from '~components/Form';
-import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   castWebType,
   getPlatformType,
@@ -32,11 +13,45 @@ import {
   makeMotionTime,
   useBreakpoint,
 } from '~utils';
-import type { Platform } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~utils/useInteraction';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import getIn from '~utils/lodashButBetter/get';
+import { useMergeRefs } from '~utils/useMergeRefs';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
+import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
+
+import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
+import { BaseInputTagSlot } from './BaseInputTagSlot';
+import {
+  baseInputBorderBackgroundMotion,
+  baseInputBorderRadius,
+  formHintLeftLabelMarginLeft,
+} from './baseInputTokens';
+
+import type { ReactNode } from 'react';
+import type { InputWrapperRef } from './types';
+import type {
+  FormInputLabelProps,
+  FormInputValidationProps,
+  FormInputHandleOnEvent,
+  FormInputOnEvent,
+  FormHintProps,
+} from '~components/Form';
+import type { IconComponent } from '~components/Icons';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { Platform } from '~utils';
 import type { ActionStates } from '~utils/useInteraction';
 import type {
   FormInputHandleOnClickEvent,
@@ -48,22 +63,10 @@ import type {
   DataAnalyticsAttribute,
   TestID,
 } from '~utils/types';
-import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
-import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
-import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import getIn from '~utils/lodashButBetter/get';
-import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
-import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { Elevation } from '~tokens/global';
-import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
-import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'

@@ -1,5 +1,6 @@
-import CurrentAccountFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CurrentAccountFilledIcon from './';
 
 describe('<CurrentAccountFilledIcon />', () => {
   it('should render CurrentAccountFilledIcon', () => {

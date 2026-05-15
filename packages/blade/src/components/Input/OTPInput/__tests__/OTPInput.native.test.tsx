@@ -1,8 +1,9 @@
 import { fireEvent } from '@testing-library/react-native';
-import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { OTPInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { ReactElement } from 'react';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

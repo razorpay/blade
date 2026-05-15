@@ -8,13 +8,15 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { switchColors, switchMotion, switchSizes } from './switchTokens';
-import type { AnimatedThumbProps } from './types';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import getIn from '~utils/lodashButBetter/get';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize } from '~utils/makeBorderSize';
+
+import { switchColors, switchMotion, switchSizes } from './switchTokens';
+
+import type { AnimatedThumbProps } from './types';
 
 const StyledAnimatedThumb = styled(Animated.View)<{ isDisabled?: boolean }>(
   ({ theme, isDisabled }) => {

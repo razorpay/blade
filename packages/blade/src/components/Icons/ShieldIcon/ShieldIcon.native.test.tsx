@@ -1,5 +1,6 @@
-import ShieldIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ShieldIcon from '.';
 
 describe('<ShieldIcon />', () => {
   it('should render ShieldIcon', () => {

@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
-import type { ButtonGroupProps } from '../ButtonGroup';
-import { ButtonGroup } from '../ButtonGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button/Button';
 import { ChevronDownIcon, PlusIcon } from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+
+import { ButtonGroup } from '../ButtonGroup';
+
+import type { ButtonGroupProps } from '../ButtonGroup';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

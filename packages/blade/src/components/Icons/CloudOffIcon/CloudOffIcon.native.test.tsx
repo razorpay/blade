@@ -1,5 +1,6 @@
-import CloudOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CloudOffIcon from '.';
 
 describe('<CloudOffIcon />', () => {
   it('should render CloudOffIcon', () => {

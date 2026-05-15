@@ -1,5 +1,6 @@
-import BusinessBankingIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BusinessBankingIcon from './';
 
 describe('<BusinessBankingIcon />', () => {
   it('should render BusinessBankingIcon', () => {

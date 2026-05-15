@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 import util from 'util';
-import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
-import type { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import jsdom from 'jsdom';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+
+import type { RenderResult } from '@testing-library/react';
+import type { ReactElement } from 'react';
 
 const globalNames = new Set(Object.getOwnPropertyNames(global));
 

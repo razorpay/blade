@@ -4,11 +4,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import React from 'react';
-import type { CheckboxGroupProps } from './CheckboxGroup';
-import type { CheckboxGroupContextType } from './CheckboxGroupContext';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~components/BladeProvider';
 import { useFormId } from '~components/Form/useFormId';
+
+import type { CheckboxGroupProps } from './CheckboxGroup';
+import type { CheckboxGroupContextType } from './CheckboxGroupContext';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,

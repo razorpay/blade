@@ -1,14 +1,18 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { footerPaddingTop, headerMarginBottom, overlayPaddingX } from '../tokens';
-import type { MenuFooterProps, MenuHeaderProps } from '../types';
-import { MenuDivider } from './MenuDivider';
+
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 import { Box } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { footerPaddingTop, headerMarginBottom, overlayPaddingX } from '../tokens';
+
+import { MenuDivider } from './MenuDivider';
+
+import type { MenuFooterProps, MenuHeaderProps } from '../types';
 
 const _MenuHeader = ({
   title,

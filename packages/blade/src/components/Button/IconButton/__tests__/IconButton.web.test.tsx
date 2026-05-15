@@ -3,10 +3,10 @@
 
 import userEvent from '@testing-library/user-event';
 
-import { IconButton } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { CloseIcon } from '~components/Icons';
+import { IconButton } from '..';
 
 describe('<IconButton />', () => {
   it('should render', () => {

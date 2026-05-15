@@ -1,5 +1,6 @@
-import CompanyRegistrationIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CompanyRegistrationIcon from '.';
 
 describe('<CompanyRegistrationIcon />', () => {
   it('should render CompanyRegistrationIcon', () => {

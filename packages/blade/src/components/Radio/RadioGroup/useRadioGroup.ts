@@ -1,10 +1,11 @@
 import React from 'react';
-import type { RadioGroupProps } from './RadioGroup';
-import type { RadioGroupContextType } from './RadioContext';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~components/BladeProvider';
 import { useId } from '~utils/useId';
+
+import type { RadioGroupProps } from './RadioGroup';
+import type { RadioGroupContextType } from './RadioContext';
 
 type UseRadioGroupProps = Pick<
   RadioGroupProps,

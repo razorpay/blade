@@ -3,13 +3,16 @@
 import React from 'react';
 import { BottomSheetSectionList as GorhomBottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { SectionList } from 'react-native';
-import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
-import { ActionListItem, ActionListSection } from './ActionListItem';
-import type { SectionData } from './actionListUtils';
+
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Divider } from '~components/Divider';
+
+import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
+import { ActionListItem, ActionListSection } from './ActionListItem';
+
+import type { SectionData } from './actionListUtils';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;

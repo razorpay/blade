@@ -1,19 +1,22 @@
 import React from 'react';
+
+import getIn from '~utils/lodashButBetter/get';
+import { useTheme } from '~components/BladeProvider';
+import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
+
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
-import getIn from '~utils/lodashButBetter/get';
+
 import type { Theme } from '~components/BladeProvider';
-import { useTheme } from '~components/BladeProvider';
-import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
 import type { BladeElementRef, TestID } from '~utils/types';
-import { makeSize } from '~utils/makeSize';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type BaseSpinnerProps = {
   /**

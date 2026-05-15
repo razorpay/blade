@@ -1,5 +1,6 @@
-import WifiIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import WifiIcon from '.';
 
 describe('<WifiIcon />', () => {
   it('should render WifiIcon', () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { AnimateInteractions } from '~components/AnimateInteractions';
-import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Elevate } from '~components/Elevate';
@@ -12,6 +11,8 @@ import { Scale } from '~components/Scale';
 import { Slide } from '~components/Slide';
 import { Stagger } from '~components/Stagger';
 import { Heading, Text } from '~components/Typography';
+
+import type { BoxProps } from '~components/Box';
 
 const ShowcaseBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (

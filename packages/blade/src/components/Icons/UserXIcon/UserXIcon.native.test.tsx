@@ -1,5 +1,6 @@
-import UserXIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import UserXIcon from '.';
 
 describe('<UserXIcon />', () => {
   it('should render UserXIcon', () => {

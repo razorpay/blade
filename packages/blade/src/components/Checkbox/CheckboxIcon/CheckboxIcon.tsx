@@ -2,14 +2,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-import { CheckboxIconWrapper } from './CheckboxIconWrapper';
-import { Fade } from './Fade';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
+
+import { CheckboxIconWrapper } from './CheckboxIconWrapper';
+import { Fade } from './Fade';
 
 const svgSize = {
   small: {

@@ -1,6 +1,7 @@
-import type { DrawerProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { DrawerProps } from './types';
 
 const Drawer = (_props: DrawerProps): React.ReactElement => {
   throwBladeError({

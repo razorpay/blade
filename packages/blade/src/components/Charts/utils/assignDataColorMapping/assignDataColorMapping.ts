@@ -1,5 +1,6 @@
-import type { ChartsCategoricalColorToken } from '../types';
 import { DEFAULT_COLOR } from '../tokens';
+
+import type { ChartsCategoricalColorToken } from '../types';
 
 type DataColorMapping = Record<
   string,

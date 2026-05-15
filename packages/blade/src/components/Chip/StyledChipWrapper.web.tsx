@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import type { StyledChipWrapperProps } from './types';
-import { chipMotionTokens, chipColorTokens, chipBorderRadiusTokens } from './chipTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
+
+import { chipMotionTokens, chipColorTokens, chipBorderRadiusTokens } from './chipTokens';
+
+import type { StyledChipWrapperProps } from './types';
 
 const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
   ({ theme, borderColor, isChecked, isDisabled, color, size = 'small' as const }) => {

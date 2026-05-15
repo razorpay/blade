@@ -1,16 +1,20 @@
 import React from 'react';
-import { radioSizes } from '../radioTokens';
-import { RadioGroupProvider } from './RadioContext';
-import { useRadioGroup } from './useRadioGroup';
+
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { radioSizes } from '../radioTokens';
+
+import { RadioGroupProvider } from './RadioContext';
+import { useRadioGroup } from './useRadioGroup';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type RadioGroupProps = {
   /**

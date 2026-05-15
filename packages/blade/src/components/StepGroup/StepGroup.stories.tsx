@@ -2,10 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';
-import type { StepGroupProps, StepItemProps } from './types';
-import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -24,6 +22,11 @@ import {
 import { Alert } from '~components/Alert';
 import { Text } from '~components/Typography';
 import { Collapsible, CollapsibleBody, CollapsibleLink } from '~components/Collapsible';
+
+import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { StepGroupProps, StepItemProps } from './types';
 
 const Page = (): React.ReactElement => {
   return (

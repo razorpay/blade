@@ -1,5 +1,6 @@
-import EngageFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EngageFilledIcon from '.';
 
 describe('<EngageFilledIcon />', () => {
   it('should render EngageFilledIcon', () => {

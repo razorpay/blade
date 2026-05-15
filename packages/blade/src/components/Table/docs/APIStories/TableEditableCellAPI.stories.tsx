@@ -1,5 +1,11 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TableProps, TableData, TableEditableCellProps } from '../../index';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Box } from '~components/Box';
+import { Code } from '~components/Typography';
+import { TableEditableCell, TableEditableDropdownCell } from '~components/Table/TableEditableCell';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { DropdownOverlay } from '~components/Dropdown';
+
 import {
   Table as TableComponent,
   TableHeader,
@@ -12,13 +18,9 @@ import {
   TableFooterRow,
   TableFooterCell,
 } from '../../index';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Box } from '~components/Box';
-import { Code } from '~components/Typography';
-import { TableEditableCell, TableEditableDropdownCell } from '~components/Table/TableEditableCell';
-import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '~components/ActionList';
-import { DropdownOverlay } from '~components/Dropdown';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableProps, TableData, TableEditableCellProps } from '../../index';
 
 export default {
   title: 'Components/Table/API',

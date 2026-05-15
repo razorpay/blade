@@ -1,5 +1,6 @@
-import TranslateIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TranslateIcon from './';
 
 describe('<TranslateIcon />', () => {
   it('should render TranslateIcon', () => {

@@ -1,16 +1,19 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
-import { useDropdown } from './useDropdown';
-import { StyledDropdownOverlay } from './StyledDropdownOverlay';
-import type { DropdownOverlayProps } from './types';
-import { dropdownComponentIds } from './dropdownComponentIds';
+
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
+
+import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { DropdownOverlayProps } from './types';
 
 const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{ testID: 'dropdown-overlay' }>(
   (props) => ({

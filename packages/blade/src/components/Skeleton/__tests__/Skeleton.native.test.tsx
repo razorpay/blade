@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
-import { Skeleton } from '../Skeleton';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Box } from '~components/Box';
 import { MetaConstants } from '~utils/metaAttribute';
+
+import { Skeleton } from '../Skeleton';
 
 describe('<Skeleton />', () => {
   it('should render skeleton', () => {

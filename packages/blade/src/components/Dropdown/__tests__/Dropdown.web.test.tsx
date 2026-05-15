@@ -1,9 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
-import { Dropdown, DropdownLink, DropdownOverlay, FilterChipSelectInput } from '../index';
-import { DropdownButton } from '../DropdownButton';
-import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
@@ -11,6 +9,10 @@ import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { AutoComplete } from '~components/Input/DropdownInputTriggers';
+
+import { Dropdown, DropdownLink, DropdownOverlay, FilterChipSelectInput } from '../index';
+import { DropdownButton } from '../DropdownButton';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');

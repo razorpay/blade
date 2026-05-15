@@ -1,11 +1,14 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useRef, useEffect, useState } from 'react';
-import type { ReactElement, ReactNode } from 'react';
+
+import { Box } from '~components/Box';
+
 import { Display } from './Display';
 import { Heading } from './Heading';
 import { Text } from './Text';
 import { Code } from './Code';
-import { Box } from '~components/Box';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement, ReactNode } from 'react';
 
 type ComputedStyles = {
   fontSize: string;

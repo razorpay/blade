@@ -1,6 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { DividerProps } from './Divider';
-import { Divider as DividerComponent } from './Divider';
 import { Heading } from '~components/Typography/Heading';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -11,6 +8,11 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { List, ListItem } from '~components/List';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Divider as DividerComponent } from './Divider';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { DividerProps } from './Divider';
 
 const Page = (): React.ReactElement => {
   return (

@@ -1,8 +1,11 @@
-import type { CSSProperties } from 'react';
 import styled from 'styled-components';
-import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
-import type { PopoverContentWrapperProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
+
+import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
+
+import type { CSSProperties } from 'react';
+import type { PopoverContentWrapperProps } from './types';
 
 const PopoverContentWrapper = styled(BaseBox)<
   { styles: CSSProperties } & PopoverContentWrapperProps

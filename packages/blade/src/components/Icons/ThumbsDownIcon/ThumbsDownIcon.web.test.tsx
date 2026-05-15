@@ -1,5 +1,6 @@
-import ThumbsDownIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ThumbsDownIcon from './';
 
 describe('<ThumbsDownIcon />', () => {
   it('should render ThumbsDownIcon', () => {

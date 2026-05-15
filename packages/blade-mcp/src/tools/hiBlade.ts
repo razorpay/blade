@@ -1,7 +1,8 @@
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getPackageJSONVersion } from '../utils/generalUtils.js';
 import { sendAnalytics } from '../utils/analyticsUtils.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 const hiBladeToolName = 'hi_blade';
 

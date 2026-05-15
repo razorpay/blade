@@ -1,5 +1,6 @@
-import ExternalLinkIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ExternalLinkIcon from '.';
 
 describe('<ExternalLinkIcon />', () => {
   it('should render ExternalLinkIcon', () => {

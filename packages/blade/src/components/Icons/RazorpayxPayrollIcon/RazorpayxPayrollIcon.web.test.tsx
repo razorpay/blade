@@ -1,5 +1,6 @@
-import RazorpayxPayrollIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import RazorpayxPayrollIcon from './';
 
 describe('<RazorpayxPayrollIcon />', () => {
   it('should render RazorpayxPayrollIcon', () => {

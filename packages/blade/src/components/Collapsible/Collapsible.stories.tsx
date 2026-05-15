@@ -1,18 +1,21 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import { useState } from 'react';
-import type { CollapsibleProps } from './Collapsible';
-import { Collapsible as CollapsibleComponent } from './Collapsible';
-import { CollapsibleButton } from './CollapsibleButton';
-import { CollapsibleBody } from './CollapsibleBody';
-import { CollapsibleLink } from './CollapsibleLink';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
+
+import { Collapsible as CollapsibleComponent } from './Collapsible';
+import { CollapsibleButton } from './CollapsibleButton';
+import { CollapsibleBody } from './CollapsibleBody';
+import { CollapsibleLink } from './CollapsibleLink';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { CollapsibleProps } from './Collapsible';
 
 const Page = (): ReactElement => {
   return (

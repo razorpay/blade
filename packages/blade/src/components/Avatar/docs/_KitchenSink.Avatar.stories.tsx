@@ -1,8 +1,10 @@
 import { composeStories } from '@storybook/react-vite';
-import * as avatarGroupStories from './AvatarGroup.stories';
-import * as avatarStories from './Avatar.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as avatarGroupStories from './AvatarGroup.stories';
+import * as avatarStories from './Avatar.stories';
 
 const allStories = [
   ...Object.values(composeStories(avatarStories)),

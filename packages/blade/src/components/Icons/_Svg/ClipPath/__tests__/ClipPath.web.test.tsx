@@ -1,7 +1,9 @@
 import ClipPath from '..';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ClipPath />', () => {
   it('should render html clipPath component', () => {

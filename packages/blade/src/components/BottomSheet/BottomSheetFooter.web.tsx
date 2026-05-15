@@ -1,11 +1,14 @@
 import React from 'react';
-import { useBottomSheetContext } from './BottomSheetContext';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useBottomSheetContext } from './BottomSheetContext';
+
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 
 const BottomSheetFooter = ({
   children,

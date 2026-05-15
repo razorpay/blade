@@ -1,14 +1,17 @@
-import type { ReactElement } from 'react';
 import { forwardRef, useCallback } from 'react';
-import { useCollapsible } from './CollapsibleContext';
-import { componentIds } from './componentIds';
-import type { ButtonProps } from '~components/Button';
-import type { IconComponent } from '~components/Icons';
+
 import BaseButton from '~components/Button/BaseButton';
-import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useCollapsible } from './CollapsibleContext';
+import { componentIds } from './componentIds';
+
+import type { ReactElement } from 'react';
+import type { ButtonProps } from '~components/Button';
+import type { IconComponent } from '~components/Icons';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 
 type CollapsibleButtonProps = Pick<
   ButtonProps,

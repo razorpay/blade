@@ -1,5 +1,6 @@
-import SourceToPayFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SourceToPayFilledIcon from '.';
 
 describe('<SourceToPayFilledIcon />', () => {
   it('should render SourceToPayFilledIcon', () => {

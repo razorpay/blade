@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SpinWheel } from './SpinWheel';
-import { TimePickerFooter } from './TimePickerFooter';
-import type { TimePickerContentProps } from './types';
-import { getNearestStepValue, createDateFromSelection } from './utils';
+
 import { Divider } from '~components/Divider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
+
+import { SpinWheel } from './SpinWheel';
+import { TimePickerFooter } from './TimePickerFooter';
+import { getNearestStepValue, createDateFromSelection } from './utils';
+
+import type { TimePickerContentProps } from './types';
 
 // Styled container with fade overlay
 const StyledFadeContainer = styled(BaseBox)`

@@ -1,6 +1,7 @@
 import React from 'react';
-import type { ChipGroupContextType } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChipGroupContextType } from './types';
 
 const ChipGroupContext = React.createContext<ChipGroupContextType>({});
 const ChipGroupProvider = ChipGroupContext.Provider;

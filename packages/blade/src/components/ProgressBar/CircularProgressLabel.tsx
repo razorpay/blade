@@ -1,7 +1,8 @@
 import React from 'react';
-import type { CircularProgressBarFilledProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+
+import type { CircularProgressBarFilledProps } from './types';
 
 const CircularProgressLabel = ({
   progressPercent,

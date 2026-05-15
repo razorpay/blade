@@ -1,4 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import {
   ChartDonut,
@@ -12,6 +11,8 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Amount } from '~components/Amount';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const Page = (): React.ReactElement => {
   return (

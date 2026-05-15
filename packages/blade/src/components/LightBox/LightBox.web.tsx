@@ -9,8 +9,7 @@ import {
   useInteractions,
 } from '@floating-ui/react';
 import usePresence from 'use-presence';
-import { LightBoxProvider } from './LightBoxContext';
-import type { LightBoxProps } from './types';
+
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useControllableState } from '~utils/useControllable';
@@ -21,6 +20,10 @@ import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
 import { BaseBox } from '~components/Box/BaseBox';
 import { CloseIcon } from '~components/Icons';
+
+import { LightBoxProvider } from './LightBoxContext';
+
+import type { LightBoxProps } from './types';
 
 const StyledBackdrop = styled(FloatingOverlay)<{ $isVisible: boolean }>(
   ({ theme, $isVisible }) => ({

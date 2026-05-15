@@ -1,5 +1,6 @@
-import CloseIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CloseIcon from './';
 
 describe('<CloseIcon />', () => {
   it('should render CloseIcon', () => {

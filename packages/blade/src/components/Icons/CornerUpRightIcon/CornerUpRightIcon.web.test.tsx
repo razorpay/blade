@@ -1,5 +1,6 @@
-import CornerUpRightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CornerUpRightIcon from './';
 
 describe('<CornerUpRightIcon />', () => {
   it('should render CornerUpRightIcon', () => {

@@ -1,5 +1,6 @@
-import PayrollAddonsFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PayrollAddonsFilledIcon from './';
 
 describe('<PayrollAddonsFilledIcon />', () => {
   it('should render PayrollAddonsFilledIcon', () => {

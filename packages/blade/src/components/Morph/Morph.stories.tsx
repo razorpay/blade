@@ -1,9 +1,7 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { Morph } from './';
-import type { MorphProps } from './';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -13,6 +11,11 @@ import { Display, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 import { MorphSandbox } from '~components/BaseMotion/docs/codeExamples';
 import { Alert } from '~components/Alert';
+
+import { Morph } from './';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { MorphProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

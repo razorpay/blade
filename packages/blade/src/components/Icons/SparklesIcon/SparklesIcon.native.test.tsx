@@ -1,5 +1,6 @@
-import SparklesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SparklesIcon from '.';
 
 describe('<SparklesIcon />', () => {
   it('should render SparklesIcon', () => {

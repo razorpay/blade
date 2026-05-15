@@ -1,8 +1,11 @@
 import React from 'react';
-import { Avatar } from '../Avatar';
-import type { AvatarGroupProps } from '../AvatarGroup';
-import { AvatarGroup } from '../AvatarGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import { Avatar } from '../Avatar';
+import { AvatarGroup } from '../AvatarGroup';
+
+import type { AvatarGroupProps } from '../AvatarGroup';
 
 const sizes: AvatarGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 

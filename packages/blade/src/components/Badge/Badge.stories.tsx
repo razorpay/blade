@@ -1,7 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { BadgeProps } from './Badge';
-import { Badge as BadgeComponent } from './Badge';
+
 import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
@@ -9,6 +7,11 @@ import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Badge as BadgeComponent } from './Badge';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BadgeProps } from './Badge';
 
 const Page = (): React.ReactElement => {
   return (

@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event';
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import { SearchInput } from '..';
 
@@ -9,6 +8,8 @@ import { Button } from '~components/Button';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { DropdownHeader } from '~components/Dropdown/DropdownHeaderFooter';
+
+import type { ReactElement } from 'react';
 
 describe('<SearchInput />', () => {
   it('should render', () => {

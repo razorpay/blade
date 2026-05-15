@@ -1,14 +1,17 @@
 import React from 'react';
-import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import getBaseTextStyles from './getBaseTextStyles';
-import type { BaseTextProps, StyledBaseTextProps } from './types';
+
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import getBaseTextStyles from './getBaseTextStyles';
+
+import type { ReactElement } from 'react';
+import type { BaseTextProps, StyledBaseTextProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const StyledBaseText = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,

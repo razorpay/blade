@@ -1,6 +1,8 @@
 import React from 'react';
-import { Avatar } from '../Avatar';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Avatar } from '../Avatar';
 
 describe('<Avatar />', () => {
   it('should render  avatar', () => {

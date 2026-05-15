@@ -1,5 +1,14 @@
 import React from 'react';
-import type { AvatarProps } from './types';
+
+import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
+import { UserIcon } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import { StyledAvatar } from './StyledAvatar';
 import { useAvatarGroupContext } from './AvatarGroupContext';
 import { AvatarButton } from './AvatarButton';
@@ -8,15 +17,9 @@ import {
   avatarToIndicatorSize,
   avatarTopAddonOffsets,
 } from './avatarTokens';
-import { getStyledProps } from '~components/Box/styledProps';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { throwBladeError } from '~utils/logger';
-import { UserIcon } from '~components/Icons';
+
+import type { AvatarProps } from './types';
 import type { BladeElementRef } from '~utils/types';
-import BaseBox from '~components/Box/BaseBox';
-import { getComponentId } from '~utils/isValidAllowedChildren';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials

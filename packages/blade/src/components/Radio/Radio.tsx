@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import type { OnChange } from './useRadio';
-import { useRadio } from './useRadio';
-import { RadioIcon } from './RadioIcon/RadioIcon';
-import { useRadioGroupContext } from './RadioGroup/RadioContext';
-import { radioHoverTokens, radioSizes } from './radioTokens';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import BaseBox from '~components/Box/BaseBox';
@@ -13,6 +9,19 @@ import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getPlatformType, makeSize, useTheme } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useRadio } from './useRadio';
+import { RadioIcon } from './RadioIcon/RadioIcon';
+import { useRadioGroupContext } from './RadioGroup/RadioContext';
+import { radioHoverTokens, radioSizes } from './radioTokens';
+
+import type { OnChange } from './useRadio';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type {
   BladeElementRef,
@@ -20,13 +29,7 @@ import type {
   StringChildrenType,
   TestID,
 } from '~utils/types';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { getPlatformType, makeSize, useTheme } from '~utils';
-import { MetaConstants } from '~utils/metaAttribute';
-import { throwBladeError } from '~utils/logger';
 import type { MotionMetaProp } from '~components/BaseMotion';
-import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type RadioProps = {
   /**

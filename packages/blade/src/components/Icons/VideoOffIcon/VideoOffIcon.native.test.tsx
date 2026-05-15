@@ -1,5 +1,6 @@
-import VideoOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VideoOffIcon from '.';
 
 describe('<VideoOffIcon />', () => {
   it('should render VideoOffIcon', () => {

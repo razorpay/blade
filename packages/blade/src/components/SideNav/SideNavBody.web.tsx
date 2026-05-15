@@ -1,7 +1,9 @@
-import { classes } from './tokens';
-import type { SideNavBodyProps } from './types';
-import { useSideNav } from './SideNavContext';
 import BaseBox from '~components/Box/BaseBox';
+
+import { classes } from './tokens';
+import { useSideNav } from './SideNavContext';
+
+import type { SideNavBodyProps } from './types';
 
 const SideNavBody = ({ children }: SideNavBodyProps): React.ReactElement => {
   const { isL1Collapsed, isL1Hovered } = useSideNav();

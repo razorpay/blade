@@ -1,14 +1,16 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { useState } from 'react';
-import { Collapsible } from '../Collapsible';
-import { CollapsibleBody } from '../CollapsibleBody';
-import { CollapsibleButton } from '../CollapsibleButton';
-import { CollapsibleLink } from '../CollapsibleLink';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
+
+import { Collapsible } from '../Collapsible';
+import { CollapsibleBody } from '../CollapsibleBody';
+import { CollapsibleButton } from '../CollapsibleButton';
+import { CollapsibleLink } from '../CollapsibleLink';
 
 describe('<Collapsible />', () => {
   // Collapsible uses animations and requestAnimationFrame which makes RN tests throw warnings

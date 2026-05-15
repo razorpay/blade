@@ -1,16 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import type { ReactElement } from 'react';
 import { m as motion } from 'framer-motion';
-import type { RazorSenseProps } from '../RzpGlass/index';
-import {
-  RazorSense as RazorSenseComponent,
-  RazorSenseGradient,
-  preloadRazorSenseAssets,
-} from '../';
-import { GradientEditor } from './GradientEditor';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -22,6 +14,18 @@ import { ChatInput } from '~components/ChatInput';
 import { Divider } from '~components/Divider';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
+
+import {
+  RazorSense as RazorSenseComponent,
+  RazorSenseGradient,
+  preloadRazorSenseAssets,
+} from '../';
+
+import { GradientEditor } from './GradientEditor';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { RazorSenseProps } from '../RzpGlass/index';
 
 const Page = (): ReactElement => {
   return (

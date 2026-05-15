@@ -1,5 +1,6 @@
-import VolumeOnIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import VolumeOnIcon from './';
 
 describe('<VolumeOnIcon />', () => {
   it('should render VolumeOnIcon', () => {

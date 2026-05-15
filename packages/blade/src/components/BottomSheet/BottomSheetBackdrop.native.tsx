@@ -1,7 +1,8 @@
 import React from 'react';
-import type { BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { BottomSheetBackdrop as GorhomBottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { useTheme } from '~components/BladeProvider';
+
+import type { BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 
 const BottomSheetBackdrop = (
   props: BottomSheetBackdropProps & { zIndex: number; isDismissible: boolean },

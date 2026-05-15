@@ -1,5 +1,6 @@
-import type { ChartsCategoricalColorToken } from '../types';
 import { assignDataColorMapping } from './assignDataColorMapping';
+
+import type { ChartsCategoricalColorToken } from '../types';
 
 describe('assignDataColorMapping', () => {
   it('should assign default color when only one key has no color', () => {

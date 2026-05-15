@@ -1,9 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import { SelectInput } from '../DropdownInputTriggers';
-import type { OTPInputProps } from './OTPInput';
-import { OTPInput as OTPInputComponent } from './OTPInput';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -15,6 +12,13 @@ import { Text } from '~components/Typography';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Link } from '~components/Link';
 import { InfoIcon } from '~components/Icons';
+
+import { SelectInput } from '../DropdownInputTriggers';
+
+import { OTPInput as OTPInputComponent } from './OTPInput';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { OTPInputProps } from './OTPInput';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',

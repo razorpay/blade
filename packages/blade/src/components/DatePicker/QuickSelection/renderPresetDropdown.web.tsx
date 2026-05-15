@@ -1,9 +1,10 @@
 import React from 'react';
-import type { renderPresetDropdownProps } from './types';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { CalendarIcon } from '~components/Icons';
+
+import type { renderPresetDropdownProps } from './types';
 
 const renderPresetDropdown = ({
   onSelection,

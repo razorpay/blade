@@ -1,8 +1,11 @@
 import React from 'react';
+
+import BaseBox from '~components/Box/BaseBox';
+
 import Rotate from './Rotate.web';
 import { ReasoningTraces } from './ReasoningTraces.web';
+
 import type { CommonChatMessageProps } from './types';
-import BaseBox from '~components/Box/BaseBox';
 
 const DefaultMessageBubble = ({
   children,

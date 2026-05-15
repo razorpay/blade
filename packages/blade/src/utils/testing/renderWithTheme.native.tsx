@@ -1,8 +1,9 @@
-import type { RenderAPI, RenderOptions } from '@testing-library/react-native';
 import { render } from '@testing-library/react-native';
-import type { ReactElement } from 'react';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+
+import type { RenderAPI, RenderOptions } from '@testing-library/react-native';
+import type { ReactElement } from 'react';
 
 const renderWithTheme = (ui: ReactElement, options: RenderOptions = {}): RenderAPI =>
   render(

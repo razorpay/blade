@@ -1,10 +1,11 @@
 import React from 'react';
-import type { SlideProps } from './types';
 import { BaseMotionEntryExit } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
+
+import type { SlideProps } from './types';
+import type { MotionVariantsType } from '~components/BaseMotion';
 
 const getFromTransform = (
   direction: SlideProps['direction'],

@@ -1,9 +1,12 @@
 import { useFloatingTree, useListItem, useMergeRefs } from '@floating-ui/react';
 import React from 'react';
-import type { MenuItemProps } from './types';
-import { useMenu } from './useMenu';
+
 import { BaseMenuItem } from '~components/BaseMenu';
 import { ChevronRightIcon } from '~components/Icons';
+
+import { useMenu } from './useMenu';
+
+import type { MenuItemProps } from './types';
 
 const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
   (

@@ -1,5 +1,6 @@
-import BaseBox from '../BaseBox';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import BaseBox from '../BaseBox';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {

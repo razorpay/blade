@@ -1,5 +1,6 @@
-import RupeeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RupeeIcon from '.';
 
 describe('<RupeeIcon />', () => {
   it('should render RupeeIcon', () => {

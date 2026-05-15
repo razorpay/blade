@@ -1,5 +1,6 @@
-import BfsiIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BfsiIcon from './';
 
 describe('<BfsiIcon />', () => {
   it('should render BfsiIcon', () => {

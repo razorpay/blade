@@ -1,5 +1,6 @@
-import MoonIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MoonIcon from './';
 
 describe('<MoonIcon />', () => {
   it('should render MoonIcon', () => {

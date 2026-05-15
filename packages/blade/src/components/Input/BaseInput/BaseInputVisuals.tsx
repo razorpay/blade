@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { ReactElement } from 'react';
-import type { BaseInputProps } from './BaseInput';
-import { inputDropdownButtonPadding } from './baseInputTokens';
+
 import { throwBladeError } from '~utils/logger';
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
-import type { IconColors } from '~components/Icons';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
+
+import { inputDropdownButtonPadding } from './baseInputTokens';
+
+import type { ReactElement } from 'react';
+import type { BaseInputProps } from './BaseInput';
+import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
+import type { IconColors } from '~components/Icons';
 
 type InputVisuals = Pick<
   BaseInputProps,

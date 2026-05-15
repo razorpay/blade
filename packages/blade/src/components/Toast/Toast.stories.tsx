@@ -2,12 +2,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs/blocks';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { useToast } from './useToast';
-import { Toast } from './Toast';
-import type { ToastProps } from './';
-import { ToastContainer } from './';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
@@ -16,6 +12,13 @@ import { Heading, Text } from '~components/Typography';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { AnnouncementIcon } from '~components/Icons';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '~components/Modal';
+
+import { useToast } from './useToast';
+import { Toast } from './Toast';
+import { ToastContainer } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ToastProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

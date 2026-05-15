@@ -1,5 +1,6 @@
-import HelpCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import HelpCircleIcon from './';
 
 describe('<HelpCircleIcon />', () => {
   it('should render HelpCircleIcon', () => {

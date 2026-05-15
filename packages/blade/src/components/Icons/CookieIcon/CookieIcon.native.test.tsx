@@ -1,5 +1,6 @@
-import CookieIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CookieIcon from '.';
 
 describe('<CookieIcon />', () => {
   it('should render CookieIcon', () => {

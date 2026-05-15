@@ -1,6 +1,9 @@
 import React from 'react';
-import type { Meta } from '@storybook/react-vite';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+
 import { FileUpload } from '../FileUpload';
+
 import {
   CustomPreviewStory,
   AutoFileUploadWithProgressStory,
@@ -8,7 +11,8 @@ import {
   MultiFileUploadStory,
   DirectFileUploadStory,
 } from './stories';
-import { Sandbox } from '~utils/storybook/Sandbox';
+
+import type { Meta } from '@storybook/react-vite';
 
 const FileUploadMeta: Meta = {
   title: 'Components/FileUpload/Sandbox Examples',

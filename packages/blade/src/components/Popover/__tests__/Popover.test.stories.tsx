@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
-import type { PopoverProps, PopoverTriggerProps } from '..';
 import { PopoverInteractiveWrapper, Popover as PopoverComponent } from '..';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { PopoverProps, PopoverTriggerProps } from '..';
 
 const onOpenChange = fn();
 

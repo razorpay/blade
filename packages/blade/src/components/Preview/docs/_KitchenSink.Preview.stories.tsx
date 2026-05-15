@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as previewWindow from './Preview.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as previewWindow from './Preview.stories';
 
 const allStories = [...Object.values(composeStories(previewWindow))];
 

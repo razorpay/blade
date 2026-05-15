@@ -1,5 +1,6 @@
-import DisbursePaymentsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DisbursePaymentsIcon from './';
 
 describe('<DisbursePaymentsIcon />', () => {
   it('should render DisbursePaymentsIcon', () => {

@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as BreadcrumbStories from './Breadcrumb.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as BreadcrumbStories from './Breadcrumb.stories';
 
 const allStories = Object.values(composeStories(BreadcrumbStories));
 

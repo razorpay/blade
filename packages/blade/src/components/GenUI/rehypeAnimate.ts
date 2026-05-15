@@ -1,5 +1,6 @@
-import type { Element, Root, Text, Node, Parent } from 'hast';
 import { SKIP, visitParents } from 'unist-util-visit-parents';
+
+import type { Element, Root, Text, Node, Parent } from 'hast';
 
 export interface AnimateOptions {
   duration?: number;

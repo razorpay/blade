@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { composeStories } from '@storybook/react-vite';
 
-import * as tabsStories from './SideNav.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as tabsStories from './SideNav.stories';
 
 const allStories = Object.values(composeStories(tabsStories));
 

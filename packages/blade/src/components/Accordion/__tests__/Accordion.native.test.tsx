@@ -1,8 +1,10 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { useState } from 'react';
-import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
+
+import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
 
 describe('<Accordion />', () => {
   // Accordion uses Collapsible which uses animations and requestAnimationFrame which makes RN tests throw warnings

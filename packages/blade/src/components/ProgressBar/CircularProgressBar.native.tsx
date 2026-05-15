@@ -10,18 +10,21 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { Text as SVGText, Circle } from 'react-native-svg';
-import type { CircularProgressBarFilledProps } from './types';
-import { circularProgressSizeTokens, getCircularProgressSVGTokens } from './progressBarTokens';
-import { CircularProgressLabel } from './CircularProgressLabel';
+
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
-import type { TextProps } from '~components/Typography';
 import { getTextProps } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { Svg } from '~components/Icons/_Svg';
 import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
+
+import { circularProgressSizeTokens, getCircularProgressSVGTokens } from './progressBarTokens';
+import { CircularProgressLabel } from './CircularProgressLabel';
+
+import type { CircularProgressBarFilledProps } from './types';
+import type { TextProps } from '~components/Typography';
 
 const pulseAnimation = {
   opacityInitial: 1,

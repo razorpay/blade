@@ -1,21 +1,24 @@
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
-import type { CircularProgressBarFilledProps } from './types';
+
+import getIn from '~utils/lodashButBetter/get';
+import BaseBox from '~components/Box/BaseBox';
+import { castWebType } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { getTextProps } from '~components/Typography';
+import { Svg, Circle } from '~components/Icons/_Svg';
+import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
+
 import {
   pulseAnimation,
   circularProgressSizeTokens,
   getCircularProgressSVGTokens,
 } from './progressBarTokens';
 import { CircularProgressLabel } from './CircularProgressLabel';
-import getIn from '~utils/lodashButBetter/get';
-import BaseBox from '~components/Box/BaseBox';
-import { castWebType } from '~utils';
-import { makeMotionTime } from '~utils/makeMotionTime';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { CircularProgressBarFilledProps } from './types';
 import type { TextProps } from '~components/Typography';
-import { getTextProps } from '~components/Typography';
-import { Svg, Circle } from '~components/Icons/_Svg';
-import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
 
 const pulseKeyframes = keyframes`
   0% {

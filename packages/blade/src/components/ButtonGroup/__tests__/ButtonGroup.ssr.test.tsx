@@ -1,6 +1,7 @@
-import { ButtonGroup } from '../ButtonGroup';
 import { Button } from '~components/Button/Button';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { ButtonGroup } from '../ButtonGroup';
 
 describe('<ButtonGroup />', () => {
   it('should render ButtonGroup', () => {

@@ -1,5 +1,6 @@
-import EditIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EditIcon from '.';
 
 describe('<EditIcon />', () => {
   it('should render EditIcon', () => {

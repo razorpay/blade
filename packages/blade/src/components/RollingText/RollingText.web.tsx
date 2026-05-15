@@ -5,8 +5,9 @@ import { useTheme } from '~components/BladeProvider';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { BaseMotionBox } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import { Box } from '~components/Box';
+
+import type { MotionVariantsType } from '~components/BaseMotion';
 
 const ShimmerOverlay = (): React.ReactElement => {
   const { theme } = useTheme();

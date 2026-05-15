@@ -1,5 +1,6 @@
-import FacebookIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FacebookIcon from '.';
 
 describe('<FacebookIcon />', () => {
   it('should render FacebookIcon', () => {

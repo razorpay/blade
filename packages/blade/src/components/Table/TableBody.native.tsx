@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import type { TableBodyProps, TableCellProps, TableRowProps } from './types';
 import { Text } from '~components/Typography';
+
+import type { TableBodyProps, TableCellProps, TableRowProps } from './types';
 
 const TableBody = <Item,>(props: TableBodyProps<Item>): React.ReactElement => {
   return <Text>Table Component is not available for Native mobile apps.</Text>;

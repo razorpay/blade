@@ -1,7 +1,8 @@
-import type { DropdownProps } from '~components/Dropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
-import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
+
+import type { DropdownProps } from '~components/Dropdown';
+import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 
 /**
  * is the role supposed to be `menu`

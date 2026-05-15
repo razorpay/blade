@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Box, Card, CardBody } from '../../components';
+
 import { Heading, Text } from '~components/Typography';
 import { Chip, ChipGroup } from '~components/Chip';
 import { InfoIcon, RazorpayIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { Button } from '~components/Button';
+
+import { Box, Card, CardBody } from '../../components';
 
 const PhantomUI = (): React.ReactElement => {
   const [selectedBusinessType, setSelectedBusinessType] = useState('Individual');

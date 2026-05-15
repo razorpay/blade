@@ -1,5 +1,6 @@
-import SaasFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SaasFilledIcon from '.';
 
 describe('<SaasFilledIcon />', () => {
   it('should render SaasFilledIcon', () => {

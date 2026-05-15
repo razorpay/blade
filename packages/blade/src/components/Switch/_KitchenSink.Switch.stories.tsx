@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as switchStories from './Switch.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as switchStories from './Switch.stories';
 
 const allStories = Object.values(composeStories(switchStories));
 

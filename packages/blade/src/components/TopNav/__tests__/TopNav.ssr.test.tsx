@@ -1,6 +1,8 @@
 import React from 'react';
-import { TopNavExample } from './TopNavExample';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { TopNavExample } from './TopNavExample';
 
 describe('<TopNav />', () => {
   it('should render TopNav ssr', () => {

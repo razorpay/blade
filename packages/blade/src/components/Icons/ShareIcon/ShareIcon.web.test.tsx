@@ -1,5 +1,6 @@
-import ShareIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ShareIcon from './';
 
 describe('<ShareIcon />', () => {
   it('should render ShareIcon', () => {

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import type { Meta } from '@storybook/react-vite';
-
 import {
   BrowserRouter,
   Switch as ReactRouterDomSwitch,
@@ -8,8 +6,11 @@ import {
   Link as ReactRouterDomLink,
   useLocation,
 } from 'react-router-dom';
-import { Box } from '../Box';
 
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
+import parameters from '~utils/storybook/recipeParameters';
+
+import { Box } from '../Box';
 import {
   SideNav,
   SideNavBody,
@@ -43,9 +44,7 @@ import {
   ChevronLeftIcon,
   EditIcon,
 } from '../Icons';
-
 import { IconButton } from '../Button/IconButton';
-
 import { SearchInput } from '../Input/SearchInput';
 import { Button } from '../Button';
 import { Avatar } from '../Avatar';
@@ -55,7 +54,6 @@ import { Text, Heading } from '../Typography';
 import { Badge } from '../Badge';
 import { Tooltip } from '../Tooltip';
 import { Switch } from '../Switch';
-
 import {
   TopNav,
   TopNavBrand,
@@ -66,7 +64,7 @@ import {
   TabNavItem,
 } from '../TopNav';
 import { useTheme, useBreakpoint } from '../../utils';
-import type { BoxProps } from '../Box';
+
 import { RazorpayLogo } from './assets/razorpay';
 import TeamManagementIcon from './assets/png/team.png';
 import BankAccountIcon from './assets/png/bank.png';
@@ -74,8 +72,9 @@ import PaymentsIcon from './assets/png/payments.png';
 import IntegrationsIcon from './assets/png/integrations.png';
 import BusinessProfileIcon from './assets/png/business.png';
 import UserProfileIcon from './assets/png/user.png';
-import storyRouterDecorator from '~utils/storybook/StoryRouter';
-import parameters from '~utils/storybook/recipeParameters';
+
+import type { Meta } from '@storybook/react-vite';
+import type { BoxProps } from '../Box';
 
 interface NavLinkProps {
   title: string;

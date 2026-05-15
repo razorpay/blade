@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { SideNavLinkProps } from '../types';
-import { SideNav, SideNavBody, SideNavLink } from '../index';
+
 import { Box } from '~components/Box';
 import iconMap from '~components/Icons/iconMap';
 import { HomeIcon, PlusIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
+
+import { SideNav, SideNavBody, SideNavLink } from '../index';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { SideNavLinkProps } from '../types';
 
 const titleSuffixMapping = {
   '<Badge color="positive" size="small">NEW</Badge>': (

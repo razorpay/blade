@@ -1,5 +1,6 @@
-import PaymentGatewayFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PaymentGatewayFilledIcon from './';
 
 describe('<PaymentGatewayFilledIcon />', () => {
   it('should render PaymentGatewayFilledIcon', () => {

@@ -1,7 +1,9 @@
-import type { BaseSpinnerProps } from '../BaseSpinner';
-import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { BaseSpinner } from '../BaseSpinner';
+
+import type { BaseSpinnerProps } from '../BaseSpinner';
 
 const colors: BaseSpinnerProps['color'][] = [
   'primary',

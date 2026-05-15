@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BottomSheet, BottomSheetBody, BottomSheetFooter, BottomSheetHeader } from '../BottomSheet';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 import { Button } from '~components/Button';
+
+import { BottomSheet, BottomSheetBody, BottomSheetFooter, BottomSheetHeader } from '../BottomSheet';
 jest.useFakeTimers();
 
 describe('<BottomSheet />', () => {

@@ -1,12 +1,15 @@
 import React from 'react';
-import { componentIds } from './constants';
+
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
-import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { componentIds } from './constants';
+
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ModalFooterProps = Pick<BaseFooterProps, 'children' | keyof DataAnalyticsAttribute>;
 

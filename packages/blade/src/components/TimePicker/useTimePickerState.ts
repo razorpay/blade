@@ -1,8 +1,11 @@
 import React from 'react';
 import { Time } from '@internationalized/date';
-import type { UseTimePickerStateProps } from './types';
-import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
+
 import { useControllableState } from '~utils/useControllable';
+
+import { dateToTimeValue, timeValueToDate, getTimeComponents, createCompleteTime } from './utils';
+
+import type { UseTimePickerStateProps } from './types';
 
 /**
  * Returns empty time value (midnight) when neither value nor defaultValue is provided

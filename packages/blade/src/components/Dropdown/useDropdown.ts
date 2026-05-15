@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { isReactNative, isBrowser } from '~utils';
+import { fireNativeEvent } from '~utils/fireNativeEvent';
+
 import {
   ensureScrollVisiblity,
   getActionFromKey,
@@ -9,14 +12,12 @@ import {
   makeInputValue,
   performAction,
 } from './dropdownUtils';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
 import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './types';
-
-import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
-import { isReactNative, isBrowser } from '~utils';
 import type { ContainerElementType } from '~utils/types';
-import { fireNativeEvent } from '~utils/fireNativeEvent';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};

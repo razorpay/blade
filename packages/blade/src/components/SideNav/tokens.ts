@@ -1,6 +1,7 @@
-import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils';
+
+import type { Theme } from '~components/BladeProvider';
 
 const classes = {
   SHOW_WHEN_COLLAPSED: 'show-when-collapsed',

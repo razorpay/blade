@@ -1,5 +1,6 @@
-import AlertOctagonIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AlertOctagonIcon from '.';
 
 describe('<AlertOctagonIcon />', () => {
   it('should render AlertOctagonIcon', () => {

@@ -1,5 +1,6 @@
-import VolumeOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VolumeOffIcon from '.';
 
 describe('<VolumeOffIcon />', () => {
   it('should render VolumeOffIcon', () => {

@@ -1,5 +1,6 @@
-import GlobeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import GlobeIcon from './';
 
 describe('<GlobeIcon />', () => {
   it('should render GlobeIcon', () => {

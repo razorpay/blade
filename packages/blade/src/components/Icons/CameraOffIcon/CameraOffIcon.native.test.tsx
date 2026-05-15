@@ -1,5 +1,6 @@
-import CameraOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CameraOffIcon from '.';
 
 describe('<CameraOffIcon />', () => {
   it('should render CameraOffIcon', () => {

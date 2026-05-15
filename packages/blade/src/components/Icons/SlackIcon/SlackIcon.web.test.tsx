@@ -1,5 +1,6 @@
-import SlackIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SlackIcon from './';
 
 describe('<SlackIcon />', () => {
   it('should render SlackIcon', () => {

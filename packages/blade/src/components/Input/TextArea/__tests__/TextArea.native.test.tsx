@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent, screen } from '@testing-library/react-native';
-import type { ReactElement } from 'react';
 import React from 'react';
 
-import type { ReactTestInstance } from 'react-test-renderer';
 import { TextArea } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
+
+import type { ReactElement } from 'react';
+import type { ReactTestInstance } from 'react-test-renderer';
 
 const getTag = (tagName: string): ReactTestInstance => {
   return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];

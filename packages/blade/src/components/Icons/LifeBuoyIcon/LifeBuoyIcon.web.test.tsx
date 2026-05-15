@@ -1,5 +1,6 @@
-import LifeBuoyIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import LifeBuoyIcon from './';
 
 describe('<LifeBuoyIcon />', () => {
   it('should render LifeBuoyIcon', () => {

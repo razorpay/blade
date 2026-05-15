@@ -1,8 +1,10 @@
 import { composeStories } from '@storybook/react-vite';
-import * as dropddownWithButtonStories from './DropdownWithButton.stories';
-import * as dropddownWithSelectStories from './DropdownWithSelect.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as dropddownWithButtonStories from './DropdownWithButton.stories';
+import * as dropddownWithSelectStories from './DropdownWithSelect.stories';
 
 const allStories = [
   ...Object.values(composeStories(dropddownWithButtonStories)),

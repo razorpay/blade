@@ -1,10 +1,11 @@
 import userEvent from '@testing-library/user-event';
 
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import { OTPInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import type { ReactElement } from 'react';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

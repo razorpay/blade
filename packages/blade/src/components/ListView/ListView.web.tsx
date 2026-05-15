@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import type { ListViewProps } from './types';
-import { ListViewProvider } from './ListViewContext';
-import type { ColorSchemeNames } from '~tokens/theme';
+
 import { getSurfaceBoxShadow, getSurfaceStyles } from '~utils/makeSurfaceStyles';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import useTheme from '~components/BladeProvider/useTheme';
+
+import { ListViewProvider } from './ListViewContext';
+
+import type { ListViewProps } from './types';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const ListViewSurface = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
   ({ theme, colorScheme }) => {

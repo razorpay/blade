@@ -1,5 +1,6 @@
-import ArrowSquareUpRightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ArrowSquareUpRightIcon from './';
 
 describe('<ArrowSquareUpRightIcon />', () => {
   it('should render ArrowSquareUpRightIcon', () => {

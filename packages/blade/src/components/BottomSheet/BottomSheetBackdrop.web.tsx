@@ -1,11 +1,13 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components';
-import { useBottomSheetContext } from './BottomSheetContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeMotionTime } from '~utils/makeMotionTime';
+
+import { useBottomSheetContext } from './BottomSheetContext';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {

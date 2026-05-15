@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as stepGroupStories from './StepGroup.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as stepGroupStories from './StepGroup.stories';
 
 const allStories = Object.values(composeStories(stepGroupStories)).filter(
   (Story) => Story.storyName !== 'StepGroupWithReactRouter',

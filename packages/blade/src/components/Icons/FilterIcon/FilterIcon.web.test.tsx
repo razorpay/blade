@@ -1,5 +1,6 @@
-import FilterIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import FilterIcon from './';
 
 describe('<FilterIcon />', () => {
   it('should render FilterIcon', () => {

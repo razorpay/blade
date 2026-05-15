@@ -1,5 +1,6 @@
-import type { AvatarProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { AvatarProps } from './types';
 
 const Avatar = (_props: AvatarProps): React.ReactElement => {
   throwBladeError({

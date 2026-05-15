@@ -1,5 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import AccessibilityInteropDemo from './AccessibilityInteropDemo';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 export default {
   title: 'Recipes/AccessibilityInterop',

@@ -1,7 +1,8 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
+
+import type { BoxProps } from '~components/Box';
 
 const MAX_WIDTH: BoxProps['maxWidth'] = {
   s: makeSize(Dimensions.get('window').width - size[40]),

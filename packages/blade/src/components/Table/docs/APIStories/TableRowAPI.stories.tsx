@@ -1,8 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TableData } from '../../types';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell } from '../../TableBody';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
@@ -10,6 +5,13 @@ import { Code } from '~components/Typography';
 import { Link } from '~components/Link';
 import { CopyIcon, TrashIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
+
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableBody, TableRow, TableCell } from '../../TableBody';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TableData } from '../../types';
 
 export default {
   title: 'Components/Table/API',

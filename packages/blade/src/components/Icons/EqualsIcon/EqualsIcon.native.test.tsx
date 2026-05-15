@@ -1,5 +1,6 @@
-import EqualsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EqualsIcon from '.';
 
 describe('<EqualsIcon />', () => {
   it('should render EqualsIcon', () => {

@@ -1,5 +1,6 @@
-import CompassIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CompassIcon from '.';
 
 describe('<CompassIcon />', () => {
   it('should render CompassIcon', () => {

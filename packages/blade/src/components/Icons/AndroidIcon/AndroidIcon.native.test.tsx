@@ -1,5 +1,6 @@
-import AndroidIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AndroidIcon from '.';
 
 describe('<AndroidIcon />', () => {
   it('should render AndroidIcon', () => {

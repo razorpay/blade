@@ -1,5 +1,6 @@
-import BugIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BugIcon from './';
 
 describe('<BugIcon />', () => {
   it('should render BugIcon', () => {

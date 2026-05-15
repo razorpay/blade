@@ -1,5 +1,6 @@
-import WindIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import WindIcon from './';
 
 describe('<WindIcon />', () => {
   it('should render WindIcon', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { SideNavSectionProps } from './types';
-import { classes } from './tokens';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
@@ -11,6 +10,10 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { makeBorderSize } from '~utils';
 import { BaseLink } from '~components/Link/BaseLink';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { classes } from './tokens';
+
+import type { SideNavSectionProps } from './types';
 
 const SideNavTitleDivider = styled(BaseBox)(({ theme }) => {
   return {

@@ -1,9 +1,7 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { Menu, MenuDivider, MenuItem, MenuOverlay, MenuHeader, MenuFooter } from '..';
-import type { MenuProps } from '..';
-import { CustomMenuItem, CustomMenuTrigger, MenuTrigger, navMenuItems } from './CustomMenu';
+
 import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -29,6 +27,11 @@ import { Alert } from '~components/Alert';
 import { List, ListItem, ListItemText } from '~components/List';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { BladeProvider } from '~components/BladeProvider';
+
+import { CustomMenuItem, CustomMenuTrigger, MenuTrigger, navMenuItems } from './CustomMenu';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { MenuProps } from '..';
 
 const Page = (): React.ReactElement => {
   return (

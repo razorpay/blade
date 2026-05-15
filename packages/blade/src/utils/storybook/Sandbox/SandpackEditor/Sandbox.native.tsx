@@ -1,11 +1,12 @@
 import dedent from 'dedent';
-import type { CodeViewerProps } from '@codesandbox/sandpack-react';
 import { ScrollView } from 'react-native';
-import type { RecipeSandboxProps, SandboxProps } from '../types';
 import { BaseText } from '~components/Typography/BaseText';
 import { Link } from '~components/Link';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { CodeViewerProps } from '@codesandbox/sandpack-react';
+import type { RecipeSandboxProps, SandboxProps } from '../types';
 
 // In React Native, the codesandbox doesn't work. So replacing it with normal text display for native
 function Sandbox({ children, uri }: SandboxProps): JSX.Element {

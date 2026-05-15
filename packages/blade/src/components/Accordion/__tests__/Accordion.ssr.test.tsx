@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
 
 describe('<Accordion />', () => {
   it('should render Accordion on server', () => {

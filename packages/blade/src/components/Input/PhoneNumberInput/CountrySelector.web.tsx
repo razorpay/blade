@@ -1,4 +1,3 @@
-import type { CountryCodeType, getFlagsForAllCountries } from '@razorpay/i18nify-js';
 import { getDialCodeByCountryCode, getFlagOfCountry } from '@razorpay/i18nify-js';
 import React from 'react';
 import { size as sizes } from '~tokens/global';
@@ -10,9 +9,11 @@ import {
   ActionListItemText,
 } from '~components/ActionList';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
-import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { useIsMobile } from '~utils/useIsMobile';
+
+import type { CountryCodeType, getFlagsForAllCountries } from '@razorpay/i18nify-js';
+import type { DropdownOverlayProps } from '~components/Dropdown';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 

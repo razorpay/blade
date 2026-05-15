@@ -1,21 +1,24 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { ListProvider, useListContext } from './ListContext';
-import { UnorderedList } from './UnorderedList';
-import { OrderedList } from './OrderedList';
-import type { ListItemProps } from './ListItem';
+
 import getIn from '~utils/lodashButBetter/get';
-import type { IconComponent, IconProps } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef, DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { makeAccessible } from '~utils/makeAccessible';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+
+import { ListProvider, useListContext } from './ListContext';
+import { UnorderedList } from './UnorderedList';
+import { OrderedList } from './OrderedList';
+
+import type { ListItemProps } from './ListItem';
+import type { IconComponent, IconProps } from '~components/Icons';
+import type { BladeElementRef, DotNotationSpacingStringToken, TestID } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type ListCommonProps = {
   /**

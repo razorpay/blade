@@ -1,6 +1,8 @@
-import type { SelectChevronIconProps } from './types';
-import { Chevron } from './Chevron';
 import BaseBox from '~components/Box/BaseBox';
+
+import { Chevron } from './Chevron';
+
+import type { SelectChevronIconProps } from './types';
 const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   return (
     <BaseBox

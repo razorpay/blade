@@ -1,8 +1,9 @@
-import type { ReactChild, ReactElement } from 'react';
 import React, { Fragment, useState, forwardRef } from 'react';
 
-import { StyledAlert } from './StyledAlert';
-import type { IconComponent } from '~components/Icons';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
@@ -10,26 +11,27 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
+
+import { StyledAlert } from './StyledAlert';
+
+import type { ReactChild, ReactElement } from 'react';
+import type { IconComponent } from '~components/Icons';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { SpacingValueType } from '~components/Box/BaseBox';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import type {
   DataAnalyticsAttribute,
   BladeElementRef,
   DotNotationSpacingStringToken,
   TestID,
 } from '~utils/types';
-import { makeAccessible } from '~utils/makeAccessible';
-import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type PrimaryAction = {
   text: string;

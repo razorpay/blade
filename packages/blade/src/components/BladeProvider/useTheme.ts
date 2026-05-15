@@ -1,9 +1,10 @@
 import { useContext, createContext } from 'react';
+import { throwBladeError } from '~utils/logger';
+
 import type { Theme } from './';
 import type { ThemeTokens } from '~tokens/theme';
 import type { UseColorScheme } from '~utils/useColorScheme';
 import type { TypographyPlatforms } from '~tokens/global';
-import { throwBladeError } from '~utils/logger';
 
 export type ThemeContext = UseColorScheme & {
   theme: Theme;

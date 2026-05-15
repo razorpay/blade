@@ -3,8 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import { Tag } from '../Tag';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import { Tag } from '../Tag';
 
 describe('<Tag />', () => {
   it('should render tag', () => {

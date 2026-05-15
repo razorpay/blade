@@ -1,6 +1,7 @@
+import { metaAttribute } from '~utils/metaAttribute';
+
 import type { ReactElement } from 'react';
 import type { Exact, PathProps } from './types';
-import { metaAttribute } from '~utils/metaAttribute';
 
 const Path = <Props extends Exact<PathProps, Props>>({
   d,

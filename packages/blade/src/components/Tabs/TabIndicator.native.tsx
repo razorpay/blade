@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { TabBarIndicatorProps } from 'react-native-tab-view';
 import { TabBarIndicator as RNTabBarIndicator } from 'react-native-tab-view';
-import { useTabsContext } from './TabsContext';
+
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+
+import { useTabsContext } from './TabsContext';
+
+import type { TabBarIndicatorProps } from 'react-native-tab-view';
 
 const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
   const { theme } = useTheme();

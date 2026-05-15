@@ -1,9 +1,11 @@
-import type { Meta } from '@storybook/react-vite';
-import type { BaseBoxProps } from './types';
-import { getBaseBoxArgTypes } from './storybookArgTypes';
-import { BaseBox } from '.';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography';
+
+import { getBaseBoxArgTypes } from './storybookArgTypes';
+import { BaseBox } from '.';
+
+import type { Meta } from '@storybook/react-vite';
+import type { BaseBoxProps } from './types';
 
 const BoxStoryMeta = {
   title: 'Components/Layout Primitives (Box)/Box/BaseBox (Internal)',

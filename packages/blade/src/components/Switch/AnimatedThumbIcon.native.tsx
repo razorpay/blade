@@ -5,11 +5,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { switchMotion } from './switchTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
-import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import Svg from '~components/Icons/_Svg';
+
+import { switchMotion } from './switchTokens';
+
+import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 
 const AnimatedThumbIcon = ({
   children,

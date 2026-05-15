@@ -1,5 +1,6 @@
-import FeatherIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import FeatherIcon from './';
 
 describe('<FeatherIcon />', () => {
   it('should render FeatherIcon', () => {

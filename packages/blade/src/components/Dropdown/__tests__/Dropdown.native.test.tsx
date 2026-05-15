@@ -1,13 +1,15 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { DropdownButton } from '../DropdownButton';
-import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
-import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
+
+import { DropdownButton } from '../DropdownButton';
+import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 
 describe('<Dropdown />', () => {
   it('should render dropdown', () => {

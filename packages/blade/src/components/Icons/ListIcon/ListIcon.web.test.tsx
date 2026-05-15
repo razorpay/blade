@@ -1,5 +1,6 @@
-import ListIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ListIcon from './';
 
 describe('<ListIcon />', () => {
   it('should render ListIcon', () => {

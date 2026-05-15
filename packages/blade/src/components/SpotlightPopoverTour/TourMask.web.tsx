@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
-import type { SpotlightPopoverTourMaskRect } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace } from '~utils';
@@ -11,6 +9,9 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { SpotlightPopoverTourMaskRect } from './types';
 
 const scaleIn = keyframes`
   from {

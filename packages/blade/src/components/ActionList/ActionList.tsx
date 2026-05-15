@@ -1,19 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+
+import { useDropdown } from '~components/Dropdown/useDropdown';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
 import { ActionListBox as ActionListNormalBox, ActionListVirtualizedBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { ActionListNoResults } from './ActionListNoResults';
-import { useDropdown } from '~components/Dropdown/useDropdown';
-import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
-import { makeAccessible } from '~utils/makeAccessible';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ActionListProps = {
   children: React.ReactNode[];

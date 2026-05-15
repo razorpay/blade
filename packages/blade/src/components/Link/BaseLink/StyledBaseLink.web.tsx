@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import getStyledLinkStyles from './getStyledLinkStyles';
-import type { StyledBaseLinkProps } from './types';
+
 import getIn from '~utils/lodashButBetter/get';
 import { castWebType } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
+
+import getStyledLinkStyles from './getStyledLinkStyles';
+
+import type { StyledBaseLinkProps } from './types';
 
 const StyledLink = styled.button
   .withConfig({

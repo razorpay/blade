@@ -1,5 +1,6 @@
-import AddressBookIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AddressBookIcon from '.';
 
 describe('<AddressBookIcon />', () => {
   it('should render AddressBookIcon', () => {
