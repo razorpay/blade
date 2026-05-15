@@ -1,0 +1,10 @@
+packages/blade/src/components/TopNav/TabNav/TabNav.web.tsx
+  947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T07:52:57.092Z 8,47-48,115
+packages/blade/src/components/TopNav/TabNav/TabNavIndicator.web.tsx
+  947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T09:03:07.099Z 7,32,54,71,74,179
+packages/blade/src/components/TopNav/TopNav.web.tsx
+  947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T09:02:35.126Z 4,21,97-112
+packages/blade/src/components/TopNav/docs/TopNav.stories.tsx
+  947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T08:29:04.424Z 526
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T07:52:57.092Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 4, "overriden_lines": 0}, "947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T09:03:07.099Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 6, "overriden_lines": 0}, "947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T09:02:35.126Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 18, "overriden_lines": 0}, "947926ea-3549-4e7c-8dba-df51c2f6c744:2026-04-28T08:29:04.424Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}}}
