@@ -93,7 +93,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       slots.bars.push({
         dataKey: props.dataKey as string,
         name: props.name as string | undefined,
-        color: props.color as DataColorMapping[string]['colorToken'] | undefined,
+        color: props.color,
         stackId: props.stackId as string | undefined,
         hide: props.hide,
       });
