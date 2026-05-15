@@ -21,6 +21,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { useMergeRefs } from '~utils/useMergeRefs';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
@@ -141,6 +142,16 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  const inputRef = useRef<BladeElementRef>(null);
+  const combinedRef = useMergeRefs(mergedRef, inputRef);
+
+  useEffect(() => {
+    if (autoFocus && inputRef.current instanceof HTMLElement) {
+      inputRef.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const fileScrollRef = useRef<HTMLDivElement>(null);
   const prevFileCountRef = useRef(files.length);
 
@@ -225,7 +236,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
-          ref={mergedRef}
+          ref={combinedRef}
           as="textarea"
           id="chat-input"
           elevation="highRaised"
@@ -240,7 +251,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onBlur={onBlur}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
-          autoFocus={autoFocus}
           isDisabled={isDisabled}
           numberOfLines={2}
           size="medium"
