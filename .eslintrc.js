@@ -6,7 +6,13 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false,
   },
-  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended', 'plugin:jsx-a11y/recommended', 'plugin:react-native-a11y/all'],
+  extends: [
+    'kentcdodds',
+    'kentcdodds/react',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-native-a11y/all',
+  ],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
@@ -26,6 +32,24 @@ module.exports = {
         alphabetize: {
           order: 'ignore',
         },
+        pathGroups: [
+          {
+            pattern: '~/**',
+            group: 'external',
+            position: 'after',
+          },
+        ],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'unknown',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
       },
     ],
     'import/extensions': ['error', 'never', { css: 'always' }],
@@ -55,29 +79,6 @@ module.exports = {
     jest: true,
   },
   settings: {
-    'import/order': [
-      'error',
-      {
-        pathGroups: [
-          {
-            pattern: '~/**',
-            group: 'external',
-            position: 'after',
-          },
-        ],
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'unknown',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type',
-        ],
-      },
-    ],
     'import/resolver': {
       node: {
         extensions: [
