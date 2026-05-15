@@ -3,14 +3,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 import dayjs from 'dayjs';
 import localeDataPlugin from 'dayjs/plugin/localeData';
 import { useI18nContext } from '@razorpay/i18nify-react';
-
-dayjs.extend(localeDataPlugin);
-import type {
-  DatePickerProps,
-  DateSelectionType,
-  DatesRangeValue,
-  DateValue,
-} from './types';
+import type { DatePickerProps, DateSelectionType, DatesRangeValue, DateValue } from './types';
 import { convertIntlToDayjsLocale } from './utils';
 import {
   BottomSheet,
@@ -26,6 +19,8 @@ import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '~components/Icons'
 import getIn from '~utils/lodashButBetter/get';
 import { useControllableState } from '~utils/useControllable';
 import { logger } from '~utils/logger';
+
+dayjs.extend(localeDataPlugin);
 
 type Preset = {
   label: string;
@@ -158,7 +153,7 @@ const Calendar = ({
   const isDisabled = (d: Date): boolean => {
     if (minDate && dayjs(d).isBefore(dayjs(minDate), 'day')) return true;
     if (maxDate && dayjs(d).isAfter(dayjs(maxDate), 'day')) return true;
-    if (excludeDate && excludeDate(d)) return true;
+    if (excludeDate?.(d)) return true;
     return false;
   };
 
@@ -419,7 +414,10 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
     : isSuccess
     ? (successText as string | undefined)
     : (helpText as string | undefined);
-  const helperRenderColor: 'feedback.text.negative.intense' | 'feedback.text.positive.intense' | 'surface.text.gray.muted' = isError
+  const helperRenderColor:
+    | 'feedback.text.negative.intense'
+    | 'feedback.text.positive.intense'
+    | 'surface.text.gray.muted' = isError
     ? 'feedback.text.negative.intense'
     : isSuccess
     ? 'feedback.text.positive.intense'
@@ -473,8 +471,8 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
     }
     const formatted = formatDateValue(innerValue, selectionType, format, localeName);
     return (
-      formatted ||
-      inputPlaceHolder ||
+      formatted ??
+      inputPlaceHolder ??
       (selectionType === 'range' ? 'Select date range' : 'Select date')
     );
   }, [
@@ -534,7 +532,7 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
   const hasValue = useMemo(() => {
     if (selectionType === 'range') {
       const [s, e] = toRange(innerValue);
-      return Boolean(s || e);
+      return Boolean(s ?? e);
     }
     return Boolean(toSingle(innerValue));
   }, [innerValue, selectionType]);
@@ -610,9 +608,7 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
 
       <BottomSheet isOpen={openInternal} onDismiss={close}>
         <BottomSheetHeader
-          title={
-            headerLabel ?? (selectionType === 'range' ? 'Select Date Range' : 'Select Date')
-          }
+          title={headerLabel ?? (selectionType === 'range' ? 'Select Date Range' : 'Select Date')}
         />
         <BottomSheetBody>
           <ScrollView showsVerticalScrollIndicator={false}>
