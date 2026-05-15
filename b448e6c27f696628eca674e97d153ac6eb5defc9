@@ -1,0 +1,4 @@
+.github/workflows/blade-lint-fix.yml
+  90e17a01-570a-41da-88a8-81773282bbae:2026-05-15T09:22:17.041Z 1,3,5-6,8-31
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"90e17a01-570a-41da-88a8-81773282bbae:2026-05-15T09:22:17.041Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 28, "overriden_lines": 0}}}
