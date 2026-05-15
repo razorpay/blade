@@ -15,6 +15,7 @@ import { castWebType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useMergeRefs } from '~utils/useMergeRefs';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
@@ -55,6 +56,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     validationState,
     errorText,
     onErrorDismiss,
+    hideFileUpload = false,
+    autoFocus = false,
     accessibilityLabel = 'Chat input',
     testID,
     ...rest
@@ -142,6 +145,16 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  const inputRef = useRef<BladeElementRef>(null);
+  const combinedRef = useMergeRefs(mergedRef, inputRef);
+
+  useEffect(() => {
+    if (autoFocus && inputRef.current instanceof HTMLElement) {
+      inputRef.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const fileScrollRef = useRef<HTMLDivElement>(null);
   const prevFileCountRef = useRef(files.length);
 
@@ -197,6 +210,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
+      hideFileUpload={hideFileUpload}
       onUploadClick={handleUploadClick}
       onSubmit={handleSubmit}
       onStop={onStop}
@@ -225,7 +239,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
-          ref={mergedRef}
+          ref={combinedRef}
           as="textarea"
           id="chat-input"
           elevation="highRaised"

@@ -123,6 +123,18 @@ type ChatInputProps = {
   onErrorDismiss?: () => void;
 
   /**
+   * Hides the file upload button in the action bar.
+   * @default false
+   */
+  hideFileUpload?: boolean;
+
+  /**
+   * When true, the input is automatically focused on mount.
+   * @default false
+   */
+  autoFocus?: boolean;
+
+  /**
    * Accessibility label for the input. Required when no visible label is present.
    */
   accessibilityLabel?: string;
