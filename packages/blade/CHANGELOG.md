@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.101.5
+
+### Patch Changes
+
+- ef481b003: feat(ChatInput): add hideFileUpload and autoFocus props
+
 ## 12.101.4
 
 ### Patch Changes
