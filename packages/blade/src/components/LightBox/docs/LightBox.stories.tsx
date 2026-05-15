@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -9,7 +8,6 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { LightBox } from '../LightBox';
 import { LightBoxBody } from '../LightBoxBody';
 import { LightBoxItem } from '../LightBoxItem';
-import type { LightBoxProps } from '../types';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -17,6 +15,8 @@ import { Preview, PreviewBody, PreviewFooter } from '~components/Preview';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { ArrowLeftIcon, ArrowRightIcon } from '~components/Icons';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { LightBoxProps } from '../types';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
