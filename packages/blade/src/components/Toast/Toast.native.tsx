@@ -117,11 +117,7 @@ const Toast = (
           {typeof content === 'string' ? (
             <Text
               size="medium"
-              color={
-                isPromotional
-                  ? 'surface.text.staticWhite.normal'
-                  : 'surface.text.gray.normal'
-              }
+              color={isPromotional ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal'}
             >
               {content}
             </Text>

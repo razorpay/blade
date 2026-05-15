@@ -6,9 +6,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Toast /> (native)', () => {
   it('renders a positive informational toast', () => {
-    const { toJSON } = renderWithTheme(
-      <Toast content="Saved successfully" color="positive" />,
-    );
+    const { toJSON } = renderWithTheme(<Toast content="Saved successfully" color="positive" />);
     expect(toJSON()).toMatchSnapshot();
   });
 

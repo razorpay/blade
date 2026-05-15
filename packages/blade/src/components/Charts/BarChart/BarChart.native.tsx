@@ -2,9 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Svg, Rect, Line, Text as SvgText, G } from 'react-native-svg';
 import { Pressable, View } from 'react-native';
 import type { GestureResponderEvent, LayoutChangeEvent } from 'react-native';
-import { BarChartContext } from './BarChartContext';
-import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
-import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
 import {
   CommonChartComponentsContext,
@@ -17,6 +14,9 @@ import type {
   ChartReferenceLineProps,
   ChartTooltipProps,
 } from '../CommonChartComponents';
+import { BarChartContext } from './BarChartContext';
+import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
+import type { ChartBarProps, ChartBarWrapperProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import { useTheme } from '~components/BladeProvider';
@@ -216,7 +216,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     const mapping: DataColorMapping = {};
     visibleBars.forEach((bar) => {
       mapping[bar.dataKey] = {
-        colorToken: bar.color as DataColorMapping[string]['colorToken'],
+        colorToken: bar.color!,
         isCustomColor: Boolean(bar.color),
       };
     });
@@ -228,7 +228,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     if (!slots.xSecondaryDataKey || !data?.length) return undefined;
     const map: Record<number, string | number | undefined> = {};
     data.forEach((row, index) => {
-      map[index] = row[slots.xSecondaryDataKey as string] as string | number | undefined;
+      map[index] = row[slots.xSecondaryDataKey!] as string | number | undefined;
     });
     return map;
   }, [data, slots.xSecondaryDataKey]);
@@ -329,21 +329,27 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       const rawValue = Number(activeRow[bar.dataKey]) || 0;
       const fillToken = dataColorMapping[bar.dataKey]?.colorToken ?? bar.color;
       const fillColor = fillToken ? getIn(theme.colors, fillToken) : tickColor;
-      let displayValue: string = String(rawValue);
-      let displayName: string = bar.name ?? bar.dataKey;
+      let displayValue = String(rawValue);
+      let label = bar.name ?? bar.dataKey;
       const formatter = slots.tooltipFormatter;
       if (formatter) {
         // Recharts' formatter signature is (value, name, item, index, payload) =>
         // string | [value, name]. Honor either shape on native.
         try {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const formatted = (formatter as any)(rawValue, bar.dataKey, undefined, activeIndex, activeRow);
+          const formatted = (formatter as any)(
+            rawValue,
+            bar.dataKey,
+            undefined,
+            activeIndex,
+            activeRow,
+          );
           if (Array.isArray(formatted)) {
             if (formatted[0] !== undefined && formatted[0] !== null) {
               displayValue = String(formatted[0]);
             }
             if (formatted[1] !== undefined && formatted[1] !== null) {
-              displayName = String(formatted[1]);
+              label = String(formatted[1]);
             }
           } else if (formatted !== undefined && formatted !== null) {
             displayValue = String(formatted);
@@ -356,7 +362,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         key: bar.dataKey,
         color: fillColor,
         displayValue,
-        displayName,
+        label,
       };
     });
   }, [
@@ -638,7 +644,10 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
               </Svg>
             ) : null}
 
-            {slots.hasTooltip && activeIndex !== undefined && tooltipRows.length > 0 && size.width > 0 ? (
+            {slots.hasTooltip &&
+            activeIndex !== undefined &&
+            tooltipRows.length > 0 &&
+            size.width > 0 ? (
               <View
                 pointerEvents="none"
                 style={{
@@ -690,7 +699,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                     />
                     <Box flex={1}>
                       <Text size="xsmall" color="surface.text.staticWhite.normal">
-                        {row.displayName}
+                        {row.label}
                       </Text>
                     </Box>
                     <Text size="xsmall" weight="semibold" color="surface.text.staticWhite.normal">
