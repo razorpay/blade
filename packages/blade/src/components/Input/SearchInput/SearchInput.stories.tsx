@@ -1,9 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import type { SearchInputProps } from './SearchInput';
-import { SearchInput as SearchInputComponent } from './SearchInput';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -42,6 +40,11 @@ import {
 import { Spinner } from '~components/Spinner';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Link } from '~components/Link';
+
+import { SearchInput as SearchInputComponent } from './SearchInput';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { SearchInputProps } from './SearchInput';
 
 const propsCategory = {
   BASE_PROPS: 'Search Input Props',

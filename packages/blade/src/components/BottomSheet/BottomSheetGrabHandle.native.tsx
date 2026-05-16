@@ -3,11 +3,13 @@
 // import { getBottomSheetGrabHandleStyles } from './getBottomSheetGrabHandleStyles';
 
 import styled from 'styled-components/native';
+
+import BaseBox from '~components/Box/BaseBox';
+
 import {
   getBottomSheetGrabHandleStyles,
   getHandlePartStyles,
 } from './getBottomSheetGrabHandleStyles';
-import BaseBox from '~components/Box/BaseBox';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 

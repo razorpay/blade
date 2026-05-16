@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import styled from 'styled-components';
 import React from 'react';
-import type { TabItemProps, TabsProps } from './types';
-import { paddingX, paddingTop, paddingBottom } from './tabTokens';
+
 import get from '~utils/lodashButBetter/get';
 import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+
+import { paddingX, paddingTop, paddingBottom } from './tabTokens';
+
+import type { TabItemProps, TabsProps } from './types';
 
 const StyledTabButton = styled(BaseBox)<{
   size: TabsProps['size'];

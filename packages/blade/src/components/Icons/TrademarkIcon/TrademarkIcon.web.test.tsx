@@ -1,5 +1,6 @@
-import TrademarkIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TrademarkIcon from './';
 
 describe('<TrademarkIcon />', () => {
   it('should render TrademarkIcon', () => {

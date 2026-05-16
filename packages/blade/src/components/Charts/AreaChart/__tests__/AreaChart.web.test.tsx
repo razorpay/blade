@@ -1,8 +1,10 @@
 import React from 'react';
-import { ChartArea, ChartAreaWrapper } from '../AreaChart.web';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { normalizeSnapshotIds } from '~utils/testing/normalizeSnapshotIds';
 import { Box } from '~components/Box/Box';
+
+import { ChartArea, ChartAreaWrapper } from '../AreaChart.web';
 
 const mockData = [
   { name: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },

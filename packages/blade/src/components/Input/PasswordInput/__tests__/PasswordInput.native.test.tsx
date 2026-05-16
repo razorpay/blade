@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 
 import { PasswordInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { ReactElement } from 'react';
 
 describe('<PasswordInput />', () => {
   it('should render', () => {

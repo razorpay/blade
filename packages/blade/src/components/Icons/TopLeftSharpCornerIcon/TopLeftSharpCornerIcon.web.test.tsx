@@ -1,5 +1,6 @@
-import TopLeftSharpCornerIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TopLeftSharpCornerIcon from './';
 
 describe('<TopLeftSharpCornerIcon />', () => {
   it('should render TopLeftSharpCornerIcon', () => {

@@ -1,5 +1,6 @@
-import AlertTriangleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AlertTriangleIcon from '.';
 
 describe('<AlertTriangleIcon />', () => {
   it('should render AlertTriangleIcon', () => {

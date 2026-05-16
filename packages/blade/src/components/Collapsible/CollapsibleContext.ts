@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
-import type { CollapsibleProps } from './Collapsible';
 import { throwBladeError } from '~utils/logger';
+
+import type { CollapsibleProps } from './Collapsible';
 
 type CollapsibleContextState = {
   isExpanded: boolean;

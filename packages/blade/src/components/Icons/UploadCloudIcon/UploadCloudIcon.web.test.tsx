@@ -1,5 +1,6 @@
-import UploadCloudIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import UploadCloudIcon from './';
 
 describe('<UploadCloudIcon />', () => {
   it('should render UploadCloudIcon', () => {

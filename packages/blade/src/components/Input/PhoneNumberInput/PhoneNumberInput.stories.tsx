@@ -1,10 +1,7 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { CountryCodeType } from '@razorpay/i18nify-js';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { PhoneNumberInputProps } from './types';
-import { PhoneNumberInput } from './PhoneNumberInput';
+
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
 import { InfoIcon, PhoneIcon } from '~components/Icons';
@@ -15,6 +12,12 @@ import iconMap from '~components/Icons/iconMap';
 import { Button } from '~components/Button';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Link } from '~components/Link';
+
+import { PhoneNumberInput } from './PhoneNumberInput';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { CountryCodeType } from '@razorpay/i18nify-js';
+import type { PhoneNumberInputProps } from './types';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',

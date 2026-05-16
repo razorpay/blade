@@ -2,11 +2,14 @@
 import { fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import type { BaseButtonProps } from '../BaseButton';
-import BaseButton from '../BaseButton';
+
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
+
+import BaseButton from '../BaseButton';
+
+import type { BaseButtonProps } from '../BaseButton';
 
 const variants: BaseButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 const colors: BaseButtonProps['color'][] = [

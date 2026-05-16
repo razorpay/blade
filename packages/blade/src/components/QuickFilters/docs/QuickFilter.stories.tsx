@@ -1,8 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { QuickFilterGroup } from '../QuickFilterGroup';
-import type { QuickFilterGroupProps } from '../types';
-import { QuickFilter } from '../QuickFilter';
+
 import { Heading } from '~components/Typography/Heading';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -13,6 +10,12 @@ import { Tooltip } from '~components/Tooltip';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
+
+import { QuickFilterGroup } from '../QuickFilterGroup';
+import { QuickFilter } from '../QuickFilter';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { QuickFilterGroupProps } from '../types';
 
 const Page = (): React.ReactElement => {
   return (

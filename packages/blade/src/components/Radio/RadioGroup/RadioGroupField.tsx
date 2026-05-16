@@ -1,7 +1,9 @@
 import React from 'react';
-import { useRadioGroupContext } from './RadioContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
+
+import { useRadioGroupContext } from './RadioContext';
 
 type RadioGroupFieldProps = {
   children: React.ReactNode;

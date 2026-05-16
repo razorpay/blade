@@ -1,6 +1,7 @@
-import BaseButton from '../BaseButton';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { CreditCardIcon } from '~components/Icons';
+
+import BaseButton from '../BaseButton';
 
 describe('<BaseButton />', () => {
   it('should render button with icon with left iconPosition', () => {

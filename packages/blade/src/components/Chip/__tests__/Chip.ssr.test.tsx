@@ -1,8 +1,10 @@
 import React from 'react';
-import { Chip } from '../Chip';
-import { ChipGroup } from '../ChipGroup';
+
 import { InfoIcon } from '~components/Icons';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
 
 describe('<Chip />', () => {
   it('should render with icon', () => {

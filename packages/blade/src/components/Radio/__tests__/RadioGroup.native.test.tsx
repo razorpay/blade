@@ -3,10 +3,13 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import type { ReactTestInstance } from 'react-test-renderer';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { ReactTestInstance } from 'react-test-renderer';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

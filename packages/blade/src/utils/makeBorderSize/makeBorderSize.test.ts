@@ -1,5 +1,6 @@
-import { makeBorderSize } from '.';
 import { border } from '~tokens/global';
+
+import { makeBorderSize } from '.';
 
 describe('makeBorderSize', () => {
   it('should return the border width in `px`', () => {

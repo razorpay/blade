@@ -1,5 +1,6 @@
-import AwardIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AwardIcon from './';
 
 describe('<AwardIcon />', () => {
   it('should render AwardIcon', () => {

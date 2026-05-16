@@ -1,5 +1,6 @@
-import AtSignIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AtSignIcon from '.';
 
 describe('<AtSignIcon />', () => {
   it('should render AtSignIcon', () => {

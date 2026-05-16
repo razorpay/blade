@@ -1,5 +1,6 @@
-import BellIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BellIcon from '.';
 
 describe('<BellIcon />', () => {
   it('should render BellIcon', () => {

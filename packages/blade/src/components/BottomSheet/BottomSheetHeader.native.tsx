@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { ComponentIds } from './componentIds';
-import { useBottomSheetContext } from './BottomSheetContext';
-import type { BottomSheetHeaderProps } from './types';
-import { BottomSheetEmptyHeader } from './BottomSheetCommon';
+
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { ComponentIds } from './componentIds';
+import { useBottomSheetContext } from './BottomSheetContext';
+import { BottomSheetEmptyHeader } from './BottomSheetCommon';
+
+import type { BottomSheetHeaderProps } from './types';
 
 const _BottomSheetHeader = ({
   title,

@@ -1,17 +1,20 @@
 import React from 'react';
-import { checkboxSizes } from '../checkboxTokens';
-import { CheckboxGroupProvider } from './CheckboxGroupContext';
-import { useCheckboxGroup } from './useCheckboxGroup';
+
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useBreakpoint } from '~utils';
-
 import { useTheme } from '~components/BladeProvider';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { checkboxSizes } from '../checkboxTokens';
+
+import { CheckboxGroupProvider } from './CheckboxGroupContext';
+import { useCheckboxGroup } from './useCheckboxGroup';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 type CheckboxGroupProps = {
   /**

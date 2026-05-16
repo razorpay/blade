@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { DatePickerType, PickerBaseProps } from '@mantine/dates';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useUncontrolledDates } from './useControlledDates';
+
+import type { DatePickerType, PickerBaseProps } from '@mantine/dates';
 
 interface UseDatesRangeInput<Type extends DatePickerType = 'default'>
   extends PickerBaseProps<Type> {

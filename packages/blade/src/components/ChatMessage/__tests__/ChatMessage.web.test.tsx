@@ -1,11 +1,13 @@
 import { fireEvent } from '@testing-library/react';
-import { ChatMessage } from '../ChatMessage.web';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { RayIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Radio, RadioGroup } from '~components/Radio';
+
+import { ChatMessage } from '../ChatMessage.web';
 
 describe('<ChatMessage/>', () => {
   it('should render last message correctly', () => {

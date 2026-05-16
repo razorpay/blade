@@ -1,14 +1,17 @@
 import React from 'react';
-import type { SelectInputProps } from './types';
-import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
+
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative } from '~utils';
-import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
+
+import type { SelectInputProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _SelectInput = (
   props: SelectInputProps,

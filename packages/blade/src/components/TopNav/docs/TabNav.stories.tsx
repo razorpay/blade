@@ -2,10 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { TabNavItemProps } from '../TabNav';
-import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
-import { tabNavExample } from './code';
+
 import { Box } from '~components/Box';
 import iconMap from '~components/Icons/iconMap';
 import {
@@ -23,6 +20,13 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { Alert } from '~components/Alert';
+
+import { TabNavItems, TabNav, TabNavItem } from '../TabNav';
+
+import { tabNavExample } from './code';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TabNavItemProps } from '../TabNav';
 
 const DocsPage = (): React.ReactElement => {
   return (

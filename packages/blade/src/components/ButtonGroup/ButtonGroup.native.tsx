@@ -1,5 +1,6 @@
-import type { ButtonGroupProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { ButtonGroupProps } from './types';
 
 const ButtonGroup = (_props: ButtonGroupProps): React.ReactElement => {
   throwBladeError({

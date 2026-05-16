@@ -1,5 +1,6 @@
-import PlusSquareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PlusSquareIcon from '.';
 
 describe('<PlusSquareIcon />', () => {
   it('should render PlusSquareIcon', () => {

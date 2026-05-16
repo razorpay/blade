@@ -1,7 +1,8 @@
+import { size } from '~tokens/global';
+
 import type { Theme } from '~components/BladeProvider';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import { size } from '~tokens/global';
 
 const radioSizes = {
   group: {

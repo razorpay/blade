@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { LightBoxItemProps } from './types';
 import { Box } from '~components/Box';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Carousel, CarouselItem } from '~components/Carousel';
+
+import type { LightBoxItemProps } from './types';
 
 type LightBoxMainViewProps = {
   items: LightBoxItemProps[];

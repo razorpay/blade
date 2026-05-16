@@ -10,12 +10,15 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import type { ProgressBarFilledProps } from './types';
-import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
+
+import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
+
+import type { ProgressBarFilledProps } from './types';
 
 const ProgressBarIndeterminateFilledContainer = styled(Animated.View)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>

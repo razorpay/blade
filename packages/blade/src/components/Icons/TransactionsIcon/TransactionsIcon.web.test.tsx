@@ -1,5 +1,6 @@
-import TransactionsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TransactionsIcon from './';
 
 describe('<TransactionsIcon />', () => {
   it('should render TransactionsIcon', () => {

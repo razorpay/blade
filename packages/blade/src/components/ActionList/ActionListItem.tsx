@@ -1,33 +1,36 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import styled from 'styled-components';
-import type { TouchableOpacity } from 'react-native';
-import { componentIds } from './componentIds';
-import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
-import { getActionListItemRole, getActionListSectionRole } from './getA11yRoles';
+
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import type { Platform } from '~utils';
 import { castWebType, isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
-import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { BaseMenuItem, useBaseMenuItem } from '~components/BaseMenu';
 import { Checkbox } from '~components/Checkbox';
-import type { AvatarProps } from '~components/Avatar/types';
 import { Avatar } from '~components/Avatar';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { componentIds } from './componentIds';
+import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
+import { getActionListItemRole, getActionListSectionRole } from './getA11yRoles';
+
+import type { TouchableOpacity } from 'react-native';
+import type { IconComponent } from '~components/Icons';
+import type { FeedbackColors } from '~tokens/theme/theme';
+import type { Platform } from '~utils';
+import type { DataAnalyticsAttribute, StringChildrenType, TestID } from '~utils/types';
+import type { BadgeProps } from '~components/Badge';
+import type { AvatarProps } from '~components/Avatar/types';
 
 type ActionListItemProps = {
   title: string;

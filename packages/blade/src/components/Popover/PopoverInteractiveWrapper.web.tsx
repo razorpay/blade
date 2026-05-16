@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import React from 'react';
-import { usePopoverContext } from './PopoverContext';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { usePopoverContext } from './PopoverContext';
+
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
 const StyledPopoverInteractiveWrapper = styled.button((props) => {

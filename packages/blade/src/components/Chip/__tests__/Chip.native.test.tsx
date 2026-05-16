@@ -1,9 +1,11 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
-import { Chip } from '../Chip';
-import { ChipGroup } from '../ChipGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

@@ -1,5 +1,6 @@
-import ListSearchIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ListSearchIcon from './';
 
 describe('<ListSearchIcon />', () => {
   it('should render ListSearchIcon', () => {

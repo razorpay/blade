@@ -1,5 +1,6 @@
-import type { BoxProps } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
+
+import type { BoxProps } from '~components/Box';
 
 export const FadeSandbox = ({ padding }: { padding?: BoxProps['padding'] }): React.ReactElement => {
   return (

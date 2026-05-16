@@ -1,19 +1,22 @@
 import React from 'react';
-import { StyledCounter } from './StyledCounter';
-import type { StyledCounterProps } from './types';
-import { counterHeight, counterMinWidth, horizontalPadding } from './counterTokens';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { isReactNative, makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { StyledCounter } from './StyledCounter';
+import { counterHeight, counterMinWidth, horizontalPadding } from './counterTokens';
+
+import type { StyledCounterProps } from './types';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 
 export type CounterProps = {
   /**

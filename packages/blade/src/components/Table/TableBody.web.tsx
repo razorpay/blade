@@ -2,24 +2,9 @@ import React, { useEffect, useMemo } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import { Virtualized } from '@table-library/react-table-library/virtualized';
 import styled from 'styled-components';
-import { useTableContext } from './TableContext';
-import { checkboxCellWidth, classes, tableRow } from './tokens';
-import { ComponentIds } from './componentIds';
-import type {
-  TableProps,
-  TableBodyProps,
-  TableRowProps,
-  TableCellProps,
-  TableBackgroundColors,
-  VirtualizedWrapperProps,
-  RowHeightType,
-  TableNode,
-} from './types';
-import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
-import { getTableBodyStyles } from './commonStyles';
+
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
-import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { getMediaQuery, makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
@@ -30,6 +15,24 @@ import { size } from '~tokens/global';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useTableContext } from './TableContext';
+import { checkboxCellWidth, classes, tableRow } from './tokens';
+import { ComponentIds } from './componentIds';
+import { getTableActionsHoverStyles, getTableRowBackgroundTransition } from './utils';
+import { getTableBodyStyles } from './commonStyles';
+
+import type {
+  TableProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableBackgroundColors,
+  VirtualizedWrapperProps,
+  RowHeightType,
+  TableNode,
+} from './types';
+import type { CheckboxProps } from '~components/Checkbox';
 const StyledBody = styled(Body)<{
   $isSelectable: boolean;
   $showStripedRows: boolean;

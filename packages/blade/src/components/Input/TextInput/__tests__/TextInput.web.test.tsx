@@ -1,14 +1,16 @@
 import userEvent from '@testing-library/user-event';
-
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import { screen, waitFor } from '@testing-library/react';
-import { TextInput } from '../';
+
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
+
+import { TextInput } from '../';
+
+import type { ReactElement } from 'react';
 
 const getTag = (tagName: string): HTMLElement => {
   return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];

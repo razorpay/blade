@@ -1,5 +1,6 @@
-import FlaskIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import FlaskIcon from './';
 
 describe('<FlaskIcon />', () => {
   it('should render FlaskIcon', () => {

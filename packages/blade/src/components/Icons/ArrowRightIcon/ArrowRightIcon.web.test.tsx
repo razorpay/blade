@@ -1,5 +1,6 @@
-import ArrowRightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ArrowRightIcon from './';
 
 describe('<ArrowRightIcon />', () => {
   it('should render ArrowRightIcon', () => {

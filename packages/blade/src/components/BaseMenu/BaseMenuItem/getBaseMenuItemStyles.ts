@@ -1,7 +1,7 @@
-import type { CSSObject } from 'styled-components';
-import type { Theme } from '~components/BladeProvider';
 import { isReactNative, makeBorderSize } from '~utils';
 import { makeSize } from '~utils/makeSize';
+import type { CSSObject } from 'styled-components';
+import type { Theme } from '~components/BladeProvider';
 
 const getBaseMenuItemStyles = (props: { theme: Theme }): CSSObject => {
   return {

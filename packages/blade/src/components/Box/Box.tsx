@@ -1,13 +1,16 @@
 import React from 'react';
-import BaseBox from './BaseBox';
-import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
-import { validBoxAsValues } from './BaseBox/types/propsTypes';
-import type { KeysRequired } from '~utils/types';
+
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import BaseBox from './BaseBox';
+import { validBoxAsValues } from './BaseBox/types/propsTypes';
+
+import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
+import type { KeysRequired } from '~utils/types';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (__DEV__) {

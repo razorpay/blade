@@ -1,17 +1,20 @@
 import React from 'react';
-import { chipGroupLabelSizeTokens, chipGroupGapTokens } from './chipTokens';
-import { ChipGroupProvider } from './ChipGroupContext';
-import { useChipGroup } from './useChipGroup';
-import type { ChipGroupProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import type { BladeElementRef } from '~utils/types';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { chipGroupLabelSizeTokens, chipGroupGapTokens } from './chipTokens';
+import { ChipGroupProvider } from './ChipGroupContext';
+import { useChipGroup } from './useChipGroup';
+
+import type { ChipGroupProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const _ChipGroup = (
   {

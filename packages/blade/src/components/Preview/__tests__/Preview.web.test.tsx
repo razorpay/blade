@@ -1,6 +1,7 @@
-import { Preview, PreviewBody, PreviewFooter, PreviewHeader } from '../Preview.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
+
+import { Preview, PreviewBody, PreviewFooter, PreviewHeader } from '../Preview.web';
 
 describe('<PreviewWindow/>', () => {
   it('should render preview window correctly', () => {

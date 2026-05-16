@@ -3,9 +3,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import styled from 'styled-components';
-import { useTopNavContext } from '../TopNavContext';
-import type { TabNavItemProps, TabNavIconProp } from './types';
-import { useTabNavContext } from './TabNavContext';
+
 import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { opacity } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -16,9 +14,15 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useTheme } from '~components/BladeProvider';
+import { RayIcon } from '~components/Icons';
+
+import { useTopNavContext } from '../TopNavContext';
+
+import { useTabNavContext } from './TabNavContext';
+
+import type { TabNavItemProps, TabNavIconProp } from './types';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import { RayIcon } from '~components/Icons';
 
 const isIconObjectProp = (
   icon: TabNavIconProp,

@@ -2,17 +2,20 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
 import React, { useEffect } from 'react';
-import { useDropdown } from './useDropdown';
-import { dropdownComponentIds } from './dropdownComponentIds';
-import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
-import type { DataAnalyticsAttribute } from '~utils/types';
+
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
-import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import { useId } from '~utils/useId';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFirstRender } from '~utils/useFirstRender';
+
+import { useDropdown } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
+import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
+
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BaseFilterChipProps } from '~components/FilterChip/types';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,

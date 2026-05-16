@@ -1,4 +1,3 @@
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import dedent from 'dedent';
 import { z } from 'zod';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
@@ -8,6 +7,8 @@ import {
   stringifyChangelog,
 } from '../utils/changelogParser.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 const getChangelogToolName = 'get_blade_changelog';
 

@@ -1,8 +1,10 @@
 import React from 'react';
-import { ChartDonutWrapper, ChartDonut, ChartDonutCell } from '../DonutChart';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box/Box';
+
+import { ChartDonutWrapper, ChartDonut, ChartDonutCell } from '../DonutChart';
 
 const mockData = [
   { name: 'Desktop', value: 400, color: '#0088FE' },

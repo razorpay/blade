@@ -1,5 +1,6 @@
-import type { BaseFilterChipProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { BaseFilterChipProps } from './types';
 
 const BaseFilterChip = (_props: BaseFilterChipProps): React.ReactElement => {
   throwBladeError({

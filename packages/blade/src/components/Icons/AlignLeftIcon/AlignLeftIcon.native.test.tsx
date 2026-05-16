@@ -1,5 +1,6 @@
-import AlignLeftIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AlignLeftIcon from '.';
 
 describe('<AlignLeftIcon />', () => {
   it('should render AlignLeftIcon', () => {

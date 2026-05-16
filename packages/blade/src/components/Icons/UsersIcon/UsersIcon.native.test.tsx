@@ -1,5 +1,6 @@
-import UsersIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import UsersIcon from '.';
 
 describe('<UsersIcon />', () => {
   it('should render UsersIcon', () => {

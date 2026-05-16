@@ -1,5 +1,6 @@
-import WhatsAppIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import WhatsAppIcon from './';
 
 describe('<WhatsAppIcon />', () => {
   it('should render WhatsAppIcon', () => {

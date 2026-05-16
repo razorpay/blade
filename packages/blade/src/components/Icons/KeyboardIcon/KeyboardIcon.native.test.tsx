@@ -1,5 +1,6 @@
-import KeyboardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import KeyboardIcon from '.';
 
 describe('<KeyboardIcon />', () => {
   it('should render KeyboardIcon', () => {

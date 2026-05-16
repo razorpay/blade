@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { componentIds } from './constants';
+
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { componentIds } from './constants';
+
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BoxProps } from '~components/Box';
 
 type ModalBodyProps = {

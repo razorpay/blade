@@ -1,12 +1,13 @@
 import React from 'react';
 import { metaAttribute } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import type { AriaRoles } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getPlatformType, useBreakpoint } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
+
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { AriaRoles } from '~utils/makeAccessible';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;

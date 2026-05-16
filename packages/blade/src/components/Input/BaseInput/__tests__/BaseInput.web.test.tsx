@@ -1,12 +1,13 @@
 import userEvent from '@testing-library/user-event';
 
-import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { BaseInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+
+import type { ReactElement } from 'react';
 
 describe('<BaseInput />', () => {
   it('should render', () => {

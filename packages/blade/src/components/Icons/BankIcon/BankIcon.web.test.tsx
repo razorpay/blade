@@ -1,5 +1,6 @@
-import BankIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BankIcon from '.';
 
 describe('<BankIcon />', () => {
   it('should render CloseIcon', () => {

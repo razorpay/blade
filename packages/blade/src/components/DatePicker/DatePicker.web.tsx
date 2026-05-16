@@ -1,6 +1,7 @@
 import React from 'react';
-import type { DatePickerProps, DateSelectionType } from './types';
 import { BaseDatePicker } from './BaseDatePicker.web';
+
+import type { DatePickerProps, DateSelectionType } from './types';
 
 const DatePicker = <Type extends DateSelectionType = 'single'>(
   props: DatePickerProps<Type>,

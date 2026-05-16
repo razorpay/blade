@@ -7,8 +7,9 @@
  * Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang)
  */
 
-import type { DropdownContextType, OptionsType } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { DropdownContextType, OptionsType } from './useDropdown';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export type SelectActionsType =

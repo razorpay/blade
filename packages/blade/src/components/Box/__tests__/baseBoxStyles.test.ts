@@ -1,10 +1,11 @@
+import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme';
+
 import {
   getSpacingValue,
   getColorValue,
   getBaseBoxStyles,
   getBorderRadiusValue,
 } from '../BaseBox/baseBoxStyles';
-import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme';
 
 export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>
   JSON.parse(JSON.stringify(props));

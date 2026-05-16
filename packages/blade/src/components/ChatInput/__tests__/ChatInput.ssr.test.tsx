@@ -1,5 +1,6 @@
-import { ChatInput } from '../index';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { ChatInput } from '../index';
 
 describe('<ChatInput />', () => {
   it('should render ChatInput', () => {

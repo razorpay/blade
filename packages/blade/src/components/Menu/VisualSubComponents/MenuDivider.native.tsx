@@ -1,6 +1,7 @@
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 const MenuDivider = (_styledProps: StyledPropsBlade): React.ReactElement => {
   throwBladeError({

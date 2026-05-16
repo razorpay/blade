@@ -1,9 +1,11 @@
 import React from 'react';
-import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '../InfoGroup';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { UserIcon, BankIcon } from '~components/Icons';
 import { Amount } from '~components/Amount';
 import { Badge } from '~components/Badge';
+
+import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '../InfoGroup';
 
 describe('<InfoGroup />', () => {
   it('should render InfoGroup on server', () => {

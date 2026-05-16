@@ -1,11 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, waitFor, expect } from 'storybook/test';
-import type { SideNav } from '../index';
-import { SideNavExample } from './SideNavExample';
+
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+
+import { SideNavExample } from './SideNavExample';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { SideNav } from '../index';
 
 // Keeping the mobile test in different file because storybook's test runner is not able to change the viewport before running test
 // With different file, we ignore running this file in test runner

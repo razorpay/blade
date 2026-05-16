@@ -1,5 +1,6 @@
-import BarChartAltIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BarChartAltIcon from './';
 
 describe('<BarChartAltIcon />', () => {
   it('should render BarChartAltIcon', () => {

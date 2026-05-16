@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useMemo } from 'react';
-import type { GenUIAction, GenUIComponentRegistry } from './types';
 import { createBuiltInRegistry } from './GenUIComponents';
 import { GenUIContext } from './GenUIContext';
+
+import type { GenUIAction, GenUIComponentRegistry } from './types';
 import type { GenUIContextValue } from './GenUIContext';
 
 /**

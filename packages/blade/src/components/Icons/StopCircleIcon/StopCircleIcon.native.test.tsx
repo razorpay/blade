@@ -1,5 +1,6 @@
-import StopCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import StopCircleIcon from '.';
 
 describe('<StopCircleIcon />', () => {
   it('should render StopCircleIcon', () => {

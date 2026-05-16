@@ -1,8 +1,10 @@
-import type { CSSObject } from 'styled-components';
-import type { AnimatedChipProps } from './types';
-import { chipBorderRadiusTokens } from './chipTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { makeBorderSize } from '~utils/makeBorderSize';
+
+import { chipBorderRadiusTokens } from './chipTokens';
+
+import type { CSSObject } from 'styled-components';
+import type { AnimatedChipProps } from './types';
 
 const getAnimatedChipStyles = ({
   theme,

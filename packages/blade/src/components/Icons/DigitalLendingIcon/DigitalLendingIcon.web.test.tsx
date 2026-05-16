@@ -1,5 +1,6 @@
-import DigitalLendingIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DigitalLendingIcon from './';
 
 describe('<DigitalLendingIcon />', () => {
   it('should render DigitalLendingIcon', () => {

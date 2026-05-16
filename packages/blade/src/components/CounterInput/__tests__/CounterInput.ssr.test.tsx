@@ -2,8 +2,9 @@
  * @jest-environment node
  */
 
-import { CounterInput } from '../CounterInput';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { CounterInput } from '../CounterInput';
 
 describe('<CounterInput />', () => {
   it('should render CounterInput with default properties', () => {

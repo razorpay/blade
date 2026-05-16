@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
-import { Stagger } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Fade } from '~components/Fade';
 import { Text } from '~components/Typography';
+
+import { Stagger } from '../index';
 
 describe('<Stagger />', () => {
   it('should render its children as expected', () => {

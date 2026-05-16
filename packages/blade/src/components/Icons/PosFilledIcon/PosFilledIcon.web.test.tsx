@@ -1,5 +1,6 @@
-import PosFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PosFilledIcon from './';
 
 describe('<PosFilledIcon />', () => {
   it('should render PosFilledIcon', () => {

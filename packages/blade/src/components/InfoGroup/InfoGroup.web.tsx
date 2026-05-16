@@ -1,12 +1,16 @@
 import React from 'react';
-import type { ReactElement } from 'react';
-import type {
-  InfoGroupProps,
-  InfoItemProps,
-  InfoItemKeyProps,
-  InfoItemValueProps,
-  TitleCollectionProps,
-} from './types';
+
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils';
+import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
+
 import {
   elementGap,
   titleTextSize,
@@ -16,19 +20,18 @@ import {
   avatarAdjustmentPaddingY,
 } from './infoGroupTokens';
 import { InfoGroupContext, useInfoGroup, InfoItemContext, useInfoItem } from './InfoGroupContext';
-import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getStyledProps } from '~components/Box/styledProps';
+
+import type { ReactElement } from 'react';
+import type {
+  InfoGroupProps,
+  InfoItemProps,
+  InfoItemKeyProps,
+  InfoItemValueProps,
+  TitleCollectionProps,
+} from './types';
 import type { BladeElementRef } from '~utils/types';
 import type { IconComponent } from '~components/Icons';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSize } from '~utils';
 import type { BoxProps } from '~components/Box';
-import { Divider } from '~components/Divider';
-import { getComponentId } from '~utils/isValidAllowedChildren';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { useTruncationTitle } from '~utils/useTruncationTitle';
 
 const getCenterBoxProps = (
   size: NonNullable<InfoGroupProps['size']>,

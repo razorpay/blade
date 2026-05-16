@@ -1,5 +1,6 @@
-import type { TooltipProps } from '~components/Tooltip';
 import { Tooltip } from '~components/Tooltip';
+
+import type { TooltipProps } from '~components/Tooltip';
 
 type TooltipifyComponentProps = {
   children: React.ReactElement;

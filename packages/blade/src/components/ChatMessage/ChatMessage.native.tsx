@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ChatMessageProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChatMessageProps } from './types';
 
 const ChatMessage = (_prop: ChatMessageProps): React.ReactElement => {
   throwBladeError({

@@ -1,5 +1,6 @@
-import EngageIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import EngageIcon from './';
 
 describe('<EngageIcon />', () => {
   it('should render EngageIcon', () => {

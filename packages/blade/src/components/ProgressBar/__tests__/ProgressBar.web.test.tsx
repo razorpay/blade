@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { ProgressBar } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
+
+import { ProgressBar } from '../';
 
 const colors = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
 const variants = ['linear', 'circular'] as const;

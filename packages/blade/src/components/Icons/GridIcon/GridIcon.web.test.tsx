@@ -1,5 +1,6 @@
-import GridIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import GridIcon from './';
 
 describe('<GridIcon />', () => {
   it('should render GridIcon', () => {

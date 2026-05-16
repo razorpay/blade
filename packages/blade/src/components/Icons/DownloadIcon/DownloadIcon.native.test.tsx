@@ -1,5 +1,6 @@
-import DownloadIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import DownloadIcon from '.';
 
 describe('<DownloadIcon />', () => {
   it('should render DownloadIcon', () => {

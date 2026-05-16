@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import type { AvatarButtonProps } from './types';
-import { avatarSizeTokens, avatarColorTokens, avatarBorderRadiusTokens } from './avatarTokens';
+
 import { makeBorderSize, makeSize } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { avatarSizeTokens, avatarColorTokens, avatarBorderRadiusTokens } from './avatarTokens';
+
+import type { AvatarButtonProps } from './types';
 
 const StyledAvatarButton = styled.button<AvatarButtonProps & { isInteractive?: boolean }>(
   ({

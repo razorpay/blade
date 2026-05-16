@@ -1,8 +1,11 @@
 import { useState, useCallback } from 'react';
-import { getColorScheme } from '../getColorScheme';
+
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
-import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
 import { throwBladeError } from '~utils/logger';
+
+import { getColorScheme } from '../getColorScheme';
+
+import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
 
 export type UseColorScheme = {
   colorScheme: ColorSchemeNames;

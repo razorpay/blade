@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import type { CSSProperties } from 'react';
 import styled from 'styled-components/native';
-import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -10,14 +8,19 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import type { View } from 'react-native';
-import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
-import type { TooltipContentWrapperProps } from './types';
-import type { ColorSchemeNames } from '~tokens/theme/theme';
+
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { castNativeType } from '~utils';
+
+import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
+
+import type { CSSProperties } from 'react';
+import type { EasingFn } from 'react-native-reanimated';
+import type { View } from 'react-native';
+import type { TooltipContentWrapperProps } from './types';
+import type { ColorSchemeNames } from '~tokens/theme/theme';
 
 const StyledTooltipContentWrapper = styled(BaseBox)<{
   collapse?: boolean;

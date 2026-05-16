@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
 import React from 'react';
-import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
-import { useBottomSheetContext } from './BottomSheetContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
-import type { BladeElementRef } from '~utils/types';
 import { isReactNative } from '~utils';
 import { size } from '~tokens/global';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
+
+import { useBottomSheetContext } from './BottomSheetContext';
+
+import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
+import type { BladeElementRef } from '~utils/types';
 
 type BottomSheetEmptyHeaderProps = Pick<
   ReactDOMAttributes,

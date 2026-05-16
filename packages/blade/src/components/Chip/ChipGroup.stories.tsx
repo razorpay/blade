@@ -1,8 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import type { ChipGroupProps } from './ChipGroup';
-import { ChipGroup as ChipGroupComponent } from './ChipGroup';
-import { Chip as ChipComponent } from './Chip';
+
 import { Heading, Text, Code } from '~components/Typography';
 import {
   PaymentLinksIcon,
@@ -16,6 +13,12 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
+
+import { ChipGroup as ChipGroupComponent } from './ChipGroup';
+import { Chip as ChipComponent } from './Chip';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ChipGroupProps } from './ChipGroup';
 // import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 // import { ActionList, ActionListItem } from '~components/ActionList';
 import type { BladeElementRef } from '~utils/types';

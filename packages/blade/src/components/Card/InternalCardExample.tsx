@@ -1,5 +1,9 @@
 // Hidden example. It is  used in motion stories
 import React from 'react';
+
+import { Text } from '~components/Typography';
+import { CheckCircleIcon } from '~components/Icons';
+
 import {
   CardBody,
   Card,
@@ -12,9 +16,8 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '.';
+
 import type { CardProps } from '.';
-import { Text } from '~components/Typography';
-import { CheckCircleIcon } from '~components/Icons';
 
 export const InternalCardExample = React.forwardRef(
   ({ elevation = 'lowRaised' }: Partial<CardProps>, ref) => {

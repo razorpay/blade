@@ -1,6 +1,19 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
+
+import { Sandbox } from '~utils/storybook/Sandbox';
+import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListItemText,
+  ActionListSection,
+} from '~components/ActionList';
+import { HomeIcon } from '~components/Icons';
+import { Button } from '~components/Button';
+import { Box } from '~components/Box';
+
 import {
   getSimpleSelectCode,
   WithAutoPositioningSelectStory,
@@ -15,18 +28,7 @@ import {
   WithSizesStory,
 } from './stories';
 
-import { Sandbox } from '~utils/storybook/Sandbox';
-import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
-import {
-  ActionList,
-  ActionListItem,
-  ActionListItemIcon,
-  ActionListItemText,
-  ActionListSection,
-} from '~components/ActionList';
-import { HomeIcon } from '~components/Icons';
-import { Button } from '~components/Button';
-import { Box } from '~components/Box';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',

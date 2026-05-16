@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs/blocks';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import type { SwitchProps } from './';
-import { Switch as SwitchComponent } from './';
+
 import { Text } from '~components/Typography';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
@@ -15,8 +13,13 @@ import { Alert } from '~components/Alert';
 import { Link } from '~components/Link';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import type { BladeElementRef } from '~utils/types';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Switch as SwitchComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { SwitchProps } from './';
+import type { BladeElementRef } from '~utils/types';
 
 const Page = (): React.ReactElement => {
   return (

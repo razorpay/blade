@@ -2,10 +2,13 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Linking } from 'react-native';
-import type { ButtonProps } from '../Button';
-import Button from '../Button';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CreditCardIcon } from '~components/Icons';
+
+import Button from '../Button';
+
+import type { ButtonProps } from '../Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

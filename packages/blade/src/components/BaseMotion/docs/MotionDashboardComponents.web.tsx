@@ -12,9 +12,7 @@ import {
   TabNavItem,
   TabNav,
 } from '~components/TopNav';
-import type { TabNavItemProps } from '~components/TopNav';
 import { Box } from '~components/Box';
-import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 import {
   SideNav,
   SideNavBody,
@@ -54,6 +52,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { Slide } from '~components/Slide';
 import { Move } from '~components/Move';
 import { Spinner } from '~components/Spinner';
+
+import type { TabNavItemProps } from '~components/TopNav';
+import type { SideNavLinkProps, SideNavProps } from '~components/SideNav';
 
 const isItemActive = (
   location: { pathname: string },

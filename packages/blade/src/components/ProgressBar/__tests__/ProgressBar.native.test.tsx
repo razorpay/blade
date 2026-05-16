@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { ProgressBar } from '../ProgressBar';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
+
+import { ProgressBar } from '../ProgressBar';
 
 const colors = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
 const variants = ['linear', 'circular'] as const;

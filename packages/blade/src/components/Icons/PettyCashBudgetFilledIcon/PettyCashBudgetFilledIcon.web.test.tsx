@@ -1,5 +1,6 @@
-import PettyCashBudgetFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PettyCashBudgetFilledIcon from './';
 
 describe('<PettyCashBudgetFilledIcon />', () => {
   it('should render PettyCashBudgetFilledIcon', () => {

@@ -1,15 +1,18 @@
-import type { ReactElement } from 'react';
 import { useCallback } from 'react';
+
+import { BaseLink } from '~components/Link/BaseLink';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
 import { componentIds } from './componentIds';
+
+import type { ReactElement } from 'react';
 import type { LinkProps } from '~components/Link';
-import { BaseLink } from '~components/Link/BaseLink';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getStyledProps } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,

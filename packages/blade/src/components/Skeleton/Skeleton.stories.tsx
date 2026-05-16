@@ -1,7 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import type { SkeletonProps } from './';
-import { Skeleton, Skeleton as SkeletonComponent } from './';
+
 import {
   Card,
   CardBody,
@@ -23,6 +21,11 @@ import { List, ListItem, ListItemCode } from '~components/List';
 import { isReactNative } from '~utils';
 import { motion } from '~tokens/global';
 import { kebabCase } from '~utils/lodashButBetter/kebabCase';
+
+import { Skeleton, Skeleton as SkeletonComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { SkeletonProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

@@ -16,11 +16,7 @@ import {
   autoUpdate,
 } from '@floating-ui/react';
 import React from 'react';
-import type { TooltipProps } from './types';
-import { TooltipContent } from './TooltipContent';
-import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { TooltipContext } from './TooltipContext';
-import { componentIds } from './componentIds';
+
 import { PopupArrow } from '~components/PopupArrow/PopupArrow.web';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -34,6 +30,13 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useMergeRefs } from '~utils/useMergeRefs';
+
+import { TooltipContent } from './TooltipContent';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { TooltipContext } from './TooltipContext';
+import { componentIds } from './componentIds';
+
+import type { TooltipProps } from './types';
 
 const _Tooltip = ({
   title,

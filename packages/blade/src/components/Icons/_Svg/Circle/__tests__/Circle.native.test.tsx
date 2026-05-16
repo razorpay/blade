@@ -1,6 +1,8 @@
 import Circle from '..';
-import Svg from '../../Svg';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import Svg from '../../Svg';
 
 describe('<Circle />', () => {
   it('should render react-native-svg Circle component', () => {

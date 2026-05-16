@@ -1,14 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
-import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
-import type { DatesRangeValue, DateValue } from '../types';
-import { DatePicker as DatePickerComponent } from '../';
+
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+
+import { DatePicker as DatePickerComponent } from '../';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { Mock } from '@vitest/spy';
+import type { DatesRangeValue, DateValue } from '../types';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

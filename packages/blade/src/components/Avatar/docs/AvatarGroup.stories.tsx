@@ -1,12 +1,14 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import { Avatar as AvatarComponent } from '../Avatar';
-import type { AvatarGroupProps } from '../AvatarGroup';
-import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Avatar as AvatarComponent } from '../Avatar';
+import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { AvatarGroupProps } from '../AvatarGroup';
 
 const Page = (): React.ReactElement => {
   return (

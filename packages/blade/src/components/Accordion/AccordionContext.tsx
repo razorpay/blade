@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
-import type { AccordionProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { AccordionProps } from './types';
 
 type AccordionContextState = {
   expandedIndex?: number;

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import type { DatesRangeValue } from '../types';
 import { isSamePreset } from './utils';
+
+import type { DatesRangeValue } from '../types';
 import type { PresetState, UsePresetStateProps, UsePresetStateReturn } from './types';
 
 export const usePresetState = ({

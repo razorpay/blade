@@ -4,27 +4,15 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-no-useless-fragment */
-import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
-import { Indicators } from './Indicators/Indicators';
-import { NavigationButton } from './NavigationButton';
-import type { CarouselProps } from './types';
-import type { CarouselContextProps } from './CarouselContext';
-import { CarouselContext } from './CarouselContext';
-import { getCarouselItemId } from './utils';
-import {
-  CAROUSEL_AUTOPLAY_INTERVAL,
-  componentIds,
-  CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
-} from './constants';
+
 import getIn from '~utils/lodashButBetter/get';
 import throttle from '~utils/lodashButBetter/throttle';
 import debounce from '~utils/lodashButBetter/debounce';
 import { castWebType, makeMotionTime, useInterval } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -35,6 +23,21 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useDidUpdate } from '~utils/useDidUpdate';
+
+import { Indicators } from './Indicators/Indicators';
+import { NavigationButton } from './NavigationButton';
+import { CarouselContext } from './CarouselContext';
+import { getCarouselItemId } from './utils';
+import {
+  CAROUSEL_AUTOPLAY_INTERVAL,
+  componentIds,
+  CAROUSEL_SIDE_OVERLAP_VALUE_OFFSET,
+} from './constants';
+
+import type { CSSObject } from 'styled-components';
+import type { CarouselProps } from './types';
+import type { CarouselContextProps } from './CarouselContext';
+import type { BladeElementRef } from '~utils/types';
 
 type ControlsProp = Required<
   Pick<

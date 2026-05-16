@@ -1,5 +1,6 @@
-import PromptIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PromptIcon from '.';
 
 describe('<PromptIcon />', () => {
   it('should render PromptIcon', () => {

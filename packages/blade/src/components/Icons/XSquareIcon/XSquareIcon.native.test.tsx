@@ -1,5 +1,6 @@
-import XSquareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import XSquareIcon from '.';
 
 describe('<XSquareIcon />', () => {
   it('should render XSquareIcon', () => {

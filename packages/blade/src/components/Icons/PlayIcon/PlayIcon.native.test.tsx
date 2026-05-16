@@ -1,5 +1,6 @@
-import PlayIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PlayIcon from '.';
 
 describe('<PlayIcon />', () => {
   it('should render PlayIcon', () => {

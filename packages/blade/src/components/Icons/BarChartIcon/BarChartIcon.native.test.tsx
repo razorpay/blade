@@ -1,5 +1,6 @@
-import BarChartIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BarChartIcon from '.';
 
 describe('<BarChartIcon />', () => {
   it('should render BarChartIcon', () => {

@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-import type { EasingFn } from 'react-native-reanimated';
 import Animated, { Keyframe } from 'react-native-reanimated';
-import type { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
-import type { FadeProps } from './types';
 import { useTheme } from '~components/BladeProvider';
+
+import type { EasingFn } from 'react-native-reanimated';
+import type { CSSObject } from 'styled-components';
+import type { FadeProps } from './types';
 
 const StyledFade = styled(Animated.View)<{ styles: CSSObject }>(({ styles }) => {
   return {

@@ -1,5 +1,6 @@
-import TicketIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TicketIcon from './';
 
 describe('<TicketIcon />', () => {
   it('should render TicketIcon', () => {

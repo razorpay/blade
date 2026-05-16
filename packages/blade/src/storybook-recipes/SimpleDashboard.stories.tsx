@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/react-vite';
 import { RecipeSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import parameters from '~utils/storybook/recipeParameters';
+
+import type { Meta } from '@storybook/react-vite';
 
 export function SimpleDashboard(): JSX.Element {
   return (

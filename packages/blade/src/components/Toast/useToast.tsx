@@ -1,8 +1,11 @@
-import type { Toast } from 'react-hot-toast';
 import toast, { useToasterStore } from 'react-hot-toast';
-import type { ToastProps } from './types';
-import { Toast as ToastComponent } from './Toast';
+
 import { logger } from '~utils/logger';
+
+import { Toast as ToastComponent } from './Toast';
+
+import type { Toast } from 'react-hot-toast';
+import type { ToastProps } from './types';
 
 type BladeToast = Omit<Toast, 'type'> & ToastProps;
 type UseToastReturn = {

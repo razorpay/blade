@@ -1,15 +1,18 @@
 /* eslint-disable react/display-name */
-import type { ReactElement } from 'react';
 import React from 'react';
-import { FormHintWrapper } from './FormHintWrapper';
-import { hintIconSize, hintMarginTop, hintTextSize } from './formTokens';
-import type { TextProps } from '~components/Typography/Text';
+
 import { Text } from '~components/Typography/Text';
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
 import { CheckIcon, InfoIcon } from '~components/Icons';
 import { getPlatformType } from '~utils/getPlatformType';
 import { Box } from '~components/Box';
+
+import { FormHintWrapper } from './FormHintWrapper';
+import { hintIconSize, hintMarginTop, hintTextSize } from './formTokens';
+
+import type { ReactElement } from 'react';
+import type { TextProps } from '~components/Typography/Text';
+import type { IconComponent } from '~components/Icons';
 
 type HintTextProps = {
   icon?: IconComponent;

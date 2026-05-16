@@ -1,10 +1,11 @@
 import React from 'react';
-import type { ScaleProps } from './types';
 import { BaseMotionEnhancerBox } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType, useTheme } from '~utils';
+
+import type { ScaleProps } from './types';
+import type { MotionVariantsType } from '~components/BaseMotion';
 
 /**
  * ## Scale

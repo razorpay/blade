@@ -1,6 +1,7 @@
-import type { ChartAreaWrapperProps, ChartAreaProps } from './types';
 import { throwBladeError } from '~utils/logger';
 import { Text } from '~components/Typography';
+
+import type { ChartAreaWrapperProps, ChartAreaProps } from './types';
 
 const ChartAreaWrapper = (_prop: ChartAreaProps): React.ReactElement => {
   throwBladeError({

@@ -1,7 +1,8 @@
-import type { CSSObject } from 'styled-components';
-import type { Theme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
 import { castWebType, isReactNative } from '~utils';
+
+import type { CSSObject } from 'styled-components';
+import type { Theme } from '~components/BladeProvider';
 
 type StyledActionListProps = {
   id?: string;

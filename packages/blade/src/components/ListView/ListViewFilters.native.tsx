@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ListViewFilterProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ListViewFilterProps } from './types';
 
 const ListViewFilters = (_prop: ListViewFilterProps): React.ReactElement => {
   throwBladeError({

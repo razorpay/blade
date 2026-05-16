@@ -1,6 +1,7 @@
-import { Box } from '../Box';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { castWebType } from '~utils';
+
+import { Box } from '../Box';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {

@@ -1,5 +1,6 @@
-import LayersIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import LayersIcon from './';
 
 describe('<LayersIcon />', () => {
   it('should render LayersIcon', () => {

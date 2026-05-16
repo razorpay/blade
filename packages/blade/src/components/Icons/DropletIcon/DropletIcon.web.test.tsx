@@ -1,5 +1,6 @@
-import DropletIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import DropletIcon from './';
 
 describe('<DropletIcon />', () => {
   it('should render DropletIcon', () => {

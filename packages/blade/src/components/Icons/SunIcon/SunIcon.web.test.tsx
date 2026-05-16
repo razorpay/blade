@@ -1,5 +1,6 @@
-import SunIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SunIcon from './';
 
 describe('<SunIcon />', () => {
   it('should render SunIcon', () => {

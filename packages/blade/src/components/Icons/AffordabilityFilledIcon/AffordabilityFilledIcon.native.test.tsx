@@ -1,5 +1,6 @@
-import AffordabilityFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AffordabilityFilledIcon from '.';
 
 describe('<AffordabilityFilledIcon />', () => {
   it('should render AffordabilityFilledIcon', () => {

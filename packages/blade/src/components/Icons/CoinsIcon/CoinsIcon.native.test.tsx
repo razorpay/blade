@@ -1,5 +1,6 @@
-import CoinsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CoinsIcon from '.';
 
 describe('<CoinsIcon />', () => {
   it('should render CoinsIcon', () => {

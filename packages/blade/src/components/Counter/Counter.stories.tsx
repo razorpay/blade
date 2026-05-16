@@ -1,13 +1,16 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { CounterProps } from './Counter';
-import { Counter as CounterComponent } from './Counter';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { Counter as CounterComponent } from './Counter';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { CounterProps } from './Counter';
 
 const Page = (): ReactElement => {
   return (

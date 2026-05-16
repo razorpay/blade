@@ -1,5 +1,6 @@
-import CreditCardIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CreditCardIcon from './';
 
 describe('<CreditCardIcon />', () => {
   it('should render CreditCardIcon', () => {

@@ -1,5 +1,6 @@
-import PayoutLinkIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PayoutLinkIcon from '.';
 
 describe('<PayoutLinkIcon />', () => {
   it('should render PayoutLinkIcon', () => {

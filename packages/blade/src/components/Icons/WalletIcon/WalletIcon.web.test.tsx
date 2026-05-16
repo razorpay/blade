@@ -1,5 +1,6 @@
-import WalletIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import WalletIcon from './';
 
 describe('<WalletIcon />', () => {
   it('should render WalletIcon', () => {

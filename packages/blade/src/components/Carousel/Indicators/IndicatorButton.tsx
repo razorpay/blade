@@ -1,6 +1,8 @@
-import type { IndicatorButtonProps } from './types';
-import { StyledIndicatorButton } from './StyledIndicatorButton';
 import { metaAttribute } from '~utils/metaAttribute';
+
+import { StyledIndicatorButton } from './StyledIndicatorButton';
+
+import type { IndicatorButtonProps } from './types';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const IndicatorButton = ({

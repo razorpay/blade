@@ -1,5 +1,3 @@
-import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
-import { TopNav, TopNavActions, TopNavBrand, TopNavContent } from '../TopNav';
 import { Avatar } from '~components/Avatar';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -8,6 +6,9 @@ import { RazorpayLogo } from '~components/SideNav/docs/RazorpayLogo';
 import { Tooltip } from '~components/Tooltip';
 import { Menu, MenuItem, MenuOverlay } from '~components/Menu';
 import { Text } from '~components/Typography';
+
+import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
+import { TopNav, TopNavActions, TopNavBrand, TopNavContent } from '../TopNav';
 
 const TopNavExample = (): React.ReactElement => {
   return (

@@ -1,5 +1,6 @@
-import type { PhoneNumberInputProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { PhoneNumberInputProps } from './types';
 
 const PhoneNumberInput = (_props: PhoneNumberInputProps): React.ReactElement => {
   throwBladeError({

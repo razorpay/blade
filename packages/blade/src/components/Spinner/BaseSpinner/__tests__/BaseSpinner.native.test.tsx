@@ -1,6 +1,8 @@
-import type { BaseSpinnerProps } from '../BaseSpinner';
-import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { BaseSpinner } from '../BaseSpinner';
+
+import type { BaseSpinnerProps } from '../BaseSpinner';
 
 const colors: BaseSpinnerProps['color'][] = [
   'primary',

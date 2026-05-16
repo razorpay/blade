@@ -1,7 +1,8 @@
 import React from 'react';
-import type { PaginationProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { PaginationProps } from './types';
 
 const Pagination = (_prop: PaginationProps): React.ReactElement => {
   throwBladeError({

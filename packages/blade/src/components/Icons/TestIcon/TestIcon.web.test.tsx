@@ -1,5 +1,6 @@
-import TestIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TestIcon from './';
 
 describe('<TestIcon />', () => {
   it('should render TestIcon', () => {

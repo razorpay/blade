@@ -1,12 +1,16 @@
 import React from 'react';
-import { useDropdown } from '../../Dropdown/useDropdown';
-import type { AutoCompleteProps, BaseDropdownInputTriggerProps } from './types';
-import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
+
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { isReactNative } from '~utils';
+
+import { useDropdown } from '../../Dropdown/useDropdown';
+
+import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
+
+import type { AutoCompleteProps, BaseDropdownInputTriggerProps } from './types';
+import type { BladeElementRef } from '~utils/types';
 
 const useAutoComplete = ({
   props,

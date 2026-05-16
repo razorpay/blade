@@ -1,5 +1,6 @@
-import XCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import XCircleIcon from './';
 
 describe('<XCircleIcon />', () => {
   it('should render XCircleIcon', () => {

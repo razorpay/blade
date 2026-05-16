@@ -1,5 +1,6 @@
-import RotateClockWiseIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import RotateClockWiseIcon from '.';
 
 describe('<RotateClockWiseIcon />', () => {
   it('should render RotateClockWiseIcon', () => {

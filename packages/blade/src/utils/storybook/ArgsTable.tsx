@@ -1,5 +1,4 @@
 import { Box } from '~components/Box';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import {
   Table,
   TableBody,
@@ -10,6 +9,8 @@ import {
   TableRow,
 } from '~components/Table';
 import { Code, Text } from '~components/Typography';
+
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const ArgsTable = ({
   data,

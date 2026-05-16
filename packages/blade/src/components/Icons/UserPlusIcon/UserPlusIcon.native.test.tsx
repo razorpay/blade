@@ -1,5 +1,6 @@
-import UserPlusIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import UserPlusIcon from '.';
 
 describe('<UserPlusIcon />', () => {
   it('should render UserPlusIcon', () => {

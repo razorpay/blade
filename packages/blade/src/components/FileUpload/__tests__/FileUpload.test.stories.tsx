@@ -1,10 +1,11 @@
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect } from 'storybook/test';
 import React, { useState } from 'react';
-import type { BladeFileList, BladeFile, FileUploadProps } from '~components/FileUpload';
 import { FileUpload } from '~components/FileUpload';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { BladeFileList, BladeFile, FileUploadProps } from '~components/FileUpload';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const imageBlob =

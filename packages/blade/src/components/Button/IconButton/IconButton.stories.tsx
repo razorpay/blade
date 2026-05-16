@@ -1,8 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import type { IconButtonProps } from './IconButton';
-import { IconButton as IconButtonComponent } from './IconButton';
+
 import { CloseIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -11,6 +8,12 @@ import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookAr
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
+
+import { IconButton as IconButtonComponent } from './IconButton';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { IconButtonProps } from './IconButton';
 
 const Page = (): ReactElement => {
   return (

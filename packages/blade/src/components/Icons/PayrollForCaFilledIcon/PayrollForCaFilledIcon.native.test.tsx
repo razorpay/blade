@@ -1,5 +1,6 @@
-import PayrollForCaFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PayrollForCaFilledIcon from '.';
 
 describe('<PayrollForCaFilledIcon />', () => {
   it('should render PayrollForCaFilledIcon', () => {

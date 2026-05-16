@@ -1,5 +1,6 @@
-import ForexManagementFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ForexManagementFilledIcon from '.';
 
 describe('<ForexManagementFilledIcon />', () => {
   it('should render ForexManagementFilledIcon', () => {

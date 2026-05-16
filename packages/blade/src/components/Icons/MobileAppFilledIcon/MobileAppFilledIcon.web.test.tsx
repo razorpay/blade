@@ -1,5 +1,6 @@
-import MobileAppFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MobileAppFilledIcon from './';
 
 describe('<MobileAppFilledIcon />', () => {
   it('should render MobileAppFilledIcon', () => {

@@ -1,5 +1,6 @@
-import type { CircularProgressBarFilledProps } from './types';
 import { size } from '~tokens/global';
+
+import type { CircularProgressBarFilledProps } from './types';
 
 const indeterminateAnimation = {
   scaleXInitial: 1,

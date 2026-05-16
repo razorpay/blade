@@ -1,5 +1,6 @@
-import BankAccountVerificationFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BankAccountVerificationFilledIcon from '.';
 
 describe('<BankAccountVerificationFilledIcon />', () => {
   it('should render BankAccountVerificationFilledIcon', () => {

@@ -1,5 +1,6 @@
-import InvoicesFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import InvoicesFilledIcon from './';
 
 describe('<InvoicesFilledIcon />', () => {
   it('should render InvoicesFilledIcon', () => {

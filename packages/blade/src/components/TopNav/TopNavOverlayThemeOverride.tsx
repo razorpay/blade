@@ -1,9 +1,12 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { useTopNavContext } from './TopNavContext';
+
 import { BladeProvider, useTheme } from '~components/BladeProvider';
-import type { Theme } from '~components/BladeProvider';
 import { ThemeContext } from '~components/BladeProvider/useTheme';
+
+import { useTopNavContext } from './TopNavContext';
+
+import type { Theme } from '~components/BladeProvider';
 
 const getOverrideColorScheme = ({
   isPrimaryVariant,

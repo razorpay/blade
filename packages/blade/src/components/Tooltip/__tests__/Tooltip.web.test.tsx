@@ -5,7 +5,6 @@
 import { act, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
-import type { BladeCommonEvents } from '~components/types';
 import { Button } from '~components/Button';
 import { bladeTheme } from '~tokens/theme';
 import { InfoIcon } from '~components/Icons';
@@ -14,6 +13,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants } from '~utils/metaAttribute';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import type { BladeCommonEvents } from '~components/types';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = bladeTheme.motion.duration.quick;

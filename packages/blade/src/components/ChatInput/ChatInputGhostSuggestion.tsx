@@ -1,10 +1,12 @@
 import React from 'react';
-import { chatInputSuggestionCycleInterval } from './chatInputTokens';
+
 import { Badge } from '~components/Badge';
 import { ArrowRightIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { RollingText } from '~components/RollingText';
+
+import { chatInputSuggestionCycleInterval } from './chatInputTokens';
 
 type ChatInputGhostSuggestionProps = {
   suggestions: string[];

@@ -1,6 +1,7 @@
-import type { BottomNavProps, BottomNavItemProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { BottomNavProps, BottomNavItemProps } from './types';
 
 const BottomNav = (_props: BottomNavProps): React.ReactElement => {
   throwBladeError({

@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
+import { InfoIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
+
 import {
   CardBody,
   Card,
@@ -13,9 +17,6 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithSSR from '~utils/testing/renderWithSSR.web';
-import { InfoIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

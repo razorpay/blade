@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React, { useState } from 'react';
+
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme, createTheme, overrideTheme } from '~tokens/theme';
+import { Box } from '~components/Box';
+import { Heading } from '~components/Typography';
+import { Card, CardBody } from '~components/Card';
+
 import { CheckoutHome } from './Checkout/CheckoutHome';
 import { CheckoutCard } from './Checkout/CheckoutCard';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
-import { BladeProvider } from '~components/BladeProvider';
-import { bladeTheme, createTheme, overrideTheme } from '~tokens/theme';
+
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
-import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
-import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);

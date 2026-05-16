@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  getSimpleSelectCode,
-  Playground,
-  WithControlledMenuStory,
-  WithControlledSelectStory,
-  WithSimpleMenuStory,
-} from './stories';
-import { getSimpleAutoComplete } from './autoCompleteStories';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
@@ -15,6 +8,15 @@ import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { List, ListItem, ListItemLink } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
+
+import {
+  getSimpleSelectCode,
+  Playground,
+  WithControlledMenuStory,
+  WithControlledSelectStory,
+  WithSimpleMenuStory,
+} from './stories';
+import { getSimpleAutoComplete } from './autoCompleteStories';
 
 const DropdownDocs = (): React.ReactElement => {
   return (

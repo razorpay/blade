@@ -1,5 +1,6 @@
-import Signal1BarIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import Signal1BarIcon from './';
 
 describe('<Signal1BarIcon />', () => {
   it('should render Signal1BarIcon', () => {

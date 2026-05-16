@@ -1,5 +1,6 @@
-import CustomersIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CustomersIcon from './';
 
 describe('<CustomersIcon />', () => {
   it('should render CustomersIcon', () => {

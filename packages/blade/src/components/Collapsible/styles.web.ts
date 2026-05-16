@@ -1,6 +1,7 @@
-import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
+
+import type { BoxProps } from '~components/Box';
 
 const MAX_WIDTH: BoxProps['maxWidth'] = {
   s: `calc(100vw - ${makeSize(size[40])})`,

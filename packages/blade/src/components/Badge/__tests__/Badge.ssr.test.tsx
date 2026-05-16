@@ -1,6 +1,7 @@
-import { Badge } from '../';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { InfoIcon } from '~components/Icons';
+
+import { Badge } from '../';
 
 describe('<Badge />', () => {
   it('should render Badge on server', () => {

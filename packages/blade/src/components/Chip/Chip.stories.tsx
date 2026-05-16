@@ -1,14 +1,18 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { Text } from '../Typography';
-import type { ChipGroupProps } from './ChipGroup';
-import { ChipGroup as ChipGroupComponent } from './ChipGroup';
-import { Chip as ChipComponent } from './Chip';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
 import { Link } from '~components/Link';
+
+import { Text } from '../Typography';
+
+import { ChipGroup as ChipGroupComponent } from './ChipGroup';
+import { Chip as ChipComponent } from './Chip';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ChipGroupProps } from './ChipGroup';
 
 const Page = (): React.ReactElement => {
   return (

@@ -1,5 +1,6 @@
-import SmartCollectFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SmartCollectFilledIcon from './';
 
 describe('<SmartCollectFilledIcon />', () => {
   it('should render SmartCollectFilledIcon', () => {

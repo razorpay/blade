@@ -1,5 +1,6 @@
-import PosIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PosIcon from '.';
 
 describe('<PosIcon />', () => {
   it('should render PosIcon', () => {

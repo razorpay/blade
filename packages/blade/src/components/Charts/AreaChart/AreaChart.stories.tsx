@@ -1,4 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import {
   ChartAreaWrapper,
@@ -17,6 +16,8 @@ import { Box } from '~components/Box';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { Text } from '~components/Typography/Text';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const Page = (): React.ReactElement => {
   return (

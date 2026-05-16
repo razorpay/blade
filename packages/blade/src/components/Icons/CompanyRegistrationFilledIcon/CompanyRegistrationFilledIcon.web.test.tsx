@@ -1,5 +1,6 @@
-import CompanyRegistrationFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CompanyRegistrationFilledIcon from './';
 
 describe('<CompanyRegistrationFilledIcon />', () => {
   it('should render CompanyRegistrationFilledIcon', () => {

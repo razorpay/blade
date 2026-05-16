@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
-import type { ReasoningTrace, ReasoningTracesProps } from './types';
-import Rotate from './Rotate';
+
 import { useTheme } from '~components/BladeProvider';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { castWebType } from '~utils';
-import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -14,6 +12,11 @@ import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible/CollapsibleBody';
 import { Svg, Path } from '~components/Icons/_Svg';
 import useIconProps from '~components/Icons/useIconProps';
+
+import Rotate from './Rotate';
+
+import type { ReasoningTrace, ReasoningTracesProps } from './types';
+import type { IconComponent } from '~components/Icons';
 
 // Custom 4-pointed star matching the Figma design
 const SparkleIcon: IconComponent = ({ size, color, ...styledProps }) => {

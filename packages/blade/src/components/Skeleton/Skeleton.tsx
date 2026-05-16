@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
-import { PulseAnimation } from './PulseAnimation';
-import type { SkeletonProps } from './types';
+
 import { getStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+
+import { PulseAnimation } from './PulseAnimation';
+
+import type { SkeletonProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const _Skeleton = (

@@ -1,5 +1,6 @@
-import SquareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SquareIcon from '.';
 
 describe('<SquareIcon />', () => {
   it('should render SquareIcon', () => {

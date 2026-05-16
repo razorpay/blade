@@ -1,6 +1,7 @@
-import type { ElevateProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ElevateProps } from './types';
 
 const Elevate = (_props: ElevateProps): React.ReactElement => {
   throwBladeError({

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import type { AvatarGroupProps } from './types';
-import { avatarSizeTokens } from './avatarTokens';
+
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
+
+import { avatarSizeTokens } from './avatarTokens';
+
+import type { AvatarGroupProps } from './types';
 
 const StyledAvatarGroup = styled(BaseBox)<{ size: NonNullable<AvatarGroupProps['size']> }>(
   ({ size }) => {

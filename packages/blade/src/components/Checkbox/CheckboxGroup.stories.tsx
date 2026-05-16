@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
-import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
-import type { CheckboxGroupProps } from './';
+
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -12,6 +10,11 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+
+import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { CheckboxGroupProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

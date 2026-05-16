@@ -1,5 +1,6 @@
-import MagicCheckoutFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MagicCheckoutFilledIcon from '.';
 
 describe('<MagicCheckoutFilledIcon />', () => {
   it('should render MagicCheckoutFilledIcon', () => {

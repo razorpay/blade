@@ -5,11 +5,14 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
-import type { GenUIComponent } from '../GenUIComponents';
 import { useGenUI } from '../GenUIContext.web';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import type { GenUIComponent } from '../GenUIComponents';
 
 describe('<GenUI />', () => {
   describe('GenUIProvider', () => {

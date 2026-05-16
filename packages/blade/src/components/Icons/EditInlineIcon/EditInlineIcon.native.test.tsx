@@ -1,5 +1,6 @@
-import EditInlineIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EditInlineIcon from '.';
 
 describe('<EditInlineIcon />', () => {
   it('should render EditInlineIcon', () => {

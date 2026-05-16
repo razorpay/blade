@@ -1,14 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, waitFor, expect } from 'storybook/test';
-import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../../../Dropdown';
-import type { DropdownProps } from '../../../Dropdown';
+
 import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+
+import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../../../Dropdown';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { DropdownProps } from '../../../Dropdown';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');

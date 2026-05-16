@@ -1,5 +1,6 @@
-import { makeSpace } from '.';
 import { spacing } from '~tokens/global';
+
+import { makeSpace } from '.';
 
 describe('makeSpace', () => {
   it('should return the spacing value in `px`', () => {

@@ -1,5 +1,6 @@
-import MapPinIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MapPinIcon from '.';
 
 describe('<MapPinIcon />', () => {
   it('should render MapPinIcon', () => {

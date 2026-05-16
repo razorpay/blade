@@ -1,5 +1,6 @@
-import ChevronsUpIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ChevronsUpIcon from './';
 
 describe('<ChevronsUpIcon />', () => {
   it('should render ChevronsUpIcon', () => {

@@ -1,9 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, fn, expect } from 'storybook/test';
 import React from 'react';
-import type { TabNavProps } from '../TabNav';
-import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
+
 import {
   AcceptPaymentsIcon,
   AwardIcon,
@@ -14,6 +12,11 @@ import {
 } from '~components/Icons';
 import { Menu, MenuItem, MenuOverlay } from '~components/Menu';
 import { Text } from '~components/Typography';
+
+import { TabNav, TabNavItem, TabNavItems } from '../TabNav';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { TabNavProps } from '../TabNav';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

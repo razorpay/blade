@@ -1,5 +1,6 @@
-import PaymentLinksIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PaymentLinksIcon from './';
 
 describe('<PaymentLinksIcon />', () => {
   it('should render PaymentLinksIcon', () => {

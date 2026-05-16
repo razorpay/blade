@@ -1,6 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
-import { TextInput as TextInputComponent } from './TextInput';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import {
@@ -8,8 +7,12 @@ import {
   getPaymentCardBrandIcon,
   getPaymentCardNumberFormat,
 } from '~utils/usePaymentCardDetection';
-import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import { TextInput as TextInputComponent } from './TextInput';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
 
 const TextInputFormatMeta: Meta<typeof TextInputComponent> = {
   title: 'Components/Input/TextInput/Format',

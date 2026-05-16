@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { InfoGroupProps, InfoItemProps, InfoItemKeyProps, InfoItemValueProps } from './types';
 
 const InfoGroup = (_props: InfoGroupProps): React.ReactElement => {
   throwBladeError({

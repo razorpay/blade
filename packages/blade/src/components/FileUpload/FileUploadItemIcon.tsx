@@ -1,10 +1,11 @@
-import type { BladeFile } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Svg, Path } from '~components/Icons/_Svg';
 import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { colors as globalColors } from '~tokens/global';
+
+import type { BladeFile } from './types';
 
 type FileUploadItemIconProps = { fileName: string; uploadStatus: BladeFile['status'] };
 

@@ -1,15 +1,19 @@
 import React from 'react';
-import type { BaseMenuItemProps } from '../types';
-import { BaseMenuItemContext } from '../BaseMenuContext';
-import { StyledMenuItemContainer } from './StyledMenuItemContainer';
-import { itemFirstRowHeight } from './tokens';
+
+import { makeAccessible } from '~utils/makeAccessible';
+import { BaseText } from '~components/Typography/BaseText';
+import { makeSize } from '~utils';
 import { Box } from '~components/Box';
 import { getTextProps, Text } from '~components/Typography';
-import { makeAccessible } from '~utils/makeAccessible';
-import type { BladeElementRef } from '~utils/types';
-import { BaseText } from '~components/Typography/BaseText';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
-import { makeSize } from '~utils';
+
+import { BaseMenuItemContext } from '../BaseMenuContext';
+
+import { StyledMenuItemContainer } from './StyledMenuItemContainer';
+import { itemFirstRowHeight } from './tokens';
+
+import type { BaseMenuItemProps } from '../types';
+import type { BladeElementRef } from '~utils/types';
 
 const menuItemTitleColor = {
   negative: {

@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import type { PickerType } from './types';
-import { classes } from './constants';
+
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
@@ -10,6 +9,10 @@ import { makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { useIsMobile } from '~utils/useIsMobile';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { classes } from './constants';
+
+import type { PickerType } from './types';
 
 const cell = {
   gap: {

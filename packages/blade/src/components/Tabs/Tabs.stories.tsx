@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Route, useHistory } from 'react-router-dom';
-import type { TabItemProps, TabsProps } from './types';
-import { Tabs, TabItem, TabList, TabPanel } from './';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import { Code, Heading, Text } from '~components/Typography';
-import type { IconComponent } from '~components/Icons';
 import {
   ExternalLinkIcon,
   ClipboardIcon,
@@ -35,6 +32,12 @@ import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { useIsMobile } from '~utils/useIsMobile';
 import { List, ListItem, ListItemText } from '~components/List';
+
+import { Tabs, TabItem, TabList, TabPanel } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { TabItemProps, TabsProps } from './types';
+import type { IconComponent } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Carousel } from '../Carousel';
-import { CarouselItem } from '../CarouselItem';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
+
+import { Carousel } from '../Carousel';
+import { CarouselItem } from '../CarouselItem';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

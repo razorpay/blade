@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import { Switch } from '../Switch';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { Switch } from '../Switch';
 
 describe('<Switch />', () => {
   it('should render switch', () => {

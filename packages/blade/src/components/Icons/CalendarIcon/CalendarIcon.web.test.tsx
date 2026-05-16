@@ -1,5 +1,6 @@
-import CalendarIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CalendarIcon from './';
 
 describe('<CalendarIcon />', () => {
   it('should render CalendarIcon', () => {

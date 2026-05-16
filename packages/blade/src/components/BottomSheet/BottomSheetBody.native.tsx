@@ -2,14 +2,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { ComponentIds } from './componentIds';
-import { useBottomSheetContext } from './BottomSheetContext';
-import type { BottomSheetBodyProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/ActionList/componentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { size } from '~tokens/global';
+
+import { ComponentIds } from './componentIds';
+import { useBottomSheetContext } from './BottomSheetContext';
+
+import type { BottomSheetBodyProps } from './types';
 
 const _BottomSheetBody = ({
   children,

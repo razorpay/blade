@@ -2,10 +2,13 @@
 import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import type { GenUIComponent } from './GenUIComponents';
-import { useGenUI, GenUIContext } from './GenUIContext';
-import type { AnimateOptions } from './rehypeAnimate';
+
 import { useResize } from '~utils/useResize';
+
+import { useGenUI, GenUIContext } from './GenUIContext';
+
+import type { GenUIComponent } from './GenUIComponents';
+import type { AnimateOptions } from './rehypeAnimate';
 
 /**
  * Fallback component shown when a GenUI component fails to render

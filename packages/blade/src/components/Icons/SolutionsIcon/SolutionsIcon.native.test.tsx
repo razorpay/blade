@@ -1,5 +1,6 @@
-import SolutionsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SolutionsIcon from '.';
 
 describe('<SolutionsIcon />', () => {
   it('should render SolutionsIcon', () => {

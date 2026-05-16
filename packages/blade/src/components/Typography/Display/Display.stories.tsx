@@ -1,15 +1,19 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title as StorybookTitle } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import { Text } from '../Text';
-import { Code } from '../Code';
-import type { DisplayProps } from './';
-import { Display as DisplayComponent } from './';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { isReactNative } from '~utils';
+
+import { Text } from '../Text';
+import { Code } from '../Code';
+
+import { Display as DisplayComponent } from './';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { DisplayProps } from './';
 
 const Page = (): ReactElement => {
   return (

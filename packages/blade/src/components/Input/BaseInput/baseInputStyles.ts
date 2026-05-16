@@ -1,5 +1,10 @@
-import type { CSSObject } from 'styled-components';
-import type { BaseInputProps } from './BaseInput';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import { getPlatformType } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
+import getTextStyles from '~components/Typography/Text/getTextStyles';
+import { makeSpace } from '~utils/makeSpace';
+import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
+
 import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
 import {
   baseInputBackgroundColor,
@@ -13,14 +18,11 @@ import {
   baseInputWrapperMaxHeight,
 } from './baseInputTokens';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
+
+import type { CSSObject } from 'styled-components';
+import type { BaseInputProps } from './BaseInput';
 import type { BaseInputWrapperProps } from './types';
-import { makeBorderSize } from '~utils/makeBorderSize';
-import { getPlatformType } from '~utils';
-import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeSpace } from '~utils/makeSpace';
-import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type GetInputStyles = Pick<

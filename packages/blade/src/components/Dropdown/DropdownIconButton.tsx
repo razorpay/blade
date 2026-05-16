@@ -2,13 +2,16 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
 import React from 'react';
+
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import StyledIconButton from '~components/Button/IconButton/StyledIconButton';
+
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
-import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+
 import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { IconButtonProps } from '~components/Button/IconButton';
-import StyledIconButton from '~components/Button/IconButton/StyledIconButton';
 
 type DropdownIconButtonProps = Omit<IconButtonProps, 'onClick'> & {
   onBlur?: BaseButtonProps['onBlur'];

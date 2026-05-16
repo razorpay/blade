@@ -1,20 +1,23 @@
 import React from 'react';
-import { TopNavContext, useTopNavContext } from './TopNavContext';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { componentZIndices } from '~utils/componentZIndices';
-import type { BoxProps } from '~components/Box';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import type { BaseBoxProps } from '~components/Box/BaseBox/types';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
+
+import { TopNavContext, useTopNavContext } from './TopNavContext';
+
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import type { BoxProps } from '~components/Box';
+import type { BaseBoxProps } from '~components/Box/BaseBox/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 const TOP_NAV_HEIGHT = size[56];
 

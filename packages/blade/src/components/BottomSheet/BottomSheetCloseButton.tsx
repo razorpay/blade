@@ -1,6 +1,7 @@
-import { useBottomSheetContext } from './BottomSheetContext';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
+
+import { useBottomSheetContext } from './BottomSheetContext';
 
 const BottomSheetCloseButton = (): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useBottomSheetContext();

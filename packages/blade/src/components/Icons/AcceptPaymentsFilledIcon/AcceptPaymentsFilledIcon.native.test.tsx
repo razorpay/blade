@@ -1,5 +1,6 @@
-import AcceptPaymentsFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AcceptPaymentsFilledIcon from '.';
 
 describe('<AcceptPaymentsFilledIcon />', () => {
   it('should render AcceptPaymentsFilledIcon', () => {

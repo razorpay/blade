@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { PopoverContentWrapper } from './PopoverContentWrapper';
-import type { PopoverContentProps } from './types';
-import { PopoverCloseButton } from './PopoverCloseButton';
-import { usePopoverContext } from './PopoverContext';
+
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useTheme } from '~components/BladeProvider';
+
+import { PopoverContentWrapper } from './PopoverContentWrapper';
+import { PopoverCloseButton } from './PopoverCloseButton';
+import { usePopoverContext } from './PopoverContext';
+
+import type { PopoverContentProps } from './types';
 
 type PopoverHeaderProps = {
   title?: string;

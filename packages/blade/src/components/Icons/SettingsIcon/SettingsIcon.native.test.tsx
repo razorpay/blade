@@ -1,5 +1,6 @@
-import SettingsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SettingsIcon from '.';
 
 describe('<SettingsIcon />', () => {
   it('should render SettingsIcon', () => {

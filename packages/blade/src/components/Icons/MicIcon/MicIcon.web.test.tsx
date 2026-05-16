@@ -1,5 +1,6 @@
-import MicIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MicIcon from './';
 
 describe('<MicIcon />', () => {
   it('should render MicIcon', () => {

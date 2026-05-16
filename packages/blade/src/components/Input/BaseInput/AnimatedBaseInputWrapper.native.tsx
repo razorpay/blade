@@ -6,7 +6,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import styled from 'styled-components';
-import type { BaseInputWrapperProps } from './types';
+
+import { castNativeType, makeMotionTime } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
+
 import {
   getAnimatedBaseInputWrapperMaxHeight,
   getBaseInputState,
@@ -20,9 +24,8 @@ import {
   baseInputHeight,
   baseInputWrapperMaxHeight,
 } from './baseInputTokens';
-import { castNativeType, makeMotionTime } from '~utils';
-import { useTheme } from '~components/BladeProvider';
-import getIn from '~utils/lodashButBetter/get';
+
+import type { BaseInputWrapperProps } from './types';
 import type { EasingFactoryFn } from '~tokens/global';
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({

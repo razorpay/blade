@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { makeTypographySize } from '~utils/makeTypographySize';
-import { Code } from '../Code';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { makeSpace } from '~utils/makeSpace';
 import { spacing, typography } from '~tokens/global';
+
+import { Code } from '../Code';
 
 describe('<Code />', () => {
   it('should render Code with default properties', () => {

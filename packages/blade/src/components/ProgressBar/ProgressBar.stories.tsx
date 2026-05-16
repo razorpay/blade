@@ -1,14 +1,17 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import { useEffect, useState } from 'react';
-import type { ProgressBarProps } from './ProgressBar';
-import { ProgressBar as ProgressBarComponent } from './ProgressBar';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Heading } from '~components/Typography';
+
+import { ProgressBar as ProgressBarComponent } from './ProgressBar';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { ProgressBarProps } from './ProgressBar';
 
 const Page = (): ReactElement => {
   return (

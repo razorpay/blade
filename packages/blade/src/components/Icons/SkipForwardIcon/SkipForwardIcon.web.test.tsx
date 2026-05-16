@@ -1,5 +1,6 @@
-import SkipForwardIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SkipForwardIcon from './';
 
 describe('<SkipForwardIcon />', () => {
   it('should render SkipForwardIcon', () => {

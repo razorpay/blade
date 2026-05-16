@@ -1,5 +1,6 @@
-import FilmIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FilmIcon from '.';
 
 describe('<FilmIcon />', () => {
   it('should render FilmIcon', () => {

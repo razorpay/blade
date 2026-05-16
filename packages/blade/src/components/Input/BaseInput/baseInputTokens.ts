@@ -1,5 +1,6 @@
-import type { BaseInputProps } from './BaseInput';
 import { size, spacing } from '~tokens/global';
+
+import type { BaseInputProps } from './BaseInput';
 
 export const BASEINPUT_MAX_ROWS = 4;
 

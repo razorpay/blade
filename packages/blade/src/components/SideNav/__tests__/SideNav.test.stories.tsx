@@ -1,10 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect } from 'storybook/test';
-import type { SideNav } from '../index';
 import { SKIP_NAV_ID } from '../tokens';
 import { SideNavExample } from './SideNavExample';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { SideNav } from '../index';
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const MenuNavigation: StoryFn<typeof SideNav> = (props): React.ReactElement => {

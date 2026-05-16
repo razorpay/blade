@@ -1,13 +1,15 @@
-import { useAccordion } from './AccordionContext';
-import { componentIds } from './componentIds';
-import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
-import type { DataAnalyticsAttribute, StringChildrenType } from '~utils/types';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
+
+import { useAccordion } from './AccordionContext';
+import { componentIds } from './componentIds';
+
+import type { DataAnalyticsAttribute, StringChildrenType } from '~utils/types';
 
 const BLANK_SPACE = ' ';
 

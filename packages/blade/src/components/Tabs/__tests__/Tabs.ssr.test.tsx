@@ -1,7 +1,9 @@
 import React from 'react';
-import { Tabs, TabList, TabItem, TabPanel } from '../';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
+
+import { Tabs, TabList, TabItem, TabPanel } from '../';
 
 describe('<Tabs />', () => {
   it('should render tabs ssr', () => {

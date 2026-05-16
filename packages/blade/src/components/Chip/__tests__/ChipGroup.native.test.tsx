@@ -1,11 +1,14 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import type { ReactTestInstance } from 'react-test-renderer';
-import { Chip } from '../Chip';
-import type { ChipGroupProps } from '../ChipGroup';
-import { ChipGroup } from '../ChipGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
+
+import type { ReactTestInstance } from 'react-test-renderer';
+import type { ChipGroupProps } from '../ChipGroup';
 
 const selectionTypes: ChipGroupProps['selectionType'][] = ['single', 'multiple'];
 const sizes: ChipGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];

@@ -1,5 +1,6 @@
-import BankAccountVerificationIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import BankAccountVerificationIcon from './';
 
 describe('<BankAccountVerificationIcon />', () => {
   it('should render BankAccountVerificationIcon', () => {

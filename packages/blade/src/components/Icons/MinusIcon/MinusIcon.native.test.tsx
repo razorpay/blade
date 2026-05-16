@@ -1,5 +1,6 @@
-import MinusIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MinusIcon from '.';
 
 describe('<MinusIcon />', () => {
   it('should render MinusIcon', () => {

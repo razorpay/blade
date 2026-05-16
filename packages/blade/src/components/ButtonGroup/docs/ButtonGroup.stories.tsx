@@ -1,6 +1,3 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { ButtonGroupProps } from '../ButtonGroup';
-import { ButtonGroup as ButtonGroupComponent } from '../ButtonGroup';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -20,6 +17,11 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Tooltip } from '~components/Tooltip';
 import { Popover } from '~components/Popover';
 import { Text } from '~components/Typography';
+
+import { ButtonGroup as ButtonGroupComponent } from '../ButtonGroup';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ButtonGroupProps } from '../ButtonGroup';
 
 const Page = (): React.ReactElement => {
   return (

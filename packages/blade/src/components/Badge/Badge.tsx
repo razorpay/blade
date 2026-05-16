@@ -1,15 +1,23 @@
 import React from 'react';
-import type { ReactElement } from 'react';
-import type { StyledBadgeProps } from './types';
-import { StyledBadge } from './StyledBadge';
-import { textHorizontalMargin, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
-import type { IconComponent, IconProps } from '~components/Icons';
+
 import BaseBox from '~components/Box/BaseBox';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { isReactNative, makeSize } from '~utils';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { StyledBadge } from './StyledBadge';
+import { textHorizontalMargin, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
+
+import type { ReactElement } from 'react';
+import type { StyledBadgeProps } from './types';
+import type { IconComponent, IconProps } from '~components/Icons';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type {
   DataAnalyticsAttribute,
@@ -17,11 +25,6 @@ import type {
   StringChildrenType,
   TestID,
 } from '~utils/types';
-import { getStringFromReactText } from '~src/utils/getStringChildren';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { isReactNative, makeSize } from '~utils';
-import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BadgeProps = {
   /**

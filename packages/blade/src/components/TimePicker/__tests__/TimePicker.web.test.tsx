@@ -1,6 +1,8 @@
 import React from 'react';
-import { TimePicker } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import { TimePicker } from '../';
 
 // Mock scrollIntoView for JSDOM environment
 Object.defineProperty(Element.prototype, 'scrollIntoView', {

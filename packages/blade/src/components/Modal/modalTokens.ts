@@ -1,6 +1,7 @@
+import { size } from '~tokens/global';
+
 import type { ModalProps } from './Modal';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import { size } from '~tokens/global';
 import type { Border, Size } from '~tokens/global';
 
 type ModalSizeWithoutFull = Exclude<NonNullable<ModalProps['size']>, 'full'>;

@@ -1,5 +1,6 @@
-import MoreHorizontalIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MoreHorizontalIcon from '.';
 
 describe('<MoreHorizontalIcon />', () => {
   it('should render MoreHorizontalIcon', () => {

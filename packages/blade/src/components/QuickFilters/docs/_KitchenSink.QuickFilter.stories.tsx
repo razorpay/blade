@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as QuickFilterGroupStories from './QuickFilter.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as QuickFilterGroupStories from './QuickFilter.stories';
 
 const allStories = [...Object.values(composeStories(QuickFilterGroupStories))];
 

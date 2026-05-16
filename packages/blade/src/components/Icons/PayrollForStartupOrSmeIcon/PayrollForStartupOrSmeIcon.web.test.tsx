@@ -1,5 +1,6 @@
-import PayrollForStartupOrSmeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PayrollForStartupOrSmeIcon from './';
 
 describe('<PayrollForStartupOrSmeIcon />', () => {
   it('should render PayrollForStartupOrSmeIcon', () => {

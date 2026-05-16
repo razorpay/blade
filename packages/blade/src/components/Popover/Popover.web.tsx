@@ -16,11 +16,7 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react';
 import React from 'react';
-import type { PopoverProps } from './types';
-import { PopoverContent } from './PopoverContent';
-import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { PopoverContext } from './PopoverContext';
-import { componentIds } from './componentIds';
+
 import { useTheme } from '~components/BladeProvider';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 import BaseBox from '~components/Box/BaseBox';
@@ -37,6 +33,13 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { OverlayContextReset } from '~components/OverlayContextReset';
+
+import { PopoverContent } from './PopoverContent';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
+import { PopoverContext } from './PopoverContext';
+import { componentIds } from './componentIds';
+
+import type { PopoverProps } from './types';
 
 const _Popover = ({
   content,

@@ -2,9 +2,11 @@
 import userEvents from '@testing-library/user-event';
 import React, { useState } from 'react';
 import { waitFor } from '@testing-library/react';
-import { Pagination } from '../Pagination';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { Pagination } from '../Pagination';
 
 describe('<Pagination />', () => {
   it('should render basic pagination', () => {

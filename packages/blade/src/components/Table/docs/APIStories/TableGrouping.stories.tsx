@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
+
+import { Box } from '~components/Box';
+import { Amount } from '~components/Amount';
+
 import {
   Table,
   TableHeader,
@@ -9,9 +12,9 @@ import {
   TableRow,
   TableCell,
 } from '../../index';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import type { TableProps, Identifier } from '../../types';
-import { Box } from '~components/Box';
-import { Amount } from '~components/Amount';
 
 const meta: Meta<TableProps<unknown>> = {
   title: 'Components/Table/Grouping',

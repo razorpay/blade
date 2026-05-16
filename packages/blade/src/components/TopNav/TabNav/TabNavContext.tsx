@@ -1,6 +1,7 @@
 import React from 'react';
-import type { TabNavItemData } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { TabNavItemData } from './types';
 
 type TabNavContextProps = {
   containerRef: React.RefObject<HTMLDivElement>;

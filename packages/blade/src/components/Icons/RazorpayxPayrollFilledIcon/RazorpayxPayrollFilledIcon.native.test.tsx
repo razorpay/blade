@@ -1,5 +1,6 @@
-import RazorpayxPayrollFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RazorpayxPayrollFilledIcon from '.';
 
 describe('<RazorpayxPayrollFilledIcon />', () => {
   it('should render RazorpayxPayrollFilledIcon', () => {

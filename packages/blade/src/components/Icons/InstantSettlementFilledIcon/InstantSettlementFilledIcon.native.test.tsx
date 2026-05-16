@@ -1,5 +1,6 @@
-import InstantSettlementFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import InstantSettlementFilledIcon from '.';
 
 describe('<InstantSettlementFilledIcon />', () => {
   it('should render InstantSettlementFilledIcon', () => {

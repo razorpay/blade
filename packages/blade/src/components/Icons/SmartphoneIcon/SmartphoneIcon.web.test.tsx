@@ -1,5 +1,6 @@
-import SmartphoneIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SmartphoneIcon from './';
 
 describe('<SmartphoneIcon />', () => {
   it('should render SmartphoneIcon', () => {

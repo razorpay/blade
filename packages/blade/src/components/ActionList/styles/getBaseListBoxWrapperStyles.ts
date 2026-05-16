@@ -1,7 +1,8 @@
-import type { CSSObject } from 'styled-components';
-import type { Theme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
 import { size } from '~tokens/global';
+
+import type { CSSObject } from 'styled-components';
+import type { Theme } from '~components/BladeProvider';
 
 const actionListMaxHeight = size[300];
 

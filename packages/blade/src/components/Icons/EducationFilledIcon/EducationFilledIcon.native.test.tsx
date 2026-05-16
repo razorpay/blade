@@ -1,5 +1,6 @@
-import EducationFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EducationFilledIcon from '.';
 
 describe('<EducationFilledIcon />', () => {
   it('should render EducationFilledIcon', () => {

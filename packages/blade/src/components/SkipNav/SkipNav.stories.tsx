@@ -1,6 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
@@ -8,6 +6,9 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
 
 const Page = (): ReactElement => {
   return (

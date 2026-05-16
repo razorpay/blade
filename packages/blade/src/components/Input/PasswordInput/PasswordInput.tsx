@@ -1,13 +1,16 @@
 import React from 'react';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
+
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
+
+import { BaseInput } from '../BaseInput';
+
+import type { BaseInputProps } from '../BaseInput';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute, BladeElementRef } from '~utils/types';
 
 type PasswordInputExtraProps = {

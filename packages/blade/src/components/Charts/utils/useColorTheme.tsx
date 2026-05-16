@@ -1,5 +1,6 @@
-import type { ColorTheme, ChartName, ChartColorTokenNames, ColorIntensity } from './types';
 import { colorSequence } from './tokens';
+
+import type { ColorTheme, ChartName, ChartColorTokenNames, ColorIntensity } from './types';
 /**
  * The color theme of the chart.
  * @default 'categorical'

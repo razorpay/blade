@@ -1,10 +1,13 @@
 import React from 'react';
-import { useNavLink } from './SideNavContext';
-import { COLLAPSED_L1_WIDTH } from './tokens';
-import type { SideNavLevelProps } from './types';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
+
+import { useNavLink } from './SideNavContext';
+import { COLLAPSED_L1_WIDTH } from './tokens';
+
+import type { SideNavLevelProps } from './types';
 
 const SideNavLevel = ({ children, titleSuffix }: SideNavLevelProps): React.ReactElement => {
   const { level: _prevLevel, title: headingTitle } = useNavLink();

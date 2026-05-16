@@ -1,5 +1,6 @@
-import WatchIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import WatchIcon from '.';
 
 describe('<WatchIcon />', () => {
   it('should render WatchIcon', () => {

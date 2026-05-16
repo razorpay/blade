@@ -8,16 +8,7 @@ import React from 'react';
 import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
-import { BottomSheetHeader } from './BottomSheetHeader';
-import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
-import { BottomSheetBody } from './BottomSheetBody';
-import { BottomSheetFooter } from './BottomSheetFooter';
-import type { BottomSheetProps } from './types';
-import { ComponentIds } from './componentIds';
-import type { BottomSheetContextProps } from './BottomSheetContext';
-import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
-import { BottomSheetBackdrop } from './BottomSheetBackdrop';
-import { useBottomSheetStack } from './BottomSheetStack';
+
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { useId } from '~utils/useId';
@@ -26,6 +17,18 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { componentZIndices } from '~utils/componentZIndices';
+
+import { BottomSheetHeader } from './BottomSheetHeader';
+import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
+import { BottomSheetBody } from './BottomSheetBody';
+import { BottomSheetFooter } from './BottomSheetFooter';
+import { ComponentIds } from './componentIds';
+import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
+import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import { useBottomSheetStack } from './BottomSheetStack';
+
+import type { BottomSheetProps } from './types';
+import type { BottomSheetContextProps } from './BottomSheetContext';
 
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
   return {

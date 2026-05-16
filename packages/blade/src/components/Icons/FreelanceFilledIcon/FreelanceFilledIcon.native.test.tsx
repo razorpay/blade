@@ -1,5 +1,6 @@
-import FreelanceFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FreelanceFilledIcon from '.';
 
 describe('<FreelanceFilledIcon />', () => {
   it('should render FreelanceFilledIcon', () => {

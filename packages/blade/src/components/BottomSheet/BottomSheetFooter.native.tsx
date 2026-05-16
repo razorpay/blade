@@ -1,9 +1,12 @@
 import React from 'react';
-import type { BottomSheetFooterProps } from './types';
-import { ComponentIds } from './componentIds';
+
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { ComponentIds } from './componentIds';
+
+import type { BottomSheetFooterProps } from './types';
 
 const _BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
   return (

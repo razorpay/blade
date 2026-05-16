@@ -1,20 +1,23 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
-import { getHintType } from '../BaseInput/BaseInput';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
-import type { FormInputOnEvent } from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { BaseInput } from '../BaseInput';
+import { getHintType } from '../BaseInput/BaseInput';
+
+import type { BaseInputProps } from '../BaseInput';
+import type { FormInputOnEvent } from '~components/Form';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute } from '~utils/types';
 
 type FormInputOnEventWithIndex = ({
   name,

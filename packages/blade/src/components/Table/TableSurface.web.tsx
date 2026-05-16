@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import type { ColorSchemeNames } from '~tokens/theme';
 import { getSurfaceBoxShadow, getSurfaceStyles } from '~utils/makeSurfaceStyles';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { ColorSchemeNames } from '~tokens/theme';
 
 type TableSurfaceProps = {
   colorScheme: ColorSchemeNames;

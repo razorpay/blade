@@ -1,5 +1,6 @@
-import CommandIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CommandIcon from './';
 
 describe('<CommandIcon />', () => {
   it('should render CommandIcon', () => {

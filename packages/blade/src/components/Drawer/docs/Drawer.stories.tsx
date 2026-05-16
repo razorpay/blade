@@ -1,9 +1,6 @@
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { DrawerProps } from '../';
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader } from '../';
-import { DrawerStackingStory } from './stories';
+
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import {
@@ -28,6 +25,13 @@ import {
 } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { IconButton } from '~components/Button/IconButton';
+
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader } from '../';
+
+import { DrawerStackingStory } from './stories';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { DrawerProps } from '../';
 
 const Page = (): React.ReactElement => {
   return (

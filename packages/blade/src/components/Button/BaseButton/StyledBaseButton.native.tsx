@@ -2,15 +2,18 @@ import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import React from 'react';
-import type { TextInput, GestureResponderEvent } from 'react-native';
-import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
-import type { StyledBaseButtonProps } from './types';
+
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { logger } from '~utils/logger';
 import { castNativeType } from '~utils';
+
+import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
+
+import type { TextInput, GestureResponderEvent } from 'react-native';
+import type { StyledBaseButtonProps } from './types';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>

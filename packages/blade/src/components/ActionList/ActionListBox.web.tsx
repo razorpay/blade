@@ -1,16 +1,10 @@
 /* eslint-disable react/display-name */
 import React, { useCallback } from 'react';
-import type { VariableSizeList } from 'react-window';
 import { VariableSizeList as VirtualizedList } from 'react-window';
-import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
-import type { SectionData } from './actionListUtils';
-import { actionListMaxHeight, getActionListPadding } from './styles/getBaseListBoxWrapperStyles';
-import { componentIds } from './componentIds';
-import { ActionListSectionTitle } from './ActionListItem';
+
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsMobile } from '~utils/useIsMobile';
 import {
@@ -19,11 +13,20 @@ import {
   getActionListItemHeight,
 } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { useTheme } from '~utils';
-import type { Theme } from '~components/BladeProvider';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Divider } from '~components/Divider';
+
+import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
+import { actionListMaxHeight, getActionListPadding } from './styles/getBaseListBoxWrapperStyles';
+import { componentIds } from './componentIds';
+import { ActionListSectionTitle } from './ActionListItem';
+
+import type { VariableSizeList } from 'react-window';
+import type { SectionData } from './actionListUtils';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { Theme } from '~components/BladeProvider';
 import type { ActionListItemProps } from '~components/ActionList';
 
 type ActionListBoxProps = {

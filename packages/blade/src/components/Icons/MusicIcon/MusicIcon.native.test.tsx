@@ -1,5 +1,6 @@
-import MusicIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MusicIcon from '.';
 
 describe('<MusicIcon />', () => {
   it('should render MusicIcon', () => {

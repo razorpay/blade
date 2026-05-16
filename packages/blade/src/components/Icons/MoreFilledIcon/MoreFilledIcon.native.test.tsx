@@ -1,5 +1,6 @@
-import MoreFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MoreFilledIcon from '.';
 
 describe('<MoreFilledIcon />', () => {
   it('should render MoreFilledIcon', () => {

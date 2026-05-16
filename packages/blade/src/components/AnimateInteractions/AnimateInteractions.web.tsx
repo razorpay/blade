@@ -1,9 +1,12 @@
 import React from 'react';
 import { useAnimation } from 'framer-motion';
+
+import { BaseMotionEnhancerBox } from '~components/BaseMotion';
+
 import { AnimateInteractionsContext } from './AnimateInteractionsProvider';
 import { useFocusWithin } from './useFocusWithin';
+
 import type { AnimateInteractionsProps } from './types';
-import { BaseMotionEnhancerBox } from '~components/BaseMotion';
 
 /**
  * ## AnimateInteractions

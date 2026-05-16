@@ -1,5 +1,6 @@
-import RoutesIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import RoutesIcon from '.';
 
 describe('<RoutesIcon />', () => {
   it('should render RoutesIcon', () => {

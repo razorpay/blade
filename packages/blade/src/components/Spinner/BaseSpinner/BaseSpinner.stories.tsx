@@ -1,9 +1,12 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
+
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { ReactElement } from 'react';
 import type { BaseSpinnerProps } from './BaseSpinner';
-import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (

@@ -1,5 +1,6 @@
-import ShuffleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ShuffleIcon from '.';
 
 describe('<ShuffleIcon />', () => {
   it('should render ShuffleIcon', () => {

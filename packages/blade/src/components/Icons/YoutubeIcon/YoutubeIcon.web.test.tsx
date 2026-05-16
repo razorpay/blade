@@ -1,5 +1,6 @@
-import YoutubeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import YoutubeIcon from './';
 
 describe('<YoutubeIcon />', () => {
   it('should render YoutubeIcon', () => {

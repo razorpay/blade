@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import Animated, {
@@ -7,9 +6,12 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import type { LayoutChangeEvent, ViewStyle } from 'react-native';
 import { View } from 'react-native';
-import type { CollapsibleBodyContentProps } from './types';
+
+import { Box } from '~components/Box';
+import { useTheme } from '~components/BladeProvider';
+import { castNativeType } from '~utils';
+
 import { useCollapsible } from './CollapsibleContext';
 import {
   getCollapsibleBodyContentBoxProps,
@@ -18,9 +20,10 @@ import {
   getTransitionEasing,
 } from './commonStyles';
 import { nativeStyles } from './styles.native';
-import { Box } from '~components/Box';
-import { useTheme } from '~components/BladeProvider';
-import { castNativeType } from '~utils';
+
+import type { ReactElement } from 'react';
+import type { LayoutChangeEvent, ViewStyle } from 'react-native';
+import type { CollapsibleBodyContentProps } from './types';
 
 type AnimatedStyledCollapsibleBodyContentProps = {
   isExpanded: boolean;

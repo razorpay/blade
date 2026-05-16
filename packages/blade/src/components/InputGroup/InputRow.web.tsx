@@ -1,7 +1,8 @@
 import React from 'react';
-import type { InputRowProps } from './types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
+
+import type { InputRowProps } from './types';
 
 export const _InputRow = React.forwardRef<HTMLDivElement, InputRowProps>(
   ({ gridTemplateColumns = '1fr', children, testID }, ref): JSX.Element => {

@@ -1,5 +1,6 @@
-import SaveIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SaveIcon from '.';
 
 describe('<SaveIcon />', () => {
   it('should render SaveIcon', () => {

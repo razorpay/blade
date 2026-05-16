@@ -1,5 +1,6 @@
-import MailIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import MailIcon from './';
 
 describe('<MailIcon />', () => {
   it('should render MailIcon', () => {

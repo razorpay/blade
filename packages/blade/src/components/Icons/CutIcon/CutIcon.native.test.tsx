@@ -1,5 +1,6 @@
-import CutIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CutIcon from '.';
 
 describe('<CutIcon />', () => {
   it('should render CutIcon', () => {

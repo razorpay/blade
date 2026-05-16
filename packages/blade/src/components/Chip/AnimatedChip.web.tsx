@@ -1,11 +1,14 @@
 import styled from 'styled-components';
-import { getAnimatedChipStyles } from './getAnimatedChipStyles';
-import type { AnimatedChipProps } from './types';
-import { chipMotionTokens } from './chipTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
+
+import { getAnimatedChipStyles } from './getAnimatedChipStyles';
+import { chipMotionTokens } from './chipTokens';
+
+import type { AnimatedChipProps } from './types';
 
 const AnimatedChip = styled(BaseBox)<AnimatedChipProps>((props) => {
   const easing = getIn(props.theme.motion, chipMotionTokens.easing);

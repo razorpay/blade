@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { sendAnalytics, handleError } from '../utils/analyticsUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
@@ -10,6 +9,8 @@ import { getBladePatternDocsToolName } from './getBladePatternDocs.js';
 import { getBladeGeneralDocsToolName } from './getBladeGeneralDocs.js';
 import { getFigmaToCodeToolName } from './getFigmaToCode.js';
 import { getChangelogToolName } from './getChangelog.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 // List of Blade MCP tool names excluding this metric tool
 const bladeMcpToolNames = [

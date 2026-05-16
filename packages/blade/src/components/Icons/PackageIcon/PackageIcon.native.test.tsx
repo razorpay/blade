@@ -1,5 +1,6 @@
-import PackageIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PackageIcon from '.';
 
 describe('<PackageIcon />', () => {
   it('should render PackageIcon', () => {

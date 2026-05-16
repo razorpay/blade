@@ -1,9 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import { SelectInput } from './SelectInput';
-import { AutoComplete } from './AutoComplete';
+
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -17,6 +15,11 @@ import { Text } from '~components/Typography';
 import { Link } from '~components/Link';
 import { Badge } from '~components/Badge';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+
+import { SelectInput } from './SelectInput';
+import { AutoComplete } from './AutoComplete';
+
+import type { StoryFn } from '@storybook/react-vite';
 
 const propsCategory = {
   BASE_PROPS: 'Input Base Props',

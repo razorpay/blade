@@ -1,15 +1,18 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { ModalHeader } from './ModalHeader';
-import type { ModalHeaderProps } from './ModalHeader';
-import { ModalFooter } from './ModalFooter';
-import type { ModalFooterProps } from './ModalFooter';
-import { ModalBody } from './ModalBody';
-import type { ModalBodyProps } from './ModalBody';
-import type { ModalProps } from './types';
+
 import { Text } from '~components/Typography';
 import { logger } from '~utils/logger';
+
+import { ModalHeader } from './ModalHeader';
+import { ModalFooter } from './ModalFooter';
+import { ModalBody } from './ModalBody';
+
+import type { ModalHeaderProps } from './ModalHeader';
+import type { ModalFooterProps } from './ModalFooter';
+import type { ModalBodyProps } from './ModalBody';
+import type { ModalProps } from './types';
 
 const Modal = (props: ModalProps): React.ReactElement => {
   if (__DEV__) {

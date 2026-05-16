@@ -1,8 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ChatMessage } from '../ChatMessage';
-import type { ChatMessageProps } from '../types';
+
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -30,8 +28,13 @@ import {
   TableRow,
   TableCell,
 } from '~components/Table';
-import type { TableData } from '~components/Table';
 import { LightBox, LightBoxBody, LightBoxItem } from '~components/LightBox';
+
+import { ChatMessage } from '../ChatMessage';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ChatMessageProps } from '../types';
+import type { TableData } from '~components/Table';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper

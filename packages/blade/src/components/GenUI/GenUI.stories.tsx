@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
-import { GenUIProvider } from './GenUIProvider';
-import { GenUISchemaRenderer } from './GenUISchemaRenderer';
+
 import { Box } from '~components/Box';
-import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
+
+import { GenUIProvider } from './GenUIProvider';
+import { GenUISchemaRenderer } from './GenUISchemaRenderer';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BoxProps } from '~components/Box';
 
 export default {
   title: 'Patterns/GenUI',

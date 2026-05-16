@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
-import { Move } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Tag } from '~components/Tag';
+
+import { Move } from '../index';
 
 describe('<Move />', () => {
   it('should enhance and render child to add move', () => {

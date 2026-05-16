@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { pagination } from './tokens';
-import type { PaginationProps } from './types';
+
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
@@ -26,6 +25,10 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
 import { getStyledProps } from '~components/Box/styledProps';
+
+import { pagination } from './tokens';
+
+import type { PaginationProps } from './types';
 
 const pageSizeOptions: NonNullable<PaginationProps['defaultPageSize']>[] = [10, 25, 50];
 

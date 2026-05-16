@@ -1,5 +1,6 @@
-import OptimizerIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import OptimizerIcon from './';
 
 describe('<OptimizerIcon />', () => {
   it('should render OptimizerIcon', () => {

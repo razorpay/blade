@@ -1,5 +1,6 @@
-import SaasIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SaasIcon from '.';
 
 describe('<SaasIcon />', () => {
   it('should render SaasIcon', () => {

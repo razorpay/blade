@@ -1,6 +1,8 @@
 import React from 'react';
-import { Display } from '../';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Display } from '../';
 
 describe('<Display />', () => {
   it('should render', () => {

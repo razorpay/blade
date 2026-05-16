@@ -1,8 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
-import { useCarouselContext } from './CarouselContext';
+
 import BaseBox from '~components/Box/BaseBox';
+
+import { useCarouselContext } from './CarouselContext';
 
 type CarouselItemProps = {
   children: React.ReactNode;

@@ -1,28 +1,31 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
-import { CheckboxIcon } from './CheckboxIcon';
-import { useCheckbox } from './useCheckbox';
-import { checkboxHoverTokens, checkboxSizes } from './checkboxTokens';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef, DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { makeSize, useTheme } from '~utils';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
-import type { MotionMetaProp } from '~components/BaseMotion';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
+import { CheckboxIcon } from './CheckboxIcon';
+import { useCheckbox } from './useCheckbox';
+import { checkboxHoverTokens, checkboxSizes } from './checkboxTokens';
+
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeElementRef, DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { MotionMetaProp } from '~components/BaseMotion';
 
 type OnChange = ({
   isChecked,

@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { useFluidGradient } from './useFluidGradient';
+
 import { useId } from '~utils/useId';
+
+import { useFluidGradient } from './useFluidGradient';
 
 // Canvas renders this much larger than the visible area so the gradient
 // fills the logo shape fully rather than fading at the edges.

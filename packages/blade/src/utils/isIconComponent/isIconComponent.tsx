@@ -1,5 +1,6 @@
-import type { IconComponent } from '~components/Icons';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+
+import type { IconComponent } from '~components/Icons';
 
 const isIconComponent = (element: React.ReactNode | IconComponent): boolean => {
   if (typeof element === 'function') {

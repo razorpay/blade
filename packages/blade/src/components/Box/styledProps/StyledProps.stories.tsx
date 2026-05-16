@@ -1,14 +1,17 @@
-import type { Meta } from '@storybook/react-vite';
 import React from 'react';
-import { getStyledPropsArgTypes } from '../BaseBox/storybookArgTypes';
-import type { BoxProps } from '..';
 import { Box } from '..';
-import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
+
 import { Text, Heading } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Link } from '~components/Link';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
+
+import { getStyledPropsArgTypes } from '../BaseBox/storybookArgTypes';
+
+import type { Meta } from '@storybook/react-vite';
+import type { BoxProps } from '..';
+import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();

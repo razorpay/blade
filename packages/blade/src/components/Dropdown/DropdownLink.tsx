@@ -2,14 +2,18 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
 import React from 'react';
-import { getActionListContainerRole } from '../ActionList/getA11yRoles';
-import { BaseLink } from '../Link/BaseLink';
-import type { BaseLinkProps } from '../Link/BaseLink';
-import type { LinkButtonVariantProps } from '../Link';
-import { useDropdown } from './useDropdown';
-import { dropdownComponentIds } from './dropdownComponentIds';
+
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { getActionListContainerRole } from '../ActionList/getA11yRoles';
+import { BaseLink } from '../Link/BaseLink';
+
+import { useDropdown } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { BaseLinkProps } from '../Link/BaseLink';
+import type { LinkButtonVariantProps } from '../Link';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];

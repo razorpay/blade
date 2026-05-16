@@ -1,5 +1,6 @@
-import MoreVerticalIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MoreVerticalIcon from '.';
 
 describe('<MoreVerticalIcon />', () => {
   it('should render MoreVerticalIcon', () => {

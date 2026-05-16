@@ -1,5 +1,6 @@
-import PaymentGatewayIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PaymentGatewayIcon from './';
 
 describe('<PaymentGatewayIcon />', () => {
   it('should render PaymentGatewayIcon', () => {

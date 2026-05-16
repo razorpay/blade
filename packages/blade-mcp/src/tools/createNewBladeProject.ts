@@ -1,10 +1,11 @@
 import { basename } from 'path';
 import { z } from 'zod';
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 const createNewBladeProjectToolName = 'create_new_blade_project';
 

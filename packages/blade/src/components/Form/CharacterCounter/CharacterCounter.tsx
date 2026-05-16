@@ -1,6 +1,8 @@
-import type { ReactElement } from 'react';
-import { hintTextSize } from '../formTokens';
 import { Text } from '~components/Typography';
+
+import { hintTextSize } from '../formTokens';
+
+import type { ReactElement } from 'react';
 
 type CharacterCounterProps = {
   currentCount: number;

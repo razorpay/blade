@@ -1,11 +1,8 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { getCurrencyList } from '@razorpay/i18nify-js/currency';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import { useState } from 'react';
-import type { AmountProps } from './Amount';
-import { Amount as AmountComponent } from './Amount';
-import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
+
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -17,6 +14,12 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
+
+import { Amount as AmountComponent } from './Amount';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { AmountProps } from './Amount';
+import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
 
 const Page = (): React.ReactElement => {
   return (

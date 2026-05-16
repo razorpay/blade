@@ -6,10 +6,13 @@
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-shadow */
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { RzpGlassMount } from './RzpGlassMount';
-import type { RzpGlassProps } from './types';
-import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
+
 import { useMergeRefs } from '~utils/useMergeRefs';
+
+import { RzpGlassMount } from './RzpGlassMount';
+import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
+
+import type { RzpGlassProps } from './types';
 
 // Duration of the component's built-in fade-in transition.
 // The video is kept paused during this window so one-shot animations

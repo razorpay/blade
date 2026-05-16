@@ -1,5 +1,6 @@
-import BatteryIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BatteryIcon from '.';
 
 describe('<BatteryIcon />', () => {
   it('should render BatteryIcon', () => {

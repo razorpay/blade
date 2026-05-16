@@ -1,7 +1,9 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { Tag } from '../Tag';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Tag } from '../Tag';
 
 describe('<Tag />', () => {
   it('should render tag', () => {

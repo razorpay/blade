@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { LightBoxItemProps } from './types';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils/platform/castUtils';
 import { useTheme } from '~components/BladeProvider';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
+
+import type { LightBoxItemProps } from './types';
 
 type LightBoxThumbnailStripProps = {
   items: LightBoxItemProps[];

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { InputGroupProps } from '../types';
-import { InputGroup as InputGroupComponent } from '../InputGroup';
-import { InputRow } from '../InputRow';
-import { InputGroupStoryCode } from './code';
+
 import { TextInput } from '~components/Input/TextInput';
 import { Button } from '~components/Button';
 import { Heading } from '~components/Typography';
@@ -22,8 +18,16 @@ import {
   getPaymentCardNumberFormat,
   getPaymentCardCVVLength,
 } from '~utils/usePaymentCardDetection';
-import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
 import { PasswordInput } from '~components/Input/PasswordInput';
+
+import { InputGroup as InputGroupComponent } from '../InputGroup';
+import { InputRow } from '../InputRow';
+
+import { InputGroupStoryCode } from './code';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { InputGroupProps } from '../types';
+import type { PaymentCardBrand } from '~utils/usePaymentCardDetection';
 
 export default {
   title: 'Components/InputGroup',

@@ -1,5 +1,6 @@
-import ExportIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ExportIcon from '.';
 
 describe('<ExportIcon />', () => {
   it('should render ExportIcon', () => {

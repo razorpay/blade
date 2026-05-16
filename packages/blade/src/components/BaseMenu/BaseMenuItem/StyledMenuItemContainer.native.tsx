@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
-import type { StyledBaseMenuItemContainerProps } from '../types';
-import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
+
 import { makeSize } from '~utils';
+
+import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
+
+import type { StyledBaseMenuItemContainerProps } from '../types';
 
 const StyledMenuItemContainer = styled(TouchableOpacity)<StyledBaseMenuItemContainerProps>(
   (props) => {

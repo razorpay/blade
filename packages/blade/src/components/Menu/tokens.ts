@@ -1,8 +1,9 @@
-import type { Theme } from '~components/BladeProvider';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeSize, makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+
+import type { Theme } from '~components/BladeProvider';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 const overlayPaddingX = 'spacing.3';
 const overlayPaddingTop = 'spacing.3';

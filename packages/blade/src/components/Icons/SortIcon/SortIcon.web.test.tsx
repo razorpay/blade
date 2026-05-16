@@ -1,5 +1,6 @@
-import SortIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SortIcon from './';
 
 describe('<SortIcon />', () => {
   it('should render SortIcon', () => {

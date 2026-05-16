@@ -1,6 +1,4 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { ChartLabelContentProps } from '~components/Charts';
 import { Box } from '~components/Box';
 import {
   ChartBar,
@@ -17,6 +15,9 @@ import { Divider } from '~components/Divider';
 import { Badge } from '~components/Badge';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ChartLabelContentProps } from '~components/Charts';
 
 const Page = (): React.ReactElement => {
   return (

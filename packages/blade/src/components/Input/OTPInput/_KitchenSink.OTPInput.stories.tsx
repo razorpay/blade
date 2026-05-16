@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as otpInputStories from './OTPInput.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as otpInputStories from './OTPInput.stories';
 
 const allStories = Object.values(composeStories(otpInputStories));
 

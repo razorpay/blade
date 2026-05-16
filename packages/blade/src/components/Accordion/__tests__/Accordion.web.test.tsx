@@ -1,10 +1,12 @@
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { waitFor } from '@testing-library/react';
-import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
+
+import { Accordion, AccordionItem, AccordionItemBody, AccordionItemHeader } from '../index';
 
 describe('<Accordion />', () => {
   it('should render', () => {

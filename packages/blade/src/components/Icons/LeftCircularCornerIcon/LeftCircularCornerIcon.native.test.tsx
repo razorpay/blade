@@ -1,5 +1,6 @@
-import LeftCircularCornerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import LeftCircularCornerIcon from '.';
 
 describe('<LeftCircularCornerIcon />', () => {
   it('should render LeftCircularCornerIcon', () => {

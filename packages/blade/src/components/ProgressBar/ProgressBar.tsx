@@ -1,24 +1,27 @@
 import React from 'react';
-import type { ReactElement, Ref } from 'react';
-import { ProgressBarFilled } from './ProgressBarFilled';
-import { CircularProgressBarFilled } from './CircularProgressBar';
+
 import clamp from '~utils/lodashButBetter/clamp';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import type { FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
-import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { ProgressBarFilled } from './ProgressBarFilled';
+import { CircularProgressBarFilled } from './CircularProgressBar';
+
+import type { ReactElement, Ref } from 'react';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { FeedbackColors } from '~tokens/theme/theme';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 
 type ProgressBarCommonProps = {
   /**

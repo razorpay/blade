@@ -1,6 +1,7 @@
-import type { IconComponent } from '~components/Icons';
 import useIconProps from '~components/Icons/useIconProps';
 import Svg, { Path } from '~components/Icons/_Svg';
+
+import type { IconComponent } from '~components/Icons';
 
 const TrustedBadgeIcon: IconComponent = (props) => {
   const { width, height } = useIconProps(props);

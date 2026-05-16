@@ -1,5 +1,6 @@
-import ContactlessPaymentIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ContactlessPaymentIcon from './';
 
 describe('<ContactlessPaymentIcon />', () => {
   it('should render ContactlessPaymentIcon', () => {

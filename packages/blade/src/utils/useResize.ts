@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
-import type React from 'react';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
+import type React from 'react';
 
 /**
  * Hook to observe resize events on a given element

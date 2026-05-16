@@ -1,8 +1,11 @@
 import React from 'react';
-import type { DisplayProps } from '../';
-import { Display } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { Display } from '../';
+
+import type { DisplayProps } from '../';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

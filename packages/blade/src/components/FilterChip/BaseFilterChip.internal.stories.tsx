@@ -1,9 +1,12 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { BaseFilterChip } from './BaseFilterChip';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import { BaseFilterChip } from './BaseFilterChip';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 const Page = (): React.ReactElement => {
   return (

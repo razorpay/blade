@@ -1,10 +1,11 @@
 import React from 'react';
-import type { BaseInputProps } from './BaseInput';
-import type { BladeElementRefWithValue } from '~utils/types';
-import type { FormInputOnEvent, FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import { isReactNative } from '~utils';
 import { useControllableState } from '~utils/useControllable';
+
+import type { BaseInputProps } from './BaseInput';
+import type { BladeElementRefWithValue } from '~utils/types';
+import type { FormInputOnEvent, FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 type TaggedInputProps = {
   isTaggedInput?: boolean;

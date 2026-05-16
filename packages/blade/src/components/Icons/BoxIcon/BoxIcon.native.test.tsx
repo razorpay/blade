@@ -1,5 +1,6 @@
-import BoxIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BoxIcon from '.';
 
 describe('<BoxIcon />', () => {
   it('should render BoxIcon', () => {

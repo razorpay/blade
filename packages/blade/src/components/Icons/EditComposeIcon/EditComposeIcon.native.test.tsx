@@ -1,5 +1,6 @@
-import EditComposeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EditComposeIcon from '.';
 
 describe('<EditComposeIcon />', () => {
   it('should render EditComposeIcon', () => {

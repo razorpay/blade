@@ -1,5 +1,6 @@
-import SpeakerIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SpeakerIcon from './';
 
 describe('<SpeakerIcon />', () => {
   it('should render SpeakerIcon', () => {

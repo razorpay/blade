@@ -1,13 +1,7 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import { useState } from 'react';
 
-import { Accordion as AccordionComponent } from './Accordion';
-import { AccordionItem } from './AccordionItem';
-import { AccordionItemHeader } from './AccordionItemHeader';
-import { AccordionItemBody } from './AccordionItemBody';
-import type { AccordionProps } from '.';
+import { isReactNative } from '~utils';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -23,13 +17,21 @@ import {
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
-import { isReactNative } from '~utils';
 import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 import { TextInput } from '~components/Input/TextInput';
 import { Indicator } from '~components/Indicator';
 import { Amount } from '~components/Amount';
+
+import { Accordion as AccordionComponent } from './Accordion';
+import { AccordionItem } from './AccordionItem';
+import { AccordionItemHeader } from './AccordionItemHeader';
+import { AccordionItemBody } from './AccordionItemBody';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { AccordionProps } from '.';
 
 const Page = (): ReactElement => {
   return (

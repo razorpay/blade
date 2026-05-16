@@ -1,5 +1,6 @@
-import { SearchInput } from '../';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { SearchInput } from '../';
 
 describe('<SearchInput />', () => {
   it('should render SearchInput', () => {

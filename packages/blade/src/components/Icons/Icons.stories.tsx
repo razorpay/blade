@@ -1,13 +1,16 @@
-import type { ComponentType, ReactElement } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Description } from '@storybook/addon-docs/blocks';
-import iconMap from './iconMap';
-import PlusIcon from './PlusIcon';
-import type { IconProps } from '.';
+
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import iconMap from './iconMap';
+import PlusIcon from './PlusIcon';
+
+import type { ComponentType, ReactElement } from 'react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { IconProps } from '.';
 
 const Page = (): ReactElement => {
   return (

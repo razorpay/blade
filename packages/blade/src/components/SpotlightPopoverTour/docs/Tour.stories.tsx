@@ -1,17 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import isChromatic from 'chromatic';
-import { SpotlightPopoverTourStep } from '../TourStep';
-import { SpotlightPopoverTourFooter } from '../TourFooter';
-import { SpotlightPopoverTour } from '../..';
-import type {
-  SpotlightPopoverStepRenderProps,
-  SpotlightPopoverTourProps,
-  SpotlightPopoverTourSteps,
-} from '../types';
-import { BasicExample } from './examples';
+
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
@@ -22,6 +13,19 @@ import { Card, CardBody } from '~components/Card';
 import { Amount } from '~components/Amount';
 import { Link } from '~components/Link';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
+
+import { SpotlightPopoverTourStep } from '../TourStep';
+import { SpotlightPopoverTourFooter } from '../TourFooter';
+import { SpotlightPopoverTour } from '../..';
+
+import { BasicExample } from './examples';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type {
+  SpotlightPopoverStepRenderProps,
+  SpotlightPopoverTourProps,
+  SpotlightPopoverTourSteps,
+} from '../types';
 
 const Page = (): React.ReactElement => {
   return (

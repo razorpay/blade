@@ -1,8 +1,11 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Box } from '../Box';
-import type { BoxRefType } from '../index';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Box } from '../Box';
+
+import type { BoxRefType } from '../index';
 
 describe('<Box />', () => {
   it('should render Box component with supported styles', () => {

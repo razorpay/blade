@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import { getPlatformType } from '~src/utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+
+import type { GestureResponderEvent } from 'react-native';
 
 export type OnChange = ({
   isChecked,

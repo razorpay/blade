@@ -1,12 +1,13 @@
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
+import { Heading } from '~components/Typography';
+
 import { List } from '../List';
 import { ListItem } from '../ListItem';
 import { ListItemLink } from '../ListItemLink';
 import { ListItemCode } from '../ListItemCode';
 import { ListItemText } from '../ListItemText';
-import assertAccessible from '~utils/testing/assertAccessible.web';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
-import { Heading } from '~components/Typography';
 
 describe('<List />', () => {
   it('should render List with default properties', () => {

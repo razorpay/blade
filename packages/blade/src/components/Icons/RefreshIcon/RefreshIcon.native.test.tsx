@@ -1,5 +1,6 @@
-import RefreshIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import RefreshIcon from '.';
 
 describe('<RefreshIcon />', () => {
   it('should render RefreshIcon', () => {

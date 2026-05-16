@@ -1,9 +1,12 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
-import type { BaseLinkProps } from './BaseLink';
-import BaseLinkComponent from './BaseLink';
+
 import iconMap from '~components/Icons/iconMap';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+
+import BaseLinkComponent from './BaseLink';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { BaseLinkProps } from './BaseLink';
 
 export default {
   title: 'Components/Link/BaseLink (Internal)',

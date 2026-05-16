@@ -1,6 +1,7 @@
+import { isReactNative, makeSpace, makeBorderSize, getPopupBoxShadowString } from '~utils';
+
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
-import { isReactNative, makeSpace, makeBorderSize, getPopupBoxShadowString } from '~utils';
 import type { ColorSchemeNames } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
 

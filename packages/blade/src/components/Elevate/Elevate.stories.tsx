@@ -1,9 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import { InternalCardExample } from '../Card/InternalCardExample';
-import { Elevate } from './';
-import type { ElevateProps } from './';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -13,6 +10,13 @@ import { Card, CardBody } from '~components/Card';
 import { Heading, Text } from '~components/Typography';
 import { Move } from '~components/Move';
 import { ExternalLinkIcon } from '~components/Icons';
+
+import { InternalCardExample } from '../Card/InternalCardExample';
+
+import { Elevate } from './';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { ElevateProps } from './';
 
 const Page = (): React.ReactElement => {
   return (

@@ -1,12 +1,14 @@
 import userEvent from '@testing-library/user-event';
 import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
-import { Tabs, TabList, TabItem, TabPanel } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { Tabs, TabList, TabItem, TabPanel } from '../';
 
 const queryTabPanelByText = (text: string): HTMLElement | null => {
   return (

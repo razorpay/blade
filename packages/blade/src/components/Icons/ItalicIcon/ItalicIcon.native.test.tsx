@@ -1,5 +1,6 @@
-import ItalicIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ItalicIcon from '.';
 
 describe('<ItalicIcon />', () => {
   it('should render ItalicIcon', () => {

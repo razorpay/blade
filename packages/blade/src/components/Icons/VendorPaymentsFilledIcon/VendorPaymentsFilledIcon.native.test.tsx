@@ -1,5 +1,6 @@
-import VendorPaymentsFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VendorPaymentsFilledIcon from '.';
 
 describe('<VendorPaymentsFilledIcon />', () => {
   it('should render VendorPaymentsFilledIcon', () => {

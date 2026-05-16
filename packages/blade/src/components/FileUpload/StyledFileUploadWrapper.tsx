@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import type { StyledFileUploadWrapperProps } from './types';
-import { fileUploadMotionTokens, fileUploadColorTokens } from './fileUploadTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
+
+import { fileUploadMotionTokens, fileUploadColorTokens } from './fileUploadTokens';
+
+import type { StyledFileUploadWrapperProps } from './types';
 
 const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
   ({ theme, isDisabled, isActive }) => {

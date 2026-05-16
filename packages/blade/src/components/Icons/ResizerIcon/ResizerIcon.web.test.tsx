@@ -1,5 +1,6 @@
-import ResizerIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ResizerIcon from './';
 
 describe('<ResizerIcon />', () => {
   it('should render ResizerIcon', () => {

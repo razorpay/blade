@@ -1,5 +1,6 @@
-import type { AvatarGroupProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { AvatarGroupProps } from './types';
 
 const AvatarGroup = (_props: AvatarGroupProps): React.ReactElement => {
   throwBladeError({

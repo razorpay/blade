@@ -1,5 +1,6 @@
-import ToggleRightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ToggleRightIcon from './';
 
 describe('<ToggleRightIcon />', () => {
   it('should render ToggleRightIcon', () => {

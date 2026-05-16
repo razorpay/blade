@@ -2,13 +2,16 @@ import React from 'react';
 import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components';
-import type { CardRootProps } from './types';
-import { CARD_SCALE_DOWN_VALUE } from './constants';
+
 import BaseBox from '~components/Box/BaseBox';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { logger } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
+
+import { CARD_SCALE_DOWN_VALUE } from './constants';
+
+import type { CardRootProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps>(({ isSelected, ...props }) => {

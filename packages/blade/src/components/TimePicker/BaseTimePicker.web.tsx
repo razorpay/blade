@@ -1,11 +1,6 @@
 import React, { useRef } from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
-import type { TimePickerProps } from './types';
-import { TimeInput } from './TimeInput.web';
-import { useTimePickerState } from './useTimePickerState';
-import { TimePickerContent } from './TimePickerContent';
-import type { DataAnalyticsAttribute } from '~utils/types';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
+
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -18,6 +13,14 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size as sizeTokens } from '~tokens/global';
 import { componentZIndices } from '~utils/componentZIndices';
+
+import { TimeInput } from './TimeInput.web';
+import { useTimePickerState } from './useTimePickerState';
+import { TimePickerContent } from './TimePickerContent';
+
+import type { TimePickerProps } from './types';
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 const _BaseTimePicker = ({
   value,

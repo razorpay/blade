@@ -1,8 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { ChatInput } from '../ChatInput';
-import type { ChatInputProps } from '../types';
-import type { BladeFileList } from '~components/FileUpload/types';
+
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -14,6 +11,12 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+
+import { ChatInput } from '../ChatInput';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ChatInputProps } from '../types';
+import type { BladeFileList } from '~components/FileUpload/types';
 
 const Page = (): React.ReactElement => {
   return (

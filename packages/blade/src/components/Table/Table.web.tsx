@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
-import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import {
@@ -12,30 +11,10 @@ import {
 import { useTree } from '@table-library/react-table-library/tree';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
-import type { TableContextType } from './TableContext';
-import { TableContext } from './TableContext';
-import { ComponentIds } from './componentIds';
-import {
-  checkboxCellWidth,
-  firstColumnStickyZIndex,
-  refreshWrapperZIndex,
-  tableBackgroundColor,
-  tablePagination,
-  classes,
-} from './tokens';
-import type {
-  TableProps,
-  TableNode,
-  Identifier,
-  TablePaginationType,
-  TableHeaderRowProps,
-} from './types';
-import { getTableBodyStyles } from './commonStyles';
-import { TableSurface } from './TableSurface.web';
+
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
-import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
@@ -49,6 +28,30 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useListViewContext } from '~components/ListView/ListViewContext';
+
+import { TableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
+import {
+  checkboxCellWidth,
+  firstColumnStickyZIndex,
+  refreshWrapperZIndex,
+  tableBackgroundColor,
+  tablePagination,
+  classes,
+} from './tokens';
+import { getTableBodyStyles } from './commonStyles';
+import { TableSurface } from './TableSurface.web';
+
+import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
+import type { TableContextType } from './TableContext';
+import type {
+  TableProps,
+  TableNode,
+  Identifier,
+  TablePaginationType,
+  TableHeaderRowProps,
+} from './types';
+import type { BoxProps } from '~components/Box';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,

@@ -1,6 +1,7 @@
-import Button from '../Button';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { CreditCardIcon } from '~components/Icons';
+
+import Button from '../Button';
 
 describe('<Button />', () => {
   it('should render button with icon with default iconPosition', () => {

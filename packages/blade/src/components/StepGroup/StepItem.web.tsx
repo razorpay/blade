@@ -1,16 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StepLine } from './StepLine';
-import type { StepLineProps } from './StepLine';
-import { useStepGroup } from './StepGroupContext';
-import type {
-  InteractiveItemHeaderProps,
-  StepGroupContextType,
-  StepGroupProps,
-  StepItemProps,
-} from './types';
-import { componentIds } from './componentIds';
-import { itemLineGap, stepItemHeaderTokens } from './tokens';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -22,6 +12,19 @@ import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { StepLine } from './StepLine';
+import { useStepGroup } from './StepGroupContext';
+import { componentIds } from './componentIds';
+import { itemLineGap, stepItemHeaderTokens } from './tokens';
+
+import type { StepLineProps } from './StepLine';
+import type {
+  InteractiveItemHeaderProps,
+  StepGroupContextType,
+  StepGroupProps,
+  StepItemProps,
+} from './types';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];

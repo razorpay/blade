@@ -1,9 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { Link, matchPath, Route, Switch, useLocation } from 'react-router-dom';
-import type { SideNavProps, SideNavSectionProps } from '../types';
-import type { SideNavLinkProps } from '..';
 import {
   SideNavBody,
   SideNav,
@@ -13,8 +10,7 @@ import {
   SideNavFooter,
   SideNavItem,
 } from '..';
-import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
-import { sideNavWithReactRouter } from './code';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
@@ -62,6 +58,13 @@ import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
 import { Badge } from '~components/Badge';
 import { IconButton } from '~components/Button/IconButton';
+
+import { RazorpayLinesSvg, RazorpayLogo } from './RazorpayLogo';
+import { sideNavWithReactRouter } from './code';
+
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { SideNavProps, SideNavSectionProps } from '../types';
+import type { SideNavLinkProps } from '..';
 
 const DocsPage = (): React.ReactElement => {
   return (

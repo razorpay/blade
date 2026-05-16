@@ -1,5 +1,6 @@
-import VolumeLowIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import VolumeLowIcon from '.';
 
 describe('<VolumeLowIcon />', () => {
   it('should render VolumeLowIcon', () => {

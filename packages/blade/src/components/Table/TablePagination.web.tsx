@@ -1,13 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
-import { useTableContext } from './TableContext';
-import { ComponentIds } from './componentIds';
-import { tablePagination } from './tokens';
-import type { TablePaginationProps } from './types';
+
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { Pagination } from '~components/Pagination';
+
+import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
+import { tablePagination } from './tokens';
+
+import type { TablePaginationProps } from './types';
 
 const _TablePagination = ({
   currentPage: controlledCurrentPage,

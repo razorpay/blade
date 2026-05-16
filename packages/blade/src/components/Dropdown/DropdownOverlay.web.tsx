@@ -10,16 +10,19 @@ import {
   useDismiss,
   useInteractions,
 } from '@floating-ui/react';
-import { useDropdown } from './useDropdown';
-import { StyledDropdownOverlay } from './StyledDropdownOverlay';
-import type { DropdownOverlayProps } from './types';
-import { dropdownComponentIds } from './dropdownComponentIds';
+
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+
+import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { DropdownOverlayProps } from './types';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';

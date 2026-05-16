@@ -1,17 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import type { ReactElement, ReactNode } from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
-import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
-import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
-import { useTaggedInput } from '../BaseInput/useTaggedInput';
-import { useFormattedInput } from './useFormattedInput';
+
 import isEmpty from '~utils/lodashButBetter/isEmpty';
-import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
@@ -19,20 +10,33 @@ import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { hintMarginTop } from '~components/Form/formTokens';
+import { Divider } from '~components/Divider';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { DropdownOverlay } from '~components/Dropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { isIconComponent } from '~utils/isIconComponent';
+import { useDatePickerContext } from '~components/DatePicker/DatePickerContext';
+
+import { BaseInput } from '../BaseInput';
+import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
+import { useTaggedInput } from '../BaseInput/useTaggedInput';
+
+import { useFormattedInput } from './useFormattedInput';
+
+import type { ReactElement, ReactNode } from 'react';
+import type { TextInput as TextInputReactNative } from 'react-native';
+import type { BaseInputProps } from '../BaseInput';
+import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
+import type { IconComponent } from '~components/Icons';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type {
   BladeElementRef,
   BladeElementRefWithValue,
   ContainerElementType,
   DataAnalyticsAttribute,
 } from '~utils/types';
-import { hintMarginTop } from '~components/Form/formTokens';
-import { Divider } from '~components/Divider';
-import { getComponentId } from '~utils/isValidAllowedChildren';
-import { DropdownOverlay } from '~components/Dropdown';
-import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
-import { isIconComponent } from '~utils/isIconComponent';
-import { useDatePickerContext } from '~components/DatePicker/DatePickerContext';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;

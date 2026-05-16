@@ -1,5 +1,6 @@
-import InfoIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import InfoIcon from '.';
 
 describe('<InfoIcon />', () => {
   it('should render InfoIcon', () => {

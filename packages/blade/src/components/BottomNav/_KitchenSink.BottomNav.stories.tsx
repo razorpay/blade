@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as bottomNavStories from './BottomNav.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as bottomNavStories from './BottomNav.stories';
 
 const allStories = Object.values(composeStories(bottomNavStories));
 

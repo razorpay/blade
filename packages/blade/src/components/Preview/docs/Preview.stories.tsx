@@ -1,9 +1,11 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { PreviewBody, PreviewHeader, Preview, PreviewFooter } from '../Preview';
-import type { PreviewProps } from '../types';
 import { Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -11,11 +13,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { ArrowLeftIcon, ArrowRightIcon } from '~components/Icons';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { PreviewProps } from '../types';
 
 // Set up the worker
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(

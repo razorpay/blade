@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { MemoryRouter, Route, matchPath, useHistory, useLocation } from 'react-router-dom';
-import type { MemoryRouterProps } from 'react-router-dom';
 import { action } from 'storybook/actions';
+
+import type { MemoryRouterProps } from 'react-router-dom';
 import type { Decorator } from '@storybook/react-vite';
 
 type Links = Record<string, (path: string) => void>;

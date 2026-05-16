@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as tourStories from './docs/Tour.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as tourStories from './docs/Tour.stories';
 
 const allStories = Object.values(composeStories(tourStories));
 

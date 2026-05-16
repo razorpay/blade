@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
-import type { FileUploadItemProps } from '../FileUploadItem';
-import { FileUploadItem } from '../FileUploadItem';
-import type { BladeFile } from '../types';
+
 import { Box } from '~components/Box';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Heading } from '~components/Typography/Heading';
 import { Text } from '~components/Typography/Text';
+
+import { FileUploadItem } from '../FileUploadItem';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { FileUploadItemProps } from '../FileUploadItem';
+import type { BladeFile } from '../types';
 
 const Page = (): React.ReactElement => {
   return (

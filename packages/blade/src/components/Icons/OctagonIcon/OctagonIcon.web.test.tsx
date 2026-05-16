@@ -1,5 +1,6 @@
-import OctagonIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import OctagonIcon from './';
 
 describe('<OctagonIcon />', () => {
   it('should render OctagonIcon', () => {

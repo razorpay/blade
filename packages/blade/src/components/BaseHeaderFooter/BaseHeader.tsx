@@ -1,22 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
-import { Divider } from '~components/Divider';
-import type { DividerProps } from '~components/Divider';
-import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
-import { IconButton } from '~components/Button/IconButton';
-import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
-import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
-import type { BoxProps } from '~components/Box';
-import { Box } from '~components/Box';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { getComponentId } from '~utils/isValidAllowedChildren';
 import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
 import { size as sizeToken } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { Divider } from '~components/Divider';
+import BaseBox from '~components/Box/BaseBox';
+import { Heading, Text } from '~components/Typography';
+import { IconButton } from '~components/Button/IconButton';
+import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
+import { Box } from '~components/Box';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+
+import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
+import type { DividerProps } from '~components/Divider';
+import type { DataAnalyticsAttribute, TestID, ElementTiming } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 type BaseHeaderProps = {
   title?: string;

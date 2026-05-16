@@ -1,5 +1,6 @@
-import AlignJustifyIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AlignJustifyIcon from './';
 
 describe('<AlignJustifyIcon />', () => {
   it('should render AlignJustifyIcon', () => {

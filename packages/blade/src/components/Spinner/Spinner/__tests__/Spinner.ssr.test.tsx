@@ -1,5 +1,6 @@
-import { Spinner } from '../Spinner';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { Spinner } from '../Spinner';
 
 describe('<Spinner />', () => {
   it('should render primary color Spinner', () => {

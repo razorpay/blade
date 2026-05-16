@@ -5,9 +5,11 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => {
   jest.spyOn(console, 'error').mockImplementation();

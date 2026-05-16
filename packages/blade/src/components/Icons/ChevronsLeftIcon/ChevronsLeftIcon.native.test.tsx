@@ -1,5 +1,6 @@
-import ChevronsLeftIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ChevronsLeftIcon from '.';
 
 describe('<ChevronsLeftIcon />', () => {
   it('should render ChevronsLeftIcon', () => {

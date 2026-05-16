@@ -1,5 +1,6 @@
-import Signal3BarIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import Signal3BarIcon from '.';
 
 describe('<Signal3BarIcon />', () => {
   it('should render Signal3BarIcon', () => {

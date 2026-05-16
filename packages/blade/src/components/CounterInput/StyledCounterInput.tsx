@@ -1,7 +1,8 @@
 import styled, { keyframes, css } from 'styled-components';
-import type { CSSObject } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import type { CSSObject } from 'styled-components';
 
 // Keyframes for slide animations
 const slideUp = keyframes`

@@ -1,5 +1,6 @@
-import MonitorIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MonitorIcon from '.';
 
 describe('<MonitorIcon />', () => {
   it('should render MonitorIcon', () => {

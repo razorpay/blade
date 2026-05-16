@@ -1,5 +1,6 @@
-import LockIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import LockIcon from './';
 
 describe('<LockIcon />', () => {
   it('should render LockIcon', () => {

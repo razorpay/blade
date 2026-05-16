@@ -1,7 +1,9 @@
 import { composeStories } from '@storybook/react-vite';
-import * as bottomSheet from './BottomSheet.stories';
+
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+
+import * as bottomSheet from './BottomSheet.stories';
 
 const allStories = Object.values(composeStories(bottomSheet));
 

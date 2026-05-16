@@ -2,13 +2,16 @@
 import userEvents from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
-import type { DrawerProps } from '../';
-import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
+
+import { Drawer, DrawerBody, DrawerHeader, DrawerFooter } from '../';
+
+import type { DrawerProps } from '../';
 
 const BasicDrawer = (props: Partial<DrawerProps>): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);

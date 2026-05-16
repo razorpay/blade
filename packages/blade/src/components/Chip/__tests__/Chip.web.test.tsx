@@ -1,11 +1,13 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import { Chip } from '../Chip';
-import { ChipGroup } from '../ChipGroup';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.native';
+
+import { Chip } from '../Chip';
+import { ChipGroup } from '../ChipGroup';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

@@ -1,8 +1,11 @@
 import { forwardRef } from 'react';
 import { useDatesContext } from '@mantine/dates';
-import type { DatePickerFilterChipProps } from '../types';
-import { getFormattedDate } from '../utils';
+
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
+
+import { getFormattedDate } from '../utils';
+
+import type { DatePickerFilterChipProps } from '../types';
 import type { BladeElementRef } from '~utils/types';
 
 const formatDateRange = (

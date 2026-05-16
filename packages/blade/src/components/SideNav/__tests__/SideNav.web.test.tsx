@@ -1,6 +1,7 @@
-import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
 import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
+
+import { SideNavExample, SideNavL4NestingErrorExample } from './SideNavExample';
 
 // Test cases are limited here since SideNav gets flaky in unit tests with all the complexity
 // Major functionality tests are added in Interaction tests

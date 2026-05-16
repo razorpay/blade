@@ -1,11 +1,14 @@
 import React from 'react';
-import type { SideNavFooterProps } from './types';
-import { classes } from './tokens';
+
 import BaseBox from '~components/Box/BaseBox';
 import { drawerPadding } from '~components/Drawer';
 import getIn from '~utils/lodashButBetter/get';
-import type { Theme } from '~components/BladeProvider';
 import { makeSpace, useTheme } from '~utils';
+
+import { classes } from './tokens';
+
+import type { SideNavFooterProps } from './types';
+import type { Theme } from '~components/BladeProvider';
 
 const getDrawerPadding = (theme: Theme): `${number}px` => {
   const negativePaddingValue = getIn(theme, drawerPadding);

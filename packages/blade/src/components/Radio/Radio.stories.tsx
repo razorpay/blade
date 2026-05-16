@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { RadioGroupProps } from './RadioGroup/RadioGroup';
-import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
-import { Radio as RadioComponent } from './Radio';
+
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -15,6 +12,12 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Link } from '~components/Link';
 import { InfoIcon } from '~components/Icons';
+
+import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
+import { Radio as RadioComponent } from './Radio';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 
 const Page = (): React.ReactElement => {
   return (

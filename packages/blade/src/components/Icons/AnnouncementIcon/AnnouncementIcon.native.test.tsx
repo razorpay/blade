@@ -1,5 +1,6 @@
-import AnnouncementIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AnnouncementIcon from '.';
 
 describe('<AnnouncementIcon />', () => {
   it('should render AnnouncementIcon', () => {

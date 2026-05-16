@@ -1,5 +1,6 @@
-import MagicKonnectFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import MagicKonnectFilledIcon from '.';
 
 describe('<MagicKonnectFilledIcon />', () => {
   it('should render MagicKonnectFilledIcon', () => {

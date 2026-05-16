@@ -1,5 +1,6 @@
-import CropIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CropIcon from './';
 
 describe('<CropIcon />', () => {
   it('should render CropIcon', () => {

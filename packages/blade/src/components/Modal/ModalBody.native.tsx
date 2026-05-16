@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type ModalBodyProps = {
   children: React.ReactNode;

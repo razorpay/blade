@@ -1,14 +1,17 @@
 import React from 'react';
-import { drawerComponentIds } from './drawerComponentIds';
-import { DrawerContext } from './DrawerContext';
-import type { DrawerHeaderProps, DrawerFooterProps } from './types';
-import { useDrawerStack } from './StackProvider';
+
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~utils';
+
+import { drawerComponentIds } from './drawerComponentIds';
+import { DrawerContext } from './DrawerContext';
+import { useDrawerStack } from './StackProvider';
+
+import type { DrawerHeaderProps, DrawerFooterProps } from './types';
 
 const _DrawerHeader = ({
   title,

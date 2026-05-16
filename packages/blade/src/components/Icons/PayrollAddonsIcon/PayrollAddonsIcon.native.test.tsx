@@ -1,5 +1,6 @@
-import PayrollAddonsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PayrollAddonsIcon from '.';
 
 describe('<PayrollAddonsIcon />', () => {
   it('should render PayrollAddonsIcon', () => {

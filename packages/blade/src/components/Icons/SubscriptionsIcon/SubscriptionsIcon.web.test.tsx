@@ -1,5 +1,6 @@
-import SubscriptionsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import SubscriptionsIcon from './';
 
 describe('<SubscriptionsIcon />', () => {
   it('should render SubscriptionsIcon', () => {

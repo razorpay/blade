@@ -1,11 +1,14 @@
 import React from 'react';
-import { componentIds } from './componentIds';
-import type { ActionListItemProps } from './ActionListItem';
-import type { OptionsType } from '~components/Dropdown/useDropdown';
+
 import { isReactNative } from '~utils';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+
+import { componentIds } from './componentIds';
+
+import type { ActionListItemProps } from './ActionListItem';
+import type { OptionsType } from '~components/Dropdown/useDropdown';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 /**
  * Returns if there is ActionListItem after ActionListSection

@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { CommonChatMessageProps } from './types';
-import { chatMessageToken } from './token';
-import { getMessageBubbleBoxShadow } from './utils';
+
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
 import { useTheme } from '~utils';
+
+import { chatMessageToken } from './token';
+import { getMessageBubbleBoxShadow } from './utils';
+
+import type { CommonChatMessageProps } from './types';
 
 const StyledSelfMessageBubble = styled(BaseBox)(() => {
   const { colorScheme } = useTheme();

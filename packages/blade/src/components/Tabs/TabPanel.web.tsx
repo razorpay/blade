@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import type { TabPanelProps } from './types';
-import { useTabsContext } from './TabsContext';
+
 import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { useTabsContext } from './TabsContext';
+
+import type { TabPanelProps } from './types';
 
 const TabPanel = ({ children, value, ...rest }: TabPanelProps): React.ReactElement => {
   const { selectedValue, baseId, isLazy } = useTabsContext();

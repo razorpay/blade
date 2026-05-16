@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ChartLineProps, ChartLineWrapperProps } from './types';
 
 const ChartLineWrapper = (_prop: ChartLineWrapperProps): React.ReactElement => {
   throwBladeError({

@@ -1,14 +1,17 @@
 import { View } from 'react-native';
-import type { DefaultTheme } from 'styled-components/native';
 import styled from 'styled-components/native';
 import React from 'react';
-import type { StyledComponent } from 'styled-components';
-import { getBaseBoxStyles, getElevationValue } from './baseBoxStyles';
-import type { BaseBoxProps } from './types';
+
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
-import type { ElevationStyles } from '~tokens/global/elevation';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { getBaseBoxStyles, getElevationValue } from './baseBoxStyles';
+
+import type { DefaultTheme } from 'styled-components/native';
+import type { StyledComponent } from 'styled-components';
+import type { BaseBoxProps } from './types';
+import type { ElevationStyles } from '~tokens/global/elevation';
 
 /**
  * Some prop go to React Native DOM and fail with type errors.

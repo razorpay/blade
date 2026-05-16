@@ -1,6 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useIconProps from './useIconProps';
+
 import themeWrapper from '~utils/testing/themeWrapper';
+
+import useIconProps from './useIconProps';
 
 describe('useIconProps', () => {
   it('should return a xsmall icon with the correct color', () => {

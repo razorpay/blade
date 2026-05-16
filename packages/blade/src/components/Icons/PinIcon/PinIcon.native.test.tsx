@@ -1,5 +1,6 @@
-import PinIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PinIcon from '.';
 
 describe('<PinIcon />', () => {
   it('should render PinIcon', () => {

@@ -1,5 +1,6 @@
-import TrendingUpIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import TrendingUpIcon from './';
 
 describe('<TrendingUpIcon />', () => {
   it('should render TrendingUpIcon', () => {

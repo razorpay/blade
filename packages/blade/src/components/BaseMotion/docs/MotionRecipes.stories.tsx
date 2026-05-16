@@ -1,10 +1,13 @@
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
-import { DashboardWithRoutingExample } from './MotionDashboardComponents';
+
 import StoryRouter from '~utils/storybook/StoryRouter';
 import { Code, Text } from '~components/Typography';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { Move } from '~components/Move';
+
+import { DashboardWithRoutingExample } from './MotionDashboardComponents';
+
+import type { StoryFn } from '@storybook/react-vite';
 
 export default {
   title: 'Motion/Recipes',

@@ -1,9 +1,11 @@
 import React from 'react';
-import { listItemUnorderedBulletSize } from './listTokens';
-import { useListContext } from './ListContext';
+
 import { useTheme } from '~components/BladeProvider';
 import { Svg, Circle, Rect } from '~components/Icons/_Svg';
 import { opacity } from '~tokens/global';
+
+import { listItemUnorderedBulletSize } from './listTokens';
+import { useListContext } from './ListContext';
 
 type UnorderedIconProps = {
   iconDimensions: string;

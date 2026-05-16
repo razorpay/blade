@@ -12,25 +12,29 @@ import {
   ResponsiveContainer as RechartsResponsiveContainer,
 } from 'recharts';
 import { animate } from 'framer-motion';
+
+import getIn from '~utils/lodashButBetter/get';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute } from '~utils/metaAttribute';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
+import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+
+import { componentIds } from './componentIds';
+import { LineChartContext, useLineChartContext } from './LineChartContext';
+
 import type {
   DataColorMapping,
   SecondaryLabelMap,
   ChartXAxisProps,
 } from '../CommonChartComponents/types';
-import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
-import { componentIds } from './componentIds';
-import { LineChartContext, useLineChartContext } from './LineChartContext';
-import getIn from '~utils/lodashButBetter/get';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
-import { getComponentId } from '~utils/isValidAllowedChildren';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const Line: React.FC<ChartLineProps> = ({
   color,

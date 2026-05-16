@@ -1,6 +1,8 @@
+import getIn from '~utils/lodashButBetter/get';
+
 import { tableRow } from '../tokens';
 import { getTableActionsHoverStyles } from '../utils';
-import getIn from '~utils/lodashButBetter/get';
+
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 

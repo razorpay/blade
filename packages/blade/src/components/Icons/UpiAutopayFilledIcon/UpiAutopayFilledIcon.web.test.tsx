@@ -1,5 +1,6 @@
-import UpiAutopayFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import UpiAutopayFilledIcon from './';
 
 describe('<UpiAutopayFilledIcon />', () => {
   it('should render UpiAutopayFilledIcon', () => {

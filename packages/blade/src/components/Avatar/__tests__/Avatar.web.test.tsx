@@ -1,10 +1,13 @@
 import React from 'react';
-import type { AvatarProps } from '../Avatar.web';
-import { Avatar } from '../Avatar.web';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.native';
 import { Box } from '~components/Box';
+
+import { Avatar } from '../Avatar.web';
+
+import type { AvatarProps } from '../Avatar.web';
 
 const sizes: AvatarProps['size'][] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 const colors: AvatarProps['color'][] = [

@@ -1,5 +1,6 @@
-import InboxIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import InboxIcon from '.';
 
 describe('<InboxIcon />', () => {
   it('should render InboxIcon', () => {

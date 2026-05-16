@@ -1,5 +1,6 @@
-import type { Theme } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
+
+import type { Theme } from '~components/BladeProvider';
 
 const bladeLightTheme: Theme = {
   name: 'bladeTheme',

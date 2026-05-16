@@ -1,5 +1,6 @@
-import TaxPaymentsFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import TaxPaymentsFilledIcon from '.';
 
 describe('<TaxPaymentsFilledIcon />', () => {
   it('should render TaxPaymentsFilledIcon', () => {

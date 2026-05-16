@@ -1,5 +1,6 @@
-import SimCardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SimCardIcon from '.';
 
 describe('<SimCardIcon />', () => {
   it('should render SimCardIcon', () => {

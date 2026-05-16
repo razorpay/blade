@@ -11,8 +11,9 @@
 // 2. Providing imperative APIs like `announce()` is also trikcky which involves using lesser known
 //    React hook `useImperativeHandle` to give users imperative access.
 
-import type { Assertiveness } from './types';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
+
+import type { Assertiveness } from './types';
 
 const LIVEREGION_TIMEOUT_DELAY = 1000;
 let liveAnnouncer: LiveAnnouncer | null = null;

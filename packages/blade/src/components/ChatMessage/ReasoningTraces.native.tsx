@@ -1,7 +1,8 @@
 import React from 'react';
-import type { ReasoningTracesProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { ReasoningTracesProps } from './types';
 
 // Upfront mode: all steps are known; activeStepIndex contro
 const ReasoningTraces = (_prop: ReasoningTracesProps): React.ReactElement => {

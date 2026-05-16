@@ -1,7 +1,8 @@
 import React from 'react';
-import type { DisplayProps } from '..';
 import { Display } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { DisplayProps } from '..';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

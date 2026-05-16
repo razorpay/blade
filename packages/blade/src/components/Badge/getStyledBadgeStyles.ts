@@ -1,7 +1,8 @@
-import type { CSSObject } from 'styled-components';
-import type { StyledBadgeProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { makeBorderSize } from '~utils/makeBorderSize';
+
+import type { CSSObject } from 'styled-components';
+import type { StyledBadgeProps } from './types';
 
 const getStyledBadgeStyles = ({ theme, backgroundColor }: StyledBadgeProps): CSSObject => ({
   backgroundColor: getIn(theme.colors, backgroundColor),

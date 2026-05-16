@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import type { StyledBaseMenuItemContainerProps } from '../types';
-import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
-import { getItemPadding } from './tokens';
+
 import { getMediaQuery, makeSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import BaseBox from '~components/Box/BaseBox';
+
+import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
+import { getItemPadding } from './tokens';
+
+import type { StyledBaseMenuItemContainerProps } from '../types';
 
 const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps>((props) => {
   return {

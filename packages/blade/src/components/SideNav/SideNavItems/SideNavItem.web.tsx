@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import type { SideNavItemProps } from '../types';
+
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeSize } from '~utils';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { TooltipifyComponent } from '~utils/TooltipifyComponent';
-import type { IconComponent } from '~components/Icons';
 import { isIconComponent } from '~utils/isIconComponent';
+
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+
+import type { SideNavItemProps } from '../types';
+import type { IconComponent } from '~components/Icons';
 
 const SideNavItemContainer = styled(BaseBox)((props) => {
   return {

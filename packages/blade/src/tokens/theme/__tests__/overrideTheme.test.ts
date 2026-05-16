@@ -1,7 +1,9 @@
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
+
 import overrideTheme from '../overrideTheme';
 import { bladeTheme } from '../';
+
 import type { ThemeTokens } from '../../theme';
-import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 
 const invalidOverridesObjectError = '[Blade: overrideTheme]: The overrides object is not valid';
 const invalidBaseThemeError =

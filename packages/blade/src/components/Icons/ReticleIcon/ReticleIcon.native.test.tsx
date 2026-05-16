@@ -1,5 +1,6 @@
-import ReticleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ReticleIcon from '.';
 
 describe('<ReticleIcon />', () => {
   it('should render ReticleIcon', () => {

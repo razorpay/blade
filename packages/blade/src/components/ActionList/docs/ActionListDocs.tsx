@@ -1,6 +1,5 @@
 import React from 'react';
-import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
-import { actionListPropsTables } from './propsTable';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Text, Heading } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
@@ -9,6 +8,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { ScrollLink } from '~utils/storybook/ScrollLink';
 import { Link } from '~components/Link';
+
+import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
+import { actionListPropsTables } from './propsTable';
 
 const ActionListDocs = (): React.ReactElement => {
   return (

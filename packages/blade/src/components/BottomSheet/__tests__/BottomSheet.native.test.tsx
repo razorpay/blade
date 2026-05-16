@@ -1,11 +1,13 @@
 /* eslint-disable no-global-assign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { BottomSheet, BottomSheetHeader, BottomSheetFooter } from '../BottomSheet';
-import { Counter } from '../../Counter';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
+
+import { BottomSheet, BottomSheetHeader, BottomSheetFooter } from '../BottomSheet';
+import { Counter } from '../../Counter';
 jest.useFakeTimers();
 
 describe('<BottomSheet />', () => {

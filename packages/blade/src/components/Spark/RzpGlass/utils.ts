@@ -2,8 +2,9 @@
  * RzpGlass Utility Functions
  */
 
-import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
+
+import type { RzpGlassPreset } from './presets';
 import type {
   RzpGlassAssets,
   RzpGlassConfig,

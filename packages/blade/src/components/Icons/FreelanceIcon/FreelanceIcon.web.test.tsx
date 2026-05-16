@@ -1,5 +1,6 @@
-import FreelanceIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import FreelanceIcon from './';
 
 describe('<FreelanceIcon />', () => {
   it('should render FreelanceIcon', () => {

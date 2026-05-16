@@ -1,8 +1,10 @@
-import type { IconProps } from '..';
-import { iconSizeMap } from './iconSizeMap';
 import get from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
+
+import { iconSizeMap } from './iconSizeMap';
+
+import type { IconProps } from '..';
 
 function useIconProps({
   size = 'medium',

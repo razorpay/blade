@@ -1,8 +1,12 @@
 import React from 'react';
-import type { Meta } from '@storybook/react-vite';
-import { Table } from '../Table';
-import { TableWithClientSidePaginationStory, TableWithServerSidePaginationStory } from './stories';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
+
+import { Table } from '../Table';
+
+import { TableWithClientSidePaginationStory, TableWithServerSidePaginationStory } from './stories';
+
+import type { Meta } from '@storybook/react-vite';
 
 const TableMeta: Meta = {
   title: 'Components/Table/Examples/Pagination',

@@ -1,7 +1,9 @@
 import userEvent from '@testing-library/user-event';
-import { Breadcrumb, BreadcrumbItem } from '../';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { Breadcrumb, BreadcrumbItem } from '../';
 
 describe('<Breadcrumb />', () => {
   it('should render', () => {

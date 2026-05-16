@@ -1,14 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, waitFor, expect } from 'storybook/test';
-import { Drawer, DrawerBody, DrawerHeader } from '../';
-import type { DrawerProps } from '../';
+
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 import { DownloadIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
+
+import { Drawer, DrawerBody, DrawerHeader } from '../';
+
+import type { StoryFn } from '@storybook/react-vite';
+import type { DrawerProps } from '../';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 

@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import { Table as TableComponent } from '../../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
-import { TableBody, TableRow, TableCell } from '../../TableBody';
+
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
@@ -10,6 +7,12 @@ import { Badge } from '~components/Badge';
 import { Amount } from '~components/Amount';
 import { ChevronDownIcon, ChevronRightIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableBody, TableRow, TableCell } from '../../TableBody';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
 
 type TransactionData = {
   id: string;

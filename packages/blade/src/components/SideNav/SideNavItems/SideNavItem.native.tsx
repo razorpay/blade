@@ -1,6 +1,7 @@
-import type { SideNavItemProps } from '../types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { SideNavItemProps } from '../types';
 
 const SideNavItem = (_props: SideNavItemProps): React.ReactElement => {
   throwBladeError({

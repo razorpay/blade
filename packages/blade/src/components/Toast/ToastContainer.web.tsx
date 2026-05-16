@@ -1,7 +1,13 @@
-import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
+
+import { makeMotionTime, makeSize, useTheme } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
+import { useIsMobile } from '~utils/useIsMobile';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
 import {
   PEEKS,
   MAX_TOASTS,
@@ -15,12 +21,9 @@ import {
   CONTAINER_GUTTER_MOBILE,
   CONTAINER_GUTTER_DESKTOP,
 } from './constants';
-import { makeMotionTime, makeSize, useTheme } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
+
+import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import type { Theme } from '~components/BladeProvider';
-import { useIsMobile } from '~utils/useIsMobile';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type CalculateYPositionProps = {
   toast: Toast;

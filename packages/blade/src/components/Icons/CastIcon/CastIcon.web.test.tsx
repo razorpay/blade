@@ -1,5 +1,6 @@
-import CastIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CastIcon from './';
 
 describe('<CastIcon />', () => {
   it('should render CastIcon', () => {

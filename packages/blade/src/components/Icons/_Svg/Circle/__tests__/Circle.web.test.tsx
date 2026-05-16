@@ -1,6 +1,8 @@
 import Circle from '..';
-import Svg from '../../Svg';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import Svg from '../../Svg';
 
 describe('<Circle />', () => {
   it('should render html circle component', () => {

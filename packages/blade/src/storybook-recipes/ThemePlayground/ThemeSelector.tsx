@@ -8,10 +8,11 @@ import { CheckIcon, LockIcon, UnlockIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Tooltip } from '~components/Tooltip';
 import { Heading, Text } from '~components/Typography';
-import type { ColorSchemeNames } from '~tokens/theme';
 import { makeBorderSize } from '~utils';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 import { useTheme } from '~components/BladeProvider';
+
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
   ({ color, isSelected, theme }) => ({

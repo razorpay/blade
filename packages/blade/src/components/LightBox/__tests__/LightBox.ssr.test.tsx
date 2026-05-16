@@ -1,6 +1,8 @@
 import React from 'react';
-import { LightBox, LightBoxBody, LightBoxItem } from '../index';
+
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
+import { LightBox, LightBoxBody, LightBoxItem } from '../index';
 
 describe('<LightBox />', () => {
   it('should render LightBox in SSR', () => {

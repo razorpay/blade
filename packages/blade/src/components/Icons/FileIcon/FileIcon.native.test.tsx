@@ -1,5 +1,6 @@
-import FileIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import FileIcon from '.';
 
 describe('<FileIcon />', () => {
   it('should render FileIcon', () => {

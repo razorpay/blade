@@ -2,9 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import toast from 'react-hot-toast';
-import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import type { ToastProps } from './types';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -22,6 +20,9 @@ import {
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { ToastProps } from './types';
 
 const iconMap = {
   positive: CheckCircleIcon,

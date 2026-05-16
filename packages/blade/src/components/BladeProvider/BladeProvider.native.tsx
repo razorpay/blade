@@ -1,11 +1,14 @@
-import type { ReactElement } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { PortalHost, PortalProvider } from '@gorhom/portal';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
+
 import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
+
+import type { ReactElement } from 'react';
 import type { BladeProviderProps } from './types';
-import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
 
 const gestureHandlerStyle = {
   flex: 1,

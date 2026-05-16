@@ -3,8 +3,10 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import { Switch } from '../Switch';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import { Switch } from '../Switch';
 
 describe('<Switch />', () => {
   it('should render switch with label', () => {

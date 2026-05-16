@@ -1,5 +1,6 @@
-import BookmarkIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import BookmarkIcon from '.';
 
 describe('<BookmarkIcon />', () => {
   it('should render BookmarkIcon', () => {

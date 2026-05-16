@@ -1,9 +1,10 @@
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import dedent from 'dedent';
 import { z } from 'zod';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 const URLS = {
   FIGMA_TO_CODE_URL: {

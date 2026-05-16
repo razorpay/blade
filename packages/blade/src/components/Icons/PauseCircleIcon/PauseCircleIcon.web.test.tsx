@@ -1,5 +1,6 @@
-import PauseCircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PauseCircleIcon from './';
 
 describe('<PauseCircleIcon />', () => {
   it('should render PauseCircleIcon', () => {

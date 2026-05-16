@@ -1,8 +1,9 @@
+import { makeMotionTime } from '~utils';
+
 import type { CollapsibleProps } from './Collapsible';
 import type { CollapsibleBodyProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
-import { makeMotionTime } from '~utils';
 
 const getCollapsibleBodyContentBoxProps = ({
   direction,

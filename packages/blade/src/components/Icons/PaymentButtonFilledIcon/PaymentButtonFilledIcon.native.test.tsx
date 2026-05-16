@@ -1,5 +1,6 @@
-import PaymentButtonFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import PaymentButtonFilledIcon from '.';
 
 describe('<PaymentButtonFilledIcon />', () => {
   it('should render PaymentButtonFilledIcon', () => {

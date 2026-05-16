@@ -1,5 +1,6 @@
-import RadioIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import RadioIcon from './';
 
 describe('<RadioIcon />', () => {
   it('should render RadioIcon', () => {

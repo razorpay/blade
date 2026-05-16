@@ -1,7 +1,8 @@
 import { colors, size } from '~tokens/global';
+import { makeSpace } from '~utils/makeSpace';
+
 import type { ColorSchemeNames } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
-import { makeSpace } from '~utils/makeSpace';
 
 export type SurfaceBoxShadow = {
   elevation: string;

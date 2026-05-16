@@ -1,5 +1,6 @@
-import CloudLightningIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import CloudLightningIcon from '.';
 
 describe('<CloudLightningIcon />', () => {
   it('should render CloudLightningIcon', () => {

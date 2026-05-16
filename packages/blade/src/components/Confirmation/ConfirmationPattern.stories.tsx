@@ -1,16 +1,10 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
-import type { ModalProps, ModalBodyProps } from '../Modal';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
+
 import { useBreakpoint, useTheme } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import type { ButtonProps } from '~components/Button';
 import { MapIcon, TrashIcon } from '~components/Icons';
-import type { IconColors, IconComponent } from '~components/Icons';
-import type { BottomSheetBodyProps } from '~components/BottomSheet';
 import {
   BottomSheet,
   BottomSheetBody,
@@ -18,6 +12,15 @@ import {
   BottomSheetHeader,
 } from '~components/BottomSheet';
 import { Text } from '~components/Typography';
+
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ModalProps, ModalBodyProps } from '../Modal';
+import type { BoxProps } from '~components/Box';
+import type { ButtonProps } from '~components/Button';
+import type { IconColors, IconComponent } from '~components/Icons';
+import type { BottomSheetBodyProps } from '~components/BottomSheet';
 
 export default {
   title: 'Patterns/Confirmation',

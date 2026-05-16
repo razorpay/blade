@@ -1,5 +1,6 @@
-import type { BreadcrumbItemProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { BreadcrumbItemProps } from './types';
 
 const BreadcrumbItem = (_: BreadcrumbItemProps): React.ReactElement => {
   throwBladeError({

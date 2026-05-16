@@ -1,7 +1,8 @@
+import { size } from '~tokens/global/size';
+
 import type { BadgeProps } from './Badge';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { IconProps } from '~components/Icons';
-import { size } from '~tokens/global/size';
 
 const badgeHeight: Record<NonNullable<BadgeProps['size']>, number> = {
   xsmall: size[14],

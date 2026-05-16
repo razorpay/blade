@@ -1,21 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
-import type { ButtonGroupProps } from './types';
-import { StyledButtonGroup } from './StyledButtonGroup';
-import { ButtonGroupProvider } from './ButtonGroupContext';
+
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeBorderSize } from '~utils';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
-import type { Theme } from '~components/BladeProvider';
-import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
+
+import { StyledButtonGroup } from './StyledButtonGroup';
+import { ButtonGroupProvider } from './ButtonGroupContext';
+
+import type { ButtonGroupProps } from './types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
+import type { BladeElementRef } from '~utils/types';
 
 const getDividerColorToken = ({
   color,

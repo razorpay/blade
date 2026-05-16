@@ -1,16 +1,19 @@
 import styled from 'styled-components';
-import type { CollapsibleProps } from './Collapsible';
+
+import { castWebType } from '~utils';
+import { ChevronDownIcon } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils/makeAccessible';
+
 import { useCollapsible } from './CollapsibleContext';
 import {
   getCollapsibleChevronIconTransforms,
   getTransitionDuration,
   getTransitionEasing,
 } from './commonStyles';
-import { castWebType } from '~utils';
+
+import type { CollapsibleProps } from './Collapsible';
 import type { IconComponent } from '~components/Icons';
-import { ChevronDownIcon } from '~components/Icons';
-import BaseBox from '~components/Box/BaseBox';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type StyledCollapsibleChevronIconProps = {
   isExpanded: boolean;

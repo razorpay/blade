@@ -1,7 +1,9 @@
 import React from 'react';
+
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
+
 import { Avatar } from '../Avatar';
 import { AvatarGroup } from '../AvatarGroup';
-import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<AvatarGroup />', () => {
   it(`should render AvatarGroup `, () => {

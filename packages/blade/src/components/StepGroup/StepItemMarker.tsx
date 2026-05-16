@@ -1,11 +1,13 @@
-import { useStepGroup } from './StepGroupContext';
-import { getMarkerLineSpacings, iconSizeTokens } from './tokens';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
-import type { IndicatorProps } from '~components/Indicator';
 import { Indicator } from '~components/Indicator';
 import { makeSize } from '~utils';
+
+import { useStepGroup } from './StepGroupContext';
+import { getMarkerLineSpacings, iconSizeTokens } from './tokens';
+
+import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { IconComponent } from '~components/Icons';
+import type { IndicatorProps } from '~components/Indicator';
 
 type MarkerBackgroundCircleProps = {
   color: IndicatorProps['color'];

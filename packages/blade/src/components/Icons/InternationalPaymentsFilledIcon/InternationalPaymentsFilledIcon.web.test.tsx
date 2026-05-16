@@ -1,5 +1,6 @@
-import InternationalPaymentsFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import InternationalPaymentsFilledIcon from './';
 
 describe('<InternationalPaymentsFilledIcon />', () => {
   it('should render InternationalPaymentsFilledIcon', () => {

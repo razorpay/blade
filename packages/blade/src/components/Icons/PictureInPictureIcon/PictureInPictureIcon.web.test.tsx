@@ -1,5 +1,6 @@
-import PictureInPictureIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PictureInPictureIcon from './';
 
 describe('<PictureInPictureIcon />', () => {
   it('should render PictureInPictureIcon', () => {

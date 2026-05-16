@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ReactElement } from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import React, { useState } from 'react';
 import { SearchInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { ReactElement } from 'react';
 
 describe('<SearchInput />', () => {
   it('should render', () => {

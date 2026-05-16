@@ -1,6 +1,7 @@
-import type { StepGroupProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { StepGroupProps } from './types';
 
 const StepGroup = (_props: StepGroupProps): React.ReactElement => {
   throwBladeError({

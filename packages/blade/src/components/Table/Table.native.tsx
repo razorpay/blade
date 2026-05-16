@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import type { TableProps } from './types';
 import { Text } from '~components/Typography';
 import { logger } from '~utils/logger';
+
+import type { TableProps } from './types';
 
 const Table = <Item,>(props: TableProps<Item>): React.ReactElement => {
   if (__DEV__) {

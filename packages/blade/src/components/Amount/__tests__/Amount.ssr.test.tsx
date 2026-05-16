@@ -1,5 +1,5 @@
-import { Amount } from '..';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
+import { Amount } from '..';
 
 describe('<Amount />', () => {
   it('should render Amount on server', () => {

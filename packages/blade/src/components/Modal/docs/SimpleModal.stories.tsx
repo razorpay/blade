@@ -1,8 +1,6 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
-import { Modal, ModalFooter, ModalHeader, ModalBody } from '../Modal';
-import type { ModalProps } from '../index';
+
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -11,6 +9,11 @@ import { DownloadIcon } from '~components/Icons';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Alert } from '~components/Alert';
+
+import { Modal, ModalFooter, ModalHeader, ModalBody } from '../Modal';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ModalProps } from '../index';
 
 export default {
   title: 'Components/Modal/SimpleModal',

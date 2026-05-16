@@ -1,16 +1,17 @@
 import { basename } from 'path';
 import { z } from 'zod';
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
 import { getBladeDocsList } from '../utils/generalUtils.js';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateSkill } from '../utils/skillUtils.js';
-import type { McpToolResponse } from '../utils/types.js';
 import {
   commonBladeMCPToolSchema,
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
+
+import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { McpToolResponse } from '../utils/types.js';
 
 const bladeComponentsList = getBladeDocsList('components');
 const bladeComponentsListString = bladeComponentsList.join(', ');

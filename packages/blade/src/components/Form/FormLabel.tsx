@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  labelLeftMarginRight,
-  labelMarginBottom,
-  labelOptionalIndicatorTextSize,
-  labelTextSize,
-  labelWidth,
-} from './formTokens';
+
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { getPlatformType, makeSize, useBreakpoint } from '~utils';
@@ -15,6 +9,14 @@ import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { size as sizeToken } from '~tokens/global';
 import getIn from '~utils/lodashButBetter/get';
+
+import {
+  labelLeftMarginRight,
+  labelMarginBottom,
+  labelOptionalIndicatorTextSize,
+  labelTextSize,
+  labelWidth,
+} from './formTokens';
 
 type CommonProps = {
   as: 'span' | 'label';

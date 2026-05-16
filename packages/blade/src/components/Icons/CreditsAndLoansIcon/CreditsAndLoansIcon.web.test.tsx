@@ -1,5 +1,6 @@
-import CreditsAndLoansIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CreditsAndLoansIcon from './';
 
 describe('<CreditsAndLoansIcon />', () => {
   it('should render CreditsAndLoansIcon', () => {

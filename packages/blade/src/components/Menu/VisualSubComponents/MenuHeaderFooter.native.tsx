@@ -1,6 +1,7 @@
-import type { MenuHeaderProps, MenuFooterProps } from '../types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
+
+import type { MenuHeaderProps, MenuFooterProps } from '../types';
 
 const MenuHeader = (_props: MenuHeaderProps): React.ReactElement => {
   throwBladeError({

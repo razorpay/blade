@@ -1,5 +1,6 @@
-import AnchorIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AnchorIcon from './';
 
 describe('<AnchorIcon />', () => {
   it('should render AnchorIcon', () => {

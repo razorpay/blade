@@ -1,5 +1,6 @@
-import RepeatIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import RepeatIcon from './';
 
 describe('<RepeatIcon />', () => {
   it('should render RepeatIcon', () => {

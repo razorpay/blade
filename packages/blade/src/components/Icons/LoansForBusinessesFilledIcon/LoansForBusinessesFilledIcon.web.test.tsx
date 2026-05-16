@@ -1,5 +1,6 @@
-import LoansForBusinessesFilledIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import LoansForBusinessesFilledIcon from './';
 
 describe('<LoansForBusinessesFilledIcon />', () => {
   it('should render LoansForBusinessesFilledIcon', () => {

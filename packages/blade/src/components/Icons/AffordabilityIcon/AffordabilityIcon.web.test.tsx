@@ -1,5 +1,6 @@
-import AffordabilityIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import AffordabilityIcon from './';
 
 describe('<AffordabilityIcon />', () => {
   it('should render AffordabilityIcon', () => {

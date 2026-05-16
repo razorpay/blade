@@ -1,5 +1,6 @@
-import type { ToastProps } from './types';
 import { throwBladeError } from '~utils/logger';
+
+import type { ToastProps } from './types';
 
 const Toast = (
   _props: ToastProps & {

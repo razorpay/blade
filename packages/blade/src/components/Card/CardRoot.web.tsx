@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import React from 'react';
-import type { CardRootProps } from './types';
-import { CARD_LINK_OVERLAY_ID, CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';
+
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
+
+import { CARD_LINK_OVERLAY_ID, CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';
+
+import type { CardRootProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(

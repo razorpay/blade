@@ -1,5 +1,6 @@
-import Battery40PercentIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import Battery40PercentIcon from './';
 
 describe('<Battery40PercentIcon />', () => {
   it('should render Battery40PercentIcon', () => {

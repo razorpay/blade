@@ -1,9 +1,11 @@
-import type { ReactElement } from 'react';
-import { useListContext } from './ListContext';
-import type { TextProps, TextVariant } from '~components/Typography';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
+
+import { useListContext } from './ListContext';
+
+import type { ReactElement } from 'react';
+import type { TextProps, TextVariant } from '~components/Typography';
 
 type ListItemTextProps = Omit<TextProps<{ variant: TextVariant }>, 'variant' | 'size'>;
 

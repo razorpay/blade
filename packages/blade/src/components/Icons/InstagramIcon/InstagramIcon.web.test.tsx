@@ -1,5 +1,6 @@
-import InstagramIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import InstagramIcon from './';
 
 describe('<InstagramIcon />', () => {
   it('should render InstagramIcon', () => {

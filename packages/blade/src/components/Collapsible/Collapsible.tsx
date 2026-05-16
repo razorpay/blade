@@ -1,15 +1,7 @@
-import type { ReactElement, ReactNode } from 'react';
 import { Children, useCallback, useRef, useState, useMemo, forwardRef } from 'react';
 
-import type { CollapsibleContextState } from './CollapsibleContext';
-import { CollapsibleContext } from './CollapsibleContext';
-import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
-import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { BoxProps } from '~components/Box';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -18,6 +10,16 @@ import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+import { CollapsibleContext } from './CollapsibleContext';
+import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
+import { componentIds } from './componentIds';
+
+import type { ReactElement, ReactNode } from 'react';
+import type { CollapsibleContextState } from './CollapsibleContext';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
 
 type CollapsibleProps = {
   /**

@@ -1,5 +1,6 @@
-import ImageIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import ImageIcon from '.';
 
 describe('<ImageIcon />', () => {
   it('should render ImageIcon', () => {

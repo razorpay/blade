@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title as StorybookTitle } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
-import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
-import type { VisuallyHiddenProps } from './types';
+
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+
+import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { VisuallyHiddenProps } from './types';
 
 const Page = (): ReactElement => {
   return (

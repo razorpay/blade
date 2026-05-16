@@ -1,5 +1,6 @@
-import SubscriptionsFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import SubscriptionsFilledIcon from '.';
 
 describe('<SubscriptionsFilledIcon />', () => {
   it('should render SubscriptionsFilledIcon', () => {

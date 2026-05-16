@@ -1,8 +1,10 @@
 import styled, { css, keyframes } from 'styled-components';
-import { motion as spinnerMotion } from './spinnerTokens';
+
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
+
+import { motion as spinnerMotion } from './spinnerTokens';
 
 const rotate = keyframes`
   from {

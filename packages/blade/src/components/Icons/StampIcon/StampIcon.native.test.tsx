@@ -1,5 +1,6 @@
-import StampIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import StampIcon from '.';
 
 describe('<StampIcon />', () => {
   it('should render StampIcon', () => {

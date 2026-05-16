@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { useState, useCallback, useMemo } from 'react';
+
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
 import { getPlatformType } from '../getPlatformType';
 import { getMediaQuery } from '../getMediaQuery';
+
 import type { Breakpoints } from '~tokens/global';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const deviceType = {
   desktop: 'desktop',

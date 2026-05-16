@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Title } from '@storybook/addon-docs/blocks';
 import { action } from 'storybook/actions';
-import type { PopoverTriggerProps } from './types';
-import type { PopoverProps } from '.';
-import { PopoverInteractiveWrapper, Popover } from '.';
+
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
@@ -28,6 +25,12 @@ import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox } from '~components/Checkbox';
+
+import { PopoverInteractiveWrapper, Popover } from '.';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { PopoverTriggerProps } from './types';
+import type { PopoverProps } from '.';
 
 const Page = (): React.ReactElement => {
   return (

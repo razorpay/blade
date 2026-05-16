@@ -3,15 +3,12 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { useDropdown } from './useDropdown';
-import { dropdownComponentIds } from './dropdownComponentIds';
+
 import { makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
-import type { DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import { spacing } from '~tokens/global';
-import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { ChevronUpDownIcon } from '~components/Icons';
 import { Box } from '~components/Box';
@@ -19,13 +16,19 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { Text } from '~components/Typography';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { useId } from '~utils/useId';
-import type { IconComponent } from '~components/Icons';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 import {
   inputDropdownButtonBorderRadius,
   baseInputHeight,
   inputDropdownButtonPadding,
 } from '~components/Input/BaseInput/baseInputTokens';
+
+import { useDropdown } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
+
+import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
+import type { IconComponent } from '~components/Icons';
 import type { BaseInputProps } from '~components/Input/BaseInput/BaseInput';
 
 type BaseInputDropDownButtonProps = {

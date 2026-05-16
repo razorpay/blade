@@ -1,10 +1,13 @@
 import React from 'react';
-import { InputRow } from '../InputRow';
-import type { InputGroupProps } from '../types';
-import { InputGroup } from '../InputGroup.web';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { TextInput } from '~components/Input/TextInput';
 import { PasswordInput } from '~components/Input/PasswordInput';
+
+import { InputRow } from '../InputRow';
+import { InputGroup } from '../InputGroup.web';
+
+import type { InputGroupProps } from '../types';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

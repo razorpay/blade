@@ -1,5 +1,6 @@
-import CircleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import CircleIcon from './';
 
 describe('<CircleIcon />', () => {
   it('should render CircleIcon', () => {

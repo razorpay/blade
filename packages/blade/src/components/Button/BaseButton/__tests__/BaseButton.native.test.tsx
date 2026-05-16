@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
-import type { BaseButtonProps } from '../BaseButton';
-import BaseButton from '../BaseButton';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
+
+import BaseButton from '../BaseButton';
+
+import type { BaseButtonProps } from '../BaseButton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

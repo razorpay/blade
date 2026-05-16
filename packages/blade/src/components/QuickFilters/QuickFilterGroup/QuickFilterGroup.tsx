@@ -1,11 +1,14 @@
 import React from 'react';
-import type { QuickFilterGroupProps, QuickFilterWrapperProps } from '../types';
-import { QuickFilterGroupProvider, useQuickFilterGroupContext } from './QuickFilterContext';
+
 import { RadioGroup } from '~components/Radio';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckboxGroup } from '~components/Checkbox';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
+
+import { QuickFilterGroupProvider, useQuickFilterGroupContext } from './QuickFilterContext';
+
+import type { QuickFilterGroupProps, QuickFilterWrapperProps } from '../types';
 
 const QuickFilterWrapper = ({
   children,

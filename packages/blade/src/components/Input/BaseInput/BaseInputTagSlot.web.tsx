@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { BaseInputTagSlotProps } from './types';
-import { baseInputHeight } from './baseInputTokens';
+
 import { castWebType, makeSize } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
@@ -10,6 +9,10 @@ import { Text } from '~components/Typography';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useTableEditableCell } from '~components/Table/TableEditableCellContext';
+
+import { baseInputHeight } from './baseInputTokens';
+
+import type { BaseInputTagSlotProps } from './types';
 
 const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;

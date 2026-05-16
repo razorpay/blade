@@ -1,7 +1,9 @@
 import userEvent from '@testing-library/user-event';
-import { CounterInput } from '../CounterInput';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+
+import { CounterInput } from '../CounterInput';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

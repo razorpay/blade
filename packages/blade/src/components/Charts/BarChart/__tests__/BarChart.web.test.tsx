@@ -1,4 +1,8 @@
 import React from 'react';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { Box } from '~components/Box/Box';
+
 import { ChartBarWrapper, ChartBar } from '../BarChart';
 import {
   ChartXAxis,
@@ -7,8 +11,6 @@ import {
   ChartTooltip,
   ChartLegend,
 } from '../../CommonChartComponents';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { Box } from '~components/Box/Box';
 
 const mockData = [
   { name: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },

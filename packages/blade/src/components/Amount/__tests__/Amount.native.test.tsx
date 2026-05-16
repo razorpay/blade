@@ -1,10 +1,13 @@
 import { setState } from '@razorpay/i18nify-js';
 import { I18nProvider } from '@razorpay/i18nify-react';
-import type { AmountProps } from '../Amount';
+
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
 import { Amount, getAmountByParts } from '../Amount';
 
 import { AMOUNT_SUFFIX_TEST_SET } from './mock';
-import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import type { AmountProps } from '../Amount';
 
 const I18nAmountWrapper = (args: AmountProps & { locale?: string }): JSX.Element => {
   return (

@@ -1,10 +1,11 @@
 import React from 'react';
-import type { BaseDropdownInputTriggerProps } from '~components/Input/DropdownInputTriggers/types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { isBrowser } from '~utils';
 import { useFirstRender } from '~utils/useFirstRender';
 import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+
+import type { BaseDropdownInputTriggerProps } from '~components/Input/DropdownInputTriggers/types';
 
 export type useControlledDropdownInputProps = Pick<
   BaseDropdownInputTriggerProps,

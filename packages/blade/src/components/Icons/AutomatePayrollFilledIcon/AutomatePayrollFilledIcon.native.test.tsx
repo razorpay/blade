@@ -1,5 +1,6 @@
-import AutomatePayrollFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import AutomatePayrollFilledIcon from '.';
 
 describe('<AutomatePayrollFilledIcon />', () => {
   it('should render AutomatePayrollFilledIcon', () => {

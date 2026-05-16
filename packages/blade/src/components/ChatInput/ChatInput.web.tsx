@@ -1,14 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
-import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidth } from './chatInputTokens';
-import { ChatInputActionBar } from './ChatInputActionBar';
-import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
-import { useChatInput } from './useChatInput';
+
 import { useTheme } from '~components/BladeProvider';
 import { BaseMotionBox, BaseMotionEntryExit } from '~components/BaseMotion';
-import type { MotionVariantsType } from '~components/BaseMotion';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
@@ -20,10 +15,18 @@ import { castWebType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { BladeElementRef } from '~utils/types';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
+
+import { chatInputFilePreviewItemWidth } from './chatInputTokens';
+import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
+import { useChatInput } from './useChatInput';
+
+import type { ChatInputProps } from './types';
+import type { MotionVariantsType } from '~components/BaseMotion';
+import type { BladeElementRef } from '~utils/types';
 
 const HiddenScrollbarBox = styled(BaseBox)(() => ({
   '&::-webkit-scrollbar': { display: 'none' },

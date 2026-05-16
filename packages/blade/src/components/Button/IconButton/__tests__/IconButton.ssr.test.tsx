@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { IconButton } from '..';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { CloseIcon } from '~components/Icons';
+import { IconButton } from '..';
 
 describe('<IconButton />', () => {
   it('should render', () => {

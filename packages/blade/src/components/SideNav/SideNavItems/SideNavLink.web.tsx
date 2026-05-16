@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
-import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
-import type { SideNavLinkProps } from '../types';
+
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
@@ -20,6 +18,11 @@ import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Ic
 import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+
+import type { SideNavLinkProps } from '../types';
 
 const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
 

@@ -2,9 +2,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import styled from 'styled-components';
-import type { GestureResponderEvent } from 'react-native';
+
+import getIn from '~utils/lodashButBetter/get';
+import { isReactNative } from '~utils';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
+import { getStyledProps } from '~components/Box/styledProps';
+import { BaseText } from '~components/Typography/BaseText';
+import { useTheme } from '~components/BladeProvider';
+import { BaseSpinner } from '~components/Spinner/BaseSpinner';
+import BaseBox from '~components/Box/BaseBox';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { usePrevious } from '~utils/usePrevious';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStringFromReactText } from '~src/utils/getStringChildren';
+import { throwBladeError } from '~utils/logger';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { announce } from '~components/LiveAnnouncer';
+
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography, ButtonBoxShadow } from './buttonTokens';
 import {
   textColor,
   backgroundGradient,
@@ -19,24 +38,18 @@ import {
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
 } from './buttonTokens';
-import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
+
+import type { GestureResponderEvent } from 'react-native';
+import type { ButtonTypography, ButtonBoxShadow } from './buttonTokens';
+import type { BaseButtonStyleProps, IconColor } from './types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
-import { getStyledProps } from '~components/Box/styledProps';
-import { BaseText } from '~components/Typography/BaseText';
-import { useTheme } from '~components/BladeProvider';
-import { announce } from '~components/LiveAnnouncer';
-import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import BaseBox from '~components/Box/BaseBox';
 import type {
   BladeElementRef,
   DataAnalyticsAttribute,
@@ -44,18 +57,8 @@ import type {
   TestID,
 } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { usePrevious } from '~utils/usePrevious';
-import { makeSize } from '~utils/makeSize';
-import { makeBorderSize } from '~utils/makeBorderSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
-import { makeAccessible } from '~utils/makeAccessible';
-import { makeSpace } from '~utils/makeSpace';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
-import { throwBladeError } from '~utils/logger';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];

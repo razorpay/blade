@@ -1,5 +1,6 @@
-import EscrowAccountFilledIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+import EscrowAccountFilledIcon from '.';
 
 describe('<EscrowAccountFilledIcon />', () => {
   it('should render EscrowAccountFilledIcon', () => {

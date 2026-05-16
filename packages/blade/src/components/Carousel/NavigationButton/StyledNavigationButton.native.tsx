@@ -1,10 +1,13 @@
 import styled from 'styled-components/native';
 import React from 'react';
-import type { NavigationButtonProps } from './types';
-import { getNavigationButtonStyles } from './getNavigationButtonStyles';
+
 import { makeAccessible } from '~utils/makeAccessible';
 import { castNativeType } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+
+import { getNavigationButtonStyles } from './getNavigationButtonStyles';
+
+import type { NavigationButtonProps } from './types';
 
 const StyledPressable = styled.Pressable<
   Pick<NavigationButtonProps, 'variant'> & { isPressed: boolean }

@@ -1,10 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 
-import type { PasswordInputProps } from './PasswordInput';
-import { PasswordInput } from './PasswordInput';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
@@ -15,6 +11,12 @@ import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { InfoIcon } from '~components/Icons';
+
+import { PasswordInput } from './PasswordInput';
+
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import type { ReactElement } from 'react';
+import type { PasswordInputProps } from './PasswordInput';
 
 const Page = (): ReactElement => {
   return (

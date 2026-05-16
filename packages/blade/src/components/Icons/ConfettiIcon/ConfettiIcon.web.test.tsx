@@ -1,5 +1,6 @@
-import ConfettiIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import ConfettiIcon from './';
 
 describe('<ConfettiIcon />', () => {
   it('should render ConfettiIcon', () => {

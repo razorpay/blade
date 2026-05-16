@@ -2,14 +2,17 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { SpotlightPopoverTour } from '../Tour.web';
-import { SpotlightPopoverTourStep } from '../TourStep.web';
-import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
-import { SpotlightPopoverTourFooter } from '../TourFooter.web';
+
 import { Button } from '~components/Button';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+
+import { SpotlightPopoverTour } from '../Tour.web';
+import { SpotlightPopoverTourStep } from '../TourStep.web';
+import { SpotlightPopoverTourFooter } from '../TourFooter.web';
+
+import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
 
 const nextButtonText = 'Next';
 const prevButtonText = 'Prev';

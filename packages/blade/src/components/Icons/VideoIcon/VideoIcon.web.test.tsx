@@ -1,5 +1,6 @@
-import VideoIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import VideoIcon from './';
 
 describe('<VideoIcon />', () => {
   it('should render VideoIcon', () => {

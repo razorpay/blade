@@ -1,5 +1,6 @@
-import KeyIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import KeyIcon from './';
 
 describe('<KeyIcon />', () => {
   it('should render KeyIcon', () => {

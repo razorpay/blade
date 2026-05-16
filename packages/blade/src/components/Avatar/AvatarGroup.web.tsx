@@ -1,15 +1,18 @@
 import React from 'react';
-import type { AvatarGroupProps, AvatarGroupContextType } from './types';
-import { StyledAvatarGroup } from './StyledAvatarGroup';
-import { StyledAvatar } from './StyledAvatar';
-import { AvatarGroupProvider } from './AvatarGroupContext';
-import { AvatarButton } from './AvatarButton';
+
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+import { StyledAvatarGroup } from './StyledAvatarGroup';
+import { StyledAvatar } from './StyledAvatar';
+import { AvatarGroupProvider } from './AvatarGroupContext';
+import { AvatarButton } from './AvatarButton';
+
+import type { AvatarGroupProps, AvatarGroupContextType } from './types';
 
 const _AvatarGroup = ({
   children,

@@ -1,10 +1,11 @@
+import { makeSize } from '~utils/makeSize';
+import { size } from '~tokens/global';
+
 import type { ListProps } from './List';
 import type { CodeProps } from '~components/Typography';
 import type { TypographyPlatforms } from '~tokens/global';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import { makeSize } from '~utils/makeSize';
-import { size } from '~tokens/global';
 
 const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,

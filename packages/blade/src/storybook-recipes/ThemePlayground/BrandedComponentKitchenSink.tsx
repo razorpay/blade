@@ -1,5 +1,11 @@
 // @ts-nocheck
 import { composeStories } from '@storybook/react';
+
+import { Card, CardBody } from '~components/Card';
+import { Box } from '~components/Box';
+import { Heading } from '~components/Typography';
+import { Divider } from '~components/Divider';
+
 import * as accordionStories from '../../components/Accordion/Accordion.stories';
 import * as buttonStories from '../../components/Button/Button/Button.stories';
 import * as bottomSheetStories from '../../components/BottomSheet/BottomSheet.stories';
@@ -14,10 +20,6 @@ import * as switchStories from '../../components/Switch/Switch.stories';
 import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
 import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
 import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
-import { Card, CardBody } from '~components/Card';
-import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
-import { Divider } from '~components/Divider';
 
 const includedStories = [
   'IconRightButton',

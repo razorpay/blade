@@ -1,5 +1,6 @@
-import PieChartIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+import PieChartIcon from './';
 
 describe('<PieChartIcon />', () => {
   it('should render PieChartIcon', () => {

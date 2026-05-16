@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { GetFocusRingArgs } from './types';
 import { castWebType, makeMotionTime } from '~utils';
+
+import type { GetFocusRingArgs } from './types';
 
 /**
  * @param props.theme Blade Theme Object
