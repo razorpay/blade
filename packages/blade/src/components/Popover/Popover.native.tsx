@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
-import { Modal, TouchableOpacity } from 'react-native';
+import { Modal, TouchableOpacity, Platform } from 'react-native';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
@@ -129,6 +129,7 @@ const Popover = ({
           side={computedSide}
           style={{
             ...floatingStyles,
+            top: (floatingStyles.top || 0) - (Platform.OS === 'ios' ? 10 : 0),
             // TODO: Tokenize zIndex values
             zIndex,
           }}

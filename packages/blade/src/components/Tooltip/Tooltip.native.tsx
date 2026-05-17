@@ -95,6 +95,7 @@ const Tooltip = ({
       }, 50);
       return () => clearTimeout(id);
     }
+    return undefined;
   }, [backdropOffset, isVisible, update]);
 
   return (
