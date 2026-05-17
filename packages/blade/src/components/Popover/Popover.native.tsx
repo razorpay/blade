@@ -132,45 +132,47 @@ const Popover = ({
       })}
       {isVisible && (
         <Portal hostName="BladeBottomSheetPortal">
-          <TouchableOpacity
-            ref={backdropRef}
-            onLayout={onBackdropLayout}
-            style={StyleSheet.absoluteFill}
-            onPress={handleClose}
-            activeOpacity={1}
-            testID="popover-modal-backdrop"
-            {...metaAttribute({ name: MetaConstants.Popover })}
-          >
-            <PopoverContent
-              titleLeading={titleLeading}
-              title={title}
-              footer={footer}
-              isVisible={controllableIsOpen}
-              ref={refs.setFloating}
-              side={computedSide}
-              style={{
-                ...floatingStyles,
-                left: (floatingStyles.left || -200) - backdropOffset.x,
-                top:
-                  (floatingStyles.top || -200) -
-                  backdropOffset.y -
-                  (Platform.OS === 'ios' ? IOS_OFFSET_CORRECTION : 0),
-                zIndex,
-              }}
-              arrow={
-                <PopupArrow
-                  ref={arrowRef as never}
-                  context={context}
-                  width={ARROW_WIDTH}
-                  height={ARROW_HEIGHT}
-                  fillColor={theme.colors.popup.background.subtle}
-                  strokeColor={theme.colors.popup.border.subtle}
-                />
-              }
+          <PopoverContext.Provider value={contextValue}>
+            <TouchableOpacity
+              ref={backdropRef}
+              onLayout={onBackdropLayout}
+              style={StyleSheet.absoluteFill}
+              onPress={handleClose}
+              activeOpacity={1}
+              testID="popover-modal-backdrop"
+              {...metaAttribute({ name: MetaConstants.Popover })}
             >
-              {content}
-            </PopoverContent>
-          </TouchableOpacity>
+              <PopoverContent
+                titleLeading={titleLeading}
+                title={title}
+                footer={footer}
+                isVisible={controllableIsOpen}
+                ref={refs.setFloating}
+                side={computedSide}
+                style={{
+                  ...floatingStyles,
+                  left: (floatingStyles.left || -200) - backdropOffset.x,
+                  top:
+                    (floatingStyles.top || -200) -
+                    backdropOffset.y -
+                    (Platform.OS === 'ios' ? IOS_OFFSET_CORRECTION : 0),
+                  zIndex,
+                }}
+                arrow={
+                  <PopupArrow
+                    ref={arrowRef as never}
+                    context={context}
+                    width={ARROW_WIDTH}
+                    height={ARROW_HEIGHT}
+                    fillColor={theme.colors.popup.background.subtle}
+                    strokeColor={theme.colors.popup.border.subtle}
+                  />
+                }
+              >
+                {content}
+              </PopoverContent>
+            </TouchableOpacity>
+          </PopoverContext.Provider>
         </Portal>
       )}
     </PopoverContext.Provider>
