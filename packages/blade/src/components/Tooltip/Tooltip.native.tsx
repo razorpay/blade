@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
-import { Modal, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { Portal } from '@gorhom/portal';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
@@ -12,6 +13,8 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+
+const IOS_OFFSET_CORRECTION = 10;
 
 const Tooltip = ({
   title,
@@ -28,6 +31,9 @@ const Tooltip = ({
   const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
+  const backdropRef = React.useRef<TouchableOpacity>(null);
+  const [backdropOffset, setBackdropOffset] = React.useState({ x: 0, y: 0 });
+
   const context = useFloating({
     sameScrollView: false,
     placement,
@@ -42,7 +48,19 @@ const Tooltip = ({
     ],
   });
 
-  const { refs, floatingStyles } = context;
+  const { refs, floatingStyles, update } = context;
+
+  // Measure the Portal backdrop's window position to correct coordinate mismatch
+  // between measureInWindow (used by floating-ui) and the Portal container's coordinate space
+  const onBackdropLayout = React.useCallback(() => {
+    if (backdropRef.current && 'measureInWindow' in backdropRef.current) {
+      ((backdropRef.current as unknown) as { measureInWindow: Function }).measureInWindow(
+        (bx: number, by: number) => {
+          setBackdropOffset({ x: bx || 0, y: by || 0 });
+        },
+      );
+    }
+  }, []);
 
   const handleOpen = React.useCallback(() => {
     setIsOpen(true);
@@ -54,7 +72,7 @@ const Tooltip = ({
     onOpenChange?.({ isOpen: false });
   }, [onOpenChange]);
 
-  // wait for animation to finish before unmounting modal
+  // wait for animation to finish before unmounting
   const [isVisible, setIsVisible] = React.useState(() => isOpen);
   React.useEffect(() => {
     const id = setTimeout(() => {
@@ -69,6 +87,16 @@ const Tooltip = ({
     return () => clearTimeout(id);
   }, [isOpen]);
 
+  // Re-run floating position computation after backdrop offset is measured
+  React.useEffect(() => {
+    if (isVisible && (backdropOffset.x !== 0 || backdropOffset.y !== 0)) {
+      const id = setTimeout(() => {
+        update();
+      }, 50);
+      return () => clearTimeout(id);
+    }
+  }, [backdropOffset, isVisible, update]);
+
   return (
     <TooltipContext.Provider value={true}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
@@ -81,48 +109,50 @@ const Tooltip = ({
         ),
         ref: refs.setReference,
       })}
-      <Modal accessibilityLabel={content} collapsable={false} transparent visible={isVisible}>
-        <TouchableOpacity
-          style={{
-            flexShrink: 0,
-            flex: 1,
-          }}
-          onPress={handleClose}
-          activeOpacity={1}
-          testID="tooltip-modal-backdrop"
-          {...metaAttribute({ name: MetaConstants.Tooltip })}
-        >
-          <TooltipContent
-            title={title}
-            isVisible={isOpen}
-            ref={refs.setFloating}
-            side={side}
-            colorScheme={colorScheme}
-            style={{
-              ...floatingStyles,
-              // To avoid flash of floating ui content at top, this only happens in RN <70
-              // if the position is zero move the floating element outside of the viewport
-              // this happens because measure is async and it takes few miliseconds to calculate the positions.
-              left: floatingStyles.left || -200,
-              top: floatingStyles.top || -200,
-              // TODO: Tokenize zIndex values
-              zIndex,
-            }}
-            arrow={
-              <PopupArrow
-                ref={arrowRef as never}
-                context={context}
-                width={ARROW_WIDTH}
-                height={ARROW_HEIGHT}
-                fillColor={theme.colors.popup.background.gray.intense}
-                strokeColor={theme.colors.popup.border.gray.intense}
-              />
-            }
+      {isVisible && (
+        <Portal hostName="BladeBottomSheetPortal">
+          <TouchableOpacity
+            ref={backdropRef}
+            onLayout={onBackdropLayout}
+            style={StyleSheet.absoluteFill}
+            onPress={handleClose}
+            activeOpacity={1}
+            testID="tooltip-modal-backdrop"
+            {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
-            {content}
-          </TooltipContent>
-        </TouchableOpacity>
-      </Modal>
+            <TooltipContent
+              title={title}
+              isVisible={isOpen}
+              ref={refs.setFloating}
+              side={side}
+              colorScheme={colorScheme}
+              style={{
+                ...floatingStyles,
+                // if the position is zero move the floating element outside of the viewport
+                // this happens because measure is async and it takes a few milliseconds to calculate positions
+                left: (floatingStyles.left || -200) - backdropOffset.x,
+                top:
+                  (floatingStyles.top || -200) -
+                  backdropOffset.y -
+                  (Platform.OS === 'ios' ? IOS_OFFSET_CORRECTION : 0),
+                zIndex,
+              }}
+              arrow={
+                <PopupArrow
+                  ref={arrowRef as never}
+                  context={context}
+                  width={ARROW_WIDTH}
+                  height={ARROW_HEIGHT}
+                  fillColor={theme.colors.popup.background.gray.intense}
+                  strokeColor={theme.colors.popup.border.gray.intense}
+                />
+              }
+            >
+              {content}
+            </TooltipContent>
+          </TouchableOpacity>
+        </Portal>
+      )}
     </TooltipContext.Provider>
   );
 };
