@@ -1,11 +1,11 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import { SankeyChart } from './SankeyChart';
+import type { SankeyChartProps } from './types';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { SankeyChart } from './SankeyChart.web';
-import type { SankeyChartProps } from './types';
 
 // ─── Docs page ────────────────────────────────────────────────────────────────
 

@@ -5,8 +5,8 @@
  */
 import React from 'react';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { SankeyChart } from '../SankeyChart.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 // ── Snapshot normaliser ────────────────────────────────────────────────────────
 function normalizeSnapshotIds(html: string): string {
@@ -65,17 +65,17 @@ afterEach(() => jest.clearAllMocks());
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
 /** waitFor that actually waits — throws until the element exists. */
-const waitForSvg = (container: HTMLElement) =>
+const waitForSvg = (container: HTMLElement): Promise<void> =>
   waitFor(() => {
     expect(container.querySelector('svg')).toBeTruthy();
   });
 
-const waitForRects = (container: HTMLElement) =>
+const waitForRects = (container: HTMLElement): Promise<void> =>
   waitFor(() => {
     expect(container.querySelector('svg rect')).toBeTruthy();
   });
 
-const waitForPaths = (container: HTMLElement) =>
+const waitForPaths = (container: HTMLElement): Promise<void> =>
   waitFor(() => {
     expect(container.querySelector('svg path')).toBeTruthy();
   });
@@ -245,15 +245,14 @@ describe('SankeyChart — color token resolution', () => {
         levels={levels}
         links={links}
         nodeColorOverride="interactive.background.primary.default"
+        showLabels={false}
       />,
     );
 
     await waitForRects(container);
 
-    const nodeRects = Array.from(container.querySelectorAll('svg rect')).filter(
-      (r) => r.getAttribute('rx') === '2', // node bars have rx=border.radius.small=2
-    );
-    const fills = new Set(nodeRects.map((r) => r.getAttribute('fill')));
+    const allRects = Array.from(container.querySelectorAll('svg rect'));
+    const fills = new Set(allRects.map((r) => r.getAttribute('fill')).filter(Boolean));
     expect(fills.size).toBe(1);
   });
 

@@ -5,17 +5,6 @@ import type {
   SankeyNode as D3SankeyNode,
   SankeyLink as D3SankeyLink,
 } from 'd3-sankey';
-
-// Blade imports — in the Blade monorepo these resolve via tsconfig paths
-import { useTheme } from '~components/BladeProvider';
-import BaseBox from '~components/Box/BaseBox';
-import getIn from '~utils/lodashButBetter/get';
-import { metaAttribute } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { castWebType } from '~utils';
-import { useChartsColorTheme } from '../utils';
-
 import { SankeyChartProvider, useSankeyChartContext } from './SankeyChartContext';
 import type { SankeyChartProps, SankeyLevelNode } from './types';
 import { componentIds } from './componentIds';
@@ -25,6 +14,14 @@ import {
   LINK_DIMMED_OPACITY,
   NODE_DIMMED_OPACITY,
 } from './tokens';
+import { useChartsColorTheme } from '../utils';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
+import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { castWebType } from '~utils';
 
 // ─── Internal types ───────────────────────────────────────────────────────────
 
@@ -62,7 +59,7 @@ function SankeyChartInner({
   onNodeClick,
   onLinkClick,
   ...restProps
-}: SankeyChartProps) {
+}: SankeyChartProps): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, x: 0, y: 0, content: '' });
@@ -105,13 +102,14 @@ function SankeyChartInner({
 
   // ── Responsiveness ────────────────────────────────────────────────────────
   useEffect(() => {
-    if (!containerRef.current) return;
+    const el = containerRef.current;
+    if (!el) return undefined;
     const observer = new ResizeObserver((entries) => {
       const entry = entries[0];
       if (entry) setWidth(entry.contentRect.width);
     });
-    observer.observe(containerRef.current);
-    setWidth(containerRef.current.offsetWidth);
+    observer.observe(el);
+    setWidth(el.offsetWidth);
     return () => observer.disconnect();
   }, []);
 
@@ -144,41 +142,6 @@ function SankeyChartInner({
       return resolveColor(tokenPath);
     },
     [linkColorOverride, nodeColorOverride, defaultColorTokens, resolveColor],
-  );
-
-  // ── Opacity helpers (mirrors LineChart dimming pattern) ───────────────────
-  const getNodeOpacity = useCallback(
-    (nodeIdx: number): number => {
-      if (hoveredNodeId === null && hoveredLinkId === null) return 1;
-      if (hoveredNodeId === nodeIdx) return 1;
-      if (hoveredLinkId !== null && graph) {
-        const link = graph.links[hoveredLinkId] as InternalLink | undefined;
-        if (link) {
-          const src = (link.source as InternalNode).originalIndex;
-          const tgt = (link.target as InternalNode).originalIndex;
-          if (nodeIdx === src || nodeIdx === tgt) return 1;
-        }
-      }
-      return NODE_DIMMED_OPACITY;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [hoveredNodeId, hoveredLinkId],
-  );
-
-  const getLinkOpacity = useCallback(
-    (linkIdx: number): number => {
-      if (hoveredNodeId === null && hoveredLinkId === null) return LINK_DEFAULT_OPACITY;
-      if (hoveredLinkId === linkIdx) return LINK_HOVER_OPACITY;
-      if (hoveredNodeId !== null && graph) {
-        const link = graph.links[linkIdx] as InternalLink;
-        const src = (link.source as InternalNode).originalIndex;
-        const tgt = (link.target as InternalNode).originalIndex;
-        if (src === hoveredNodeId || tgt === hoveredNodeId) return LINK_HOVER_OPACITY;
-      }
-      return LINK_DIMMED_OPACITY;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [hoveredNodeId, hoveredLinkId],
   );
 
   // ── d3-sankey layout ──────────────────────────────────────────────────────
@@ -229,8 +192,43 @@ function SankeyChartInner({
     });
   }, [width, height, nodeWidth, nodePadding, flatNodes, nodeIdToIndex, links, showLabels]);
 
+  // ── Opacity helpers (mirrors LineChart dimming pattern) ───────────────────
+  const getNodeOpacity = useCallback(
+    (nodeIdx: number): number => {
+      if (hoveredNodeId === null && hoveredLinkId === null) return 1;
+      if (hoveredNodeId === nodeIdx) return 1;
+      if (hoveredLinkId !== null && graph) {
+        const link = graph.links[hoveredLinkId] as InternalLink | undefined;
+        if (link) {
+          const src = (link.source as InternalNode).originalIndex;
+          const tgt = (link.target as InternalNode).originalIndex;
+          if (nodeIdx === src || nodeIdx === tgt) return 1;
+        }
+      }
+      return NODE_DIMMED_OPACITY;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [hoveredNodeId, hoveredLinkId, graph],
+  );
+
+  const getLinkOpacity = useCallback(
+    (linkIdx: number): number => {
+      if (hoveredNodeId === null && hoveredLinkId === null) return LINK_DEFAULT_OPACITY;
+      if (hoveredLinkId === linkIdx) return LINK_HOVER_OPACITY;
+      if (hoveredNodeId !== null && graph) {
+        const link = graph.links[linkIdx] as InternalLink;
+        const src = (link.source as InternalNode).originalIndex;
+        const tgt = (link.target as InternalNode).originalIndex;
+        if (src === hoveredNodeId || tgt === hoveredNodeId) return LINK_HOVER_OPACITY;
+      }
+      return LINK_DIMMED_OPACITY;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [hoveredNodeId, hoveredLinkId, graph],
+  );
+
   // ── Tooltip helpers ───────────────────────────────────────────────────────
-  const showNodeTooltip = (e: React.MouseEvent, node: InternalNode) => {
+  const showNodeTooltip = (e: React.MouseEvent, node: InternalNode): void => {
     if (!showTooltip) return;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -242,7 +240,7 @@ function SankeyChartInner({
     });
   };
 
-  const showLinkTooltip = (e: React.MouseEvent, link: InternalLink) => {
+  const showLinkTooltip = (e: React.MouseEvent, link: InternalLink): void => {
     if (!showTooltip) return;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -258,7 +256,7 @@ function SankeyChartInner({
     });
   };
 
-  const hideTooltip = () => setTooltip((t) => ({ ...t, visible: false }));
+  const hideTooltip = (): void => setTooltip((t) => ({ ...t, visible: false }));
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
@@ -438,7 +436,7 @@ function SankeyChartInner({
 
 // ─── Public export ────────────────────────────────────────────────────────────
 
-const _SankeyChart = (props: SankeyChartProps) => (
+const _SankeyChart = (props: SankeyChartProps): React.ReactElement => (
   <SankeyChartProvider>
     <SankeyChartInner {...props} />
   </SankeyChartProvider>

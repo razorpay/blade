@@ -7,8 +7,8 @@
  * a separate layout pass. This is tracked as a future enhancement.
  */
 import React from 'react';
-import { throwBladeError } from '~utils/logger';
 import type { SankeyChartProps } from './types';
+import { throwBladeError } from '~utils/logger';
 
 const SankeyChart = (_props: SankeyChartProps): React.ReactElement => {
   throwBladeError({
