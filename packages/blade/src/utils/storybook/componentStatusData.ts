@@ -1264,6 +1264,21 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'SankeyChart',
+    description:
+      'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with d3-sankey and Blade design system styling.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/SankeyChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'TimePicker',
     description:
       'TimePicker component allows users to select a specific time from a customizable time interface. It supports both 12-hour and 24-hour formats, provides an intuitive picker interface, and automatically adapts to mobile devices with a BottomSheet experience.',
