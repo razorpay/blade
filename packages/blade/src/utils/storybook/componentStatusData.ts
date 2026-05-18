@@ -875,7 +875,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'DatePicker',
     description: 'DatePicker will provide an easy way to input dates and ranges',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
         status: 'released',
@@ -906,7 +906,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'Toast',
     description: 'Toast is a component to show a simple floating messages to your users',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
         status: 'released',
