@@ -123,6 +123,8 @@ exports[`<Switch /> should render switch with label 1`] = `
           }
         >
           <View
+            _thumbHeight={20}
+            _thumbWidth={20}
             style={
               [
                 {
@@ -131,10 +133,10 @@ exports[`<Switch /> should render switch with label 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": "100%",
+                  "height": 20,
                   "justifyContent": "center",
                   "position": "absolute",
-                  "width": "100%",
+                  "width": 20,
                 },
                 {
                   "left": 0,
@@ -347,6 +349,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           }
         >
           <View
+            _thumbHeight={20}
+            _thumbWidth={20}
             isDisabled={true}
             style={
               [
@@ -356,10 +360,10 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": "100%",
+                  "height": 20,
                   "justifyContent": "center",
                   "position": "absolute",
-                  "width": "100%",
+                  "width": 20,
                 },
                 {
                   "left": 0,
