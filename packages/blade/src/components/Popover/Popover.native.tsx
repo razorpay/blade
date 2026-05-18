@@ -66,7 +66,7 @@ const Popover = ({
   const onBackdropLayout = React.useCallback(() => {
     if (backdropRef.current && 'measureInWindow' in backdropRef.current) {
       ((backdropRef.current as unknown) as {
-        measureInWindow: (x: number, y: number, w: number, h: number) => void;
+        measureInWindow: (cb: (x: number, y: number, w: number, h: number) => void) => void;
       }).measureInWindow((bx: number, by: number) => {
         setBackdropOffset({ x: bx || 0, y: by || 0 });
       });
