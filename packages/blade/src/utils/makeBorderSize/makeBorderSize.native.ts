@@ -11,7 +11,9 @@ export function makeBorderSize<T extends number>(size: T): `${T}px`;
 export function makeBorderSize<T extends string>(size: T): T;
 export function makeBorderSize<T extends number | string>(size: T): `${T}px` | T {
   if (typeof size === 'number') {
-    return (size as unknown) as `${T}px`;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (size as any) as `${T}px`;
   }
-  return ((parseFloat(size as string) || 0) as unknown) as T;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return ((parseFloat(size) || 0) as any) as T;
 }

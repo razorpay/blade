@@ -54,11 +54,11 @@ const Tooltip = ({
   // between measureInWindow (used by floating-ui) and the Portal container's coordinate space
   const onBackdropLayout = React.useCallback(() => {
     if (backdropRef.current && 'measureInWindow' in backdropRef.current) {
-      ((backdropRef.current as unknown) as { measureInWindow: Function }).measureInWindow(
-        (bx: number, by: number) => {
-          setBackdropOffset({ x: bx || 0, y: by || 0 });
-        },
-      );
+      ((backdropRef.current as unknown) as {
+        measureInWindow: (x: number, y: number, w: number, h: number) => void;
+      }).measureInWindow((bx: number, by: number) => {
+        setBackdropOffset({ x: bx || 0, y: by || 0 });
+      });
     }
   }, []);
 
