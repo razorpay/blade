@@ -20,6 +20,7 @@ import {
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 import getIn from '~utils/lodashButBetter/get';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -83,19 +84,18 @@ function SankeyChartInner({
   );
 
   const tooltipBg = theme.colors.surface.icon.staticBlack.normal;
-  const tooltipTextColor = theme.colors.surface.text.staticWhite.normal;
   const labelNameColor = theme.colors.surface.text.gray.normal;
   const labelValueColor = theme.colors.surface.text.gray.muted;
   const chipBg = theme.colors.surface.background.gray.subtle;
   const chipShadowColor = theme.colors.surface.border.gray.muted;
-  const chipRadius = theme.border.radius.medium;
+  const chipRadius = theme.border.radius.small;
   const motionDuration = theme.motion.duration.quick;
   const fontFamily = theme.typography.fonts.family.text;
 
   // Chip layout — derived from Blade spacing tokens
   const CHIP_H = theme.spacing[7]; // 24px
-  const CHIP_PAD_X = theme.spacing[4]; // 12px
-  const CHIP_GAP = theme.spacing[3]; // 8px
+  const CHIP_PAD_X = theme.spacing[3]; // 8px horizontal padding inside chip
+  const CHIP_GAP = theme.spacing[3]; // 8px gap between node bar and chip
 
   // ── Responsiveness ────────────────────────────────────────────────────────
   useEffect(() => {
@@ -406,26 +406,26 @@ function SankeyChartInner({
           </svg>
         )}
 
-        {/* Tooltip */}
+        {/* Tooltip — matches Blade ChartTooltip visual style */}
         {showTooltip && tooltip.visible && (
           <div
             style={{
               position: 'absolute',
               left: tooltip.x,
               top: tooltip.y,
-              background: tooltipBg,
-              color: tooltipTextColor,
-              borderRadius: theme.border.radius.medium,
-              fontSize: theme.typography.fonts.size[75],
-              padding: `${theme.spacing[2]}px ${theme.spacing[3]}px`,
+              backgroundColor: tooltipBg,
+              borderRadius: theme.border.radius.large,
+              border: `1px solid ${theme.colors.surface.border.gray.muted}`,
+              padding: theme.spacing[4],
               pointerEvents: 'none',
               whiteSpace: 'nowrap',
               zIndex: TOOLTIP_Z_INDEX,
               boxShadow: castWebType(theme.elevation.highRaised),
-              fontFamily,
             }}
           >
-            {tooltip.content}
+            <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+              {tooltip.content}
+            </Text>
           </div>
         )}
       </div>
