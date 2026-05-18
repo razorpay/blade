@@ -711,12 +711,14 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }

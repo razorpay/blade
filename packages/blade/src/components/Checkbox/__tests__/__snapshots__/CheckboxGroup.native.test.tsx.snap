@@ -1393,12 +1393,14 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }
