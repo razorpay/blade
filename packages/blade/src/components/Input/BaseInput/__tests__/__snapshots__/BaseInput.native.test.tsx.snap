@@ -979,12 +979,14 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }
@@ -996,7 +998,7 @@ exports[`<BaseInput /> should render input with no borders in error state 1`] = 
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
+                    "marginTop": 0,
                   },
                 ]
               }
@@ -1472,12 +1474,14 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }
@@ -1489,7 +1493,7 @@ exports[`<BaseInput /> should render input with no borders in success state 1`] 
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
+                    "marginTop": 0,
                   },
                 ]
               }
@@ -2635,13 +2639,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                   </RNSVGGroup>
                 </RNSVGSvgView>
               </View>
-              <Modal
-                accessibilityLabel="Success"
-                collapsable={false}
-                hardwareAccelerated={false}
-                transparent={true}
-                visible={false}
-              />
             </View>
           </View>
         </View>
@@ -2688,12 +2685,14 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }
@@ -2705,7 +2704,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                 [
                   {
                     "flexShrink": 0,
-                    "marginTop": 2,
+                    "marginTop": 0,
                   },
                 ]
               }
@@ -2783,7 +2782,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               fontStyle="normal"
               fontWeight="regular"
               lineHeight={50}
-              marginTop="spacing.1"
+              marginTop="spacing.0"
               style={
                 [
                   {
@@ -2797,7 +2796,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
-                    "marginTop": 2,
+                    "marginTop": 0,
                     "paddingBottom": 0,
                     "paddingLeft": 0,
                     "paddingRight": 0,

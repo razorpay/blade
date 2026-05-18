@@ -63,7 +63,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         }
         accessible={true}
         alignSelf="flex-start"
-        borderRadius="8px"
+        borderRadius={8}
         buttonPaddingBottom="0px"
         buttonPaddingLeft="12px"
         buttonPaddingRight="12px"

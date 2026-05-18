@@ -1698,7 +1698,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3546,7 +3546,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"

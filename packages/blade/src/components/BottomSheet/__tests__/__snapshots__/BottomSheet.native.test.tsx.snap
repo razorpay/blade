@@ -253,7 +253,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     }
                     accessible={true}
-                    borderRadius="8px"
+                    borderRadius={8}
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="12px"
                     buttonPaddingRight="12px"
@@ -847,6 +847,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "borderRadius": 9999,
                                 "display": "flex",
                                 "flexWrap": "nowrap",
+                                "justifyContent": "center",
+                                "paddingBottom": 0.5,
                               },
                             ]
                           }
@@ -1348,7 +1350,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       }
                     }
                     accessible={true}
-                    borderRadius="8px"
+                    borderRadius={8}
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="12px"
                     buttonPaddingRight="12px"

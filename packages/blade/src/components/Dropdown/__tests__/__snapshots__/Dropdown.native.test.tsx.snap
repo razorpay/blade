@@ -832,10 +832,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 },
                 [
                   {
-                    "backdropFilter": "blur(8px)",
                     "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
                     "borderRadius": 12,
-                    "borderWidth": "none",
                     "transform": [
                       {
                         "translateY": 8,

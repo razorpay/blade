@@ -796,10 +796,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 },
                 [
                   {
-                    "backdropFilter": "blur(8px)",
                     "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
                     "borderRadius": 12,
-                    "borderWidth": "none",
                     "transform": [
                       {
                         "translateY": 8,
@@ -1867,7 +1865,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     }
                   }
                   accessible={true}
-                  borderRadius="8px"
+                  borderRadius={8}
                   buttonPaddingBottom="0px"
                   buttonPaddingLeft="12px"
                   buttonPaddingRight="12px"
