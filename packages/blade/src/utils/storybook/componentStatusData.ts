@@ -31,7 +31,7 @@ const componentData: ComponentStatusDataType = [
     frameworks: {
       react: {
         status: 'released',
-        releasedIn: '12.102.0',
+        releasedIn: '12.101.6',
         storybookLink: 'Components/Avatar/Avatar',
       },
       svelte: {
@@ -46,7 +46,7 @@ const componentData: ComponentStatusDataType = [
     frameworks: {
       react: {
         status: 'released',
-        releasedIn: '12.102.0',
+        releasedIn: '12.101.6',
         storybookLink: 'Components/Avatar/AvatarGroup',
       },
       svelte: {
