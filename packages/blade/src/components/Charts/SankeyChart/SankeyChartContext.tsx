@@ -9,7 +9,11 @@ type SankeyChartContextType = {
 
 const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 
-export function SankeyChartProvider({ children }: { children: React.ReactNode }): React.ReactElement {
+export function SankeyChartProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.ReactElement {
   const [hoveredNodeId, setHoveredNodeId] = useState<number | null>(null);
   const [hoveredLinkId, setHoveredLinkId] = useState<number | null>(null);
 

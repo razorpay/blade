@@ -5,6 +5,7 @@ import type {
   SankeyNode as D3SankeyNode,
   SankeyLink as D3SankeyLink,
 } from 'd3-sankey';
+import { useChartsColorTheme } from '../utils';
 import { SankeyChartProvider, useSankeyChartContext } from './SankeyChartContext';
 import type { SankeyChartProps, SankeyLevelNode } from './types';
 import { componentIds } from './componentIds';
@@ -14,7 +15,6 @@ import {
   LINK_DIMMED_OPACITY,
   NODE_DIMMED_OPACITY,
 } from './tokens';
-import { useChartsColorTheme } from '../utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
