@@ -13,7 +13,11 @@ import {
   LINK_DEFAULT_OPACITY,
   LINK_HOVER_OPACITY,
   LINK_DIMMED_OPACITY,
+  NODE_DEFAULT_OPACITY,
   NODE_DIMMED_OPACITY,
+  NODE_WIDTH,
+  NODE_PADDING,
+  TOOLTIP_Z_INDEX,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -48,8 +52,6 @@ function SankeyChartInner({
   levels,
   links,
   height = 400,
-  nodeWidth = 20,
-  nodePadding = 10,
   nodeColorOverride,
   linkColorOverride,
   showTooltip = true,
@@ -90,9 +92,9 @@ function SankeyChartInner({
   const labelNameColor = theme.colors.surface.text.gray.normal;
   const labelValueColor = theme.colors.surface.text.gray.muted;
   const chipBg = theme.colors.surface.background.gray.subtle;
-  const chipShadow = castWebType(theme.elevation.midRaised);
-  const chipRadius = theme.border.radius.large;
-  const motionDuration = theme.motion.duration.gentle;
+  const chipShadowColor = theme.colors.surface.border.gray.muted;
+  const chipRadius = theme.border.radius.medium;
+  const motionDuration = theme.motion.duration.quick;
   const fontFamily = theme.typography.fonts.family.text;
 
   // Chip layout — derived from Blade spacing tokens
@@ -169,8 +171,8 @@ function SankeyChartInner({
       { originalIndex: number } & FlatNode,
       { originalIndex: number; label?: string }
     >()
-      .nodeWidth(nodeWidth)
-      .nodePadding(nodePadding)
+      .nodeWidth(NODE_WIDTH)
+      .nodePadding(NODE_PADDING)
       .extent([
         [leftMargin, 8],
         [width - rightMargin, height - 8],
@@ -190,19 +192,19 @@ function SankeyChartInner({
       nodes: flatNodes.map((n, i) => ({ ...n, originalIndex: i })),
       links: d3Links,
     });
-  }, [width, height, nodeWidth, nodePadding, flatNodes, nodeIdToIndex, links, showLabels]);
+  }, [width, height, flatNodes, nodeIdToIndex, links, showLabels, labelUnit, CHIP_GAP, CHIP_PAD_X]);
 
   // ── Opacity helpers (mirrors LineChart dimming pattern) ───────────────────
   const getNodeOpacity = useCallback(
     (nodeIdx: number): number => {
-      if (hoveredNodeId === null && hoveredLinkId === null) return 1;
-      if (hoveredNodeId === nodeIdx) return 1;
+      if (hoveredNodeId === null && hoveredLinkId === null) return NODE_DEFAULT_OPACITY;
+      if (hoveredNodeId === nodeIdx) return NODE_DEFAULT_OPACITY;
       if (hoveredLinkId !== null && graph) {
         const link = graph.links[hoveredLinkId] as InternalLink | undefined;
         if (link) {
           const src = (link.source as InternalNode).originalIndex;
           const tgt = (link.target as InternalNode).originalIndex;
-          if (nodeIdx === src || nodeIdx === tgt) return 1;
+          if (nodeIdx === src || nodeIdx === tgt) return NODE_DEFAULT_OPACITY;
         }
       }
       return NODE_DIMMED_OPACITY;
@@ -284,7 +286,7 @@ function SankeyChartInner({
 
                 return (
                   <path
-                    key={i}
+                    key={`${srcNode.id}-${(link.target as InternalNode).id}`}
                     d={path}
                     fill="none"
                     stroke={stroke}
@@ -314,7 +316,7 @@ function SankeyChartInner({
 
             {/* Nodes + Label chips */}
             <g>
-              {(graph.nodes as InternalNode[]).map((node, i) => {
+              {(graph.nodes as InternalNode[]).map((node) => {
                 const x0 = node.x0 ?? 0;
                 const x1 = node.x1 ?? 0;
                 const y0 = node.y0 ?? 0;
@@ -335,7 +337,7 @@ function SankeyChartInner({
 
                 return (
                   <g
-                    key={i}
+                    key={flatNodes[node.originalIndex].id}
                     opacity={getNodeOpacity(node.originalIndex)}
                     style={{
                       transition: `opacity ${motionDuration}ms ${castWebType(
@@ -350,7 +352,7 @@ function SankeyChartInner({
                       width={x1 - x0}
                       height={Math.max(1, y1 - y0)}
                       fill={color}
-                      rx={theme.border.radius.small}
+                      rx={0}
                       style={{ cursor: 'pointer' }}
                       onMouseEnter={(e) => {
                         setHoveredNodeId(node.originalIndex);
@@ -367,8 +369,8 @@ function SankeyChartInner({
                       }
                     />
 
-                    {/* Label chip */}
-                    {showLabels && (
+                    {/* Label chip — skip on narrow screens to avoid overflow */}
+                    {showLabels && chipX < width - 24 && (
                       <g style={{ pointerEvents: 'none' }}>
                         <rect
                           x={chipX}
@@ -377,7 +379,9 @@ function SankeyChartInner({
                           height={CHIP_H}
                           fill={chipBg}
                           rx={chipRadius}
-                          style={{ filter: `drop-shadow(${chipShadow})` }}
+                          style={{
+                            filter: `drop-shadow(0px 2px 8px ${chipShadowColor})`,
+                          }}
                         />
                         <text
                           x={chipX + CHIP_PAD_X}
@@ -393,7 +397,7 @@ function SankeyChartInner({
                             {node.name}
                           </tspan>
                           {labelValue && (
-                            <tspan fill={labelValueColor} dx={6}>
+                            <tspan fill={labelValueColor} dx={theme.spacing[2]}>
                               {labelValue}
                             </tspan>
                           )}
@@ -421,7 +425,7 @@ function SankeyChartInner({
               padding: `${theme.spacing[2]}px ${theme.spacing[3]}px`,
               pointerEvents: 'none',
               whiteSpace: 'nowrap',
-              zIndex: 100,
+              zIndex: TOOLTIP_Z_INDEX,
               boxShadow: castWebType(theme.elevation.highRaised),
               fontFamily,
             }}

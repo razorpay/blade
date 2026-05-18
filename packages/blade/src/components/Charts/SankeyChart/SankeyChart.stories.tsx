@@ -61,14 +61,6 @@ export default {
       control: { type: 'number', min: 200, max: 800, step: 20 },
       description: 'Height of the chart in pixels.',
     },
-    nodeWidth: {
-      control: { type: 'number', min: 8, max: 40, step: 2 },
-      description: 'Width of each node rectangle.',
-    },
-    nodePadding: {
-      control: { type: 'number', min: 4, max: 40, step: 2 },
-      description: 'Vertical gap between nodes in the same column.',
-    },
     showTooltip: {
       control: { type: 'boolean' },
       description: 'Show a tooltip on node/link hover.',
@@ -232,8 +224,6 @@ type DefaultStoryArgs = SankeyChartProps & {
 
 export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
   height = 420,
-  nodeWidth = 14,
-  nodePadding = 16,
   showTooltip = true,
   showLabels = true,
   labelUnit = 'txn',
@@ -255,8 +245,6 @@ export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
           levels={levels}
           links={links}
           height={height}
-          nodeWidth={nodeWidth}
-          nodePadding={nodePadding}
           showTooltip={showTooltip}
           showLabels={showLabels}
           labelUnit={labelUnit}
@@ -276,8 +264,6 @@ export const SingleColorSankeyChart: StoryFn<typeof SankeyChart> = () => (
         levels={paymentLevels}
         links={paymentLinks}
         height={420}
-        nodeWidth={14}
-        nodePadding={16}
         nodeColorOverride="interactive.background.primary.default"
         linkColorOverride="data.background.categorical.blue.subtle"
         showTooltip={true}
@@ -299,8 +285,6 @@ export const SankeyChartWithoutLabels: StoryFn<typeof SankeyChart> = () => (
         levels={paymentLevels}
         links={paymentLinks}
         height={420}
-        nodeWidth={14}
-        nodePadding={16}
         nodeColorOverride="interactive.background.primary.default"
         linkColorOverride="data.background.categorical.blue.subtle"
         showTooltip={true}
@@ -359,8 +343,6 @@ export const SankeyChartWithCustomNodeColors: StoryFn<typeof SankeyChart> = () =
           { from: 'gp', to: 'net', value: 400 },
         ]}
         height={320}
-        nodeWidth={16}
-        nodePadding={20}
         showTooltip={true}
         showLabels={true}
         labelUnit="₹M"

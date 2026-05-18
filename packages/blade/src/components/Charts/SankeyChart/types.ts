@@ -29,13 +29,12 @@ export type SankeyChartProps = {
   /** Flow connections between nodes — referenced by node id, not array index. */
   links: SankeyFlowLink[];
   height?: number;
-  nodeWidth?: number;
-  nodePadding?: number;
   /** Override all nodes with a single Blade color token, e.g. 'interactive.background.primary.default' */
   nodeColorOverride?: string;
   /** Override all links with a single Blade color token, e.g. 'data.background.categorical.blue.subtle' */
   linkColorOverride?: string;
   showTooltip?: boolean;
+  /** Show label chips to the right of each node bar. Default: true */
   showLabels?: boolean;
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
