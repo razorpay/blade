@@ -9,46 +9,4 @@ async function preloadRazorSenseAssets(
   // no-op on native
 }
 
-// no-op stubs for web-only utilities — not available on native
-async function loadImage(_src: string): Promise<HTMLImageElement> {
-  return Promise.reject(new Error('loadImage is not supported on native'));
-}
-
-async function loadVideo(_src: string): Promise<HTMLVideoElement> {
-  return Promise.reject(new Error('loadVideo is not supported on native'));
-}
-
-function isSafari(): boolean {
-  return false;
-}
-
-function bestGuessBrowserZoom(): number {
-  return 1;
-}
-
-function getDefaultAssets(_assetsPath: string): Record<string, string> {
-  return {};
-}
-
-function getPresetAssets(_preset: string | undefined, _assetsPath: string): Record<string, string> {
-  return {};
-}
-
-function resolveConfig(
-  _props: Record<string, unknown>,
-  _assetsPath: string,
-): Record<string, unknown> {
-  return {};
-}
-
-export {
-  DEFAULT_CDN_PATH,
-  preloadRazorSenseAssets,
-  loadImage,
-  loadVideo,
-  isSafari,
-  bestGuessBrowserZoom,
-  getDefaultAssets,
-  getPresetAssets,
-  resolveConfig,
-};
+export { DEFAULT_CDN_PATH, preloadRazorSenseAssets };
