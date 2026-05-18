@@ -6,7 +6,6 @@ import type {
   SankeyLink as D3SankeyLink,
 } from 'd3-sankey';
 import { useChartsColorTheme } from '../utils';
-import { SankeyChartProvider, useSankeyChartContext } from './SankeyChartContext';
 import type { SankeyChartProps, SankeyLevelNode } from './types';
 import { componentIds } from './componentIds';
 import {
@@ -65,12 +64,8 @@ function SankeyChartInner({
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, x: 0, y: 0, content: '' });
-  const {
-    hoveredNodeId,
-    hoveredLinkId,
-    setHoveredNodeId,
-    setHoveredLinkId,
-  } = useSankeyChartContext();
+  const [hoveredNodeId, setHoveredNodeId] = useState<number | null>(null);
+  const [hoveredLinkId, setHoveredLinkId] = useState<number | null>(null);
 
   // ── Theme tokens ──────────────────────────────────────────────────────────
   const { theme } = useTheme();
@@ -441,9 +436,7 @@ function SankeyChartInner({
 // ─── Public export ────────────────────────────────────────────────────────────
 
 const _SankeyChart = (props: SankeyChartProps): React.ReactElement => (
-  <SankeyChartProvider>
-    <SankeyChartInner {...props} />
-  </SankeyChartProvider>
+  <SankeyChartInner {...props} />
 );
 
 export const SankeyChart = assignWithoutSideEffects(_SankeyChart, {
