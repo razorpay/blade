@@ -17,6 +17,7 @@ import {
   NODE_WIDTH,
   NODE_PADDING,
   TOOLTIP_Z_INDEX,
+  MIN_CHART_WIDTH,
 } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -225,32 +226,42 @@ function SankeyChartInner({
   );
 
   // ── Tooltip helpers ───────────────────────────────────────────────────────
+  // Positions tooltip near the cursor and flips it away from container edges.
+  const positionTooltip = (
+    e: React.MouseEvent,
+    content: string,
+  ): { x: number; y: number; content: string } => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return { x: 0, y: 0, content };
+    const cursorX = e.clientX - rect.left;
+    const cursorY = e.clientY - rect.top;
+    // Estimate tooltip dimensions: ~7px per character wide, 36px tall
+    const estW = content.length * 7 + 24;
+    const estH = 36;
+    const offset = 12;
+    // Flip horizontally if tooltip would overflow the right edge
+    const x = cursorX + offset + estW > rect.width ? cursorX - estW - offset : cursorX + offset;
+    // Flip vertically if tooltip would overflow the bottom edge
+    const y = cursorY + estH > rect.height ? cursorY - estH - offset : cursorY + offset;
+    return { x, y, content };
+  };
+
   const showNodeTooltip = (e: React.MouseEvent, node: InternalNode): void => {
     if (!showTooltip) return;
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    setTooltip({
-      visible: true,
-      x: e.clientX - rect.left + 12,
-      y: e.clientY - rect.top - 8,
-      content: `${node.name}: ${node.value?.toLocaleString()}${labelUnit ? ` ${labelUnit}` : ''}`,
-    });
+    const content = `${node.name}: ${node.value?.toLocaleString()}${
+      labelUnit ? ` ${labelUnit}` : ''
+    }`;
+    setTooltip({ visible: true, ...positionTooltip(e, content) });
   };
 
   const showLinkTooltip = (e: React.MouseEvent, link: InternalLink): void => {
     if (!showTooltip) return;
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
     const src = (link.source as InternalNode).name;
     const tgt = (link.target as InternalNode).name;
-    setTooltip({
-      visible: true,
-      x: e.clientX - rect.left + 12,
-      y: e.clientY - rect.top - 8,
-      content:
-        link.label ??
-        `${src} → ${tgt}: ${link.value?.toLocaleString()}${labelUnit ? ` ${labelUnit}` : ''}`,
-    });
+    const content =
+      link.label ??
+      `${src} → ${tgt}: ${link.value?.toLocaleString()}${labelUnit ? ` ${labelUnit}` : ''}`;
+    setTooltip({ visible: true, ...positionTooltip(e, content) });
   };
 
   const hideTooltip = (): void => setTooltip((t) => ({ ...t, visible: false }));
@@ -263,171 +274,179 @@ function SankeyChartInner({
       position="relative"
       width="100%"
     >
-      <div ref={containerRef} style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
-        {width > 0 && graph && (
-          <svg
-            width={width}
-            height={height}
-            style={{ overflow: 'hidden', display: 'block' }}
-            aria-label="Sankey Chart"
-            role="img"
-          >
-            {/* Links */}
-            <g>
-              {(graph.links as InternalLink[]).map((link, i) => {
-                const path = sankeyLinkHorizontal()(link as never) ?? '';
-                const srcNode = link.source as InternalNode;
-                const stroke = linkColor(flatNodes[srcNode.originalIndex], srcNode.originalIndex);
+      <div style={{ width: '100%', overflowX: 'auto' }}>
+        <div ref={containerRef} style={{ position: 'relative', minWidth: MIN_CHART_WIDTH }}>
+          {width > 0 && graph && (
+            <svg
+              width={width}
+              height={height}
+              style={{ display: 'block' }}
+              aria-label="Sankey Chart"
+              role="img"
+            >
+              {/* Links */}
+              <g>
+                {(graph.links as InternalLink[]).map((link, i) => {
+                  const path = sankeyLinkHorizontal()(link as never) ?? '';
+                  const srcNode = link.source as InternalNode;
+                  const stroke = linkColor(flatNodes[srcNode.originalIndex], srcNode.originalIndex);
 
-                return (
-                  <path
-                    key={`${srcNode.id}-${(link.target as InternalNode).id}`}
-                    d={path}
-                    fill="none"
-                    stroke={stroke}
-                    strokeWidth={Math.max(1, link.width ?? 1)}
-                    strokeOpacity={getLinkOpacity(i)}
-                    style={{
-                      cursor: 'pointer',
-                      transition: `stroke-opacity ${motionDuration}ms ${castWebType(
-                        theme.motion.easing.standard,
-                      )}`,
-                    }}
-                    onMouseEnter={(e) => {
-                      setHoveredLinkId(i);
-                      setHoveredNodeId(null);
-                      showLinkTooltip(e, link);
-                    }}
-                    onMouseMove={(e) => showLinkTooltip(e, link)}
-                    onMouseLeave={() => {
-                      setHoveredLinkId(null);
-                      hideTooltip();
-                    }}
-                    onClick={() => onLinkClick?.(links[link.originalIndex], link.originalIndex)}
-                  />
-                );
-              })}
-            </g>
-
-            {/* Nodes + Label chips */}
-            <g>
-              {(graph.nodes as InternalNode[]).map((node) => {
-                const x0 = node.x0 ?? 0;
-                const x1 = node.x1 ?? 0;
-                const y0 = node.y0 ?? 0;
-                const y1 = node.y1 ?? 0;
-                const color = nodeColor(flatNodes[node.originalIndex], node.originalIndex);
-                const nodeMidY = (y0 + y1) / 2;
-
-                const labelValue =
-                  labelUnit != null ? `${node.value?.toLocaleString()} ${labelUnit}` : null;
-                const fullText = labelValue ? `${node.name} ${labelValue}` : node.name;
-                const chipX = x1 + CHIP_GAP;
-                // Cap chip width so it never extends past the SVG right edge
-                const chipW = Math.min(
-                  Math.max(80, fullText.length * 6 + CHIP_PAD_X * 2),
-                  width - chipX - 4,
-                );
-                const chipY = nodeMidY - CHIP_H / 2;
-
-                return (
-                  <g
-                    key={flatNodes[node.originalIndex].id}
-                    opacity={getNodeOpacity(node.originalIndex)}
-                    style={{
-                      transition: `opacity ${motionDuration}ms ${castWebType(
-                        theme.motion.easing.standard,
-                      )}`,
-                    }}
-                  >
-                    {/* Node bar */}
-                    <rect
-                      x={x0}
-                      y={y0}
-                      width={x1 - x0}
-                      height={Math.max(1, y1 - y0)}
-                      fill={color}
-                      rx={0}
-                      style={{ cursor: 'pointer' }}
-                      onMouseEnter={(e) => {
-                        setHoveredNodeId(node.originalIndex);
-                        setHoveredLinkId(null);
-                        showNodeTooltip(e, node);
+                  return (
+                    <path
+                      key={`${srcNode.id}-${(link.target as InternalNode).id}`}
+                      d={path}
+                      fill="none"
+                      stroke={stroke}
+                      strokeWidth={Math.max(1, link.width ?? 1)}
+                      strokeOpacity={getLinkOpacity(i)}
+                      style={{
+                        cursor: 'pointer',
+                        transition: `stroke-opacity ${motionDuration}ms ${castWebType(
+                          theme.motion.easing.standard,
+                        )}`,
                       }}
-                      onMouseMove={(e) => showNodeTooltip(e, node)}
-                      onMouseLeave={() => {
+                      onMouseEnter={(e) => {
+                        setHoveredLinkId(i);
                         setHoveredNodeId(null);
+                        showLinkTooltip(e, link);
+                      }}
+                      onMouseMove={(e) => {
+                        if (showTooltip)
+                          setTooltip((t) => ({ ...t, ...positionTooltip(e, t.content) }));
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredLinkId(null);
                         hideTooltip();
                       }}
-                      onClick={() =>
-                        onNodeClick?.(flatNodes[node.originalIndex], node.originalIndex)
-                      }
+                      onClick={() => onLinkClick?.(links[link.originalIndex], link.originalIndex)}
                     />
+                  );
+                })}
+              </g>
 
-                    {/* Label chip — skip on narrow screens to avoid overflow */}
-                    {showLabels && chipX < width - 24 && (
-                      <g style={{ pointerEvents: 'none' }}>
-                        <rect
-                          x={chipX}
-                          y={chipY}
-                          width={chipW}
-                          height={CHIP_H}
-                          fill={chipBg}
-                          rx={chipRadius}
-                          style={{
-                            filter: `drop-shadow(0px 2px 8px ${chipShadowColor})`,
-                          }}
-                        />
-                        <text
-                          x={chipX + CHIP_PAD_X}
-                          y={nodeMidY}
-                          dominantBaseline="middle"
-                          fontSize={theme.typography.fonts.size[75]}
-                          style={{ userSelect: 'none', fontFamily }}
-                        >
-                          <tspan
-                            fontWeight={theme.typography.fonts.weight.semibold}
-                            fill={labelNameColor}
+              {/* Nodes + Label chips */}
+              <g>
+                {(graph.nodes as InternalNode[]).map((node) => {
+                  const x0 = node.x0 ?? 0;
+                  const x1 = node.x1 ?? 0;
+                  const y0 = node.y0 ?? 0;
+                  const y1 = node.y1 ?? 0;
+                  const color = nodeColor(flatNodes[node.originalIndex], node.originalIndex);
+                  const nodeMidY = (y0 + y1) / 2;
+
+                  const labelValue =
+                    labelUnit != null ? `${node.value?.toLocaleString()} ${labelUnit}` : null;
+                  const fullText = labelValue ? `${node.name} ${labelValue}` : node.name;
+                  const chipX = x1 + CHIP_GAP;
+                  // Cap chip width so it never extends past the SVG right edge
+                  const chipW = Math.min(
+                    Math.max(80, fullText.length * 6 + CHIP_PAD_X * 2),
+                    width - chipX - 4,
+                  );
+                  const chipY = nodeMidY - CHIP_H / 2;
+
+                  return (
+                    <g
+                      key={flatNodes[node.originalIndex].id}
+                      opacity={getNodeOpacity(node.originalIndex)}
+                      style={{
+                        transition: `opacity ${motionDuration}ms ${castWebType(
+                          theme.motion.easing.standard,
+                        )}`,
+                      }}
+                    >
+                      {/* Node bar */}
+                      <rect
+                        x={x0}
+                        y={y0}
+                        width={x1 - x0}
+                        height={Math.max(1, y1 - y0)}
+                        fill={color}
+                        rx={0}
+                        style={{ cursor: 'pointer' }}
+                        onMouseEnter={(e) => {
+                          setHoveredNodeId(node.originalIndex);
+                          setHoveredLinkId(null);
+                          showNodeTooltip(e, node);
+                        }}
+                        onMouseMove={(e) => {
+                          if (showTooltip)
+                            setTooltip((t) => ({ ...t, ...positionTooltip(e, t.content) }));
+                        }}
+                        onMouseLeave={() => {
+                          setHoveredNodeId(null);
+                          hideTooltip();
+                        }}
+                        onClick={() =>
+                          onNodeClick?.(flatNodes[node.originalIndex], node.originalIndex)
+                        }
+                      />
+
+                      {/* Label chip — skip on narrow screens to avoid overflow */}
+                      {showLabels && chipX < width - 24 && (
+                        <g style={{ pointerEvents: 'none' }}>
+                          <rect
+                            x={chipX}
+                            y={chipY}
+                            width={chipW}
+                            height={CHIP_H}
+                            fill={chipBg}
+                            rx={chipRadius}
+                            style={{
+                              filter: `drop-shadow(0px 2px 8px ${chipShadowColor})`,
+                            }}
+                          />
+                          <text
+                            x={chipX + CHIP_PAD_X}
+                            y={nodeMidY}
+                            dominantBaseline="middle"
+                            fontSize={theme.typography.fonts.size[75]}
+                            style={{ userSelect: 'none', fontFamily }}
                           >
-                            {node.name}
-                          </tspan>
-                          {labelValue && (
-                            <tspan fill={labelValueColor} dx={theme.spacing[2]}>
-                              {labelValue}
+                            <tspan
+                              fontWeight={theme.typography.fonts.weight.semibold}
+                              fill={labelNameColor}
+                            >
+                              {node.name}
                             </tspan>
-                          )}
-                        </text>
-                      </g>
-                    )}
-                  </g>
-                );
-              })}
-            </g>
-          </svg>
-        )}
+                            {labelValue && (
+                              <tspan fill={labelValueColor} dx={theme.spacing[2]}>
+                                {labelValue}
+                              </tspan>
+                            )}
+                          </text>
+                        </g>
+                      )}
+                    </g>
+                  );
+                })}
+              </g>
+            </svg>
+          )}
 
-        {/* Tooltip — matches Blade ChartTooltip visual style */}
-        {showTooltip && tooltip.visible && (
-          <div
-            style={{
-              position: 'absolute',
-              left: tooltip.x,
-              top: tooltip.y,
-              backgroundColor: tooltipBg,
-              borderRadius: theme.border.radius.large,
-              border: `1px solid ${theme.colors.surface.border.gray.muted}`,
-              padding: theme.spacing[4],
-              pointerEvents: 'none',
-              whiteSpace: 'nowrap',
-              zIndex: TOOLTIP_Z_INDEX,
-              boxShadow: castWebType(theme.elevation.highRaised),
-            }}
-          >
-            <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-              {tooltip.content}
-            </Text>
-          </div>
-        )}
+          {/* Tooltip — matches Blade ChartTooltip visual style */}
+          {showTooltip && tooltip.visible && (
+            <div
+              style={{
+                position: 'absolute',
+                left: tooltip.x,
+                top: tooltip.y,
+                backgroundColor: tooltipBg,
+                borderRadius: theme.border.radius.large,
+                border: `1px solid ${theme.colors.surface.border.gray.muted}`,
+                padding: theme.spacing[4],
+                pointerEvents: 'none',
+                whiteSpace: 'nowrap',
+                zIndex: TOOLTIP_Z_INDEX,
+                boxShadow: castWebType(theme.elevation.highRaised),
+              }}
+            >
+              <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+                {tooltip.content}
+              </Text>
+            </div>
+          )}
+        </div>
       </div>
     </BaseBox>
   );
