@@ -129,6 +129,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
           resizeMode="cover"
           onError={() => setImgError(true)}
           accessibilityLabel={alt ?? name}
+          accessibilityIgnoresInvertColors
         />
       );
     }
@@ -149,7 +150,7 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
   };
 
   const handlePress = (): void => {
-    if (href) Linking.openURL(href);
+    if (href) void Linking.openURL(href);
     // onClick is typed for web (MouseEvent); on native we call it without an event arg
     onClick?.(undefined as never);
   };

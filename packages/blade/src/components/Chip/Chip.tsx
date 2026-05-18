@@ -190,7 +190,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
             />
             <AnimatedChip
               borderColor={chipBorderColor}
-              backgroundColor={chipBackgroundColor}
+              {...(isReactNative() && { backgroundColor: chipBackgroundColor })}
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}

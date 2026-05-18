@@ -1,5 +1,5 @@
-import { throwBladeError } from '~utils/logger';
 import type { RzpGlassProps } from './types';
+import { throwBladeError } from '~utils/logger';
 import { Text } from '~components/Typography';
 
 const RzpGlass = (_props: RzpGlassProps): React.ReactElement => {

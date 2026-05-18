@@ -8,12 +8,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import type { AnimatedThumbProps } from './types';
+import { switchColors, switchMotion, switchSizes } from './switchTokens';
 import isNumber from '~utils/lodashButBetter/isNumber';
 import getIn from '~utils/lodashButBetter/get';
 import { useBreakpoint } from '~utils';
 import { makeBorderSize } from '~utils/makeBorderSize';
-import type { AnimatedThumbProps } from './types';
-import { switchColors, switchMotion, switchSizes } from './switchTokens';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedThumb = styled(Animated.View)<{

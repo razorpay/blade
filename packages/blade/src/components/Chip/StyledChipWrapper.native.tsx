@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
-import getIn from '~utils/lodashButBetter/get';
-import { makeBorderSize } from '~utils/makeBorderSize';
 import type { StyledChipWrapperProps } from './types';
 import { chipBorderRadiusTokens } from './chipTokens';
+import getIn from '~utils/lodashButBetter/get';
+import { makeBorderSize } from '~utils/makeBorderSize';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
