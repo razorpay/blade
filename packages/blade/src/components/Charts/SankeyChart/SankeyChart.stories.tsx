@@ -152,7 +152,9 @@ const LEVEL_WEIGHTS: number[][] = [
 
 const ROOT_VALUE = 10_000;
 
-function generateChartData(nodeCounts: number[]): {
+function generateChartData(
+  nodeCounts: number[],
+): {
   nodes: SankeyDataNode[];
   links: SankeyDataLink[];
 } {
@@ -182,7 +184,11 @@ function generateChartData(nodeCounts: number[]): {
     for (const src of srcNodes) {
       const srcFlow = nodeValue[src.id] ?? 0;
       tgtNodes.forEach((tgt, ti) => {
-        links.push({ source: src.id, target: tgt.id, value: Math.round(srcFlow * normWeights[ti]) });
+        links.push({
+          source: src.id,
+          target: tgt.id,
+          value: Math.round(srcFlow * normWeights[ti]),
+        });
       });
     }
   }

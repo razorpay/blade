@@ -4,7 +4,7 @@
  * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart
  */
 import React from 'react';
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { SankeyChart } from '../SankeyChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 

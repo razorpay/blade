@@ -1,8 +1,12 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
-import type { NodeProps, LinkProps, SankeyElementType } from 'recharts/types/chart/Sankey';
+import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
+import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { castWebType } from '~utils';
 import { useChartsColorTheme } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
 import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonChartComponents/types';
@@ -22,11 +26,7 @@ import {
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import getIn from '~utils/lodashButBetter/get';
-import { metaAttribute } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { castWebType } from '~utils';
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -34,11 +34,17 @@ type HoverState = { type: 'node' | 'link'; index: number } | null;
 
 // ─── Tooltip content ──────────────────────────────────────────────────────────
 
+type SankeyTooltipContentProps = {
+  active?: boolean;
+  payload?: TooltipContentProps<number, string>['payload'];
+  labelUnit?: string;
+};
+
 function SankeyTooltipContent({
   active,
   payload,
   labelUnit,
-}: TooltipContentProps<number, string> & { labelUnit?: string }): React.ReactElement | null {
+}: SankeyTooltipContentProps): React.ReactElement | null {
   const { theme } = useTheme();
 
   if (!active || !payload?.length) return null;
@@ -351,7 +357,7 @@ function SankeyChartInner({
 
   // ── Event handlers ───────────────────────────────────────────────────────
   const handleMouseEnter = useCallback(
-    (item: NodeProps | LinkProps, type: SankeyElementType): void => {
+    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
       setHovered({ type, index: item.index });
     },
     [],
@@ -362,7 +368,7 @@ function SankeyChartInner({
   }, []);
 
   const handleClick = useCallback(
-    (item: NodeProps | LinkProps, type: SankeyElementType): void => {
+    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
       if (type === 'node') {
         const nodeData = data.nodes[item.index];
         if (nodeData) onNodeClick?.(nodeData, item.index);
@@ -396,15 +402,22 @@ function SankeyChartInner({
                 nodePadding={NODE_PADDING}
                 node={renderNode}
                 link={renderLink}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleClick}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onMouseEnter={handleMouseEnter as any}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onMouseLeave={handleMouseLeave as any}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onClick={handleClick as any}
                 margin={{ top: 8, right: showLabels ? 160 : 8, bottom: 8, left: 8 }}
               >
                 {showTooltip && (
                   <Tooltip
                     content={(tooltipProps) => (
-                      <SankeyTooltipContent {...tooltipProps} labelUnit={labelUnit} />
+                      <SankeyTooltipContent
+                        active={tooltipProps.active}
+                        payload={tooltipProps.payload}
+                        labelUnit={labelUnit}
+                      />
                     )}
                   />
                 )}

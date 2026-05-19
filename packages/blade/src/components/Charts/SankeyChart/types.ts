@@ -1,5 +1,5 @@
-import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
+import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 
 export type SankeyDataNode = {
   /** Unique identifier — used in link `source`/`target` references */
