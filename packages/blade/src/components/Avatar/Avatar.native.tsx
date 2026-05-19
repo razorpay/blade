@@ -1,11 +1,5 @@
 import React from 'react';
 import { Image, Pressable, Linking } from 'react-native';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { throwBladeError } from '~utils/logger';
-import type { BladeElementRef } from '~utils/types';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeAccessible } from '~utils/makeAccessible';
-import getIn from '~utils/lodashButBetter/get';
 import type { AvatarProps } from './types';
 import {
   avatarSizeTokens,
@@ -18,12 +12,18 @@ import {
 } from './avatarTokens';
 import { useAvatarGroupContext } from './AvatarGroupContext';
 import { getInitials } from './avatarUtils';
-import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import getIn from '~utils/lodashButBetter/get';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { UserIcon } from '~components/Icons';
-import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { UserIcon } from '~components/Icons';
 import { useTheme } from '~components/BladeProvider';
+import { getStyledProps } from '~components/Box/styledProps';
+import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';

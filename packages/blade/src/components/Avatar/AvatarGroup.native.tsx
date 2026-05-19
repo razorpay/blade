@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { AvatarGroupProps } from './types';
 import { avatarSizeTokens, avatarTextSizeMapping } from './avatarTokens';
 import { AvatarGroupProvider } from './AvatarGroupContext';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';

@@ -1,13 +1,13 @@
 import React from 'react';
+import { emptyStateSizeTokens } from './emptyStateTokens';
+import type { EmptyStateProps } from './types';
 import type { BladeElementRef } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { emptyStateSizeTokens } from './emptyStateTokens';
-import type { EmptyStateProps } from './types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
 import { getStyledProps } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStateProps> = (
   { asset, title, description, children, size = 'medium', testID, ...props },
