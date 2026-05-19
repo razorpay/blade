@@ -27,14 +27,17 @@ import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import getIn from '~utils/lodashButBetter/get';
+import { getInitials } from './avatarUtils';
 
 // Approximate native line-height for Indicator's internal Text.
 // On native an empty <Text> reserves line-height even with no content, pushing
 // the SVG dot down when it is vertically centred inside the flex row.
 // Subtracting (lineHeight - svgSize) / 2 from the web top-offset compensates.
+// Value sourced from Indicator component's internal text line-height on native.
 const INDICATOR_TEXT_LINE_HEIGHT = 20;
 
-// Subtle-emphasis dot sizes (px) per indicator size — from indicatorDotSizes.
+// Subtle-emphasis dot sizes (px) per indicator size.
+// Sourced from indicatorDotSizes in indicatorTokens — keep in sync if those change.
 const indicatorSubtleSvgSize: Record<'small' | 'medium' | 'large', number> = {
   small: 6,
   medium: 8,
@@ -47,12 +50,6 @@ function nativeTopOffset(webTop: string, indicatorSize: 'small' | 'medium' | 'la
   const centeringOffset = Math.max(0, (INDICATOR_TEXT_LINE_HEIGHT - svgSize) / 2);
   return px - centeringOffset;
 }
-
-const getInitials = (name: string): string => {
-  const names = name.trim().toUpperCase().split(' ');
-  if (names.length === 1) return names[0].substring(0, 2);
-  return names[0][0] + names[names.length - 1][0];
-};
 
 const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
   {
@@ -151,8 +148,8 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
 
   const handlePress = (): void => {
     if (href) void Linking.openURL(href);
-    // onClick is typed for web (MouseEvent); on native we call it without an event arg
-    onClick?.(undefined as never);
+    // onClick is web-only (MouseEvent); on native the Pressable's onPress already handles
+    // the interaction — do not call onClick to avoid passing undefined as a MouseEvent.
   };
 
   const indicatorSize = avatarToIndicatorSize[avatarSize];

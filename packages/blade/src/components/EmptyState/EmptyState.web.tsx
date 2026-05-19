@@ -32,7 +32,7 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
           {asset}
         </BaseBox>
       ) : null}
-      <BaseBox display="flex" flexDirection="column" gap="spacing.1" alignItems="center">
+      <BaseBox display="flex" flexDirection="column" gap={tokens.gapInsideContentSection} alignItems="center">
         {title ? (
           <Heading
             textAlign="center"

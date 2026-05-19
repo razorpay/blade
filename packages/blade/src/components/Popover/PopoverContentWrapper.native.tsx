@@ -59,7 +59,7 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
           ? [{ translateX: translate.value }]
           : [{ translateY: translate.value }],
       };
-    }, [isVisible]);
+    }, [isVisible, isHorizontal]);
 
     return (
       <Animated.View style={animatedStyles}>

@@ -13,6 +13,7 @@ import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useFloatingPortal } from '~components/Popover/useFloatingPortal.native';
 
 const IOS_OFFSET_CORRECTION = 10;
 
@@ -31,8 +32,6 @@ const Tooltip = ({
   const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
-  const backdropRef = React.useRef<TouchableOpacity>(null);
-  const [backdropOffset, setBackdropOffset] = React.useState({ x: 0, y: 0 });
 
   const context = useFloating({
     sameScrollView: false,
@@ -50,17 +49,8 @@ const Tooltip = ({
 
   const { refs, floatingStyles, update } = context;
 
-  // Measure the Portal backdrop's window position to correct coordinate mismatch
-  // between measureInWindow (used by floating-ui) and the Portal container's coordinate space
-  const onBackdropLayout = React.useCallback(() => {
-    if (backdropRef.current && 'measureInWindow' in backdropRef.current) {
-      ((backdropRef.current as unknown) as {
-        measureInWindow: (cb: (x: number, y: number, w: number, h: number) => void) => void;
-      }).measureInWindow((bx: number, by: number) => {
-        setBackdropOffset({ x: bx || 0, y: by || 0 });
-      });
-    }
-  }, []);
+  const [isVisible, setIsVisible] = React.useState(() => isOpen);
+  const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
   const handleOpen = React.useCallback(() => {
     setIsOpen(true);
@@ -73,7 +63,6 @@ const Tooltip = ({
   }, [onOpenChange]);
 
   // wait for animation to finish before unmounting
-  const [isVisible, setIsVisible] = React.useState(() => isOpen);
   React.useEffect(() => {
     const id = setTimeout(() => {
       if (!isOpen) {
@@ -86,17 +75,6 @@ const Tooltip = ({
     }
     return () => clearTimeout(id);
   }, [isOpen]);
-
-  // Re-run floating position computation after backdrop offset is measured
-  React.useEffect(() => {
-    if (isVisible && (backdropOffset.x !== 0 || backdropOffset.y !== 0)) {
-      const id = setTimeout(() => {
-        update();
-      }, 50);
-      return () => clearTimeout(id);
-    }
-    return undefined;
-  }, [backdropOffset, isVisible, update]);
 
   return (
     <TooltipContext.Provider value={true}>

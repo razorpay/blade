@@ -41,7 +41,7 @@ export type BaseButtonStyleProps = {
   focusRingColor: string;
   motionDuration: DurationString;
   motionEasing: EasingString;
-  borderRadius: BorderRadiusValues;
+  borderRadius: BorderRadiusValues | number;
   height?: string;
   width?: string;
 };
@@ -73,7 +73,7 @@ export type StyledBaseButtonProps = Omit<
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;
-  borderRadius: BorderRadiusValues;
+  borderRadius: BorderRadiusValues | number;
   borderWidth?: string;
   accessibilityProps: Record<string, unknown>;
   isPressed: boolean;

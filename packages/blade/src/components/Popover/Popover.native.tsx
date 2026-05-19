@@ -14,6 +14,7 @@ import { useControllableState } from '~utils/useControllable';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useFloatingPortal } from './useFloatingPortal.native';
 
 const IOS_OFFSET_CORRECTION = 10;
 
@@ -41,8 +42,6 @@ const Popover = ({
   const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
-  const backdropRef = React.useRef<TouchableOpacity>(null);
-  const [backdropOffset, setBackdropOffset] = React.useState({ x: 0, y: 0 });
 
   const context = useFloating({
     sameScrollView: false,
@@ -61,17 +60,8 @@ const Popover = ({
   const { refs, floatingStyles, update } = context;
   const [computedSide] = getFloatingPlacementParts(context.placement);
 
-  // Measure the Portal backdrop's window position to correct coordinate mismatch
-  // between measureInWindow (used by floating-ui) and the Portal container's coordinate space
-  const onBackdropLayout = React.useCallback(() => {
-    if (backdropRef.current && 'measureInWindow' in backdropRef.current) {
-      ((backdropRef.current as unknown) as {
-        measureInWindow: (cb: (x: number, y: number, w: number, h: number) => void) => void;
-      }).measureInWindow((bx: number, by: number) => {
-        setBackdropOffset({ x: bx || 0, y: by || 0 });
-      });
-    }
-  }, []);
+  const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
+  const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
   const handleOpen = React.useCallback(() => {
     controllableSetIsOpen(() => true);
@@ -84,7 +74,6 @@ const Popover = ({
   }, [controllableSetIsOpen, onOpenChange]);
 
   // wait for animation to finish before unmounting
-  const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
   React.useEffect(() => {
     const id = setTimeout(() => {
       if (!controllableIsOpen) {
@@ -97,17 +86,6 @@ const Popover = ({
     }
     return () => clearTimeout(id);
   }, [controllableIsOpen]);
-
-  // Re-run floating position computation after backdrop offset is measured
-  React.useEffect(() => {
-    if (isVisible && (backdropOffset.x !== 0 || backdropOffset.y !== 0)) {
-      const id = setTimeout(() => {
-        update();
-      }, 50);
-      return () => clearTimeout(id);
-    }
-    return undefined;
-  }, [backdropOffset, isVisible, update]);
 
   const contextValue = React.useMemo(() => {
     return {

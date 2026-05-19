@@ -9,12 +9,14 @@ async function preloadRazorSenseAssets(
   // no-op on native
 }
 
-// no-op stubs for web-only utilities — not available on native
-async function loadImage(_src: string): Promise<HTMLImageElement> {
+// no-op stubs for web-only utilities — not available on native.
+// Return Promise<never> since these always reject and HTMLImageElement/HTMLVideoElement
+// are DOM types that don't exist in React Native's type environment.
+async function loadImage(_src: string): Promise<never> {
   return Promise.reject(new Error('loadImage is not supported on native'));
 }
 
-async function loadVideo(_src: string): Promise<HTMLVideoElement> {
+async function loadVideo(_src: string): Promise<never> {
   return Promise.reject(new Error('loadVideo is not supported on native'));
 }
 

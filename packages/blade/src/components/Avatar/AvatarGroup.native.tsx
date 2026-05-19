@@ -42,25 +42,28 @@ const _AvatarGroup = ({
         style={{ flexDirection: 'row', alignItems: 'center' }}
         {...metaAttribute({ name: MetaConstants.AvatarGroup, testID })}
       >
-        {visible.map((child, i) => (
+        {visible.map((child, i) => {
+          const key = React.isValidElement(child) ? (child.key ?? i) : i;
+          return (
           // Each wrapper is RING px larger on every side, filled with opaque intense-gray.
           // The avatar body sits inside the padding exposing the gray ring as a separator.
           // Ascending zIndex mirrors web's DOM-order stacking so each later avatar is on top.
-          <View
-            key={i}
-            style={{
-              padding: RING,
-              width: wrapperSize,
-              height: wrapperSize,
-              borderRadius: wrapperRadius,
-              backgroundColor: ringColor,
-              marginLeft: i === 0 ? 0 : itemMarginLeft,
-              zIndex: i + 1,
-            }}
-          >
-            {child}
-          </View>
-        ))}
+            <View
+              key={key}
+              style={{
+                padding: RING,
+                width: wrapperSize,
+                height: wrapperSize,
+                borderRadius: wrapperRadius,
+                backgroundColor: ringColor,
+                marginLeft: i === 0 ? 0 : itemMarginLeft,
+                zIndex: i + 1,
+              }}
+            >
+              {child}
+            </View>
+          );
+        })}
 
         {overflowCount > 0 ? (
           <View

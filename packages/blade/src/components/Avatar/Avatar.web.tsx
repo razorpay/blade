@@ -18,15 +18,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-const getInitials = (name: string): string => {
-  // Combine first and last name initials
-  const names = name.trim().toUpperCase().split(' ');
-
-  if (names.length === 1) {
-    return names[0].substring(0, 2);
-  }
-  return names[0][0] + names[names.length - 1][0];
-};
+import { getInitials } from './avatarUtils';
 
 const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
   {
