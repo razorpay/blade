@@ -1,4 +1,3 @@
-import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 
 export type SankeyDataNode = {
@@ -36,5 +35,4 @@ export type SankeyChartProps = {
   labelUnit?: string;
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
   onLinkClick?: (link: SankeyDataLink, index: number) => void;
-} & TestID &
-  DataAnalyticsAttribute;
+};

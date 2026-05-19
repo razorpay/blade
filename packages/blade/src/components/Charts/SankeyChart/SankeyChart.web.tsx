@@ -3,10 +3,6 @@ import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
-import getIn from '~utils/lodashButBetter/get';
-import { metaAttribute } from '~utils/metaAttribute';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { castWebType } from '~utils';
 import { useChartsColorTheme } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
 import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonChartComponents/types';
@@ -23,10 +19,15 @@ import {
   TOOLTIP_Z_INDEX,
   MIN_CHART_WIDTH,
 } from './tokens';
+import getIn from '~utils/lodashButBetter/get';
+import { metaAttribute } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { castWebType } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -93,7 +94,7 @@ function SankeyChartInner({
   onNodeClick,
   onLinkClick,
   ...restProps
-}: SankeyChartProps): React.ReactElement {
+}: SankeyChartProps & TestID & DataAnalyticsAttribute): React.ReactElement {
   const [hovered, setHovered] = useState<HoverState>(null);
 
   // ── Theme tokens ────────────────────────────────────────────────────────
@@ -432,9 +433,9 @@ function SankeyChartInner({
 
 // ─── Public export ────────────────────────────────────────────────────────────
 
-const _SankeyChart = (props: SankeyChartProps): React.ReactElement => (
-  <SankeyChartInner {...props} />
-);
+const _SankeyChart = (
+  props: SankeyChartProps & TestID & DataAnalyticsAttribute,
+): React.ReactElement => <SankeyChartInner {...props} />;
 
 export const SankeyChart = assignWithoutSideEffects(_SankeyChart, {
   componentId: componentIds.SankeyChart,
