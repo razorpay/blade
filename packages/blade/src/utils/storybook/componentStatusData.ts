@@ -1266,7 +1266,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'SankeyChart',
     description:
-      'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with d3-sankey and Blade design system styling.',
+      'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with Recharts and Blade design system styling.',
     platform: 'web',
     frameworks: {
       react: {
