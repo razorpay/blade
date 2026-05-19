@@ -18,17 +18,11 @@ jest.mock('recharts', () => {
   const Recharts = jest.requireActual('recharts');
   return {
     ...Recharts,
-    ResponsiveContainer: ({
-      children,
-      height,
-    }: {
-      children: React.ReactElement;
-      height?: number;
-    }) =>
-      React.cloneElement(React.Children.only(children), {
-        width: 800,
-        height: height ?? 400,
-      }),
+    ResponsiveContainer: ({ children, height }: { children: React.ReactNode; height?: number }) => (
+      <Recharts.ResponsiveContainer width={800} height={height ?? 400}>
+        {children}
+      </Recharts.ResponsiveContainer>
+    ),
   };
 });
 
