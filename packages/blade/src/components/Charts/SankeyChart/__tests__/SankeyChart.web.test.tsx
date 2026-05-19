@@ -16,13 +16,16 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 //   • Fixed 800×400 dimensions → deterministic node positions in snapshots
 jest.mock('recharts', () => {
   const Recharts = jest.requireActual('recharts');
+  // require('react') inside the factory runs after jest.mock hoisting,
+  // so React is in scope. This lets us bypass the real ResponsiveContainer
+  // (which creates a ResizeObserver even with explicit dimensions) entirely.
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { cloneElement, Children } = require('react');
   return {
     ...Recharts,
-    ResponsiveContainer: ({ children, height }: { children: React.ReactNode; height?: number }) => (
-      <Recharts.ResponsiveContainer width={800} height={height ?? 400}>
-        {children}
-      </Recharts.ResponsiveContainer>
-    ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
+      cloneElement(Children.only(children), { width: 800, height: height ?? 400 }),
   };
 });
 
