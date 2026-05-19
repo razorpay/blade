@@ -17,6 +17,8 @@ export const baseInputHeight: Record<
 };
 
 /**
+ * xsmall - 112px (28px height * 4 rows)
+ * small - 128px (32px height * 4 rows)
  * medium - 144px (36px height * 4 rows)
  * large - 192px (48px height * 4 rows)
  */
