@@ -94,6 +94,12 @@ type ChatInputProps = {
   accept?: string;
 
   /**
+   * Maximum number of files that can be attached.
+   * When the limit is reached, the upload button is disabled.
+   */
+  maxCount?: number;
+
+  /**
    * List of ghost suggestions displayed as faded text in the input.
    * When multiple suggestions are provided, they cycle automatically with a crossfade animation.
    * The user can press TAB to accept the currently visible suggestion.

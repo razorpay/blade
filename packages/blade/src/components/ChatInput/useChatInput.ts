@@ -22,6 +22,7 @@ type UseChatInputProps = Pick<
   | 'onFileRemove'
   | 'onFileDismiss'
   | 'accept'
+  | 'maxCount'
   | 'suggestions'
   | 'onSuggestionAccept'
 >;
@@ -37,6 +38,7 @@ const useChatInput = (
     onFileRemove,
     onFileDismiss,
     accept,
+    maxCount,
     suggestions,
     onSuggestionAccept,
   }: UseChatInputProps,
@@ -50,6 +52,7 @@ const useChatInput = (
   setActiveSuggestionIndex: React.Dispatch<React.SetStateAction<number>>;
   hasText: boolean;
   hasFiles: boolean;
+  isAtMaxCount: boolean;
   isSubmitDisabled: boolean;
   showGhostSuggestion: boolean;
   handleTextChange: (args: { name?: string; value?: string }) => void;
@@ -91,6 +94,7 @@ const useChatInput = (
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
   const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
+  const isAtMaxCount = maxCount !== undefined && files.length >= maxCount;
   const isSubmitDisabled = (!hasText && !hasFiles) || hasErrorFiles;
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
@@ -172,14 +176,15 @@ const useChatInput = (
       }
 
       if (validFiles.length > 0) {
-        const newFileList = [...files, ...validFiles];
+        const merged = [...files, ...validFiles];
+        const newFileList = maxCount !== undefined ? merged.slice(0, maxCount) : merged;
         setFiles(() => newFileList);
         onFileChange?.({ fileList: newFileList });
       }
 
       event.target.value = '';
     },
-    [accept, files, setFiles, onFileChange],
+    [accept, maxCount, files, setFiles, onFileChange],
   );
 
   const handleFileRemove = React.useCallback(
@@ -207,19 +212,25 @@ const useChatInput = (
 
       event.preventDefault();
 
-      for (const file of clipboardFiles) {
+      const validFiles = clipboardFiles.filter((file) => {
+        if (accept && !isFileAccepted(file as BladeFile, accept)) return false;
+        return true;
+      });
+
+      for (const file of validFiles) {
         if (!(file as BladeFile).id) {
           (file as BladeFile).id = `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
         }
       }
 
-      if (clipboardFiles.length > 0) {
-        const newFileList = [...files, ...clipboardFiles] as BladeFileList;
+      if (validFiles.length > 0) {
+        const merged = [...files, ...validFiles] as BladeFileList;
+        const newFileList = maxCount !== undefined ? merged.slice(0, maxCount) : merged;
         setFiles(() => newFileList);
         onFileChange?.({ fileList: newFileList });
       }
     },
-    [files, setFiles, onFileChange],
+    [accept, maxCount, files, setFiles, onFileChange],
   );
 
   const handleInnerMouseDownCapture = React.useCallback((event: React.MouseEvent): void => {
@@ -242,6 +253,7 @@ const useChatInput = (
     setActiveSuggestionIndex,
     hasText,
     hasFiles,
+    isAtMaxCount,
     isSubmitDisabled,
     showGhostSuggestion,
     handleTextChange,
