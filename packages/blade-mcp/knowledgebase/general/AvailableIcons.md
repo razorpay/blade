@@ -171,6 +171,7 @@ import {
 | CutIcon | Scissors for cut operation |
 | DashboardIcon | Dashboard/gauge for overview or control panel |
 | DeleteIcon | Trash/delete action icon |
+| DiamondBlocksIcon | Diamond/rhombus block shape for layout or design patterns |
 | DigitalLendingIcon | Razorpay product icon for digital lending |
 | DigitalLendingFilledIcon | Filled variant of DigitalLendingIcon |
 | DisbursePaymentsIcon | Razorpay product icon for disbursing payments |
@@ -231,6 +232,7 @@ import {
 | HelpCircleIcon | Question mark in circle for help or FAQ |
 | HistoryIcon | Clock with arrow for history or recent items |
 | HomeIcon | House for home page or main screen |
+| HorizontalBlocksIcon | Horizontally arranged block shapes for layout representation |
 | ImageIcon | Image/picture placeholder for photos |
 | InboxIcon | Inbox tray for messages or email |
 | IndiaFlagIcon | Indian national flag |
@@ -350,6 +352,7 @@ import {
 | RepeatIcon | Repeat/loop arrows for repeating actions |
 | ReportsIcon | Document with chart for reports and analytics |
 | ResizerIcon | Diagonal resize handle for resizable elements |
+| ReticleIcon | Targeting reticle or crosshair for precision selection |
 | RewindIcon | Double left arrows for rewind |
 | RotateClockWiseIcon | Clockwise rotation arrow |
 | RotateCounterClockWiseIcon | Counter-clockwise rotation arrow |
@@ -447,6 +450,7 @@ import {
 | UsersIcon | Multiple people for groups or teams |
 | VendorPaymentsIcon | Razorpay product icon for vendor payments |
 | VendorPaymentsFilledIcon | Filled variant of VendorPaymentsIcon |
+| VerticalBlocksIcon | Vertically arranged block shapes for layout representation |
 | VideoIcon | Video camera for recording |
 | VideoOffIcon | Disabled video camera |
 | ViewLiveDemoIcon | Razorpay icon for viewing live demos |
