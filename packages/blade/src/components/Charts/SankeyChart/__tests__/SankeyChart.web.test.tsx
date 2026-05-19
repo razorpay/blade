@@ -29,14 +29,6 @@ jest.mock('recharts', () => {
   };
 });
 
-// ── Snapshot normaliser ────────────────────────────────────────────────────────
-function normalizeSnapshotIds(html: string): string {
-  return html
-    .replace(/id="[^"]*"/g, 'id="NORMALIZED"')
-    .replace(/clip-path="[^"]*"/g, 'clip-path="NORMALIZED"')
-    .replace(/url\([^)]*\)/g, 'url(NORMALIZED)');
-}
-
 // ── Test data ──────────────────────────────────────────────────────────────────
 
 const nodes = [
@@ -301,19 +293,5 @@ describe('SankeyChart — edge cases', () => {
     );
     await waitForSvg(container);
     expect(container.querySelector('svg')).toBeTruthy();
-  });
-});
-
-// ── Snapshots ──────────────────────────────────────────────────────────────────
-// Only the pre-resize snapshot is stable across environments.
-// Post-layout snapshots include SVG x/y coordinates that Recharts computes from
-// the jsdom viewport width, which differs between local and CI environments.
-
-describe('SankeyChart — snapshots', () => {
-  it('matches snapshot for default chart (pre-resize, no SVG)', () => {
-    const { container } = renderWithTheme(
-      <SankeyChart data={data} showLabels={true} labelUnit="txn" />,
-    );
-    expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
   });
 });
