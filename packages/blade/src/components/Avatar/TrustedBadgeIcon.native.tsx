@@ -1,4 +1,5 @@
 import { throwBladeError } from '~utils/logger';
+import { Text } from '~components/Typography';
 
 import type { IconComponent } from '~components/Icons';
 
@@ -8,7 +9,7 @@ const TrustedBadgeIcon: IconComponent = () => {
     moduleName: 'TrustedBadgeIcon',
   });
 
-  return <></>;
+  return <Text>TrustedBadgeIcon is not available for Native mobile apps.</Text>;
 };
 
 export { TrustedBadgeIcon };
