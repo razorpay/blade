@@ -3,18 +3,18 @@ import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-nati
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { Portal } from '@gorhom/portal';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
+import { useFloatingPortal } from './useFloatingPortal.native';
 import { useTheme } from '~components/BladeProvider';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
 import { PopupArrow } from '~components/PopupArrow';
-import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
-import { useFloatingPortal } from './useFloatingPortal.native';
 
 const IOS_OFFSET_CORRECTION = 10;
 

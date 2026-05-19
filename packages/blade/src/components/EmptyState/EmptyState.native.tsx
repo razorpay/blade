@@ -1,13 +1,13 @@
 import React from 'react';
+import type { BladeElementRef } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
-import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStateProps> = (
   { asset, title, description, children, size = 'medium', testID, ...props },
@@ -33,7 +33,12 @@ const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStatePro
         </BaseBox>
       ) : null}
 
-      <BaseBox display="flex" flexDirection="column" gap={tokens.gapInsideContentSection} alignItems="center">
+      <BaseBox
+        display="flex"
+        flexDirection="column"
+        gap={tokens.gapInsideContentSection}
+        alignItems="center"
+      >
         {title ? (
           <Heading
             textAlign="center"

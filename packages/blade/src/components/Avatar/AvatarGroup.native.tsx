@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { AvatarGroupProps } from './types';
 import { avatarSizeTokens, avatarTextSizeMapping } from './avatarTokens';
 import { AvatarGroupProvider } from './AvatarGroupContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 
@@ -43,11 +43,11 @@ const _AvatarGroup = ({
         {...metaAttribute({ name: MetaConstants.AvatarGroup, testID })}
       >
         {visible.map((child, i) => {
-          const key = React.isValidElement(child) ? (child.key ?? i) : i;
+          const key = React.isValidElement(child) ? child.key ?? i : i;
           return (
-          // Each wrapper is RING px larger on every side, filled with opaque intense-gray.
-          // The avatar body sits inside the padding exposing the gray ring as a separator.
-          // Ascending zIndex mirrors web's DOM-order stacking so each later avatar is on top.
+            // Each wrapper is RING px larger on every side, filled with opaque intense-gray.
+            // The avatar body sits inside the padding exposing the gray ring as a separator.
+            // Ascending zIndex mirrors web's DOM-order stacking so each later avatar is on top.
             <View
               key={key}
               style={{

@@ -1,5 +1,11 @@
 import React from 'react';
 import { Image, Pressable, Linking } from 'react-native';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
+import type { BladeElementRef } from '~utils/types';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import getIn from '~utils/lodashButBetter/get';
 import type { AvatarProps } from './types';
 import {
   avatarSizeTokens,
@@ -11,23 +17,17 @@ import {
   avatarTextSizeMapping,
 } from './avatarTokens';
 import { useAvatarGroupContext } from './AvatarGroupContext';
+import { getInitials } from './avatarUtils';
 import { getStyledProps } from '~components/Box/styledProps';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { throwBladeError } from '~utils/logger';
 import { UserIcon } from '~components/Icons';
-import type { BladeElementRef } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { Heading, Text } from '~components/Typography';
 import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { makeAccessible } from '~utils/makeAccessible';
-import getIn from '~utils/lodashButBetter/get';
-import { getInitials } from './avatarUtils';
 
 // Approximate native line-height for Indicator's internal Text.
 // On native an empty <Text> reserves line-height even with no content, pushing
