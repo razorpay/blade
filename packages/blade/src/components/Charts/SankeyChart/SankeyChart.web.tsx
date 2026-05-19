@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
-import type { TooltipProps } from 'recharts';
-import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
+import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
+import type { NodeProps, LinkProps, SankeyElementType } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
 import { useChartsColorTheme } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
@@ -38,7 +38,7 @@ function SankeyTooltipContent({
   active,
   payload,
   labelUnit,
-}: TooltipProps<number, string> & { labelUnit?: string }): React.ReactElement | null {
+}: TooltipContentProps<number, string> & { labelUnit?: string }): React.ReactElement | null {
   const { theme } = useTheme();
 
   if (!active || !payload?.length) return null;
@@ -351,7 +351,7 @@ function SankeyChartInner({
 
   // ── Event handlers ───────────────────────────────────────────────────────
   const handleMouseEnter = useCallback(
-    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
+    (item: NodeProps | LinkProps, type: SankeyElementType): void => {
       setHovered({ type, index: item.index });
     },
     [],
@@ -362,7 +362,7 @@ function SankeyChartInner({
   }, []);
 
   const handleClick = useCallback(
-    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
+    (item: NodeProps | LinkProps, type: SankeyElementType): void => {
       if (type === 'node') {
         const nodeData = data.nodes[item.index];
         if (nodeData) onNodeClick?.(nodeData, item.index);
@@ -399,7 +399,7 @@ function SankeyChartInner({
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={handleClick}
-                margin={{ top: 8, right: 8, bottom: 8, left: 8 }}
+                margin={{ top: 8, right: showLabels ? 160 : 8, bottom: 8, left: 8 }}
               >
                 {showTooltip && (
                   <Tooltip
