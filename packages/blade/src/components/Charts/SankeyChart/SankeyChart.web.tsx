@@ -65,7 +65,7 @@ function SankeyTooltipContent({
       style={{
         backgroundColor: theme.colors.surface.icon.staticBlack.normal,
         borderRadius: theme.border.radius.large,
-        border: `1px solid ${theme.colors.surface.border.gray.muted}`,
+        border: `${theme.border.width.thin}px solid ${theme.colors.surface.border.gray.muted}`,
         padding: theme.spacing[4],
         pointerEvents: 'none',
         whiteSpace: 'nowrap',
@@ -234,7 +234,7 @@ function SankeyChartInner({
                 height={CHIP_H}
                 fill={chipBg}
                 rx={chipRadius}
-                style={{ filter: `drop-shadow(0px 2px 8px ${chipShadowColor})` }}
+                style={{ filter: `drop-shadow(0px ${theme.spacing[1]}px ${theme.spacing[3]}px ${chipShadowColor})` }}
               />
               <text
                 x={chipX + CHIP_PAD_X}
@@ -409,7 +409,7 @@ function SankeyChartInner({
                 onMouseLeave={handleMouseLeave as any}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onClick={handleClick as any}
-                margin={{ top: 8, right: showLabels ? 160 : 8, bottom: 8, left: 8 }}
+                margin={{ top: theme.spacing[3], right: showLabels ? 160 : theme.spacing[3], bottom: theme.spacing[3], left: theme.spacing[3] }}
               >
                 {showTooltip && (
                   <Tooltip
