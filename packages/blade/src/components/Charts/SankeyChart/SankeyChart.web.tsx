@@ -413,6 +413,7 @@ function SankeyChartInner({
               >
                 {showTooltip && (
                   <Tooltip
+                    isAnimationActive={false}
                     content={(tooltipProps) => (
                       <SankeyTooltipContent
                         active={tooltipProps.active}
