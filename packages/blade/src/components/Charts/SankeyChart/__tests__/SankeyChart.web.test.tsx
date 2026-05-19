@@ -8,6 +8,30 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { SankeyChart } from '../SankeyChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
+// ── ResponsiveContainer mock ───────────────────────────────────────────────────
+// Recharts' ResponsiveContainer uses ResizeObserver internally, which jsdom
+// does not support. Mocking it to pass fixed dimensions synchronously means:
+//   • No ResizeObserver / setTimeout open handles → Jest exits cleanly
+//   • SVG renders immediately → no async waitFor needed for basic assertions
+//   • Fixed 800×400 dimensions → deterministic node positions in snapshots
+jest.mock('recharts', () => {
+  const Recharts = jest.requireActual('recharts');
+  return {
+    ...Recharts,
+    ResponsiveContainer: ({
+      children,
+      height,
+    }: {
+      children: React.ReactElement;
+      height?: number;
+    }) =>
+      React.cloneElement(React.Children.only(children), {
+        width: 800,
+        height: height ?? 400,
+      }),
+  };
+});
+
 // ── Snapshot normaliser ────────────────────────────────────────────────────────
 function normalizeSnapshotIds(html: string): string {
   return html
@@ -36,21 +60,6 @@ const links = [
 ];
 
 const data = { nodes, links };
-
-// ── ResizeObserver mock ────────────────────────────────────────────────────────
-// jsdom has no ResizeObserver; fire callback with 800px width so the SVG renders.
-beforeAll(() => {
-  global.ResizeObserver = class {
-    observe = jest.fn();
-    disconnect = jest.fn();
-    unobserve = jest.fn();
-    constructor(cb: ResizeObserverCallback) {
-      setTimeout(() => {
-        cb([{ contentRect: { width: 800, height: 400 } } as ResizeObserverEntry], this);
-      }, 0);
-    }
-  };
-});
 
 afterEach(() => jest.clearAllMocks());
 

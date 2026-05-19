@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SankeyChart — snapshots matches snapshot for default chart (pre-resize, no SVG) 1`] = `"<div data-blade-component="SankeyChart" class="BaseBox-bksIuc iFjRPZ"><div style="width: 100%; overflow-x: auto;"><div style="min-width: 560px;"><div class="recharts-responsive-container" style="width: 100%; height: 400px; min-width: 0;"><div style="width: 0px; overflow-x: visible;"></div></div></div></div></div>"`;
