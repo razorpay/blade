@@ -3,19 +3,21 @@ import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-nati
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { Portal } from '@gorhom/portal';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useFloatingPortal } from './useFloatingPortal.native';
-import { useTheme } from '~components/BladeProvider';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
-import { PopupArrow } from '~components/PopupArrow';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useTheme } from '~components/BladeProvider';
+import { PopupArrow } from '~components/PopupArrow';
 
+// Portal container rendered by @gorhom/portal has a 10px top offset on iOS relative
+// to the window coordinate system that measureInWindow doesn't account for.
 const IOS_OFFSET_CORRECTION = 10;
 
 const Popover = ({
