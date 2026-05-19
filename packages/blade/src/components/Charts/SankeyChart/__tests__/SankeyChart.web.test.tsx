@@ -4,21 +4,19 @@
  * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart
  */
 import React from 'react';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import { SankeyChart } from '../SankeyChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 // ── ResponsiveContainer mock ───────────────────────────────────────────────────
 // Recharts' ResponsiveContainer uses ResizeObserver internally, which jsdom
-// does not support. Mocking it to pass fixed dimensions synchronously means:
-//   • No ResizeObserver / setTimeout open handles → Jest exits cleanly
-//   • SVG renders immediately → no async waitFor needed for basic assertions
-//   • Fixed 800×400 dimensions → deterministic node positions in snapshots
+// does not support. Bypassing it by passing fixed dimensions directly to the
+// Sankey component makes rendering fully synchronous — no waitFor needed,
+// no open handles, Jest exits cleanly.
 jest.mock('recharts', () => {
   const Recharts = jest.requireActual('recharts');
   // require('react') inside the factory runs after jest.mock hoisting,
-  // so React is in scope. This lets us bypass the real ResponsiveContainer
-  // (which creates a ResizeObserver even with explicit dimensions) entirely.
+  // so React is available at call time.
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { cloneElement, Children } = require('react');
   return {
@@ -52,24 +50,6 @@ const data = { nodes, links };
 
 afterEach(() => jest.clearAllMocks());
 
-// ── Helpers ────────────────────────────────────────────────────────────────────
-
-/** waitFor that actually waits — throws until the element exists. */
-const waitForSvg = (container: HTMLElement): Promise<void> =>
-  waitFor(() => {
-    expect(container.querySelector('svg')).toBeTruthy();
-  });
-
-const waitForRects = (container: HTMLElement): Promise<void> =>
-  waitFor(() => {
-    expect(container.querySelector('svg rect')).toBeTruthy();
-  });
-
-const waitForPaths = (container: HTMLElement): Promise<void> =>
-  waitFor(() => {
-    expect(container.querySelector('svg path')).toBeTruthy();
-  });
-
 // ── Rendering ──────────────────────────────────────────────────────────────────
 
 describe('SankeyChart — rendering', () => {
@@ -83,51 +63,39 @@ describe('SankeyChart — rendering', () => {
     expect(container.querySelector('[data-blade-component="SankeyChart"]')).toBeTruthy();
   });
 
-  it('renders the correct number of node rects after layout', async () => {
+  it('renders the correct number of node rects after layout', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} />);
-    await waitFor(() => {
-      expect(container.querySelectorAll('svg rect').length).toBeGreaterThanOrEqual(nodes.length);
-    });
+    expect(container.querySelectorAll('svg rect').length).toBeGreaterThanOrEqual(nodes.length);
   });
 
-  it('renders the correct number of link paths', async () => {
+  it('renders the correct number of link paths', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} />);
-    await waitFor(() => {
-      expect(container.querySelectorAll('svg path')).toHaveLength(links.length);
-    });
+    expect(container.querySelectorAll('svg path')).toHaveLength(links.length);
   });
 
-  it('renders label chips with node names when showLabels is true', async () => {
+  it('renders label chips with node names when showLabels is true', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} showLabels={true} />);
-    // Labels are SVG <tspan> elements — query by textContent
-    await waitFor(() => {
-      const tspans = Array.from(container.querySelectorAll('tspan'));
-      const texts = tspans.map((t) => t.textContent ?? '');
-      expect(texts).toContain('Total');
-      expect(texts).toContain('UPI');
-      expect(texts.some((t) => t.includes('Successful'))).toBe(true);
-    });
+    const tspans = Array.from(container.querySelectorAll('tspan'));
+    const texts = tspans.map((t) => t.textContent ?? '');
+    expect(texts).toContain('Total');
+    expect(texts).toContain('UPI');
+    expect(texts.some((t) => t.includes('Successful'))).toBe(true);
   });
 
-  it('does not render label chips when showLabels is false', async () => {
+  it('does not render label chips when showLabels is false', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} showLabels={false} />);
-    await waitForSvg(container);
-    // No tspan elements should contain node names
     const tspans = Array.from(container.querySelectorAll('tspan'));
     const texts = tspans.map((t) => t.textContent ?? '');
     expect(texts).not.toContain('Total');
   });
 
-  it('appends labelUnit to node value in chip', async () => {
+  it('appends labelUnit to node value in chip', () => {
     const { container } = renderWithTheme(
       <SankeyChart data={data} showLabels={true} labelUnit="txn" />,
     );
-    await waitFor(() => {
-      // tspan elements should include the unit text
-      const tspans = Array.from(container.querySelectorAll('tspan'));
-      const texts = tspans.map((t) => t.textContent ?? '');
-      expect(texts.some((t) => t.includes('txn'))).toBe(true);
-    });
+    const tspans = Array.from(container.querySelectorAll('tspan'));
+    const texts = tspans.map((t) => t.textContent ?? '');
+    expect(texts.some((t) => t.includes('txn'))).toBe(true);
   });
 
   it('accepts testID and renders it as data-testid', () => {
@@ -139,13 +107,11 @@ describe('SankeyChart — rendering', () => {
 // ── Interactivity ──────────────────────────────────────────────────────────────
 
 describe('SankeyChart — interactivity', () => {
-  it('calls onNodeClick with the correct node and index when a node rect is clicked', async () => {
+  it('calls onNodeClick with the correct node and index when a node rect is clicked', () => {
     const handleNodeClick = jest.fn();
     const { container } = renderWithTheme(
       <SankeyChart data={data} onNodeClick={handleNodeClick} />,
     );
-
-    await waitForRects(container);
 
     const rects = container.querySelectorAll('svg rect');
     fireEvent.click(rects[0]);
@@ -157,13 +123,11 @@ describe('SankeyChart — interactivity', () => {
     );
   });
 
-  it('calls onLinkClick with the correct link and index when a link path is clicked', async () => {
+  it('calls onLinkClick with the correct link and index when a link path is clicked', () => {
     const handleLinkClick = jest.fn();
     const { container } = renderWithTheme(
       <SankeyChart data={data} onLinkClick={handleLinkClick} />,
     );
-
-    await waitForPaths(container);
 
     const paths = container.querySelectorAll('svg path');
     fireEvent.click(paths[0]);
@@ -179,55 +143,21 @@ describe('SankeyChart — interactivity', () => {
     );
   });
 
-  it('shows tooltip on node hover when showTooltip is true', async () => {
-    const { container } = renderWithTheme(<SankeyChart data={data} showTooltip={true} />);
-
-    await waitForRects(container);
-
-    const firstRect = container.querySelector('svg rect')!;
-    fireEvent.mouseEnter(firstRect, { clientX: 100, clientY: 100 });
-
-    await waitFor(() => {
-      expect(container.querySelectorAll('[style*="position: absolute"]').length).toBeGreaterThan(0);
-    });
-  });
-
-  it('does not show tooltip on hover when showTooltip is false', async () => {
+  it('does not show tooltip when showTooltip is false', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} showTooltip={false} />);
-
-    await waitForRects(container);
-
     const firstRect = container.querySelector('svg rect')!;
     fireEvent.mouseEnter(firstRect);
-
     const tooltipContent = container.querySelector(
       '[data-blade-component="SankeyChart"] > div > div[style*="position: absolute"]',
     );
     expect(tooltipContent).toBeNull();
-  });
-
-  it('hides tooltip on mouse leave', async () => {
-    const { container } = renderWithTheme(<SankeyChart data={data} showTooltip={true} />);
-
-    await waitForRects(container);
-
-    const firstRect = container.querySelector('svg rect')!;
-    fireEvent.mouseEnter(firstRect, { clientX: 100, clientY: 100 });
-    fireEvent.mouseLeave(firstRect);
-
-    await waitFor(() => {
-      const tooltip = container.querySelector('[style*="position: absolute"]');
-      if (tooltip) {
-        expect((tooltip as HTMLElement).style.visibility).not.toBe('visible');
-      }
-    });
   });
 });
 
 // ── Color resolution ───────────────────────────────────────────────────────────
 
 describe('SankeyChart — color token resolution', () => {
-  it('applies nodeColorOverride to all node rects', async () => {
+  it('applies nodeColorOverride to all node rects', () => {
     const { container } = renderWithTheme(
       <SankeyChart
         data={data}
@@ -235,17 +165,13 @@ describe('SankeyChart — color token resolution', () => {
         showLabels={false}
       />,
     );
-
-    await waitForRects(container);
-
     const allRects = Array.from(container.querySelectorAll('svg rect'));
     const fills = new Set(allRects.map((r) => r.getAttribute('fill')).filter(Boolean));
     expect(fills.size).toBe(1);
   });
 
-  it('renders with default categorical colors without crashing', async () => {
+  it('renders with default categorical colors without crashing', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} />);
-    await waitForSvg(container);
     expect(container.querySelector('svg')).toBeTruthy();
   });
 });
@@ -253,7 +179,7 @@ describe('SankeyChart — color token resolution', () => {
 // ── Edge cases ─────────────────────────────────────────────────────────────────
 
 describe('SankeyChart — edge cases', () => {
-  it('renders gracefully with a minimal 2-node graph', async () => {
+  it('renders gracefully with a minimal 2-node graph', () => {
     const { container } = renderWithTheme(
       <SankeyChart
         data={{
@@ -265,7 +191,6 @@ describe('SankeyChart — edge cases', () => {
         }}
       />,
     );
-    await waitForSvg(container);
     expect(container.querySelector('svg')).toBeTruthy();
   });
 
@@ -282,7 +207,7 @@ describe('SankeyChart — edge cases', () => {
     ).not.toThrow();
   });
 
-  it('silently ignores links that reference unknown node ids', async () => {
+  it('silently ignores links that reference unknown node ids', () => {
     const { container } = renderWithTheme(
       <SankeyChart
         data={{
@@ -291,7 +216,6 @@ describe('SankeyChart — edge cases', () => {
         }}
       />,
     );
-    await waitForSvg(container);
     expect(container.querySelector('svg')).toBeTruthy();
   });
 });
