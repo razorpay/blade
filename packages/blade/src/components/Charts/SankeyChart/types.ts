@@ -1,44 +1,40 @@
+import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 
-export type SankeyLevelNode = {
-  /** Unique identifier — used in link `from`/`to` references */
+export type SankeyDataNode = {
+  /** Unique identifier — used in link `source`/`target` references */
   id: string;
   name: string;
-  /** Optional Blade color token path override, e.g. 'data.background.categorical.blue.moderate' */
-  color?: string;
+  /** Optional typed Blade color token override, e.g. 'data.background.categorical.blue.moderate' */
+  color?: ChartsCategoricalColorToken;
 };
 
-export type SankeyLevel = {
-  /** Unique identifier for this column of nodes */
-  id: string;
-  nodes: SankeyLevelNode[];
-};
-
-export type SankeyFlowLink = {
+export type SankeyDataLink = {
   /** id of the source node */
-  from: string;
+  source: string;
   /** id of the target node */
-  to: string;
+  target: string;
   value: number;
   label?: string;
 };
 
 export type SankeyChartProps = {
-  /** Ordered array of node columns. Each level holds one or more nodes. */
-  levels: SankeyLevel[];
-  /** Flow connections between nodes — referenced by node id, not array index. */
-  links: SankeyFlowLink[];
+  /** Flat node list + directed flow connections, referenced by node id. */
+  data: {
+    nodes: SankeyDataNode[];
+    links: SankeyDataLink[];
+  };
   height?: number;
-  /** Override all nodes with a single Blade color token, e.g. 'interactive.background.primary.default' */
-  nodeColorOverride?: string;
-  /** Override all links with a single Blade color token, e.g. 'data.background.categorical.blue.subtle' */
-  linkColorOverride?: string;
+  /** Override all node bar colors with a single Blade token */
+  nodeColorOverride?: ChartsCategoricalColorToken;
+  /** Override all link ribbon colors with a single Blade token */
+  linkColorOverride?: ChartsCategoricalColorToken;
   showTooltip?: boolean;
   /** Show label chips to the right of each node bar. Default: true */
   showLabels?: boolean;
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
-  onNodeClick?: (node: SankeyLevelNode & { levelId: string }, index: number) => void;
-  onLinkClick?: (link: SankeyFlowLink, index: number) => void;
+  onNodeClick?: (node: SankeyDataNode, index: number) => void;
+  onLinkClick?: (link: SankeyDataLink, index: number) => void;
 } & TestID &
   DataAnalyticsAttribute;
