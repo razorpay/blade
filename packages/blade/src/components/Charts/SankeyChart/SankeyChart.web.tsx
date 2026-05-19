@@ -234,7 +234,9 @@ function SankeyChartInner({
                 height={CHIP_H}
                 fill={chipBg}
                 rx={chipRadius}
-                style={{ filter: `drop-shadow(0px ${theme.spacing[1]}px ${theme.spacing[3]}px ${chipShadowColor})` }}
+                style={{
+                  filter: `drop-shadow(0px ${theme.spacing[1]}px ${theme.spacing[3]}px ${chipShadowColor})`,
+                }}
               />
               <text
                 x={chipX + CHIP_PAD_X}
@@ -409,7 +411,12 @@ function SankeyChartInner({
                 onMouseLeave={handleMouseLeave as any}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onClick={handleClick as any}
-                margin={{ top: theme.spacing[3], right: showLabels ? 160 : theme.spacing[3], bottom: theme.spacing[3], left: theme.spacing[3] }}
+                margin={{
+                  top: theme.spacing[3],
+                  right: showLabels ? 160 : theme.spacing[3],
+                  bottom: theme.spacing[3],
+                  left: theme.spacing[3],
+                }}
               >
                 {showTooltip && (
                   <Tooltip
