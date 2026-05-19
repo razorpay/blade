@@ -130,6 +130,23 @@ describe('<BaseInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render with small size input', () => {
+    const { container } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder="First Last"
+        id="name"
+        leadingIcon={EyeIcon}
+        trailingIcon={CloseIcon}
+        successText="Success"
+        validationState="success"
+        size="small"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render with large size input', () => {
     const { container } = renderWithTheme(
       <BaseInput
