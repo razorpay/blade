@@ -1,0 +1,8 @@
+packages/blade/src/components/Avatar/Avatar.native.tsx
+  0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:40:48.133Z 15-20,23,25-26
+packages/blade/src/components/Avatar/AvatarGroup.native.tsx
+  0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:40:55.864Z 6
+packages/blade/src/components/EmptyState/EmptyState.native.tsx
+  0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:41:07.572Z 2-3,7
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:40:48.133Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 9, "overriden_lines": 0}, "0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:40:55.864Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}, "0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-19T11:41:07.572Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 3, "overriden_lines": 0}}}
