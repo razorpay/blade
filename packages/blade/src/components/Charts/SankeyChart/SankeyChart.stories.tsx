@@ -290,38 +290,6 @@ SankeyChartWithoutLabels.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const SankeyChartWithCustomNodeColors: StoryFn<typeof SankeyChart> = () => (
-  <ChartsWrapper>
-    <Box width="100%">
-      <SankeyChart
-        data={{
-          nodes: [
-            { id: 'revenue', name: 'Revenue', color: 'data.background.categorical.blue.moderate' },
-            { id: 'cogs', name: 'COGS', color: 'data.background.categorical.orange.moderate' },
-            { id: 'gp', name: 'Gross Profit', color: 'data.background.categorical.green.moderate' },
-            { id: 'opex', name: 'OpEx', color: 'data.background.categorical.red.moderate' },
-            { id: 'net', name: 'Net Profit', color: 'data.background.categorical.purple.moderate' },
-          ],
-          links: [
-            { source: 'revenue', target: 'cogs', value: 400 },
-            { source: 'revenue', target: 'gp', value: 600 },
-            { source: 'gp', target: 'opex', value: 200 },
-            { source: 'gp', target: 'net', value: 400 },
-          ],
-        }}
-        height={320}
-        showTooltip={true}
-        showLabels={true}
-        labelUnit="₹M"
-      />
-    </Box>
-  </ChartsWrapper>
-);
-
-SankeyChartWithCustomNodeColors.parameters = { controls: { disable: true } };
-
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const SankeyChartWithPlainTextLabels: StoryFn<typeof SankeyChart> = () => (
   <ChartsWrapper>
     <Box width="100%">
@@ -344,5 +312,4 @@ SankeyChartWithPlainTextLabels.parameters = { controls: { disable: true } };
 DefaultSankeyChart.storyName = 'Default Sankey Chart';
 SingleColorSankeyChart.storyName = 'Single Color Sankey Chart';
 SankeyChartWithoutLabels.storyName = 'Sankey Chart without Labels';
-SankeyChartWithCustomNodeColors.storyName = 'Sankey Chart with Custom Node Colors';
 SankeyChartWithPlainTextLabels.storyName = 'Sankey Chart with Plain Text Labels';
