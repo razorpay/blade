@@ -26,8 +26,8 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
     <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
         {Icon ? (
-          // offset block element 2px down to align with text
-          <Box flexShrink={0} marginTop="spacing.1">
+          // offset block element 2px down to align with text baseline on web only
+          <Box flexShrink={0} marginTop={isReactNative ? 'spacing.0' : 'spacing.1'}>
             <Icon />
           </Box>
         ) : null}
@@ -37,7 +37,7 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
           size={hintTextSize[size]}
           variant="caption"
           wordBreak="break-word"
-          marginTop={size === 'large' && Icon ? 'spacing.1' : 'spacing.0'}
+          marginTop={!isReactNative && size === 'large' && Icon ? 'spacing.1' : 'spacing.0'}
         >
           {children}
         </Text>

@@ -28,7 +28,7 @@ exports[`<Button /> should render button with default properties 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -206,7 +206,7 @@ exports[`<Button /> should render button with full width 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -384,7 +384,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -666,7 +666,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -948,7 +948,7 @@ exports[`<Button /> should render disabled button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1123,7 +1123,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1298,7 +1298,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1476,7 +1476,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1651,7 +1651,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1829,7 +1829,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2004,7 +2004,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2182,7 +2182,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2360,7 +2360,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2535,7 +2535,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2713,7 +2713,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2891,7 +2891,7 @@ exports[`<Button /> should render large size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
+    borderRadius={12}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="16px"
     buttonPaddingRight="16px"
@@ -3069,7 +3069,7 @@ exports[`<Button /> should render medium size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3247,7 +3247,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3425,7 +3425,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3603,7 +3603,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3781,7 +3781,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3959,7 +3959,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4137,7 +4137,7 @@ exports[`<Button /> should render primary color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4315,7 +4315,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4493,7 +4493,7 @@ exports[`<Button /> should render small size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
     buttonPaddingRight="8px"
@@ -4671,7 +4671,7 @@ exports[`<Button /> should render white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4849,7 +4849,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5027,7 +5027,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5205,7 +5205,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
     buttonPaddingRight="8px"
