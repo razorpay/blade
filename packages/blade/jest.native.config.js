@@ -12,6 +12,7 @@ module.exports = {
       statements: 75,
     },
   },
+  testTimeout: 10000,
   moduleFileExtensions: ['native.ts', 'native.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {

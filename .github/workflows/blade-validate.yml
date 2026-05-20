@@ -59,6 +59,7 @@ jobs:
   test:
     name: Run Tests (${{ matrix.shard }})
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
