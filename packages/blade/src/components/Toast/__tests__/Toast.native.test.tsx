@@ -20,23 +20,38 @@ describe('<Toast /> (native)', () => {
 
 describe('<ToastContainer /> (native)', () => {
   beforeEach(() => {
-    // Reset state between tests.
-    while (toastStore.getSnapshot().length > 0) {
-      toastStore.dismiss(toastStore.getSnapshot()[0].id);
-    }
+    // Use fake timers to flush the 250 ms removal delay in toastStore.dismiss()
+    // synchronously, so the store is truly empty before each test. Without
+    // this, the dismissed entries remain in the snapshot (visible=false) until
+    // their real timer fires, and the previous while-loop would spin forever
+    // re-calling dismiss() and resetting the removal timer indefinitely.
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
   });
 
   it('renders nothing when there are no toasts', () => {
     const { toJSON } = renderWithTheme(<ToastContainer />);
-    expect(toJSON()).toBeNull();
+    // renderWithTheme wraps in BladeProvider which always renders a root View,
+    // so toJSON() is never null. Snapshot the empty state — the BladeProvider
+    // wrapper should have no children when ToastContainer returns null.
+    expect(toJSON()).toMatchSnapshot();
   });
 });
 
 describe('toastStore (native)', () => {
   beforeEach(() => {
-    while (toastStore.getSnapshot().length > 0) {
-      toastStore.dismiss(toastStore.getSnapshot()[0].id);
-    }
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
+  });
+
+  afterEach(() => {
+    // Always restore real timers so fake timers from one test don't bleed into
+    // subsequent tests and cause them to hang indefinitely.
+    jest.useRealTimers();
   });
 
   it('show() returns a non-empty id for a regular toast', () => {
@@ -68,6 +83,5 @@ describe('toastStore (native)', () => {
     toastStore.dismiss(id);
     expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
     jest.advanceTimersByTime(2000);
-    jest.useRealTimers();
   });
 });

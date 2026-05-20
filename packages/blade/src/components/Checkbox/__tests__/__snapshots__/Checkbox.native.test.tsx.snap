@@ -511,12 +511,14 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
+        gap="spacing.2"
         style={
           [
             {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
+              "gap": 4,
             },
           ]
         }
@@ -528,7 +530,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             [
               {
                 "flexShrink": 0,
-                "marginTop": 2,
+                "marginTop": 0,
               },
             ]
           }
