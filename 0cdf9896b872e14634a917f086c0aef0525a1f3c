@@ -1,0 +1,6 @@
+.agents/skills/get-agentic-blade-metrics/SKILL.md
+  d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T10:59:50.769Z 22,24,26-30
+.github/scripts/fetch-metrics.mjs
+  d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T10:59:26.920Z 77,79-83
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T10:59:50.769Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 7, "overriden_lines": 0}, "d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T10:59:26.920Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 6, "overriden_lines": 0}}}
