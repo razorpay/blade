@@ -17,7 +17,9 @@ import {
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
   CHIP_PX_PER_CHAR,
+  CHIP_BORDER_WIDTH,
   LABEL_MARGIN_RIGHT,
+  NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
   MIN_CHART_WIDTH,
 } from './tokens';
@@ -222,7 +224,7 @@ function SankeyChartInner({
             x={x}
             y={y}
             width={width}
-            height={Math.max(1, nodeHeight)}
+            height={Math.max(NODE_MIN_HEIGHT, nodeHeight)}
             fill={fill}
             rx={theme.border.radius.none}
             style={{ cursor: 'pointer' }}
@@ -239,7 +241,7 @@ function SankeyChartInner({
                 fill={chipBg}
                 rx={chipRadius}
                 stroke={chipBorderColor}
-                strokeWidth={0.5}
+                strokeWidth={CHIP_BORDER_WIDTH}
               />
               <text
                 x={chipX + CHIP_PAD_X}

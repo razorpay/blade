@@ -16,6 +16,10 @@ export const CHIP_MIN_WIDTH = 80;
 export const CHIP_PX_PER_CHAR = 6;
 /** Right margin reserved for label chips (px). Longer-term should be computed from CHIP_MIN_WIDTH + gap. */
 export const LABEL_MARGIN_RIGHT = 160;
+/** Stroke width for the chip border in px. No 0.5px token exists in Blade yet. */
+export const CHIP_BORDER_WIDTH = 0.5;
+/** Minimum rendered height for a node bar in px — prevents invisible zero-height nodes */
+export const NODE_MIN_HEIGHT = 1;
 
 // ── Link opacity states ────────────────────────────────────────────────────────
 export const LINK_DEFAULT_OPACITY = 0.55;
