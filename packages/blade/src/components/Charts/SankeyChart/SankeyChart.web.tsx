@@ -15,7 +15,9 @@ import {
   NODE_DEFAULT_OPACITY,
   NODE_DIMMED_OPACITY,
   NODE_WIDTH,
-  NODE_PADDING,
+  CHIP_MIN_WIDTH,
+  CHIP_PX_PER_CHAR,
+  LABEL_MARGIN_RIGHT,
   TOOLTIP_Z_INDEX,
   MIN_CHART_WIDTH,
 } from './tokens';
@@ -117,9 +119,11 @@ function SankeyChartInner({
   const fontFamily = theme.typography.fonts.family.text;
   const labelNameColor = theme.colors.surface.text.gray.normal;
   const labelValueColor = theme.colors.surface.text.gray.muted;
-  const chipBg = theme.colors.surface.background.gray.subtle;
-  const chipShadowColor = theme.colors.surface.border.gray.muted;
+  const chipBg = theme.colors.surface.background.gray.intense;
+  const chipBorderColor = theme.colors.surface.border.gray.muted;
   const chipRadius = theme.border.radius.small;
+  // NODE_PADDING derives from the Blade spacing scale
+  const nodePadding = theme.spacing[4]; // 16px
   const motionDuration = theme.motion.duration.quick;
 
   // ── Color mapping ────────────────────────────────────────────────────────
@@ -201,7 +205,7 @@ function SankeyChartInner({
       const labelValue =
         labelUnit != null ? `${payload.value?.toLocaleString()} ${labelUnit}` : null;
       const fullText = labelValue ? `${nodeData.name} ${labelValue}` : nodeData.name;
-      const chipW = Math.max(80, fullText.length * 6 + CHIP_PAD_X * 2);
+      const chipW = Math.max(CHIP_MIN_WIDTH, fullText.length * CHIP_PX_PER_CHAR + CHIP_PAD_X * 2);
       const chipY = nodeMidY - CHIP_H / 2;
       // Show chips whenever labels are enabled — the SVG viewport clips any overflow
       const showChip = showLabels;
@@ -220,7 +224,7 @@ function SankeyChartInner({
             width={width}
             height={Math.max(1, nodeHeight)}
             fill={fill}
-            rx={0}
+            rx={theme.border.radius.none}
             style={{ cursor: 'pointer' }}
           />
 
@@ -234,9 +238,8 @@ function SankeyChartInner({
                 height={CHIP_H}
                 fill={chipBg}
                 rx={chipRadius}
-                style={{
-                  filter: `drop-shadow(0px ${theme.spacing[1]}px ${theme.spacing[3]}px ${chipShadowColor})`,
-                }}
+                stroke={chipBorderColor}
+                strokeWidth={0.5}
               />
               <text
                 x={chipX + CHIP_PAD_X}
@@ -275,7 +278,7 @@ function SankeyChartInner({
       labelNameColor,
       labelValueColor,
       chipBg,
-      chipShadowColor,
+      chipBorderColor,
       chipRadius,
       motionDuration,
       theme,
@@ -402,7 +405,7 @@ function SankeyChartInner({
               <Sankey
                 data={{ nodes: data.nodes, links: rechartsLinks }}
                 nodeWidth={NODE_WIDTH}
-                nodePadding={NODE_PADDING}
+                nodePadding={nodePadding}
                 node={renderNode}
                 link={renderLink}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -413,7 +416,7 @@ function SankeyChartInner({
                 onClick={handleClick as any}
                 margin={{
                   top: theme.spacing[3],
-                  right: showLabels ? 160 : theme.spacing[3],
+                  right: showLabels ? LABEL_MARGIN_RIGHT : theme.spacing[3],
                   bottom: theme.spacing[3],
                   left: theme.spacing[3],
                 }}

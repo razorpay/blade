@@ -8,8 +8,14 @@
 // ── Layout ────────────────────────────────────────────────────────────────────
 /** Width of each node bar in px */
 export const NODE_WIDTH = 14;
-/** Vertical gap between stacked nodes in the same column in px */
-export const NODE_PADDING = 16;
+
+// ── Label chip geometry ───────────────────────────────────────────────────────
+/** Minimum width for a label chip in px */
+export const CHIP_MIN_WIDTH = 80;
+/** Approximate px-per-character for chip width estimation (12px Inter, weight 600) */
+export const CHIP_PX_PER_CHAR = 6;
+/** Right margin reserved for label chips (px). Longer-term should be computed from CHIP_MIN_WIDTH + gap. */
+export const LABEL_MARGIN_RIGHT = 160;
 
 // ── Link opacity states ────────────────────────────────────────────────────────
 export const LINK_DEFAULT_OPACITY = 0.55;
