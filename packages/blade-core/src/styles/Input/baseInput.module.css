@@ -294,11 +294,36 @@
   flex-direction: column;
 }
 
+/* Body container that wraps input + hint when label is on the side/top */
+.inputBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.inputBody--labelLeft {
+  width: auto;
+}
+
 /* Hint row with footer slot */
 .hintRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+}
+
+/* Right-aligned wrapper for the trailing footer slot */
+.hintFooterRight {
+  margin-left: auto;
+}
+
+/* Group used to render a clear button + divider + trailing element */
+.trailingInteractionGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
 }
 
 /* ============================================

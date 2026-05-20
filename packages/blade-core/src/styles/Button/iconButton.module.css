@@ -1,0 +1,110 @@
+/* IconButton CSS Module */
+/* Styles for IconButton component */
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--border-radius-2xsmall);
+  cursor: pointer;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+/* Emphasis variants -- pick the icon color family (gray vs staticWhite) */
+.iconButton--intense {
+  color: var(--interactive-icon-gray-muted);
+}
+
+.iconButton--subtle {
+  color: var(--interactive-icon-static-white-muted);
+}
+
+/* Size variants -- clickable area */
+.iconButton--small {
+  width: 24px;
+  height: 24px;
+}
+
+.iconButton--medium {
+  width: 32px;
+  height: 32px;
+}
+
+.iconButton--large {
+  width: 40px;
+  height: 40px;
+}
+
+/* Hover/active states -- mirror React's intense vs subtle color families */
+.iconButton--intense:hover:not(.iconButton--disabled):not(:disabled),
+.iconButton--intense:active:not(.iconButton--disabled):not(:disabled) {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.iconButton--subtle:hover:not(.iconButton--disabled):not(:disabled),
+.iconButton--subtle:active:not(.iconButton--disabled):not(:disabled) {
+  color: var(--interactive-icon-static-white-subtle);
+}
+
+/* Focus-visible ring */
+.iconButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--interactive-background-primary-faded);
+}
+
+.iconButton--intense:focus-visible {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.iconButton--subtle:focus-visible {
+  color: var(--interactive-icon-static-white-subtle);
+}
+
+/* Highlighted state: rounder corners + faded background on hover */
+.iconButton--highlighted {
+  border-radius: var(--border-radius-small);
+}
+
+/* Highlighted backgrounds vary by emphasis */
+.iconButton--highlighted.iconButton--intense:hover:not(.iconButton--disabled):not(:disabled),
+.iconButton--highlighted.iconButton--intense:focus-visible {
+  background-color: var(--interactive-background-gray-faded-highlighted);
+}
+
+.iconButton--highlighted.iconButton--subtle:hover:not(.iconButton--disabled):not(:disabled),
+.iconButton--highlighted.iconButton--subtle:focus-visible {
+  background-color: var(--interactive-background-static-white-faded);
+}
+
+/* Highlighted-only size overrides (small/medium only -- large is unsupported) */
+.iconButton--highlighted.iconButton--small {
+  width: 24px;
+  height: 24px;
+}
+
+.iconButton--highlighted.iconButton--medium {
+  width: 32px;
+  height: 32px;
+}
+
+/* Disabled */
+.iconButton--disabled,
+.iconButton:disabled {
+  cursor: not-allowed;
+}
+
+.iconButton--disabled.iconButton--intense,
+.iconButton--intense:disabled {
+  color: var(--interactive-icon-gray-disabled);
+}
+
+.iconButton--disabled.iconButton--subtle,
+.iconButton--subtle:disabled {
+  color: var(--interactive-icon-static-white-disabled);
+}

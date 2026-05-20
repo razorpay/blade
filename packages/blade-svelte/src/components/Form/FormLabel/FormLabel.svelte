@@ -5,9 +5,12 @@
     labelTextSize,
     labelOptionalIndicatorTextSize,
     getFormLabelClasses,
+    getLabelContentClasses,
     getLabelTextContainerClasses,
+    getLabelTextRowClasses,
     getLabelSuffixClasses,
     getLabelTrailingClasses,
+    visuallyHiddenClass,
   } from '@razorpay/blade-core/styles';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
 
@@ -47,6 +50,12 @@
     getFormLabelClasses({ position, size, necessityIndicator })
   );
 
+  const labelContentClasses = $derived(
+    getLabelContentClasses(isLabelLeftPositioned)
+  );
+
+  const labelTextRowClasses = getLabelTextRowClasses();
+
   const textContainerClasses = $derived(
     getLabelTextContainerClasses(necessityIndicator)
   );
@@ -70,8 +79,8 @@
   for={as === 'label' ? htmlFor : undefined}
   {...metaAttrs}
 >
-  <div class="label-content" style="display: flex; flex-direction: {isLabelLeftPositioned ? 'column' : 'row'}; align-items: {isLabelLeftPositioned ? 'flex-start' : 'center'}; width: 100%;">
-    <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
+  <div class={labelContentClasses}>
+    <div class={labelTextRowClasses}>
       <div class={textContainerClasses}>
         {#if children}
           <Text
@@ -90,7 +99,7 @@
         {/if}
 
         {#if accessibilityText}
-          <span class="visually-hidden">{accessibilityText}</span>
+          <span class={visuallyHiddenClass}>{accessibilityText}</span>
         {/if}
 
         {#if necessityIndicator === 'optional'}
@@ -128,22 +137,4 @@
     {/if}
   </div>
 </svelte:element>
-
-<style>
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .label-content {
-    width: 100%;
-  }
-</style>
 

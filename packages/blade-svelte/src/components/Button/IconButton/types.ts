@@ -28,11 +28,13 @@ export type IconButtonProps = {
 
   /**
    * Disabled state
+   * @default false
    */
   isDisabled?: boolean;
 
   /**
    * Highlighted state (hover emphasis)
+   * @default false
    */
   isHighlighted?: boolean;
 

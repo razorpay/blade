@@ -1,20 +1,10 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  import type { ValidationState, InputSize } from './types';
+  import type { BaseInputWrapperProps } from './types';
   import {
     getInputWrapperClasses,
     getFocusRingWrapperClasses,
     type BaseInputState,
   } from '@razorpay/blade-core/styles';
-
-  type Props = {
-    isDisabled?: boolean;
-    validationState?: ValidationState;
-    size?: InputSize;
-    isTextArea?: boolean;
-    children?: Snippet;
-    onclick?: (event: MouseEvent) => void;
-  };
 
   let {
     isDisabled = false,
@@ -23,7 +13,7 @@
     isTextArea = false,
     children,
     onclick,
-  }: Props = $props();
+  }: BaseInputWrapperProps = $props();
 
   // Internal focus/hover state
   let isFocused = $state(false);

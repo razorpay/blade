@@ -28,10 +28,6 @@ export type StyledInputOptions = {
 
 export type InputVisualsOptions = {
   type: 'leading' | 'trailing';
-  hasIcon?: boolean;
-  hasText?: boolean;
-  hasInteractionElement?: boolean;
-  hasOtherTrailingElements?: boolean;
 };
 
 /**
@@ -184,10 +180,39 @@ export function getLabelRowClasses(isLabelLeft: boolean): string {
 }
 
 /**
+ * Get CSS classes for the body container that wraps the input wrapper and
+ * the hint row. Width collapses to `auto` when the label is on the left.
+ */
+export function getInputBodyClasses(isLabelLeft: boolean): string {
+  const classes = [styles.inputBody];
+
+  if (isLabelLeft) {
+    classes.push(styles['inputBody--labelLeft']);
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+/**
  * Get CSS classes for hint row
  */
 export function getHintRowClasses(): string {
   return styles.hintRow;
+}
+
+/**
+ * Get CSS classes for the wrapper used to right-align the trailing footer slot.
+ */
+export function getHintFooterRightClasses(): string {
+  return styles.hintFooterRight;
+}
+
+/**
+ * Get CSS classes for a horizontal group of trailing interaction elements
+ * (e.g. clear button + divider + custom trailing element).
+ */
+export function getTrailingInteractionGroupClasses(): string {
+  return styles.trailingInteractionGroup;
 }
 
 /**

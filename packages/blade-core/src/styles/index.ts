@@ -43,6 +43,8 @@ export {
   getButtonSpinnerSize,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export { getIconButtonClasses } from './Button';
+export type { IconButtonSize, IconButtonEmphasis, IconButtonOptions } from './Button';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -78,13 +80,16 @@ export {
   labelWidth,
   labelLeftMarginRight,
   getFormLabelClasses,
+  getLabelContentClasses,
   getLabelTextContainerClasses,
+  getLabelTextRowClasses,
   getLabelSuffixClasses,
   getLabelTrailingClasses,
   getFormHintClasses,
   getHintIconClasses,
   getCharacterCounterClasses,
   getFormTemplateClasses,
+  visuallyHiddenClass,
 } from './Form';
 export type {
   FormSize,
@@ -116,7 +121,10 @@ export {
   getInteractionElementClasses,
   getInputContainerClasses,
   getLabelRowClasses,
+  getInputBodyClasses,
   getHintRowClasses,
+  getHintFooterRightClasses,
+  getTrailingInteractionGroupClasses,
   getTrailingButtonClasses,
   getBaseInputTemplateClasses,
 } from './Input';

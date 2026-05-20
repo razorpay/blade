@@ -75,11 +75,13 @@ export type BaseInputProps = {
 
   /**
    * Disabled state
+   * @default false
    */
   isDisabled?: boolean;
 
   /**
    * Required state
+   * @default false
    */
   isRequired?: boolean;
 
@@ -149,6 +151,7 @@ export type BaseInputProps = {
 
   /**
    * Auto focus on mount
+   * @default false
    */
   autoFocus?: boolean;
 
@@ -190,11 +193,13 @@ export type BaseInputProps = {
 
   /**
    * Hide label text visually
+   * @default false
    */
   hideLabelText?: boolean;
 
   /**
    * Hide form hint
+   * @default false
    */
   hideFormHint?: boolean;
 
@@ -300,13 +305,34 @@ export type StyledBaseInputProps = {
 
 // Input wrapper props
 export type BaseInputWrapperProps = {
+  /**
+   * Disabled state
+   * @default false
+   */
   isDisabled?: boolean;
+  /**
+   * Validation state
+   * @default 'none'
+   */
   validationState?: ValidationState;
-  isFocused?: boolean;
-  isHovered?: boolean;
-  size: InputSize;
+  /**
+   * Input size
+   * @default 'medium'
+   */
+  size?: InputSize;
+  /**
+   * Render as textarea-friendly wrapper (aligns children to top)
+   * @default false
+   */
   isTextArea?: boolean;
+  /**
+   * Wrapper content (input + visuals)
+   */
   children?: Snippet;
+  /**
+   * Click handler for the wrapper (used to focus the underlying input)
+   */
+  onclick?: (event: MouseEvent) => void;
 };
 
 // Input visuals props

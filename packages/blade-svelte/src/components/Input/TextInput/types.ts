@@ -83,11 +83,13 @@ export type TextInputProps = {
 
   /**
    * Disabled state
+   * @default false
    */
   isDisabled?: boolean;
 
   /**
    * Required state
+   * @default false
    */
   isRequired?: boolean;
 
@@ -108,6 +110,7 @@ export type TextInputProps = {
 
   /**
    * Auto focus
+   * @default false
    */
   autoFocus?: boolean;
 
@@ -198,11 +201,27 @@ export type TextInputProps = {
    */
   format?: string;
 
-  // Event handlers
+  /**
+   * Fired when the input value changes. Includes both the formatted `value`
+   * and the raw user characters in `rawValue` when a `format` pattern is used.
+   */
   onChange?: (event: FormInputOnEvent & { rawValue?: string }) => void;
+  /**
+   * Fired when the input receives focus.
+   */
   onFocus?: (event: FormInputOnEvent) => void;
+  /**
+   * Fired when the input loses focus.
+   */
   onBlur?: (event: FormInputOnEvent) => void;
+  /**
+   * Fired when the input is clicked.
+   */
   onClick?: (event: FormInputOnEvent) => void;
+  /**
+   * Fired on key down. Includes the original `KeyboardEvent` for advanced use
+   * cases (e.g. capturing the input element for cursor positioning).
+   */
   onKeyDown?: (event: FormInputKeyDownEvent) => void;
 
   // ARIA props

@@ -77,11 +77,47 @@
   gap: 0;
 }
 
+/* Label content wrapper - holds the text row + optional trailing slot */
+.labelContent {
+  display: flex;
+  width: 100%;
+}
+
+.labelContent--top {
+  flex-direction: row;
+  align-items: center;
+}
+
+.labelContent--left {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Inner row that wraps label text container + optional suffix */
+.labelTextRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Visually hidden text for screen readers */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Label suffix container */
 .labelSuffix {
   display: flex;
   align-items: center;
-  margin-left: var(--spacing-2);
 }
 
 /* Label trailing container */

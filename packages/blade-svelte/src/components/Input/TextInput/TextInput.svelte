@@ -8,7 +8,10 @@
   import { Divider } from '../../Divider';
   import { CharacterCounter } from '../../Form';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
-  import { hintMarginTop } from '@razorpay/blade-core/styles';
+  import {
+    getCharacterCounterClasses,
+    getTrailingInteractionGroupClasses,
+  } from '@razorpay/blade-core/styles';
   import { MetaConstants } from '@razorpay/blade-core/utils';
   import { formatValue, stripPatternCharacters, isUserCharacter } from './useFormattedInput';
 
@@ -97,6 +100,10 @@
   // Computed values
   const effectiveMaxCharacters = $derived(format ? format.length : maxCharacters);
   const inputValue = $derived(format ? formattedValue : value);
+
+  // CSS classes
+  const trailingInteractionGroupClasses = getTrailingInteractionGroupClasses();
+  const characterCounterClasses = $derived(getCharacterCounterClasses(size, true));
 
   // Determine leading/trailing icons from leading/trailing props
   const _leadingIcon = $derived.by(() => {
@@ -335,7 +342,7 @@
     {#if isLoading}
       <Spinner accessibilityLabel="Loading Content" color="primary" size="medium" />
     {:else if shouldShowClearButton && hasTrailingInteractionElement}
-      <div style="display: flex; align-items: center; gap: 8px;">
+      <div class={trailingInteractionGroupClasses}>
         <IconButton
           icon={CloseIcon}
           size="medium"
@@ -363,7 +370,7 @@
 
   {#snippet trailingFooterSlot(currentValue)}
     {#if !format && effectiveMaxCharacters}
-      <div style="margin-top: {hintMarginTop[size]}; margin-right: 4px;">
+      <div class={characterCounterClasses}>
         <CharacterCounter
           currentCount={currentValue?.length ?? 0}
           maxCount={effectiveMaxCharacters}

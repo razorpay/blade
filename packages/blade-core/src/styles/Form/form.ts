@@ -51,6 +51,30 @@ export function getLabelTextContainerClasses(necessityIndicator: NecessityIndica
 }
 
 /**
+ * Get CSS classes for the label content wrapper that holds the text row and
+ * optional trailing slot. Switches axis based on label position.
+ */
+export function getLabelContentClasses(isLabelLeft: boolean): string {
+  const classes = [styles.labelContent];
+  classes.push(isLabelLeft ? styles['labelContent--left'] : styles['labelContent--top']);
+  return classes.filter(Boolean).join(' ');
+}
+
+/**
+ * Get CSS classes for the inner row that holds the label text container
+ * and an optional label suffix.
+ */
+export function getLabelTextRowClasses(): string {
+  return styles.labelTextRow;
+}
+
+/**
+ * CSS class to visually hide content while keeping it accessible to
+ * screen readers.
+ */
+export const visuallyHiddenClass: string = styles.visuallyHidden;
+
+/**
  * Get CSS classes for label suffix
  */
 export function getLabelSuffixClasses(): string {

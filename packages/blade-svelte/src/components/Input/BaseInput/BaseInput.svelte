@@ -8,7 +8,9 @@
   import {
     getInputContainerClasses,
     getLabelRowClasses,
+    getInputBodyClasses,
     getHintRowClasses,
+    getHintFooterRightClasses,
   } from '@razorpay/blade-core/styles';
   import { metaAttribute, makeAccessible, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
 
@@ -143,7 +145,9 @@
   // CSS classes
   const containerClasses = $derived(getInputContainerClasses(isLabelLeftPositioned));
   const labelRowClasses = $derived(getLabelRowClasses(isLabelLeftPositioned));
+  const inputBodyClasses = $derived(getInputBodyClasses(isLabelLeftPositioned));
   const hintRowClasses = getHintRowClasses();
+  const hintFooterRightClasses = getHintFooterRightClasses();
 
   // Meta and analytics attributes
   const metaAttrs = metaAttribute({
@@ -153,7 +157,12 @@
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 
   // Event handlers that update internal value
+  // All handlers short-circuit when `isDisabled` is true to keep parity with
+  // React Blade where event handlers never fire on disabled inputs. The native
+  // <input> already drops events when `disabled`, but the wrapper-level click
+  // (handleWrapperClick) lives on a non-disabled <div> and must be guarded.
   function handleChange(event: FormInputOnEvent): void {
+    if (isDisabled) return;
     if (event.value !== undefined) {
       internalValue = event.value;
       if (value !== undefined) {
@@ -164,18 +173,22 @@
   }
 
   function handleFocus(event: FormInputOnEvent): void {
+    if (isDisabled) return;
     onFocus?.(event);
   }
 
   function handleBlur(event: FormInputOnEvent): void {
+    if (isDisabled) return;
     onBlur?.(event);
   }
 
   function handleClick(event: FormInputOnEvent): void {
+    if (isDisabled) return;
     onClick?.(event);
   }
 
   function handleInput(event: FormInputOnEvent): void {
+    if (isDisabled) return;
     if (event.value !== undefined) {
       internalValue = event.value;
     }
@@ -183,10 +196,12 @@
   }
 
   function handleKeyDown(event: FormInputKeyDownEvent): void {
+    if (isDisabled) return;
     onKeyDown?.(event);
   }
 
   function handleWrapperClick(): void {
+    if (isDisabled) return;
     styledInputRef?.focus();
   }
 
@@ -211,7 +226,6 @@
 
 <div 
   class={containerClasses} 
-  style="display: flex; flex-direction: {isLabelLeftPositioned ? 'row' : 'column'}; width: 100%;"
   {...metaAttrs} 
   {...analyticsAttrs}
 >
@@ -237,7 +251,7 @@
   {/if}
 
   <!-- Input and Hint Container (grouped together for left label layout) -->
-  <div style="display: flex; flex-direction: column; flex: 1; width: {isLabelLeftPositioned ? 'auto' : '100%'};">
+  <div class={inputBodyClasses}>
     <!-- Input Wrapper -->
     <BaseInputWrapper
       {isDisabled}
@@ -308,10 +322,7 @@
 
     <!-- Hint and Footer Slot -->
     {#if !hideFormHint}
-      <div 
-        class={hintRowClasses}
-        style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;"
-      >
+      <div class={hintRowClasses}>
         {#if willRenderHintText}
           <FormHint
             type={hintType}
@@ -325,7 +336,7 @@
           />
         {/if}
         {#if trailingFooterSlot}
-          <div style="margin-left: auto;">
+          <div class={hintFooterRightClasses}>
             {@render trailingFooterSlot(internalValue)}
           </div>
         {/if}
