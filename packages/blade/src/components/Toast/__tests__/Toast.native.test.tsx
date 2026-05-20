@@ -20,10 +20,15 @@ describe('<Toast /> (native)', () => {
 
 describe('<ToastContainer /> (native)', () => {
   beforeEach(() => {
-    // Reset state between tests.
-    while (toastStore.getSnapshot().length > 0) {
-      toastStore.dismiss(toastStore.getSnapshot()[0].id);
-    }
+    // Use fake timers to flush the 250 ms removal delay in toastStore.dismiss()
+    // synchronously, so the store is truly empty before each test. Without
+    // this, the dismissed entries remain in the snapshot (visible=false) until
+    // their real timer fires, and the previous while-loop would spin forever
+    // re-calling dismiss() and resetting the removal timer indefinitely.
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
   });
 
   it('renders nothing when there are no toasts', () => {
@@ -34,9 +39,10 @@ describe('<ToastContainer /> (native)', () => {
 
 describe('toastStore (native)', () => {
   beforeEach(() => {
-    while (toastStore.getSnapshot().length > 0) {
-      toastStore.dismiss(toastStore.getSnapshot()[0].id);
-    }
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
   });
 
   afterEach(() => {
