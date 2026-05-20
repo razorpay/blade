@@ -44,6 +44,11 @@ export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
 
+// Radio
+export { default as Radio } from './Radio/Radio.svelte';
+export { default as RadioGroup } from './Radio/RadioGroup.svelte';
+export type { RadioProps, RadioGroupProps } from './Radio/types';
+
 // Card
 export {
   Card,

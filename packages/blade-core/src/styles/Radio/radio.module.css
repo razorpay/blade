@@ -1,0 +1,313 @@
+/* Radio outer wrapper */
+.radio {
+  display: inline-block;
+}
+
+/* Label — click target covering icon + title */
+.label {
+  display: inline-flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/* Row: icon + title */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Visually-hidden native radio input */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus ring on the radio icon wrapper when input is focused */
+.input:focus-visible ~ .row .iconWrapper {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 1px;
+}
+
+/* ── RadioIcon wrapper ── */
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-style: solid;
+  border-width: var(--border-width-thick);
+  border-radius: var(--border-radius-max);
+  transition-property: background-color, border-color;
+  transition-timing-function: var(--easing-exit);
+  transition-duration: var(--duration-xquick);
+}
+
+/* Size variants */
+.sizeSmall {
+  width: 12px;
+  height: 12px;
+  margin: var(--spacing-1);
+  margin-top: 3px;
+}
+
+.sizeMedium {
+  width: 16px;
+  height: 16px;
+  margin: var(--spacing-1);
+}
+
+.sizeLarge {
+  width: 20px;
+  height: 20px;
+  margin: var(--spacing-1);
+}
+
+/* Default unchecked */
+.iconWrapper {
+  border-color: var(--interactive-border-gray-highlighted);
+  background-color: transparent;
+}
+
+/* Checked state */
+.checked {
+  border-color: var(--interactive-border-primary-default);
+  background-color: var(--interactive-background-primary-default);
+}
+
+/* Hover — applied via label hover so the full label is the hover target */
+.label:hover .iconWrapper:not([data-disabled]) {
+  border-color: var(--interactive-border-gray-highlighted);
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.label:hover .checked:not([data-disabled]) {
+  border-color: var(--interactive-background-primary-highlighted);
+  background-color: var(--interactive-background-primary-highlighted);
+}
+
+/* Disabled — unchecked */
+.iconWrapper[data-disabled] {
+  border-color: var(--interactive-border-gray-disabled);
+  background-color: transparent;
+}
+
+/* Disabled — checked */
+.checked[data-disabled] {
+  border-color: transparent;
+  background-color: var(--interactive-background-primary-disabled);
+}
+
+/* Error/Negative state */
+.negative {
+  border-color: var(--interactive-border-negative-default);
+  background-color: transparent;
+}
+
+.negative.checked {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-negative-default);
+}
+
+/* Hover — error/negative state overrides the generic blue hover above */
+.label:hover .negative:not([data-disabled]) {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.label:hover .negative.checked:not([data-disabled]) {
+  border-color: var(--interactive-border-negative-default);
+  background-color: var(--interactive-background-negative-default);
+}
+
+/* ── Dot (checked indicator SVG) ── */
+.dot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dotHidden {
+  opacity: 0;
+  transform: scale(0.3);
+  transition-property: opacity, transform;
+  transition-timing-function: var(--easing-exit);
+  transition-duration: var(--duration-xquick);
+}
+
+.dotVisible {
+  opacity: 1;
+  transform: scale(1);
+  transition-property: opacity, transform;
+  transition-timing-function: var(--easing-entrance);
+  transition-duration: var(--duration-xquick);
+}
+
+/* ── Title (label text) ── */
+.title {
+  font-family: var(--fonts-family-text);
+  color: var(--surface-text-gray-normal);
+  margin-left: var(--spacing-2);
+}
+
+.titleSmall {
+  font-size: var(--fonts-size-75);
+  line-height: var(--fonts-lineHeight-75);
+}
+
+.titleMedium {
+  font-size: var(--fonts-size-100);
+  line-height: var(--fonts-lineHeight-100);
+}
+
+.titleLarge {
+  font-size: var(--fonts-size-200);
+  line-height: var(--fonts-lineHeight-200);
+}
+
+.titleDisabled {
+  color: var(--surface-text-gray-disabled);
+}
+
+/* ── Help text ── */
+.helpText {
+  font-family: var(--fonts-family-text);
+  font-size: var(--fonts-size-75);
+  line-height: var(--fonts-lineHeight-75);
+  color: var(--surface-text-gray-muted);
+}
+
+/*
+ * Help text left offset = icon width + margin (spacing-1=4px) + spacing-3 (12px)
+ * small:  12 + 4 + 12 = 28px
+ * medium: 16 + 4 + 12 = 32px
+ * large:  20 + 4 + 12 = 36px
+ */
+.helpTextSmall {
+  margin-left: 28px;
+}
+
+.helpTextMedium {
+  margin-left: 32px;
+}
+
+.helpTextLarge {
+  margin-left: 36px;
+}
+
+/* ── RadioGroup ── */
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupField {
+  display: flex;
+}
+
+.groupFieldTop {
+  flex-direction: column;
+}
+
+.groupFieldLeft {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-6);
+}
+
+.groupLabel {
+  font-family: var(--fonts-family-text);
+  color: var(--surface-text-gray-normal);
+}
+
+.groupLabelSmall {
+  font-size: var(--fonts-size-75);
+  line-height: var(--fonts-lineHeight-75);
+}
+
+.groupLabelMedium {
+  font-size: var(--fonts-size-100);
+  line-height: var(--fonts-lineHeight-100);
+}
+
+.groupLabelLarge {
+  font-size: var(--fonts-size-200);
+  line-height: var(--fonts-lineHeight-200);
+}
+
+.necessity {
+  font-size: var(--fonts-size-75);
+  color: var(--surface-text-gray-muted);
+  margin-left: var(--spacing-1);
+}
+
+.groupLabelLeft {
+  min-width: 120px;
+  padding-top: var(--spacing-2);
+}
+
+.radios {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gapSmall {
+  gap: var(--spacing-2);
+}
+
+.gapMedium {
+  gap: var(--spacing-3);
+}
+
+.gapLarge {
+  gap: var(--spacing-4);
+}
+
+.hintText {
+  font-family: var(--fonts-family-text);
+  font-size: var(--fonts-size-75);
+  line-height: var(--fonts-lineHeight-75);
+  margin-top: var(--spacing-2);
+}
+
+.hintHelp {
+  color: var(--surface-text-gray-muted);
+}
+
+.hintError {
+  color: var(--surface-text-negative-normal);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border-width: 0;
+}
