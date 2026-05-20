@@ -12,12 +12,20 @@ export const NODE_WIDTH = 14;
 // ── Label chip geometry ───────────────────────────────────────────────────────
 /** Minimum width for a label chip in px */
 export const CHIP_MIN_WIDTH = 80;
+/**
+ * Maximum width for a label chip in px.
+ * Fits most typical node names + humanized value + percentage on one line.
+ * Content wider than (CHIP_MAX_WIDTH - horizontal padding) wraps to two lines.
+ */
+export const CHIP_MAX_WIDTH = 160;
 /** Approximate px-per-character for chip width estimation (12px Inter, weight 600) */
 export const CHIP_PX_PER_CHAR = 6;
-/** Right margin reserved for label chips (px). Longer-term should be computed from CHIP_MIN_WIDTH + gap. */
-export const LABEL_MARGIN_RIGHT = 160;
-/** Stroke width for the chip border in px. No 0.5px token exists in Blade yet. */
-export const CHIP_BORDER_WIDTH = 0.5;
+/**
+ * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
+ * e.g. "1.24L txn  (100.0%)". Used when computing the dynamic right margin before
+ * node values are available from Recharts layout.
+ */
+export const CHIP_VALUE_BUDGET = 120;
 /** Minimum rendered height for a node bar in px — prevents invisible zero-height nodes */
 export const NODE_MIN_HEIGHT = 1;
 

@@ -16,9 +16,9 @@ import {
   NODE_DIMMED_OPACITY,
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
+  CHIP_MAX_WIDTH,
+  CHIP_VALUE_BUDGET,
   CHIP_PX_PER_CHAR,
-  CHIP_BORDER_WIDTH,
-  LABEL_MARGIN_RIGHT,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
   MIN_CHART_WIDTH,
@@ -84,6 +84,29 @@ function SankeyTooltipContent({
   );
 }
 
+// ─── Indian number humanizer ─────────────────────────────────────────────────
+// Truncates (never rounds up) to avoid overstating values.
+// Examples: 2550→2.5k, 17100→17.1k, 124500→1.24L, 1000000→10L, 15000000→1.5Cr
+
+function humanizeIndian(value: number): string {
+  if (value >= 1_00_00_000) {
+    // Crore — truncate to 2 dp, strip trailing zeros
+    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
+    return `${parseFloat(v.toFixed(2))}Cr`;
+  }
+  if (value >= 1_00_000) {
+    // Lakh — truncate to 2 dp, strip trailing zeros
+    const v = Math.floor((value / 1_00_000) * 100) / 100;
+    return `${parseFloat(v.toFixed(2))}L`;
+  }
+  if (value >= 1_000) {
+    // Thousands — truncate to 1 dp, strip trailing zeros
+    const v = Math.floor((value / 1_000) * 10) / 10;
+    return `${parseFloat(v.toFixed(1))}k`;
+  }
+  return String(value);
+}
+
 // ─── Inner chart ──────────────────────────────────────────────────────────────
 
 function SankeyChartInner({
@@ -93,6 +116,7 @@ function SankeyChartInner({
   linkColorOverride,
   showTooltip = true,
   showLabels = true,
+  showLabelChip = true,
   labelUnit,
   testID,
   onNodeClick,
@@ -115,17 +139,34 @@ function SankeyChartInner({
   );
 
   // Chip layout — derived from Blade spacing tokens
-  const CHIP_H = theme.spacing[7]; // 24px
-  const CHIP_PAD_X = theme.spacing[3]; // 8px
+  const CHIP_PAD_X = theme.spacing[3]; // 8px horizontal padding
+  const CHIP_H = theme.typography.fonts.size[75] + theme.spacing[3] * 2; // 12 + 16 = 28px (8px top/bottom)
   const CHIP_GAP = theme.spacing[3]; // 8px
   const fontFamily = theme.typography.fonts.family.text;
+
+  // Accurate text width measurement via Canvas API — avoids flat px-per-char estimates
+  // that over/under-shoot on proportional fonts (narrow: i,l,1 / wide: W,M)
+  const measureText = useCallback(
+    (text: string, weight: number | string): number => {
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return text.length * CHIP_PX_PER_CHAR;
+        ctx.font = `${weight} ${theme.typography.fonts.size[75]}px ${fontFamily}`;
+        return ctx.measureText(text).width;
+      } catch {
+        return text.length * CHIP_PX_PER_CHAR;
+      }
+    },
+    [fontFamily, theme],
+  );
   const labelNameColor = theme.colors.surface.text.gray.normal;
   const labelValueColor = theme.colors.surface.text.gray.muted;
   const chipBg = theme.colors.surface.background.gray.intense;
-  const chipBorderColor = theme.colors.surface.border.gray.muted;
+  const chipBorderColor = theme.colors.interactive.border.gray.faded;
   const chipRadius = theme.border.radius.small;
   // NODE_PADDING derives from the Blade spacing scale
-  const nodePadding = theme.spacing[4]; // 16px
+  const nodePadding = theme.spacing[4]; // 12px
   const motionDuration = theme.motion.duration.quick;
 
   // ── Color mapping ────────────────────────────────────────────────────────
@@ -158,6 +199,72 @@ function SankeyChartInner({
         .filter((l): l is NonNullable<typeof l> => l !== null),
     [data.links, nodeIdToIndex],
   );
+
+  // Dynamic right margin — based on the widest chip across all nodes.
+  // The value/percentage part budget (120px) covers "X.XXL unit  (100.0%)".
+  // Falls back to CHIP_MIN_WIDTH for very short names.
+  const dynamicRightMargin = useMemo(() => {
+    if (!showLabels) return theme.spacing[3];
+    if (!showLabelChip) {
+      // Plain text — only needs space for the longest node name
+      const maxNameW = data.nodes.reduce(
+        (max, node) =>
+          Math.max(max, measureText(node.name, theme.typography.fonts.weight.semibold)),
+        0,
+      );
+      return maxNameW + CHIP_GAP + theme.spacing[3];
+    }
+    // Chip mode — budget for name + value + percentage
+    const maxChipW = data.nodes.reduce((max, node) => {
+      const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
+      const chipW = Math.min(
+        CHIP_MAX_WIDTH,
+        Math.max(CHIP_MIN_WIDTH, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET + CHIP_PAD_X * 2),
+      );
+      return Math.max(max, chipW);
+    }, 0);
+    return maxChipW + CHIP_GAP + theme.spacing[3];
+  }, [showLabels, showLabelChip, data.nodes, measureText, theme, CHIP_PAD_X, CHIP_GAP]);
+
+  // Node depth map + count per level — used to suppress percentage when a
+  // level has only one node (showing "100%" adds no information).
+  const nodeDepthInfo = useMemo(() => {
+    const incomingCount = new Map<string, number>(data.nodes.map((n) => [n.id, 0]));
+    data.links.forEach((l) => incomingCount.set(l.target, (incomingCount.get(l.target) ?? 0) + 1));
+
+    const outgoing = new Map<string, string[]>(data.nodes.map((n) => [n.id, []]));
+    data.links.forEach((l) => outgoing.get(l.source)?.push(l.target));
+
+    // BFS from root nodes (no incoming links)
+    const depthOf = new Map<string, number>();
+    const queue = data.nodes.filter((n) => incomingCount.get(n.id) === 0).map((n) => n.id);
+    queue.forEach((id) => depthOf.set(id, 0));
+    for (let i = 0; i < queue.length; i++) {
+      const id = queue[i];
+      const d = depthOf.get(id) ?? 0;
+      outgoing.get(id)?.forEach((tid) => {
+        if (!depthOf.has(tid)) {
+          depthOf.set(tid, d + 1);
+          queue.push(tid);
+        }
+      });
+    }
+
+    // Count nodes per depth level
+    const countPerDepth = new Map<number, number>();
+    depthOf.forEach((d) => countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1));
+
+    return { depthOf, countPerDepth };
+  }, [data.nodes, data.links]);
+
+  // Total value = sum of outflows from root nodes (nodes with no incoming links)
+  // Used to compute each node's percentage of the overall flow
+  const totalValue = useMemo(() => {
+    const targetIds = new Set(data.links.map((l) => l.target));
+    return data.links
+      .filter((l) => !targetIds.has(l.source))
+      .reduce((sum, l) => sum + l.value, 0);
+  }, [data.links]);
 
   // ── Opacity helpers ──────────────────────────────────────────────────────
   const getNodeOpacity = useCallback(
@@ -204,12 +311,35 @@ function SankeyChartInner({
 
       const nodeMidY = y + nodeHeight / 2;
       const chipX = x + width + CHIP_GAP;
-      const labelValue =
-        labelUnit != null ? `${payload.value?.toLocaleString()} ${labelUnit}` : null;
-      const fullText = labelValue ? `${nodeData.name} ${labelValue}` : nodeData.name;
-      const chipW = Math.max(CHIP_MIN_WIDTH, fullText.length * CHIP_PX_PER_CHAR + CHIP_PAD_X * 2);
-      const chipY = nodeMidY - CHIP_H / 2;
-      // Show chips whenever labels are enabled — the SVG viewport clips any overflow
+      const nodeValue = payload.value ?? 0;
+      const humanized = humanizeIndian(nodeValue);
+      const nodeDepth = nodeDepthInfo.depthOf.get(nodeData.id) ?? 0;
+      const levelCount = nodeDepthInfo.countPerDepth.get(nodeDepth) ?? 1;
+      const pct = totalValue > 0 ? ((nodeValue / totalValue) * 100).toFixed(1) : '0.0';
+      const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
+      // Suppress percentage when this node is the only one at its depth level
+      const labelValue = levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+
+      // ── Chip sizing ───────────────────────────────────────────────────────
+      const fontSize = theme.typography.fonts.size[75]; // 12px
+      const nameW = measureText(nodeData.name, theme.typography.fonts.weight.semibold);
+      const labelW = measureText(labelValue, theme.typography.fonts.weight.regular);
+      const contentW = nameW + theme.spacing[2] + labelW; // total inline width
+
+      // Wrap when content + padding would exceed CHIP_MAX_WIDTH
+      const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
+      const chipW = shouldWrap
+        // Hug the widest line — don't fill the full max width unnecessarily
+        ? Math.min(CHIP_MAX_WIDTH, Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2))
+        : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
+
+      // Two-line height: pad + line1 + gap + line2 + pad
+      const lineGap = theme.spacing[2]; // 4px
+      const chipH = shouldWrap
+        ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3] // 8+12+4+12+8 = 44px
+        : CHIP_H; // 28px single-line
+
+      const chipY = nodeMidY - chipH / 2;
       const showChip = showLabels;
 
       return (
@@ -230,35 +360,80 @@ function SankeyChartInner({
             style={{ cursor: 'pointer' }}
           />
 
-          {/* Label chip */}
+          {/* Label */}
           {showChip && (
             <g style={{ pointerEvents: 'none' }}>
-              <rect
-                x={chipX}
-                y={chipY}
-                width={chipW}
-                height={CHIP_H}
-                fill={chipBg}
-                rx={chipRadius}
-                stroke={chipBorderColor}
-                strokeWidth={CHIP_BORDER_WIDTH}
-              />
-              <text
-                x={chipX + CHIP_PAD_X}
-                y={nodeMidY}
-                dominantBaseline="middle"
-                fontSize={theme.typography.fonts.size[75]}
-                style={{ userSelect: 'none', fontFamily }}
-              >
-                <tspan fontWeight={theme.typography.fonts.weight.semibold} fill={labelNameColor}>
+              {showLabelChip ? (
+                // ── Chip mode: styled card with value + percentage ──────────
+                <>
+                  <rect
+                    x={chipX + theme.border.width.thin / 2}
+                    y={chipY + theme.border.width.thin / 2}
+                    width={chipW - theme.border.width.thin}
+                    height={chipH - theme.border.width.thin}
+                    fill={chipBg}
+                    rx={chipRadius}
+                    stroke={chipBorderColor}
+                    strokeWidth={theme.border.width.thin}
+                  />
+                  {shouldWrap ? (
+                    // Two-line: name on line 1, value+pct on line 2
+                    <text
+                      dominantBaseline="central"
+                      fontSize={fontSize}
+                      style={{ userSelect: 'none', fontFamily }}
+                    >
+                      <tspan
+                        x={chipX + CHIP_PAD_X}
+                        y={chipY + theme.spacing[3] + fontSize / 2}
+                        fontWeight={theme.typography.fonts.weight.semibold}
+                        fill={labelNameColor}
+                      >
+                        {nodeData.name}
+                      </tspan>
+                      <tspan
+                        x={chipX + CHIP_PAD_X}
+                        y={chipY + theme.spacing[3] + fontSize + lineGap + fontSize / 2}
+                        fill={labelValueColor}
+                      >
+                        {labelValue}
+                      </tspan>
+                    </text>
+                  ) : (
+                    // Single-line: name + value inline
+                    <text
+                      x={chipX + CHIP_PAD_X}
+                      y={chipY + chipH / 2}
+                      dominantBaseline="central"
+                      fontSize={fontSize}
+                      style={{ userSelect: 'none', fontFamily }}
+                    >
+                      <tspan
+                        fontWeight={theme.typography.fonts.weight.semibold}
+                        fill={labelNameColor}
+                      >
+                        {nodeData.name}
+                      </tspan>
+                      <tspan fill={labelValueColor} dx={theme.spacing[2]}>
+                        {labelValue}
+                      </tspan>
+                    </text>
+                  )}
+                </>
+              ) : (
+                // ── Plain text mode: node name only, no background ──────────
+                <text
+                  x={chipX}
+                  y={nodeMidY}
+                  dominantBaseline="central"
+                  fontSize={fontSize}
+                  fontWeight={theme.typography.fonts.weight.semibold}
+                  fill={labelNameColor}
+                  style={{ userSelect: 'none', fontFamily }}
+                >
                   {nodeData.name}
-                </tspan>
-                {labelValue && (
-                  <tspan fill={labelValueColor} dx={theme.spacing[2]}>
-                    {labelValue}
-                  </tspan>
-                )}
-              </text>
+                </text>
+              )}
             </g>
           )}
         </g>
@@ -272,6 +447,7 @@ function SankeyChartInner({
       resolveColor,
       getNodeOpacity,
       showLabels,
+      showLabelChip,
       labelUnit,
       CHIP_H,
       CHIP_PAD_X,
@@ -283,6 +459,10 @@ function SankeyChartInner({
       chipBorderColor,
       chipRadius,
       motionDuration,
+      measureText,
+      totalValue,
+      nodeDepthInfo,
+      CHIP_MAX_WIDTH,
       theme,
     ],
   );
@@ -418,7 +598,7 @@ function SankeyChartInner({
                 onClick={handleClick as any}
                 margin={{
                   top: theme.spacing[3],
-                  right: showLabels ? LABEL_MARGIN_RIGHT : theme.spacing[3],
+                  right: dynamicRightMargin,
                   bottom: theme.spacing[3],
                   left: theme.spacing[3],
                 }}

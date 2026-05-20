@@ -29,8 +29,13 @@ export type SankeyChartProps = {
   /** Override all link ribbon colors with a single Blade token */
   linkColorOverride?: ChartsCategoricalColorToken;
   showTooltip?: boolean;
-  /** Show label chips to the right of each node bar. Default: true */
+  /** Show labels to the right of each node bar. Default: true */
   showLabels?: boolean;
+  /**
+   * When true (default), labels render as Blade-styled chips with value + percentage.
+   * When false, renders a plain text node name — cleaner for dense charts or static exports.
+   */
+  showLabelChip?: boolean;
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
