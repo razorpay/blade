@@ -1,0 +1,4 @@
+packages/blade/src/components/ChatInput/docs/ChatInput.stories.tsx
+  ace34e8f-4ae8-47f2-8872-5fa07b6e9534:2026-04-28T06:33:54.578Z 840-862,864-886
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"ace34e8f-4ae8-47f2-8872-5fa07b6e9534:2026-04-28T06:33:54.578Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 46, "overriden_lines": 0}}}

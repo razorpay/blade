@@ -1,0 +1,6 @@
+packages/blade/src/components/Input/BaseInput/__tests__/BaseInput.native.test.tsx
+  1c3753de-6984-4243-8674-4c37e3e066b5:2026-05-19T22:08:57.909Z 117-129,131-132
+packages/blade/src/components/Input/BaseInput/__tests__/BaseInput.web.test.tsx
+  1c3753de-6984-4243-8674-4c37e3e066b5:2026-05-19T22:08:49.718Z 133-145,147-148
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"1c3753de-6984-4243-8674-4c37e3e066b5:2026-05-19T22:08:57.909Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 15, "overriden_lines": 0}, "1c3753de-6984-4243-8674-4c37e3e066b5:2026-05-19T22:08:49.718Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "rama.behera@razorpay.com", "accepted_lines": 15, "overriden_lines": 0}}}
