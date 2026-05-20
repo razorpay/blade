@@ -39,6 +39,12 @@ describe('toastStore (native)', () => {
     }
   });
 
+  afterEach(() => {
+    // Always restore real timers so fake timers from one test don't bleed into
+    // subsequent tests and cause them to hang indefinitely.
+    jest.useRealTimers();
+  });
+
   it('show() returns a non-empty id for a regular toast', () => {
     const id = toastStore.show({ content: 'Hello' });
     expect(id).not.toBe(TOAST_REJECTED);
@@ -68,6 +74,5 @@ describe('toastStore (native)', () => {
     toastStore.dismiss(id);
     expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
     jest.advanceTimersByTime(2000);
-    jest.useRealTimers();
   });
 });
