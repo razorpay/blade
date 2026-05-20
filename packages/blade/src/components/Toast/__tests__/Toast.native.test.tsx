@@ -33,7 +33,10 @@ describe('<ToastContainer /> (native)', () => {
 
   it('renders nothing when there are no toasts', () => {
     const { toJSON } = renderWithTheme(<ToastContainer />);
-    expect(toJSON()).toBeNull();
+    // renderWithTheme wraps in BladeProvider which always renders a root View,
+    // so toJSON() is never null. Check that the container itself rendered no children
+    // (i.e. ToastContainer returned null and contributed no nodes to the tree).
+    expect(toJSON()?.children).toBeNull();
   });
 });
 
