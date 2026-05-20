@@ -1,0 +1,4 @@
+.github/workflows/blade-agentic-metrics.yml
+  d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T11:03:19.035Z 4-6
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"d0e74179-4dfb-40c4-b07e-1f3fd7e86cf9:2026-05-20T11:03:19.035Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 3, "overriden_lines": 0}}}
