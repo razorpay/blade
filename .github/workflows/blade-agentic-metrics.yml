@@ -1,9 +1,8 @@
 name: Agentic Blade Metrics
 
 on:
-  # schedule:
-  #   - cron: "0 6 * * *" # Daily at 6am UTC
-  push:
+  schedule:
+    - cron: "30 0 * * *" # Daily at 6am IST (UTC+5:30)
   workflow_dispatch:
 
 jobs:
