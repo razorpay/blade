@@ -293,12 +293,11 @@
     "styled-components": "5.3.5",
     "svgson": "5.3.1",
     "tsc-alias": "^1.8.8",
-    "tsconfig-paths-webpack-plugin": "3.5.2",
-    "tweakpane": "4.0.5",
     "typescript": "4.9",
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^6.1.1",
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "tweakpane": "4.0.5"
   },
   "peerDependencies": {
     "@floating-ui/react-native": "^0.10.0",
