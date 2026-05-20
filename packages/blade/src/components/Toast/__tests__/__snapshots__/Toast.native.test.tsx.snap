@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ToastContainer /> (native) renders nothing when there are no toasts 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+/>
+`;
+
 exports[`<Toast /> (native) renders a positive informational toast 1`] = `
 <View
   style={
