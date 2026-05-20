@@ -19,6 +19,16 @@ The script outputs the full markdown report. Then:
 <OutputFormat>
 - Timespan: {Timespan of the metrics}
 
+=== Summary ===
+
+<!-- Core metric summarisation -->
+
+| Metric                                                | Value                                                             | Description of Metric                                                        |
+| ----------------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Metric 1: % PRs with auto-approval label              | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that received the `rcore:eligible-for-auto-approval` label |
+| Submetric 1: % of comments on PRs (by human)          | {Comments by human / Total comments}                              | Percentage of review comments made by human contributors                     |
+| Submetric 2: % comments marked as resolved (by agent) | {Comments with "resolved by agent" mentioned}                     | Percentage of comments that were resolved by agent                           |
+
 === PRs Metric ===
 
 | Metric                     | Value                                                             | Description of Metric                                                    |
@@ -42,15 +52,5 @@ Note: exclude all comments by `changeset-bot`, `github-actions`, `codesandbox-ci
 | % of comments on PRs (by human)             | {Comments by human / Total comments}          | Percentage of review comments made by human contributors                      |
 | % of comments on PRs (by agent)             | {Comments by agent / Total comments}          | Percentage of review comments made by agent                                   |
 | % of comments marked as resolved (by agent) | {Comments with "resolved by agent" mentioned} | Percentage of comments where "resolved by agent" is mentioned in the comment  |
-
-=== Summary ===
-
-<!-- Core metric summarisation -->
-
-| Metric                                                | Value                                                             | Description of Metric                                                        |
-| ----------------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Metric 1: % PRs with auto-approval label              | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that received the `rcore:eligible-for-auto-approval` label |
-| Submetric 1: % of comments on PRs (by human)          | {Comments by human / Total comments}                              | Percentage of review comments made by human contributors                     |
-| Submetric 2: % comments marked as resolved (by agent) | {Comments with "resolved by agent" mentioned}                     | Percentage of comments that were resolved by agent                           |
 
 </OutputFormat>

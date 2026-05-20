@@ -70,9 +70,17 @@ for (const pr of prs) {
 
 const humanComments = totalComments - agentComments;
 
-const report = `# Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${days} day${days !== 1 ? "s" : ""})
+const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${days} day${days !== 1 ? "s" : ""})
 
 - Timespan: Last ${days} day${days !== 1 ? "s" : ""} (${sinceLabel} to ${todayLabel})
+
+### Summary
+
+| Metric                                                | Value | Description of Metric                                                        |
+| ----------------------------------------------------- | ----- | ---------------------------------------------------------------------------- |
+| Metric 1: % PRs with auto-approval label              | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that received the \`rcore:eligible-for-auto-approval\` label |
+| Submetric 1: % of comments on PRs (by human)          | ${pct(humanComments, totalComments)} | Percentage of review comments made by human contributors        |
+| Submetric 2: % comments marked as resolved (by agent) | ${pct(resolvedByAgent, totalComments)} | Percentage of comments that were resolved by agent           |
 
 ### PRs Metric
 
@@ -97,14 +105,6 @@ Note: excludes all comments by \`changeset-bot\`, \`github-actions\`, \`codesand
 | % of comments on PRs (by human)             | ${pct(humanComments, totalComments)} | Percentage of review comments made by human contributors |
 | % of comments on PRs (by agent)             | ${pct(agentComments, totalComments)} | Percentage of review comments made by agent              |
 | % of comments marked as resolved (by agent) | ${pct(resolvedByAgent, totalComments)} | Percentage of comments where "resolved by agent" is mentioned |
-
-### Summary
-
-| Metric                                                | Value | Description of Metric                                                        |
-| ----------------------------------------------------- | ----- | ---------------------------------------------------------------------------- |
-| Metric 1: % PRs with auto-approval label              | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that received the \`rcore:eligible-for-auto-approval\` label |
-| Submetric 1: % of comments on PRs (by human)          | ${pct(humanComments, totalComments)} | Percentage of review comments made by human contributors        |
-| Submetric 2: % comments marked as resolved (by agent) | ${pct(resolvedByAgent, totalComments)} | Percentage of comments that were resolved by agent           |
 `;
 
 process.stdout.write(report);
