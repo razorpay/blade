@@ -332,10 +332,9 @@ const StyledRow = styled(Row)<{
             getIn(theme.motion, tableRow.backgroundColorMotionDuration),
           )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
         },
-        '&:hover td:first-child .cell-wrapper > *, &:focus td:first-child .cell-wrapper > *, &.row-select-selected td:first-child .cell-wrapper > *':
-          {
-            opacity: 1,
-          },
+        '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
+        '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
+        '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
       }),
     },
   };
