@@ -206,13 +206,13 @@ function SankeyChartInner({
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
     if (!showLabelChip) {
-      // Plain text — only needs space for the longest node name
-      const maxNameW = data.nodes.reduce(
-        (max, node) =>
-          Math.max(max, measureText(node.name, theme.typography.fonts.weight.semibold)),
-        0,
-      );
-      return maxNameW + CHIP_GAP + theme.spacing[3];
+      // Plain text — budget for widest (name + value+pct) just like chip mode, minus the chip padding
+      const maxTextW = data.nodes.reduce((max, node) => {
+        const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
+        // Use same CHIP_VALUE_BUDGET for the value+pct portion
+        return Math.max(max, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET);
+      }, 0);
+      return Math.min(CHIP_MAX_WIDTH, maxTextW) + CHIP_GAP + theme.spacing[3];
     }
     // Chip mode — budget for name + value + percentage
     const maxChipW = data.nodes.reduce((max, node) => {
@@ -421,18 +421,55 @@ function SankeyChartInner({
                   )}
                 </>
               ) : (
-                // ── Plain text mode: node name only, no background ──────────
-                <text
-                  x={chipX}
-                  y={nodeMidY}
-                  dominantBaseline="central"
-                  fontSize={fontSize}
-                  fontWeight={theme.typography.fonts.weight.semibold}
-                  fill={labelNameColor}
-                  style={{ userSelect: 'none', fontFamily }}
-                >
-                  {nodeData.name}
-                </text>
+                // ── Plain text mode: same info as chip, no background rect ───
+                shouldWrap ? (
+                  // Two-line: name on line 1, value+pct on line 2
+                  <text
+                    dominantBaseline="central"
+                    fontSize={fontSize}
+                    style={{ userSelect: 'none', fontFamily }}
+                  >
+                    <tspan
+                      x={chipX}
+                      y={nodeMidY - fontSize / 2 - lineGap / 2}
+                      fontWeight={theme.typography.fonts.weight.semibold}
+                      fill={labelNameColor}
+                    >
+                      {nodeData.name}
+                    </tspan>
+                    <tspan
+                      x={chipX}
+                      y={nodeMidY + fontSize / 2 + lineGap / 2}
+                      fontWeight={theme.typography.fonts.weight.regular}
+                      fill={labelValueColor}
+                    >
+                      {labelValue}
+                    </tspan>
+                  </text>
+                ) : (
+                  // Single-line: name + value inline
+                  <text
+                    x={chipX}
+                    y={nodeMidY}
+                    dominantBaseline="central"
+                    fontSize={fontSize}
+                    style={{ userSelect: 'none', fontFamily }}
+                  >
+                    <tspan
+                      fontWeight={theme.typography.fonts.weight.semibold}
+                      fill={labelNameColor}
+                    >
+                      {nodeData.name}
+                    </tspan>
+                    <tspan
+                      fontWeight={theme.typography.fonts.weight.regular}
+                      fill={labelValueColor}
+                      dx={theme.spacing[2]}
+                    >
+                      {labelValue}
+                    </tspan>
+                  </text>
+                )
               )}
             </g>
           )}
