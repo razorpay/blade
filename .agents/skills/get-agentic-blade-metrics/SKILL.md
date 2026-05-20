@@ -1,18 +1,20 @@
 ---
 name: get-agentic-blade-metrics
-description: Get agentic metrics for the `razorpay/blade` repo and push them to `agentic-blade-metrics` page on wiki.
+description: Get agentic metrics for the `razorpay/blade` repo.
 disable-model-invocation: true
 ---
 
-Run `fetch-metrics.py` (located in the same directory as this skill) to collect all metrics:
+Run `fetch-metrics.mjs` to collect all metrics:
+
+Note: the script is relative to the root of the git repo.
 
 ```bash
-node <skill-dir>/scripts/fetch-metrics.mjs [days]
+node .github/scripts/fetch-metrics.mjs [days]
 ```
 
 The script outputs the full markdown report. Then:
-- Push the report to the `agentic-blade-metrics` page on the blade wiki (clone `https://github.com/razorpay/blade.wiki.git`, write the file, commit, and push)
-- Respond with the metrics in the output format below
+
+- Respond with the metrics in the output format below (make sure tables are formatted as expected in the output)
 
 <OutputFormat>
 - Timespan: {Timespan of the metrics}

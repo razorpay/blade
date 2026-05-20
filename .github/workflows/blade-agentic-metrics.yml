@@ -1,11 +1,8 @@
 name: Agentic Blade Metrics
 
 on:
-  push:
-    branches:
-      - feat/create-metric-automation
-  # schedule:
-  #   - cron: "0 6 * * *" # Daily at 6am UTC
+  schedule:
+    - cron: "0 6 * * *" # Daily at 6am UTC
   workflow_dispatch:
 
 jobs:
