@@ -36,6 +36,7 @@ export * from './InfoGroup';
 export * from './Indicator';
 export * from './Input/DropdownInputTriggers';
 export * from './Input/OTPInput';
+export * from './Input/ColorInput';
 export * from './Input/PasswordInput';
 export * from './Input/TextArea';
 export * from './Input/TextInput';
