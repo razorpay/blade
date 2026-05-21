@@ -36,6 +36,22 @@ export function getFormLabelClasses(options: FormLabelOptions): string {
 }
 
 /**
+ * Get CSS classes for the label content wrapper (outer flex row/column)
+ */
+export function getLabelContentClasses(isLabelLeft: boolean): string {
+  return `${styles.labelContent} ${
+    isLabelLeft ? styles['labelContent--left'] : styles['labelContent--top']
+  }`;
+}
+
+/**
+ * Get CSS classes for the inner row that holds the label text container and suffix
+ */
+export function getLabelInnerRowClasses(): string {
+  return styles.labelInnerRow;
+}
+
+/**
  * Get CSS classes for label text container
  */
 export function getLabelTextContainerClasses(necessityIndicator: NecessityIndicator): string {
@@ -105,11 +121,14 @@ export function getCharacterCounterClasses(size: FormSize, hasMarginRight?: bool
 export function getFormTemplateClasses(): Record<string, string> {
   return {
     formLabel: styles.formLabel,
+    labelContent: styles.labelContent,
+    labelInnerRow: styles.labelInnerRow,
     labelTextContainer: styles.labelTextContainer,
     labelSuffix: styles.labelSuffix,
     labelTrailing: styles.labelTrailing,
     formHint: styles.formHint,
     hintIcon: styles.hintIcon,
     characterCounter: styles.characterCounter,
+    srOnly: styles.srOnly,
   };
 }

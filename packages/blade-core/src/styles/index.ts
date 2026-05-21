@@ -78,6 +78,8 @@ export {
   labelWidth,
   labelLeftMarginRight,
   getFormLabelClasses,
+  getLabelContentClasses,
+  getLabelInnerRowClasses,
   getLabelTextContainerClasses,
   getLabelSuffixClasses,
   getLabelTrailingClasses,

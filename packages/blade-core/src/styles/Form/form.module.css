@@ -59,22 +59,60 @@
   margin-bottom: var(--spacing-3);
 }
 
+/* Label content wrapper – mirrors React's outer flex BaseBox */
+.labelContent {
+  display: flex;
+  width: 100%;
+}
+
+.labelContent--top {
+  flex-direction: row;
+  align-items: center;
+}
+
+.labelContent--left {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Inner row holding the text container and optional label suffix */
+.labelInnerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
 /* Label text container */
 .labelTextContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: 0;
   max-height: 36px;
 }
 
-/* Necessity indicator spacing */
+/* Necessity indicator spacing – matches React's
+   gap={necessityIndicator === 'optional' ? 'spacing.2' : 'spacing.0'} */
 .labelTextContainer--optional {
   gap: var(--spacing-2);
 }
 
 .labelTextContainer--required {
   gap: 0;
+}
+
+/* Visually hidden utility for screen-reader-only content */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Label suffix container */

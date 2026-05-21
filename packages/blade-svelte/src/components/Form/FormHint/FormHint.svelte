@@ -55,7 +55,12 @@
 {/if}
 
 {#if showError}
-  <div class={hintClasses} id={errorTextId}>
+  <div
+    class={hintClasses}
+    id={errorTextId}
+    role="alert"
+    aria-live="assertive"
+  >
     <div class={iconClasses}>
       <InfoIcon
         size={iconSize}
@@ -74,7 +79,12 @@
 {/if}
 
 {#if showSuccess}
-  <div class={hintClasses} id={successTextId}>
+  <div
+    class={hintClasses}
+    id={successTextId}
+    role="status"
+    aria-live="polite"
+  >
     <div class={iconClasses}>
       <CheckIcon
         size={iconSize}

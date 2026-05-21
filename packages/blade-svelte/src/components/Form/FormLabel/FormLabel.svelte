@@ -5,9 +5,12 @@
     labelTextSize,
     labelOptionalIndicatorTextSize,
     getFormLabelClasses,
+    getLabelContentClasses,
+    getLabelInnerRowClasses,
     getLabelTextContainerClasses,
     getLabelSuffixClasses,
     getLabelTrailingClasses,
+    getFormTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
 
@@ -32,11 +35,6 @@
     labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size] as 'small' | 'medium' | 'large'
   );
 
-  // Get text color based on position
-  const textColor = $derived(
-    isLabelLeftPositioned ? 'surface.text.gray.subtle' : 'surface.text.gray.muted'
-  );
-
   // Get optional indicator text size
   const optionalTextSize = $derived(
     labelOptionalIndicatorTextSize[size] as 'small' | 'medium'
@@ -46,6 +44,10 @@
   const labelClasses = $derived(
     getFormLabelClasses({ position, size, necessityIndicator })
   );
+
+  const labelContentClasses = $derived(getLabelContentClasses(isLabelLeftPositioned));
+
+  const labelInnerRowClasses = getLabelInnerRowClasses();
 
   const textContainerClasses = $derived(
     getLabelTextContainerClasses(necessityIndicator)
@@ -57,10 +59,16 @@
     getLabelTrailingClasses(isLabelLeftPositioned)
   );
 
+  // Template classes referenced via expressions (prevents Svelte tree-shaking of CSS modules)
+  const templateClasses = getFormTemplateClasses();
+
   // Meta attributes
   const metaAttrs = metaAttribute({
     name: MetaConstants.FormLabel,
   });
+
+  // Visually-hidden text exists when there's accessibility text OR a necessity word to announce
+  const hasA11yContent = $derived(necessityIndicator !== 'none' || Boolean(accessibilityText));
 </script>
 
 <svelte:element
@@ -70,15 +78,15 @@
   for={as === 'label' ? htmlFor : undefined}
   {...metaAttrs}
 >
-  <div class="label-content" style="display: flex; flex-direction: {isLabelLeftPositioned ? 'column' : 'row'}; align-items: {isLabelLeftPositioned ? 'flex-start' : 'center'}; width: 100%;">
-    <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
+  <div class={labelContentClasses}>
+    <div class={labelInnerRowClasses}>
       <div class={textContainerClasses}>
         {#if children}
           <Text
             variant="body"
             size={textSize}
-            color={textColor}
-            weight="semibold"
+            color="surface.text.gray.subtle"
+            weight="medium"
             truncateAfterLines={2}
           >
             {#if typeof children === 'function'}
@@ -89,8 +97,11 @@
           </Text>
         {/if}
 
-        {#if accessibilityText}
-          <span class="visually-hidden">{accessibilityText}</span>
+        {#if hasA11yContent}
+          <span class={templateClasses.srOnly}>
+            {#if necessityIndicator !== 'none'}{necessityIndicator}{/if}
+            {#if accessibilityText} {accessibilityText}{/if}
+          </span>
         {/if}
 
         {#if necessityIndicator === 'optional'}
@@ -128,22 +139,3 @@
     {/if}
   </div>
 </svelte:element>
-
-<style>
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .label-content {
-    width: 100%;
-  }
-</style>
-
