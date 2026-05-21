@@ -157,4 +157,5 @@ export const MetaConstants = {
   PreviewFooter: 'preview-footer',
   Pagination: 'pagination',
   TimePicker: 'time-picker',
+  Slider: 'slider',
 } as const;

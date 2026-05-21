@@ -1,0 +1,1417 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slider /> should render all sizes 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 2px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 2px;
+  border-radius: 9999px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  margin-top: -5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        class=""
+        data-blade-component="base-box"
+        for="slider-20"
+      >
+        <p
+          class="c1"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          Volume
+        </p>
+      </label>
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="false"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0"
+        class="c3"
+        id="slider-20"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="0"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render all sizes 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  margin-top: -6.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        class=""
+        data-blade-component="base-box"
+        for="slider-22"
+      >
+        <p
+          class="c1"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          Volume
+        </p>
+      </label>
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="false"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0"
+        class="c3"
+        id="slider-22"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="0"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render all sizes 3`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 4px;
+  border-radius: 9999px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  margin-top: -8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        class=""
+        data-blade-component="base-box"
+        for="slider-24"
+      >
+        <p
+          class="c1"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          Volume
+        </p>
+      </label>
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="false"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0"
+        class="c3"
+        id="slider-24"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="0"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render disabled slider 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: not-allowed;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(0,0%,97%,1) 0%,hsla(0,0%,97%,1) 50%,hsla(0,0%,97%,1) 50%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(0,0%,97%,1);
+  margin-top: -6.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(0,0%,97%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(0,0%,97%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(0,0%,97%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        class=""
+        data-blade-component="base-box"
+        for="slider-5"
+      >
+        <p
+          class="c1"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          Volume
+        </p>
+      </label>
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        50
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="true"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="50"
+        aria-valuetext="50"
+        class="c3"
+        disabled=""
+        id="slider-5"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="50"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render slider with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  margin-top: -6.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="false"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0"
+        class="c3"
+        id="slider-1"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="0"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render slider with label 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.8125rem;
+  -webkit-letter-spacing: -0.13px;
+  -moz-letter-spacing: -0.13px;
+  -ms-letter-spacing: -0.13px;
+  letter-spacing: -0.13px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(218,89%,51%,1) 30%,hsla(0,0%,97%,1) 30%,hsla(0,0%,97%,1) 100%);
+  -webkit-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-track {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(0,0%,97%,1);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-progress {
+  height: 3px;
+  border-radius: 9999px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  margin-top: -6.5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c3.c3.c3.c3.c3::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.c3.c3.c3.c3.c3::-moz-range-thumb {
+  border: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsla(218,89%,51%,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c3.c3.c3.c3.c3:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        class=""
+        data-blade-component="base-box"
+        for="slider-3"
+      >
+        <p
+          class="c1"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          Volume
+        </p>
+      </label>
+      <p
+        class="c1"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        30
+      </p>
+    </div>
+    <div
+      class="c2"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-disabled="false"
+        aria-label="Volume"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="30"
+        aria-valuetext="30"
+        class="c3"
+        id="slider-3"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="30"
+      />
+    </div>
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        0
+      </p>
+      <p
+        class="c5"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        100
+      </p>
+    </div>
+  </div>
+</div>
+`;
