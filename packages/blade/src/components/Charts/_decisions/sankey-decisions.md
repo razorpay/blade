@@ -3,7 +3,7 @@
 **Component:** `SankeyChart`  
 **Status:** Draft  
 **Authors:** Debabrata Malik (Product Designer, MoneySaver)  
-**Last updated:** 2026-05-17
+**Last updated:** 2026-05-21
 
 ---
 
@@ -23,22 +23,19 @@ No existing Blade chart type supports this flow topology. A Sankey diagram is th
 
 ---
 
-## 2. Rendering approach — why not recharts?
+## 2. Rendering approach — recharts native Sankey
 
-All other Blade charts (BarChart, LineChart, AreaChart, DonutChart) are built on **recharts**, which wraps D3 internally. However, recharts does not expose a Sankey layout — it was purpose-built for time-series and categorical charts.
+All other Blade charts (BarChart, LineChart, AreaChart, DonutChart) are built on **recharts**. Recharts v3.7.0 (already a Blade dependency) ships a native `<Sankey>` component that handles layout calculation, responsive sizing via `<ResponsiveContainer>`, and tooltip positioning. Using it keeps SankeyChart fully consistent with the rest of the Blade charts layer.
 
 ### Options evaluated
 
 | Option | Pros | Cons | Decision |
 |---|---|---|---|
-| **d3-sankey + React SVG** | Industry standard layout algorithm; pure JS (no DOM dep); full control over rendering, theming, and interactivity | More implementation work than a pre-built component | ✅ **Chosen** |
-| A wrapper around an existing React Sankey lib (e.g. `react-d3-sankey`, `@ant-design/charts`) | Less code | Adds a large dependency; styling and token integration is opaque; conflicts with Blade's design language | ❌ Rejected |
-| recharts with a custom chart type | Consistent with other Blade charts | recharts does not support the Sankey graph topology; would require monkey-patching internals | ❌ Rejected |
+| **recharts native `<Sankey>`** | Consistent with all other Blade charts; `<ResponsiveContainer>` replaces manual ResizeObserver; Recharts Tooltip handles edge-flip natively; zero new dependencies | Custom `node`/`link` render props required for Blade-token styling | ✅ **Chosen** |
+| d3-sankey + React SVG | Full layout control; pure JS | Adds a new dependency (~10 KB); duplicates what recharts already provides; inconsistent with the rest of the charts layer | ❌ Rejected |
+| A wrapper around an existing React Sankey lib (e.g. `react-d3-sankey`, `@ant-design/charts`) | Less code | Adds a large opaque dependency; styling and token integration conflicts with Blade's design language | ❌ Rejected |
 
-**Decision:** Use `d3-sankey` for layout calculation only (produces `x0, y0, x1, y1` coordinates and link `width` values), then render the result using plain React SVG elements. This approach:
-- Has zero DOM side-effects during layout (pure functional)
-- Gives us full control over Blade token application
-- Keeps the dependency footprint minimal (d3-sankey is ~10 KB minified)
+**Decision:** Use Recharts' built-in `<Sankey>` for layout, `<ResponsiveContainer>` for sizing, and Recharts `<Tooltip>` for hover cards. Blade token application is done entirely inside the custom `node` and `link` render props — no recharts internals are patched.
 
 ---
 
@@ -46,78 +43,92 @@ All other Blade charts (BarChart, LineChart, AreaChart, DonutChart) are built on
 
 ### 3a. Single component vs composition API
 
-BarChart uses a **composition API** (`<ChartBarWrapper>` + `<ChartBar>` + `<ChartXAxis>` …) because recharts itself is compositional. Since our SVG rendering is self-contained, a composition API would add indirection without benefit.
+BarChart uses a **composition API** (`<ChartBarWrapper>` + `<ChartBar>` + `<ChartXAxis>` …) because recharts itself is compositional and each sub-component maps to a recharts primitive. Since SankeyChart's visual output is a single connected diagram, a composition API would add indirection without benefit.
 
-**Decision:** Single `<SankeyChart nodes={} links={} />` prop API. This is simpler to use and sufficient for the current use cases.
+**Decision:** Single `<SankeyChart data={} />` prop API. This is simpler to use and sufficient for the current use cases.
 
 ### 3b. Node & link data shape
 
 ```ts
-// Chosen shape
-type SankeyLevelNode = { id: string; name: string; color?: string };
-type SankeyLevel     = { id: string; nodes: SankeyLevelNode[] };
-type SankeyFlowLink  = { from: string; to: string; value: number; label?: string };
+type SankeyDataNode = {
+  id: string;
+  name: string;
+  color?: ChartsCategoricalColorToken; // optional per-node color override
+};
+
+type SankeyDataLink = {
+  source: string; // node id
+  target: string; // node id
+  value: number;
+  label?: string;
+};
+
+// Prop
+data: { nodes: SankeyDataNode[]; links: SankeyDataLink[] }
 ```
 
-**Why a `levels` array instead of a flat `nodes` array?**  
-Grouping nodes into levels makes it immediately obvious which nodes belong to the same column (e.g. all methods together, all providers together). This mirrors how designers and product people reason about Sankey diagrams. Callers never need to manage or count array indices.
+**Why a flat `nodes` array instead of a nested `levels` array?**  
+Recharts' `<Sankey>` accepts a flat node list and infers column layout from the link topology. Using the same shape means zero intermediate transformation for the majority of callers. Column membership is implicit in the graph structure — callers don't need to manage it.
 
-**Why string `id` references instead of numeric indices in links?**  
-Numeric indices are brittle — inserting a node in the middle renumbers everything downstream. String IDs are stable: reordering, inserting, or removing nodes does not require updating any link. Internally, the component builds a `Map<id, index>` to resolve references to d3-sankey's required numeric format in O(1).
+**Why string `id` references in links instead of numeric indices?**  
+Numeric indices are brittle — inserting a node in the middle renumbers everything downstream. String IDs are stable. The component builds a `Map<id, index>` internally to transform to Recharts' required numeric format in O(1).
 
 **Why separate `id` and `name` on a node?**  
-`id` is the stable reference key used in links; `name` is the human-readable display label. Keeping them separate avoids collisions when display names change (e.g. "Razorpay PG" → "Razorpay") without breaking all existing link definitions.
+`id` is the stable reference key used in links; `name` is the human-readable display label. Keeping them separate avoids breakage when display names change (e.g. "Razorpay PG" → "Razorpay") without touching any link definitions.
 
 **Why is `color` optional on the node?**  
-Most callers will use the palette or `nodeColorOverride`. Per-node color is an escape hatch for one-off use cases (e.g. the budget P&L example).
+Most callers will use the default categorical palette or `nodeColorOverride`. Per-node color is an escape hatch for one-off use cases.
 
 ### 3c. Color override props
 
-`nodeColorOverride` and `linkColorOverride` accept Blade color token paths (e.g. `"interactive.background.primary.default"`). They are resolved through `getIn(theme.colors, tokenPath)` at render time, matching the pattern used by `ChartBar`.
+`nodeColorOverride` and `linkColorOverride` accept typed Blade color token paths (`ChartsCategoricalColorToken`). They are resolved through `getIn(theme.colors, tokenPath)` at render time, matching the pattern used by other Blade chart components.
 
-When set, they override the categorical/sequential palette for ALL nodes or links respectively. This is the correct model for the Optimizer use case where all nodes are a single brand blue.
+When set, they override the categorical palette for ALL nodes or links respectively. Per-node `color` takes precedence over the palette but is overridden by `nodeColorOverride`.
 
 ### 3d. `labelUnit` prop
 
-The `labelUnit` prop appends a unit string to the node value in the label chip (e.g. `"txn"` → `"7,300 txn"`, `"₹M"` → `"12.6 ₹M"`). This is intentionally a dumb string concatenation — formatting logic (decimal places, abbreviation) is the caller's responsibility.
+The `labelUnit` prop appends a unit string to the humanized node value in the label (e.g. `"txn"` → `"4.4k txn"`). Values are formatted using Indian number conventions (k / L / Cr) with truncation (not rounding) to avoid overstating values.
+
+### 3e. `showLabelChip` prop
+
+When `true` (default), labels render as Blade-styled chip cards (gray intense background, faded border, 8px radius) showing node name + humanized value + percentage. When `false`, the same information is rendered as plain SVG text — cleaner for dense charts or static exports. Both modes use identical wrapping logic (single-line vs two-line based on CHIP_MAX_WIDTH) and identical percentage suppression (omitted when a node is the only one at its depth level).
 
 ---
 
-## 4. Context design
+## 4. Context & color mapping
 
-`SankeyChartContext` holds `hoveredNodeId` and `hoveredLinkId` to drive coordinated opacity changes across all nodes and links, mirroring the `LineChartContext` pattern. This avoids prop-drilling through the SVG node/link renderers.
+`SankeyChart` provides `CommonChartComponentsContext` (same context used by BarChart, DonutChart, etc.) with a `dataColorMapping` keyed by node `id`. This enables consistent color token resolution across the charts layer and supports future integration with shared legend/tooltip components.
+
+Hover state (`{ type: 'node' | 'link'; index: number } | null`) is managed locally via `useState` in the component — it does not need to live in context since nodes and links are rendered in a single SVG tree.
 
 ---
 
 ## 5. Responsiveness
 
-The chart wraps its SVG in a container `<div>` observed by `ResizeObserver`. On width change, the d3-sankey generator is re-invoked synchronously (it is a pure function; no side effects) and the SVG is redrawn. The d3 layout is kept inside a `useMemo` keyed on `[width, height, nodeWidth, nodePadding, nodes, links]`.
+`<ResponsiveContainer width="100%" height={height}>` from recharts handles container measurement and passes the resolved width/height into the `<Sankey>` component. This replaces any manual `ResizeObserver` pattern.
+
+For narrow viewports, the SVG is wrapped in a horizontally scrollable `<div>` with `minWidth: MIN_CHART_WIDTH` (560px) so the Sankey layout never collapses below a legible size.
 
 ---
 
 ## 6. Label placement
 
-Labels are always placed to the **right** of the node bar (`x = x1 + CHIP_GAP`), regardless of which column the node is in. This is intentional:
+Labels are always placed to the **right** of the node bar (`x = nodeX + nodeWidth + CHIP_GAP`), regardless of which column the node is in. This is intentional:
 
 - Uniform placement reduces cognitive load — users always look right of the bar.
-- Left-side labels for the rightmost column (Status) would overlap bands.
-- The SVG has `overflow: visible`, so labels that extend beyond the SVG bounding box are still rendered (this is correct browser behaviour).
-
-The right margin of the d3 layout extent (`width - 150px`) is reserved for labels so nodes do not crowd them.
+- The Recharts `margin.right` is set to `dynamicRightMargin` — computed from the widest label across all nodes using the Canvas API for accurate proportional-font measurement — so labels are never clipped.
 
 ---
 
 ## 7. Tooltip
 
-The tooltip is rendered as an absolutely positioned `<div>` inside the component's container. It uses `surface.overlay.background` and `surface.background.cloud.subdued` from Blade's token system.
-
-**Future:** Replace with Blade's `<Tooltip>` component once `@floating-ui/react` positioning is integrated, matching the approach used in `CommonChartComponents`.
+The tooltip uses Recharts' built-in `<Tooltip>` with a custom `content` render prop that applies Blade tokens (background, border, typography, elevation). Recharts handles positioning and edge-flip natively — no manual coordinate calculation is needed.
 
 ---
 
 ## 8. React Native
 
-Not implemented in v1. The web implementation depends on SVG, ResizeObserver, and d3-sankey, none of which are available in RN. `SankeyChart.native.tsx` throws a `throwBladeError` pointing to this decision doc.
+Not implemented in v1. The web implementation depends on SVG and recharts, which are not available in React Native. `SankeyChart.native.tsx` throws a `throwBladeError` pointing to this decision doc.
 
 ---
 
@@ -125,8 +136,7 @@ Not implemented in v1. The web implementation depends on SVG, ResizeObserver, an
 
 | # | Question | Status |
 |---|---|---|
-| 1 | Should `SankeyChart` integrate with `CommonChartComponentsContext` for shared tooltip/legend? | Open — not needed for v1 since Sankey doesn't use recharts |
-| 2 | Should nodes support a secondary "failed" segment (grey sub-bar within the blue bar per Optimizer design)? | Deferred to v2 |
-| 3 | Should clicking a provider node filter the SR trend chart (per spec)? | Out of scope for the component; handled by the consuming page |
-| 4 | Accessibility: should nodes/links be focusable via keyboard? | Deferred — needs `<title>` and `aria-describedby` on SVG elements |
-| 5 | Dark mode automatic flip | Works today via Blade `ThemeProvider` — token values flip without any additional code |
+| 1 | Should nodes support a secondary "failed" segment (grey sub-bar within the blue bar per Optimizer design)? | Deferred to v2 |
+| 2 | Should clicking a provider node filter the SR trend chart (per spec)? | Out of scope for the component; handled by the consuming page |
+| 3 | Accessibility: should nodes/links be focusable via keyboard? | Deferred — needs `<title>` and `aria-describedby` on SVG elements |
+| 4 | Dark mode automatic flip | Works today via Blade `ThemeProvider` — token values flip without any additional code |
