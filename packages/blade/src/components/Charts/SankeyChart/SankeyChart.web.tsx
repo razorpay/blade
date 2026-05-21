@@ -143,6 +143,11 @@ function SankeyChartInner({
   const CHIP_H = theme.typography.fonts.size[75] + theme.spacing[3] * 2; // 12 + 16 = 28px (8px top/bottom)
   const CHIP_GAP = theme.spacing[3]; // 8px
   const fontFamily = theme.typography.fonts.family.text;
+  // Cap-height ratio for Inter — uppercase glyphs occupy ~72% of font-size above the baseline.
+  // Using this to position SVG text baselines explicitly avoids the extra descender-space
+  // that dominantBaseline="central" includes, which causes perceived extra whitespace
+  // above cap-height text (e.g. "PayU 2,700 txn" has no descenders).
+  const capHeightRatio = 0.72;
 
   // Accurate text width measurement via Canvas API — avoids flat px-per-char estimates
   // that over/under-shoot on proportional fonts (narrow: i,l,1 / wide: W,M)
@@ -378,14 +383,15 @@ function SankeyChartInner({
                   />
                   {shouldWrap ? (
                     // Two-line: name on line 1, value+pct on line 2
+                    // Each tspan baseline = slot_top + (fontSize + capHeight) / 2
+                    // which visually centres cap-height glyphs within their fontSize slot
                     <text
-                      dominantBaseline="central"
                       fontSize={fontSize}
                       style={{ userSelect: 'none', fontFamily }}
                     >
                       <tspan
                         x={chipX + CHIP_PAD_X}
-                        y={chipY + theme.spacing[3] + fontSize / 2}
+                        y={chipY + theme.spacing[3] + (fontSize * (1 + capHeightRatio)) / 2}
                         fontWeight={theme.typography.fonts.weight.semibold}
                         fill={labelNameColor}
                       >
@@ -393,7 +399,7 @@ function SankeyChartInner({
                       </tspan>
                       <tspan
                         x={chipX + CHIP_PAD_X}
-                        y={chipY + theme.spacing[3] + fontSize + lineGap + fontSize / 2}
+                        y={chipY + theme.spacing[3] + fontSize + lineGap + (fontSize * (1 + capHeightRatio)) / 2}
                         fill={labelValueColor}
                       >
                         {labelValue}
@@ -401,10 +407,10 @@ function SankeyChartInner({
                     </text>
                   ) : (
                     // Single-line: name + value inline
+                    // y = visual centre of chip: baseline at chipY + (chipH + capHeight) / 2
                     <text
                       x={chipX + CHIP_PAD_X}
-                      y={chipY + chipH / 2}
-                      dominantBaseline="central"
+                      y={chipY + (chipH + fontSize * capHeightRatio) / 2}
                       fontSize={fontSize}
                       style={{ userSelect: 'none', fontFamily }}
                     >
@@ -424,14 +430,16 @@ function SankeyChartInner({
                 // ── Plain text mode: same info as chip, no background rect ───
                 shouldWrap ? (
                   // Two-line: name on line 1, value+pct on line 2
+                  // Baselines chosen so the two-line block is centred on nodeMidY:
+                  //   B1 = nodeMidY - lineGap/2
+                  //   B2 = nodeMidY + capHeight + lineGap/2
                   <text
-                    dominantBaseline="central"
                     fontSize={fontSize}
                     style={{ userSelect: 'none', fontFamily }}
                   >
                     <tspan
                       x={chipX}
-                      y={nodeMidY - fontSize / 2 - lineGap / 2}
+                      y={nodeMidY - lineGap / 2}
                       fontWeight={theme.typography.fonts.weight.semibold}
                       fill={labelNameColor}
                     >
@@ -439,7 +447,7 @@ function SankeyChartInner({
                     </tspan>
                     <tspan
                       x={chipX}
-                      y={nodeMidY + fontSize / 2 + lineGap / 2}
+                      y={nodeMidY + fontSize * capHeightRatio + lineGap / 2}
                       fontWeight={theme.typography.fonts.weight.regular}
                       fill={labelValueColor}
                     >
@@ -447,11 +455,11 @@ function SankeyChartInner({
                     </tspan>
                   </text>
                 ) : (
-                  // Single-line: name + value inline
+                  // Single-line: name + value inline — baseline at nodeMidY + capHeight/2
+                  // so cap-height glyphs are visually centred on the node bar
                   <text
                     x={chipX}
-                    y={nodeMidY}
-                    dominantBaseline="central"
+                    y={nodeMidY + (fontSize * capHeightRatio) / 2}
                     fontSize={fontSize}
                     style={{ userSelect: 'none', fontFamily }}
                   >
