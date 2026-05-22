@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.104.0
+
+### Minor Changes
+
+- 07ba06c3f: feat(Table): change loading to use skeleton instead of spinner
+
 ## 12.103.0
 
 ### Minor Changes
