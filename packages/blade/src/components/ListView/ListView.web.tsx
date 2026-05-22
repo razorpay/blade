@@ -32,11 +32,7 @@ const ListViewSurface = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
   },
 );
 
-const ListView = ({
-  testID,
-  children,
-  ...rest
-}: ListViewProps): React.ReactElement => {
+const ListView = ({ testID, children, ...rest }: ListViewProps): React.ReactElement => {
   const { colorScheme } = useTheme();
   return (
     <ListViewProvider value={{ isInsideListView: true }}>

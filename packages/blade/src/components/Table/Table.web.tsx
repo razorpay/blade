@@ -612,7 +612,9 @@ const _Table = <Item,>({
               {Array.from({ length: columnCount || 5 }).map((_, i) => (
                 <Skeleton
                   key={i}
-                  width={i === 0 ? SKELETON_CELL_WIDTHS.headerFirst : SKELETON_CELL_WIDTHS.headerRest}
+                  width={
+                    i === 0 ? SKELETON_CELL_WIDTHS.headerFirst : SKELETON_CELL_WIDTHS.headerRest
+                  }
                   height="16px"
                   borderRadius="medium"
                 />
