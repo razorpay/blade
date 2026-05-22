@@ -27,11 +27,12 @@ src/
 
 ### Other Commands
 
-| Task                  | Command          |
-| --------------------- | ---------------- |
-| Type check            | `yarn typecheck` |
-| Build blade package   | `yarn build`     |
-| Run storybook locally | `yarn start:web` |
+| Task                  | Command                                 |
+| --------------------- | --------------------------------------- |
+| Type check            | `yarn typecheck`                        |
+| Prettier format files | `yarn prettier --write <file1> <file2>` |
+| Build blade package   | `yarn build`                            |
+| Run storybook locally | `yarn start:web`                        |
 
 ## Common Patterns and Best Practices to follow
 
