@@ -68,12 +68,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent
-        data={data}
-        selectionType="multiple"
-        checkboxDisplay="on-hover"
-        {...args}
-      >
+      <TableComponent data={data} selectionType="multiple" checkboxDisplay="on-hover" {...args}>
         {(tableData) => (
           <>
             <TableHeader>
