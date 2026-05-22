@@ -13,7 +13,6 @@ const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="SankeyChart"
     componentDescription="A Sankey flow diagram for visualising how a quantity is distributed across multiple stages. Built with Recharts for layout and React SVG for rendering. Suitable for payment routing, funnel analysis, and budget allocation."
-    figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=PLACEHOLDER"
     apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/sankey-decisions.md"
   >
     <Heading size="large">Usage</Heading>

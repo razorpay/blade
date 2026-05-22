@@ -14,7 +14,6 @@ export type SankeyDataLink = {
   /** id of the target node */
   target: string;
   value: number;
-  label?: string;
 };
 
 export type SankeyChartProps = {

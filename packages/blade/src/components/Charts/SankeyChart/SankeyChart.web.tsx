@@ -67,7 +67,7 @@ function SankeyTooltipContent({
   return (
     <div
       style={{
-        backgroundColor: theme.colors.surface.icon.staticBlack.normal,
+        backgroundColor: theme.colors.surface.background.staticBlack.normal,
         borderRadius: theme.border.radius.large,
         border: `${theme.border.width.thin}px solid ${theme.colors.surface.border.gray.muted}`,
         padding: theme.spacing[4],
@@ -199,7 +199,7 @@ function SankeyChartInner({
           const source = nodeIdToIndex.get(l.source);
           const target = nodeIdToIndex.get(l.target);
           if (source === undefined || target === undefined) return null;
-          return { source, target, value: l.value, _originalIndex: i, label: l.label };
+          return { source, target, value: l.value, _originalIndex: i };
         })
         .filter((l): l is NonNullable<typeof l> => l !== null),
     [data.links, nodeIdToIndex],
@@ -527,16 +527,15 @@ function SankeyChartInner({
         payload,
       } = props;
 
-      const srcNodeIndex =
-        typeof payload.source === 'number'
-          ? payload.source
-          : (payload.source as RechartsSankeyNode & { index?: number })?.depth ?? 0;
-      const srcNode = data.nodes[
-        typeof payload.source === 'object'
-          ? nodeIdToIndex.get(((payload.source as unknown) as { id?: string })?.id ?? '') ??
-            srcNodeIndex
-          : payload.source
-      ] as SankeyDataNode | undefined;
+      // Recharts may pass source as a numeric index or as a resolved node object.
+      // resolveSourceIndex normalises both cases to a numeric index into data.nodes.
+      const resolveSourceIndex = (source: typeof payload.source): number => {
+        if (typeof source === 'number') return source;
+        const id = (source as unknown as { id?: string })?.id ?? '';
+        return nodeIdToIndex.get(id) ?? 0;
+      };
+      const srcNodeIndex = resolveSourceIndex(payload.source);
+      const srcNode = data.nodes[srcNodeIndex] as SankeyDataNode | undefined;
 
       const colorToken =
         linkColorOverride ??
@@ -589,8 +588,12 @@ function SankeyChartInner({
   );
 
   // ── Event handlers ───────────────────────────────────────────────────────
-  const handleMouseEnter = useCallback(
-    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
+  // Recharts Sankey passes (data, type) where type is 'node' | 'link'.
+  // Typed explicitly to avoid eslint-disable as-any suppression on the Sankey props.
+  type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
+
+  const handleMouseEnter = useCallback<SankeyEventHandler>(
+    (item, type): void => {
       setHovered({ type, index: item.index });
     },
     [],
@@ -600,8 +603,8 @@ function SankeyChartInner({
     setHovered(null);
   }, []);
 
-  const handleClick = useCallback(
-    (item: NodeProps | LinkProps, type: 'node' | 'link'): void => {
+  const handleClick = useCallback<SankeyEventHandler>(
+    (item, type): void => {
       if (type === 'node') {
         const nodeData = data.nodes[item.index];
         if (nodeData) onNodeClick?.(nodeData, item.index);
@@ -626,8 +629,8 @@ function SankeyChartInner({
         width="100%"
       >
         {/* Scroll wrapper — ensures minimum width on narrow viewports */}
-        <div style={{ width: '100%', overflowX: 'auto' }}>
-          <div style={{ minWidth: MIN_CHART_WIDTH }}>
+        <BaseBox width="100%" overflowX="auto">
+          <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
             <ResponsiveContainer width="100%" height={height}>
               <Sankey
                 data={{ nodes: data.nodes, links: rechartsLinks }}
@@ -635,12 +638,9 @@ function SankeyChartInner({
                 nodePadding={nodePadding}
                 node={renderNode}
                 link={renderLink}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onMouseEnter={handleMouseEnter as any}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onMouseLeave={handleMouseLeave as any}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onClick={handleClick as any}
+                onMouseEnter={handleMouseEnter as SankeyEventHandler}
+                onMouseLeave={handleMouseLeave}
+                onClick={handleClick as SankeyEventHandler}
                 margin={{
                   top: theme.spacing[3],
                   right: dynamicRightMargin,
@@ -662,8 +662,8 @@ function SankeyChartInner({
                 )}
               </Sankey>
             </ResponsiveContainer>
-          </div>
-        </div>
+          </BaseBox>
+        </BaseBox>
       </BaseBox>
     </CommonChartComponentsContext.Provider>
   );
