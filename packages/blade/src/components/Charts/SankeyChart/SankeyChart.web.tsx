@@ -117,6 +117,7 @@ function SankeyChartInner({
   showTooltip = true,
   showLabels = true,
   showLabelChip = true,
+  showPercentage = true,
   labelUnit,
   testID,
   onNodeClick,
@@ -212,7 +213,7 @@ function SankeyChartInner({
   );
 
   // Dynamic right margin — based on the widest chip across all nodes.
-  // The value/percentage part budget (120px) covers "X.XXL unit  (100.0%)".
+  // The value/percentage part budget (120px) covers "X.XXL unit  (100%)".
   // Falls back to CHIP_MIN_WIDTH for very short names.
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
@@ -324,10 +325,10 @@ function SankeyChartInner({
       const humanized = humanizeIndian(nodeValue);
       const nodeDepth = nodeDepthInfo.depthOf.get(nodeData.id) ?? 0;
       const levelCount = nodeDepthInfo.countPerDepth.get(nodeDepth) ?? 1;
-      const pct = totalValue > 0 ? ((nodeValue / totalValue) * 100).toFixed(1) : '0.0';
+      const pct = totalValue > 0 ? Math.round((nodeValue / totalValue) * 100) : 0;
       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-      // Suppress percentage when this node is the only one at its depth level
-      const labelValue = levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+      // Show percentage only when enabled AND this node is not the only one at its depth level
+      const labelValue = showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
 
       // ── Chip sizing ───────────────────────────────────────────────────────
       const fontSize = theme.typography.fonts.size[75]; // 12px

@@ -36,6 +36,11 @@ export type SankeyChartProps = {
    * without the chip background — cleaner for dense charts or static exports.
    */
   showLabelChip?: boolean;
+  /**
+   * When true (default), the percentage of total flow is shown alongside the value in each label.
+   * When false, only the humanized value (and optional unit) is shown — no percentage.
+   */
+  showPercentage?: boolean;
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
   onNodeClick?: (node: SankeyDataNode, index: number) => void;

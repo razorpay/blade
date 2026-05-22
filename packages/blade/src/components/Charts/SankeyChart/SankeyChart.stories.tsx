@@ -77,6 +77,11 @@ export default {
       description:
         'When true (default), labels render as Blade-styled chips with value + percentage. When false, renders the same info (name + value + percentage) as plain SVG text without chip background — cleaner for dense charts or static exports.',
     },
+    showPercentage: {
+      control: { type: 'boolean' },
+      description:
+        'When true (default), shows the percentage of total flow alongside the value in each label. When false, only the humanized value (and optional unit) is shown.',
+    },
     labelUnit: {
       control: { type: 'text' },
       description: 'Unit appended to node value in label chip, e.g. "txn" or "₹".',
@@ -213,6 +218,7 @@ type DefaultStoryArgs = SankeyChartProps & {
   nodesL3: number;
   nodesL4: number;
   showLabelChip: boolean;
+  showPercentage: boolean;
 };
 
 export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
@@ -220,6 +226,7 @@ export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
   showTooltip = true,
   showLabels = true,
   showLabelChip = true,
+  showPercentage = true,
   labelUnit = 'txn',
   numLevels = 4,
   nodesL1 = 1,
@@ -240,6 +247,7 @@ export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
           showTooltip={showTooltip}
           showLabels={showLabels}
           showLabelChip={showLabelChip}
+          showPercentage={showPercentage}
           labelUnit={labelUnit}
           {...props}
         />
