@@ -46,6 +46,7 @@
     "dev": "npm-run-all --parallel dev:blade-core storybook",
     "dev:blade-core": "cd ../blade-core && yarn build:watch",
     "prestorybook": "cd ../blade-core && yarn build",
+    "start:web": "yarn storybook",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static"
   },
