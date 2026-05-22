@@ -10,7 +10,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import type { View } from 'react-native';
+import type { LayoutChangeEvent } from 'react-native';
+import { View } from 'react-native';
 import { getTooltipContentWrapperStyles } from './getTooltipContentWrapperStyles';
 import type { TooltipContentWrapperProps } from './types';
 import type { ColorSchemeNames } from '~tokens/theme/theme';
@@ -59,8 +60,49 @@ const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>
       };
     }, [isVisible]);
 
+    // RN doesn't support backdropFilter: blur(). The tooltip background
+    // (popup.background.gray.intense) is semi-transparent — on web the blur makes it
+    // appear solid, but on native content bleeds through. We render an opaque sibling
+    // View behind the tooltip at the same position/size measured via onLayout.
+    // The measurement happens while opacity is still 0 (entry animation), so no flash.
+    const [layout, setLayout] = React.useState<{
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    } | null>(null);
+
+    const handleLayout = React.useCallback((e: LayoutChangeEvent) => {
+      const { x, y, width, height } = e.nativeEvent.layout;
+      setLayout((prev) => {
+        if (
+          prev &&
+          prev.x === x &&
+          prev.y === y &&
+          prev.width === width &&
+          prev.height === height
+        ) {
+          return prev;
+        }
+        return { x, y, width, height };
+      });
+    }, []);
+
     return (
       <Animated.View style={animatedStyles}>
+        {layout && (
+          <View
+            style={{
+              position: 'absolute',
+              left: layout.x,
+              top: layout.y,
+              width: layout.width,
+              height: layout.height,
+              backgroundColor: theme.colors.surface.background.gray.intense,
+              borderRadius: theme.border.radius.medium,
+            }}
+          />
+        )}
         <StyledTooltipContentWrapper
           styles={styles}
           // Shadow styles need to be passed directly through native style prop
@@ -69,6 +111,7 @@ const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>
           elevation={20}
           ref={ref as never}
           collapse={false}
+          onLayout={handleLayout}
           // if I don't assert this TS throws error
           // I think because of the intersection type in TooltipContentWrapperProps
           {...(props as any)}
