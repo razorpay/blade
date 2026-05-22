@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ListView } from '../ListView';
 import type { ListViewProps } from '../types';
 import { ListViewFilters } from '../ListViewFilters';

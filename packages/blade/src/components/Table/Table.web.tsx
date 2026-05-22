@@ -155,7 +155,7 @@ const SKELETON_CELL_WIDTHS = {
   middle: '75%',
   headerFirst: '80%',
   headerRest: '60%',
-};
+} as const;
 
 const StyledSkeletonRow = styled(BaseBox)<{ $columns: number; $isHeader?: boolean }>(
   ({ theme, $columns, $isHeader }) => ({

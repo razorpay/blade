@@ -11338,37 +11338,39 @@ exports[`<Table /> should render table with isLoading 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-top: 56px;
-  padding-bottom: 56px;
 }
 
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.c4.c4.c4.c4.c4 {
+  height: 16px;
+  width: 80%;
+  border-radius: 12px;
+}
+
+.c6.c6.c6.c6.c6 {
+  height: 16px;
+  width: 60%;
+  border-radius: 12px;
+}
+
+.c8.c8.c8.c8.c8 {
+  height: 14px;
+  width: 70%;
+  border-radius: 12px;
+}
+
+.c9.c9.c9.c9.c9 {
+  height: 14px;
+  width: 75%;
+  border-radius: 12px;
+}
+
+.c10.c10.c10.c10.c10 {
+  height: 14px;
+  width: 50%;
+  border-radius: 12px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -11394,17 +11396,57 @@ exports[`<Table /> should render table with isLoading 1`] = `
   border-bottom: 1px solid hsla(204,8%,88%,1);
 }
 
-.c4.c4.c4.c4.c4 {
-  padding: 1px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr-450290765 960ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+.c5.c5.c5.c5.c5 {
+  opacity: 0;
+  background-color: hsla(206,10%,29%,0.06);
+  -webkit-animation-name: lbWRkT-450290765,cxENvt-450290765;
+  animation-name: lbWRkT-450290765,cxENvt-450290765;
+  -webkit-animation-duration: 960ms,1320ms;
+  animation-duration: 960ms,1320ms;
+  -webkit-animation-delay: 0ms,960ms;
+  animation-delay: 0ms,960ms;
+  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  -webkit-animation-iteration-count: 1,infinite;
+  animation-iteration-count: 1,infinite;
+  -webkit-animation-direction: normal,alternate;
+  animation-direction: normal,alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: grid;
+  grid-template-columns: repeat(6,minmax(100px,1fr));
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-bottom-style: solid;
+  gap: 12px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: grid;
+  grid-template-columns: repeat(6,minmax(100px,1fr));
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(206,10%,29%,0.12);
+  border-bottom-style: solid;
+  gap: 12px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 <div>
@@ -11415,50 +11457,287 @@ exports[`<Table /> should render table with isLoading 1`] = `
     <div
       class="c2"
       data-blade-component="table"
+      data-testid="table-skeleton"
     >
       <div
-        class=""
-        data-blade-component="spinner"
-        data-testid="table-spinner"
+        class=" c3"
+        data-blade-component="base-box"
       >
         <div
-          aria-label="Loading Table"
-          class="c3"
-          data-blade-component="base-box"
-          role="progressbar"
-        >
-          <div
-            class=" c4"
-            data-blade-component="base-box"
-          >
-            <svg
-              aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
-              data-blade-component="icon"
-              fill="none"
-              height="20px"
-              viewBox="0 0 24 24"
-              width="20px"
-            >
-              <path
-                d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
-                data-blade-component="svg-path"
-                fill="hsla(204, 9%, 42%, 1)"
-                fill-opacity="0.2"
-              />
-              <path
-                d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
-                data-blade-component="svg-path"
-                fill="hsla(204, 9%, 42%, 1)"
-              />
-              <path
-                d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
-                data-blade-component="svg-path"
-                fill="hsla(204, 9%, 42%, 1)"
-              />
-            </svg>
-          </div>
-        </div>
+          aria-hidden="true"
+          class="c4 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c6 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c6 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c6 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c6 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c6 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
+      </div>
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-hidden="true"
+          class="c8 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c9 c5"
+          data-blade-component="skeleton"
+        />
+        <div
+          aria-hidden="true"
+          class="c10 c5"
+          data-blade-component="skeleton"
+        />
       </div>
     </div>
   </div>
