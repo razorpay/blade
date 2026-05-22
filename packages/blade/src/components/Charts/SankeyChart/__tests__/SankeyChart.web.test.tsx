@@ -5,8 +5,9 @@
  */
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { SankeyChart } from '../SankeyChart.web';
+import { SankeyChart } from '../SankeyChart';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 // ── ResponsiveContainer mock ───────────────────────────────────────────────────
 // Recharts' ResponsiveContainer uses ResizeObserver internally, which jsdom
@@ -60,7 +61,7 @@ describe('SankeyChart — rendering', () => {
 
   it('sets data-blade-component attribute for analytics', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} />);
-    expect(container.querySelector('[data-blade-component="SankeyChart"]')).toBeTruthy();
+    expect(container.querySelector('[data-blade-component="sankey-chart"]')).toBeTruthy();
   });
 
   it('renders the correct number of node rects after layout', () => {
@@ -101,6 +102,11 @@ describe('SankeyChart — rendering', () => {
   it('accepts testID and renders it as data-testid', () => {
     const { container } = renderWithTheme(<SankeyChart data={data} testID="sankey-chart" />);
     expect(container.querySelector('[data-testid="sankey-chart"]')).toBeTruthy();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = renderWithTheme(<SankeyChart data={data} />);
+    await assertAccessible(container);
   });
 });
 
@@ -148,7 +154,7 @@ describe('SankeyChart — interactivity', () => {
     const firstRect = container.querySelector('svg rect')!;
     fireEvent.mouseEnter(firstRect);
     const tooltipContent = container.querySelector(
-      '[data-blade-component="SankeyChart"] > div > div[style*="position: absolute"]',
+      '[data-blade-component="sankey-chart"] > div > div[style*="position: absolute"]',
     );
     expect(tooltipContent).toBeNull();
   });

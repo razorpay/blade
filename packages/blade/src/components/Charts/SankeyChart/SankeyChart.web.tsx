@@ -67,7 +67,7 @@ function SankeyTooltipContent({
   return (
     <div
       style={{
-        backgroundColor: theme.colors.surface.background.staticBlack.normal,
+        backgroundColor: theme.colors.surface.icon.staticBlack.normal,
         borderRadius: theme.border.radius.large,
         border: `${theme.border.width.thin}px solid ${theme.colors.surface.border.gray.muted}`,
         padding: theme.spacing[4],
@@ -130,9 +130,15 @@ function SankeyChartInner({
 
   const defaultColorTokens = useChartsColorTheme({
     colorTheme: 'categorical',
-  }).filter((t) => t !== 'data.background.categorical.gray.faint');
+  }).filter(
+    // gray.faint is near-white on light backgrounds and invisible as a node fill
+    (t) => t !== 'data.background.categorical.gray.faint',
+  );
 
   const resolveColor = useCallback(
+    // tokenPath is typed ChartsCategoricalColorToken at all call sites, but this wrapper
+    // accepts a plain string so that palette entries and per-node overrides flow through a
+    // single path; getIn's K bound (DotNotationToken<T>) requires the cast.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokenPath: string): string => (getIn(theme.colors, tokenPath as any) as string) ?? tokenPath,
     [theme],
@@ -485,6 +491,7 @@ function SankeyChartInner({
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // CHIP_MAX_WIDTH is a module-level constant — stable, intentionally omitted
     [
       data.nodes,
       nodeColorOverride,
@@ -507,7 +514,6 @@ function SankeyChartInner({
       measureText,
       totalValue,
       nodeDepthInfo,
-      CHIP_MAX_WIDTH,
       theme,
     ],
   );
@@ -574,6 +580,7 @@ function SankeyChartInner({
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // module-level imports (castWebType, NODE_MIN_HEIGHT) are stable; intentionally omitted
     [
       data.nodes,
       nodeIdToIndex,

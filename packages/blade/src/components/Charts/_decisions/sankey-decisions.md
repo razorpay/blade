@@ -1,7 +1,7 @@
 # SankeyChart — API & Architecture Decisions
 
 **Component:** `SankeyChart`  
-**Status:** Draft  
+**Status:** Approved  
 **Authors:** Debabrata Malik (Product Designer, MoneySaver)  
 **Last updated:** 2026-05-21
 

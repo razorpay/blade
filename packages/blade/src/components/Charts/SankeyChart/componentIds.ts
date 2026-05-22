@@ -1,3 +1,3 @@
 export const componentIds = {
-  SankeyChart: 'SankeyChart',
+  SankeyChart: 'sankey-chart',
 };

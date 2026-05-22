@@ -6,17 +6,18 @@
  * React Native SVG library (e.g. react-native-svg) and a separate
  * layout pass. This is tracked as a future enhancement.
  */
-import type React from 'react';
+import React from 'react';
 import type { SankeyChartProps } from './types';
 import { throwBladeError } from '~utils/logger';
+import { Text } from '~components/Typography';
 
 const SankeyChart = (_props: SankeyChartProps): React.ReactElement => {
   throwBladeError({
     moduleName: 'SankeyChart',
     message: 'SankeyChart is not yet implemented for native',
   });
-  // @ts-expect-error: unreachable, throwBladeError always throws
-  return null;
+
+  return <Text>SankeyChart is not available for Native mobile apps.</Text>;
 };
 
 export { SankeyChart };
