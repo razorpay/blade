@@ -15,6 +15,7 @@ const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
 const AGENT_REVIEWERS = new Set(["rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"]);
 const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"]);
 const AUTO_APPROVE_LABEL = "rcore:eligible-for-auto-approval";
+const IGNORE_LABEL = "Ignore - Test PR";
 
 function gh(...args) {
   const result = execSync(`gh ${args.join(" ")}`, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] });
@@ -37,9 +38,12 @@ const todayLabel = formatDate(new Date());
 
 // Fetch PRs
 const allPRs = gh("pr", "list", "--repo", REPO, "--state", "all",
-  "--json", "number,title,createdAt,labels,author", "--limit", "200");
+  "--json", "number,title,createdAt,mergedAt,labels,author", "--limit", "200");
 
-const prs = allPRs.filter(p => new Date(p.createdAt) >= since);
+const prs = allPRs.filter(p =>
+  new Date(p.createdAt) >= since &&
+  !p.labels.some(l => l.name === IGNORE_LABEL)
+);
 const totalPRs = prs.length;
 
 const agentPRs = prs.filter(p => AGENT_AUTHORS.has(p.author.login?.replace("app/", "")));
@@ -70,6 +74,31 @@ for (const pr of prs) {
 
 const humanComments = totalComments - agentComments;
 
+// Compute time-to-merge: PRs merged in the timespan (regardless of creation date)
+const VERSION_BUMP_PATTERN = /update version/i;
+const mergedPRs = allPRs.filter(p =>
+  p.mergedAt &&
+  new Date(p.mergedAt) >= since &&
+  !VERSION_BUMP_PATTERN.test(p.title) &&
+  !p.labels.some(l => l.name === IGNORE_LABEL)
+);
+const ttmHours = mergedPRs.map(p => (new Date(p.mergedAt) - new Date(p.createdAt)) / (1000 * 60 * 60));
+
+function formatHours(h) {
+  if (!h && h !== 0) return "N/A";
+  if (h < 24) return `${h.toFixed(1)}h`;
+  return `${(h / 24).toFixed(1)}d`;
+}
+
+function median(arr) {
+  if (!arr.length) return null;
+  const s = [...arr].sort((a, b) => a - b);
+  return s.length % 2 === 0 ? (s[s.length / 2 - 1] + s[s.length / 2]) / 2 : s[Math.floor(s.length / 2)];
+}
+
+const avgTtm = ttmHours.length ? ttmHours.reduce((a, b) => a + b, 0) / ttmHours.length : null;
+const medTtm = median(ttmHours);
+
 const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${days} day${days !== 1 ? "s" : ""})
 
 - Timespan: Last ${days} day${days !== 1 ? "s" : ""} (${sinceLabel} to ${todayLabel})
@@ -92,6 +121,8 @@ const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${da
 | % of PRs raised (by human) | ${pct(humanPRs, totalPRs)} | Percentage of PRs opened by human contributors              |
 | % of PRs raised (by agent) | ${pct(agentPRs.length, totalPRs)} | Percentage of PRs opened by agent                      |
 | Total PRs auto-approved    | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that have the \`rcore:eligible-for-auto-approval\` label |
+| Time to Merge (Average) | ${formatHours(avgTtm)} | Average time from PR creation to merge; excludes "update version" PRs |
+| Time to Merge (Median)  | ${formatHours(medTtm)} | Median time from PR creation to merge; excludes "update version" PRs  |
 
 ### Review Metric
 
