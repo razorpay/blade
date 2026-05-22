@@ -272,9 +272,7 @@ function SankeyChartInner({
   // Used to compute each node's percentage of the overall flow
   const totalValue = useMemo(() => {
     const targetIds = new Set(data.links.map((l) => l.target));
-    return data.links
-      .filter((l) => !targetIds.has(l.source))
-      .reduce((sum, l) => sum + l.value, 0);
+    return data.links.filter((l) => !targetIds.has(l.source)).reduce((sum, l) => sum + l.value, 0);
   }, [data.links]);
 
   // ── Opacity helpers ──────────────────────────────────────────────────────
@@ -340,8 +338,11 @@ function SankeyChartInner({
       // Wrap when content + padding would exceed CHIP_MAX_WIDTH
       const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
       const chipW = shouldWrap
-        // Hug the widest line — don't fill the full max width unnecessarily
-        ? Math.min(CHIP_MAX_WIDTH, Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2))
+        ? // Hug the widest line — don't fill the full max width unnecessarily
+          Math.min(
+            CHIP_MAX_WIDTH,
+            Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
+          )
         : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
 
       // Two-line height: pad + line1 + gap + line2 + pad
@@ -391,10 +392,7 @@ function SankeyChartInner({
                     // Two-line: name on line 1, value+pct on line 2
                     // Each tspan baseline = slot_top + (fontSize + capHeight) / 2
                     // which visually centres cap-height glyphs within their fontSize slot
-                    <text
-                      fontSize={fontSize}
-                      style={{ userSelect: 'none', fontFamily }}
-                    >
+                    <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
                       <tspan
                         x={chipX + CHIP_PAD_X}
                         y={chipY + theme.spacing[3] + (fontSize * (1 + capHeightRatio)) / 2}
@@ -405,7 +403,13 @@ function SankeyChartInner({
                       </tspan>
                       <tspan
                         x={chipX + CHIP_PAD_X}
-                        y={chipY + theme.spacing[3] + fontSize + lineGap + (fontSize * (1 + capHeightRatio)) / 2}
+                        y={
+                          chipY +
+                          theme.spacing[3] +
+                          fontSize +
+                          lineGap +
+                          (fontSize * (1 + capHeightRatio)) / 2
+                        }
                         fill={labelValueColor}
                       >
                         {labelValue}
@@ -432,58 +436,50 @@ function SankeyChartInner({
                     </text>
                   )}
                 </>
-              ) : (
-                // ── Plain text mode: same info as chip, no background rect ───
-                shouldWrap ? (
-                  // Two-line: name on line 1, value+pct on line 2
-                  // Baselines chosen so the two-line block is centred on nodeMidY:
-                  //   B1 = nodeMidY - lineGap/2
-                  //   B2 = nodeMidY + capHeight + lineGap/2
-                  <text
-                    fontSize={fontSize}
-                    style={{ userSelect: 'none', fontFamily }}
-                  >
-                    <tspan
-                      x={chipX}
-                      y={nodeMidY - lineGap / 2}
-                      fontWeight={theme.typography.fonts.weight.semibold}
-                      fill={labelNameColor}
-                    >
-                      {nodeData.name}
-                    </tspan>
-                    <tspan
-                      x={chipX}
-                      y={nodeMidY + fontSize * capHeightRatio + lineGap / 2}
-                      fontWeight={theme.typography.fonts.weight.regular}
-                      fill={labelValueColor}
-                    >
-                      {labelValue}
-                    </tspan>
-                  </text>
-                ) : (
-                  // Single-line: name + value inline — baseline at nodeMidY + capHeight/2
-                  // so cap-height glyphs are visually centred on the node bar
-                  <text
+              ) : // ── Plain text mode: same info as chip, no background rect ───
+              shouldWrap ? (
+                // Two-line: name on line 1, value+pct on line 2
+                // Baselines chosen so the two-line block is centred on nodeMidY:
+                //   B1 = nodeMidY - lineGap/2
+                //   B2 = nodeMidY + capHeight + lineGap/2
+                <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
+                  <tspan
                     x={chipX}
-                    y={nodeMidY + (fontSize * capHeightRatio) / 2}
-                    fontSize={fontSize}
-                    style={{ userSelect: 'none', fontFamily }}
+                    y={nodeMidY - lineGap / 2}
+                    fontWeight={theme.typography.fonts.weight.semibold}
+                    fill={labelNameColor}
                   >
-                    <tspan
-                      fontWeight={theme.typography.fonts.weight.semibold}
-                      fill={labelNameColor}
-                    >
-                      {nodeData.name}
-                    </tspan>
-                    <tspan
-                      fontWeight={theme.typography.fonts.weight.regular}
-                      fill={labelValueColor}
-                      dx={theme.spacing[2]}
-                    >
-                      {labelValue}
-                    </tspan>
-                  </text>
-                )
+                    {nodeData.name}
+                  </tspan>
+                  <tspan
+                    x={chipX}
+                    y={nodeMidY + fontSize * capHeightRatio + lineGap / 2}
+                    fontWeight={theme.typography.fonts.weight.regular}
+                    fill={labelValueColor}
+                  >
+                    {labelValue}
+                  </tspan>
+                </text>
+              ) : (
+                // Single-line: name + value inline — baseline at nodeMidY + capHeight/2
+                // so cap-height glyphs are visually centred on the node bar
+                <text
+                  x={chipX}
+                  y={nodeMidY + (fontSize * capHeightRatio) / 2}
+                  fontSize={fontSize}
+                  style={{ userSelect: 'none', fontFamily }}
+                >
+                  <tspan fontWeight={theme.typography.fonts.weight.semibold} fill={labelNameColor}>
+                    {nodeData.name}
+                  </tspan>
+                  <tspan
+                    fontWeight={theme.typography.fonts.weight.regular}
+                    fill={labelValueColor}
+                    dx={theme.spacing[2]}
+                  >
+                    {labelValue}
+                  </tspan>
+                </text>
               )}
             </g>
           )}
@@ -537,7 +533,7 @@ function SankeyChartInner({
       // resolveSourceIndex normalises both cases to a numeric index into data.nodes.
       const resolveSourceIndex = (source: typeof payload.source): number => {
         if (typeof source === 'number') return source;
-        const id = (source as unknown as { id?: string })?.id ?? '';
+        const id = ((source as unknown) as { id?: string })?.id ?? '';
         return nodeIdToIndex.get(id) ?? 0;
       };
       const srcNodeIndex = resolveSourceIndex(payload.source);
@@ -599,12 +595,9 @@ function SankeyChartInner({
   // Typed explicitly to avoid eslint-disable as-any suppression on the Sankey props.
   type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
 
-  const handleMouseEnter = useCallback<SankeyEventHandler>(
-    (item, type): void => {
-      setHovered({ type, index: item.index });
-    },
-    [],
-  );
+  const handleMouseEnter = useCallback<SankeyEventHandler>((item, type): void => {
+    setHovered({ type, index: item.index });
+  }, []);
 
   const handleMouseLeave = useCallback((): void => {
     setHovered(null);
