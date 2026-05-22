@@ -645,9 +645,14 @@ function SankeyChartInner({
                 nodePadding={nodePadding}
                 node={renderNode}
                 link={renderLink}
-                onMouseEnter={handleMouseEnter as SankeyEventHandler}
+                // Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
+                // ((item, type, e) => void) — an intersection that can't be satisfied by a
+                // plain user callback. Casting through unknown is the accepted pattern here.
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onMouseEnter={handleMouseEnter as any}
                 onMouseLeave={handleMouseLeave}
-                onClick={handleClick as SankeyEventHandler}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onClick={handleClick as any}
                 margin={{
                   top: theme.spacing[3],
                   right: dynamicRightMargin,
