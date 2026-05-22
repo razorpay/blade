@@ -121,8 +121,8 @@ const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${da
 | % of PRs raised (by human) | ${pct(humanPRs, totalPRs)} | Percentage of PRs opened by human contributors              |
 | % of PRs raised (by agent) | ${pct(agentPRs.length, totalPRs)} | Percentage of PRs opened by agent                      |
 | Total PRs auto-approved    | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that have the \`rcore:eligible-for-auto-approval\` label |
-| Average time to merge (excl. version bumps) | ${formatHours(avgTtm)} | Average time from PR creation to merge; excludes "update version" PRs |
-| Median time to merge (excl. version bumps)  | ${formatHours(medTtm)} | Median time from PR creation to merge; excludes "update version" PRs  |
+| Time to Merge (Average) | ${formatHours(avgTtm)} | Average time from PR creation to merge; excludes "update version" PRs |
+| Time to Merge (Median)  | ${formatHours(medTtm)} | Median time from PR creation to merge; excludes "update version" PRs  |
 
 ### Review Metric
 

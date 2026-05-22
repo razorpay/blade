@@ -39,8 +39,8 @@ The script outputs the full markdown report. Then:
 | % of PRs raised (by human) | {PRs raised by human / Total PRs}                                 | Percentage of PRs opened by human contributors                           |
 | % of PRs raised (by agent) | {PRs raised by agent / Total PRs}                                 | Percentage of PRs opened by agent                                        |
 | Total PRs auto-approved                     | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that have the `rcore:eligible-for-auto-approval` label |
-| Average time to merge (excl. version bumps) | {Average time from PR creation to merge}                          | Average time from PR creation to merge; excludes "update version" PRs    |
-| Median time to merge (excl. version bumps)  | {Median time from PR creation to merge}                           | Median time from PR creation to merge; excludes "update version" PRs     |
+| Time to Merge (Average) | {Average time from PR creation to merge}                          | Average time from PR creation to merge; excludes "update version" PRs    |
+| Time to Merge (Median)  | {Median time from PR creation to merge}                           | Median time from PR creation to merge; excludes "update version" PRs     |
 
 === Review Metric ===
 
