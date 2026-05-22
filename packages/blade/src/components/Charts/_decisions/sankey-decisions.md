@@ -9,7 +9,6 @@
 
 ## References
 
-- **Figma:** [Blade DSL — SankeyChart](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=PLACEHOLDER) *(update with final node ID)*
 - **Design spec:** Section 3.7 — Volume Distribution (Sankey Chart) in the MoneySaver Dashboard spec
 - **Related decisions:** [`Charts/_decisions/decisions.md`](../../../Charts/_decisions/decisions.md)
 
@@ -60,7 +59,6 @@ type SankeyDataLink = {
   source: string; // node id
   target: string; // node id
   value: number;
-  label?: string;
 };
 
 // Prop
