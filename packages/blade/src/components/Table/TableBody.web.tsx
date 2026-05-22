@@ -325,17 +325,18 @@ const StyledRow = styled(Row)<{
       // draws the row separator line — stays fully visible.
       // Reveal on row hover, keyboard focus, or when the row is already selected
       // (.row-select-selected class is added by @table-library/react-table-library).
-      ...(checkboxDisplay === 'on-hover' && selectionType === 'multiple' && {
-        '& td:first-child .cell-wrapper > *': {
-          opacity: 0,
-          transition: `opacity ${makeMotionTime(
-            getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-          )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
-        },
-        '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
-        '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
-        '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
-      }),
+      ...(checkboxDisplay === 'on-hover' &&
+        selectionType === 'multiple' && {
+          '& td:first-child .cell-wrapper > *': {
+            opacity: 0,
+            transition: `opacity ${makeMotionTime(
+              getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+            )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+          },
+          '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
+          '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
+          '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
+        }),
     },
   };
 });
