@@ -38,11 +38,13 @@ The script outputs the full markdown report. Then:
 | PRs raised (by human)      | {PRs raised by human}                                             | Total PRs minus PRs raised by agent                                      |
 | % of PRs raised (by human) | {PRs raised by human / Total PRs}                                 | Percentage of PRs opened by human contributors                           |
 | % of PRs raised (by agent) | {PRs raised by agent / Total PRs}                                 | Percentage of PRs opened by agent                                        |
-| Total PRs auto-approved    | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that have the `rcore:eligible-for-auto-approval` label |
+| Total PRs auto-approved                     | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that have the `rcore:eligible-for-auto-approval` label |
+| Average time to merge (excl. version bumps) | {Average time from PR creation to merge}                          | Average time from PR creation to merge; excludes "update version" PRs    |
+| Median time to merge (excl. version bumps)  | {Median time from PR creation to merge}                           | Median time from PR creation to merge; excludes "update version" PRs     |
 
 === Review Metric ===
 
-Note: exclude all comments by `changeset-bot`, `github-actions`, `codesandbox-ci` bots in all the metrics below as they are not applicable
+Note: exclude all comments by `changeset-bot`, `github-actions`, `codesandbox-ci` bots in all the metrics below as they are not applicable. PRs with the `Ignore - Test PR` label are excluded from all calculations.
 
 | Metric                                      | Value                                         | Description of Metric                                                         |
 | ------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |
