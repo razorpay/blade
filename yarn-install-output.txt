@@ -1,0 +1,66 @@
+yarn install v1.22.22
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+warning Resolution field "@octokit/rest@21.0.2" is incompatible with requested version "@octokit/rest@^18.1.0"
+warning Resolution field "@octokit/rest@21.0.2" is incompatible with requested version "@octokit/rest@^18.12.0"
+warning Resolution field "@types/react@18.2.24" is incompatible with requested version "@types/react@^17"
+[3/5] Fetching packages...
+(node:2481) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+warning bare-fs@4.5.5: The engine "bare" appears to be invalid.
+warning bare-os@3.7.1: The engine "bare" appears to be invalid.
+[4/5] Linking dependencies...
+warning " > styled-components@5.3.11" has unmet peer dependency "react-is@>= 16.8.0".
+warning " > eslint-config-kentcdodds@18.0.0" has incorrect peer dependency "eslint@^7.5.0".
+warning "eslint-config-kentcdodds > @typescript-eslint/eslint-plugin@4.33.0" has incorrect peer dependency "eslint@^5.0.0 || ^6.0.0 || ^7.0.0".
+warning "eslint-config-kentcdodds > @typescript-eslint/parser@4.33.0" has incorrect peer dependency "eslint@^5.0.0 || ^6.0.0 || ^7.0.0".
+warning "eslint-config-kentcdodds > eslint-plugin-testing-library@4.12.4" has incorrect peer dependency "eslint@^7.5.0".
+warning " > eslint-plugin-storybook@10.2.16" has unmet peer dependency "storybook@^10.2.16".
+warning "eslint-plugin-storybook > @typescript-eslint/utils@8.56.1" has incorrect peer dependency "eslint@^8.57.0 || ^9.0.0 || ^10.0.0".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "@floating-ui/react-native@^0.10.0".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "@gorhom/bottom-sheet@^4.4.6".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "@gorhom/portal@^1.0.14".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "@razorpay/i18nify-js@^1.12.3".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "@razorpay/i18nify-react@^4.0.12".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "react-hot-toast@2.4.1".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "react-native-gesture-handler@^2.9.0".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "react-native-pager-view@^6.2.1 || ^8.0.0".
+warning " > @razorpay/blade@12.104.0" has unmet peer dependency "react-native-svg@^12.3.0".
+warning " > @razorpay/blade-svelte@0.7.0" has unmet peer dependency "svelte@>=5.35.0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > recharts@3.7.0" has unmet peer dependency "react-is@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > @storybook/addon-ondevice-notes@10.2.3" has unmet peer dependency "@storybook/react@^10".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > @testing-library/react-hooks@8.0.1" has incorrect peer dependency "react@^16.9.0 || ^17.0.0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > @testing-library/user-event@14.4.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > react-docgen-typescript-plugin@1.0.5" has unmet peer dependency "webpack@>= 4".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-mcp > @modelcontextprotocol/sdk@1.26.0" has unmet peer dependency "zod@^3.25 || ^4.0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-svelte > @storybook/addon-docs@10.2.19" has incorrect peer dependency "storybook@^10.2.19".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-svelte > @storybook/addon-links@10.2.19" has incorrect peer dependency "storybook@^10.2.19".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-svelte > @storybook/addon-svelte-csf@5.0.10" has unmet peer dependency "@storybook/svelte@^0.0.0-0 || ^8.2.0 || ^9.0.0 || ^9.1.0-0 || ^10.0.0-0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > react-hot-toast > goober@2.1.18" has unmet peer dependency "csstype@^3.0.10".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > @storybook/addon-ondevice-controls > react-native-modal-datetime-picker@18.0.0" has incorrect peer dependency "@react-native-community/datetimepicker@>=6.7.0".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > @storybook/react-native > esbuild-register@3.6.0" has unmet peer dependency "esbuild@>=0.12 <1".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > storybook > @testing-library/user-event@14.6.1" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-svelte > @storybook/addon-docs > @storybook/csf-plugin@10.2.19" has incorrect peer dependency "storybook@^10.2.19".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade-svelte > @storybook/addon-docs > @storybook/react-dom-shim@10.2.19" has incorrect peer dependency "storybook@^10.2.19".
+warning "workspace-aggregator-bc4c050d-23a9-44ce-b4a5-e0718141d9e4 > @razorpay/blade > react-scripts > eslint-config-react-app > eslint-plugin-flowtype@8.0.3" has unmet peer dependency "@babel/plugin-syntax-flow@^7.14.5".
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+warning Workspaces can only be enabled in private projects.
+
+EXIT_CODE: 1
+
+---
+Run at: 2026-05-22
+Timeout: 10 minutes
+Status: Completed before timeout with exit code 1
+Note: Dependencies appeared to be installed (packages fetched and linked), but yarn exited with code 1 due to "Workspaces can only be enabled in private projects" warnings and various peer dependency warnings.
