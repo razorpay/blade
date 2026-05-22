@@ -32,7 +32,8 @@ export type SankeyChartProps = {
   showLabels?: boolean;
   /**
    * When true (default), labels render as Blade-styled chips with value + percentage.
-   * When false, renders a plain text node name — cleaner for dense charts or static exports.
+   * When false, renders the same information (name + value + percentage) as plain SVG text
+   * without the chip background — cleaner for dense charts or static exports.
    */
   showLabelChip?: boolean;
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */

@@ -75,7 +75,7 @@ export default {
     showLabelChip: {
       control: { type: 'boolean' },
       description:
-        'When true (default), labels render as Blade-styled chips with value + percentage. When false, renders plain semibold text — cleaner for dense charts or static exports.',
+        'When true (default), labels render as Blade-styled chips with value + percentage. When false, renders the same info (name + value + percentage) as plain SVG text without chip background — cleaner for dense charts or static exports.',
     },
     labelUnit: {
       control: { type: 'text' },
