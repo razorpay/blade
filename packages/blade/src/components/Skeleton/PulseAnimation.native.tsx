@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import Animated, {
   cancelAnimation,
-  interpolateColor,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -17,46 +17,15 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 
-const hslaToRgba = (color: string): string => {
+const parseHsla = (color: string): { base: string; alpha: number } => {
   const match = color.match(
-    /hsla?\(\s*([\d.]+)\s*,\s*([\d.]+)%\s*,\s*([\d.]+)%\s*(?:,\s*([\d.]+))?\s*\)/,
+    /hsla?\(\s*([\d.]+)\s*,\s*([\d.]+%)\s*,\s*([\d.]+%)\s*(?:,\s*([\d.]+))?\s*\)/,
   );
-  if (!match) return color;
-
-  const h = parseFloat(match[1]);
-  const s = parseFloat(match[2]) / 100;
-  const l = parseFloat(match[3]) / 100;
-  const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
-
-  const c = (1 - Math.abs(2 * l - 1)) * s;
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = l - c / 2;
-
-  let r = 0;
-  let g = 0;
-  let b = 0;
-
-  if (h < 60) {
-    r = c;
-    g = x;
-  } else if (h < 120) {
-    r = x;
-    g = c;
-  } else if (h < 180) {
-    g = c;
-    b = x;
-  } else if (h < 240) {
-    g = x;
-    b = c;
-  } else if (h < 300) {
-    r = x;
-    b = c;
-  } else {
-    r = c;
-    b = x;
-  }
-
-  return `rgba(${Math.round((r + m) * 255)}, ${Math.round((g + m) * 255)}, ${Math.round((b + m) * 255)}, ${a})`;
+  if (!match) return { base: color, alpha: 1 };
+  return {
+    base: `hsl(${match[1]}, ${match[2]}, ${match[3]})`,
+    alpha: match[4] !== undefined ? parseFloat(match[4]) : 1,
+  };
 };
 
 const styles = StyleSheet.create({
@@ -74,14 +43,14 @@ const _PulseAnimation = (
   const fadeInDuration = castNativeType(makeMotionTime(durationPulseOn));
   const easing = castNativeType(theme.motion.easing.standard);
 
-  const grayDefault = hslaToRgba(theme.colors.interactive.background.gray.default);
-  const grayHighlighted = hslaToRgba(theme.colors.interactive.background.gray.highlighted);
+  const grayDefault = parseHsla(theme.colors.interactive.background.gray.default);
+  const grayHighlighted = parseHsla(theme.colors.interactive.background.gray.highlighted);
 
-  const opacity = useSharedValue(0);
+  const fadeIn = useSharedValue(0);
   const pulseProgress = useSharedValue(0);
 
   React.useEffect(() => {
-    opacity.value = withTiming(1, { duration: fadeInDuration, easing });
+    fadeIn.value = withTiming(1, { duration: fadeInDuration, easing });
 
     pulseProgress.value = withDelay(
       fadeInDuration,
@@ -89,14 +58,16 @@ const _PulseAnimation = (
     );
 
     return () => {
-      cancelAnimation(opacity);
+      cancelAnimation(fadeIn);
       cancelAnimation(pulseProgress);
     };
-  }, [easing, fadeInDuration, opacity, pulseProgress, totalDuration]);
+  }, [easing, fadeIn, fadeInDuration, pulseProgress, totalDuration]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    backgroundColor: interpolateColor(pulseProgress.value, [0, 1], [grayDefault, grayHighlighted]),
+    opacity:
+      fadeIn.value *
+      interpolate(pulseProgress.value, [0, 1], [grayDefault.alpha, grayHighlighted.alpha]),
+    backgroundColor: grayDefault.base,
   }));
 
   return (
