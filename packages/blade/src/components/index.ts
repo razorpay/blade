@@ -58,6 +58,7 @@ export * from './Scale';
 export * from './SideNav';
 export * from './Skeleton';
 export * from './SkipNav';
+export * from './Slider';
 export * from './Spinner';
 export * from './SpotlightPopoverTour';
 export * from './Stagger';

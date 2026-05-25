@@ -1,0 +1,1918 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slider /> should render Slider with custom min, max, and step 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 37.5%,hsla(0,0%,97%,1) 37.5%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-13-input-14"
+        id="slider-13-label-18"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="50"
+            aria-valuemin="10"
+            aria-valuenow="25"
+            aria-valuetext="25"
+            class="c9"
+            id="slider-13-input-14"
+            max="50"
+            min="10"
+            step="5"
+            type="range"
+            value="25"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            10
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            50
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render Slider with default props 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-1-input-2"
+        id="slider-1-label-6"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class="c9"
+            id="slider-1-input-2"
+            max="100"
+            min="0"
+            step="1"
+            type="range"
+            value="0"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            0
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            100
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render medium size 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-265-input-266"
+        id="slider-265-label-270"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class="c9"
+            id="slider-265-input-266"
+            max="100"
+            min="0"
+            step="1"
+            type="range"
+            value="0"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            0
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            100
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render small size 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-253-input-254"
+        id="slider-253-label-258"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class="c9"
+            id="slider-253-input-254"
+            max="100"
+            min="0"
+            step="1"
+            type="range"
+            value="0"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            0
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            100
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should render with disabled state 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,hsla(206,10%,29%,0.06) 0%,hsla(0,0%,97%,1) 0%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(206,10%,29%,0.06);
+  cursor: not-allowed;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(206,10%,29%,0.06);
+  cursor: not-allowed;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-25-input-26"
+        id="slider-25-label-30"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class="c9"
+            disabled=""
+            id="slider-25-input-26"
+            max="100"
+            min="0"
+            step="1"
+            type="range"
+            value="0"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            0
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            100
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Slider /> should support data-analytics attributes 1`] = `
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8.c8.c8.c8.c8 {
+  position: relative;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 0%,hsla(0,0%,97%,1) 0%);
+  border-radius: 50%px;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.c9.c9.c9.c9.c9:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  border-radius: 50%px;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%px;
+  background: hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px hsla(200,10%,18%,0.06);
+  border: none;
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-webkit-slider-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+.c9.c9.c9.c9.c9:not(:disabled)::-moz-range-thumb:hover {
+  background: hsla(218,87%,43%,1);
+}
+
+<div>
+  <div
+    class=""
+    data-analytics-slider="volume-control"
+    data-blade-component="slider"
+    data-testid="slider-test"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <label
+        data-blade-component="form-label"
+        for="slider-181-input-182"
+        id="slider-181-label-186"
+        style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Volume
+                </p>
+                <div
+                  class="c5"
+                  data-blade-component="visually-hidden"
+                >
+                  <p
+                    class="c6"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-label="Volume"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class="c9"
+            id="slider-181-input-182"
+            max="100"
+            min="0"
+            step="1"
+            type="range"
+            value="0"
+          />
+        </div>
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            0
+          </p>
+          <p
+            class="c11"
+            data-blade-component="text"
+            letter-spacing="50"
+          >
+            100
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
