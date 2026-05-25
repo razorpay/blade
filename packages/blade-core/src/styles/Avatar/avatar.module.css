@@ -336,7 +336,7 @@
   z-index: 2;
 }
 
-/* AvatarGroup size variants (negative margin overlap) */
+/* AvatarGroup size variants (negative margin overlap) — normal density */
 .group-size-xsmall > :not(:first-child) {
   margin-left: -10px;
 }
@@ -355,4 +355,46 @@
 
 .group-size-xlarge > :not(:first-child) {
   margin-left: -28px;
+}
+
+/* AvatarGroup density × size compound: compact (tighter overlap) */
+.group-density-compact-xsmall > :not(:first-child) {
+  margin-left: -14px;
+}
+
+.group-density-compact-small > :not(:first-child) {
+  margin-left: -18px;
+}
+
+.group-density-compact-medium > :not(:first-child) {
+  margin-left: -22px;
+}
+
+.group-density-compact-large > :not(:first-child) {
+  margin-left: -28px;
+}
+
+.group-density-compact-xlarge > :not(:first-child) {
+  margin-left: -34px;
+}
+
+/* AvatarGroup density × size compound: comfortable (looser overlap) */
+.group-density-comfortable-xsmall > :not(:first-child) {
+  margin-left: -6px;
+}
+
+.group-density-comfortable-small > :not(:first-child) {
+  margin-left: -8px;
+}
+
+.group-density-comfortable-medium > :not(:first-child) {
+  margin-left: -10px;
+}
+
+.group-density-comfortable-large > :not(:first-child) {
+  margin-left: -14px;
+}
+
+.group-density-comfortable-xlarge > :not(:first-child) {
+  margin-left: -18px;
 }

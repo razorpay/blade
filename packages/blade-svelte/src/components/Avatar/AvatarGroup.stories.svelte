@@ -11,6 +11,10 @@
         control: 'select',
         options: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
       },
+      density: {
+        control: 'select',
+        options: ['compact', 'normal', 'comfortable'],
+      },
       maxCount: {
         control: 'number',
       },
@@ -31,6 +35,7 @@
   ] as const;
   const avatarColors = ['primary', 'positive', 'negative', 'information', 'notice'] as const;
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
+  const densities = ['compact', 'normal', 'comfortable'] as const;
 </script>
 
 <!-- Story 1: Default -->
@@ -70,6 +75,65 @@
             {/each}
           </AvatarGroup>
         </div>
+      </div>
+    {/each}
+  </div>
+</Story>
+
+<!-- Story 4: Density -->
+<Story name="Density" asChild>
+  <div style="display: flex; flex-direction: column; gap: 32px;">
+    {#each densities as density}
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div style="width: 100px;">
+          <Heading size="small">{density}</Heading>
+        </div>
+        <AvatarGroup density={density}>
+          {#each names as name, index}
+            <Avatar name={name} color={avatarColors[index]} />
+          {/each}
+        </AvatarGroup>
+      </div>
+    {/each}
+  </div>
+</Story>
+
+<!-- Story 5: Density with All Sizes -->
+<Story name="Density All Sizes" asChild>
+  <div style="display: flex; flex-direction: column; gap: 32px;">
+    {#each densities as density}
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <Heading size="small">{density}</Heading>
+        {#each sizes as groupSize}
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="width: 60px;">
+              <Heading size="xsmall">{groupSize}</Heading>
+            </div>
+            <AvatarGroup size={groupSize} density={density}>
+              {#each names as name, index}
+                <Avatar name={name} color={avatarColors[index]} />
+              {/each}
+            </AvatarGroup>
+          </div>
+        {/each}
+      </div>
+    {/each}
+  </div>
+</Story>
+
+<!-- Story 6: Overflow Counter (+N) -->
+<Story name="Overflow Counter" asChild>
+  <div style="display: flex; flex-direction: column; gap: 20px;">
+    {#each sizes as groupSize}
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div style="width: 50px;">
+          <Heading>{groupSize}</Heading>
+        </div>
+        <AvatarGroup size={groupSize} maxCount={3}>
+          {#each names as name, index}
+            <Avatar name={name} color={avatarColors[index]} />
+          {/each}
+        </AvatarGroup>
       </div>
     {/each}
   </div>

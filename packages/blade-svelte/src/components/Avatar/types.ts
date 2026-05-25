@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { AvatarDensity } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 /**
@@ -284,6 +285,14 @@ export type AvatarGroupProps = {
    * @default 'medium'
    */
   size?: AvatarSize;
+  /**
+   * Controls the spacing (overlap) between avatars in the group.
+   * - `compact` — tighter overlap, avatars are closer together
+   * - `normal` — default spacing
+   * - `comfortable` — looser overlap, more space between avatars
+   * @default 'normal'
+   */
+  density?: AvatarDensity;
   /**
    * The maximum number of avatars to display before truncating.
    */

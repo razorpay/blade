@@ -108,8 +108,11 @@ export function getAvatarButtonClasses(props: AvatarButtonVariants): string {
 
 // ===== AvatarGroup CVA =====
 
+export type AvatarDensity = 'compact' | 'normal' | 'comfortable';
+
 export type AvatarGroupVariants = {
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  density?: AvatarDensity;
 };
 
 export const avatarGroupStyles = cva(styles['avatar-group'], {
@@ -121,9 +124,29 @@ export const avatarGroupStyles = cva(styles['avatar-group'], {
       large: styles['group-size-large'],
       xlarge: styles['group-size-xlarge'],
     },
+    density: {
+      normal: '',
+      compact: '',
+      comfortable: '',
+    },
   },
+  compoundVariants: [
+    // compact density overrides per size
+    { density: 'compact', size: 'xsmall', class: styles['group-density-compact-xsmall'] },
+    { density: 'compact', size: 'small', class: styles['group-density-compact-small'] },
+    { density: 'compact', size: 'medium', class: styles['group-density-compact-medium'] },
+    { density: 'compact', size: 'large', class: styles['group-density-compact-large'] },
+    { density: 'compact', size: 'xlarge', class: styles['group-density-compact-xlarge'] },
+    // comfortable density overrides per size
+    { density: 'comfortable', size: 'xsmall', class: styles['group-density-comfortable-xsmall'] },
+    { density: 'comfortable', size: 'small', class: styles['group-density-comfortable-small'] },
+    { density: 'comfortable', size: 'medium', class: styles['group-density-comfortable-medium'] },
+    { density: 'comfortable', size: 'large', class: styles['group-density-comfortable-large'] },
+    { density: 'comfortable', size: 'xlarge', class: styles['group-density-comfortable-xlarge'] },
+  ],
   defaultVariants: {
     size: 'medium',
+    density: 'normal',
   },
 });
 
@@ -215,6 +238,18 @@ export function getAvatarTemplateClasses(): Record<string, string> {
     bottomAddonSquare: styles['bottom-addon-square'],
     // Group
     avatarGroup: styles['avatar-group'],
+    // Group density compact
+    groupDensityCompactXsmall: styles['group-density-compact-xsmall'],
+    groupDensityCompactSmall: styles['group-density-compact-small'],
+    groupDensityCompactMedium: styles['group-density-compact-medium'],
+    groupDensityCompactLarge: styles['group-density-compact-large'],
+    groupDensityCompactXlarge: styles['group-density-compact-xlarge'],
+    // Group density comfortable
+    groupDensityComfortableXsmall: styles['group-density-comfortable-xsmall'],
+    groupDensityComfortableSmall: styles['group-density-comfortable-small'],
+    groupDensityComfortableMedium: styles['group-density-comfortable-medium'],
+    groupDensityComfortableLarge: styles['group-density-comfortable-large'],
+    groupDensityComfortableXlarge: styles['group-density-comfortable-xlarge'],
   } as const;
 }
 

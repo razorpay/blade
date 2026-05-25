@@ -10,7 +10,11 @@
     getAvatarTemplateClasses,
     getAvatarWrapperClasses,
     getAvatarButtonClasses,
+    avatarTextSizeMapping,
+    getButtonTextColorToken,
   } from '@razorpay/blade-core/styles';
+  import BaseText from '../Typography/BaseText/BaseText.svelte';
+  import type { TextColors } from '../Typography/BaseText/types';
   import { setAvatarGroupContext } from './avatarContext';
   import type { AvatarGroupProps, AvatarGroupRegistration } from './types';
 
@@ -20,6 +24,7 @@
   let {
     children,
     size = 'medium',
+    density = 'normal',
     maxCount,
     testID,
     ...rest
@@ -53,7 +58,7 @@
   setAvatarGroupContext(() => ({ size, register }));
 
   // Group classes
-  const groupClasses = $derived(getAvatarGroupClasses({ size }));
+  const groupClasses = $derived(getAvatarGroupClasses({ size, density }));
 
   // Meta & analytics attributes
   const metaAttrs = metaAttribute({ name: MetaConstants.AvatarGroup, testID });
@@ -78,6 +83,17 @@
     maxCount !== undefined && registeredCount > maxCount ? registeredCount - maxCount : 0,
   );
   const showOverflow = $derived(overflowCount > 0);
+
+  // Overflow text styling (size-aware)
+  const overflowTextSize = $derived(avatarTextSizeMapping[size]);
+  const overflowTextColorToken = $derived(
+    getButtonTextColorToken({
+      property: 'text',
+      variant: 'secondary',
+      color: 'neutral',
+      state: 'default',
+    }) as TextColors,
+  );
 </script>
 
 <div class={groupClasses} {...metaAttrs} {...analyticsAttrs} {...a11yAttrs}>
@@ -86,7 +102,16 @@
     <div class={overflowWrapperClasses}>
       <div class={overflowBtnClasses}>
         <div class={templateClasses.btnContent}>
-          +{overflowCount}
+          <BaseText
+            as="span"
+            color={overflowTextColorToken}
+            fontSize={overflowTextSize === 'xsmall' ? 75 : overflowTextSize === 'small' ? 100 : 200}
+            lineHeight={overflowTextSize === 'xsmall' ? 75 : overflowTextSize === 'small' ? 100 : 200}
+            fontFamily="heading"
+            fontWeight="semibold"
+          >
+            +{overflowCount}
+          </BaseText>
         </div>
       </div>
     </div>
