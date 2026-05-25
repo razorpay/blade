@@ -117,12 +117,15 @@ export type AvatarGroupVariants = {
 
 export const avatarGroupStyles = cva(styles['avatar-group'], {
   variants: {
+    // size variant carries no margin directly — all spacing is controlled by
+    // density × size compound variants below, so that there is a single
+    // authoritative source for every margin value regardless of density.
     size: {
-      xsmall: styles['group-size-xsmall'],
-      small: styles['group-size-small'],
-      medium: styles['group-size-medium'],
-      large: styles['group-size-large'],
-      xlarge: styles['group-size-xlarge'],
+      xsmall: '',
+      small: '',
+      medium: '',
+      large: '',
+      xlarge: '',
     },
     density: {
       normal: '',
@@ -131,13 +134,19 @@ export const avatarGroupStyles = cva(styles['avatar-group'], {
     },
   },
   compoundVariants: [
-    // compact density overrides per size
+    // normal density — same overlap as the original size-only classes
+    { density: 'normal', size: 'xsmall', class: styles['group-size-xsmall'] },
+    { density: 'normal', size: 'small', class: styles['group-size-small'] },
+    { density: 'normal', size: 'medium', class: styles['group-size-medium'] },
+    { density: 'normal', size: 'large', class: styles['group-size-large'] },
+    { density: 'normal', size: 'xlarge', class: styles['group-size-xlarge'] },
+    // compact density — tighter overlap
     { density: 'compact', size: 'xsmall', class: styles['group-density-compact-xsmall'] },
     { density: 'compact', size: 'small', class: styles['group-density-compact-small'] },
     { density: 'compact', size: 'medium', class: styles['group-density-compact-medium'] },
     { density: 'compact', size: 'large', class: styles['group-density-compact-large'] },
     { density: 'compact', size: 'xlarge', class: styles['group-density-compact-xlarge'] },
-    // comfortable density overrides per size
+    // comfortable density — looser overlap
     { density: 'comfortable', size: 'xsmall', class: styles['group-density-comfortable-xsmall'] },
     { density: 'comfortable', size: 'small', class: styles['group-density-comfortable-small'] },
     { density: 'comfortable', size: 'medium', class: styles['group-density-comfortable-medium'] },
