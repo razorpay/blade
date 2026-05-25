@@ -3,7 +3,7 @@
   import Checkbox from './Checkbox.svelte';
 
   const { Story } = defineMeta({
-    title: 'Components/Checkbox',
+    title: 'Components/Checkbox/Checkbox',
     component: Checkbox,
     tags: ['autodocs'],
     args: {
@@ -45,10 +45,7 @@
         control: { type: 'select' },
         options: ['none', 'error'],
         description: "Sets the validation state. Use 'error' to show errorText.",
-        table: {
-          type: { summary: '"none" | "error"' },
-          defaultValue: { summary: 'none' },
-        },
+        table: { type: { summary: '"none" | "error"' }, defaultValue: { summary: 'none' } },
       },
       size: {
         control: { type: 'select' },
@@ -89,83 +86,62 @@
 </script>
 
 <script lang="ts">
-  import CheckboxGroup from './CheckboxGroup/CheckboxGroup.svelte';
+  import Button from '../Button/Button.svelte';
 
   let controlledChecked = $state(false);
-  let groupValues = $state<string[]>([]);
 
   const showcaseSizes = ['small', 'medium', 'large'] as const;
-  const showcaseStates = [
-    { label: 'Unchecked', isChecked: false },
-    { label: 'Checked', isChecked: true },
+  const showcaseColumns = [
+    { label: 'Unchecked', isChecked: false, isIndeterminate: false },
+    { label: 'Checked', isChecked: true, isIndeterminate: false },
     { label: 'Indeterminate', isChecked: false, isIndeterminate: true },
   ] as const;
-  const showcaseVariants = [
-    { label: 'Default', isDisabled: false },
-    { label: 'Disabled', isDisabled: true },
-  ] as const;
-
-  function capitalize(s: string): string {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
+  const showcaseRows = [
+    { label: 'Default', props: {} },
+    { label: 'Help Text', props: { helpText: 'Help text' } },
+    { label: 'Disabled', props: { isDisabled: true } },
+    { label: 'Error', props: { validationState: 'error' as const, errorText: 'Error text' } },
+  ];
 </script>
 
-<!-- 1. Default — args-only playground -->
-<Story name="Default" asChild>
-  <Checkbox>I agree to the terms and conditions</Checkbox>
+<!-- 1. Default — args playground -->
+<Story name="Default">
+  <Checkbox>Toggle checkbox</Checkbox>
 </Story>
 
 <!-- 2. Checked — controlled -->
-<Story name="Checked" asChild>
-  <Checkbox isChecked={true} onChange={(e) => console.log('onChange', e)}>
-    Controlled checkbox
-  </Checkbox>
+<Story name="Checked">
+  <Checkbox isChecked={true} onChange={(e) => console.log(e)}>Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 3. DefaultChecked — uncontrolled -->
-<Story name="DefaultChecked" asChild>
-  <Checkbox defaultChecked>
-    Uncontrolled checkbox (starts checked)
-  </Checkbox>
+<!-- 3. DefaultChecked — uncontrolled starting checked -->
+<Story name="DefaultChecked">
+  <Checkbox defaultChecked>Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 4. Indeterminate -->
-<Story name="Indeterminate" asChild>
-  <Checkbox isIndeterminate>
-    Indeterminate state
-  </Checkbox>
+<!-- 4. HelpText -->
+<Story name="HelpText">
+  <Checkbox helpText="This is a help text">Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 5. WithHelpText -->
-<Story name="WithHelpText" asChild>
-  <Checkbox helpText="You can change this setting later.">
-    Receive marketing emails
-  </Checkbox>
+<!-- 5. ErrorText -->
+<Story name="ErrorText">
+  <Checkbox validationState="error" errorText="This is an error text">Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 6. WithError -->
-<Story name="WithError" asChild>
-  <Checkbox validationState="error" errorText="You must accept the terms to continue.">
-    I agree to the terms and conditions
-  </Checkbox>
+<!-- 6. Small -->
+<Story name="Small">
+  <Checkbox size="small">Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 7. Disabled -->
-<Story name="Disabled" asChild>
-  <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
-    <Checkbox isDisabled>Disabled unchecked</Checkbox>
-    <Checkbox isDisabled isChecked={true} onChange={() => {}}>Disabled checked</Checkbox>
-    <Checkbox isDisabled isIndeterminate>Disabled indeterminate</Checkbox>
-  </div>
+<!-- 7. Large -->
+<Story name="Large">
+  <Checkbox size="large">Toggle checkbox</Checkbox>
 </Story>
 
-<!-- 8. Sizes -->
-<Story name="Sizes" asChild>
-  <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
-    <Checkbox size="small">Small checkbox</Checkbox>
-    <Checkbox size="medium">Medium checkbox</Checkbox>
-    <Checkbox size="large">Large checkbox</Checkbox>
-  </div>
+<!-- 8. Indeterminate -->
+<Story name="Indeterminate">
+  <Checkbox isIndeterminate>Toggle checkbox</Checkbox>
 </Story>
 
 <!-- 9. ControlledAndUncontrolled -->
@@ -174,7 +150,6 @@
     <Checkbox defaultChecked onChange={(e) => console.log('uncontrolled', e)}>
       Uncontrolled (starts checked)
     </Checkbox>
-
     <Checkbox
       isChecked={controlledChecked}
       onChange={(e) => (controlledChecked = e.isChecked)}
@@ -184,94 +159,11 @@
   </div>
 </Story>
 
-<!-- 10. WithCheckboxGroup — vertical -->
-<Story name="WithCheckboxGroup" asChild>
-  <div style="display: flex; flex-direction: column; gap: var(--spacing-8);">
-    <CheckboxGroup
-      label="Select your interests"
-      helpText="Choose all that apply."
-      name="interests"
-      onChange={(e) => (groupValues = e.values)}
-    >
-      {#snippet children()}
-        <Checkbox value="design">Design</Checkbox>
-        <Checkbox value="engineering">Engineering</Checkbox>
-        <Checkbox value="product">Product</Checkbox>
-        <Checkbox value="marketing">Marketing</Checkbox>
-      {/snippet}
-    </CheckboxGroup>
-    <p style="font-family: var(--font-family-text); font-size: var(--font-size-75);">
-      Selected: {groupValues.join(', ') || 'none'}
-    </p>
-  </div>
-</Story>
-
-<!-- 11. CheckboxGroup — horizontal -->
-<Story name="CheckboxGroupHorizontal" asChild>
-  <CheckboxGroup
-    label="Preferred contact methods"
-    orientation="horizontal"
-    name="contact"
-  >
-    {#snippet children()}
-      <Checkbox value="email">Email</Checkbox>
-      <Checkbox value="sms">SMS</Checkbox>
-      <Checkbox value="whatsapp">WhatsApp</Checkbox>
-    {/snippet}
-  </CheckboxGroup>
-</Story>
-
-<!-- 12. CheckboxGroup — with error -->
-<Story name="CheckboxGroupWithError" asChild>
-  <CheckboxGroup
-    label="Agree to policies"
-    validationState="error"
-    errorText="You must select all required policies."
-    name="policies"
-  >
-    {#snippet children()}
-      <Checkbox value="privacy">Privacy Policy</Checkbox>
-      <Checkbox value="terms">Terms of Service</Checkbox>
-      <Checkbox value="cookies">Cookie Policy</Checkbox>
-    {/snippet}
-  </CheckboxGroup>
-</Story>
-
-<!-- 13. CheckboxGroup — disabled -->
-<Story name="CheckboxGroupDisabled" asChild>
-  <CheckboxGroup
-    label="Payment methods"
-    isDisabled
-    defaultValue={['upi']}
-    name="payment"
-  >
-    {#snippet children()}
-      <Checkbox value="upi">UPI</Checkbox>
-      <Checkbox value="card">Card</Checkbox>
-      <Checkbox value="netbanking">Net Banking</Checkbox>
-    {/snippet}
-  </CheckboxGroup>
-</Story>
-
-<!-- 14. CheckboxGroup — label left -->
-<Story name="CheckboxGroupLabelLeft" asChild>
-  <CheckboxGroup
-    label="Notifications"
-    labelPosition="left"
-    name="notifications"
-  >
-    {#snippet children()}
-      <Checkbox value="push">Push</Checkbox>
-      <Checkbox value="email">Email</Checkbox>
-    {/snippet}
-  </CheckboxGroup>
-</Story>
-
-<!-- 15. Showcase — full matrix -->
+<!-- 10. Showcase — full size × state × row matrix -->
 <Story name="Showcase" asChild>
   <div style="display: flex; flex-direction: column; gap: var(--spacing-11);">
     {#each showcaseSizes as size}
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-7);">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
         <strong
           style="
             font-family: var(--font-family-text);
@@ -279,34 +171,58 @@
             font-weight: var(--font-weight-semibold);
           "
         >
-          Size: {capitalize(size)}
+          Size {size}
         </strong>
 
-        <div style="display: flex; flex-direction: row; gap: var(--spacing-11); flex-wrap: wrap;">
-          {#each showcaseVariants as variant}
-            <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
-              <strong
-                style="
-                  font-family: var(--font-family-text);
-                  font-size: var(--font-size-100);
-                  color: var(--surface-text-gray-muted);
-                "
-              >
-                {variant.label}
-              </strong>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 140px repeat(3, minmax(160px, 1fr));
+            row-gap: var(--spacing-4);
+            column-gap: var(--spacing-4);
+            align-items: center;
+          "
+        >
+          <!-- Header row -->
+          <div></div>
+          {#each showcaseColumns as col}
+            <span
+              style="
+                font-family: var(--font-family-text);
+                font-size: var(--font-size-75);
+                font-weight: var(--font-weight-semibold);
+                color: var(--surface-text-gray-muted);
+                text-align: center;
+              "
+            >
+              {col.label}
+            </span>
+          {/each}
 
-              {#each showcaseStates as state}
+          <!-- Data rows -->
+          {#each showcaseRows as row}
+            <span
+              style="
+                font-family: var(--font-family-text);
+                font-size: var(--font-size-75);
+                color: var(--surface-text-gray-muted);
+              "
+            >
+              {row.label}
+            </span>
+            {#each showcaseColumns as col}
+              <div style="display: flex; justify-content: center;">
                 <Checkbox
                   {size}
-                  isChecked={state.isChecked}
-                  isIndeterminate={'isIndeterminate' in state ? state.isIndeterminate : false}
-                  isDisabled={variant.isDisabled}
+                  isChecked={col.isChecked}
+                  isIndeterminate={col.isIndeterminate}
                   onChange={() => {}}
+                  {...row.props}
                 >
-                  {state.label}
+                  {col.label}
                 </Checkbox>
-              {/each}
-            </div>
+              </div>
+            {/each}
           {/each}
         </div>
       </div>
