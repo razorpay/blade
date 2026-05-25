@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Pressable, Linking, Platform } from 'react-native';
 import type { GestureResponderEvent, ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import type { BottomNavItemProps, BottomNavProps } from './types';
 import { useTheme } from '~components/BladeProvider';
@@ -80,6 +81,7 @@ const _BottomNav = (
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
+  const insets = useSafeAreaInsets();
 
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
@@ -113,7 +115,7 @@ const _BottomNav = (
       borderTopWidth={theme.border.width.thin}
       borderTopColor={theme.colors.surface.border.gray.muted}
       paddingHorizontal={theme.spacing[2]}
-      style={[shadowStyle, { zIndex }]}
+      style={[shadowStyle, { zIndex, paddingBottom: insets.bottom }]}
       {...makeAccessible({ role: 'navigation' })}
       {...metaAttribute({
         testID,
