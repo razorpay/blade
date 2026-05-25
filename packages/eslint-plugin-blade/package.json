@@ -17,7 +17,6 @@
   "scripts": {
     "build": "tsc -b",
     "lint": "eslint .",
-    "test": "jest",
-    "postinstall": "yarn build"
+    "test": "jest"
   }
 }
