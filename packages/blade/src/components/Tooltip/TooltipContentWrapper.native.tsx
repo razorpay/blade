@@ -90,6 +90,13 @@ const TooltipContentWrapper = React.forwardRef<View, TooltipContentWrapperProps>
 
     return (
       <Animated.View style={animatedStyles}>
+        {/* Short-term workaround: RN doesn't support backdropFilter so we render an opaque
+            sibling View behind the tooltip to prevent content bleeding through the
+            semi-transparent popup.background.gray.intense background.
+            TODO: revisit this when upgrading React Native — newer versions may support
+            backdropFilter natively, making this backing View unnecessary.
+            NOTE: borderRadius must stay in sync with getTooltipContentWrapperStyles —
+            if the radius token changes there, update it here too. */}
         {layout && (
           <View
             style={{
