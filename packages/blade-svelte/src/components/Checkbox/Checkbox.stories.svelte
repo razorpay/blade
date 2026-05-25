@@ -7,6 +7,7 @@
     component: Checkbox,
     tags: ['autodocs'],
     args: {
+      children: 'Toggle checkbox',
       isChecked: undefined,
       defaultChecked: undefined,
       isDisabled: false,
@@ -21,6 +22,11 @@
       tabIndex: undefined,
     },
     argTypes: {
+      children: {
+        control: { type: 'text' },
+        description: 'Label text for the checkbox.',
+        table: { type: { summary: 'string' } },
+      },
       isChecked: {
         control: { type: 'boolean' },
         description: 'Controlled checked state.',
@@ -86,8 +92,6 @@
 </script>
 
 <script lang="ts">
-  import Button from '../Button/Button.svelte';
-
   let controlledChecked = $state(false);
 
   const showcaseSizes = ['small', 'medium', 'large'] as const;
@@ -104,47 +108,31 @@
   ];
 </script>
 
-<!-- 1. Default — args playground -->
-<Story name="Default">
-  <Checkbox>Toggle checkbox</Checkbox>
-</Story>
+<!-- 1. Default — args playground (controls wire directly) -->
+<Story name="Default" />
 
 <!-- 2. Checked — controlled -->
-<Story name="Checked">
-  <Checkbox isChecked={true} onChange={(e) => console.log(e)}>Toggle checkbox</Checkbox>
-</Story>
+<Story name="Checked" args={{ isChecked: true }} />
 
 <!-- 3. DefaultChecked — uncontrolled starting checked -->
-<Story name="DefaultChecked">
-  <Checkbox defaultChecked>Toggle checkbox</Checkbox>
-</Story>
+<Story name="DefaultChecked" args={{ defaultChecked: true }} />
 
 <!-- 4. HelpText -->
-<Story name="HelpText">
-  <Checkbox helpText="This is a help text">Toggle checkbox</Checkbox>
-</Story>
+<Story name="HelpText" args={{ helpText: 'This is a help text' }} />
 
 <!-- 5. ErrorText -->
-<Story name="ErrorText">
-  <Checkbox validationState="error" errorText="This is an error text">Toggle checkbox</Checkbox>
-</Story>
+<Story name="ErrorText" args={{ validationState: 'error', errorText: 'This is an error text' }} />
 
 <!-- 6. Small -->
-<Story name="Small">
-  <Checkbox size="small">Toggle checkbox</Checkbox>
-</Story>
+<Story name="Small" args={{ size: 'small' }} />
 
 <!-- 7. Large -->
-<Story name="Large">
-  <Checkbox size="large">Toggle checkbox</Checkbox>
-</Story>
+<Story name="Large" args={{ size: 'large' }} />
 
 <!-- 8. Indeterminate -->
-<Story name="Indeterminate">
-  <Checkbox isIndeterminate>Toggle checkbox</Checkbox>
-</Story>
+<Story name="Indeterminate" args={{ isIndeterminate: true }} />
 
-<!-- 9. ControlledAndUncontrolled -->
+<!-- 9. ControlledAndUncontrolled — stateful; keep as asChild -->
 <Story name="ControlledAndUncontrolled" asChild>
   <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
     <Checkbox defaultChecked onChange={(e) => console.log('uncontrolled', e)}>
