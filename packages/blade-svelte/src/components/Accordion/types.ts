@@ -54,6 +54,13 @@ export type AccordionProps = {
   minWidth?: string;
 
   /**
+   * Body background variant. Use `'gray'` for checkout/surface-gray contexts
+   * to apply `--surface-background-gray-subtle` behind expanded body content.
+   * @default undefined
+   */
+  bodyBackground?: 'gray';
+
+  /**
    * Test ID for the element.
    */
   testID?: string;
@@ -110,9 +117,20 @@ export type AccordionItemHeaderProps = {
   trailing?: Snippet;
 
   /**
-   * Title suffix element snippet (e.g., Badge).
+   * Title suffix element snippet.
+   * Accepts any Snippet — pass a `<Badge>` or an `<AvatarGroup>` here.
+   * The `titleSuffixType` hint documents intent without restricting rendering.
    */
   titleSuffix?: Snippet;
+
+  /**
+   * Documents the type of element rendered in `titleSuffix`.
+   * Consumers can pass either a `Badge` or an `AvatarGroup`.
+   * This is a hint for documentation/tooling; the actual rendering is
+   * controlled by what you pass to the `titleSuffix` snippet.
+   * @default 'badge'
+   */
+  titleSuffixType?: 'badge' | 'avatarGroup';
 
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;

@@ -38,6 +38,8 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Button from '../Button/Button.svelte';
+  import Avatar from '../Avatar/Avatar.svelte';
+  import AvatarGroup from '../Avatar/AvatarGroup.svelte';
   import { CheckIcon } from '../Icons/CheckIcon';
   import { InfoIcon } from '../Icons/InfoIcon';
   import { SearchIcon } from '../Icons/SearchIcon';
@@ -550,6 +552,102 @@
         {/snippet}
       </Accordion>
     </div>
+  </div>
+</Story>
+
+<Story name="With AvatarGroup in TitleSuffix" asChild>
+  <!--
+    Design assumption: AvatarGroup sits in the same titleSuffix slot as Badge.
+    Since titleSuffix is an open Snippet, no prop changes are required — consumers
+    just pass an AvatarGroup snippet instead of a Badge snippet.
+    titleSuffixType="avatarGroup" is a documentation hint only.
+  -->
+  <Accordion variant="filled">
+    {#snippet children()}
+      <AccordionItem>
+        {#snippet children()}
+          <AccordionItemHeader title="Team members" subtitle="Assigned reviewers" titleSuffixType="avatarGroup">
+            {#snippet titleSuffix()}
+              <AvatarGroup size="xsmall" maxCount={3}>
+                {#snippet children()}
+                  <Avatar name="Anurag Hazra" />
+                  <Avatar name="Saransh Chopra" />
+                  <Avatar name="Kamlesh Chandnani" />
+                  <Avatar name="Saurav Gupta" />
+                {/snippet}
+              </AvatarGroup>
+            {/snippet}
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            Reviewers are notified when this item is expanded. You can assign up to 10 reviewers
+            per accordion item.
+          </AccordionItemBody>
+        {/snippet}
+      </AccordionItem>
+      <AccordionItem>
+        {#snippet children()}
+          <AccordionItemHeader title="Watchers">
+            {#snippet titleSuffix()}
+              <AvatarGroup size="xsmall" maxCount={2}>
+                {#snippet children()}
+                  <Avatar name="Alice Johnson" />
+                  <Avatar name="Bob Smith" />
+                  <Avatar name="Charlie Brown" />
+                {/snippet}
+              </AvatarGroup>
+            {/snippet}
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            Watchers receive notifications but cannot approve changes.
+          </AccordionItemBody>
+        {/snippet}
+      </AccordionItem>
+    {/snippet}
+  </Accordion>
+</Story>
+
+<Story name="With Gray Body Background (Checkout)" asChild>
+  <!--
+    Design assumption: The gray body background (`--surface-background-gray-subtle`)
+    is applied via the `bodyBackground="gray"` prop on the Accordion root.
+    This matches the checkout theme where payment method bodies use a recessed
+    surface to distinguish content from the card container.
+  -->
+  <div style="max-width: 480px;">
+    <Accordion variant="filled" bodyBackground="gray">
+      {#snippet children()}
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="PhonePe Wallet" subtitle="+ ₹50 Extra Charge" />
+            <AccordionItemBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <input type="tel" placeholder="Enter Phone Number" style="padding: 8px 12px; border: 1px solid var(--surface-border-gray-subtle); border-radius: 4px; font-size: 14px;" />
+                  <Button>Continue</Button>
+                </div>
+              {/snippet}
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="HDFC Credit Card" subtitle="No EMI Cost Available">
+              {#snippet titleSuffix()}
+                <Badge color="positive">Upto ₹500 off</Badge>
+              {/snippet}
+            </AccordionItemHeader>
+            <AccordionItemBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <input type="number" placeholder="Enter Card Number" style="padding: 8px 12px; border: 1px solid var(--surface-border-gray-subtle); border-radius: 4px; font-size: 14px;" />
+                  <Button>Continue</Button>
+                </div>
+              {/snippet}
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+      {/snippet}
+    </Accordion>
   </div>
 </Story>
 
