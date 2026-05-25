@@ -1,0 +1,92 @@
+/* Collapsible trigger button */
+.trigger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--transparent);
+  border: none;
+  padding: var(--spacing-4) var(--spacing-5);
+  cursor: pointer;
+  text-align: left;
+  transition-property: background-color, box-shadow;
+  transition-duration: var(--duration-2xquick);
+  transition-timing-function: var(--easing-standard);
+  border-radius: var(--border-radius-small);
+  color: var(--interactive-icon-gray-muted);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--interactive-background-gray-faded);
+    color: var(--interactive-icon-gray-subtle);
+  }
+
+  &:focus-visible {
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
+    transition-property: outline-width;
+    transition-duration: var(--duration-2xquick);
+    transition-timing-function: var(--easing-standard);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--interactive-icon-gray-disabled);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--transparent);
+      color: var(--interactive-icon-gray-disabled);
+    }
+  }
+}
+
+/* Row that holds icon + label; fills available space */
+.triggerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Optional leading icon wrapper */
+.triggerIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Text label */
+.triggerLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Chevron slot – rotates on expand */
+.triggerChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: var(--spacing-3);
+  transition: transform var(--duration-moderate) var(--easing-standard);
+}
+
+.chevronExpanded {
+  transform: rotate(-180deg);
+}
+
+/* Animated body wrapper */
+.body {
+  overflow-y: hidden;
+  transition-property: height, opacity;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-standard);
+}
+
+/* Inner content area with default padding */
+.bodyInner {
+  padding: var(--spacing-4) var(--spacing-5) var(--spacing-5);
+}

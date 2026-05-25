@@ -6,27 +6,31 @@
     makeAccessible,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
+  import { getCollapsibleTemplateClasses } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
-  // AccordionItem now sets CollapsibleContext in addition to AccordionItemContext,
-  // so we can read shared state (isExpanded, collapsibleBodyId, size) from the
-  // Collapsible primitive — removing the tight coupling to accordion-specific contexts.
-  import { getCollapsibleContext } from '../Collapsible/context';
-  import type { AccordionItemBodyProps } from './types';
+  import { getCollapsibleContext } from './context';
+  import type { CollapsibleBodyProps } from './types';
 
-  const templateClasses = getAccordionTemplateClasses();
+  const templateClasses = getCollapsibleTemplateClasses();
 
-  let { children, ...rest }: AccordionItemBodyProps = $props();
+  let { children, testID, ...rest }: CollapsibleBodyProps = $props();
 
   const getCtx = getCollapsibleContext();
-  const ctx = $derived(getCtx!());
+
+  if (!getCtx) {
+    throw new Error(
+      '[blade-svelte] CollapsibleBody must be used inside a <Collapsible> component.',
+    );
+  }
+
+  const ctx = $derived(getCtx());
 
   const isExpanded = $derived(ctx.isExpanded);
   const collapsibleBodyId = $derived(ctx.collapsibleBodyId);
-  const accordionSize = $derived(ctx.size);
+  const size = $derived(ctx.size);
 
-  const descriptionFontSize = $derived(accordionSize === 'large' ? 100 : 75);
-  const descriptionLineHeight = $derived(accordionSize === 'large' ? 100 : 75);
+  const descriptionFontSize = $derived(size === 'large' ? 100 : 75);
+  const descriptionLineHeight = $derived(size === 'large' ? 100 : 75);
 
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(!isStringChildren ? (children as Snippet) : undefined);
@@ -97,7 +101,7 @@
     }
   };
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.AccordionItemBody });
+  const metaAttrs = metaAttribute({ name: MetaConstants.CollapsibleBody, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const bodyA11y = $derived(
     makeAccessible({ role: 'region', hidden: !isExpanded }),
@@ -107,13 +111,13 @@
 <div
   bind:this={bodyRef}
   id={collapsibleBodyId}
-  class={templateClasses.collapsibleContent}
+  class={templateClasses.body}
   ontransitionend={onTransitionEnd}
   {...bodyA11y}
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  <div class={templateClasses.body}>
+  <div class={templateClasses.bodyInner}>
     <BaseText
       as="div"
       color="surface.text.gray.subtle"
