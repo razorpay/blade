@@ -96,11 +96,7 @@ const _PulseAnimation = (
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
-    backgroundColor: interpolateColor(
-      pulseProgress.value,
-      [0, 1],
-      [grayDefault, grayHighlighted],
-    ),
+    backgroundColor: interpolateColor(pulseProgress.value, [0, 1], [grayDefault, grayHighlighted]),
   }));
 
   return (
