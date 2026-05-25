@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.104.2
+
+### Patch Changes
+
+- 37a1f0dd4: feat(blade): add checkboxDisplay prop for on-hover row checkbox visibility in table
+
 ## 12.104.1
 
 ### Patch Changes
