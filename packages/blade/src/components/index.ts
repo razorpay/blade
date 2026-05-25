@@ -34,6 +34,7 @@ export * from './FileUpload';
 export * from './Icons';
 export * from './InfoGroup';
 export * from './Indicator';
+export * from './Input/ColorInput';
 export * from './Input/DropdownInputTriggers';
 export * from './Input/OTPInput';
 export * from './Input/PasswordInput';

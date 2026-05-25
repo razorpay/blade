@@ -1,0 +1,655 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ColorInput /> should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="color-input"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      position="relative"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+                "marginRight": 16,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            gap="spacing.0"
+            maxHeight="36px"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "gap": 0,
+                  "maxHeight": 36,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.subtle"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="medium"
+              lineHeight={75}
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "hsla(200, 10%, 18%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 17,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Brand Color
+            </Text>
+            <View
+              data-blade-component="visually-hidden"
+              style={
+                [
+                  {
+                    "borderColor": "black",
+                    "borderStyle": "solid",
+                    "borderWidth": 0,
+                    "clip": "rect(0 0 0 0)",
+                    "clipPath": "inset(50%)",
+                    "height": 1,
+                    "left": -10000,
+                    "marginBottom": -1,
+                    "marginLeft": 0,
+                    "marginRight": -1,
+                    "marginTop": 0,
+                    "overflow": "hidden",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                    "wordWrap": "normal",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        className="focus-ring-wrapper"
+        currentInteraction="default"
+        data-blade-component="base-box"
+        isTableInputCell={false}
+        shouldAddLimitedFocus={false}
+        style={
+          [
+            {},
+            {
+              "borderRadius": 8,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          currentInteraction="default"
+          isDisabled={false}
+          isTableInputCell={false}
+          onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
+          size="medium"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "display": "flex",
+                "flexDirection": "row",
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              },
+              {},
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+              },
+            ]
+          }
+        >
+          <TextInput
+            accessibilityDescribedBy=""
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityState={
+              {
+                "disabled": false,
+                "expanded": undefined,
+              }
+            }
+            accessible={true}
+            autoCapitalize="none"
+            autoFocus={false}
+            data-blade-component="styled-base-input"
+            editable={true}
+            hasLeadingDropdown={false}
+            hasTags={false}
+            id="color-input-1-input-2"
+            isFocused={false}
+            isInsideCounterInput={false}
+            isTableInputCell={false}
+            isTextArea={false}
+            keyboardType="default"
+            leadingInteractionElement={null}
+            multiline={false}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onEndEditing={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            onSubmitEditing={[Function]}
+            placeholder="#000000"
+            placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+            secureTextEntry={false}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  "color": "hsla(0, 0%, 2%, 1)",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "height": 36,
+                  "letterSpacing": -0.18200000000000002,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "minHeight": 36,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "textAlignVertical": "top",
+                  "textDecorationLine": "none",
+                  "width": "100%",
+                },
+              ]
+            }
+            valueComponentType="text"
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      style={
+        [
+          {
+            "marginLeft": 0,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ColorInput /> should render large size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="color-input"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      position="relative"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+                "marginRight": 16,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            gap="spacing.0"
+            maxHeight="36px"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "gap": 0,
+                  "maxHeight": 36,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.subtle"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="medium"
+              lineHeight={100}
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "hsla(200, 10%, 18%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Brand Color
+            </Text>
+            <View
+              data-blade-component="visually-hidden"
+              style={
+                [
+                  {
+                    "borderColor": "black",
+                    "borderStyle": "solid",
+                    "borderWidth": 0,
+                    "clip": "rect(0 0 0 0)",
+                    "clipPath": "inset(50%)",
+                    "height": 1,
+                    "left": -10000,
+                    "marginBottom": -1,
+                    "marginLeft": 0,
+                    "marginRight": -1,
+                    "marginTop": 0,
+                    "overflow": "hidden",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": 1,
+                    "wordWrap": "normal",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        className="focus-ring-wrapper"
+        currentInteraction="default"
+        data-blade-component="base-box"
+        isTableInputCell={false}
+        shouldAddLimitedFocus={false}
+        style={
+          [
+            {},
+            {
+              "borderRadius": 12,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          currentInteraction="default"
+          isDisabled={false}
+          isTableInputCell={false}
+          onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
+          size="large"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 12,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "display": "flex",
+                "flexDirection": "row",
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              },
+              {},
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 12,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+              },
+            ]
+          }
+        >
+          <TextInput
+            accessibilityDescribedBy=""
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityState={
+              {
+                "disabled": false,
+                "expanded": undefined,
+              }
+            }
+            accessible={true}
+            autoCapitalize="none"
+            autoFocus={false}
+            data-blade-component="styled-base-input"
+            editable={true}
+            hasLeadingDropdown={false}
+            hasTags={false}
+            id="color-input-13-input-14"
+            isFocused={false}
+            isInsideCounterInput={false}
+            isTableInputCell={false}
+            isTextArea={false}
+            keyboardType="default"
+            leadingInteractionElement={null}
+            multiline={false}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onEndEditing={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            onSubmitEditing={[Function]}
+            placeholder="#000000"
+            placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+            secureTextEntry={false}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  "color": "hsla(0, 0%, 2%, 1)",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "height": 48,
+                  "letterSpacing": -0.528,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "minHeight": 48,
+                  "paddingBottom": 12,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 12,
+                  "textAlignVertical": "top",
+                  "textDecorationLine": "none",
+                  "width": "100%",
+                },
+              ]
+            }
+            valueComponentType="text"
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      style={
+        [
+          {
+            "marginLeft": 0,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
