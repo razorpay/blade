@@ -17,6 +17,7 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { BladeElementRef } from '~utils/types';
 
+// Reanimated's interpolateColor doesn't support hsla(). Split into base hsl + alpha so we can animate it properly.
 const parseHsla = (color: string): { base: string; alpha: number } => {
   const match = color.match(
     /hsla?\(\s*([\d.]+)\s*,\s*([\d.]+%)\s*,\s*([\d.]+%)\s*(?:,\s*([\d.]+))?\s*\)/,

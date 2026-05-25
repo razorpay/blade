@@ -37,8 +37,8 @@ exports[`<Skeleton /> should render skeleton 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": undefined,
-            "opacity": 0,
+            "backgroundColor": "hsl(206, 10%, 29%)",
+            "opacity": NaN,
           },
         ]
       }
