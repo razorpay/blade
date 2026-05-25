@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.104.1
+
+### Patch Changes
+
+- 3b566c927: fix(native): transparency issue in tooltip for native
+
 ## 12.104.0
 
 ### Minor Changes
