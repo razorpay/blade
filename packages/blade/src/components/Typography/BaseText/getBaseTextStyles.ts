@@ -82,9 +82,7 @@ const getBaseTextStyles = ({
   // Without this, browsers default to opsz:8 (Text), which doesn't match
   // "TASA Orbiter Display" that designers have installed locally.
   const headingVariationStyles: CSSObject =
-    fontFamily === 'heading' && !isReactNative()
-      ? { fontVariationSettings: "'opsz' 60" }
-      : {};
+    fontFamily === 'heading' && !isReactNative() ? { fontVariationSettings: "'opsz' 60" } : {};
 
   return {
     color: textColor,
