@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slider /> should render slider with label 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c9.c9.c9.c9.c9 {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right,hsla(218,89%,51%,1) 50%,hsla(206,10%,29%,0.06) 50%);
+  cursor: pointer;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: hsla(206,10%,29%,0.06);
+  cursor: pointer;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: hsla(218,89%,51%,1);
+}
+
+.c9.c9.c9.c9.c9::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: hsla(0,0%,100%,1);
+  border: 2px solid hsla(218,89%,51%,1);
+  cursor: pointer;
+  margin-top: calc(-20px / 2 + 4px / 2);
+  box-sizing: border-box;
+}
+
+.c9.c9.c9.c9.c9::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: hsla(0,0%,100%,1);
+  border: 2px solid hsla(218,89%,51%,1);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.c9.c9.c9.c9.c9:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+.c9.c9.c9.c9.c9:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsla(218,89%,51%,1);
+  outline-offset: 2px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <label
+          data-blade-component="form-label"
+          for="slider-1-input-2"
+          id="slider-1-label-6"
+          style="width: 100%; flex-shrink: 0; margin-right: 0px;"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Volume
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+        <p
+          class="c8"
+          data-blade-component="text"
+          letter-spacing="50"
+        >
+          50
+        </p>
+      </div>
+      <input
+        aria-labelledby="slider-1-label-6"
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="50"
+        class="c9"
+        id="slider-1-input-2"
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="50"
+      />
+    </div>
+  </div>
+</div>
+`;
