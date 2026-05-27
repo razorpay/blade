@@ -142,6 +142,7 @@ export const MetaConstants = {
   ModalFooter: 'modal-footer',
   ModalBackdrop: 'modal-backdrop',
   ModalScrollOverlay: 'modal-scroll-overlay',
+  MetricsCard: 'metrics-card',
   VisuallyHidden: 'visually-hidden',
   FormLabel: 'form-label',
   Switch: 'switch',
