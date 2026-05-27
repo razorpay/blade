@@ -35,6 +35,7 @@ const _ActionList = ({
     dropdownTriggerer,
     hasFooterAction,
     filteredValues,
+    hasAutoCompleteInHeader,
   } = useDropdown();
 
   const ActionListBox = isVirtualized ? ActionListVirtualizedBox : ActionListNormalBox;
@@ -53,7 +54,8 @@ const _ActionList = ({
 
   if (
     filteredValues.length <= 0 &&
-    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+    (dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete ||
+      hasAutoCompleteInHeader)
   ) {
     return <ActionListNoResults />;
   }
