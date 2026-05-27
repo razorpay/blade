@@ -6,20 +6,19 @@ export const BASEINPUT_MAX_ROWS = 4;
 export const TAG_HEIGHT = size['20'];
 export const TAG_GAP = spacing['3'];
 
-/**
- * 36px
- */
 export const baseInputHeight: Record<
   NonNullable<BaseInputProps['size']>,
   typeof size[keyof typeof size]
 > = {
-  xsmall: size['26'],
-  small: size['30'],
+  xsmall: size['28'],
+  small: size['32'],
   medium: size['36'],
   large: size['48'],
 };
 
 /**
+ * xsmall - 112px (28px height * 4 rows)
+ * small - 128px (32px height * 4 rows)
  * medium - 144px (36px height * 4 rows)
  * large - 192px (48px height * 4 rows)
  */
