@@ -46,7 +46,6 @@ import { Text } from '~components/Typography';
 // Passes wrapper-level config down to ChartSankey without prop drilling.
 
 type SankeyChartContextType = {
-  height: number;
   showTooltip: boolean;
   nodeColorOverride?: ChartsCategoricalColorToken;
   linkColorOverride?: ChartsCategoricalColorToken;
@@ -158,16 +157,15 @@ const _ChartSankeyWrapper = ({
     [allColorTokens],
   );
 
-  // Extract data from ChartSankey child — same pattern ChartDonutWrapper uses
-  // to read colorTheme/radius from ChartDonut props.
-  const data = useMemo(() => {
-    const sankeyChild = React.Children.toArray(children).find(
-      (child) => isValidElement(child) && getComponentId(child) === componentIds.ChartSankey,
-    );
-    return isValidElement(sankeyChild)
-      ? (sankeyChild.props as ChartSankeyProps).data
-      : { nodes: [], links: [] };
-  }, [children]);
+  // Extract data from the ChartSankey child to compute dataColorMapping ahead of render.
+  // children is typed as React.ReactElement so no array traversal needed — check directly.
+  const data = useMemo(
+    () =>
+      isValidElement(children) && getComponentId(children) === componentIds.ChartSankey
+        ? (children.props as ChartSankeyProps).data
+        : { nodes: [], links: [] },
+    [children],
+  );
 
   // Build dataColorMapping for CommonChartComponentsContext.
   // Pre-populate explicit overrides then fill the rest with assignDataColorMapping().
@@ -190,7 +188,7 @@ const _ChartSankeyWrapper = ({
   return (
     <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
       <SankeyChartContext.Provider
-        value={{ height, showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens }}
+        value={{ showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens }}
       >
         <BaseBox
           {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
@@ -582,7 +580,6 @@ const _ChartSankey = ({
         : CHIP_H;
 
       const chipY = nodeMidY - chipH / 2;
-      const showChip = showLabels;
 
       return (
         <g
@@ -603,7 +600,7 @@ const _ChartSankey = ({
           />
 
           {/* Label — delegated to renderChipLabel / renderPlainTextLabel helpers */}
-          {showChip && (
+          {showLabels && (
             <g style={{ pointerEvents: 'none' }}>
               {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
                 chipX,

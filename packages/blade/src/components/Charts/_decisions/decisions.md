@@ -668,7 +668,7 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
-| `children` | `React.ReactNode` | ✅ | — | Must contain a `<ChartSankey>` element |
+| `children` | `React.ReactElement` | ✅ | — | Must be exactly one `<ChartSankey>` element |
 | `height` | `number` | ❌ | `400` | Chart height in pixels |
 | `width` | `number \| string` | ❌ | `"100%"` | Chart width — pixel number or CSS string. Useful for fixed-width dashboard layouts |
 | `showTooltip` | `boolean` | ❌ | `true` | Show a tooltip on node/link hover |
