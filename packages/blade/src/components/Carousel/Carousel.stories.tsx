@@ -18,6 +18,22 @@ import { Button } from '~components/Button';
 import { SparklesIcon, AlertTriangleIcon, SearchIcon } from '~components/Icons';
 import type { IconComponent, IconColors } from '~components/Icons';
 
+const ScrollableCardContent = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  if (isReactNative()) {
+    // Indirect require so webpack's static analysis skips this on web builds
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-require-imports
+    const rn = 'react-native';
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { ScrollView } = require(rn) as any;
+    return (
+      <ScrollView nestedScrollEnabled contentContainerStyle={{ paddingRight: 8 }}>
+        {children}
+      </ScrollView>
+    );
+  }
+  return <>{children}</>;
+};
+
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -216,37 +232,39 @@ const TestimonialCard = ({
   return (
     <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
-        <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
-          <QuoteSvg />
-          <Box>
-            <Heading weight="semibold" size="large">
-              {quote}
-            </Heading>
-            <Text size="medium" marginTop="spacing.4">
-              {longQuote}
-            </Text>
-          </Box>
-          <Divider marginY="spacing.4" />
-          <Box
-            display="flex"
-            alignItems={isReactNative() ? 'flex-start' : 'center'}
-            gap="spacing.4"
-          >
-            <Avatar name={name} />
+        <ScrollableCardContent>
+          <Box display="flex" gap="spacing.4" flexDirection="column">
+            <QuoteSvg />
             <Box>
-              <Text size="large" weight="semibold">
-                {name}
-              </Text>
-              <Text>
-                <Text as="span" weight="semibold">
-                  {company}
-                </Text>
-                {', '}
-                <Text as="span">{role}</Text>
+              <Heading weight="semibold" size="large">
+                {quote}
+              </Heading>
+              <Text size="medium" marginTop="spacing.4">
+                {longQuote}
               </Text>
             </Box>
+            <Divider marginY="spacing.4" />
+            <Box
+              display="flex"
+              alignItems={isReactNative() ? 'flex-start' : 'center'}
+              gap="spacing.4"
+            >
+              <Avatar name={name} />
+              <Box>
+                <Text size="large" weight="semibold">
+                  {name}
+                </Text>
+                <Text>
+                  <Text as="span" weight="semibold">
+                    {company}
+                  </Text>
+                  {', '}
+                  <Text as="span">{role}</Text>
+                </Text>
+              </Box>
+            </Box>
           </Box>
-        </Box>
+        </ScrollableCardContent>
       </CardBody>
     </Card>
   );
@@ -520,37 +538,39 @@ const InteractiveTestimonialCard = ({
         href={`https://www.google.com/search?q=${company}`}
       >
         <CardBody height="100%">
-          <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
-            <QuoteSvg />
-            <Box>
-              <Heading weight="semibold" size="large">
-                {quote}
-              </Heading>
-              <Text size="medium" marginTop="spacing.4">
-                {longQuote}
-              </Text>
-            </Box>
-            <Divider marginY="spacing.4" />
-            <Box
-              display="flex"
-              alignItems={isReactNative() ? 'flex-start' : 'center'}
-              gap="spacing.4"
-            >
-              <Avatar name={name} />
+          <ScrollableCardContent>
+            <Box display="flex" gap="spacing.4" flexDirection="column">
+              <QuoteSvg />
               <Box>
-                <Link size="large" href={`https://www.google.com/search?q=${name}`}>
-                  {name}
-                </Link>
-                <Text>
-                  <Text as="span" weight="semibold">
-                    {company}
-                  </Text>
-                  {', '}
-                  <Text as="span">{role}</Text>
+                <Heading weight="semibold" size="large">
+                  {quote}
+                </Heading>
+                <Text size="medium" marginTop="spacing.4">
+                  {longQuote}
                 </Text>
               </Box>
+              <Divider marginY="spacing.4" />
+              <Box
+                display="flex"
+                alignItems={isReactNative() ? 'flex-start' : 'center'}
+                gap="spacing.4"
+              >
+                <Avatar name={name} />
+                <Box>
+                  <Link size="large" href={`https://www.google.com/search?q=${name}`}>
+                    {name}
+                  </Link>
+                  <Text>
+                    <Text as="span" weight="semibold">
+                      {company}
+                    </Text>
+                    {', '}
+                    <Text as="span">{role}</Text>
+                  </Text>
+                </Box>
+              </Box>
             </Box>
-          </Box>
+          </ScrollableCardContent>
         </CardBody>
       </Card>
     </Box>
