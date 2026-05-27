@@ -6,6 +6,7 @@ import { ArrowUpIcon, StopCircleIcon, PlusIcon } from '~components/Icons';
 
 type ChatInputActionBarProps = {
   isDisabled?: boolean;
+  isUploadDisabled?: boolean;
   isGenerating?: boolean;
   isSubmitDisabled?: boolean;
   hideFileUpload?: boolean;
@@ -16,6 +17,7 @@ type ChatInputActionBarProps = {
 
 const ChatInputActionBar = ({
   isDisabled,
+  isUploadDisabled = false,
   isGenerating,
   isSubmitDisabled,
   hideFileUpload = false,
@@ -40,7 +42,8 @@ const ChatInputActionBar = ({
           size="small"
           icon={PlusIcon}
           onClick={onUploadClick}
-          isDisabled={isDisabled}
+          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+          isDisabled={isDisabled || isUploadDisabled}
         >
           Upload file
         </Link>
