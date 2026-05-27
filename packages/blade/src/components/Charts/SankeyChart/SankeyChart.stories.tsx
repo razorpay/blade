@@ -1,5 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import { action } from 'storybook/actions';
 import { ChartSankeyWrapper, ChartSankey } from './SankeyChart';
 import type {
   ChartSankeyWrapperProps,
@@ -263,6 +264,8 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
             showLabelChip={showLabelChip}
             showPercentage={showPercentage}
             labelUnit={labelUnit}
+            onNodeClick={action('onNodeClick')}
+            onLinkClick={action('onLinkClick')}
           />
         </ChartSankeyWrapper>
       </Box>

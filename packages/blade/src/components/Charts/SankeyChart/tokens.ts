@@ -18,8 +18,6 @@ export const CHIP_MIN_WIDTH = 80;
  * Content wider than (CHIP_MAX_WIDTH - horizontal padding) wraps to two lines.
  */
 export const CHIP_MAX_WIDTH = 160;
-/** Approximate px-per-character for chip width estimation (12px Inter, weight 600) */
-export const CHIP_PX_PER_CHAR = 6;
 /**
  * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
  * e.g. "1.24L txn  (100.0%)". Used when computing the dynamic right margin before
@@ -49,6 +47,15 @@ export const TOOLTIP_Z_INDEX = 100;
  * Below this the Sankey layout collapses; the scroll wrapper kicks in instead.
  */
 export const MIN_CHART_WIDTH = 560;
+
+// ── Label vertical alignment ──────────────────────────────────────────────────
+/**
+ * Cap-height ratio for the Inter font family.
+ * Uppercase glyphs occupy ~72% of font-size above the baseline.
+ * Used for vertical SVG text alignment in node label rendering.
+ * Update if Blade's base font family ever changes.
+ */
+export const LABEL_CAP_HEIGHT_RATIO = 0.72;
 
 // ── Component IDs ─────────────────────────────────────────────────────────────
 // PascalCase values match the convention used by BarChart ('ChartBar'),

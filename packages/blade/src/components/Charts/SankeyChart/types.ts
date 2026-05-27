@@ -19,7 +19,13 @@ export type SankeyDataLink = {
 
 export type ChartSankeyWrapperProps = {
   children: React.ReactNode;
+  /** Chart height in px. Default: 400 */
   height?: number;
+  /**
+   * Chart width. Accepts a pixel number or any valid CSS width string (e.g. `"100%"`, `"600px"`).
+   * Default: `"100%"` — fills the parent container. Use a fixed value in side-by-side dashboard layouts.
+   */
+  width?: number | string;
   showTooltip?: boolean;
   /** Override all node bar colors with a single Blade token */
   nodeColorOverride?: ChartsCategoricalColorToken;
@@ -50,7 +56,12 @@ export type ChartSankeyProps = {
   labelUnit?: string;
   /**
    * Custom value formatter for node labels.
-   * Defaults to Indian number system (k / L / Cr, truncated).
+   * Defaults to Indian number notation (k / L / Cr).
+   *
+   * **Default truncates, not rounds** — e.g. `14999999` → `"1.49Cr"`, not `"1.5Cr"`.
+   * This is intentional to avoid overstating values. Provide a custom formatter
+   * if standard rounding is preferred.
+   *
    * @example formatValue={(v) => Intl.NumberFormat('en-US', { notation: 'compact' }).format(v)}
    */
   formatValue?: (value: number) => string;

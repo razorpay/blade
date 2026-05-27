@@ -10,7 +10,6 @@ import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
-import { getComponentId } from '~utils/isValidAllowedChildren';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
 import { calculateTextWidth } from '../CommonChartComponents/utils';
@@ -18,6 +17,7 @@ import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonCha
 import type { ChartSankeyWrapperProps, ChartSankeyProps, SankeyDataNode } from './types';
 import {
   componentIds,
+  LABEL_CAP_HEIGHT_RATIO,
   LINK_DEFAULT_OPACITY,
   LINK_HOVER_OPACITY,
   LINK_DIMMED_OPACITY,
@@ -31,6 +31,8 @@ import {
   TOOLTIP_Z_INDEX,
   MIN_CHART_WIDTH,
 } from './tokens';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -51,13 +53,9 @@ type SankeyChartContextType = {
   defaultColorTokens: ChartsCategoricalColorToken[];
 };
 
-const SankeyChartContext = createContext<SankeyChartContextType>({
-  height: 400,
-  showTooltip: true,
-  nodeColorOverride: undefined,
-  linkColorOverride: undefined,
-  defaultColorTokens: [],
-});
+// Default is null — rendering ChartSankey outside ChartSankeyWrapper is detected and
+// throws a descriptive Blade error rather than silently failing with an empty palette.
+const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -139,15 +137,20 @@ function humanizeIndian(value: number): string {
 const _ChartSankeyWrapper = ({
   children,
   height = 400,
+  width,
   showTooltip = true,
   nodeColorOverride,
   linkColorOverride,
   testID,
   ...restProps
 }: ChartSankeyWrapperProps): React.ReactElement => {
-  // Categorical palette — same filter used in DonutChart (gray.faint is near-white)
-  const defaultColorTokens = useChartsColorTheme({ colorTheme: 'categorical' }).filter(
-    (t) => t !== 'data.background.categorical.gray.faint',
+  // Categorical palette — same filter used in DonutChart (gray.faint is near-white).
+  // Memoised so the filtered array reference is stable across renders and downstream
+  // useMemo/useCallback hooks that depend on it don't recompute needlessly.
+  const allColorTokens = useChartsColorTheme({ colorTheme: 'categorical' });
+  const defaultColorTokens = useMemo(
+    () => allColorTokens.filter((t) => t !== 'data.background.categorical.gray.faint'),
+    [allColorTokens],
   );
 
   // Extract data from ChartSankey child — same pattern ChartDonutWrapper uses
@@ -168,8 +171,10 @@ const _ChartSankeyWrapper = ({
     data.nodes.forEach((node) => {
       const override = nodeColorOverride ?? node.color;
       mapping[node.id] = {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        colorToken: (override ?? undefined) as any,
+        // Entries without an explicit override use undefined as a placeholder;
+        // assignDataColorMapping() fills in the real palette token afterwards.
+        // Cast is narrower than `as any` — undefined is intentional here, not a type escape.
+        colorToken: override as ChartsCategoricalColorToken,
         isCustomColor: Boolean(override),
       };
     });
@@ -191,7 +196,8 @@ const _ChartSankeyWrapper = ({
           {/* Scroll wrapper — ensures minimum width on narrow viewports */}
           <BaseBox width="100%" overflowX="auto">
             <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
-              <ResponsiveContainer width="100%" height={height}>
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              <ResponsiveContainer width={(width ?? '100%') as any} height={height}>
                 {/* ResponsiveContainer requires a single React element child */}
                 {React.Children.only(children) as React.ReactElement}
               </ResponsiveContainer>
@@ -206,6 +212,159 @@ const _ChartSankeyWrapper = ({
 export const ChartSankeyWrapper = assignWithoutSideEffects(_ChartSankeyWrapper, {
   componentId: componentIds.ChartSankeyWrapper,
 });
+
+// ─── Node label render helpers ───────────────────────────────────────────────
+// Pure functions extracted from renderNode to keep the useCallback lean.
+// All positional/style data is passed explicitly so there are no hidden closures.
+
+type NodeLabelArgs = {
+  chipX: number;
+  chipY: number;
+  chipW: number;
+  chipH: number;
+  nodeMidY: number;
+  fontSize: number;
+  fontFamily: string;
+  labelNameColor: string;
+  labelValueColor: string;
+  chipBg: string;
+  chipBorderColor: string;
+  chipRadius: number;
+  chipPadX: number;
+  lineGap: number;
+  borderThin: number;
+  capHeightRatio: number;
+  CHIP_H: number;
+  name: string;
+  labelValue: string;
+  shouldWrap: boolean;
+  semibold: number | string;
+  regular: number | string;
+};
+
+function renderChipLabel({
+  chipX,
+  chipY,
+  chipW,
+  chipH,
+  fontSize,
+  fontFamily,
+  labelNameColor,
+  labelValueColor,
+  chipBg,
+  chipBorderColor,
+  chipRadius,
+  chipPadX,
+  lineGap,
+  borderThin,
+  capHeightRatio,
+  name,
+  labelValue,
+  shouldWrap,
+  semibold,
+}: NodeLabelArgs): React.ReactElement {
+  return (
+    <>
+      <rect
+        x={chipX + borderThin / 2}
+        y={chipY + borderThin / 2}
+        width={chipW - borderThin}
+        height={chipH - borderThin}
+        fill={chipBg}
+        rx={chipRadius}
+        stroke={chipBorderColor}
+        strokeWidth={borderThin}
+      />
+      {shouldWrap ? (
+        <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
+          <tspan
+            x={chipX + chipPadX}
+            y={chipY + lineGap * 2 + (fontSize * (1 + capHeightRatio)) / 2}
+            fontWeight={semibold}
+            fill={labelNameColor}
+          >
+            {name}
+          </tspan>
+          <tspan
+            x={chipX + chipPadX}
+            y={chipY + lineGap * 2 + fontSize + lineGap + (fontSize * (1 + capHeightRatio)) / 2}
+            fill={labelValueColor}
+          >
+            {labelValue}
+          </tspan>
+        </text>
+      ) : (
+        <text
+          x={chipX + chipPadX}
+          y={chipY + (chipH + fontSize * capHeightRatio) / 2}
+          fontSize={fontSize}
+          style={{ userSelect: 'none', fontFamily }}
+        >
+          <tspan fontWeight={semibold} fill={labelNameColor}>
+            {name}
+          </tspan>
+          <tspan fill={labelValueColor} dx={lineGap / 2}>
+            {labelValue}
+          </tspan>
+        </text>
+      )}
+    </>
+  );
+}
+
+function renderPlainTextLabel({
+  chipX,
+  nodeMidY,
+  fontSize,
+  fontFamily,
+  labelNameColor,
+  labelValueColor,
+  lineGap,
+  capHeightRatio,
+  name,
+  labelValue,
+  shouldWrap,
+  semibold,
+  regular,
+}: NodeLabelArgs): React.ReactElement {
+  if (shouldWrap) {
+    return (
+      <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
+        <tspan
+          x={chipX}
+          y={nodeMidY - (fontSize + lineGap) / 2}
+          fontWeight={semibold}
+          fill={labelNameColor}
+        >
+          {name}
+        </tspan>
+        <tspan
+          x={chipX}
+          y={nodeMidY + (fontSize + lineGap) / 2}
+          fontWeight={regular}
+          fill={labelValueColor}
+        >
+          {labelValue}
+        </tspan>
+      </text>
+    );
+  }
+  return (
+    <text
+      x={chipX}
+      y={nodeMidY + (fontSize * capHeightRatio) / 2}
+      fontSize={fontSize}
+      style={{ userSelect: 'none', fontFamily }}
+    >
+      <tspan fontWeight={semibold} fill={labelNameColor}>
+        {name}
+      </tspan>
+      <tspan fontWeight={regular} fill={labelValueColor} dx={lineGap / 2}>
+        {labelValue}
+      </tspan>
+    </text>
+  );
+}
 
 // ─── ChartSankey ──────────────────────────────────────────────────────────────
 // Presentational layer — mirrors ChartDonut.
@@ -227,10 +386,17 @@ const _ChartSankey = ({
 }: ChartSankeyProps & { width?: number; height?: number }): React.ReactElement => {
   const [hovered, setHovered] = useState<HoverState>(null);
 
-  // Read wrapper-level config from private context
-  const { showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens } = useContext(
-    SankeyChartContext,
-  );
+  // Read wrapper-level config from private context.
+  // null means ChartSankey was rendered outside ChartSankeyWrapper — throw a clear error.
+  const sankeyCtx = useContext(SankeyChartContext);
+  if (sankeyCtx === null) {
+    throwBladeError({
+      message: 'ChartSankey must be rendered as a direct child of ChartSankeyWrapper',
+      moduleName: 'ChartSankey',
+    });
+  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens } = sankeyCtx!;
 
   // ── Theme tokens ──────────────────────────────────────────────────────────
   const { theme } = useTheme();
@@ -246,8 +412,8 @@ const _ChartSankey = ({
   const CHIP_H = theme.typography.fonts.size[75] + theme.spacing[3] * 2; // 28px single-line
   const CHIP_GAP = theme.spacing[3]; // 8px
   const fontFamily = theme.typography.fonts.family.text;
-  // Cap-height ratio for Inter — uppercase glyphs occupy ~72% of font-size above baseline.
-  const capHeightRatio = 0.72;
+  // Imported from tokens.ts — see LABEL_CAP_HEIGHT_RATIO for derivation notes.
+  const capHeightRatio = LABEL_CAP_HEIGHT_RATIO;
 
   // Canvas-based text width measurement — delegates to calculateTextWidth from CommonChartComponents.
   // Uses size[75] (node labels are larger than the default size[50] used by axis labels) and
@@ -257,10 +423,10 @@ const _ChartSankey = ({
       calculateTextWidth(text, theme, {
         fontSize: theme.typography.fonts.size[75],
         fontWeight: weight,
-        // rawMeasure: return the bare canvas pixel width so shouldWrap decisions
+        // skipPadding: return the bare canvas pixel width so shouldWrap decisions
         // use actual glyph widths rather than the MIN_WIDTH-floored chip widths
         // that calculateTextWidth normally returns for axis label chips.
-        rawMeasure: true,
+        skipPadding: true,
       }).width,
     [theme],
   );
@@ -433,102 +599,33 @@ const _ChartSankey = ({
             style={{ cursor: 'pointer' }}
           />
 
-          {/* Label */}
+          {/* Label — delegated to renderChipLabel / renderPlainTextLabel helpers */}
           {showChip && (
             <g style={{ pointerEvents: 'none' }}>
-              {showLabelChip ? (
-                <>
-                  <rect
-                    x={chipX + theme.border.width.thin / 2}
-                    y={chipY + theme.border.width.thin / 2}
-                    width={chipW - theme.border.width.thin}
-                    height={chipH - theme.border.width.thin}
-                    fill={chipBg}
-                    rx={chipRadius}
-                    stroke={chipBorderColor}
-                    strokeWidth={theme.border.width.thin}
-                  />
-                  {shouldWrap ? (
-                    <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
-                      <tspan
-                        x={chipX + CHIP_PAD_X}
-                        y={chipY + theme.spacing[3] + (fontSize * (1 + capHeightRatio)) / 2}
-                        fontWeight={theme.typography.fonts.weight.semibold}
-                        fill={labelNameColor}
-                      >
-                        {nodeData.name}
-                      </tspan>
-                      <tspan
-                        x={chipX + CHIP_PAD_X}
-                        y={
-                          chipY +
-                          theme.spacing[3] +
-                          fontSize +
-                          lineGap +
-                          (fontSize * (1 + capHeightRatio)) / 2
-                        }
-                        fill={labelValueColor}
-                      >
-                        {labelValue}
-                      </tspan>
-                    </text>
-                  ) : (
-                    <text
-                      x={chipX + CHIP_PAD_X}
-                      y={chipY + (chipH + fontSize * capHeightRatio) / 2}
-                      fontSize={fontSize}
-                      style={{ userSelect: 'none', fontFamily }}
-                    >
-                      <tspan
-                        fontWeight={theme.typography.fonts.weight.semibold}
-                        fill={labelNameColor}
-                      >
-                        {nodeData.name}
-                      </tspan>
-                      <tspan fill={labelValueColor} dx={theme.spacing[2]}>
-                        {labelValue}
-                      </tspan>
-                    </text>
-                  )}
-                </>
-              ) : shouldWrap ? (
-                <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
-                  <tspan
-                    x={chipX}
-                    y={nodeMidY - (fontSize + lineGap) / 2}
-                    fontWeight={theme.typography.fonts.weight.semibold}
-                    fill={labelNameColor}
-                  >
-                    {nodeData.name}
-                  </tspan>
-                  <tspan
-                    x={chipX}
-                    y={nodeMidY + (fontSize + lineGap) / 2}
-                    fontWeight={theme.typography.fonts.weight.regular}
-                    fill={labelValueColor}
-                  >
-                    {labelValue}
-                  </tspan>
-                </text>
-              ) : (
-                <text
-                  x={chipX}
-                  y={nodeMidY + (fontSize * capHeightRatio) / 2}
-                  fontSize={fontSize}
-                  style={{ userSelect: 'none', fontFamily }}
-                >
-                  <tspan fontWeight={theme.typography.fonts.weight.semibold} fill={labelNameColor}>
-                    {nodeData.name}
-                  </tspan>
-                  <tspan
-                    fontWeight={theme.typography.fonts.weight.regular}
-                    fill={labelValueColor}
-                    dx={theme.spacing[2]}
-                  >
-                    {labelValue}
-                  </tspan>
-                </text>
-              )}
+              {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
+                chipX,
+                chipY,
+                chipW,
+                chipH,
+                nodeMidY,
+                fontSize,
+                fontFamily,
+                labelNameColor,
+                labelValueColor,
+                chipBg,
+                chipBorderColor,
+                chipRadius,
+                chipPadX: CHIP_PAD_X,
+                lineGap,
+                borderThin: theme.border.width.thin,
+                capHeightRatio,
+                CHIP_H,
+                name: nodeData.name,
+                labelValue,
+                shouldWrap,
+                semibold: theme.typography.fonts.weight.semibold,
+                regular: theme.typography.fonts.weight.regular,
+              })}
             </g>
           )}
         </g>
@@ -547,6 +644,7 @@ const _ChartSankey = ({
       showPercentage,
       labelUnit,
       formatValue,
+      capHeightRatio,
       CHIP_H,
       CHIP_PAD_X,
       CHIP_GAP,
@@ -592,7 +690,8 @@ const _ChartSankey = ({
         nodeColorOverride ??
         (srcNode
           ? srcNode.color ??
-            defaultColorTokens[data.nodes.indexOf(srcNode) % defaultColorTokens.length]
+            // srcNodeIndex is already resolved above — O(1) map lookup, not O(n) indexOf
+            defaultColorTokens[srcNodeIndex % defaultColorTokens.length]
           : defaultColorTokens[0]);
       const stroke = resolveColor(colorToken);
       const opacity = getLinkOpacity(index);

@@ -217,7 +217,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                         Total
                       </tspan>
                       <tspan
-                        dx="4"
+                        dx="2"
                         fill="hsla(204, 9%, 42%, 1)"
                       >
                         7.2k
@@ -268,7 +268,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                         UPI
                       </tspan>
                       <tspan
-                        dx="4"
+                        dx="2"
                         fill="hsla(204, 9%, 42%, 1)"
                       >
                         4k  (56%)
@@ -319,7 +319,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                         Card
                       </tspan>
                       <tspan
-                        dx="4"
+                        dx="2"
                         fill="hsla(204, 9%, 42%, 1)"
                       >
                         3.2k  (44%)
@@ -370,7 +370,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                         Successful
                       </tspan>
                       <tspan
-                        dx="4"
+                        dx="2"
                         fill="hsla(204, 9%, 42%, 1)"
                       >
                         6.3k  (88%)
@@ -421,7 +421,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                         Failed
                       </tspan>
                       <tspan
-                        dx="4"
+                        dx="2"
                         fill="hsla(204, 9%, 42%, 1)"
                       >
                         900  (13%)

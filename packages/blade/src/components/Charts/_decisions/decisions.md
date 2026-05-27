@@ -670,6 +670,7 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 |------|------|----------|---------|-------------|
 | `children` | `React.ReactNode` | ✅ | — | Must contain a `<ChartSankey>` element |
 | `height` | `number` | ❌ | `400` | Chart height in pixels |
+| `width` | `number \| string` | ❌ | `"100%"` | Chart width — pixel number or CSS string. Useful for fixed-width dashboard layouts |
 | `showTooltip` | `boolean` | ❌ | `true` | Show a tooltip on node/link hover |
 | `nodeColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all node bar colors with a single Blade token |
 | `linkColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all link ribbon colors with a single Blade token |
@@ -721,7 +722,7 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 ### 3.8\. Axis and Grid Components
 
-#### 3.7.1\. ReferenceLine Component
+#### 3.8.1\. ReferenceLine Component
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|

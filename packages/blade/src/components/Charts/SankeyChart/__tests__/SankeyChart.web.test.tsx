@@ -6,6 +6,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart';
+import type { SankeyDataNode } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -155,10 +156,14 @@ describe('SankeyChart — interactivity', () => {
     fireEvent.click(rects[0]);
 
     expect(handleNodeClick).toHaveBeenCalledTimes(1);
-    expect(handleNodeClick).toHaveBeenCalledWith(
-      expect.objectContaining({ id: expect.any(String), name: expect.any(String) }),
-      expect.any(Number),
-    );
+    // Validate correctness: the returned node must exist in our test dataset,
+    // not just have the right shape. expect.any(String) would pass for any node.
+    const [clickedNode, clickedIndex] = handleNodeClick.mock.calls[0] as [SankeyDataNode, number];
+    const matchingNode = nodes.find((n) => n.id === clickedNode.id);
+    expect(matchingNode).toBeDefined();
+    expect(clickedNode.name).toBe(matchingNode?.name);
+    expect(clickedIndex).toBeGreaterThanOrEqual(0);
+    expect(clickedIndex).toBeLessThan(nodes.length);
   });
 
   it('calls onLinkClick with the correct link and index when a link path is clicked', () => {

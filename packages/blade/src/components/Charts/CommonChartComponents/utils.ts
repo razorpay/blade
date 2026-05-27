@@ -5,15 +5,19 @@ import type { Theme } from '~components/BladeProvider';
  * Measures text width using the Canvas API, returning the pixel width and a
  * (possibly truncated) display string.
  *
- * @param options.fontSize   Override the default font size (theme.typography.fonts.size[50]).
- *                           SankeyChart uses size[75] for node labels.
- * @param options.fontWeight Override the default font weight (theme.typography.fonts.weight.medium).
- *                           SankeyChart uses semibold/regular depending on label part.
+ * @param options.fontSize    Override the default font size (theme.typography.fonts.size[50]).
+ *                            SankeyChart uses size[75] for node labels.
+ * @param options.fontWeight  Override the default font weight (theme.typography.fonts.weight.medium).
+ *                            SankeyChart uses semibold/regular depending on label part.
+ * @param options.skipPadding When true, returns the raw canvas pixel width without applying the
+ *                            MIN_WIDTH floor or PADDING_HORIZONTAL addition. Use this when measuring
+ *                            individual text segments for layout decisions (e.g. SankeyChart chip
+ *                            wrapping) where the caller needs actual glyph widths, not padded chip widths.
  */
 const calculateTextWidth = (
   text: string,
   theme: Theme,
-  options?: { fontSize?: number; fontWeight?: number | string; rawMeasure?: boolean },
+  options?: { fontSize?: number; fontWeight?: number | string; skipPadding?: boolean },
 ): { width: number; displayText: string } => {
   // Create a temporary canvas to measure text
   const canvas = document.createElement('canvas');
@@ -37,7 +41,7 @@ const calculateTextWidth = (
     // rawMeasure: skip the MIN_WIDTH floor and PADDING_HORIZONTAL addition.
     // Used by SankeyChart to measure individual text segments for layout decisions —
     // those callers need the raw canvas pixel width, not a padded chip width.
-    if (options?.rawMeasure) return { width: fullTextWidth, displayText: text };
+    if (options?.skipPadding) return { width: fullTextWidth, displayText: text };
     const finalWidth = Math.max(MIN_WIDTH, fullTextWidth + PADDING_HORIZONTAL);
     return { width: finalWidth, displayText: text };
   }
