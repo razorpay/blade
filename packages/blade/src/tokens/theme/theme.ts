@@ -79,9 +79,13 @@ type ColorCategories = {
   onSea: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
   onCloud: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
   primary: Pick<Emphasis, 'normal'>;
+  secondary: Pick<Emphasis, 'normal'>;
 };
 
-type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
+type InteractiveColorKeys =
+  | FeedbackColors
+  | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>
+  | 'secondary';
 
 /**
  * @deprecated
@@ -114,11 +118,11 @@ export type Colors = {
     > &
       Record<InteractiveBorderColorsWithFadedHighlighted, InteractiveStatesWithFadedHighlighted>;
     text: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onSecondary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
     icon: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onSecondary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
   };
@@ -132,12 +136,14 @@ export type Colors = {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
       primary: SubtleOrIntenseEmphasis;
+      secondary: SubtleOrIntenseEmphasis;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
       primary: Pick<Emphasis, 'normal' | 'muted'>;
+      secondary: Pick<Emphasis, 'normal' | 'muted'>;
     };
     text: ColorCategories;
     icon: ColorCategories;
