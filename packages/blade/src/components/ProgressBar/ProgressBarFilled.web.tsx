@@ -78,11 +78,11 @@ const getPulseAnimationStyles = ({
 const BoxWithIndeterminateAnimation = styled(BaseBox)<
   Pick<
     ProgressBarFilledProps,
-    'fillMotionDuration' | 'indeterminateMotionDuration' | '_oscillation'
+    'fillMotionDuration' | 'indeterminateMotionDuration' | '_oscillation' | 'motionEasing'
   >
->(({ theme, indeterminateMotionDuration, _oscillation = false }) => {
+>(({ theme, indeterminateMotionDuration, motionEasing, _oscillation = false }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)));
-  const easing = 'linear'; // TODO: Add this in motion tokens
+  const easing = castWebType(getIn(theme.motion, motionEasing));
   const keyframes = _oscillation ? oscillateKeyframes : slideAndScaleKeyframes;
 
   return css`
@@ -167,6 +167,7 @@ const ProgressBarFilled = ({
     <ProgressBarFilledContainer
       backgroundColor={backgroundColor}
       fillMotionDuration={fillMotionDuration}
+      motionEasing={motionEasing}
       progress={progress}
       indeterminateMotionDuration={indeterminateMotionDuration}
       _oscillation={_oscillation}
