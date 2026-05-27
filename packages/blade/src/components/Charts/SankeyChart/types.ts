@@ -4,6 +4,7 @@ import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 export type SankeyDataNode = {
   /** Unique identifier — used in link `source`/`target` references */
   id: string;
+  /** Human-readable label shown in node tooltips and label chips */
   name: string;
   /** Optional typed Blade color token override, e.g. 'data.background.categorical.blue.moderate' */
   color?: ChartsCategoricalColorToken;
@@ -14,6 +15,7 @@ export type SankeyDataLink = {
   source: string;
   /** id of the target node */
   target: string;
+  /** Flow magnitude — determines ribbon thickness between source and target */
   value: number;
 };
 
@@ -26,6 +28,7 @@ export type ChartSankeyWrapperProps = {
    * Default: `"100%"` — fills the parent container. Use a fixed value in side-by-side dashboard layouts.
    */
   width?: number | string;
+  /** Show a tooltip when hovering over a node or link ribbon. Default: true */
   showTooltip?: boolean;
   /** Override all node bar colors with a single Blade token */
   nodeColorOverride?: ChartsCategoricalColorToken;
@@ -65,6 +68,8 @@ export type ChartSankeyProps = {
    * @example formatValue={(v) => Intl.NumberFormat('en-US', { notation: 'compact' }).format(v)}
    */
   formatValue?: (value: number) => string;
+  /** Called when a node bar is clicked. Receives the node data and its zero-based index. */
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
+  /** Called when a link ribbon is clicked. Receives the link data and its zero-based index. */
   onLinkClick?: (link: SankeyDataLink, index: number) => void;
 };

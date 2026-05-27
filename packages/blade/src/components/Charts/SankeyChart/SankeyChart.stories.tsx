@@ -131,9 +131,15 @@ export default {
       defaultValue: 2,
       if: { arg: 'numLevels', eq: 4 },
     },
+    width: {
+      control: { type: 'text' },
+      description:
+        'Chart width. Accepts a pixel number or any valid CSS width string (e.g. "100%", "600px"). Default: "100%".',
+    },
     // Hide complex/internal props from Storybook controls
     data: { table: { disable: true } },
     children: { table: { disable: true } },
+    formatValue: { table: { disable: true } },
     nodeColorOverride: { table: { disable: true } },
     linkColorOverride: { table: { disable: true } },
     testID: { table: { disable: true } },

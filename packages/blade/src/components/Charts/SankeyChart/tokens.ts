@@ -20,7 +20,7 @@ export const CHIP_MIN_WIDTH = 80;
 export const CHIP_MAX_WIDTH = 160;
 /**
  * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
- * e.g. "1.24L txn  (100.0%)". Used when computing the dynamic right margin before
+ * e.g. "1.24L txn  (100%)". Used when computing the dynamic right margin before
  * node values are available from Recharts layout.
  */
 export const CHIP_VALUE_BUDGET = 120;

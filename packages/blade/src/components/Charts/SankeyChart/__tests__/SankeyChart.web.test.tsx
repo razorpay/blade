@@ -324,4 +324,12 @@ describe('SankeyChart — edge cases', () => {
     );
     expect(container.querySelector('svg')).toBeTruthy();
   });
+
+  it('throws a Blade error when ChartSankey is rendered outside ChartSankeyWrapper', () => {
+    // Suppress the expected console.error from React's error boundary during the throw
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    expect(() => renderWithTheme(<ChartSankey data={{ nodes, links }} />)).toThrow();
+    consoleError.mockRestore();
+  });
 });

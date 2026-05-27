@@ -358,7 +358,7 @@ function renderPlainTextLabel({
       <tspan fontWeight={semibold} fill={labelNameColor}>
         {name}
       </tspan>
-      <tspan fontWeight={regular} fill={labelValueColor} dx={lineGap / 2}>
+      <tspan fontWeight={regular} fill={labelValueColor} dx={lineGap}>
         {labelValue}
       </tspan>
     </text>
