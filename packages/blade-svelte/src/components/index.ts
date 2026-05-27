@@ -101,5 +101,9 @@ export type {
   UseToastReturn,
 } from './Toast/types';
 
+// Form
+export { FormLabel, FormHint, CharacterCounter } from './Form';
+export type { FormLabelProps, FormHintProps, CharacterCounterProps } from './Form';
+
 // BladeProvider
 export * from './BladeProvider';
