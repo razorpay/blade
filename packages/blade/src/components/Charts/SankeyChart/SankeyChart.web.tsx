@@ -61,6 +61,11 @@ const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 
 type HoverState = { type: 'node' | 'link'; index: number } | null;
 
+// Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
+// ((item, type, e) => void) — an intersection TypeScript cannot satisfy with a
+// plain callback. This module-level alias is cast through `any` at the call site.
+type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
+
 // ─── Tooltip content ──────────────────────────────────────────────────────────
 
 type SankeyTooltipContentProps = {
@@ -198,8 +203,7 @@ const _ChartSankeyWrapper = ({
             <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               <ResponsiveContainer width={(width ?? '100%') as any} height={height}>
-                {/* ResponsiveContainer requires a single React element child */}
-                {React.Children.only(children) as React.ReactElement}
+                {children}
               </ResponsiveContainer>
             </BaseBox>
           </BaseBox>
@@ -736,10 +740,6 @@ const _ChartSankey = ({
   );
 
   // ── Event handlers ─────────────────────────────────────────────────────────
-  // Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
-  // ((item, type, e) => void) — an intersection that TypeScript cannot satisfy
-  // with a plain callback. Casting through any is the accepted pattern here.
-  type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
 
   const handleMouseEnter = useCallback<SankeyEventHandler>((item, type): void => {
     setHovered({ type, index: item.index });

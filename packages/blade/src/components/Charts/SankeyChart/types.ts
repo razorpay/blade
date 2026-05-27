@@ -20,7 +20,8 @@ export type SankeyDataLink = {
 };
 
 export type ChartSankeyWrapperProps = {
-  children: React.ReactNode;
+  /** Must contain exactly one `<ChartSankey>` element */
+  children: React.ReactElement;
   /** Chart height in px. Default: 400 */
   height?: number;
   /**
