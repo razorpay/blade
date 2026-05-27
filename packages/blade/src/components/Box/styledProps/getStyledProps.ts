@@ -77,6 +77,10 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
     left: props.left,
     visibility: props.visibility,
     flexWrap: props.flexWrap,
+    flex: props.flex,
+    flexGrow: props.flexGrow,
+    flexShrink: props.flexShrink,
+    flexBasis: props.flexBasis,
   };
 };
 
