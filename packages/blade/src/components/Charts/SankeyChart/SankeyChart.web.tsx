@@ -211,6 +211,16 @@ const _ChartSankeyWrapper = ({
   );
 };
 
+/**
+ * Orchestration wrapper for the Sankey flow diagram.
+ * Computes colour mapping, provides chart context, and owns the responsive container.
+ * Must contain exactly one `<ChartSankey>` child.
+ *
+ * @example
+ * <ChartSankeyWrapper height={420} showTooltip>
+ *   <ChartSankey data={{ nodes, links }} labelUnit="txn" />
+ * </ChartSankeyWrapper>
+ */
 export const ChartSankeyWrapper = assignWithoutSideEffects(_ChartSankeyWrapper, {
   componentId: componentIds.ChartSankeyWrapper,
 });
@@ -802,6 +812,23 @@ const _ChartSankey = ({
   );
 };
 
+/**
+ * Presentational layer for the Sankey flow diagram.
+ * Renders nodes, link ribbons, and labels; delegates colour and tooltip config
+ * to the parent `<ChartSankeyWrapper>`.
+ * Must be rendered as a direct child of `<ChartSankeyWrapper>`.
+ *
+ * @example
+ * <ChartSankeyWrapper height={420}>
+ *   <ChartSankey
+ *     data={{ nodes, links }}
+ *     showLabels
+ *     showLabelChip
+ *     labelUnit="txn"
+ *     onNodeClick={(node, i) => console.log(node, i)}
+ *   />
+ * </ChartSankeyWrapper>
+ */
 export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
   componentId: componentIds.ChartSankey,
 });
