@@ -234,7 +234,6 @@ type NodeLabelArgs = {
   lineGap: number;
   borderThin: number;
   capHeightRatio: number;
-  CHIP_H: number;
   name: string;
   labelValue: string;
   shouldWrap: boolean;
@@ -303,7 +302,7 @@ function renderChipLabel({
           <tspan fontWeight={semibold} fill={labelNameColor}>
             {name}
           </tspan>
-          <tspan fill={labelValueColor} dx={lineGap / 2}>
+          <tspan fill={labelValueColor} dx={lineGap}>
             {labelValue}
           </tspan>
         </text>
@@ -619,7 +618,6 @@ const _ChartSankey = ({
                 lineGap,
                 borderThin: theme.border.width.thin,
                 capHeightRatio,
-                CHIP_H,
                 name: nodeData.name,
                 labelValue,
                 shouldWrap,

@@ -38,7 +38,7 @@ const calculateTextWidth = (
 
   // If text fits within max width, use it as is
   if (fullTextWidth <= availableWidth) {
-    // rawMeasure: skip the MIN_WIDTH floor and PADDING_HORIZONTAL addition.
+    // skipPadding: skip the MIN_WIDTH floor and PADDING_HORIZONTAL addition.
     // Used by SankeyChart to measure individual text segments for layout decisions —
     // those callers need the raw canvas pixel width, not a padded chip width.
     if (options?.skipPadding) return { width: fullTextWidth, displayText: text };
