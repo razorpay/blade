@@ -195,6 +195,7 @@ const AmountValue = ({
       fontFamily={numberFontFamily}
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
+      as={isReactNative ? undefined : 'span'}
     >
       {amount.integer}
       {amount.decimal}
