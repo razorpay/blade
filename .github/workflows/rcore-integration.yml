@@ -1,0 +1,33 @@
+name: RZP Code Review Integration
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+      - labeled
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+
+jobs:
+  rCoRe:
+    # Only run on internal PRs (not forks), exclude bot actors
+    if: >
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'rzp-code-review[bot]' && github.actor != 'github-actions[bot]' &&
+      (github.event_name == 'pull_request' ||
+      github.event_name == 'pull_request_review' ||
+      github.event_name == 'pull_request_review_comment' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request))
+    uses: razorpay/actions/.github/workflows/rcore-suite.yml@rcore-v2
+    with:
+      runner_name: 'self-hosted'
+      disabled_checks: ''
+      run_on_label: 'AI-PR-Review'
+    secrets: inherit
