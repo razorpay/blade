@@ -10,6 +10,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
@@ -152,8 +153,9 @@ const FormLabel = ({
         {children}
       </Text>
       {computedAccessibilityNode}
-      {/* TODO: Hide from screen readers to prevent double announcement */}
-      {necessityLabel}
+      {necessityLabel ? (
+        <BaseBox {...makeAccessible({ hidden: true })}>{necessityLabel}</BaseBox>
+      ) : null}
     </BaseBox>
   );
 
