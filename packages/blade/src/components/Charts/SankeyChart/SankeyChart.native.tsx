@@ -1,5 +1,10 @@
 import React from 'react';
-import type { ChartSankeyWrapperProps, ChartSankeyProps } from './types';
+import type {
+  ChartSankeyWrapperProps,
+  ChartSankeyProps,
+  SankeyDataNode,
+  SankeyDataLink,
+} from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';
 
@@ -21,5 +26,6 @@ const ChartSankey = (_props: ChartSankeyProps): React.ReactElement => {
   return <Text>ChartSankey is not available for Native mobile apps.</Text>;
 };
 
-export type { ChartSankeyWrapperProps, ChartSankeyProps };
+export type { ChartSankeyWrapperProps, ChartSankeyProps, SankeyDataNode, SankeyDataLink };
+
 export { ChartSankeyWrapper, ChartSankey };

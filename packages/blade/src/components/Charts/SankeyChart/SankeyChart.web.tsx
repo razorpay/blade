@@ -263,6 +263,7 @@ function renderChipLabel({
   labelValue,
   shouldWrap,
   semibold,
+  regular,
 }: NodeLabelArgs): React.ReactElement {
   return (
     <>
@@ -289,6 +290,7 @@ function renderChipLabel({
           <tspan
             x={chipX + chipPadX}
             y={chipY + lineGap * 2 + fontSize + lineGap + (fontSize * (1 + capHeightRatio)) / 2}
+            fontWeight={regular}
             fill={labelValueColor}
           >
             {labelValue}
@@ -304,7 +306,7 @@ function renderChipLabel({
           <tspan fontWeight={semibold} fill={labelNameColor}>
             {name}
           </tspan>
-          <tspan fill={labelValueColor} dx={lineGap}>
+          <tspan fontWeight={regular} fill={labelValueColor} dx={lineGap}>
             {labelValue}
           </tspan>
         </text>
@@ -722,7 +724,7 @@ const _ChartSankey = ({
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // castWebType, NODE_MIN_HEIGHT are module-level — stable, intentionally omitted
+    // castWebType is module-level — stable, intentionally omitted
     [
       data.nodes,
       nodeIdToIndex,

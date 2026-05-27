@@ -70,8 +70,15 @@ const calculateTextWidth = (
   }
 
   const truncatedText = bestFit + ELLIPSIS;
-  const finalWidth = Math.max(MIN_WIDTH, MAX_WIDTH);
 
+  // skipPadding: return the raw measured width of the truncated string,
+  // consistent with the non-truncated skipPadding path above.
+  if (options?.skipPadding) {
+    const truncatedWidth = context.measureText(truncatedText).width;
+    return { width: truncatedWidth, displayText: truncatedText };
+  }
+
+  const finalWidth = Math.max(MIN_WIDTH, MAX_WIDTH);
   return { width: finalWidth, displayText: truncatedText };
 };
 

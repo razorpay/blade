@@ -219,6 +219,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                       <tspan
                         dx="4"
                         fill="hsla(204, 9%, 42%, 1)"
+                        font-weight="400"
                       >
                         7.2k
                       </tspan>
@@ -270,6 +271,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                       <tspan
                         dx="4"
                         fill="hsla(204, 9%, 42%, 1)"
+                        font-weight="400"
                       >
                         4k  (56%)
                       </tspan>
@@ -321,6 +323,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                       <tspan
                         dx="4"
                         fill="hsla(204, 9%, 42%, 1)"
+                        font-weight="400"
                       >
                         3.2k  (44%)
                       </tspan>
@@ -372,6 +375,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                       <tspan
                         dx="4"
                         fill="hsla(204, 9%, 42%, 1)"
+                        font-weight="400"
                       >
                         6.3k  (88%)
                       </tspan>
@@ -423,6 +427,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                       <tspan
                         dx="4"
                         fill="hsla(204, 9%, 42%, 1)"
+                        font-weight="400"
                       >
                         900  (13%)
                       </tspan>

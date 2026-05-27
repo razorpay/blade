@@ -23,9 +23,13 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('SankeyChart (native)', () => {
   it('ChartSankeyWrapper throws a Blade error when rendered on native', () => {
-    expect(() => renderWithTheme(<ChartSankeyWrapper><></></ChartSankeyWrapper>)).toThrow(
-      '[Blade: ChartSankeyWrapper]: ChartSankeyWrapper is not yet implemented for native',
-    );
+    expect(() =>
+      renderWithTheme(
+        <ChartSankeyWrapper>
+          <ChartSankey data={data} />
+        </ChartSankeyWrapper>,
+      ),
+    ).toThrow('[Blade: ChartSankeyWrapper]: ChartSankeyWrapper is not yet implemented for native');
   });
 
   it('ChartSankey throws a Blade error when rendered on native', () => {
