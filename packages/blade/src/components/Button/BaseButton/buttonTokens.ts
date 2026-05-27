@@ -2,7 +2,6 @@
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconSize } from '~components/Icons';
-import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
 import { size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
@@ -321,63 +320,14 @@ const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size'
   large: 'medium',
 };
 
-const buttonSizeToSpinnerSizeMap: Record<
-  NonNullable<BaseButtonProps['size']>,
-  SpinnerProps['size']
-> = {
-  xsmall: 'medium',
-  small: 'medium',
-  medium: 'medium',
-  large: 'large',
-};
-
-/**
- * Spinner color mapping based on button variant and color
- */
-const spinnerColor = {
-  base: {
-    primary: 'primary',
-    secondary: 'neutral',
-    tertiary: 'neutral',
-    transparent: 'primary',
-  },
-  white: {
-    primary: 'white',
-    secondary: 'white',
-    tertiary: 'white',
-  },
-  positive: {
-    primary: 'positive',
-    secondary: 'positive',
-  },
-  negative: {
-    primary: 'negative',
-    secondary: 'negative',
-  },
-  notice: {
-    primary: 'notice',
-    secondary: 'notice',
-  },
-  information: {
-    primary: 'information',
-    secondary: 'information',
-  },
-  neutral: {
-    primary: 'neutral',
-    secondary: 'neutral',
-  },
-} as const;
-
 export {
   boxShadow,
   backgroundGradient,
   textColor,
-  spinnerColor,
   typography,
   minHeight,
   buttonSizeToIconSizeMap,
   buttonIconOnlySizeToIconSizeMap,
-  buttonSizeToSpinnerSizeMap,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
