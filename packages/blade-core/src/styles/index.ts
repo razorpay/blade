@@ -204,7 +204,12 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './Avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants, AvatarDensity } from './Avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './Avatar';
 export {
   breadcrumbNavClass,
   breadcrumbListClass,

@@ -17,4 +17,9 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants, AvatarDensity } from './avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './avatar';
