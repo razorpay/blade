@@ -133,6 +133,26 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  /**
+   * Regression test for: isAffixSubtle={false} not working for body type currency prefix.
+   *
+   * Bug: currencyHardcodedSizes.body had values equal to the subtle font sizes (10–12px).
+   * These were applied as inline style overrides, keeping the currency prefix small even
+   * when isAffixSubtle={false}. The fix ensures body type uses normalAmountSizes (same
+   * font size as the number) and does not apply any hardcoded pixel override.
+   *
+   * Expected: when isAffixSubtle={false}, currency symbol font size === amount number font size.
+   */
+  it.each(['xsmall', 'small', 'medium', 'large'] as const)(
+    'should render body-%s Amount with isAffixSubtle=false — currency prefix must be full size',
+    (size) => {
+      const { container } = renderWithTheme(
+        <Amount type="body" size={size} isAffixSubtle={false} value={12500.45} />,
+      );
+      expect(container).toMatchSnapshot();
+    },
+  );
+
   for (const currency of ['USD', 'MYR', 'AED']) {
     it(`should render ${currency} currency Amount`, () => {
       const { container } = renderWithTheme(
