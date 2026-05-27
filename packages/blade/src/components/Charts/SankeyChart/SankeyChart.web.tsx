@@ -1,14 +1,23 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  isValidElement,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
-import { useChartsColorTheme } from '../utils';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
+import { calculateTextWidth } from '../CommonChartComponents/utils';
 import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type { SankeyChartProps, SankeyDataNode } from './types';
-import { componentIds } from './componentIds';
+import type { ChartSankeyWrapperProps, ChartSankeyProps, SankeyDataNode } from './types';
 import {
+  componentIds,
   LINK_DEFAULT_OPACITY,
   LINK_HOVER_OPACITY,
   LINK_DIMMED_OPACITY,
@@ -28,10 +37,28 @@ import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+
+// ─── Private context (mirrors DonutContainerContext pattern) ──────────────────
+// Passes wrapper-level config down to ChartSankey without prop drilling.
+
+type SankeyChartContextType = {
+  height: number;
+  showTooltip: boolean;
+  nodeColorOverride?: ChartsCategoricalColorToken;
+  linkColorOverride?: ChartsCategoricalColorToken;
+  defaultColorTokens: ChartsCategoricalColorToken[];
+};
+
+const SankeyChartContext = createContext<SankeyChartContextType>({
+  height: 400,
+  showTooltip: true,
+  nodeColorOverride: undefined,
+  linkColorOverride: undefined,
+  defaultColorTokens: [],
+});
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -54,7 +81,6 @@ function SankeyTooltipContent({
 
   if (!active || !payload?.length) return null;
 
-  // Recharts Sankey passes node payload under payload[0].payload
   const item = payload[0]?.payload as
     | (RechartsSankeyNode & { name?: string; value?: number })
     | undefined;
@@ -67,6 +93,8 @@ function SankeyTooltipContent({
   return (
     <div
       style={{
+        // surface.icon.staticBlack.normal is the token used by CommonChartComponents tooltip.
+        // The icon→surface semantic mismatch is a known issue to fix system-wide separately.
         backgroundColor: theme.colors.surface.icon.staticBlack.normal,
         borderRadius: theme.border.radius.large,
         border: `${theme.border.width.thin}px solid ${theme.colors.surface.border.gray.muted}`,
@@ -84,62 +112,131 @@ function SankeyTooltipContent({
   );
 }
 
-// ─── Indian number humanizer ─────────────────────────────────────────────────
+// ─── Indian number humanizer (private default for formatValue) ────────────────
 // Truncates (never rounds up) to avoid overstating values.
 // Examples: 2550→2.5k, 17100→17.1k, 124500→1.24L, 1000000→10L, 15000000→1.5Cr
 
 function humanizeIndian(value: number): string {
   if (value >= 1_00_00_000) {
-    // Crore — truncate to 2 dp, strip trailing zeros
     const v = Math.floor((value / 1_00_00_000) * 100) / 100;
     return `${parseFloat(v.toFixed(2))}Cr`;
   }
   if (value >= 1_00_000) {
-    // Lakh — truncate to 2 dp, strip trailing zeros
     const v = Math.floor((value / 1_00_000) * 100) / 100;
     return `${parseFloat(v.toFixed(2))}L`;
   }
   if (value >= 1_000) {
-    // Thousands — truncate to 1 dp, strip trailing zeros
     const v = Math.floor((value / 1_000) * 10) / 10;
     return `${parseFloat(v.toFixed(1))}k`;
   }
   return String(value);
 }
 
-// ─── Inner chart ──────────────────────────────────────────────────────────────
+// ─── ChartSankeyWrapper ───────────────────────────────────────────────────────
+// Orchestration layer — mirrors ChartDonutWrapper.
+// Inspects children to extract data, computes dataColorMapping,
+// provides CommonChartComponentsContext + private SankeyChartContext.
 
-function SankeyChartInner({
-  data,
+const _ChartSankeyWrapper = ({
+  children,
   height = 400,
+  showTooltip = true,
   nodeColorOverride,
   linkColorOverride,
-  showTooltip = true,
+  testID,
+  ...restProps
+}: ChartSankeyWrapperProps): React.ReactElement => {
+  // Categorical palette — same filter used in DonutChart (gray.faint is near-white)
+  const defaultColorTokens = useChartsColorTheme({ colorTheme: 'categorical' }).filter(
+    (t) => t !== 'data.background.categorical.gray.faint',
+  );
+
+  // Extract data from ChartSankey child — same pattern ChartDonutWrapper uses
+  // to read colorTheme/radius from ChartDonut props.
+  const data = useMemo(() => {
+    const sankeyChild = React.Children.toArray(children).find(
+      (child) => isValidElement(child) && getComponentId(child) === componentIds.ChartSankey,
+    );
+    return isValidElement(sankeyChild)
+      ? (sankeyChild.props as ChartSankeyProps).data
+      : { nodes: [], links: [] };
+  }, [children]);
+
+  // Build dataColorMapping for CommonChartComponentsContext.
+  // Pre-populate explicit overrides then fill the rest with assignDataColorMapping().
+  const dataColorMapping = useMemo<DataColorMapping>(() => {
+    const mapping: DataColorMapping = {};
+    data.nodes.forEach((node) => {
+      const override = nodeColorOverride ?? node.color;
+      mapping[node.id] = {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        colorToken: (override ?? undefined) as any,
+        isCustomColor: Boolean(override),
+      };
+    });
+    assignDataColorMapping(mapping, defaultColorTokens);
+    return mapping;
+  }, [data.nodes, nodeColorOverride, defaultColorTokens]);
+
+  return (
+    <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
+      <SankeyChartContext.Provider
+        value={{ height, showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens }}
+      >
+        <BaseBox
+          {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
+          {...makeAnalyticsAttribute(restProps as Record<string, unknown>)}
+          position="relative"
+          width="100%"
+        >
+          {/* Scroll wrapper — ensures minimum width on narrow viewports */}
+          <BaseBox width="100%" overflowX="auto">
+            <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
+              <ResponsiveContainer width="100%" height={height}>
+                {/* ResponsiveContainer requires a single React element child */}
+                {React.Children.only(children) as React.ReactElement}
+              </ResponsiveContainer>
+            </BaseBox>
+          </BaseBox>
+        </BaseBox>
+      </SankeyChartContext.Provider>
+    </CommonChartComponentsContext.Provider>
+  );
+};
+
+export const ChartSankeyWrapper = assignWithoutSideEffects(_ChartSankeyWrapper, {
+  componentId: componentIds.ChartSankeyWrapper,
+});
+
+// ─── ChartSankey ──────────────────────────────────────────────────────────────
+// Presentational layer — mirrors ChartDonut.
+// Reads wrapper config from SankeyChartContext, manages local hover state only.
+
+const _ChartSankey = ({
+  data,
   showLabels = true,
   showLabelChip = true,
   showPercentage = true,
   labelUnit,
-  testID,
+  formatValue,
   onNodeClick,
   onLinkClick,
-  ...restProps
-}: SankeyChartProps & TestID & DataAnalyticsAttribute): React.ReactElement {
+  // width and height are injected at runtime by ResponsiveContainer — not part of
+  // the public ChartSankeyProps API. They must be forwarded to <Sankey> for the chart to render.
+  width,
+  height,
+}: ChartSankeyProps & { width?: number; height?: number }): React.ReactElement => {
   const [hovered, setHovered] = useState<HoverState>(null);
 
-  // ── Theme tokens ────────────────────────────────────────────────────────
-  const { theme } = useTheme();
-
-  const defaultColorTokens = useChartsColorTheme({
-    colorTheme: 'categorical',
-  }).filter(
-    // gray.faint is near-white on light backgrounds and invisible as a node fill
-    (t) => t !== 'data.background.categorical.gray.faint',
+  // Read wrapper-level config from private context
+  const { showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens } = useContext(
+    SankeyChartContext,
   );
 
+  // ── Theme tokens ──────────────────────────────────────────────────────────
+  const { theme } = useTheme();
+
   const resolveColor = useCallback(
-    // tokenPath is typed ChartsCategoricalColorToken at all call sites, but this wrapper
-    // accepts a plain string so that palette entries and per-node overrides flow through a
-    // single path; getIn's K bound (DotNotationToken<T>) requires the cast.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (tokenPath: string): string => (getIn(theme.colors, tokenPath as any) as string) ?? tokenPath,
     [theme],
@@ -147,56 +244,37 @@ function SankeyChartInner({
 
   // Chip layout — derived from Blade spacing tokens
   const CHIP_PAD_X = theme.spacing[3]; // 8px horizontal padding
-  const CHIP_H = theme.typography.fonts.size[75] + theme.spacing[3] * 2; // 12 + 16 = 28px (8px top/bottom)
+  const CHIP_H = theme.typography.fonts.size[75] + theme.spacing[3] * 2; // 28px single-line
   const CHIP_GAP = theme.spacing[3]; // 8px
   const fontFamily = theme.typography.fonts.family.text;
-  // Cap-height ratio for Inter — uppercase glyphs occupy ~72% of font-size above the baseline.
-  // Using this to position SVG text baselines explicitly avoids the extra descender-space
-  // that dominantBaseline="central" includes, which causes perceived extra whitespace
-  // above cap-height text (e.g. "PayU 2,700 txn" has no descenders).
+  // Cap-height ratio for Inter — uppercase glyphs occupy ~72% of font-size above baseline.
   const capHeightRatio = 0.72;
 
-  // Accurate text width measurement via Canvas API — avoids flat px-per-char estimates
-  // that over/under-shoot on proportional fonts (narrow: i,l,1 / wide: W,M)
+  // Canvas-based text width measurement — delegates to calculateTextWidth from CommonChartComponents.
+  // Uses size[75] (node labels are larger than the default size[50] used by axis labels) and
+  // accepts a per-call fontWeight override so name vs value segments can use different weights.
   const measureText = useCallback(
-    (text: string, weight: number | string): number => {
-      try {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return text.length * CHIP_PX_PER_CHAR;
-        ctx.font = `${weight} ${theme.typography.fonts.size[75]}px ${fontFamily}`;
-        return ctx.measureText(text).width;
-      } catch {
-        return text.length * CHIP_PX_PER_CHAR;
-      }
-    },
-    [fontFamily, theme],
+    (text: string, weight: number | string): number =>
+      calculateTextWidth(text, theme, {
+        fontSize: theme.typography.fonts.size[75],
+        fontWeight: weight,
+        // rawMeasure: return the bare canvas pixel width so shouldWrap decisions
+        // use actual glyph widths rather than the MIN_WIDTH-floored chip widths
+        // that calculateTextWidth normally returns for axis label chips.
+        rawMeasure: true,
+      }).width,
+    [theme],
   );
+
   const labelNameColor = theme.colors.surface.text.gray.normal;
   const labelValueColor = theme.colors.surface.text.gray.muted;
   const chipBg = theme.colors.surface.background.gray.intense;
   const chipBorderColor = theme.colors.interactive.border.gray.faded;
   const chipRadius = theme.border.radius.small;
-  // NODE_PADDING derives from the Blade spacing scale
   const nodePadding = theme.spacing[4]; // 12px
   const motionDuration = theme.motion.duration.quick;
 
-  // ── Color mapping ────────────────────────────────────────────────────────
-  const dataColorMapping = useMemo<DataColorMapping>(() => {
-    const mapping: DataColorMapping = {};
-    data.nodes.forEach((node, i) => {
-      const colorToken = (nodeColorOverride ??
-        node.color ??
-        defaultColorTokens[i % defaultColorTokens.length]) as ChartsCategoricalColorToken;
-      mapping[node.id] = {
-        colorToken,
-        isCustomColor: Boolean(node.color ?? nodeColorOverride),
-      };
-    });
-    return mapping;
-  }, [data.nodes, nodeColorOverride, defaultColorTokens]);
-
-  // ── Transform data to Recharts format ───────────────────────────────────
+  // ── Transform data to Recharts format ────────────────────────────────────
   const nodeIdToIndex = useMemo(() => new Map(data.nodes.map((n, i) => [n.id, i])), [data.nodes]);
 
   const rechartsLinks = useMemo(
@@ -212,21 +290,16 @@ function SankeyChartInner({
     [data.links, nodeIdToIndex],
   );
 
-  // Dynamic right margin — based on the widest chip across all nodes.
-  // The value/percentage part budget (120px) covers "X.XXL unit  (100%)".
-  // Falls back to CHIP_MIN_WIDTH for very short names.
+  // Dynamic right margin — based on widest chip across all nodes
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
     if (!showLabelChip) {
-      // Plain text — budget for widest (name + value+pct) just like chip mode, minus the chip padding
       const maxTextW = data.nodes.reduce((max, node) => {
         const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
-        // Use same CHIP_VALUE_BUDGET for the value+pct portion
         return Math.max(max, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET);
       }, 0);
       return Math.min(CHIP_MAX_WIDTH, maxTextW) + CHIP_GAP + theme.spacing[3];
     }
-    // Chip mode — budget for name + value + percentage
     const maxChipW = data.nodes.reduce((max, node) => {
       const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
       const chipW = Math.min(
@@ -238,16 +311,12 @@ function SankeyChartInner({
     return maxChipW + CHIP_GAP + theme.spacing[3];
   }, [showLabels, showLabelChip, data.nodes, measureText, theme, CHIP_PAD_X, CHIP_GAP]);
 
-  // Node depth map + count per level — used to suppress percentage when a
-  // level has only one node (showing "100%" adds no information).
+  // Node depth map + count per level — suppress percentage for sole node at a level
   const nodeDepthInfo = useMemo(() => {
     const incomingCount = new Map<string, number>(data.nodes.map((n) => [n.id, 0]));
     data.links.forEach((l) => incomingCount.set(l.target, (incomingCount.get(l.target) ?? 0) + 1));
-
     const outgoing = new Map<string, string[]>(data.nodes.map((n) => [n.id, []]));
     data.links.forEach((l) => outgoing.get(l.source)?.push(l.target));
-
-    // BFS from root nodes (no incoming links)
     const depthOf = new Map<string, number>();
     const queue = data.nodes.filter((n) => incomingCount.get(n.id) === 0).map((n) => n.id);
     queue.forEach((id) => depthOf.set(id, 0));
@@ -261,22 +330,18 @@ function SankeyChartInner({
         }
       });
     }
-
-    // Count nodes per depth level
     const countPerDepth = new Map<number, number>();
     depthOf.forEach((d) => countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1));
-
     return { depthOf, countPerDepth };
   }, [data.nodes, data.links]);
 
-  // Total value = sum of outflows from root nodes (nodes with no incoming links)
-  // Used to compute each node's percentage of the overall flow
+  // Total value = sum of outflows from root nodes
   const totalValue = useMemo(() => {
     const targetIds = new Set(data.links.map((l) => l.target));
     return data.links.filter((l) => !targetIds.has(l.source)).reduce((sum, l) => sum + l.value, 0);
   }, [data.links]);
 
-  // ── Opacity helpers ──────────────────────────────────────────────────────
+  // ── Opacity helpers ────────────────────────────────────────────────────────
   const getNodeOpacity = useCallback(
     (nodeIdx: number): number => {
       if (hovered === null) return NODE_DEFAULT_OPACITY;
@@ -305,7 +370,7 @@ function SankeyChartInner({
     [hovered, rechartsLinks],
   );
 
-  // ── Custom node render ───────────────────────────────────────────────────
+  // ── Custom node render ─────────────────────────────────────────────────────
   const renderNode = useCallback(
     (props: NodeProps): React.ReactElement => {
       const { x, y, width, height: nodeHeight, index, payload } = props;
@@ -322,35 +387,31 @@ function SankeyChartInner({
       const nodeMidY = y + nodeHeight / 2;
       const chipX = x + width + CHIP_GAP;
       const nodeValue = payload.value ?? 0;
-      const humanized = humanizeIndian(nodeValue);
+      const formatter = formatValue ?? humanizeIndian;
+      const humanized = formatter(nodeValue);
       const nodeDepth = nodeDepthInfo.depthOf.get(nodeData.id) ?? 0;
       const levelCount = nodeDepthInfo.countPerDepth.get(nodeDepth) ?? 1;
       const pct = totalValue > 0 ? Math.round((nodeValue / totalValue) * 100) : 0;
       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-      // Show percentage only when enabled AND this node is not the only one at its depth level
       const labelValue = showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
 
-      // ── Chip sizing ───────────────────────────────────────────────────────
-      const fontSize = theme.typography.fonts.size[75]; // 12px
+      const fontSize = theme.typography.fonts.size[75];
       const nameW = measureText(nodeData.name, theme.typography.fonts.weight.semibold);
       const labelW = measureText(labelValue, theme.typography.fonts.weight.regular);
-      const contentW = nameW + theme.spacing[2] + labelW; // total inline width
+      const contentW = nameW + theme.spacing[2] + labelW;
 
-      // Wrap when content + padding would exceed CHIP_MAX_WIDTH
       const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
       const chipW = shouldWrap
-        ? // Hug the widest line — don't fill the full max width unnecessarily
-          Math.min(
+        ? Math.min(
             CHIP_MAX_WIDTH,
             Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
           )
         : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
 
-      // Two-line height: pad + line1 + gap + line2 + pad
-      const lineGap = theme.spacing[2]; // 4px
+      const lineGap = theme.spacing[2]; // 4px — fixed y-formula gives 16px baseline-to-baseline at size[75]
       const chipH = shouldWrap
-        ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3] // 8+12+4+12+8 = 44px
-        : CHIP_H; // 28px single-line
+        ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
+        : CHIP_H;
 
       const chipY = nodeMidY - chipH / 2;
       const showChip = showLabels;
@@ -377,7 +438,6 @@ function SankeyChartInner({
           {showChip && (
             <g style={{ pointerEvents: 'none' }}>
               {showLabelChip ? (
-                // ── Chip mode: styled card with value + percentage ──────────
                 <>
                   <rect
                     x={chipX + theme.border.width.thin / 2}
@@ -390,9 +450,6 @@ function SankeyChartInner({
                     strokeWidth={theme.border.width.thin}
                   />
                   {shouldWrap ? (
-                    // Two-line: name on line 1, value+pct on line 2
-                    // Each tspan baseline = slot_top + (fontSize + capHeight) / 2
-                    // which visually centres cap-height glyphs within their fontSize slot
                     <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
                       <tspan
                         x={chipX + CHIP_PAD_X}
@@ -417,8 +474,6 @@ function SankeyChartInner({
                       </tspan>
                     </text>
                   ) : (
-                    // Single-line: name + value inline
-                    // y = visual centre of chip: baseline at chipY + (chipH + capHeight) / 2
                     <text
                       x={chipX + CHIP_PAD_X}
                       y={chipY + (chipH + fontSize * capHeightRatio) / 2}
@@ -437,16 +492,11 @@ function SankeyChartInner({
                     </text>
                   )}
                 </>
-              ) : // ── Plain text mode: same info as chip, no background rect ───
-              shouldWrap ? (
-                // Two-line: name on line 1, value+pct on line 2
-                // Baselines chosen so the two-line block is centred on nodeMidY:
-                //   B1 = nodeMidY - lineGap/2
-                //   B2 = nodeMidY + capHeight + lineGap/2
+              ) : shouldWrap ? (
                 <text fontSize={fontSize} style={{ userSelect: 'none', fontFamily }}>
                   <tspan
                     x={chipX}
-                    y={nodeMidY - lineGap / 2}
+                    y={nodeMidY - (fontSize + lineGap) / 2}
                     fontWeight={theme.typography.fonts.weight.semibold}
                     fill={labelNameColor}
                   >
@@ -454,7 +504,7 @@ function SankeyChartInner({
                   </tspan>
                   <tspan
                     x={chipX}
-                    y={nodeMidY + fontSize * capHeightRatio + lineGap / 2}
+                    y={nodeMidY + (fontSize + lineGap) / 2}
                     fontWeight={theme.typography.fonts.weight.regular}
                     fill={labelValueColor}
                   >
@@ -462,8 +512,6 @@ function SankeyChartInner({
                   </tspan>
                 </text>
               ) : (
-                // Single-line: name + value inline — baseline at nodeMidY + capHeight/2
-                // so cap-height glyphs are visually centred on the node bar
                 <text
                   x={chipX}
                   y={nodeMidY + (fontSize * capHeightRatio) / 2}
@@ -497,7 +545,9 @@ function SankeyChartInner({
       getNodeOpacity,
       showLabels,
       showLabelChip,
+      showPercentage,
       labelUnit,
+      formatValue,
       CHIP_H,
       CHIP_PAD_X,
       CHIP_GAP,
@@ -515,7 +565,7 @@ function SankeyChartInner({
     ],
   );
 
-  // ── Custom link render ───────────────────────────────────────────────────
+  // ── Custom link render ─────────────────────────────────────────────────────
   const renderLink = useCallback(
     (props: LinkProps): React.ReactElement => {
       const {
@@ -530,8 +580,6 @@ function SankeyChartInner({
         payload,
       } = props;
 
-      // Recharts may pass source as a numeric index or as a resolved node object.
-      // resolveSourceIndex normalises both cases to a numeric index into data.nodes.
       const resolveSourceIndex = (source: typeof payload.source): number => {
         if (typeof source === 'number') return source;
         const id = ((source as unknown) as { id?: string })?.id ?? '';
@@ -577,7 +625,7 @@ function SankeyChartInner({
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // module-level imports (castWebType, NODE_MIN_HEIGHT) are stable; intentionally omitted
+    // castWebType, NODE_MIN_HEIGHT are module-level — stable, intentionally omitted
     [
       data.nodes,
       nodeIdToIndex,
@@ -591,9 +639,10 @@ function SankeyChartInner({
     ],
   );
 
-  // ── Event handlers ───────────────────────────────────────────────────────
-  // Recharts Sankey passes (data, type) where type is 'node' | 'link'.
-  // Typed explicitly to avoid eslint-disable as-any suppression on the Sankey props.
+  // ── Event handlers ─────────────────────────────────────────────────────────
+  // Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
+  // ((item, type, e) => void) — an intersection that TypeScript cannot satisfy
+  // with a plain callback. Casting through any is the accepted pattern here.
   type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
 
   const handleMouseEnter = useCallback<SankeyEventHandler>((item, type): void => {
@@ -620,68 +669,44 @@ function SankeyChartInner({
     [data.nodes, data.links, rechartsLinks, onNodeClick, onLinkClick],
   );
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
-      <BaseBox
-        {...metaAttribute({ name: componentIds.SankeyChart, testID })}
-        {...makeAnalyticsAttribute(restProps as Record<string, unknown>)}
-        position="relative"
-        width="100%"
-      >
-        {/* Scroll wrapper — ensures minimum width on narrow viewports */}
-        <BaseBox width="100%" overflowX="auto">
-          <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
-            <ResponsiveContainer width="100%" height={height}>
-              <Sankey
-                data={{ nodes: data.nodes, links: rechartsLinks }}
-                nodeWidth={NODE_WIDTH}
-                nodePadding={nodePadding}
-                node={renderNode}
-                link={renderLink}
-                // Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
-                // ((item, type, e) => void) — an intersection that can't be satisfied by a
-                // plain user callback. Casting through unknown is the accepted pattern here.
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onMouseEnter={handleMouseEnter as any}
-                onMouseLeave={handleMouseLeave}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onClick={handleClick as any}
-                margin={{
-                  top: theme.spacing[3],
-                  right: dynamicRightMargin,
-                  bottom: theme.spacing[3],
-                  left: theme.spacing[3],
-                }}
-              >
-                {showTooltip && (
-                  <Tooltip
-                    isAnimationActive={false}
-                    content={(tooltipProps) => (
-                      <SankeyTooltipContent
-                        active={tooltipProps.active}
-                        payload={tooltipProps.payload}
-                        labelUnit={labelUnit}
-                      />
-                    )}
-                  />
-                )}
-              </Sankey>
-            </ResponsiveContainer>
-          </BaseBox>
-        </BaseBox>
-      </BaseBox>
-    </CommonChartComponentsContext.Provider>
+    <Sankey
+      data={{ nodes: data.nodes, links: rechartsLinks }}
+      width={width}
+      height={height}
+      nodeWidth={NODE_WIDTH}
+      nodePadding={nodePadding}
+      node={renderNode}
+      link={renderLink}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onMouseEnter={handleMouseEnter as any}
+      onMouseLeave={handleMouseLeave}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onClick={handleClick as any}
+      margin={{
+        top: theme.spacing[3],
+        right: dynamicRightMargin,
+        bottom: theme.spacing[3],
+        left: theme.spacing[3],
+      }}
+    >
+      {showTooltip && (
+        <Tooltip
+          isAnimationActive={false}
+          content={(tooltipProps) => (
+            <SankeyTooltipContent
+              active={tooltipProps.active}
+              payload={tooltipProps.payload}
+              labelUnit={labelUnit}
+            />
+          )}
+        />
+      )}
+    </Sankey>
   );
-}
+};
 
-// ─── Public export ────────────────────────────────────────────────────────────
-
-const _SankeyChart = (
-  props: SankeyChartProps & TestID & DataAnalyticsAttribute,
-): React.ReactElement => <SankeyChartInner {...props} />;
-
-export const SankeyChart = assignWithoutSideEffects(_SankeyChart, {
-  componentId: componentIds.SankeyChart,
-  displayName: 'SankeyChart',
+export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
+  componentId: componentIds.ChartSankey,
 });

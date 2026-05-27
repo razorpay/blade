@@ -1,0 +1,440 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SankeyChart — rendering matches snapshot 1`] = `
+.c0.c0.c0.c0.c0 {
+  position: relative;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.c2.c2.c2.c2.c2 {
+  min-width: 560px;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="ChartSankeyWrapper"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="recharts-wrapper"
+          height="400"
+          style="position: relative; cursor: default; width: 800px; height: 400px;"
+          width="800"
+        >
+          <div
+            class="recharts-tooltip-wrapper"
+            style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px;"
+            tabindex="-1"
+            xmlns="http://www.w3.org/1999/xhtml"
+          />
+          <svg
+            class="recharts-surface"
+            height="400"
+            viewBox="0 0 800 400"
+            width="800"
+          >
+            <title />
+            <desc />
+            <g
+              class="recharts-layer recharts-sankey-links"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M22,217.2103662917066
+        C165.5,217.2103662917066
+          165.5,214.66666666666669
+          309,214.66666666666669
+        L309,8.000000000000043
+        C165.5,8.000000000000043
+          165.5,10.543699625039949
+          22,10.543699625039949
+        Z
+      "
+                  fill="hsla(218, 100%, 92%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M22,382.54369962503995
+        C165.5,382.54369962503995
+          165.5,392.00000000000006
+          309,392.00000000000006
+        L309,226.66666666666669
+        C165.5,226.66666666666669
+          165.5,217.21036629170658
+          22,217.21036629170658
+        Z
+      "
+                  fill="hsla(218, 100%, 92%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M323,188.83333333333337
+        C466.5,188.83333333333337
+          466.5,188.83333333333337
+          610,188.83333333333337
+        L610,8.000000000000014
+        C466.5,8.000000000000014
+          466.5,8.000000000000043
+          323,8.000000000000043
+        Z
+      "
+                  fill="hsla(149, 38%, 86%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M323,214.66666666666669
+        C466.5,214.66666666666669
+          466.5,371.33333333333337
+          610,371.33333333333337
+        L610,345.5
+        C466.5,345.5
+          466.5,188.83333333333337
+          323,188.83333333333337
+        Z
+      "
+                  fill="hsla(149, 38%, 86%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M323,371.3333333333333
+        C466.5,371.3333333333333
+          466.5,333.5
+          610,333.5
+        L610,188.83333333333337
+        C466.5,188.83333333333337
+          466.5,226.66666666666669
+          323,226.66666666666669
+        Z
+      "
+                  fill="hsla(46, 86%, 83%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <path
+                  d="
+        M323,392
+        C466.5,392
+          466.5,391.99999999999994
+          610,391.99999999999994
+        L610,371.3333333333333
+        C466.5,371.3333333333333
+          466.5,371.33333333333337
+          323,371.33333333333337
+        Z
+      "
+                  fill="hsla(46, 86%, 83%, 1)"
+                  fill-opacity="0.55"
+                  style="cursor: pointer; transition: fill-opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                />
+              </g>
+            </g>
+            <g
+              class="recharts-layer recharts-sankey-nodes"
+            >
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  opacity="1"
+                  style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                >
+                  <rect
+                    fill="hsla(218, 100%, 92%, 1)"
+                    height="372"
+                    rx="0"
+                    style="cursor: pointer;"
+                    width="14"
+                    x="8"
+                    y="10.543699625039944"
+                  />
+                  <g
+                    style="pointer-events: none;"
+                  >
+                    <rect
+                      fill="hsla(0, 0%, 100%, 1)"
+                      height="27"
+                      rx="8"
+                      stroke="hsla(206, 10%, 29%, 0.18)"
+                      stroke-width="1"
+                      width="79"
+                      x="30.5"
+                      y="183.04369962503995"
+                    />
+                    <text
+                      font-size="12"
+                      style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                      x="38"
+                      y="200.86369962503994"
+                    >
+                      <tspan
+                        fill="hsla(0, 0%, 2%, 1)"
+                        font-weight="600"
+                      >
+                        Total
+                      </tspan>
+                      <tspan
+                        dx="4"
+                        fill="hsla(204, 9%, 42%, 1)"
+                      >
+                        7.2k
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  opacity="1"
+                  style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                >
+                  <rect
+                    fill="hsla(149, 38%, 86%, 1)"
+                    height="206.66666666666666"
+                    rx="0"
+                    style="cursor: pointer;"
+                    width="14"
+                    x="309"
+                    y="8.000000000000043"
+                  />
+                  <g
+                    style="pointer-events: none;"
+                  >
+                    <rect
+                      fill="hsla(0, 0%, 100%, 1)"
+                      height="27"
+                      rx="8"
+                      stroke="hsla(206, 10%, 29%, 0.18)"
+                      stroke-width="1"
+                      width="90.35546875"
+                      x="331.5"
+                      y="97.83333333333337"
+                    />
+                    <text
+                      font-size="12"
+                      style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                      x="339"
+                      y="115.65333333333336"
+                    >
+                      <tspan
+                        fill="hsla(0, 0%, 2%, 1)"
+                        font-weight="600"
+                      >
+                        UPI
+                      </tspan>
+                      <tspan
+                        dx="4"
+                        fill="hsla(204, 9%, 42%, 1)"
+                      >
+                        4k  (56%)
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  opacity="1"
+                  style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                >
+                  <rect
+                    fill="hsla(46, 86%, 83%, 1)"
+                    height="165.33333333333334"
+                    rx="0"
+                    style="cursor: pointer;"
+                    width="14"
+                    x="309"
+                    y="226.66666666666669"
+                  />
+                  <g
+                    style="pointer-events: none;"
+                  >
+                    <rect
+                      fill="hsla(0, 0%, 100%, 1)"
+                      height="27"
+                      rx="8"
+                      stroke="hsla(206, 10%, 29%, 0.18)"
+                      stroke-width="1"
+                      width="107.69921875"
+                      x="331.5"
+                      y="295.83333333333337"
+                    />
+                    <text
+                      font-size="12"
+                      style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                      x="339"
+                      y="313.65333333333336"
+                    >
+                      <tspan
+                        fill="hsla(0, 0%, 2%, 1)"
+                        font-weight="600"
+                      >
+                        Card
+                      </tspan>
+                      <tspan
+                        dx="4"
+                        fill="hsla(204, 9%, 42%, 1)"
+                      >
+                        3.2k  (44%)
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  opacity="1"
+                  style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                >
+                  <rect
+                    fill="hsla(264, 100%, 89%, 1)"
+                    height="325.5"
+                    rx="0"
+                    style="cursor: pointer;"
+                    width="14"
+                    x="610"
+                    y="8.00000000000001"
+                  />
+                  <g
+                    style="pointer-events: none;"
+                  >
+                    <rect
+                      fill="hsla(0, 0%, 100%, 1)"
+                      height="27"
+                      rx="8"
+                      stroke="hsla(206, 10%, 29%, 0.18)"
+                      stroke-width="1"
+                      width="143.72265625"
+                      x="632.5"
+                      y="157.25"
+                    />
+                    <text
+                      font-size="12"
+                      style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                      x="640"
+                      y="175.07"
+                    >
+                      <tspan
+                        fill="hsla(0, 0%, 2%, 1)"
+                        font-weight="600"
+                      >
+                        Successful
+                      </tspan>
+                      <tspan
+                        dx="4"
+                        fill="hsla(204, 9%, 42%, 1)"
+                      >
+                        6.3k  (88%)
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="recharts-layer"
+              >
+                <g
+                  opacity="1"
+                  style="transition: opacity 200ms cubic-bezier(0.3, 0, 0.2, 1);"
+                >
+                  <rect
+                    fill="hsla(24, 100%, 92%, 1)"
+                    height="46.5"
+                    rx="0"
+                    style="cursor: pointer;"
+                    width="14"
+                    x="610"
+                    y="345.5"
+                  />
+                  <g
+                    style="pointer-events: none;"
+                  >
+                    <rect
+                      fill="hsla(0, 0%, 100%, 1)"
+                      height="27"
+                      rx="8"
+                      stroke="hsla(206, 10%, 29%, 0.18)"
+                      stroke-width="1"
+                      width="112.375"
+                      x="632.5"
+                      y="355.25"
+                    />
+                    <text
+                      font-size="12"
+                      style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                      x="640"
+                      y="373.07"
+                    >
+                      <tspan
+                        fill="hsla(0, 0%, 2%, 1)"
+                        font-weight="600"
+                      >
+                        Failed
+                      </tspan>
+                      <tspan
+                        dx="4"
+                        fill="hsla(204, 9%, 42%, 1)"
+                      >
+                        900  (13%)
+                      </tspan>
+                    </text>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,13 +1,13 @@
 /**
  * SankeyChart native tests
  *
- * Verifies that the native stub throws a Blade error when rendered,
+ * Verifies that each native stub throws a Blade error when rendered,
  * since SankeyChart is a web-only component (Recharts/SVG-based).
  *
  * Run with: yarn test:native --testPathPattern=SankeyChart
  */
 import React from 'react';
-import { SankeyChart } from '../SankeyChart.native';
+import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 const data = {
@@ -22,9 +22,15 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('SankeyChart (native)', () => {
-  it('throws a Blade error when rendered on native', () => {
-    expect(() => renderWithTheme(<SankeyChart data={data} />)).toThrow(
-      '[Blade: SankeyChart]: SankeyChart is not yet implemented for native',
+  it('ChartSankeyWrapper throws a Blade error when rendered on native', () => {
+    expect(() => renderWithTheme(<ChartSankeyWrapper>{null}</ChartSankeyWrapper>)).toThrow(
+      '[Blade: ChartSankeyWrapper]: ChartSankeyWrapper is not yet implemented for native',
+    );
+  });
+
+  it('ChartSankey throws a Blade error when rendered on native', () => {
+    expect(() => renderWithTheme(<ChartSankey data={data} />)).toThrow(
+      '[Blade: ChartSankey]: ChartSankey is not yet implemented for native',
     );
   });
 });

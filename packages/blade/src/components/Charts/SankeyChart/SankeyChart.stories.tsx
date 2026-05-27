@@ -1,7 +1,12 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { SankeyChart } from './SankeyChart';
-import type { SankeyChartProps, SankeyDataNode, SankeyDataLink } from './types';
+import { ChartSankeyWrapper, ChartSankey } from './SankeyChart';
+import type {
+  ChartSankeyWrapperProps,
+  ChartSankeyProps,
+  SankeyDataNode,
+  SankeyDataLink,
+} from './types';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -13,36 +18,38 @@ const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="SankeyChart"
     componentDescription="A Sankey flow diagram for visualising how a quantity is distributed across multiple stages. Built with Recharts for layout and React SVG for rendering. Suitable for payment routing, funnel analysis, and budget allocation."
-    apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/sankey-decisions.md"
+    apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md"
   >
     <Heading size="large">Usage</Heading>
     <Sandbox showConsole>
       {`
-        import { SankeyChart } from '@razorpay/blade/components';
+        import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
         function App() {
           return (
             <Box width="100%" height="320px">
-              <SankeyChart
-                data={{
-                  nodes: [
-                    { id: 'total',   name: 'Total' },
-                    { id: 'upi',     name: 'UPI' },
-                    { id: 'card',    name: 'Card' },
-                    { id: 'success', name: 'Successful' },
-                    { id: 'failed',  name: 'Failed' },
-                  ],
-                  links: [
-                    { source: 'total', target: 'upi',     value: 4000 },
-                    { source: 'total', target: 'card',    value: 3200 },
-                    { source: 'upi',   target: 'success', value: 3500 },
-                    { source: 'upi',   target: 'failed',  value: 500  },
-                    { source: 'card',  target: 'success', value: 2800 },
-                    { source: 'card',  target: 'failed',  value: 400  },
-                  ],
-                }}
-                labelUnit="txn"
-              />
+              <ChartSankeyWrapper height={320} showTooltip>
+                <ChartSankey
+                  data={{
+                    nodes: [
+                      { id: 'total',   name: 'Total' },
+                      { id: 'upi',     name: 'UPI' },
+                      { id: 'card',    name: 'Card' },
+                      { id: 'success', name: 'Successful' },
+                      { id: 'failed',  name: 'Failed' },
+                    ],
+                    links: [
+                      { source: 'total', target: 'upi',     value: 4000 },
+                      { source: 'total', target: 'card',    value: 3200 },
+                      { source: 'upi',   target: 'success', value: 3500 },
+                      { source: 'upi',   target: 'failed',  value: 500  },
+                      { source: 'card',  target: 'success', value: 2800 },
+                      { source: 'card',  target: 'failed',  value: 400  },
+                    ],
+                  }}
+                  labelUnit="txn"
+                />
+              </ChartSankeyWrapper>
             </Box>
           );
         }
@@ -55,9 +62,18 @@ const Page = (): React.ReactElement => (
 
 // ─── Story meta ───────────────────────────────────────────────────────────────
 
+type StoryProps = ChartSankeyWrapperProps &
+  ChartSankeyProps & {
+    numLevels: 2 | 3 | 4;
+    nodesL1: number;
+    nodesL2: number;
+    nodesL3: number;
+    nodesL4: number;
+  };
+
 export default {
   title: 'Components/Charts/SankeyChart',
-  component: SankeyChart,
+  component: ChartSankeyWrapper,
   tags: ['autodocs'],
   argTypes: {
     height: {
@@ -116,6 +132,7 @@ export default {
     },
     // Hide complex/internal props from Storybook controls
     data: { table: { disable: true } },
+    children: { table: { disable: true } },
     nodeColorOverride: { table: { disable: true } },
     linkColorOverride: { table: { disable: true } },
     testID: { table: { disable: true } },
@@ -125,7 +142,7 @@ export default {
   parameters: {
     docs: { page: Page },
   },
-} as Meta<typeof SankeyChart>;
+} as Meta<StoryProps>;
 
 // ─── Shared wrapper ───────────────────────────────────────────────────────────
 
@@ -152,6 +169,12 @@ const NODE_NAMES: string[][] = [
   ['Successful', 'Failed', 'Pending', 'Refunded', 'Disputed', 'Expired'],
 ];
 
+// Semantic color overrides for outcome nodes
+const NODE_COLORS: Partial<Record<string, SankeyDataNode['color']>> = {
+  Successful: 'data.background.categorical.green.subtle',
+  Failed: 'data.background.categorical.red.subtle',
+};
+
 const LEVEL_WEIGHTS: number[][] = [
   [1],
   [0.44, 0.28, 0.17, 0.11, 0.07, 0.04],
@@ -168,10 +191,14 @@ function generateChartData(
   links: SankeyDataLink[];
 } {
   const columns = nodeCounts.map((count, li) =>
-    Array.from({ length: count }, (_, ni) => ({
-      id: `l${li}-n${ni}`,
-      name: NODE_NAMES[li]?.[ni] ?? `Col${li + 1} Node ${ni + 1}`,
-    })),
+    Array.from({ length: count }, (_, ni) => {
+      const name = NODE_NAMES[li]?.[ni] ?? `Col${li + 1} Node ${ni + 1}`;
+      return {
+        id: `l${li}-n${ni}`,
+        name,
+        ...(NODE_COLORS[name] ? { color: NODE_COLORS[name] } : {}),
+      };
+    }),
   );
 
   const nodeValue: Record<string, number> = {};
@@ -211,17 +238,7 @@ const { nodes: paymentNodes, links: paymentLinks } = generateChartData([1, 4, 3,
 
 // ─── Stories ──────────────────────────────────────────────────────────────────
 
-type DefaultStoryArgs = SankeyChartProps & {
-  numLevels: 2 | 3 | 4;
-  nodesL1: number;
-  nodesL2: number;
-  nodesL3: number;
-  nodesL4: number;
-  showLabelChip: boolean;
-  showPercentage: boolean;
-};
-
-export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
+export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   height = 420,
   showTooltip = true,
   showLabels = true,
@@ -233,24 +250,21 @@ export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
   nodesL2 = 4,
   nodesL3 = 3,
   nodesL4 = 2,
-  data: _data,
-  ...props
-}: DefaultStoryArgs) => {
+}: StoryProps) => {
   const counts = ([nodesL1, nodesL2, nodesL3, nodesL4] as number[]).slice(0, numLevels);
   const { nodes, links } = generateChartData(counts);
   return (
     <ChartsWrapper>
       <Box width="100%" height={`${height}px`}>
-        <SankeyChart
-          data={{ nodes, links }}
-          height={height}
-          showTooltip={showTooltip}
-          showLabels={showLabels}
-          showLabelChip={showLabelChip}
-          showPercentage={showPercentage}
-          labelUnit={labelUnit}
-          {...props}
-        />
+        <ChartSankeyWrapper height={height} showTooltip={showTooltip}>
+          <ChartSankey
+            data={{ nodes, links }}
+            showLabels={showLabels}
+            showLabelChip={showLabelChip}
+            showPercentage={showPercentage}
+            labelUnit={labelUnit}
+          />
+        </ChartSankeyWrapper>
       </Box>
     </ChartsWrapper>
   );
@@ -258,18 +272,21 @@ export const DefaultSankeyChart: StoryFn<DefaultStoryArgs> = ({
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const SingleColorSankeyChart: StoryFn<typeof SankeyChart> = () => (
+export const SingleColorSankeyChart: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
     <Box width="100%" display="flex" flexDirection="column" gap="spacing.4">
-      <SankeyChart
-        data={{ nodes: paymentNodes, links: paymentLinks }}
+      <ChartSankeyWrapper
         height={420}
         nodeColorOverride="data.background.categorical.blue.intense"
         linkColorOverride="data.background.categorical.blue.subtle"
         showTooltip={true}
-        showLabels={true}
-        labelUnit="txn"
-      />
+      >
+        <ChartSankey
+          data={{ nodes: paymentNodes, links: paymentLinks }}
+          showLabels={true}
+          labelUnit="txn"
+        />
+      </ChartSankeyWrapper>
     </Box>
   </ChartsWrapper>
 );
@@ -278,17 +295,17 @@ SingleColorSankeyChart.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const SankeyChartWithoutLabels: StoryFn<typeof SankeyChart> = () => (
+export const SankeyChartWithoutLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
     <Box width="100%">
-      <SankeyChart
-        data={{ nodes: paymentNodes, links: paymentLinks }}
+      <ChartSankeyWrapper
         height={420}
         nodeColorOverride="data.background.categorical.blue.intense"
         linkColorOverride="data.background.categorical.blue.subtle"
         showTooltip={true}
-        showLabels={false}
-      />
+      >
+        <ChartSankey data={{ nodes: paymentNodes, links: paymentLinks }} showLabels={false} />
+      </ChartSankeyWrapper>
     </Box>
   </ChartsWrapper>
 );
@@ -297,17 +314,17 @@ SankeyChartWithoutLabels.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const SankeyChartWithPlainTextLabels: StoryFn<typeof SankeyChart> = () => (
+export const SankeyChartWithPlainTextLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
     <Box width="100%">
-      <SankeyChart
-        data={{ nodes: paymentNodes, links: paymentLinks }}
-        height={420}
-        showTooltip={true}
-        showLabels={true}
-        showLabelChip={false}
-        labelUnit="txn"
-      />
+      <ChartSankeyWrapper height={420} showTooltip={true}>
+        <ChartSankey
+          data={{ nodes: paymentNodes, links: paymentLinks }}
+          showLabels={true}
+          showLabelChip={false}
+          labelUnit="txn"
+        />
+      </ChartSankeyWrapper>
     </Box>
   </ChartsWrapper>
 );

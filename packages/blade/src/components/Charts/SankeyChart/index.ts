@@ -1,3 +1,8 @@
-export { SankeyChart } from './SankeyChart';
+export { ChartSankeyWrapper, ChartSankey } from './SankeyChart';
 
-export type { SankeyChartProps, SankeyDataNode, SankeyDataLink } from './types';
+export type {
+  ChartSankeyWrapperProps,
+  ChartSankeyProps,
+  SankeyDataNode,
+  SankeyDataLink,
+} from './types';

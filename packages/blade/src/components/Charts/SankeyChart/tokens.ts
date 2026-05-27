@@ -49,3 +49,11 @@ export const TOOLTIP_Z_INDEX = 100;
  * Below this the Sankey layout collapses; the scroll wrapper kicks in instead.
  */
 export const MIN_CHART_WIDTH = 560;
+
+// ── Component IDs ─────────────────────────────────────────────────────────────
+// PascalCase values match the convention used by BarChart ('ChartBar'),
+// AreaChart ('ChartArea'), and LineChart ('ChartLine').
+export const componentIds = {
+  ChartSankey: 'ChartSankey',
+  ChartSankeyWrapper: 'ChartSankeyWrapper',
+};
