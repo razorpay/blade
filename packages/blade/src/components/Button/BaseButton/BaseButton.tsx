@@ -345,6 +345,8 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
+    defaultShadowTokens: getBoxShadowToken({ variant, color, state: 'default' }),
+    focusShadowTokens: getBoxShadowToken({ variant, color, state: 'focus' }),
   };
 
   if (isDisabled) {
@@ -369,6 +371,8 @@ const getProps = ({
     props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBoxShadow = getBoxShadow('disabled', color);
+    props.defaultShadowTokens = getBoxShadowToken({ variant, color, state: 'disabled' });
+    props.focusShadowTokens = getBoxShadowToken({ variant, color, state: 'disabled' });
   }
 
   return props;
@@ -467,6 +471,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     borderRadius,
     motionDuration,
     motionEasing,
+    defaultShadowTokens,
+    focusShadowTokens,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
@@ -573,6 +579,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
+      defaultShadowTokens={defaultShadowTokens}
+      focusShadowTokens={focusShadowTokens}
       hoverIconColor={
         isDisabled
           ? getIn(theme.colors, iconColor as DotNotationToken<Theme['colors']>)

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { ButtonMinHeight } from './buttonTokens';
+import type { ButtonMinHeight, ButtonBoxShadow } from './buttonTokens';
 import type { BaseButtonProps } from './BaseButton';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, SpacingValues } from '~tokens/theme/theme';
@@ -44,6 +44,8 @@ export type BaseButtonStyleProps = {
   borderRadius: BorderRadiusValues;
   height?: string;
   width?: string;
+  defaultShadowTokens?: ButtonBoxShadow;
+  focusShadowTokens?: ButtonBoxShadow;
 };
 
 export type StyledBaseButtonProps = Omit<
@@ -69,6 +71,8 @@ export type StyledBaseButtonProps = Omit<
   hoverBoxShadow?: string;
   hoverBackgroundColor: string;
   hoverBorderColor?: string;
+  defaultShadowTokens?: ButtonBoxShadow;
+  focusShadowTokens?: ButtonBoxShadow;
   hoverIconColor: DotNotationToken<Theme['colors']>;
   isFullWidth: boolean;
   motionDuration: DurationString;

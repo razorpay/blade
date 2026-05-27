@@ -1,13 +1,15 @@
-import { Linking, Pressable } from 'react-native';
+import { Linking, Pressable, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import React from 'react';
 import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
+import type { ButtonBoxShadow } from './buttonTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { logger } from '~utils/logger';
 import { castNativeType } from '~utils';
@@ -28,6 +30,92 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
     ...styledPropsCSSObject,
   };
 });
+
+const resolveShadowBorders = (
+  shadowTokens: ButtonBoxShadow | undefined,
+  theme: Theme,
+): {
+  borderWidth: number;
+  borderColor: string;
+  borderTopWidth: number;
+  borderTopColor: string;
+  borderBottomWidth: number;
+  borderBottomColor: string;
+} => {
+  const transparent = 'transparent';
+  const defaults = {
+    borderWidth: 0,
+    borderColor: transparent,
+    borderTopWidth: 0,
+    borderTopColor: transparent,
+    borderBottomWidth: 0,
+    borderBottomColor: transparent,
+  };
+
+  if (!shadowTokens || shadowTokens.length === 0) return defaults;
+
+  let hasBottomShadow = false;
+
+  for (const shadow of shadowTokens) {
+    const color = getIn(theme.colors, shadow.color) as string;
+    if (shadow.spread > 0 && shadow.y === 0) {
+      defaults.borderWidth = shadow.spread;
+      defaults.borderColor = color;
+    } else if (shadow.y > 0) {
+      // Top inner highlight — use a more visible white overlay
+      defaults.borderTopWidth = Math.abs(shadow.y);
+      defaults.borderTopColor = 'rgba(255,255,255,0.35)';
+    } else if (shadow.y < 0 && !hasBottomShadow) {
+      // Bottom inner shadow — use a more visible dark overlay, take first one only
+      defaults.borderBottomWidth = Math.abs(shadow.y);
+      defaults.borderBottomColor = 'rgba(0,0,0,0.2)';
+      hasBottomShadow = true;
+    }
+  }
+
+  return defaults;
+};
+
+const ButtonShadowOverlay = ({
+  shadowTokens,
+  borderRadius,
+}: {
+  shadowTokens: ButtonBoxShadow | undefined;
+  borderRadius: string;
+}): React.ReactElement | null => {
+  const { theme } = useTheme();
+
+  if (!shadowTokens || shadowTokens.length === 0) return null;
+
+  const borders = resolveShadowBorders(shadowTokens, theme);
+  const radius = parseFloat(borderRadius) || 0;
+
+  return (
+    <View
+      pointerEvents="none"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        borderRadius: radius,
+        borderTopWidth: Math.max(borders.borderTopWidth, borders.borderWidth),
+        borderTopColor:
+          borders.borderTopColor !== 'transparent' ? borders.borderTopColor : borders.borderColor,
+        borderBottomWidth: Math.max(borders.borderBottomWidth, borders.borderWidth),
+        borderBottomColor:
+          borders.borderBottomColor !== 'transparent'
+            ? borders.borderBottomColor
+            : borders.borderColor,
+        borderLeftWidth: borders.borderWidth,
+        borderLeftColor: borders.borderColor,
+        borderRightWidth: borders.borderWidth,
+        borderRightColor: borders.borderColor,
+      }}
+    />
+  );
+};
 
 const openURL = async (href: string): Promise<void> => {
   try {
@@ -80,6 +168,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onPointerEnter,
     onPointerDown,
     onFocus,
+    defaultShadowTokens,
+    focusShadowTokens,
     ...styledProps
   },
   ref,
@@ -158,7 +248,15 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       {/* @ts-ignore */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
-        return children;
+        return (
+          <>
+            {children}
+            <ButtonShadowOverlay
+              shadowTokens={pressed ? focusShadowTokens : defaultShadowTokens}
+              borderRadius={borderRadius}
+            />
+          </>
+        );
       }}
     </StyledPressable>
   );

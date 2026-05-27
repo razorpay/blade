@@ -48,7 +48,13 @@
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@razorpay/blade": "^12.98.1",
+    "@razorpay/i18nify-js": "1.9.3",
+    "@razorpay/i18nify-react": "4.0.8",
+    "framer-motion": "^12.40.0",
+    "styled-components": "5.3.11"
+  },
   "devDependencies": {
     "@babel/core": "7.21.8",
     "@babel/eslint-parser": "7.21.8",
