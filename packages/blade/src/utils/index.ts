@@ -4,6 +4,7 @@ export * from './getPlatformType';
 export * from './useBreakpoint';
 export * from './useColorScheme';
 export * from './useInterval';
+export * from './useReducedMotion';
 export * from './platform';
 
 // https://github.com/razorpay/blade/pull/1193#discussion_r1212616031
