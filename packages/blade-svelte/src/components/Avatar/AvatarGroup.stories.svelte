@@ -34,6 +34,37 @@
     'Chaitanya Vikas Deorukhkar',
   ] as const;
   const avatarColors = ['primary', 'positive', 'negative', 'information', 'notice'] as const;
+
+  const overflowNames = [
+    'Anurag Hazra',
+    'Kamlesh Chandnani',
+    'Rama Krushna Behera',
+    'Nitin Kumar',
+    'Chaitanya Vikas Deorukhkar',
+    'Saurabh Daware',
+    'Divya Sharma',
+    'Rohan Kokane',
+    'Priya Singh',
+    'Aditya Kumar',
+    'Meera Pillai',
+    'Arjun Mehta',
+    'Sneha Reddy',
+  ] as const;
+  const overflowColors = [
+    'primary',
+    'positive',
+    'negative',
+    'information',
+    'notice',
+    'primary',
+    'positive',
+    'negative',
+    'information',
+    'notice',
+    'primary',
+    'positive',
+    'negative',
+  ] as const;
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
   const densities = ['compact', 'normal', 'comfortable'] as const;
 </script>
@@ -109,9 +140,9 @@
             <div style="width: 60px;">
               <Heading size="xsmall">{groupSize}</Heading>
             </div>
-            <AvatarGroup size={groupSize} density={density}>
-              {#each names as name, index}
-                <Avatar name={name} color={avatarColors[index]} />
+            <AvatarGroup size={groupSize} density={density} maxCount={3}>
+              {#each overflowNames as name, index}
+                <Avatar name={name} color={overflowColors[index]} />
               {/each}
             </AvatarGroup>
           </div>
@@ -130,8 +161,8 @@
           <Heading>{groupSize}</Heading>
         </div>
         <AvatarGroup size={groupSize} maxCount={3}>
-          {#each names as name, index}
-            <Avatar name={name} color={avatarColors[index]} />
+          {#each overflowNames as name, index}
+            <Avatar name={name} color={overflowColors[index]} />
           {/each}
         </AvatarGroup>
       </div>

@@ -9,11 +9,12 @@
     getAvatarGroupClasses,
     getAvatarTemplateClasses,
     getAvatarWrapperClasses,
-    getAvatarButtonClasses,
-    avatarTextSizeMapping,
-    getButtonTextColorToken,
+    getAvatarGroupOverflowButtonClasses,
+    avatarGroupOverflowTextColorToken,
+    getAvatarGroupOverflowBodyTextSize,
   } from '@razorpay/blade-core/styles';
-  import BaseText from '../Typography/BaseText/BaseText.svelte';
+  import Heading from '../Typography/Heading/Heading.svelte';
+  import Text from '../Typography/Text/Text.svelte';
   import type { TextColors } from '../Typography/BaseText/types';
   import { setAvatarGroupContext } from './avatarContext';
   import type { AvatarGroupProps, AvatarGroupRegistration } from './types';
@@ -70,13 +71,7 @@
     getAvatarWrapperClasses({ size, variant: 'circle', isInteractive: false }),
   );
   const overflowBtnClasses = $derived(
-    getAvatarButtonClasses({
-      size,
-      variant: 'circle',
-      color: 'neutral',
-      isInteractive: false,
-      isSelected: false,
-    }),
+    getAvatarGroupOverflowButtonClasses({ size, variant: 'circle' }),
   );
 
   const overflowCount = $derived(
@@ -84,16 +79,7 @@
   );
   const showOverflow = $derived(overflowCount > 0);
 
-  // Overflow text styling (size-aware)
-  const overflowTextSize = $derived(avatarTextSizeMapping[size]);
-  const overflowTextColorToken = $derived(
-    getButtonTextColorToken({
-      property: 'text',
-      variant: 'secondary',
-      color: 'neutral',
-      state: 'default',
-    }) as TextColors,
-  );
+  const overflowTextColor = avatarGroupOverflowTextColorToken satisfies TextColors;
 </script>
 
 <div class={groupClasses} {...metaAttrs} {...analyticsAttrs} {...a11yAttrs}>
@@ -102,16 +88,21 @@
     <div class={overflowWrapperClasses}>
       <div class={overflowBtnClasses}>
         <div class={templateClasses.btnContent}>
-          <BaseText
-            as="span"
-            color={overflowTextColorToken}
-            fontSize={overflowTextSize === 'xsmall' ? 75 : overflowTextSize === 'small' ? 100 : 200}
-            lineHeight={overflowTextSize === 'xsmall' ? 75 : overflowTextSize === 'small' ? 100 : 200}
-            fontFamily="heading"
-            fontWeight="semibold"
-          >
-            +{overflowCount}
-          </BaseText>
+          {#if size === 'xlarge'}
+            <Heading size="small" weight="semibold" color={overflowTextColor}>
+              +{overflowCount}
+            </Heading>
+          {:else}
+            <Text
+              as="span"
+              variant="body"
+              size={getAvatarGroupOverflowBodyTextSize(size)}
+              weight="semibold"
+              color={overflowTextColor}
+            >
+              +{overflowCount}
+            </Text>
+          {/if}
         </div>
       </div>
     </div>

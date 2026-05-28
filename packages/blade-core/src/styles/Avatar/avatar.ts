@@ -1,4 +1,4 @@
-import { cva } from 'class-variance-authority';
+import { cva, cx } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './avatar.module.css';
 
@@ -104,6 +104,52 @@ export const avatarButtonStyles = cva(styles['avatar-btn'], {
 
 export function getAvatarButtonClasses(props: AvatarButtonVariants): string {
   return avatarButtonStyles(props);
+}
+
+/** Text color token for AvatarGroup overflow (+N) counter */
+export const avatarGroupOverflowTextColorToken = 'interactive.text.neutral.muted' as const;
+
+/**
+ * AvatarGroup overflow (+N) body text size mapping (avatar size → Text size).
+ * All sizes use Body/Semibold; xlarge uses Heading/SmallSemibold separately.
+ */
+export const avatarGroupOverflowTextSizeMapping = {
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+export type AvatarGroupOverflowBodyTextSize =
+  (typeof avatarGroupOverflowTextSizeMapping)[keyof typeof avatarGroupOverflowTextSizeMapping];
+
+export function getAvatarGroupOverflowBodyTextSize(
+  size: Exclude<NonNullable<AvatarGroupVariants['size']>, 'xlarge'>,
+): AvatarGroupOverflowBodyTextSize {
+  return avatarGroupOverflowTextSizeMapping[size];
+}
+
+/**
+ * Button classes for AvatarGroup overflow (+N) counter avatar.
+ *
+ * Builds on `color: 'neutral'` (kept inside the public color enum) and layers
+ * a Svelte-only `btn-color-group-overflow` override on top to give the counter
+ * its distinct panel-style background. The override is intentionally not
+ * exposed via `AvatarButtonVariants['color']` so the public type stays aligned
+ * with React's `AvatarProps['color']`.
+ */
+export function getAvatarGroupOverflowButtonClasses(
+  props: Pick<AvatarButtonVariants, 'size' | 'variant'>,
+): string {
+  return cx(
+    avatarButtonStyles({
+      ...props,
+      color: 'neutral',
+      isInteractive: false,
+      isSelected: false,
+    }),
+    styles['btn-color-group-overflow'],
+  );
 }
 
 // ===== AvatarGroup CVA =====
