@@ -109,28 +109,26 @@ const CountrySelector = ({
         <BottomSheetHeader title="Select A Country" />
         <BottomSheetBody>
           <ActionList isVirtualized={true}>
-            {isBottomSheetOpen ? countryData.map((country) => {
-              return (
-                <ActionListItem
-                  key={country.code}
-                  leading={
-                    <ActionListItemAsset
-                      src={flags[country.code]['4X3']}
-                      alt={country.name}
-                    />
-                  }
-                  title={country.name}
-                  value={country.code}
-                  isSelected={country.code === selectedCountry}
-                  onClick={() => handleItemClick(country.code)}
-                  trailing={
-                    <ActionListItemText>
-                      {getDialCodeByCountryCode(country.code)}
-                    </ActionListItemText>
-                  }
-                />
-              );
-            }) : null}
+            {(isBottomSheetOpen ? countryData : []).map((country) => (
+              <ActionListItem
+                key={country.code}
+                leading={
+                  <ActionListItemAsset
+                    src={flags[country.code]['4X3']}
+                    alt={country.name}
+                  />
+                }
+                title={country.name}
+                value={country.code}
+                isSelected={country.code === selectedCountry}
+                onClick={() => handleItemClick(country.code)}
+                trailing={
+                  <ActionListItemText>
+                    {getDialCodeByCountryCode(country.code)}
+                  </ActionListItemText>
+                }
+              />
+            ))}
           </ActionList>
         </BottomSheetBody>
       </BottomSheet>
