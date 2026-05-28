@@ -145,6 +145,17 @@ const BottomNavItem = ({
 }: BottomNavItemProps): React.ReactElement => {
   const { theme } = useTheme();
 
+  if (__DEV__) {
+    if (_as) {
+      logger({
+        moduleName: 'BottomNavItem',
+        type: 'warn',
+        message:
+          'The `as` prop is not supported on React Native. Use the `onClick` prop with your navigation library instead (e.g. `onClick={() => navigation.navigate(route)}`).',
+      });
+    }
+  }
+
   const iconColor = isActive
     ? ('interactive.icon.primary.subtle' as const)
     : ('interactive.icon.gray.subtle' as const);
@@ -158,8 +169,6 @@ const BottomNavItem = ({
     }
 
     if (onClick) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error RN Pressable onPress returns GestureResponderEvent but our types expect MouseEvent
       onClick(event);
     }
   };
@@ -177,6 +186,7 @@ const BottomNavItem = ({
         gap: theme.spacing[1],
       }}
       {...makeAccessible({
+        role: 'tab',
         current: isActive ? 'page' : undefined,
       })}
       {...metaAttribute({
