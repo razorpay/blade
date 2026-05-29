@@ -273,6 +273,21 @@ const getProps = ({
     return resolveBackgroundValue(getBackgroundColorToken({ variant, color, state: 'default' }));
   };
 
+  const getNativeBoxShadow = (
+    state: 'default' | 'hover' | 'focus' | 'disabled',
+    btnColor: BaseButtonProps['color'],
+  ) => {
+    if (!isReactNative()) return undefined;
+    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state });
+    if (shadowTokens.length === 0) return undefined;
+    return shadowTokens.map((shadow) => ({
+      y: shadow.y,
+      blur: shadow.blur,
+      spread: shadow.spread,
+      color: getIn(theme.colors, shadow.color) as string,
+    }));
+  };
+
   const getBoxShadow = (
     state: 'default' | 'hover' | 'focus' | 'disabled',
     btnColor: BaseButtonProps['color'],
@@ -324,6 +339,8 @@ const getProps = ({
     text: childrenString?.trim(),
     defaultBackgroundColor: getDefaultBackground(),
     defaultBoxShadow: getBoxShadow('default', color),
+    defaultNativeBoxShadow: getNativeBoxShadow('default', color),
+    focusNativeBoxShadow: getNativeBoxShadow('focus', color),
     hoverBackgroundColor: resolveBackgroundValue(
       getBackgroundColorToken({ variant, color, state: 'hover' }),
     ),
@@ -444,6 +461,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const {
     defaultBackgroundColor,
     defaultBoxShadow,
+    defaultNativeBoxShadow,
+    focusNativeBoxShadow,
     minHeight,
     height,
     width,
@@ -539,6 +558,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       buttonPaddingRight={buttonPaddingRight}
       defaultBackgroundColor={defaultBackgroundColor}
       defaultBoxShadow={defaultBoxShadow}
+      defaultNativeBoxShadow={defaultNativeBoxShadow}
+      focusNativeBoxShadow={focusNativeBoxShadow}
       focusBoxShadow={focusBoxShadow}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}

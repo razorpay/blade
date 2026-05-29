@@ -110,6 +110,9 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     borderColor = getIn(theme.colors, baseInputBorderColor.success);
   }
 
+  const isFocused = rest.currentInteraction === 'focus';
+  const focusRingColor = getIn(theme.colors, 'surface.border.primary.muted');
+
   const motionConfig: {
     duration: number;
     easing: EasingFactoryFn;
@@ -118,53 +121,93 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       makeMotionTime(
         getIn(
           theme.motion.duration,
-          baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-            .duration,
+          baseInputBorderBackgroundMotion[isFocused ? 'enter' : 'exit'].duration,
         ),
       ),
     ),
     easing: castNativeType(
-      theme.motion.easing[
-        baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-          .easing
-      ],
+      theme.motion.easing[baseInputBorderBackgroundMotion[isFocused ? 'enter' : 'exit'].easing],
     ),
   };
 
+  const targetBorderWidth = rest.isTableInputCell
+    ? theme.border.width.none
+    : isFocused
+    ? theme.border.width.thick
+    : theme.border.width.thin;
+
+  const inputBorderRadius = rest.isTableInputCell
+    ? theme.border.radius.none
+    : theme.border.radius[baseInputBorderRadius[rest.size]];
+
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({
-      borderWidth: rest.isTableInputCell ? theme.border.width.none : theme.border.width.thin,
-      borderRadius: rest.isTableInputCell
-        ? theme.border.radius.none
-        : theme.border.radius[baseInputBorderRadius[rest.size]],
+      borderWidth: withTiming(targetBorderWidth, motionConfig),
+      borderRadius: inputBorderRadius,
       borderStyle: 'solid',
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-    [borderColor, backgroundColor, motionConfig, rest.isTableInputCell, rest.size],
+    [borderColor, backgroundColor, motionConfig, rest.isTableInputCell, rest.size, targetBorderWidth, inputBorderRadius],
   );
 
+  const FOCUS_RING_MAX_WIDTH = 4;
+
+  // Shared value drives the expanding animation: 0 → FOCUS_RING_MAX_WIDTH on focus, back to 0 on blur.
+  // Animating borderWidth + position together makes the ring appear to physically grow outward,
+  // matching the web's outline-width transition.
+  const ringWidth = useSharedValue(0);
+  React.useEffect(() => {
+    ringWidth.value = withTiming(isFocused ? FOCUS_RING_MAX_WIDTH : 0, motionConfig);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocused]);
+
+  const focusRingStyle = useAnimatedStyle(() => ({
+    top: -ringWidth.value,
+    left: -ringWidth.value,
+    right: -ringWidth.value,
+    bottom: -ringWidth.value,
+    borderRadius: inputBorderRadius + ringWidth.value,
+    borderWidth: ringWidth.value,
+  }));
+
   return (
-    <StyledBaseInputWrapper
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      style={[
-        // We only want to define height in tagged inputs except height for TextArea is set on TextArea based on numberOfLines prop
-        isDropdownTrigger && !isTextArea
-          ? {
-              ...maxHeightStyleObject,
-              ...animatedStyleObject,
-            }
-          : {},
-        animatedBorderAndBackgroundStyle,
-      ]}
-      isDropdownTrigger={isDropdownTrigger}
-      numberOfLines={numberOfLines}
-      setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-      {...rest}
-    >
-      {children}
-    </StyledBaseInputWrapper>
+    // Outer wrapper has no overflow clipping so the focus ring overlay can extend beyond input edges
+    <Animated.View style={{ width: '100%', position: 'relative' }}>
+      {/* Focus ring — expands outward from the dark border edge as borderWidth grows 0 → 4 */}
+      {!rest.isTableInputCell && (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            {
+              position: 'absolute',
+              borderColor: focusRingColor,
+            },
+            focusRingStyle,
+          ]}
+        />
+      )}
+      <StyledBaseInputWrapper
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        style={[
+          // We only want to define height in tagged inputs except height for TextArea is set on TextArea based on numberOfLines prop
+          isDropdownTrigger && !isTextArea
+            ? {
+                ...maxHeightStyleObject,
+                ...animatedStyleObject,
+              }
+            : {},
+          animatedBorderAndBackgroundStyle,
+        ]}
+        isDropdownTrigger={isDropdownTrigger}
+        numberOfLines={numberOfLines}
+        setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
+        {...rest}
+      >
+        {children}
+      </StyledBaseInputWrapper>
+    </Animated.View>
   );
 };
 

@@ -23,6 +23,7 @@ const config = {
   },
   resolver: {
     resolverMainFields: ['react-native', 'browser', 'main'],
+    unstable_enablePackageExports: true,
     resolveRequest: (context, moduleName, platform) => {
       if (moduleName.endsWith('.css')) {
         return { type: 'empty' };
@@ -40,6 +41,36 @@ const config = {
         return {
           type: 'sourceFile',
           filePath: path.resolve(mocksDir, 'storybook-react-router.js'),
+        };
+      }
+      if (moduleName === '@storybook/design-system' || moduleName.startsWith('@storybook/design-system/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-design-system.js'),
+        };
+      }
+      if (moduleName === '@storybook/addon-actions' || moduleName.startsWith('@storybook/addon-actions/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-addon-actions.js'),
+        };
+      }
+      if (moduleName === '@storybook/addon-docs' || moduleName.startsWith('@storybook/addon-docs/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-addon-docs.js'),
+        };
+      }
+      if (moduleName === '@storybook/jest' || moduleName.startsWith('@storybook/jest/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-jest.js'),
+        };
+      }
+      if (moduleName === '@storybook/testing-library' || moduleName.startsWith('@storybook/testing-library/')) {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-testing-library.js'),
         };
       }
       return context.resolveRequest(context, moduleName, platform);
