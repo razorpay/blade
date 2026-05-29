@@ -152,6 +152,19 @@ yarn test:react # web tests
 yarn test:react-native # native tests
 ```
 
+#### Configuring Jest for React Native Consumers
+
+If you use Blade in a React Native project and run tests with Jest, you may need to configure `global.navigator.product` in your Jest setup file. Blade internally uses this to detect the React Native platform at runtime, but Jest does not set it by default:
+
+```js
+// jest-setup.js (or your Jest setup file)
+global.navigator = {
+  product: 'ReactNative',
+};
+```
+
+Without this configuration, tests that import Blade components may fail because the platform detection logic cannot determine the target environment.
+
 ### Visual Tests
 
 We also have visual tests that run on every PR. So if your PR changes / breaks a certain component, the diff will show up on chromatic checks of PR
