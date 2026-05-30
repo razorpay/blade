@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 12.105.0
+
+### Minor Changes
+
+- 374cb0479: feat(native): Added BottomNav component in React Native
+- 7268d4bf2: feat(native): Added Skeleton Loader for React Native
+
+### Patch Changes
+
+- 0f9dc0876: fix(typography): apply TASA Orbiter Display optical size on web headings
+
 ## 12.104.2
 
 ### Patch Changes
