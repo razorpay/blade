@@ -101,5 +101,18 @@ export type {
   UseToastReturn,
 } from './Toast/types';
 
+// StepGroup
+export { StepGroup, StepItem, StepItemIndicator, StepItemIcon } from './StepGroup';
+export type {
+  StepGroupProps,
+  StepItemProps,
+  StepItemIndicatorProps,
+  StepItemIconProps,
+  StepGroupSize,
+  StepGroupOrientation,
+  StepItemMarkerColor,
+  StepProgress,
+} from './StepGroup';
+
 // BladeProvider
 export * from './BladeProvider';

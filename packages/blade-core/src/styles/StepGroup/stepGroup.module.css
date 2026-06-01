@@ -1,0 +1,296 @@
+/* StepGroup container */
+.stepGroup {
+  display: inline-flex;
+  max-width: 100%;
+
+  /* Medium size tokens (default) */
+  --step-marker-bg-size: 20px;
+  --step-marker-margin: 2px;
+  --step-indentation: 31px;
+  --step-marker-left-align: 11px; /* (20 + 2) / 2 */
+  --step-marker-top-align: -13px; /* -(20 + 4 + 2) / 2 */
+  --step-item-gap: var(--spacing-2);
+}
+
+.large {
+  --step-marker-bg-size: 24px;
+  --step-marker-margin: 2px;
+  --step-indentation: 33px;
+  --step-marker-left-align: 13px; /* (24 + 2) / 2 */
+  --step-marker-top-align: -15px; /* -(24 + 4 + 2) / 2 */
+  --step-item-gap: var(--spacing-3);
+}
+
+.vertical {
+  flex-direction: column;
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+}
+
+.horizontal {
+  flex-direction: row;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Nested StepGroup — column direction, no padding */
+.nested {
+  flex-direction: column;
+}
+
+/* StepItem layout */
+.stepItem {
+  display: flex;
+  gap: var(--step-item-gap);
+}
+
+.stepItemVertical {
+  flex-direction: row;
+  width: 100%;
+  margin-left: var(--spacing-4);
+  margin-right: var(--spacing-4);
+  text-align: left;
+}
+
+.stepItemHorizontal {
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  flex: 1;
+  min-width: min(120px, 100%);
+  margin-left: var(--spacing-0);
+  margin-right: var(--spacing-0);
+}
+
+/* StepItem content area */
+.stepItemContent {
+  flex: 1;
+}
+
+/* Interactive header (button/anchor) */
+.interactiveHeader {
+  padding: var(--spacing-3) var(--spacing-4);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  text-align: inherit;
+  background-color: transparent;
+  border-radius: var(--border-radius-medium);
+  width: 100%;
+  transition: background-color var(--duration-2xquick) var(--easing-standard);
+}
+
+.interactiveHeader:not([disabled]):hover {
+  background-color: var(--interactive-background-gray-default);
+}
+
+.interactiveHeaderSelected:not([disabled]):hover {
+  background-color: var(--interactive-background-primary-faded);
+}
+
+.interactiveHeader:not([disabled]):focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-medium);
+}
+
+.interactiveHeader[disabled] {
+  cursor: not-allowed;
+}
+
+/* Static header padding */
+.staticHeader {
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+/* Header content row */
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+/* Children slot of step item */
+.stepItemChildren {
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+}
+
+/* ===================== */
+/* StepLine styles       */
+/* ===================== */
+
+/* Shared line container */
+.stepLine {
+  position: relative;
+  display: flex;
+}
+
+.stepLineVertical {
+  flex-direction: column;
+}
+
+.stepLineHorizontal {
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Straight line - vertical */
+.straightLineVertical {
+  width: 2px; /* markerLineWidth */
+  flex: 1;
+  border-left: 2px solid var(--surface-border-gray-muted);
+}
+
+.straightLineVerticalDotted {
+  width: 2px;
+  flex: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--surface-border-gray-subtle) 1px,
+    transparent 1px
+  );
+  background-size: 2px 6px; /* dot 2px + spacing 4px = 6px total */
+  background-repeat: no-repeat round;
+  background-position: top;
+}
+
+/* Fixed-height top margin vertical line */
+.straightLineVerticalTop {
+  height: 6px; /* itemTopMargin = size[6] = 6px */
+  flex: none;
+  width: 2px;
+}
+
+/* Straight line - horizontal */
+.straightLineHorizontal {
+  height: 2px;
+  flex: 1;
+  border-top: 2px solid var(--surface-border-gray-subtle);
+}
+
+.straightLineHorizontalDotted {
+  height: 2px;
+  flex: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--surface-border-gray-subtle) 1px,
+    transparent 1px
+  );
+  background-size: 6px 2px;
+  background-repeat: round no-repeat;
+  background-position: left;
+}
+
+/* Marker wrapper */
+.markerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Marker wrapper - default/middle vertical (no indentation, centered) */
+.markerDefault {
+  margin-left: calc(-1 * var(--step-marker-left-align));
+}
+
+/* Indented marker (for nested items: start, middle, end, single) */
+.markerIndented {
+  margin-left: calc(var(--step-indentation) - var(--step-marker-left-align));
+}
+
+/* For "start" nesting type, marker has additional top offset */
+.markerTopOffset {
+  margin-top: var(--step-marker-top-align);
+}
+
+/* Indented straight lines (for nested: middle, end, single-item end branch) */
+.lineIndented {
+  margin-left: var(--step-indentation);
+}
+
+/* ========================== */
+/* StepItemIndicator styles   */
+/* ========================== */
+
+.indicatorBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--step-marker-bg-size);
+  width: var(--step-marker-bg-size);
+  border-radius: var(--border-radius-max);
+  margin: var(--step-marker-margin);
+}
+
+/* Indicator color variants */
+.indicatorPrimary {
+  background-color: var(--surface-background-primary-subtle);
+}
+
+.indicatorPositive {
+  background-color: var(--feedback-background-positive-subtle);
+}
+
+.indicatorNegative {
+  background-color: var(--feedback-background-negative-subtle);
+}
+
+.indicatorNotice {
+  background-color: var(--feedback-background-notice-subtle);
+}
+
+.indicatorInformation {
+  background-color: var(--feedback-background-information-subtle);
+}
+
+.indicatorNeutral {
+  background-color: var(--surface-background-gray-moderate);
+}
+
+/* Indicator dot */
+.indicatorDot {
+  border-radius: var(--border-radius-max);
+  position: relative;
+}
+
+/* Medium: dot size from Indicator component = "medium" */
+.indicatorDotMedium {
+  width: 8px;
+  height: 8px;
+}
+
+/* Large: dot size from Indicator component = "large" */
+.indicatorDotLarge {
+  width: 10px;
+  height: 10px;
+}
+
+.indicatorDotColorPrimary {
+  background-color: var(--surface-icon-primary-normal);
+}
+
+.indicatorDotColorPositive {
+  background-color: var(--feedback-icon-positive-intense);
+}
+
+.indicatorDotColorNegative {
+  background-color: var(--feedback-icon-negative-intense);
+}
+
+.indicatorDotColorNotice {
+  background-color: var(--feedback-icon-notice-intense);
+}
+
+.indicatorDotColorInformation {
+  background-color: var(--feedback-icon-information-intense);
+}
+
+.indicatorDotColorNeutral {
+  background-color: var(--surface-icon-gray-muted);
+}
