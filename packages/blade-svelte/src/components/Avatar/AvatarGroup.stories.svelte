@@ -138,7 +138,7 @@
         {#each sizes as groupSize}
           <div style="display: flex; align-items: center; gap: 20px;">
             <div style="width: 60px;">
-              <Heading size="xsmall">{groupSize}</Heading>
+              <Heading size="small">{groupSize}</Heading>
             </div>
             <AvatarGroup size={groupSize} density={density} maxCount={3}>
               {#each overflowNames as name, index}
