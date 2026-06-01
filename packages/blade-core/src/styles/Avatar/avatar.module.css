@@ -220,6 +220,15 @@
   background-color: var(--interactive-background-neutral-faded);
 }
 
+/* AvatarGroup overflow (+N) counter — Svelte-only override layered on top of
+   `.btn-color-neutral`. Not exposed as a public color variant; applied via
+   `getAvatarGroupOverflowButtonClasses` only. Source-order after
+   `.btn-color-neutral` ensures it wins on background-color. */
+.btn-color-group-overflow {
+  background-color: var(--surface-background-gray-subtle);
+  color: var(--interactive-text-neutral-muted);
+}
+
 /* AvatarButton interactive state */
 .btn-interactive {
   cursor: pointer;
@@ -336,23 +345,65 @@
   z-index: 2;
 }
 
-/* AvatarGroup size variants (negative margin overlap) */
+/* AvatarGroup size variants (negative margin overlap) — normal density */
 .group-size-xsmall > :not(:first-child) {
-  margin-left: -10px;
+  margin-left: -6px;
 }
 
 .group-size-small > :not(:first-child) {
-  margin-left: -14px;
+  margin-left: -10px;
 }
 
 .group-size-medium > :not(:first-child) {
-  margin-left: -18px;
+  margin-left: -14px;
 }
 
 .group-size-large > :not(:first-child) {
-  margin-left: -24px;
+  margin-left: -20px;
 }
 
 .group-size-xlarge > :not(:first-child) {
-  margin-left: -28px;
+  margin-left: -24px;
+}
+
+/* AvatarGroup density × size compound: compact (tighter overlap) */
+.group-density-compact-xsmall > :not(:first-child) {
+  margin-left: -10px;
+}
+
+.group-density-compact-small > :not(:first-child) {
+  margin-left: -14px;
+}
+
+.group-density-compact-medium > :not(:first-child) {
+  margin-left: -18px;
+}
+
+.group-density-compact-large > :not(:first-child) {
+  margin-left: -24px;
+}
+
+.group-density-compact-xlarge > :not(:first-child) {
+  margin-left: -30px;
+}
+
+/* AvatarGroup density × size compound: comfortable (looser overlap) */
+.group-density-comfortable-xsmall > :not(:first-child) {
+  margin-left: -2px;
+}
+
+.group-density-comfortable-small > :not(:first-child) {
+  margin-left: -4px;
+}
+
+.group-density-comfortable-medium > :not(:first-child) {
+  margin-left: -6px;
+}
+
+.group-density-comfortable-large > :not(:first-child) {
+  margin-left: -10px;
+}
+
+.group-density-comfortable-xlarge > :not(:first-child) {
+  margin-left: -14px;
 }

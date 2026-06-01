@@ -1,4 +1,4 @@
-import { cva } from 'class-variance-authority';
+import { cva, cx } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './avatar.module.css';
 
@@ -106,24 +106,101 @@ export function getAvatarButtonClasses(props: AvatarButtonVariants): string {
   return avatarButtonStyles(props);
 }
 
+/** Text color token for AvatarGroup overflow (+N) counter */
+export const avatarGroupOverflowTextColorToken = 'interactive.text.neutral.muted' as const;
+
+/**
+ * AvatarGroup overflow (+N) body text size mapping (avatar size → Text size).
+ * All sizes use Body/Semibold; xlarge uses Heading/SmallSemibold separately.
+ */
+export const avatarGroupOverflowTextSizeMapping = {
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+export type AvatarGroupOverflowBodyTextSize = typeof avatarGroupOverflowTextSizeMapping[keyof typeof avatarGroupOverflowTextSizeMapping];
+
+export function getAvatarGroupOverflowBodyTextSize(
+  size: Exclude<NonNullable<AvatarGroupVariants['size']>, 'xlarge'>,
+): AvatarGroupOverflowBodyTextSize {
+  return avatarGroupOverflowTextSizeMapping[size];
+}
+
+/**
+ * Button classes for AvatarGroup overflow (+N) counter avatar.
+ *
+ * Builds on `color: 'neutral'` (kept inside the public color enum) and layers
+ * a Svelte-only `btn-color-group-overflow` override on top to give the counter
+ * its distinct panel-style background. The override is intentionally not
+ * exposed via `AvatarButtonVariants['color']` so the public type stays aligned
+ * with React's `AvatarProps['color']`.
+ */
+export function getAvatarGroupOverflowButtonClasses(
+  props: Pick<AvatarButtonVariants, 'size' | 'variant'>,
+): string {
+  return cx(
+    avatarButtonStyles({
+      ...props,
+      color: 'neutral',
+      isInteractive: false,
+      isSelected: false,
+    }),
+    styles['btn-color-group-overflow'],
+  );
+}
+
 // ===== AvatarGroup CVA =====
+
+export type AvatarDensity = 'compact' | 'normal' | 'comfortable';
 
 export type AvatarGroupVariants = {
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  density?: AvatarDensity;
 };
 
 export const avatarGroupStyles = cva(styles['avatar-group'], {
   variants: {
+    // size variant carries no margin directly — all spacing is controlled by
+    // density × size compound variants below, so that there is a single
+    // authoritative source for every margin value regardless of density.
     size: {
-      xsmall: styles['group-size-xsmall'],
-      small: styles['group-size-small'],
-      medium: styles['group-size-medium'],
-      large: styles['group-size-large'],
-      xlarge: styles['group-size-xlarge'],
+      xsmall: '',
+      small: '',
+      medium: '',
+      large: '',
+      xlarge: '',
+    },
+    density: {
+      normal: '',
+      compact: '',
+      comfortable: '',
     },
   },
+  compoundVariants: [
+    // normal density — same overlap as the original size-only classes
+    { density: 'normal', size: 'xsmall', class: styles['group-size-xsmall'] },
+    { density: 'normal', size: 'small', class: styles['group-size-small'] },
+    { density: 'normal', size: 'medium', class: styles['group-size-medium'] },
+    { density: 'normal', size: 'large', class: styles['group-size-large'] },
+    { density: 'normal', size: 'xlarge', class: styles['group-size-xlarge'] },
+    // compact density — tighter overlap
+    { density: 'compact', size: 'xsmall', class: styles['group-density-compact-xsmall'] },
+    { density: 'compact', size: 'small', class: styles['group-density-compact-small'] },
+    { density: 'compact', size: 'medium', class: styles['group-density-compact-medium'] },
+    { density: 'compact', size: 'large', class: styles['group-density-compact-large'] },
+    { density: 'compact', size: 'xlarge', class: styles['group-density-compact-xlarge'] },
+    // comfortable density — looser overlap
+    { density: 'comfortable', size: 'xsmall', class: styles['group-density-comfortable-xsmall'] },
+    { density: 'comfortable', size: 'small', class: styles['group-density-comfortable-small'] },
+    { density: 'comfortable', size: 'medium', class: styles['group-density-comfortable-medium'] },
+    { density: 'comfortable', size: 'large', class: styles['group-density-comfortable-large'] },
+    { density: 'comfortable', size: 'xlarge', class: styles['group-density-comfortable-xlarge'] },
+  ],
   defaultVariants: {
     size: 'medium',
+    density: 'normal',
   },
 });
 
@@ -215,6 +292,18 @@ export function getAvatarTemplateClasses(): Record<string, string> {
     bottomAddonSquare: styles['bottom-addon-square'],
     // Group
     avatarGroup: styles['avatar-group'],
+    // Group density compact
+    groupDensityCompactXsmall: styles['group-density-compact-xsmall'],
+    groupDensityCompactSmall: styles['group-density-compact-small'],
+    groupDensityCompactMedium: styles['group-density-compact-medium'],
+    groupDensityCompactLarge: styles['group-density-compact-large'],
+    groupDensityCompactXlarge: styles['group-density-compact-xlarge'],
+    // Group density comfortable
+    groupDensityComfortableXsmall: styles['group-density-comfortable-xsmall'],
+    groupDensityComfortableSmall: styles['group-density-comfortable-small'],
+    groupDensityComfortableMedium: styles['group-density-comfortable-medium'],
+    groupDensityComfortableLarge: styles['group-density-comfortable-large'],
+    groupDensityComfortableXlarge: styles['group-density-comfortable-xlarge'],
   } as const;
 }
 

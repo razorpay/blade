@@ -9,8 +9,13 @@
     getAvatarGroupClasses,
     getAvatarTemplateClasses,
     getAvatarWrapperClasses,
-    getAvatarButtonClasses,
+    getAvatarGroupOverflowButtonClasses,
+    avatarGroupOverflowTextColorToken,
+    getAvatarGroupOverflowBodyTextSize,
   } from '@razorpay/blade-core/styles';
+  import Heading from '../Typography/Heading/Heading.svelte';
+  import Text from '../Typography/Text/Text.svelte';
+  import type { TextColors } from '../Typography/BaseText/types';
   import { setAvatarGroupContext } from './avatarContext';
   import type { AvatarGroupProps, AvatarGroupRegistration } from './types';
 
@@ -20,6 +25,7 @@
   let {
     children,
     size = 'medium',
+    density = 'normal',
     maxCount,
     testID,
     ...rest
@@ -53,7 +59,7 @@
   setAvatarGroupContext(() => ({ size, register }));
 
   // Group classes
-  const groupClasses = $derived(getAvatarGroupClasses({ size }));
+  const groupClasses = $derived(getAvatarGroupClasses({ size, density }));
 
   // Meta & analytics attributes
   const metaAttrs = metaAttribute({ name: MetaConstants.AvatarGroup, testID });
@@ -65,19 +71,15 @@
     getAvatarWrapperClasses({ size, variant: 'circle', isInteractive: false }),
   );
   const overflowBtnClasses = $derived(
-    getAvatarButtonClasses({
-      size,
-      variant: 'circle',
-      color: 'neutral',
-      isInteractive: false,
-      isSelected: false,
-    }),
+    getAvatarGroupOverflowButtonClasses({ size, variant: 'circle' }),
   );
 
   const overflowCount = $derived(
     maxCount !== undefined && registeredCount > maxCount ? registeredCount - maxCount : 0,
   );
   const showOverflow = $derived(overflowCount > 0);
+
+  const overflowTextColor = avatarGroupOverflowTextColorToken satisfies TextColors;
 </script>
 
 <div class={groupClasses} {...metaAttrs} {...analyticsAttrs} {...a11yAttrs}>
@@ -86,7 +88,21 @@
     <div class={overflowWrapperClasses}>
       <div class={overflowBtnClasses}>
         <div class={templateClasses.btnContent}>
-          +{overflowCount}
+          {#if size === 'xlarge'}
+            <Heading size="small" weight="semibold" color={overflowTextColor}>
+              +{overflowCount}
+            </Heading>
+          {:else}
+            <Text
+              as="span"
+              variant="body"
+              size={getAvatarGroupOverflowBodyTextSize(size)}
+              weight="semibold"
+              color={overflowTextColor}
+            >
+              +{overflowCount}
+            </Text>
+          {/if}
         </div>
       </div>
     </div>
