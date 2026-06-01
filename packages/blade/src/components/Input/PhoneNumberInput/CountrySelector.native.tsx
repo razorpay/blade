@@ -113,19 +113,14 @@ const CountrySelector = ({
               <ActionListItem
                 key={country.code}
                 leading={
-                  <ActionListItemAsset
-                    src={flags[country.code]['4X3']}
-                    alt={country.name}
-                  />
+                  <ActionListItemAsset src={flags[country.code]['4X3']} alt={country.name} />
                 }
                 title={country.name}
                 value={country.code}
                 isSelected={country.code === selectedCountry}
                 onClick={() => handleItemClick(country.code)}
                 trailing={
-                  <ActionListItemText>
-                    {getDialCodeByCountryCode(country.code)}
-                  </ActionListItemText>
+                  <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
                 }
               />
             ))}
