@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './alert.module.css';
 
-export type AlertColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+export type AlertColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive' | 'primary';
 export type AlertEmphasis = 'subtle' | 'intense';
 
 export type AlertVariants = {
@@ -22,6 +22,7 @@ export const alertStyles = cva(styles.alert, {
       negative: styles['color-negative'],
       notice: styles['color-notice'],
       information: styles['color-information'],
+      primary: styles['color-primary'],
     },
     emphasis: {
       subtle: styles['emphasis-subtle'],
@@ -118,6 +119,9 @@ export function getAlertIconColorToken({
 }): string {
   if (emphasis === 'intense') {
     return 'surface.icon.staticWhite.normal';
+  }
+  if (color === 'primary') {
+    return 'interactive.icon.primary.normal';
   }
   return `feedback.icon.${color}.intense`;
 }
