@@ -122,3 +122,14 @@
 .color-primary.emphasis-intense {
   background-color: var(--surface-background-primary-intense);
 }
+
+/* Checkout shape variants — scoped to checkout context
+ * intense = rectangle (small radius), subtle = pill (max radius)
+ */
+.shape-rectangle {
+  border-radius: var(--border-radius-small);
+}
+
+.shape-pill {
+  border-radius: var(--border-radius-max);
+}
