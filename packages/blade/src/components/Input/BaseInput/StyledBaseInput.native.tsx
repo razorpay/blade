@@ -143,6 +143,12 @@ const getRNInputStyles = (
       ios: undefined,
     }),
     textAlignVertical: props.isTextArea ? 'top' : 'center',
+    ...(props.isTextArea
+      ? {}
+      : {
+          paddingTop: 3.5,
+          paddingBottom: 0,
+        }),
     height: getInputHeight({
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
