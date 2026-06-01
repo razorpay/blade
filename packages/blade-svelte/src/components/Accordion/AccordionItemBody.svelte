@@ -24,6 +24,13 @@
   const isExpanded = $derived(itemCtx.isExpanded);
   const collapsibleBodyId = $derived(itemCtx.collapsibleBodyId);
   const accordionSize = $derived(accordionCtx.size);
+  const bodyBackground = $derived(accordionCtx.bodyBackground);
+
+  const bodyClass = $derived(
+    [templateClasses.body, bodyBackground === 'gray' ? templateClasses.bodyGray : '']
+      .filter(Boolean)
+      .join(' '),
+  );
 
   const descriptionFontSize = $derived(accordionSize === 'large' ? 100 : 75);
   const descriptionLineHeight = $derived(accordionSize === 'large' ? 100 : 75);
@@ -113,7 +120,7 @@
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  <div class={templateClasses.body}>
+  <div class={bodyClass}>
     <BaseText
       as="div"
       color="surface.text.gray.subtle"

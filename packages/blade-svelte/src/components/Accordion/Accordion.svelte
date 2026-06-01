@@ -24,6 +24,7 @@
     size = 'large',
     maxWidth,
     minWidth,
+    bodyBackground,
     testID,
     ...rest
   }: AccordionProps = $props();
@@ -68,6 +69,7 @@
     numberOfItems: _numberOfItems,
     size,
     registerItem,
+    bodyBackground,
   }));
 
   const wrapperClass = $derived(getAccordionWrapperClasses({ variant }));

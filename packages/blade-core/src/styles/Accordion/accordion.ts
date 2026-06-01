@@ -103,6 +103,7 @@ export const getAccordionTemplateClasses = (): Record<string, string> => ({
   headerDivider: styles.headerDivider,
   collapsibleContent: styles.collapsibleContent,
   body: styles.body,
+  bodyGray: styles.bodyGray,
   accordionOuter: styles.accordionOuter,
 });
 
