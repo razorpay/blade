@@ -142,7 +142,13 @@ const getRNInputStyles = (
       android: makeSize(props.theme.typography.lineHeights[100]),
       ios: undefined,
     }),
-    textAlignVertical: 'top',
+    textAlignVertical: props.isTextArea ? 'top' : 'center',
+    ...(props.isTextArea
+      ? {}
+      : {
+          paddingTop: 3.5,
+          paddingBottom: 0,
+        }),
     height: getInputHeight({
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
