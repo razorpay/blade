@@ -146,7 +146,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-       [
+    [
       borderColor,
       backgroundColor,
       motionConfig,
