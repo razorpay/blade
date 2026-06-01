@@ -1,5 +1,8 @@
+import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
+import type { ColorTheme } from '../utils';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
+import type { BoxProps } from '~components/Box';
 
 export type SankeyDataNode = {
   /** Unique identifier — used in link `source`/`target` references */
@@ -19,24 +22,29 @@ export type SankeyDataLink = {
   value: number;
 };
 
+export type SankeyTooltipContentProps = {
+  active?: boolean;
+  payload?: TooltipContentProps<number, string>['payload'];
+  labelUnit?: string;
+};
+
 export type ChartSankeyWrapperProps = {
   /** Must contain exactly one `<ChartSankey>` element */
   children: React.ReactElement;
-  /** Chart height in px. Default: 400 */
-  height?: number;
-  /**
-   * Chart width. Accepts a pixel number or any valid CSS width string (e.g. `"100%"`, `"600px"`).
-   * Default: `"100%"` — fills the parent container. Use a fixed value in side-by-side dashboard layouts.
-   */
-  width?: number | string;
   /** Show a tooltip when hovering over a node or link ribbon. Default: true */
   showTooltip?: boolean;
+  /**
+   * Colour palette to use for auto-assigned node colours.
+   * @default 'categorical'
+   */
+  colorTheme?: ColorTheme;
   /** Override all node bar colors with a single Blade token */
   nodeColorOverride?: ChartsCategoricalColorToken;
   /** Override all link ribbon colors with a single Blade token */
   linkColorOverride?: ChartsCategoricalColorToken;
 } & TestID &
-  DataAnalyticsAttribute;
+  DataAnalyticsAttribute &
+  BoxProps;
 
 export type ChartSankeyProps = {
   /** Flat node list + directed flow connections, referenced by node id */

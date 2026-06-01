@@ -6,15 +6,20 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Sankey, Tooltip, ResponsiveContainer } from 'recharts';
-import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
+import { Sankey, ResponsiveContainer } from 'recharts';
 import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
 import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
+import { ChartTooltip } from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
 import { calculateTextWidth } from '../CommonChartComponents/utils';
 import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type { ChartSankeyWrapperProps, ChartSankeyProps, SankeyDataNode } from './types';
+import type {
+  ChartSankeyWrapperProps,
+  ChartSankeyProps,
+  SankeyDataNode,
+  SankeyTooltipContentProps,
+} from './types';
 import {
   componentIds,
   LABEL_CAP_HEIGHT_RATIO,
@@ -66,12 +71,6 @@ type HoverState = { type: 'node' | 'link'; index: number } | null;
 type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
 
 // ─── Tooltip content ──────────────────────────────────────────────────────────
-
-type SankeyTooltipContentProps = {
-  active?: boolean;
-  payload?: TooltipContentProps<number, string>['payload'];
-  labelUnit?: string;
-};
 
 function SankeyTooltipContent({
   active,
@@ -140,9 +139,8 @@ function humanizeIndian(value: number): string {
 
 const _ChartSankeyWrapper = ({
   children,
-  height = 400,
-  width,
   showTooltip = true,
+  colorTheme = 'categorical',
   nodeColorOverride,
   linkColorOverride,
   testID,
@@ -151,7 +149,7 @@ const _ChartSankeyWrapper = ({
   // Categorical palette — same filter used in DonutChart (gray.faint is near-white).
   // Memoised so the filtered array reference is stable across renders and downstream
   // useMemo/useCallback hooks that depend on it don't recompute needlessly.
-  const allColorTokens = useChartsColorTheme({ colorTheme: 'categorical' });
+  const allColorTokens = useChartsColorTheme({ colorTheme });
   const defaultColorTokens = useMemo(
     () => allColorTokens.filter((t) => t !== 'data.background.categorical.gray.faint'),
     [allColorTokens],
@@ -192,15 +190,16 @@ const _ChartSankeyWrapper = ({
       >
         <BaseBox
           {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
-          {...makeAnalyticsAttribute(restProps as Record<string, unknown>)}
-          position="relative"
+          {...makeAnalyticsAttribute(restProps)}
           width="100%"
+          height="100%"
+          {...restProps}
+          position="relative"
         >
           {/* Scroll wrapper — ensures minimum width on narrow viewports */}
-          <BaseBox width="100%" overflowX="auto">
-            <BaseBox minWidth={`${MIN_CHART_WIDTH}px`}>
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-              <ResponsiveContainer width={(width ?? '100%') as any} height={height}>
+          <BaseBox width="100%" height="100%" overflowX="auto">
+            <BaseBox height="100%" minWidth={`${MIN_CHART_WIDTH}px`}>
+              <ResponsiveContainer width="100%" height="100%">
                 {children}
               </ResponsiveContainer>
             </BaseBox>
@@ -217,9 +216,11 @@ const _ChartSankeyWrapper = ({
  * Must contain exactly one `<ChartSankey>` child.
  *
  * @example
- * <ChartSankeyWrapper height={420} showTooltip>
- *   <ChartSankey data={{ nodes, links }} labelUnit="txn" />
- * </ChartSankeyWrapper>
+ * <Box height="420px">
+ *   <ChartSankeyWrapper showTooltip>
+ *     <ChartSankey data={{ nodes, links }} labelUnit="txn" />
+ *   </ChartSankeyWrapper>
+ * </Box>
  */
 export const ChartSankeyWrapper = assignWithoutSideEffects(_ChartSankeyWrapper, {
   componentId: componentIds.ChartSankeyWrapper,
@@ -797,7 +798,7 @@ const _ChartSankey = ({
       }}
     >
       {showTooltip && (
-        <Tooltip
+        <ChartTooltip
           isAnimationActive={false}
           content={(tooltipProps) => (
             <SankeyTooltipContent
@@ -819,15 +820,17 @@ const _ChartSankey = ({
  * Must be rendered as a direct child of `<ChartSankeyWrapper>`.
  *
  * @example
- * <ChartSankeyWrapper height={420}>
- *   <ChartSankey
+ * <Box height="420px">
+ *   <ChartSankeyWrapper>
+ *     <ChartSankey
  *     data={{ nodes, links }}
  *     showLabels
  *     showLabelChip
  *     labelUnit="txn"
  *     onNodeClick={(node, i) => console.log(node, i)}
  *   />
- * </ChartSankeyWrapper>
+ *   </ChartSankeyWrapper>
+ * </Box>
  */
 export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
   componentId: componentIds.ChartSankey,

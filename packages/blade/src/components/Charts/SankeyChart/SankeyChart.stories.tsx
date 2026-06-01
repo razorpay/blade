@@ -29,7 +29,7 @@ const Page = (): React.ReactElement => (
         function App() {
           return (
             <Box width="100%" height="320px">
-              <ChartSankeyWrapper height={320} showTooltip>
+              <ChartSankeyWrapper showTooltip>
                 <ChartSankey
                   data={{
                     nodes: [
@@ -79,7 +79,8 @@ export default {
   argTypes: {
     height: {
       control: { type: 'number', min: 200, max: 800, step: 20 },
-      description: 'Height of the chart in pixels.',
+      description:
+        'Chart height. Passed as a BoxProp — the story uses this to set the height of the outer container Box (e.g. "420px").',
     },
     showTooltip: {
       control: { type: 'boolean' },
@@ -263,7 +264,7 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   return (
     <ChartsWrapper>
       <Box width="100%" height={`${height}px`}>
-        <ChartSankeyWrapper height={height} showTooltip={showTooltip}>
+        <ChartSankeyWrapper showTooltip={showTooltip}>
           <ChartSankey
             data={{ nodes, links }}
             showLabels={showLabels}
@@ -284,18 +285,19 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
 export const SingleColorSankeyChart: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
     <Box width="100%" display="flex" flexDirection="column" gap="spacing.4">
-      <ChartSankeyWrapper
-        height={420}
-        nodeColorOverride="data.background.categorical.blue.intense"
-        linkColorOverride="data.background.categorical.blue.subtle"
-        showTooltip={true}
-      >
-        <ChartSankey
-          data={{ nodes: paymentNodes, links: paymentLinks }}
-          showLabels={true}
-          labelUnit="txn"
-        />
-      </ChartSankeyWrapper>
+      <Box width="100%" height="420px">
+        <ChartSankeyWrapper
+          nodeColorOverride="data.background.categorical.blue.intense"
+          linkColorOverride="data.background.categorical.blue.subtle"
+          showTooltip={true}
+        >
+          <ChartSankey
+            data={{ nodes: paymentNodes, links: paymentLinks }}
+            showLabels={true}
+            labelUnit="txn"
+          />
+        </ChartSankeyWrapper>
+      </Box>
     </Box>
   </ChartsWrapper>
 );
@@ -306,9 +308,8 @@ SingleColorSankeyChart.parameters = { controls: { disable: true } };
 
 export const SankeyChartWithoutLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
-    <Box width="100%">
+    <Box width="100%" height="420px">
       <ChartSankeyWrapper
-        height={420}
         nodeColorOverride="data.background.categorical.blue.intense"
         linkColorOverride="data.background.categorical.blue.subtle"
         showTooltip={true}
@@ -325,8 +326,8 @@ SankeyChartWithoutLabels.parameters = { controls: { disable: true } };
 
 export const SankeyChartWithPlainTextLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper>
-    <Box width="100%">
-      <ChartSankeyWrapper height={420} showTooltip={true}>
+    <Box width="100%" height="420px">
+      <ChartSankeyWrapper showTooltip={true}>
         <ChartSankey
           data={{ nodes: paymentNodes, links: paymentLinks }}
           showLabels={true}

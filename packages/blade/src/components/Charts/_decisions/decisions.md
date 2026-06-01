@@ -669,12 +669,12 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
 | `children` | `React.ReactElement` | ✅ | — | Must be exactly one `<ChartSankey>` element |
-| `height` | `number` | ❌ | `400` | Chart height in pixels |
-| `width` | `number \| string` | ❌ | `"100%"` | Chart width — pixel number or CSS string. Useful for fixed-width dashboard layouts |
 | `showTooltip` | `boolean` | ❌ | `true` | Show a tooltip on node/link hover |
+| `colorTheme` | `ColorTheme` | ❌ | `'categorical'` | Colour palette — `'categorical'` today; `'sequential'` planned |
 | `nodeColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all node bar colors with a single Blade token |
 | `linkColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all link ribbon colors with a single Blade token |
 | `testID` | `string` | ❌ | — | `data-testid` for the wrapper element |
+| `...BoxProps` | `BoxProps` | ❌ | `height="100%"` | All Blade Box layout props — use `height` / `width` to size the chart container |
 
 #### `ChartSankey` Props
 
@@ -694,28 +694,30 @@ Example —
 ```tsx
 import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
-<ChartSankeyWrapper height={420} showTooltip>
-  <ChartSankey
-    data={{
-      nodes: [
-        { id: 'total',   name: 'Total' },
-        { id: 'upi',     name: 'UPI' },
-        { id: 'card',    name: 'Card' },
-        { id: 'success', name: 'Successful' },
-        { id: 'failed',  name: 'Failed' },
-      ],
-      links: [
-        { source: 'total', target: 'upi',     value: 4000 },
-        { source: 'total', target: 'card',    value: 3200 },
-        { source: 'upi',   target: 'success', value: 3500 },
-        { source: 'upi',   target: 'failed',  value: 500  },
-        { source: 'card',  target: 'success', value: 2800 },
-        { source: 'card',  target: 'failed',  value: 400  },
-      ],
-    }}
-    labelUnit="txn"
-  />
-</ChartSankeyWrapper>
+<Box height="420px">
+  <ChartSankeyWrapper showTooltip>
+    <ChartSankey
+      data={{
+        nodes: [
+          { id: 'total',   name: 'Total' },
+          { id: 'upi',     name: 'UPI' },
+          { id: 'card',    name: 'Card' },
+          { id: 'success', name: 'Successful' },
+          { id: 'failed',  name: 'Failed' },
+        ],
+        links: [
+          { source: 'total', target: 'upi',     value: 4000 },
+          { source: 'total', target: 'card',    value: 3200 },
+          { source: 'upi',   target: 'success', value: 3500 },
+          { source: 'upi',   target: 'failed',  value: 500  },
+          { source: 'card',  target: 'success', value: 2800 },
+          { source: 'card',  target: 'failed',  value: 400  },
+        ],
+      }}
+      labelUnit="txn"
+    />
+  </ChartSankeyWrapper>
+</Box>
 ```
 
 > **Note:** `ChartSankeyWrapper` inspects its `ChartSankey` child to extract `data.nodes` and compute `dataColorMapping` before rendering — matching the `ChartDonutWrapper` pattern exactly. Node `id` fields are used as stable keys in links; `name` is the display label. Per-node `color` prop (optional) takes palette precedence but is overridden by `nodeColorOverride`.
