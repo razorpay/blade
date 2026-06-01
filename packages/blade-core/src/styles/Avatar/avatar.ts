@@ -120,8 +120,7 @@ export const avatarGroupOverflowTextSizeMapping = {
   large: 'medium',
 } as const;
 
-export type AvatarGroupOverflowBodyTextSize =
-  (typeof avatarGroupOverflowTextSizeMapping)[keyof typeof avatarGroupOverflowTextSizeMapping];
+export type AvatarGroupOverflowBodyTextSize = typeof avatarGroupOverflowTextSizeMapping[keyof typeof avatarGroupOverflowTextSizeMapping];
 
 export function getAvatarGroupOverflowBodyTextSize(
   size: Exclude<NonNullable<AvatarGroupVariants['size']>, 'xlarge'>,
