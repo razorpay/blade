@@ -148,7 +148,15 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-    [borderColor, backgroundColor, motionConfig, rest.isTableInputCell, rest.size, targetBorderWidth, inputBorderRadius],
+       [
+      borderColor,
+      backgroundColor,
+      motionConfig,
+      rest.isTableInputCell,
+      rest.size,
+      targetBorderWidth,
+      inputBorderRadius,
+    ],
   );
 
   const FOCUS_RING_MAX_WIDTH = 4;
