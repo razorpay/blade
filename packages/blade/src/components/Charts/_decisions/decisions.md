@@ -19,6 +19,7 @@ This document outlines the API of Charts component.
     - [`AreaChart`](#34-area-chart)
     - [`BarChart`](#35-bar-chart)
     - [`DonutChart`](#36-donut-chart)
+    - [`SankeyChart`](#37-sankey-chart)
   - [Open questions](#4-open-questions)
 
 -----
@@ -657,9 +658,73 @@ import {
 
 
 
-### 3.7\. Axis and Grid Components
+### 3.7\. Sankey Chart
 
-#### 3.7.1\. ReferenceLine Component
+A flow diagram that shows how a quantity is distributed across multiple stages — node height is proportional to volume, link width is proportional to flow between source and target. Suitable for payment routing, funnel analysis, and budget allocation. Built on recharts `<Sankey>` for layout consistency with all other Blade charts.
+
+Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with DonutChart.
+
+#### `ChartSankeyWrapper` Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `children` | `React.ReactElement` | ✅ | — | Must be exactly one `<ChartSankey>` element |
+| `showTooltip` | `boolean` | ❌ | `true` | Show a tooltip on node/link hover |
+| `colorTheme` | `ColorTheme` | ❌ | `'categorical'` | Colour palette — `'categorical'` today; `'sequential'` planned |
+| `nodeColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all node bar colors with a single Blade token |
+| `linkColorOverride` | `ChartsCategoricalColorToken` | ❌ | — | Override all link ribbon colors with a single Blade token |
+| `testID` | `string` | ❌ | — | `data-testid` for the wrapper element |
+| `...BoxProps` | `BoxProps` | ❌ | `height="100%"` | All Blade Box layout props — use `height` / `width` to size the chart container |
+
+#### `ChartSankey` Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `data` | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅ | — | Flat node list and directed flow connections |
+| `showLabels` | `boolean` | ❌ | `true` | Show labels to the right of each node bar |
+| `showLabelChip` | `boolean` | ❌ | `true` | Render labels as Blade chip cards; `false` renders plain SVG text |
+| `showPercentage` | `boolean` | ❌ | `true` | Show percentage of total flow alongside value in each label |
+| `labelUnit` | `string` | ❌ | — | Unit string appended to node value, e.g. `"txn"` or `"₹M"` |
+| `formatValue` | `(value: number) => string` | ❌ | Indian notation (k/L/Cr) | Custom value formatter for node labels |
+| `onNodeClick` | `(node: SankeyDataNode, index: number) => void` | ❌ | — | Called when a node bar is clicked |
+| `onLinkClick` | `(link: SankeyDataLink, index: number) => void` | ❌ | — | Called when a link ribbon is clicked |
+
+Example —
+
+```tsx
+import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
+
+<Box height="420px">
+  <ChartSankeyWrapper showTooltip>
+    <ChartSankey
+      data={{
+        nodes: [
+          { id: 'total',   name: 'Total' },
+          { id: 'upi',     name: 'UPI' },
+          { id: 'card',    name: 'Card' },
+          { id: 'success', name: 'Successful' },
+          { id: 'failed',  name: 'Failed' },
+        ],
+        links: [
+          { source: 'total', target: 'upi',     value: 4000 },
+          { source: 'total', target: 'card',    value: 3200 },
+          { source: 'upi',   target: 'success', value: 3500 },
+          { source: 'upi',   target: 'failed',  value: 500  },
+          { source: 'card',  target: 'success', value: 2800 },
+          { source: 'card',  target: 'failed',  value: 400  },
+        ],
+      }}
+      labelUnit="txn"
+    />
+  </ChartSankeyWrapper>
+</Box>
+```
+
+> **Note:** `ChartSankeyWrapper` inspects its `ChartSankey` child to extract `data.nodes` and compute `dataColorMapping` before rendering — matching the `ChartDonutWrapper` pattern exactly. Node `id` fields are used as stable keys in links; `name` is the display label. Per-node `color` prop (optional) takes palette precedence but is overridden by `nodeColorOverride`.
+
+### 3.8\. Axis and Grid Components
+
+#### 3.8.1\. ReferenceLine Component
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
