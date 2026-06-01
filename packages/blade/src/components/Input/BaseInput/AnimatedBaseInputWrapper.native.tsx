@@ -197,12 +197,13 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         style={[
-          // We only want to define height in tagged inputs except height for TextArea is set on TextArea based on numberOfLines prop
           isDropdownTrigger && !isTextArea
             ? {
                 ...maxHeightStyleObject,
                 ...animatedStyleObject,
               }
+            : !isTextArea
+            ? { height: baseInputHeight[rest.size] }
             : {},
           animatedBorderAndBackgroundStyle,
         ]}
