@@ -137,6 +137,8 @@
     "@babel/runtime": "7.28.3",
     "@emotion/react": "11.11.1",
     "@floating-ui/react": "0.26.13",
+    "@formatjs/intl-displaynames": "^7.0.0",
+    "@formatjs/intl-locale": "^5.0.0",
     "@internationalized/date": "3.9.0",
     "@mantine/core": "6.0.21",
     "@mantine/dates": "6.0.21",
