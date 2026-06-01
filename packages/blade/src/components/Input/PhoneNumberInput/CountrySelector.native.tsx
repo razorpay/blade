@@ -17,12 +17,7 @@ import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/Bot
 import { Chevron } from '~components/Input/DropdownInputTriggers/Chevron';
 import { BaseBox } from '~components/Box/BaseBox';
 
-let countryNameFormatter: { of: (code: string) => string | undefined };
-try {
-  countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
-} catch {
-  countryNameFormatter = { of: (code: string) => code };
-}
+const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
 type CountryData = {
   code: CountryCodeType;
@@ -105,28 +100,32 @@ const CountrySelector = ({
         </BaseBox>
       </TouchableOpacity>
 
-      <BottomSheet isOpen={isBottomSheetOpen} onDismiss={() => setIsBottomSheetOpen(false)}>
-        <BottomSheetHeader title="Select A Country" />
-        <BottomSheetBody>
-          <ActionList isVirtualized={true}>
-            {(isBottomSheetOpen ? countryData : []).map((country) => (
-              <ActionListItem
-                key={country.code}
-                leading={
-                  <ActionListItemAsset src={flags[country.code]['4X3']} alt={country.name} />
-                }
-                title={country.name}
-                value={country.code}
-                isSelected={country.code === selectedCountry}
-                onClick={() => handleItemClick(country.code)}
-                trailing={
-                  <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
-                }
-              />
-            ))}
-          </ActionList>
-        </BottomSheetBody>
-      </BottomSheet>
+      {isBottomSheetOpen ? (
+        <BottomSheet isOpen={isBottomSheetOpen} onDismiss={() => setIsBottomSheetOpen(false)}>
+          <BottomSheetHeader title="Select A Country" />
+          <BottomSheetBody>
+            <ActionList isVirtualized={true}>
+              {(isBottomSheetOpen ? countryData : []).map((country) => (
+                <ActionListItem
+                  key={country.code}
+                  leading={
+                    <ActionListItemAsset src={flags[country.code]['4X3']} alt={country.name} />
+                  }
+                  title={country.name}
+                  value={country.code}
+                  isSelected={country.code === selectedCountry}
+                  onClick={() => handleItemClick(country.code)}
+                  trailing={
+                    <ActionListItemText>
+                      {getDialCodeByCountryCode(country.code)}
+                    </ActionListItemText>
+                  }
+                />
+              ))}
+            </ActionList>
+          </BottomSheetBody>
+        </BottomSheet>
+      ) : null}
     </>
   );
 };
