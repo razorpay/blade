@@ -146,16 +146,22 @@ const getRNInputStyles = (
     ...(props.isTextArea
       ? {}
       : {
-          paddingTop: 3.5,
+          paddingTop: 0,
           paddingBottom: 0,
+          height: undefined,
+          minHeight: undefined,
         }),
-    height: getInputHeight({
-      isTextArea: props.isTextArea,
-      hasTags: props.hasTags,
-      numberOfLines: props.numberOfLines,
-      isDropdownTrigger: props.isDropdownTrigger,
-      size: props.$size,
-    }),
+    ...(props.isTextArea || props.hasTags
+      ? {
+          height: getInputHeight({
+            isTextArea: props.isTextArea,
+            hasTags: props.hasTags,
+            numberOfLines: props.numberOfLines,
+            isDropdownTrigger: props.isDropdownTrigger,
+            size: props.$size,
+          }),
+        }
+      : {}),
   };
 };
 const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
