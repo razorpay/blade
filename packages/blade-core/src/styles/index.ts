@@ -113,10 +113,7 @@ export {
   getCollapsibleChevronClasses,
   getCollapsibleTemplateClasses,
 } from './Collapsible';
-export type {
-  CollapsibleTriggerVariants,
-  CollapsibleChevronVariants,
-} from './Collapsible';
+export type { CollapsibleTriggerVariants, CollapsibleChevronVariants } from './Collapsible';
 export {
   skeletonStyles,
   skeletonClass,
