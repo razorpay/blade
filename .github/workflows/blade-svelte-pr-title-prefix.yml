@@ -1,0 +1,54 @@
+name: Blade Svelte PR Title Prefix
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  add-blade-svelte-prefix:
+    name: Add [blade-svelte] prefix to PR title
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Check changed files and update PR title
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const { owner, repo } = context.repo;
+
+            // Fetch all changed files in the PR
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+
+            const isBladeSvelteOrCore = files.some(
+              (f) =>
+                f.filename.startsWith('packages/blade-svelte/') ||
+                f.filename.startsWith('packages/blade-core/')
+            );
+
+            const prefix = '[blade-svelte]';
+            const currentTitle = pr.title;
+
+            if (isBladeSvelteOrCore && !currentTitle.startsWith(prefix)) {
+              const newTitle = `${prefix} ${currentTitle}`;
+              await github.rest.pulls.update({
+                owner,
+                repo,
+                pull_number: pr.number,
+                title: newTitle,
+              });
+              core.info(`Updated PR title to: "${newTitle}"`);
+            } else {
+              core.info('No title update needed.');
+            }
