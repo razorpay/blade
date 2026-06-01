@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.105.1
+
+### Patch Changes
+
+- f116b3cae: fix: externalize react-native-safe-area-context as peer dependency
+
 ## 12.105.0
 
 ### Minor Changes

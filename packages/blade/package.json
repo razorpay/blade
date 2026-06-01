@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "12.105.0",
+  "version": "12.105.1",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -314,6 +314,7 @@
     "react-native-gesture-handler": "^2.9.0",
     "react-native-pager-view": "^6.2.1 || ^8.0.0",
     "react-native-reanimated": "^3.4.1",
+    "react-native-safe-area-context": "^3.4.1",
     "react-native-svg": "^12.3.0",
     "styled-components": "^5"
   },
@@ -322,6 +323,9 @@
       "optional": true
     },
     "react-native-reanimated": {
+      "optional": true
+    },
+    "react-native-safe-area-context": {
       "optional": true
     }
   }
