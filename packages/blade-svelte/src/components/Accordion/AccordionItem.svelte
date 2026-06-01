@@ -20,6 +20,7 @@
     getAccordionContext,
     setAccordionItemContext,
   } from './context';
+  import { setCollapsibleContext } from '../Collapsible/context';
   import type { AccordionItemProps } from './types';
 
   let {
@@ -61,6 +62,16 @@
     isExpanded,
     toggle,
     collapsibleBodyId,
+  }));
+
+  // Also expose via CollapsibleContext so AccordionItemBody can delegate
+  // its animation to the shared CollapsibleBody component.
+  setCollapsibleContext(() => ({
+    isExpanded,
+    toggle,
+    collapsibleBodyId,
+    isDisabled,
+    size: accordionCtx.size,
   }));
 
   const metaAttrs = metaAttribute({ name: MetaConstants.AccordionItem, testID });
