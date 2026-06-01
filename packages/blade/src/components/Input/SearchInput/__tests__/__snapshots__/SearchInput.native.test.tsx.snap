@@ -208,320 +208,346 @@ exports[`<SearchInput /> should render 1`] = `
           }
         >
           <View
-            currentInteraction="default"
-            isDropdownTrigger={true}
-            isTableInputCell={false}
-            onClick={[Function]}
-            setShowAllTagsWithAnimation={[Function]}
-            size="medium"
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(204, 8%, 88%, 1)",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 0,
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "height": "auto",
-                  "overflow": "hidden",
-                  "position": "relative",
-                  "width": "100%",
-                },
-                {
-                  "maxHeight": 36,
-                },
-                {
-                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(204, 8%, 88%, 1)",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                },
-              ]
+              {
+                "position": "relative",
+                "width": "100%",
+              }
             }
           >
             <View
-              alignItems="center"
-              alignSelf="center"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
+              pointerEvents="none"
+              style={
+                [
+                  {
+                    "borderColor": "hsla(218, 89%, 51%, 0.18)",
+                    "position": "absolute",
+                  },
+                  {
+                    "borderRadius": 8,
+                    "borderWidth": 0,
+                    "bottom": -0,
+                    "left": -0,
+                    "right": -0,
+                    "top": -0,
+                  },
+                ]
+              }
+            />
+            <View
+              currentInteraction="default"
+              isDropdownTrigger={true}
+              isTableInputCell={false}
+              onClick={[Function]}
+              setShowAllTagsWithAnimation={[Function]}
+              size="medium"
               style={
                 [
                   {
                     "alignItems": "center",
-                    "alignSelf": "center",
+                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                    "borderColor": "hsla(204, 8%, 88%, 1)",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 0,
                     "display": "flex",
                     "flexDirection": "row",
+                    "height": "auto",
+                    "overflow": "hidden",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                  {
+                    "maxHeight": 36,
+                  },
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                    "borderColor": "hsla(204, 8%, 88%, 1)",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                   },
                 ]
               }
             >
               <View
+                alignItems="center"
+                alignSelf="center"
                 data-blade-component="base-box"
                 display="flex"
+                flexDirection="row"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "paddingLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="16px"
+                    bbWidth="16px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="16px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        [
+                          {},
+                        ],
+                        {
+                          "flex": 0,
+                          "height": 16,
+                          "width": 16,
+                        },
+                      ]
+                    }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="16px"
+                  >
+                    <RNSVGGroup
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    >
+                      <RNSVGPath
+                        clipRule={0}
+                        d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
+                        fill={
+                          {
+                            "payload": 4284575093,
+                            "type": 0,
+                          }
+                        }
+                        fillRule={0}
+                        propList={
+                          [
+                            "fill",
+                            "fillRule",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+              </View>
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="flex-start"
+                minHeight="36px"
+                onLayout={[Function]}
+                position="relative"
                 style={
                   [
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "flex-start",
+                      "minHeight": 36,
+                      "paddingBottom": 2,
                       "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 2,
+                      "position": "relative",
                     },
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      [
-                        {},
-                      ],
-                      {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
-                      },
-                    ]
+                <RCTScrollView
+                  contentContainerStyle={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexWrap": "wrap",
+                      "position": "relative",
+                    }
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
+                  horizontal={false}
+                  onContentSizeChange={[Function]}
+                  onScrollBeginDrag={[Function]}
+                  onScrollEndDrag={[Function]}
+                  showsHorizontalScrollIndicator={false}
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
-                      [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGPath
-                      clipRule={0}
-                      d="M16.6177 18.0319C15.078 19.2635 13.125 20 11 20C6.02944 20 2 15.9706 2 11C2 6.02944 6.02944 2 11 2C15.9706 2 20 6.02944 20 11C20 13.125 19.2635 15.078 18.0319 16.6177L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0977 20.6834 22.0977 20.2929 21.7071L16.6177 18.0319ZM4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 12.886 17.2541 14.5978 16.0413 15.8565C16.0071 15.8828 15.9742 15.9116 15.9429 15.9429C15.9116 15.9742 15.8827 16.0071 15.8564 16.0413C14.5977 17.2542 12.886 18 11 18C7.13401 18 4 14.866 4 11Z"
-                      fill={
-                        {
-                          "payload": 4284575093,
-                          "type": 0,
-                        }
-                      }
-                      fillRule={0}
-                      propList={
-                        [
-                          "fill",
-                          "fillRule",
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-              </View>
-            </View>
-            <View
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              justifyContent="flex-start"
-              minHeight="36px"
-              onLayout={[Function]}
-              position="relative"
-              style={
-                [
-                  {
-                    "display": "flex",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-start",
-                    "minHeight": 36,
-                    "paddingBottom": 2,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 2,
-                    "position": "relative",
-                  },
-                ]
-              }
-            >
-              <RCTScrollView
-                contentContainerStyle={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexWrap": "wrap",
-                    "position": "relative",
-                  }
-                }
-                horizontal={false}
-                onContentSizeChange={[Function]}
-                onScrollBeginDrag={[Function]}
-                onScrollEndDrag={[Function]}
-                showsHorizontalScrollIndicator={false}
-              >
-                <View>
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessible={true}
-                    data-blade-component="base-box"
-                    focusable={true}
-                    height="100%"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    position="absolute"
-                    style={
-                      [
-                        {
-                          "height": "100%",
-                          "position": "absolute",
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                    width="100%"
-                  />
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                    width="100%"
-                  >
-                    <TextInput
-                      accessibilityDescribedBy=""
-                      accessibilityInvalid={false}
-                      accessibilityRequired={false}
+                  <View>
+                    <View
                       accessibilityState={
                         {
-                          "disabled": false,
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
                           "expanded": undefined,
+                          "selected": undefined,
                         }
                       }
                       accessible={true}
-                      autoCompleteType="off"
-                      data-blade-component="styled-base-input"
-                      editable={true}
-                      hasLeadingDropdown={false}
-                      hasTags={false}
-                      id="searchinput-1-input-2"
-                      isDropdownTrigger={true}
-                      isFocused={false}
-                      isInsideCounterInput={false}
-                      isTableInputCell={false}
-                      isTextArea={false}
-                      keyboardType="default"
-                      leadingIcon={[Function]}
-                      multiline={false}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onEndEditing={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
-                      returnKeyType="search"
-                      secureTextEntry={false}
+                      data-blade-component="base-box"
+                      focusable={true}
+                      height="100%"
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      position="absolute"
                       style={
                         [
                           {
-                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "height": 36,
-                            "letterSpacing": -0.18200000000000002,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "minHeight": 36,
-                            "paddingBottom": 8,
-                            "paddingLeft": 0,
-                            "paddingRight": 12,
-                            "paddingTop": 8,
-                            "textAlignVertical": "top",
-                            "textDecorationLine": "none",
+                            "height": "100%",
+                            "position": "absolute",
                             "width": "100%",
                           },
                         ]
                       }
-                      textContentType="none"
-                      trailingInteractionElement={null}
-                      valueComponentType="text"
+                      width="100%"
                     />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      width="100%"
+                    >
+                      <TextInput
+                        accessibilityDescribedBy=""
+                        accessibilityInvalid={false}
+                        accessibilityRequired={false}
+                        accessibilityState={
+                          {
+                            "disabled": false,
+                            "expanded": undefined,
+                          }
+                        }
+                        accessible={true}
+                        autoCompleteType="off"
+                        data-blade-component="styled-base-input"
+                        editable={true}
+                        hasLeadingDropdown={false}
+                        hasTags={false}
+                        id="searchinput-1-input-2"
+                        isDropdownTrigger={true}
+                        isFocused={false}
+                        isInsideCounterInput={false}
+                        isTableInputCell={false}
+                        isTextArea={false}
+                        keyboardType="default"
+                        leadingIcon={[Function]}
+                        multiline={false}
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onEndEditing={[Function]}
+                        onFocus={[Function]}
+                        onKeyPress={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholderTextColor="hsla(206, 10%, 29%, 0.32)"
+                        returnKeyType="search"
+                        secureTextEntry={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "color": "hsla(0, 0%, 2%, 1)",
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "400",
+                              "letterSpacing": -0.18200000000000002,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 12,
+                              "paddingTop": 0,
+                              "textAlignVertical": "center",
+                              "textDecorationLine": "none",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        textContentType="none"
+                        trailingInteractionElement={null}
+                        valueComponentType="text"
+                      />
+                    </View>
                   </View>
-                </View>
-              </RCTScrollView>
-              <View
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessible={true}
-                data-blade-component="base-box"
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
+                </RCTScrollView>
+                <View
+                  accessibilityState={
                     {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessible={true}
+                  data-blade-component="base-box"
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+              </View>
             </View>
           </View>
         </View>
