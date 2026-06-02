@@ -45,14 +45,16 @@ const CollapsibleBodyContent = ({
 
   // `undefined` implies no height restrictions which is analogous to `auto` on web
   const height = useSharedValue(isExpanded ? undefined : 0);
-  const [layoutHeight, setLayoutHeight] = useState(0);
+  const layoutHeightRef = useRef(0);
 
   // Keeps track of running animation to control absolute / relative positioning and handling layout event
   const [isAnimating, setIsAnimating] = useState(false);
+  const isAnimatingRef = useRef(false);
   const animationIdRef = useRef(0);
   const onAnimationComplete = useCallback((id: number): void => {
     requestAnimationFrame(() => {
       if (animationIdRef.current === id) {
+        isAnimatingRef.current = false;
         setIsAnimating(false);
       }
     });
@@ -63,22 +65,20 @@ const CollapsibleBodyContent = ({
 
   useEffect(() => {
     const currentId = ++animationIdRef.current;
+    isAnimatingRef.current = true;
     setIsAnimating(true);
 
     opacity.value = withTiming(getOpacity({ isExpanded }), { duration, easing });
     height.value = withTiming(
-      // Animates the height to the measured value
-      isExpanded && layoutHeight ? layoutHeight : 0,
+      isExpanded && layoutHeightRef.current ? layoutHeightRef.current : 0,
       { duration, easing },
       (isComplete) => {
-        // Only run this if the animation ran uninterrupted, for eg collapsing the content before it expanded fully
         if (isComplete) {
-          // The callback `onAnimationComplete` has to be declared outside this, on JS thread
           runOnJS(onAnimationComplete)(currentId);
         }
       },
     );
-  }, [isExpanded, opacity, duration, easing, height, layoutHeight, onAnimationComplete]);
+  }, [isExpanded, opacity, duration, easing, height, onAnimationComplete]);
 
   const animatedStyles = useAnimatedStyle(
     (): ViewStyle => {
@@ -95,28 +95,17 @@ const CollapsibleBodyContent = ({
    */
   const onLayout: (event: LayoutChangeEvent) => void = useCallback(
     (event) => {
-      if (isAnimating) {
-        if (event.nativeEvent.layout.height > layoutHeight) {
-          /**
-           * During animation, we set `layoutHeight` if the native event's layout height is larger.
-           *
-           * The greater than comparison is needed because sometimes the native event's layout height is smaller than actual content height 🤯
-           * For example, this happens if you try to render a lengthy `Text` that wraps onto multiple lines.
-           * In this case the initial native event's layout height only counts height of `Text` as if it were single line.
-           * So, when the `Text` actually renders on screen and wraps, another `nativeEvent` is triggered which gives us the actual content height.
-           * `nativeEvent` is triggered multiple times during animation but we only set `layoutHeight` if the height value is greater, hence the check.
-           */
-          setLayoutHeight(event.nativeEvent.layout.height);
+      const newHeight = event.nativeEvent.layout.height;
+      if (isAnimatingRef.current) {
+        if (newHeight > layoutHeightRef.current) {
+          layoutHeightRef.current = newHeight;
+          height.value = withTiming(newHeight, { duration, easing });
         }
-      } else if (event.nativeEvent.layout.height !== layoutHeight) {
-        /**
-         * When not animating, we set `layoutHeight` anytime `nativeEvent` layout height changes.
-         * This handles userland dynamic content inside the slot.
-         */
-        setLayoutHeight(event.nativeEvent.layout.height);
+      } else if (newHeight !== layoutHeightRef.current) {
+        layoutHeightRef.current = newHeight;
       }
     },
-    [layoutHeight, isAnimating],
+    [height, duration, easing],
   );
 
   return (
