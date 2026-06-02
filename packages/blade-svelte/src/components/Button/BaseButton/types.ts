@@ -23,6 +23,27 @@ export interface BaseButtonProps extends StyledPropsBlade {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
+  /**
+   * Controls loading behaviour.
+   * - `'indefinite'`: replaces content with a 3-dot spinner while `isLoading` is true.
+   * - `'definite'`: shows a left-to-right progress overlay driven by `loadingTimer`.
+   * @default 'indefinite'
+   */
+  loadingType?: 'indefinite' | 'definite';
+  /**
+   * Duration in milliseconds for the definite progress fill animation.
+   * Required when `loadingType` is `'definite'`.
+   */
+  loadingTimer?: number;
+  /**
+   * Callback fired once the definite progress fill reaches 100%.
+   */
+  onLoadingComplete?: () => void;
+  /**
+   * Avatar data to render as an `AvatarGroup` after the button text.
+   * Only visible when `size` is `'large'` and loading type is not indefinite.
+   */
+  avatars?: { name?: string; src?: string; alt?: string }[];
   href?: string;
   target?: string;
   rel?: string;

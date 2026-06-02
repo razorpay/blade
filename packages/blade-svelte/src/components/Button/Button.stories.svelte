@@ -19,6 +19,9 @@
       isFullWidth: false,
       icon: undefined,
       iconPosition: 'left',
+      loadingType: 'indefinite',
+      loadingTimer: undefined,
+      avatars: undefined,
     },
     argTypes: {
       children: {
@@ -89,6 +92,22 @@
         table: {
           defaultValue: { summary: 'left' },
         },
+      },
+      loadingType: {
+        control: 'select',
+        options: ['indefinite', 'definite'],
+        description: 'Controls loading behaviour: 3-dot spinner (indefinite) or timed progress overlay (definite)',
+        table: {
+          defaultValue: { summary: 'indefinite' },
+        },
+      },
+      loadingTimer: {
+        control: 'number',
+        description: 'Duration in ms for the definite progress fill. Required when loadingType is "definite".',
+      },
+      avatars: {
+        control: 'object',
+        description: 'Avatar data array rendered as an AvatarGroup after button text (large size only)',
       },
     },
   });
@@ -161,6 +180,62 @@
     <div class="display-flex flex-col items-center gap-spacing-2">
       <Button icon={CloseIcon} size="large" accessibilityLabel="Close" />
       <Text size="xsmall" color="surface.text.gray.muted">large</Text>
+    </div>
+  </div>
+</Story>
+
+<!-- Loading stories -->
+<Story name="Indefinite Loading" args={{ children: 'Processing', isLoading: true, loadingType: 'indefinite' }} />
+
+<Story name="Definite Loading" asChild>
+  <Button
+    size="large"
+    loadingType="definite"
+    loadingTimer={3000}
+    onLoadingComplete={() => console.log('Loading complete!')}
+  >
+    Uploading
+  </Button>
+</Story>
+
+<Story name="Definite Loading Variants" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button size="large" loadingType="definite" loadingTimer={3000} color="primary">Primary</Button>
+    <Button size="large" loadingType="definite" loadingTimer={5000} color="positive">Positive</Button>
+    <Button size="large" loadingType="definite" loadingTimer={4000} color="negative">Negative</Button>
+  </div>
+</Story>
+
+<!-- Avatar group stories -->
+<Story name="With Avatar Group" asChild>
+  <Button
+    size="large"
+    avatars={[
+      { name: 'Anurag Hazra', src: 'https://avatars.githubusercontent.com/u/46647141?v=4' },
+      { name: 'Rama Krushna' },
+      { name: 'Kamlesh Chandnani' },
+    ]}
+  >
+    Assignees
+  </Button>
+</Story>
+
+<Story name="Avatar Group Hidden On Non-Large" asChild>
+  <div class="display-flex flex-col gap-spacing-4">
+    <Text size="small" color="surface.text.gray.muted">Avatars only visible at size=large</Text>
+    <div class="display-flex gap-spacing-4 items-center">
+      <Button
+        size="medium"
+        avatars={[{ name: 'Anurag Hazra' }, { name: 'Rama Krushna' }]}
+      >
+        medium (no avatars)
+      </Button>
+      <Button
+        size="large"
+        avatars={[{ name: 'Anurag Hazra' }, { name: 'Rama Krushna' }]}
+      >
+        large (with avatars)
+      </Button>
     </div>
   </div>
 </Story>

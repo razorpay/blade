@@ -333,6 +333,10 @@ export const loadingSpinnerClass = styles['loading-spinner'];
 export const loadingClass = styles.loading;
 export const animatedContentClass = styles['animated-content'];
 export const pressedClass = styles.pressed;
+export const dotsLoaderClass = styles['dots-loader'];
+export const progressOverlayClass = styles['progress-overlay'];
+export const progressFillClass = styles['progress-overlay-fill'];
+export const avatarGroupWrapperClass = styles['avatar-group-wrapper'];
 
 /**
  * Get all Button component template classes as an object.
@@ -353,7 +357,40 @@ export function getButtonTemplateClasses(): Record<string, string> {
     loading: loadingClass,
     animatedContent: animatedContentClass,
     pressed: pressedClass,
+    dotsLoader: dotsLoaderClass,
+    progressOverlay: progressOverlayClass,
+    progressFill: progressFillClass,
+    avatarGroupWrapper: avatarGroupWrapperClass,
   } as const;
+}
+
+/**
+ * Get a faded overlay color token for the definite progress fill.
+ * Returns a lighter interactive background token appropriate for the button's color/variant.
+ */
+export function getButtonProgressOverlayColorToken({
+  variant,
+  color,
+}: {
+  variant: ButtonVariant;
+  color: ButtonColor;
+}): string {
+  if (color === 'white') {
+    return 'interactive.background.staticWhite.faded';
+  }
+  if (color === 'transparent') {
+    return 'interactive.background.gray.faded';
+  }
+  if (color === 'primary') {
+    return 'interactive.background.primary.faded';
+  }
+  if (variant === 'primary') {
+    return `interactive.background.${color}.faded`;
+  }
+  if (variant === 'secondary') {
+    return `interactive.background.${color}.faded`;
+  }
+  return 'interactive.background.primary.faded';
 }
 
 /**

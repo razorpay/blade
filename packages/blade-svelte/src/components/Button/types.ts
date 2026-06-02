@@ -49,6 +49,27 @@ export type ButtonProps = BaseButtonProps & {
    */
   isLoading?: boolean;
   /**
+   * Controls loading behaviour.
+   * - `'indefinite'`: replaces content with a 3-dot spinner while `isLoading` is true.
+   * - `'definite'`: shows a left-to-right progress overlay driven by `loadingTimer`.
+   * @default 'indefinite'
+   */
+  loadingType?: 'indefinite' | 'definite';
+  /**
+   * Duration in milliseconds for the definite progress fill animation.
+   * Required when `loadingType` is `'definite'`.
+   */
+  loadingTimer?: number;
+  /**
+   * Callback fired once the definite progress fill reaches 100%.
+   */
+  onLoadingComplete?: () => void;
+  /**
+   * Avatar data to render as an `AvatarGroup` after the button text.
+   * Only visible when `size` is `'large'` and loading type is not indefinite.
+   */
+  avatars?: { name?: string; src?: string; alt?: string }[];
+  /**
    * The accessible label for the button
    * Required for icon-only buttons
    */
