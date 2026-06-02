@@ -14,7 +14,7 @@ import {
   ActionListItemText,
 } from '~components/ActionList';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
-import { Chevron } from '~components/Input/DropdownInputTriggers/Chevron';
+import { ChevronUpDownIcon } from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -96,7 +96,10 @@ const CountrySelector = ({
             width={flagWidth}
             height={flagHeight}
           />
-          <Chevron isDisabled={isDisabled} isOpen={isBottomSheetOpen} />
+          <ChevronUpDownIcon
+            size="medium"
+            color={`surface.icon.gray.${isDisabled ? 'disabled' : 'muted'}`}
+          />
         </BaseBox>
       </TouchableOpacity>
 
