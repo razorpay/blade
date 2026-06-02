@@ -1,5 +1,5 @@
 ---
-name: execute
+name: execute-svelte-migration
 description: Implements Svelte components from migration-plan.md specifications. Creates TypeScript types, CSS modules, Svelte components, and Storybook stories following blade design system patterns and framework conventions, generating the files in blade-svelte and blade-core.
 model: inherit
 ---
