@@ -1,3 +1,3 @@
 blade-svelte:
   - packages/blade-svelte/**
-
+  - packages/blade-core/**
