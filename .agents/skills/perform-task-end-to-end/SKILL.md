@@ -38,6 +38,7 @@ For large tasks, use subagents smartly and always follow this checklist
 
 This is a checklist that makes sure that basic sanity of feature / bugfix is maintained and the feature is end-to-end ready.
 
+- [ ] Run `yarn install` to install dependencies that would be needed for the next sanity checks (can take upto 10 minutes. If process is stuck, continue after the timeout anyways)
 - [ ] UI Verification: Use verify-with-browser skill to verify the story to check if the feature is working as expected
 - [ ] Prettier: Fix prettier issues on changed files (refer to CLAUDE.md of the package for command -- note: do this for changed files only, not for all files in the package)
 - [ ] Tests: Run tests for changed parts (refer to CLAUDE.md of the package for command)
