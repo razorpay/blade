@@ -612,6 +612,11 @@ const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ..
           <Text>Deprecated slot</Text>
         </Box>
       </AccordionItem>
+      <AccordionItem
+        icon={AnnouncementIcon}
+        title="How can I setup Payouts?"
+        description="Use Razorpay Payouts to send money to bank accounts, UPI IDs, or wallets instantly. You can automate bulk payouts via APIs or manage them from the dashboard."
+      />
     </AccordionComponent>
   );
 };

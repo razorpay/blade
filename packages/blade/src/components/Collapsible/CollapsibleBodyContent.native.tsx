@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/native';
 import Animated, {
   runOnJS,
@@ -49,15 +49,20 @@ const CollapsibleBodyContent = ({
 
   // Keeps track of running animation to control absolute / relative positioning and handling layout event
   const [isAnimating, setIsAnimating] = useState(false);
-  const onAnimationComplete = useCallback((): void => {
-    // Only mark the animation complete before the next repaint, otherwise, sometimes leads to state update delays when you try to quickly toggle multiple times
-    requestAnimationFrame(() => setIsAnimating(false));
+  const animationIdRef = useRef(0);
+  const onAnimationComplete = useCallback((id: number): void => {
+    requestAnimationFrame(() => {
+      if (animationIdRef.current === id) {
+        setIsAnimating(false);
+      }
+    });
   }, []);
 
   const duration = castNativeType(getTransitionDuration(theme));
   const easing = castNativeType(getTransitionEasing(theme));
 
   useEffect(() => {
+    const currentId = ++animationIdRef.current;
     setIsAnimating(true);
 
     opacity.value = withTiming(getOpacity({ isExpanded }), { duration, easing });
@@ -69,7 +74,7 @@ const CollapsibleBodyContent = ({
         // Only run this if the animation ran uninterrupted, for eg collapsing the content before it expanded fully
         if (isComplete) {
           // The callback `onAnimationComplete` has to be declared outside this, on JS thread
-          runOnJS(onAnimationComplete)();
+          runOnJS(onAnimationComplete)(currentId);
         }
       },
     );
