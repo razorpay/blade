@@ -208,6 +208,7 @@ const _Carousel = (
             automaticallyAdjustContentInsets={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
+            nestedScrollEnabled
             snapToInterval={slideWidth}
             contentInset={{
               left: 0,

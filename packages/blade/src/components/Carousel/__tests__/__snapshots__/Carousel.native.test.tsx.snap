@@ -67,6 +67,7 @@ exports[`Carousel Snapshots should render 1`] = `
         }
         decelerationRate="fast"
         horizontal={true}
+        nestedScrollEnabled={true}
         onLayout={[Function]}
         onMomentumScrollEnd={[Function]}
         onScrollBeginDrag={[Function]}
@@ -732,6 +733,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         }
         decelerationRate="fast"
         horizontal={true}
+        nestedScrollEnabled={true}
         onLayout={[Function]}
         onMomentumScrollEnd={[Function]}
         onScrollBeginDrag={[Function]}
