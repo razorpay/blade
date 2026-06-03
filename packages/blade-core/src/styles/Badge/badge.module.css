@@ -124,8 +124,14 @@
 }
 
 /* Checkout shape variants — scoped to checkout context
- * large = border-radius-small, xsmall/small/medium = border-radius-xsmall
+ * subtle → pill (border-radius-max)
+ * intense + large → border-radius-small
+ * intense + xsmall/small/medium → border-radius-xsmall
  */
+.shape-pill {
+  border-radius: var(--border-radius-max);
+}
+
 .shape-size-large {
   border-radius: var(--border-radius-small);
 }

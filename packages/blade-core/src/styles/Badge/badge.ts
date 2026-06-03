@@ -147,12 +147,14 @@ export const badgeStyles = cva(styles.badge, {
     },
   },
   // Checkout-scoped shape variants:
-  // large → border-radius-small, xsmall/small/medium → border-radius-xsmall
+  // subtle → pill (border-radius-max)
+  // intense + large → border-radius-small; intense + xsmall/small/medium → border-radius-xsmall
   compoundVariants: [
-    { size: 'large', class: styles['shape-size-large'] },
-    { size: 'xsmall', class: styles['shape-size-default'] },
-    { size: 'small', class: styles['shape-size-default'] },
-    { size: 'medium', class: styles['shape-size-default'] },
+    { emphasis: 'subtle', class: styles['shape-pill'] },
+    { emphasis: 'intense', size: 'large', class: styles['shape-size-large'] },
+    { emphasis: 'intense', size: 'xsmall', class: styles['shape-size-default'] },
+    { emphasis: 'intense', size: 'small', class: styles['shape-size-default'] },
+    { emphasis: 'intense', size: 'medium', class: styles['shape-size-default'] },
   ],
   defaultVariants: {
     size: 'medium',
@@ -198,6 +200,7 @@ export function getBadgeTemplateClasses(): Record<string, string> {
     iconPaddingSmall: styles['icon-padding-small'],
     iconPaddingMedium: styles['icon-padding-medium'],
     iconPaddingLarge: styles['icon-padding-large'],
+    shapePill: styles['shape-pill'],
     shapeSizeLarge: styles['shape-size-large'],
     shapeSizeDefault: styles['shape-size-default'],
   } as const;
