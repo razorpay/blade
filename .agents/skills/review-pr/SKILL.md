@@ -1,5 +1,5 @@
 ---
-name: review-changes
+name: review-pr
 description: Review blade PRs by fetching diff, checking CI status, and getting Storybook URL. Use when reviewing PRs, checking PR status, or getting preview links for razorpay/blade PRs.
 disable-model-invocation: true
 ---
