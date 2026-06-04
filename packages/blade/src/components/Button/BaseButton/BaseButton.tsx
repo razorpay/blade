@@ -61,7 +61,7 @@ type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
   target?: BaseLinkProps['target'];
   rel?: BaseLinkProps['rel'];
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   id?: string;
   tabIndex?: BaseBoxProps['tabIndex'];
   iconPosition?: 'left' | 'right';
