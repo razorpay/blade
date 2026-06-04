@@ -5,6 +5,35 @@ import type { IconProps } from '../../Icons/types';
 // Icon component type - Svelte component that accepts IconProps
 export type IconComponent = Component<IconProps>;
 
+/**
+ * Loading behaviour of the button.
+ * - `indefinite`: shows a 3-dot loader (driven by `isLoading`) that replaces all content
+ * - `definite`: the button sits in its disabled/"rest" color while a left-to-right
+ *   progress bar in the button's normal color fills over `loadingTimer` ms, so the button
+ *   visually transitions from disabled → normal as it completes. Content stays visible.
+ */
+export type ButtonLoadingType = 'indefinite' | 'definite';
+
+/**
+ * A single avatar entry rendered inside the button's avatar group.
+ * Only the data needed to render an `<Avatar />` is accepted to prevent
+ * arbitrary markup from being injected into the button.
+ */
+export type ButtonAvatar = {
+  /**
+   * Name used to generate initials and as the image `alt` when `src` loads.
+   */
+  name?: string;
+  /**
+   * Avatar image source.
+   */
+  src?: string;
+  /**
+   * `alt` text for the avatar image.
+   */
+  alt?: string;
+};
+
 export interface BaseButtonProps extends StyledPropsBlade {
   children?: Snippet | string;
   icon?: IconComponent;
@@ -22,7 +51,33 @@ export interface BaseButtonProps extends StyledPropsBlade {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
   isFullWidth?: boolean;
+  /**
+   * Whether the button is in a loading state.
+   * Only applicable when `loadingType` is `indefinite` (the default) and drives the 3-dot loader.
+   * @default false
+   */
   isLoading?: boolean;
+  /**
+   * Type of loading indicator to show.
+   * - `indefinite`: 3-dot loader controlled by `isLoading`
+   * - `definite`: left-to-right progress bar (button color) over a disabled-colored base
+   * @default 'indefinite'
+   */
+  loadingType?: ButtonLoadingType;
+  /**
+   * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
+   * Required when `loadingType` is `definite`. The progress is consumer-controlled via this timer.
+   */
+  loadingTimer?: number;
+  /**
+   * Called once when the `definite` progress bar reaches 100%.
+   */
+  onLoadingComplete?: () => void;
+  /**
+   * Avatars to render after the button text as an avatar group.
+   * Only rendered for `large` buttons; ignored for smaller sizes.
+   */
+  avatars?: ButtonAvatar[];
   href?: string;
   target?: string;
   rel?: string;

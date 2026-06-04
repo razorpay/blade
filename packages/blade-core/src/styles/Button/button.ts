@@ -124,6 +124,29 @@ export function getButtonBackgroundColorToken({
 }
 
 /**
+ * Get the progress "rest" (unfilled) background token for the definite loader.
+ *
+ * Inverted-layer model: the button base stays its normal color and a rest-colored
+ * cover recedes over it. This returns that rest color — the button's disabled-state
+ * background, which the receding cover paints. It reuses the standard disabled
+ * background token for the variant/color.
+ */
+export function getButtonProgressRestColorToken({
+  variant,
+  color,
+}: {
+  variant: ButtonVariant;
+  color: ButtonColor;
+}): string {
+  return getButtonBackgroundColorToken({
+    variant,
+    color,
+    state: 'disabled',
+    property: 'background',
+  });
+}
+
+/**
  * Get text/icon color token based on variant, color, and state
  */
 export function getButtonTextColorToken({
@@ -333,6 +356,10 @@ export const loadingSpinnerClass = styles['loading-spinner'];
 export const loadingClass = styles.loading;
 export const animatedContentClass = styles['animated-content'];
 export const pressedClass = styles.pressed;
+export const dotsLoaderClass = styles['dots-loader'];
+export const progressOverlayClass = styles['progress-overlay'];
+export const progressFillClass = styles['progress-overlay-fill'];
+export const definiteLoadingClass = styles['definite-loading'];
 
 /**
  * Get all Button component template classes as an object.
@@ -349,10 +376,15 @@ export function getButtonTemplateClasses(): Record<string, string> {
     icon: buttonIconClass,
     iconLeft: styles['icon-left'],
     iconRight: styles['icon-right'],
+    avatarGroup: styles['avatar-group'],
     loadingSpinner: loadingSpinnerClass,
     loading: loadingClass,
     animatedContent: animatedContentClass,
     pressed: pressedClass,
+    dotsLoader: dotsLoaderClass,
+    progressOverlay: progressOverlayClass,
+    progressFill: progressFillClass,
+    definiteLoading: definiteLoadingClass,
   } as const;
 }
 

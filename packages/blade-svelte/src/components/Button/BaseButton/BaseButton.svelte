@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, type AriaRoles } from '@razorpay/blade-core/utils';
+  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, getTokenCSSVariable, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
-  import BaseSpinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
+  import Avatar from '../../Avatar/Avatar.svelte';
+  import AvatarGroup from '../../Avatar/AvatarGroup.svelte';
   import type { BaseButtonProps } from './types';
   import type { TextColors } from '../../Typography/BaseText/types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
@@ -10,12 +11,11 @@
     getButtonClasses,
     getButtonTemplateClasses,
     getButtonTextColorToken,
+    getButtonProgressRestColorToken,
     getButtonTextSizes,
-    getButtonSpinnerSize,
     getButtonIconSize,
     getButtonIconOnlySize,
     type ActionStatesType as ButtonActionStatesType,
-    type SpinnerColor,
   } from '@razorpay/blade-core/styles';
   import type { IconColor } from '../../Icons/types';
 
@@ -32,6 +32,10 @@
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
+    loadingTimer,
+    onLoadingComplete,
+    avatars,
     href,
     target,
     rel,
@@ -69,8 +73,30 @@
   const isLink = $derived(Boolean(href));
   const isButton = $derived(!isLink);
 
+  // Identifies the current definite-loading "run" by its inputs. When the inputs
+  // change (e.g. a new `loadingTimer`), this key changes and the loader runs again.
+  const definiteLoadingKey = $derived(
+    loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0
+      ? `${loadingType}:${loadingTimer}`
+      : null,
+  );
+
+  // The run key that finished animating to 100%. Set on animation end; compared
+  // against `definiteLoadingKey` so completion only applies to the run that ended.
+  let completedDefiniteLoadingKey = $state<string | null>(null);
+
+  // Loading states:
+  // - indefinite: 3-dot loader, driven by isLoading, replaces all content
+  // - definite: left-to-right progress overlay (loadingTimer), content stays visible
+  //   until the fill reaches 100%, after which the button returns to normal.
+  const isIndefiniteLoading = $derived(loadingType === 'indefinite' && isLoading);
+  const isDefiniteLoading = $derived(
+    definiteLoadingKey !== null && definiteLoadingKey !== completedDefiniteLoadingKey,
+  );
+  const isAnyLoading = $derived(isIndefiniteLoading || isDefiniteLoading);
+
   // Button cannot be disabled when its rendered as Link
-  const disabled = $derived(isLoading || (isDisabled && isButton));
+  const disabled = $derived(isAnyLoading || (isDisabled && isButton));
 
   // Create interaction state using $state
   let currentInteraction = $state<ButtonActionStatesType>('default');
@@ -119,12 +145,20 @@
   // Get text sizes
   const textSizes = getButtonTextSizes();
 
+  // During definite loading the button base is in its normal color and a
+  // rest/disabled-colored cover recedes over it. The text/icon stay in the
+  // *normal* color the whole run so they remain consistent and readable over
+  // both the receding rest region and the revealed normal base.
+  const contentColorState = $derived<ButtonActionStatesType>(
+    isDefiniteLoading ? 'default' : currentInteraction,
+  );
+
   // Compute text color token reactively
   const textColorToken = $derived.by((): TextColors => {
     return getButtonTextColorToken({
       variant,
       color,
-      state: currentInteraction,
+      state: contentColorState,
       property: 'text',
     }) as TextColors;
   });
@@ -134,7 +168,7 @@
     return getButtonTextColorToken({
       variant,
       color,
-      state: currentInteraction,
+      state: contentColorState,
       property: 'icon',
     }) as IconColor;
   });
@@ -152,22 +186,23 @@
   const fontSize = $derived(textSizes.fontSize[size]);
   const lineHeight = $derived(textSizes.lineHeight[size]);
 
-  // Get spinner size based on button size
-  const spinnerSizeMap = getButtonSpinnerSize();
-  const spinnerSize = $derived(spinnerSizeMap[size]);
+  // Indefinite (3-dot) loader color follows the resolved button text color so the
+  // dots are visible against the button background across variants/colors.
+  const dotsColorCSSVar = $derived(getTokenCSSVariable(textColorToken));
 
-  // Get spinner color - should match button color directly
-  // Primary → blue, Negative → red, Positive → green, White → white
-  // Spinner doesn't support 'transparent', so use 'primary' as fallback
-  const spinnerColor = $derived.by((): SpinnerColor => {
-    if (color === 'transparent') {
-      return 'primary';
-    }
-    // Direct mapping: button color → spinner color
-    // Button colors: 'primary' | 'white' | 'positive' | 'negative' | 'transparent'
-    // Spinner colors: 'primary' | 'white' | 'positive' | 'negative' | 'neutral'
-    return color as SpinnerColor;
-  });
+  // Definite loader color (inverted-layer model):
+  // The base button stays its *normal* (default) color; only the receding cover
+  // needs a color — the button's disabled/"rest" background — which shrinks away
+  // to reveal the normal base beneath.
+  const progressRestColorCSSVar = $derived(
+    getTokenCSSVariable(getButtonProgressRestColorToken({ variant, color })),
+  );
+
+  // Avatars render only after the text and only on large buttons; they stay visible
+  // during definite loading but are hidden during indefinite loading (all content is replaced).
+  const shouldShowAvatars = $derived(
+    Boolean(avatars && avatars.length > 0) && size === 'large' && !isIndefiniteLoading,
+  );
 
   // Generate button props reactively
   const buttonProps = $derived.by(() => {
@@ -206,11 +241,14 @@
   // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes for button element
+  // Combine classes for button element.
+  // Only the indefinite loader hides content (`loading` class); the definite overlay
+  // keeps text/icon/avatars visible.
   const combinedClasses = $derived(() => {
     const classes = [
       baseButtonClasses,
-      isLoading ? buttonClasses.loading : '',
+      isIndefiniteLoading ? buttonClasses.loading : '',
+      isDefiniteLoading ? buttonClasses.definiteLoading : '',
       'focus-ring-parent',
     ];
     if (styledProps.classes) {
@@ -228,17 +266,36 @@
     return classes.filter(Boolean).join(' ');
   });
 
-  // Accessibility attributes
+  // Accessibility attributes. The element stays a `button` (or `link`) and we expose
+  // `aria-busy` while loading rather than switching to a progressbar role.
   const accessibilityAttrs = $derived(
     makeAccessible({
       role: (accessibilityProps?.role ?? buttonRole) as AriaRoles,
       disabled: isButtonDisabled,
+      busy: isAnyLoading || undefined,
       label: accessibilityProps?.label,
       describedBy: accessibilityProps?.describedBy,
       expanded: accessibilityProps?.expanded,
       hasPopup: accessibilityProps?.hasPopup,
     }),
   );
+
+  // Polite live-region announcement when loading starts/stops (parity with React Button).
+  // The previous value is tracked via a plain (non-reactive) ref that is only ever
+  // read/written inside the effect, so it stays in sync with the latest `isLoading`.
+  let loadingAnnouncement = $state('');
+  let prevIsLoading: boolean | undefined;
+  $effect(() => {
+    const loading = isLoading;
+    if (prevIsLoading !== undefined) {
+      if (loading && !prevIsLoading) {
+        loadingAnnouncement = 'Started loading';
+      } else if (!loading && prevIsLoading) {
+        loadingAnnouncement = 'Stopped loading';
+      }
+    }
+    prevIsLoading = loading;
+  });
 
   // Meta attributes
   const metaAttrs = metaAttribute({
@@ -248,6 +305,13 @@
 
   // Analytics attributes
   const analyticsAttrs = makeAnalyticsAttribute(rest);
+
+  // Once the definite progress fill reaches 100%, mark this run complete so the
+  // button exits the loading state and becomes interactive, then notify the consumer.
+  function handleProgressAnimationEnd(): void {
+    completedDefiniteLoadingKey = definiteLoadingKey;
+    onLoadingComplete?.();
+  }
 
   // Event handlers
   function handleClick(event: MouseEvent): void {
@@ -339,6 +403,7 @@
 <svelte:element
   this={elementTag}
   class={combinedClasses()}
+  style:--btn-progress-rest-color={isDefiniteLoading ? progressRestColorCSSVar : undefined}
   {id}
   {...accessibilityAttrs}
   {...metaAttrs}
@@ -364,17 +429,20 @@
   rel={isLink ? (rel ?? defaultRel) : undefined}
   {tabIndex}
 >
+  {#if isDefiniteLoading}
+    <span class={buttonClasses.progressOverlay} aria-hidden="true">
+      <span
+        class={buttonClasses.progressFill}
+        style:--btn-progress-duration={`${loadingTimer}ms`}
+        onanimationend={handleProgressAnimationEnd}
+      ></span>
+    </span>
+  {/if}
   <div class={animatedContentClasses()}>
-    {#if isLoading}
-      <div class={buttonClasses.loadingSpinner}>
-        <BaseSpinner
-          size={spinnerSize}
-          color={spinnerColor}
-          accessibilityLabel="Loading"
-        />
-      </div>
+    {#if isIndefiniteLoading}
+      <span class={buttonClasses.dotsLoader} style:--btn-dots-color={dotsColorCSSVar}></span>
     {/if}
-    <span class={buttonClasses.content + (isLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
+    <span class={buttonClasses.content + (isIndefiniteLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
       {#if Icon && iconPosition === 'left'}
         <span class={buttonClasses.icon + (hasChildren ? ' ' + buttonClasses.iconLeft : '')}>
           <Icon size={iconSize} color={iconColorToken} />
@@ -412,6 +480,34 @@
           <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
+      {#if shouldShowAvatars && avatars}
+        <span class={buttonClasses.avatarGroup}>
+          <AvatarGroup size="xsmall">
+            {#each avatars as avatar, index (avatar.src ?? avatar.name ?? index)}
+              <Avatar name={avatar.name} src={avatar.src} alt={avatar.alt} />
+            {/each}
+          </AvatarGroup>
+        </span>
+      {/if}
     </span>
   </div>
+  {#if loadingAnnouncement}
+    <span class="blade-button-live-region" aria-live="polite" aria-atomic="true">
+      {loadingAnnouncement}
+    </span>
+  {/if}
 </svelte:element>
+
+<style>
+  .blade-button-live-region {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
