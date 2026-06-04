@@ -18,6 +18,10 @@ const StyledTabButton = styled(BaseBox)<{
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
+    // Center the tab label, matching TabItem.web's `justifyContent: 'center'`.
+    // Without this, full-width tab items (`isFullWidthTabItem`) left-align their
+    // label on native while web centers it — a web/native parity gap.
+    justifyContent: 'center',
     width: isFullWidthTabItem ? '100%' : undefined,
     paddingTop: makeSpace(get(theme, paddingTop[_variant].horizontal[size!])),
     paddingBottom: makeSpace(get(theme, paddingBottom[_variant].horizontal[size!])),
