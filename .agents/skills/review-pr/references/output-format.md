@@ -9,16 +9,20 @@ This PR adds a new Button variant and updates the DatePicker component.
 
 ### 📊 CI Status
 
+Render **all** checks from `ci_checks` in this table (passing and failing alike):
+
 | Check                | Status | Job URL                                                              |
 | -------------------- | ------ | -------------------------------------------------------------------- |
 | Run Tests            | ✅     | [Job URL](https://github.com/razorpay/blade/actions/runs/1234567890) |
 | Validate Source Code | ❌     | [Job URL](https://github.com/razorpay/blade/actions/runs/1234567890) |
 | Storybook Publish    | ✅     | [Job URL](https://github.com/razorpay/blade/actions/runs/1234567890) |
 
-#### CI Issues (If any checks are failing / skipped)
+Status emoji mapping: SUCCESS → ✅, SKIPPED → ⏭️, CANCELLED → ⚠️, PENDING → ⏳, FAILURE → ❌
+
+#### CI Issues (only for non-SUCCESS / non-SKIPPED checks)
 
 - {name of the failing check}
-  - {description of the issue}
+  - {description of the issue / failure_reason}
 
 ### 💅 UI Review Findings
 
