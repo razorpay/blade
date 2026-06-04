@@ -850,7 +850,7 @@
       alert("No component key configured for this selection.\nAdd it in components.js or in the defaults inside ui.html.\n\n" + (selected && selected.wizard ? "Variant signature:\n" + computeSignature() : ""));
       return;
     }
-    parent.postMessage({ pluginMessage: { type: "create-pattern", name: ck.name, key: ck.key } }, "*");
+    parent.postMessage({ pluginMessage: { type: "create-pattern", name: ck.name, key: ck.key } }, "https://www.figma.com");
   };
 
   // Previous button
