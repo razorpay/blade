@@ -51,7 +51,7 @@ const bladeCoverageCards: BaseNode[] = [];
 const PATTERN_SHARED_DATA_NAMESPACE = 'blade.pattern';
 const PATTERN_SHARED_DATA_KEY = 'isPattern';
 const TRUTHY_SHARED_DATA_VALUES = ['true', '1', 'yes'];
-const PATTERN_LAYER_NAME_TAGS = ['@blade-pattern'];
+const PATTERN_LAYER_NAME_TAGS = ['@blade-pattern-node'];
 
 const isPatternFrameExemptNode = (node: SceneNode): boolean => {
   const normalizedNodeName = node.name.toLowerCase();
