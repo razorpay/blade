@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "postinstall": "[ ! -f .env ] && cp .env.sample .env || true; [ ! -f results.csv ] && cp results.sample.csv results.csv || true",
     "eval": "yarn eval:verbose",
     "eval:verbose": "node --env-file=.env run-eval.js --verbose",
     "eval:all": "node --env-file=.env run-eval.js"
