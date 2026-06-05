@@ -210,9 +210,24 @@
   const fontSize = $derived(textSizes.fontSize[size]);
   const lineHeight = $derived(textSizes.lineHeight[size]);
 
-  // Indefinite (3-dot) loader color follows the resolved button text color so the
-  // dots are visible against the button background across variants/colors.
-  const dotsColorCSSVar = $derived(getTokenCSSVariable(textColorToken));
+  // Indefinite (3-dot) loader color. While loading the button is disabled, which
+  // would otherwise resolve the icon token to its muted/disabled color and wash the
+  // dots out, so we always resolve against the NORMAL state.
+  //
+  // Primary keeps the primary brand color (the blue accent), while every other
+  // variant follows its standard icon color token (e.g. secondary → gray/black).
+  const dotsColorToken = $derived.by((): IconColor => {
+    if (variant === 'primary' && color === 'primary') {
+      return 'interactive.icon.primary.normal' as IconColor;
+    }
+    return getButtonTextColorToken({
+      variant,
+      color,
+      state: 'default',
+      property: 'icon',
+    }) as IconColor;
+  });
+  const dotsColorCSSVar = $derived(getTokenCSSVariable(dotsColorToken));
 
   // Definite loader color (inverted-layer model):
   // The base button stays its *normal* (default) color; only the receding cover
