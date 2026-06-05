@@ -118,10 +118,12 @@
     },
   });
 
+  // Use seeded picsum URLs so each avatar resolves to a stable image across loads,
+  // keeping story snapshots deterministic.
   const sampleAvatars = [
     { name: 'Nitin Kumar', src: 'https://avatars.githubusercontent.com/u/46647141?v=4' },
-    { name: 'Kamlesh Chandnani', src: 'https://picsum.photos/200'},
-    { name: 'Rama Krushna Behera', src: 'https://picsum.photos/300' },
+    { name: 'Kamlesh Chandnani', src: 'https://picsum.photos/seed/kamlesh/200' },
+    { name: 'Rama Krushna Behera', src: 'https://picsum.photos/seed/rama/200' },
   ];
 </script>
 

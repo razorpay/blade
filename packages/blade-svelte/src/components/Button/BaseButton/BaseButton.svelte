@@ -73,12 +73,36 @@
   const isLink = $derived(Boolean(href));
   const isButton = $derived(!isLink);
 
-  // Identifies the current definite-loading "run" by its inputs. When the inputs
-  // change (e.g. a new `loadingTimer`), this key changes and the loader runs again.
+  // Whether the current props describe an active definite-loading configuration.
+  const isDefiniteLoadingConfigured = $derived(
+    loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0,
+  );
+
+  // Monotonic run counter. It increments every time the button *re-enters* a
+  // definite loading configuration (transition from not-configured → configured)
+  // after the first one. This lets a consumer re-trigger the loader with the
+  // *same* `loadingTimer` value — e.g. toggle definite off and on again — because
+  // the run identity changes even when the duration does not. The first configured
+  // state (whether on mount or later) keeps run = 0 so it never causes a spurious
+  // re-key; only genuine re-entries bump it.
+  let definiteLoadingRun = $state(0);
+  let prevDefiniteLoadingConfigured = false;
+  let hasBeenConfiguredBefore = false;
+  $effect(() => {
+    if (isDefiniteLoadingConfigured && !prevDefiniteLoadingConfigured) {
+      if (hasBeenConfiguredBefore) {
+        definiteLoadingRun += 1;
+      }
+      hasBeenConfiguredBefore = true;
+    }
+    prevDefiniteLoadingConfigured = isDefiniteLoadingConfigured;
+  });
+
+  // Identifies the current definite-loading "run" by its inputs *and* the run
+  // counter. When the inputs change (e.g. a new `loadingTimer`) or the loader is
+  // re-triggered with the same duration, this key changes and the loader runs again.
   const definiteLoadingKey = $derived(
-    loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0
-      ? `${loadingType}:${loadingTimer}`
-      : null,
+    isDefiniteLoadingConfigured ? `${loadingType}:${loadingTimer}:${definiteLoadingRun}` : null,
   );
 
   // The run key that finished animating to 100%. Set on animation end; compared
@@ -281,20 +305,22 @@
   );
 
   // Polite live-region announcement when loading starts/stops (parity with React Button).
+  // Covers both loaders: indefinite (driven by `isLoading`) and definite (driven by
+  // `isDefiniteLoading`, which starts on trigger and ends when the fill completes).
   // The previous value is tracked via a plain (non-reactive) ref that is only ever
-  // read/written inside the effect, so it stays in sync with the latest `isLoading`.
+  // read/written inside the effect, so it stays in sync with the latest loading state.
   let loadingAnnouncement = $state('');
-  let prevIsLoading: boolean | undefined;
+  let prevAnyLoading: boolean | undefined;
   $effect(() => {
-    const loading = isLoading;
-    if (prevIsLoading !== undefined) {
-      if (loading && !prevIsLoading) {
+    const loading = isAnyLoading;
+    if (prevAnyLoading !== undefined) {
+      if (loading && !prevAnyLoading) {
         loadingAnnouncement = 'Started loading';
-      } else if (!loading && prevIsLoading) {
+      } else if (!loading && prevAnyLoading) {
         loadingAnnouncement = 'Stopped loading';
       }
     }
-    prevIsLoading = loading;
+    prevAnyLoading = loading;
   });
 
   // Meta attributes
@@ -404,6 +430,7 @@
   this={elementTag}
   class={combinedClasses()}
   style:--btn-progress-rest-color={isDefiniteLoading ? progressRestColorCSSVar : undefined}
+  data-definite-loading={isDefiniteLoading ? 'true' : undefined}
   {id}
   {...accessibilityAttrs}
   {...metaAttrs}
@@ -431,11 +458,13 @@
 >
   {#if isDefiniteLoading}
     <span class={buttonClasses.progressOverlay} aria-hidden="true">
-      <span
-        class={buttonClasses.progressFill}
-        style:--btn-progress-duration={`${loadingTimer}ms`}
-        onanimationend={handleProgressAnimationEnd}
-      ></span>
+      {#key definiteLoadingKey}
+        <span
+          class={buttonClasses.progressFill}
+          style:--btn-progress-duration={`${loadingTimer}ms`}
+          onanimationend={handleProgressAnimationEnd}
+        ></span>
+      {/key}
     </span>
   {/if}
   <div class={animatedContentClasses()}>
@@ -483,6 +512,9 @@
       {#if shouldShowAvatars && avatars}
         <span class={buttonClasses.avatarGroup}>
           <AvatarGroup size="xsmall">
+            <!-- Key prefers a stable identity (src/name); the index fallback is a
+                 defensive guard and is effectively unreachable since ButtonAvatar
+                 requires at least one of `src` or `name`. -->
             {#each avatars as avatar, index (avatar.src ?? avatar.name ?? index)}
               <Avatar name={avatar.name} src={avatar.src} alt={avatar.alt} />
             {/each}
@@ -492,22 +524,8 @@
     </span>
   </div>
   {#if loadingAnnouncement}
-    <span class="blade-button-live-region" aria-live="polite" aria-atomic="true">
+    <span class={buttonClasses.liveRegion} aria-live="polite" aria-atomic="true">
       {loadingAnnouncement}
     </span>
   {/if}
 </svelte:element>
-
-<style>
-  .blade-button-live-region {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-</style>

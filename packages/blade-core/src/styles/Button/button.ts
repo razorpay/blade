@@ -287,22 +287,6 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
   } as const;
 }
 
-/**
- * Get spinner size mapping for buttons
- * Maps button sizes to appropriate spinner sizes
- */
-export function getButtonSpinnerSize(): Record<
-  'xsmall' | 'small' | 'medium' | 'large',
-  'medium' | 'large'
-> {
-  return {
-    xsmall: 'medium',
-    small: 'medium',
-    medium: 'medium',
-    large: 'large',
-  } as const;
-}
-
 export const buttonStyles = cva(styles.btn, {
   variants: {
     variant: {
@@ -352,7 +336,6 @@ export const buttonStyles = cva(styles.btn, {
 // Export content and icon classes for use in component templates
 export const buttonContentClass = styles.content;
 export const buttonIconClass = styles.icon;
-export const loadingSpinnerClass = styles['loading-spinner'];
 export const loadingClass = styles.loading;
 export const animatedContentClass = styles['animated-content'];
 export const pressedClass = styles.pressed;
@@ -360,6 +343,7 @@ export const dotsLoaderClass = styles['dots-loader'];
 export const progressOverlayClass = styles['progress-overlay'];
 export const progressFillClass = styles['progress-overlay-fill'];
 export const definiteLoadingClass = styles['definite-loading'];
+export const liveRegionClass = styles['live-region'];
 
 /**
  * Get all Button component template classes as an object.
@@ -377,7 +361,6 @@ export function getButtonTemplateClasses(): Record<string, string> {
     iconLeft: styles['icon-left'],
     iconRight: styles['icon-right'],
     avatarGroup: styles['avatar-group'],
-    loadingSpinner: loadingSpinnerClass,
     loading: loadingClass,
     animatedContent: animatedContentClass,
     pressed: pressedClass,
@@ -385,6 +368,7 @@ export function getButtonTemplateClasses(): Record<string, string> {
     progressOverlay: progressOverlayClass,
     progressFill: progressFillClass,
     definiteLoading: definiteLoadingClass,
+    liveRegion: liveRegionClass,
   } as const;
 }
 

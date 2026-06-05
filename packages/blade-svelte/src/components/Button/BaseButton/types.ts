@@ -18,21 +18,41 @@ export type ButtonLoadingType = 'indefinite' | 'definite';
  * A single avatar entry rendered inside the button's avatar group.
  * Only the data needed to render an `<Avatar />` is accepted to prevent
  * arbitrary markup from being injected into the button.
+ *
+ * At least one of `name` or `src` is required — both serve as the stable
+ * identity used to key the avatar in the rendered group, so an entry with
+ * neither cannot be reliably reconciled when the list changes.
  */
-export type ButtonAvatar = {
-  /**
-   * Name used to generate initials and as the image `alt` when `src` loads.
-   */
-  name?: string;
-  /**
-   * Avatar image source.
-   */
-  src?: string;
+type ButtonAvatarBase = {
   /**
    * `alt` text for the avatar image.
    */
   alt?: string;
 };
+
+export type ButtonAvatar = ButtonAvatarBase &
+  (
+    | {
+        /**
+         * Name used to generate initials and as the image `alt` when `src` loads.
+         */
+        name: string;
+        /**
+         * Avatar image source.
+         */
+        src?: string;
+      }
+    | {
+        /**
+         * Name used to generate initials and as the image `alt` when `src` loads.
+         */
+        name?: string;
+        /**
+         * Avatar image source.
+         */
+        src: string;
+      }
+  );
 
 export interface BaseButtonProps extends StyledPropsBlade {
   children?: Snippet | string;

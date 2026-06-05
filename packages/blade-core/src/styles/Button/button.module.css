@@ -391,19 +391,6 @@
   }
 }
 
-/* Loading spinner container */
-.loading-spinner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
 /*
  * Indefinite loader — pure-CSS 3 dots.
  * Replaces the spinner for indefinite loading. Centered absolutely over the button,
@@ -460,8 +447,13 @@
 /*
  * While definite loading, the element carries the `disabled` attribute. The
  * variant's `[disabled]` rules would flatten the button (swap to the disabled
- * color and remove the box-shadow / radial highlight). We need higher specificity
- * than those rules, so the tripled class + `[disabled]` selector beats them.
+ * color and remove the box-shadow / radial highlight). We override them with an
+ * explicit `[data-definite-loading='true']` attribute selector combined with
+ * `[disabled]`. This selector's specificity (one class + two attributes) matches
+ * or exceeds every variant `[disabled]` rule above, and because it is declared
+ * after all of them, it wins any specificity tie via source order. The
+ * data-attribute also documents intent — far clearer than the previous repeated
+ * class hack used purely to inflate specificity.
  *
  * Inverted-layer model: the button base stays in its NORMAL (default) color and
  * keeps the primary variant's tactile treatment (inset box-shadow borders +
@@ -473,7 +465,7 @@
  * reaches 0% (and the overlay later unmounts) there is nothing left to reveal —
  * no color hand-off, so no blink.
  */
-.definite-loading.definite-loading.definite-loading[disabled] {
+.definite-loading[data-definite-loading='true'][disabled] {
   background-color: var(--btn-accent-bg-default);
   background-image: radial-gradient(
     var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
@@ -535,8 +527,14 @@
  * sits on top of the button's *opaque normal-color* base, so painting the
  * translucent token alone would just tint same-hue-over-same-hue and be nearly
  * invisible. We therefore composite it the way the eye actually sees a disabled
- * button: the translucent disabled token layered over an opaque surface backing
- * (`--surface-background-gray-intense` = page background in light/dark). This
+ * button: the translucent disabled token layered over an opaque surface backing.
+ *
+ * The backing is read from `--btn-progress-surface-backing`, defaulting to
+ * `--surface-background-gray-intense` (the page background in light/dark). This
+ * default is correct for buttons on the default surface; when a button sits on a
+ * different surface (card, modal, colored container) the consumer can set
+ * `--btn-progress-surface-backing` on the button (or an ancestor) to that surface's
+ * background so the receding cover composites correctly there too. Either way it
  * reproduces the true "rest" appearance AND gives the receding edge real contrast
  * against the normal base.
  */
@@ -546,7 +544,10 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  background-color: var(--surface-background-gray-intense);
+  background-color: var(
+    --btn-progress-surface-backing,
+    var(--surface-background-gray-intense)
+  );
   background-image: linear-gradient(
     var(--btn-progress-rest-color, var(--btn-accent-bg-disabled)),
     var(--btn-progress-rest-color, var(--btn-accent-bg-disabled))
@@ -564,6 +565,23 @@
   to {
     width: 0%;
   }
+}
+
+/*
+ * Visually-hidden live region used to politely announce loading start/stop to
+ * assistive tech. Kept here (alongside the rest of the button styles) rather than
+ * in a component-scoped block so all button styling lives in one place.
+ */
+.live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Respect reduced-motion: freeze animations to a static, non-distracting state */

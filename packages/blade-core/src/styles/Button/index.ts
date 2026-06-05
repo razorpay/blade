@@ -8,7 +8,6 @@ export {
   getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
-  loadingSpinnerClass,
   loadingClass,
   animatedContentClass,
   pressedClass,
@@ -16,6 +15,7 @@ export {
   progressOverlayClass,
   progressFillClass,
   definiteLoadingClass,
+  liveRegionClass,
   getButtonBackgroundColorToken,
   getButtonProgressRestColorToken,
   getButtonTextColorToken,
@@ -23,6 +23,5 @@ export {
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
-  getButtonSpinnerSize,
 } from './button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ActionStatesType } from './button';
