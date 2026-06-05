@@ -19,13 +19,19 @@ disable-model-invocation: true
 
 ## Steps
 
-### 1. Fetch the diff
+### 1. Fetch the diff and PR metadata
+
+Run these in parallel:
 
 ```bash
 gh api repos/razorpay/blade/pulls/{PR_NUMBER}/files --jq '[.[] | select(.filename | test("lock$|lock\\.json$|lock\\.yaml$") | not) | {filename, patch}]'
 ```
 
-Store the output as `DIFF`.
+```bash
+gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
+```
+
+Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
 
 ### 2. Spawn Critique Subagents in parallel
 
@@ -42,6 +48,8 @@ prompt: "PR_NUMBER={PR_NUMBER}"
 subagent_type: code-quality-critique
 prompt: |
   PR_NUMBER={PR_NUMBER}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
   DIFF={DIFF}
 ```
 
@@ -51,6 +59,19 @@ prompt: |
 subagent_type: usecase-critique
 prompt: |
   PR_NUMBER={PR_NUMBER}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
+  DIFF={DIFF}
+```
+
+**api-decision-critique** (only if the diff contains component changes):
+
+```
+subagent_type: api-decision-critique
+prompt: |
+  PR_NUMBER={PR_NUMBER}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
   DIFF={DIFF}
 ```
 
@@ -61,6 +82,8 @@ subagent_type: ui-critique
 prompt: |
   PR_NUMBER={PR_NUMBER}
   HEADED={ShouldRunHeadedBrowser}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
   DIFF={DIFF}
 ```
 

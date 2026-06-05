@@ -1,6 +1,7 @@
 ---
 name: pr-sanity-critique
 description: Reviews PR sanity — CI status, changeset, docs, and tests. Spawned by review-pr skill.
+color: yellow
 ---
 
 # PR Sanity Critique
@@ -62,30 +63,36 @@ console.log(JSON.stringify({touched_packages: touchedPackages, bumped_packages: 
 "
 ```
 
-Add any `issues` from the output to `sanity_issues`.
+Add any `issues` from the output to `issues` as entries with only a `problem` field (no `file`/`line`/`side`/`severity`).
 
 ## Output
 
 ```json
 {
   "pr_number": 1234,
-  "ci_checks": [
+  "critique_name": "pr-sanity-critique",
+  "statuses": [
     {
       "name": "Check 1 name",
+      "description": "Description field from gh pr checks output",
       "state": "SUCCESS",
       "link": "https://github.com/razorpay/blade/actions/runs/1234567890"
-      // and other properties from the output
     },
     {
       "name": "Check 2 name",
+      "description": "Description field from gh pr checks output",
       "state": "FAILURE",
       "link": "https://github.com/razorpay/blade/actions/runs/1234567890",
-      // and other properties from the output
-      "failure_reason": "<detailed reason for failure after debugging the failed job>"
+      "problem": "<detailed reason for failure after debugging the failed job>",
+      "suggestion": "<what to do to fix or unblock this>"
     }
   ],
-  "sanity_issues": ["Missing changeset: ..."]
+  "issues": [
+    {
+      "problem": "Missing changeset bump for @razorpay/blade (packages/blade was modified)"
+    }
+  ]
 }
 ```
 
-`ci_checks` must include **all** checks — passing, failing, pending, etc etc. Only include `failure_reason` for non-SUCCESS/non-SKIPPED checks.
+`statuses` must include **all** CI checks — passing, failing, pending, skipped. Only include `problem` and `suggestion` for non-SUCCESS/non-SKIPPED checks. `issues` holds changeset/docs/test problems with no file location.

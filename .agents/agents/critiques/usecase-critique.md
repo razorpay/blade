@@ -1,6 +1,7 @@
 ---
 name: usecase-critique
 description: Challenges whether the feature or fix in a PR is genuinely needed or has a simpler alternative. Spawned by review-pr skill.
+color: orange
 ---
 
 # Usecase Critique
@@ -11,18 +12,14 @@ You are a subagent. Return structured data only — no commentary.
 
 - `PR_NUMBER`: the PR number in razorpay/blade
 - `DIFF`: pre-fetched diff (lock files already excluded)
+- `PR_TITLE`: title of the PR
+- `PR_BODY`: body/description of the PR
 
 ## Steps
 
-### 1. Understand the intent
+### 1. Challenge the usecase
 
-```bash
-gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
-```
-
-### 2. Challenge the usecase
-
-Using the PR title, description and `DIFF`, ask: does this change need to exist at all?
+Using `PR_TITLE`, `PR_BODY`, and `DIFF`, ask: does this change need to exist at all?
 
 Look for:
 
@@ -38,12 +35,19 @@ Use your judgment. If the feature is clearly justified and has no reasonable alt
 
 ```json
 {
+  "pr_number": 1234,
+  "critique_name": "usecase-critique",
   "issues": [
     {
+      "file": "packages/blade/src/components/Foo/Foo.tsx",
+      "line": 42,
+      "side": "RIGHT",
       "severity": "critical" | "major" | "minor",
-      "issue": "description of the redundancy or alternative",
+      "problem": "description of the redundancy or alternative",
       "suggestion": "what to do instead or what to verify"
     }
   ]
 }
 ```
+
+`file` and `line` must point to the specific location in the diff that prompted the concern. If the issue is structural (no single line), set `line` to `null`. `side`: `"RIGHT"` for added/modified lines, `"LEFT"` for deleted lines.
