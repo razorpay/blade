@@ -79,7 +79,7 @@
   );
   const showOverflow = $derived(overflowCount > 0);
 
-  const overflowTextColor = avatarGroupOverflowTextColorToken satisfies TextColors;
+  const overflowTextColor: TextColors = avatarGroupOverflowTextColorToken;
 </script>
 
 <div class={groupClasses} {...metaAttrs} {...analyticsAttrs} {...a11yAttrs}>
