@@ -1,0 +1,35 @@
+{
+  "id": "bottomsheet",
+  "component": "BottomSheet",
+  "pr_number": 1002,
+  "pr_title": "chore: added bottom sheet api decisions",
+  "pr_body": "",
+  "before_ref": "fb3ac3b1b79f1dcdce92b2d76295235a186b5fbd",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "open_not_isOpen",
+      "description": "The prop is named open instead of isOpen. Blade's convention for boolean props requires an auxiliary verb prefix (is/has/should/show). It should be isOpen.",
+      "weight": 1.0
+    },
+    {
+      "id": "onClose_not_onDismiss",
+      "description": "onClose implies the user clicked a 'close' button, but the event fires for Escape key, backdrop tap, and programmatic closes too. Blade's convention for overlay dismissal is onDismiss \u2014 semantically correct for all dismiss triggers.",
+      "weight": 1.0
+    },
+    {
+      "id": "hideDivider_negative_boolean",
+      "description": "hideDivider is a negative boolean \u2014 it defaults to false (divider visible) and is set to true to hide it. Blade prefers positive booleans: showDivider defaulting to true, where false hides it. Negative boolean props require mental inversion every time.",
+      "weight": 0.8
+    },
+    {
+      "id": "footer_actions_object",
+      "description": "BottomSheetFooter accepts an actions: { primaryAction, secondaryAction } object which restricts footer content to a fixed two-button layout. Footers often need Checkbox + Button, or ButtonGroup, or other combinations. The footer should accept free children instead.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "505ca975fcbd48443e4b42120cf8bcfa3b637da0"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "clean",
+  "component": "Table (clean fix)",
+  "type": "clean_pr",
+  "pr_number": 3279,
+  "pr_title": "fix: update to transient prop in Table cell styled components",
+  "pr_body": "Internal fix: updates styled-component props to use transient ($prop) naming to stop non-DOM props from leaking to the DOM. No public API changes.",
+  "repo": "razorpay/blade",
+  "diff_files": [],
+  "expected_issues": []
+}

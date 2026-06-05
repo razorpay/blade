@@ -1,0 +1,20 @@
+{
+  "id": "counter_input",
+  "component": "CounterInput",
+  "pr_number": 2952,
+  "pr_title": "feat(blade): added counter-input API decision",
+  "pr_body": "",
+  "before_ref": "e9a1f94db4e8867e49f3f853747a48e52edb87b0",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "variant_vs_emphasis",
+      "description": "The prop is named variant with values 'subtle' | 'intense' but this dimension represents visual emphasis/weight, not a structural variant. Blade uses variant for structural differences (e.g. Button variant='primary'/'secondary'). The design specifies this as 'emphasis', so the prop should be emphasis not variant.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "0c8494aa9e4e8893848366daf85793bfd7ed1e38"
+}

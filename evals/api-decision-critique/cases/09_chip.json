@@ -1,0 +1,25 @@
+{
+  "id": "chip",
+  "component": "Chip",
+  "pr_number": 1535,
+  "pr_title": "docs(Chip): add API decisions",
+  "pr_body": "",
+  "before_ref": "c2d698fae58eb84a30e1f8a809855877b8936c21",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "size_on_chip_not_group",
+      "description": "size is defined on the individual Chip component but in Blade, group-level props that apply uniformly to all children (size, isDisabled) must live on the group component (ChipGroup), not on individual children. Putting size on Chip forces consumers to repeat it on every chip.",
+      "weight": 1.0
+    },
+    {
+      "id": "onChange_signature",
+      "description": "The onChange callback signature returns string | string[] depending on whether selectionType is single or multiple. Blade standardises on always returning string[] for consistency \u2014 consumers always take values[0] for single-select. This matches the SelectInput pattern.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "b37ab68f181cca9d6505b612bcef65cf85dc7d66"
+}

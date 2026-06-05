@@ -1,0 +1,22 @@
+{
+  "id": "timepicker",
+  "component": "TimePicker",
+  "pr_number": 2934,
+  "pr_title": "feat(timepicker): added timepicker component",
+  "pr_body": "",
+  "before_ref": "4a80cff701dad71fa5a6187f3b34870e1d85a859",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "TimePicker/types.ts",
+    "TimePicker/TimePicker.web",
+    "TimePicker/TimePicker.native"
+  ],
+  "expected_issues": [
+    {
+      "id": "onValueChange_naming",
+      "description": "Internal props use onValueChange instead of onChange. Blade standardises all change handlers as onChange (matching TextInput, SelectInput, DatePicker, etc.). Even internal/unexposed props should follow the same convention to avoid incorrect naming if they get exposed later.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "82590ffd2440924094d2ee8ce6f6ca09915c65ca"
+}

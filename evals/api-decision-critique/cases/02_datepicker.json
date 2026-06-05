@@ -1,0 +1,22 @@
+{
+  "id": "datepicker",
+  "component": "DatePicker",
+  "pr_number": 2927,
+  "pr_title": "feat(datepicker): exposing footer slot prop",
+  "pr_body": "",
+  "before_ref": "f45ca0250191a336ccce34345e56ec6443c49458",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "DatePicker/types.ts",
+    "DatePicker/BaseDatePicker",
+    "DatePicker/DatePicker.stories"
+  ],
+  "expected_issues": [
+    {
+      "id": "footerSlot_naming",
+      "description": "The prop is named footerSlot but Blade never uses the 'Slot' suffix in public component APIs. Other components (Card, BottomSheet, Modal) simply use footer, header, body. It should be footer.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "c5003acdd3e449102a6dd78da8cac9ffa7473cc7"
+}

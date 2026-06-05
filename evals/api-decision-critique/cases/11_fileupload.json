@@ -1,0 +1,35 @@
+{
+  "id": "fileupload",
+  "component": "FileUpload",
+  "pr_number": 2010,
+  "pr_title": "docs(FileUpload): add API decisions",
+  "pr_body": "",
+  "before_ref": "645bf4db87d8054ad7633a29812e3bee93188746",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "selectionType_wrong_semantics",
+      "description": "The prop is named selectionType but FileUpload is not selecting anything \u2014 it is uploading. The term was borrowed from ActionList where it fits. It should be uploadType.",
+      "weight": 1.0
+    },
+    {
+      "id": "onCancel_wrong_semantics",
+      "description": "onCancel implies the upload is still in progress, but the close/dismiss icon also appears in error states where the upload has already failed. The correct name is onDismiss, consistent with other Blade overlay and dismissible item patterns.",
+      "weight": 1.0
+    },
+    {
+      "id": "onDelete_should_be_onRemove",
+      "description": "onDelete implies destruction of data, but the action is removing a file from the upload list. Blade uses onRemove for list-item removal actions (e.g. Tag). It should be onRemove.",
+      "weight": 0.8
+    },
+    {
+      "id": "native_type_name_collision",
+      "description": "Types named File and FileList collide with the browser's built-in Web API globals of the same name. They must be prefixed \u2014 BladeFile and BladeFileList \u2014 to avoid TypeScript ambiguity.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "46a5c16e28d0646dd323c93a19c90221f158a0bd"
+}

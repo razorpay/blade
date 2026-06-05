@@ -1,0 +1,25 @@
+{
+  "id": "tabs",
+  "component": "Tabs",
+  "pr_number": 1693,
+  "pr_title": "docs(blade): Tabs API Decisions",
+  "pr_body": "",
+  "before_ref": "a139f44248a1d1df0df8021e74e631d28b859495",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "autoWidth_naming",
+      "description": "The prop is named autoWidth but this name is ambiguous \u2014 it's unclear whether it auto-sizes the tab item, the tab list, or the tab panel. Blade's pattern for boolean layout modifiers is more descriptive. The correct name is isFitted, which clearly communicates that tab items stretch to fill the tab list width.",
+      "weight": 1.0
+    },
+    {
+      "id": "TabsItem_naming",
+      "description": "The component is named TabsItem (plural) but Blade uses singular sub-component names \u2014 e.g. MenuItem not MenusItem, StepItem not StepsItem, RadioGroup not RadiosGroup. The correct name is TabItem.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "4782ba6de6b35d176206cd9cdf504090d7d5c1a7"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "table",
+  "component": "Table",
+  "pr_number": 1730,
+  "pr_title": "docs: add Table API Decisions",
+  "pr_body": "",
+  "before_ref": "5bccddabc60c591afb897bb627e0d4428e199f2d",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "cellDensity_naming",
+      "description": "The prop is named cellDensity but density can only be controlled at the row level \u2014 there is no per-cell density control. Using cellDensity implies per-cell configurability that doesn't exist. It should be rowDensity to accurately reflect what is being controlled.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "de82795aab4917d04be94c2b42605ae1f280c268"
+}

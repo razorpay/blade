@@ -1,0 +1,14 @@
+{
+  "name": "api-decision-critique-evals",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "eval": "yarn eval:verbose",
+    "eval:verbose": "node --env-file=.env run-eval.js --verbose",
+    "eval:all": "node --env-file=.env run-eval.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

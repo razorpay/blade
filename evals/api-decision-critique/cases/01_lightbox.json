@@ -1,0 +1,25 @@
+{
+  "id": "lightbox",
+  "component": "LightBox",
+  "pr_number": 3215,
+  "pr_title": "feat(LightBox): add LightBox component",
+  "pr_body": "",
+  "before_ref": "bbaf0844a1736971f5e3da296d1fe84b09545c9a",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "thumbnailSrc_naming",
+      "description": "LightBoxItem.thumbnailSrc should be thumbnail \u2014 the 'Src' suffix is not used anywhere in Blade's public prop APIs",
+      "weight": 1.0
+    },
+    {
+      "id": "onIndexChange_signature",
+      "description": "onIndexChange callback receives a bare number but Blade's convention is to pass a value object e.g. { index: number }, consistent with how onChange/onSelectionChange callbacks work across components",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "fddc8286d6557af50d298c388f8f8fcfa87c7a56"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "popover",
+  "component": "Popover",
+  "pr_number": 1584,
+  "pr_title": "docs: Popover API Decision",
+  "pr_body": "",
+  "before_ref": "192df0dd8bc4db4a22eed122c0f853b3b93055b2",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "headerTitle_naming",
+      "description": "The prop is named headerTitle but all other Blade components with a header area (Card, BottomSheet, Modal) use simply title for the heading text. The 'header' prefix is redundant and inconsistent.",
+      "weight": 1.0
+    },
+    {
+      "id": "headerLeading_naming",
+      "description": "The prop is named headerLeading but other Blade components (Card, BottomSheet) use titleLeading for the leading slot next to the title. Should be titleLeading for consistency.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "67e0ae96d4f8cf906ea88b22c9c12e10bc9ebaec"
+}

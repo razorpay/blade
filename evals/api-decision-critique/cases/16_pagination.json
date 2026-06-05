@@ -1,0 +1,30 @@
+{
+  "id": "pagination",
+  "component": "Pagination",
+  "pr_number": 3005,
+  "pr_title": "feat: add pagination api spec",
+  "pr_body": "",
+  "before_ref": "488c3e5724a97955d651c232f4d8a05e18589b52",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "currentPage_wrong_naming",
+      "description": "The controlled prop is named currentPage. Blade's convention for controlled props mirrors React's value/onChange pattern \u2014 the prop should be selectedPage with a corresponding defaultSelectedPage for uncontrolled usage and onSelectedPageChange for the callback.",
+      "weight": 1.0
+    },
+    {
+      "id": "missing_uncontrolled_pattern",
+      "description": "The initial spec only provides a controlled prop (currentPage) with no defaultSelectedPage for uncontrolled usage. Every controllable Blade component must support both the controlled (value + onChange) and uncontrolled (defaultValue) patterns.",
+      "weight": 1.0
+    },
+    {
+      "id": "showPageNumberSelector_verbose",
+      "description": "showPageNumberSelector is unnecessarily verbose. The shorter showPageNumbers communicates the same meaning and matches the terseness of other boolean show* props in Blade.",
+      "weight": 0.7
+    }
+  ],
+  "base_ref": "7a8d1e79be3ff5135173544f6efabecadfd96ddf"
+}

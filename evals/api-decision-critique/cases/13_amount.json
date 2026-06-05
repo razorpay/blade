@@ -1,0 +1,35 @@
+{
+  "id": "amount",
+  "component": "Amount",
+  "pr_number": 993,
+  "pr_title": "docs: add Amount decisions",
+  "pr_body": "",
+  "before_ref": "94aa10bdd01c9a9bd6f10b778426972f16d16ba7",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "children_should_be_value",
+      "description": "Amount uses children: string for its content, copied from Badge. Currency semantics require a typed number passed via a named prop. It should be value: number \u2014 not children.",
+      "weight": 1.0
+    },
+    {
+      "id": "overlapping_booleans",
+      "description": "hasDecimals and hasTextPostfix are two mutually exclusive booleans \u2014 only one display mode applies at a time. Two overlapping booleans should be replaced by a single enum: suffix: 'none' | 'decimals' | 'humanize'.",
+      "weight": 1.0
+    },
+    {
+      "id": "fontWeight_redundant",
+      "description": "fontWeight: 'bold' | 'regular' is redundant because the size prop encodes weight in its token name (e.g. 'heading-large-bold'). Exposing fontWeight separately creates impossible states like size='heading-large-bold' fontWeight='regular'.",
+      "weight": 1.0
+    },
+    {
+      "id": "stale_template_props",
+      "description": "Props contrast: 'low' | 'high' and screenSize were copied from Badge and do not apply to Amount. Stale template content should be removed before proposing an API.",
+      "weight": 0.8
+    }
+  ],
+  "base_ref": "d2cfab2d484c4f150b0220c957c3a6cb3d040dee"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "infogroup",
+  "component": "InfoGroup",
+  "pr_number": 2725,
+  "pr_title": "feat(InfoGroup): add API decision",
+  "pr_body": "",
+  "before_ref": "0355cc23322fd9bd68c91a70720c8f5ec070fda5",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "orientation_misleading_scope",
+      "description": "The prop orientation on InfoGroup is deeply counterintuitive: orientation='vertical' means items are laid out horizontally but each item's key/value pair stacks vertically. The prop actually controls per-item layout, not group layout. It should be itemOrientation to make the scope explicit.",
+      "weight": 1.0
+    },
+    {
+      "id": "showDivider_should_be_child",
+      "description": "showDivider as a boolean prop on InfoItem hides the divider from the component tree, making the layout invisible when reading JSX. Following Blade's 'what you see is what you get' philosophy, consumers should instead render <Divider /> as a direct child of InfoGroup.",
+      "weight": 0.8
+    },
+    {
+      "id": "leadingIcon_too_narrow",
+      "description": "leadingIcon and trailingIcon only accept IconComponent, which prevents passing Avatar or other React elements as the leading/trailing slot. The props should be named leading and trailing and accept React.ReactElement | IconComponent.",
+      "weight": 0.8
+    }
+  ],
+  "base_ref": "af08bf36377b5ce452a1ecf6574d5625ca1416f2"
+}

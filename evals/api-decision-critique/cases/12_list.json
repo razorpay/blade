@@ -1,0 +1,30 @@
+{
+  "id": "list",
+  "component": "List",
+  "pr_number": 952,
+  "pr_title": "docs: add List decisions",
+  "pr_body": "",
+  "before_ref": "c3b448726c955affa0b200211d6704d69a29ab34",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "isOrderedFilled_impossible_state",
+      "description": "isOrderedFilled is a boolean prop that is only valid when variant='ordered'. This creates an impossible state \u2014 isOrderedFilled={true} with variant='unordered' has no meaning. The correct approach is to encode it as its own variant value: variant='ordered-filled'.",
+      "weight": 1.0
+    },
+    {
+      "id": "separate_ordered_unordered_components",
+      "description": "Proposing separate UnorderedList and OrderedList top-level components reduces discoverability \u2014 consumers searching for 'List' in the component library would not find UnorderedList. A single List component with a variant prop is the correct approach.",
+      "weight": 0.8
+    },
+    {
+      "id": "dot_notation_composition",
+      "description": "List.Item and List.Item.Link use dot notation which requires assigning child components to the parent object, breaking tree-shaking. Blade's convention is flat named exports: ListItem, ListItemLink.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "040d97b443eefc890f09135209435b247e119b98"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "sankey_chart",
+  "component": "SankeyChart",
+  "pr_number": 3414,
+  "pr_title": "feat(SankeyChart): add SankeyChart component",
+  "pr_body": "",
+  "before_ref": "12d226e9e332af13420b6ee89034e9606d6f7a04",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "SankeyChart/SankeyChart.stories",
+    "SankeyChart/SankeyChart.web",
+    "SankeyChart/types"
+  ],
+  "expected_issues": [
+    {
+      "id": "composition_pattern",
+      "description": "The component is exported as a single SankeyChart component but all Blade chart components follow a Wrapper+Child composition pattern: ChartAreaWrapper+ChartArea, ChartBarWrapper+ChartBar, ChartDonutWrapper+ChartDonut etc. SankeyChart should be ChartSankeyWrapper+ChartSankey to be consistent.",
+      "weight": 2.0
+    },
+    {
+      "id": "data_shape",
+      "description": "Data is passed as top-level props levels (a columnar SankeyLevel array) and links directly on the component, but all other Blade chart inner components accept a flat data array. The correct shape is data: { nodes: SankeyDataNode[], links: SankeyDataLink[] } passed to the inner ChartSankey component.",
+      "weight": 2.0
+    },
+    {
+      "id": "link_field_names",
+      "description": "SankeyFlowLink uses from and to to reference source and target nodes, but the standard in graph/Sankey data models (and Recharts' Sankey) is source and target. The link type should use source and target.",
+      "weight": 1.0
+    },
+    {
+      "id": "color_override_typing",
+      "description": "nodeColorOverride and linkColorOverride are typed as plain string, but Blade uses design token types for all color props \u2014 specifically ChartsCategoricalColorToken. Using raw strings bypasses the token system.",
+      "weight": 1.0
+    },
+    {
+      "id": "missing_colorTheme",
+      "description": "All other Blade chart wrapper components expose a colorTheme prop (colorTheme?: ColorTheme) to let consumers switch between categorical, sequential, etc. color palettes. SankeyChart hardcodes colorTheme internally and does not expose it.",
+      "weight": 1.0
+    },
+    {
+      "id": "missing_boxprops",
+      "description": "All Blade chart wrapper components extend BoxProps to allow layout/sizing via the standard Box API (height, width, margin, padding, etc.). SankeyChart exposes a custom height?: number instead, which is inconsistent.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "a47f0512d2603cc1be0efff0403c3515f86aae94"
+}

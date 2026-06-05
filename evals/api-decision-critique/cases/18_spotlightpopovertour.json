@@ -1,0 +1,35 @@
+{
+  "id": "spotlightpopovertour",
+  "component": "SpotlightPopoverTour",
+  "pr_number": 1793,
+  "pr_title": "docs: Tour Component API Decisions",
+  "pr_body": "",
+  "before_ref": "22929b8a1a05b5034dc619959673d80aefb60186",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "visible_not_isOpen",
+      "description": "The prop is named visible instead of isOpen. Blade uses isOpen consistently for overlay/popover visibility (Tooltip, Popover, Drawer, Modal). visible is a non-standard term in this design system.",
+      "weight": 1.0
+    },
+    {
+      "id": "id_conflicts_with_html_id",
+      "description": "Using id as the step identifier prop conflicts with the HTML id attribute semantics and causes confusion when the prop is used on a component that also forwards an id to the DOM. The prop should be name \u2014 it is also a better match for the ref-based (not id-based) internal implementation.",
+      "weight": 1.0
+    },
+    {
+      "id": "gotToNext_typo",
+      "description": "The function is named gotToNext instead of goToNext \u2014 a typo. It should also be goToPrevious (not goToPrev) for consistency with full-word naming conventions.",
+      "weight": 0.8
+    },
+    {
+      "id": "web_tour_via_getElementById",
+      "description": "The proposed web API uses getElementById to attach tour steps, but not all Blade components expose an id prop \u2014 this creates footguns with no type-level errors. The TourStep wrapper component should be used on both web and React Native for a consistent, type-safe API.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "6e8089f4efd4a4e84035b93533072815b125b81d"
+}

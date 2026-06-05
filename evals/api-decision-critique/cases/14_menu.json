@@ -1,0 +1,30 @@
+{
+  "id": "menu",
+  "component": "Menu",
+  "pr_number": 2212,
+  "pr_title": "docs(Menu): API Decision",
+  "pr_body": "",
+  "before_ref": "3a2016751bf32c40a589392b1aa1e68391b5d2e8",
+  "repo": "razorpay/blade",
+  "diff_files": [
+    "_decisions/decisions.md"
+  ],
+  "expected_issues": [
+    {
+      "id": "callback_primitive_param",
+      "description": "onOpenChange receives a bare boolean: (isOpen: boolean) => void. Blade's convention is to use an object parameter so additional context can be added in future without a breaking change: ({ isOpen }: { isOpen: boolean }) => void.",
+      "weight": 1.0
+    },
+    {
+      "id": "extract_type_over_engineered",
+      "description": "The color prop type is written as Extract<FeedbackColors, 'negative'> which always resolves to the literal 'negative'. This adds unnecessary complexity \u2014 it should simply be color?: 'negative'.",
+      "weight": 0.8
+    },
+    {
+      "id": "disabled_not_isDisabled",
+      "description": "The prop is named disabled instead of isDisabled. Blade's convention for boolean props is to use auxiliary verb prefixes (is/has/should/show). It should be isDisabled.",
+      "weight": 1.0
+    }
+  ],
+  "base_ref": "70f8d54e2abedac9c5be06003ca7e42548139c55"
+}
