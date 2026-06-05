@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 12.106.0
+
+### Minor Changes
+
+- bcdbef2f8: Adds a new SankeyChart component for visualising flow and proportional
+  relationships between nodes. Built on Recharts' native Sankey component.
+  Supports Blade color tokens, hover interactions, tooltips, label chips,
+  responsive resize, and click callbacks.
+
+### Patch Changes
+
+- 4fc149e14: fix(native): added scroll in carousel component
+
 ## 12.105.1
 
 ### Patch Changes
