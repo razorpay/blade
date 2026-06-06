@@ -345,48 +345,46 @@
   z-index: 2;
 }
 
-/* AvatarGroup size variants (negative margin overlap) — normal density.
-   These values match the original (pre-density) AvatarGroup overlap so existing
-   consumers that don't pass `density` keep identical spacing. */
+/* AvatarGroup size variants (negative margin overlap) — normal density */
 .group-size-xsmall > :not(:first-child) {
-  margin-left: -10px;
+  margin-left: -6px;
 }
 
 .group-size-small > :not(:first-child) {
-  margin-left: -14px;
+  margin-left: -10px;
 }
 
 .group-size-medium > :not(:first-child) {
-  margin-left: -18px;
-}
-
-.group-size-large > :not(:first-child) {
-  margin-left: -24px;
-}
-
-.group-size-xlarge > :not(:first-child) {
-  margin-left: -28px;
-}
-
-/* AvatarGroup density × size compound: compact (tighter overlap than normal) */
-.group-density-compact-xsmall > :not(:first-child) {
   margin-left: -14px;
 }
 
+.group-size-large > :not(:first-child) {
+  margin-left: -20px;
+}
+
+.group-size-xlarge > :not(:first-child) {
+  margin-left: -24px;
+}
+
+/* AvatarGroup density × size compound: compact (tighter overlap) */
+.group-density-compact-xsmall > :not(:first-child) {
+  margin-left: -10px;
+}
+
 .group-density-compact-small > :not(:first-child) {
-  margin-left: -18px;
+  margin-left: -14px;
 }
 
 .group-density-compact-medium > :not(:first-child) {
-  margin-left: -22px;
+  margin-left: -18px;
 }
 
 .group-density-compact-large > :not(:first-child) {
-  margin-left: -30px;
+  margin-left: -24px;
 }
 
 .group-density-compact-xlarge > :not(:first-child) {
-  margin-left: -34px;
+  margin-left: -30px;
 }
 
 /* AvatarGroup density × size compound: comfortable (looser overlap) */
