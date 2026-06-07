@@ -865,6 +865,12 @@ exports[`<Popover /> should render with title,footer 1`] = `
   margin-left: auto;
 }
 
+.c15.c15.c15.c15.c15 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
 .c6.c6.c6.c6.c6 {
   border: none;
   width: 100%;
@@ -1190,7 +1196,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
             </div>
           </div>
           <div
-            class=""
+            class="c15"
             data-blade-component="base-box"
           >
             <p

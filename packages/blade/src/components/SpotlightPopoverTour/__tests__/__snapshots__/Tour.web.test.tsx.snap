@@ -60,6 +60,12 @@ exports[`<Tour /> should render 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -75,7 +81,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -187,7 +193,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -204,7 +210,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -299,7 +305,7 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -336,26 +342,26 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c16.c16.c16.c16.c16:hover {
+.c17.c17.c17.c17.c17:hover {
   background-color: hsla(218,87%,43%,1);
   box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   background-image: none;
 }
 
-.c16.c16.c16.c16.c16:active {
+.c17.c17.c17.c17.c17:active {
   background-color: hsla(218,87%,43%,1);
   box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   background-image: none;
 }
 
-.c16.c16.c16.c16.c16:focus-visible {
+.c17.c17.c17.c17.c17:focus-visible {
   background-color: hsla(218,87%,43%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
-.c16.c16.c16.c16.c16 * {
+.c17.c17.c17.c17.c17 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -561,15 +567,15 @@ exports[`<Tour /> should render 1`] = `
             </div>
           </div>
           <div
-            class=""
+            class="c13"
             data-blade-component="base-box"
           >
             <div
-              class="c13"
+              class="c14"
               data-blade-component="box"
             >
               <p
-                class="c14"
+                class="c15"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -578,11 +584,11 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c15"
+                class="c16"
                 data-blade-component="box"
               >
                 <button
-                  class="c16"
+                  class="c17"
                   data-analytics-active-step="1"
                   data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
                   data-analytics-total-steps="2"
@@ -599,7 +605,7 @@ exports[`<Tour /> should render 1`] = `
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c17"
+                        class="c18"
                         data-blade-component="base-text"
                       >
                         Next
