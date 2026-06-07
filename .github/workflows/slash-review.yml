@@ -1,0 +1,54 @@
+name: Slash Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# One review per PR at a time — cancel any in-flight run for the same PR
+# when a new commit is pushed before it finishes.
+concurrency:
+  group: slash-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  slash-review:
+    name: Request Slash AI review
+    # Skip draft PRs — Slash reviews ready PRs only
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+
+    steps:
+      - name: Request Slash review
+        env:
+          SLASH_API_TOKEN: ${{ secrets.SLASH_API_TOKEN }}
+        run: |
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          REPOSITORY="razorpay/blade"
+          SLASH_API="https://slash-api.concierge.razorpay.com/api/v1/pr-review"
+
+          echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
+
+          HTTP_STATUS=$(curl --silent --output /tmp/slash_response.json \
+            --write-out "%{http_code}" \
+            --request POST "${SLASH_API}" \
+            --user "blade_ci:${SLASH_API_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data "{
+              \"pr_url\": \"${PR_URL}\",
+              \"repository\": \"${REPOSITORY}\",
+              \"pr_number\": ${PR_NUMBER}
+            }")
+
+          echo "HTTP status: ${HTTP_STATUS}"
+          cat /tmp/slash_response.json
+
+          if [ "${HTTP_STATUS}" = "202" ]; then
+            REVIEW_ID=$(cat /tmp/slash_response.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('review_id',''))" 2>/dev/null || true)
+            echo "Review accepted — review_id: ${REVIEW_ID}"
+          elif [ "${HTTP_STATUS}" = "200" ]; then
+            echo "Review deduplicated — this PR was already queued or reviewed."
+          else
+            echo "Slash review request failed with HTTP ${HTTP_STATUS}"
+            exit 1
+          fi
