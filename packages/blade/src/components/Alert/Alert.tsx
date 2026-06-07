@@ -198,8 +198,8 @@ const _Alert = (
           emphasis === 'intense'
             ? 'surface.icon.staticWhite.normal'
             : color === 'primary'
-              ? 'surface.icon.primary.normal'
-              : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
+            ? 'surface.icon.primary.normal'
+            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
         }
         size="medium"
       />

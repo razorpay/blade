@@ -214,7 +214,8 @@ export const WithCollapsibleText = CollapsibleTextTemplate.bind({});
 WithCollapsibleText.parameters = {
   docs: {
     description: {
-      story: 'Compose `Collapsible` with `CollapsibleText` and `CollapsibleBody` for a lightweight text trigger with a chevron icon',
+      story:
+        'Compose `Collapsible` with `CollapsibleText` and `CollapsibleBody` for a lightweight text trigger with a chevron icon',
     },
   },
 };

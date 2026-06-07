@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import userEvent from '@testing-library/user-event';
 
 import { Alert } from '..';
