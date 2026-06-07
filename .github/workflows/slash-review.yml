@@ -2,19 +2,17 @@ name: Slash Code Review
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened, ready_for_review]
 
-# One review per PR at a time — cancel any in-flight run for the same PR
-# when a new commit is pushed before it finishes.
 concurrency:
-  group: slash-review-${{ github.event.pull_request.number }}
+  group: ${{ github.repository }}-${{ github.event.pull_request.number || github.head_ref || github.sha }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
   slash-review:
     name: Request Slash AI review
-    # Skip draft PRs — Slash reviews ready PRs only
-    if: github.event.pull_request.draft == false
+    # Skip bot-triggered runs to prevent feedback loops
+    if: github.actor != 'rzp-code-review[bot]' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
 
     steps:
