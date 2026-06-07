@@ -430,7 +430,11 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasInsideValidationText ? (
-          <BaseBox paddingRight={size === 'xsmall' || size === 'small' ? 'spacing.3' : 'spacing.4'} display="flex" alignItems="center">
+          <BaseBox
+            paddingRight={size === 'xsmall' || size === 'small' ? 'spacing.3' : 'spacing.4'}
+            display="flex"
+            alignItems="center"
+          >
             <Text
               size={validationTextSize[size]}
               variant="body"

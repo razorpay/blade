@@ -1250,7 +1250,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
             <FormHint
-              type={getHintType({ validationState: isValidationTextInside ? 'none' : validationState, hasHelpText: Boolean(helpText) })}
+              type={getHintType({
+                validationState: isValidationTextInside ? 'none' : validationState,
+                hasHelpText: Boolean(helpText),
+              })}
               helpText={helpText}
               errorText={isValidationTextInside ? undefined : errorText}
               successText={isValidationTextInside ? undefined : successText}
