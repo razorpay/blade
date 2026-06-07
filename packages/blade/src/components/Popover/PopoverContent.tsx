@@ -84,7 +84,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
             <PopoverHeader title={title} titleLeading={titleLeading} />
             <BaseBox>{children}</BaseBox>
           </BaseBox>
-          {footer ? <BaseBox>{footer}</BaseBox> : null}
+          {footer ? <BaseBox alignSelf="flex-start">{footer}</BaseBox> : null}
         </BaseBox>
         {arrow}
       </PopoverContentWrapper>
