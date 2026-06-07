@@ -31,6 +31,7 @@ type InputVisuals = Pick<
   | 'showHintsAsTooltip'
   | 'errorText'
   | 'successText'
+  | 'validationTextPlacement'
 > & {
   size: NonNullable<BaseInputProps['size']>;
 };
@@ -64,6 +65,19 @@ const textSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
+} as const;
+
+const validationTextSize = {
+  xsmall: 'xsmall',
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+const validationTextColor = {
+  success: 'feedback.text.positive.intense',
+  error: 'feedback.text.negative.intense',
+  none: 'surface.text.gray.subtle',
 } as const;
 
 const getPrefixStyles = ({
@@ -263,6 +277,7 @@ export const BaseInputVisuals = ({
   showHintsAsTooltip,
   errorText,
   successText,
+  validationTextPlacement,
   trailingButton: TrailingButton,
 }: InputVisuals): ReactElement | null => {
   const {
@@ -288,6 +303,14 @@ export const BaseInputVisuals = ({
     size,
   });
 
+  const insideValidationText =
+    validationTextPlacement === 'inside' && validationState !== 'none'
+      ? validationState === 'error'
+        ? errorText
+        : successText
+      : undefined;
+  const hasInsideValidationText = Boolean(insideValidationText);
+
   const hasLeadingVisuals =
     hasLeadingInteractionElement || hasLeadingIcon || hasPrefix || hasLeadingDropDown;
   const hasTrailingVisuals =
@@ -295,7 +318,8 @@ export const BaseInputVisuals = ({
     hasSuffix ||
     hasTrailingIcon ||
     hasTrailingButton ||
-    hasTrailingDropDown;
+    hasTrailingDropDown ||
+    hasInsideValidationText;
 
   if (__DEV__) {
     if (hasTrailingButton && !isValidAllowedChildren(TrailingButton, 'Link')) {
@@ -402,6 +426,18 @@ export const BaseInputVisuals = ({
               color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
             >
               {suffix}
+            </Text>
+          </BaseBox>
+        ) : null}
+        {hasInsideValidationText ? (
+          <BaseBox paddingRight={size === 'xsmall' || size === 'small' ? 'spacing.3' : 'spacing.4'} display="flex" alignItems="center">
+            <Text
+              size={validationTextSize[size]}
+              variant="body"
+              weight="medium"
+              color={validationTextColor[validationState]}
+            >
+              {insideValidationText}
             </Text>
           </BaseBox>
         ) : null}

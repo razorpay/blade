@@ -878,6 +878,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -1024,10 +1025,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
+  const isValidationTextInside = validationTextPlacement === 'inside';
   const willRenderHintText =
     Boolean(helpText) ||
-    (validationState === 'success' && Boolean(successText)) ||
-    (validationState === 'error' && Boolean(errorText));
+    (!isValidationTextInside &&
+      ((validationState === 'success' && Boolean(successText)) ||
+        (validationState === 'error' && Boolean(errorText))));
 
   if (__DEV__) {
     if (
@@ -1223,6 +1226,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingIcon={trailingIcon}
               isDisabled={_isDisabled}
               validationState={validationState}
+              validationTextPlacement={validationTextPlacement}
               trailingButton={trailingButton}
               size={_size}
               errorText={errorText}
@@ -1246,10 +1250,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
             <FormHint
-              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              type={getHintType({ validationState: isValidationTextInside ? 'none' : validationState, hasHelpText: Boolean(helpText) })}
               helpText={helpText}
-              errorText={errorText}
-              successText={successText}
+              errorText={isValidationTextInside ? undefined : errorText}
+              successText={isValidationTextInside ? undefined : successText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}

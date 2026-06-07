@@ -116,11 +116,11 @@ export const getInputBackgroundAndBorderStyles = ({
       : getIn(theme.colors, baseInputBorderColor[baseInputState]);
   borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
-  if (!isTableInputCell && validationState && validationState !== 'none') {
+  if (!isTableInputCell && validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
     borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
     zIndex = 1; // Prevent validation ring clipping by adjacent inputs in InputGroup
-  } else if (validationState && validationState !== 'none') {
+  } else if (validationState && validationState !== 'none' && validationState !== 'success') {
     backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
   return {
