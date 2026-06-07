@@ -37,6 +37,31 @@ describe('<Alert />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render primary color with subtle emphasis', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Your payment link has been created successfully."
+        color="primary"
+        title="Payment Link Created"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render primary color with intense emphasis', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Your payment link has been created successfully."
+        color="primary"
+        emphasis="intense"
+        title="Payment Link Created"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should handle onClick on actions', async () => {
     const user = userEvent.setup();
     const onClickPrimary = jest.fn();

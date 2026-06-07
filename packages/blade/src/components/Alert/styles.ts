@@ -11,8 +11,13 @@ const MAX_WIDTH = size[584];
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
   const { theme, emphasis, color, isFullWidth, isDesktop } = props;
 
+  const background =
+    color === 'primary'
+      ? theme.colors.surface.background.primary[emphasis]
+      : theme.colors.feedback.background[color][emphasis];
+
   return {
-    background: theme.colors.feedback.background[color][emphasis],
+    background,
     padding: makeSpace(theme.spacing[4]),
     borderRadius: makeBorderSize(
       isFullWidth ? theme.border.radius.none : theme.border.radius.medium,

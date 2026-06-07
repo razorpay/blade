@@ -20,7 +20,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
+import type { AlertColors } from './types';
 import { useTheme } from '~components/BladeProvider';
 import type {
   DataAnalyticsAttribute,
@@ -100,7 +101,7 @@ type AlertProps = {
   /**
    * Sets the color tone
    */
-  color?: FeedbackColors;
+  color?: AlertColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -130,6 +131,7 @@ const intentIconMap = {
   information: InfoIcon,
   neutral: InfoIcon,
   notice: AlertTriangleIcon,
+  primary: InfoIcon,
 };
 
 const _Alert = (
@@ -195,7 +197,9 @@ const _Alert = (
         color={
           emphasis === 'intense'
             ? 'surface.icon.staticWhite.normal'
-            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
+            : color === 'primary'
+              ? 'surface.icon.primary.normal'
+              : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
         }
         size="medium"
       />
@@ -356,5 +360,5 @@ const _Alert = (
 
 const Alert = forwardRef(_Alert);
 
-export type { AlertProps };
+export type { AlertProps, AlertColors };
 export { Alert };

@@ -117,6 +117,23 @@ const avatarTopAddonOffsets = {
   },
 } as const;
 
+const avatarGroupDensityOverlapTokens = {
+  normal: {
+    xsmall: 14,
+    small: 16,
+    medium: 16,
+    large: 16,
+    xlarge: 16,
+  },
+  comfortable: {
+    xsmall: 8,
+    small: 8,
+    medium: 8,
+    large: 8,
+    xlarge: 8,
+  },
+} as const;
+
 export {
   avatarSizeTokens,
   avatarIconSizeTokens,
@@ -126,4 +143,5 @@ export {
   avatarToBottomAddonSize,
   avatarToIndicatorSize,
   avatarTopAddonOffsets,
+  avatarGroupDensityOverlapTokens,
 };

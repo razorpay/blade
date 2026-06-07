@@ -7,6 +7,7 @@ import { Collapsible as CollapsibleComponent } from './Collapsible';
 import { CollapsibleButton } from './CollapsibleButton';
 import { CollapsibleBody } from './CollapsibleBody';
 import { CollapsibleLink } from './CollapsibleLink';
+import { CollapsibleText } from './CollapsibleText';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -168,6 +169,55 @@ const CollapsibleLinkTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...args
 };
 
 export const WithCollapsibleLink = CollapsibleLinkTemplate.bind({});
+
+const CollapsibleTextTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...args }) => {
+  return (
+    <CollapsibleComponent {...args}>
+      <CollapsibleText>View Price Breakdown</CollapsibleText>
+      <CollapsibleBody>
+        <Box display="flex" flexDirection="column" minWidth="200px">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text>Actual amount</Text>
+            <Amount value={1000} color="feedback.text.positive.intense" />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+            <Text>2%</Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text marginTop="spacing.2">GST</Text>
+            <Text>18%</Text>
+          </Box>
+        </Box>
+      </CollapsibleBody>
+    </CollapsibleComponent>
+  );
+};
+
+export const WithCollapsibleText = CollapsibleTextTemplate.bind({});
+
+WithCollapsibleText.parameters = {
+  docs: {
+    description: {
+      story: 'Compose `Collapsible` with `CollapsibleText` and `CollapsibleBody` for a lightweight text trigger with a chevron icon',
+    },
+  },
+};
 
 WithCollapsibleLink.parameters = {
   docs: {
