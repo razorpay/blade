@@ -178,7 +178,10 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
-type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload'> & {
+type FileUploadItemProps = Pick<
+  FileUploadProps,
+  'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload'
+> & {
   /**
    * Size of the FileUploadItem component
    *
