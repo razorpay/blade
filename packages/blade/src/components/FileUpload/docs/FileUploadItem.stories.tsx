@@ -40,7 +40,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['medium', 'large'],
+      options: ['small', 'medium', 'large'],
     },
     onPreview: { action: 'preview clicked' },
     onRemove: { action: 'remove clicked' },

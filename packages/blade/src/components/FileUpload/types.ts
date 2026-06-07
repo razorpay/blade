@@ -178,10 +178,13 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
-type FileUploadItemProps = Pick<
-  FileUploadProps,
-  'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
-> & {
+type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload'> & {
+  /**
+   * Size of the FileUploadItem component
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large' | 'variable';
   file: BladeFile;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
@@ -202,7 +205,7 @@ type StyledFileUploadWrapperProps = {
 
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
-  size: NonNullable<FileUploadProps['size']>;
+  size: NonNullable<FileUploadItemProps['size']>;
   theme: Theme;
   children: React.ReactNode;
 };
