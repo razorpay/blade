@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import { TabBar, TabView } from 'react-native-tab-view';
-import { Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
@@ -138,37 +138,45 @@ const _Tabs = ({
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
 
       return (
-        <StyledTabButton
-          size={size}
-          variant={variant}
-          isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
-          {...metaAttribute({ name: MetaConstants.TabItem })}
-        >
-          <Box
-            display="flex"
-            alignItems="center"
-            flexDirection="row"
-            gap="spacing.3"
-            {...(!isFilled && focused
-              ? {
-                  borderBottomWidth: theme.border.width.thicker,
-                  borderBottomColor: theme.colors.interactive.border.primary.default,
-                }
-              : undefined)}
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <StyledTabButton
+            size={size}
+            variant={variant}
+            isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+            {...metaAttribute({ name: MetaConstants.TabItem })}
           >
-            {Leading ? (
-              <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
-            ) : null}
-            <Text
-              color={textColor[selectedState].default}
-              size={size === 'medium' ? 'medium' : 'large'}
-              weight="semibold"
+            <Box
+              display="flex"
+              alignItems="center"
+              flexDirection="row"
+              gap="spacing.3"
             >
-              {title}
-            </Text>
-            {validatedTrailingComponent}
-          </Box>
-        </StyledTabButton>
+              {Leading ? (
+                <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
+              ) : null}
+              <Text
+                color={textColor[selectedState].default}
+                size={size === 'medium' ? 'medium' : 'large'}
+                weight="semibold"
+              >
+                {title}
+              </Text>
+              {validatedTrailingComponent}
+            </Box>
+          </StyledTabButton>
+          {focused && !isFilled && (
+            <View
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: theme.border.width.thicker,
+                backgroundColor: theme.colors.interactive.border.neutral.highlighted,
+              }}
+            />
+          )}
+        </View>
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
