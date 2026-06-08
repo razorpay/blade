@@ -60,7 +60,7 @@
 
 <!-- All Badge Sizes -->
 <Story name="Sizes">
-  {#snippet template({ args })}
+  {#snippet template(args)}
     <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
       {#each sizes as size}
         <Badge {size} color={args.color} emphasis={args.emphasis}>{size}</Badge>
@@ -96,7 +96,7 @@
 
 <!-- Badge with Icon - all variants -->
 <Story name="With Icon">
-  {#snippet template({ args })}
+  {#snippet template(args)}
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--feedback-text-neutral-intense);">Subtle Emphasis</p>
