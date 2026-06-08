@@ -415,6 +415,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const { theme } = useTheme();
   const buttonGroupProps = useButtonGroupContext();
   const [isPressed, setIsPressed] = React.useState(false);
+  const [isClickDebounced, setIsClickDebounced] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   const isChildrenComponent = React.isValidElement(children);
@@ -422,7 +423,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // Button cannot be disabled when its rendered as Link
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
-  const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  const disabled = buttonGroupProps.isDisabled || isLoading || isClickDebounced || (isDisabled && !isLink);
+
+  const handleClick = React.useCallback((e: any) => {
+    if (isClickDebounced) return;
+    setIsClickDebounced(true);
+    onClick?.(e);
+    setTimeout(() => setIsClickDebounced(false), 300);
+  }, [isClickDebounced, onClick]);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
