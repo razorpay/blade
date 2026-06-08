@@ -32,6 +32,7 @@ const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactEleme
       source={props.src as ImageSourcePropType}
       style={{ width: size[16], height: size[12], borderRadius: 2 }}
       accessibilityLabel={props.alt}
+      accessibilityIgnoresInvertColors
     />
   );
 };
