@@ -17,10 +17,6 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
  */
 export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
-/** Resolved shadow layer for React Native (colors already resolved from theme) */
-export type NativeBoxShadowLayer = { y: number; blur: number; spread: number; color: string };
-export type NativeBoxShadow = NativeBoxShadowLayer[];
-
 export type BaseButtonStyleProps = {
   iconSize: IconSize;
   spinnerSize: BaseSpinnerProps['size'];
@@ -37,8 +33,6 @@ export type BaseButtonStyleProps = {
   text?: string;
   defaultBackgroundColor: string;
   defaultBoxShadow?: string;
-  defaultNativeBoxShadow?: NativeBoxShadow;
-  focusNativeBoxShadow?: NativeBoxShadow;
   hoverBackgroundColor: string;
   hoverBoxShadow?: string;
   hoverIconColor: string;
@@ -67,8 +61,6 @@ export type StyledBaseButtonProps = Omit<
   defaultBackgroundColor: string;
   defaultBorderColor?: string;
   defaultBoxShadow?: string;
-  defaultNativeBoxShadow?: NativeBoxShadow;
-  focusNativeBoxShadow?: NativeBoxShadow;
   disabled: boolean;
   focusBoxShadow?: string;
   focusBackgroundColor: string;

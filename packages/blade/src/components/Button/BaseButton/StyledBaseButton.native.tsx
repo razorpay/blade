@@ -1,16 +1,10 @@
 import { Linking, Pressable } from 'react-native';
-import Animated, {
-  interpolateColor,
-  useDerivedValue,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import React from 'react';
 import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
-import type { NativeBoxShadow, StyledBaseButtonProps } from './types';
+import type { StyledBaseButtonProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
@@ -52,49 +46,6 @@ const openURL = async (href: string): Promise<void> => {
   }
 };
 
-type ShadowBorders = {
-  borderWidth: number;
-  borderColor: string;
-  borderTopWidth: number;
-  borderTopColor: string;
-  borderBottomWidth: number;
-  borderBottomColor: string;
-};
-
-/**
- * Converts NativeBoxShadow tokens into React Native border properties.
- * Multi-layer approximation: accumulates widths from all top/bottom shadows
- * and uses the primary (first) color for each edge.
- *
- *   spread > 0  → uniform outline border
- *   y > 0       → top highlight (inner top glow)
- *   y < 0       → bottom shadow (inner bottom depth)
- */
-function buildShadowBorders(shadows: NativeBoxShadow | undefined): ShadowBorders {
-  let borderWidth = 0;
-  let borderColor = 'transparent';
-  let borderTopWidth = 0;
-  let borderTopColor = 'transparent';
-  let borderBottomWidth = 0;
-  let borderBottomColor = 'transparent';
-
-  for (const shadow of shadows ?? []) {
-    if (shadow.spread > 0) {
-      borderWidth = 1;
-      borderColor = shadow.color;
-    } else if (shadow.y > 0) {
-      // Accumulate top shadow widths for multi-layer depth; keep first color
-      borderTopWidth += shadow.y;
-      if (borderTopColor === 'transparent') borderTopColor = shadow.color;
-    } else if (shadow.y < 0) {
-      // Accumulate bottom shadow widths for multi-layer depth; keep first color
-      borderBottomWidth += Math.abs(shadow.y);
-      if (borderBottomColor === 'transparent') borderBottomColor = shadow.color;
-    }
-  }
-
-  return { borderWidth, borderColor, borderTopWidth, borderTopColor, borderBottomWidth, borderBottomColor };
-}
 
 const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseButtonProps> = (
   {
@@ -130,8 +81,6 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onPointerEnter,
     onPointerDown,
     onFocus,
-    defaultNativeBoxShadow,
-    focusNativeBoxShadow,
     ...styledProps
   },
   ref,
@@ -141,56 +90,25 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
 
-  const defaultBorders = buildShadowBorders(defaultNativeBoxShadow);
-  const focusBorders = buildShadowBorders(focusNativeBoxShadow);
-
-  // Smooth 0→1 progress value driven by press state, used for color interpolation
-  const pressProgress = useDerivedValue(() =>
-    withTiming(isPressed.value ? 1 : 0, { duration, easing }),
-  );
-
   const animatedStyles = useAnimatedStyle(() => {
-    const progress = pressProgress.value;
-
-    return {
+    const styles: {
+      backgroundColor: string;
+      borderColor?: string;
+    } = {
       backgroundColor: withTiming(
         isPressed.value ? focusBackgroundColor : defaultBackgroundColor,
         { duration, easing },
       ) as string,
-
-      // Outline border (uniform, from spread shadow)
-      borderWidth: defaultBorders.borderWidth,
-      borderColor: interpolateColor(progress, [0, 1], [
-        defaultBorders.borderColor,
-        focusBorders.borderColor || defaultBorders.borderColor,
-      ]),
-
-      // Top highlight — smooth width + color transition on press
-      borderTopWidth: withTiming(
-        isPressed.value ? focusBorders.borderTopWidth : defaultBorders.borderTopWidth,
-        { duration, easing },
-      ),
-      borderTopColor: interpolateColor(progress, [0, 1], [
-        defaultBorders.borderTopColor,
-        focusBorders.borderTopColor || defaultBorders.borderTopColor,
-      ]),
-
-      // Bottom shadow — smooth width + color transition on press
-      borderBottomWidth: withTiming(
-        isPressed.value ? focusBorders.borderBottomWidth : defaultBorders.borderBottomWidth,
-        { duration, easing },
-      ),
-      borderBottomColor: interpolateColor(progress, [0, 1], [
-        defaultBorders.borderBottomColor,
-        focusBorders.borderBottomColor || defaultBorders.borderBottomColor,
-      ]),
-
-      // Focus ring via shadow (iOS) — appears on press
-      shadowColor: focusRingColor,
-      shadowOffset: { width: 0, height: 0 },
-      shadowRadius: withTiming(isPressed.value ? 4 : 0, { duration, easing }),
-      shadowOpacity: withTiming(isPressed.value ? 0.5 : 0, { duration, easing }),
     };
+
+    if (variant !== 'tertiary' && defaultBorderColor && focusBorderColor) {
+      styles.borderColor = withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
+        duration,
+        easing,
+      }) as string;
+    }
+
+    return styles;
   });
 
   const handleOnPress = (event: GestureResponderEvent): void => {
