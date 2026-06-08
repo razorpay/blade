@@ -144,7 +144,18 @@ const _Tabs = ({
           isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
           {...metaAttribute({ name: MetaConstants.TabItem })}
         >
-          <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
+          <Box
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            gap="spacing.3"
+            {...(!isFilled && focused
+              ? {
+                  borderBottomWidth: theme.border.width.thicker,
+                  borderBottomColor: theme.colors.interactive.border.primary.default,
+                }
+              : undefined)}
+          >
             {Leading ? (
               <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
             ) : null}
@@ -160,7 +171,8 @@ const _Tabs = ({
         </StyledTabButton>
       );
     },
-    [isFullWidthTabItem, isFilled, size, variant],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isFullWidthTabItem, isFilled, size, variant, theme],
   );
 
   const renderTabBar = React.useCallback(
@@ -197,7 +209,7 @@ const _Tabs = ({
                 }),
               }),
         }}
-        renderIndicator={TabIndicator}
+        renderIndicator={isFilled ? TabIndicator : () => null}
         renderLabel={renderTabLabel}
         // This is a bit hacky, but this is the only way to put a divider between tabs
         // Since there is no way to use tablist.map() to render the tabs
