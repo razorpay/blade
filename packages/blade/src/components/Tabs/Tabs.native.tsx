@@ -170,7 +170,7 @@ const TabBarIndicator = ({
           : {
               height: theme.border.width.thicker,
               bottom: 0,
-              backgroundColor: theme.colors.interactive.border.primary.default,
+              backgroundColor: theme.colors.interactive.border.neutral.highlighted,
             },
         animStyle,
       ]}
@@ -419,7 +419,15 @@ const _Tabs = (
             const shouldRender = !isLazy || index === safeIndex;
             return (
               <View key={panel.value} style={styles.pagerView}>
-                {shouldRender ? panel.children : null}
+                {shouldRender ? (
+                  <ScrollView
+                    nestedScrollEnabled
+                    showsVerticalScrollIndicator={false}
+                    style={styles.pagerView}
+                  >
+                    {panel.children}
+                  </ScrollView>
+                ) : null}
               </View>
             );
           })}
