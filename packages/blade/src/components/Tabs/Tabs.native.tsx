@@ -138,32 +138,30 @@ const _Tabs = ({
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
 
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <StyledTabButton
-            size={size}
-            variant={variant}
-            isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
-            {...metaAttribute({ name: MetaConstants.TabItem })}
+        <StyledTabButton
+          size={size}
+          variant={variant}
+          isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+          {...metaAttribute({ name: MetaConstants.TabItem })}
+        >
+          <Box
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            gap="spacing.3"
           >
-            <Box
-              display="flex"
-              alignItems="center"
-              flexDirection="row"
-              gap="spacing.3"
+            {Leading ? (
+              <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
+            ) : null}
+            <Text
+              color={textColor[selectedState].default}
+              size={size === 'medium' ? 'medium' : 'large'}
+              weight="semibold"
             >
-              {Leading ? (
-                <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
-              ) : null}
-              <Text
-                color={textColor[selectedState].default}
-                size={size === 'medium' ? 'medium' : 'large'}
-                weight="semibold"
-              >
-                {title}
-              </Text>
-              {validatedTrailingComponent}
-            </Box>
-          </StyledTabButton>
+              {title}
+            </Text>
+            {validatedTrailingComponent}
+          </Box>
           {focused && !isFilled && (
             <View
               style={{
@@ -176,7 +174,7 @@ const _Tabs = ({
               }}
             />
           )}
-        </View>
+        </StyledTabButton>
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
