@@ -1,5 +1,5 @@
 ---
-name: verify
+name: verify-svelte-migration
 description: Validates migrated components through static type checking, CSS variable auditing, API parity verification, visual regression testing, computed style spot-checks against React originals, and applies iterative fixes until all quality gates pass.
 model: inherit
 ---
@@ -221,7 +221,7 @@ Read `discovery-report.md` as the source of truth. Compare against actual implem
    - Missing stories with descriptions
    - Missing exports with expected paths
    - Missing event handlers with signatures
-2. Spawn Execute (`subagent_type: "execute"`, `run_in_background: false`) via the Agent tool with this prompt:
+2. Spawn Execute (`subagent_type: "execute-svelte-migration"`, `run_in_background: false`) via the Agent tool with this prompt:
 
    ```text
    Apply the patch request for {Name}.
