@@ -111,6 +111,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -120,7 +121,7 @@ exports[`Carousel Snapshots should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -173,6 +174,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -182,7 +184,7 @@ exports[`Carousel Snapshots should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -776,6 +778,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -785,7 +788,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -838,6 +841,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -847,7 +851,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -900,6 +904,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -909,7 +914,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,

@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ToastContainer /> (native) renders nothing when there are no toasts 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
-/>
-`;
-
 exports[`<Toast /> (native) renders a positive informational toast 1`] = `
 <View
   style={
@@ -167,6 +157,7 @@ exports[`<Toast /> (native) renders a positive informational toast 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -176,7 +167,7 @@ exports[`<Toast /> (native) renders a positive informational toast 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -483,6 +474,7 @@ exports[`<Toast /> (native) renders a promotional toast 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -492,7 +484,7 @@ exports[`<Toast /> (native) renders a promotional toast 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -623,4 +615,14 @@ exports[`<Toast /> (native) renders a promotional toast 1`] = `
     </View>
   </View>
 </View>
+`;
+
+exports[`<ToastContainer /> (native) renders nothing when there are no toasts 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+/>
 `;
