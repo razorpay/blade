@@ -19,22 +19,20 @@ type ActionListItemAssetProps = {
 };
 
 const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactElement => {
-  if (typeof props.src === 'number') {
+  if (typeof props.src === 'string') {
     return (
-      <Image
-        source={props.src}
-        style={{ width: size[16], height: size[12], borderRadius: 2 }}
-        accessibilityLabel={props.alt}
-      />
+      <View style={{ width: size[16], height: size[12], borderRadius: 2, overflow: 'hidden' }}>
+        <SvgUri uri={props.src} width={size[16]} height={size[12]} />
+      </View>
     );
   }
 
-  const uri = typeof props.src === 'string' ? props.src : props.src.uri;
-
   return (
-    <View style={{ width: size[16], height: size[12], borderRadius: 2, overflow: 'hidden' }}>
-      <SvgUri uri={uri} width={size[16]} height={size[12]} />
-    </View>
+    <Image
+      source={props.src as ImageSourcePropType}
+      style={{ width: size[16], height: size[12], borderRadius: 2 }}
+      accessibilityLabel={props.alt}
+    />
   );
 };
 
