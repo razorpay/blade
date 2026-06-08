@@ -20,15 +20,21 @@ jobs:
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BRANCH: ${{ github.head_ref }}
+          PR_TARGET_BRANCH: ${{ github.base_ref }}
+          RUN_ID: ${{ github.run_id }}
         run: |
-          PR_URL="${{ github.event.pull_request.html_url }}"
-          PR_NUMBER="${{ github.event.pull_request.number }}"
           REPOSITORY="razorpay/blade"
           SLASH_API="https://slash-api-ext.razorpay.com/api/v1/pr-review"
+          ESCAPED_PR_TITLE=$(printf '%s' "${PR_TITLE}" | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read().strip()))')
 
           echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
 
-          HTTP_STATUS=$(curl --silent --output /tmp/slash_response.json \
+          HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
             --write-out "%{http_code}" \
             --request POST "${SLASH_API}" \
             --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
@@ -38,12 +44,12 @@ jobs:
                 \"pr_url\": \"${PR_URL}\",
                 \"pr_number\": ${PR_NUMBER},
                 \"repository\": \"${REPOSITORY}\",
-                \"author\": \"${{ github.event.pull_request.user.login }}\",
-                \"title\": $(echo '${{ github.event.pull_request.title }}' | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read().strip()))'),
-                \"branch\": \"${{ github.head_ref }}\",
-                \"target_branch\": \"${{ github.base_ref }}\"
+                \"author\": \"${PR_AUTHOR}\",
+                \"title\": ${ESCAPED_PR_TITLE},
+                \"branch\": \"${PR_BRANCH}\",
+                \"target_branch\": \"${PR_TARGET_BRANCH}\"
               },
-              \"idempotency_key\": \"${REPOSITORY}:${PR_NUMBER}:${{ github.run_id }}\"
+              \"idempotency_key\": \"${REPOSITORY}:${PR_NUMBER}:${RUN_ID}\"
             }")
 
           echo "HTTP status: ${HTTP_STATUS}"
