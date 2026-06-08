@@ -1,6 +1,3 @@
-import '@formatjs/intl-locale/polyfill';
-import '@formatjs/intl-displaynames/polyfill';
-import '@formatjs/intl-displaynames/locale-data/en';
 import type { CountryCodeType, getFlagsForAllCountries } from '@razorpay/i18nify-js';
 import { getDialCodeByCountryCode, getFlagOfCountry } from '@razorpay/i18nify-js';
 import React from 'react';
@@ -108,7 +105,7 @@ const CountrySelector = ({
           <BottomSheetHeader title="Select A Country" />
           <BottomSheetBody>
             <ActionList isVirtualized={true}>
-              {(isBottomSheetOpen ? countryData : []).map((country) => (
+              {countryData.map((country) => (
                 <ActionListItem
                   key={country.code}
                   leading={

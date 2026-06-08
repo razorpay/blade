@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import '@formatjs/intl-locale/polyfill';
+import '@formatjs/intl-displaynames/polyfill';
+import '@formatjs/intl-displaynames/locale-data/en';
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import {
   formatPhoneNumber,
@@ -19,6 +22,7 @@ import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
+import { useId } from '~utils/useId';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
@@ -60,6 +64,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
   },
   ref,
 ): React.ReactElement => {
+  const id = useId('phone-number-input');
   const inputRef = React.useRef<TextInput | null>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
 
@@ -151,7 +156,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
   return (
     <BaseInput
       ref={mergedRef}
-      id="phone-number-input"
+      id={id}
       componentName={MetaConstants.PhoneNumberInput}
       label={label as string}
       hideLabelText={!Boolean(label)}
