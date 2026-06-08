@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-Fix/accordion animation race condition
+fix(Accordion): animation race condition
