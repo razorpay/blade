@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Request Slash review
         env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
         run: |
           PR_URL="${{ github.event.pull_request.html_url }}"
@@ -30,7 +31,7 @@ jobs:
           HTTP_STATUS=$(curl --silent --output /tmp/slash_response.json \
             --write-out "%{http_code}" \
             --request POST "${SLASH_API}" \
-            --user "blade_ci:${SLASH_API_PASSWORD}" \
+            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
             --header "Content-Type: application/json" \
             --data "{
               \"pr_url\": \"${PR_URL}\",
