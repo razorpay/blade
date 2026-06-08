@@ -24,7 +24,7 @@ jobs:
           PR_URL="${{ github.event.pull_request.html_url }}"
           PR_NUMBER="${{ github.event.pull_request.number }}"
           REPOSITORY="razorpay/blade"
-          SLASH_API="https://slash-api.concierge.razorpay.com/api/v1/pr-review"
+          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/pr-review"
 
           echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
 
