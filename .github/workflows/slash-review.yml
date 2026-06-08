@@ -2,7 +2,7 @@ name: Slash Code Review
 
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review]
+    types: [opened, reopened, ready_for_review, labeled]
 
 concurrency:
   group: ${{ github.repository }}-${{ github.event.pull_request.number || github.head_ref || github.sha }}-${{ github.workflow }}
@@ -11,8 +11,15 @@ concurrency:
 jobs:
   slash-review:
     name: Request Slash AI review
-    # Skip bot-triggered runs to prevent feedback loops
-    if: github.actor != 'rzp-code-review[bot]' && github.actor != 'github-actions[bot]'
+    # Skip bot-triggered runs to prevent feedback loops.
+    # For labeled events, only fire on the 'Run Slash Review' label — not every label addition.
+    if: |
+      github.actor != 'rzp-slash-public[bot]' &&
+      github.actor != 'github-actions[bot]' &&
+      (
+        github.event.action != 'labeled' ||
+        github.event.label.name == 'Run Slash Review'
+      )
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
 
     steps:
