@@ -34,9 +34,16 @@ jobs:
             --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
             --header "Content-Type: application/json" \
             --data "{
-              \"pr_url\": \"${PR_URL}\",
-              \"repository\": \"${REPOSITORY}\",
-              \"pr_number\": ${PR_NUMBER}
+              \"pr_metadata\": {
+                \"pr_url\": \"${PR_URL}\",
+                \"pr_number\": ${PR_NUMBER},
+                \"repository\": \"${REPOSITORY}\",
+                \"author\": \"${{ github.event.pull_request.user.login }}\",
+                \"title\": $(echo '${{ github.event.pull_request.title }}' | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read().strip()))'),
+                \"branch\": \"${{ github.head_ref }}\",
+                \"target_branch\": \"${{ github.base_ref }}\"
+              },
+              \"idempotency_key\": \"${REPOSITORY}:${PR_NUMBER}:${{ github.run_id }}\"
             }")
 
           echo "HTTP status: ${HTTP_STATUS}"
