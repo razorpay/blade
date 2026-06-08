@@ -5,6 +5,7 @@
 import React from 'react';
 import { TabBar, TabView } from 'react-native-tab-view';
 import { Dimensions, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
@@ -41,7 +42,14 @@ const getTabPanels = (node: React.ReactNode): Record<string, () => React.ReactEl
   return children
     .filter((child) => getComponentId(child) === 'TabPanel')
     .reduce((prev, curr) => {
-      return { ...prev, [curr.props.value]: () => curr.props.children };
+      return {
+        ...prev,
+        [curr.props.value]: () => (
+          <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
+            {curr.props.children}
+          </ScrollView>
+        ),
+      };
     }, {});
 };
 
