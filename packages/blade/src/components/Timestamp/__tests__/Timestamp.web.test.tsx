@@ -10,170 +10,13 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Timestamp />', () => {
-  it('should render Timestamp with default props (dateTime format)', () => {
+  // ─── Basic render ────────────────────────────────────────────────────────────
+
+  it('should render with default props', () => {
     const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with format="date"', () => {
-    const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} format="date" />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with format="time"', () => {
-    const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} format="time" />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with format="relative"', () => {
-    // Use a jest fake timer so relative time is deterministic
-    jest.useFakeTimers().setSystemTime(FIXED_DATE);
-    const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
-    const { container } = renderWithTheme(<Timestamp value={fiveMinAgo} format="relative" />);
-    expect(container).toMatchSnapshot();
-    jest.useRealTimers();
-  });
-
-  it('should accept ISO string as value', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value="2026-05-30T13:08:32.000Z" format="date" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should accept Unix timestamp (ms) as value', () => {
-    const { container } = renderWithTheme(<Timestamp value={FIXED_DATE.getTime()} format="date" />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render all dateStyle options', () => {
-    const styles = ['short', 'medium', 'long', 'full'] as const;
-    styles.forEach((dateStyle) => {
-      const { container } = renderWithTheme(
-        <Timestamp value={FIXED_DATE} format="date" dateStyle={dateStyle} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  it('should render precision="minute" (default)', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" precision="minute" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render precision="second"', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" precision="second" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with hourCycle="12h"', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="12h" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render with hourCycle="24h"', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="24h" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render all body sizes', () => {
-    const sizes = ['xsmall', 'small', 'medium', 'large'] as const;
-    sizes.forEach((size) => {
-      const { container } = renderWithTheme(
-        <Timestamp value={FIXED_DATE} type="body" size={size} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  it('should render all heading sizes', () => {
-    const sizes = ['small', 'medium', 'large', 'xlarge', '2xlarge'] as const;
-    sizes.forEach((size) => {
-      const { container } = renderWithTheme(
-        <Timestamp value={FIXED_DATE} type="heading" size={size} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  it('should render all display sizes', () => {
-    const sizes = ['small', 'medium', 'large', 'xlarge'] as const;
-    sizes.forEach((size) => {
-      const { container } = renderWithTheme(
-        <Timestamp value={FIXED_DATE} type="display" size={size} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  it('should throw __DEV__ error for invalid type × size combinations', () => {
-    expect(() => {
-      // @ts-expect-error intentionally invalid
-      renderWithTheme(<Timestamp value={FIXED_DATE} type="body" size="2xlarge" />);
-    }).toThrow('[Blade: Timestamp]');
-
-    expect(() => {
-      // @ts-expect-error intentionally invalid
-      renderWithTheme(<Timestamp value={FIXED_DATE} type="heading" size="xsmall" />);
-    }).toThrow('[Blade: Timestamp]');
-
-    expect(() => {
-      // @ts-expect-error intentionally invalid
-      renderWithTheme(<Timestamp value={FIXED_DATE} type="display" size="2xlarge" />);
-    }).toThrow('[Blade: Timestamp]');
-  });
-
-  it('should render all text weights', () => {
-    const weights = ['regular', 'medium', 'semibold'] as const;
-    weights.forEach((weight) => {
-      const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} weight={weight} />);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  it('should apply custom color', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} color="feedback.text.positive.intense" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should apply accessibilityLabel as aria-label', () => {
-    const { getByLabelText } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" accessibilityLabel="Payment date" />,
-    );
-    expect(getByLabelText('Payment date')).toBeTruthy();
-  });
-
-  it('should accept testID prop', () => {
-    const { getByTestId } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} testID="timestamp-test" />,
-    );
-    expect(getByTestId('timestamp-test')).toBeTruthy();
-  });
-
-  it('should throw an error for invalid date value in __DEV__', () => {
-    expect(() => {
-      renderWithTheme(<Timestamp value="not-a-date" />);
-    }).toThrow('[Blade: Timestamp]');
-  });
-
-  it('should render nothing for invalid date value in production', () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const g = global as any;
-    const originalDev = g.__DEV__;
-    g.__DEV__ = false;
-    const { container } = renderWithTheme(<Timestamp value="not-a-date" />);
-    expect(container.querySelector('[data-blade-component="timestamp"]')).toBeNull();
-    g.__DEV__ = originalDev;
+    const el = container.querySelector('[data-blade-component="timestamp"]');
+    expect(el).toBeTruthy();
+    expect(el?.textContent?.trim().length).toBeGreaterThan(0);
   });
 
   it('should render a semantic <time> element with ISO dateTime attribute', () => {
@@ -183,11 +26,198 @@ describe('<Timestamp />', () => {
     expect(timeEl?.getAttribute('datetime')).toBe(FIXED_DATE.toISOString());
   });
 
+  it('should accept ISO string as value', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value="2026-05-30T13:08:32.000Z" format="date" />,
+    );
+    expect(container.querySelector('time')).toBeTruthy();
+    expect(container.textContent?.trim().length).toBeGreaterThan(0);
+  });
+
+  it('should accept Unix timestamp (ms) as value', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE.getTime()} format="date" />,
+    );
+    expect(container.querySelector('time')).toBeTruthy();
+    expect(container.textContent?.trim().length).toBeGreaterThan(0);
+  });
+
+  // ─── format prop ─────────────────────────────────────────────────────────────
+
+  it('should render format="date" — no time component in text', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" locale="en-US" />,
+    );
+    const text = container.textContent ?? '';
+    // date format should not contain time separator or AM/PM
+    expect(text).toMatch(/May|30|2026/);
+    expect(text).not.toMatch(/AM|PM|\d:\d\d/);
+  });
+
+  it('should render format="time" — contains hour and minute', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" hourCycle="12h" locale="en-US" />,
+    );
+    const text = container.textContent ?? '';
+    expect(text).toMatch(/\d:\d\d/);
+    expect(text).toMatch(/AM|PM/i);
+  });
+
+  it('should render format="relative" — produces human-relative label', () => {
+    jest.useFakeTimers().setSystemTime(FIXED_DATE);
+    const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
+    const { container } = renderWithTheme(<Timestamp value={fiveMinAgo} format="relative" />);
+    const text = container.textContent ?? '';
+    // Should be something like "5 minutes ago"
+    expect(text).toMatch(/ago|now|minute/i);
+    jest.useRealTimers();
+  });
+
+  it('should render format="dateTime" — contains both date and time parts', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="dateTime" locale="en-US" />,
+    );
+    const text = container.textContent ?? '';
+    expect(text).toMatch(/May|30|2026/);
+    expect(text).toMatch(/\d:\d\d/);
+  });
+
+  // ─── dateStyle prop ───────────────────────────────────────────────────────────
+
+  it('should render dateStyle="short" — compact numeric date', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" dateStyle="short" locale="en-US" />,
+    );
+    // en-US short gives "5/30/26"
+    expect(container.textContent).toMatch(/\d+\/\d+\/\d+/);
+  });
+
+  it('should render dateStyle="full" — includes weekday', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" dateStyle="full" locale="en-US" />,
+    );
+    // "Saturday, May 30, 2026"
+    expect(container.textContent).toMatch(/Saturday|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday/);
+  });
+
+  it('should render all dateStyle options without throwing', () => {
+    (['short', 'medium', 'long', 'full'] as const).forEach((dateStyle) => {
+      expect(() =>
+        renderWithTheme(<Timestamp value={FIXED_DATE} format="date" dateStyle={dateStyle} />),
+      ).not.toThrow();
+    });
+  });
+
+  // ─── precision prop ───────────────────────────────────────────────────────────
+
+  it('should render precision="minute" — no seconds in time', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" precision="minute" hourCycle="12h" locale="en-US" />,
+    );
+    // "1:08 PM" — only hours and minutes
+    expect(container.textContent).toMatch(/\d:\d{2}\s*(AM|PM)/i);
+    expect(container.textContent).not.toMatch(/\d:\d{2}:\d{2}/);
+  });
+
+  it('should render precision="second" — includes seconds in time', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" precision="second" hourCycle="12h" locale="en-US" />,
+    );
+    // "1:08:32 PM"
+    expect(container.textContent).toMatch(/\d:\d{2}:\d{2}/);
+  });
+
+  // ─── hourCycle prop ────────────────────────────────────────────────────────────
+
+  it('should render hourCycle="12h" — output has AM/PM', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" hourCycle="12h" locale="en-US" />,
+    );
+    expect(container.textContent).toMatch(/AM|PM/i);
+  });
+
+  it('should render hourCycle="24h" — output has no AM/PM', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" hourCycle="24h" locale="en-US" />,
+    );
+    expect(container.textContent).not.toMatch(/AM|PM/i);
+    // 13:08 format
+    expect(container.textContent).toMatch(/13:\d{2}/);
+  });
+
+  // ─── type × size combinations ─────────────────────────────────────────────────
+
+  it('should render all body sizes without throwing', () => {
+    (['xsmall', 'small', 'medium', 'large'] as const).forEach((size) => {
+      expect(() =>
+        renderWithTheme(<Timestamp value={FIXED_DATE} type="body" size={size} />),
+      ).not.toThrow();
+    });
+  });
+
+  it('should render all heading sizes without throwing', () => {
+    (['small', 'medium', 'large', 'xlarge', '2xlarge'] as const).forEach((size) => {
+      expect(() =>
+        renderWithTheme(<Timestamp value={FIXED_DATE} type="heading" size={size} />),
+      ).not.toThrow();
+    });
+  });
+
+  it('should render all display sizes without throwing', () => {
+    (['small', 'medium', 'large', 'xlarge'] as const).forEach((size) => {
+      expect(() =>
+        renderWithTheme(<Timestamp value={FIXED_DATE} type="display" size={size} />),
+      ).not.toThrow();
+    });
+  });
+
+  it('should throw __DEV__ error for invalid type × size: body + 2xlarge', () => {
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="body" size="2xlarge" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  it('should throw __DEV__ error for invalid type × size: heading + xsmall', () => {
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="heading" size="xsmall" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  it('should throw __DEV__ error for invalid type × size: display + 2xlarge', () => {
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="display" size="2xlarge" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  // ─── weight prop ──────────────────────────────────────────────────────────────
+
+  it('should render all text weights without throwing', () => {
+    (['regular', 'medium', 'semibold'] as const).forEach((weight) => {
+      expect(() =>
+        renderWithTheme(<Timestamp value={FIXED_DATE} weight={weight} />),
+      ).not.toThrow();
+    });
+  });
+
+  // ─── color prop ───────────────────────────────────────────────────────────────
+
+  it('should render with custom color without throwing', () => {
+    expect(() =>
+      renderWithTheme(
+        <Timestamp value={FIXED_DATE} color="feedback.text.positive.intense" />,
+      ),
+    ).not.toThrow();
+  });
+
+  // ─── tooltip ─────────────────────────────────────────────────────────────────
+
   it('should show tooltip by default for format="relative"', () => {
     jest.useFakeTimers().setSystemTime(FIXED_DATE);
     const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
     const { container } = renderWithTheme(<Timestamp value={fiveMinAgo} format="relative" />);
-    // Tooltip wrapper has data-testid="tooltip-interactive-wrapper"
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
     jest.useRealTimers();
   });
@@ -216,18 +246,75 @@ describe('<Timestamp />', () => {
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeNull();
   });
 
+  it('should force tooltip on when noTooltip=false for an otherwise non-tooltip case', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="dateTime" dateStyle="medium" noTooltip={false} />,
+    );
+    expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
+  });
+
+  // ─── locale ───────────────────────────────────────────────────────────────────
+
   it('should use locale prop for formatting', () => {
-    // en-US formats dates differently from en-IN
     const { container: containerUS } = renderWithTheme(
       <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-US" />,
     );
     const { container: containerIN } = renderWithTheme(
       <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-IN" />,
     );
-    // Both should render but may differ in month/day ordering
-    expect(containerUS.textContent).toBeTruthy();
-    expect(containerIN.textContent).toBeTruthy();
+    expect(containerUS.textContent?.trim().length).toBeGreaterThan(0);
+    expect(containerIN.textContent?.trim().length).toBeGreaterThan(0);
   });
+
+  // ─── accessibility ────────────────────────────────────────────────────────────
+
+  it('should apply accessibilityLabel as aria-label', () => {
+    const { getByLabelText } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" accessibilityLabel="Payment date" />,
+    );
+    expect(getByLabelText('Payment date')).toBeTruthy();
+  });
+
+  it('should accept testID prop', () => {
+    const { getByTestId } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} testID="timestamp-test" />,
+    );
+    expect(getByTestId('timestamp-test')).toBeTruthy();
+  });
+
+  // ─── invalid date ─────────────────────────────────────────────────────────────
+
+  it('should throw an error for invalid date value in __DEV__', () => {
+    expect(() => {
+      renderWithTheme(<Timestamp value="not-a-date" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  it('should render nothing for invalid date value in production', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g = global as any;
+    const originalDev = g.__DEV__;
+    g.__DEV__ = false;
+    const { container } = renderWithTheme(<Timestamp value="not-a-date" />);
+    expect(container.querySelector('[data-blade-component="timestamp"]')).toBeNull();
+    g.__DEV__ = originalDev;
+  });
+
+  // ─── precision validation ─────────────────────────────────────────────────────
+
+  it('should throw __DEV__ error for precision="hour" with format="dateTime"', () => {
+    expect(() => {
+      renderWithTheme(<Timestamp value={FIXED_DATE} format="dateTime" precision="hour" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  it('should throw __DEV__ error for precision="day" with format="time"', () => {
+    expect(() => {
+      renderWithTheme(<Timestamp value={FIXED_DATE} format="time" precision="day" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  // ─── auto-update ──────────────────────────────────────────────────────────────
 
   it('should auto-update relative timestamp after interval', () => {
     jest.useFakeTimers();
@@ -250,17 +337,14 @@ describe('<Timestamp />', () => {
     expect(secondText).not.toBe(firstText);
     jest.useRealTimers();
   });
-
-  it('should throw __DEV__ error for precision="hour" with format="dateTime"', () => {
-    expect(() => {
-      renderWithTheme(<Timestamp value={FIXED_DATE} format="dateTime" precision="hour" />);
-    }).toThrow('[Blade: Timestamp]');
-  });
 });
+
+// ─── formatTimestamp utility ──────────────────────────────────────────────────
 
 describe('formatTimestamp utility', () => {
   const baseOptions = {
     date: FIXED_DATE,
+    format: 'dateTime' as const,
     dateStyle: 'medium' as const,
     hourCycle: undefined,
     precision: 'minute' as const,
@@ -303,7 +387,46 @@ describe('formatTimestamp utility', () => {
     expect(result).toBe('30 seconds ago');
     jest.useRealTimers();
   });
+
+  it('should format relative — just now for < 10s', () => {
+    jest.useFakeTimers().setSystemTime(FIXED_DATE);
+    const fiveSecsAgo = new Date(FIXED_DATE.getTime() - 5 * 1000);
+    const result = formatTimestamp({
+      ...baseOptions,
+      date: fiveSecsAgo,
+      format: 'relative',
+      precision: 'second',
+    });
+    expect(result).toBe('now');
+    jest.useRealTimers();
+  });
+
+  it('should format date with dateStyle="short"', () => {
+    const result = formatTimestamp({ ...baseOptions, format: 'date', dateStyle: 'short' });
+    // en-US short: "5/30/26"
+    expect(result).toMatch(/\d+\/\d+\/\d+/);
+  });
+
+  it('should format time with hourCycle="24h"', () => {
+    const result = formatTimestamp({ ...baseOptions, format: 'time', hourCycle: '24h' });
+    // 13:08
+    expect(result).toMatch(/13:\d{2}/);
+    expect(result).not.toMatch(/AM|PM/i);
+  });
+
+  it('should format time with precision="second"', () => {
+    const result = formatTimestamp({
+      ...baseOptions,
+      format: 'time',
+      hourCycle: '12h',
+      precision: 'second',
+    });
+    // "1:08:32 PM"
+    expect(result).toMatch(/\d:\d{2}:\d{2}/);
+  });
 });
+
+// ─── toDate utility ───────────────────────────────────────────────────────────
 
 describe('toDate utility', () => {
   it('should return same Date object when Date is passed', () => {

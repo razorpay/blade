@@ -243,6 +243,29 @@ Since `Timestamp` renders inline, it can be embedded inside a `Text` component.
 <Timestamp value={date} format="date" dateStyle="medium" noTooltip={false} />
 ```
 
+### Typography Scale
+
+Use `type` + `size` to match the surrounding typographic context (mirrors the `Amount` component pattern).
+
+```jsx
+// Body — table cells, inline text (default)
+<Timestamp value={date} type="body" size="medium" />
+<Timestamp value={date} type="body" size="small" />
+
+// Heading — section headers, drawer titles
+<Timestamp value={date} type="heading" size="large" />
+<Timestamp value={date} type="heading" size="xlarge" weight="semibold" />
+
+// Display — dashboard summary cards, hero numbers
+<Timestamp value={date} format="date" type="display" size="medium" />
+<Timestamp value={date} format="date" type="display" size="large" weight="semibold" />
+```
+
+Each `type` has its own valid `size` range — passing an invalid combination throws in `__DEV__`:
+```
+[Blade: Timestamp]: size="xsmall" is not allowed with type="heading". Valid sizes: small, medium, large, xlarge, 2xlarge.
+```
+
 ## Accessibility
 
 - The component renders a semantic `<time>` element with a machine-readable `dateTime` ISO attribute on web. Screen readers and crawlers receive the precise date even when visible text is compact ("5 minutes ago") or abbreviated ("5/30/26").
@@ -255,5 +278,7 @@ Since `Timestamp` renders inline, it can be embedded inside a `Text` component.
 - ~~**Live Updates**: Should relative timestamps auto-update?~~ Resolved: yes, in v1. The component manages its own adaptive `setTimeout` interval (10s → 1min → 1hr as the timestamp ages). No consumer-side re-render needed.
 - ~~**timeStyle prop**: Use `timeStyle: 'short'|'medium'|'long'|'full'` (direct Intl mapping) or an explicit `precision` prop?~~ Resolved: `precision`. The `timeStyle` values describe length but not what changes — a developer can't predict that `"medium"` adds seconds or that `"long"` adds a timezone offset without reading the Intl spec. `precision="second"` is self-documenting.
 - **Timezone**: Currently uses the system timezone. A `timeZone` prop (mapping to `Intl.DateTimeFormat` `timeZone` option) is a natural extension for v2 when multi-timezone settlement/payout surfaces are needed.
+- **`dateStyle="medium"` vs `"long"`**: In `en-US` and `en-IN` these produce identical output ("May 30, 2026"). They differ in some locales. Consider documenting this clearly or collapsing to 3 values in v2.
+- ~~**`type` prop (body/heading/display)**: Should Timestamp follow Amount's discriminated union pattern or stay body-only?~~ Resolved: yes, same pattern as Amount. `timestampTokens.ts` defines the 2D `(type, size) → fontSize token` map. Heading/display use the heading font family. Invalid type×size combinations throw in `__DEV__`.
 - **`dateStyle="medium"` vs `"long"`**: In `en-US` and `en-IN` these produce identical output ("May 30, 2026"). They differ in some locales. Consider documenting this clearly or collapsing to 3 values in v2.
 - **`dateStyle="numeric"` from the original proposal**: Dropped in favour of `dateStyle="short"` which maps to `Intl.DateTimeFormat`'s equivalent numeric style (e.g. "5/30/26" in en-US).

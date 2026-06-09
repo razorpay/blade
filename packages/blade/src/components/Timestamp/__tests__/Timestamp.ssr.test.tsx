@@ -20,10 +20,22 @@ describe('<Timestamp />', () => {
     expect(container.textContent).toMatch(/21 Mar 2025/);
   });
 
-  it('should return null for an invalid date value', () => {
-    // In production (non-__DEV__), invalid dates render nothing rather than "Invalid Date"
+  it('should return null for an invalid date value in production', () => {
+    // In production (non-__DEV__), invalid dates render nothing rather than "Invalid Date".
+    // Must disable __DEV__ explicitly — the SSR test environment runs with __DEV__ = true.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g = global as any;
+    const originalDev = g.__DEV__;
+    g.__DEV__ = false;
     const { container } = renderWithSSR(<Timestamp value="not-a-date" />);
     expect(container.querySelector('[data-blade-component="timestamp"]')).toBeNull();
+    g.__DEV__ = originalDev;
+  });
+
+  it('should throw for an invalid date in __DEV__', () => {
+    expect(() => {
+      renderWithSSR(<Timestamp value="not-a-date" />);
+    }).toThrow('[Blade: Timestamp]');
   });
 
   it('should render format="date" with no time text', () => {
@@ -32,5 +44,12 @@ describe('<Timestamp />', () => {
     );
     expect(container.textContent).toMatch(/Mar/);
     expect(container.textContent).not.toMatch(/AM|PM|:/);
+  });
+
+  it('should render a <time> element with ISO datetime attribute on SSR', () => {
+    const { container } = renderWithSSR(<Timestamp value={FIXED_DATE} />);
+    expect(container.querySelector('time')?.getAttribute('datetime')).toBe(
+      FIXED_DATE.toISOString(),
+    );
   });
 });
