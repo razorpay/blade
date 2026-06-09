@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Timestamp /> should render Timestamp on server 1`] = `"<div id=\\"root\\"><div data-blade-component=\\"timestamp\\" aria-label=\\"21 Mar 2025\\" class=\\"BaseBox-bksIuc gxpZfy\\"><time dateTime=\\"2025-03-21T03:50:00.000Z\\" style=\\"display:inline\\"><span class=\\"StyledBaseText-foUshD cmvurT\\" data-blade-component=\\"base-text\\">21 Mar 2025</span></time></div></div>"`;
-
-exports[`<Timestamp /> should render a <time> element with ISO datetime attribute on SSR 1`] = `"<div id=\\"root\\"><div data-blade-component=\\"timestamp\\" aria-label=\\"Mar 21, 2025\\" class=\\"BaseBox-bksIuc gxpZfy\\"><time dateTime=\\"2025-03-21T03:50:00.000Z\\" style=\\"display:inline\\"><span class=\\"StyledBaseText-foUshD cmvurT\\" data-blade-component=\\"base-text\\">Mar 21, 2025</span></time></div></div>"`;
-
-exports[`<Timestamp /> should render format="date" with no time text 1`] = `"<div id=\\"root\\"><div data-blade-component=\\"timestamp\\" aria-label=\\"Mar 21, 2025\\" class=\\"BaseBox-bksIuc gxpZfy\\"><time dateTime=\\"2025-03-21T03:50:00.000Z\\" style=\\"display:inline\\"><span class=\\"StyledBaseText-foUshD cmvurT\\" data-blade-component=\\"base-text\\">Mar 21, 2025</span></time></div></div>"`;
-
-exports[`<Timestamp /> should return null for an invalid date value in production 1`] = `"<div id=\\"root\\"></div>"`;
