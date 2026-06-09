@@ -101,17 +101,15 @@
   let kitchenSinkSelected = $state(['mango', 'apple']);
 </script>
 
-<!-- 1. Default — wires controls via args spread -->
+<!-- 1. Default -->
 <Story name="Default" asChild>
-  {#snippet children({ args })}
-    <CheckboxGroup {...args}>
-      {#snippet children()}
-        <Checkbox value="apple">Apple</Checkbox>
-        <Checkbox value="mango">Mango</Checkbox>
-        <Checkbox value="orange">Orange</Checkbox>
-      {/snippet}
-    </CheckboxGroup>
-  {/snippet}
+  <CheckboxGroup label="Checkbox Group">
+    {#snippet children()}
+      <Checkbox value="apple">Apple</Checkbox>
+      <Checkbox value="mango">Mango</Checkbox>
+      <Checkbox value="orange">Orange</Checkbox>
+    {/snippet}
+  </CheckboxGroup>
 </Story>
 
 <!-- 2. CheckboxGroup Orientation Horizontal -->
