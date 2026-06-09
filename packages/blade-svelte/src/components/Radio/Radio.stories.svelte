@@ -83,8 +83,11 @@
 <script lang="ts">
   import Radio from './Radio.svelte';
   import Button from '../Button/Button.svelte';
+  import type { RadioSize } from './types';
 
   let controlledValue = $state('apple');
+
+  const radioSizes: RadioSize[] = ['small', 'medium', 'large'];
 </script>
 
 <!-- Story 1: Default -->
@@ -108,7 +111,7 @@
 <!-- Story 2: Sizes -->
 <Story name="Sizes" asChild>
   <div style="display:flex;flex-direction:column;gap:32px">
-    {#each ['small', 'medium', 'large'] as radioSize}
+    {#each radioSizes as radioSize}
       <RadioGroup label="Size: {radioSize}" size={radioSize} defaultValue="apple">
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
