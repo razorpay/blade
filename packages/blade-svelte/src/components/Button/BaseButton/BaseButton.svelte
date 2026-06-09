@@ -6,6 +6,7 @@
   import type { BaseButtonProps } from './types';
   import type { TextColors } from '../../Typography/BaseText/types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { resolveVisualStyledProps } from '@razorpay/blade-core/utils';
   import {
     getButtonClasses,
     getButtonTemplateClasses,
@@ -14,9 +15,13 @@
     getButtonSpinnerSize,
     getButtonIconSize,
     getButtonIconOnlySize,
+    resolveButtonOverrides,
+    resolveSlotTheme,
+    styleObjectToString,
     type ActionStatesType as ButtonActionStatesType,
     type SpinnerColor,
   } from '@razorpay/blade-core/styles';
+  import { getSlotThemeMap } from '../../BladeProvider/bladeProviderContext';
   import type { IconColor } from '../../Icons/types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
@@ -40,6 +45,10 @@
     tabIndex,
     accessibilityProps,
     testID,
+    styleOverrides,
+    visualProps,
+    themeKey,
+    className,
     onClick,
     onBlur,
     onFocus,
@@ -54,6 +63,22 @@
     onKeyDown,
     ...rest
   }: BaseButtonProps = $props();
+
+  // ===== Instance-level styling (Options A–E) =====
+  // Option D: resolve this button's slot from the nearest BladeProvider slotTheme.
+  const slotThemeMap = getSlotThemeMap();
+  const slotOverrideVars = $derived(resolveSlotTheme(slotThemeMap, 'button', themeKey));
+  // Option B: per-instance styleOverrides → element-scoped CSS vars (derived states).
+  const instanceOverrideVars = $derived(resolveButtonOverrides(styleOverrides));
+  // B and D share the same carrier; instance styleOverrides win over the slot map.
+  const overrideVars = $derived({ ...slotOverrideVars, ...instanceOverrideVars });
+  // Option A: flat visual styled props → inline styles (state-unaware, for compare).
+  const visualInlineStyles = $derived(resolveVisualStyledProps(visualProps));
+  // True when text color is being overridden (B/D var or A's `color`) — the text/icon
+  // must then inherit via `currentColor` so the override actually paints them.
+  const hasContentColorOverride = $derived(
+    Boolean(overrideVars['--btn-content-color']) || Boolean(visualInlineStyles.color),
+  );
 
   // Validation - check if we have either icon or children
   $effect(() => {
@@ -119,8 +144,13 @@
   // Get text sizes
   const textSizes = getButtonTextSizes();
 
-  // Compute text color token reactively
-  const textColorToken = $derived.by((): TextColors => {
+  // Compute text color token reactively.
+  // When a text-color override is active (Option A/B/D), defer to `currentColor`
+  // so the text inherits the overridden color set on the button element.
+  const textColorToken = $derived.by((): TextColors | 'currentColor' => {
+    if (hasContentColorOverride) {
+      return 'currentColor';
+    }
     return getButtonTextColorToken({
       variant,
       color,
@@ -129,8 +159,11 @@
     }) as TextColors;
   });
 
-  // Compute icon color token reactively
+  // Compute icon color token reactively (same currentColor deferral as text).
   const iconColorToken = $derived.by((): IconColor => {
+    if (hasContentColorOverride) {
+      return 'currentColor';
+    }
     return getButtonTextColorToken({
       variant,
       color,
@@ -206,7 +239,7 @@
   // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes for button element
+  // Combine classes for button element (Option E appends a raw className passthrough).
   const combinedClasses = $derived(() => {
     const classes = [
       baseButtonClasses,
@@ -216,8 +249,24 @@
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
+    if (className) {
+      classes.push(className);
+    }
     return classes.filter(Boolean).join(' ');
   });
+
+  // Combine the inline style for the button element:
+  //  - styled-props arbitrary values (existing behavior, e.g. numeric zIndex/margins)
+  //  - Option A visual inline styles (background-color/color/border written directly)
+  //  - Option B/D override CSS variables (state-aware, the recommended carrier)
+  // Override vars are emitted last so they take precedence over A on the same concern.
+  const combinedInlineStyle = $derived(
+    styleObjectToString({
+      ...styledProps.inlineStyles,
+      ...visualInlineStyles,
+      ...overrideVars,
+    }),
+  );
 
   // Animated content wrapper classes (for scale animation)
   const animatedContentClasses = $derived(() => {
@@ -339,6 +388,7 @@
 <svelte:element
   this={elementTag}
   class={combinedClasses()}
+  style={combinedInlineStyle}
   {id}
   {...accessibilityAttrs}
   {...metaAttrs}

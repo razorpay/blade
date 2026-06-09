@@ -34,6 +34,7 @@
     overflowX,
     overflowY,
     validationState = 'none',
+    styleOverrides,
     testID,
     ...rest
   }: CardProps = $props();
@@ -86,6 +87,7 @@
       {overflow}
       {overflowX}
       {overflowY}
+      {styleOverrides}
     >
       {#snippet children()}
         {#if href}
