@@ -98,11 +98,7 @@ export interface RadioGroupProps extends StyledPropsBlade {
   /**
    * Callback fired when the selected radio changes.
    */
-  onChange?: (payload: {
-    name: string | undefined;
-    value: string;
-    event: Event;
-  }) => void;
+  onChange?: (payload: { name: string | undefined; value: string; event: Event }) => void;
   /**
    * Name attribute for form submission. Auto-generated if not provided.
    */
