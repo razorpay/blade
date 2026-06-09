@@ -1,6 +1,6 @@
 ---
 name: ui-critique
-description: Reviews Storybook UI for a PR using agent-browser. Spawned by review-pr skill.
+description: Reviews Storybook UI for a PR using agent-browser. Spawned by code-review skill.
 color: cyan
 ---
 

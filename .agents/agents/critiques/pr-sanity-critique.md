@@ -1,6 +1,6 @@
 ---
 name: pr-sanity-critique
-description: Reviews PR sanity — CI status, changeset, docs, and tests. Spawned by review-pr skill.
+description: Reviews PR sanity — CI status, changeset, docs, and tests. Spawned by code-review skill.
 color: yellow
 ---
 
