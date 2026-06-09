@@ -1,9 +1,9 @@
 /**
  * # Collapsible
  *
- * A primitive expand/collapse component that supports a text label and an
- * optional leading icon in its trigger. Use `Collapsible` when you need a
- * standalone show/hide panel — for grouped accordion-style lists use `Accordion`.
+ * Collapsible is used to allow users to toggle the visibility of hidden content
+ * within a container. Compose `Collapsible` with `CollapsibleButton` /
+ * `CollapsibleLink` and `CollapsibleBody`.
  *
  * ## Usage
  *
@@ -11,15 +11,14 @@
  * <script>
  *   import {
  *     Collapsible,
- *     CollapsibleTrigger,
+ *     CollapsibleButton,
  *     CollapsibleBody,
  *   } from '@razorpay/blade-svelte';
- *   import { InfoIcon } from '@razorpay/blade-svelte';
  * </script>
  *
  * <Collapsible>
  *   {#snippet children()}
- *     <CollapsibleTrigger label="What is Razorpay Route?" icon={InfoIcon} />
+ *     <CollapsibleButton>View Price Breakdown</CollapsibleButton>
  *     <CollapsibleBody>
  *       You can use Razorpay Route from the Dashboard or using APIs.
  *     </CollapsibleBody>
@@ -28,12 +27,13 @@
  * ```
  */
 export { default as Collapsible } from './Collapsible.svelte';
-export { default as CollapsibleTrigger } from './CollapsibleTrigger.svelte';
+export { default as CollapsibleButton } from './CollapsibleButton.svelte';
+export { default as CollapsibleLink } from './CollapsibleLink.svelte';
 export { default as CollapsibleBody } from './CollapsibleBody.svelte';
 
 export type {
   CollapsibleProps,
-  CollapsibleTriggerProps,
+  CollapsibleButtonProps,
+  CollapsibleLinkProps,
   CollapsibleBodyProps,
-  IconComponent as CollapsibleIconComponent,
 } from './types';

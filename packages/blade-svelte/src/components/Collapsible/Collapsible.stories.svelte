@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Collapsible from './Collapsible.svelte';
 
@@ -8,20 +8,15 @@
     tags: ['autodocs'],
     args: {},
     argTypes: {
-      size: {
+      direction: {
         control: 'select',
-        options: ['large', 'medium'],
-        description: 'Size of the Collapsible',
-        table: { defaultValue: { summary: 'large' } },
-      },
-      isDisabled: {
-        control: 'boolean',
-        description: 'Disables the trigger button',
-        table: { defaultValue: { summary: 'false' } },
+        options: ['bottom', 'top'],
+        description: 'Direction in which the content expands',
+        table: { defaultValue: { summary: 'bottom' } },
       },
       defaultIsExpanded: {
         control: 'boolean',
-        description: 'Whether the panel is open on first render (uncontrolled)',
+        description: 'Expands the collapsible content by default (uncontrolled)',
         table: { defaultValue: { summary: 'false' } },
       },
     },
@@ -29,149 +24,87 @@
 </script>
 
 <script lang="ts">
-  import CollapsibleTrigger from './CollapsibleTrigger.svelte';
+  import CollapsibleButton from './CollapsibleButton.svelte';
+  import CollapsibleLink from './CollapsibleLink.svelte';
   import CollapsibleBody from './CollapsibleBody.svelte';
-  import { InfoIcon } from '../Icons/InfoIcon';
-  import { CheckIcon } from '../Icons/CheckIcon';
-  import { CreditCardIcon } from '../Icons/CreditCardIcon';
-  import { SearchIcon } from '../Icons/SearchIcon';
   import Text from '../Typography/Text/Text.svelte';
+  import Amount from '../Amount/Amount.svelte';
+  import type { CollapsibleProps } from './types';
 
-  let controlledIsExpanded = $state(false);
+  type CollapsibleStoryArgs = Omit<CollapsibleProps, 'children'> & { children?: unknown };
+
+  let isExpanded = $state(true);
+
+  const getCollapsibleArgs = (
+    args: CollapsibleStoryArgs,
+  ): Omit<CollapsibleProps, 'children'> => {
+    const { children: _children, ...collapsibleArgs } = args;
+    return collapsibleArgs;
+  };
 </script>
 
-<!-- Basic: text-only trigger -->
-<Story name="Text Only Trigger" asChild>
-  <Collapsible>
-    {#snippet children()}
-      <CollapsibleTrigger label="What is Razorpay Route?" />
-      <CollapsibleBody>
-        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
-        Check our docs for detailed instructions.
-      </CollapsibleBody>
-    {/snippet}
-  </Collapsible>
-</Story>
-
-<!-- Icon + Text trigger -->
-<Story name="Icon and Text Trigger" asChild>
-  <Collapsible>
-    {#snippet children()}
-      <CollapsibleTrigger label="What is Razorpay Route?" icon={InfoIcon} />
-      <CollapsibleBody>
-        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
-        Check our docs for detailed instructions.
-      </CollapsibleBody>
-    {/snippet}
-  </Collapsible>
-</Story>
-
-<!-- Multiple Collapsibles with different icons -->
-<Story name="Multiple With Icons" asChild>
-  <div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px;">
-    <Collapsible>
-      {#snippet children()}
-        <CollapsibleTrigger label="What is Razorpay Route?" icon={InfoIcon} />
-        <CollapsibleBody>
-          You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
-        </CollapsibleBody>
-      {/snippet}
-    </Collapsible>
-
-    <Collapsible>
-      {#snippet children()}
-        <CollapsibleTrigger label="How do I set up QR Codes?" icon={CreditCardIcon} />
-        <CollapsibleBody>
-          Just use Razorpay. You may also check our docs for detailed instructions.
-        </CollapsibleBody>
-      {/snippet}
-    </Collapsible>
-
-    <Collapsible>
-      {#snippet children()}
-        <CollapsibleTrigger label="How do Subscriptions work?" icon={CheckIcon} />
-        <CollapsibleBody>
-          Please use the search functionality to ask your queries.
-        </CollapsibleBody>
-      {/snippet}
-    </Collapsible>
-  </div>
-</Story>
-
-<!-- Medium size -->
-<Story name="Medium Size With Icon" asChild>
-  <Collapsible size="medium">
-    {#snippet children()}
-      <CollapsibleTrigger label="Subscription details" icon={SearchIcon} />
-      <CollapsibleBody>
-        Medium-size collapsible with icon. Font sizes and spacing are more compact.
-      </CollapsibleBody>
-    {/snippet}
-  </Collapsible>
-</Story>
-
-<!-- Open by default (uncontrolled) -->
-<Story name="Default Expanded" asChild>
-  <Collapsible defaultIsExpanded={true}>
-    {#snippet children()}
-      <CollapsibleTrigger label="This panel is open on load" icon={InfoIcon} />
-      <CollapsibleBody>
-        The `defaultIsExpanded` prop opens the panel on first render without requiring controlled
-        state management.
-      </CollapsibleBody>
-    {/snippet}
-  </Collapsible>
-</Story>
-
-<!-- Disabled -->
-<Story name="Disabled" asChild>
-  <Collapsible isDisabled={true}>
-    {#snippet children()}
-      <CollapsibleTrigger label="This trigger is disabled" icon={InfoIcon} />
-      <CollapsibleBody>
-        This content is inaccessible when the collapsible is disabled.
-      </CollapsibleBody>
-    {/snippet}
-  </Collapsible>
-</Story>
-
-<!-- Controlled -->
-<Story name="Controlled" asChild>
-  <div>
-    <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-      <button onclick={() => { controlledIsExpanded = true; }}>Expand</button>
-      <button onclick={() => { controlledIsExpanded = false; }}>Collapse</button>
+{#snippet priceBreakdown()}
+  <div style="display: flex; flex-direction: column; min-width: 200px;">
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline;">
+      <Text>Actual amount</Text>
+      <Amount value={1000} color="feedback.text.positive.intense" />
     </div>
-    <Collapsible
-      isExpanded={controlledIsExpanded}
-      onExpandChange={(expanded) => { controlledIsExpanded = expanded; }}
-    >
-      {#snippet children()}
-        <CollapsibleTrigger label="Controlled collapsible" icon={InfoIcon} />
-        <CollapsibleBody>
-          The expanded state is driven externally — use the buttons above to toggle.
-        </CollapsibleBody>
-      {/snippet}
-    </Collapsible>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline;">
+      <Text marginTop="spacing.2">Razorpay Platform Fees</Text>
+      <Text>2%</Text>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline;">
+      <Text marginTop="spacing.2">GST</Text>
+      <Text>18%</Text>
+    </div>
   </div>
+{/snippet}
+
+<!-- Compose Collapsible with CollapsibleButton and CollapsibleBody -->
+<Story name="With Collapsible Button">
+  {#snippet template(args)}
+    <Collapsible {...getCollapsibleArgs(args)}>
+      <CollapsibleButton>View Price Breakdown</CollapsibleButton>
+      <CollapsibleBody>
+        {@render priceBreakdown()}
+      </CollapsibleBody>
+    </Collapsible>
+  {/snippet}
 </Story>
 
-<!-- Custom trigger content (via children slot) -->
-<Story name="Custom Trigger Content" asChild>
-  <Collapsible>
-    {#snippet children()}
-      <CollapsibleTrigger>
-        {#snippet children()}
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <Text size="medium" weight="semibold">Custom Trigger Layout</Text>
-            <Text size="small" color="surface.text.gray.subtle">Click to expand details</Text>
-          </div>
-        {/snippet}
-      </CollapsibleTrigger>
+<!-- Compose Collapsible with CollapsibleLink and CollapsibleBody -->
+<Story name="With Collapsible Link">
+  {#snippet template(args)}
+    <Collapsible {...getCollapsibleArgs(args)}>
+      <CollapsibleLink>View Price Breakdown</CollapsibleLink>
       <CollapsibleBody>
-        You can pass any Svelte markup as the trigger's `children` snippet to override the
-        default icon + label layout. The chevron is always rendered.
+        {@render priceBreakdown()}
       </CollapsibleBody>
-    {/snippet}
+    </Collapsible>
+  {/snippet}
+</Story>
+
+<!-- Use `direction` prop to control in which direction the Collapsible expands -->
+<Story name="With Direction" args={{ direction: 'top' }}>
+  {#snippet template(args)}
+    <Collapsible {...getCollapsibleArgs(args)}>
+      <CollapsibleLink>View Price Breakdown</CollapsibleLink>
+      <CollapsibleBody>
+        {@render priceBreakdown()}
+      </CollapsibleBody>
+    </Collapsible>
+  {/snippet}
+</Story>
+
+<!-- Controlled: use `isExpanded` and `onExpandChange` -->
+<Story name="Controlled Example" asChild>
+  <Collapsible
+    isExpanded={isExpanded}
+    onExpandChange={(args) => { isExpanded = args.isExpanded; }}
+  >
+    <CollapsibleButton>{isExpanded ? 'Hide' : 'Show'} Price Breakdown</CollapsibleButton>
+    <CollapsibleBody>
+      {@render priceBreakdown()}
+    </CollapsibleBody>
   </Collapsible>
 </Story>

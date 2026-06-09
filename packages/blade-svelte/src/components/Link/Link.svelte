@@ -18,6 +18,8 @@
     rel?: string;
     accessibilityLabel?: string;
     'aria-describedby'?: string;
+    'aria-controls'?: string;
+    'aria-expanded'?: boolean;
     size?: 'xsmall' | 'small' | 'medium' | 'large';
     testID?: string;
     htmlTitle?: string;
@@ -63,6 +65,8 @@
     onMouseDown,
     onMouseUp,
     'aria-describedby': ariaDescribedBy,
+    'aria-controls': ariaControls,
+    'aria-expanded': ariaExpanded,
     ...rest
   }: LinkProps = $props();
 
@@ -80,6 +84,8 @@
     accessibilityProps: {
       label: accessibilityLabel,
       describedBy: ariaDescribedBy,
+      controls: ariaControls,
+      expanded: ariaExpanded,
     },
     onBlur,
     onFocus,

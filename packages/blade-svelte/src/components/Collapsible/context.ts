@@ -2,12 +2,14 @@ import { getContext, setContext } from 'svelte';
 
 const COLLAPSIBLE_CONTEXT_KEY = 'blade-collapsible-context';
 
+export type CollapsibleDirection = 'bottom' | 'top';
+
 export type CollapsibleContextState = {
   isExpanded: boolean;
-  toggle: () => void;
+  defaultIsExpanded: boolean;
+  onExpandChange: (isExpanded: boolean) => void;
+  direction: CollapsibleDirection;
   collapsibleBodyId: string;
-  isDisabled: boolean;
-  size: 'large' | 'medium';
 };
 
 export function setCollapsibleContext(getCtx: () => CollapsibleContextState): void {

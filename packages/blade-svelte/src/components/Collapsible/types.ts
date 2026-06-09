@@ -1,79 +1,83 @@
-import type { Component, Snippet } from 'svelte';
-import type { IconProps } from '../Icons/types';
+import type { Snippet } from 'svelte';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { ButtonProps } from '../Button/types';
+import type { CollapsibleDirection } from './context';
 
-/** A Svelte component that accepts IconProps — same shape as Button's icon prop. */
-export type IconComponent = Component<IconProps>;
+type CollapsibleLinkColor = 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
+type CollapsibleLinkSize = 'xsmall' | 'small' | 'medium' | 'large';
 
 export type CollapsibleProps = {
   /**
-   * Body content rendered inside the collapsible section.
+   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
    */
   children: Snippet;
 
   /**
-   * Opens the collapsible by default (uncontrolled).
+   * Direction in which the content expands
+   *
+   * @default 'bottom'
+   */
+  direction?: CollapsibleDirection;
+
+  /**
+   * Expands the collapsible content by default (uncontrolled)
+   *
    * @default false
    */
   defaultIsExpanded?: boolean;
 
   /**
-   * Controlled expanded state. Pass `true` to expand, `false` to collapse.
+   * Expands the collapsible content (controlled)
+   *
+   * @default undefined
    */
   isExpanded?: boolean;
 
   /**
-   * Callback fired when the expanded state changes.
+   * Callback for change in collapsible's expanded state
+   *
+   * @default undefined
    */
-  onExpandChange?: (isExpanded: boolean) => void;
-
-  /**
-   * Disables the trigger button so the panel cannot be toggled.
-   * @default false
-   */
-  isDisabled?: boolean;
-
-  /**
-   * Size variant — affects font size and spacing.
-   * @default 'large'
-   */
-  size?: 'large' | 'medium';
+  onExpandChange?: (args: { isExpanded: boolean }) => void;
 
   /**
    * Test ID for the root element.
    */
   testID?: string;
-};
-
-export type CollapsibleTriggerProps = {
-  /**
-   * Text label shown inside the trigger.
-   */
-  label?: string;
 
   /**
-   * Optional leading icon component (e.g. `InfoIcon` from Blade icons).
-   * The icon is rendered to the left of the label at a size appropriate
-   * to the `size` prop inherited from the parent `Collapsible`.
-   *
-   * **Design assumption:** icon is always leading (left); no trailing icon
-   * position is supported on the trigger — only on AccordionItemHeader.
+   * **Internal**: used to override responsive width restrictions
    */
-  icon?: IconComponent;
-
-  /**
-   * Custom trigger content. When provided, replaces the default
-   * `icon + label` layout. The chevron is always shown.
-   */
-  children?: Snippet;
-
-  /**
-   * Test ID for the trigger button.
-   */
-  testID?: string;
+  _shouldApplyWidthRestrictions?: boolean;
 
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
+} & StyledPropsBlade;
+
+export type CollapsibleButtonProps = Pick<
+  ButtonProps,
+  'variant' | 'size' | 'iconPosition' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'icon' | 'children'
+> & {
+  /** Analytics data attributes. */
+  [key: `data-analytics-${string}`]: string;
 };
+
+export type CollapsibleLinkProps = {
+  /** Link color */
+  color?: CollapsibleLinkColor;
+  /** Link size */
+  size?: CollapsibleLinkSize;
+  /** Whether the link is disabled */
+  isDisabled?: boolean;
+  /** Test ID for the link */
+  testID?: string;
+  /** Accessible label for the link */
+  accessibilityLabel?: string;
+  /** Link content */
+  children?: Snippet | string;
+  /** Analytics data attributes. */
+  [key: `data-analytics-${string}`]: string;
+} & StyledPropsBlade;
 
 export type CollapsibleBodyProps = {
   /**
@@ -82,9 +86,19 @@ export type CollapsibleBodyProps = {
   children: Snippet | string;
 
   /**
+   * Width of the collapsible body content.
+   */
+  width?: string;
+
+  /**
    * Test ID for the body element.
    */
   testID?: string;
+
+  /**
+   * **Internal**: Set to false to remove margin of CollapsibleBody
+   */
+  _hasMargin?: boolean;
 
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;

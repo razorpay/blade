@@ -1,6 +1,6 @@
 export {
-  getCollapsibleTriggerClasses,
   getCollapsibleChevronClasses,
+  getCollapsibleBodyClasses,
   getCollapsibleTemplateClasses,
 } from './collapsible';
-export type { CollapsibleTriggerVariants, CollapsibleChevronVariants } from './collapsible';
+export type { CollapsibleChevronVariants, CollapsibleBodyVariants } from './collapsible';

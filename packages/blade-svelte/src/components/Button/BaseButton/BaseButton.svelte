@@ -235,6 +235,7 @@
       disabled: isButtonDisabled,
       label: accessibilityProps?.label,
       describedBy: accessibilityProps?.describedBy,
+      controls: accessibilityProps?.controls,
       expanded: accessibilityProps?.expanded,
       hasPopup: accessibilityProps?.hasPopup,
     }),

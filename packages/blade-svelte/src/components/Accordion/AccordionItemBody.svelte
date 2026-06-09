@@ -8,22 +8,21 @@
   } from '@razorpay/blade-core/utils';
   import { getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
-  // AccordionItem now sets CollapsibleContext in addition to AccordionItemContext,
-  // so we can read shared state (isExpanded, collapsibleBodyId, size) from the
-  // Collapsible primitive — removing the tight coupling to accordion-specific contexts.
-  import { getCollapsibleContext } from '../Collapsible/context';
+  import { getAccordionContext, getAccordionItemContext } from './context';
   import type { AccordionItemBodyProps } from './types';
 
   const templateClasses = getAccordionTemplateClasses();
 
   let { children, ...rest }: AccordionItemBodyProps = $props();
 
-  const getCtx = getCollapsibleContext();
-  const ctx = $derived(getCtx!());
+  const getItemCtx = getAccordionItemContext();
+  const itemCtx = $derived(getItemCtx());
+  const getAccCtx = getAccordionContext();
+  const accordionCtx = $derived(getAccCtx());
 
-  const isExpanded = $derived(ctx.isExpanded);
-  const collapsibleBodyId = $derived(ctx.collapsibleBodyId);
-  const accordionSize = $derived(ctx.size);
+  const isExpanded = $derived(itemCtx.isExpanded);
+  const collapsibleBodyId = $derived(itemCtx.collapsibleBodyId);
+  const accordionSize = $derived(accordionCtx.size);
 
   const descriptionFontSize = $derived(accordionSize === 'large' ? 100 : 75);
   const descriptionLineHeight = $derived(accordionSize === 'large' ? 100 : 75);
