@@ -1,8 +1,17 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  content: { padding: 16 },
+});
 
 const StoryScrollView = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return <ScrollView>{children}</ScrollView>;
+  return (
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      {children}
+    </ScrollView>
+  );
 };
 
 export { StoryScrollView };

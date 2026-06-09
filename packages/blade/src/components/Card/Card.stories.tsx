@@ -313,6 +313,7 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
+    <StoryScrollView>
     <Box display="flex">
       <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
         <Card
@@ -383,6 +384,7 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
         </Box>
       </BladeProvider>
     </Box>
+    </StoryScrollView>
   );
 };
 
