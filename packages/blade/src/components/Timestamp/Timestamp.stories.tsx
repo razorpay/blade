@@ -105,11 +105,16 @@ export default {
         '`true` suppresses the tooltip, `false` forces it on, `undefined` (default) uses smart auto-detection: tooltip is shown when text is relative or `dateStyle="short"`.',
     },
     color: {
-      description: 'Overrides the text color. Uses Blade semantic color tokens.',
+      control: { type: 'text' },
+      description:
+        'Overrides the text color. Pass a Blade semantic color token, e.g. `"feedback.text.positive.intense"`. Leave unset to use the default gray.',
+      table: { category: 'Advanced' },
     },
     accessibilityLabel: {
       control: { type: 'text' },
-      description: 'Accessible label override. Defaults to the formatted text value.',
+      description:
+        'Custom label read out by screen readers. By default screen readers announce the formatted date text (e.g. "30 May 2026"). Override this when the context makes that ambiguous — for example, in a table row you might pass `"Payment created on 30 May 2026"` so the announcement includes the row\'s meaning.',
+      table: { category: 'Advanced' },
     },
     ...getStyledPropsArgTypes(),
   },
