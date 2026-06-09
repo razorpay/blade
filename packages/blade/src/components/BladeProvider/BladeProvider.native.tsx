@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useContext } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { PortalHost, PortalProvider } from '@gorhom/portal';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -16,10 +17,12 @@ const BladeProvider = ({
   colorScheme: initialColorScheme,
   children,
 }: BladeProviderProps): ReactElement => {
+  const existingTheme = useContext(ThemeContext);
+  const isNested = existingTheme.theme !== null;
   const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
 
   return (
-    <GestureHandlerRootView style={gestureHandlerStyle}>
+    <GestureHandlerRootView style={isNested ? undefined : gestureHandlerStyle}>
       <PortalProvider>
         <ThemeContext.Provider value={themeContextValue}>
           <StyledComponentThemeProvider theme={theme}>
