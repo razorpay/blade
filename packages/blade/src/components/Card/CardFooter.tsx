@@ -148,7 +148,7 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
       width={isMobile ? '100%' : undefined}
       {...makeAnalyticsAttribute(rest)}
     >
-      <BaseBox flex={1}>
+      <BaseBox flex={isMobile ? 1 : undefined} flexGrow={isMobile ? undefined : 1}>
         {actions?.secondary ? (
           <Button
             isFullWidth
@@ -161,7 +161,7 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
           </Button>
         ) : null}
       </BaseBox>
-      <BaseBox flex={1}>
+      <BaseBox flex={isMobile ? 1 : undefined} flexGrow={isMobile ? undefined : 1}>
         {actions?.primary ? (
           <Button
             isFullWidth

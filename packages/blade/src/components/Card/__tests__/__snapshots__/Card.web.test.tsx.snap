@@ -62,9 +62,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -1395,9 +1396,10 @@ exports[`<Card /> should support adding data-analytics attributes 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c15.c15.c15.c15.c15 {
