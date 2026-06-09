@@ -50,7 +50,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      control: { type: 'text' },
+      control: { type: 'date' },
       description:
         'The date/time value to display. Accepts a `Date` object, ISO 8601 string, or Unix timestamp in milliseconds.',
     },
@@ -64,7 +64,7 @@ export default {
       control: { type: 'select' },
       options: ['short', 'medium', 'long', 'full'],
       description:
-        'Verbosity of the date portion. Only applies when `format` is `"date"` or `"dateTime"`. `"short"` → "5/30/26", `"full"` → "Saturday, May 30, 2026".',
+        'Verbosity of the date portion. Only applies when `format` is `"date"` or `"dateTime"`.\n\n- `short` → "5/30/26"\n- `medium` → "May 30, 2026" *(default)*\n- `long` → "May 30, 2026" *(same as medium in most locales)*\n- `full` → "Saturday, May 30, 2026"',
     },
     hourCycle: {
       control: { type: 'select' },
@@ -126,7 +126,7 @@ const TimestampTemplate: StoryFn<typeof TimestampComponent> = (args) => (
 
 export const Default = TimestampTemplate.bind({});
 Default.args = {
-  value: REFERENCE_DATE,
+  value: REFERENCE_DATE.getTime(),
   format: 'dateTime',
   dateStyle: 'medium',
   precision: 'minute',
