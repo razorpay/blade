@@ -141,12 +141,14 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
     <BaseBox
       display="flex"
       flexDirection="row"
+      gap="spacing.5"
       alignSelf={isMobile ? 'auto' : 'center'}
       marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
       marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
+      width={isMobile ? '100%' : undefined}
       {...makeAnalyticsAttribute(rest)}
     >
-      <BaseBox flexGrow={1}>
+      <BaseBox flex={1}>
         {actions?.secondary ? (
           <Button
             isFullWidth
@@ -159,8 +161,7 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
           </Button>
         ) : null}
       </BaseBox>
-      <BaseBox marginLeft="spacing.5" />
-      <BaseBox flexGrow={1}>
+      <BaseBox flex={1}>
         {actions?.primary ? (
           <Button
             isFullWidth

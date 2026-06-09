@@ -199,15 +199,16 @@ const _CardHeaderLeading = ({
       display="flex"
       flexDirection="column"
       gap="spacing.4"
+      flexShrink={1}
     >
-      <BaseBox flex={1} display="flex" flexDirection="row">
+      <BaseBox display="flex" flexDirection="row">
         {prefix && (
           <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
             {prefix}
           </BaseBox>
         )}
 
-        <BaseBox marginRight="spacing.5">
+        <BaseBox marginRight="spacing.5" flexShrink={1}>
           <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
             <Text color="surface.text.gray.normal" size={size} weight="semibold">
               {title}
