@@ -278,10 +278,7 @@ const _Timestamp = (
   if (shouldShowTooltip) {
     return (
       <Tooltip content={tooltipLabel} placement="top">
-        {/* alignSelf="flex-start" prevents the wrapper from stretching to the full
-            width of a parent flex container, which would misplace the tooltip far
-            from the actual text. */}
-        <TooltipInteractiveWrapper alignSelf="flex-start">{inner}</TooltipInteractiveWrapper>
+        <TooltipInteractiveWrapper>{inner}</TooltipInteractiveWrapper>
       </Tooltip>
     );
   }
