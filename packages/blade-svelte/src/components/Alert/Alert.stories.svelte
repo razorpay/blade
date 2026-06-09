@@ -10,7 +10,7 @@
       onDismiss: { action: 'Dismissed' },
       color: {
         control: 'select',
-        options: ['information', 'negative', 'neutral', 'notice', 'positive'],
+        options: ['information', 'negative', 'neutral', 'notice', 'positive', 'primary'],
       },
       emphasis: {
         control: 'select',
@@ -152,6 +152,54 @@
     </div>
   </div>
 </Story>
+
+<!-- Story 10: Primary Subtle -->
+<Story
+  name="Primary"
+  args={{
+    color: 'primary',
+    emphasis: 'subtle',
+    title: 'New Feature Available',
+    description: 'A new dashboard experience is now available. Switch to the new layout to get started.',
+    actions: {
+      primary: {
+        text: 'Try it now',
+        onClick: () => {
+          console.log('Primary action clicked');
+        },
+      },
+      secondary: {
+        text: 'Learn more',
+        href: 'https://razorpay.com',
+        target: '_blank',
+      },
+    },
+  }}
+/>
+
+<!-- Story 11: Primary Intense -->
+<Story
+  name="Primary Intense"
+  args={{
+    color: 'primary',
+    emphasis: 'intense',
+    title: 'Action Required',
+    description: 'Please complete your KYC verification to continue accepting payments.',
+    actions: {
+      primary: {
+        text: 'Complete KYC',
+        onClick: () => {
+          console.log('Complete KYC clicked');
+        },
+      },
+      secondary: {
+        text: 'Learn more',
+        href: 'https://razorpay.com',
+        target: '_blank',
+      },
+    },
+  }}
+/>
 
 <!-- Story 9: Full Width One Action -->
 <Story name="Full Width One Action" asChild>

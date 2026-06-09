@@ -198,6 +198,10 @@ export {
   getAvatarWrapperClasses,
   avatarButtonStyles,
   getAvatarButtonClasses,
+  getAvatarGroupOverflowButtonClasses,
+  avatarGroupOverflowTextColorToken,
+  avatarGroupOverflowTextSizeMapping,
+  getAvatarGroupOverflowBodyTextSize,
   avatarGroupStyles,
   getAvatarGroupClasses,
   avatarIconSizeTokens,
@@ -208,7 +212,12 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './Avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './Avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './Avatar';
 export {
   breadcrumbNavClass,
   breadcrumbListClass,

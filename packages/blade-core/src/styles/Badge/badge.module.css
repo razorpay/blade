@@ -122,3 +122,20 @@
 .color-primary.emphasis-intense {
   background-color: var(--surface-background-primary-intense);
 }
+
+/* Checkout shape variants — scoped to checkout context
+ * subtle → pill (border-radius-max)
+ * intense + large → border-radius-small
+ * intense + xsmall/small/medium → border-radius-xsmall
+ */
+.shape-pill {
+  border-radius: var(--border-radius-max);
+}
+
+.shape-size-large {
+  border-radius: var(--border-radius-small);
+}
+
+.shape-size-default {
+  border-radius: var(--border-radius-xsmall);
+}

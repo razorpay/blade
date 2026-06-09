@@ -1,5 +1,53 @@
 # @razorpay/blade
 
+## 12.107.0
+
+### Minor Changes
+
+- 11f7f0141: feat(native): added phone number input component in native
+
+### Patch Changes
+
+- 5f5289683: fix(Menu): fix asymmetric top/bottom padding in menu overlay
+
+## 12.106.1
+
+### Patch Changes
+
+- e657a6a1f: fix(Tabs): center tab labels on React Native to match web
+
+  `TabItem.native`'s `StyledTabButton` was missing `justifyContent: 'center'`, so full-width tab items (`isFullWidthTabItem`) left-aligned their labels on React Native, while the web variant (`TabItem.web`) centers them. Added the missing property to restore web/native parity.
+
+## 12.106.0
+
+### Minor Changes
+
+- bcdbef2f8: Adds a new SankeyChart component for visualising flow and proportional
+  relationships between nodes. Built on Recharts' native Sankey component.
+  Supports Blade color tokens, hover interactions, tooltips, label chips,
+  responsive resize, and click callbacks.
+
+### Patch Changes
+
+- 4fc149e14: fix(native): added scroll in carousel component
+
+## 12.105.1
+
+### Patch Changes
+
+- f116b3cae: fix: externalize react-native-safe-area-context as peer dependency
+
+## 12.105.0
+
+### Minor Changes
+
+- 374cb0479: feat(native): Added BottomNav component in React Native
+- 7268d4bf2: feat(native): Added Skeleton Loader for React Native
+
+### Patch Changes
+
+- 0f9dc0876: fix(typography): apply TASA Orbiter Display optical size on web headings
+
 ## 12.104.2
 
 ### Patch Changes
