@@ -273,3 +273,15 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export {
+  getRadioIconWrapperClasses,
+  getRadioDotClasses,
+  getRadioTitleClasses,
+  getRadioHelpTextClasses,
+  getRadioGroupFieldClasses,
+  getRadioGroupLabelClasses,
+  getRadioGroupGapClass,
+  getRadioGroupRadiosClasses,
+  getRadioTemplateClasses,
+} from './Radio';
+export type { RadioSize, RadioOrientation, RadioLabelPosition } from './Radio';
