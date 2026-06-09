@@ -88,9 +88,7 @@ describe('<Timestamp /> (native)', () => {
   });
 
   it('should accept Unix timestamp (ms) as value', () => {
-    const { getByText } = renderWithTheme(
-      <Timestamp value={FIXED_DATE.getTime()} format="date" />,
-    );
+    const { getByText } = renderWithTheme(<Timestamp value={FIXED_DATE.getTime()} format="date" />);
     expect(getByText(/30 May 2026/)).toBeTruthy();
   });
 

@@ -148,7 +148,7 @@ export const RelativeFormat: StoryFn<typeof TimestampComponent> = () => (
     <Text weight="semibold">Relative Format (auto-updates, shows tooltip on hover)</Text>
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <Text size="small" color="surface.text.gray.muted">
-        precision="second" — &lt;1 min ago
+        precision=&quot;second&quot; — &lt;1 min ago
       </Text>
       <TimestampComponent
         value={new Date(REFERENCE_DATE.getTime() - 45 * 1000)}
@@ -158,13 +158,13 @@ export const RelativeFormat: StoryFn<typeof TimestampComponent> = () => (
     </BaseBox>
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <Text size="small" color="surface.text.gray.muted">
-        precision="minute" (default)
+        precision=&quot;minute&quot; (default)
       </Text>
       <TimestampComponent value={FIVE_MIN_AGO} format="relative" precision="minute" />
     </BaseBox>
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <Text size="small" color="surface.text.gray.muted">
-        precision="hour"
+        precision=&quot;hour&quot;
       </Text>
       <TimestampComponent
         value={new Date(REFERENCE_DATE.getTime() - 3 * 60 * 60 * 1000)}
@@ -174,7 +174,7 @@ export const RelativeFormat: StoryFn<typeof TimestampComponent> = () => (
     </BaseBox>
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <Text size="small" color="surface.text.gray.muted">
-        precision="day"
+        precision=&quot;day&quot;
       </Text>
       <TimestampComponent
         value={new Date(REFERENCE_DATE.getTime() - 3 * 24 * 60 * 60 * 1000)}
@@ -189,7 +189,7 @@ RelativeFormat.parameters = { controls: { disable: true } };
 
 export const DateStyles: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-    <Text weight="semibold">Date Styles (format="date")</Text>
+    <Text weight="semibold">Date Styles (format=&quot;date&quot;)</Text>
     {(['short', 'medium', 'long', 'full'] as const).map((dateStyle) => (
       <BaseBox key={dateStyle} display="flex" alignItems="center" gap="spacing.4">
         <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '140px' }}>
@@ -205,7 +205,7 @@ DateStyles.parameters = { controls: { disable: true } };
 
 export const TimePrecision: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-    <Text weight="semibold">Time Precision (format="time")</Text>
+    <Text weight="semibold">Time Precision (format=&quot;time&quot;)</Text>
     <BaseBox display="flex" alignItems="center" gap="spacing.4">
       <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
         precision=&quot;minute&quot; (default)
@@ -248,7 +248,7 @@ HourCycle.parameters = { controls: { disable: true } };
 export const TypographyScale: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.6">
     <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-      <Text weight="semibold">type="body" — table cells, inline text</Text>
+      <Text weight="semibold">type=&quot;body&quot; — table cells, inline text</Text>
       {(['xsmall', 'small', 'medium', 'large'] as const).map((size) => (
         <BaseBox key={size} display="flex" alignItems="center" gap="spacing.4">
           <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '60px' }}>
@@ -260,7 +260,7 @@ export const TypographyScale: StoryFn<typeof TimestampComponent> = () => (
     </BaseBox>
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-      <Text weight="semibold">type="heading" — section headers, drawer titles</Text>
+      <Text weight="semibold">type=&quot;heading&quot; — section headers, drawer titles</Text>
       {(['small', 'medium', 'large', 'xlarge', '2xlarge'] as const).map((size) => (
         <BaseBox key={size} display="flex" alignItems="center" gap="spacing.4">
           <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '60px' }}>
@@ -272,7 +272,9 @@ export const TypographyScale: StoryFn<typeof TimestampComponent> = () => (
     </BaseBox>
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-      <Text weight="semibold">type="display" — dashboard summary cards, hero numbers</Text>
+      <Text weight="semibold">
+        type=&quot;display&quot; — dashboard summary cards, hero numbers
+      </Text>
       {(['small', 'medium', 'large', 'xlarge'] as const).map((size) => (
         <BaseBox key={size} display="flex" alignItems="center" gap="spacing.4">
           <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '60px' }}>
@@ -295,7 +297,7 @@ export const TooltipControl: StoryFn<typeof TimestampComponent> = () => (
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.1">
       <Text size="small" color="surface.text.gray.muted">
-        Auto (default) — tooltip ON for relative and dateStyle="short"
+        Auto (default) — tooltip ON for relative and dateStyle=&quot;short&quot;
       </Text>
       <TimestampComponent value={FIVE_MIN_AGO} format="relative" />
     </BaseBox>

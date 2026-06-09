@@ -35,9 +35,7 @@ describe('<Timestamp />', () => {
   });
 
   it('should accept Unix timestamp (ms) as value', () => {
-    const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE.getTime()} format="date" />,
-    );
+    const { container } = renderWithTheme(<Timestamp value={FIXED_DATE.getTime()} format="date" />);
     expect(container.querySelector('time')).toBeTruthy();
     expect(container.textContent?.trim().length).toBeGreaterThan(0);
   });
@@ -97,7 +95,9 @@ describe('<Timestamp />', () => {
       <Timestamp value={FIXED_DATE} format="date" dateStyle="full" locale="en-US" />,
     );
     // "Saturday, May 30, 2026"
-    expect(container.textContent).toMatch(/Saturday|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday/);
+    expect(container.textContent).toMatch(
+      /Saturday|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday/,
+    );
   });
 
   it('should render all dateStyle options without throwing', () => {
@@ -112,7 +112,13 @@ describe('<Timestamp />', () => {
 
   it('should render precision="minute" — no seconds in time', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" precision="minute" hourCycle="12h" locale="en-US" />,
+      <Timestamp
+        value={FIXED_DATE}
+        format="time"
+        precision="minute"
+        hourCycle="12h"
+        locale="en-US"
+      />,
     );
     // "1:08 PM" — only hours and minutes
     expect(container.textContent).toMatch(/\d:\d{2}\s*(AM|PM)/i);
@@ -121,7 +127,13 @@ describe('<Timestamp />', () => {
 
   it('should render precision="second" — includes seconds in time', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" precision="second" hourCycle="12h" locale="en-US" />,
+      <Timestamp
+        value={FIXED_DATE}
+        format="time"
+        precision="second"
+        hourCycle="12h"
+        locale="en-US"
+      />,
     );
     // "1:08:32 PM"
     expect(container.textContent).toMatch(/\d:\d{2}:\d{2}/);
@@ -196,9 +208,7 @@ describe('<Timestamp />', () => {
 
   it('should render all text weights without throwing', () => {
     (['regular', 'medium', 'semibold'] as const).forEach((weight) => {
-      expect(() =>
-        renderWithTheme(<Timestamp value={FIXED_DATE} weight={weight} />),
-      ).not.toThrow();
+      expect(() => renderWithTheme(<Timestamp value={FIXED_DATE} weight={weight} />)).not.toThrow();
     });
   });
 
@@ -206,9 +216,7 @@ describe('<Timestamp />', () => {
 
   it('should render with custom color without throwing', () => {
     expect(() =>
-      renderWithTheme(
-        <Timestamp value={FIXED_DATE} color="feedback.text.positive.intense" />,
-      ),
+      renderWithTheme(<Timestamp value={FIXED_DATE} color="feedback.text.positive.intense" />),
     ).not.toThrow();
   });
 

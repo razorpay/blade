@@ -104,12 +104,11 @@ const displaySizes: NonNullable<TimestampDisplayProps['size']>[] = [
   'xlarge',
 ];
 
-export {
-  timestampFontSizes,
-  timestampLineHeights,
-  bodySizes,
-  headingSizes,
-  displaySizes,
-};
+export { timestampFontSizes, timestampLineHeights, bodySizes, headingSizes, displaySizes };
 
-export type { TimestampBodyProps, TimestampHeadingProps, TimestampDisplayProps, TimestampTypeProps };
+export type {
+  TimestampBodyProps,
+  TimestampHeadingProps,
+  TimestampDisplayProps,
+  TimestampTypeProps,
+};

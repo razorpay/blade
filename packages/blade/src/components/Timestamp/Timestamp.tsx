@@ -187,34 +187,43 @@ const _Timestamp = (
     }
   }
 
-  // In production, return nothing rather than rendering "Invalid Date" in the UI.
-  if (isNaN(date.getTime())) {
-    return null;
-  }
+  // Hooks must be called unconditionally — before any early returns.
+  // They are safe to call even for invalid dates; we gate the render below.
 
   // Tick counter to force re-render for live relative timestamps.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [tick, setTick] = React.useState(0);
 
   // Auto-update relative timestamps on an adaptive interval.
   // Reschedules after each tick using the updated age of the timestamp.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
-    if (format !== 'relative') return undefined;
+    if (format !== 'relative' || isNaN(date.getTime())) return undefined;
     const id = setTimeout(() => setTick((t) => t + 1), getRelativeUpdateInterval(date));
     return () => clearTimeout(id);
   }, [format, date, tick]);
 
   // Memoize formatted output — Intl constructors are expensive.
-  // `tick` is intentionally included so relative timestamps recompute on each update.
+  // `tick` is intentionally included: when the timer fires and increments tick,
+  // Date.now() inside formatTimestamp will have advanced, so the relative label
+  // must recompute even though none of the other deps changed.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const formattedText = React.useMemo(
-    () => formatTimestamp({ date, format, dateStyle, hourCycle, precision, locale }),
+    () =>
+      isNaN(date.getTime())
+        ? ''
+        : formatTimestamp({ date, format, dateStyle, hourCycle, precision, locale }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [date, format, dateStyle, hourCycle, precision, locale, tick],
   );
 
-  const tooltipLabel = React.useMemo(() => getFullAbsoluteLabel(date, locale), [date, locale]);
+  const tooltipLabel = React.useMemo(
+    () => (isNaN(date.getTime()) ? '' : getFullAbsoluteLabel(date, locale)),
+    [date, locale],
+  );
+
+  // In production, return nothing rather than rendering "Invalid Date" in the UI.
+  if (isNaN(date.getTime())) {
+    return null;
+  }
 
   const a11yLabel = accessibilityLabel ?? formattedText;
 
