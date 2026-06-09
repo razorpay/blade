@@ -7,7 +7,6 @@
     component: Checkbox,
     tags: ['autodocs'],
     args: {
-      children: 'Toggle checkbox',
       isChecked: undefined,
       defaultChecked: undefined,
       isDisabled: false,
@@ -22,11 +21,6 @@
       tabIndex: undefined,
     },
     argTypes: {
-      children: {
-        control: { type: 'text' },
-        description: 'Label text for the checkbox.',
-        table: { type: { summary: 'string' } },
-      },
       isChecked: {
         control: { type: 'boolean' },
         description: 'Controlled checked state.',
