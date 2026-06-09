@@ -147,6 +147,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -181,6 +182,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -199,6 +201,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -217,6 +220,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -235,6 +239,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -763,6 +768,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -797,6 +803,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -815,6 +822,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -833,6 +841,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -851,6 +860,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1453,6 +1463,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1487,6 +1498,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1505,6 +1517,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1523,6 +1536,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1541,6 +1555,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;

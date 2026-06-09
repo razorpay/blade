@@ -1,6 +1,7 @@
 ---
 name: write-api-decision
 description: This rule helps in writing API decisions for new components of blade design system
+disable-model-invocation: true
 ---
 
 You work in the Design System team of Razorpay. Design System requires giving good amount of thought in how to expose certain components. You as a team member of design system team, go through existing API decisions from `packages/blade/src/components/*/decision/decisions.md` to understand the format and common props that we support, and create a new API bases on that. Especially the decisions which might be similar to the API you're writing at this point.
@@ -48,32 +49,33 @@ import { Component, SubComponent } from '@razorpay/blade/components';
 
 <Component prop="value">
   <SubComponent title="Example" />
-</Component>
+</Component>;
 ```
 
 <details>
   <summary>Alternate APIs (if needed. avoid creating unnecessary and far fetched alternate APIs. Skip this section if main API is obvious)</summary>
 
-  ### Alternate API 1
+### Alternate API 1
 
-  ```jsx
-  ```
+```jsx
 
-  - Pros
-    - ...list down pros of this API
-  - Cons
-    -...list down cons of this API
+```
 
+- Pros
+  - ...list down pros of this API
+- Cons
+  -...list down cons of this API
 
-  ### Alternate API 2 (Optional)
-  
-  ```jsx
-  ```
+### Alternate API 2 (Optional)
 
-  - Pros
-    - ...list down pros of this API
-  - Cons
-    -...list down cons of this API
+```jsx
+
+```
+
+- Pros
+  - ...list down pros of this API
+- Cons
+  -...list down cons of this API
 
 </details>
 
@@ -84,24 +86,24 @@ import { Component, SubComponent } from '@razorpay/blade/components';
 ```typescript
 type ComponentNameProps = {
   /**
-  * jsdoc for propName
-  */
+   * jsdoc for propName
+   */
   propName: 'option1' | 'option2';
 
   /**
-  * jsdoc for optionalProp
-  * @default -
-  */
+   * jsdoc for optionalProp
+   * @default -
+   */
   optionalProp?: string;
 
   /**
-  * jsdoc for children
-  */
+   * jsdoc for children
+   */
   children: React.ReactNode;
 
   /**
-  * jsdoc for onAction
-  */
+   * jsdoc for onAction
+   */
   onAction?: (value: string) => void;
 };
 ```
@@ -111,20 +113,20 @@ type ComponentNameProps = {
 ```typescript
 type SubComponentProps = {
   /**
-  * jsdoc for title
-  */
+   * jsdoc for title
+   */
   title: string;
 
   /**
-  * jsdoc for variant
-  * @default medium
-  */
+   * jsdoc for variant
+   * @default medium
+   */
   variant?: 'small' | 'medium' | 'large';
 
   /**
-  * jsdoc for isActive
-  * @default -
-  */
+   * jsdoc for isActive
+   * @default -
+   */
   isActive?: boolean;
 };
 ```
@@ -172,14 +174,14 @@ type SubComponentProps = {
 - List alternative approaches considered
 - Note future considerations or potential changes
 
---------------------------
-
+---
 
 ## Writing Guidelines
 
 1. **Follow Existing Patterns**: Study the referenced decisions.md files to maintain consistency with established naming conventions and prop patterns used in Blade.
 
 2. **Props Section Requirements**:
+
    - Use TypeScript type definitions, not prop tables
    - Group props by component (main component first, then sub-components)
    - Use union types for enums (`'small' | 'medium' | 'large'`)
@@ -187,18 +189,21 @@ type SubComponentProps = {
    - Use consistent naming patterns from existing components
 
 3. **API Section Requirements**:
+
    - Show the overall structure first
    - Include realistic imports
    - Use actual component names and realistic props
    - Show parent-child relationships clearly
 
 4. **Examples Section Requirements**:
+
    - Start with basic usage
    - Progress to more complex scenarios
    - Include real use cases from the design system
    - Show different prop combinations
 
 5. **Common Prop Naming Patterns** (from existing components):
+
    - `variant` for visual variations
    - `size` for sizing options (`'small' | 'medium' | 'large'`)
    - `isActive`, `isDisabled`, `isOpen` for boolean states

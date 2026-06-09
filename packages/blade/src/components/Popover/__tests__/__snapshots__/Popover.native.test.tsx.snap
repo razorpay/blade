@@ -563,6 +563,22 @@ exports[`<Popover /> should render 1`] = `
                 }
                 stroke={null}
               />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
             </RNSVGGroup>
           </RNSVGSvgView>
         </View>
@@ -1118,6 +1134,22 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                   }
                 }
                 strokeWidth="2px"
+              />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
@@ -1873,6 +1905,22 @@ exports[`<Popover /> should render with title,footer 1`] = `
                   }
                 }
                 strokeWidth="2px"
+              />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"

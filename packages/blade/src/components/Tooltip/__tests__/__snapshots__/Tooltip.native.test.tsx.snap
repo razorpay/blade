@@ -237,6 +237,7 @@ exports[`<Tooltip /> should render 1`] = `
         flexDirection="column"
         gap="spacing.2"
         maxWidth="200px"
+        onLayout={[Function]}
         position="absolute"
         style={
           [
@@ -371,21 +372,19 @@ exports[`<Tooltip /> should render 1`] = `
             >
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                fill={null}
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
                 propList={
                   [
                     "fill",
                     "stroke",
-                    "strokeWidth",
                   ]
                 }
-                stroke={
-                  {
-                    "payload": 4281810499,
-                    "type": 0,
-                  }
-                }
-                strokeWidth="2px"
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
@@ -649,6 +648,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         flexDirection="column"
         gap="spacing.2"
         maxWidth="200px"
+        onLayout={[Function]}
         position="absolute"
         style={
           [
@@ -783,21 +783,19 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             >
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                fill={null}
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
                 propList={
                   [
                     "fill",
                     "stroke",
-                    "strokeWidth",
                   ]
                 }
-                stroke={
-                  {
-                    "payload": 4281810499,
-                    "type": 0,
-                  }
-                }
-                strokeWidth="2px"
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
@@ -1061,6 +1059,7 @@ exports[`<Tooltip /> should render with title 1`] = `
         flexDirection="column"
         gap="spacing.2"
         maxWidth="200px"
+        onLayout={[Function]}
         position="absolute"
         style={
           [
@@ -1229,21 +1228,19 @@ exports[`<Tooltip /> should render with title 1`] = `
             >
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                fill={null}
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
                 propList={
                   [
                     "fill",
                     "stroke",
-                    "strokeWidth",
                   ]
                 }
-                stroke={
-                  {
-                    "payload": 4281810499,
-                    "type": 0,
-                  }
-                }
-                strokeWidth="2px"
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H14 L7,8 Q7,8 7,8 Z"
