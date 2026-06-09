@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte';
-import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type RadioSize = 'small' | 'medium' | 'large';
 export type RadioValidationState = 'error' | 'none';
