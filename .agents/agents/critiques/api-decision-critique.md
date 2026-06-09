@@ -1,6 +1,6 @@
 ---
 name: api-decision-critique
-description: Reviews component API decisions in a PR for design system consistency. Spawned by review-pr skill.
+description: Reviews component API decisions in a PR for design system consistency. Spawned by code-review skill.
 color: purple
 ---
 

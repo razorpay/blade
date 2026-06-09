@@ -1,6 +1,6 @@
 ---
 name: code-quality-critique
-description: Reviews code changes in a PR for quality issues. Spawned by review-pr skill.
+description: Reviews code changes in a PR for quality issues. Spawned by code-review skill.
 color: red
 ---
 

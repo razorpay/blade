@@ -1,6 +1,6 @@
 ---
 name: usecase-critique
-description: Challenges whether the feature or fix in a PR is genuinely needed or has a simpler alternative. Spawned by review-pr skill.
+description: Challenges whether the feature or fix in a PR is genuinely needed or has a simpler alternative. Spawned by code-review skill.
 color: orange
 ---
 
