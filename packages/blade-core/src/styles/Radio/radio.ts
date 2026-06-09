@@ -22,7 +22,6 @@ export function getRadioIconSizeClass(size: RadioSize): string {
 export function getRadioIconWrapperClasses({
   size,
   isChecked,
-  isDisabled,
   isNegative,
 }: {
   size: RadioSize;
