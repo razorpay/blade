@@ -63,7 +63,7 @@ for (const pr of prs) {
     const user = c.user.login;
     if (BOT_COMMENTERS.has(user)) continue;
     totalComments++;
-    if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", ""))) {
+    if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", "").replace("[bot]", ""))) {
       agentComments++;
     }
     if (c.body.toLowerCase().includes("resolved by agent")) {
