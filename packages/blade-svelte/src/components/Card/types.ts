@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { CardStyleOverrides } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -133,6 +134,16 @@ export type CardProps = {
    * @default 'none'
    */
   validationState?: 'none' | 'error' | 'success';
+  /**
+   * **Instance-level styling — Option B, composite "parts".**
+   * Bounded, typed per-instance overrides addressed by *named part*. The `surface`
+   * part targets the `.cardSurface` child (background gradient + box-shadow border
+   * seams). Unset parts render pixel-identical. See instance-level-styling-proposal §4.5.
+   *
+   * @example
+   * <Card styleOverrides={{ surface: { backgroundColor: '#fff', borderColor: '#1a59ff' } }} />
+   */
+  styleOverrides?: CardStyleOverrides;
   /**
    * Test ID for testing
    */

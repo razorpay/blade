@@ -21,3 +21,9 @@ export {
   getButtonSpinnerSize,
 } from './button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ActionStatesType } from './button';
+export {
+  resolveButtonOverrides,
+  styleObjectToString,
+  BUTTON_OVERRIDE_VARS,
+} from './buttonOverrides';
+export type { ButtonStyleOverrides } from './buttonOverrides';
