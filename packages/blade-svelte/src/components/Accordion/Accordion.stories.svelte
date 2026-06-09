@@ -570,10 +570,10 @@
             {#snippet titleSuffix()}
               <AvatarGroup size="xsmall" maxCount={3}>
                 {#snippet children()}
-                  <Avatar name="Anurag Hazra" />
-                  <Avatar name="Saransh Chopra" />
-                  <Avatar name="Kamlesh Chandnani" />
-                  <Avatar name="Saurav Gupta" />
+                  <Avatar name="Anurag Hazra" src="https://avatars.githubusercontent.com/u/12962469?v=4" />
+                  <Avatar name="Saransh Chopra" src="https://avatars.githubusercontent.com/u/41524992?v=4" />
+                  <Avatar name="Kamlesh Chandnani" src="https://avatars.githubusercontent.com/u/4329423?v=4" />
+                  <Avatar name="Saurav Gupta" src="https://avatars.githubusercontent.com/u/35374649?v=4" />
                 {/snippet}
               </AvatarGroup>
             {/snippet}
@@ -590,9 +590,9 @@
             {#snippet titleSuffix()}
               <AvatarGroup size="xsmall" maxCount={2}>
                 {#snippet children()}
-                  <Avatar name="Alice Johnson" />
-                  <Avatar name="Bob Smith" />
-                  <Avatar name="Charlie Brown" />
+                  <Avatar name="Alice Johnson" src="https://avatars.githubusercontent.com/u/46647141?v=4" />
+                  <Avatar name="Bob Smith" src="https://avatars.githubusercontent.com/u/6682655?v=4" />
+                  <Avatar name="Charlie Brown" src="https://avatars.githubusercontent.com/u/11075561?v=4" />
                 {/snippet}
               </AvatarGroup>
             {/snippet}

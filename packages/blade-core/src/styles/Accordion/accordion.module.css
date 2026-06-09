@@ -253,9 +253,30 @@
   margin-right: var(--spacing-5);
 }
 
-/* Gray body background — for checkout/surface-gray contexts */
-.bodyGray {
+/*
+ * Gray body background — for checkout/surface-gray contexts.
+ *
+ * The gray surface must fill the *entire* body pane edge-to-edge (matching
+ * design), so the background lives on the full-width collapsible wrapper.
+ * The inner `.body` then uses padding instead of margins so its spacing sits
+ * *inside* the gray surface rather than leaving a white frame around it.
+ */
+.collapsibleContentGray {
   background-color: var(--surface-background-gray-subtle);
+}
+
+/* Last item's gray body follows the filled card's rounded bottom corners. */
+.collapsibleContentGrayLast {
+  border-bottom-left-radius: var(--border-radius-medium);
+  border-bottom-right-radius: var(--border-radius-medium);
+}
+
+.bodyGray {
+  margin: var(--spacing-0);
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-5);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
 }
 
 /* Responsive width defaults */

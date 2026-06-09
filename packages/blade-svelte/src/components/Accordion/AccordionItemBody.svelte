@@ -26,8 +26,25 @@
   const accordionSize = $derived(accordionCtx.size);
   const bodyBackground = $derived(accordionCtx.bodyBackground);
 
+  const isGrayBody = $derived(bodyBackground === 'gray');
+  // When the gray body belongs to the last item, round its bottom corners so the
+  // edge-to-edge gray surface follows the filled card's rounded bottom.
+  const isLastItem = $derived(
+    typeof itemCtx.index === 'number' && itemCtx.index === accordionCtx.numberOfItems - 1,
+  );
+
+  const collapsibleContentClass = $derived(
+    [
+      templateClasses.collapsibleContent,
+      isGrayBody ? templateClasses.collapsibleContentGray : '',
+      isGrayBody && isLastItem ? templateClasses.collapsibleContentGrayLast : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+
   const bodyClass = $derived(
-    [templateClasses.body, bodyBackground === 'gray' ? templateClasses.bodyGray : '']
+    [templateClasses.body, isGrayBody ? templateClasses.bodyGray : '']
       .filter(Boolean)
       .join(' '),
   );
@@ -114,7 +131,7 @@
 <div
   bind:this={bodyRef}
   id={collapsibleBodyId}
-  class={templateClasses.collapsibleContent}
+  class={collapsibleContentClass}
   ontransitionend={onTransitionEnd}
   {...bodyA11y}
   {...metaAttrs}
