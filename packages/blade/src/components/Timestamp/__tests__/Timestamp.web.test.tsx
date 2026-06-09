@@ -84,12 +84,51 @@ describe('<Timestamp />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render all text sizes', () => {
+  it('should render all body sizes', () => {
     const sizes = ['xsmall', 'small', 'medium', 'large'] as const;
     sizes.forEach((size) => {
-      const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} size={size} />);
+      const { container } = renderWithTheme(
+        <Timestamp value={FIXED_DATE} type="body" size={size} />,
+      );
       expect(container).toMatchSnapshot();
     });
+  });
+
+  it('should render all heading sizes', () => {
+    const sizes = ['small', 'medium', 'large', 'xlarge', '2xlarge'] as const;
+    sizes.forEach((size) => {
+      const { container } = renderWithTheme(
+        <Timestamp value={FIXED_DATE} type="heading" size={size} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  it('should render all display sizes', () => {
+    const sizes = ['small', 'medium', 'large', 'xlarge'] as const;
+    sizes.forEach((size) => {
+      const { container } = renderWithTheme(
+        <Timestamp value={FIXED_DATE} type="display" size={size} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  it('should throw __DEV__ error for invalid type × size combinations', () => {
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="body" size="2xlarge" />);
+    }).toThrow('[Blade: Timestamp]');
+
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="heading" size="xsmall" />);
+    }).toThrow('[Blade: Timestamp]');
+
+    expect(() => {
+      // @ts-expect-error intentionally invalid
+      renderWithTheme(<Timestamp value={FIXED_DATE} type="display" size="2xlarge" />);
+    }).toThrow('[Blade: Timestamp]');
   });
 
   it('should render all text weights', () => {

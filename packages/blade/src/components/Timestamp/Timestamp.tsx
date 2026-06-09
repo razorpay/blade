@@ -2,8 +2,16 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import { toDate, formatTimestamp, getFullAbsoluteLabel, getRelativeUpdateInterval } from './utils';
 import type { TimestampFormat, TimestampDateStyle, TimestampPrecision } from './utils';
+import {
+  timestampFontSizes,
+  timestampLineHeights,
+  bodySizes,
+  headingSizes,
+  displaySizes,
+} from './timestampTokens';
+import type { TimestampTypeProps } from './timestampTokens';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
-import { Text } from '~components/Typography';
+import { BaseText } from '~components/Typography/BaseText';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -16,10 +24,11 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { throwBladeError } from '~utils/logger';
 import { isReactNative } from '~utils';
 
-export type TimestampProps = {
+type TimestampCommonProps = {
   /**
    * The date/time value to display.
    * Accepts a `Date` object, ISO 8601 string, or Unix timestamp in milliseconds.
+   * An invalid value throws in __DEV__ and renders nothing in production.
    */
   value: Date | string | number;
 
@@ -62,7 +71,7 @@ export type TimestampProps = {
    * - `"hour"`   — relative only: "3 hours ago"
    * - `"day"`    — relative only: "2 days ago"
    *
-   * Note: `"hour"` and `"day"` have no effect on absolute formats (`"time"`, `"dateTime"`).
+   * Note: `"hour"` and `"day"` throw in __DEV__ when used with absolute formats.
    *
    * @default "minute"
    */
@@ -70,6 +79,8 @@ export type TimestampProps = {
 
   /**
    * BCP 47 locale string. Controls language and regional number/date ordering.
+   * Defaults to `"en-IN"` (Razorpay product standard).
+   * Override for cross-border surfaces: `"en-MY"`, `"en-SG"`, `"en-US"`.
    *
    * @default "en-IN"
    */
@@ -78,7 +89,7 @@ export type TimestampProps = {
   /**
    * Override the automatic tooltip behaviour.
    *
-   * By default, a tooltip showing the full absolute datetime is shown when the
+   * By default a tooltip showing the full absolute datetime is shown when
    * visible text is compact or relative (`format="relative"` or `dateStyle="short"`).
    * Pass `true` to suppress it, `false` to force it on.
    * Leave unset to use smart defaults (recommended).
@@ -95,26 +106,14 @@ export type TimestampProps = {
   color?: BaseTextProps['color'];
 
   /**
-   * Controls the text size. Follows Blade body text sizing.
-   *
-   * @default "medium"
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-
-  /**
-   * Controls the font weight.
-   *
-   * @default "regular"
-   */
-  weight?: 'regular' | 'medium' | 'semibold';
-
-  /**
    * Accessible label override. Defaults to the formatted text value.
    */
   accessibilityLabel?: string;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
+
+export type TimestampProps = TimestampTypeProps & TimestampCommonProps;
 
 const _Timestamp = (
   {
@@ -126,6 +125,7 @@ const _Timestamp = (
     locale = 'en-IN',
     noTooltip,
     color,
+    type = 'body',
     size = 'medium',
     weight = 'regular',
     accessibilityLabel,
@@ -143,6 +143,26 @@ const _Timestamp = (
         message: `"${String(
           value,
         )}" is not a valid date. Pass a Date object, ISO string, or Unix timestamp in milliseconds.`,
+        moduleName: 'Timestamp',
+      });
+    }
+
+    // Validate type × size combinations (mirrors Amount's validation pattern)
+    if (type === 'body' && !bodySizes.includes(size as never)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="body". Valid sizes: ${bodySizes.join(', ')}.`,
+        moduleName: 'Timestamp',
+      });
+    }
+    if (type === 'heading' && !headingSizes.includes(size as never)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="heading". Valid sizes: ${headingSizes.join(', ')}.`,
+        moduleName: 'Timestamp',
+      });
+    }
+    if (type === 'display' && !displaySizes.includes(size as never)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="display". Valid sizes: ${displaySizes.join(', ')}.`,
         moduleName: 'Timestamp',
       });
     }
@@ -197,10 +217,25 @@ const _Timestamp = (
   const autoTooltip = format === 'relative' || (format !== 'time' && dateStyle === 'short');
   const shouldShowTooltip = noTooltip === undefined ? autoTooltip : !noTooltip;
 
+  // Resolve typography tokens from the type × size 2D map (same as Amount)
+  const resolvedType = (type ?? 'body') as 'body' | 'heading' | 'display';
+  const resolvedSize = (size ?? 'medium') as string;
+  const fontSize = timestampFontSizes[resolvedType][resolvedSize];
+  const lineHeight = timestampLineHeights[resolvedType][resolvedSize];
+  // heading/display use the heading font family (matches Amount convention)
+  const fontFamily = resolvedType === 'body' ? ('text' as const) : ('heading' as const);
+
   const textNode = (
-    <Text as="span" variant="body" size={size} weight={weight} color={color}>
+    <BaseText
+      as={isReactNative() ? undefined : 'span'}
+      fontSize={fontSize}
+      fontWeight={weight}
+      lineHeight={lineHeight}
+      fontFamily={fontFamily}
+      color={color}
+    >
       {formattedText}
-    </Text>
+    </BaseText>
   );
 
   const inner = (
@@ -242,4 +277,5 @@ const Timestamp = assignWithoutSideEffects(React.forwardRef(_Timestamp), {
 });
 
 export type { TimestampFormat, TimestampDateStyle, TimestampPrecision };
+export type { TimestampBodyProps, TimestampHeadingProps, TimestampDisplayProps } from './timestampTokens';
 export { Timestamp };

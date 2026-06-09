@@ -4,4 +4,7 @@ export type {
   TimestampFormat,
   TimestampDateStyle,
   TimestampPrecision,
+  TimestampBodyProps,
+  TimestampHeadingProps,
+  TimestampDisplayProps,
 } from './Timestamp';

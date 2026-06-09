@@ -34,8 +34,32 @@ import { Timestamp } from '@razorpay/blade/components';
 
 #### Timestamp
 
+The `type` and `size` props form a discriminated union (mirrors the `Amount` component pattern). Each `type` value unlocks its own valid `size` range — mixing an invalid combination throws in `__DEV__`.
+
 ```typescript
-type TimestampProps = {
+// Discriminated union — each type has its own valid size set
+type TimestampBodyProps = {
+  type?: 'body';
+  /** Valid: xsmall | small | medium | large */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  weight?: 'regular' | 'medium' | 'semibold';
+};
+
+type TimestampHeadingProps = {
+  type?: 'heading';
+  /** Valid: small | medium | large | xlarge | 2xlarge */
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  weight?: 'regular' | 'semibold';
+};
+
+type TimestampDisplayProps = {
+  type?: 'display';
+  /** Valid: small | medium | large | xlarge */
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  weight?: 'regular' | 'medium' | 'semibold';
+};
+
+type TimestampProps = (TimestampBodyProps | TimestampHeadingProps | TimestampDisplayProps) & {
   /**
    * The date/time value to display.
    * Accepts a Date object, ISO 8601 string, or Unix timestamp in milliseconds.
@@ -118,18 +142,6 @@ type TimestampProps = {
    * @default "surface.text.gray.normal"
    */
   color?: BaseTextProps['color'];
-
-  /**
-   * Controls the text size. Follows Blade body text sizing.
-   * @default "medium"
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-
-  /**
-   * Controls the font weight.
-   * @default "regular"
-   */
-  weight?: 'regular' | 'medium' | 'semibold';
 
   /**
    * Accessible label for the timestamp. Defaults to the formatted text.
