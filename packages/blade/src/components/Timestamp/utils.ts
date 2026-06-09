@@ -44,11 +44,17 @@ const getRelativeUnit = (
   return { value: Math.round(diffMs / DAY_MS), unit: 'day' };
 };
 
+// Maps the explicit `precision` prop to the Intl.DateTimeFormat timeStyle.
+// 'minute' → 'short'  (e.g. "1:08 PM")
+// 'second' → 'medium' (e.g. "1:08:32 PM")
+const precisionToTimeStyle = (
+  precision: NonNullable<TimestampProps['precision']>,
+): 'short' | 'medium' => (precision === 'second' ? 'medium' : 'short');
+
 type FormatTimestampOptions = {
   date: Date;
   format: NonNullable<TimestampProps['format']>;
   dateStyle: NonNullable<TimestampProps['dateStyle']>;
-  timeStyle: NonNullable<TimestampProps['timeStyle']>;
   hourCycle: TimestampProps['hourCycle'];
   precision: NonNullable<TimestampProps['precision']>;
 };
@@ -61,7 +67,6 @@ export const formatTimestamp = ({
   date,
   format,
   dateStyle,
-  timeStyle,
   hourCycle,
   precision,
 }: FormatTimestampOptions): string => {
@@ -81,8 +86,16 @@ export const formatTimestamp = ({
   }
 
   if (format === 'time' || format === 'dateTime') {
-    options.timeStyle = timeStyle;
+    options.timeStyle = precisionToTimeStyle(precision);
   }
 
   return new Intl.DateTimeFormat(undefined, options).format(date);
 };
+
+/**
+ * Returns the full absolute datetime string used as tooltip content.
+ * Always shows the complete picture regardless of what the visible text shows.
+ * e.g. "Saturday, May 30, 2026, 1:08 PM"
+ */
+export const getFullAbsoluteLabel = (date: Date): string =>
+  new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' }).format(date);

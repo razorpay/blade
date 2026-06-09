@@ -65,7 +65,7 @@ Default.args = {
   value: REFERENCE_DATE,
   format: 'dateTime',
   dateStyle: 'medium',
-  timeStyle: 'short',
+  precision: 'minute',
 };
 Default.storyName = 'Default';
 
@@ -127,20 +127,24 @@ export const DateStyles: StoryFn<typeof TimestampComponent> = () => (
 );
 DateStyles.storyName = 'Date Styles';
 
-export const TimeStyles: StoryFn<typeof TimestampComponent> = () => (
+export const TimePrecision: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.4">
-    <Text weight="semibold">Time Styles (format="time")</Text>
-    {(['short', 'medium', 'long', 'full'] as const).map((timeStyle) => (
-      <BaseBox key={timeStyle} display="flex" flexDirection="column" gap="spacing.1">
-        <Text size="small" color="surface.text.gray.muted">
-          timeStyle="{timeStyle}"
-        </Text>
-        <TimestampComponent value={REFERENCE_DATE} format="time" timeStyle={timeStyle} />
-      </BaseBox>
-    ))}
+    <Text weight="semibold">Time Precision (format="time")</Text>
+    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
+      <Text size="small" color="surface.text.gray.muted">
+        precision="minute" (default) — "1:08 PM"
+      </Text>
+      <TimestampComponent value={REFERENCE_DATE} format="time" precision="minute" />
+    </BaseBox>
+    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
+      <Text size="small" color="surface.text.gray.muted">
+        precision="second" — "1:08:32 PM"
+      </Text>
+      <TimestampComponent value={REFERENCE_DATE} format="time" precision="second" />
+    </BaseBox>
   </BaseBox>
 );
-TimeStyles.storyName = 'Time Styles';
+TimePrecision.storyName = 'Time Precision';
 
 export const HourCycle: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.4">
@@ -212,7 +216,7 @@ export const DashboardUseCases: StoryFn<typeof TimestampComponent> = () => (
         value={REFERENCE_DATE}
         format="dateTime"
         dateStyle="short"
-        timeStyle="medium"
+        precision="second"
         hourCycle="24h"
       />
     </BaseBox>

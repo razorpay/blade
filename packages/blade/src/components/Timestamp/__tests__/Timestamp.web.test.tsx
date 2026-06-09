@@ -55,14 +55,18 @@ describe('<Timestamp />', () => {
     });
   });
 
-  it('should render all timeStyle options', () => {
-    const styles = ['short', 'medium', 'long', 'full'] as const;
-    styles.forEach((timeStyle) => {
-      const { container } = renderWithTheme(
-        <Timestamp value={FIXED_DATE} format="time" timeStyle={timeStyle} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
+  it('should render precision="minute" (default)', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" precision="minute" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render precision="second"', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="time" precision="second" />,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with hourCycle="12h"', () => {
@@ -127,7 +131,6 @@ describe('formatTimestamp utility', () => {
   const baseOptions = {
     date: FIXED_DATE,
     dateStyle: 'medium' as const,
-    timeStyle: 'short' as const,
     hourCycle: undefined,
     precision: 'minute' as const,
   };

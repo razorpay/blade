@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import { toDate, formatTimestamp } from './utils';
+import { toDate, formatTimestamp, getFullAbsoluteLabel } from './utils';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -41,26 +42,35 @@ export type TimestampProps = {
   dateStyle?: 'short' | 'medium' | 'long' | 'full';
 
   /**
-   * Controls the verbosity of the time portion.
-   * Only applicable when `format` is `"time"` or `"dateTime"`.
-   *
-   * @default "short"
-   */
-  timeStyle?: 'short' | 'medium' | 'long' | 'full';
-
-  /**
    * Hour cycle for time display.
    * Defaults to the locale's preferred cycle when omitted.
    */
   hourCycle?: '12h' | '24h';
 
   /**
-   * Finest time unit shown in `"relative"` format.
-   * Only applicable when `format` is `"relative"`.
+   * Controls time granularity for absolute formats (`"time"`, `"dateTime"`) and
+   * the finest unit shown for `"relative"` format.
+   *
+   * - `"minute"` — "1:08 PM" / "5 minutes ago"
+   * - `"second"` — "1:08:32 PM" / "30 seconds ago"
+   * - `"hour"` — relative only: "3 hours ago"
+   * - `"day"` — relative only: "2 days ago"
    *
    * @default "minute"
    */
   precision?: 'second' | 'minute' | 'hour' | 'day';
+
+  /**
+   * Override the automatic tooltip behaviour.
+   *
+   * By default, a tooltip showing the full absolute datetime is shown when the
+   * visible text is compact or relative (`format="relative"` or `dateStyle="short"`).
+   * Pass `true` to suppress it, `false` to force it on.
+   * Leave unset to use smart defaults (recommended).
+   *
+   * @default undefined (automatic)
+   */
+  noTooltip?: boolean;
 
   /**
    * Overrides the text color.
@@ -96,9 +106,9 @@ const _Timestamp = (
     value,
     format = 'dateTime',
     dateStyle = 'medium',
-    timeStyle = 'short',
     hourCycle,
     precision = 'minute',
+    noTooltip,
     color,
     size = 'medium',
     weight = 'regular',
@@ -125,13 +135,19 @@ const _Timestamp = (
     date,
     format,
     dateStyle,
-    timeStyle,
     hourCycle,
     precision,
   });
   const a11yLabel = accessibilityLabel ?? formattedText;
 
-  return (
+  // Smart tooltip: ON when visible text is compact or relative.
+  // format="relative" → always compact ("5 minutes ago" needs full date on hover).
+  // dateStyle="short" → abbreviated display, year often omitted.
+  // noTooltip=true forces OFF, noTooltip=false forces ON, undefined = automatic.
+  const autoTooltip = format === 'relative' || (format !== 'time' && dateStyle === 'short');
+  const shouldShowTooltip = noTooltip === undefined ? autoTooltip : !noTooltip;
+
+  const inner = (
     <BaseBox
       ref={ref as never}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
@@ -146,6 +162,16 @@ const _Timestamp = (
       </Text>
     </BaseBox>
   );
+
+  if (shouldShowTooltip) {
+    return (
+      <Tooltip content={getFullAbsoluteLabel(date)} placement="top">
+        <TooltipInteractiveWrapper>{inner}</TooltipInteractiveWrapper>
+      </Tooltip>
+    );
+  }
+
+  return inner;
 };
 
 const Timestamp = assignWithoutSideEffects(React.forwardRef(_Timestamp), {
