@@ -116,13 +116,7 @@ const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {sizes.map((size) => (
-        <Box
-          key={size}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          gap="spacing.5"
-        >
+        <Box key={size} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
           <Box minWidth="80px">
             <Heading>{size}</Heading>
           </Box>
@@ -141,13 +135,7 @@ const AvatarColorsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {colors.map((color) => (
-        <Box
-          key={color}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          gap="spacing.5"
-        >
+        <Box key={color} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
           <Box minWidth="100px">
             <Heading>{color}</Heading>
           </Box>
@@ -166,13 +154,7 @@ const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {variants.map((variant) => (
-        <Box
-          key={variant}
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          gap="spacing.5"
-        >
+        <Box key={variant} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
           <Box minWidth="80px">
             <Heading>{variant}</Heading>
           </Box>
