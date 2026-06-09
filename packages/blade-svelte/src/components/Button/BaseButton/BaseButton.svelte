@@ -127,8 +127,8 @@
   const textSizes = getButtonTextSizes();
 
   // Compute text color token reactively.
-  // When a text-color override is active (Option A/B/D), defer to `currentColor`
-  // so the text inherits the overridden color set on the button element.
+  // When a text-color override is active (Option B), defer to `currentColor` so the
+  // text inherits the overridden color set on the button element.
   const textColorToken = $derived.by((): TextColors | 'currentColor' => {
     if (hasContentColorOverride) {
       return 'currentColor';
