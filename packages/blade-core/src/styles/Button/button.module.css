@@ -464,8 +464,13 @@
  * Because the base is genuinely the normal color underneath, when the cover
  * reaches 0% (and the overlay later unmounts) there is nothing left to reveal —
  * no color hand-off, so no blink.
+ *
+ * Scoped to `.primary` only: secondary and tertiary buttons do not use accent
+ * tokens, so they must not receive this override. They fall through to their own
+ * `[disabled]` rules and the progress overlay animates on top of the outlined
+ * appearance unchanged.
  */
-.definite-loading[data-definite-loading='true'][disabled] {
+.primary.definite-loading[data-definite-loading='true'][disabled] {
   background-color: var(--btn-accent-bg-default);
   background-image: radial-gradient(
     var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
@@ -500,8 +505,12 @@
  * stay visible across the whole button for the duration of the loader. In the
  * revealed (normal) region the base's identical box-shadow shows through, so the
  * frame is seamless end-to-end.
+ *
+ * Scoped to `.primary` only: secondary and tertiary use their own border tokens
+ * (gray, not accent), so their `[disabled]` box-shadow already provides the
+ * correct frame — no re-paint needed.
  */
-.progress-overlay::after {
+.primary .progress-overlay::after {
   content: '';
   position: absolute;
   inset: 0;
