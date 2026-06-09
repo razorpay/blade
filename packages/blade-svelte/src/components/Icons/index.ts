@@ -10,6 +10,8 @@ export { ChevronDownIcon } from './ChevronDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
+export { EyeIcon } from './EyeIcon';
+export { EyeOffIcon } from './EyeOffIcon';
 export { InfoIcon } from './InfoIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';
