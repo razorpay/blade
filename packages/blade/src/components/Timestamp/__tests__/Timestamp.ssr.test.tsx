@@ -1,13 +1,17 @@
 import { Timestamp } from '..';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
-// Fixed date for deterministic output — 2025-03-21 09:20 IST (UTC+5:30)
+// Fixed date for deterministic output — 2025-03-21 UTC
+// We deliberately use format="date" in snapshot tests to avoid timezone-sensitive
+// output: format="dateTime" would render "9:20 AM" in IST and "3:50 AM" in UTC,
+// breaking CI (which runs in UTC) when snapshots are generated locally (IST).
 const FIXED_DATE = new Date('2025-03-21T03:50:00.000Z');
 
 describe('<Timestamp />', () => {
   it('should render Timestamp on server', () => {
+    // format="date" → timezone-invariant output safe to snapshot
     const { container } = renderWithSSR(
-      <Timestamp value={FIXED_DATE} format="dateTime" locale="en-IN" />,
+      <Timestamp value={FIXED_DATE} format="date" locale="en-IN" />,
     );
 
     // Renders a semantic <time> element with an ISO dateTime attribute
@@ -47,7 +51,10 @@ describe('<Timestamp />', () => {
   });
 
   it('should render a <time> element with ISO datetime attribute on SSR', () => {
-    const { container } = renderWithSSR(<Timestamp value={FIXED_DATE} />);
+    // format="date" keeps snapshot timezone-invariant
+    const { container } = renderWithSSR(
+      <Timestamp value={FIXED_DATE} format="date" locale="en-US" />,
+    );
     expect(container.querySelector('time')?.getAttribute('datetime')).toBe(
       FIXED_DATE.toISOString(),
     );
