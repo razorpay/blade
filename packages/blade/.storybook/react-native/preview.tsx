@@ -1,13 +1,12 @@
 import 'react-native-gesture-handler';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { StyleSheet } from 'react-native';
-import { View } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 export const decorators = [
   (StoryFn) => (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       <StoryFn />
-    </View>
+    </ScrollView>
   ),
   withBackgrounds,
 ];
@@ -21,5 +20,6 @@ export const parameters = {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16 },
+  container: { flex: 1 },
+  contentContainer: { padding: 16 },
 });
