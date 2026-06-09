@@ -150,19 +150,25 @@ const _Timestamp = (
     // Validate type × size combinations (mirrors Amount's validation pattern)
     if (type === 'body' && !bodySizes.includes(size as never)) {
       throwBladeError({
-        message: `size="${size}" is not allowed with type="body". Valid sizes: ${bodySizes.join(', ')}.`,
+        message: `size="${size}" is not allowed with type="body". Valid sizes: ${bodySizes.join(
+          ', ',
+        )}.`,
         moduleName: 'Timestamp',
       });
     }
     if (type === 'heading' && !headingSizes.includes(size as never)) {
       throwBladeError({
-        message: `size="${size}" is not allowed with type="heading". Valid sizes: ${headingSizes.join(', ')}.`,
+        message: `size="${size}" is not allowed with type="heading". Valid sizes: ${headingSizes.join(
+          ', ',
+        )}.`,
         moduleName: 'Timestamp',
       });
     }
     if (type === 'display' && !displaySizes.includes(size as never)) {
       throwBladeError({
-        message: `size="${size}" is not allowed with type="display". Valid sizes: ${displaySizes.join(', ')}.`,
+        message: `size="${size}" is not allowed with type="display". Valid sizes: ${displaySizes.join(
+          ', ',
+        )}.`,
         moduleName: 'Timestamp',
       });
     }
@@ -263,7 +269,10 @@ const _Timestamp = (
   if (shouldShowTooltip) {
     return (
       <Tooltip content={tooltipLabel} placement="top">
-        <TooltipInteractiveWrapper>{inner}</TooltipInteractiveWrapper>
+        {/* alignSelf="flex-start" prevents the wrapper from stretching to the full
+            width of a parent flex container, which would misplace the tooltip far
+            from the actual text. */}
+        <TooltipInteractiveWrapper alignSelf="flex-start">{inner}</TooltipInteractiveWrapper>
       </Tooltip>
     );
   }
@@ -277,5 +286,9 @@ const Timestamp = assignWithoutSideEffects(React.forwardRef(_Timestamp), {
 });
 
 export type { TimestampFormat, TimestampDateStyle, TimestampPrecision };
-export type { TimestampBodyProps, TimestampHeadingProps, TimestampDisplayProps } from './timestampTokens';
+export type {
+  TimestampBodyProps,
+  TimestampHeadingProps,
+  TimestampDisplayProps,
+} from './timestampTokens';
 export { Timestamp };

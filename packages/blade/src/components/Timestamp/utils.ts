@@ -103,16 +103,28 @@ export const formatTimestamp = ({
     options.timeStyle = precisionToTimeStyle(precision);
   }
 
-  return new Intl.DateTimeFormat(locale, options).format(date);
+  const raw = new Intl.DateTimeFormat(locale, options).format(date);
+  // Normalise am/pm to uppercase — en-IN CLDR uses lowercase British style by default.
+  return raw.replace(/\b(am|pm)\b/gi, (m) => m.toUpperCase());
 };
 
 /**
  * Returns the full absolute datetime string used as tooltip content.
  * Always shows the complete picture regardless of what the visible text shows.
- * e.g. "Saturday, May 30, 2026, 1:08 PM"
+ * e.g. "Saturday, 30 May 2026 at 6:33 PM"
+ *
+ * The Intl API for en-IN (and other en-* locales) outputs lowercase "am/pm".
+ * We normalise to uppercase to match the industry standard (Stripe, GitHub, etc.)
+ * and keep the tooltip consistent with any absolute-format visible text.
  */
-export const getFullAbsoluteLabel = (date: Date, locale: string): string =>
-  new Intl.DateTimeFormat(locale, { dateStyle: 'full', timeStyle: 'short' }).format(date);
+export const getFullAbsoluteLabel = (date: Date, locale: string): string => {
+  const raw = new Intl.DateTimeFormat(locale, { dateStyle: 'full', timeStyle: 'short' }).format(
+    date,
+  );
+  // Uppercase standalone am/pm markers (whole-word, case-insensitive).
+  // Matches "6:33 am" → "6:33 AM", "6:33pm" → "6:33PM", leaves other text untouched.
+  return raw.replace(/\b(am|pm)\b/gi, (m) => m.toUpperCase());
+};
 
 /**
  * Returns the adaptive auto-update interval in ms for a relative timestamp.

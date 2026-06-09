@@ -69,13 +69,13 @@ export default {
     hourCycle: {
       control: { type: 'select' },
       options: ['12h', '24h'],
-      description: 'Hour cycle for time display. Defaults to the locale\'s preferred cycle.',
+      description: "Hour cycle for time display. Defaults to the locale's preferred cycle.",
     },
     precision: {
       control: { type: 'select' },
-      options: ['minute', 'second', 'hour', 'day'],
+      options: ['minute', 'second'],
       description:
-        'Time granularity. `"minute"` → "1:08 PM", `"second"` → "1:08:32 PM". `"hour"` and `"day"` are relative-only.',
+        'Time granularity for the rendered output.\n\n- `"minute"` → "1:08 PM" *(default)*\n- `"second"` → "1:08:32 PM"\n\nNote: `"hour"` and `"day"` are additional options only valid with `format="relative"` — use the **Relative Format** story to see those.',
     },
     type: {
       control: { type: 'select' },
@@ -188,12 +188,12 @@ RelativeFormat.storyName = 'Relative Format';
 RelativeFormat.parameters = { controls: { disable: true } };
 
 export const DateStyles: StoryFn<typeof TimestampComponent> = () => (
-  <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+  <BaseBox display="flex" flexDirection="column" gap="spacing.3">
     <Text weight="semibold">Date Styles (format="date")</Text>
     {(['short', 'medium', 'long', 'full'] as const).map((dateStyle) => (
-      <BaseBox key={dateStyle} display="flex" flexDirection="column" gap="spacing.1">
-        <Text size="small" color="surface.text.gray.muted">
-          dateStyle="{dateStyle}"
+      <BaseBox key={dateStyle} display="flex" alignItems="center" gap="spacing.4">
+        <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '140px' }}>
+          dateStyle=&quot;{dateStyle}&quot;
         </Text>
         <TimestampComponent value={REFERENCE_DATE} format="date" dateStyle={dateStyle} />
       </BaseBox>
@@ -204,17 +204,17 @@ DateStyles.storyName = 'Date Styles';
 DateStyles.parameters = { controls: { disable: true } };
 
 export const TimePrecision: StoryFn<typeof TimestampComponent> = () => (
-  <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+  <BaseBox display="flex" flexDirection="column" gap="spacing.3">
     <Text weight="semibold">Time Precision (format="time")</Text>
-    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
-      <Text size="small" color="surface.text.gray.muted">
-        precision="minute" (default) — "1:08 PM"
+    <BaseBox display="flex" alignItems="center" gap="spacing.4">
+      <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
+        precision=&quot;minute&quot; (default)
       </Text>
       <TimestampComponent value={REFERENCE_DATE} format="time" precision="minute" />
     </BaseBox>
-    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
-      <Text size="small" color="surface.text.gray.muted">
-        precision="second" — "1:08:32 PM"
+    <BaseBox display="flex" alignItems="center" gap="spacing.4">
+      <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
+        precision=&quot;second&quot;
       </Text>
       <TimestampComponent value={REFERENCE_DATE} format="time" precision="second" />
     </BaseBox>
@@ -224,17 +224,17 @@ TimePrecision.storyName = 'Time Precision';
 TimePrecision.parameters = { controls: { disable: true } };
 
 export const HourCycle: StoryFn<typeof TimestampComponent> = () => (
-  <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+  <BaseBox display="flex" flexDirection="column" gap="spacing.3">
     <Text weight="semibold">Hour Cycle</Text>
-    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
-      <Text size="small" color="surface.text.gray.muted">
-        hourCycle="12h" — locale default for en-IN
+    <BaseBox display="flex" alignItems="center" gap="spacing.4">
+      <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
+        hourCycle=&quot;12h&quot; — locale default for en-IN
       </Text>
       <TimestampComponent value={REFERENCE_DATE} format="time" hourCycle="12h" />
     </BaseBox>
-    <BaseBox display="flex" flexDirection="column" gap="spacing.1">
-      <Text size="small" color="surface.text.gray.muted">
-        hourCycle="24h" — developer / log surfaces
+    <BaseBox display="flex" alignItems="center" gap="spacing.4">
+      <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
+        hourCycle=&quot;24h&quot; — developer / log surfaces
       </Text>
       <TimestampComponent value={REFERENCE_DATE} format="time" hourCycle="24h" />
     </BaseBox>
@@ -266,12 +266,7 @@ export const TypographyScale: StoryFn<typeof TimestampComponent> = () => (
           <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '60px' }}>
             {size}
           </Text>
-          <TimestampComponent
-            value={REFERENCE_DATE}
-            format="dateTime"
-            type="heading"
-            size={size}
-          />
+          <TimestampComponent value={REFERENCE_DATE} format="dateTime" type="heading" size={size} />
         </BaseBox>
       ))}
     </BaseBox>
@@ -283,12 +278,7 @@ export const TypographyScale: StoryFn<typeof TimestampComponent> = () => (
           <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '60px' }}>
             {size}
           </Text>
-          <TimestampComponent
-            value={REFERENCE_DATE}
-            format="date"
-            type="display"
-            size={size}
-          />
+          <TimestampComponent value={REFERENCE_DATE} format="date" type="display" size={size} />
         </BaseBox>
       ))}
     </BaseBox>
@@ -353,19 +343,17 @@ InlineUsage.parameters = { controls: { disable: true } };
 // ─── Cross-border locale ──────────────────────────────────────────────────────
 
 export const CrossBorderLocale: StoryFn<typeof TimestampComponent> = () => (
-  <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+  <BaseBox display="flex" flexDirection="column" gap="spacing.3">
     <Text weight="semibold">Cross-Border Locale (MoneySaver)</Text>
-    {(
-      [
-        { locale: 'en-IN', label: 'India (default) — en-IN' },
-        { locale: 'en-MY', label: 'Malaysia — en-MY' },
-        { locale: 'en-SG', label: 'Singapore — en-SG' },
-        { locale: 'en-US', label: 'United States — en-US' },
-        { locale: 'en-GB', label: 'United Kingdom — en-GB' },
-      ] as const
-    ).map(({ locale, label }) => (
-      <BaseBox key={locale} display="flex" flexDirection="column" gap="spacing.1">
-        <Text size="small" color="surface.text.gray.muted">
+    {([
+      { locale: 'en-IN', label: 'India (default) — en-IN' },
+      { locale: 'en-MY', label: 'Malaysia — en-MY' },
+      { locale: 'en-SG', label: 'Singapore — en-SG' },
+      { locale: 'en-US', label: 'United States — en-US' },
+      { locale: 'en-GB', label: 'United Kingdom — en-GB' },
+    ] as const).map(({ locale, label }) => (
+      <BaseBox key={locale} display="flex" alignItems="center" gap="spacing.4">
+        <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '220px' }}>
           {label}
         </Text>
         <TimestampComponent value={REFERENCE_DATE} format="dateTime" locale={locale} />
