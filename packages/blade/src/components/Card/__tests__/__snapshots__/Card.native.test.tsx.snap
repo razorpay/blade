@@ -246,25 +246,30 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.5"
             style={
               [
                 {
                   "alignSelf": "auto",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 16,
                   "marginLeft": 0,
                   "marginTop": 16,
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="base-box"
-              flexGrow={1}
               style={
                 [
                   {
+                    "flexBasis": 0,
                     "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
@@ -443,18 +448,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 [
                   {
-                    "marginLeft": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              data-blade-component="base-box"
-              flexGrow={1}
-              style={
-                [
-                  {
+                    "flexBasis": 0,
                     "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
@@ -734,12 +730,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="column"
+            flexShrink={1}
             gap="spacing.4"
             style={
               [
                 {
                   "display": "flex",
                   "flexDirection": "column",
+                  "flexShrink": 1,
                   "gap": 12,
                 },
               ]
@@ -753,10 +751,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 [
                   {
                     "display": "flex",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                   },
                 ]
               }
@@ -866,9 +861,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </View>
               <View
                 data-blade-component="base-box"
+                flexShrink={1}
                 style={
                   [
                     {
+                      "flexShrink": 1,
                       "marginRight": 16,
                     },
                   ]
