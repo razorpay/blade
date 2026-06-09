@@ -11,10 +11,10 @@ concurrency:
 jobs:
   slash-review:
     name: Request Slash AI review
-    # Skip bot-triggered runs to prevent feedback loops.
+    # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
+    # so that Slash-authored PRs also get reviewed).
     # For labeled events, only fire on the 'Run Slash Review' label — not every label addition.
     if: |
-      github.actor != 'rzp-slash-public[bot]' &&
       github.actor != 'github-actions[bot]' &&
       (
         github.event.action != 'labeled' ||
