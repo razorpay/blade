@@ -128,9 +128,7 @@ const checkboxGroupFieldStyles = cva(styles['group-field'], {
   defaultVariants: { labelPosition: 'top' },
 });
 
-export function getCheckboxGroupFieldClasses(props: {
-  labelPosition?: 'top' | 'left';
-}): string {
+export function getCheckboxGroupFieldClasses(props: { labelPosition?: 'top' | 'left' }): string {
   return checkboxGroupFieldStyles({ labelPosition: props.labelPosition });
 }
 
