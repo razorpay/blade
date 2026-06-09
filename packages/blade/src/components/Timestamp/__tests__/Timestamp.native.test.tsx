@@ -118,9 +118,16 @@ describe('<Timestamp /> (native)', () => {
     const g = global as any;
     const originalDev = g.__DEV__;
     g.__DEV__ = false;
-    const { toJSON } = renderWithTheme(<Timestamp value="not-a-date" />);
-    expect(toJSON()).toBeNull();
-    g.__DEV__ = originalDev;
+    try {
+      const { toJSON } = renderWithTheme(<Timestamp value="not-a-date" />);
+      // renderWithTheme wraps in a BladeProvider View — toJSON() is that wrapper, never null.
+      // When Timestamp returns null, the wrapper renders with no children.
+      expect(toJSON()?.children).toBeNull();
+    } finally {
+      // Always restore __DEV__ — if the assertion above throws, the next test
+      // (which relies on __DEV__ = true) must not be affected.
+      g.__DEV__ = originalDev;
+    }
   });
 
   it('should throw __DEV__ error for invalid type × size combination', () => {
