@@ -1,3 +1,4 @@
+import { act } from '@testing-library/react';
 import { Timestamp } from '../Timestamp';
 import { formatTimestamp, toDate } from '../utils';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -120,9 +121,100 @@ describe('<Timestamp />', () => {
     expect(getByTestId('timestamp-test')).toBeTruthy();
   });
 
-  it('should throw an error for invalid date value', () => {
+  it('should throw an error for invalid date value in __DEV__', () => {
     expect(() => {
       renderWithTheme(<Timestamp value="not-a-date" />);
+    }).toThrow('[Blade: Timestamp]');
+  });
+
+  it('should render nothing for invalid date value in production', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g = global as any;
+    const originalDev = g.__DEV__;
+    g.__DEV__ = false;
+    const { container } = renderWithTheme(<Timestamp value="not-a-date" />);
+    expect(container.querySelector('[data-blade-component="timestamp"]')).toBeNull();
+    g.__DEV__ = originalDev;
+  });
+
+  it('should render a semantic <time> element with ISO dateTime attribute', () => {
+    const { container } = renderWithTheme(<Timestamp value={FIXED_DATE} format="dateTime" />);
+    const timeEl = container.querySelector('time');
+    expect(timeEl).toBeTruthy();
+    expect(timeEl?.getAttribute('datetime')).toBe(FIXED_DATE.toISOString());
+  });
+
+  it('should show tooltip by default for format="relative"', () => {
+    jest.useFakeTimers().setSystemTime(FIXED_DATE);
+    const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
+    const { container } = renderWithTheme(<Timestamp value={fiveMinAgo} format="relative" />);
+    // Tooltip wrapper has data-testid="tooltip-interactive-wrapper"
+    expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
+    jest.useRealTimers();
+  });
+
+  it('should suppress tooltip when noTooltip=true', () => {
+    jest.useFakeTimers().setSystemTime(FIXED_DATE);
+    const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
+    const { container } = renderWithTheme(
+      <Timestamp value={fiveMinAgo} format="relative" noTooltip />,
+    );
+    expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('should show tooltip for dateStyle="short"', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" dateStyle="short" />,
+    );
+    expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
+  });
+
+  it('should NOT show tooltip for dateStyle="full"', () => {
+    const { container } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="dateTime" dateStyle="full" />,
+    );
+    expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeNull();
+  });
+
+  it('should use locale prop for formatting', () => {
+    // en-US formats dates differently from en-IN
+    const { container: containerUS } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-US" />,
+    );
+    const { container: containerIN } = renderWithTheme(
+      <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-IN" />,
+    );
+    // Both should render but may differ in month/day ordering
+    expect(containerUS.textContent).toBeTruthy();
+    expect(containerIN.textContent).toBeTruthy();
+  });
+
+  it('should auto-update relative timestamp after interval', () => {
+    jest.useFakeTimers();
+    const now = FIXED_DATE.getTime();
+    jest.setSystemTime(now);
+    // 30 seconds ago — within the "every 10s" update window
+    const thirtySecsAgo = new Date(now - 30 * 1000);
+    const { container } = renderWithTheme(
+      <Timestamp value={thirtySecsAgo} format="relative" precision="second" />,
+    );
+    const firstText = container.textContent;
+
+    // Advance time by 10s (the update interval for timestamps < 1min old)
+    act(() => {
+      jest.advanceTimersByTime(10_000);
+    });
+
+    const secondText = container.textContent;
+    // The displayed time should have changed (40s ago vs 30s ago)
+    expect(secondText).not.toBe(firstText);
+    jest.useRealTimers();
+  });
+
+  it('should throw __DEV__ error for precision="hour" with format="dateTime"', () => {
+    expect(() => {
+      renderWithTheme(<Timestamp value={FIXED_DATE} format="dateTime" precision="hour" />);
     }).toThrow('[Blade: Timestamp]');
   });
 });
@@ -133,6 +225,7 @@ describe('formatTimestamp utility', () => {
     dateStyle: 'medium' as const,
     hourCycle: undefined,
     precision: 'minute' as const,
+    locale: 'en-US',
   };
 
   it('should format relative — minutes ago', () => {

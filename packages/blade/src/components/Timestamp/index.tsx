@@ -1,2 +1,2 @@
-export { Timestamp } from './Timestamp';
-export type { TimestampProps } from './Timestamp';
+// Re-exports moved to index.ts — this file is kept for backwards compat during migration.
+export * from './index';

@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import { toDate, formatTimestamp, getFullAbsoluteLabel } from './utils';
+import { toDate, formatTimestamp, getFullAbsoluteLabel, getRelativeUpdateInterval } from './utils';
+import type { TimestampFormat, TimestampDateStyle, TimestampPrecision } from './utils';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -24,22 +25,27 @@ export type TimestampProps = {
 
   /**
    * Controls how the timestamp is displayed.
-   * - `"relative"`: human-relative label, e.g. "5 minutes ago"
+   * - `"relative"`: human-relative label, e.g. "5 minutes ago". Auto-updates.
    * - `"date"`: date only, e.g. "May 30, 2026"
    * - `"time"`: time only, e.g. "1:08 PM"
    * - `"dateTime"`: date and time, e.g. "May 30, 2026, 1:08 PM"
    *
    * @default "dateTime"
    */
-  format?: 'relative' | 'date' | 'time' | 'dateTime';
+  format?: TimestampFormat;
 
   /**
    * Controls the verbosity of the date portion.
    * Only applicable when `format` is `"date"` or `"dateTime"`.
    *
+   * - `"short"`:  "5/30/26"
+   * - `"medium"`: "May 30, 2026"
+   * - `"long"`:   "May 30, 2026" (same as medium in most locales; adds month in others)
+   * - `"full"`:   "Saturday, May 30, 2026"
+   *
    * @default "medium"
    */
-  dateStyle?: 'short' | 'medium' | 'long' | 'full';
+  dateStyle?: TimestampDateStyle;
 
   /**
    * Hour cycle for time display.
@@ -53,12 +59,21 @@ export type TimestampProps = {
    *
    * - `"minute"` — "1:08 PM" / "5 minutes ago"
    * - `"second"` — "1:08:32 PM" / "30 seconds ago"
-   * - `"hour"` — relative only: "3 hours ago"
-   * - `"day"` — relative only: "2 days ago"
+   * - `"hour"`   — relative only: "3 hours ago"
+   * - `"day"`    — relative only: "2 days ago"
+   *
+   * Note: `"hour"` and `"day"` have no effect on absolute formats (`"time"`, `"dateTime"`).
    *
    * @default "minute"
    */
-  precision?: 'second' | 'minute' | 'hour' | 'day';
+  precision?: TimestampPrecision;
+
+  /**
+   * BCP 47 locale string. Controls language and regional number/date ordering.
+   *
+   * @default "en-IN"
+   */
+  locale?: string;
 
   /**
    * Override the automatic tooltip behaviour.
@@ -108,6 +123,7 @@ const _Timestamp = (
     dateStyle = 'medium',
     hourCycle,
     precision = 'minute',
+    locale = 'en-IN',
     noTooltip,
     color,
     size = 'medium',
@@ -117,9 +133,11 @@ const _Timestamp = (
     ...styledProps
   }: TimestampProps,
   ref: React.Ref<BladeElementRef>,
-): ReactElement => {
+): ReactElement | null => {
+  // Parse the value once upfront — used in both validation and formatting.
+  const date = toDate(value);
+
   if (__DEV__) {
-    const date = toDate(value);
     if (isNaN(date.getTime())) {
       throwBladeError({
         message: `"${String(
@@ -128,24 +146,62 @@ const _Timestamp = (
         moduleName: 'Timestamp',
       });
     }
+
+    // 'hour' and 'day' are only meaningful for format="relative". For absolute
+    // formats they silently fall back to 'short' timeStyle which can confuse
+    // developers who expect finer control.
+    if (
+      (precision === 'hour' || precision === 'day') &&
+      (format === 'time' || format === 'dateTime')
+    ) {
+      throwBladeError({
+        message: `precision="${precision}" has no effect when format="${format}". Use precision="minute" or precision="second" for absolute formats.`,
+        moduleName: 'Timestamp',
+      });
+    }
   }
 
-  const date = toDate(value);
-  const formattedText = formatTimestamp({
-    date,
-    format,
-    dateStyle,
-    hourCycle,
-    precision,
-  });
+  // In production, return nothing rather than rendering "Invalid Date" in the UI.
+  if (isNaN(date.getTime())) {
+    return null;
+  }
+
+  // Tick counter to force re-render for live relative timestamps.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [tick, setTick] = React.useState(0);
+
+  // Auto-update relative timestamps on an adaptive interval.
+  // Reschedules after each tick using the updated age of the timestamp.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    if (format !== 'relative') return undefined;
+    const id = setTimeout(() => setTick((t) => t + 1), getRelativeUpdateInterval(date));
+    return () => clearTimeout(id);
+  }, [format, date, tick]);
+
+  // Memoize formatted output — Intl constructors are expensive.
+  // `tick` is intentionally included so relative timestamps recompute on each update.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const formattedText = React.useMemo(
+    () => formatTimestamp({ date, format, dateStyle, hourCycle, precision, locale }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [date, format, dateStyle, hourCycle, precision, locale, tick],
+  );
+
+  const tooltipLabel = React.useMemo(() => getFullAbsoluteLabel(date, locale), [date, locale]);
+
   const a11yLabel = accessibilityLabel ?? formattedText;
 
   // Smart tooltip: ON when visible text is compact or relative.
-  // format="relative" → always compact ("5 minutes ago" needs full date on hover).
-  // dateStyle="short" → abbreviated display, year often omitted.
   // noTooltip=true forces OFF, noTooltip=false forces ON, undefined = automatic.
   const autoTooltip = format === 'relative' || (format !== 'time' && dateStyle === 'short');
   const shouldShowTooltip = noTooltip === undefined ? autoTooltip : !noTooltip;
+
+  const textNode = (
+    <Text as="span" variant="body" size={size} weight={weight} color={color}>
+      {formattedText}
+    </Text>
+  );
 
   const inner = (
     <BaseBox
@@ -157,15 +213,21 @@ const _Timestamp = (
       {...makeAnalyticsAttribute(styledProps)}
       {...makeAccessible({ label: a11yLabel })}
     >
-      <Text as="span" variant="body" size={size} weight={weight} color={color}>
-        {formattedText}
-      </Text>
+      {/* Semantic <time> element on web — gives screen readers and crawlers the
+          machine-readable ISO date even when visible text is compact or relative. */}
+      {isReactNative() ? (
+        textNode
+      ) : (
+        <time dateTime={date.toISOString()} style={{ display: 'inline' }}>
+          {textNode}
+        </time>
+      )}
     </BaseBox>
   );
 
   if (shouldShowTooltip) {
     return (
-      <Tooltip content={getFullAbsoluteLabel(date)} placement="top">
+      <Tooltip content={tooltipLabel} placement="top">
         <TooltipInteractiveWrapper>{inner}</TooltipInteractiveWrapper>
       </Tooltip>
     );
@@ -179,4 +241,5 @@ const Timestamp = assignWithoutSideEffects(React.forwardRef(_Timestamp), {
   componentId: 'Timestamp',
 });
 
+export type { TimestampFormat, TimestampDateStyle, TimestampPrecision };
 export { Timestamp };

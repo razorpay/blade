@@ -1,9 +1,15 @@
-import type { TimestampProps } from './Timestamp';
+// Types defined here (not imported from Timestamp.tsx) to avoid circular dependency.
+export type TimestampFormat = 'relative' | 'date' | 'time' | 'dateTime';
+export type TimestampDateStyle = 'short' | 'medium' | 'long' | 'full';
+export type TimestampPrecision = 'second' | 'minute' | 'hour' | 'day';
 
 const SECOND_MS = 1000;
 const MINUTE_MS = 60 * SECOND_MS;
 const HOUR_MS = 60 * MINUTE_MS;
 const DAY_MS = 24 * HOUR_MS;
+
+// Below this threshold, always show "now" regardless of precision.
+const JUST_NOW_THRESHOLD_MS = 10 * SECOND_MS;
 
 /**
  * Converts a value prop to a Date object.
@@ -18,45 +24,52 @@ type RelativeUnit = 'second' | 'minute' | 'hour' | 'day';
 
 const getRelativeUnit = (
   diffMs: number,
-  precision: NonNullable<TimestampProps['precision']>,
+  precision: TimestampPrecision,
 ): { value: number; unit: RelativeUnit } => {
   const absMs = Math.abs(diffMs);
 
+  // < 10s always returns 0 seconds → Intl renders "now" with numeric:'auto'.
+  // This prevents "1 second ago" flickering on fresh timestamps.
+  if (absMs < JUST_NOW_THRESHOLD_MS) {
+    return { value: 0, unit: 'second' };
+  }
+
+  // Use Math.floor (not Math.round) so "59 seconds ago" never jumps to "1 minute ago"
+  // before a full minute has elapsed.
   if (precision === 'second') {
-    if (absMs < MINUTE_MS) return { value: Math.round(diffMs / SECOND_MS), unit: 'second' };
-    if (absMs < HOUR_MS) return { value: Math.round(diffMs / MINUTE_MS), unit: 'minute' };
-    if (absMs < DAY_MS) return { value: Math.round(diffMs / HOUR_MS), unit: 'hour' };
-    return { value: Math.round(diffMs / DAY_MS), unit: 'day' };
+    if (absMs < MINUTE_MS) return { value: Math.floor(diffMs / SECOND_MS), unit: 'second' };
+    if (absMs < HOUR_MS) return { value: Math.floor(diffMs / MINUTE_MS), unit: 'minute' };
+    if (absMs < DAY_MS) return { value: Math.floor(diffMs / HOUR_MS), unit: 'hour' };
+    return { value: Math.floor(diffMs / DAY_MS), unit: 'day' };
   }
 
   if (precision === 'minute') {
-    if (absMs < HOUR_MS) return { value: Math.round(diffMs / MINUTE_MS), unit: 'minute' };
-    if (absMs < DAY_MS) return { value: Math.round(diffMs / HOUR_MS), unit: 'hour' };
-    return { value: Math.round(diffMs / DAY_MS), unit: 'day' };
+    if (absMs < HOUR_MS) return { value: Math.floor(diffMs / MINUTE_MS), unit: 'minute' };
+    if (absMs < DAY_MS) return { value: Math.floor(diffMs / HOUR_MS), unit: 'hour' };
+    return { value: Math.floor(diffMs / DAY_MS), unit: 'day' };
   }
 
   if (precision === 'hour') {
-    if (absMs < DAY_MS) return { value: Math.round(diffMs / HOUR_MS), unit: 'hour' };
-    return { value: Math.round(diffMs / DAY_MS), unit: 'day' };
+    if (absMs < DAY_MS) return { value: Math.floor(diffMs / HOUR_MS), unit: 'hour' };
+    return { value: Math.floor(diffMs / DAY_MS), unit: 'day' };
   }
 
   // precision === 'day'
-  return { value: Math.round(diffMs / DAY_MS), unit: 'day' };
+  return { value: Math.floor(diffMs / DAY_MS), unit: 'day' };
 };
 
-// Maps the explicit `precision` prop to the Intl.DateTimeFormat timeStyle.
-// 'minute' → 'short'  (e.g. "1:08 PM")
-// 'second' → 'medium' (e.g. "1:08:32 PM")
-const precisionToTimeStyle = (
-  precision: NonNullable<TimestampProps['precision']>,
-): 'short' | 'medium' => (precision === 'second' ? 'medium' : 'short');
+// Maps the explicit `precision` prop to Intl.DateTimeFormat timeStyle.
+// Only 'minute' and 'second' are meaningful for absolute formats.
+const precisionToTimeStyle = (precision: TimestampPrecision): 'short' | 'medium' =>
+  precision === 'second' ? 'medium' : 'short';
 
-type FormatTimestampOptions = {
+export type FormatTimestampOptions = {
   date: Date;
-  format: NonNullable<TimestampProps['format']>;
-  dateStyle: NonNullable<TimestampProps['dateStyle']>;
-  hourCycle: TimestampProps['hourCycle'];
-  precision: NonNullable<TimestampProps['precision']>;
+  format: TimestampFormat;
+  dateStyle: TimestampDateStyle;
+  hourCycle?: '12h' | '24h';
+  precision: TimestampPrecision;
+  locale: string;
 };
 
 /**
@@ -69,11 +82,12 @@ export const formatTimestamp = ({
   dateStyle,
   hourCycle,
   precision,
+  locale,
 }: FormatTimestampOptions): string => {
   if (format === 'relative') {
     const diffMs = date.getTime() - Date.now();
     const { value, unit } = getRelativeUnit(diffMs, precision);
-    return new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' }).format(value, unit);
+    return new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(value, unit);
   }
 
   const hour12 =
@@ -89,7 +103,7 @@ export const formatTimestamp = ({
     options.timeStyle = precisionToTimeStyle(precision);
   }
 
-  return new Intl.DateTimeFormat(undefined, options).format(date);
+  return new Intl.DateTimeFormat(locale, options).format(date);
 };
 
 /**
@@ -97,5 +111,20 @@ export const formatTimestamp = ({
  * Always shows the complete picture regardless of what the visible text shows.
  * e.g. "Saturday, May 30, 2026, 1:08 PM"
  */
-export const getFullAbsoluteLabel = (date: Date): string =>
-  new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'short' }).format(date);
+export const getFullAbsoluteLabel = (date: Date, locale: string): string =>
+  new Intl.DateTimeFormat(locale, { dateStyle: 'full', timeStyle: 'short' }).format(date);
+
+/**
+ * Returns the adaptive auto-update interval in ms for a relative timestamp.
+ * Interval decreases for fresher timestamps so updates feel responsive.
+ *
+ * < 1 min old → update every 10s
+ * < 1 hr old  → update every 1 min
+ * older       → update every 1 hr
+ */
+export const getRelativeUpdateInterval = (date: Date): number => {
+  const ageMs = Math.abs(Date.now() - date.getTime());
+  if (ageMs < MINUTE_MS) return SECOND_MS * 10;
+  if (ageMs < HOUR_MS) return MINUTE_MS;
+  return HOUR_MS;
+};
