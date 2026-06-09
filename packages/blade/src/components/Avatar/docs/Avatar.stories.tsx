@@ -114,25 +114,19 @@ InteractiveNonInteractive.storyName = 'Interactive and NonInteractive Avatar';
 const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {sizes.map((size) => (
         <Box
           key={size}
           display="flex"
-          flex="1 1 auto"
+          flexDirection="row"
           alignItems="center"
-          justifyItems="center"
-          alignContent="center"
           gap="spacing.5"
-          flexWrap="nowrap"
-          width="120px"
         >
-          <Box width="50px">
+          <Box minWidth="80px">
             <Heading>{size}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent {...args} size={size} />
-          </Box>
+          <AvatarComponent {...args} size={size} />
         </Box>
       ))}
     </Box>
@@ -145,25 +139,19 @@ AllSizes.storyName = 'All Sizes';
 const AvatarColorsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const colors = ['primary', 'positive', 'negative', 'neutral', 'notice', 'information'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {colors.map((color) => (
         <Box
           key={color}
           display="flex"
-          flex="1 1 auto"
+          flexDirection="row"
           alignItems="center"
-          justifyItems="center"
-          alignContent="center"
           gap="spacing.5"
-          flexWrap="nowrap"
-          width="200px"
         >
-          <Box width="40px">
+          <Box minWidth="100px">
             <Heading>{color}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent size="medium" {...args} color={color} />
-          </Box>
+          <AvatarComponent size="medium" {...args} color={color} />
         </Box>
       ))}
     </Box>
@@ -176,25 +164,19 @@ AllColors.storyName = 'All Colors';
 const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const variants = ['circle', 'square'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {variants.map((variant) => (
         <Box
           key={variant}
           display="flex"
-          flex="1 1 auto"
+          flexDirection="row"
           alignItems="center"
-          justifyItems="center"
-          alignContent="center"
           gap="spacing.5"
-          flexWrap="nowrap"
-          width="120px"
         >
-          <Box width="40px">
+          <Box minWidth="80px">
             <Heading>{variant}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent size="medium" {...args} variant={variant} />
-          </Box>
+          <AvatarComponent size="medium" {...args} variant={variant} />
         </Box>
       ))}
     </Box>
