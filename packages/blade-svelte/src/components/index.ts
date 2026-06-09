@@ -103,3 +103,9 @@ export type {
 
 // BladeProvider
 export * from './BladeProvider';
+
+// Checkbox
+export { default as Checkbox } from './Checkbox/Checkbox.svelte';
+export type { CheckboxProps, CheckboxOnChange } from './Checkbox/types';
+export { CheckboxGroup } from './Checkbox/CheckboxGroup';
+export type { CheckboxGroupProps } from './Checkbox/CheckboxGroup';

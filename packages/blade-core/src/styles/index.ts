@@ -273,3 +273,16 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export {
+  getCheckboxIconWrapperClasses,
+  getCheckboxLabelTextClasses,
+  getCheckboxHelpTextClasses,
+  getCheckboxErrorTextClasses,
+  getCheckboxSupportingTextWrapperClasses,
+  getCheckboxGroupFieldClasses,
+  getCheckboxGroupLabelClasses,
+  getCheckboxGroupItemsClasses,
+  getCheckboxGroupHintClasses,
+  getCheckboxTemplateClasses,
+} from './Checkbox';
+export type { CheckboxSize } from './Checkbox';
