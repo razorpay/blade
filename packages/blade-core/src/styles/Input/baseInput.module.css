@@ -12,7 +12,7 @@
   width: 100%;
   position: relative;
   border-style: solid;
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-small);
   transition-property: border-color, background-color, box-shadow;
   transition-duration: var(--duration-gentle);
   transition-timing-function: var(--easing-standard);
@@ -58,21 +58,28 @@
   border-width: var(--border-width-thick);
 }
 
-/* Size variants */
+/* Size variants
+ * border-radius is size-dependent per React baseInputBorderRadius tokens:
+ *   xsmall/small/medium → small (8px), large → medium (12px)
+ */
 .inputWrapper--xsmall {
   min-height: 26px;
+  border-radius: var(--border-radius-small);
 }
 
 .inputWrapper--small {
   min-height: 30px;
+  border-radius: var(--border-radius-small);
 }
 
 .inputWrapper--medium {
   min-height: 36px;
+  border-radius: var(--border-radius-small);
 }
 
 .inputWrapper--large {
   min-height: 48px;
+  border-radius: var(--border-radius-medium);
 }
 
 /* TextArea variant */
@@ -85,11 +92,22 @@
    ============================================ */
 
 .focusRingWrapper {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-small);
   width: 100%;
   transition-property: box-shadow;
   transition-duration: var(--duration-gentle);
   transition-timing-function: var(--easing-standard);
+}
+
+/* Size variants — mirror inputWrapper so the focus glow tracks the corner */
+.focusRingWrapper--xsmall,
+.focusRingWrapper--small,
+.focusRingWrapper--medium {
+  border-radius: var(--border-radius-small);
+}
+
+.focusRingWrapper--large {
+  border-radius: var(--border-radius-medium);
 }
 
 .focusRingWrapper:focus-within {
@@ -155,28 +173,36 @@
   padding-bottom: var(--spacing-4);
 }
 
-/* Padding variants based on visuals */
-.styledInput--paddingLeft-none {
-  padding-left: 0;
-}
-
-.styledInput--paddingLeft-small {
+/* Padding variants based on visuals × size
+ * React rule (getLeftPadding/getRightPadding):
+ *   With leading/trailing visual → constant 8px (spacing-3)
+ *   Without visual → size-dependent: xsmall/small = 8px, medium/large = 12px (spacing-4)
+ */
+.styledInput--paddingLeft-withVisual {
   padding-left: var(--spacing-3);
 }
 
-.styledInput--paddingLeft-medium {
+.styledInput--paddingLeft-noVisual-xsmall,
+.styledInput--paddingLeft-noVisual-small {
+  padding-left: var(--spacing-3);
+}
+
+.styledInput--paddingLeft-noVisual-medium,
+.styledInput--paddingLeft-noVisual-large {
   padding-left: var(--spacing-4);
 }
 
-.styledInput--paddingRight-none {
-  padding-right: 0;
-}
-
-.styledInput--paddingRight-small {
+.styledInput--paddingRight-withVisual {
   padding-right: var(--spacing-3);
 }
 
-.styledInput--paddingRight-medium {
+.styledInput--paddingRight-noVisual-xsmall,
+.styledInput--paddingRight-noVisual-small {
+  padding-right: var(--spacing-3);
+}
+
+.styledInput--paddingRight-noVisual-medium,
+.styledInput--paddingRight-noVisual-large {
   padding-right: var(--spacing-4);
 }
 

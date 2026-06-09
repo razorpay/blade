@@ -30,7 +30,7 @@
   });
 
   // CSS classes
-  const focusRingClasses = getFocusRingWrapperClasses();
+  const focusRingClasses = $derived(getFocusRingWrapperClasses(size));
   const wrapperClasses = $derived(
     getInputWrapperClasses({
       state: currentState,

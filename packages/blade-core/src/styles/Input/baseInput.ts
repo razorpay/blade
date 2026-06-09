@@ -50,10 +50,17 @@ export function getInputWrapperClasses(options: InputWrapperOptions): string {
 }
 
 /**
- * Get CSS classes for the focus ring wrapper
+ * Get CSS classes for the focus ring wrapper.
+ * The optional `size` mirrors the inputWrapper border-radius so the focus
+ * glow tracks the corner radius (xsmall/small/medium = 8px, large = 12px).
+ * When omitted, only the base class is returned for backwards compatibility.
  */
-export function getFocusRingWrapperClasses(): string {
-  return styles.focusRingWrapper;
+export function getFocusRingWrapperClasses(size?: BaseInputSize): string {
+  const classes = [styles.focusRingWrapper];
+  if (size) {
+    classes.push(styles[`focusRingWrapper--${size}`]);
+  }
+  return classes.filter(Boolean).join(' ');
 }
 
 /**
@@ -77,18 +84,19 @@ export function getStyledInputClasses(options: StyledInputOptions): string {
     styles[`styledInput--textAlign-${textAlign}`],
   ];
 
-  // Left padding logic
+  // Left padding logic — depends on hasLeadingVisual AND size
+  // With visual: constant 8px. Without visual: 8px (xsmall/small) | 12px (medium/large).
   if (hasLeadingIcon || hasPrefix || hasLeadingInteractionElement) {
-    classes.push(styles['styledInput--paddingLeft-small']);
+    classes.push(styles['styledInput--paddingLeft-withVisual']);
   } else {
-    classes.push(styles['styledInput--paddingLeft-medium']);
+    classes.push(styles[`styledInput--paddingLeft-noVisual-${size}`]);
   }
 
-  // Right padding logic
+  // Right padding logic — depends on hasTrailingVisual AND size
   if (hasTrailingIcon || hasSuffix || hasTrailingInteractionElement) {
-    classes.push(styles['styledInput--paddingRight-small']);
+    classes.push(styles['styledInput--paddingRight-withVisual']);
   } else {
-    classes.push(styles['styledInput--paddingRight-medium']);
+    classes.push(styles[`styledInput--paddingRight-noVisual-${size}`]);
   }
 
   return classes.filter(Boolean).join(' ');
