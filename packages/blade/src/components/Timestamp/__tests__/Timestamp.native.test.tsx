@@ -120,7 +120,10 @@ describe('<Timestamp /> (native)', () => {
       const { toJSON } = renderWithTheme(<Timestamp value="not-a-date" />);
       // renderWithTheme wraps in a BladeProvider View — toJSON() is that wrapper, never null.
       // When Timestamp returns null, the wrapper renders with no children.
-      expect(toJSON()?.children).toBeNull();
+      // toJSON() can return an array; take the first element to get a single JSON node.
+      const json = toJSON();
+      const node = Array.isArray(json) ? json[0] : json;
+      expect(node?.children).toBeNull();
     } finally {
       // Always restore __DEV__ — if the assertion above throws, the next test
       // (which relies on __DEV__ = true) must not be affected.
