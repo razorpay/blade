@@ -98,6 +98,7 @@ export const bottomSheetHeaderSubtitleClass = styles.headerSubtitle;
 export const bottomSheetHeaderTrailingClass = styles.headerTrailing;
 export const bottomSheetHeaderBackButtonClass = styles.headerBackButton;
 export const bottomSheetHeaderCloseButtonClass = styles.headerCloseButton;
+export const bottomSheetHeaderDividerClass = styles.headerDivider;
 export const bottomSheetEmptyHeaderClass = styles.headerEmpty;
 export const bottomSheetEmptyHeaderFloatingClass = styles.headerEmptyFloating;
 export const bottomSheetCloseButtonCapsuleClass = styles.closeButtonCapsule;
@@ -128,6 +129,7 @@ export function getBottomSheetTemplateClasses(): Record<string, string> {
     headerTrailing: bottomSheetHeaderTrailingClass,
     headerBackButton: bottomSheetHeaderBackButtonClass,
     headerCloseButton: bottomSheetHeaderCloseButtonClass,
+    headerDivider: bottomSheetHeaderDividerClass,
     emptyHeader: bottomSheetEmptyHeaderClass,
     emptyHeaderFloating: bottomSheetEmptyHeaderFloatingClass,
     closeButtonCapsule: bottomSheetCloseButtonCapsuleClass,

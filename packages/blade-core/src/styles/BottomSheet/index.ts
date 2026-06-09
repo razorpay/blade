@@ -21,6 +21,7 @@ export {
   bottomSheetHeaderTrailingClass,
   bottomSheetHeaderBackButtonClass,
   bottomSheetHeaderCloseButtonClass,
+  bottomSheetHeaderDividerClass,
   bottomSheetEmptyHeaderClass,
   bottomSheetEmptyHeaderFloatingClass,
   bottomSheetCloseButtonCapsuleClass,

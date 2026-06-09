@@ -15,6 +15,7 @@
     bottomSheetHeaderSubtitleClass,
     bottomSheetHeaderTrailingClass,
     bottomSheetHeaderBackButtonClass,
+    bottomSheetHeaderDividerClass,
     bottomSheetEmptyHeaderClass,
     bottomSheetEmptyHeaderFloatingClass,
     bottomSheetCloseButtonCapsuleClass,
@@ -193,5 +194,7 @@
     {#if children}
       {@render children()}
     {/if}
+
+    <div class={bottomSheetHeaderDividerClass} role="separator"></div>
   {/if}
 </div>

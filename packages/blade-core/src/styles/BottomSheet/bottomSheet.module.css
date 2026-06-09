@@ -194,10 +194,10 @@
 }
 
 .headerTitle {
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-text);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-200);
-  line-height: var(--line-height-300);
+  line-height: var(--line-height-200);
   color: var(--surface-text-gray-normal);
   margin: 0;
 }
@@ -238,6 +238,13 @@
 
 .headerCloseButton {
   composes: headerBackButton;
+}
+
+.headerDivider {
+  border-bottom-width: var(--border-width-thin);
+  border-bottom-style: solid;
+  border-bottom-color: var(--surface-border-gray-muted);
+  width: 100%;
 }
 
 /* ===== BODY ===== */
@@ -290,4 +297,10 @@
 .footerInner {
   padding: var(--spacing-5);
   border-top: 1px solid var(--surface-border-gray-muted);
+}
+
+@media (min-width: 768px) {
+  .headerContent {
+    padding: var(--spacing-6);
+  }
 }
