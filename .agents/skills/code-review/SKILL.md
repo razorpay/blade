@@ -1,94 +1,22 @@
 ---
 name: code-review
-description: Review blade PRs by fetching diff, checking CI status, and getting Storybook URL. Use when reviewing PRs, checking PR status, or getting preview links for razorpay/blade PRs.
-disable-model-invocation: true
+description: Guidelines for reviewing Blade PRs — sanity checks, code quality, API decisions, usecase validity, and UI review.
 ---
 
-# Review Blade PR
+# Blade PR Code Review Guidelines
 
-## Arguments / Clarifications
+Use these guidelines to review a Blade PR. Apply each critique lens based on what the diff touches. No subagents — you perform the review directly.
 
-- PR: Link / Number of the PR to review
-- ShouldReviewUI: Whether UI should be reviewed or not. Clarify if not mentioned.
-- ShouldRunHeadedBrowser: Whether to run the browser in headed mode. Clarify if not mentioned.
+## Critique Lenses
 
-## Prerequisites
+Load and apply whichever references are relevant:
 
-- GitHub CLI (`gh`) must be installed and authenticated
-- `agent-browser` command must be installed (if ShouldReviewUI is true)
+- **PR Sanity** — Always relevant. CI status, changeset coverage, docs, tests → [pr-sanity-critique.md](./references/pr-sanity-critique.md)
+- **Code Quality** — Relevant for code changes. bugs, logic errors, edge cases, performance, security → [code-quality-critique.md](./references/code-quality-critique.md)
+- **Usecase** — Relevant for code changes. is the change necessary? simpler alternatives? → [usecase-critique.md](./references/usecase-critique.md)
+- **API Decisions** — Relevant for component changes. prop naming, component structure, design system consistency (apply when diff touches component files) → [api-decision-critique.md](./references/api-decision-critique.md)
+- **UI** — Relevant for changes that affect the UI. visual correctness via Storybook (apply when explicitly asked) → [ui-critique.md](./references/ui-critique.md)
 
-## Steps
+## Output Format
 
-### 1. Fetch the diff and PR metadata
-
-Run these in parallel:
-
-```bash
-gh api repos/razorpay/blade/pulls/{PR_NUMBER}/files --jq '[.[] | select(.filename | test("lock$|lock\\.json$|lock\\.yaml$") | not) | {filename, patch}]'
-```
-
-```bash
-gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
-```
-
-Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
-
-### 2. Spawn Critique Subagents in parallel
-
-**pr-sanity-critique:**
-
-```
-subagent_type: pr-sanity-critique
-prompt: "PR_NUMBER={PR_NUMBER}"
-```
-
-**code-quality-critique:**
-
-```
-subagent_type: code-quality-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
-**usecase-critique:**
-
-```
-subagent_type: usecase-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
-**api-decision-critique** (only if the diff contains component changes):
-
-```
-subagent_type: api-decision-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
-**ui-critique** (only if ShouldReviewUI is true):
-
-```
-subagent_type: ui-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  HEADED={ShouldRunHeadedBrowser}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
-### 4. Synthesize and output
-
-Combine both subagent outputs. Follow the output format in references/output-format.md exactly.
-
-- [Output Format](./references/output-format.md)
+Follow the output format in [output-format.md](./references/output-format.md) exactly.
