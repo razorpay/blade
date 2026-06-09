@@ -6,17 +6,14 @@
 > **Purpose:** **Adoption-readiness / API-fit review.** Checkout V2 just shipped a deep merchant-configurability layer (Config V2, PR [checkout#11286](https://github.com/razorpay/checkout/pull/11286)) but **does not consume Blade Svelte yet** — it styles its own components. This doc evaluates the architectural/API changes Blade Svelte needs so checkout can drop those bespoke components and adopt Blade *without losing the merchant-config surface*.
 > **Related:** `docs/theming-and-classnames.md`, `checkout/app/v2/docs/CONFIG_V2_SPEC.md`, `checkout/app/v2/utils/config-driver/*`
 
-> **📦 Reference implementations (all 5 options are now buildable & inspectable).** To make this RFC concrete, every option A–E has a working spike landed in the codebase so the team can compare them side-by-side in Storybook (especially hover/disabled behaviour) rather than from prose alone. **These are evaluation spikes, not a final API commitment** — the recommendation (B core + C complementary) is unchanged.
+> **📦 Reference implementations (Options B & C on branch `feat/instance-level-styling-bc`).** This branch lands the **recommended pair** only — not the full A–E evaluation set (see `feat/instance-level-styling` for all five spikes). **These are evaluation spikes, not a final API commitment.**
 >
 > | Option | `blade-core` (framework-agnostic) | `blade-svelte` wiring |
 > |---|---|---|
-> | **A** — visual styled props | `utils/colorOverrides/visualStyledProps.ts` (`resolveVisualStyledProps`) | `Button` prop `visualProps` |
-> | **B** — `styleOverrides` → CSS vars (**recommended**) | `styles/Button/buttonOverrides.ts` (`resolveButtonOverrides`), `styles/Card/cardOverrides.ts` (`resolveCardOverrides`, parts), `utils/colorOverrides/deriveColorStates.ts` (state synthesis) | `Button`/`Card` prop `styleOverrides`; CSS seams added to `button.module.css` (`--btn-content-color`, `--btn-radius`) and `card.module.css` (`--card-surface-bg`, `--card-surface-border-color`) |
-> | **C** — scoped provider | `styles/themeScope/themeScope.ts` (`flattenThemeOverridesToVars`) | `BladeProvider.svelte` (`themeOverrides`) |
-> | **D** — slot-keyed map | `styles/slotTheme/slotTheme.ts` (`resolveSlotTheme`) | `BladeProvider` (`slotTheme`) + `Button` prop `themeKey` |
-> | **E** — `className` | — | `Button` prop `className` |
+> | **B** — `styleOverrides` → CSS vars (**recommended core**) | `styles/Button/buttonOverrides.ts` (`resolveButtonOverrides`), `styles/Card/cardOverrides.ts` (`resolveCardOverrides`, parts), `utils/colorOverrides/deriveColorStates.ts` (state synthesis) | `Button`/`Card` prop `styleOverrides`; CSS seams in `button.module.css` (`--btn-content-color`, `--btn-radius`) and `card.module.css` (`--card-surface-bg`, `--card-surface-border-color`) |
+> | **C** — scoped provider (**complementary**) | `styles/themeScope/themeScope.ts` (`flattenThemeOverridesToVars`) | `BladeProvider.svelte` (`themeOverrides`) |
 >
-> **See it:** Storybook → *Patterns / Instance-Level Styling* (`src/components/Button/StyleOverrides.stories.svelte`). The “A vs B · hover & disabled” story is the money shot — A dead-ends states, B derives them. Everything is additive/backward-compatible (`svelte-check` + `blade-core` typecheck green; unspecified instances render pixel-identical via `var(--x, <default>)`).
+> **See it:** Storybook → *Patterns / Instance-Level Styling* (`src/components/Button/StyleOverrides.stories.svelte`). Start with **“B · hover & disabled”** — one base hex, derived states. Everything is additive/backward-compatible; unspecified instances render pixel-identical via `var(--x, <default>)`.
 
 ---
 

@@ -46,10 +46,8 @@ export {
   BUTTON_OVERRIDE_VARS,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ButtonStyleOverrides } from './Button';
-// Instance-level styling — Option D (slot-keyed theme map) and Option C (scoped
-// theme provider) framework-agnostic resolvers. See instance-level-styling-proposal.
-export { resolveSlotTheme } from './slotTheme';
-export type { SlotThemeMap, SlotThemeComponent } from './slotTheme';
+// Instance-level styling — Option C (scoped theme provider) framework-agnostic
+// resolver. See instance-level-styling-proposal.
 export { flattenThemeOverridesToVars } from './themeScope';
 export type { ThemeOverrideTree } from './themeScope';
 export { utilityClasses, getUtilityClass } from './utilities';
