@@ -13,6 +13,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
+import { isReactNative } from '~utils';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -141,14 +142,14 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
     <BaseBox
       display="flex"
       flexDirection="row"
-      gap="spacing.5"
+      gap={isReactNative() ? 'spacing.5' : undefined}
       alignSelf={isMobile ? 'auto' : 'center'}
       marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
       marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
-      width={isMobile ? '100%' : undefined}
+      width={isReactNative() ? '100%' : undefined}
       {...makeAnalyticsAttribute(rest)}
     >
-      <BaseBox flex={isMobile ? 1 : undefined} flexGrow={isMobile ? undefined : 1}>
+      <BaseBox flex={isReactNative() ? 1 : undefined} flexGrow={isReactNative() ? undefined : 1}>
         {actions?.secondary ? (
           <Button
             isFullWidth
@@ -161,7 +162,8 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
           </Button>
         ) : null}
       </BaseBox>
-      <BaseBox flex={isMobile ? 1 : undefined} flexGrow={isMobile ? undefined : 1}>
+      {!isReactNative() && <BaseBox marginLeft="spacing.5" />}
+      <BaseBox flex={isReactNative() ? 1 : undefined} flexGrow={isReactNative() ? undefined : 1}>
         {actions?.primary ? (
           <Button
             isFullWidth
