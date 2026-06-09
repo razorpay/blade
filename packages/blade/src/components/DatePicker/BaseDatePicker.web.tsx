@@ -104,6 +104,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   const referenceRef = React.useRef<HTMLButtonElement>(null);
   // Flag to apply preset selection after state updates (avoids stale values)
   const shouldApplyAfterPresetSelection = React.useRef(false);
+  // Flag to auto-apply single date selection immediately after state update
+  const shouldApplyAfterSingleDateClick = React.useRef(false);
 
   const [_picker, setPicker] = useControllableState<PickerType>({
     defaultValue: defaultPicker,
@@ -246,10 +248,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     updateSelectedFilters();
   };
 
-  // Apply preset selection after state updates to avoid stale values
+  // Apply preset or single-date selection after state updates to avoid stale values
   React.useEffect(() => {
-    if (shouldApplyAfterPresetSelection.current) {
+    if (shouldApplyAfterPresetSelection.current || shouldApplyAfterSingleDateClick.current) {
       shouldApplyAfterPresetSelection.current = false;
+      shouldApplyAfterSingleDateClick.current = false;
       handleApply();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -372,6 +375,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             }}
             __onDayClick={(_event, date) => {
               onDateChange(date, 'day');
+              if (isSingle) shouldApplyAfterSingleDateClick.current = true;
             }}
             getMonthControlProps={(date) => {
               return getControlProps(date);
@@ -385,10 +389,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             onMonthSelect={(date) => {
               props?.onMonthSelect?.(date);
               onDateChange(date, 'month');
+              if (isSingle) shouldApplyAfterSingleDateClick.current = true;
             }}
             onYearSelect={(date) => {
               props?.onYearSelect?.(date);
               onDateChange(date, 'year');
+              if (isSingle) shouldApplyAfterSingleDateClick.current = true;
             }}
             onNext={(data) => {
               props?.onNext?.(data);
@@ -415,6 +421,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
               onCancel={handleCancel}
               footer={footer}
               selectionType={_selectionType}
+              showButtons={!isSingle}
             />
           ))}
       </BaseBox>
@@ -556,13 +563,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                     />
                   )}
                 </BottomSheetBody>
-                {showFooterActions && (
+                {showFooterActions && (!isSingle || footer) && (
                   <BottomSheetFooter>
                     <CalendarFooter
                       onCancel={handleCancel}
                       onApply={handleApply}
                       footer={footer}
                       selectionType={_selectionType}
+                      showButtons={!isSingle}
                     />
                   </BottomSheetFooter>
                 )}

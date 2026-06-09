@@ -109,15 +109,14 @@ DatePickerSingleSelect.play = async () => {
   await sleep(400);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
   await expect(queryByText('Sun')).toBeVisible();
-  // select
+  // Apply button should NOT be visible for single mode
+  await expect(queryByText('Apply')).toBeNull();
+  // select - clicking a date should auto-apply and close picker
   const dateToSelect = dayjs().add(1, 'day');
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
-  // press apply button
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
-  await expect(date).not.toBeVisible();
+  await expect(queryByText('Sun')).toBeNull();
   // assert inputs value
   await expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'));
   await expect(onOpenChange).toBeCalledTimes(2);
@@ -138,17 +137,10 @@ DatePickerSingleSelectCancel.play = async () => {
   await sleep(400);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
   await expect(queryByText('Sun')).toBeVisible();
-  // select
-  const dateToSelect = dayjs().add(1, 'day');
-  const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
-  await userEvent.click(date);
-  // assert inputs value
-  await expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'));
-  // press cancel button
-  const cancelButton = getByRole('button', { name: /Cancel/i });
-  await userEvent.click(cancelButton);
+  // No Cancel/Apply buttons in single mode - pressing Escape should close without selecting
+  await userEvent.keyboard('{Escape}');
   await sleep(400);
-  await expect(date).not.toBeVisible();
+  await expect(queryByText('Sun')).toBeNull();
   await expect(input).toHaveValue('');
   await expect(onOpenChange).toBeCalledTimes(2);
 };
@@ -197,13 +189,10 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // assert inputs value
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
-  // select another date
+  // select another date - clicking auto-applies and closes picker in single mode
   const dateToSelect = dayjs().add(2, 'day');
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
-  // press apply button
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
   await expect(date).not.toBeVisible();
   // assert inputs value
@@ -264,12 +253,8 @@ DatePickerSingleChangePicker.play = async () => {
   await userEvent.keyboard('{ArrowRight}');
   await userEvent.keyboard('{ArrowLeft}');
   await userEvent.keyboard('{Enter}');
-  // choose today's date
+  // choose today's date - auto-applies in single mode
   await userEvent.click(getByRole('button', { name: dayjs().format('D MMMM YYYY') }));
-  await sleep(400);
-  // press apply
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
   // expect input to have today's date
   await expect(input).toHaveValue(dayjs().format('DD/MM/YYYY'));
@@ -456,15 +441,13 @@ Localization.play = async () => {
   await userEvent.click(input);
   await sleep(400);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
-  await expect(queryByText('Apply')).toBeVisible();
-  // expect hindi locale
+  // Single mode: no Apply button
+  await expect(queryByText('Apply')).toBeNull();
+  // expect english locale headers
   await expect(queryByText('Sun')).toBeVisible();
 
-  // click apply
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
-  await sleep(400);
-  await userEvent.click(input);
+  // Close the picker with Escape
+  await userEvent.keyboard('{Escape}');
   await sleep(400);
 
   // click change locale
@@ -518,8 +501,7 @@ DatePickerSingleAutoFocus.play = async () => {
   await userEvent.click(january);
   const date = getByRole('button', { name: selectedDate });
   await userEvent.click(date);
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
+  // Auto-applies in single mode
   await sleep(400);
   await userEvent.click(input);
   await sleep(400);
@@ -795,12 +777,9 @@ DatePickerMonthFormat.play = async () => {
   // Should show month picker view
   await expect(queryByText('Dec')).toBeVisible();
 
-  // Select a month
+  // Select a month - auto-applies in single mode
   const monthButton = getByRole('button', { name: /Nov/i });
   await userEvent.click(monthButton);
-
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
 
   // Verify month is selected
@@ -834,12 +813,9 @@ DatePickerYearFormat.play = async () => {
   const currentYear = dayjs().year();
   await expect(queryByText(`${currentYear}`)).toBeVisible();
 
-  // Select the year 2026
+  // Select the year 2026 - auto-applies in single mode
   const yearButton = getByRole('button', { name: '2026' });
   await userEvent.click(yearButton);
-
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
 
   // Verify year is selected
@@ -969,17 +945,13 @@ DatePickerCalendarToInput.play = async () => {
   await sleep(400);
   await expect(queryByText('Sun')).toBeVisible();
 
-  // Select a date from calendar
+  // Select a date - auto-applies and closes in single mode
   const targetDate = dayjs().add(4, 'day');
   const dateButton = getByRole('button', { name: targetDate.format('D MMMM YYYY') });
   await userEvent.click(dateButton);
-
-  // Apply the selection
-  const applyButton = getByRole('button', { name: /Apply/i });
-  await userEvent.click(applyButton);
   await sleep(400);
 
-  // Verify calendar selection appears in input
+  // Verify calendar selection appears in input and calendar closed
   await expect(input).toHaveValue(targetDate.format('DD/MM/YYYY'));
   await expect(queryByText('Sun')).toBeNull();
 };
