@@ -644,7 +644,10 @@ const CardWithOverflowExample = (): React.ReactElement => {
           <CardHeaderLeading title="Scrollable Content" />
         </CardHeader>
         <CardBody>
-          <Box height={isReactNative() ? '120px' : undefined} overflow={isReactNative() ? 'hidden' : undefined}>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
             <StoryScrollView>
               <Text>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -689,7 +692,10 @@ const CardWithOverflowExample = (): React.ReactElement => {
           <CardHeaderLeading title="Vertical Scroll Only" />
         </CardHeader>
         <CardBody>
-          <Box height={isReactNative() ? '120px' : undefined} overflow={isReactNative() ? 'hidden' : undefined}>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
             <StoryScrollView>
               <Text>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
