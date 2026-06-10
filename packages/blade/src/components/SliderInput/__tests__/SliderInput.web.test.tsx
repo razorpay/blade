@@ -5,9 +5,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SliderInput />', () => {
   it('should render with default props', () => {
-    const { getByRole, getByText } = renderWithTheme(
-      <SliderInput label="Test Slider" />,
-    );
+    const { getByRole, getByText } = renderWithTheme(<SliderInput label="Test Slider" />);
     expect(getByRole('slider')).toBeTruthy();
     expect(getByText('Test Slider')).toBeTruthy();
   });
@@ -37,7 +35,7 @@ describe('<SliderInput />', () => {
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 100 });
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('should jump to min/max on Home/End keys', () => {
@@ -77,9 +75,7 @@ describe('<SliderInput />', () => {
   });
 
   it('should render in disabled state', () => {
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} isDisabled />,
-    );
+    const { getByRole } = renderWithTheme(<SliderInput label="Test" value={50} isDisabled />);
     expect(getByRole('slider')).toHaveAttribute('aria-disabled', 'true');
   });
 

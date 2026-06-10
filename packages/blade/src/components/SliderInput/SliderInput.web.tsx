@@ -58,12 +58,12 @@ const StyledInputWrapper = styled.div<{
       $state === 'error'
         ? T.color.input.borderError
         : $state === 'focused'
-          ? T.color.input.borderFocus
-          : $state === 'hovered'
-            ? T.color.input.borderHover
-            : $state === 'disabled'
-              ? T.color.input.borderDisabled
-              : T.color.input.border;
+        ? T.color.input.borderFocus
+        : $state === 'hovered'
+        ? T.color.input.borderHover
+        : $state === 'disabled'
+        ? T.color.input.borderDisabled
+        : T.color.input.border;
     return `${get(theme.colors, colorToken, '')} 0px 0px 0px ${makeBorderSize(width)}`;
   }};
 
@@ -75,9 +75,13 @@ const StyledInputWrapper = styled.div<{
 
   transition-property: box-shadow, background-color, outline-width;
   transition-duration: ${({ theme }) =>
-    `${castWebType(makeMotionTime(theme.motion.duration.xgentle))}, ${castWebType(makeMotionTime(theme.motion.duration.xquick))}, ${castWebType(makeMotionTime(theme.motion.duration['2xquick']))}`};
+    `${castWebType(makeMotionTime(theme.motion.duration.xgentle))}, ${castWebType(
+      makeMotionTime(theme.motion.duration.xquick),
+    )}, ${castWebType(makeMotionTime(theme.motion.duration['2xquick']))}`};
   transition-timing-function: ${({ theme }) =>
-    `${castWebType(theme.motion.easing.emphasized)}, ${castWebType(theme.motion.easing.standard)}, ${castWebType(theme.motion.easing.standard)}`};
+    `${castWebType(theme.motion.easing.emphasized)}, ${castWebType(
+      theme.motion.easing.standard,
+    )}, ${castWebType(theme.motion.easing.standard)}`};
 `;
 
 const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
@@ -236,31 +240,22 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const thumbColor = isDisabled
       ? get(theme.colors, T.color.thumb.disabled, '')
       : get(theme.colors, T.color.thumb.fill, '');
-    const trackBgColor = get(theme.colors, T.color.track.bg, '');
     const trackFillColor = isDisabled
       ? get(theme.colors, T.color.track.fillDisabled, '')
       : get(theme.colors, T.color.track.fill, '');
-    const labelColor = isDisabled ? T.color.label.disabled : T.color.label.text;
     const valueColor = isDisabled ? T.color.value.disabled : T.color.value.text;
     const suffixColor = isDisabled ? T.color.suffix.disabled : T.color.suffix.text;
 
     const inputState = isDisabled
       ? 'disabled'
       : validationState === 'error'
-        ? 'error'
-        : isInputFocused
-          ? 'focused'
-          : isInputHovered
-            ? 'hovered'
-            : 'default';
+      ? 'error'
+      : isInputFocused
+      ? 'focused'
+      : isInputHovered
+      ? 'hovered'
+      : 'default';
 
-    const labelTextStyles = getTextStyles({
-      size: 'small',
-      variant: 'body',
-      weight: 'medium',
-      color: labelColor,
-      theme,
-    });
     const valueTextStyles = getTextStyles({
       size: 'small',
       variant: 'body',
@@ -281,16 +276,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
     return (
       <BaseBox
-        ref={ref}
+        ref={ref as React.Ref<HTMLDivElement>}
         {...metaAttribute({ name: MetaConstants.SliderInput, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
       >
-        <BaseBox
-          display="flex"
-          flexDirection="column"
-          gap="spacing.1"
-        >
+        <BaseBox display="flex" flexDirection="column" gap="spacing.1">
           <BaseBox
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -320,7 +311,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 display="flex"
                 alignItems="center"
                 cursor={isDisabled ? 'not-allowed' : 'pointer'}
-                onMouseDown={handleMouseDown as unknown as React.MouseEventHandler}
+                onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
               >
                 {/* Track background */}
                 <BaseBox
@@ -342,7 +333,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     height: T.track.height,
                     borderRadius: theme.border.radius.max,
                     backgroundColor: trackFillColor,
-                    transition: isDragging ? 'none' : `width ${castWebType(makeMotionTime(theme.motion.duration.quick))} ${castWebType(theme.motion.easing.standard)}`,
+                    transition: isDragging
+                      ? 'none'
+                      : `width ${castWebType(
+                          makeMotionTime(theme.motion.duration.quick),
+                        )} ${castWebType(theme.motion.easing.standard)}`,
                   }}
                 />
 
@@ -356,11 +351,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     width: showHalo ? haloSize : 0,
                     height: showHalo ? haloSize : 0,
                     borderRadius: '50%',
-                    backgroundColor: isDragging
-                      ? 'rgba(0, 0, 0, 0.12)'
-                      : 'rgba(0, 0, 0, 0.08)',
+                    backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
                     opacity: showHalo ? 1 : 0,
-                    transition: isDragging ? 'none' : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
+                    transition: isDragging
+                      ? 'none'
+                      : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
                     pointerEvents: 'none',
                   }}
                 />
@@ -376,7 +371,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-valuenow={currentValue}
                   aria-valuetext={suffix ? `${currentValue} ${suffix}` : String(currentValue)}
                   aria-labelledby={label ? labelId : undefined}
-                  aria-label={!label ? (accessibilityLabel ?? 'Slider') : undefined}
+                  aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                   aria-disabled={isDisabled}
                   onKeyDown={handleKeyDown}
                   onFocus={() => setIsThumbFocused(true)}
@@ -394,7 +389,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     backgroundColor: thumbColor,
                     border: 'none',
                     cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
-                    transition: isDragging ? 'none' : `all ${castWebType(makeMotionTime(theme.motion.duration.xquick))} ${castWebType(theme.motion.easing.standard)}`,
+                    transition: isDragging
+                      ? 'none'
+                      : `all ${castWebType(
+                          makeMotionTime(theme.motion.duration.xquick),
+                        )} ${castWebType(theme.motion.easing.standard)}`,
                     zIndex: 2,
                     touchAction: 'none',
                   }}
@@ -427,7 +426,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     if (e.key === 'Enter') inputRef.current?.blur();
                   }}
                   aria-labelledby={label ? labelId : undefined}
-                  aria-label={!label ? (accessibilityLabel ?? 'Slider value') : undefined}
+                  aria-label={!label ? accessibilityLabel ?? 'Slider value' : undefined}
                   style={{
                     ...valueTextStyles,
                     width: 21,
@@ -439,27 +438,21 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     cursor: isDisabled ? 'not-allowed' : 'text',
                   }}
                 />
-                {suffix && (
-                  <span style={{ ...suffixTextStyles, flexShrink: 0 }}>{suffix}</span>
-                )}
+                {suffix && <span style={{ ...suffixTextStyles, flexShrink: 0 }}>{suffix}</span>}
               </StyledInputWrapper>
             </BaseBox>
           </BaseBox>
 
           {willRenderHintText && (
-            <BaseBox marginLeft={isLabelLeftPositioned ? `${T.label.width + T.gap.labelToSlider}px` : undefined}>
+            <BaseBox
+              marginLeft={
+                isLabelLeftPositioned ? `${T.label.width + T.gap.labelToSlider}px` : undefined
+              }
+            >
               {validationState === 'error' && errorText ? (
-                <FormHint
-                  type="error"
-                  errorText={errorText}
-                  errorTextId={errorTextId}
-                />
+                <FormHint type="error" errorText={errorText} errorTextId={errorTextId} />
               ) : helpText ? (
-                <FormHint
-                  type="help"
-                  helpText={helpText}
-                  helpTextId={helpTextId}
-                />
+                <FormHint type="help" helpText={helpText} helpTextId={helpTextId} />
               ) : null}
             </BaseBox>
           )}
