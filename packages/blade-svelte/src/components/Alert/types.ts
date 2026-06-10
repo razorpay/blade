@@ -2,7 +2,7 @@ import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../Icons';
 
-export type AlertColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+export type AlertColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive' | 'primary';
 export type AlertEmphasis = 'subtle' | 'intense';
 
 export type PrimaryAction = {

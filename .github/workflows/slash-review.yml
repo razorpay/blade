@@ -1,0 +1,78 @@
+name: Slash Code Review
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, labeled]
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.pull_request.number || github.head_ref || github.sha }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  slash-review:
+    name: Request Slash AI review
+    # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
+    # so that Slash-authored PRs also get reviewed).
+    # For labeled events, only fire on the 'Run Slash Review' label — not every label addition.
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      (
+        github.event.action != 'labeled' ||
+        github.event.label.name == 'Run Slash Review'
+      )
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+
+    steps:
+      - name: Request Slash review
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BRANCH: ${{ github.head_ref }}
+          PR_TARGET_BRANCH: ${{ github.base_ref }}
+          PR_REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/pr-review"
+
+          PAYLOAD=$(python3 -c "
+          import json, os
+          print(json.dumps({
+            'pr_metadata': {
+              'pr_url': os.environ['PR_URL'],
+              'pr_number': int(os.environ['PR_NUMBER']),
+              'repository': os.environ['PR_REPOSITORY'],
+              'author': os.environ['PR_AUTHOR'],
+              'title': os.environ['PR_TITLE'],
+              'branch': os.environ['PR_BRANCH'],
+              'target_branch': os.environ['PR_TARGET_BRANCH'],
+            },
+            'idempotency_key': f\"{os.environ['PR_REPOSITORY']}:{os.environ['PR_NUMBER']}:{os.environ['RUN_ID']}\"
+          }))
+          ")
+
+          echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
+
+          HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
+            --write-out "%{http_code}" \
+            --request POST "${SLASH_API}" \
+            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
+            --header "Content-Type: application/json" \
+            --data "${PAYLOAD}")
+
+          RESPONSE=$(cat /tmp/slash_response.json)
+          echo "HTTP status: ${HTTP_STATUS}"
+          echo "${RESPONSE}"
+
+          if [ "${HTTP_STATUS}" = "202" ]; then
+            REVIEW_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('review_id',''))" 2>/dev/null || true)
+            echo "Review accepted — review_id: ${REVIEW_ID}"
+          elif [ "${HTTP_STATUS}" = "200" ]; then
+            echo "Review deduplicated — this PR was already queued or reviewed."
+          else
+            echo "Slash review request failed with HTTP ${HTTP_STATUS}"
+            exit 1
+          fi
