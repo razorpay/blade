@@ -94,7 +94,7 @@ export default defineConfig({
       input: {
         code: resolve(__dirname, 'src/code.ts'),
         'code.basic': resolve(__dirname, 'src/code.basic.ts'),
-        ui: resolve(__dirname, 'src/ui.js'),
+        ui: resolve(__dirname, 'src/ui/index.ts'),
       },
       output: {
         entryFileNames: (chunkInfo) => {

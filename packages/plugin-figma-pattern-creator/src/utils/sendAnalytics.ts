@@ -74,11 +74,6 @@ export const sendAnalytics = async ({
       }, properties),
     };
 
-    console.log('Sending analytics request:', {
-      url: 'https://api.segment.io/v1/track',
-      headers,
-      body: requestBody
-    });
 
     const response = await fetch('https://api.segment.io/v1/track', {
       method: 'POST',
@@ -96,12 +91,10 @@ export const sendAnalytics = async ({
       throw new Error(`Analytics request failed: ${response.status} ${response.statusText}`);
     }
 
-    console.log('Analytics sent successfully');
   } catch (error) {
     // Silently fail analytics to not break the plugin functionality
     console.warn('Analytics failed:', error);
   }
-  // console.log('Analytics sent!!!');
   /**
    * TODO: will use this once we add the UI part of this plugin, till then using the default fetch
    */
