@@ -76,11 +76,11 @@ const validationTextSize = {
   large: 'medium',
 } as const;
 
-const validationTextColor: Record<NonNullable<BaseInputProps['validationState']>, string> = {
+const validationTextColor = {
   success: 'feedback.text.positive.intense',
   error: 'feedback.text.negative.intense',
   none: 'surface.text.gray.subtle', // TypeScript exhaustiveness — never reached at runtime
-};
+} as const;
 
 const getPrefixStyles = ({
   hasLeadingIcon,
