@@ -1,16 +1,276 @@
-import React from 'react';
-/* eslint-disable react/jsx-no-useless-fragment */
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Pressable, TextInput } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated';
 import type { CounterInputProps } from './types';
-import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import { COUNTER_INPUT_TOKEN } from './token';
+import { CounterInputProvider } from './CounterInputContext';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { useControllableState } from '~utils/useControllable';
+import BaseBox from '~components/Box/BaseBox';
+import { FormLabel } from '~components/Form';
+import { useId } from '~utils/useId';
+import { useTheme } from '~components/BladeProvider';
+import { MinusIcon, PlusIcon } from '~components/Icons';
+import { ProgressBar } from '~components/ProgressBar';
+import get from '~utils/lodashButBetter/get';
 
-const CounterInput = (_props: CounterInputProps): React.ReactElement => {
-  throwBladeError({
-    message: 'CounterInput is not yet implemented for native',
-    moduleName: 'CounterInput',
-  });
+const ICON_SIZE_MAP = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'large',
+  large: 'xlarge',
+} as const;
 
-  return <Text>CounterInput Component is not available for Native mobile apps.</Text>;
-};
+const FONT_SIZE_MAP = {
+  xsmall: 75,
+  small: 75,
+  medium: 100,
+  large: 200,
+} as const;
+
+const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
+  (
+    {
+      label,
+      accessibilityLabel,
+      labelPosition = 'top',
+      name,
+      value,
+      defaultValue,
+      min = 0,
+      max,
+      emphasis = 'subtle',
+      size = 'medium',
+      isLoading = false,
+      isDisabled = false,
+      onChange,
+      onFocus,
+      onBlur,
+      testID,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      _motionMeta,
+      ...rest
+    },
+    ref,
+  ) => {
+    const [internalValue, setInternalValue] = useControllableState({
+      value,
+      defaultValue,
+      onChange: (newValue) => onChange?.({ value: newValue }),
+    });
+
+    const translateY = useSharedValue(0);
+    const opacity = useSharedValue(1);
+    const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
+    const previousValueRef = useRef<number | undefined>(internalValue);
+
+    useEffect(() => {
+      if (lastActionRef.current && internalValue !== previousValueRef.current) {
+        const startY = lastActionRef.current === 'increment' ? 8 : -8;
+        translateY.value = startY;
+        opacity.value = 0;
+        translateY.value = withTiming(0, { duration: 200, easing: Easing.out(Easing.ease) });
+        opacity.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.ease) });
+        lastActionRef.current = null;
+      }
+      previousValueRef.current = internalValue;
+    }, [internalValue]);
+
+    const animatedStyle = useAnimatedStyle(() => ({
+      transform: [{ translateY: translateY.value }],
+      opacity: opacity.value,
+    }));
+
+    const labelId = useId('counter-input-label');
+    const { theme } = useTheme();
+    const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
+    const _isDisabled = isDisabled || isLoading;
+
+    const handleInputChange = useCallback(
+      (text: string) => {
+        const numericValue = text ? parseInt(text, 10) : min;
+        const validValue = isNaN(numericValue) ? min : numericValue;
+        let constrainedValue = validValue;
+        if (constrainedValue < min) constrainedValue = min;
+        if (max !== undefined && constrainedValue > max) constrainedValue = max;
+        setInternalValue(() => constrainedValue);
+      },
+      [min, max, setInternalValue],
+    );
+
+    const handleIncrement = useCallback(() => {
+      if (_isDisabled) return;
+      lastActionRef.current = 'increment';
+      const newValue = (internalValue ?? min) + 1;
+      const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
+      setInternalValue(() => constrainedValue);
+    }, [internalValue, min, max, _isDisabled, setInternalValue]);
+
+    const handleDecrement = useCallback(() => {
+      if (_isDisabled) return;
+      lastActionRef.current = 'decrement';
+      const newValue = (internalValue ?? min) - 1;
+      const constrainedValue = Math.max(newValue, min);
+      setInternalValue(() => constrainedValue);
+    }, [internalValue, min, _isDisabled, setInternalValue]);
+
+    const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
+    const isIncrementDisabled = _isDisabled || (max !== undefined && (internalValue ?? min) >= max);
+
+    const valueColor = get(
+      theme.colors,
+      _isDisabled ? emphasisTokens.disabledColor : emphasisTokens.color,
+      '',
+    ) as string;
+
+    const contextValue = {
+      size,
+      emphasis,
+      isDisabled,
+      isLoading,
+      color: emphasisTokens.color,
+      disabledTextColor: emphasisTokens.disabledColor,
+      isInsideCounterInput: true,
+    };
+
+    return (
+      <CounterInputProvider value={contextValue}>
+        <BaseBox
+          ref={ref}
+          {...metaAttribute({ name: MetaConstants.CounterInput, testID })}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <BaseBox display="flex" flexDirection="column">
+            {label && (
+              <FormLabel as="span" position="top" id={labelId} size={size}>
+                {label}
+              </FormLabel>
+            )}
+
+            <BaseBox
+              display="flex"
+              alignItems="center"
+              flexDirection="column"
+              backgroundColor={
+                isLoading || isDisabled
+                  ? emphasisTokens.loadingOrDisabledBgColor
+                  : emphasisTokens.backgroundColor
+              }
+              style={{
+                width: COUNTER_INPUT_TOKEN.width[size],
+                height: COUNTER_INPUT_TOKEN.height[size],
+              }}
+              borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
+              borderWidth="thin"
+              borderColor={
+                _isDisabled ? emphasisTokens.disabledBorderColor : emphasisTokens.borderColor
+              }
+            >
+              <BaseBox display="flex" alignItems="center" flexDirection="row" flex={1}>
+                <Pressable
+                  onPress={handleDecrement}
+                  disabled={isDecrementDisabled}
+                  style={{
+                    padding: COUNTER_INPUT_TOKEN.iconPadding[size],
+                    marginTop: COUNTER_INPUT_TOKEN.decrementIconMargin[0],
+                    marginRight: COUNTER_INPUT_TOKEN.decrementIconMargin[1],
+                    marginBottom: COUNTER_INPUT_TOKEN.decrementIconMargin[2],
+                    marginLeft: COUNTER_INPUT_TOKEN.decrementIconMargin[3],
+                    borderRadius: COUNTER_INPUT_TOKEN.buttonBorderRadius[size],
+                  }}
+                  accessibilityLabel="Decrement value"
+                  accessibilityRole="button"
+                >
+                  <MinusIcon
+                    size={ICON_SIZE_MAP[size]}
+                    color={
+                      isDecrementDisabled
+                        ? emphasisTokens.disabledIconColor
+                        : emphasisTokens.iconColor
+                    }
+                  />
+                </Pressable>
+
+                <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+                  <TextInput
+                    value={internalValue?.toString() ?? String(min)}
+                    onChangeText={handleInputChange}
+                    onFocus={() => onFocus?.({ name, value: internalValue?.toString() })}
+                    onEndEditing={() => onBlur?.({ name, value: internalValue?.toString() })}
+                    editable={!_isDisabled}
+                    keyboardType="numeric"
+                    style={{
+                      flex: 1,
+                      textAlign: 'center',
+                      textAlignVertical: 'center',
+                      includeFontPadding: false,
+                      padding: 0,
+                      color: valueColor,
+                      fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
+                      fontFamily: theme.typography.fonts.family.text,
+                      fontWeight: '600',
+                    }}
+                    accessibilityLabel={accessibilityLabel ?? label}
+                    accessibilityRole="spinbutton"
+                  />
+                </Animated.View>
+
+                <Pressable
+                  onPress={handleIncrement}
+                  disabled={isIncrementDisabled}
+                  style={{
+                    padding: COUNTER_INPUT_TOKEN.iconPadding[size],
+                    marginTop: COUNTER_INPUT_TOKEN.incrementIconMargin[0],
+                    marginRight: COUNTER_INPUT_TOKEN.incrementIconMargin[1],
+                    marginBottom: COUNTER_INPUT_TOKEN.incrementIconMargin[2],
+                    marginLeft: COUNTER_INPUT_TOKEN.incrementIconMargin[3],
+                    borderRadius: COUNTER_INPUT_TOKEN.buttonBorderRadius[size],
+                  }}
+                  accessibilityLabel="Increment value"
+                  accessibilityRole="button"
+                >
+                  <PlusIcon
+                    size={ICON_SIZE_MAP[size]}
+                    color={
+                      isIncrementDisabled
+                        ? emphasisTokens.disabledIconColor
+                        : emphasisTokens.iconColor
+                    }
+                  />
+                </Pressable>
+              </BaseBox>
+
+              {isLoading && (
+                <BaseBox width="100%" position="absolute" bottom="spacing.0">
+                  <ProgressBar
+                    color={emphasisTokens.progressBarColor}
+                    showPercentage={false}
+                    value={1}
+                    isIndeterminate={true}
+                    _oscillation={true}
+                  />
+                </BaseBox>
+              )}
+            </BaseBox>
+          </BaseBox>
+        </BaseBox>
+      </CounterInputProvider>
+    );
+  },
+);
+
+const CounterInput = assignWithoutSideEffects(_CounterInput, {
+  componentId: MetaConstants.CounterInput,
+});
 
 export { CounterInput };
