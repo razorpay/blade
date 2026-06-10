@@ -255,6 +255,89 @@ export function toButtonOverrides(input: {
         return { text: v, color: '#57606a' };
     }
   }
+
+  const SCENARIOS = [
+    {
+      id: 'A',
+      question: 'I want to recolor ONE button driven by merchant config.',
+      verdict: 'B',
+      verdictLabel: 'Use Option B',
+      reason:
+        'Per-instance hex from your config feed. styleOverrides is typed, derives hover/disabled, and stays scoped to that single button.',
+      snippet: `<Button styleOverrides={{ backgroundColor: $ctaBg$, textColor: $ctaText$ }}>
+  Continue
+</Button>`,
+    },
+    {
+      id: 'B',
+      question: 'Two CTAs on the same page need DIFFERENT colors.',
+      verdict: 'B',
+      verdictLabel: 'Use Option B',
+      reason:
+        'Each button gets its own styleOverrides — no global cascade. Provider would force them to share a palette.',
+      snippet: `<Button styleOverrides={{ backgroundColor: '#1a59ff', textColor: '#ffffff' }}>
+  Pay
+</Button>
+<Button variant="secondary" styleOverrides={{ borderColor: '#1a59ff', textColor: '#1a59ff' }}>
+  Cancel
+</Button>`,
+    },
+    {
+      id: 'C',
+      question:
+        'I want a whole drawer / section to feel festive — every primary inside should match.',
+      verdict: 'C',
+      verdictLabel: 'Use Option C',
+      reason:
+        'Subtree token override. Cards, Buttons, anything inside picks up the palette via CSS cascade — no per-component prop wiring.',
+      snippet: `<BladeProvider themeOverrides={festiveTheme}>
+  <Card>...</Card>
+  <Button>Pay now</Button>
+  <Button variant="secondary">Maybe later</Button>
+</BladeProvider>`,
+    },
+    {
+      id: 'D',
+      question:
+        'Festive drawer AND one CTA inside has merchant-specific colors from config.',
+      verdict: 'B+C',
+      verdictLabel: 'Combine B + C',
+      reason:
+        'Outer BladeProvider supplies the festive baseline. Inner Button uses styleOverrides to deviate — local prop wins over scoped vars.',
+      snippet: `<BladeProvider themeOverrides={festiveTheme}>
+  <Card>...</Card>
+  <Button styleOverrides={{ backgroundColor: $ctaBg$, textColor: $ctaText$ }}>
+    Continue
+  </Button>
+</BladeProvider>`,
+    },
+  ];
+
+  const ANTI_PATTERNS = [
+    {
+      title: 'Reaching for inline `style=` on a Blade component',
+      bad: `<Button style="background:#7c3aed; color:#fff" />`,
+      why: 'Inline style shadows the token classes — :hover, :active, [disabled] backgrounds disappear. Use styleOverrides instead.',
+    },
+    {
+      title: 'Wrapping a single button in BladeProvider',
+      bad: `<BladeProvider themeOverrides={{ interactive: { background: { primary: { default: '#7c3aed' } } } }}>
+  <Button>Continue</Button>
+</BladeProvider>`,
+      why: 'Coarse, ceremony-heavy, and any sibling Button you add later will get repainted. Use styleOverrides on the one button.',
+    },
+    {
+      title: 'Mutating :root token variables for one screen',
+      bad: `document.documentElement.style.setProperty('--colors-...', merchantHex);`,
+      why: 'Leaks across the whole app. Use BladeProvider to scope the override to a subtree.',
+    },
+  ];
+
+  const VERDICT_PILL = {
+    B: { bg: '#dafbe1', fg: '#0a5223' },
+    C: { bg: '#ddf4ff', fg: '#0a3069' },
+    'B+C': { bg: '#fff4d6', fg: '#5e4200' },
+  };
 </script>
 
 {#snippet varsReadout(title, vars)}
@@ -275,6 +358,130 @@ export function toButtonOverrides(input: {
       style="background:#0c1117; color:#c9d1d9; margin:0; padding:14px; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; line-height:1.55; white-space:pre; overflow-x:auto;">{code}</pre>
   </div>
 {/snippet}
+
+<Story
+  name="Start here · Which one do I use?"
+  exportName="StartHereWhichOneDoIUse"
+  parameters={{ controls: { exclude: /.*/g } }}
+  asChild
+>
+  <div style="display:flex; flex-direction:column; gap:24px; max-width:920px;">
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <Heading size="large">Which one do I use? B, C, or both?</Heading>
+      <Text color="surface.text.gray.muted">
+        TL;DR — reach for <strong>B (<code>styleOverrides</code>)</strong> by default. It is per-instance,
+        typed, and derives hover/active/disabled from one base hex. Reach for <strong>C (<code>BladeProvider</code>)</strong>
+        when you want a whole subtree (drawer, modal, page region) to inherit a palette. They compose.
+      </Text>
+    </div>
+
+    <div
+      style="border:1px solid #d0d7de; border-left:4px solid #1a7f37; border-radius:8px; padding:14px 16px; background:#f6fff9;"
+    >
+      <Text weight="semibold">The two-question rule</Text>
+      <ol style="margin:8px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:13px; line-height:1.55;">
+          Is the change <strong>specific to one component instance</strong> (or differs from its siblings)?
+          → <strong>Option B</strong> on that instance.
+        </li>
+        <li style="font-size:13px; line-height:1.55;">
+          Should <strong>every Blade component inside a region</strong> share a new palette?
+          → <strong>Option C</strong> on a wrapper.
+        </li>
+      </ol>
+      <Text size="small" color="surface.text.gray.subtle">
+        Both true at once? Wrap with C, then deviate with B on the specific instance. Local prop wins over scoped vars.
+      </Text>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <Heading size="small">Pick the scenario that matches your screen</Heading>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        {#each SCENARIOS as s (s.id)}
+          {@const pill = VERDICT_PILL[s.verdict]}
+          <div
+            style="border:1px solid #d0d7de; border-radius:8px; background:#ffffff; display:flex; flex-direction:column;"
+          >
+            <div
+              style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:#f6f8fa; border-bottom:1px solid #d0d7de;"
+            >
+              <span
+                style="display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 6px; border-radius:6px; background:#1f2328; color:#fff; font-weight:700; font-size:12px;"
+              >
+                {s.id}
+              </span>
+              <span style="font-size:13px; font-weight:600; color:#1f2328; flex:1;">{s.question}</span>
+              <span
+                style="font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:10px; font-weight:700; letter-spacing:0.04em; padding:3px 8px; border-radius:999px; background:{pill.bg}; color:{pill.fg};"
+              >
+                {s.verdictLabel}
+              </span>
+            </div>
+            <div style="padding:12px 14px; display:flex; flex-direction:column; gap:10px;">
+              <Text size="small" color="surface.text.gray.muted">{s.reason}</Text>
+              <pre
+                style="background:#0c1117; color:#c9d1d9; margin:0; padding:12px; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:11.5px; line-height:1.55; white-space:pre; overflow-x:auto; border-radius:6px;">{s.snippet}</pre>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <Heading size="small">Live · Scenario D (B + C combined)</Heading>
+      <Text size="small" color="surface.text.gray.muted">
+        Outer <code>BladeProvider</code> sets the festive purple. The first button inherits it. The second
+        button overrides locally with <code>styleOverrides</code> — note hover/disabled still derive correctly.
+      </Text>
+
+      <BladeProvider themeOverrides={festiveTheme}>
+        {#snippet children()}
+          <div
+            style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:16px; border:1px dashed var(--surface-border-gray-muted); border-radius:8px;"
+          >
+            <Button>Inherits provider</Button>
+            <Button styleOverrides={{ backgroundColor: '#0f9d58', textColor: '#ffffff' }}>
+              Local override (B wins)
+            </Button>
+            <Button styleOverrides={{ backgroundColor: '#0f9d58', textColor: '#ffffff' }} isDisabled>
+              Disabled (derived)
+            </Button>
+          </div>
+        {/snippet}
+      </BladeProvider>
+
+      <Button>Outside provider — default theme</Button>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <Heading size="small">Anti-patterns — avoid these</Heading>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        {#each ANTI_PATTERNS as ap (ap.title)}
+          <div
+            style="border:1px solid #ffabab; border-left:4px solid #cf222e; border-radius:8px; background:#fff5f5; padding:12px 14px; display:flex; flex-direction:column; gap:8px;"
+          >
+            <Text weight="semibold" color="feedback.text.negative.intense">✗ {ap.title}</Text>
+            <pre
+              style="background:#0c1117; color:#ffa198; margin:0; padding:10px 12px; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:11.5px; line-height:1.55; white-space:pre; overflow-x:auto; border-radius:6px;">{ap.bad}</pre>
+            <Text size="small" color="surface.text.gray.subtle">{ap.why}</Text>
+          </div>
+        {/each}
+      </div>
+    </div>
+
+    <div
+      style="border:1px solid #d0d7de; border-radius:8px; padding:12px 14px; background:#f6f8fa; display:flex; flex-direction:column; gap:6px;"
+    >
+      <Text weight="semibold">Still unsure?</Text>
+      <Text size="small" color="surface.text.gray.subtle">
+        Open the next stories in this folder for live, copy-pasteable demos: <code>B · styleOverrides</code> for
+        the per-instance recipe, <code>C · BladeProvider (scoped)</code> for the subtree recipe, and
+        <code>App · Before vs After</code> for a real call-site diff. Full RFC:
+        <code>docs/instance-level-styling-proposal.md</code>.
+      </Text>
+    </div>
+  </div>
+</Story>
 
 <Story
   name="B · hover &amp; disabled"
