@@ -4,7 +4,8 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import getIn from '~utils/lodashButBetter/get';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
-import { chipMotionTokens } from './chipTokens';
+import { chipMotionTokens, chipBorderRadiusTokens } from './chipTokens';
+import { makeBorderSize } from '~utils/makeBorderSize';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
@@ -14,6 +15,10 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
       alignSelf: 'center',
       overflow: 'hidden',
       backgroundColor: backgroundColor ? getIn(theme.colors, backgroundColor) : 'transparent',
+      // On native, StyledChipWrapper handles the border — suppress inner border to avoid double border
+      borderWidth: 0,
+      // Inner radius must be outer radius minus the wrapper's border thickness to avoid corner clipping
+      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] - (getIn(theme, 'border.width.thin') as number) * 2),
     };
   },
 );
