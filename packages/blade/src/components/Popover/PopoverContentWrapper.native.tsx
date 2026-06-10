@@ -6,20 +6,21 @@ import type { EasingFn } from 'react-native-reanimated';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
 import type { View } from 'react-native';
 import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
 import type { PopoverContentWrapperProps } from './types';
-import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { castNativeType } from '~utils';
 
-const StyledPopoverContentWrapper = styled(BaseBox)<{
+// Use styled(Animated.View) so opacity animates on the same View that has elevation.
+// On Android, elevation renders its shadow independently of a parent Animated.View's
+// opacity — co-locating opacity and elevation on the same View fixes the flash.
+const StyledPopoverContentWrapper = styled(Animated.View)<{
   collapse?: boolean;
   styles: CSSProperties;
   isMobile: boolean;
@@ -45,29 +46,34 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
 
     React.useEffect(() => {
       const timings = { easing, duration };
-      opacity.value = withDelay(duration, withTiming(isVisible ? 1 : 0, timings));
-      translate.value = withDelay(duration, withTiming(isVisible ? 0 : offset, timings));
+      opacity.value = withTiming(isVisible ? 1 : 0, timings);
+      translate.value = withTiming(isVisible ? 0 : offset, timings);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible]);
 
     // Avoid computed property keys inside useAnimatedStyle — Babel compiles them to
     // _defineProperty() which is not a worklet and crashes Reanimated v4 on the UI thread.
-    const animatedStyles = useAnimatedStyle(() => {
+    const translateAnimatedStyle = useAnimatedStyle(() => {
       return {
-        opacity: opacity.value,
         transform: isHorizontal
           ? [{ translateX: translate.value }]
           : [{ translateY: translate.value }],
       };
     }, [isVisible, isHorizontal]);
 
+    const opacityAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        opacity: opacity.value,
+      };
+    }, [isVisible]);
+
     return (
-      <Animated.View style={animatedStyles}>
+      <Animated.View style={translateAnimatedStyle}>
         <StyledPopoverContentWrapper
           styles={styles}
           // Shadow styles need to be passed directly through native style prop
           // Cannot be done via styled components
-          style={castNativeType(theme.elevation.lowRaised)}
+          style={[castNativeType(theme.elevation.lowRaised), opacityAnimatedStyle]}
           elevation={20}
           ref={ref as never}
           collapse={false}
