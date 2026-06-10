@@ -2,19 +2,20 @@ import type { CSSObject, StyledProps } from 'styled-components';
 
 import type { StyledAlertProps, AlertColors } from './types';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
+import type { IconColors } from '~components/Icons';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { size } from '~tokens/global';
 
-export const getAlertIconColor = (color: AlertColors, emphasis: SubtleOrIntense): string => {
+export const getAlertIconColor = (color: AlertColors, emphasis: SubtleOrIntense): IconColors => {
   if (emphasis === 'intense') {
     return 'surface.icon.staticWhite.normal';
   }
   if (color === 'primary') {
     return 'surface.icon.primary.normal';
   }
-  return `feedback.icon.${color}.intense`;
+  return `feedback.icon.${color}.intense` as IconColors;
 };
 
 const MAX_WIDTH = size[584];
