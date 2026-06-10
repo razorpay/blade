@@ -288,9 +288,12 @@ export const getBaseInputStyles = ({
           theme,
         })
       : getTextStyles({
+          /**
+           * CounterInput: uses 'small' size for xsmall and 'semibold' weight for prominence
+           */
           size: isInsideCounterInput && size === 'xsmall' ? 'small' : size,
           variant: 'body',
-          weight: 'regular',
+          weight: isInsideCounterInput ? 'semibold' : 'regular',
           color: isDisabled
             ? disabledColor ?? 'surface.text.gray.disabled'
             : color ?? 'interactive.text.gray.normal',

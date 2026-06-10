@@ -188,6 +188,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     color: valueColor,
                     fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
                     fontFamily: theme.typography.fonts.family.text,
+                    fontWeight: '600',
                   }}
                   accessibilityLabel={accessibilityLabel ?? label}
                   accessibilityRole="spinbutton"
