@@ -135,7 +135,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
 
   return (
     <Box>
-      <Box paddingY="spacing.4" display="flex" flexDirection="row" flexWrap="wrap">
+      <Box paddingY="spacing.4">
         {tags.map((tagName) => (
           <Tag
             key={tagName}
