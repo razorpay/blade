@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 12.107.0
+
+### Minor Changes
+
+- 11f7f0141: feat(native): added phone number input component in native
+
+### Patch Changes
+
+- 5f5289683: fix(Menu): fix asymmetric top/bottom padding in menu overlay
+
 ## 12.106.1
 
 ### Patch Changes

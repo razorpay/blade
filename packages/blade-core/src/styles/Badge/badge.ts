@@ -146,6 +146,16 @@ export const badgeStyles = cva(styles.badge, {
       intense: styles['emphasis-intense'],
     },
   },
+  // Checkout-scoped shape variants:
+  // subtle → pill (border-radius-max)
+  // intense + large → border-radius-small; intense + xsmall/small/medium → border-radius-xsmall
+  compoundVariants: [
+    { emphasis: 'subtle', class: styles['shape-pill'] },
+    { emphasis: 'intense', size: 'large', class: styles['shape-size-large'] },
+    { emphasis: 'intense', size: 'xsmall', class: styles['shape-size-default'] },
+    { emphasis: 'intense', size: 'small', class: styles['shape-size-default'] },
+    { emphasis: 'intense', size: 'medium', class: styles['shape-size-default'] },
+  ],
   defaultVariants: {
     size: 'medium',
     color: 'neutral',
@@ -190,6 +200,9 @@ export function getBadgeTemplateClasses(): Record<string, string> {
     iconPaddingSmall: styles['icon-padding-small'],
     iconPaddingMedium: styles['icon-padding-medium'],
     iconPaddingLarge: styles['icon-padding-large'],
+    shapePill: styles['shape-pill'],
+    shapeSizeLarge: styles['shape-size-large'],
+    shapeSizeDefault: styles['shape-size-default'],
   } as const;
 }
 
