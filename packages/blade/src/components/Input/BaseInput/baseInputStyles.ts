@@ -120,7 +120,7 @@ export const getInputBackgroundAndBorderStyles = ({
     borderColor = getIn(theme.colors, baseInputBorderColor[validationState]);
     borderWidth = getIn(theme.border.width, baseInputBorderWidth[validationState]);
     zIndex = 1; // Prevent validation ring clipping by adjacent inputs in InputGroup
-  } else if (validationState && validationState !== 'none' && validationState !== 'success') {
+  } else if (isTableInputCell && validationState === 'error') {
     backgroundColor = getIn(theme.colors, baseInputBorderlessBackgroundColor[validationState]);
   }
   return {

@@ -51,7 +51,7 @@ import type {
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
@@ -1044,6 +1044,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         moduleName: 'Input',
       });
     }
+
+    if (showHintsAsTooltip && isValidationTextInside) {
+      logger({
+        message:
+          'showHintsAsTooltip and validationTextPlacement="inside" should not be used together. validationTextPlacement="inside" will take precedence.',
+        moduleName: 'Input',
+        type: 'warn',
+      });
+    }
   }
 
   const isTextArea = as === 'textarea';
@@ -1233,6 +1242,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
               trailingDropDown={trailingDropDown}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>

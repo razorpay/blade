@@ -3,7 +3,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { inputDropdownButtonPadding } from './baseInputTokens';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -34,6 +34,8 @@ type InputVisuals = Pick<
   | 'validationTextPlacement'
 > & {
   size: NonNullable<BaseInputProps['size']>;
+  errorTextId?: string;
+  successTextId?: string;
 };
 
 const getVisualContainerStyles = ({
@@ -74,11 +76,11 @@ const validationTextSize = {
   large: 'medium',
 } as const;
 
-const validationTextColor = {
+const validationTextColor: Record<NonNullable<BaseInputProps['validationState']>, string> = {
   success: 'feedback.text.positive.intense',
   error: 'feedback.text.negative.intense',
-  none: 'surface.text.gray.subtle',
-} as const;
+  none: 'surface.text.gray.subtle', // TypeScript exhaustiveness — never reached at runtime
+};
 
 const getPrefixStyles = ({
   hasLeadingIcon,
@@ -279,6 +281,8 @@ export const BaseInputVisuals = ({
   successText,
   validationTextPlacement,
   trailingButton: TrailingButton,
+  errorTextId,
+  successTextId,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -326,6 +330,15 @@ export const BaseInputVisuals = ({
       throwBladeError({
         message: 'trailingButton must be a valid Blade Link component',
         moduleName: 'BaseInput',
+      });
+    }
+
+    if (hasInsideValidationText && (hasTrailingIcon || hasTrailingButton || hasSuffix)) {
+      logger({
+        message:
+          'Using validationTextPlacement="inside" with trailingIcon, trailingButton, or suffix may cause layout conflicts. Consider using validationTextPlacement="outside" when trailing visuals are present.',
+        moduleName: 'BaseInput',
+        type: 'warn',
       });
     }
   }
@@ -431,6 +444,7 @@ export const BaseInputVisuals = ({
         ) : null}
         {hasInsideValidationText ? (
           <BaseBox
+            id={validationState === 'error' ? errorTextId : successTextId}
             paddingRight={size === 'xsmall' || size === 'small' ? 'spacing.3' : 'spacing.4'}
             display="flex"
             alignItems="center"
