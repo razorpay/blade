@@ -1,10 +1,6 @@
 import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps, InternalFileUploadItemSize } from './types';
-
-type InternalFileUploadItemProps = Omit<FileUploadItemProps, 'size'> & {
-  size?: InternalFileUploadItemSize;
-};
 import { FileUploadItemIcon } from './FileUploadItemIcon';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
@@ -22,6 +18,10 @@ import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 import { BaseLink } from '~components/Link/BaseLink';
 import { getStyledProps } from '~components/Box/styledProps';
+
+type InternalFileUploadItemProps = Omit<FileUploadItemProps, 'size'> & {
+  size?: InternalFileUploadItemSize;
+};
 
 const FileUploadItem = memo(
   ({
