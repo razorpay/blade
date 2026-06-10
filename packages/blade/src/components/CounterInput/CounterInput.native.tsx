@@ -42,6 +42,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     {
       label,
       accessibilityLabel,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       labelPosition = 'top',
       name,
       value,
