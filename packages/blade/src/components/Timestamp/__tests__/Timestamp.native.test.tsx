@@ -148,9 +148,9 @@ describe('<Timestamp /> (native)', () => {
     }).toThrow('[Blade: Timestamp]');
   });
 
-  it('should render with hourCycle="24h" without crashing', () => {
+  it('should render with timeFormat="24h" without crashing', () => {
     const { toJSON } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="24h" />,
+      <Timestamp value={FIXED_DATE} format="time" timeFormat="24h" />,
     );
     expect(toJSON()).not.toBeNull();
   });

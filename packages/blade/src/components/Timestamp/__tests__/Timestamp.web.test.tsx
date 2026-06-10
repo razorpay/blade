@@ -54,7 +54,7 @@ describe('<Timestamp />', () => {
 
   it('should render format="time" — contains hour and minute', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="12h" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="time" timeFormat="12h" locale="en-US" />,
     );
     const text = container.textContent ?? '';
     expect(text).toMatch(/\d:\d\d/);
@@ -80,19 +80,19 @@ describe('<Timestamp />', () => {
     expect(text).toMatch(/\d:\d\d/);
   });
 
-  // ─── dateStyle prop ───────────────────────────────────────────────────────────
+  // ─── dateFormat prop ───────────────────────────────────────────────────────────
 
-  it('should render dateStyle="short" — compact numeric date', () => {
+  it('should render dateFormat="short" — compact numeric date', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" dateStyle="short" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="date" dateFormat="short" locale="en-US" />,
     );
     // en-US short gives "5/30/26"
     expect(container.textContent).toMatch(/\d+\/\d+\/\d+/);
   });
 
-  it('should render dateStyle="full" — includes weekday', () => {
+  it('should render dateFormat="full" — includes weekday', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" dateStyle="full" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="date" dateFormat="full" locale="en-US" />,
     );
     // "Saturday, May 30, 2026"
     expect(container.textContent).toMatch(
@@ -100,10 +100,10 @@ describe('<Timestamp />', () => {
     );
   });
 
-  it('should render all dateStyle options without throwing', () => {
-    (['short', 'medium', 'long', 'full'] as const).forEach((dateStyle) => {
+  it('should render all dateFormat options without throwing', () => {
+    (['short', 'medium', 'long', 'full'] as const).forEach((dateFormat) => {
       expect(() =>
-        renderWithTheme(<Timestamp value={FIXED_DATE} format="date" dateStyle={dateStyle} />),
+        renderWithTheme(<Timestamp value={FIXED_DATE} format="date" dateFormat={dateFormat} />),
       ).not.toThrow();
     });
   });
@@ -116,7 +116,7 @@ describe('<Timestamp />', () => {
         value={FIXED_DATE}
         format="time"
         precision="minute"
-        hourCycle="12h"
+        timeFormat="12h"
         locale="en-US"
       />,
     );
@@ -131,7 +131,7 @@ describe('<Timestamp />', () => {
         value={FIXED_DATE}
         format="time"
         precision="second"
-        hourCycle="12h"
+        timeFormat="12h"
         locale="en-US"
       />,
     );
@@ -139,18 +139,18 @@ describe('<Timestamp />', () => {
     expect(container.textContent).toMatch(/\d:\d{2}:\d{2}/);
   });
 
-  // ─── hourCycle prop ────────────────────────────────────────────────────────────
+  // ─── timeFormat prop ────────────────────────────────────────────────────────────
 
-  it('should render hourCycle="12h" — output has AM/PM', () => {
+  it('should render timeFormat="12h" — output has AM/PM', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="12h" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="time" timeFormat="12h" locale="en-US" />,
     );
     expect(container.textContent).toMatch(/AM|PM/i);
   });
 
-  it('should render hourCycle="24h" — output has no AM/PM', () => {
+  it('should render timeFormat="24h" — output has no AM/PM', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="time" hourCycle="24h" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="time" timeFormat="24h" locale="en-US" />,
     );
     expect(container.textContent).not.toMatch(/AM|PM/i);
     // 13:08 format
@@ -230,33 +230,33 @@ describe('<Timestamp />', () => {
     jest.useRealTimers();
   });
 
-  it('should suppress tooltip when noTooltip=true', () => {
+  it('should suppress tooltip when showTooltip=false', () => {
     jest.useFakeTimers().setSystemTime(FIXED_DATE);
     const fiveMinAgo = new Date(FIXED_DATE.getTime() - 5 * 60 * 1000);
     const { container } = renderWithTheme(
-      <Timestamp value={fiveMinAgo} format="relative" noTooltip />,
+      <Timestamp value={fiveMinAgo} format="relative" showTooltip={false} />,
     );
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeNull();
     jest.useRealTimers();
   });
 
-  it('should show tooltip for dateStyle="short"', () => {
+  it('should show tooltip for dateFormat="short"', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" dateStyle="short" />,
+      <Timestamp value={FIXED_DATE} format="date" dateFormat="short" />,
     );
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
   });
 
-  it('should NOT show tooltip for dateStyle="full"', () => {
+  it('should NOT show tooltip for dateFormat="full"', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="dateTime" dateStyle="full" />,
+      <Timestamp value={FIXED_DATE} format="dateTime" dateFormat="full" />,
     );
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeNull();
   });
 
-  it('should force tooltip on when noTooltip=false for an otherwise non-tooltip case', () => {
+  it('should force tooltip on when showTooltip=true for an otherwise non-tooltip case', () => {
     const { container } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="dateTime" dateStyle="medium" noTooltip={false} />,
+      <Timestamp value={FIXED_DATE} format="dateTime" dateFormat="medium" showTooltip />,
     );
     expect(container.querySelector('[data-testid="tooltip-interactive-wrapper"]')).toBeTruthy();
   });
@@ -265,10 +265,10 @@ describe('<Timestamp />', () => {
 
   it('should use locale prop for formatting', () => {
     const { container: containerUS } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-US" />,
+      <Timestamp value={FIXED_DATE} format="date" dateFormat="medium" locale="en-US" />,
     );
     const { container: containerIN } = renderWithTheme(
-      <Timestamp value={FIXED_DATE} format="date" dateStyle="medium" locale="en-IN" />,
+      <Timestamp value={FIXED_DATE} format="date" dateFormat="medium" locale="en-IN" />,
     );
     expect(containerUS.textContent?.trim().length).toBeGreaterThan(0);
     expect(containerIN.textContent?.trim().length).toBeGreaterThan(0);
@@ -353,8 +353,8 @@ describe('formatTimestamp utility', () => {
   const baseOptions = {
     date: FIXED_DATE,
     format: 'dateTime' as const,
-    dateStyle: 'medium' as const,
-    hourCycle: undefined,
+    dateFormat: 'medium' as const,
+    timeFormat: undefined,
     precision: 'minute' as const,
     locale: 'en-US',
   };
@@ -409,14 +409,14 @@ describe('formatTimestamp utility', () => {
     jest.useRealTimers();
   });
 
-  it('should format date with dateStyle="short"', () => {
-    const result = formatTimestamp({ ...baseOptions, format: 'date', dateStyle: 'short' });
+  it('should format date with dateFormat="short"', () => {
+    const result = formatTimestamp({ ...baseOptions, format: 'date', dateFormat: 'short' });
     // en-US short: "5/30/26"
     expect(result).toMatch(/\d+\/\d+\/\d+/);
   });
 
-  it('should format time with hourCycle="24h"', () => {
-    const result = formatTimestamp({ ...baseOptions, format: 'time', hourCycle: '24h' });
+  it('should format time with timeFormat="24h"', () => {
+    const result = formatTimestamp({ ...baseOptions, format: 'time', timeFormat: '24h' });
     // 13:08
     expect(result).toMatch(/13:\d{2}/);
     expect(result).not.toMatch(/AM|PM/i);
@@ -426,7 +426,7 @@ describe('formatTimestamp utility', () => {
     const result = formatTimestamp({
       ...baseOptions,
       format: 'time',
-      hourCycle: '12h',
+      timeFormat: '12h',
       precision: 'second',
     });
     // "1:08:32 PM"

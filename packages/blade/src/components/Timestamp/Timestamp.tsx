@@ -54,13 +54,13 @@ type TimestampCommonProps = {
    *
    * @default "medium"
    */
-  dateStyle?: TimestampDateStyle;
+  dateFormat?: TimestampDateStyle;
 
   /**
    * Hour cycle for time display.
    * Defaults to the locale's preferred cycle when omitted.
    */
-  hourCycle?: '12h' | '24h';
+  timeFormat?: '12h' | '24h';
 
   /**
    * Controls time granularity for absolute formats (`"time"`, `"dateTime"`) and
@@ -90,13 +90,13 @@ type TimestampCommonProps = {
    * Override the automatic tooltip behaviour.
    *
    * By default a tooltip showing the full absolute datetime is shown when
-   * visible text is compact or relative (`format="relative"` or `dateStyle="short"`).
-   * Pass `true` to suppress it, `false` to force it on.
+   * visible text is compact or relative (`format="relative"` or `dateFormat="short"`).
+   * Pass `false` to suppress it, `true` to force it on.
    * Leave unset to use smart defaults (recommended).
    *
    * @default undefined (automatic)
    */
-  noTooltip?: boolean;
+  showTooltip?: boolean;
 
   /**
    * Overrides the text color.
@@ -119,11 +119,11 @@ const _Timestamp = (
   {
     value,
     format = 'dateTime',
-    dateStyle = 'medium',
-    hourCycle,
+    dateFormat = 'medium',
+    timeFormat,
     precision = 'minute',
     locale = 'en-IN',
-    noTooltip,
+    showTooltip,
     color,
     type = 'body',
     size = 'medium',
@@ -210,9 +210,9 @@ const _Timestamp = (
     () =>
       isNaN(date.getTime())
         ? ''
-        : formatTimestamp({ date, format, dateStyle, hourCycle, precision, locale }),
+        : formatTimestamp({ date, format, dateFormat, timeFormat, precision, locale }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [date, format, dateStyle, hourCycle, precision, locale, tick],
+    [date, format, dateFormat, timeFormat, precision, locale, tick],
   );
 
   const tooltipLabel = React.useMemo(
@@ -228,9 +228,9 @@ const _Timestamp = (
   const a11yLabel = accessibilityLabel ?? formattedText;
 
   // Smart tooltip: ON when visible text is compact or relative.
-  // noTooltip=true forces OFF, noTooltip=false forces ON, undefined = automatic.
-  const autoTooltip = format === 'relative' || (format !== 'time' && dateStyle === 'short');
-  const shouldShowTooltip = noTooltip === undefined ? autoTooltip : !noTooltip;
+  // showTooltip=false forces OFF, showTooltip=true forces ON, undefined = automatic.
+  const autoTooltip = format === 'relative' || (format !== 'time' && dateFormat === 'short');
+  const shouldShowTooltip = showTooltip === undefined ? autoTooltip : showTooltip;
 
   // Resolve typography tokens from the type × size 2D map (same as Amount)
   const resolvedType = (type ?? 'body') as 'body' | 'heading' | 'display';

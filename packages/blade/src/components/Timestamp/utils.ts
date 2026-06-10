@@ -66,8 +66,8 @@ const precisionToTimeStyle = (precision: TimestampPrecision): 'short' | 'medium'
 export type FormatTimestampOptions = {
   date: Date;
   format: TimestampFormat;
-  dateStyle: TimestampDateStyle;
-  hourCycle?: '12h' | '24h';
+  dateFormat: TimestampDateStyle;
+  timeFormat?: '12h' | '24h';
   precision: TimestampPrecision;
   locale: string;
 };
@@ -79,8 +79,8 @@ export type FormatTimestampOptions = {
 export const formatTimestamp = ({
   date,
   format,
-  dateStyle,
-  hourCycle,
+  dateFormat,
+  timeFormat,
   precision,
   locale,
 }: FormatTimestampOptions): string => {
@@ -91,12 +91,12 @@ export const formatTimestamp = ({
   }
 
   const hour12 =
-    hourCycle === '12h' ? true : hourCycle === '24h' ? false : (undefined as boolean | undefined);
+    timeFormat === '12h' ? true : timeFormat === '24h' ? false : (undefined as boolean | undefined);
 
   const options: Intl.DateTimeFormatOptions = { hour12 };
 
   if (format === 'date' || format === 'dateTime') {
-    options.dateStyle = dateStyle;
+    options.dateStyle = dateFormat;
   }
 
   if (format === 'time' || format === 'dateTime') {

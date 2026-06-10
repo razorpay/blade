@@ -32,7 +32,7 @@ const Page = (): React.ReactElement => {
             <Timestamp
               value={new Date()}
               format="dateTime"
-              dateStyle="medium"
+              dateFormat="medium"
             />
           );
         }
@@ -60,13 +60,13 @@ export default {
       description:
         '`"relative"` — "5 minutes ago" (auto-updates). `"date"` — date only. `"time"` — time only. `"dateTime"` — both.',
     },
-    dateStyle: {
+    dateFormat: {
       control: { type: 'select' },
       options: ['short', 'medium', 'long', 'full'],
       description:
         'Verbosity of the date portion. Only applies when `format` is `"date"` or `"dateTime"`.\n\n- `short` → "5/30/26"\n- `medium` → "May 30, 2026" *(default)*\n- `long` → "May 30, 2026" *(same as medium in most locales)*\n- `full` → "Saturday, May 30, 2026"',
     },
-    hourCycle: {
+    timeFormat: {
       control: { type: 'select' },
       options: ['12h', '24h'],
       description: "Hour cycle for time display. Defaults to the locale's preferred cycle.",
@@ -99,10 +99,10 @@ export default {
       description:
         'BCP 47 locale string. Defaults to `"en-IN"` (Razorpay standard). Override for cross-border: `"en-MY"`, `"en-SG"`, `"en-US"`.',
     },
-    noTooltip: {
+    showTooltip: {
       control: { type: 'boolean' },
       description:
-        '`true` suppresses the tooltip, `false` forces it on, `undefined` (default) uses smart auto-detection: tooltip is shown when text is relative or `dateStyle="short"`.',
+        '`true` suppresses the tooltip, `false` forces it on, `undefined` (default) uses smart auto-detection: tooltip is shown when text is relative or `dateFormat="short"`.',
     },
     color: {
       control: { type: 'text' },
@@ -133,7 +133,7 @@ export const Default = TimestampTemplate.bind({});
 Default.args = {
   value: REFERENCE_DATE.getTime(),
   format: 'dateTime',
-  dateStyle: 'medium',
+  dateFormat: 'medium',
   precision: 'minute',
   type: 'body',
   size: 'medium',
@@ -190,12 +190,12 @@ RelativeFormat.parameters = { controls: { disable: true } };
 export const DateStyles: StoryFn<typeof TimestampComponent> = () => (
   <BaseBox display="flex" flexDirection="column" gap="spacing.3">
     <Text weight="semibold">Date Styles (format=&quot;date&quot;)</Text>
-    {(['short', 'medium', 'long', 'full'] as const).map((dateStyle) => (
-      <BaseBox key={dateStyle} display="flex" alignItems="center" gap="spacing.4">
+    {(['short', 'medium', 'long', 'full'] as const).map((dateFormat) => (
+      <BaseBox key={dateFormat} display="flex" alignItems="center" gap="spacing.4">
         <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '140px' }}>
-          dateStyle=&quot;{dateStyle}&quot;
+          dateFormat=&quot;{dateFormat}&quot;
         </Text>
-        <TimestampComponent value={REFERENCE_DATE} format="date" dateStyle={dateStyle} />
+        <TimestampComponent value={REFERENCE_DATE} format="date" dateFormat={dateFormat} />
       </BaseBox>
     ))}
   </BaseBox>
@@ -228,15 +228,15 @@ export const HourCycle: StoryFn<typeof TimestampComponent> = () => (
     <Text weight="semibold">Hour Cycle</Text>
     <BaseBox display="flex" alignItems="center" gap="spacing.4">
       <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
-        hourCycle=&quot;12h&quot; — locale default for en-IN
+        timeFormat=&quot;12h&quot; — locale default for en-IN
       </Text>
-      <TimestampComponent value={REFERENCE_DATE} format="time" hourCycle="12h" />
+      <TimestampComponent value={REFERENCE_DATE} format="time" timeFormat="12h" />
     </BaseBox>
     <BaseBox display="flex" alignItems="center" gap="spacing.4">
       <Text size="small" color="surface.text.gray.muted" style={{ minWidth: '260px' }}>
-        hourCycle=&quot;24h&quot; — developer / log surfaces
+        timeFormat=&quot;24h&quot; — developer / log surfaces
       </Text>
-      <TimestampComponent value={REFERENCE_DATE} format="time" hourCycle="24h" />
+      <TimestampComponent value={REFERENCE_DATE} format="time" timeFormat="24h" />
     </BaseBox>
   </BaseBox>
 );
@@ -297,27 +297,27 @@ export const TooltipControl: StoryFn<typeof TimestampComponent> = () => (
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.1">
       <Text size="small" color="surface.text.gray.muted">
-        Auto (default) — tooltip ON for relative and dateStyle=&quot;short&quot;
+        Auto (default) — tooltip ON for relative and dateFormat=&quot;short&quot;
       </Text>
       <TimestampComponent value={FIVE_MIN_AGO} format="relative" />
     </BaseBox>
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.1">
       <Text size="small" color="surface.text.gray.muted">
-        noTooltip — suppress even for relative
+        showTooltip={false} — suppress even for relative
       </Text>
-      <TimestampComponent value={FIVE_MIN_AGO} format="relative" noTooltip />
+      <TimestampComponent value={FIVE_MIN_AGO} format="relative" showTooltip={false} />
     </BaseBox>
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.1">
       <Text size="small" color="surface.text.gray.muted">
-        noTooltip={false} — force tooltip on for medium dateStyle (normally no tooltip)
+        showTooltip — force tooltip on for medium dateFormat (normally no tooltip)
       </Text>
       <TimestampComponent
         value={REFERENCE_DATE}
         format="dateTime"
-        dateStyle="medium"
-        noTooltip={false}
+        dateFormat="medium"
+        showTooltip
       />
     </BaseBox>
   </BaseBox>
@@ -332,7 +332,7 @@ export const InlineUsage: StoryFn<typeof TimestampComponent> = () => (
     <Text weight="semibold">Inline Usage</Text>
     <Text>
       Payment created on{' '}
-      <TimestampComponent value={REFERENCE_DATE} format="date" dateStyle="long" />.
+      <TimestampComponent value={REFERENCE_DATE} format="date" dateFormat="long" />.
     </Text>
     <Text>
       Last updated: <TimestampComponent value={FIVE_MIN_AGO} format="relative" />
@@ -381,7 +381,7 @@ export const DashboardUseCases: StoryFn<typeof TimestampComponent> = () => (
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <Text weight="medium">Order Detail Drawer — full absolute</Text>
-      <TimestampComponent value={REFERENCE_DATE} format="dateTime" dateStyle="full" />
+      <TimestampComponent value={REFERENCE_DATE} format="dateTime" dateFormat="full" />
     </BaseBox>
 
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
@@ -389,9 +389,9 @@ export const DashboardUseCases: StoryFn<typeof TimestampComponent> = () => (
       <TimestampComponent
         value={REFERENCE_DATE}
         format="dateTime"
-        dateStyle="short"
+        dateFormat="short"
         precision="second"
-        hourCycle="24h"
+        timeFormat="24h"
       />
     </BaseBox>
 

@@ -15,15 +15,15 @@ import { Timestamp } from '@razorpay/blade/components';
 <Timestamp value={payment.created_at} format="relative" />
 
 // Order detail drawer — full absolute date + time
-<Timestamp value={payment.created_at} format="dateTime" dateStyle="full" />
+<Timestamp value={payment.created_at} format="dateTime" dateFormat="full" />
 
 // Events & Logs — 24-hour, second-level precision
 <Timestamp
   value={event.created_at}
   format="dateTime"
-  dateStyle="short"
+  dateFormat="short"
   precision="second"
-  hourCycle="24h"
+  timeFormat="24h"
 />
 
 // Date-only column
@@ -86,11 +86,11 @@ type TimestampProps = (TimestampBodyProps | TimestampHeadingProps | TimestampDis
    * - `"long"`:   "May 30, 2026" (same as medium in most locales)
    * - `"full"`:   "Saturday, May 30, 2026"
    *
-   * Maps directly to `Intl.DateTimeFormat` `dateStyle` option.
+   * Maps directly to `Intl.DateTimeFormat` `dateFormat` option.
    *
    * @default "medium"
    */
-  dateStyle?: 'short' | 'medium' | 'long' | 'full';
+  dateFormat?: 'short' | 'medium' | 'long' | 'full';
 
   /**
    * Controls the hour cycle for time display.
@@ -99,7 +99,7 @@ type TimestampProps = (TimestampBodyProps | TimestampHeadingProps | TimestampDis
    *
    * Defaults to the locale's preferred hour cycle when omitted.
    */
-  hourCycle?: '12h' | '24h';
+  timeFormat?: '12h' | '24h';
 
   /**
    * Controls time granularity for absolute formats (`"time"`, `"dateTime"`) and
@@ -129,13 +129,13 @@ type TimestampProps = (TimestampBodyProps | TimestampHeadingProps | TimestampDis
    * Override the automatic tooltip behaviour.
    *
    * By default, a tooltip showing the full absolute datetime is shown when the
-   * visible text is compact or relative (`format="relative"` or `dateStyle="short"`).
+   * visible text is compact or relative (`format="relative"` or `dateFormat="short"`).
    * Pass `true` to suppress it, `false` to force it on.
    * Leave unset to use smart defaults (recommended).
    *
    * @default undefined (automatic)
    */
-  noTooltip?: boolean;
+  showTooltip?: boolean;
 
   /**
    * Overrides the default text color.
@@ -177,10 +177,10 @@ Use `format="relative"` in activity feeds, notifications, and table columns wher
 
 ### Full Date & Time
 
-Use `dateStyle="full"` in detail drawers and confirmation screens where precision matters.
+Use `dateFormat="full"` in detail drawers and confirmation screens where precision matters.
 
 ```jsx
-<Timestamp value={payment.created_at} format="dateTime" dateStyle="full" />
+<Timestamp value={payment.created_at} format="dateTime" dateFormat="full" />
 // → "Saturday, May 30, 2026, 1:08 PM"
 ```
 
@@ -192,9 +192,9 @@ Events logs and developer-facing UIs often need 24-hour time with second-level p
 <Timestamp
   value={event.created_at}
   format="dateTime"
-  dateStyle="short"
+  dateFormat="short"
   precision="second"
-  hourCycle="24h"
+  timeFormat="24h"
 />
 // → "5/30/26, 13:08:32"
 ```
@@ -208,7 +208,7 @@ For MoneySaver and other cross-border surfaces, pass the appropriate locale.
 <Timestamp value={date} />
 
 // Malaysia / Singapore
-<Timestamp value={date} locale="en-MY" hourCycle="24h" />
+<Timestamp value={date} locale="en-MY" timeFormat="24h" />
 
 // United States
 <Timestamp value={date} locale="en-US" />
@@ -237,10 +237,10 @@ Since `Timestamp` renders inline, it can be embedded inside a `Text` component.
 
 ```jsx
 // Force suppress (e.g. when you provide your own accessible alternative)
-<Timestamp value={date} format="relative" noTooltip />
+<Timestamp value={date} format="relative" showTooltip />
 
-// Force show (e.g. dateStyle="medium" normally has no tooltip, but you want one)
-<Timestamp value={date} format="date" dateStyle="medium" noTooltip={false} />
+// Force show (e.g. dateFormat="medium" normally has no tooltip, but you want one)
+<Timestamp value={date} format="date" dateFormat="medium" showTooltip={false} />
 ```
 
 ### Typography Scale
@@ -278,6 +278,6 @@ Each `type` has its own valid `size` range — passing an invalid combination th
 - ~~**Live Updates**: Should relative timestamps auto-update?~~ Resolved: yes, in v1. The component manages its own adaptive `setTimeout` interval (10s → 1min → 1hr as the timestamp ages). No consumer-side re-render needed.
 - ~~**timeStyle prop**: Use `timeStyle: 'short'|'medium'|'long'|'full'` (direct Intl mapping) or an explicit `precision` prop?~~ Resolved: `precision`. The `timeStyle` values describe length but not what changes — a developer can't predict that `"medium"` adds seconds or that `"long"` adds a timezone offset without reading the Intl spec. `precision="second"` is self-documenting.
 - **Timezone**: Currently uses the system timezone. A `timeZone` prop (mapping to `Intl.DateTimeFormat` `timeZone` option) is a natural extension for v2 when multi-timezone settlement/payout surfaces are needed.
-- **`dateStyle="medium"` vs `"long"`**: In `en-US` and `en-IN` these produce identical output ("May 30, 2026"). They differ in some locales. Consider documenting this clearly or collapsing to 3 values in v2.
+- **`dateFormat="medium"` vs `"long"`**: In `en-US` and `en-IN` these produce identical output ("May 30, 2026"). They differ in some locales. Consider documenting this clearly or collapsing to 3 values in v2.
 - ~~**`type` prop (body/heading/display)**: Should Timestamp follow Amount's discriminated union pattern or stay body-only?~~ Resolved: yes, same pattern as Amount. `timestampTokens.ts` defines the 2D `(type, size) → fontSize token` map. Heading/display use the heading font family. Invalid type×size combinations throw in `__DEV__`.
-- **`dateStyle="numeric"` from the original proposal**: Dropped in favour of `dateStyle="short"` which maps to `Intl.DateTimeFormat`'s equivalent numeric style (e.g. "5/30/26" in en-US).
+- **`dateFormat="numeric"` from the original proposal**: Dropped in favour of `dateFormat="short"` which maps to `Intl.DateTimeFormat`'s equivalent numeric style (e.g. "5/30/26" in en-US).
