@@ -118,6 +118,13 @@ const avatarTopAddonOffsets = {
 } as const;
 
 const avatarGroupDensityOverlapTokens = {
+  compact: {
+    xsmall: size[20] / 2,
+    small: size[28] / 2,
+    medium: size[36] / 2,
+    large: size[48] / 2,
+    xlarge: size[56] / 2,
+  },
   normal: {
     xsmall: 14,
     small: 16,

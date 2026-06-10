@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, KeyboardEvent } from 'react';
 import { useCallback } from 'react';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
@@ -30,6 +30,16 @@ const _CollapsibleText = ({
     }
   }, [onExpandChange, isExpanded, isDisabled]);
 
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleIsExpanded();
+      }
+    },
+    [toggleIsExpanded],
+  );
+
   return (
     <BaseBox
       display="flex"
@@ -39,7 +49,9 @@ const _CollapsibleText = ({
       width="100%"
       cursor={isDisabled ? 'not-allowed' : 'pointer'}
       opacity={isDisabled ? 0.4 : 1}
+      tabIndex={isDisabled ? -1 : 0}
       onClick={toggleIsExpanded}
+      onKeyDown={handleKeyDown}
       {...makeAccessible({
         role: 'button',
         label: accessibilityLabel,

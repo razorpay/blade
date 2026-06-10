@@ -57,7 +57,7 @@ const _CollapsibleText = ({
         <Text size={size} weight={weight} color={color}>
           {children}
         </Text>
-        <CollapsibleChevronIcon size="medium" color="currentColor" />
+        <CollapsibleChevronIcon size="medium" color="interactive.icon.gray.muted" />
       </BaseBox>
     </Pressable>
   );

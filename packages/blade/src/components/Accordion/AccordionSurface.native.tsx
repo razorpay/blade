@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize } from '~utils';
 
+// colorScheme is accepted (passed by parent) but intentionally unused on native —
+// native doesn't support surface color scheme styling yet.
 type AccordionSurfaceProps = {
   colorScheme?: string;
 };

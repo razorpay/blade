@@ -22,6 +22,7 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import type { AlertColors } from './types';
+import { getAlertIconColor } from './styles';
 import { useTheme } from '~components/BladeProvider';
 import type {
   DataAnalyticsAttribute,
@@ -193,16 +194,7 @@ const _Alert = (
 
   const leadingIcon = (
     <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
-      <Icon
-        color={
-          emphasis === 'intense'
-            ? 'surface.icon.staticWhite.normal'
-            : color === 'primary'
-            ? 'surface.icon.primary.normal'
-            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
-        }
-        size="medium"
-      />
+      <Icon color={getAlertIconColor(color, emphasis)} size="medium" />
     </BaseBox>
   );
 

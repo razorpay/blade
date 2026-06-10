@@ -23,9 +23,7 @@ const _AvatarGroup = ({
   const all = React.Children.toArray(children);
   const totalCount = all.length;
   const dimension = avatarSizeTokens[size];
-
-  const overlap =
-    density === 'compact' ? dimension / 2 : avatarGroupDensityOverlapTokens[density][size];
+  const overlap = avatarGroupDensityOverlapTokens[density][size];
 
   // 2px opaque ring — mirrors StyledAvatar's backgroundColor="surface.background.gray.intense".
   // Without it, semi-transparent faded avatar colours blend at the overlap (Venn-diagram effect).
