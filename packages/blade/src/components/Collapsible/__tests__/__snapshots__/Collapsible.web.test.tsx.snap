@@ -991,6 +991,7 @@ exports[`<Collapsible /> should render with CollapsibleText 1`] = `
         data-blade-component="collapsible-text"
         opacity="1"
         role="button"
+        tabindex="0"
       >
         <p
           class="c2"
