@@ -112,16 +112,16 @@ const Content = () => {
         borderWidth="thin"
         borderColor="surface.border.gray.subtle"
       >
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Gross Settlements</Text>
           <Amount size="medium" value={5000} />
         </Box>
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Deductions</Text>
           <Amount color="negative" size="medium" value={250} />
         </Box>
         <Divider variant="subtle" />
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text weight="semibold" size="medium">
             Net Settlements
           </Text>
