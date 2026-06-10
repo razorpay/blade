@@ -3,11 +3,7 @@
 import type { CSSProperties } from 'react';
 import styled from 'styled-components/native';
 import type { EasingFn } from 'react-native-reanimated';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import React from 'react';
 import type { View } from 'react-native';
 import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
