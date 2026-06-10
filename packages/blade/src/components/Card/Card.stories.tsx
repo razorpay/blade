@@ -44,6 +44,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
+import { StoryScrollView } from '~utils/storybook/StoryScrollView';
 
 const Page = (): React.ReactElement => {
   return (
