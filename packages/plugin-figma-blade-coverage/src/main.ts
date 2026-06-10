@@ -27,6 +27,7 @@ type CoverageMetrics = {
   bladeTextStyles: number;
   bladeColorStyles: number;
   // bladeEffectStyles: number;
+  exemptedNodes: number;
   nonBladeComponents: number;
   nonBladeTextStyles: number;
   nonBladeColorStyles: number;
@@ -47,6 +48,27 @@ const NODES_SKIP_FROM_COVERAGE = [
 ];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
+const PATTERN_SHARED_DATA_NAMESPACE = 'blade.pattern';
+const PATTERN_SHARED_DATA_KEY = 'isPattern';
+const TRUTHY_SHARED_DATA_VALUES = ['true', '1', 'yes'];
+const PATTERN_LAYER_NAME_TAGS = ['@blade-pattern-node'];
+
+const isPatternFrameExemptNode = (node: SceneNode): boolean => {
+  const normalizedNodeName = node.name.toLowerCase();
+  const hasPatternTagInName = PATTERN_LAYER_NAME_TAGS.some((tag) =>
+    normalizedNodeName.includes(tag),
+  );
+  if (hasPatternTagInName) {
+    return true;
+  }
+
+  const sharedPluginDataValue = node
+    .getSharedPluginData(PATTERN_SHARED_DATA_NAMESPACE, PATTERN_SHARED_DATA_KEY)
+    .trim()
+    .toLowerCase();
+
+  return TRUTHY_SHARED_DATA_VALUES.includes(sharedPluginDataValue);
+};
 
 const highlightNonBladeNode = (node: SceneNode, desc?: string): void => {
   const highlighterBox = figma.createRectangle();
@@ -85,6 +107,7 @@ const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
 const renderCoverageCard = async ({
   mainFrameNode,
   bladeComponents,
+  exemptedNodes,
   nonBladeComponents,
   nonBladeColorStyles,
   nonBladeTextStyles,
@@ -98,17 +121,14 @@ const renderCoverageCard = async ({
   const BLADE_INTENT_COLOR_KEYS = {
     positive: {
       id: '',
-      keyStyle: 'c61aca5db3a21aead10da4889ad2b31c74d93529',
       keyVariable: '6489b823f0ea6a46820027c92b5650d0d7950350',
     },
     negative: {
       id: '',
-      keyStyle: 'cccac5aac53e828b3be3e8617e462f8ee1a058dd',
       keyVariable: '11c2fb911f47d4f8dc6ff648c2e9c6ee2ee3f2b9',
     },
     notice: {
       id: '',
-      keyStyle: '707d5fdfc748a5fc4777d212ee247bc40a86fe85',
       keyVariable: '6fe5b15560ece4139ebacb2ae64f93892761d858',
     },
   };
@@ -155,6 +175,7 @@ const renderCoverageCard = async ({
       'nonBladeComponents#45789:4': nonBladeComponents.toString().padStart(2, '0'),
       'nonBladeTextStyles#45789:5': nonBladeTextStyles.toString().padStart(2, '0'),
       'nonBladeColorStyles#45789:6': nonBladeColorStyles.toString().padStart(2, '0'),
+      'nodesExempted#123665:0': exemptedNodes.toString().padStart(2, '0'),
     });
 
     const detachedCoverageCard = coverageCardInstance.detachInstance();
@@ -199,12 +220,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let bladeTextStyles = 0;
   let bladeColorStyles = 0;
   // let bladeEffectStyles = 0;
+  let exemptedNodes = 0;
   let nonBladeComponents = 0;
   let nonBladeTextStyles = 0;
   let nonBladeColorStyles = 0;
   // let nonBladeEffectStyles = 0;
   let totalLayers = 0;
   let bladeCoverage = 0;
+  const exemptedNodeIds = new Set<string>();
 
   try {
     // if there are non-frame nodes as direct children of a page, ignore them
@@ -217,6 +240,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
       (traversedNode) => {
         if (!traversedNode.visible) {
           return;
+        }
+        const isPatternExemptFrameNode = isPatternFrameExemptNode(traversedNode);
+        if (isPatternExemptFrameNode && !exemptedNodeIds.has(traversedNode.id)) {
+          exemptedNodes++;
+          exemptedNodeIds.add(traversedNode.id);
         }
         // this condition is required to run coverage on component sets which are components built locally using Blade components
         const isLocalComponent =
@@ -503,6 +531,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                   (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
                 ) || BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? '')
               ))) &&
+          !isPatternExemptFrameNode &&
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
           getParentNode(traversedNode)?.type !== 'PAGE' &&
           getParentNode(traversedNode)?.type !== 'SECTION'
@@ -547,6 +576,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           getParentNode(traversedNode)?.type !== 'PAGE' &&
           getParentNode(traversedNode)?.type !== 'SECTION' &&
           !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
+          !isPatternExemptFrameNode &&
           // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
         ) {
@@ -611,6 +641,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     bladeComponents,
     bladeTextStyles,
     bladeColorStyles,
+    exemptedNodes,
     nonBladeComponents,
     nonBladeTextStyles,
     nonBladeColorStyles,
