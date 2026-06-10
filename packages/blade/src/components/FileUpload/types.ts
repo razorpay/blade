@@ -187,7 +187,7 @@ type FileUploadItemProps = Pick<
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large' | 'variable';
+  size?: 'small' | 'medium' | 'large';
   file: BladeFile;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
@@ -197,6 +197,8 @@ type FileUploadItemProps = Pick<
   flexBasis?: BoxProps['flexBasis'];
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
+
+type InternalFileUploadItemSize = NonNullable<FileUploadItemProps['size']> | 'variable';
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
@@ -208,7 +210,7 @@ type StyledFileUploadWrapperProps = {
 
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
-  size: NonNullable<FileUploadItemProps['size']>;
+  size: InternalFileUploadItemSize;
   theme: Theme;
   children: React.ReactNode;
 };
@@ -230,6 +232,7 @@ export type {
   BladeFileList,
   FileUploadProps,
   FileUploadItemProps,
+  InternalFileUploadItemSize,
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
   FileUploadItemBackgroundColors,

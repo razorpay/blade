@@ -1,6 +1,10 @@
 import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
-import type { FileUploadItemProps } from './types';
+import type { FileUploadItemProps, InternalFileUploadItemSize } from './types';
+
+type InternalFileUploadItemProps = Omit<FileUploadItemProps, 'size'> & {
+  size?: InternalFileUploadItemSize;
+};
 import { FileUploadItemIcon } from './FileUploadItemIcon';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
@@ -34,7 +38,7 @@ const FileUploadItem = memo(
     flexGrow,
     flexBasis,
     ...rest
-  }: FileUploadItemProps): React.ReactElement => {
+  }: InternalFileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
@@ -66,6 +70,7 @@ const FileUploadItem = memo(
           flexDirection="column"
           justifyContent={isSmall ? 'center' : undefined}
         >
+          {/* Small variant intentionally omits CheckCircleIcon on success — at 36px height, the compact layout prioritizes file name and actions over status iconography */}
           {isSmall ? (
             <BaseBox
               display="flex"
@@ -73,6 +78,7 @@ const FileUploadItem = memo(
               alignItems="center"
               margin={['spacing.2', 'spacing.3', 'spacing.2', 'spacing.3']}
             >
+              {/* paddingTop is intentional for visual balance with the text baseline at this icon size */}
               <BaseBox marginRight="spacing.3" paddingTop="spacing.2">
                 <FileUploadItemIcon fileName={name} uploadStatus={status} iconSize="small" />
               </BaseBox>

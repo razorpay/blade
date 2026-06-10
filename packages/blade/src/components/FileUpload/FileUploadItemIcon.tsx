@@ -22,6 +22,7 @@ const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
 
   if (uploadStatus === 'error') {
     if (iconSize === 'small') {
+      // viewBox 38x38 (vs 38x39 for non-error) is intentional — the error icon artwork is square; the difference provides visual balance at 20x20 rendered size
       return (
         <Svg {...styledProps} width="20" height="20" viewBox="0 0 38 38" fill="none">
           <Path
