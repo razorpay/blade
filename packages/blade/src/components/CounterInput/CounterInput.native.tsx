@@ -181,6 +181,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   style={{
                     flex: 1,
                     textAlign: 'center',
+                    textAlignVertical: 'center',
+                    includeFontPadding: false,
                     color: valueColor,
                     fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
                     fontFamily: theme.typography.fonts.family.text,
