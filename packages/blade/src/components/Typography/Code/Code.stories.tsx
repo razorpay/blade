@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import { getPlatformType } from '~utils';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -53,17 +54,32 @@ const CodeStoryMeta: Meta = {
   argTypes: getStyledPropsArgTypes(),
 };
 
-const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => (
-  // For React Native, use flex to align items correctly
-  <>
-    <Text size="medium">
-      Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
-    </Text>
-    <Text size="small">
-      Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
-    </Text>
-  </>
-);
+const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => {
+  const isReactNative = getPlatformType() === 'react-native';
+  return isReactNative ? (
+    <>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text size="medium">Lorem ipsum normal text </Text>
+        <CodeComponent {...args} size="medium" />
+        <Text size="medium"> component</Text>
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text size="small">Lorem ipsum normal text </Text>
+        <CodeComponent {...args} size="small" />
+        <Text size="small"> component</Text>
+      </BaseBox>
+    </>
+  ) : (
+    <>
+      <Text size="medium">
+        Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
+      </Text>
+      <Text size="small">
+        Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
+      </Text>
+    </>
+  );
+};
 
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
