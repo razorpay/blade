@@ -1,11 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback } from 'react';
 import { Pressable, TextInput } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-  Easing,
-} from 'react-native-reanimated';
 import type { CounterInputProps } from './types';
 import { COUNTER_INPUT_TOKEN } from './token';
 import { CounterInputProvider } from './CounterInputContext';
@@ -68,28 +62,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       onChange: (newValue) => onChange?.({ value: newValue }),
     });
 
-    const translateY = useSharedValue(0);
-    const opacity = useSharedValue(1);
-    const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
-    const previousValueRef = useRef<number | undefined>(internalValue);
-
-    useEffect(() => {
-      if (lastActionRef.current && internalValue !== previousValueRef.current) {
-        const startY = lastActionRef.current === 'increment' ? 8 : -8;
-        translateY.value = startY;
-        opacity.value = 0;
-        translateY.value = withTiming(0, { duration: 200, easing: Easing.out(Easing.ease) });
-        opacity.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.ease) });
-        lastActionRef.current = null;
-      }
-      previousValueRef.current = internalValue;
-    }, [internalValue]);
-
-    const animatedStyle = useAnimatedStyle(() => ({
-      transform: [{ translateY: translateY.value }],
-      opacity: opacity.value,
-    }));
-
     const labelId = useId('counter-input-label');
     const { theme } = useTheme();
     const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
@@ -109,7 +81,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     const handleIncrement = useCallback(() => {
       if (_isDisabled) return;
-      lastActionRef.current = 'increment';
       const newValue = (internalValue ?? min) + 1;
       const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
       setInternalValue(() => constrainedValue);
@@ -117,7 +88,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     const handleDecrement = useCallback(() => {
       if (_isDisabled) return;
-      lastActionRef.current = 'decrement';
       const newValue = (internalValue ?? min) - 1;
       const constrainedValue = Math.max(newValue, min);
       setInternalValue(() => constrainedValue);
@@ -201,29 +171,27 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </Pressable>
 
-                <Animated.View style={[{ flex: 1 }, animatedStyle]}>
-                  <TextInput
-                    value={internalValue?.toString() ?? String(min)}
-                    onChangeText={handleInputChange}
-                    onFocus={() => onFocus?.({ name, value: internalValue?.toString() })}
-                    onEndEditing={() => onBlur?.({ name, value: internalValue?.toString() })}
-                    editable={!_isDisabled}
-                    keyboardType="numeric"
-                    style={{
-                      flex: 1,
-                      textAlign: 'center',
-                      textAlignVertical: 'center',
-                      includeFontPadding: false,
-                      padding: 0,
-                      color: valueColor,
-                      fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
-                      fontFamily: theme.typography.fonts.family.text,
-                      fontWeight: '600',
-                    }}
-                    accessibilityLabel={accessibilityLabel ?? label}
-                    accessibilityRole="spinbutton"
-                  />
-                </Animated.View>
+                <TextInput
+                  value={internalValue?.toString() ?? String(min)}
+                  onChangeText={handleInputChange}
+                  onFocus={() => onFocus?.({ name, value: internalValue?.toString() })}
+                  onEndEditing={() => onBlur?.({ name, value: internalValue?.toString() })}
+                  editable={!_isDisabled}
+                  keyboardType="numeric"
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    textAlignVertical: 'center',
+                    includeFontPadding: false,
+                    padding: 0,
+                    color: valueColor,
+                    fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
+                    fontFamily: theme.typography.fonts.family.text,
+                    fontWeight: '600',
+                  }}
+                  accessibilityLabel={accessibilityLabel ?? label}
+                  accessibilityRole="spinbutton"
+                />
 
                 <Pressable
                   onPress={handleIncrement}
