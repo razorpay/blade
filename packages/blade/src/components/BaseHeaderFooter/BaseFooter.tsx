@@ -30,6 +30,7 @@ const _BaseFooter = ({
         {...metaAttribute({ name: metaComponentName, testID })}
         {...makeAnalyticsAttribute(rest)}
         padding={padding ?? { base: 'spacing.5', m: 'spacing.6' }}
+        width="100%"
       >
         {children}
       </BaseBox>
