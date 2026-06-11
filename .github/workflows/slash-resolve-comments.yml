@@ -1,0 +1,184 @@
+name: Slash Auto-Resolve PR Comments
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+concurrency:
+  # One resolution job per PR at a time to avoid conflicting edits.
+  group: ${{ github.repository }}-${{ github.event.issue.number || github.event.pull_request.number }}-slash-resolve-comments
+  cancel-in-progress: false
+
+jobs:
+  resolve-comment:
+    name: Resolve PR comment via Slash
+    # Only run on PR comments (issue_comment fires on both issues and PRs).
+    # Skip comments from bots (including Slash itself) to prevent feedback loops.
+    if: |
+      (
+        github.event_name == 'pull_request_review_comment' ||
+        (
+          github.event_name == 'issue_comment' &&
+          github.event.issue.pull_request != null
+        )
+      ) &&
+      github.actor != 'github-actions[bot]' &&
+      github.actor != 'rzp-slash' &&
+      github.actor != 'rzp-slash-public' &&
+      github.actor != 'rzp-slash-reviewer'
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+
+    steps:
+      - name: Resolve PR and comment metadata
+        id: meta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          # issue_comment fields
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_COMMENT_ID: ${{ github.event.comment.id }}
+          ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          # pull_request_review_comment fields
+          PR_NUMBER_FALLBACK: ${{ github.event.pull_request.number }}
+          REVIEW_COMMENT_ID: ${{ github.event.comment.id }}
+          REVIEW_COMMENT_BODY: ${{ github.event.comment.body }}
+          REVIEW_COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          REVIEW_COMMENT_PATH: ${{ github.event.comment.path }}
+          REVIEW_COMMENT_LINE: ${{ github.event.comment.line }}
+          REVIEW_COMMENT_DIFF_HUNK: ${{ github.event.comment.diff_hunk }}
+        run: |
+          if [ "$EVENT_NAME" = "issue_comment" ]; then
+            PR_NUMBER="$ISSUE_NUMBER"
+            COMMENT_ID="$ISSUE_COMMENT_ID"
+            COMMENT_BODY="$ISSUE_COMMENT_BODY"
+            COMMENT_AUTHOR="$ISSUE_COMMENT_AUTHOR"
+            COMMENT_TYPE="issue_comment"
+            COMMENT_PATH=""
+            COMMENT_LINE=""
+            COMMENT_DIFF_HUNK=""
+          else
+            PR_NUMBER="$PR_NUMBER_FALLBACK"
+            COMMENT_ID="$REVIEW_COMMENT_ID"
+            COMMENT_BODY="$REVIEW_COMMENT_BODY"
+            COMMENT_AUTHOR="$REVIEW_COMMENT_AUTHOR"
+            COMMENT_TYPE="review_comment"
+            COMMENT_PATH="$REVIEW_COMMENT_PATH"
+            COMMENT_LINE="$REVIEW_COMMENT_LINE"
+            COMMENT_DIFF_HUNK="$REVIEW_COMMENT_DIFF_HUNK"
+          fi
+
+          # Skip empty or bot comments
+          if [ -z "$PR_NUMBER" ] || [ -z "$COMMENT_BODY" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Fetch PR metadata
+          PR_JSON=$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER" \
+            --header "Accept: application/vnd.github+json")
+
+          PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('html_url',''))")
+          PR_TITLE=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('title',''))")
+          PR_AUTHOR=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('user',{}).get('login',''))")
+          PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('head',{}).get('ref',''))")
+          PR_TARGET_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('base',{}).get('ref',''))")
+          HEAD_SHA=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('head',{}).get('sha',''))")
+
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "pr_title=$PR_TITLE" >> $GITHUB_OUTPUT
+          echo "pr_author=$PR_AUTHOR" >> $GITHUB_OUTPUT
+          echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
+          echo "pr_target_branch=$PR_TARGET_BRANCH" >> $GITHUB_OUTPUT
+          echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
+          echo "comment_id=$COMMENT_ID" >> $GITHUB_OUTPUT
+          echo "comment_author=$COMMENT_AUTHOR" >> $GITHUB_OUTPUT
+          echo "comment_type=$COMMENT_TYPE" >> $GITHUB_OUTPUT
+          echo "comment_path=$COMMENT_PATH" >> $GITHUB_OUTPUT
+          echo "comment_line=$COMMENT_LINE" >> $GITHUB_OUTPUT
+
+          # Write comment body to a file to avoid shell quoting issues with multiline text
+          echo "$COMMENT_BODY" > /tmp/comment_body.txt
+          echo "$COMMENT_DIFF_HUNK" > /tmp/diff_hunk.txt
+
+      - name: Request Slash to resolve comment
+        if: steps.meta.outputs.skip != 'true'
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
+          PR_URL: ${{ steps.meta.outputs.pr_url }}
+          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
+          PR_AUTHOR: ${{ steps.meta.outputs.pr_author }}
+          PR_BRANCH: ${{ steps.meta.outputs.pr_branch }}
+          PR_TARGET_BRANCH: ${{ steps.meta.outputs.pr_target_branch }}
+          PR_REPOSITORY: ${{ github.repository }}
+          HEAD_SHA: ${{ steps.meta.outputs.head_sha }}
+          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
+          COMMENT_AUTHOR: ${{ steps.meta.outputs.comment_author }}
+          COMMENT_TYPE: ${{ steps.meta.outputs.comment_type }}
+          COMMENT_PATH: ${{ steps.meta.outputs.comment_path }}
+          COMMENT_LINE: ${{ steps.meta.outputs.comment_line }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/resolve-comment"
+
+          COMMENT_BODY=$(cat /tmp/comment_body.txt)
+          DIFF_HUNK=$(cat /tmp/diff_hunk.txt)
+
+          PAYLOAD=$(python3 -c "
+          import json, os
+
+          comment_body = open('/tmp/comment_body.txt').read().strip()
+          diff_hunk = open('/tmp/diff_hunk.txt').read().strip()
+
+          print(json.dumps({
+            'pr_metadata': {
+              'pr_url': os.environ['PR_URL'],
+              'pr_number': int(os.environ['PR_NUMBER']),
+              'repository': os.environ['PR_REPOSITORY'],
+              'author': os.environ['PR_AUTHOR'],
+              'title': os.environ['PR_TITLE'],
+              'branch': os.environ['PR_BRANCH'],
+              'target_branch': os.environ['PR_TARGET_BRANCH'],
+              'head_sha': os.environ['HEAD_SHA'],
+            },
+            'comment': {
+              'id': int(os.environ['COMMENT_ID']),
+              'body': comment_body,
+              'author': os.environ['COMMENT_AUTHOR'],
+              'type': os.environ['COMMENT_TYPE'],
+              'path': os.environ['COMMENT_PATH'] or None,
+              'line': int(os.environ['COMMENT_LINE']) if os.environ['COMMENT_LINE'] else None,
+              'diff_hunk': diff_hunk or None,
+            },
+            'idempotency_key': f\"{os.environ['PR_REPOSITORY']}:{os.environ['PR_NUMBER']}:{os.environ['COMMENT_ID']}:{os.environ['RUN_ID']}\"
+          }))
+          ")
+
+          echo "Requesting Slash to resolve comment #${COMMENT_ID} on PR #${PR_NUMBER}"
+
+          HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
+            --write-out "%{http_code}" \
+            --request POST "${SLASH_API}" \
+            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
+            --header "Content-Type: application/json" \
+            --data "${PAYLOAD}")
+
+          RESPONSE=$(cat /tmp/slash_response.json)
+          echo "HTTP status: ${HTTP_STATUS}"
+          echo "${RESPONSE}"
+
+          if [ "${HTTP_STATUS}" = "202" ]; then
+            TASK_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('task_id',''))" 2>/dev/null || true)
+            echo "Comment resolution accepted — task_id: ${TASK_ID}"
+          elif [ "${HTTP_STATUS}" = "200" ]; then
+            echo "Comment resolution deduplicated — already queued."
+          else
+            echo "Slash comment resolution request failed with HTTP ${HTTP_STATUS}"
+            exit 1
+          fi
