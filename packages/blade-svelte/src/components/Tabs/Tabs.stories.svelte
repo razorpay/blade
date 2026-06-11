@@ -50,8 +50,8 @@
   import Counter from '../Counter/Counter.svelte';
   import Button from '../Button/Button.svelte';
   import Alert from '../Alert/Alert.svelte';
-  import { ClipboardIcon } from '../Icons/ClipboardIcon';
-  import { SettingsIcon } from '../Icons/SettingsIcon';
+  import { HomeIcon } from '../Icons/HomeIcon';
+  import { SearchIcon } from '../Icons/SearchIcon';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';
 
   let controlledValue = $state('plans');
@@ -452,7 +452,7 @@
         {#snippet children()}
           <TabItem value="subscriptions">
             {#snippet leading()}
-              <ClipboardIcon size="medium" />
+              <HomeIcon size="medium" />
             {/snippet}
             {#snippet children()}Subscription{/snippet}
           </TabItem>
@@ -464,7 +464,7 @@
           </TabItem>
           <TabItem value="settings">
             {#snippet leading()}
-              <SettingsIcon size="medium" />
+              <SearchIcon size="medium" />
             {/snippet}
             {#snippet children()}Settings{/snippet}
           </TabItem>
@@ -679,7 +679,7 @@
         {#snippet children()}
           <TabItem value="clipboard">
             {#snippet leading()}
-              <ClipboardIcon size="medium" />
+              <HomeIcon size="medium" />
             {/snippet}
           </TabItem>
           <TabItem value="card">
@@ -689,7 +689,7 @@
           </TabItem>
           <TabItem value="settings">
             {#snippet leading()}
-              <SettingsIcon size="medium" />
+              <SearchIcon size="medium" />
             {/snippet}
           </TabItem>
         {/snippet}
