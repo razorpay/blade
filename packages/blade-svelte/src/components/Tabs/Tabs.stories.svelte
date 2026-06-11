@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Tabs from './Tabs.svelte';
 
@@ -45,11 +45,9 @@
   import TabItem from './TabItem.svelte';
   import TabPanel from './TabPanel.svelte';
   import Text from '../Typography/Text/Text.svelte';
-  import Heading from '../Typography/Heading/Heading.svelte';
   import Badge from '../Badge/Badge.svelte';
   import Counter from '../Counter/Counter.svelte';
   import Button from '../Button/Button.svelte';
-  import Alert from '../Alert/Alert.svelte';
   import { HomeIcon } from '../Icons/HomeIcon';
   import { SearchIcon } from '../Icons/SearchIcon';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';

@@ -46,9 +46,6 @@
     ctx.size === 'large' ? 'large' : 'medium',
   );
 
-  const iconSize = $derived(
-    ctx.size === 'large' ? 'large' : 'medium',
-  );
 
   const buttonClasses = $derived(() => {
     const result: string[] = [classes.tabButton];

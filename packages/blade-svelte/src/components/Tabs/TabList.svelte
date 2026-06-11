@@ -98,6 +98,7 @@
       {#if ctx.isVertical && isBordered}
         <div class={classes.verticalTrack}></div>
       {/if}
+      <!-- svelte-ignore a11y_interactive_supports_focus -->
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
       <div
         bind:this={tabListContainerEl}
