@@ -10,6 +10,17 @@
 
   const classes = getTabsClasses();
 
+  const paddingClassMap: Record<string, Record<string, Record<string, string>>> = {
+    bordered: {
+      Horiz: { small: classes.tabBorderedHorizSmall, medium: classes.tabBorderedHorizMedium, large: classes.tabBorderedHorizLarge },
+      Vert: { small: classes.tabBorderedVertSmall, medium: classes.tabBorderedVertMedium, large: classes.tabBorderedVertLarge },
+    },
+    filled: {
+      Horiz: { small: classes.tabFilledHorizSmall, medium: classes.tabFilledHorizMedium, large: classes.tabFilledHorizLarge },
+      Vert: { small: classes.tabFilledVertSmall, medium: classes.tabFilledVertMedium, large: classes.tabFilledVertLarge },
+    },
+  };
+
   let {
     children,
     value,
@@ -30,7 +41,7 @@
   const isSelected = $derived(ctx.selectedValue === value);
   const isFilled = $derived(ctx.variant === 'filled');
   const isBordered = $derived(ctx.variant === 'bordered' || ctx.variant === 'borderless');
-  const _variant = $derived(ctx.variant === 'borderless' ? 'bordered' : ctx.variant);
+  const normalizedVariant = $derived(ctx.variant === 'borderless' ? 'bordered' : ctx.variant);
 
   const panelId = $derived(`${ctx.baseId}-${value}-tabpanel`);
   const tabItemId = $derived(`${ctx.baseId}-${value}-tabitem`);
@@ -44,14 +55,11 @@
     onClick?.(event);
   };
 
-  const textSize = $derived(
-    ctx.size === 'large' ? 'large' : 'medium',
-  );
-
   const textClasses = $derived(
     [
       classes.tabItemText,
       isSelected ? classes.tabItemTextSelected : '',
+      ctx.size === 'large' ? classes.tabItemTextLarge : classes.tabItemTextMedium,
     ].filter(Boolean).join(' '),
   );
 
@@ -62,33 +70,27 @@
     ].filter(Boolean).join(' '),
   );
 
-  const buttonClasses = $derived(() => {
+  const buttonClasses = $derived.by(() => {
     const result: string[] = [classes.tabButton];
 
-    // Direction
     result.push(ctx.isVertical ? classes.tabButtonVertical : classes.tabButtonHorizontal);
 
-    // Full width
     if (ctx.isFullWidthTabItem || isFilled) {
       result.push(classes.tabButtonFullWidth);
     }
 
-    // Padding based on variant, orientation, size
-    const orientation = ctx.isVertical ? 'Vert' : 'Horiz';
-    const sizeKey = ctx.size.charAt(0).toUpperCase() + ctx.size.slice(1);
-    const paddingClass = `tab${_variant === 'bordered' ? 'Bordered' : 'Filled'}${orientation}${sizeKey}`;
-    if (classes[paddingClass]) {
-      result.push(classes[paddingClass]);
+    const orientationKey = ctx.isVertical ? 'Vert' : 'Horiz';
+    const paddingClass = paddingClassMap[normalizedVariant]?.[orientationKey]?.[ctx.size];
+    if (paddingClass) {
+      result.push(paddingClass);
     }
 
-    // Border for bordered variant
     if (isBordered) {
       result.push(
         ctx.isVertical ? classes.tabBorderedBorderLeft : classes.tabBorderedBorderBottom,
       );
     }
 
-    // Border radius
     if (isFilled) {
       if (ctx.size === 'small' && !ctx.isVertical) {
         result.push(classes.tabRadiusMedium);
@@ -99,24 +101,20 @@
       result.push(classes.tabRadiusNone);
     }
 
-    // Background
     if (isFilled && isSelected && ctx.isVertical) {
       result.push(classes.tabBgFilledSelectedVertical);
     } else {
       result.push(classes.tabBgTransparent);
     }
 
-    // Filled unselected hover class
     if (isFilled && !isSelected) {
       result.push(classes.tabFilledUnselected);
     }
 
-    // Stacking context for filled horizontal
     if (isFilled && !ctx.isVertical) {
       result.push(classes.tabStackingContext);
     }
 
-    // Focus radius
     if (isFilled) {
       if (ctx.size === 'small' && !ctx.isVertical) {
         result.push(classes.tabFocusRadiusMedium);
@@ -127,12 +125,10 @@
       result.push(classes.tabFocusRadiusMedium);
     }
 
-    // Selected state marker (for CSS hover differentiation)
     if (isSelected) {
       result.push(classes.tabSelected);
     }
 
-    // Disabled link marker (anchors don't support :disabled pseudo-class)
     if (href && isDisabled) {
       result.push(classes.tabDisabledLink);
     }
@@ -140,20 +136,32 @@
     return result.filter(Boolean).join(' ');
   });
 
-  const textStyle = $derived(
-    `font-size: var(--font-size-${textSize === 'large' ? '175' : '100'}); font-weight: var(--font-weight-medium); line-height: var(--line-height-${textSize === 'large' ? 'l' : 'm'});`,
-  );
-
   const metaAttrs = metaAttribute({ name: MetaConstants.TabItem, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
+
+{#snippet tabItemContent()}
+  {#if leading}
+    <span class={iconClasses}>
+      {@render leading()}
+    </span>
+  {/if}
+  {#if children}
+    <span class={textClasses}>
+      {@render children()}
+    </span>
+  {/if}
+  {#if trailing}
+    {@render trailing()}
+  {/if}
+{/snippet}
 
 <!-- svelte-ignore a11y_role_supports_aria_props -->
 {#if href}
   <a
     href={isDisabled ? undefined : href}
     id={tabItemId}
-    class={buttonClasses()}
+    class={buttonClasses}
     role="tab"
     aria-selected={isSelected}
     aria-controls={panelId}
@@ -163,25 +171,13 @@
     {...metaAttrs}
     {...analyticsAttrs}
   >
-    {#if leading}
-      <span class={iconClasses}>
-        {@render leading()}
-      </span>
-    {/if}
-    {#if children}
-      <span class={textClasses} style={textStyle}>
-        {@render children()}
-      </span>
-    {/if}
-    {#if trailing}
-      {@render trailing()}
-    {/if}
+    {@render tabItemContent()}
   </a>
 {:else}
   <button
     type="button"
     id={tabItemId}
-    class={buttonClasses()}
+    class={buttonClasses}
     role="tab"
     aria-selected={isSelected}
     aria-controls={panelId}
@@ -191,18 +187,6 @@
     {...metaAttrs}
     {...analyticsAttrs}
   >
-    {#if leading}
-      <span class={iconClasses}>
-        {@render leading()}
-      </span>
-    {/if}
-    {#if children}
-      <span class={textClasses} style={textStyle}>
-        {@render children()}
-      </span>
-    {/if}
-    {#if trailing}
-      {@render trailing()}
-    {/if}
+    {@render tabItemContent()}
   </button>
 {/if}

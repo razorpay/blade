@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { tick } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
   } from '@razorpay/blade-core/utils';
   import { getTabsClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
-  import { tick } from 'svelte';
 
   const classes = getTabsClasses();
 
@@ -70,7 +70,7 @@
 
   const transitionDuration = $derived(shouldAnimate ? 'var(--duration-moderate)' : '0ms');
 
-  const indicatorClasses = $derived(() => {
+  const indicatorClasses = $derived.by(() => {
     const result = [classes.tabIndicator];
     if (isVerticalBordered) {
       result.push(classes.indicatorVerticalBordered);
@@ -83,7 +83,7 @@
     return result.filter(Boolean).join(' ');
   });
 
-  const indicatorStyle = $derived(() => {
+  const indicatorStyle = $derived.by(() => {
     const base = `transition-property: transform, width, height, background-color; transition-duration: ${transitionDuration}; transition-timing-function: var(--easing-standard);`;
     if (isVerticalBordered) {
       return `${base} height: ${dimensions.height}px; transform: translateY(${dimensions.y}px);`;
@@ -98,7 +98,7 @@
 </script>
 
 <div
-  class={indicatorClasses()}
-  style={indicatorStyle()}
+  class={indicatorClasses}
+  style={indicatorStyle}
   {...metaAttrs}
 ></div>

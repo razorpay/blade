@@ -40,15 +40,11 @@
   const isVertical = $derived(orientation === 'vertical');
 
   const setSelectedValue = (newValue: string, skipOnChange?: boolean) => {
-    if (controlledValue !== undefined) {
-      if (!skipOnChange) {
-        onChange?.(newValue);
-      }
-    } else {
+    if (controlledValue === undefined) {
       internalValue = newValue;
-      if (!skipOnChange) {
-        onChange?.(newValue);
-      }
+    }
+    if (!skipOnChange) {
+      onChange?.(newValue);
     }
   };
 

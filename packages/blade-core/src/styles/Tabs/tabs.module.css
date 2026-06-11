@@ -13,9 +13,21 @@
 
 /* TabList outer container */
 .tabListOuter {
-  display: flex;
   flex-shrink: 0;
   overflow: hidden;
+}
+
+.tabListOuterHorizontal {
+  display: block;
+}
+
+.tabListOuterVertical {
+  display: flex;
+}
+
+.tabListScrollRow {
+  display: flex;
+  flex-direction: row;
 }
 
 /* Scrollable area hides scrollbar */
@@ -51,7 +63,7 @@
 /* Filled variant tablist wrapper */
 .tabListFilled {
   border-radius: var(--border-radius-medium);
-  border-width: none;
+  border-width: 0;
   border-color: var(--interactive-border-gray-default);
   padding: var(--spacing-2);
   gap: var(--spacing-1);
@@ -271,13 +283,24 @@
   text-decoration: none;
 }
 
-/* Text and icon color classes */
+/* Text and icon color/size classes */
 .tabItemText {
   color: var(--interactive-text-gray-muted);
+  font-weight: var(--font-weight-medium);
 }
 
 .tabItemTextSelected {
   color: var(--interactive-text-gray-normal);
+}
+
+.tabItemTextMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-m);
+}
+
+.tabItemTextLarge {
+  font-size: var(--font-size-175);
+  line-height: var(--line-height-l);
 }
 
 .tabItemIcon {

@@ -27,7 +27,7 @@
   const isFilled = $derived(ctx.variant === 'filled');
   const isCompact = $derived(ctx.size === 'small' && !ctx.isVertical);
 
-  const tabListInnerClasses = $derived(() => {
+  const tabListInnerClasses = $derived.by(() => {
     const result = [classes.tabListInner];
     result.push(ctx.isVertical ? classes.tabListVertical : classes.tabListHorizontal);
 
@@ -48,7 +48,7 @@
     if (!tabList) return;
 
     const tabs = Array.from(
-      tabList.querySelectorAll<HTMLElement>('[role="tab"]:not([disabled])'),
+      tabList.querySelectorAll<HTMLElement>('[role="tab"]:not([disabled]):not([aria-disabled="true"])'),
     );
     const currentIndex = tabs.findIndex((tab) => tab === document.activeElement);
     if (currentIndex === -1) return;
@@ -80,7 +80,7 @@
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
-    [classes.tabListOuter, ...(styledProps.classes || [])].filter(Boolean).join(' '),
+    [classes.tabListOuter, ctx.isVertical ? classes.tabListOuterVertical : classes.tabListOuterHorizontal, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.TabList, testID });
@@ -89,12 +89,11 @@
 
 <div
   class={outerClasses}
-  style={ctx.isVertical ? 'display: flex;' : 'display: block;'}
   {...metaAttrs}
   {...analyticsAttrs}
 >
   <div class={classes.scrollableArea}>
-    <div style="display: flex; flex-direction: row;">
+    <div class={classes.tabListScrollRow}>
       {#if ctx.isVertical && isBordered}
         <div class={classes.verticalTrack}></div>
       {/if}
@@ -103,7 +102,7 @@
       <div
         bind:this={tabListContainerEl}
         role="tablist"
-        class={tabListInnerClasses()}
+        class={tabListInnerClasses}
         onkeydown={handleKeyDown}
       >
         {@render children()}
