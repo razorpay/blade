@@ -25,7 +25,6 @@
   const getCtx = getTabsContext();
   const ctx = $derived(getCtx());
 
-  // Auto-select first tab if no value is set
   getCtx().registerTabItem(value);
 
   const isSelected = $derived(ctx.selectedValue === value);
@@ -37,18 +36,31 @@
   const tabItemId = $derived(`${ctx.baseId}-${value}-tabitem`);
 
   const handleClick = (event: MouseEvent) => {
+    if (isDisabled) {
+      event.preventDefault();
+      return;
+    }
     ctx.setSelectedValue(value);
     onClick?.(event);
   };
-
-  const textColorClass = $derived(
-    isSelected ? 'interactive-text-gray-normal' : 'interactive-text-gray-muted',
-  );
 
   const textSize = $derived(
     ctx.size === 'large' ? 'large' : 'medium',
   );
 
+  const textClasses = $derived(
+    [
+      classes.tabItemText,
+      isSelected ? classes.tabItemTextSelected : '',
+    ].filter(Boolean).join(' '),
+  );
+
+  const iconClasses = $derived(
+    [
+      classes.tabItemIcon,
+      isSelected ? classes.tabItemIconSelected : '',
+    ].filter(Boolean).join(' '),
+  );
 
   const buttonClasses = $derived(() => {
     const result: string[] = [classes.tabButton];
@@ -115,8 +127,22 @@
       result.push(classes.tabFocusRadiusMedium);
     }
 
+    // Selected state marker (for CSS hover differentiation)
+    if (isSelected) {
+      result.push(classes.tabSelected);
+    }
+
+    // Disabled link marker (anchors don't support :disabled pseudo-class)
+    if (href && isDisabled) {
+      result.push(classes.tabDisabledLink);
+    }
+
     return result.filter(Boolean).join(' ');
   });
+
+  const textStyle = $derived(
+    `font-size: var(--font-size-${textSize === 'large' ? '175' : '100'}); font-weight: var(--font-weight-medium); line-height: var(--line-height-${textSize === 'large' ? 'l' : 'm'});`,
+  );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.TabItem, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -125,7 +151,7 @@
 <!-- svelte-ignore a11y_role_supports_aria_props -->
 {#if href}
   <a
-    {href}
+    href={isDisabled ? undefined : href}
     id={tabItemId}
     class={buttonClasses()}
     role="tab"
@@ -138,14 +164,13 @@
     {...analyticsAttrs}
   >
     {#if leading}
-      {@render leading()}
+      <span class={iconClasses}>
+        {@render leading()}
+      </span>
     {/if}
     {#if children}
-      <span
-        class="tab-item-text"
-        style="color: var(--{textColorClass}); font-size: var(--font-size-{textSize === 'large' ? '175' : '100'}); font-weight: var(--font-weight-medium); line-height: var(--line-height-{textSize === 'large' ? 'l' : 'm'});"
-      >
-        {#if children}{@render children()}{/if}
+      <span class={textClasses} style={textStyle}>
+        {@render children()}
       </span>
     {/if}
     {#if trailing}
@@ -167,13 +192,12 @@
     {...analyticsAttrs}
   >
     {#if leading}
-      {@render leading()}
+      <span class={iconClasses}>
+        {@render leading()}
+      </span>
     {/if}
     {#if children}
-      <span
-        class="tab-item-text"
-        style="color: var(--{textColorClass}); font-size: var(--font-size-{textSize === 'large' ? '175' : '100'}); font-weight: var(--font-weight-medium); line-height: var(--line-height-{textSize === 'large' ? 'l' : 'm'});"
-      >
+      <span class={textClasses} style={textStyle}>
         {@render children()}
       </span>
     {/if}

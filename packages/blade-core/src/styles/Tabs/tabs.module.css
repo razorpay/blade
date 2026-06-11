@@ -119,7 +119,7 @@
 .tabButton * {
   transition-property: color, fill;
   transition-timing-function: var(--easing-standard);
-  transition-duration: var(--duration-2xquick);
+  transition-duration: var(--duration-xquick);
 }
 
 .tabButtonHorizontal {
@@ -264,12 +264,64 @@
   z-index: 1;
 }
 
-/* Hover states */
-.tabButton:hover .tabBorderHighlight {
-  border-color: var(--interactive-border-gray-highlighted);
+/* State marker classes */
+.tabSelected {}
+
+.tabDisabledLink {
+  text-decoration: none;
 }
 
-.tabButton:hover.tabFilledUnselected {
+/* Text and icon color classes */
+.tabItemText {
+  color: var(--interactive-text-gray-muted);
+}
+
+.tabItemTextSelected {
+  color: var(--interactive-text-gray-normal);
+}
+
+.tabItemIcon {
+  color: var(--interactive-icon-gray-muted);
+}
+
+.tabItemIconSelected {
+  color: var(--interactive-icon-gray-normal);
+}
+
+/* Hover states */
+.tabButton:hover:not(:disabled):not(.tabDisabledLink) .tabItemText {
+  color: var(--interactive-text-gray-subtle);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink) .tabItemIcon {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink) .tabItemText {
+  color: var(--interactive-text-gray-normal);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink) .tabItemIcon {
+  color: var(--interactive-icon-gray-normal);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderBottom {
+  border-bottom-color: var(--interactive-border-gray-highlighted);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderLeft {
+  border-left-color: var(--interactive-border-gray-highlighted);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderBottom {
+  border-bottom-color: transparent;
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderLeft {
+  border-left-color: transparent;
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabFilledUnselected {
   background-color: var(--interactive-background-gray-default);
 }
 
@@ -287,20 +339,43 @@
   border-radius: var(--border-radius-medium);
 }
 
-.tabButton:focus-visible.tabBgTransparent {
+.tabButton:focus-visible.tabBgTransparent:not(.tabSelected) {
   background-color: var(--interactive-background-gray-default);
 }
 
 /* Disabled */
-.tabButton:disabled {
+.tabButton:disabled,
+.tabButton.tabDisabledLink {
   cursor: not-allowed;
+  background-color: transparent;
+  border-color: transparent !important;
+  pointer-events: auto;
+}
+
+.tabButton:disabled .tabItemText,
+.tabButton.tabDisabledLink .tabItemText {
+  color: var(--interactive-text-gray-disabled);
+}
+
+.tabButton:disabled .tabItemIcon,
+.tabButton.tabDisabledLink .tabItemIcon {
+  color: var(--interactive-icon-gray-disabled);
+}
+
+.tabButton:disabled:hover,
+.tabButton.tabDisabledLink:hover {
   background-color: transparent;
   border-color: transparent !important;
 }
 
-.tabButton:disabled:hover {
-  background-color: transparent;
-  border-color: transparent !important;
+.tabButton:disabled:hover .tabItemText,
+.tabButton.tabDisabledLink:hover .tabItemText {
+  color: var(--interactive-text-gray-disabled);
+}
+
+.tabButton:disabled:hover .tabItemIcon,
+.tabButton.tabDisabledLink:hover .tabItemIcon {
+  color: var(--interactive-icon-gray-disabled);
 }
 
 /* ========== TAB INDICATOR ========== */
