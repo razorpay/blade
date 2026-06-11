@@ -1,4 +1,4 @@
-name: Agentic / Slash Auto-Resolve PR Comments
+name: Agentic Repo / Slash Auto-Resolve PR Comments
 
 on:
   pull_request_review:
