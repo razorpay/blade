@@ -101,71 +101,82 @@ jobs:
           echo "comment_path=$COMMENT_PATH" >> $GITHUB_OUTPUT
           echo "comment_line=$COMMENT_LINE" >> $GITHUB_OUTPUT
 
-          # Write comment body to a file to avoid shell quoting issues with multiline text
           echo "$COMMENT_BODY" > /tmp/comment_body.txt
           echo "$COMMENT_DIFF_HUNK" > /tmp/diff_hunk.txt
 
-      - name: Request Slash to resolve comment
+      - name: Trigger Slash to resolve comment via tasks API
         if: steps.meta.outputs.skip != 'true'
         env:
-          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
-          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_AUTH_TOKEN: ${{ secrets.SLASH_AUTH_TOKEN }}
           PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
           PR_URL: ${{ steps.meta.outputs.pr_url }}
           PR_TITLE: ${{ steps.meta.outputs.pr_title }}
-          PR_AUTHOR: ${{ steps.meta.outputs.pr_author }}
           PR_BRANCH: ${{ steps.meta.outputs.pr_branch }}
-          PR_TARGET_BRANCH: ${{ steps.meta.outputs.pr_target_branch }}
           PR_REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ steps.meta.outputs.head_sha }}
           COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
           COMMENT_AUTHOR: ${{ steps.meta.outputs.comment_author }}
           COMMENT_TYPE: ${{ steps.meta.outputs.comment_type }}
           COMMENT_PATH: ${{ steps.meta.outputs.comment_path }}
           COMMENT_LINE: ${{ steps.meta.outputs.comment_line }}
-          RUN_ID: ${{ github.run_id }}
         run: |
-          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/resolve-comment"
-
-          COMMENT_BODY=$(cat /tmp/comment_body.txt)
-          DIFF_HUNK=$(cat /tmp/diff_hunk.txt)
+          SLASH_API="https://slash-api.concierge.razorpay.com/api/v1/agents/run"
 
           PAYLOAD=$(python3 -c "
           import json, os
 
+          pr_number = os.environ['PR_NUMBER']
+          pr_url = os.environ['PR_URL']
+          pr_title = os.environ['PR_TITLE']
+          pr_branch = os.environ['PR_BRANCH']
+          repository = os.environ['PR_REPOSITORY']
+          comment_id = os.environ['COMMENT_ID']
+          comment_author = os.environ['COMMENT_AUTHOR']
+          comment_type = os.environ['COMMENT_TYPE']
+          comment_path = os.environ['COMMENT_PATH']
+          comment_line = os.environ['COMMENT_LINE']
           comment_body = open('/tmp/comment_body.txt').read().strip()
           diff_hunk = open('/tmp/diff_hunk.txt').read().strip()
 
+          location = ''
+          if comment_path:
+              location = f'File: {comment_path}'
+              if comment_line:
+                  location += f', Line: {comment_line}'
+          if diff_hunk:
+              location += f'\nDiff hunk:\n{diff_hunk}'
+
+          prompt = (
+            f'Resolve a PR review comment on PR #{pr_number} in {repository}.\n\n'
+            f'PR: {pr_url}\n'
+            f'Title: {pr_title}\n'
+            f'Branch: {pr_branch}\n\n'
+            f'Comment by @{comment_author} (comment #{comment_id}, type: {comment_type}):\n'
+            f'{comment_body}\n'
+          )
+          if location:
+              prompt += f'\n{location}\n'
+
+          prompt += (
+            f'\nInstructions:\n'
+            f'- Look at the PR diff on branch {pr_branch} for context.\n'
+            f'- Either reply to the comment with a text response, OR push a code fix to branch {pr_branch}.\n'
+            f'- After responding, make sure your reply includes the text "resolved by agent".\n'
+            f'- If you need clarification from the PR author, add the label "Human Help Needed" to PR #{pr_number} instead of guessing.'
+          )
+
           print(json.dumps({
-            'pr_metadata': {
-              'pr_url': os.environ['PR_URL'],
-              'pr_number': int(os.environ['PR_NUMBER']),
-              'repository': os.environ['PR_REPOSITORY'],
-              'author': os.environ['PR_AUTHOR'],
-              'title': os.environ['PR_TITLE'],
-              'branch': os.environ['PR_BRANCH'],
-              'target_branch': os.environ['PR_TARGET_BRANCH'],
-              'head_sha': os.environ['HEAD_SHA'],
-            },
-            'comment': {
-              'id': int(os.environ['COMMENT_ID']),
-              'body': comment_body,
-              'author': os.environ['COMMENT_AUTHOR'],
-              'type': os.environ['COMMENT_TYPE'],
-              'path': os.environ['COMMENT_PATH'] or None,
-              'line': int(os.environ['COMMENT_LINE']) if os.environ['COMMENT_LINE'] else None,
-              'diff_hunk': diff_hunk or None,
-            },
-            'idempotency_key': f\"{os.environ['PR_REPOSITORY']}:{os.environ['PR_NUMBER']}:{os.environ['COMMENT_ID']}:{os.environ['RUN_ID']}\"
+            'prompt': prompt,
+            'repository_url': f'https://github.com/{repository}',
+            'branch': pr_branch,
           }))
           ")
 
-          echo "Requesting Slash to resolve comment #${COMMENT_ID} on PR #${PR_NUMBER}"
+          echo "Triggering Slash to resolve comment #${COMMENT_ID} on PR #${PR_NUMBER}"
 
           HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
             --write-out "%{http_code}" \
             --request POST "${SLASH_API}" \
-            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
+            --header "Authorization: Bearer ${SLASH_AUTH_TOKEN}" \
             --header "Content-Type: application/json" \
             --data "${PAYLOAD}")
 
@@ -173,11 +184,9 @@ jobs:
           echo "HTTP status: ${HTTP_STATUS}"
           echo "${RESPONSE}"
 
-          if [ "${HTTP_STATUS}" = "202" ]; then
-            TASK_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('task_id',''))" 2>/dev/null || true)
-            echo "Comment resolution accepted — task_id: ${TASK_ID}"
-          elif [ "${HTTP_STATUS}" = "200" ]; then
-            echo "Comment resolution deduplicated — already queued."
+          if [ "${HTTP_STATUS}" = "201" ] || [ "${HTTP_STATUS}" = "200" ] || [ "${HTTP_STATUS}" = "202" ]; then
+            TASK_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('task_id', d.get('id','')))" 2>/dev/null || true)
+            echo "Comment resolution task created — task_id: ${TASK_ID}"
           else
             echo "Slash comment resolution request failed with HTTP ${HTTP_STATUS}"
             exit 1
