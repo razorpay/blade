@@ -133,7 +133,7 @@ const _Badge = (
     },
     medium: {
       variant: 'body',
-      size: 'medium',
+      size: 'small',
     },
     large: {
       variant: 'body',

@@ -1,7 +1,8 @@
 name: Slash Code Review
 
 on:
-  check_suite:
+  workflow_run:
+    workflows: ['Blade Validate']
     types: [completed]
   pull_request:
     types: [labeled]
@@ -13,17 +14,14 @@ concurrency:
 jobs:
   slash-review:
     name: Request Slash AI review
-    # For check_suite: only fire when GitHub Actions suite completes (ignores Chromatic and other app suites).
+    # For workflow_run: fires when 'Blade Validate' completes, without waiting for slower checks like Bundle Size.
     # For pull_request: only fire on the 'Run Slash Review' label (manual re-run path).
     # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
     # so that Slash-authored PRs also get reviewed).
     if: |
       github.actor != 'github-actions[bot]' &&
       (
-        (
-          github.event_name == 'check_suite' &&
-          github.event.check_suite.app.slug == 'github-actions'
-        ) ||
+        github.event_name == 'workflow_run' ||
         (
           github.event_name == 'pull_request' &&
           github.event.label.name == 'Run Slash Review'
@@ -36,10 +34,18 @@ jobs:
         id: pr-meta
         env:
           GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          REPOSITORY: ${{ github.repository }}
+          PR_URL_FALLBACK: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER_FALLBACK: ${{ github.event.pull_request.number }}
+          PR_AUTHOR_FALLBACK: ${{ github.event.pull_request.user.login }}
+          PR_TITLE_FALLBACK: ${{ github.event.pull_request.title }}
+          PR_BRANCH_FALLBACK: ${{ github.head_ref }}
+          PR_TARGET_BRANCH_FALLBACK: ${{ github.base_ref }}
         run: |
-          if [ "${{ github.event_name }}" = "check_suite" ]; then
-            HEAD_SHA="${{ github.event.check_suite.head_sha }}"
-            PR_JSON=$(gh api "repos/${{ github.repository }}/commits/${HEAD_SHA}/pulls" \
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
+            PR_JSON=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/pulls" \
               --header "Accept: application/vnd.github+json")
             PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
             PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
@@ -48,12 +54,12 @@ jobs:
             PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
             PR_TARGET_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['base']['ref'] if p else '')")
           else
-            PR_URL="${{ github.event.pull_request.html_url }}"
-            PR_NUMBER="${{ github.event.pull_request.number }}"
-            PR_AUTHOR="${{ github.event.pull_request.user.login }}"
-            PR_TITLE="${{ github.event.pull_request.title }}"
-            PR_BRANCH="${{ github.head_ref }}"
-            PR_TARGET_BRANCH="${{ github.base_ref }}"
+            PR_URL="$PR_URL_FALLBACK"
+            PR_NUMBER="$PR_NUMBER_FALLBACK"
+            PR_AUTHOR="$PR_AUTHOR_FALLBACK"
+            PR_TITLE="$PR_TITLE_FALLBACK"
+            PR_BRANCH="$PR_BRANCH_FALLBACK"
+            PR_TARGET_BRANCH="$PR_TARGET_BRANCH_FALLBACK"
           fi
 
           if [ -z "$PR_NUMBER" ]; then
