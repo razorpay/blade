@@ -69,7 +69,6 @@ jobs:
           fi
 
           # Find the Chromatic check run and extract the published storybook URL.
-          # The Chromatic action outputs the storybook URL in the check run's output text.
           CHROMATIC_CHECK=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/check-runs" \
             --header "Accept: application/vnd.github+json" \
             --paginate \
@@ -83,29 +82,22 @@ jobs:
               print('')
               sys.exit(0)
 
-          # May be multiple JSON objects; take the first
           try:
               check = json.loads(data)
           except Exception:
-              # Try parsing as newline-delimited or partial; fall back
               try:
                   check = json.loads(data.split('\n')[0])
               except Exception:
                   print('')
                   sys.exit(0)
 
-          # Check output text for storybook URL
           output = check.get('output', {})
-          text = output.get('text', '') or ''
-          summary = output.get('summary', '') or ''
-          combined = text + ' ' + summary
+          text = (output.get('text', '') or '') + ' ' + (output.get('summary', '') or '')
 
-          # Chromatic typically puts the storybook URL in output text
-          match = re.search(r'https://[a-z0-9\-]+--[a-z0-9]+\.chromatic\.com[^\s\"<>]*', combined)
+          match = re.search(r'https://[a-z0-9\-]+--[a-z0-9]+\.chromatic\.com[^\s\"<>]*', text)
           if match:
               print(match.group(0).rstrip('/') + '/')
           else:
-              # Fall back to details_url (Chromatic build URL)
               print(check.get('details_url', ''))
           " 2>/dev/null || echo "")
 
@@ -119,52 +111,59 @@ jobs:
           echo "storybook_url=$STORYBOOK_URL" >> $GITHUB_OUTPUT
           echo "master_storybook_url=$MASTER_STORYBOOK_URL" >> $GITHUB_OUTPUT
 
-      - name: Request Slash UI review
+      - name: Trigger Slash UI review via tasks API
         if: steps.pr-meta.outputs.skip != 'true'
         env:
-          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
-          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_AUTH_TOKEN: ${{ secrets.SLASH_AUTH_TOKEN }}
           PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
-          PR_AUTHOR: ${{ steps.pr-meta.outputs.pr_author }}
           PR_TITLE: ${{ steps.pr-meta.outputs.pr_title }}
           PR_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
-          PR_TARGET_BRANCH: ${{ steps.pr-meta.outputs.pr_target_branch }}
           PR_REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ steps.pr-meta.outputs.head_sha }}
           STORYBOOK_URL: ${{ steps.pr-meta.outputs.storybook_url }}
           MASTER_STORYBOOK_URL: ${{ steps.pr-meta.outputs.master_storybook_url }}
-          RUN_ID: ${{ github.run_id }}
         run: |
-          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/ui-review"
+          SLASH_API="https://slash-api.concierge.razorpay.com/api/v1/agents/run"
 
           PAYLOAD=$(python3 -c "
           import json, os
+
+          pr_number = os.environ['PR_NUMBER']
+          pr_url = os.environ['PR_URL']
+          pr_title = os.environ['PR_TITLE']
+          pr_branch = os.environ['PR_BRANCH']
+          repository = os.environ['PR_REPOSITORY']
+          storybook_url = os.environ['STORYBOOK_URL']
+          master_storybook_url = os.environ['MASTER_STORYBOOK_URL']
+
+          prompt = (
+            f'Use the verify-with-browser skill to do a UI review for PR #{pr_number} in {repository}.\n\n'
+            f'PR: {pr_url}\n'
+            f'Title: {pr_title}\n'
+            f'Branch: {pr_branch}\n\n'
+            f'PR Storybook URL (Chromatic): {storybook_url}\n'
+            f'Master Storybook URL: {master_storybook_url}\n\n'
+            f'Steps:\n'
+            f'1. Look at the PR diff to identify which components/stories changed.\n'
+            f'2. Open the PR storybook and find the stories for those components.\n'
+            f'3. Compare those stories against the same stories in the master storybook ({master_storybook_url}).\n'
+            f'4. Post a comment on PR #{pr_number} summarising which flows were tested and their visual status (pass/fail/needs-review).'
+          )
+
           print(json.dumps({
-            'pr_metadata': {
-              'pr_url': os.environ['PR_URL'],
-              'pr_number': int(os.environ['PR_NUMBER']),
-              'repository': os.environ['PR_REPOSITORY'],
-              'author': os.environ['PR_AUTHOR'],
-              'title': os.environ['PR_TITLE'],
-              'branch': os.environ['PR_BRANCH'],
-              'target_branch': os.environ['PR_TARGET_BRANCH'],
-              'head_sha': os.environ['HEAD_SHA'],
-            },
-            'storybook_url': os.environ['STORYBOOK_URL'],
-            'master_storybook_url': os.environ['MASTER_STORYBOOK_URL'],
-            'idempotency_key': f\"{os.environ['PR_REPOSITORY']}:{os.environ['PR_NUMBER']}:{os.environ['RUN_ID']}\"
+            'prompt': prompt,
+            'repository_url': f'https://github.com/{repository}',
+            'branch': pr_branch,
+            'skills': ['verify-with-browser'],
           }))
           ")
 
-          echo "Requesting Slash UI review for PR #${PR_NUMBER} (${PR_URL})"
-          echo "Storybook URL: ${STORYBOOK_URL}"
-          echo "Master Storybook URL: ${MASTER_STORYBOOK_URL}"
+          echo "Triggering Slash UI review for PR #${PR_NUMBER} (${PR_URL})"
 
           HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
             --write-out "%{http_code}" \
             --request POST "${SLASH_API}" \
-            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
+            --header "Authorization: Bearer ${SLASH_AUTH_TOKEN}" \
             --header "Content-Type: application/json" \
             --data "${PAYLOAD}")
 
@@ -172,11 +171,9 @@ jobs:
           echo "HTTP status: ${HTTP_STATUS}"
           echo "${RESPONSE}"
 
-          if [ "${HTTP_STATUS}" = "202" ]; then
-            REVIEW_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('review_id',''))" 2>/dev/null || true)
-            echo "UI review accepted — review_id: ${REVIEW_ID}"
-          elif [ "${HTTP_STATUS}" = "200" ]; then
-            echo "UI review deduplicated — already queued or reviewed."
+          if [ "${HTTP_STATUS}" = "201" ] || [ "${HTTP_STATUS}" = "200" ] || [ "${HTTP_STATUS}" = "202" ]; then
+            TASK_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('task_id', d.get('id','')))" 2>/dev/null || true)
+            echo "UI review task created — task_id: ${TASK_ID}"
           else
             echo "Slash UI review request failed with HTTP ${HTTP_STATUS}"
             exit 1
