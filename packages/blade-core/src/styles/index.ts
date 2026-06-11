@@ -277,3 +277,4 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export { getTabsClasses } from './Tabs';

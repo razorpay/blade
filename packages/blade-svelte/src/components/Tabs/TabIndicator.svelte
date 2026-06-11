@@ -1,0 +1,104 @@
+<script lang="ts">
+  import {
+    metaAttribute,
+    MetaConstants,
+  } from '@razorpay/blade-core/utils';
+  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsContext } from './context';
+  import { tick } from 'svelte';
+
+  const classes = getTabsClasses();
+
+  let { tabListContainerEl }: { tabListContainerEl: HTMLDivElement | undefined } = $props();
+
+  const getCtx = getTabsContext();
+  const ctx = $derived(getCtx());
+
+  let shouldAnimate = $state(false);
+  let dimensions = $state({ width: 0, height: 0, x: 0, y: 0 });
+
+  const updateDimensions = () => {
+    if (!tabListContainerEl) return;
+    const activeTabItem = document.getElementById(
+      `${ctx.baseId}-${ctx.selectedValue}-tabitem`,
+    );
+    if (!activeTabItem || activeTabItem.offsetWidth === 0) return;
+
+    dimensions = {
+      width: activeTabItem.offsetWidth,
+      height: activeTabItem.offsetHeight,
+      x: activeTabItem.offsetLeft,
+      y:
+        ctx.variant === 'filled' || ctx.isVertical
+          ? activeTabItem.offsetTop
+          : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
+    };
+
+    if (!shouldAnimate) {
+      requestAnimationFrame(() => {
+        shouldAnimate = true;
+      });
+    }
+  };
+
+  $effect(() => {
+    if (ctx.selectedValue && tabListContainerEl) {
+      void tick().then(updateDimensions);
+    }
+  });
+
+  $effect(() => {
+    if (!tabListContainerEl) return;
+    const observer = new ResizeObserver(updateDimensions);
+    observer.observe(tabListContainerEl);
+    return () => observer.disconnect();
+  });
+
+  $effect(() => {
+    if ('fonts' in document) {
+      try {
+        void document.fonts.ready.then(updateDimensions);
+      } catch {
+        /* empty */
+      }
+    }
+  });
+
+  const isFilled = $derived(ctx.variant === 'filled');
+  const isVerticalBordered = $derived(ctx.isVertical && !isFilled);
+  const shouldHaveMediumRadius = $derived(ctx.size === 'small' && !ctx.isVertical);
+
+  const transitionDuration = $derived(shouldAnimate ? 'var(--duration-moderate)' : '0ms');
+
+  const indicatorClasses = $derived(() => {
+    const result = [classes.tabIndicator];
+    if (isVerticalBordered) {
+      result.push(classes.indicatorVerticalBordered);
+    } else if (isFilled) {
+      result.push(classes.indicatorFilled);
+      result.push(shouldHaveMediumRadius ? classes.indicatorRadiusMedium : classes.indicatorRadiusSmall);
+    } else {
+      result.push(classes.indicatorHorizontalBordered);
+    }
+    return result.filter(Boolean).join(' ');
+  });
+
+  const indicatorStyle = $derived(() => {
+    const base = `transition-property: transform, width, height, background-color; transition-duration: ${transitionDuration}; transition-timing-function: var(--easing-standard);`;
+    if (isVerticalBordered) {
+      return `${base} height: ${dimensions.height}px; transform: translateY(${dimensions.y}px);`;
+    }
+    if (isFilled) {
+      return `${base} width: ${dimensions.width}px; height: ${dimensions.height}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`;
+    }
+    return `${base} width: ${dimensions.width}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`;
+  });
+
+  const metaAttrs = metaAttribute({ name: MetaConstants.TabIndicator });
+</script>
+
+<div
+  class={indicatorClasses()}
+  style={indicatorStyle()}
+  {...metaAttrs}
+></div>
