@@ -25,6 +25,9 @@
   const getCtx = getTabsContext();
   const ctx = $derived(getCtx());
 
+  // Auto-select first tab if no value is set
+  getCtx().registerTabItem(value);
+
   const isSelected = $derived(ctx.selectedValue === value);
   const isFilled = $derived(ctx.variant === 'filled');
   const isBordered = $derived(ctx.variant === 'bordered' || ctx.variant === 'borderless');

@@ -52,10 +52,17 @@
     }
   };
 
+  const registerTabItem = (value: string) => {
+    if (!selectedValue) {
+      setSelectedValue(value, true);
+    }
+  };
+
   setTabsContext(() => ({
     baseId,
     selectedValue,
     setSelectedValue,
+    registerTabItem,
     isVertical,
     size,
     variant,
