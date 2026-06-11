@@ -27,7 +27,7 @@ type CoverageMetrics = {
   bladeTextStyles: number;
   bladeColorStyles: number;
   // bladeEffectStyles: number;
-  exemptedNodes: number;
+  patternsUsed: number;
   nonBladeComponents: number;
   nonBladeTextStyles: number;
   nonBladeColorStyles: number;
@@ -107,7 +107,7 @@ const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
 const renderCoverageCard = async ({
   mainFrameNode,
   bladeComponents,
-  exemptedNodes,
+  patternsUsed,
   nonBladeComponents,
   nonBladeColorStyles,
   nonBladeTextStyles,
@@ -175,7 +175,7 @@ const renderCoverageCard = async ({
       'nonBladeComponents#45789:4': nonBladeComponents.toString().padStart(2, '0'),
       'nonBladeTextStyles#45789:5': nonBladeTextStyles.toString().padStart(2, '0'),
       'nonBladeColorStyles#45789:6': nonBladeColorStyles.toString().padStart(2, '0'),
-      'nodesExempted#123665:0': exemptedNodes.toString().padStart(2, '0'),
+      'patternUsage#123665:0': patternsUsed.toString().padStart(2, '0'),
     });
 
     const detachedCoverageCard = coverageCardInstance.detachInstance();
@@ -220,7 +220,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let bladeTextStyles = 0;
   let bladeColorStyles = 0;
   // let bladeEffectStyles = 0;
-  let exemptedNodes = 0;
+  let patternsUsed = 0;
   let nonBladeComponents = 0;
   let nonBladeTextStyles = 0;
   let nonBladeColorStyles = 0;
@@ -243,7 +243,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         }
         const isPatternExemptFrameNode = isPatternFrameExemptNode(traversedNode);
         if (isPatternExemptFrameNode && !exemptedNodeIds.has(traversedNode.id)) {
-          exemptedNodes++;
+          patternsUsed++;
           exemptedNodeIds.add(traversedNode.id);
         }
         // this condition is required to run coverage on component sets which are components built locally using Blade components
@@ -641,7 +641,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     bladeComponents,
     bladeTextStyles,
     bladeColorStyles,
-    exemptedNodes,
+    patternsUsed,
     nonBladeComponents,
     nonBladeTextStyles,
     nonBladeColorStyles,
