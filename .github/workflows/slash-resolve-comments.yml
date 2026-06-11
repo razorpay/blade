@@ -26,8 +26,11 @@ jobs:
       ) &&
       github.actor != 'github-actions[bot]' &&
       github.actor != 'rzp-slash' &&
+      github.actor != 'rzp-slash[bot]' &&
       github.actor != 'rzp-slash-public' &&
-      github.actor != 'rzp-slash-reviewer'
+      github.actor != 'rzp-slash-public[bot]' &&
+      github.actor != 'rzp-slash-reviewer' &&
+      github.actor != 'rzp-slash-reviewer[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
 
     steps:
@@ -71,7 +74,7 @@ jobs:
             COMMENT_DIFF_HUNK="$REVIEW_COMMENT_DIFF_HUNK"
           fi
 
-          # Skip empty or bot comments
+          # Skip empty comments
           if [ -z "$PR_NUMBER" ] || [ -z "$COMMENT_BODY" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
             exit 0
@@ -101,13 +104,20 @@ jobs:
           echo "comment_path=$COMMENT_PATH" >> $GITHUB_OUTPUT
           echo "comment_line=$COMMENT_LINE" >> $GITHUB_OUTPUT
 
-          echo "$COMMENT_BODY" > /tmp/comment_body.txt
-          echo "$COMMENT_DIFF_HUNK" > /tmp/diff_hunk.txt
+          printf '%s' "$COMMENT_BODY" > /tmp/comment_body.txt
+          printf '%s' "$COMMENT_DIFF_HUNK" > /tmp/diff_hunk.txt
 
-      - name: Trigger Slash to resolve comment via tasks API
+      - name: Checkout repository
+        if: steps.meta.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+
+      - name: Trigger Slash to resolve comment
         if: steps.meta.outputs.skip != 'true'
         env:
-          SLASH_AUTH_TOKEN: ${{ secrets.SLASH_AUTH_TOKEN }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
           PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
           PR_URL: ${{ steps.meta.outputs.pr_url }}
           PR_TITLE: ${{ steps.meta.outputs.pr_title }}
@@ -118,76 +128,4 @@ jobs:
           COMMENT_TYPE: ${{ steps.meta.outputs.comment_type }}
           COMMENT_PATH: ${{ steps.meta.outputs.comment_path }}
           COMMENT_LINE: ${{ steps.meta.outputs.comment_line }}
-        run: |
-          SLASH_API="https://slash-api.concierge.razorpay.com/api/v1/agents/run"
-
-          PAYLOAD=$(python3 -c "
-          import json, os
-
-          pr_number = os.environ['PR_NUMBER']
-          pr_url = os.environ['PR_URL']
-          pr_title = os.environ['PR_TITLE']
-          pr_branch = os.environ['PR_BRANCH']
-          repository = os.environ['PR_REPOSITORY']
-          comment_id = os.environ['COMMENT_ID']
-          comment_author = os.environ['COMMENT_AUTHOR']
-          comment_type = os.environ['COMMENT_TYPE']
-          comment_path = os.environ['COMMENT_PATH']
-          comment_line = os.environ['COMMENT_LINE']
-          comment_body = open('/tmp/comment_body.txt').read().strip()
-          diff_hunk = open('/tmp/diff_hunk.txt').read().strip()
-
-          location = ''
-          if comment_path:
-              location = f'File: {comment_path}'
-              if comment_line:
-                  location += f', Line: {comment_line}'
-          if diff_hunk:
-              location += f'\nDiff hunk:\n{diff_hunk}'
-
-          prompt = (
-            f'Resolve a PR review comment on PR #{pr_number} in {repository}.\n\n'
-            f'PR: {pr_url}\n'
-            f'Title: {pr_title}\n'
-            f'Branch: {pr_branch}\n\n'
-            f'Comment by @{comment_author} (comment #{comment_id}, type: {comment_type}):\n'
-            f'{comment_body}\n'
-          )
-          if location:
-              prompt += f'\n{location}\n'
-
-          prompt += (
-            f'\nInstructions:\n'
-            f'- Look at the PR diff on branch {pr_branch} for context.\n'
-            f'- Either reply to the comment with a text response, OR push a code fix to branch {pr_branch}.\n'
-            f'- After responding, make sure your reply includes the text "resolved by agent".\n'
-            f'- If you need clarification from the PR author, add the label "Human Help Needed" to PR #{pr_number} instead of guessing.'
-          )
-
-          print(json.dumps({
-            'prompt': prompt,
-            'repository_url': f'https://github.com/{repository}',
-            'branch': pr_branch,
-          }))
-          ")
-
-          echo "Triggering Slash to resolve comment #${COMMENT_ID} on PR #${PR_NUMBER}"
-
-          HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
-            --write-out "%{http_code}" \
-            --request POST "${SLASH_API}" \
-            --header "Authorization: Bearer ${SLASH_AUTH_TOKEN}" \
-            --header "Content-Type: application/json" \
-            --data "${PAYLOAD}")
-
-          RESPONSE=$(cat /tmp/slash_response.json)
-          echo "HTTP status: ${HTTP_STATUS}"
-          echo "${RESPONSE}"
-
-          if [ "${HTTP_STATUS}" = "201" ] || [ "${HTTP_STATUS}" = "200" ] || [ "${HTTP_STATUS}" = "202" ]; then
-            TASK_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('task_id', d.get('id','')))" 2>/dev/null || true)
-            echo "Comment resolution task created — task_id: ${TASK_ID}"
-          else
-            echo "Slash comment resolution request failed with HTTP ${HTTP_STATUS}"
-            exit 1
-          fi
+        run: node .github/scripts/run-slash-comment.js
