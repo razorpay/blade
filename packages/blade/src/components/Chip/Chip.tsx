@@ -83,6 +83,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
+  const _isFullWidth = groupProps?.isFullWidth;
   const chipColor = color ?? groupProps?.color ?? 'primary';
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -158,9 +159,10 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       alignSelf={isReactNative() ? 'flex-start' : undefined}
       ref={getOuterMotionRef({ _motionMeta, ref })}
-      width={width}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
+      flex={_isFullWidth ? 1 : undefined}
+      width={_isFullWidth ? undefined : width}
+      maxWidth={_isFullWidth ? undefined : maxWidth}
+      minWidth={_isFullWidth ? undefined : minWidth}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}

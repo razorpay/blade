@@ -150,6 +150,12 @@ type ChipGroupCommonProps = {
    * @default "primary"
    */
   color?: 'primary' | 'positive' | 'negative';
+  /**
+   * When true, ChipGroup takes full width of its container and distributes chips equally in a single row (no wrap).
+   *
+   * @default false
+   */
+  isFullWidth?: boolean;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -205,6 +211,7 @@ type ChipGroupContextType = Pick<
   | 'size'
   | 'color'
   | 'selectionType'
+  | 'isFullWidth'
 > & { state?: State };
 
 type InteractiveBackgroundColors<

@@ -17,6 +17,7 @@ type UseChipGroupProps = Pick<
   | 'size'
   | 'color'
   | 'selectionType'
+  | 'isFullWidth'
 >;
 type UseChipGroupReturn = {
   state: State;
@@ -36,6 +37,7 @@ const useChipGroup = ({
   selectionType,
   necessityIndicator,
   validationState,
+  isFullWidth,
 }: UseChipGroupProps): UseChipGroupReturn => {
   const idBase = useId('chip-group');
   const labelId = `${idBase}-label`;
@@ -99,6 +101,7 @@ const useChipGroup = ({
       size,
       color,
       selectionType,
+      isFullWidth,
     };
   }, [
     isDisabled,
@@ -110,6 +113,7 @@ const useChipGroup = ({
     size,
     color,
     selectionType,
+    isFullWidth,
   ]);
 
   return { state, contextValue, ids: { labelId } };

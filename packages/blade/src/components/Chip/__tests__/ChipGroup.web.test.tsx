@@ -269,6 +269,58 @@ describe('<ChipGroup />', () => {
     expect(getByTestId('values')).toHaveTextContent('apple');
   });
 
+  describe('isFullWidth', () => {
+    it('should render chips with flex:1 and no wrap when isFullWidth is true', () => {
+      const { container } = renderWithTheme(
+        <ChipGroup accessibilityLabel="Select plan" selectionType="single" isFullWidth>
+          <Chip value="basic">Basic</Chip>
+          <Chip value="standard">Standard</Chip>
+          <Chip value="premium">Premium</Chip>
+        </ChipGroup>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should not apply fullWidth styles when isFullWidth is false (default)', () => {
+      const { container } = renderWithTheme(
+        <ChipGroup accessibilityLabel="Select plan" selectionType="single">
+          <Chip value="basic">Basic</Chip>
+          <Chip value="standard">Standard</Chip>
+          <Chip value="premium">Premium</Chip>
+        </ChipGroup>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should work with selection when isFullWidth is true', async () => {
+      const user = userEvents.setup({ autoModify: false });
+      const fn = jest.fn();
+      const { getByLabelText, getByRole } = renderWithTheme(
+        <ChipGroup
+          accessibilityLabel="Select plan"
+          selectionType="single"
+          isFullWidth
+          defaultValue="basic"
+          onChange={({ values }) => fn(values)}
+        >
+          <Chip value="basic">Basic</Chip>
+          <Chip value="standard">Standard</Chip>
+          <Chip value="premium">Premium</Chip>
+        </ChipGroup>,
+      );
+
+      expect(getByRole('radio', { checked: true })).toHaveAttribute('value', 'basic');
+
+      await user.tab();
+      expect(getByLabelText('Basic')).toHaveFocus();
+      await user.keyboard('[ArrowDown]');
+      expect(getByLabelText('Standard')).toHaveFocus();
+      expect(fn).toBeCalledWith(['standard']);
+    });
+  });
+
   it('should work in controlled mode when selectionType="multiple"', async () => {
     const user = userEvents.setup();
     const fn = jest.fn();
