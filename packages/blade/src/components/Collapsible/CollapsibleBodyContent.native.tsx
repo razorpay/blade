@@ -47,7 +47,9 @@ const CollapsibleBodyContent = ({
   const height = useSharedValue(isExpanded ? undefined : 0);
   const layoutHeightRef = useRef(0);
 
-  // Keeps track of running animation to control absolute / relative positioning and handling layout event
+  // Dual tracking is intentional: isAnimating (state) triggers re-renders so animatedStyles can
+  // switch absolute↔relative positioning; isAnimatingRef (ref) gives synchronous reads in
+  // onLayout/onAnimationComplete callbacks where stale closure state would be unreliable.
   const [isAnimating, setIsAnimating] = useState(false);
   const isAnimatingRef = useRef(false);
   const animationIdRef = useRef(0);
