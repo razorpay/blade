@@ -52,6 +52,21 @@ if (shouldSkipBuild) {
   }
 }
 
+// Install dependencies if not already installed (required for react-router-dom v6, react v19, etc.)
+const nodeModulesDir = path.join(dashboardPlaygroundDir, 'node_modules');
+if (!fs.existsSync(nodeModulesDir)) {
+  console.log('Installing blade-dashboard-template dependencies...');
+  try {
+    execSync('yarn install --frozen-lockfile', {
+      cwd: dashboardPlaygroundDir,
+      stdio: 'inherit',
+    });
+    console.log('✓ Dependencies installed successfully');
+  } catch (installError) {
+    console.log('⚠ Could not install all dependencies, proceeding with monorepo node_modules...');
+  }
+}
+
 // Build the dashboard playground
 console.log('Building blade-dashboard-template...');
 try {
