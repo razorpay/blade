@@ -270,9 +270,14 @@ describe('<ChipGroup />', () => {
   });
 
   describe('isFullWidth', () => {
-    it('should render chips with flex:1 and no wrap when isFullWidth is true', () => {
+    it('should render with filled-tab styling when isFullWidth is true', () => {
       const { container } = renderWithTheme(
-        <ChipGroup accessibilityLabel="Select plan" selectionType="single" isFullWidth>
+        <ChipGroup
+          accessibilityLabel="Select plan"
+          selectionType="single"
+          isFullWidth
+          defaultValue="basic"
+        >
           <Chip value="basic">Basic</Chip>
           <Chip value="standard">Standard</Chip>
           <Chip value="premium">Premium</Chip>
@@ -282,16 +287,28 @@ describe('<ChipGroup />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should not apply fullWidth styles when isFullWidth is false (default)', () => {
-      const { container } = renderWithTheme(
-        <ChipGroup accessibilityLabel="Select plan" selectionType="single">
+    it('should prevent deselection when isFullWidth is true (always one selected)', async () => {
+      const user = userEvents.setup({ autoModify: false });
+      const fn = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChipGroup
+          accessibilityLabel="Select plan"
+          selectionType="single"
+          isFullWidth
+          defaultValue="basic"
+          onChange={({ values }) => fn(values)}
+        >
           <Chip value="basic">Basic</Chip>
           <Chip value="standard">Standard</Chip>
-          <Chip value="premium">Premium</Chip>
         </ChipGroup>,
       );
 
-      expect(container).toMatchSnapshot();
+      expect(getByRole('radio', { checked: true })).toHaveAttribute('value', 'basic');
+
+      await user.tab();
+      await user.keyboard('[ArrowDown]');
+      expect(fn).toBeCalledWith(['standard']);
+      expect(getByRole('radio', { checked: true })).toHaveAttribute('value', 'standard');
     });
 
     it('should work with selection when isFullWidth is true', async () => {

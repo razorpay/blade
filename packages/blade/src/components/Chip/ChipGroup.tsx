@@ -101,8 +101,7 @@ const _ChipGroup = (
             <BaseBox
               display="flex"
               flexDirection="row"
-              flexWrap={isFullWidth ? 'nowrap' : 'wrap'}
-              width={isFullWidth ? '100%' : undefined}
+              flexWrap="wrap"
               rowGap={chipGroupGapTokens[size].bottom}
               columnGap={chipGroupGapTokens[size].right}
               marginBottom={chipGroupGapTokens[size].bottom}

@@ -1,24 +1,23 @@
 import React from 'react';
-import type { ChipGroupProps, ChipGroupContextType, State } from './types';
+import type { ChipGroupContextType, State } from './types';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 
-type UseChipGroupProps = Pick<
-  ChipGroupProps,
-  | 'isDisabled'
-  | 'isRequired'
-  | 'necessityIndicator'
-  | 'validationState'
-  | 'name'
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'size'
-  | 'color'
-  | 'selectionType'
-  | 'isFullWidth'
->;
+type UseChipGroupProps = {
+  isDisabled?: boolean;
+  isRequired?: boolean;
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  validationState?: 'error' | 'none';
+  name?: string;
+  value?: string | string[];
+  defaultValue?: string | string[];
+  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  color?: 'primary' | 'positive' | 'negative';
+  selectionType?: 'single' | 'multiple';
+  isFullWidth?: boolean;
+};
 type UseChipGroupReturn = {
   state: State;
   contextValue: ChipGroupContextType;
@@ -77,6 +76,7 @@ const useChipGroup = ({
           return;
         }
         if (selectionType === 'single') {
+          if (isFullWidth) return;
           setValues(undefined!);
         }
         if (
@@ -88,7 +88,7 @@ const useChipGroup = ({
         }
       },
     };
-  }, [checkedValues, isDisabled, setValues, selectionType]);
+  }, [checkedValues, isDisabled, setValues, selectionType, isFullWidth]);
 
   const contextValue = React.useMemo<ChipGroupContextType>(() => {
     return {
