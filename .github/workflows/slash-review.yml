@@ -1,38 +1,85 @@
 name: Slash Code Review
 
 on:
+  check_suite:
+    types: [completed]
   pull_request:
-    types: [opened, reopened, ready_for_review, labeled]
+    types: [labeled]
 
 concurrency:
-  group: ${{ github.repository }}-${{ github.event.pull_request.number || github.head_ref || github.sha }}-${{ github.workflow }}
+  group: ${{ github.repository }}-${{ github.event.pull_request.number || github.event.check_suite.head_sha || github.sha }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
   slash-review:
     name: Request Slash AI review
+    # For check_suite: only fire when GitHub Actions suite completes (ignores Chromatic and other app suites).
+    # For pull_request: only fire on the 'Run Slash Review' label (manual re-run path).
     # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
     # so that Slash-authored PRs also get reviewed).
-    # For labeled events, only fire on the 'Run Slash Review' label — not every label addition.
     if: |
       github.actor != 'github-actions[bot]' &&
       (
-        github.event.action != 'labeled' ||
-        github.event.label.name == 'Run Slash Review'
+        (
+          github.event_name == 'check_suite' &&
+          github.event.check_suite.app.slug == 'github-actions'
+        ) ||
+        (
+          github.event_name == 'pull_request' &&
+          github.event.label.name == 'Run Slash Review'
+        )
       )
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
 
     steps:
+      - name: Resolve PR metadata
+        id: pr-meta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ github.event_name }}" = "check_suite" ]; then
+            HEAD_SHA="${{ github.event.check_suite.head_sha }}"
+            PR_JSON=$(gh api "repos/${{ github.repository }}/commits/${HEAD_SHA}/pulls" \
+              --header "Accept: application/vnd.github+json")
+            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
+            PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
+            PR_AUTHOR=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['user']['login'] if p else '')")
+            PR_TITLE=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['title'] if p else '')")
+            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
+            PR_TARGET_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['base']['ref'] if p else '')")
+          else
+            PR_URL="${{ github.event.pull_request.html_url }}"
+            PR_NUMBER="${{ github.event.pull_request.number }}"
+            PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+            PR_TITLE="${{ github.event.pull_request.title }}"
+            PR_BRANCH="${{ github.head_ref }}"
+            PR_TARGET_BRANCH="${{ github.base_ref }}"
+          fi
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found for this commit — skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr_author=$PR_AUTHOR" >> $GITHUB_OUTPUT
+          echo "pr_title=$PR_TITLE" >> $GITHUB_OUTPUT
+          echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
+          echo "pr_target_branch=$PR_TARGET_BRANCH" >> $GITHUB_OUTPUT
+
       - name: Request Slash review
+        if: steps.pr-meta.outputs.skip != 'true'
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_BRANCH: ${{ github.head_ref }}
-          PR_TARGET_BRANCH: ${{ github.base_ref }}
+          PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          PR_AUTHOR: ${{ steps.pr-meta.outputs.pr_author }}
+          PR_TITLE: ${{ steps.pr-meta.outputs.pr_title }}
+          PR_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
+          PR_TARGET_BRANCH: ${{ steps.pr-meta.outputs.pr_target_branch }}
           PR_REPOSITORY: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
         run: |
