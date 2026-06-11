@@ -20,11 +20,13 @@ import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 const T = SLIDER_INPUT_TOKENS;
 
-const StyledThumb = styled.div<{ $isFocused: boolean; $isDragging: boolean }>`
+const StyledThumb = styled.div<{
+  $isFocused: boolean;
+  $isDragging: boolean;
+  $showFocusRing: boolean;
+}>`
   outline: none;
-  &:focus-visible {
-    ${({ theme }) => getFocusRingStyles({ theme })}
-  }
+  ${({ theme, $showFocusRing }) => $showFocusRing && getFocusRingStyles({ theme })}
 `;
 
 const StyledInputWrapper = styled.div<{
@@ -99,7 +101,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       suffix,
       size = 'medium',
       isDisabled = false,
-      isRequired = false,
       necessityIndicator,
       validationState = 'none',
       helpText,
@@ -122,11 +123,17 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const [isDragging, setIsDragging] = useState(false);
     const [isThumbHovered, setIsThumbHovered] = useState(false);
     const [isThumbFocused, setIsThumbFocused] = useState(false);
+    const isPointerFocusRef = useRef(false);
     const [isInputHovered, setIsInputHovered] = useState(false);
     const [isInputFocused, setIsInputFocused] = useState(false);
 
     const trackRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const thumbRef = useRef<HTMLDivElement>(null);
+    const fillRef = useRef<HTMLDivElement>(null);
+    const haloRef = useRef<HTMLDivElement>(null);
+    const dragValueRef = useRef(0);
+    const rafRef = useRef(0);
     const { inputId, helpTextId, errorTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
     const labelId = `${idBase}-label`;
@@ -162,32 +169,123 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       [min, max, currentValue],
     );
 
+    const positionDomElements = useCallback(
+      (val: number) => {
+        const p = ((val - min) / (max - min)) * 100;
+        if (thumbRef.current) thumbRef.current.style.left = `${p}%`;
+        if (fillRef.current) fillRef.current.style.width = `${p}%`;
+        if (haloRef.current) haloRef.current.style.left = `${p}%`;
+        if (inputRef.current && !isInputFocused) inputRef.current.value = String(val);
+      },
+      [min, max, isInputFocused],
+    );
+
+    const hasLargeSteps = step > 1;
+    const snapTransitionCss = 'all 120ms cubic-bezier(0.2, 0, 0, 1)';
+
+    const setDragTransitions = useCallback(
+      (enable: boolean) => {
+        if (!hasLargeSteps) return;
+        const val = enable ? snapTransitionCss : '';
+        const fillVal = enable ? `width 120ms cubic-bezier(0.2, 0, 0, 1)` : '';
+        if (thumbRef.current) thumbRef.current.style.transition = val;
+        if (fillRef.current) fillRef.current.style.transition = fillVal;
+        if (haloRef.current) haloRef.current.style.transition = val;
+      },
+      [hasLargeSteps],
+    );
+
+    const startDrag = useCallback(
+      (clientX: number) => {
+        isPointerFocusRef.current = true;
+        setDragTransitions(true);
+        setIsDragging(true);
+        const val = clamp(snap(getValueFromPosition(clientX)));
+        dragValueRef.current = val;
+        positionDomElements(val);
+        onChangeStart?.({ name, value: val });
+        updateValue(val);
+      },
+      [
+        getValueFromPosition,
+        updateValue,
+        onChangeStart,
+        name,
+        clamp,
+        snap,
+        positionDomElements,
+        setDragTransitions,
+      ],
+    );
+
     const handleMouseDown = useCallback(
       (e: React.MouseEvent) => {
         if (isDisabled) return;
         e.preventDefault();
-        setIsDragging(true);
-        const val = clamp(snap(getValueFromPosition(e.clientX)));
-        onChangeStart?.({ name, value: val });
-        updateValue(val);
+        startDrag(e.clientX);
       },
-      [isDisabled, getValueFromPosition, updateValue, onChangeStart, name, clamp, snap],
+      [isDisabled, startDrag],
+    );
+
+    const handleTouchStart = useCallback(
+      (e: React.TouchEvent) => {
+        if (isDisabled) return;
+        startDrag(e.touches[0].clientX);
+      },
+      [isDisabled, startDrag],
     );
 
     useEffect(() => {
       if (!isDragging) return undefined;
-      const handleMove = (e: MouseEvent): void => updateValue(getValueFromPosition(e.clientX));
-      const handleUp = (e: MouseEvent): void => {
+      const onMove = (clientX: number): void => {
+        const val = clamp(snap(getValueFromPosition(clientX)));
+        if (val === dragValueRef.current) return;
+        dragValueRef.current = val;
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(() => {
+          positionDomElements(val);
+        });
+      };
+      const onEnd = (clientX: number): void => {
+        cancelAnimationFrame(rafRef.current);
+        setDragTransitions(false);
+        const val = clamp(snap(getValueFromPosition(clientX)));
         setIsDragging(false);
-        onChangeEnd?.({ name, value: clamp(snap(getValueFromPosition(e.clientX))) });
+        updateValue(val);
+        onChangeEnd?.({ name, value: val });
       };
-      window.addEventListener('mousemove', handleMove);
-      window.addEventListener('mouseup', handleUp);
+      const handleMouseMove = (e: MouseEvent): void => onMove(e.clientX);
+      const handleMouseUp = (e: MouseEvent): void => onEnd(e.clientX);
+      const handleTouchMove = (e: TouchEvent): void => {
+        e.preventDefault();
+        onMove(e.touches[0].clientX);
+      };
+      const handleTouchEnd = (e: TouchEvent): void => {
+        const touch = e.changedTouches[0];
+        onEnd(touch.clientX);
+      };
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd);
       return (): void => {
-        window.removeEventListener('mousemove', handleMove);
-        window.removeEventListener('mouseup', handleUp);
+        cancelAnimationFrame(rafRef.current);
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
       };
-    }, [isDragging, getValueFromPosition, updateValue, onChangeEnd, name, clamp, snap]);
+    }, [
+      isDragging,
+      getValueFromPosition,
+      updateValue,
+      onChangeEnd,
+      name,
+      clamp,
+      snap,
+      positionDomElements,
+      setDragTransitions,
+    ]);
 
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent) => {
@@ -238,10 +336,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const haloSize = thumbSize * T.thumb.haloMultiplier;
 
     const thumbColor = isDisabled
-      ? get(theme.colors, T.color.thumb.disabled, '')
+      ? T.color.thumb.disabledHardcoded
       : get(theme.colors, T.color.thumb.fill, '');
     const trackFillColor = isDisabled
-      ? get(theme.colors, T.color.track.fillDisabled, '')
+      ? T.color.track.fillDisabledHardcoded
       : get(theme.colors, T.color.track.fill, '');
     const valueColor = isDisabled ? T.color.value.disabled : T.color.value.text;
     const suffixColor = isDisabled ? T.color.suffix.disabled : T.color.suffix.text;
@@ -312,6 +410,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 alignItems="center"
                 cursor={isDisabled ? 'not-allowed' : 'pointer'}
                 onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
+                onTouchStart={(handleTouchStart as unknown) as React.TouchEventHandler}
+                style={{ touchAction: 'none' }}
               >
                 {/* Track background */}
                 <BaseBox
@@ -321,11 +421,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   height={`${T.track.height}px`}
                   borderRadius="max"
                   backgroundColor={T.color.track.bg}
-                  opacity={isDisabled ? 0.5 : 1}
                 />
 
                 {/* Fill track */}
                 <div
+                  ref={fillRef}
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -343,6 +443,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
                 {/* Halo */}
                 <div
+                  ref={haloRef}
                   style={{
                     position: 'absolute',
                     left: `${pct}%`,
@@ -362,8 +463,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
                 {/* Thumb */}
                 <StyledThumb
+                  ref={thumbRef}
                   $isFocused={isThumbFocused}
                   $isDragging={isDragging}
+                  $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
                   tabIndex={isDisabled ? -1 : 0}
                   role="slider"
                   aria-valuemin={min}
@@ -375,7 +478,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-disabled={isDisabled}
                   onKeyDown={handleKeyDown}
                   onFocus={() => setIsThumbFocused(true)}
-                  onBlur={() => setIsThumbFocused(false)}
+                  onBlur={() => {
+                    setIsThumbFocused(false);
+                    isPointerFocusRef.current = false;
+                  }}
+                  onPointerDown={() => {
+                    isPointerFocusRef.current = true;
+                  }}
                   onMouseEnter={() => !isDisabled && setIsThumbHovered(true)}
                   onMouseLeave={() => setIsThumbHovered(false)}
                   style={{

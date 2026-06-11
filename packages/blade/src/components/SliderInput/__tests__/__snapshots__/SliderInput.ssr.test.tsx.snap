@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SliderInput /> should render SliderInput with default properties 1`] = `"<div id="root"><div data-blade-component="slider-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hxTZzD"><div data-blade-component="base-box" class="BaseBox-bmPWx fNpotV"><label for="slider-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="slider-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Corner Radius</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx kgMQvt"><div data-blade-component="base-box" class="BaseBox-bmPWx ercLXG"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx fOQeJj"></div><div style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:0;height:0;border-radius:50%;background-color:rgba(0, 0, 0, 0.08);opacity:0;transition:opacity 100ms ease, width 100ms ease, height 100ms ease;pointer-events:none"></div><div tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="24" aria-valuenow="12" aria-valuetext="12 px" aria-labelledby="slider-input-undefined-label" aria-disabled="false" style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:12px;height:12px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);border:none;cursor:grab;transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);z-index:2;touch-action:none" class="SliderInputweb__StyledThumb-sc-1ay9soo-0 fGjcdv"></div></div><div class="SliderInputweb__StyledInputWrapper-sc-1ay9soo-1 dQSSoE"><input id="slider-input-undefined-input-undefined" type="text" inputMode="numeric" aria-labelledby="slider-input-undefined-label" style="color:hsla(212, 39%, 16%, 1);font-family:&quot;Inter&quot;, &quot;Inter Fallback Arial&quot;, Arial;font-size:0.75rem;font-weight:500;font-style:normal;text-decoration-line:none;line-height:1.125rem;letter-spacing:0px;text-align:left;margin:0;padding:0;width:21px;border:none;outline:none;background:transparent;cursor:text" value="12"/><span style="color:hsla(211, 22%, 56%, 1);font-family:&quot;Inter&quot;, &quot;Inter Fallback Arial&quot;, Arial;font-size:0.75rem;font-weight:400;font-style:normal;text-decoration-line:none;line-height:1.125rem;letter-spacing:0px;margin:0;padding:0;flex-shrink:0">px</span></div></div></div></div></div></div>"`;
+exports[`<SliderInput /> should render SliderInput with default properties 1`] = `"<div id="root"><div data-blade-component="slider-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hxTZzD"><div data-blade-component="base-box" class="BaseBox-bmPWx fNpotV"><label for="slider-input-undefined-input-undefined" style="width:100%;flex-shrink:0;margin-right:0px" id="slider-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx iNPVxs"><div data-blade-component="base-box" class="BaseBox-bmPWx eePmTt"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx dGiucr"><p class="StyledBaseText-dVBfTO iKpNtj" data-blade-component="text">Corner Radius</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx kgMQvt"><div style="touch-action:none" data-blade-component="base-box" class="BaseBox-bmPWx ercLXG"><div data-blade-component="base-box" class="BaseBox-bmPWx gwSkRW"></div><div style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"></div><div style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:0;height:0;border-radius:50%;background-color:rgba(0, 0, 0, 0.08);opacity:0;transition:opacity 100ms ease, width 100ms ease, height 100ms ease;pointer-events:none"></div><div tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="24" aria-valuenow="12" aria-valuetext="12 px" aria-labelledby="slider-input-undefined-label" aria-disabled="false" style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:12px;height:12px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);border:none;cursor:grab;transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);z-index:2;touch-action:none" class="SliderInputweb__StyledThumb-sc-1ay9soo-0 cMCxxB"></div></div><div class="SliderInputweb__StyledInputWrapper-sc-1ay9soo-1 dQSSoE"><input id="slider-input-undefined-input-undefined" type="text" inputMode="numeric" aria-labelledby="slider-input-undefined-label" style="color:hsla(212, 39%, 16%, 1);font-family:&quot;Inter&quot;, &quot;Inter Fallback Arial&quot;, Arial;font-size:0.75rem;font-weight:500;font-style:normal;text-decoration-line:none;line-height:1.125rem;letter-spacing:0px;text-align:left;margin:0;padding:0;width:21px;border:none;outline:none;background:transparent;cursor:text" value="12"/><span style="color:hsla(211, 22%, 56%, 1);font-family:&quot;Inter&quot;, &quot;Inter Fallback Arial&quot;, Arial;font-size:0.75rem;font-weight:400;font-style:normal;text-decoration-line:none;line-height:1.125rem;letter-spacing:0px;margin:0;padding:0;flex-shrink:0">px</span></div></div></div></div></div></div>"`;
 
 exports[`<SliderInput /> should render SliderInput with default properties 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -111,7 +111,6 @@ exports[`<SliderInput /> should render SliderInput with default properties 2`] =
   left: 0px;
   background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
-  opacity: 1;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -173,18 +172,6 @@ exports[`<SliderInput /> should render SliderInput with default properties 2`] =
 
 .c11.c11.c11.c11.c11 {
   outline: none;
-}
-
-.c11.c11.c11.c11.c11:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 80ms;
-  transition-duration: 80ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  z-index: 2;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -284,11 +271,11 @@ exports[`<SliderInput /> should render SliderInput with default properties 2`] =
           <div
             class="c9"
             data-blade-component="base-box"
+            style="touch-action:none"
           >
             <div
               class="c10"
               data-blade-component="base-box"
-              opacity="1"
             />
             <div
               style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"

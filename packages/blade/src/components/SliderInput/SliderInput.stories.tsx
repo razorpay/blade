@@ -111,16 +111,7 @@ export const ErrorState: StoryFn<typeof SliderInput> = () => {
 };
 
 export const Disabled: StoryFn<typeof SliderInput> = () => {
-  return (
-    <SliderInput
-      label="Line Height"
-      value={20}
-      min={12}
-      max={40}
-      suffix="px"
-      isDisabled
-    />
-  );
+  return <SliderInput label="Line Height" value={20} min={12} max={40} suffix="px" isDisabled />;
 };
 
 export const Configurator: StoryFn<typeof SliderInput> = () => {
