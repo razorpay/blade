@@ -6,6 +6,7 @@ import { metaAttribute } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getPlatformType } from '~utils';
 
 type BaseFooterProps = {
   children: React.ReactNode;
@@ -30,7 +31,7 @@ const _BaseFooter = ({
         {...metaAttribute({ name: metaComponentName, testID })}
         {...makeAnalyticsAttribute(rest)}
         padding={padding ?? { base: 'spacing.5', m: 'spacing.6' }}
-        width="100%"
+        width={getPlatformType() === 'react-native' ? '100%' : undefined}
       >
         {children}
       </BaseBox>
