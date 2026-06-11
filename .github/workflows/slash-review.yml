@@ -1,4 +1,4 @@
-name: Agentic / Slash Code Review
+name: Agentic Repo / Slash Code Review
 
 on:
   workflow_run:
