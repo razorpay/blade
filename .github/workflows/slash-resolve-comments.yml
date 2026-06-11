@@ -26,9 +26,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          sparse-checkout: .github/scripts
+          sparse-checkout: |
+            .github/scripts
+            CODEOWNERS
+
+      - name: Check if reviewer is CODEOWNER or PR author
+        id: auth-check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          if [ "$ACTOR" = "$PR_AUTHOR" ]; then
+            echo "Actor is the PR author — authorized."
+            echo "authorized=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Extract all GitHub usernames from CODEOWNERS (lines starting with /, strip @ prefix)
+          CODEOWNERS=$(grep -oP '@\K[A-Za-z0-9_-]+' CODEOWNERS | sort -u)
+
+          if echo "$CODEOWNERS" | grep -qx "$ACTOR"; then
+            echo "Actor '$ACTOR' is a CODEOWNER — authorized."
+            echo "authorized=true" >> $GITHUB_OUTPUT
+          else
+            echo "Actor '$ACTOR' is neither the PR author nor a CODEOWNER — skipping."
+            echo "authorized=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Fetch review comments and trigger Slash
+        if: steps.auth-check.outputs.authorized == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
