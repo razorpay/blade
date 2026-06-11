@@ -1,0 +1,21 @@
+name: Run Slash Agent
+
+on:
+  push:
+
+jobs:
+  run-slash:
+    name: Run Slash Agent
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Slash agent
+        env:
+          SLASH_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+        run: node .github/scripts/run-slash.js
