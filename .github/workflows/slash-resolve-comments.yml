@@ -1,29 +1,19 @@
-name: Slash Auto-Resolve PR Comments
+name: Agentic / Slash Auto-Resolve PR Comments
 
 on:
-  issue_comment:
-    types: [created]
-  pull_request_review_comment:
-    types: [created]
+  pull_request_review:
+    types: [submitted]
 
 concurrency:
   # One resolution job per PR at a time to avoid conflicting edits.
-  group: ${{ github.repository }}-${{ github.event.issue.number || github.event.pull_request.number }}-slash-resolve-comments
+  group: ${{ github.repository }}-${{ github.event.pull_request.number }}-slash-resolve-comments
   cancel-in-progress: false
 
 jobs:
-  resolve-comment:
-    name: Resolve PR comment via Slash
-    # Only run on PR comments (issue_comment fires on both issues and PRs).
-    # Skip comments from bots (including Slash itself) to prevent feedback loops.
+  resolve-comments:
+    name: Resolve PR review comments via Slash
+    # Skip reviews from bots (including Slash itself) to prevent feedback loops.
     if: |
-      (
-        github.event_name == 'pull_request_review_comment' ||
-        (
-          github.event_name == 'issue_comment' &&
-          github.event.issue.pull_request != null
-        )
-      ) &&
       github.actor != 'github-actions[bot]' &&
       github.actor != 'rzp-slash' &&
       github.actor != 'rzp-slash[bot]' &&
@@ -32,100 +22,37 @@ jobs:
       github.actor != 'rzp-slash-reviewer' &&
       github.actor != 'rzp-slash-reviewer[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-
     steps:
-      - name: Resolve PR and comment metadata
-        id: meta
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          EVENT_NAME: ${{ github.event_name }}
-          # issue_comment fields
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_COMMENT_ID: ${{ github.event.comment.id }}
-          ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
-          ISSUE_COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
-          # pull_request_review_comment fields
-          PR_NUMBER_FALLBACK: ${{ github.event.pull_request.number }}
-          REVIEW_COMMENT_ID: ${{ github.event.comment.id }}
-          REVIEW_COMMENT_BODY: ${{ github.event.comment.body }}
-          REVIEW_COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
-          REVIEW_COMMENT_PATH: ${{ github.event.comment.path }}
-          REVIEW_COMMENT_LINE: ${{ github.event.comment.line }}
-          REVIEW_COMMENT_DIFF_HUNK: ${{ github.event.comment.diff_hunk }}
-        run: |
-          if [ "$EVENT_NAME" = "issue_comment" ]; then
-            PR_NUMBER="$ISSUE_NUMBER"
-            COMMENT_ID="$ISSUE_COMMENT_ID"
-            COMMENT_BODY="$ISSUE_COMMENT_BODY"
-            COMMENT_AUTHOR="$ISSUE_COMMENT_AUTHOR"
-            COMMENT_TYPE="issue_comment"
-            COMMENT_PATH=""
-            COMMENT_LINE=""
-            COMMENT_DIFF_HUNK=""
-          else
-            PR_NUMBER="$PR_NUMBER_FALLBACK"
-            COMMENT_ID="$REVIEW_COMMENT_ID"
-            COMMENT_BODY="$REVIEW_COMMENT_BODY"
-            COMMENT_AUTHOR="$REVIEW_COMMENT_AUTHOR"
-            COMMENT_TYPE="review_comment"
-            COMMENT_PATH="$REVIEW_COMMENT_PATH"
-            COMMENT_LINE="$REVIEW_COMMENT_LINE"
-            COMMENT_DIFF_HUNK="$REVIEW_COMMENT_DIFF_HUNK"
-          fi
-
-          # Skip empty comments
-          if [ -z "$PR_NUMBER" ] || [ -z "$COMMENT_BODY" ]; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          # Fetch PR metadata
-          PR_JSON=$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER" \
-            --header "Accept: application/vnd.github+json")
-
-          PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('html_url',''))")
-          PR_TITLE=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('title',''))")
-          PR_AUTHOR=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('user',{}).get('login',''))")
-          PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('head',{}).get('ref',''))")
-          PR_TARGET_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('base',{}).get('ref',''))")
-          HEAD_SHA=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p.get('head',{}).get('sha',''))")
-
-          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
-          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
-          echo "pr_title=$PR_TITLE" >> $GITHUB_OUTPUT
-          echo "pr_author=$PR_AUTHOR" >> $GITHUB_OUTPUT
-          echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
-          echo "pr_target_branch=$PR_TARGET_BRANCH" >> $GITHUB_OUTPUT
-          echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
-          echo "comment_id=$COMMENT_ID" >> $GITHUB_OUTPUT
-          echo "comment_author=$COMMENT_AUTHOR" >> $GITHUB_OUTPUT
-          echo "comment_type=$COMMENT_TYPE" >> $GITHUB_OUTPUT
-          echo "comment_path=$COMMENT_PATH" >> $GITHUB_OUTPUT
-          echo "comment_line=$COMMENT_LINE" >> $GITHUB_OUTPUT
-
-          printf '%s' "$COMMENT_BODY" > /tmp/comment_body.txt
-          printf '%s' "$COMMENT_DIFF_HUNK" > /tmp/diff_hunk.txt
-
       - name: Checkout repository
-        if: steps.meta.outputs.skip != 'true'
         uses: actions/checkout@v4
         with:
           sparse-checkout: .github/scripts
 
-      - name: Trigger Slash to resolve comment
-        if: steps.meta.outputs.skip != 'true'
+      - name: Fetch review comments and trigger Slash
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
-          PR_NUMBER: ${{ steps.meta.outputs.pr_number }}
-          PR_URL: ${{ steps.meta.outputs.pr_url }}
-          PR_TITLE: ${{ steps.meta.outputs.pr_title }}
-          PR_BRANCH: ${{ steps.meta.outputs.pr_branch }}
-          PR_REPOSITORY: ${{ github.repository }}
-          COMMENT_ID: ${{ steps.meta.outputs.comment_id }}
-          COMMENT_AUTHOR: ${{ steps.meta.outputs.comment_author }}
-          COMMENT_TYPE: ${{ steps.meta.outputs.comment_type }}
-          COMMENT_PATH: ${{ steps.meta.outputs.comment_path }}
-          COMMENT_LINE: ${{ steps.meta.outputs.comment_line }}
-        run: node .github/scripts/run-slash-comment.js
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_ID: ${{ github.event.review.id }}
+        run: |
+          COMMENT_URLS=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews/${REVIEW_ID}/comments" --jq '[.[].html_url] | join("\n")')
+
+          if [ -z "$COMMENT_URLS" ]; then
+            echo "No inline comments in this review, skipping."
+            exit 0
+          fi
+
+          PROMPT="Resolve the following PR review comments that were just submitted in a single review.
+
+Comment URLs:
+${COMMENT_URLS}
+
+Instructions:
+  - Fetch the details of the PR and each comment with \`gh\` CLI.
+  - For each comment: when it asks for clarification, reply to the comment with a response (including \"resolved by agent\" at the end) OR push a code fix to the PR branch.
+  - After pushing any change, reply to the relevant comment(s) with \"resolved by agent\" at the end.
+  - If you need clarification from the PR author for any comment, add the label \"Human Help Needed\" to the PR instead of guessing."
+
+          node .github/scripts/run-slash.js "$PROMPT"
