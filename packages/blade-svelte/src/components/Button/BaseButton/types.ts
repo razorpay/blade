@@ -1,11 +1,23 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { ButtonStyleOverrides } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
 export type IconComponent = Component<IconProps>;
 
 export interface BaseButtonProps extends StyledPropsBlade {
+  /**
+   * **Instance-level styling — Option B (recommended).**
+   * Bounded, typed per-instance visual overrides mapped to element-scoped CSS
+   * variables. Interaction states (hover/active/focus/disabled) are *derived* from
+   * the base color, so an override keeps working states. Reactive — re-spreads when
+   * the object changes (e.g. a live config editor).
+   *
+   * @example
+   * <Button styleOverrides={{ backgroundColor: '#1a59ff', textColor: '#ffffff' }} />
+   */
+  styleOverrides?: ButtonStyleOverrides;
   children?: Snippet | string;
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';

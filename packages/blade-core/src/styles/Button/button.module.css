@@ -8,7 +8,19 @@
   outline: none;
   text-decoration: none;
   overflow: hidden;
-  border-radius: var(--border-radius-small);
+  /*
+   * Instance-level styling seam (Option B). `--btn-radius` defaults to the
+   * existing token so unspecified instances render pixel-identical; a per-instance
+   * styleOverride sets `--btn-radius` inline to override just this button.
+   */
+  border-radius: var(--btn-radius, var(--border-radius-small));
+  /*
+   * Content color seam. When a `textColor` override is present the component sets
+   * `--btn-content-color` and passes `color="currentColor"` to the text/icon, which
+   * then inherit this value. Defaults to `inherit` so without an override the
+   * token-class color on the text/icon is unaffected.
+   */
+  color: var(--btn-content-color, inherit);
   transition-property: background-color, background-image, box-shadow;
   transition-timing-function: var(--easing-standard);
   transition-duration: var(--duration-xquick);
@@ -66,7 +78,8 @@
 .large {
   --btn-gradient-size: 72px;
   min-height: 48px;
-  border-radius: var(--border-radius-medium);
+  /* Large's larger default radius, still overridable via `--btn-radius`. */
+  border-radius: var(--btn-radius, var(--border-radius-medium));
   padding-left: var(--spacing-5);
   padding-right: var(--spacing-5);
   padding-top: 0;

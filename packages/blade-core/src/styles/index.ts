@@ -41,8 +41,15 @@ export {
   getButtonIconSize,
   getButtonIconOnlySize,
   getButtonSpinnerSize,
+  resolveButtonOverrides,
+  styleObjectToString,
+  BUTTON_OVERRIDE_VARS,
 } from './Button';
-export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export type { ButtonVariants, ButtonColor, ButtonVariant, ButtonStyleOverrides } from './Button';
+// Instance-level styling — Option C (scoped theme provider) framework-agnostic
+// resolver. See instance-level-styling-proposal.
+export { flattenThemeOverridesToVars } from './themeScope';
+export type { ThemeOverrideTree } from './themeScope';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -127,11 +134,14 @@ export {
   getCardFooterClasses,
   getCardTemplateClasses,
 } from './Card';
+export { resolveCardOverrides, CARD_OVERRIDE_VARS } from './Card';
 export type {
   CardRootVariants,
   CardSurfaceVariants,
   CardHeaderVariants,
   CardFooterVariants,
+  CardStyleOverrides,
+  CardSurfaceOverrides,
 } from './Card';
 export {
   animatedChipCva,

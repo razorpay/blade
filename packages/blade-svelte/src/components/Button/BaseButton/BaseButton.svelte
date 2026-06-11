@@ -14,6 +14,8 @@
     getButtonSpinnerSize,
     getButtonIconSize,
     getButtonIconOnlySize,
+    resolveButtonOverrides,
+    styleObjectToString,
     type ActionStatesType as ButtonActionStatesType,
     type SpinnerColor,
   } from '@razorpay/blade-core/styles';
@@ -40,6 +42,7 @@
     tabIndex,
     accessibilityProps,
     testID,
+    styleOverrides,
     onClick,
     onBlur,
     onFocus,
@@ -54,6 +57,10 @@
     onKeyDown,
     ...rest
   }: BaseButtonProps = $props();
+
+  // Option B: per-instance styleOverrides → element-scoped CSS vars (derived states).
+  const overrideVars = $derived(resolveButtonOverrides(styleOverrides));
+  const hasContentColorOverride = $derived(Boolean(overrideVars['--btn-content-color']));
 
   // Validation - check if we have either icon or children
   $effect(() => {
@@ -119,8 +126,13 @@
   // Get text sizes
   const textSizes = getButtonTextSizes();
 
-  // Compute text color token reactively
-  const textColorToken = $derived.by((): TextColors => {
+  // Compute text color token reactively.
+  // When a text-color override is active (Option B), defer to `currentColor` so the
+  // text inherits the overridden color set on the button element.
+  const textColorToken = $derived.by((): TextColors | 'currentColor' => {
+    if (hasContentColorOverride) {
+      return 'currentColor';
+    }
     return getButtonTextColorToken({
       variant,
       color,
@@ -129,8 +141,11 @@
     }) as TextColors;
   });
 
-  // Compute icon color token reactively
+  // Compute icon color token reactively (same currentColor deferral as text).
   const iconColorToken = $derived.by((): IconColor => {
+    if (hasContentColorOverride) {
+      return 'currentColor';
+    }
     return getButtonTextColorToken({
       variant,
       color,
@@ -206,7 +221,6 @@
   // Extract styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
 
-  // Combine classes for button element
   const combinedClasses = $derived(() => {
     const classes = [
       baseButtonClasses,
@@ -218,6 +232,13 @@
     }
     return classes.filter(Boolean).join(' ');
   });
+
+  const combinedInlineStyle = $derived(
+    styleObjectToString({
+      ...styledProps.inlineStyles,
+      ...overrideVars,
+    }),
+  );
 
   // Animated content wrapper classes (for scale animation)
   const animatedContentClasses = $derived(() => {
@@ -339,6 +360,7 @@
 <svelte:element
   this={elementTag}
   class={combinedClasses()}
+  style={combinedInlineStyle}
   {id}
   {...accessibilityAttrs}
   {...metaAttrs}

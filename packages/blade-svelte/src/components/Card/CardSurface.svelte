@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { cardSurfaceStyles } from '@razorpay/blade-core/styles';
-  import type { CardSurfaceVariants } from '@razorpay/blade-core/styles';
+  import {
+    cardSurfaceStyles,
+    resolveCardOverrides,
+    styleObjectToString,
+  } from '@razorpay/blade-core/styles';
+  import type { CardSurfaceVariants, CardStyleOverrides } from '@razorpay/blade-core/styles';
 
   type OverflowValue = 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
 
@@ -15,6 +19,7 @@
     overflow,
     overflowX,
     overflowY,
+    styleOverrides,
   }: {
     children: Snippet;
     backgroundColor?: CardSurfaceVariants['backgroundColor'];
@@ -25,6 +30,7 @@
     overflow?: OverflowValue;
     overflowX?: OverflowValue;
     overflowY?: OverflowValue;
+    styleOverrides?: CardStyleOverrides;
   } = $props();
 
   const surfaceClasses = $derived(
@@ -34,10 +40,16 @@
       borderRadius,
     })
   );
+
+  // Option B (composite parts): resolve the `surface` part overrides into the
+  // element-scoped CSS vars the .cardSurface seams consume (--card-surface-bg /
+  // --card-surface-border-color). Emitted as an inline style on the surface element.
+  const overrideStyle = $derived(styleObjectToString(resolveCardOverrides(styleOverrides)));
 </script>
 
 <div
   class={surfaceClasses}
+  style={overrideStyle}
   style:height={height}
   style:min-height={minHeight}
   style:overflow={overflow}
