@@ -214,9 +214,9 @@ OrderedListWithSizes.args = {
 
 const OrderedFilledListWithSizesTemplate: StoryFn<typeof List> = () => {
   return (
-    <BaseBox>
+    <BaseBox overflow="hidden">
       {listSizes.map((size) => (
-        <BaseBox key={size}>
+        <BaseBox key={size} overflow="hidden">
           <Heading>{capitalize(size)} Size:</Heading>
           <List variant="ordered-filled" size={size}>
             <ListItem>
