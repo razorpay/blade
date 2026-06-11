@@ -54,6 +54,10 @@ const CollapsibleBodyContent = ({
   const isAnimatingRef = useRef(false);
   const animationIdRef = useRef(0);
   const onAnimationComplete = useCallback((id: number): void => {
+    // Defer to next repaint to avoid state update delays when toggling rapidly.
+    // The id check ensures only the most recent animation can mark itself complete —
+    // if a new animation started before this fires, animationIdRef.current will have
+    // advanced past id and we skip the update (the new animation owns the state now).
     requestAnimationFrame(() => {
       if (animationIdRef.current === id) {
         isAnimatingRef.current = false;
@@ -71,10 +75,14 @@ const CollapsibleBodyContent = ({
     setIsAnimating(true);
 
     opacity.value = withTiming(getOpacity({ isExpanded }), { duration, easing });
+    // Animates height to the last measured content height, or 0 when collapsing.
     height.value = withTiming(
       isExpanded && layoutHeightRef.current ? layoutHeightRef.current : 0,
       { duration, easing },
       (isComplete) => {
+        // Only mark complete if animation ran uninterrupted (e.g. not reversed mid-way by
+        // the user toggling before it finished). onAnimationComplete must be called via
+        // runOnJS since withTiming callbacks run on the UI thread.
         if (isComplete) {
           runOnJS(onAnimationComplete)(currentId);
         }
@@ -100,10 +108,20 @@ const CollapsibleBodyContent = ({
       const newHeight = event.nativeEvent.layout.height;
       if (isAnimatingRef.current) {
         if (newHeight > layoutHeightRef.current) {
+          /**
+           * During animation, update the target height only if the new measurement is larger.
+           *
+           * The greater-than check is intentional: for multi-line Text, the first onLayout
+           * event reports height as if the text were single-line. Once the text actually wraps
+           * on screen a second onLayout fires with the real height. We only update upward to
+           * avoid shrinking the animation target to an intermediate measurement.
+           */
           layoutHeightRef.current = newHeight;
           height.value = withTiming(newHeight, { duration, easing });
         }
       } else if (newHeight !== layoutHeightRef.current) {
+        // When not animating, always sync layoutHeightRef to the latest measurement so
+        // dynamic content changes (e.g. items added to the slot) are picked up correctly.
         layoutHeightRef.current = newHeight;
       }
     },
