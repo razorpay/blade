@@ -28,6 +28,7 @@ import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 import { TextInput } from '~components/Input/TextInput';
+import { Avatar, AvatarGroup } from '~components/Avatar';
 import { Indicator } from '~components/Indicator';
 import { Amount } from '~components/Amount';
 
@@ -505,6 +506,23 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
             leading={<AnnouncementIcon size="large" />}
             title="Item with Badge"
             titleSuffix={<Badge>New</Badge>}
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" />}
+            title="Item with AvatarGroup"
+            titleSuffix={
+              <AvatarGroup size="xsmall" density="comfortable">
+                <Avatar name="John Doe" src="https://i.pravatar.cc/150?img=1" />
+                <Avatar name="Jane Smith" src="https://i.pravatar.cc/150?img=2" />
+                <Avatar name="Bob Wilson" src="https://i.pravatar.cc/150?img=3" />
+              </AvatarGroup>
+            }
           />
           <AccordionItemBody>
             Just use Razorpay. You may also check our docs for detailed instructions. Please use the

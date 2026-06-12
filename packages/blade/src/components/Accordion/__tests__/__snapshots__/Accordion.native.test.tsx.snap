@@ -1804,7 +1804,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-31"
+              accessibilityControls="collapsible-body-40"
               accessibilityLabel="How can I setup Route?"
               accessibilityRole="button"
               accessibilityState={
@@ -2146,7 +2146,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-31"
+              id="collapsible-body-40"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -2363,7 +2363,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-32"
+              accessibilityControls="collapsible-body-41"
               accessibilityLabel="How can I setup QR Codes?"
               accessibilityRole="button"
               accessibilityState={
@@ -2705,7 +2705,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-32"
+              id="collapsible-body-41"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -2922,7 +2922,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-33"
+              accessibilityControls="collapsible-body-42"
               accessibilityLabel="How can I setup Subscriptions?"
               accessibilityRole="button"
               accessibilityState={
@@ -3264,7 +3264,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-33"
+              id="collapsible-body-42"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -3530,7 +3530,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-34"
+              accessibilityControls="collapsible-body-46"
               accessibilityLabel="How can I setup Route?"
               accessibilityRole="button"
               accessibilityState={
@@ -3872,7 +3872,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-34"
+              id="collapsible-body-46"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -4089,7 +4089,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-35"
+              accessibilityControls="collapsible-body-47"
               accessibilityLabel="How can I setup QR Codes?"
               accessibilityRole="button"
               accessibilityState={
@@ -4431,7 +4431,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-35"
+              id="collapsible-body-47"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
@@ -4648,7 +4648,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
             }
           >
             <View
-              accessibilityControls="collapsible-body-36"
+              accessibilityControls="collapsible-body-48"
               accessibilityLabel="How can I setup Subscriptions?"
               accessibilityRole="button"
               accessibilityState={
@@ -4990,7 +4990,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
               data-blade-component="collapsible-body"
-              id="collapsible-body-36"
+              id="collapsible-body-48"
               importantForAccessibility="no-hide-descendants"
               style={
                 [
