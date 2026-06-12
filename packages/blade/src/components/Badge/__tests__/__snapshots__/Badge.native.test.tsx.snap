@@ -22,13 +22,13 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
     <View
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -59,8 +59,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -229,13 +229,13 @@ exports[`<Badge /> should render Badge with default props 1`] = `
     <View
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -266,8 +266,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -336,13 +336,13 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
     <View
       backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 100%, 41%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -373,8 +373,8 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -443,13 +443,13 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
     <View
       backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 100%, 41%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -480,8 +480,8 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -550,13 +550,13 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
     <View
       backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(4, 85%, 44%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -587,8 +587,8 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -657,13 +657,13 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
     <View
       backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(4, 85%, 44%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -694,8 +694,8 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -764,13 +764,13 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
     <View
       backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 10%, 18%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -801,8 +801,8 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -871,13 +871,13 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
     <View
       backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 10%, 18%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -908,8 +908,8 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -978,13 +978,13 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
     <View
       backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(25, 100%, 44%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1015,8 +1015,8 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1085,13 +1085,13 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
     <View
       backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(25, 100%, 44%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1122,8 +1122,8 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1192,13 +1192,13 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
     <View
       backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(150, 100%, 28%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1229,8 +1229,8 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1299,13 +1299,13 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
     <View
       backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(150, 100%, 28%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1336,8 +1336,8 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1406,13 +1406,13 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
     <View
       backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1443,8 +1443,8 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1513,13 +1513,13 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
     <View
       backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1550,8 +1550,8 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -1941,13 +1941,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
     <View
       backgroundColor="feedback.background.information.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -1978,8 +1978,8 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2048,13 +2048,13 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
     <View
       backgroundColor="feedback.background.information.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2085,8 +2085,8 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2155,13 +2155,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
     <View
       backgroundColor="feedback.background.negative.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2192,8 +2192,8 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2262,13 +2262,13 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
     <View
       backgroundColor="feedback.background.negative.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2299,8 +2299,8 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2369,13 +2369,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
     <View
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2406,8 +2406,8 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2476,13 +2476,13 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
     <View
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2513,8 +2513,8 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2583,13 +2583,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
     <View
       backgroundColor="feedback.background.notice.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2620,8 +2620,8 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2690,13 +2690,13 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
     <View
       backgroundColor="feedback.background.notice.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2727,8 +2727,8 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2797,13 +2797,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
     <View
       backgroundColor="feedback.background.positive.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2834,8 +2834,8 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -2904,13 +2904,13 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
     <View
       backgroundColor="feedback.background.positive.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -2941,8 +2941,8 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -3011,13 +3011,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
     <View
       backgroundColor="surface.background.primary.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -3048,8 +3048,8 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
@@ -3118,13 +3118,13 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
     <View
       backgroundColor="surface.background.primary.subtle"
       data-blade-component="base-box"
-      height="20px"
-      size="medium"
+      height="24px"
+      size="large"
       style={
         [
           {
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-            "height": 20,
+            "height": 24,
             "textAlign": "left",
           },
           {
@@ -3155,8 +3155,8 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingLeft": 4,
-              "paddingRight": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
             },
           ]
         }
