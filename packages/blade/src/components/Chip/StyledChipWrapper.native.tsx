@@ -12,8 +12,9 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
     const outerBorderWidth = getIn(theme, 'border.width.thin') as number;
     return {
       display: 'flex',
-      borderColor: isChecked ? getIn(theme.colors, borderColor) : 'transparent',
-      borderWidth: outerBorderWidth * 2,
+      borderColor: getIn(theme.colors, borderColor),
+      // Double width when selected to visually indicate selection; single width when unselected
+      borderWidth: isChecked ? outerBorderWidth * 2 : outerBorderWidth,
       borderRadius: makeBorderSize(outerRadius - outerBorderWidth),
       // Clipping is handled by AnimatedChip's overflow:hidden; avoid double-clip artifact.
       overflow: 'visible',
