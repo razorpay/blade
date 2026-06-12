@@ -420,6 +420,9 @@ const _Tabs = (
             return (
               <View key={panel.value} style={styles.pagerView}>
                 {shouldRender ? (
+                  // Avoid double-wrapping if the consumer already passes a ScrollView.
+                  // Covers: react-native ScrollView (reference check) and
+                  // react-native-gesture-handler ScrollView (displayName check).
                   React.isValidElement(panel.children) &&
                   (panel.children.type === ScrollView ||
                     (panel.children.type as React.ComponentType).displayName === 'ScrollView') ? (
