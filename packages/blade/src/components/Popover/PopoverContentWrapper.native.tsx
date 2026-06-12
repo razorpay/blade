@@ -11,12 +11,15 @@ import type { PopoverContentWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { castNativeType } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
-// Use styled(Animated.View) so opacity animates on the same View that has elevation.
-// On Android, elevation renders its shadow independently of a parent Animated.View's
-// opacity — co-locating opacity and elevation on the same View fixes the flash.
-const StyledPopoverContentWrapper = styled(Animated.View)<{
+// Animated.createAnimatedComponent(BaseBox) so BaseBox handles elevation prop resolution
+// (getElevationValue → shadow styles) while Animated handles opacity on the same View.
+// On Android, elevation shadow renders independently of a parent View's opacity —
+// co-locating opacity and elevation on the same View fixes the flash.
+const AnimatedBaseBox = Animated.createAnimatedComponent(BaseBox as React.ComponentType<any>);
+
+const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
   collapse?: boolean;
   styles: CSSProperties;
   isMobile: boolean;
@@ -67,10 +70,8 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
       <Animated.View style={translateAnimatedStyle}>
         <StyledPopoverContentWrapper
           styles={styles}
-          // Shadow styles need to be passed directly through native style prop
-          // Cannot be done via styled components
-          style={[castNativeType(theme.elevation.lowRaised), opacityAnimatedStyle]}
-          elevation={20}
+          style={opacityAnimatedStyle}
+          elevation="lowRaised"
           ref={ref as never}
           collapse={false}
           isMobile={isMobile}
