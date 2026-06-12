@@ -41,6 +41,12 @@ type ButtonCommonProps = {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
+  /**
+   * Determines the type of loading indicator displayed when `isLoading` is true.
+   *
+   * @default 'indefinite'
+   */
+  loadingType?: 'indefinite';
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -111,6 +117,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
     href,
     target,
     rel,
@@ -160,6 +167,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
+      loadingType={loadingType}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}
