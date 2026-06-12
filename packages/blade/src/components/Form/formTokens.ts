@@ -57,6 +57,13 @@ const labelWidth = {
   large: size[176],
 } as const;
 
+const labelTextColor = {
+  xsmall: 'surface.text.gray.muted',
+  small: 'surface.text.gray.muted',
+  medium: 'surface.text.gray.subtle',
+  large: 'surface.text.gray.subtle',
+} as const;
+
 const labelLeftMarginRight = {
   xsmall: 'spacing.3',
   small: 'spacing.3',
@@ -66,6 +73,7 @@ const labelLeftMarginRight = {
 
 export {
   labelTextSize,
+  labelTextColor,
   labelOptionalIndicatorTextSize,
   hintTextSize,
   hintIconSize,

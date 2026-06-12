@@ -1,5 +1,5 @@
 blade-svelte:
   - changed-files:
-    - any-glob-to-any-file:
-      - packages/blade-svelte/**
-      - packages/blade-core/**
+      - any-glob-to-any-file:
+          - packages/blade-svelte/**
+          - packages/blade-core/**

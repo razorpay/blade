@@ -106,8 +106,6 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   if (rest.validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor.error);
-  } else if (rest.validationState === 'success') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.success);
   }
 
   const motionConfig: {
