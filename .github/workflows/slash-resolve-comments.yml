@@ -64,7 +64,10 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REVIEW_ID: ${{ github.event.review.id }}
         run: |
-          COMMENT_URLS=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews/${REVIEW_ID}/comments" --jq '[.[] | select(.body | contains("@rzp-slash-public")) | .html_url] | join("\n")')
+          COMMENT_DATA=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews/${REVIEW_ID}/comments" --jq '[.[] | select(.body | contains("@rzp-slash-public")) | {id: .id, html_url: .html_url}]')
+
+          COMMENT_URLS=$(echo "$COMMENT_DATA" | jq -r '.[].html_url')
+          COMMENT_IDS=$(echo "$COMMENT_DATA" | jq -r '.[].id')
 
           if [ -z "$COMMENT_URLS" ]; then
             echo "No comments mentioning @rzp-slash-public in this review, skipping."
@@ -81,5 +84,9 @@ jobs:
 
           if [ -n "$TASK_ID" ]; then
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
-            gh pr comment "${PR_NUMBER}" --body "Auto Comment Resolution started at <${EXECUTION_URL}>"
+            for COMMENT_ID in $COMMENT_IDS; do
+              gh api "repos/${{ github.repository }}/pulls/comments/${COMMENT_ID}/replies" \
+                --method POST \
+                --field body="Auto Comment Resolution started at <${EXECUTION_URL}>"
+            done
           fi
