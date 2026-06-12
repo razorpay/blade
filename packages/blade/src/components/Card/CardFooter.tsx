@@ -151,7 +151,7 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
       width={isReactNative() ? '100%' : undefined}
       {...makeAnalyticsAttribute(rest)}
     >
-      {(!isReactNative() || actions?.secondary) ? (
+      {!isReactNative() || actions?.secondary ? (
         <BaseBox {...equalWidthFlexProps}>
           {actions?.secondary ? (
             <Button
@@ -167,7 +167,7 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
         </BaseBox>
       ) : null}
       {!isReactNative() && <BaseBox marginLeft="spacing.5" />}
-      {(!isReactNative() || actions?.primary) ? (
+      {!isReactNative() || actions?.primary ? (
         <BaseBox {...equalWidthFlexProps}>
           {actions?.primary ? (
             <Button
