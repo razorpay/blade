@@ -95,4 +95,4 @@ Add any `issues` from the output to `issues` as entries with only a `problem` fi
 }
 ```
 
-`statuses` must include **all** CI checks — passing, failing, pending, skipped. Only include `problem` and `suggestion` for non-SUCCESS/non-SKIPPED checks. `issues` holds changeset/docs/test problems with no file location.
+`statuses` must include **all** CI checks — passing, failing, pending, skipped. For any check with state `FAILURE` or `PENDING`, `problem` is **required** — populate it after debugging the failed job with `gh run view`. `suggestion` is required when a fix is known. Do not omit `problem` from a failing status. `issues` holds changeset/docs/test problems with no file location.

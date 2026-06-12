@@ -1,7 +1,19 @@
 Assemble the outputs from all critique agents into a single JSON object matching this schema exactly. Do not wrap it in markdown code fences — output raw JSON only.
 
+## Determining the Review Status
+
+- `reviewStatus`: can be 'approved' or 'commented'
+- Set to `approved` if:
+  - All CI and UI checks passed
+  - There are no 'major' or 'critical' severity issues found
+  - Earlier 'major' or 'critical' severity issues are addressed either by a valid response or by commit push
+- Set to `commented` for everything else
+
+## Output Format
+
 ```json
 {
+  "reviewStatus": "approved" | "commented",
   "overview-comment": {
     "ui-review": {
       "critique": "ui-critique",
