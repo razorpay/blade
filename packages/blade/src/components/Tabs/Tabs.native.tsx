@@ -425,7 +425,8 @@ const _Tabs = (
                   // react-native-gesture-handler ScrollView (displayName check).
                   React.isValidElement(panel.children) &&
                   (panel.children.type === ScrollView ||
-                    (panel.children.type as React.ComponentType).displayName === 'ScrollView') ? (
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    (panel.children.type as any)['displayName'] === 'ScrollView') ? (
                     panel.children
                   ) : (
                     <ScrollView
