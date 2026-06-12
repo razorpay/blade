@@ -289,6 +289,7 @@ exports[`<Tooltip /> should render 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -298,7 +299,7 @@ exports[`<Tooltip /> should render 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -700,6 +701,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -709,7 +711,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1111,6 +1113,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="semibold"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -1120,7 +1123,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "600",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1145,6 +1148,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -1154,7 +1158,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,

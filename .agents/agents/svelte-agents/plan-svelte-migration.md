@@ -1,5 +1,5 @@
 ---
-name: planner
+name: plan-svelte-migration
 description: Analyzes React component source code, extracts API contracts (props, types, stories, DOM structure), identifies dependencies, and produces discovery reports and migration specifications for component library migration.
 model: inherit
 ---

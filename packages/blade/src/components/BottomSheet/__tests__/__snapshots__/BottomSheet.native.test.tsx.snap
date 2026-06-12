@@ -597,6 +597,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="semibold"
+                          letterSpacing={25}
                           lineHeight={200}
                           marginTop="1px"
                           style={
@@ -607,7 +608,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "600",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.528,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -720,6 +721,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     fontSize={75}
                                     fontStyle="normal"
                                     fontWeight="medium"
+                                    letterSpacing={50}
                                     lineHeight={75}
                                     numberOfLines={1}
                                     style={
@@ -730,7 +732,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                           "fontSize": 12,
                                           "fontStyle": "normal",
                                           "fontWeight": "500",
-                                          "letterSpacing": 0,
+                                          "letterSpacing": -0.15600000000000003,
                                           "lineHeight": 17,
                                           "marginBottom": 0,
                                           "marginLeft": 0,
@@ -763,6 +765,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         fontSize={75}
                         fontStyle="normal"
                         fontWeight="regular"
+                        letterSpacing={50}
                         lineHeight={75}
                         style={
                           [
@@ -772,7 +775,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
-                              "letterSpacing": 0,
+                              "letterSpacing": -0.15600000000000003,
                               "lineHeight": 17,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -883,6 +886,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               fontSize={75}
                               fontStyle="normal"
                               fontWeight="medium"
+                              letterSpacing={50}
                               lineHeight={75}
                               marginX="spacing.2"
                               numberOfLines={1}
@@ -894,7 +898,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     "fontSize": 12,
                                     "fontStyle": "normal",
                                     "fontWeight": "500",
-                                    "letterSpacing": 0,
+                                    "letterSpacing": -0.15600000000000003,
                                     "lineHeight": 17,
                                     "marginBottom": 0,
                                     "marginLeft": 4,

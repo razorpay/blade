@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>UI Pattern Creator</title>
+  <link rel="stylesheet" href="ui.css">
+
+  <!-- Component keys will be injected here at build time -->
+</head>
+<body>
+  <header>
+    <h2>Blade UI Pattern Creator</h2>
+    <div class="toolbar">
+      <div class="seg" id="platformSeg">
+        <button data-platform="desktop" class="active">💻</button>
+        <button data-platform="mobile">📱</button>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search patterns..." id="search" />
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+    <div id="step1">
+        <div class="cardgrid" id="grid"></div>
+        <div class="empty" id="empty" style="display:none;">
+          <div id="emptyMsg">No patterns available.</div>
+          </div>
+        </div>
+        
+      <div id="step2" style="display:none;">
+        <div class="config-title">CONFIGURATION</div>
+        <div class="config-subtitle" id="wizardPatternName">Pattern Name</div>
+        
+        <div class="inputs-preview-container">
+          <div class="config-container">
+            <div class="form-section">
+              <div class="config-divider"></div>
+              
+              <div class="row">
+                <div class="muted">Page Type</div>
+                <select id="opt_pageType">
+                  <option value="HomePage">Home Page</option>
+                  <option value="Internal Modules" selected>Internal Modules</option>
+                </select>
+            </div>
+
+              <div class="row">
+                <div class="muted">Show Tabs</div>
+                <select id="opt_showTabs">
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+            </div>
+
+              <div class="row">
+                <div class="muted">Supporting Elements</div>
+                <select id="opt_supportingElements">
+                  <option value="None">None</option>
+                  <option value="Guidance Panel">Guidance Panel</option>
+                  <option value="Preview">Preview</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Step Type</div>
+                <select id="opt_stepType">
+                  <option value="Single">Single</option>
+                  <option value="Multiple">Multiple</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">View Type</div>
+                <select id="opt_viewType">
+                  <option value="Small Modal">Small Modal</option>
+                  <option value="Medium Modal">Medium Modal</option>
+                  <option value="Large Modal">Large Modal</option>
+                  <option value="Full Page">Full Page</option>
+                </select>
+            </div>
+
+              <div class="row">
+                <div class="muted">Column Type</div>
+                <select id="opt_columnType">
+                  <option value="Narrow">Narrow</option>
+                  <option value="Full Width" selected>Full Width</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Stepper Type</div>
+                <select id="opt_stepperType">
+                  <option value="StepGroup">StepGroup</option>
+                  <option value="Progress Bar">Progress Bar</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Size</div>
+                <select id="opt_size">
+                  <option value="Large">Large</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Small">Small</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Content Type</div>
+                <select id="opt_contentType">
+                  <option value="Image + Text">Image + Text</option>
+                  <option value="Preview">Preview</option>
+                  <option value="Subtle Context">Subtle Context</option>
+                  <option value="Only Text">Only Text</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Content</div>
+                <select id="opt_content">
+                  <option value="Default">Default</option>
+                  <option value="Selection Cards">Selection Cards</option>
+                  <option value="Right Asset">Right Asset</option>
+                  <option value="Left Asset">Left Asset</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Column Type</div>
+                <select id="opt_columnType_dashboard">
+                  <option value="Full Width">Full Width</option>
+                  <option value="Narrow">Narrow</option>
+                </select>
+            </div>
+
+              <div class="row">
+              <div class="muted">Show Aside</div>
+                <select id="opt_showAside">
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+            
+              <div class="preview-window">
+                <div class="preview-content">
+                  <div class="preview-placeholder">
+                  <div style="color: #768EA7; text-align: center; padding: 20px; font-size: 14px;">
+                    Select a pattern to see preview
+                  </div>
+                </div>
+              </div>
+              <div class="preview-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <button class="btn" id="prevBtn" style="display:none;">Previous</button>
+      <button class="btn primary" id="createBtn" disabled>Create</button>
+  </footer>
+
+  <!-- JavaScript logic loaded from external file -->
+  <script src="ui.js"></script>
+</body>
+</html>

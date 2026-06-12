@@ -3,4 +3,5 @@ export const componentIds = {
   CollapsibleBody: 'CollapsibleBody',
   CollapsibleButton: 'CollapsibleButton',
   CollapsibleLink: 'CollapsibleLink',
+  CollapsibleText: 'CollapsibleText',
 };
