@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 12.107.1
+
+### Patch Changes
+
+- 3891126cc: fix(Accordion): animation race condition
+- 90c660fef: fix(rn): fix BaseFooterSink layout for React Native
+- 7e8ffc9bf: fix(rn): fix Avatar story label wrapping on React Native
+- 57703cf66: fix(Drawer): fix stale closure in StackProvider causing back button to appear on L0 after closing all drawers
+- 0ae4f1c5a: feat(Input): update input sizing, success border, and add validationTextPlacement prop
+- 5cd3af431: feat(Accordion): apply Card surface styling to filled variant
+- ce3bf0b4e: fix(rn): fix story layout issues for Divider, Link, and Code components
+- c448696eb: fix(native): pass letterSpacing prop through BaseText.native.tsx
+
 ## 12.107.0
 
 ### Minor Changes
