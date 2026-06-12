@@ -70,6 +70,7 @@ jobs:
             .github/scripts
 
       - name: Request Slash review
+        id: request-slash-review
         if: steps.pr-meta.outputs.skip != 'true'
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
@@ -92,4 +93,29 @@ jobs:
           if [ -n "$TASK_ID" ]; then
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
             echo "Execution logs: ${EXECUTION_URL}"
+            echo "execution_url=$EXECUTION_URL" >> $GITHUB_OUTPUT
           fi
+
+      - name: Post PR comment with execution log link
+        if: steps.pr-meta.outputs.skip != 'true' && steps.request-slash-review.outputs.execution_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          EXECUTION_URL: ${{ steps.request-slash-review.outputs.execution_url }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})"
+
+      - name: Post PR comment on failure
+        if: failure() && steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="⚠️ **Slash AI Review** failed to trigger. [View workflow run](${RUN_URL})"
