@@ -85,7 +85,7 @@ jobs:
           if [ -n "$TASK_ID" ]; then
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
             for COMMENT_ID in $COMMENT_IDS; do
-              gh api "repos/${{ github.repository }}/pulls/comments/${COMMENT_ID}/replies" \
+              gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/comments/${COMMENT_ID}/replies" \
                 --method POST \
                 --field body="Auto Comment Resolution started at <${EXECUTION_URL}>"
             done
