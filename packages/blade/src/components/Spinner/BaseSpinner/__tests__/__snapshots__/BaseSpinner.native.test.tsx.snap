@@ -314,6 +314,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -323,7 +324,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -810,6 +811,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -819,7 +821,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,

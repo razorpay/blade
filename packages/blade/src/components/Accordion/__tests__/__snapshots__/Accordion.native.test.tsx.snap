@@ -256,6 +256,7 @@ exports[`<Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -266,7 +267,7 @@ exports[`<Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -500,6 +501,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -509,7 +511,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -545,6 +547,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -554,7 +557,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -815,6 +818,7 @@ exports[`<Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -825,7 +829,7 @@ exports[`<Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -1059,6 +1063,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -1068,7 +1073,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1104,6 +1109,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -1113,7 +1119,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1374,6 +1380,7 @@ exports[`<Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -1384,7 +1391,7 @@ exports[`<Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -1618,6 +1625,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -1627,7 +1635,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1663,6 +1671,7 @@ exports[`<Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -1672,7 +1681,7 @@ exports[`<Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1983,6 +1992,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -1993,7 +2003,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -2217,6 +2227,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -2226,7 +2237,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -2271,6 +2282,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -2280,7 +2292,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2542,6 +2554,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -2552,7 +2565,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -2776,6 +2789,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -2785,7 +2799,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -2830,6 +2844,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -2839,7 +2854,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3101,6 +3116,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -3111,7 +3127,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -3335,6 +3351,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -3344,7 +3361,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3389,6 +3406,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -3398,7 +3416,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3709,6 +3727,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -3719,7 +3738,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -3943,6 +3962,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -3952,7 +3972,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3997,6 +4017,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -4006,7 +4027,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -4268,6 +4289,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -4278,7 +4300,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -4502,6 +4524,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -4511,7 +4534,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -4556,6 +4579,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -4565,7 +4589,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -4827,6 +4851,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 fontSize={200}
                                 fontStyle="normal"
                                 fontWeight="semibold"
+                                letterSpacing={25}
                                 lineHeight={200}
                                 marginTop="1px"
                                 style={
@@ -4837,7 +4862,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                       "fontSize": 16,
                                       "fontStyle": "normal",
                                       "fontWeight": "600",
-                                      "letterSpacing": 0,
+                                      "letterSpacing": -0.528,
                                       "lineHeight": 24,
                                       "marginBottom": 0,
                                       "marginLeft": 0,
@@ -5061,6 +5086,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -5070,7 +5096,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -5115,6 +5141,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             fontSize={100}
                             fontStyle="normal"
                             fontWeight="regular"
+                            letterSpacing={50}
                             lineHeight={100}
                             style={
                               [
@@ -5124,7 +5151,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.18200000000000002,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
