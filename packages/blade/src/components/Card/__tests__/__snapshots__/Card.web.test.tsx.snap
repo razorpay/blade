@@ -580,9 +580,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
   gap: 12px;
 }
 
@@ -591,6 +588,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -608,9 +608,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
   margin-right: 16px;
 }
 
