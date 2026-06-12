@@ -121,6 +121,7 @@ Combine all subagent outputs into a single JSON object. Follow the output format
 ```
 subagent_type: filter-critique
 prompt: |
+  PR_NUMBER={PR_NUMBER}
   INLINED_COMMENTS={INLINED_COMMENTS}
 ```
 

@@ -1,5 +1,16 @@
 Assemble the outputs from all critique agents into a single JSON object matching this schema exactly. Do not wrap it in markdown code fences — output raw JSON only.
 
+## Determining the Review Status
+
+- `reviewStatus`: can be 'approved' or 'commented'
+- Set to `approved` if:
+  - All CI and UI checks passed
+  - There are no 'major' or 'critical' severity issues found
+  - Earlier 'major' or 'critical' severity issues are addressed either by a valid response or by commit push
+- Set to `commented` for everything else
+
+## Output Format
+
 ```json
 {
   "reviewStatus": "approved" | "commented",
@@ -70,9 +81,6 @@ Assemble the outputs from all critique agents into a single JSON object matching
 
 ## Assembly rules
 
-- `reviewStatus`: can be 'approved' or 'commented'
-  - Set to `approved` if all CI and UI checks passed and there are no major or critical issues found.
-  - Set to `commented` for everything else
 - `overview-comment.ui-review`: populated from `ui-critique.statuses`. Omit this key entirely if `ShouldReviewUI` is false.
 - `overview-comment.sanity-review`: `statuses` and `issues` come directly from `pr-sanity-critique`.
 - `inlined-comments`: one entry per item in `issues[]` from `code-quality-critique`, `api-decision-critique`, and `usecase-critique`. Inject `critique` (the agent's `critique_name`) and copy `file`, `line`, `side`, `severity`, `problem`, `suggestion` directly. Sort by severity: critical → major → minor.
