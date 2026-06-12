@@ -10,14 +10,6 @@ describe('<SliderInput />', () => {
     expect(getByText('Test Slider')).toBeTruthy();
   });
 
-  it('should render with value and suffix', () => {
-    const { getByDisplayValue, getByText } = renderWithTheme(
-      <SliderInput label="Radius" value={12} suffix="px" />,
-    );
-    expect(getByDisplayValue('12')).toBeTruthy();
-    expect(getByText('px')).toBeTruthy();
-  });
-
   it('should call onChange when value changes via keyboard', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
@@ -47,30 +39,6 @@ describe('<SliderInput />', () => {
     fireEvent.keyDown(slider, { key: 'Home' });
     expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 0 });
     fireEvent.keyDown(slider, { key: 'End' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 100 });
-  });
-
-  it('should update value from input field on blur', () => {
-    const onChange = jest.fn();
-    const { getByDisplayValue } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} />,
-    );
-    const input = getByDisplayValue('50');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '75' } });
-    fireEvent.blur(input);
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 75 });
-  });
-
-  it('should clamp input value to max on blur', () => {
-    const onChange = jest.fn();
-    const { getByDisplayValue } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} />,
-    );
-    const input = getByDisplayValue('50');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '200' } });
-    fireEvent.blur(input);
     expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 100 });
   });
 
@@ -120,11 +88,10 @@ describe('<SliderInput />', () => {
   });
 
   it('should work as uncontrolled component', () => {
-    const { getByRole, getByDisplayValue } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={25} min={0} max={100} step={1} />,
     );
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '25');
-    expect(getByDisplayValue('25')).toBeTruthy();
   });
 
   it('should snap to step values', () => {

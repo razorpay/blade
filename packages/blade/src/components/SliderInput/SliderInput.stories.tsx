@@ -13,7 +13,6 @@ export default {
     min: 0,
     max: 24,
     step: 2,
-    suffix: 'px',
     defaultValue: 12,
     size: 'medium',
     isDisabled: false,
@@ -53,7 +52,6 @@ export const Controlled: StoryFn<typeof SliderInput> = () => {
         min={0}
         max={24}
         step={2}
-        suffix="px"
       />
       <Text size="small" color="surface.text.gray.muted">
         Current value: {value}px
@@ -72,7 +70,6 @@ export const WithSteps: StoryFn<typeof SliderInput> = () => {
       min={0}
       max={100}
       step={10}
-      suffix="%"
     />
   );
 };
@@ -87,7 +84,6 @@ export const Continuous: StoryFn<typeof SliderInput> = () => {
       min={0}
       max={20}
       step={1}
-      suffix="px"
     />
   );
 };
@@ -102,7 +98,6 @@ export const ErrorState: StoryFn<typeof SliderInput> = () => {
       min={8}
       max={32}
       step={1}
-      suffix="px"
       validationState={fontSize < 12 ? 'error' : 'none'}
       errorText="Below 12px does not meet accessibility standards"
       helpText="Minimum 12px recommended"
@@ -111,7 +106,7 @@ export const ErrorState: StoryFn<typeof SliderInput> = () => {
 };
 
 export const Disabled: StoryFn<typeof SliderInput> = () => {
-  return <SliderInput label="Line Height" value={20} min={12} max={40} suffix="px" isDisabled />;
+  return <SliderInput label="Line Height" value={20} min={12} max={40} isDisabled />;
 };
 
 export const Configurator: StoryFn<typeof SliderInput> = () => {
@@ -137,7 +132,6 @@ export const Configurator: StoryFn<typeof SliderInput> = () => {
           min={0}
           max={24}
           step={2}
-          suffix="px"
         />
         <SliderInput
           label="Spacing"
@@ -146,7 +140,6 @@ export const Configurator: StoryFn<typeof SliderInput> = () => {
           min={0}
           max={48}
           step={4}
-          suffix="px"
         />
         <SliderInput
           label="Opacity"
@@ -155,7 +148,6 @@ export const Configurator: StoryFn<typeof SliderInput> = () => {
           min={0}
           max={100}
           step={10}
-          suffix="%"
         />
         <SliderInput
           label="Shadow Blur"
@@ -164,7 +156,6 @@ export const Configurator: StoryFn<typeof SliderInput> = () => {
           min={0}
           max={20}
           step={1}
-          suffix="px"
         />
       </Box>
     </Box>
