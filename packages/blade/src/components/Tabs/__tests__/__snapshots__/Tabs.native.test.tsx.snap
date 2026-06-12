@@ -310,40 +310,52 @@ exports[`Tabs should render 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Payments Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Payments Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
       <View
@@ -374,40 +386,52 @@ exports[`Tabs should render 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Refunds Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Refunds Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -769,40 +793,52 @@ exports[`Tabs should render with filled variant 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Payments Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Payments Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
       <View
@@ -833,40 +869,52 @@ exports[`Tabs should render with filled variant 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Refunds Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Refunds Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -1197,40 +1245,52 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Payments Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Payments Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
       <View
@@ -1261,40 +1321,52 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Refunds Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Refunds Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -1612,40 +1684,52 @@ exports[`Tabs should render with large size 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Payments Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Payments Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
       <View
@@ -1676,40 +1760,52 @@ exports[`Tabs should render with large size 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={100}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 2%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "flexGrow": 1,
+              }
             }
+            nestedScrollEnabled={true}
+            showsVerticalScrollIndicator={false}
           >
-            Refunds Panel
-          </Text>
+            <View>
+              <Text
+                accessible={true}
+                color="surface.text.gray.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 2%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": 0,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Refunds Panel
+              </Text>
+            </View>
+          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
