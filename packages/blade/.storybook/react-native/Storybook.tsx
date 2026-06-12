@@ -1,33 +1,23 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import { getStorybookUI } from '@storybook/react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { bladeTheme } from '../../src/tokens/theme';
-import './storybook.requires';
+import { view } from './storybook.requires';
 
 import { name as appName } from '../../app.json';
 
 const App = () => {
-  const Storybook = getStorybookUI({
-    shouldPersistSelection: true,
-    // keeping in comments becuase this is not documented properly in the docs
-    theme: {
-      backgroundColor: bladeTheme.colors.onLight.surface.background.gray.moderate,
-      // headerTextColor: 'black',
-      // labelColor: 'black',
-      // borderColor: '#e6e6e6',
-      // previewBorderColor: '#b3b3b3',
-      // buttonTextColor: '#999999',
-      // buttonActiveTextColor: '#444444',
+  const Storybook = view.getStorybookUI({
+    storage: {
+      getItem: AsyncStorage.getItem,
+      setItem: AsyncStorage.setItem,
     },
   });
 
   return (
-    <BladeProvider
-      // key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
-      themeTokens={bladeTheme}
-    >
+    <BladeProvider themeTokens={bladeTheme}>
       <Storybook />
     </BladeProvider>
   );
