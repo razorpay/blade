@@ -7,7 +7,7 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import type { CounterInputProps } from './types';
-import { COUNTER_INPUT_TOKEN } from './token';
+import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -22,20 +22,42 @@ import { useTheme } from '~components/BladeProvider';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
+import { getTextProps } from '~components/Typography/Text/Text';
 
-const ICON_SIZE_MAP = {
+const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
   xsmall: 'small',
   small: 'small',
-  medium: 'large',
-  large: 'xlarge',
+  medium: 'medium',
+  large: 'large',
 } as const;
 
-const FONT_SIZE_MAP = {
-  xsmall: 75,
-  small: 75,
-  medium: 100,
-  large: 200,
-} as const;
+type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
+
+const getButtonStyle = (
+  type: 'decrement' | 'increment',
+  size: CounterInputSize,
+): Record<string, number> => {
+  const iconPadding =
+    COUNTER_INPUT_TOKEN.iconPadding[size as keyof typeof COUNTER_INPUT_TOKEN.iconPadding] ??
+    COUNTER_INPUT_TOKEN.iconPadding.xsmall;
+  const margin =
+    type === 'decrement'
+      ? COUNTER_INPUT_TOKEN.decrementIconMargin
+      : COUNTER_INPUT_TOKEN.incrementIconMargin;
+  return {
+    padding: iconPadding,
+    marginTop: margin[0],
+    marginRight: margin[1],
+    marginBottom: margin[2],
+    marginLeft: margin[3],
+    borderRadius:
+      COUNTER_INPUT_TOKEN.buttonBorderRadius[
+        (size in COUNTER_INPUT_TOKEN.buttonBorderRadius
+          ? size
+          : 'xsmall') as keyof typeof COUNTER_INPUT_TOKEN.buttonBorderRadius
+      ],
+  };
+};
 
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
@@ -56,6 +78,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       onFocus,
       onBlur,
       testID,
+      // Destructured to prevent leaking into ...rest which gets spread onto BaseBox
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       _motionMeta,
       ...rest
@@ -73,27 +96,29 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
 
+    const labelId = useId('counter-input-label');
+    const { theme } = useTheme();
+    const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
+    const _isDisabled = isDisabled || isLoading;
+
+    const duration = theme.motion.duration.quick;
+
     useEffect(() => {
       if (lastActionRef.current && internalValue !== previousValueRef.current) {
         const startY = lastActionRef.current === 'increment' ? 8 : -8;
         translateY.value = startY;
         opacity.value = 0;
-        translateY.value = withTiming(0, { duration: 200, easing: Easing.out(Easing.ease) });
-        opacity.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.ease) });
+        translateY.value = withTiming(0, { duration, easing: Easing.out(Easing.ease) });
+        opacity.value = withTiming(1, { duration, easing: Easing.out(Easing.ease) });
         lastActionRef.current = null;
       }
       previousValueRef.current = internalValue;
-    }, [internalValue]);
+    }, [internalValue, duration]);
 
     const animatedStyle = useAnimatedStyle(() => ({
       transform: [{ translateY: translateY.value }],
       opacity: opacity.value,
     }));
-
-    const labelId = useId('counter-input-label');
-    const { theme } = useTheme();
-    const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
-    const _isDisabled = isDisabled || isLoading;
 
     const handleInputChange = useCallback(
       (text: string) => {
@@ -131,6 +156,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       _isDisabled ? emphasisTokens.disabledColor : emphasisTokens.color,
       '',
     ) as string;
+
+    const { fontSize: fontSizeToken = 100 } = getTextProps({
+      variant: 'body',
+      size: COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size],
+      weight: 'semibold',
+    });
 
     const contextValue = {
       size,
@@ -180,19 +211,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 <Pressable
                   onPress={handleDecrement}
                   disabled={isDecrementDisabled}
-                  style={{
-                    padding: COUNTER_INPUT_TOKEN.iconPadding[size],
-                    marginTop: COUNTER_INPUT_TOKEN.decrementIconMargin[0],
-                    marginRight: COUNTER_INPUT_TOKEN.decrementIconMargin[1],
-                    marginBottom: COUNTER_INPUT_TOKEN.decrementIconMargin[2],
-                    marginLeft: COUNTER_INPUT_TOKEN.decrementIconMargin[3],
-                    borderRadius: COUNTER_INPUT_TOKEN.buttonBorderRadius[size],
-                  }}
+                  style={getButtonStyle('decrement', size)}
                   accessibilityLabel="Decrement value"
                   accessibilityRole="button"
                 >
                   <MinusIcon
-                    size={ICON_SIZE_MAP[size]}
+                    size={COUNTER_INPUT_ICON_SIZE_MAP[size]}
                     color={
                       isDecrementDisabled
                         ? emphasisTokens.disabledIconColor
@@ -206,7 +230,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     value={internalValue?.toString() ?? String(min)}
                     onChangeText={handleInputChange}
                     onFocus={() => onFocus?.({ name, value: internalValue?.toString() })}
-                    onEndEditing={() => onBlur?.({ name, value: internalValue?.toString() })}
+                    onBlur={() => onBlur?.({ name, value: internalValue?.toString() })}
                     editable={!_isDisabled}
                     keyboardType="numeric"
                     style={{
@@ -216,7 +240,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                       includeFontPadding: false,
                       padding: 0,
                       color: valueColor,
-                      fontSize: theme.typography.fonts.size[FONT_SIZE_MAP[size]],
+                      fontSize: theme.typography.fonts.size[fontSizeToken],
                       fontFamily: theme.typography.fonts.family.text,
                       fontWeight: '600',
                     }}
@@ -228,19 +252,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 <Pressable
                   onPress={handleIncrement}
                   disabled={isIncrementDisabled}
-                  style={{
-                    padding: COUNTER_INPUT_TOKEN.iconPadding[size],
-                    marginTop: COUNTER_INPUT_TOKEN.incrementIconMargin[0],
-                    marginRight: COUNTER_INPUT_TOKEN.incrementIconMargin[1],
-                    marginBottom: COUNTER_INPUT_TOKEN.incrementIconMargin[2],
-                    marginLeft: COUNTER_INPUT_TOKEN.incrementIconMargin[3],
-                    borderRadius: COUNTER_INPUT_TOKEN.buttonBorderRadius[size],
-                  }}
+                  style={getButtonStyle('increment', size)}
                   accessibilityLabel="Increment value"
                   accessibilityRole="button"
                 >
                   <PlusIcon
-                    size={ICON_SIZE_MAP[size]}
+                    size={COUNTER_INPUT_ICON_SIZE_MAP[size]}
                     color={
                       isIncrementDisabled
                         ? emphasisTokens.disabledIconColor
