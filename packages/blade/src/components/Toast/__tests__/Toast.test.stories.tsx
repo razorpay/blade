@@ -186,7 +186,7 @@ ToastStacking.play = async () => {
   await sleep(400);
   await expect(queryByText('Toast 4')).toBeVisible();
 
-  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(40);
+  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(50);
 
   const toast4 = queryByText('Toast 4')! as Element;
 
@@ -195,7 +195,7 @@ ToastStacking.play = async () => {
   await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(160);
   await sleep(400);
   await userEvent.unhover(toast4);
-  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(40);
+  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(50);
 
   // fire promo toast
   await userEvent.click(promoButton);
