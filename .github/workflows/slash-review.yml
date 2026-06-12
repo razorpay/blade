@@ -79,10 +79,17 @@ jobs:
           PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
         run: |
-          LOGS_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
-          echo "Logs: ${LOGS_URL}"
 
           PROMPT="Review the pull request at ${PR_URL} using the /review-pr skill from the blade repo. shouldReviewUI=true, shouldRunHeadedBrowser=false, and shouldSubmitReview=true. Strictly use review-pr skill from blade repo only. Do not use any other skill."
 
-          node .github/scripts/run-slash.js "$PROMPT"
+          RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          echo "$RESPONSE_OUTPUT"
+
+          RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+          TASK_ID=$(echo "$RESPONSE_JSON" | grep -oP '"task_id"\s*:\s*"\K[^"]+' || true)
+
+          if [ -n "$TASK_ID" ]; then
+            EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+            echo "Execution logs: ${EXECUTION_URL}"
+          fi
