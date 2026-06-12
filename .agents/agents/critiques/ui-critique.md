@@ -63,16 +63,18 @@ Return a JSON object:
     {
       "name": "Button primary variant",
       "description": "Opened the Primary story and verified hover, focus, and click states render correctly.",
-      "state": "SUCCESS"
+      "state": "SUCCESS",
+      "link": "https://abc123.chromatic.com/?path=/story/components-button--primary"
     },
     {
       "name": "DatePicker range selection",
       "description": "Opened the Range Selection story, clicked a start date then an end date to complete a range.",
       "state": "FAILURE",
-      "problem": "Clicking end date crashes the picker"
+      "problem": "Clicking end date crashes the picker",
+      "link": "https://abc123.chromatic.com/?path=/story/components-datepicker--range-selection"
     }
   ],
 }
 ```
 
-Each tested flow maps to one entry in `statuses`. `description` must briefly describe what was opened and what interaction was tested. Only include `problem` when `state` is `"FAILURE"`. Omit `issues` entirely — ui-critique never produces issues.
+Each tested flow maps to one entry in `statuses`. `description` must briefly describe what was opened and what interaction was tested. Always include `link` — the full Storybook URL for the story (use `?path=/story/{story-id}` format, not the iframe URL). Only include `problem` when `state` is `"FAILURE"`. Omit `issues` entirely — ui-critique never produces issues.

@@ -28,7 +28,6 @@ jobs:
         )
       )
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-
     steps:
       - name: Resolve PR metadata
         id: pr-meta
@@ -39,27 +38,18 @@ jobs:
           REPOSITORY: ${{ github.repository }}
           PR_URL_FALLBACK: ${{ github.event.pull_request.html_url }}
           PR_NUMBER_FALLBACK: ${{ github.event.pull_request.number }}
-          PR_AUTHOR_FALLBACK: ${{ github.event.pull_request.user.login }}
-          PR_TITLE_FALLBACK: ${{ github.event.pull_request.title }}
           PR_BRANCH_FALLBACK: ${{ github.head_ref }}
-          PR_TARGET_BRANCH_FALLBACK: ${{ github.base_ref }}
         run: |
           if [ "$EVENT_NAME" = "workflow_run" ]; then
             PR_JSON=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/pulls" \
               --header "Accept: application/vnd.github+json")
             PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
             PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
-            PR_AUTHOR=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['user']['login'] if p else '')")
-            PR_TITLE=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['title'] if p else '')")
             PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
-            PR_TARGET_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['base']['ref'] if p else '')")
           else
             PR_URL="$PR_URL_FALLBACK"
             PR_NUMBER="$PR_NUMBER_FALLBACK"
-            PR_AUTHOR="$PR_AUTHOR_FALLBACK"
-            PR_TITLE="$PR_TITLE_FALLBACK"
             PR_BRANCH="$PR_BRANCH_FALLBACK"
-            PR_TARGET_BRANCH="$PR_TARGET_BRANCH_FALLBACK"
           fi
 
           if [ -z "$PR_NUMBER" ]; then
@@ -70,62 +60,29 @@ jobs:
 
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
-          echo "pr_author=$PR_AUTHOR" >> $GITHUB_OUTPUT
-          echo "pr_title=$PR_TITLE" >> $GITHUB_OUTPUT
           echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
-          echo "pr_target_branch=$PR_TARGET_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Checkout repository
+        if: steps.pr-meta.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
 
       - name: Request Slash review
         if: steps.pr-meta.outputs.skip != 'true'
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          SLASH_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
           PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
-          PR_AUTHOR: ${{ steps.pr-meta.outputs.pr_author }}
-          PR_TITLE: ${{ steps.pr-meta.outputs.pr_title }}
-          PR_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
-          PR_TARGET_BRANCH: ${{ steps.pr-meta.outputs.pr_target_branch }}
-          PR_REPOSITORY: ${{ github.repository }}
-          RUN_ID: ${{ github.run_id }}
         run: |
-          SLASH_API="https://slash-api-ext.razorpay.com/api/v1/pr-review"
-
-          PAYLOAD=$(python3 -c "
-          import json, os
-          print(json.dumps({
-            'pr_metadata': {
-              'pr_url': os.environ['PR_URL'],
-              'pr_number': int(os.environ['PR_NUMBER']),
-              'repository': os.environ['PR_REPOSITORY'],
-              'author': os.environ['PR_AUTHOR'],
-              'title': os.environ['PR_TITLE'],
-              'branch': os.environ['PR_BRANCH'],
-              'target_branch': os.environ['PR_TARGET_BRANCH'],
-            },
-            'idempotency_key': f\"{os.environ['PR_REPOSITORY']}:{os.environ['PR_NUMBER']}:{os.environ['RUN_ID']}\"
-          }))
-          ")
-
+          LOGS_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
+          echo "Logs: ${LOGS_URL}"
 
-          HTTP_STATUS=$(curl --silent --output "/tmp/slash_response.json" \
-            --write-out "%{http_code}" \
-            --request POST "${SLASH_API}" \
-            --user "${SLASH_API_USERNAME}:${SLASH_API_PASSWORD}" \
-            --header "Content-Type: application/json" \
-            --data "${PAYLOAD}")
+          PROMPT="Review the pull request at ${PR_URL} using the /review-pr skill from the blade repo. shouldReviewUI=true, shouldRunHeadedBrowser=false, and shouldSubmitReview=true. Strictly use review-pr skill from blade repo only. Do not use any other skill."
 
-          RESPONSE=$(cat /tmp/slash_response.json)
-          echo "HTTP status: ${HTTP_STATUS}"
-          echo "${RESPONSE}"
-
-          if [ "${HTTP_STATUS}" = "202" ]; then
-            REVIEW_ID=$(echo "${RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('review_id',''))" 2>/dev/null || true)
-            echo "Review accepted — review_id: ${REVIEW_ID}"
-          elif [ "${HTTP_STATUS}" = "200" ]; then
-            echo "Review deduplicated — this PR was already queued or reviewed."
-          else
-            echo "Slash review request failed with HTTP ${HTTP_STATUS}"
-            exit 1
-          fi
+          node .github/scripts/run-slash.js "$PROMPT"
