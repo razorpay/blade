@@ -17,7 +17,7 @@ import BaseBox from '~components/Box/BaseBox';
 // (getElevationValue → shadow styles) while Animated handles opacity on the same View.
 // On Android, elevation shadow renders independently of a parent View's opacity —
 // co-locating opacity and elevation on the same View fixes the flash.
-const AnimatedBaseBox = Animated.createAnimatedComponent(BaseBox as React.ComponentType<any>);
+const AnimatedBaseBox = Animated.createAnimatedComponent(BaseBox as React.FunctionComponent<any>);
 
 const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
   collapse?: boolean;
