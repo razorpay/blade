@@ -87,6 +87,6 @@ jobs:
             for COMMENT_ID in $COMMENT_IDS; do
               gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/comments/${COMMENT_ID}/replies" \
                 --method POST \
-                --field body="Auto Comment Resolution started at <${EXECUTION_URL}>"
+                --field body="[Agentic Resolution 🪄]: Auto Comment Resolution started at <${EXECUTION_URL}>"
             done
           fi
