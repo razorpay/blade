@@ -284,7 +284,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
           >
             {label && (
               <FormLabel
-                as="label"
+                as="span"
                 position={labelPosition}
                 necessityIndicator={necessityIndicator}
                 id={labelId}
