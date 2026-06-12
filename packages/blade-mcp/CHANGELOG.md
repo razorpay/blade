@@ -1,5 +1,11 @@
 # @razorpay/blade-mcp
 
+## 1.27.1
+
+### Patch Changes
+
+- 1aec424ef: docs(blade-mcp): update knowledgebase with icons and tokens
+
 ## 1.27.0
 
 ### Minor Changes
