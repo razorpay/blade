@@ -18,12 +18,22 @@ const _DrawerHeader = ({
   titleSuffix,
   children,
   color = 'information',
-  showDivider = true,
+  backgroundStyle = 'default',
+  showDivider,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
-  const { close, closeButtonRef, stackingLevel, isExiting } = React.useContext(DrawerContext);
+  const { close, closeButtonRef, stackingLevel, isExiting, setHeaderConfig } = React.useContext(
+    DrawerContext,
+  );
   const { drawerStack } = useDrawerStack();
   const { theme } = useTheme();
+
+  const isContiguous = backgroundStyle === 'contiguous';
+  const resolvedShowDivider = showDivider ?? !isContiguous;
+
+  React.useLayoutEffect(() => {
+    setHeaderConfig?.({ color, backgroundStyle });
+  }, [color, backgroundStyle, setHeaderConfig]);
 
   const closeAllDrawers = (): void => {
     for (const onDismiss of Object.values(drawerStack)) {
@@ -35,7 +45,9 @@ const _DrawerHeader = ({
 
   const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
 
-  const backgroundGradient = `radial-gradient(150% 100% at 50% 100%, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 100%)` as const;
+  const backgroundGradient = isContiguous
+    ? undefined
+    : (`radial-gradient(150% 100% at 50% 100%, ${theme.colors.transparent} 0%, ${theme.colors.feedback.background[color].subtle} 100%)` as const);
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
@@ -54,7 +66,7 @@ const _DrawerHeader = ({
       leading={leading}
       trailing={trailing}
       backgroundImage={backgroundGradient}
-      showDivider={showDivider}
+      showDivider={resolvedShowDivider}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
