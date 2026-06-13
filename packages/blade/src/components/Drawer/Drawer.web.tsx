@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import usePresence from 'use-presence';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
+import type { DrawerHeaderConfig } from './DrawerContext';
 import type { DrawerProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, getMediaQuery, makeMotionTime, useTheme } from '~utils';
@@ -113,6 +114,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   const { theme } = useTheme();
   const drawerId = useId('drawer');
   const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useDrawerStack();
+  const [headerConfig, setHeaderConfig] = React.useState<DrawerHeaderConfig>({});
 
   const { isMounted, isVisible, isExiting } = usePresence(isOpen, {
     enterTransitionDuration: theme.motion.duration.gentle,
@@ -155,14 +157,24 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
+  const contiguousBackgroundImage =
+    headerConfig.backgroundStyle === 'contiguous' && headerConfig.color
+      ? (`radial-gradient(120% 50% at 50% 0%, ${
+          theme.colors.feedback.background[headerConfig.color].subtle
+        } 0%, ${theme.colors.transparent} 100%)` as const)
+      : undefined;
+
   const contextValue = React.useMemo(
     () => ({
       close: onDismiss,
       closeButtonRef,
       stackingLevel,
       isExiting,
+      setHeaderConfig,
+      headerConfig,
     }),
-    [isExiting, onDismiss, stackingLevel],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isExiting, onDismiss, stackingLevel, headerConfig],
   );
 
   return (
@@ -207,6 +219,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
                 })}
                 position="fixed"
                 backgroundColor="popup.background.gray.subtle"
+                backgroundImage={contiguousBackgroundImage}
                 borderRadius={{ base: 'none', m: 'large' }}
                 overflow="hidden"
                 elevation="highRaised"

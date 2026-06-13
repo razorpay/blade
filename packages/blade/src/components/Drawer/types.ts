@@ -104,8 +104,17 @@ type DrawerHeaderProps = {
    */
   color?: FeedbackColors;
   /**
+   * Controls how the drawer background gradient is rendered.
+   *
+   * - `'default'`: gradient is applied only to the header section, with a divider separating header from body.
+   * - `'contiguous'`: gradient spans the full drawer height from the top, creating a seamless surface without a visual break between header and body.
+   *
+   * @default 'default'
+   */
+  backgroundStyle?: 'default' | 'contiguous';
+  /**
    * Whether to show the divider above the header
-   * @default true
+   * @default true (false when backgroundStyle is 'contiguous')
    */
   showDivider?: boolean;
 } & DataAnalyticsAttribute;

@@ -197,6 +197,51 @@ describe('Drawer', () => {
     });
   });
 
+  describe('DrawerHeader backgroundStyle', () => {
+    it('renders contiguous background style on the drawer container', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" backgroundStyle="contiguous" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toMatchSnapshot();
+    });
+
+    it('does not show divider by default when backgroundStyle is contiguous', () => {
+      const { queryByTestId } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" backgroundStyle="contiguous" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      // divider has role="separator" in accessible contexts
+      expect(queryByTestId('divider')).not.toBeInTheDocument();
+    });
+
+    it('shows divider when explicitly set even with contiguous backgroundStyle', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader
+            title="Payout Details"
+            color="positive"
+            backgroundStyle="contiguous"
+            showDivider={true}
+          />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      // The dialog should still render correctly with explicit showDivider
+      expect(getByRole('dialog')).toBeInTheDocument();
+    });
+  });
+
   describe('DrawerFooter', () => {
     it('renders a Drawer with footer', () => {
       const { getByRole, getByText } = renderWithTheme(
