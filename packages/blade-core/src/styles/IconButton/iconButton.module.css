@@ -21,10 +21,20 @@
     cursor: not-allowed;
   }
 
-  /* Focus ring (mirrors getFocusRingStyles → Button pattern) */
-  &:focus-visible:not([disabled]) {
-    outline: 1px solid var(--surface-background-primary-subtle);
-    box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted);
+  /*
+   * Focus ring — faithful reproduction of React `getFocusRingStyles({ theme })`
+   * (see StyledIconButton.web.tsx `&:focus-visible`). React renders a true 4px
+   * solid outline offset by 1px (NOT the Button's box-shadow ring), animating
+   * `outline-width` over the 2xquick duration. Ungated to mirror React's styled
+   * object exactly — `:focus-visible` already cannot match a disabled button.
+   */
+  &:focus-visible {
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
+    transition-property: outline-width;
+    transition-duration: var(--duration-2xquick);
+    transition-timing-function: var(--easing-standard);
+    z-index: 2;
   }
 }
 

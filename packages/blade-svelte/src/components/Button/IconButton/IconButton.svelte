@@ -16,6 +16,8 @@
     onFocus,
     onMouseLeave,
     onMouseMove,
+    onMouseDown,
+    onMouseUp,
     onPointerDown,
     onPointerEnter,
     onTouchStart,
@@ -41,6 +43,8 @@
   {onFocus}
   {onMouseLeave}
   {onMouseMove}
+  {onMouseDown}
+  {onMouseUp}
   {onPointerDown}
   {onPointerEnter}
   {onTouchStart}

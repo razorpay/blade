@@ -61,6 +61,10 @@ export interface IconButtonProps extends StyledPropsBlade {
   onMouseLeave?: (event: MouseEvent) => void;
   /** Called when the pointer moves over the IconButton. */
   onMouseMove?: (event: MouseEvent) => void;
+  /** Called when a mouse button is pressed on the IconButton. */
+  onMouseDown?: (event: MouseEvent) => void;
+  /** Called when a mouse button is released over the IconButton. */
+  onMouseUp?: (event: MouseEvent) => void;
   /** Called when a pointer becomes active over the IconButton. */
   onPointerDown?: (event: PointerEvent) => void;
   /** Called when a pointer enters the IconButton. */
