@@ -195,6 +195,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         rafRef.current = requestAnimationFrame(() => {
           positionDomElements(val);
         });
+        updateValue(val);
       };
       const onEnd = (clientX: number): void => {
         cancelAnimationFrame(rafRef.current);
