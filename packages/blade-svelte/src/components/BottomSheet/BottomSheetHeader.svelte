@@ -11,10 +11,9 @@
     bottomSheetHeaderLeadingClass,
     bottomSheetHeaderTitleBlockClass,
     bottomSheetHeaderTitleRowClass,
-    bottomSheetHeaderTitleClass,
-    bottomSheetHeaderSubtitleClass,
     bottomSheetHeaderTrailingClass,
     bottomSheetHeaderBackButtonClass,
+    bottomSheetHeaderCloseButtonClass,
     bottomSheetHeaderDividerClass,
     bottomSheetEmptyHeaderClass,
     bottomSheetEmptyHeaderFloatingClass,
@@ -23,6 +22,8 @@
     bottomSheetCloseButtonClass,
   } from '@razorpay/blade-core/styles';
   import { CloseIcon } from '../Icons/CloseIcon';
+  import { ChevronLeftIcon } from '../Icons/ChevronLeftIcon';
+  import Text from '../Typography/Text/Text.svelte';
   import { getBottomSheetContext } from './bottomSheetContext';
   import type { BottomSheetHeaderProps } from './types';
 
@@ -126,7 +127,7 @@
             onclick={handleClose}
             {...makeAccessible({ label: 'Close' })}
           >
-            <CloseIcon size="medium" color="surface.icon.gray.subtle" />
+            <CloseIcon size="large" color="currentColor" />
           </button>
         </div>
       {/if}
@@ -140,15 +141,7 @@
           onclick={handleBackButtonClick}
           {...makeAccessible({ label: 'Back' })}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M15 18l-6-6 6-6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <ChevronLeftIcon size="large" color="currentColor" />
         </button>
       {/if}
 
@@ -161,14 +154,29 @@
       <div class={bottomSheetHeaderTitleBlockClass}>
         {#if title}
           <div class={bottomSheetHeaderTitleRowClass}>
-            <h3 class={bottomSheetHeaderTitleClass}>{title}</h3>
+            <Text
+              size="large"
+              weight="semibold"
+              marginTop="1px"
+              color="surface.text.gray.normal"
+              wordBreak="break-word"
+            >
+              {title}
+            </Text>
             {#if titleSuffix}
               {@render titleSuffix()}
             {/if}
           </div>
         {/if}
         {#if subtitle}
-          <p class={bottomSheetHeaderSubtitleClass}>{subtitle}</p>
+          <Text
+            variant="body"
+            size="small"
+            weight="regular"
+            color="surface.text.gray.muted"
+          >
+            {subtitle}
+          </Text>
         {/if}
       </div>
 
@@ -182,11 +190,11 @@
         <button
           bind:this={closeButtonEl}
           type="button"
-          class={bottomSheetHeaderBackButtonClass}
+          class={bottomSheetHeaderCloseButtonClass}
           onclick={handleClose}
           {...makeAccessible({ label: 'Close' })}
         >
-          <CloseIcon size="medium" color="surface.icon.gray.subtle" />
+          <CloseIcon size="large" color="currentColor" />
         </button>
       {/if}
     </div>

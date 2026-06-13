@@ -157,19 +157,32 @@
   background: transparent;
   cursor: pointer;
   border-radius: var(--border-radius-max);
-  color: var(--surface-icon-gray-subtle);
+  color: var(--interactive-icon-gray-muted);
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.closeButton:hover:not([disabled]),
+.closeButton:active {
+  color: var(--interactive-icon-gray-subtle);
 }
 
 .closeButton:focus-visible {
   outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
   outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
 }
 
-/* Header content row (when not empty). */
+/* Header content row (when not empty).
+ * `align-items: flex-start` matches React's BaseHeader where the row uses
+ * `alignItems="flex-start"`. Each slot (title, close button) is centered within
+ * its own 28px-tall virtual box anchored to the top, so the close icon aligns
+ * with the title rather than the vertical center of the title+subtitle block. */
 .headerContent {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   padding: var(--spacing-5);
   gap: var(--spacing-3);
 }
@@ -177,6 +190,9 @@
 .headerLeading {
   display: flex;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
 }
 
 .headerTitleBlock {
@@ -198,14 +214,17 @@
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-200);
   line-height: var(--line-height-200);
+  letter-spacing: var(--letter-spacing-25);
   color: var(--surface-text-gray-normal);
-  margin: 0;
+  margin: 1px 0 0 0;
 }
 
 .headerSubtitle {
   font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
   font-size: var(--font-size-75);
-  line-height: var(--line-height-100);
+  line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
   color: var(--surface-text-gray-muted);
   margin: var(--spacing-1) 0 0 0;
 }
@@ -214,6 +233,8 @@
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  justify-content: center;
+  height: 28px;
 }
 
 .headerBackButton {
@@ -227,17 +248,52 @@
   background: transparent;
   cursor: pointer;
   border-radius: var(--border-radius-max);
-  color: var(--surface-icon-gray-subtle);
+  color: var(--interactive-icon-gray-muted);
   flex-shrink: 0;
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.headerBackButton:hover:not([disabled]),
+.headerBackButton:active {
+  color: var(--interactive-icon-gray-subtle);
 }
 
 .headerBackButton:focus-visible {
   outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
   outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
 }
 
+/* Close button hugs its icon (no fixed 28px width). Height kept for vertical
+ * centering parity with the React `centerBoxProps` virtual box. */
 .headerCloseButton {
-  composes: headerBackButton;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius-max);
+  color: var(--interactive-icon-gray-muted);
+  flex-shrink: 0;
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.headerCloseButton:hover:not([disabled]),
+.headerCloseButton:active {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.headerCloseButton:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
+  outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
 }
 
 .headerDivider {
