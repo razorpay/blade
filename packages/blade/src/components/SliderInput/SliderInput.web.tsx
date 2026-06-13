@@ -69,9 +69,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const trackRef = useRef<HTMLDivElement>(null);
     const thumbRef = useRef<HTMLDivElement>(null);
     const fillRef = useRef<HTMLDivElement>(null);
-    const haloRef = useRef<HTMLDivElement>(null);
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
+    const visualPctRef = useRef(0);
+    const targetPctRef = useRef(0);
+    const lerpRafRef = useRef(0);
     const { helpTextId, errorTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
     const labelId = `${idBase}-label`;
@@ -103,30 +105,45 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       [min, max, currentValue],
     );
 
+    const applyPosition = useCallback((p: number) => {
+      if (thumbRef.current) thumbRef.current.style.left = `${p}%`;
+      if (fillRef.current) fillRef.current.style.width = `${p}%`;
+    }, []);
+
+    const animateToTarget = useCallback(() => {
+      cancelAnimationFrame(lerpRafRef.current);
+      const tick = (): void => {
+        const diff = targetPctRef.current - visualPctRef.current;
+        if (Math.abs(diff) < 0.1) {
+          visualPctRef.current = targetPctRef.current;
+          applyPosition(visualPctRef.current);
+          return;
+        }
+        visualPctRef.current += diff * 0.3;
+        applyPosition(visualPctRef.current);
+        lerpRafRef.current = requestAnimationFrame(tick);
+      };
+      lerpRafRef.current = requestAnimationFrame(tick);
+    }, [applyPosition]);
+
     const positionDomElements = useCallback(
       (val: number) => {
         const p = ((val - min) / (max - min)) * 100;
-        if (thumbRef.current) thumbRef.current.style.left = `${p}%`;
-        if (fillRef.current) fillRef.current.style.width = `${p}%`;
-        if (haloRef.current) haloRef.current.style.left = `${p}%`;
+        targetPctRef.current = p;
+        if (step > 1) {
+          animateToTarget();
+        } else {
+          visualPctRef.current = p;
+          applyPosition(p);
+        }
       },
-      [min, max],
+      [min, max, step, applyPosition, animateToTarget],
     );
 
-    const hasLargeSteps = step > 1;
-    const snapTransitionCss = 'all 120ms cubic-bezier(0.2, 0, 0, 1)';
-
-    const setDragTransitions = useCallback(
-      (enable: boolean) => {
-        if (!hasLargeSteps) return;
-        const val = enable ? snapTransitionCss : '';
-        const fillVal = enable ? `width 120ms cubic-bezier(0.2, 0, 0, 1)` : '';
-        if (thumbRef.current) thumbRef.current.style.transition = val;
-        if (fillRef.current) fillRef.current.style.transition = fillVal;
-        if (haloRef.current) haloRef.current.style.transition = val;
-      },
-      [hasLargeSteps],
-    );
+    const setDragTransitions = useCallback((enable: boolean) => {
+      if (thumbRef.current) thumbRef.current.style.transition = enable ? 'none' : '';
+      if (fillRef.current) fillRef.current.style.transition = enable ? 'none' : '';
+    }, []);
 
     const startDrag = useCallback(
       (clientX: number) => {
@@ -181,8 +198,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       };
       const onEnd = (clientX: number): void => {
         cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(lerpRafRef.current);
         setDragTransitions(false);
         const val = clamp(snap(getValueFromPosition(clientX)));
+        const p = ((val - min) / (max - min)) * 100;
+        visualPctRef.current = p;
+        targetPctRef.current = p;
+        applyPosition(p);
         setIsDragging(false);
         updateValue(val);
         onChangeEnd?.({ name, value: val });
@@ -203,6 +225,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       window.addEventListener('touchend', handleTouchEnd);
       return (): void => {
         cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(lerpRafRef.current);
         window.removeEventListener('mousemove', handleMouseMove);
         window.removeEventListener('mouseup', handleMouseUp);
         window.removeEventListener('touchmove', handleTouchMove);
@@ -299,7 +322,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
               ref={trackRef}
               position="relative"
               flex="1"
-              height={makeSpace(32)}
+              height={makeSpace(44)}
               display="flex"
               alignItems="center"
               cursor={isDisabled ? 'not-allowed' : 'pointer'}
@@ -335,27 +358,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 }}
               />
 
-              {/* Halo */}
-              <div
-                ref={haloRef}
-                style={{
-                  position: 'absolute',
-                  left: `${pct}%`,
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: showHalo ? haloSize : 0,
-                  height: showHalo ? haloSize : 0,
-                  borderRadius: '50%',
-                  backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
-                  opacity: showHalo ? 1 : 0,
-                  transition: isDragging
-                    ? 'none'
-                    : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
-                  pointerEvents: 'none',
-                }}
-              />
-
-              {/* Thumb */}
+              {/* Thumb wrapper — halo + visual thumb nested inside */}
               <StyledThumb
                 ref={thumbRef}
                 $isFocused={isThumbFocused}
@@ -386,21 +389,49 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   left: `${pct}%`,
                   top: '50%',
                   transform: 'translate(-50%, -50%)',
-                  width: thumbSize,
-                  height: thumbSize,
-                  borderRadius: '50%',
-                  backgroundColor: thumbColor,
+                  width: 44,
+                  height: 44,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   border: 'none',
+                  background: 'transparent',
                   cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
-                  transition: isDragging
-                    ? 'none'
-                    : `all ${castWebType(
-                        makeMotionTime(theme.motion.duration.xquick),
-                      )} ${castWebType(theme.motion.easing.standard)}`,
                   zIndex: 2,
                   touchAction: 'none',
                 }}
-              />
+              >
+                {/* Halo */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    width: showHalo ? haloSize : 0,
+                    height: showHalo ? haloSize : 0,
+                    borderRadius: '50%',
+                    backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
+                    opacity: showHalo ? 1 : 0,
+                    transition: isDragging
+                      ? 'none'
+                      : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
+                    pointerEvents: 'none',
+                  }}
+                />
+                {/* Visual thumb */}
+                <div
+                  style={{
+                    width: thumbSize,
+                    height: thumbSize,
+                    borderRadius: '50%',
+                    backgroundColor: thumbColor,
+                    transition: isDragging
+                      ? 'none'
+                      : `all ${castWebType(
+                          makeMotionTime(theme.motion.duration.xquick),
+                        )} ${castWebType(theme.motion.easing.standard)}`,
+                    pointerEvents: 'none',
+                  }}
+                />
+              </StyledThumb>
             </BaseBox>
           </BaseBox>
 
