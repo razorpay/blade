@@ -344,7 +344,7 @@ const _Alert = (
         emphasis={emphasis}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
-        maxWidth={isFullWidth ? undefined : maxWidth ?? DEFAULT_MAX_WIDTH}
+        maxWidth={isFullWidth ? 'auto' : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
         {leadingIcon}

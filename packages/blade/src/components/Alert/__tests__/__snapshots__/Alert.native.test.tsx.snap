@@ -24,9 +24,11 @@ exports[`<Alert /> should render 1`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={false}
+      maxWidth="584px"
       style={
         [
           {
+            "maxWidth": 584,
             "textAlign": "left",
           },
           {
@@ -36,7 +38,6 @@ exports[`<Alert /> should render 1`] = `
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": 584,
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,
@@ -347,9 +348,11 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={true}
+      maxWidth="auto"
       style={
         [
           {
+            "maxWidth": "auto",
             "textAlign": "left",
           },
           {
@@ -359,7 +362,6 @@ exports[`<Alert /> should render positive color and full width 1`] = `
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": "auto",
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,
@@ -654,9 +656,11 @@ exports[`<Alert /> should render positive color and full width 2`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={true}
+      maxWidth="auto"
       style={
         [
           {
+            "maxWidth": "auto",
             "textAlign": "left",
           },
           {
@@ -666,7 +670,6 @@ exports[`<Alert /> should render positive color and full width 2`] = `
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": "auto",
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,

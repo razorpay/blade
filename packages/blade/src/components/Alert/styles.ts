@@ -5,7 +5,6 @@ import type { SubtleOrIntense } from '~tokens/theme/theme';
 import type { IconColors } from '~components/Icons';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
-import { size } from '~tokens/global';
 
 export const getAlertIconColor = (color: AlertColors, emphasis: SubtleOrIntense): IconColors => {
   if (emphasis === 'intense') {
@@ -16,8 +15,6 @@ export const getAlertIconColor = (color: AlertColors, emphasis: SubtleOrIntense)
   }
   return `feedback.icon.${color}.intense` as IconColors;
 };
-
-const MAX_WIDTH = size[584];
 
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
   const { theme, emphasis, color, isFullWidth, isDesktop } = props;

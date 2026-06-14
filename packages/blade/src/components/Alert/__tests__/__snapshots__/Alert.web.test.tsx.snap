@@ -405,6 +405,7 @@ exports[`<Alert /> should render 1`] = `
 exports[`<Alert /> should render positive color and full width 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
+  max-width: auto;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -599,6 +600,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 exports[`<Alert /> should render positive color and full width 2`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
+  max-width: auto;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -793,6 +795,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
 exports[`<Alert /> should render primary color with intense emphasis 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
+  max-width: 584px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -833,7 +836,6 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  max-width: 584px;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1027,6 +1029,7 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
 exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
+  max-width: 584px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1067,7 +1070,6 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  max-width: 584px;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
