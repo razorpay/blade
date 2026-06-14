@@ -151,8 +151,8 @@
 
 {#snippet tabItemContent()}
   {#if leading}
+    {@const Leading = leading}
     <span class={iconClasses}>
-      {@const Leading = leading}
       <Leading size={iconSize} color="currentColor" />
     </span>
   {/if}
