@@ -77,6 +77,15 @@ type BaseButtonCommonProps = {
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
+  /**
+   * Determines the type of loading indicator displayed when `isLoading` is true.
+   *
+   * - `'indefinite'`: Shows a spinner (default)
+   * - `'definite'`: Shows a progress indicator based on `loadingProgress`
+   *
+   * @default 'indefinite'
+   */
+  loadingType?: 'indefinite' | 'definite';
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?:
@@ -393,6 +402,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
     onClick,
     onBlur,
     onKeyDown,
@@ -594,7 +604,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         motionEasing={motionEasing}
         isPressed={isPressed}
       >
-        {isLoading ? (
+        {isLoading && loadingType === 'indefinite' ? (
           <BaseBox
             display="flex"
             justifyContent="center"
