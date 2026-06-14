@@ -13,7 +13,7 @@ type SelectorGroupFieldProps = {
   labelledBy: string;
   position?: 'top' | 'left';
   accessibilityRole?: AriaRoles;
-  componentName: 'checkbox-group' | 'radio-group' | 'chip-group';
+  componentName: 'checkbox-group' | 'radio-group' | 'chip-group' | 'segmented-control';
 } & TestID &
   DataAnalyticsAttribute;
 
