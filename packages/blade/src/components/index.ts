@@ -55,6 +55,7 @@ export * from './ProgressBar';
 export * from './QuickFilters';
 export * from './Radio';
 export * from './Scale';
+export * from './SegmentedControl';
 export * from './SideNav';
 export * from './Skeleton';
 export * from './SkipNav';
