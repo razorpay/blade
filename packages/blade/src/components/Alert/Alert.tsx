@@ -11,9 +11,11 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
+import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
@@ -98,6 +100,14 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
+   * Sets a custom max-width for the Alert.
+   * When `isFullWidth` is true, this prop is ignored.
+   *
+   * @default '584px'
+   */
+  maxWidth?: BoxProps['maxWidth'];
+
+  /**
    * Sets the color tone
    */
   color?: FeedbackColors;
@@ -118,6 +128,8 @@ type AlertProps = {
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute;
+
+const DEFAULT_MAX_WIDTH = makeSize(size[584]);
 
 const isReactNative = getPlatformType() === 'react-native';
 
@@ -140,6 +152,7 @@ const _Alert = (
     onDismiss,
     emphasis = 'subtle',
     isFullWidth = false,
+    maxWidth,
     color = 'neutral',
     actions,
     testID,
@@ -335,6 +348,7 @@ const _Alert = (
         emphasis={emphasis}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
+        maxWidth={isFullWidth ? undefined : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
         {leadingIcon}

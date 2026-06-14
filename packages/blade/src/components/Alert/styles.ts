@@ -2,11 +2,7 @@ import type { CSSObject, StyledProps } from 'styled-components';
 
 import type { StyledAlertProps } from './types';
 import { makeSpace } from '~utils/makeSpace';
-import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
-import { size } from '~tokens/global';
-
-const MAX_WIDTH = size[584];
 
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
   const { theme, emphasis, color, isFullWidth, isDesktop } = props;
@@ -19,7 +15,6 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
     ),
     display: 'flex',
     flexDirection: 'row',
-    maxWidth: isFullWidth ? 'auto' : makeSize(MAX_WIDTH),
     width: isFullWidth ? '100%' : undefined,
     alignItems: isFullWidth && isDesktop ? 'center' : 'flex-start',
     boxSizing: 'border-box',
