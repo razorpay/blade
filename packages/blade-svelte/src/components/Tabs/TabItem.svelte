@@ -7,8 +7,15 @@
   import { getTabsClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
   import type { TabItemProps } from './types';
+  import type { IconSize } from '../Icons/types';
 
   const classes = getTabsClasses();
+
+  const iconSizeMap: Record<string, IconSize> = {
+    small: 'medium',
+    medium: 'medium',
+    large: 'large',
+  };
 
   const paddingClassMap: Record<string, Record<string, Record<string, string>>> = {
     bordered: {
@@ -69,6 +76,8 @@
       isSelected ? classes.tabItemIconSelected : '',
     ].filter(Boolean).join(' '),
   );
+
+  const iconSize = $derived(iconSizeMap[ctx.size]);
 
   const buttonClasses = $derived.by(() => {
     const result: string[] = [classes.tabButton];
@@ -143,7 +152,8 @@
 {#snippet tabItemContent()}
   {#if leading}
     <span class={iconClasses}>
-      {@render leading()}
+      {@const Leading = leading}
+      <Leading size={iconSize} color="currentColor" />
     </span>
   {/if}
   {#if children}

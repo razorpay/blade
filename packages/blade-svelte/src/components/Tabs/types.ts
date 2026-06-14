@@ -1,5 +1,8 @@
-import type { Snippet } from 'svelte';
+import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { IconProps } from '../Icons/types';
+
+export type IconComponent = Component<IconProps>;
 
 export type TabsProps = {
   /**
@@ -73,9 +76,11 @@ export type TabItemProps = {
   value: string;
 
   /**
-   * Leading icon snippet for the tab item.
+   * Leading icon component for the tab item.
+   * Accepts a Blade Icon component reference (e.g., HomeIcon).
+   * Color is managed internally based on selection/interaction state.
    */
-  leading?: Snippet;
+  leading?: IconComponent;
 
   /**
    * Trailing element snippet (Badge/Counter).
