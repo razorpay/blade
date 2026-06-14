@@ -160,13 +160,13 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       role="radio"
       type="button"
     >
-      <p
+      <span
         class="c2"
         data-blade-component="text"
         letter-spacing="50"
       >
         Daily
-      </p>
+      </span>
     </button>
     <button
       aria-checked="false"
@@ -175,13 +175,13 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       role="radio"
       type="button"
     >
-      <p
+      <span
         class="c4"
         data-blade-component="text"
         letter-spacing="50"
       >
         Weekly
-      </p>
+      </span>
     </button>
     <button
       aria-checked="false"
@@ -190,13 +190,13 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       role="radio"
       type="button"
     >
-      <p
+      <span
         class="c4"
         data-blade-component="text"
         letter-spacing="50"
       >
         Monthly
-      </p>
+      </span>
     </button>
   </div>
 </div>

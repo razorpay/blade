@@ -99,6 +99,7 @@ const SegmentedControlItem = ({
       {Icon ? <Icon size={iconSizeMap[size]} color={iconColor} /> : null}
       {children ? (
         <Text
+          as="span"
           color={textColor}
           size={textSizeMap[size]}
           weight={isSelected ? 'semibold' : 'medium'}
