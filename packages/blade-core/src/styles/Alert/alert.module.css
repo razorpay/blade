@@ -59,6 +59,14 @@
   background-color: var(--feedback-background-information-intense);
 }
 
+.color-primary.emphasis-subtle {
+  background-color: var(--interactive-background-primary-faded);
+}
+
+.color-primary.emphasis-intense {
+  background-color: var(--interactive-background-primary-default);
+}
+
 /* Icon Wrapper */
 .icon-wrapper {
   display: flex;

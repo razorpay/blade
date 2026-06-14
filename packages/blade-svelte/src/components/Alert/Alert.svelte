@@ -74,6 +74,7 @@
     information: InfoIcon,
     neutral: InfoIcon,
     notice: AlertTriangleIcon,
+    primary: InfoIcon,
   } as const;
 
   // Resolved icon component

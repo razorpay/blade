@@ -46,6 +46,7 @@ type TextInputCommonProps = Pick<
   | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
+  | 'validationTextPlacement'
   | 'helpText'
   | 'errorText'
   | 'successText'
@@ -211,6 +212,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -534,6 +536,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
+      validationTextPlacement={validationTextPlacement}
       errorText={errorText}
       helpText={helpText}
       successText={successText}

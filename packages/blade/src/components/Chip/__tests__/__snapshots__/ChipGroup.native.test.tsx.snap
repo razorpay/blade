@@ -69,6 +69,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -79,7 +80,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -133,6 +134,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -142,7 +144,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -205,6 +207,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -214,7 +217,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -427,6 +430,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -437,7 +441,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -638,6 +642,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -648,7 +653,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -849,6 +854,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -859,7 +865,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -960,6 +966,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -970,7 +977,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1024,6 +1031,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1033,7 +1041,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1096,6 +1104,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -1105,7 +1114,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1319,6 +1328,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1329,7 +1339,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1531,6 +1541,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1541,7 +1552,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1743,6 +1754,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1753,7 +1765,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

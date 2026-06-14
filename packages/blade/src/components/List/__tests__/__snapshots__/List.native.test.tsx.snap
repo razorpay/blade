@@ -153,6 +153,7 @@ exports[`<List /> should render List with default properties 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -162,7 +163,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -332,6 +333,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     fontSize={100}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={100}
                     style={
                       [
@@ -341,7 +343,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.18200000000000002,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -509,6 +511,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -518,7 +521,7 @@ exports[`<List /> should render List with default properties 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -702,6 +705,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -711,7 +715,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -757,6 +761,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 fontFamily="code"
                 fontSize={25}
                 fontWeight="regular"
+                letterSpacing={100}
                 lineHeight={25}
                 style={
                   [
@@ -914,6 +919,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -923,7 +929,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1101,6 +1107,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1110,7 +1117,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1361,6 +1368,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1370,7 +1378,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1548,6 +1556,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1557,7 +1566,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1670,6 +1679,7 @@ exports[`<List /> should render large ordered List 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -1679,7 +1689,7 @@ exports[`<List /> should render large ordered List 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1720,6 +1730,7 @@ exports[`<List /> should render large ordered List 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -1729,7 +1740,7 @@ exports[`<List /> should render large ordered List 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1899,6 +1910,7 @@ exports[`<List /> should render large ordered List 1`] = `
                     fontSize={200}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={25}
                     lineHeight={200}
                     style={
                       [
@@ -1908,7 +1920,7 @@ exports[`<List /> should render large ordered List 1`] = `
                           "fontSize": 16,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.528,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -2076,6 +2088,7 @@ exports[`<List /> should render large ordered List 1`] = `
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={25}
                           lineHeight={200}
                           style={
                             [
@@ -2085,7 +2098,7 @@ exports[`<List /> should render large ordered List 1`] = `
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.528,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -2208,6 +2221,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -2217,7 +2231,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2258,6 +2272,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -2267,7 +2282,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2353,6 +2368,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -2362,7 +2378,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2403,6 +2419,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -2412,7 +2429,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2498,6 +2515,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -2507,7 +2525,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2548,6 +2566,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -2557,7 +2576,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2733,6 +2752,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={25}
               lineHeight={200}
               style={
                 [
@@ -2742,7 +2762,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.528,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2904,6 +2924,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     fontSize={200}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={25}
                     lineHeight={200}
                     style={
                       [
@@ -2913,7 +2934,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                           "fontSize": 16,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.528,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -3081,6 +3102,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={25}
                           lineHeight={200}
                           style={
                             [
@@ -3090,7 +3112,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.528,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3209,6 +3231,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -3218,7 +3241,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3259,6 +3282,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -3268,7 +3292,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3438,6 +3462,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     fontSize={100}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={100}
                     style={
                       [
@@ -3447,7 +3472,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.18200000000000002,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -3615,6 +3640,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -3624,7 +3650,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3747,6 +3773,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -3756,7 +3783,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3797,6 +3824,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -3806,7 +3834,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3892,6 +3920,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -3901,7 +3930,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3942,6 +3971,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -3951,7 +3981,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4037,6 +4067,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -4046,7 +4077,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4087,6 +4118,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -4096,7 +4128,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4272,6 +4304,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -4281,7 +4314,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4443,6 +4476,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     fontSize={100}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={100}
                     style={
                       [
@@ -4452,7 +4486,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.18200000000000002,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -4620,6 +4654,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           style={
                             [
@@ -4629,7 +4664,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -4748,6 +4783,7 @@ exports[`<List /> should render small ordered List 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -4757,7 +4793,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4798,6 +4834,7 @@ exports[`<List /> should render small ordered List 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -4807,7 +4844,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4977,6 +5014,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={75}
                     style={
                       [
@@ -4986,7 +5024,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.15600000000000003,
                           "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -5154,6 +5192,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={75}
                           style={
                             [
@@ -5163,7 +5202,7 @@ exports[`<List /> should render small ordered List 1`] = `
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.15600000000000003,
                                 "lineHeight": 17,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -5286,6 +5325,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -5295,7 +5335,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5336,6 +5376,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -5345,7 +5386,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5431,6 +5472,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -5440,7 +5482,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5481,6 +5523,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -5490,7 +5533,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5576,6 +5619,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={25}
               style={
                 [
@@ -5585,7 +5629,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5626,6 +5670,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -5635,7 +5680,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5811,6 +5856,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -5820,7 +5866,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5982,6 +6028,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={75}
                     style={
                       [
@@ -5991,7 +6038,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.15600000000000003,
                           "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -6159,6 +6206,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={75}
                           style={
                             [
@@ -6168,7 +6216,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.15600000000000003,
                                 "lineHeight": 17,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -6352,6 +6400,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -6361,7 +6410,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -6531,6 +6580,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
+                    letterSpacing={50}
                     lineHeight={75}
                     style={
                       [
@@ -6540,7 +6590,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.15600000000000003,
                           "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -6708,6 +6758,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={75}
                           style={
                             [
@@ -6717,7 +6768,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.15600000000000003,
                                 "lineHeight": 17,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
