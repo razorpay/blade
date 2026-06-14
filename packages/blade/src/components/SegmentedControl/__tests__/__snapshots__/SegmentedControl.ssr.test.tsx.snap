@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div role="radiogroup" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 fovmls"><button type="button" role="radio" aria-checked="true" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 ciDHjh"><p letter-spacing="50" class="StyledBaseText-foUshD hXMJEr" data-blade-component="text">Daily</p></button><button type="button" role="radio" aria-checked="false" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 hZUoZa"><p letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</p></button><button type="button" role="radio" aria-checked="false" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 hZUoZa"><p letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</p></button></div></div>"`;
+
+exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background-color: hsla(200,10%,94%,1);
+  border-radius: 12px;
+  position: relative;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(204,9%,42%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: hsla(0,0%,97%,1);
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px hsla(206,10%,29%,0.12);
+  -webkit-transition-property: background-color,box-shadow;
+  transition-property: background-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+
+.c1.c1.c1.c1.c1:hover:not(:disabled) {
+  background-color: hsla(0,0%,97%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,0.18);
+}
+
+.c1.c1.c1.c1.c1:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: none;
+  -webkit-transition-property: background-color,box-shadow;
+  transition-property: background-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+
+.c3.c3.c3.c3.c3:hover:not(:disabled) {
+  background-color: hsla(206,10%,29%,0.12);
+}
+
+.c3.c3.c3.c3.c3:focus-visible {
+  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,0.18);
+}
+
+.c3.c3.c3.c3.c3:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+<div
+  id="root"
+>
+  <div
+    class="c0"
+    data-blade-component="segmented-control"
+    role="radiogroup"
+  >
+    <button
+      aria-checked="true"
+      class="c1"
+      data-blade-component="segmented-control-item"
+      role="radio"
+      type="button"
+    >
+      <p
+        class="c2"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        Daily
+      </p>
+    </button>
+    <button
+      aria-checked="false"
+      class="c3"
+      data-blade-component="segmented-control-item"
+      role="radio"
+      type="button"
+    >
+      <p
+        class="c4"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        Weekly
+      </p>
+    </button>
+    <button
+      aria-checked="false"
+      class="c3"
+      data-blade-component="segmented-control-item"
+      role="radio"
+      type="button"
+    >
+      <p
+        class="c4"
+        data-blade-component="text"
+        letter-spacing="50"
+      >
+        Monthly
+      </p>
+    </button>
+  </div>
+</div>
+`;
