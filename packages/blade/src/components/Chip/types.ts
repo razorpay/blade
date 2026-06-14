@@ -151,9 +151,7 @@ type ChipGroupCommonProps = {
    */
   color?: 'primary' | 'positive' | 'negative';
   /**
-   * When true, ChipGroup takes full width of its container and distributes chips equally
-   * in a single row with filled-tab styling. One chip is always selected.
-   * Only available with selectionType="single".
+   * When true, ChipGroup takes full width of its container and distributes chips equally in a single row (no wrap).
    *
    * @default false
    */
@@ -200,21 +198,21 @@ type State = {
   removeValue(value: string): void;
 };
 
-type ChipGroupContextType = {
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  necessityIndicator?: 'required' | 'optional' | 'none';
-  validationState?: 'error' | 'none';
-  name?: string;
-  defaultValue?: string | string[];
-  value?: string | string[];
-  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-  color?: 'primary' | 'positive' | 'negative';
-  selectionType?: 'single' | 'multiple';
-  isFullWidth?: boolean;
-  state?: State;
-};
+type ChipGroupContextType = Pick<
+  ChipGroupProps,
+  | 'isDisabled'
+  | 'isRequired'
+  | 'necessityIndicator'
+  | 'validationState'
+  | 'name'
+  | 'defaultValue'
+  | 'value'
+  | 'onChange'
+  | 'size'
+  | 'color'
+  | 'selectionType'
+  | 'isFullWidth'
+> & { state?: State };
 
 type InteractiveBackgroundColors<
   T extends 'positive' | 'negative' | 'primary'
