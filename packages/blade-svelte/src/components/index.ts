@@ -40,6 +40,15 @@ export type { SkeletonProps } from './Skeleton/types';
 // Accordion
 export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
 
+// Collapsible
+export { Collapsible, CollapsibleButton, CollapsibleLink, CollapsibleBody } from './Collapsible';
+export type {
+  CollapsibleProps,
+  CollapsibleButtonProps,
+  CollapsibleLinkProps,
+  CollapsibleBodyProps,
+} from './Collapsible';
+
 // Switch
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
