@@ -229,9 +229,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         "paddingLeft": 16,
                         "paddingRight": 16,
                         "paddingTop": 16,
+                        "width": "100%",
                       },
                     ]
                   }
+                  width="100%"
                 >
                   <View
                     accessibilityRole="button"
@@ -1330,9 +1332,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         "paddingLeft": 16,
                         "paddingRight": 16,
                         "paddingTop": 16,
+                        "width": "100%",
                       },
                     ]
                   }
+                  width="100%"
                 >
                   <View
                     accessibilityRole="button"
