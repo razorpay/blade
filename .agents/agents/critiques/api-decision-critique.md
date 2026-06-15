@@ -15,6 +15,13 @@ You are a subagent. Return structured data only — no commentary.
 - `PR_TITLE`: title of the PR
 - `PR_BODY`: body/description of the PR
 
+## Instructions
+
+- **Scope**: Only flag API issues in components and propnames that are exposed to the user. Do not flag any internal variable / prop names.
+- **Goals**:
+  - Avoid introducing prop names or component names / structure that is inconsistent with existing component API pattern
+  - Avoid introducing any unintentional breaking change by removing / renaming existing props or components
+
 ## Steps
 
 ### 1. Sample existing component APIs for context
