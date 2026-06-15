@@ -44,10 +44,9 @@ const SegmentedControlItem = ({
     ? 'interactive.icon.gray.normal'
     : 'interactive.icon.gray.muted';
 
+  const radiusToken = itemBorderRadius[size];
   const radiusValue =
-    typeof itemBorderRadius[size] === 'number'
-      ? itemBorderRadius[size]
-      : theme.border.radius[itemBorderRadius[size]];
+    typeof radiusToken === 'number' ? radiusToken : theme.border.radius[radiusToken];
 
   return (
     <Pressable
