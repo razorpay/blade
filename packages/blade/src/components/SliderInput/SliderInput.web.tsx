@@ -69,11 +69,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const trackRef = useRef<HTMLDivElement>(null);
     const thumbRef = useRef<HTMLDivElement>(null);
     const fillRef = useRef<HTMLDivElement>(null);
+    const currentValue = internalValue ?? defaultValue;
+
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
-    const initialPct = ((currentValue - min) / (max - min)) * 100;
-    const visualPctRef = useRef(initialPct);
-    const targetPctRef = useRef(initialPct);
+    const visualPctRef = useRef(((currentValue - min) / (max - min)) * 100);
+    const targetPctRef = useRef(visualPctRef.current);
     const lerpRafRef = useRef(0);
     const { helpTextId, errorTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
@@ -81,8 +82,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const { theme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-
-    const currentValue = internalValue ?? defaultValue;
 
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
     const snap = useCallback((v: number) => Math.round(v / step) * step, [step]);
