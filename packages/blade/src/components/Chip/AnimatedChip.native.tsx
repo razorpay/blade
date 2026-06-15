@@ -18,7 +18,10 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
       // StyledChipWrapper renders the visible border; suppress AnimatedChip's own border to avoid double border
       borderWidth: 0,
       // Clip radius must match StyledChipWrapper's outer border radius (outerRadius - thick = 8 - 1.5 = 6.5)
-      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] - (getIn(theme, 'border.width.thick') as number)),
+      borderRadius: makeBorderSize(
+  theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] -
+    (getIn(theme, 'border.width.thick') as number),
+),
     };
   },
 );
