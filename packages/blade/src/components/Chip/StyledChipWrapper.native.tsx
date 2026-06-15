@@ -10,7 +10,10 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
     const borderRadius = chipBorderRadiusTokens[size];
     const outerRadius = theme.border.radius[borderRadius];
     const isSmallSize = size === 'xsmall' || size === 'small';
-    const outerBorderWidth = getIn(theme, isSmallSize ? 'border.width.thick' : 'border.width.thicker') as number;
+    const outerBorderWidth = getIn(
+      theme,
+      isSmallSize ? 'border.width.thick' : 'border.width.thicker',
+    ) as number;
     return {
       display: 'flex',
       borderColor: getIn(theme.colors, borderColor),
