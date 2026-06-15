@@ -78,9 +78,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       onFocus,
       onBlur,
       testID,
-      // Destructured to prevent leaking into ...rest which gets spread onto BaseBox
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      _motionMeta,
       ...rest
     },
     ref,
