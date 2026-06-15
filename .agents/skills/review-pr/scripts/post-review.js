@@ -147,8 +147,13 @@ function formatInlineComment(c) {
 const prAuthor = execSync(`gh api repos/${repo}/pulls/${prNumber} --jq '.user.login'`)
   .toString()
   .trim();
-const currentUser = execSync("gh api user --jq '.login'").toString().trim();
-const isSelfReview = prAuthor === currentUser;
+let currentUser;
+try {
+  currentUser = execSync("gh api user --jq '.login'").toString().trim();
+} catch (_) {
+  currentUser = null;
+}
+const isSelfReview = currentUser !== null && prAuthor === currentUser;
 
 const overviewBody = formatOverviewComment(
   reviewJson['overview-comment'],
