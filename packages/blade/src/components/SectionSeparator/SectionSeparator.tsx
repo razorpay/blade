@@ -61,14 +61,11 @@ const _SectionSeparator = (
       {...getStyledProps(styledProps)}
     >
       {label ? (
-        <Text
-          size="small"
-          color="surface.text.gray.muted"
-          weight="medium"
-          whiteSpace="nowrap"
-        >
-          {label}
-        </Text>
+        <BaseBox flexShrink={0}>
+          <Text size="small" color="surface.text.gray.muted" weight="medium">
+            {label}
+          </Text>
+        </BaseBox>
       ) : null}
       <StyledGradientLine gradientColor={gradientColor} isNative={native} />
     </BaseBox>

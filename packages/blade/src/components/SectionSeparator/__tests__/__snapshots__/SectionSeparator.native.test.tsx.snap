@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SectionSeparator /> should render with a label 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="section-separator"
+      display="flex"
+      flexDirection="row"
+      gap="spacing.3"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        flexShrink={0}
+        style={
+          [
+            {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.muted"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          letterSpacing={50}
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(204, 9%, 42%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Section Title
+        </Text>
+      </View>
+      <View
+        data-blade-component="base-box"
+        gradientColor="hsla(206, 10%, 29%, 0.12)"
+        isNative={true}
+        style={
+          [
+            {},
+            {
+              "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "flexGrow": 1,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<SectionSeparator /> should render without a label 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="section-separator"
+      display="flex"
+      flexDirection="row"
+      gap="spacing.3"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        gradientColor="hsla(206, 10%, 29%, 0.12)"
+        isNative={true}
+        style={
+          [
+            {},
+            {
+              "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "flexGrow": 1,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
