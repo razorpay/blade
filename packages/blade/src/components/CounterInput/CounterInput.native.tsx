@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Pressable, TextInput } from 'react-native';
+import { Pressable, TextInput, StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -31,7 +31,7 @@ const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
   large: 'large',
 } as const;
 
-type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
+type CounterInputSize = NonNullable<CounterInputProps['size']>;
 
 const getButtonStyle = (
   type: 'decrement' | 'increment',
@@ -164,6 +164,27 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       weight: 'semibold',
     });
 
+    const containerStyle = StyleSheet.create({
+      box: {
+        width: COUNTER_INPUT_TOKEN.width[size],
+        height: COUNTER_INPUT_TOKEN.height[size],
+      },
+    });
+
+    const textInputStyle = StyleSheet.create({
+      input: {
+        flex: 1,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        includeFontPadding: false,
+        padding: 0,
+        color: valueColor,
+        fontSize: theme.typography.fonts.size[fontSizeToken],
+        fontFamily: theme.typography.fonts.family.text,
+        fontWeight: '600',
+      },
+    });
+
     const contextValue = {
       size,
       emphasis,
@@ -198,10 +219,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   ? emphasisTokens.loadingOrDisabledBgColor
                   : emphasisTokens.backgroundColor
               }
-              style={{
-                width: COUNTER_INPUT_TOKEN.width[size],
-                height: COUNTER_INPUT_TOKEN.height[size],
-              }}
+              style={containerStyle.box}
               borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
               borderColor={
@@ -234,17 +252,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     onBlur={() => onBlur?.({ name, value: internalValue?.toString() })}
                     editable={!_isDisabled}
                     keyboardType="numeric"
-                    style={{
-                      flex: 1,
-                      textAlign: 'center',
-                      textAlignVertical: 'center',
-                      includeFontPadding: false,
-                      padding: 0,
-                      color: valueColor,
-                      fontSize: theme.typography.fonts.size[fontSizeToken],
-                      fontFamily: theme.typography.fonts.family.text,
-                      fontWeight: '600',
-                    }}
+                    style={textInputStyle.input}
                     accessibilityLabel={accessibilityLabel ?? label}
                     accessibilityRole="spinbutton"
                   />
