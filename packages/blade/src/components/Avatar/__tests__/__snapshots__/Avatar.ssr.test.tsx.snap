@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cbyYRY"><div data-blade-component="base-box" class="BaseBox-bmPWx jQbaa-D"><div color="neutral" class="StyledAvatarButton-sc-1w6qflj-0 gUvmEf"><div data-blade-component="base-box" class="BaseBox-bmPWx eLHsyV"><p letter-spacing="50" class="StyledBaseText-dVBfTO iYBdaK" data-blade-component="text">NK</p></div></div></div></div></div>"`;
+exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bksIuc StyledAvatar-sc-127ewkg-0 dJEpKS hLLnGR"><div data-blade-component="base-box" class="BaseBox-bksIuc dLgLvj"><div color="neutral" class="StyledAvatarButton-sc-1w6qflj-0 gaVCCy"><div data-blade-component="base-box" class="BaseBox-bksIuc iLTzl"><p letter-spacing="50" class="StyledBaseText-foUshD iwndPR" data-blade-component="text">NK</p></div></div></div></div></div>"`;
 
 exports[`<Avatar /> should render  avatar 2`] = `
 .c0.c0.c0.c0.c0 {

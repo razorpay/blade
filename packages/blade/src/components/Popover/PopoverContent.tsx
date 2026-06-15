@@ -84,7 +84,9 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
             <PopoverHeader title={title} titleLeading={titleLeading} />
             <BaseBox>{children}</BaseBox>
           </BaseBox>
-          {footer ? <BaseBox alignSelf={isReactNative() ? 'flex-start' : undefined}>{footer}</BaseBox> : null}
+          {footer ? (
+            <BaseBox alignSelf={isReactNative() ? 'flex-start' : undefined}>{footer}</BaseBox>
+          ) : null}
         </BaseBox>
         {arrow}
       </PopoverContentWrapper>
