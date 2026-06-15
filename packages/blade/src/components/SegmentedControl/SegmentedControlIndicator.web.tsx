@@ -17,6 +17,7 @@ const SegmentedControlIndicator = ({
   const { selectedValue, baseId, size, isDisabled } = useSegmentedControlContext();
   const [shouldAnimate, setShouldAnimate] = React.useState(false);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
+  const hasInitializedRef = React.useRef(false);
 
   const updateDimensions = React.useCallback(() => {
     const activeItem = document.getElementById(`${baseId}-${selectedValue}-item`);
@@ -29,10 +30,10 @@ const SegmentedControlIndicator = ({
       y: activeItem.offsetTop,
     });
 
-    setShouldAnimate((prev) => {
-      if (!prev) requestAnimationFrame(() => setShouldAnimate(true));
-      return prev;
-    });
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      requestAnimationFrame(() => setShouldAnimate(true));
+    }
   }, [baseId, selectedValue]);
 
   useIsomorphicLayoutEffect(() => {
