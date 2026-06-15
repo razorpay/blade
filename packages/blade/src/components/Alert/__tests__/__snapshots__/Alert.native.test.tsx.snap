@@ -358,7 +358,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           {
             "alignItems": "flex-start",
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "borderRadius": 0,
+            "borderRadius": 12,
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
@@ -666,7 +666,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
           {
             "alignItems": "flex-start",
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "borderRadius": 0,
+            "borderRadius": 12,
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",

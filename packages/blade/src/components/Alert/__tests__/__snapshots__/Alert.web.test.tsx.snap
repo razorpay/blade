@@ -434,7 +434,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 .c1.c1.c1.c1.c1 {
   background: hsla(150,100%,28%,0.09);
   padding: 12px;
-  border-radius: 0px;
+  border-radius: 12px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -629,7 +629,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
 .c1.c1.c1.c1.c1 {
   background: hsla(150,100%,28%,0.09);
   padding: 12px;
-  border-radius: 0px;
+  border-radius: 12px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
