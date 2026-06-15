@@ -27,9 +27,7 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
   return {
     background,
     padding: makeSpace(theme.spacing[4]),
-    borderRadius: makeBorderSize(
-      isFullWidth ? theme.border.radius.none : theme.border.radius.medium,
-    ),
+    borderRadius: makeBorderSize(theme.border.radius.medium),
     display: 'flex',
     flexDirection: 'row',
     width: isFullWidth ? '100%' : undefined,
