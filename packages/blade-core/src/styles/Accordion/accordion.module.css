@@ -5,8 +5,16 @@
 
 /* Filled variant wrapper — Card surface treatment:
    elevation shadow, top-highlight gradient, and inset border ring
-   matching card.module.css .cardSurface approach. */
+   matching card.module.css .cardSurface approach.
+
+   The inset border ring + bottom "lip" are painted via an `::after`
+   overlay (see `.filled::after`) instead of directly on the wrapper.
+   An edge-to-edge gray body (`.collapsibleContentGray`) paints its own
+   background *on top of* the wrapper's box-shadow, which would otherwise
+   clip the inset ring along the body's left/right/bottom edges. Rendering
+   the ring as a non-interactive overlay keeps it above the gray surface. */
 .filled {
+  position: relative;
   border-radius: var(--border-radius-medium);
   border: none;
   background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%),
@@ -14,8 +22,25 @@
   background-position: center top, center calc(100% - 2px);
   background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
   background-repeat: no-repeat;
+  /* Only the elevation drop shadow lives on the wrapper. */
+  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06);
+}
+
+/* Inset border ring + bottom lip overlay — painted above the body so an
+   edge-to-edge gray body background can't cover it. */
+.filled::after {
+  content: '';
+  position: absolute;
+  /* Longhand instead of `inset: 0` to support pre-2021 browsers (inset
+     shorthand is Baseline only since Apr 2021 / Safari 14.1). */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: var(--border-radius-medium);
   box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
-    0px 6px 32px 4px hsla(205, 8%, 71%, 0.06),
     inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
 }
 
@@ -27,8 +52,11 @@
   background-position: center top, center calc(100% - 1px);
   background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
   background-repeat: no-repeat;
+  box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06);
+}
+
+:root body[data-theme='dark'] .filled::after {
   box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
-    0px 6px 12px 4px hsla(0, 0%, 0%, 0.06),
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
