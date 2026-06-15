@@ -251,11 +251,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -315,11 +317,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -337,6 +337,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -344,15 +345,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -396,15 +398,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -460,11 +463,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -524,11 +529,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -546,6 +549,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -553,15 +557,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -605,15 +610,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -669,11 +675,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -733,11 +741,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -755,6 +761,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -762,15 +769,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -814,15 +822,16 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1136,11 +1145,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1201,11 +1212,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1223,6 +1232,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1230,15 +1240,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1282,15 +1293,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1346,11 +1358,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1411,11 +1425,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1433,6 +1445,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1440,15 +1453,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1492,15 +1506,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1556,11 +1571,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1621,11 +1638,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1643,6 +1658,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1650,15 +1666,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1702,15 +1719,16 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"

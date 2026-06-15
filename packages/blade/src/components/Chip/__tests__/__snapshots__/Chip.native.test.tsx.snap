@@ -125,11 +125,13 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -190,11 +192,9 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -212,6 +212,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                   }
                 >
                   <View
+                    backgroundColor="transparent"
                     borderColor="interactive.border.gray.disabled"
                     isDisabled={true}
                     style={
@@ -219,15 +220,16 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
                           "borderColor": "hsla(204, 8%, 88%, 1)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -271,15 +273,16 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(204, 8%, 88%, 1)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -335,11 +338,13 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -400,11 +405,9 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -422,6 +425,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -429,15 +433,16 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -481,15 +486,16 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -676,11 +682,13 @@ exports[`<Chip /> should render chip 1`] = `
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -741,11 +749,9 @@ exports[`<Chip /> should render chip 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -763,6 +769,7 @@ exports[`<Chip /> should render chip 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -770,15 +777,16 @@ exports[`<Chip /> should render chip 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -822,15 +830,16 @@ exports[`<Chip /> should render chip 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -886,11 +895,13 @@ exports[`<Chip /> should render chip 1`] = `
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -951,11 +962,9 @@ exports[`<Chip /> should render chip 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -973,6 +982,7 @@ exports[`<Chip /> should render chip 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -980,15 +990,16 @@ exports[`<Chip /> should render chip 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1032,15 +1043,16 @@ exports[`<Chip /> should render chip 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1227,11 +1239,13 @@ exports[`<Chip /> should render chip with icon 1`] = `
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1292,11 +1306,9 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1314,6 +1326,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1321,15 +1334,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1373,15 +1387,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1537,11 +1552,13 @@ exports[`<Chip /> should render chip with icon 1`] = `
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1602,11 +1619,9 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1624,6 +1639,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1631,15 +1647,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1683,15 +1700,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1978,11 +1996,13 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -2043,11 +2063,9 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -2065,6 +2083,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="transparent"
                     borderColor="interactive.border.gray.disabled"
                     isDisabled={true}
                     style={
@@ -2072,15 +2091,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
                           "borderColor": "hsla(204, 8%, 88%, 1)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -2124,15 +2144,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(204, 8%, 88%, 1)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -2188,11 +2209,13 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -2253,11 +2276,9 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -2275,6 +2296,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -2282,15 +2304,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
+                          "borderRadius": 6.5,
+                          "borderWidth": 0,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -2334,15 +2357,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
-                            "borderColor": "transparent",
+                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
+                            "borderRadius": 6.5,
+                            "borderWidth": 1.5,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
