@@ -6,6 +6,7 @@ import ActivityIconComponent from './ActivityIcon';
 import AddressBookIconComponent from './AddressBookIcon';
 import AffordabilityFilledIconComponent from './AffordabilityFilledIcon';
 import AffordabilityIconComponent from './AffordabilityIcon';
+import AgentStudioIconComponent from './AgentStudioIcon';
 import AirplayIconComponent from './AirplayIcon';
 import AlertCircleIconComponent from './AlertCircleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -452,6 +453,7 @@ const iconMap: Record<string, IconComponent> = {
   AddressBookIcon: AddressBookIconComponent,
   AffordabilityFilledIcon: AffordabilityFilledIconComponent,
   AffordabilityIcon: AffordabilityIconComponent,
+  AgentStudioIcon: AgentStudioIconComponent,
   AirplayIcon: AirplayIconComponent,
   AlertCircleIcon: AlertCircleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
