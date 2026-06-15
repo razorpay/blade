@@ -5,7 +5,7 @@ export const SLIDER_INPUT_TOKENS = {
     haloMultiplier: 1.5,
   },
   track: {
-    height: 2,
+    height: 4,
   },
   label: {
     width: 100,
