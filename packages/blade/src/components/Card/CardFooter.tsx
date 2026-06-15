@@ -15,10 +15,11 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { isReactNative } from '~utils';
 
-const equalWidthFlexProps = isReactNative() ? ({ flex: 1 } as const) : ({ flexGrow: 1 } as const);
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+const equalWidthFlexProps = isReactNative() ? ({ flex: 1 } as const) : ({ flexGrow: 1 } as const);
 
 export type CardFooterAction = Pick<
   ButtonProps,
