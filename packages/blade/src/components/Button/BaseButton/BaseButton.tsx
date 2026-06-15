@@ -291,6 +291,52 @@ const getProps = ({
     return shadows.join(', ');
   };
 
+  const getNativeShadowColors = (
+    btnColor: BaseButtonProps['color'],
+  ): {
+    shadowHighlightColor?: string;
+    shadowHighlightHeight?: number;
+    shadowBottomColor?: string;
+    shadowBottomHeight?: number;
+    shadowBorderColor?: string;
+    shadowRingWidth?: number;
+    shadowShowGradient?: boolean;
+  } => {
+    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
+    if (shadowTokens.length === 0) return {};
+
+    let highlightColor: string | undefined;
+    let highlightHeight = 0;
+    let bottomColor: string | undefined;
+    let bottomHeight = 0;
+    let borderColor: string | undefined;
+    let ringWidth = 0;
+
+    for (const shadow of shadowTokens) {
+      const resolved = getIn(theme.colors, shadow.color);
+      if (shadow.y > 0 && !highlightColor) {
+        highlightColor = resolved;
+        highlightHeight = shadow.y;
+      } else if (shadow.y < 0 && !bottomColor) {
+        bottomColor = resolved;
+        bottomHeight = Math.abs(shadow.y);
+      } else if (shadow.spread > 0 && !borderColor) {
+        borderColor = resolved;
+        ringWidth = shadow.spread;
+      }
+    }
+
+    return {
+      shadowHighlightColor: highlightColor,
+      shadowHighlightHeight: highlightHeight || undefined,
+      shadowBottomColor: bottomColor,
+      shadowBottomHeight: bottomHeight || undefined,
+      shadowBorderColor: borderColor,
+      shadowRingWidth: ringWidth || undefined,
+      shadowShowGradient: variant === 'primary',
+    };
+  };
+
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
@@ -345,6 +391,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
+    ...getNativeShadowColors(color),
   };
 
   if (isDisabled) {
@@ -369,6 +416,13 @@ const getProps = ({
     props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBoxShadow = getBoxShadow('disabled', color);
+    props.shadowHighlightColor = undefined;
+    props.shadowHighlightHeight = undefined;
+    props.shadowBottomColor = undefined;
+    props.shadowBottomHeight = undefined;
+    props.shadowBorderColor = undefined;
+    props.shadowRingWidth = undefined;
+    props.shadowShowGradient = undefined;
   }
 
   return props;
