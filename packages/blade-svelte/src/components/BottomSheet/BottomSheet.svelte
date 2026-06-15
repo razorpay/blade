@@ -44,7 +44,7 @@
     isOpen = false,
     onDismiss,
     children,
-    initialFocusElement = null,
+    initialFocusRef = null,
     snapPoints = [...BOTTOM_SHEET_DEFAULT_SNAP_POINTS] as SnapPoints,
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
@@ -144,7 +144,7 @@
   }
 
   function focusOnInitialRef(): void {
-    const target = initialFocusElement ?? defaultFocusEl;
+    const target = initialFocusRef ?? defaultFocusEl;
     if (!target) return;
     try {
       target.focus();

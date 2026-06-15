@@ -17,7 +17,7 @@
       isOpen: { table: { disable: true } },
       children: { table: { disable: true } },
       onDismiss: { table: { disable: true } },
-      initialFocusElement: { table: { disable: true } },
+      initialFocusRef: { table: { disable: true } },
       isDismissible: { control: 'boolean' },
       zIndex: { control: 'number' },
       title: {
@@ -540,7 +540,7 @@
       <BottomSheet
         isOpen={isInitialFocusOpen}
         onDismiss={() => (isInitialFocusOpen = false)}
-        initialFocusElement={initialFocusInputEl}
+        initialFocusRef={initialFocusInputEl}
       >
         {#snippet children()}
           <BottomSheetHeader title="Users" />

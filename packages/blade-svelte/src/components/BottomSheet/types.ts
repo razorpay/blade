@@ -46,12 +46,12 @@ export interface BottomSheetProps extends StyledPropsBlade {
 
   /**
    * Element that should receive keyboard focus when the sheet opens. By
-   * default focus is moved to the close button. Pass an `HTMLElement`
-   * obtained via `bind:this`.
+   * default focus is moved to the close button. Svelte callers pass the
+   * element obtained via `bind:this`.
    *
    * @default null
    */
-  initialFocusElement?: HTMLElement | null;
+  initialFocusRef?: HTMLElement | null;
 
   /**
    * Sets the z-index of the bottom sheet. When stacking multiple sheets keep
