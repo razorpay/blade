@@ -1,0 +1,205 @@
+/* RadioGroup field layout (SelectorGroupField) */
+.radioGroupField {
+  display: flex;
+}
+
+.fieldTop {
+  flex-direction: column;
+}
+
+.fieldLeft {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* React forces label position to `top` on mobile (< 768px); collapse the
+   left-positioned field back to a column so the label sits above the radios. */
+@media (max-width: 767px) {
+  .fieldLeft {
+    flex-direction: column;
+  }
+}
+
+/* Radios flex container */
+.itemsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.orientationVertical {
+  flex-direction: column;
+}
+
+.orientationHorizontal {
+  flex-direction: row;
+}
+
+/* Gap per size (radioSizes.group.gap → spacing 2/3/4) */
+.gapSmall {
+  gap: var(--spacing-2);
+}
+
+.gapMedium {
+  gap: var(--spacing-3);
+}
+
+.gapLarge {
+  gap: var(--spacing-4);
+}
+
+/* Group label (FormLabel as span).
+   Top position: inline-flex row, label + (optional) on the same line.
+   Default text size matches React `labelTextSize.top` (small/small/medium). */
+.groupLabel {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--surface-text-gray-subtle);
+  margin-bottom: var(--spacing-2);
+}
+
+/* ── Top-position label sizes ── */
+.labelSmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.labelMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.labelLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* ── Left-position label column (React FormLabel isLabelLeftPositioned) ──
+   Fixed width per size (labelWidth → 120/120/176), stacks label + (optional)
+   in a column, allows long labels to wrap, and owns the right gutter to the
+   radios via margin-right (labelLeftMarginRight → spacing 3/4/5). */
+.labelLeft {
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  word-break: break-word;
+}
+
+.labelLeftSmall {
+  width: 120px;
+  margin-right: var(--spacing-3);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.labelLeftMedium {
+  width: 120px;
+  margin-right: var(--spacing-4);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.labelLeftLarge {
+  width: 176px;
+  margin-right: var(--spacing-5);
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* React forces label position to `top` on mobile (< 768px) via platform.
+   Below the breakpoint, the left-positioned label collapses back to a
+   full-width top label (no fixed width / right gutter). */
+@media (max-width: 767px) {
+  .labelLeft {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: var(--spacing-2);
+  }
+}
+
+/* Necessity indicator */
+.necessityRequired {
+  /* React renders `*` immediately after the label (gap spacing.0). */
+  gap: var(--spacing-0);
+}
+
+.necessityRequired::after {
+  content: '*';
+  color: var(--feedback-text-negative-intense);
+}
+
+.necessityOptional::after {
+  content: '(optional)';
+  color: var(--surface-text-gray-muted);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+/* Help text (FormHint type=help) */
+.helpText {
+  display: block;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-muted);
+  margin-top: var(--spacing-2);
+}
+
+/* Error text (FormHint type=error) */
+.errorText {
+  display: block;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--feedback-text-negative-intense);
+  margin-top: var(--spacing-2);
+}
+
+/* FormHintWrapper — row with the error icon + text (React: display flex,
+   align-items flex-start, gap spacing.2). Carries the errorText margin-top
+   so the row (not just the text) is offset below the radios. */
+.hintWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+}
+
+/* The errorText inside the wrapper must not double the top margin. */
+.hintWrapper .errorText {
+  margin-top: 0;
+}
+
+/* Offset the block-level icon 2px down to align with the text baseline (web). */
+.hintIcon {
+  flex-shrink: 0;
+  margin-top: var(--spacing-1);
+}
+
+/* React renders the hint icon with `display: block` to drop the inline SVG's
+   baseline descender gap. Without this the icon sits low / misaligned with the
+   error text. Force the SVG inside the wrapper to block. */
+.hintIcon svg {
+  display: block;
+}
+
+/* Screen reader only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
