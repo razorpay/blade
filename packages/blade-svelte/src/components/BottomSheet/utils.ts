@@ -77,22 +77,3 @@ export function computeMaxContent(
     ),
   );
 }
-
-/**
- * Rubberband function — produces a damped value when `value` falls outside
- * `[min, max]`. Mirrors `@use-gesture`'s `rubberbandIfOutOfBounds`.
- */
-export function rubberbandIfOutOfBounds(
-  value: number,
-  min: number,
-  max: number,
-  dampening = 0.55,
-): number {
-  if (value > max) {
-    return max + (value - max) * dampening;
-  }
-  if (value < min) {
-    return min + (value - min) * dampening;
-  }
-  return value;
-}
