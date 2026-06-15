@@ -5,7 +5,7 @@ import { SegmentedControl } from './SegmentedControl';
 import { SegmentedControlItem } from './SegmentedControlItem';
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
-import { CalendarIcon, ClockIcon, TrendingUpIcon } from '~components/Icons';
+import { CalendarIcon, ClockIcon, TrendingUpIcon, ListIcon, LayoutIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -24,7 +24,7 @@ const Page = (): React.ReactElement => {
           function App() {
             return (
               <Box padding="spacing.5">
-                <SegmentedControl defaultValue="daily">
+                <SegmentedControl defaultValue="daily" label="Time Period">
                   <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
                   <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
                   <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -53,11 +53,47 @@ export default {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
     },
-    isFullWidth: {
-      control: { type: 'boolean' },
-    },
     isDisabled: {
       control: { type: 'boolean' },
+    },
+    label: {
+      control: { type: 'text' },
+    },
+    labelPosition: {
+      control: { type: 'select' },
+      options: ['top', 'left'],
+    },
+    helpText: {
+      control: { type: 'text' },
+    },
+    errorText: {
+      control: { type: 'text' },
+    },
+    validationState: {
+      control: { type: 'select' },
+      options: ['none', 'error'],
+    },
+    necessityIndicator: {
+      control: { type: 'select' },
+      options: ['none', 'required', 'optional'],
+    },
+    isRequired: {
+      control: { type: 'boolean' },
+    },
+    name: {
+      control: { type: 'text' },
+    },
+    defaultValue: {
+      control: { type: 'text' },
+    },
+    value: {
+      table: { disable: true },
+    },
+    onChange: {
+      table: { disable: true },
+    },
+    children: {
+      table: { disable: true },
     },
   },
 } as Meta<SegmentedControlProps>;
@@ -65,7 +101,7 @@ export default {
 const DefaultTemplate: StoryFn<SegmentedControlProps> = (args) => {
   return (
     <Box padding="spacing.5">
-      <SegmentedControl {...args} defaultValue="daily">
+      <SegmentedControl {...args} defaultValue={args.defaultValue || 'daily'}>
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -77,8 +113,14 @@ const DefaultTemplate: StoryFn<SegmentedControlProps> = (args) => {
 export const Default = DefaultTemplate.bind({});
 Default.args = {
   size: 'medium',
-  isFullWidth: false,
   isDisabled: false,
+  label: 'Time Period',
+  labelPosition: 'top',
+  helpText: '',
+  errorText: '',
+  validationState: 'none',
+  necessityIndicator: 'none',
+  isRequired: false,
 };
 
 export const Sizes: StoryFn<SegmentedControlProps> = () => {
@@ -120,26 +162,40 @@ export const Sizes: StoryFn<SegmentedControlProps> = () => {
 
 export const WithIcons: StoryFn<SegmentedControlProps> = () => {
   return (
-    <Box padding="spacing.5">
-      <SegmentedControl defaultValue="day">
-        <SegmentedControlItem value="day" icon={CalendarIcon}>
-          Day
-        </SegmentedControlItem>
-        <SegmentedControlItem value="hour" icon={ClockIcon}>
-          Hour
-        </SegmentedControlItem>
-        <SegmentedControlItem value="trend" icon={TrendingUpIcon}>
-          Trend
-        </SegmentedControlItem>
-      </SegmentedControl>
+    <Box display="flex" flexDirection="column" gap="spacing.6" padding="spacing.5">
+      <Box>
+        <Text marginBottom="spacing.3" weight="semibold">
+          Icon with label
+        </Text>
+        <SegmentedControl defaultValue="day">
+          <SegmentedControlItem value="day" icon={CalendarIcon}>
+            Day
+          </SegmentedControlItem>
+          <SegmentedControlItem value="hour" icon={ClockIcon}>
+            Hour
+          </SegmentedControlItem>
+          <SegmentedControlItem value="trend" icon={TrendingUpIcon}>
+            Trend
+          </SegmentedControlItem>
+        </SegmentedControl>
+      </Box>
+      <Box>
+        <Text marginBottom="spacing.3" weight="semibold">
+          Icon only
+        </Text>
+        <SegmentedControl defaultValue="list" name="View mode">
+          <SegmentedControlItem value="list" icon={ListIcon} />
+          <SegmentedControlItem value="grid" icon={LayoutIcon} />
+        </SegmentedControl>
+      </Box>
     </Box>
   );
 };
 
-export const FullWidth: StoryFn<SegmentedControlProps> = () => {
+export const InContainer: StoryFn<SegmentedControlProps> = () => {
   return (
     <Box padding="spacing.5" width="400px">
-      <SegmentedControl isFullWidth defaultValue="overview">
+      <SegmentedControl defaultValue="overview">
         <SegmentedControlItem value="overview">Overview</SegmentedControlItem>
         <SegmentedControlItem value="analytics">Analytics</SegmentedControlItem>
         <SegmentedControlItem value="reports">Reports</SegmentedControlItem>
@@ -188,6 +244,231 @@ export const Controlled: StoryFn<SegmentedControlProps> = () => {
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
       </SegmentedControl>
+    </Box>
+  );
+};
+
+export const WithLabel: StoryFn<SegmentedControlProps> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6" padding="spacing.5">
+      <SegmentedControl
+        label="Time Period"
+        defaultValue="daily"
+        helpText="Select how often you'd like reports"
+      >
+        <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+        <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+        <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+      </SegmentedControl>
+
+      <SegmentedControl
+        label="Frequency"
+        defaultValue="daily"
+        validationState="error"
+        errorText="Please select a valid frequency"
+        necessityIndicator="required"
+      >
+        <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+        <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+        <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+      </SegmentedControl>
+
+      <SegmentedControl label="View Mode" labelPosition="left" defaultValue="list">
+        <SegmentedControlItem value="list">List</SegmentedControlItem>
+        <SegmentedControlItem value="grid">Grid</SegmentedControlItem>
+      </SegmentedControl>
+    </Box>
+  );
+};
+
+export const Showcase: StoryFn<SegmentedControlProps> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" padding="spacing.5">
+      {/* Sizes */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Sizes
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Small
+            </Text>
+            <SegmentedControl size="small" defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+              <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Medium
+            </Text>
+            <SegmentedControl size="medium" defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+              <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Large
+            </Text>
+            <SegmentedControl size="large" defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+              <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* With Icons */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          With Icons
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Icon + Label
+            </Text>
+            <SegmentedControl defaultValue="day">
+              <SegmentedControlItem value="day" icon={CalendarIcon}>
+                Day
+              </SegmentedControlItem>
+              <SegmentedControlItem value="hour" icon={ClockIcon}>
+                Hour
+              </SegmentedControlItem>
+              <SegmentedControlItem value="trend" icon={TrendingUpIcon}>
+                Trend
+              </SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Icon Only
+            </Text>
+            <SegmentedControl defaultValue="list" name="View mode">
+              <SegmentedControlItem value="list" icon={ListIcon} />
+              <SegmentedControlItem value="grid" icon={LayoutIcon} />
+            </SegmentedControl>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Disabled States */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Disabled
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Group Disabled
+            </Text>
+            <SegmentedControl isDisabled defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+              <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Single Item Disabled
+            </Text>
+            <SegmentedControl defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+              <SegmentedControlItem value="monthly" isDisabled>
+                Monthly
+              </SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* With Label & Help Text */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Label & Help Text
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <SegmentedControl
+            label="Report Frequency"
+            helpText="Choose how often to receive reports"
+            defaultValue="weekly"
+          >
+            <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+            <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+            <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+          </SegmentedControl>
+        </Box>
+      </Box>
+
+      {/* Validation State */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Validation
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <SegmentedControl
+            label="Priority"
+            defaultValue="low"
+            validationState="error"
+            errorText="High priority items require approval"
+            necessityIndicator="required"
+          >
+            <SegmentedControlItem value="low">Low</SegmentedControlItem>
+            <SegmentedControlItem value="medium">Medium</SegmentedControlItem>
+            <SegmentedControlItem value="high">High</SegmentedControlItem>
+          </SegmentedControl>
+        </Box>
+      </Box>
+
+      {/* Label Position */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Label Position
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Top (default)
+            </Text>
+            <SegmentedControl label="Period" defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+          <Box>
+            <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
+              Left
+            </Text>
+            <SegmentedControl label="Period" labelPosition="left" defaultValue="daily">
+              <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+              <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+            </SegmentedControl>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Necessity Indicator */}
+      <Box>
+        <Heading size="medium" marginBottom="spacing.4">
+          Necessity Indicator
+        </Heading>
+        <Box display="flex" flexDirection="column" gap="spacing.4">
+          <SegmentedControl label="Required Field" necessityIndicator="required" defaultValue="a">
+            <SegmentedControlItem value="a">Option A</SegmentedControlItem>
+            <SegmentedControlItem value="b">Option B</SegmentedControlItem>
+          </SegmentedControl>
+          <SegmentedControl label="Optional Field" necessityIndicator="optional" defaultValue="a">
+            <SegmentedControlItem value="a">Option A</SegmentedControlItem>
+            <SegmentedControlItem value="b">Option B</SegmentedControlItem>
+          </SegmentedControl>
+        </Box>
+      </Box>
     </Box>
   );
 };

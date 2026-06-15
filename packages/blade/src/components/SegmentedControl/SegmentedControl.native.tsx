@@ -3,13 +3,17 @@ import { View, StyleSheet } from 'react-native';
 import type { SegmentedControlProps } from './types';
 import { SegmentedControlContext } from './SegmentedControlContext';
 import { useControllableState } from '~utils/useControllable';
+import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { FormLabel, FormHint } from '~components/Form';
+import BaseBox from '~components/Box/BaseBox';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'stretch',
   },
 });
 
@@ -20,9 +24,15 @@ const _SegmentedControl = (
     value,
     onChange,
     size = 'medium',
-    isFullWidth = false,
     isDisabled = false,
     name,
+    label,
+    labelPosition = 'top',
+    helpText,
+    errorText,
+    validationState = 'none',
+    necessityIndicator = 'none',
+    isRequired = false,
     testID,
   }: SegmentedControlProps,
   _ref: React.Ref<unknown>,
@@ -37,37 +47,77 @@ const _SegmentedControl = (
     },
   });
 
+  const baseId = useId('segmented-control');
+  const labelId = `${baseId}-label`;
+
   const contextValue = React.useMemo(
     () => ({
       selectedValue,
       setSelectedValue,
       size,
       isDisabled,
-      isFullWidth,
       name,
+      baseId,
     }),
-    [selectedValue, setSelectedValue, size, isDisabled, isFullWidth, name],
+    [selectedValue, setSelectedValue, size, isDisabled, name, baseId],
   );
+
+  const showError = validationState === 'error' && errorText;
+  const showHelpText = !showError && helpText;
+  const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
+
+  const segmentedControlElement = (
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.colors.interactive.background.gray.faded,
+          borderRadius: theme.border.radius[size === 'small' ? 'small' : 'medium'],
+          padding: theme.spacing[size === 'small' ? 1 : 2],
+          gap: theme.spacing[1],
+        },
+      ]}
+      accessibilityRole="radiogroup"
+      accessibilityLabel={name}
+      {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
+    >
+      {children}
+    </View>
+  );
+
+  if (!label && !helpText && !errorText) {
+    return (
+      <SegmentedControlContext.Provider value={contextValue}>
+        {segmentedControlElement}
+      </SegmentedControlContext.Provider>
+    );
+  }
 
   return (
     <SegmentedControlContext.Provider value={contextValue}>
-      <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: theme.colors.surface.background.gray.subtle,
-            borderRadius: theme.border.radius.medium,
-            padding: theme.spacing[1],
-            gap: theme.spacing[1],
-          },
-          isFullWidth && { alignSelf: 'stretch' },
-        ]}
-        accessibilityRole="radiogroup"
-        accessibilityLabel={name}
-        {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
-      >
-        {children}
-      </View>
+      <BaseBox display="flex" flexDirection="column">
+        {label ? (
+          <FormLabel
+            as="span"
+            necessityIndicator={necessityIndicator}
+            position={labelPosition}
+            id={labelId}
+            accessibilityText={accessibilityText && `,${accessibilityText}`}
+            size={size}
+          >
+            {label}
+          </FormLabel>
+        ) : null}
+        <BaseBox>
+          {segmentedControlElement}
+          <FormHint
+            size={size}
+            type={validationState === 'error' ? 'error' : 'help'}
+            errorText={errorText}
+            helpText={helpText}
+          />
+        </BaseBox>
+      </BaseBox>
     </SegmentedControlContext.Provider>
   );
 };

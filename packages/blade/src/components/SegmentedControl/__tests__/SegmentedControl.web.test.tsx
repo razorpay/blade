@@ -127,9 +127,9 @@ describe('<SegmentedControl />', () => {
     });
   });
 
-  it('should render full width', () => {
+  it('should always render full width', () => {
     const { getByRole } = renderWithTheme(
-      <SegmentedControl isFullWidth defaultValue="a">
+      <SegmentedControl defaultValue="a">
         <SegmentedControlItem value="a">A</SegmentedControlItem>
         <SegmentedControlItem value="b">B</SegmentedControlItem>
       </SegmentedControl>,

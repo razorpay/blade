@@ -1,27 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SegmentedControl /> should render with default props 1`] = `
-.c0.c0.c0.c0.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 2px;
-  padding: 2px;
-  background-color: hsla(200,10%,94%,1);
-  border-radius: 12px;
-  position: relative;
+.c5.c5.c5.c5.c5 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: hsla(0,0%,100%,1);
+  pointer-events: none;
 }
 
 .c2.c2.c2.c2.c2 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -51,6 +43,23 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   padding: 0;
 }
 
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background-color: hsla(206,10%,29%,0.06);
+  border-radius: 12px;
+  position: relative;
+}
+
 .c1.c1.c1.c1.c1 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -70,33 +79,41 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 12px;
-  padding-right: 12px;
-  background-color: hsla(0,0%,97%,1);
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0px 1px 2px hsla(206,10%,29%,0.12);
-  -webkit-transition-property: background-color,box-shadow;
-  transition-property: background-color,box-shadow;
+  position: relative;
+  z-index: 1;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 200ms;
-  transition-duration: 200ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c1.c1.c1.c1.c1:hover:not(:disabled) {
-  background-color: hsla(0,0%,97%,1);
+  background-color: transparent;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,0.18);
+  box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1:disabled {
   cursor: not-allowed;
-  opacity: 0.4;
+  background-color: transparent;
+}
+
+.c1.c1.c1.c1.c1:disabled:hover {
+  background-color: transparent;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -118,33 +135,71 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
   background-color: transparent;
   border-radius: 8px;
-  box-shadow: none;
-  -webkit-transition-property: background-color,box-shadow;
-  transition-property: background-color,box-shadow;
+  position: relative;
+  z-index: 1;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 200ms;
-  transition-duration: 200ms;
+  -webkit-transition-duration: 480ms;
+  transition-duration: 480ms;
 }
 
 .c3.c3.c3.c3.c3:hover:not(:disabled) {
-  background-color: hsla(206,10%,29%,0.12);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,0.18);
+  box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c3.c3.c3.c3.c3:disabled {
   cursor: not-allowed;
-  opacity: 0.4;
+  background-color: transparent;
+}
+
+.c3.c3.c3.c3.c3:disabled:hover {
+  background-color: transparent;
+}
+
+@media screen and (min-width:320px) {
+  .c5.c5.c5.c5.c5 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c5.c5.c5.c5.c5 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c5.c5.c5.c5.c5 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c5.c5.c5.c5.c5 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c5.c5.c5.c5.c5 {
+    pointer-events: none;
+  }
 }
 
 <div>
@@ -157,6 +212,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       aria-checked="true"
       class="c1"
       data-blade-component="segmented-control-item"
+      id="segmented-control-1-daily-item"
       role="radio"
       type="button"
     >
@@ -172,6 +228,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       aria-checked="false"
       class="c3"
       data-blade-component="segmented-control-item"
+      id="segmented-control-1-weekly-item"
       role="radio"
       type="button"
     >
@@ -187,6 +244,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
       aria-checked="false"
       class="c3"
       data-blade-component="segmented-control-item"
+      id="segmented-control-1-monthly-item"
       role="radio"
       type="button"
     >
@@ -198,6 +256,12 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
         Monthly
       </span>
     </button>
+    <div
+      class="c5"
+      data-blade-component="segmented-control-indicator"
+      pointer-events="none"
+      style="transition-property: transform, width, height; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); border-radius: 8px; box-shadow: 0px 2px 4px 0px hsla(200, 10%, 18%, 0.06); width: 0px; height: 0px; transform: translate(0px, 0px);"
+    />
   </div>
 </div>
 `;

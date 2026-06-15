@@ -8,8 +8,8 @@ type SegmentedControlContextProps = {
   setSelectedValue: ControllableStateSetter<string>;
   size: SegmentedControlSize;
   isDisabled: boolean;
-  isFullWidth: boolean;
   name?: string;
+  baseId: string;
 } | null;
 
 const SegmentedControlContext = React.createContext<SegmentedControlContextProps>(null);

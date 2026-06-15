@@ -9,6 +9,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const styles = StyleSheet.create({
   button: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -17,8 +18,8 @@ const styles = StyleSheet.create({
 
 const paddingMap = {
   small: { paddingVertical: 4, paddingHorizontal: 12 },
-  medium: { paddingVertical: 8, paddingHorizontal: 16 },
-  large: { paddingVertical: 12, paddingHorizontal: 20 },
+  medium: { paddingVertical: 8, paddingHorizontal: 12 },
+  large: { paddingVertical: 12, paddingHorizontal: 12 },
 } as const;
 
 const SegmentedControlItem = ({
@@ -33,15 +34,22 @@ const SegmentedControlItem = ({
     setSelectedValue,
     size,
     isDisabled: isGroupDisabled,
-    isFullWidth,
   } = useSegmentedControlContext();
   const { theme } = useTheme();
 
   const isSelected = selectedValue === value;
   const isDisabled = isGroupDisabled || isItemDisabled;
 
-  const textColor = isSelected ? 'surface.text.gray.normal' : 'surface.text.gray.muted';
-  const iconColor = isSelected ? 'surface.icon.gray.normal' : 'surface.icon.gray.muted';
+  const textColor = isDisabled
+    ? 'interactive.text.gray.disabled'
+    : isSelected
+    ? 'interactive.text.gray.normal'
+    : 'interactive.text.gray.muted';
+  const iconColor = isDisabled
+    ? 'interactive.icon.gray.disabled'
+    : isSelected
+    ? 'interactive.icon.gray.normal'
+    : 'interactive.icon.gray.muted';
 
   return (
     <Pressable
@@ -57,24 +65,18 @@ const SegmentedControlItem = ({
         styles.button,
         paddingMap[size],
         {
-          gap: theme.spacing[2],
-          borderRadius: theme.border.radius.small,
+          gap: theme.spacing[3],
+          borderRadius: size === 'small' ? 6 : theme.border.radius.small,
           backgroundColor: isSelected
-            ? theme.colors.surface.background.gray.moderate
+            ? theme.colors.surface.background.gray.intense
             : 'transparent',
-          opacity: isDisabled ? 0.4 : 1,
         },
-        isFullWidth && { flex: 1 },
       ]}
       {...metaAttribute({ name: MetaConstants.SegmentedControlItem, testID })}
     >
       {Icon ? <Icon size={iconSizeMap[size]} color={iconColor} /> : null}
       {children ? (
-        <Text
-          color={textColor}
-          size={textSizeMap[size]}
-          weight={isSelected ? 'semibold' : 'medium'}
-        >
+        <Text color={textColor} size={textSizeMap[size]} weight="medium">
           {children}
         </Text>
       ) : null}
