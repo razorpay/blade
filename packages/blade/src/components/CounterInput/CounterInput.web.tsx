@@ -69,8 +69,6 @@ const StyledCounterButton = styled.button<{
   }
 `;
 
-
-
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
     {
