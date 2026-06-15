@@ -185,7 +185,6 @@ const PreviewFooter = assignWithoutSideEffects(_PreviewFooter, {
 });
 
 const dotSpacing = 16;
-const dotOpacity = 0.1;
 const dotSize = 1;
 const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }>`
   width: 100%;
@@ -194,11 +193,11 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
     if (!isDragEnabled) return 'default';
     return isDragging ? 'grabbing' : 'grab';
   }};
-  background-image: ${({ isDragEnabled }) =>
+  background-image: ${({ isDragEnabled, theme }) =>
     isDragEnabled
       ? `radial-gradient(
     circle,
-    rgba(0, 0, 0, ${dotOpacity}) ${dotSize}px,
+    ${getIn(theme.colors, 'surface.border.gray.muted' as DotNotationToken<Theme['colors']>)} ${dotSize}px,
     transparent ${dotSize}px
   )`
       : 'none'};
