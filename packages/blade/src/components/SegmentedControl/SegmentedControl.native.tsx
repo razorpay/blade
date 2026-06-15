@@ -32,7 +32,7 @@ const _SegmentedControl = (
     errorText,
     validationState = 'none',
     necessityIndicator = 'none',
-    isRequired = false,
+    isRequired: _isRequired,
     testID,
   }: SegmentedControlProps,
   _ref: React.Ref<unknown>,
