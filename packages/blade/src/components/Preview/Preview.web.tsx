@@ -197,7 +197,10 @@ const ZoomContainer = styled.div<{ isDragEnabled: boolean; isDragging: boolean }
     isDragEnabled
       ? `radial-gradient(
     circle,
-    ${getIn(theme.colors, 'surface.border.gray.muted' as DotNotationToken<Theme['colors']>)} ${dotSize}px,
+    ${getIn(
+      theme.colors,
+      'surface.border.gray.muted' as DotNotationToken<Theme['colors']>,
+    )} ${dotSize}px,
     transparent ${dotSize}px
   )`
       : 'none'};
