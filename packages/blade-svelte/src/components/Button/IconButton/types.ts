@@ -73,6 +73,8 @@ export interface IconButtonProps extends StyledPropsBlade {
   onTouchStart?: (event: TouchEvent) => void;
   /** Called when a touch point is removed from the IconButton. */
   onTouchEnd?: (event: TouchEvent) => void;
+  /** Called when a key is pressed while the IconButton is focused. */
+  onKeyDown?: (event: KeyboardEvent) => void;
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
 }

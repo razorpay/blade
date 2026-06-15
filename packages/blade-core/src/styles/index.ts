@@ -54,11 +54,7 @@ export {
   getIconButtonIconColorToken,
   highlightedButtonSizeMap,
 } from './IconButton';
-export type {
-  IconButtonVariants,
-  IconButtonEmphasis,
-  IconButtonSize,
-} from './IconButton';
+export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';

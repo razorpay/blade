@@ -22,6 +22,7 @@
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
+    onKeyDown,
     ...rest
   }: IconButtonProps = $props();
 
@@ -49,4 +50,5 @@
   {onPointerEnter}
   {onTouchStart}
   {onTouchEnd}
+  {onKeyDown}
 />
