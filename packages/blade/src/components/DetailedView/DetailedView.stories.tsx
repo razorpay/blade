@@ -1293,7 +1293,7 @@ const DetailedViewWithContiguousBackgroundTemplate: StoryFn<typeof Drawer> = ({ 
       >
         <DrawerHeader
           color="positive"
-          backgroundStyle="contiguous"
+          variant="contiguous"
           title="Payout Details"
           trailing={
             <IconButton

@@ -18,7 +18,7 @@ const _DrawerHeader = ({
   titleSuffix,
   children,
   color = 'information',
-  backgroundStyle = 'default',
+  variant = 'default',
   showDivider,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
@@ -28,12 +28,15 @@ const _DrawerHeader = ({
   const { drawerStack } = useDrawerStack();
   const { theme } = useTheme();
 
-  const isContiguous = backgroundStyle === 'contiguous';
+  const isContiguous = variant === 'contiguous';
   const resolvedShowDivider = showDivider ?? !isContiguous;
 
-  React.useLayoutEffect(() => {
-    setHeaderConfig?.({ color, backgroundStyle });
-  }, [color, backgroundStyle, setHeaderConfig]);
+  React.useEffect(() => {
+    setHeaderConfig?.({ color, variant });
+    return () => {
+      setHeaderConfig?.({});
+    };
+  }, [color, variant, setHeaderConfig]);
 
   const closeAllDrawers = (): void => {
     for (const onDismiss of Object.values(drawerStack)) {

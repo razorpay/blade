@@ -158,7 +158,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
   }, [isMounted]);
 
   const contiguousBackgroundImage =
-    headerConfig.backgroundStyle === 'contiguous' && headerConfig.color
+    headerConfig.variant === 'contiguous' && headerConfig.color
       ? (`radial-gradient(120% 50% at 50% 0%, ${
           theme.colors.feedback.background[headerConfig.color].subtle
         } 0%, ${theme.colors.transparent} 100%)` as const)
@@ -171,10 +171,8 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
       stackingLevel,
       isExiting,
       setHeaderConfig,
-      headerConfig,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isExiting, onDismiss, stackingLevel, headerConfig],
+    [isExiting, onDismiss, stackingLevel, setHeaderConfig],
   );
 
   return (
