@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { FeedbackColors } from '~tokens/theme/theme';
+import type { DrawerHeaderVariant } from './types';
 
 type DrawerHeaderConfig = {
   color?: FeedbackColors;
-  backgroundStyle?: 'default' | 'contiguous';
+  variant?: DrawerHeaderVariant;
 };
 
 type DrawerContextType = {
@@ -13,7 +14,6 @@ type DrawerContextType = {
   stackingLevel?: number;
   isExiting: boolean;
   setHeaderConfig?: (config: DrawerHeaderConfig) => void;
-  headerConfig?: DrawerHeaderConfig;
 };
 
 const DrawerContext = React.createContext<DrawerContextType>({

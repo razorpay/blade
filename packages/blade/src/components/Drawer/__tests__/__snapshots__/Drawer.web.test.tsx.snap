@@ -502,7 +502,7 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
 </div>
 `;
 
-exports[`Drawer DrawerHeader backgroundStyle renders contiguous background style on the drawer container 1`] = `
+exports[`Drawer DrawerHeader variant renders contiguous variant on the drawer container 1`] = `
 .c2.c2.c2.c2.c2 {
   padding-right: 16px;
   padding-left: 16px;

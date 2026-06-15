@@ -594,7 +594,7 @@ export const ContiguousBackground = (args: DrawerProps): React.ReactElement => {
       >
         <DrawerHeader
           color="positive"
-          backgroundStyle="contiguous"
+          variant="contiguous"
           title="Settlements"
           trailing={
             <IconButton
