@@ -150,13 +150,34 @@ const prAuthor = execSync(`gh api repos/${repo}/pulls/${prNumber} --jq '.user.lo
 const currentUser = execSync("gh api user --jq '.login'").toString().trim();
 const isSelfReview = prAuthor === currentUser;
 
+// "Generate PR Report" runs long and is always in-progress — exclude it from review gates
+const IGNORED_CHECKS = ['generate pr report'];
+function filterIgnoredChecks(overview) {
+  const filtered = { ...overview };
+  for (const key of ['sanity-review', 'ui-review']) {
+    if (filtered[key]?.statuses) {
+      filtered[key] = {
+        ...filtered[key],
+        statuses: filtered[key].statuses.filter(
+          (s) => !IGNORED_CHECKS.includes(s.name.toLowerCase()),
+        ),
+      };
+    }
+  }
+  return filtered;
+}
+
 const overviewBody = formatOverviewComment(
-  reviewJson['overview-comment'],
+  filterIgnoredChecks(reviewJson['overview-comment']),
   reviewJson['reviewStatus'],
   isSelfReview,
 );
 
-const allComments = reviewJson['inlined-comments'] ?? [];
+const SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
+const sortBySeverity = (a, b) =>
+  (SEVERITY_ORDER[a.severity] ?? 3) - (SEVERITY_ORDER[b.severity] ?? 3);
+
+const allComments = (reviewJson['inlined-comments'] ?? []).sort(sortBySeverity);
 const lineComments = allComments.filter((c) => c.line);
 const fileComments = allComments.filter((c) => !c.line);
 

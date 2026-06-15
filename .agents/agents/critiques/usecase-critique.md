@@ -15,6 +15,12 @@ You are a subagent. Return structured data only — no commentary.
 - `PR_TITLE`: title of the PR
 - `PR_BODY`: body/description of the PR
 
+## Instructions
+
+- **Scope**: Question the intent of different changes in the PR or overall intent of the PR
+- **Goals**:
+  - Ensure that new prop is not exposed to the user for something that can be achieved with existing props without too much effort
+
 ## Steps
 
 ### 1. Challenge the usecase
