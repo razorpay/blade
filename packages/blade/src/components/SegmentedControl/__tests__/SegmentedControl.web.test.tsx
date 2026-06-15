@@ -7,7 +7,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 describe('<SegmentedControl />', () => {
   it('should render with default props', () => {
     const { container, getByRole, getAllByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="daily">
+      <SegmentedControl defaultValue="daily" accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -21,7 +21,7 @@ describe('<SegmentedControl />', () => {
 
   it('should select defaultValue on mount', () => {
     const { getByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="weekly">
+      <SegmentedControl defaultValue="weekly" accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -37,7 +37,7 @@ describe('<SegmentedControl />', () => {
     const onChange = jest.fn();
 
     const { getByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="daily" onChange={onChange}>
+      <SegmentedControl defaultValue="daily" onChange={onChange} accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -45,7 +45,7 @@ describe('<SegmentedControl />', () => {
     );
 
     await user.click(getByRole('radio', { name: /weekly/i }));
-    expect(onChange).toHaveBeenCalledWith('weekly');
+    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 'weekly' });
     expect(getByRole('radio', { name: /weekly/i })).toHaveAttribute('aria-checked', 'true');
     expect(getByRole('radio', { name: /daily/i })).toHaveAttribute('aria-checked', 'false');
   });
@@ -55,14 +55,15 @@ describe('<SegmentedControl />', () => {
     const onChange = jest.fn();
 
     const ControlledExample = (): React.ReactElement => {
-      const [value, setValue] = React.useState('daily');
+      const [val, setVal] = React.useState('daily');
       return (
         <SegmentedControl
-          value={value}
-          onChange={(v) => {
-            setValue(v);
+          value={val}
+          onChange={({ value: v }) => {
+            setVal(v);
             onChange(v);
           }}
+          accessibilityLabel="Time period"
         >
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
@@ -81,7 +82,7 @@ describe('<SegmentedControl />', () => {
 
   it('should disable all items when isDisabled is true', () => {
     const { getAllByRole } = renderWithTheme(
-      <SegmentedControl isDisabled defaultValue="daily">
+      <SegmentedControl isDisabled defaultValue="daily" accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
       </SegmentedControl>,
@@ -98,7 +99,7 @@ describe('<SegmentedControl />', () => {
     const onChange = jest.fn();
 
     const { getByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="daily" onChange={onChange}>
+      <SegmentedControl defaultValue="daily" onChange={onChange} accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly" isDisabled>
           Weekly
@@ -116,7 +117,7 @@ describe('<SegmentedControl />', () => {
 
     sizes.forEach((size) => {
       const { getByRole, unmount } = renderWithTheme(
-        <SegmentedControl size={size} defaultValue="a">
+        <SegmentedControl size={size} defaultValue="a" accessibilityLabel="Options">
           <SegmentedControlItem value="a">A</SegmentedControlItem>
           <SegmentedControlItem value="b">B</SegmentedControlItem>
         </SegmentedControl>,
@@ -129,7 +130,7 @@ describe('<SegmentedControl />', () => {
 
   it('should always render full width', () => {
     const { getByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="a">
+      <SegmentedControl defaultValue="a" accessibilityLabel="Options">
         <SegmentedControlItem value="a">A</SegmentedControlItem>
         <SegmentedControlItem value="b">B</SegmentedControlItem>
       </SegmentedControl>,
@@ -140,12 +141,12 @@ describe('<SegmentedControl />', () => {
 
   it('should have correct accessibility attributes', () => {
     const { getByRole } = renderWithTheme(
-      <SegmentedControl name="frequency" defaultValue="daily">
+      <SegmentedControl accessibilityLabel="Frequency" defaultValue="daily">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
       </SegmentedControl>,
     );
 
-    expect(getByRole('radiogroup')).toHaveAttribute('aria-label', 'frequency');
+    expect(getByRole('radiogroup')).toHaveAttribute('aria-label', 'Frequency');
   });
 });

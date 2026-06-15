@@ -130,7 +130,7 @@ export const Sizes: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Small
         </Text>
-        <SegmentedControl size="small" defaultValue="daily">
+        <SegmentedControl size="small" defaultValue="daily" accessibilityLabel="Time period">
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
           <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -140,7 +140,7 @@ export const Sizes: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Medium
         </Text>
-        <SegmentedControl size="medium" defaultValue="daily">
+        <SegmentedControl size="medium" defaultValue="daily" accessibilityLabel="Time period">
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
           <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -150,7 +150,7 @@ export const Sizes: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Large
         </Text>
-        <SegmentedControl size="large" defaultValue="daily">
+        <SegmentedControl size="large" defaultValue="daily" accessibilityLabel="Time period">
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
           <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -167,14 +167,14 @@ export const WithIcons: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Icon with label
         </Text>
-        <SegmentedControl defaultValue="day">
-          <SegmentedControlItem value="day" icon={CalendarIcon}>
+        <SegmentedControl defaultValue="day" accessibilityLabel="Time view">
+          <SegmentedControlItem value="day" leading={CalendarIcon}>
             Day
           </SegmentedControlItem>
-          <SegmentedControlItem value="hour" icon={ClockIcon}>
+          <SegmentedControlItem value="hour" leading={ClockIcon}>
             Hour
           </SegmentedControlItem>
-          <SegmentedControlItem value="trend" icon={TrendingUpIcon}>
+          <SegmentedControlItem value="trend" leading={TrendingUpIcon}>
             Trend
           </SegmentedControlItem>
         </SegmentedControl>
@@ -183,9 +183,9 @@ export const WithIcons: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Icon only
         </Text>
-        <SegmentedControl defaultValue="list" name="View mode">
-          <SegmentedControlItem value="list" icon={ListIcon} />
-          <SegmentedControlItem value="grid" icon={LayoutIcon} />
+        <SegmentedControl defaultValue="list" accessibilityLabel="View mode">
+          <SegmentedControlItem value="list" leading={ListIcon} accessibilityLabel="List view" />
+          <SegmentedControlItem value="grid" leading={LayoutIcon} accessibilityLabel="Grid view" />
         </SegmentedControl>
       </Box>
     </Box>
@@ -195,7 +195,7 @@ export const WithIcons: StoryFn<SegmentedControlProps> = () => {
 export const InContainer: StoryFn<SegmentedControlProps> = () => {
   return (
     <Box padding="spacing.5" width="400px">
-      <SegmentedControl defaultValue="overview">
+      <SegmentedControl defaultValue="overview" accessibilityLabel="Navigation">
         <SegmentedControlItem value="overview">Overview</SegmentedControlItem>
         <SegmentedControlItem value="analytics">Analytics</SegmentedControlItem>
         <SegmentedControlItem value="reports">Reports</SegmentedControlItem>
@@ -211,7 +211,7 @@ export const Disabled: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Entire group disabled
         </Text>
-        <SegmentedControl isDisabled defaultValue="daily">
+        <SegmentedControl isDisabled defaultValue="daily" accessibilityLabel="Time period">
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
           <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -221,7 +221,7 @@ export const Disabled: StoryFn<SegmentedControlProps> = () => {
         <Text marginBottom="spacing.3" weight="semibold">
           Single item disabled
         </Text>
-        <SegmentedControl defaultValue="daily">
+        <SegmentedControl defaultValue="daily" accessibilityLabel="Time period">
           <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
           <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
           <SegmentedControlItem value="monthly" isDisabled>
@@ -239,7 +239,11 @@ export const Controlled: StoryFn<SegmentedControlProps> = () => {
   return (
     <Box padding="spacing.5">
       <Text marginBottom="spacing.3">Selected: {selected}</Text>
-      <SegmentedControl value={selected} onChange={setSelected}>
+      <SegmentedControl
+        value={selected}
+        onChange={({ value: v }) => setSelected(v)}
+        accessibilityLabel="Time period"
+      >
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -294,7 +298,7 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Small
             </Text>
-            <SegmentedControl size="small" defaultValue="daily">
+            <SegmentedControl size="small" defaultValue="daily" accessibilityLabel="Time period">
               <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
               <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
               <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -304,7 +308,7 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Medium
             </Text>
-            <SegmentedControl size="medium" defaultValue="daily">
+            <SegmentedControl size="medium" defaultValue="daily" accessibilityLabel="Time period">
               <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
               <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
               <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -314,7 +318,7 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Large
             </Text>
-            <SegmentedControl size="large" defaultValue="daily">
+            <SegmentedControl size="large" defaultValue="daily" accessibilityLabel="Time period">
               <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
               <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
               <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -333,14 +337,14 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Icon + Label
             </Text>
-            <SegmentedControl defaultValue="day">
-              <SegmentedControlItem value="day" icon={CalendarIcon}>
+            <SegmentedControl defaultValue="day" accessibilityLabel="Time view">
+              <SegmentedControlItem value="day" leading={CalendarIcon}>
                 Day
               </SegmentedControlItem>
-              <SegmentedControlItem value="hour" icon={ClockIcon}>
+              <SegmentedControlItem value="hour" leading={ClockIcon}>
                 Hour
               </SegmentedControlItem>
-              <SegmentedControlItem value="trend" icon={TrendingUpIcon}>
+              <SegmentedControlItem value="trend" leading={TrendingUpIcon}>
                 Trend
               </SegmentedControlItem>
             </SegmentedControl>
@@ -349,9 +353,17 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Icon Only
             </Text>
-            <SegmentedControl defaultValue="list" name="View mode">
-              <SegmentedControlItem value="list" icon={ListIcon} />
-              <SegmentedControlItem value="grid" icon={LayoutIcon} />
+            <SegmentedControl defaultValue="list" accessibilityLabel="View mode">
+              <SegmentedControlItem
+                value="list"
+                leading={ListIcon}
+                accessibilityLabel="List view"
+              />
+              <SegmentedControlItem
+                value="grid"
+                leading={LayoutIcon}
+                accessibilityLabel="Grid view"
+              />
             </SegmentedControl>
           </Box>
         </Box>
@@ -367,7 +379,7 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Group Disabled
             </Text>
-            <SegmentedControl isDisabled defaultValue="daily">
+            <SegmentedControl isDisabled defaultValue="daily" accessibilityLabel="Time period">
               <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
               <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
               <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -377,7 +389,7 @@ export const Showcase: StoryFn<SegmentedControlProps> = () => {
             <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.2">
               Single Item Disabled
             </Text>
-            <SegmentedControl defaultValue="daily">
+            <SegmentedControl defaultValue="daily" accessibilityLabel="Time period">
               <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
               <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
               <SegmentedControlItem value="monthly" isDisabled>

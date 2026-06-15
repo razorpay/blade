@@ -1,21 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import type { SegmentedControlProps } from './types';
 import { SegmentedControlContext } from './SegmentedControlContext';
+import { containerPadding, containerBorderRadius, gap } from './segmentedControlTokens';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-  },
-});
+import getIn from '~utils/lodashButBetter/get';
 
 const _SegmentedControl = (
   {
@@ -25,17 +19,18 @@ const _SegmentedControl = (
     onChange,
     size = 'medium',
     isDisabled = false,
+    isRequired: _isRequired,
     name,
     label,
+    accessibilityLabel,
     labelPosition = 'top',
     helpText,
     errorText,
     validationState = 'none',
     necessityIndicator = 'none',
-    isRequired: _isRequired,
     testID,
   }: SegmentedControlProps,
-  _ref: React.Ref<unknown>,
+  ref: React.Ref<View>,
 ): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -43,12 +38,13 @@ const _SegmentedControl = (
     defaultValue,
     value,
     onChange: (val) => {
-      onChange?.(val);
+      onChange?.({ name, value: val });
     },
   });
 
   const baseId = useId('segmented-control');
   const labelId = `${baseId}-label`;
+  const totalItems = React.Children.count(children);
 
   const contextValue = React.useMemo(
     () => ({
@@ -58,34 +54,38 @@ const _SegmentedControl = (
       isDisabled,
       name,
       baseId,
+      totalItems,
     }),
-    [selectedValue, setSelectedValue, size, isDisabled, name, baseId],
+    [selectedValue, setSelectedValue, size, isDisabled, name, baseId, totalItems],
   );
 
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
+  const hasFieldWrapper = Boolean(label || helpText || errorText);
 
   const segmentedControlElement = (
     <View
-      style={[
-        styles.container,
-        {
-          backgroundColor: theme.colors.interactive.background.gray.faded,
-          borderRadius: theme.border.radius[size === 'small' ? 'small' : 'medium'],
-          padding: theme.spacing[size === 'small' ? 1 : 2],
-          gap: theme.spacing[1],
-        },
-      ]}
+      ref={ref}
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        backgroundColor: theme.colors.interactive.background.gray.faded,
+        borderRadius: theme.border.radius[containerBorderRadius[size]],
+        padding: getIn(theme, containerPadding[size]),
+        gap: getIn(theme, gap[size]),
+      }}
       accessibilityRole="radiogroup"
-      accessibilityLabel={name}
+      accessibilityLabel={label || accessibilityLabel || name}
+      accessibilityState={{ expanded: undefined }}
       {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
     >
       {children}
     </View>
   );
 
-  if (!label && !helpText && !errorText) {
+  if (!hasFieldWrapper) {
     return (
       <SegmentedControlContext.Provider value={contextValue}>
         {segmentedControlElement}

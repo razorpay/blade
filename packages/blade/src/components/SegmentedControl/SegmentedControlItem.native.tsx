@@ -1,32 +1,25 @@
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 import type { SegmentedControlItemProps } from './types';
 import { useSegmentedControlContext } from './SegmentedControlContext';
-import { textSizeMap, iconSizeMap } from './segmentedControlTokens';
+import {
+  paddingX,
+  paddingY,
+  textSizeMap,
+  iconSizeMap,
+  itemBorderRadius,
+} from './segmentedControlTokens';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-
-const styles = StyleSheet.create({
-  button: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-const paddingMap = {
-  small: { paddingVertical: 4, paddingHorizontal: 12 },
-  medium: { paddingVertical: 8, paddingHorizontal: 12 },
-  large: { paddingVertical: 12, paddingHorizontal: 12 },
-} as const;
+import getIn from '~utils/lodashButBetter/get';
 
 const SegmentedControlItem = ({
   children,
   value,
-  icon: Icon,
+  leading: Leading,
   isDisabled: isItemDisabled = false,
+  accessibilityLabel,
   testID,
 }: SegmentedControlItemProps): React.ReactElement => {
   const {
@@ -51,6 +44,11 @@ const SegmentedControlItem = ({
     ? 'interactive.icon.gray.normal'
     : 'interactive.icon.gray.muted';
 
+  const radiusValue =
+    typeof itemBorderRadius[size] === 'number'
+      ? itemBorderRadius[size]
+      : theme.border.radius[itemBorderRadius[size]];
+
   return (
     <Pressable
       onPress={() => {
@@ -60,21 +58,22 @@ const SegmentedControlItem = ({
       }}
       disabled={isDisabled}
       accessibilityRole="radio"
-      accessibilityState={{ checked: isSelected, disabled: isDisabled }}
-      style={[
-        styles.button,
-        paddingMap[size],
-        {
-          gap: theme.spacing[3],
-          borderRadius: size === 'small' ? 6 : theme.border.radius.small,
-          backgroundColor: isSelected
-            ? theme.colors.surface.background.gray.intense
-            : 'transparent',
-        },
-      ]}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ selected: isSelected, disabled: isDisabled }}
+      style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: theme.spacing[3],
+        paddingVertical: getIn(theme, paddingY[size]),
+        paddingHorizontal: getIn(theme, paddingX[size]),
+        borderRadius: radiusValue,
+        backgroundColor: isSelected ? theme.colors.surface.background.gray.intense : 'transparent',
+      }}
       {...metaAttribute({ name: MetaConstants.SegmentedControlItem, testID })}
     >
-      {Icon ? <Icon size={iconSizeMap[size]} color={iconColor} /> : null}
+      {Leading ? <Leading size={iconSizeMap[size]} color={iconColor} /> : null}
       {children ? (
         <Text color={textColor} size={textSizeMap[size]} weight="medium">
           {children}

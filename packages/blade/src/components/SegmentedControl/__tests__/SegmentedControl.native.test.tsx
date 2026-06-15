@@ -7,7 +7,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 describe('<SegmentedControl /> (native)', () => {
   it('should render with default props', () => {
     const { toJSON, getAllByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="daily">
+      <SegmentedControl defaultValue="daily" accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
         <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
@@ -22,7 +22,7 @@ describe('<SegmentedControl /> (native)', () => {
     const onChange = jest.fn();
 
     const { getAllByRole } = renderWithTheme(
-      <SegmentedControl defaultValue="daily" onChange={onChange}>
+      <SegmentedControl defaultValue="daily" onChange={onChange} accessibilityLabel="Time period">
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
       </SegmentedControl>,
@@ -30,14 +30,19 @@ describe('<SegmentedControl /> (native)', () => {
 
     const radios = getAllByRole('radio');
     fireEvent.press(radios[1]);
-    expect(onChange).toHaveBeenCalledWith('weekly');
+    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 'weekly' });
   });
 
   it('should disable all items when isDisabled is true', () => {
     const onChange = jest.fn();
 
     const { getAllByRole } = renderWithTheme(
-      <SegmentedControl isDisabled defaultValue="daily" onChange={onChange}>
+      <SegmentedControl
+        isDisabled
+        defaultValue="daily"
+        onChange={onChange}
+        accessibilityLabel="Time period"
+      >
         <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
         <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
       </SegmentedControl>,

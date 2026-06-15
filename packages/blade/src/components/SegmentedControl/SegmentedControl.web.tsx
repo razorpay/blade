@@ -36,14 +36,15 @@ const _SegmentedControl = (
     onChange,
     size = 'medium',
     isDisabled = false,
+    isRequired = false,
     name,
     label,
+    accessibilityLabel,
     labelPosition = 'top',
     helpText,
     errorText,
     validationState = 'none',
     necessityIndicator = 'none',
-    isRequired: _isRequired,
     testID,
     ...rest
   }: SegmentedControlProps,
@@ -53,13 +54,14 @@ const _SegmentedControl = (
     defaultValue,
     value,
     onChange: (val) => {
-      onChange?.(val);
+      onChange?.({ name, value: val });
     },
   });
 
   const baseId = useId('segmented-control');
   const containerRef = React.useRef<HTMLDivElement>(null);
   const labelId = `${baseId}-label`;
+  const totalItems = React.Children.count(children);
 
   const contextValue = React.useMemo(
     () => ({
@@ -69,14 +71,16 @@ const _SegmentedControl = (
       isDisabled,
       name,
       baseId,
+      totalItems,
     }),
-    [selectedValue, setSelectedValue, size, isDisabled, name, baseId],
+    [selectedValue, setSelectedValue, size, isDisabled, name, baseId, totalItems],
   );
 
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
   const hasFieldWrapper = Boolean(label || helpText || errorText);
+  const ariaLabel = label ? undefined : accessibilityLabel || name;
 
   const segmentedControlElement = (
     <StyledSegmentedControlContainer
@@ -89,7 +93,8 @@ const _SegmentedControl = (
       {...makeAccessible({
         role: 'radiogroup',
         labelledBy: label ? labelId : undefined,
-        label: label ? undefined : name,
+        label: ariaLabel,
+        required: isRequired,
       })}
       {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
       {...makeAnalyticsAttribute(rest)}

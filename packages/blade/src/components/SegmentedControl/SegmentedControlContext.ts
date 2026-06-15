@@ -4,12 +4,13 @@ import { throwBladeError } from '~utils/logger';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
 type SegmentedControlContextProps = {
-  selectedValue: string;
+  selectedValue: string | undefined;
   setSelectedValue: ControllableStateSetter<string>;
   size: SegmentedControlSize;
   isDisabled: boolean;
   name?: string;
   baseId: string;
+  totalItems: number;
 } | null;
 
 const SegmentedControlContext = React.createContext<SegmentedControlContextProps>(null);

@@ -65,7 +65,6 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   -moz-appearance: none;
   appearance: none;
   border: none;
-  outline: none;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -103,7 +102,12 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   background-color: transparent;
 }
 
+.c1.c1.c1.c1.c1:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .c1.c1.c1.c1.c1:focus-visible {
+  outline: none;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -121,7 +125,6 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   -moz-appearance: none;
   appearance: none;
   border: none;
-  outline: none;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -159,7 +162,12 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
   background-color: hsla(206,10%,29%,0.06);
 }
 
+.c3.c3.c3.c3.c3:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .c3.c3.c3.c3.c3:focus-visible {
+  outline: none;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -204,12 +212,15 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
 
 <div>
   <div
+    aria-label="Time period"
+    aria-required="false"
     class="c0"
     data-blade-component="segmented-control"
     role="radiogroup"
   >
     <button
       aria-checked="true"
+      aria-setsize="3"
       class="c1"
       data-blade-component="segmented-control-item"
       id="segmented-control-1-daily-item"
@@ -226,6 +237,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
     </button>
     <button
       aria-checked="false"
+      aria-setsize="3"
       class="c3"
       data-blade-component="segmented-control-item"
       id="segmented-control-1-weekly-item"
@@ -242,6 +254,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
     </button>
     <button
       aria-checked="false"
+      aria-setsize="3"
       class="c3"
       data-blade-component="segmented-control-item"
       id="segmented-control-1-monthly-item"

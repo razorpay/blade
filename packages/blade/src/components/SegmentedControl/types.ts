@@ -4,7 +4,7 @@ import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 
 type SegmentedControlSize = 'small' | 'medium' | 'large';
 
-type SegmentedControlProps = {
+type SegmentedControlCommonProps = {
   /**
    * The content of the SegmentedControl, accepts `SegmentedControlItem` components.
    */
@@ -20,7 +20,7 @@ type SegmentedControlProps = {
   /**
    * Callback fired when the selected value changes.
    */
-  onChange?: (value: string) => void;
+  onChange?: ({ name, value }: { name: string | undefined; value: string }) => void;
   /**
    * The size of the segmented control.
    *
@@ -34,13 +34,9 @@ type SegmentedControlProps = {
    */
   isDisabled?: boolean;
   /**
-   * Name attribute for form submission.
+   * Name attribute for form identification.
    */
   name?: string;
-  /**
-   * Renders the label of the segmented control.
-   */
-  label?: string;
   /**
    * Sets the position of the label.
    *
@@ -78,25 +74,76 @@ type SegmentedControlProps = {
 } & TestID &
   DataAnalyticsAttribute;
 
-type SegmentedControlItemProps = {
+type SegmentedControlPropsWithLabel = {
+  /**
+   * Renders the label of the segmented control.
+   */
+  label: string;
+  /**
+   * Accessibility label for the segmented control.
+   */
+  accessibilityLabel?: string;
+};
+
+type SegmentedControlPropsWithA11yLabel = {
+  /**
+   * Renders the label of the segmented control.
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the segmented control (required when no visible label).
+   */
+  accessibilityLabel: string;
+};
+
+type SegmentedControlProps = (SegmentedControlPropsWithLabel | SegmentedControlPropsWithA11yLabel) &
+  SegmentedControlCommonProps;
+
+type SegmentedControlItemWithIconProps = {
+  /**
+   * A leading icon component.
+   */
+  leading: IconComponent;
+  /**
+   * The label content of the item. Optional when leading icon is provided.
+   */
+  children?: React.ReactNode;
+  /**
+   * Accessibility label for the item. Required for icon-only items.
+   */
+  accessibilityLabel?: string;
+};
+
+type SegmentedControlItemWithoutIconProps = {
+  /**
+   * A leading icon component.
+   */
+  leading?: undefined;
+  /**
+   * The label content of the item.
+   */
+  children: React.ReactNode;
+  /**
+   * Accessibility label for the item.
+   */
+  accessibilityLabel?: string;
+};
+
+type SegmentedControlItemProps = (
+  | SegmentedControlItemWithIconProps
+  | SegmentedControlItemWithoutIconProps
+) & {
   /**
    * The unique value for this item.
    */
   value: string;
-  /**
-   * The label content of the item. Can be omitted for icon-only items.
-   */
-  children?: React.ReactNode;
-  /**
-   * An optional leading icon. Can be used alone without children for icon-only items.
-   */
-  icon?: IconComponent;
   /**
    * If `true`, this item is disabled.
    *
    * @default false
    */
   isDisabled?: boolean;
-} & TestID;
+} & TestID &
+  DataAnalyticsAttribute;
 
 export type { SegmentedControlProps, SegmentedControlItemProps, SegmentedControlSize };

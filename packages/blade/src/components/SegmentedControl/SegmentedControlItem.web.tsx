@@ -11,9 +11,9 @@ import {
 } from './segmentedControlTokens';
 import { Text } from '~components/Typography';
 import { makeSpace, castWebType, makeMotionTime } from '~utils';
-import useInteraction from '~utils/useInteraction';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import getIn from '~utils/lodashButBetter/get';
 
 const StyledSegmentedControlButton = styled.button<{
@@ -22,7 +22,6 @@ const StyledSegmentedControlButton = styled.button<{
 }>(({ theme, $size, $isSelected }) => ({
   appearance: 'none',
   border: 'none',
-  outline: 'none',
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
@@ -52,7 +51,12 @@ const StyledSegmentedControlButton = styled.button<{
     backgroundColor: $isSelected ? 'transparent' : theme.colors.interactive.background.gray.default,
   },
 
+  '&:focus:not(:focus-visible)': {
+    outline: 'none',
+  },
+
   '&:focus-visible': {
+    outline: 'none',
     boxShadow: `inset 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
   },
 
@@ -68,9 +72,11 @@ const StyledSegmentedControlButton = styled.button<{
 const SegmentedControlItem = ({
   children,
   value,
-  icon: Icon,
+  leading: Leading,
   isDisabled: isItemDisabled = false,
+  accessibilityLabel,
   testID,
+  ...rest
 }: SegmentedControlItemProps): React.ReactElement => {
   const {
     selectedValue,
@@ -78,9 +84,9 @@ const SegmentedControlItem = ({
     size,
     isDisabled: isGroupDisabled,
     baseId,
+    totalItems,
   } = useSegmentedControlContext();
 
-  const { currentInteraction, ...interactionProps } = useInteraction();
   const isSelected = selectedValue === value;
   const isDisabled = isGroupDisabled || isItemDisabled;
 
@@ -103,18 +109,18 @@ const SegmentedControlItem = ({
       $isSelected={isSelected}
       disabled={isDisabled}
       onClick={() => {
-        if (!isDisabled) {
-          setSelectedValue(() => value);
-        }
+        setSelectedValue(() => value);
       }}
-      {...interactionProps}
       {...makeAccessible({
         role: 'radio',
         checked: isSelected,
+        label: accessibilityLabel,
+        setSize: totalItems,
       })}
       {...metaAttribute({ name: MetaConstants.SegmentedControlItem, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
-      {Icon ? <Icon size={iconSizeMap[size]} color={iconColor} /> : null}
+      {Leading ? <Leading size={iconSizeMap[size]} color={iconColor} /> : null}
       {children ? (
         <Text as="span" color={textColor} size={textSizeMap[size]} weight="medium">
           {children}

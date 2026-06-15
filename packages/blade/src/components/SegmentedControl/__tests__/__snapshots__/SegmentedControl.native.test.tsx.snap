@@ -9,22 +9,24 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
   }
 >
   <View
+    accessibilityLabel="Time period"
     accessibilityRole="radiogroup"
+    accessibilityState={
+      {
+        "expanded": undefined,
+      }
+    }
     data-blade-component="segmented-control"
     style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flexDirection": "row",
-        },
-        {
-          "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
-          "borderRadius": 12,
-          "gap": 2,
-          "padding": 4,
-        },
-      ]
+      {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "backgroundColor": "hsla(206, 10%, 29%, 0.06)",
+        "borderRadius": 12,
+        "flexDirection": "row",
+        "gap": 2,
+        "padding": 4,
+      }
     }
   >
     <View
@@ -32,10 +34,10 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       accessibilityState={
         {
           "busy": undefined,
-          "checked": true,
+          "checked": undefined,
           "disabled": false,
           "expanded": undefined,
-          "selected": undefined,
+          "selected": true,
         }
       }
       accessibilityValue={
@@ -60,23 +62,17 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-          },
-          {
-            "paddingHorizontal": 12,
-            "paddingVertical": 8,
-          },
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-            "borderRadius": 8,
-            "gap": 8,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 8,
+          "flex": 1,
+          "flexDirection": "row",
+          "gap": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 8,
+          "paddingVertical": 4,
+        }
       }
     >
       <Text
@@ -120,10 +116,10 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       accessibilityState={
         {
           "busy": undefined,
-          "checked": false,
+          "checked": undefined,
           "disabled": false,
           "expanded": undefined,
-          "selected": undefined,
+          "selected": false,
         }
       }
       accessibilityValue={
@@ -148,23 +144,17 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-          },
-          {
-            "paddingHorizontal": 12,
-            "paddingVertical": 8,
-          },
-          {
-            "backgroundColor": "transparent",
-            "borderRadius": 8,
-            "gap": 8,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 8,
+          "flex": 1,
+          "flexDirection": "row",
+          "gap": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 8,
+          "paddingVertical": 4,
+        }
       }
     >
       <Text
@@ -208,10 +198,10 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       accessibilityState={
         {
           "busy": undefined,
-          "checked": false,
+          "checked": undefined,
           "disabled": false,
           "expanded": undefined,
-          "selected": undefined,
+          "selected": false,
         }
       }
       accessibilityValue={
@@ -236,23 +226,17 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-          },
-          {
-            "paddingHorizontal": 12,
-            "paddingVertical": 8,
-          },
-          {
-            "backgroundColor": "transparent",
-            "borderRadius": 8,
-            "gap": 8,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 8,
+          "flex": 1,
+          "flexDirection": "row",
+          "gap": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 8,
+          "paddingVertical": 4,
+        }
       }
     >
       <Text
