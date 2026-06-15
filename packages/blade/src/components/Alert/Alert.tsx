@@ -95,7 +95,6 @@ type AlertProps = {
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`.
-   * This also makes the alert borderless, useful for creating full bleed layouts.
    *
    * @default false
    */
@@ -103,9 +102,9 @@ type AlertProps = {
 
   /**
    * Sets a custom max-width for the Alert.
-   * When `isFullWidth` is true, this prop is ignored.
+   * Has no effect when `isFullWidth` is true.
    *
-   * @default '584px'
+   * @default '584px' (derived from global size token `size[584]`)
    */
   maxWidth?: BoxProps['maxWidth'];
 
