@@ -57,10 +57,13 @@
   });
 
   /* Measure the header height after mount/open so the parent can size its
-   * total content. Mirrors React's `useIsomorphicLayoutEffect` measurement. */
+   * total content. Mirrors React's `useIsomorphicLayoutEffect` measurement.
+   * Run for any non-empty header (covers leading/trailing/showBackButton/children
+   * cases too — not just title/subtitle) so snap-point math always accounts for
+   * the rendered header. */
   $effect(() => {
     if (!headerEl) return;
-    if (!title && !subtitle) return;
+    if (isHeaderEmpty) return;
     // Re-run on isOpen toggle by reading it.
     void ctx?.isOpen;
     ctx?.setHeaderHeight(headerEl.getBoundingClientRect().height);
