@@ -1,0 +1,460 @@
+/* ───────────────────────── Checkbox ───────────────────────── */
+
+/* Outer wrapper (BaseBox + styled props land here) */
+.checkbox {
+  display: block;
+}
+
+/* SelectorLabel — wraps the visually-hidden input + icon + title.
+   Drives cursor + click target. `display: flex` (block-level, matching React's
+   StyledSelectorLabel) so a sibling FormHint wraps below instead of inline.
+   margin-top/bottom = spacing.1, mirroring React. */
+.label {
+  display: flex;
+  margin-top: var(--spacing-1);
+  margin-bottom: var(--spacing-1);
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Visually-hidden native input — kept as a sibling of `.icon` so adjacent
+   sibling selectors (`+ .icon`) handle hover and focus-visible. */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Icon wrapper (the visible box) ── */
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-style: solid;
+  margin: var(--spacing-1);
+  border-radius: var(--border-radius-xsmall);
+  box-sizing: border-box;
+}
+
+/* Sizes — width/height + border-width */
+.icon-small {
+  width: 12px;
+  height: 12px;
+  border-width: var(--border-width-thick);
+}
+
+.icon-medium {
+  width: 16px;
+  height: 16px;
+  border-width: var(--border-width-thick);
+}
+
+.icon-large {
+  width: 20px;
+  height: 20px;
+  border-width: var(--border-width-thicker);
+}
+
+/* padding-top applied only when size=small AND not indeterminate */
+.icon-small-pad {
+  padding-top: 1px;
+}
+
+/*
+ * Class anchors — intentionally empty so CSS Modules emits a scoped class name
+ * even when the class only participates in compound sibling selectors below.
+ */
+.checked {
+}
+.unchecked {
+}
+
+/* ── Variant × checked compounds (background + border) ── */
+.default-checked {
+  background-color: var(--interactive-background-primary-default);
+  border-color: var(--interactive-border-primary-default);
+}
+
+.default-unchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-gray-highlighted);
+}
+
+.disabled-checked {
+  background-color: var(--interactive-background-primary-disabled);
+  border-color: transparent;
+}
+
+.disabled-unchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-gray-disabled);
+}
+
+.negative-checked {
+  background-color: var(--interactive-background-negative-default);
+  border-color: var(--interactive-border-negative-default);
+}
+
+.negative-unchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-negative-default);
+}
+
+/* ── Hover — adjacent sibling selectors, suppressed when disabled/error ──
+   The hover variants only apply to the `default` (non-disabled, non-negative)
+   icon, matching React's checkboxHoverTokens which is skipped for those. */
+.input:hover:not(:disabled) + .default-checked {
+  background-color: var(--interactive-background-primary-highlighted);
+  border-color: var(--interactive-background-primary-highlighted);
+}
+
+.input:hover:not(:disabled) + .default-unchecked {
+  background-color: var(--interactive-background-gray-faded);
+  border-color: var(--interactive-border-gray-highlighted);
+}
+
+/* ── Focus ring — adjacent sibling: input + icon ── */
+.input:focus-visible + .icon {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 1px;
+}
+
+/* ── Fade wrappers (enter/exit animation around each svg) ── */
+.fade {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+}
+
+.fade-shown {
+  opacity: 1;
+}
+
+.fade-in {
+  animation: checkboxFadeIn var(--duration-xquick) var(--easing-entrance);
+}
+
+.fade-out {
+  animation: checkboxFadeOut var(--duration-xquick) var(--easing-exit);
+}
+
+@keyframes checkboxFadeIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes checkboxFadeOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* ── SVG (tick / dash) ── */
+.svg {
+  color: var(--interactive-icon-on-primary-normal);
+}
+
+.svg-disabled {
+  color: var(--interactive-icon-static-white-disabled);
+}
+
+.svg-small {
+  width: 8px;
+  height: 8px;
+}
+
+.svg-medium {
+  width: 12px;
+  height: 12px;
+}
+
+.svg-large {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Title (SelectorTitle) ── */
+/* React renders an empty `<BaseBox marginLeft="spacing.2" />` spacer before the
+   Text; replicate that gap (icon margin 2px + this 4px = 6px) via margin-left. */
+.title {
+  margin-left: var(--spacing-2);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  color: var(--surface-text-gray-subtle);
+}
+
+.title-disabled {
+  color: var(--surface-text-gray-disabled);
+}
+
+.title-small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.title-medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.title-large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* ── Support text (helpText below the box) ──
+   Block wrapper mirrors React's container (BaseBox) which inherits font-size
+   16px + line-height normal, producing a ~20px line box. The inline text child
+   (`.support-text`) renders the caption glyphs and sits baseline-aligned within
+   that taller line box — this reproduces React's vertical leading exactly. */
+.support {
+  display: block;
+  font-size: var(--font-size-200);
+  line-height: normal;
+}
+
+.support-text {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  color: var(--surface-text-gray-muted);
+}
+
+/* React caption sizes: small/medium checkbox -> caption "small" (11px/16px),
+   large checkbox -> caption "medium" (14px/16px). */
+.support-small,
+.support-medium {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+}
+
+.support-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-50);
+}
+
+/* Left spacing of support text — aligns under the title.
+   React: helpTextLeftSpacing = icon.width + spacing.3 (8px).
+   small: 12+8=20, medium: 16+8=24, large: 20+8=28. */
+.support-spacing-small {
+  margin-left: 20px;
+}
+
+.support-spacing-medium {
+  margin-left: 24px;
+}
+
+.support-spacing-large {
+  margin-left: 28px;
+}
+
+/* ── Form hint (errorText / helpText below the whole control) ── */
+.hint {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+}
+
+.hint-help {
+  color: var(--surface-text-gray-muted);
+}
+
+.hint-error {
+  color: var(--feedback-text-negative-intense);
+}
+
+/* React FormHint caption sizes (via checkbox formHintSize map): small/medium ->
+   caption "small" (11px/16px), large -> caption "medium" (14px/16px). */
+.hint-small,
+.hint-medium {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+}
+
+.hint-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-50);
+}
+
+/* React offsets the large hint Text 2px down (marginTop spacing.1) when an icon
+   is present, to keep it baseline-aligned with the larger icon. Only the error
+   hint renders an icon, so this is scoped to size large + error. */
+.hint-large-error {
+  margin-top: var(--spacing-1);
+}
+
+/* FormHintWrapper — row with the error icon + text (React: display flex,
+   align-items flex-start, gap spacing.2). */
+.hint-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+/* Top spacing of the form hint — mirrors React's hintMarginTop applied to the
+   HintText wrapper. Checkbox maps formHintSize small/medium -> medium
+   (spacing.2 = 4px) and large -> large (spacing.3 = 8px). */
+.hint-wrapper-spacing-small,
+.hint-wrapper-spacing-medium {
+  margin-top: var(--spacing-2);
+}
+
+.hint-wrapper-spacing-large {
+  margin-top: var(--spacing-3);
+}
+
+/* Offset the block-level icon 2px down to align with the text baseline (web).
+   display:flex + line-height:0 collapses the inline line-box strut that was
+   making the wrapper ~20px tall and pushing the svg down vs React's 12px box. */
+.hint-icon {
+  flex-shrink: 0;
+  margin-top: var(--spacing-1);
+  display: flex;
+  line-height: 0;
+}
+
+.hint-icon svg {
+  display: block;
+}
+
+/* ───────────────────────── CheckboxGroup ───────────────────────── */
+
+.group-field {
+  display: flex;
+}
+
+.field-top {
+  flex-direction: column;
+}
+
+.field-left {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+/* Options container — orientation drives row/column */
+.options {
+  display: flex;
+}
+
+.options-vertical {
+  flex-direction: column;
+}
+
+.options-horizontal {
+  flex-direction: row;
+}
+
+/* Gap between options per size */
+.gap-small {
+  gap: var(--spacing-2);
+}
+
+.gap-medium,
+.gap-large {
+  gap: var(--spacing-3);
+}
+
+/* Group label */
+.group-label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--surface-text-gray-subtle);
+  margin-bottom: var(--spacing-3);
+  gap: var(--spacing-2);
+}
+
+.group-label-small {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.group-label-medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.group-label-large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* Label row holds label text + suffix + trailing; trailing pushed to far end */
+.label-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.label-suffix {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--spacing-2);
+}
+
+.label-trailing {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Necessity indicator */
+.necessity-required::after {
+  content: ' *';
+  color: var(--feedback-text-negative-intense);
+}
+
+.necessity-optional::after {
+  content: ' (optional)';
+  color: var(--surface-text-gray-muted);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Screen-reader-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

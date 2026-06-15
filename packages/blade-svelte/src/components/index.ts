@@ -66,6 +66,18 @@ export {
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+
+// Checkbox
+export { default as Checkbox } from './Checkbox/Checkbox.svelte';
+export { default as CheckboxGroup } from './Checkbox/CheckboxGroup.svelte';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxOnChange,
+  CheckboxGroupOnChange,
+  CheckboxInstance,
+  CheckboxSize,
+} from './Checkbox/types';
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
 
