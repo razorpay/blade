@@ -9,12 +9,16 @@ import { view } from './storybook.requires';
 import { name as appName } from '../../app.json';
 
 const App = () => {
-  const Storybook = view.getStorybookUI({
-    storage: {
-      getItem: AsyncStorage.getItem,
-      setItem: AsyncStorage.setItem,
-    },
-  });
+  const Storybook = React.useMemo(
+    () =>
+      view.getStorybookUI({
+        storage: {
+          getItem: AsyncStorage.getItem,
+          setItem: AsyncStorage.setItem,
+        },
+      }),
+    [],
+  );
 
   return (
     <BladeProvider themeTokens={bladeTheme}>

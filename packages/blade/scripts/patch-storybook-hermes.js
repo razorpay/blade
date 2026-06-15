@@ -72,6 +72,7 @@ for (const file of files) {
   if (idx >= 0) {
     const lineStart = content.lastIndexOf('\n', idx) + 1;
     const lineEnd = content.indexOf('\n', idx);
+    if (lineEnd < 0) continue;
     const line = content.substring(lineStart, lineEnd);
 
     if (line.includes('\\p{') || line.includes('/\\p{')) {
@@ -127,7 +128,9 @@ for (const file of idFiles) {
   const endMarker = 'identifierContinueRegex = new RegExp';
   const contIdx = content.indexOf(endMarker, idx);
   if (contIdx < 0) continue;
-  const lineEnd = content.indexOf(';', contIdx) + 1;
+  const semiIdx = content.indexOf(';', contIdx);
+  if (semiIdx < 0) continue;
+  const lineEnd = semiIdx + 1;
   content = content.substring(0, lineStart) +
     '        var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9\\-]/;' +
     content.substring(lineEnd);
