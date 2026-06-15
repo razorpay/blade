@@ -413,7 +413,12 @@
       (state: any) => runDragHandler(state, false),
       { from: () => [0, positionY], filterTaps: true },
     );
-    return () => gesture.destroy();
+    return () => {
+      /* Reset drag flag so the exit transition isn't suppressed by
+       * `transition: none` if `isOpen` flips false mid-drag. */
+      isDragging = false;
+      gesture.destroy();
+    };
   });
 
   $effect(() => {
@@ -425,11 +430,18 @@
       (state: any) => runDragHandler(state, true),
       { from: () => [0, positionY], filterTaps: true },
     );
-    return () => gesture.destroy();
+    return () => {
+      isDragging = false;
+      gesture.destroy();
+    };
   });
 
-  /* Gate scroll/touchmove on the body while we're not at the upper snap
-   * point — mirrors React's `preventScrollingRef`-driven listener. */
+  /* Gate touchmove on the body while we're not at the upper snap point —
+   * mirrors React's `preventScrollingRef`-driven listener. The `scroll`
+   * event is non-cancelable per spec, so only `touchmove` is wired here.
+   * `passive: false` is required for `preventDefault()` to actually block
+   * the gesture; modern browsers default touchmove on scrollables to
+   * passive. */
   $effect(() => {
     if (!scrollEl) return undefined;
     const node = scrollEl;
@@ -441,10 +453,8 @@
         event.preventDefault();
       }
     }
-    node.addEventListener('scroll', preventScrollingHandler);
-    node.addEventListener('touchmove', preventScrollingHandler);
+    node.addEventListener('touchmove', preventScrollingHandler, { passive: false });
     return () => {
-      node.removeEventListener('scroll', preventScrollingHandler);
       node.removeEventListener('touchmove', preventScrollingHandler);
     };
   });

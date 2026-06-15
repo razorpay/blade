@@ -40,7 +40,6 @@ export { default as BottomSheet } from './BottomSheet.svelte';
 export { default as BottomSheetHeader } from './BottomSheetHeader.svelte';
 export { default as BottomSheetBody } from './BottomSheetBody.svelte';
 export { default as BottomSheetFooter } from './BottomSheetFooter.svelte';
-export { default as BottomSheetBackdrop } from './BottomSheetBackdrop.svelte';
 
 export type {
   BottomSheetProps,
@@ -49,11 +48,3 @@ export type {
   BottomSheetFooterProps,
   SnapPoints,
 } from './types';
-
-export {
-  bottomSheetStack,
-  addBottomSheetToStack,
-  removeBottomSheetFromStack,
-  getTopOfTheStack,
-  getCurrentStackIndexById,
-} from './bottomSheetStack';

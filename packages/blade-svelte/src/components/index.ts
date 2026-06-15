@@ -107,7 +107,6 @@ export {
   BottomSheetHeader,
   BottomSheetBody,
   BottomSheetFooter,
-  BottomSheetBackdrop,
 } from './BottomSheet';
 export type {
   BottomSheetProps,
