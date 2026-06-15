@@ -15,13 +15,10 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
       alignSelf: 'center',
       overflow: 'hidden',
       backgroundColor: backgroundColor ? getIn(theme.colors, backgroundColor) : 'transparent',
-      // On native, StyledChipWrapper handles the border — suppress inner border to avoid double border
+      // StyledChipWrapper renders the visible border; suppress AnimatedChip's own border to avoid double border
       borderWidth: 0,
-      // Inner radius must account for wrapper's border thickness to avoid corner clipping
-      borderRadius: makeBorderSize(
-        theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] -
-          (getIn(theme, 'border.width.thin') as number) * 2,
-      ),
+      // Clip radius must match StyledChipWrapper's outer border radius (outerRadius - thick = 8 - 1.5 = 6.5)
+      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] - (getIn(theme, 'border.width.thick') as number)),
     };
   },
 );
