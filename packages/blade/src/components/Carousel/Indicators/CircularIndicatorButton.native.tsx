@@ -66,8 +66,8 @@ const CircularIndicatorButton = ({
   return (
     <Pressable
       onPress={onClick}
-      slideIndex={slideIndex}
       {...rest}
+      {...({ slideIndex } as any)}
       style={{
         minWidth: SVG_SIZE,
         minHeight: SVG_SIZE,
