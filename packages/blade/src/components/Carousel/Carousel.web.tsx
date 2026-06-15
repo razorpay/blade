@@ -489,6 +489,8 @@ const _Carousel = (
     scrollToSlide(activeSlide);
   }, [activeSlide]);
 
+  const isAutoPlaying = autoPlay && !shouldPauseAutoplay;
+
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
       isResponsive,
@@ -501,6 +503,8 @@ const _Carousel = (
       activeSlide,
       startEndMargin,
       shouldAddStartEndSpacing,
+      isMobile,
+      isAutoPlaying,
     };
   }, [
     carouselId,
@@ -511,6 +515,8 @@ const _Carousel = (
     totalNumberOfSlides,
     activeSlide,
     shouldAddStartEndSpacing,
+    isMobile,
+    isAutoPlaying,
   ]);
 
   return (
