@@ -79,15 +79,9 @@ jobs:
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
         run: |
           PREV_TASK_ID=$(gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
-            | python3 -c "
-import sys, json, re
-comments = json.load(sys.stdin)
-for c in reversed(comments):
-    m = re.search(r'<!-- slash-task-id: (\S+) -->', c.get('body', ''))
-    if m:
-        print(m.group(1))
-        break
-" 2>/dev/null || true)
+            --jq '.[].body' \
+            | grep -oP '<!-- slash-task-id: \K\S+(?= -->)' \
+            | tail -1 2>/dev/null || true)
 
           if [ -n "$PREV_TASK_ID" ]; then
             echo "Terminating previous Slash task: $PREV_TASK_ID"
