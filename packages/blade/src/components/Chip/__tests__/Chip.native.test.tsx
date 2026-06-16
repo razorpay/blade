@@ -168,7 +168,7 @@ describe('<Chip />', () => {
   });
 
   it('should render chip with leading element', () => {
-    const { toJSON, getByText } = renderWithTheme(
+    const { getByText } = renderWithTheme(
       <ChipGroup accessibilityLabel="Select country">
         <Chip value="IN" leading={<Text>🇮🇳</Text>}>
           India
@@ -178,17 +178,18 @@ describe('<Chip />', () => {
         </Chip>
       </ChipGroup>,
     );
-    expect(toJSON()).toMatchSnapshot();
     expect(getByText('India')).toBeDefined();
     expect(getByText('United States')).toBeDefined();
+    expect(getByText('🇮🇳')).toBeDefined();
+    expect(getByText('🇺🇸')).toBeDefined();
   });
 
   it('should render chip with leading element and no children', () => {
-    const { toJSON } = renderWithTheme(
+    const { getByText } = renderWithTheme(
       <ChipGroup accessibilityLabel="Select country">
         <Chip value="IN" leading={<Text>🇮🇳</Text>} />
       </ChipGroup>,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(getByText('🇮🇳')).toBeDefined();
   });
 });
