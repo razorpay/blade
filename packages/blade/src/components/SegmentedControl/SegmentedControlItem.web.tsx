@@ -92,6 +92,16 @@ const SegmentedControlItem = ({
   const isSelected = selectedValue === value;
   const isDisabled = isGroupDisabled || isItemDisabled;
 
+  const shouldReceiveFocus = (() => {
+    if (isSelected) return true;
+    if (selectedValue !== undefined) return false;
+    if (isDisabled) return false;
+    if (!itemRefs) return false;
+    const entries = Array.from(itemRefs.current.entries());
+    const firstEnabled = entries.find(([, el]) => !(el as HTMLButtonElement).disabled);
+    return firstEnabled?.[0] === value;
+  })();
+
   React.useEffect(() => {
     if (!itemRefs) return undefined;
     const map = itemRefs.current;
@@ -104,30 +114,28 @@ const SegmentedControlItem = ({
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLButtonElement>) => {
-      const container = e.currentTarget.parentElement;
-      if (!container) return;
+      if (!itemRefs) return;
 
-      const items = Array.from(
-        container.querySelectorAll<HTMLButtonElement>('[role="radio"]:not(:disabled)'),
+      const entries = Array.from(itemRefs.current.entries()).filter(
+        ([, el]) => !(el as HTMLButtonElement).disabled,
       );
-      const currentIndex = items.indexOf(e.currentTarget);
+      const currentIndex = entries.findIndex(([v]) => v === value);
       let nextIndex = -1;
 
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        nextIndex = (currentIndex + 1) % items.length;
+        nextIndex = (currentIndex + 1) % entries.length;
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        nextIndex = (currentIndex - 1 + items.length) % items.length;
+        nextIndex = (currentIndex - 1 + entries.length) % entries.length;
       }
 
       if (nextIndex >= 0) {
         e.preventDefault();
-        const nextItem = items[nextIndex];
-        nextItem.focus();
-        const nextValue = nextItem.dataset.value;
-        if (nextValue) setSelectedValue(() => nextValue);
+        const [nextValue, nextEl] = entries[nextIndex];
+        (nextEl as HTMLButtonElement).focus();
+        setSelectedValue(() => nextValue);
       }
     },
-    [setSelectedValue],
+    [setSelectedValue, itemRefs, value],
   );
 
   const textColor = isDisabled
@@ -147,7 +155,7 @@ const SegmentedControlItem = ({
       type="button"
       id={`${baseId}-${value}-item`}
       data-value={value}
-      tabIndex={isSelected ? 0 : -1}
+      tabIndex={shouldReceiveFocus ? 0 : -1}
       $size={size}
       $isSelected={isSelected}
       disabled={isDisabled}

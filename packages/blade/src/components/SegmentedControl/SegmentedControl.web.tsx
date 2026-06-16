@@ -6,6 +6,7 @@ import { SegmentedControlIndicator } from './SegmentedControlIndicator.web';
 import { containerPadding, containerBorderRadius, gap } from './segmentedControlTokens';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
+import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -60,6 +61,7 @@ const _SegmentedControl = (
 
   const baseId = useId('segmented-control');
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const mergedRef = useMergeRefs(containerRef, ref as React.Ref<HTMLDivElement>);
   const itemRefs = React.useRef<Map<string, HTMLElement>>(new Map());
   const labelId = `${baseId}-label`;
   const totalItems = React.Children.count(children);
@@ -86,11 +88,7 @@ const _SegmentedControl = (
 
   const segmentedControlElement = (
     <StyledSegmentedControlContainer
-      ref={(node) => {
-        (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-        if (typeof ref === 'function') ref(node as never);
-        else if (ref) (ref as React.MutableRefObject<unknown>).current = node;
-      }}
+      ref={mergedRef}
       $size={size}
       {...makeAccessible({
         role: 'radiogroup',

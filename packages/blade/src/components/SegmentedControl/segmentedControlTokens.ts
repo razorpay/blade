@@ -33,6 +33,7 @@ const containerBorderRadius: Record<SegmentedControlSize, 'small' | 'medium'> = 
   large: 'medium',
 };
 
+// 6px for small is a deliberate design decision — sits between xsmall (4px) and small (8px) tokens for visual proportion at this size
 const itemBorderRadius: Record<SegmentedControlSize, number | 'small'> = {
   small: 6,
   medium: 'small',
