@@ -395,7 +395,6 @@
   align-items: center;
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-medium);
-  color: var(--surface-text-gray-subtle);
   margin-bottom: var(--spacing-3);
   gap: var(--spacing-2);
 }
@@ -403,16 +402,19 @@
 .group-label-small {
   font-size: var(--font-size-75);
   line-height: var(--line-height-75);
+  color: var(--surface-text-gray-muted);
 }
 
 .group-label-medium {
-  font-size: var(--font-size-100);
-  line-height: var(--line-height-100);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-subtle);
 }
 
 .group-label-large {
-  font-size: var(--font-size-200);
-  line-height: var(--line-height-200);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  color: var(--surface-text-gray-subtle);
 }
 
 /* Label row holds label text + suffix + trailing; trailing pushed to far end */
