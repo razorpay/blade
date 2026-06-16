@@ -15,10 +15,10 @@ type ColorSwatchRef = {
 };
 
 const swatchSize = {
-  xsmall: 16,
-  small: 16,
-  medium: 20,
-  large: 24,
+  xsmall: 20,
+  small: 24,
+  medium: 28,
+  large: 36,
 } as const;
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
@@ -60,7 +60,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
             width: `${dimension}px`,
             height: `${dimension}px`,
             backgroundColor: `#${color || 'FFFFFF'}`,
-            borderRadius: '4px',
+            borderRadius: '6px',
             border: '1px solid',
             borderColor: 'hsla(0, 0%, 0%, 0.12)',
             flexShrink: 0,

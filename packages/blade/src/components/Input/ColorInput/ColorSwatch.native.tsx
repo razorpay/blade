@@ -10,10 +10,10 @@ type ColorSwatchProps = {
 };
 
 const swatchSize = {
-  xsmall: 16,
-  small: 16,
-  medium: 20,
-  large: 24,
+  xsmall: 20,
+  small: 24,
+  medium: 28,
+  large: 36,
 } as const;
 
 const ColorSwatch = ({
@@ -30,7 +30,7 @@ const ColorSwatch = ({
         width: dimension,
         height: dimension,
         backgroundColor: `#${color || 'FFFFFF'}`,
-        borderRadius: 4,
+        borderRadius: 6,
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.12)',
         opacity: isDisabled ? 0.5 : 1,
