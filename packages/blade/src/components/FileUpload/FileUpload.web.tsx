@@ -52,6 +52,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     isRequired,
     necessityIndicator,
     fileList,
+    fileCategory,
     testID,
     label,
     labelPosition = 'top',
@@ -370,6 +371,16 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={selectedFiles[0]}
             size={size}
+            fileCategory={
+              fileCategory
+                ? {
+                    options: fileCategory.options,
+                    value: fileCategory.getValue(selectedFiles[0]),
+                    onChange: fileCategory.onChange,
+                    placeholder: fileCategory.placeholder,
+                  }
+                : undefined
+            }
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
@@ -436,6 +447,16 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
+              fileCategory={
+                fileCategory
+                  ? {
+                      options: fileCategory.options,
+                      value: fileCategory.getValue(file),
+                      onChange: fileCategory.onChange,
+                      placeholder: fileCategory.placeholder,
+                    }
+                  : undefined
+              }
               onRemove={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);

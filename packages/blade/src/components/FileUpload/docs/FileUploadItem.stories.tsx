@@ -194,3 +194,78 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 
 export const AllStates = AllStatesTemplate.bind({});
 AllStates.storyName = 'All States';
+
+// With File Category Selector
+const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>('delivery_proof');
+
+  const categoryOptions = [
+    { title: 'Invoice', value: 'invoice' },
+    { title: 'Cancellation proof', value: 'cancellation_proof' },
+    { title: 'Delivery proof', value: 'delivery_proof' },
+    { title: 'Proof of service', value: 'proof_of_service' },
+    { title: 'Explanation letter', value: 'explanation_letter' },
+    { title: 'Refund confirmation', value: 'refund_confirmation' },
+    { title: 'Others', value: 'others' },
+  ];
+
+  const successFile = createMockFile('File_Name.pdf', 1024 * 1024 * 1.3, { status: 'success' });
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box>
+        <Heading size="small">Medium Size with Category Selector</Heading>
+        <Box maxWidth="400px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="medium"
+            fileCategory={{
+              options: categoryOptions,
+              value: selectedCategory,
+              onChange: ({ value }) => setSelectedCategory(value),
+              placeholder: 'Type',
+            }}
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+
+      <Box>
+        <Heading size="small">Large Size with Category Selector</Heading>
+        <Box maxWidth="500px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="large"
+            fileCategory={{
+              options: categoryOptions,
+              value: selectedCategory,
+              onChange: ({ value }) => setSelectedCategory(value),
+              placeholder: 'Type',
+            }}
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+
+      <Box>
+        <Heading size="small">No Default Value (Placeholder)</Heading>
+        <Box maxWidth="400px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="medium"
+            fileCategory={{
+              options: categoryOptions,
+              value: undefined,
+              onChange: ({ value }) => action('onChange')(value),
+              placeholder: 'Type',
+            }}
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const WithFileCategory = WithFileCategoryTemplate.bind({});
+WithFileCategory.storyName = 'With File Category Selector';
