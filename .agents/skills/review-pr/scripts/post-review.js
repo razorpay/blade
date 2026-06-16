@@ -50,7 +50,7 @@ function buildStatusSection(statuses, screenshotCdnMap = {}) {
 
   const screenshotCell = (s) => {
     const cdn = s.screenshot_path && screenshotCdnMap[s.screenshot_path];
-    return cdn ? `<a href="${cdn}"><img src="${cdn}" width="200" /></a>` : '';
+    return cdn ? `<a href="${cdn}"><img src="${cdn}" width="400" /></a>` : '';
   };
 
   const parts = [];
@@ -87,9 +87,7 @@ function buildStatusSection(statuses, screenshotCdnMap = {}) {
       : ['| Check |', '|-------|'];
     const rows = passed.map((s) => {
       const name = s.link ? `[${s.name}](${s.link})` : s.name;
-      return hasScreenshots
-        ? `| ✅ ${name} | ${screenshotCell(s)} |`
-        : `| ✅ ${name} |`;
+      return hasScreenshots ? `| ✅ ${name} | ${screenshotCell(s)} |` : `| ✅ ${name} |`;
     });
     const inner = [...header, ...rows].join('\n');
     parts.push(
