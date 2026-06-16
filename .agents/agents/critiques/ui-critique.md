@@ -61,6 +61,7 @@ agent-browser screenshot /tmp/ui-critique-{story-id}.png --full
 If relevant and needed, compare it with same story in master storybook.
 
 Storybook URL for master:
+
 - For packages/blade changes: https://blade.razorpay.com/
 - For packages/blade-svelte changes: https://blade.razorpay.com/svelte
 
@@ -87,11 +88,11 @@ Return a JSON object:
       "screenshot_path": "/tmp/ui-critique-components-button--primary.png"
     },
     {
-      "name": "DatePicker range selection",
-      "description": "Opened the Range Selection story, clicked a start date then an end date to complete a range.",
+      "name": "DatePicker range selection (Svelte)",
+      "description": "Opened the Range Selection story in /svelte storybook, clicked a start date then an end date to complete a range.",
       "state": "FAILURE",
       "problem": "Clicking end date crashes the picker",
-      "link": "https://abc123.chromatic.com/?path=/story/components-datepicker--range-selection",
+      "link": "https://abc123.chromatic.com/svelte?path=/story/components-datepicker--range-selection",
       "screenshot_path": "/tmp/ui-critique-components-datepicker--range-selection.png"
     }
   ]
