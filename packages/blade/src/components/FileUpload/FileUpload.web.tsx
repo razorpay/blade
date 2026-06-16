@@ -317,17 +317,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 <UploadIcon
                   size="small"
                   color={
-                    isDisabled
-                      ? 'interactive.icon.gray.muted'
-                      : 'interactive.icon.gray.normal'
+                    isDisabled ? 'interactive.icon.gray.muted' : 'interactive.icon.gray.normal'
                   }
                 />
                 <Text
                   size="small"
                   color={
-                    isDisabled
-                      ? 'interactive.text.gray.muted'
-                      : 'interactive.text.gray.normal'
+                    isDisabled ? 'interactive.text.gray.muted' : 'interactive.text.gray.normal'
                   }
                 >
                   {isDisabled ? 'Upload...' : 'Upload'}

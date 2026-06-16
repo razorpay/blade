@@ -72,7 +72,7 @@ const FileUploadItem = memo(
           flexDirection="column"
           justifyContent={isSmall ? 'center' : undefined}
         >
-          {/* Small variant intentionally omits CheckCircleIcon on success — at 36px height, the compact layout prioritizes file name and actions over status iconography */}
+          {/* Small variant intentionally omits CheckCircleIcon on success — the compact layout prioritizes file name and actions over status iconography */}
           {isSmall ? (
             <BaseBox
               display="flex"
@@ -84,10 +84,7 @@ const FileUploadItem = memo(
                   : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.3']
               }
             >
-              <BaseBox
-                marginRight="spacing.3"
-                {...(!thumbnail && { paddingTop: 'spacing.1' })}
-              >
+              <BaseBox marginRight="spacing.3" {...(!thumbnail && { paddingTop: 'spacing.1' })}>
                 {thumbnail ? (
                   <FileUploadItemThumbnail
                     thumbnail={thumbnail}

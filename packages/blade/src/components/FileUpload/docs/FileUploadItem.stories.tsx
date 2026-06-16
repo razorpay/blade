@@ -166,14 +166,20 @@ const SmallAllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 
       <Heading size="small">Small - Uploading</Heading>
       <FileUploadItem
-        file={createMockFile('photo.jpg', 1024 * 1024 * 2, { status: 'uploading', uploadPercent: 42 })}
+        file={createMockFile('photo.jpg', 1024 * 1024 * 2, {
+          status: 'uploading',
+          uploadPercent: 42,
+        })}
         size="small"
         onDismiss={({ file }) => action('onDismiss')(file.name)}
       />
 
       <Heading size="small">Small - Error</Heading>
       <FileUploadItem
-        file={createMockFile('corrupted.zip', 1024 * 1024, { status: 'error', errorText: 'Upload failed' })}
+        file={createMockFile('corrupted.zip', 1024 * 1024, {
+          status: 'error',
+          errorText: 'Upload failed',
+        })}
         size="small"
         onReupload={({ file }) => action('onReupload')(file.name)}
         onRemove={({ file }) => action('onRemove')(file.name)}
