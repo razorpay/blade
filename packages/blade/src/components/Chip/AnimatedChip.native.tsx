@@ -4,28 +4,31 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import getIn from '~utils/lodashButBetter/get';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
-import { chipMotionTokens, chipBorderRadiusTokens } from './chipTokens';
-import { makeBorderSize } from '~utils/makeBorderSize';
+import { chipMotionTokens } from './chipTokens';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
-  ({ theme, backgroundColor, ...props }) => {
+  ({ theme, ...props }) => {
     const size = props.size ?? 'small';
-    const isSmallSize = size === 'xsmall' || size === 'small';
-    // Mirror StyledChipWrapper's border width logic so the clip radius exactly matches
-    // the outer edge of the visible border and avoids corner bleed.
-    const borderWidth = getIn(
-      theme,
-      isSmallSize ? 'border.width.thick' : 'border.width.thicker',
-    ) as number;
     return {
       ...getAnimatedChipStyles({ theme, ...props }),
       alignSelf: 'center',
       overflow: 'hidden',
-      backgroundColor: backgroundColor ? getIn(theme.colors, backgroundColor) : 'transparent',
-      // StyledChipWrapper renders the visible border; suppress AnimatedChip's own border to avoid double border
-      borderWidth: 0,
-      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[size]] - borderWidth),
+      // Anchor content to the start: a long, truncated label exceeds maxWidth, and centering
+      // (getAnimatedChipStyles default) would clip both edges and eat the leading icon's padding.
+      // flex-start clips only the trailing text, keeping the icon's inset.
+      justifyContent: 'flex-start',
+      // The selected fill (interactive.background.*.faded) is semi-transparent and is painted by
+      // StyledChipWrapper — same as web. Keep this outer layer transparent so the alpha isn't
+      // applied twice and the blue doesn't render darker than web.
+      backgroundColor: 'transparent',
+      // When selected, medium & large own a single thicker border (the wrapper border is
+      // suppressed): 1.5px for medium, 2px for large. xsmall/small and all unchecked chips
+      // keep the default thin 1px outline.
+      ...(props.isChecked &&
+        size === 'medium' && { borderWidth: getIn(theme, 'border.width.thick') as number }),
+      ...(props.isChecked &&
+        size === 'large' && { borderWidth: getIn(theme, 'border.width.thicker') as number }),
     };
   },
 );
@@ -36,6 +39,7 @@ const AnimatedChip = ({
   children,
   isPressed,
   isDisabled,
+  isChecked,
   size,
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
@@ -61,6 +65,7 @@ const AnimatedChip = ({
       borderColor={borderColor}
       backgroundColor={backgroundColor}
       isDisabled={isDisabled}
+      isChecked={isChecked}
       size={size}
       style={chipAnimation}
     >
