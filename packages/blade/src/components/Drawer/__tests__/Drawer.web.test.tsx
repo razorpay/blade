@@ -197,6 +197,49 @@ describe('Drawer', () => {
     });
   });
 
+  describe('DrawerHeader variant', () => {
+    it('renders contiguous variant on the drawer container', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" variant="contiguous" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toMatchSnapshot();
+    });
+
+    it('does not show divider by default when variant is contiguous', () => {
+      const { queryByTestId } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" variant="contiguous" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(queryByTestId('divider')).not.toBeInTheDocument();
+    });
+
+    it('shows divider when explicitly set even with contiguous variant', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader
+            title="Payout Details"
+            color="positive"
+            variant="contiguous"
+            showDivider={true}
+          />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toBeInTheDocument();
+    });
+  });
+
   describe('DrawerFooter', () => {
     it('renders a Drawer with footer', () => {
       const { getByRole, getByText } = renderWithTheme(

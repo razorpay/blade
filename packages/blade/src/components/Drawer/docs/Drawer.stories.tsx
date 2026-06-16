@@ -580,3 +580,80 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
     </Box>
   );
 };
+
+export const ContiguousBackground = (args: DrawerProps): React.ReactElement => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
+      <Drawer
+        {...args}
+        isOpen={args.isOpen ?? isDrawerOpen}
+        onDismiss={() => setIsDrawerOpen(false)}
+      >
+        <DrawerHeader
+          color="positive"
+          variant="contiguous"
+          title="Settlements"
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={26000}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              suffix="decimals"
+            />
+          </Box>
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
+              Captured
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.2"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <Text size="large" textAlign="center">
+              Payment was successfully captured. To be settled in your bank account by{' '}
+              <Text as="span" size="large" weight="semibold" color="feedback.text.positive.intense">
+                Jan 20, 2025
+              </Text>
+            </Text>
+          </Box>
+        </DrawerHeader>
+        <DrawerBody>
+          <Box display="flex" alignItems="center">
+            <Heading>Starters{"'"} CFP Private Limited</Heading>
+            <Badge size="small" color="primary" marginLeft="spacing.3">
+              Vendor
+            </Badge>
+          </Box>
+          <Box marginTop="spacing.6" marginBottom="spacing.8">
+            <TextInput label="Email" type="email" placeholder="Enter your email" />
+            <TextInput
+              marginTop="spacing.4"
+              label="Phone Number"
+              type="telephone"
+              placeholder="Enter your phone number"
+            />
+          </Box>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
