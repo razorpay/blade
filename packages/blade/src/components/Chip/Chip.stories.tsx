@@ -122,3 +122,62 @@ Default.storyName = 'Default';
 Default.args = {
   color: 'primary',
 };
+
+const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.4">Chip with leading element (e.g., country flags):</Text>
+      <ChipGroupComponent
+        selectionType="single"
+        accessibilityLabel="Select country"
+        label="Country"
+      >
+        <ChipComponent
+          value="IN"
+          leading={
+            <img
+              src="https://flagcdn.com/w40/in.png"
+              width={16}
+              height={12}
+              alt="India"
+              style={{ borderRadius: 2 }}
+            />
+          }
+        >
+          India
+        </ChipComponent>
+        <ChipComponent
+          value="US"
+          leading={
+            <img
+              src="https://flagcdn.com/w40/us.png"
+              width={16}
+              height={12}
+              alt="US"
+              style={{ borderRadius: 2 }}
+            />
+          }
+        >
+          United States
+        </ChipComponent>
+        <ChipComponent
+          value="GB"
+          leading={
+            <img
+              src="https://flagcdn.com/w40/gb.png"
+              width={16}
+              height={12}
+              alt="UK"
+              style={{ borderRadius: 2 }}
+            />
+          }
+        >
+          United Kingdom
+        </ChipComponent>
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const WithLeading = ChipWithLeadingTemplate.bind({});
+WithLeading.storyName = 'With Leading (Flags)';

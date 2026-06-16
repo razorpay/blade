@@ -14,6 +14,11 @@ type ChipCommonProps = {
    */
   icon?: IconComponent;
   /**
+   * Custom leading element rendered before the label (e.g., a flag image, avatar).
+   * Mutually exclusive with `icon`.
+   */
+  leading?: React.ReactNode;
+  /**
    * Sets the Chip's visual color.
    *
    */
@@ -48,10 +53,11 @@ type ChipCommonProps = {
   MotionMetaProp;
 
 /*
-  Mandatory children prop when icon is not provided
+  Mandatory children prop when neither icon nor leading is provided
 */
 type ChipWithoutIconProps = ChipCommonProps & {
   icon?: undefined;
+  leading?: undefined;
   children: StringChildrenType;
 };
 
@@ -60,10 +66,20 @@ type ChipWithoutIconProps = ChipCommonProps & {
 */
 type ChipWithIconProps = ChipCommonProps & {
   icon: IconComponent;
+  leading?: undefined;
   children?: StringChildrenType;
 };
 
-type ChipProps = ChipWithoutIconProps | ChipWithIconProps;
+/*
+  Optional children prop when leading is provided
+*/
+type ChipWithLeadingProps = ChipCommonProps & {
+  icon?: undefined;
+  leading: React.ReactNode;
+  children?: StringChildrenType;
+};
+
+type ChipProps = ChipWithoutIconProps | ChipWithIconProps | ChipWithLeadingProps;
 
 type ChipGroupCommonProps = {
   /**

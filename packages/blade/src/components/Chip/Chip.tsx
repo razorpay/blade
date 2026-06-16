@@ -44,6 +44,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     value,
     children,
     icon: Icon,
+    leading,
     color,
     testID,
     _motionMeta,
@@ -208,14 +209,14 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 backgroundColor={chipBackgroundColor}
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
-                    _size
-                  ]
+                  chipHorizontalPaddingTokens[
+                    Boolean(Icon) || Boolean(leading) ? 'withIcon' : 'withoutIcon'
+                  ].left[_size]
                 }
                 paddingRight={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].right[
-                    _size
-                  ]
+                  chipHorizontalPaddingTokens[
+                    Boolean(Icon) || Boolean(leading) ? 'withIcon' : 'withoutIcon'
+                  ].right[_size]
                 }
                 height={makeSize(chipHeightTokens[_size])}
                 width="100%"
@@ -223,6 +224,10 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 {Icon ? (
                   <BaseBox display="flex">
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
+                  </BaseBox>
+                ) : leading ? (
+                  <BaseBox display="flex" alignItems="center">
+                    {leading}
                   </BaseBox>
                 ) : null}
                 {children ? (
