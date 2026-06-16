@@ -9,6 +9,8 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
+type AvatarGroupDensity = 'compact' | 'normal' | 'comfortable';
+
 type AvatarImgProps = {
   /**
    * Custom image source
@@ -42,6 +44,11 @@ type AvatarGroupProps = {
    * @default "medium"
    */
   size?: AvatarSize;
+  /**
+   * The density of the avatar group, controlling how closely avatars overlap.
+   * @default "compact"
+   */
+  density?: AvatarGroupDensity;
   /**
    * The maximum number of avatars to display before truncating.
    */
@@ -130,6 +137,7 @@ type StyledAvatarProps = {
 
 export type {
   AvatarGroupProps,
+  AvatarGroupDensity,
   AvatarProps,
   StyledAvatarProps,
   AvatarGroupContextType,

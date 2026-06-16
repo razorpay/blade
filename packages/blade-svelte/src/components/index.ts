@@ -101,6 +101,16 @@ export type {
   UseToastReturn,
 } from './Toast/types';
 
+// BottomSheet
+export { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from './BottomSheet';
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetBodyProps,
+  BottomSheetFooterProps,
+  SnapPoints,
+} from './BottomSheet';
+
 // BladeProvider
 export * from './BladeProvider';
 

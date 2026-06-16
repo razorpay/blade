@@ -28,7 +28,7 @@ export const TestCarouselOnChange: StoryFn<typeof CarouselComponent> = (
 };
 
 TestCarouselOnChange.play = async ({ canvasElement }) => {
-  const { getByRole, getByText } = within(canvasElement);
+  const { getByRole, getByLabelText } = within(canvasElement);
   onChange?.mockClear();
   const nextButton = getByRole('button', { name: 'Next Slide' });
   const previousButton = getByRole('button', { name: 'Previous Slide' });
@@ -42,10 +42,12 @@ TestCarouselOnChange.play = async ({ canvasElement }) => {
   const lastCallAfterPrevious = onChange?.mock.lastCall?.[0];
   await expect(lastCallAfterPrevious).toBe(0);
 
-  getByText(/Single Flow To Collect And Disburse Payments/)?.scrollIntoView({ behavior: 'smooth' });
+  // Use indicator button instead of scrollIntoView, which is unreliable in headless browsers
+  const slide4Indicator = getByLabelText('Slide 4');
+  await userEvent.click(slide4Indicator);
   await sleep(1000);
-  const lastCallAfterScroll = onChange?.mock.lastCall?.[0];
-  await expect(lastCallAfterScroll).toBe(3);
+  const lastCallAfterIndicatorClick = onChange?.mock.lastCall?.[0];
+  await expect(lastCallAfterIndicatorClick).toBe(3);
 };
 
 export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (

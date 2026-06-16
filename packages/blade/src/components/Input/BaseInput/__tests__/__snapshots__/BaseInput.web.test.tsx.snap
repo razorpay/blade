@@ -2307,9 +2307,8 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   align-items: center;
   position: relative;
   border: none;
-  z-index: 1;
   border-width: 0px;
-  box-shadow: hsla(150,100%,28%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
@@ -2337,9 +2336,8 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   align-items: center;
   position: relative;
   border: none;
-  z-index: 1;
   border-width: 0px;
-  box-shadow: hsla(150,100%,28%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 160ms;
@@ -2369,9 +2367,8 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   align-items: center;
   position: relative;
   border: none;
-  z-index: 1;
   border-width: 0px;
-  box-shadow: hsla(150,100%,28%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
   -webkit-transition-duration: 640ms;
