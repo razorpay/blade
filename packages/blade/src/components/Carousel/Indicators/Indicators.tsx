@@ -6,7 +6,10 @@ import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 
 const Indicators = (props: IndicatorsProps): React.ReactElement => {
-  const { carouselId, isResponsive, visibleItems, isMobile, isAutoPlaying } = useCarouselContext();
+  const { carouselId, isResponsive, visibleItems } = useCarouselContext();
+
+  const ButtonComponent = props.isMobile ? CircularIndicatorButton : IndicatorButton;
+
   return (
     <BaseBox
       display="flex"
@@ -27,28 +30,15 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
           controls: `${carouselId}-carousel-item-${idx * _visibleItems}`,
         });
 
-        if (isMobile) {
-          return (
-            <CircularIndicatorButton
-              key={`${props.activeIndex}-${idx}`}
-              {...accessibleProps}
-              slideIndex={idx * _visibleItems}
-              isActive={idx === props.activeIndex}
-              onClick={() => props?.onClick?.(idx)}
-              variant={props.variant}
-              isAutoPlaying={isAutoPlaying}
-            />
-          );
-        }
-
         return (
-          <IndicatorButton
+          <ButtonComponent
             key={idx}
             {...accessibleProps}
             slideIndex={idx * _visibleItems}
             isActive={idx === props.activeIndex}
             onClick={() => props?.onClick?.(idx)}
             variant={props.variant}
+            isAutoPlaying={props.isAutoPlaying}
           />
         );
       })}

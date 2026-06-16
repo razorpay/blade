@@ -3,6 +3,8 @@ type IndicatorsProps = {
   totalItems: number;
   variant: 'gray' | 'white' | 'blue';
   onClick: (index: number) => void;
+  isAutoPlaying?: boolean;
+  isMobile?: boolean;
 };
 
 type IndicatorButtonProps = {

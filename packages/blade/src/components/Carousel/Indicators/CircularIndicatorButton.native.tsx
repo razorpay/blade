@@ -1,6 +1,8 @@
 import React from 'react';
 import { Pressable } from 'react-native';
+import type { AccessibilityProps } from 'react-native';
 import Animated, {
+  cancelAnimation,
   useAnimatedProps,
   useSharedValue,
   withTiming,
@@ -32,7 +34,7 @@ const CircularIndicatorButton = ({
   isAutoPlaying,
   slideIndex,
   ...rest
-}: CircularIndicatorButtonProps & Record<string, unknown>): React.ReactElement => {
+}: CircularIndicatorButtonProps & AccessibilityProps): React.ReactElement => {
   const { theme } = useTheme();
 
   const activeColor = {
@@ -49,15 +51,21 @@ const CircularIndicatorButton = ({
 
   React.useEffect(() => {
     if (showProgressRing) {
+      cancelAnimation(progress);
       progress.value = CIRCUMFERENCE;
       progress.value = withTiming(0, {
         duration: CAROUSEL_AUTOPLAY_INTERVAL,
         easing: Easing.linear,
       });
     } else {
+      cancelAnimation(progress);
       progress.value = CIRCUMFERENCE;
     }
-  }, [showProgressRing, progress]);
+
+    return () => {
+      cancelAnimation(progress);
+    };
+  }, [showProgressRing, progress, slideIndex]);
 
   const animatedProps = useAnimatedProps(() => ({
     strokeDashoffset: progress.value,
@@ -67,7 +75,7 @@ const CircularIndicatorButton = ({
     <Pressable
       onPress={onClick}
       {...rest}
-      {...({ slideIndex } as Record<string, unknown>)}
+      testID={`carousel-indicator-${slideIndex}`}
       style={{
         minWidth: SVG_SIZE,
         minHeight: SVG_SIZE,

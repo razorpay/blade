@@ -48,6 +48,8 @@ type ControlsProp = Required<
   onNextButtonClick: () => void;
   onPreviousButtonClick: () => void;
   showNavigationButtons: boolean;
+  isAutoPlaying: boolean;
+  isMobile: boolean;
 };
 
 const Controls = ({
@@ -61,6 +63,8 @@ const Controls = ({
   indicatorVariant,
   navigationButtonVariant,
   showNavigationButtons,
+  isAutoPlaying,
+  isMobile,
 }: ControlsProp): React.ReactElement => {
   if (navigationButtonPosition === 'bottom') {
     return (
@@ -78,6 +82,8 @@ const Controls = ({
             activeIndex={activeIndicator}
             totalItems={totalSlides}
             variant={indicatorVariant}
+            isAutoPlaying={isAutoPlaying}
+            isMobile={isMobile}
           />
         ) : null}
         {showNavigationButtons ? (
@@ -102,6 +108,8 @@ const Controls = ({
           activeIndex={activeIndicator}
           totalItems={totalSlides}
           variant={indicatorVariant}
+          isAutoPlaying={isAutoPlaying}
+          isMobile={isMobile}
         />
       </Box>
     );
@@ -503,8 +511,6 @@ const _Carousel = (
       activeSlide,
       startEndMargin,
       shouldAddStartEndSpacing,
-      isMobile,
-      isAutoPlaying,
     };
   }, [
     carouselId,
@@ -515,8 +521,6 @@ const _Carousel = (
     totalNumberOfSlides,
     activeSlide,
     shouldAddStartEndSpacing,
-    isMobile,
-    isAutoPlaying,
   ]);
 
   return (
@@ -643,6 +647,8 @@ const _Carousel = (
           indicatorVariant={indicatorVariant}
           navigationButtonVariant={navigationButtonVariant}
           showNavigationButtons={showNavigationButtons}
+          isAutoPlaying={isAutoPlaying}
+          isMobile={isMobile}
         />
       </BaseBox>
     </CarouselContext.Provider>

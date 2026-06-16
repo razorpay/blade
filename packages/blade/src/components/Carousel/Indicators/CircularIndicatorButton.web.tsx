@@ -23,12 +23,13 @@ const progressAnimation = keyframes`
   }
 `;
 
-const progressAnimationStyles = css`
-  animation: ${progressAnimation} ${CAROUSEL_AUTOPLAY_INTERVAL}ms linear forwards;
-`;
-
-const ProgressRing = styled.circle`
-  ${progressAnimationStyles}
+const ProgressRing = styled.circle<{ $animate: boolean }>`
+  stroke-dashoffset: ${CIRCUMFERENCE};
+  ${({ $animate }) =>
+    $animate &&
+    css`
+      animation: ${progressAnimation} ${CAROUSEL_AUTOPLAY_INTERVAL}ms linear forwards;
+    `}
 `;
 
 const StyledCircularButton = styled.button(({ theme }) => ({
@@ -57,6 +58,7 @@ const CircularIndicatorButton = ({
   isActive,
   variant,
   isAutoPlaying,
+  ...rest
 }: CircularIndicatorButtonProps): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -73,6 +75,7 @@ const CircularIndicatorButton = ({
   return (
     <StyledCircularButton
       onClick={onClick}
+      {...rest}
       {...metaAttribute({ name: 'carousel-indicator-button' })}
     >
       <svg
@@ -82,13 +85,14 @@ const CircularIndicatorButton = ({
         style={{ display: 'block' }}
       >
         <circle cx={CENTER} cy={CENTER} r={DOT_RADIUS} fill={fillColor} stroke="none" />
-        {showProgressRing && (
+        {isActive && (
           <ProgressRing
+            $animate={Boolean(showProgressRing)}
             cx={CENTER}
             cy={CENTER}
             r={RING_RADIUS}
             fill="none"
-            stroke={activeColor[variant]}
+            stroke={showProgressRing ? activeColor[variant] : 'transparent'}
             strokeWidth={RING_STROKE_WIDTH}
             strokeDasharray={CIRCUMFERENCE}
             strokeDashoffset={CIRCUMFERENCE}
