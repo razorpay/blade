@@ -69,6 +69,33 @@ jobs:
           sparse-checkout: |
             .github/scripts
 
+      - name: Terminate previous Slash review
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+        run: |
+          PREV_TASK_ID=$(gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            | python3 -c "
+import sys, json, re
+comments = json.load(sys.stdin)
+for c in reversed(comments):
+    m = re.search(r'<!-- slash-task-id: (\S+) -->', c.get('body', ''))
+    if m:
+        print(m.group(1))
+        break
+" 2>/dev/null || true)
+
+          if [ -n "$PREV_TASK_ID" ]; then
+            echo "Terminating previous Slash task: $PREV_TASK_ID"
+            node .github/scripts/terminate-slash.js "$PREV_TASK_ID" || true
+          else
+            echo "No previous Slash task found — skipping termination."
+          fi
+
       - name: Request Slash review
         id: request-slash-review
         if: steps.pr-meta.outputs.skip != 'true'
@@ -94,6 +121,7 @@ jobs:
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
             echo "Execution logs: ${EXECUTION_URL}"
             echo "execution_url=$EXECUTION_URL" >> $GITHUB_OUTPUT
+            echo "task_id=$TASK_ID" >> $GITHUB_OUTPUT
           fi
 
       - name: Post PR comment with execution log link
@@ -103,10 +131,11 @@ jobs:
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
           EXECUTION_URL: ${{ steps.request-slash-review.outputs.execution_url }}
+          TASK_ID: ${{ steps.request-slash-review.outputs.task_id }}
         run: |
           gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
             --method POST \
-            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})"
+            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
 
       - name: Post PR comment on failure
         if: failure() && steps.pr-meta.outputs.skip != 'true'
