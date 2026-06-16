@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.web';
+import type { ColorSwatchRef } from './ColorSwatch.web';
 import { StyledColorInput } from './StyledColorInput';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
@@ -63,6 +64,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   });
 
   const hexInputRef = useRef<BladeElementRef>(null);
+  const swatchRef = useRef<ColorSwatchRef>(null);
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
   const idBase = useId('color-input');
   const labelId = `${idBase}-label`;
@@ -92,11 +94,39 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     [colorValue, setColorValue],
   );
 
+  const handleOpacityKeyDown = useCallback(
+    ({ key, event }: { name?: string; key?: string; code?: string; event: unknown }) => {
+      if (key === 'ArrowUp') {
+        (event as Event & { preventDefault: () => void }).preventDefault();
+        const next = Math.min(colorValue.opacity + 1, 100);
+        if (next !== colorValue.opacity) {
+          setColorValue(() => ({ ...colorValue, opacity: next }));
+        }
+      } else if (key === 'ArrowDown') {
+        (event as Event & { preventDefault: () => void }).preventDefault();
+        const next = Math.max(colorValue.opacity - 1, 0);
+        if (next !== colorValue.opacity) {
+          setColorValue(() => ({ ...colorValue, opacity: next }));
+        }
+      }
+    },
+    [colorValue, setColorValue],
+  );
+
   const handleSwatchChange = useCallback(
     (hex: string) => {
       setColorValue(() => ({ ...colorValue, hex }));
     },
     [colorValue, setColorValue],
+  );
+
+  const handleHexInputClick = useCallback(
+    (_event: { name?: string; value?: string }) => {
+      if (!isDisabled) {
+        swatchRef.current?.openPicker();
+      }
+    },
+    [isDisabled],
   );
 
   const willRenderHintText =
@@ -145,6 +175,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               placeholder="000000"
               value={colorValue.hex}
               onChange={handleHexChange}
+              onClick={handleHexInputClick}
               onFocus={onFocus}
               onBlur={onBlur}
               isDisabled={isDisabled}
@@ -156,6 +187,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               textAlign="left"
               leadingInteractionElement={
                 <ColorSwatch
+                  ref={swatchRef}
                   color={colorValue.hex}
                   size={size}
                   isDisabled={isDisabled}
@@ -176,6 +208,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                 placeholder="100"
                 value={String(colorValue.opacity)}
                 onChange={handleOpacityChange}
+                onKeyDown={handleOpacityKeyDown}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 isDisabled={isDisabled}
