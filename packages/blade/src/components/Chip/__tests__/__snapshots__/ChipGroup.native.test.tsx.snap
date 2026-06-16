@@ -342,6 +342,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -349,14 +350,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -384,7 +385,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -398,15 +399,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
@@ -556,6 +556,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -563,14 +564,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -598,7 +599,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -612,15 +613,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
@@ -770,6 +770,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -777,14 +778,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -812,7 +813,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -826,15 +827,14 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
@@ -1246,6 +1246,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -1253,14 +1254,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -1288,7 +1289,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -1302,15 +1303,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
@@ -1461,6 +1461,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -1468,14 +1469,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -1503,7 +1504,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -1517,15 +1518,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
@@ -1676,6 +1676,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   <View
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
+                    isChecked={false}
                     isDisabled={false}
                     size="small"
                     style={
@@ -1683,14 +1684,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                          "backgroundColor": "transparent",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                          "borderRadius": 6.5,
-                          "borderWidth": 0,
+                          "borderRadius": 8,
+                          "borderWidth": 1,
                           "display": "flex",
                           "flexDirection": "row",
                           "flexWrap": "nowrap",
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 280,
                           "overflow": "hidden",
                           "textAlign": "left",
@@ -1718,7 +1719,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       height="28px"
                       isChecked={false}
                       isDisabled={false}
-                      justifyContent="center"
+                      justifyContent="flex-start"
                       overflow="hidden"
                       size="small"
                       style={
@@ -1732,15 +1733,14 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "display": "flex",
                             "flexDirection": "row",
                             "height": 28,
-                            "justifyContent": "center",
+                            "justifyContent": "flex-start",
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
                           },
                           {
-                            "borderColor": "hsla(206, 10%, 29%, 0.18)",
-                            "borderRadius": 6.5,
-                            "borderWidth": 1.5,
+                            "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
                             "overflow": "visible",
                           },
