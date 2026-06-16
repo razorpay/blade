@@ -116,14 +116,14 @@ type FileUploadCommonProps = {
 } & StyledPropsBlade &
   MotionMetaProp;
 
-// Standard size props (medium or large)
+// Standard size props (small, medium, or large)
 type FileUploadStandardSizeProps = FileUploadCommonProps & {
   /**
    * Size of the FileUpload component
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 // Variable size props with custom text options

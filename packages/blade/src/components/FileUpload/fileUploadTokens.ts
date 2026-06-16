@@ -29,6 +29,12 @@ const fileUploadHeightTokens = {
   large: size['64'],
 };
 
+const fileUploadInputHeightTokens = {
+  small: size['32'],
+  medium: size['56'],
+  large: size['64'],
+};
+
 const fileUploadThumbnailSizeTokens = {
   small: size['28'],
   medium: size['48'],
@@ -93,5 +99,6 @@ export {
   fileUploadColorTokens,
   fileUploadLinkBorderTokens,
   fileUploadHeightTokens,
+  fileUploadInputHeightTokens,
   fileUploadThumbnailSizeTokens,
 };
