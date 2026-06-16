@@ -17,7 +17,7 @@ function getAuthorizationHeader() {
 async function main() {
   const taskId = process.argv[2];
   if (!taskId) {
-    console.error('Missing task_id. Pass as first argument.');
+    console.error('Missing task_id. Pass as first argument');
     process.exit(1);
   }
 
