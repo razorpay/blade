@@ -139,7 +139,7 @@ const _Carousel = (
     goToSlideIndex(slideIndex);
   };
 
-  const isAutoPlaying = autoPlay && !shouldPauseAutoplay;
+  const isAutoPlaying = Boolean(autoPlay && !shouldPauseAutoplay);
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
