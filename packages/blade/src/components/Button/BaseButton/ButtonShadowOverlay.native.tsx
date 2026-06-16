@@ -85,7 +85,7 @@ const ButtonShadowOverlay = ({
           ry={borderRadius}
           fill="none"
           stroke={highlightColor}
-          strokeWidth={(highlightHeight + 1) * 2}
+          strokeWidth={(highlightHeight + 0.5) * 2}
           mask="url(#topMask)"
         />
       ) : null}
