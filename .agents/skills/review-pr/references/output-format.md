@@ -21,13 +21,16 @@ Assemble the outputs from all critique agents into a single JSON object matching
         {
           "name": "Button primary variant",
           "description": "Opened the Primary story and verified hover, focus, and click states.",
-          "state": "SUCCESS"
+          "state": "SUCCESS",
+          "link": "https://chromatic.com/?path=/story/...",
+          "screenshot_path": "/tmp/ui-critique-button-primary.png"
         },
         {
           "name": "Button disabled state",
           "description": "Opened the Disabled story and attempted to hover and click the button.",
           "state": "FAILURE",
-          "problem": "Disabled button still shows hover styles"
+          "problem": "Disabled button still shows hover styles",
+          "screenshot_path": "/tmp/ui-critique-button-disabled.png"
         }
       ]
     },
@@ -81,7 +84,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
 
 ## Assembly rules
 
-- `overview-comment.ui-review`: populated from `ui-critique.statuses`. Omit this key entirely if `ShouldReviewUI` is false.
+- `overview-comment.ui-review`: populated from `ui-critique.statuses`. Omit this key entirely if `ShouldReviewUI` is false. Preserve all fields from the agent output verbatim, including `screenshot_path` — the post-review script uses this to upload screenshots and embed them in the comment.
 - `overview-comment.sanity-review`: `statuses` and `issues` come directly from `pr-sanity-critique`.
 - `inlined-comments`: one entry per item in `issues[]` from `code-quality-critique`, `api-decision-critique`, and `usecase-critique`. Inject `critique` (the agent's `critique_name`) and copy `file`, `line`, `side`, `severity`, `problem`, `suggestion` directly. Sort by severity: critical → major → minor.
 - `side`: `"RIGHT"` for added/modified lines, `"LEFT"` for deleted lines.

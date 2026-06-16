@@ -45,6 +45,12 @@ agent-browser open {url} [--headed]  # add --headed if HEADED=true
 
 Test the main flows and interactions for each changed component.
 
+After testing each story, take a screenshot and save it to a tmp path:
+
+```bash
+agent-browser screenshot /tmp/ui-critique-{story-id}.png --full
+```
+
 ### 4. Close browser
 
 ```bash
@@ -64,17 +70,19 @@ Return a JSON object:
       "name": "Button primary variant",
       "description": "Opened the Primary story and verified hover, focus, and click states render correctly.",
       "state": "SUCCESS",
-      "link": "https://abc123.chromatic.com/?path=/story/components-button--primary"
+      "link": "https://abc123.chromatic.com/?path=/story/components-button--primary",
+      "screenshot_path": "/tmp/ui-critique-components-button--primary.png"
     },
     {
       "name": "DatePicker range selection",
       "description": "Opened the Range Selection story, clicked a start date then an end date to complete a range.",
       "state": "FAILURE",
       "problem": "Clicking end date crashes the picker",
-      "link": "https://abc123.chromatic.com/?path=/story/components-datepicker--range-selection"
+      "link": "https://abc123.chromatic.com/?path=/story/components-datepicker--range-selection",
+      "screenshot_path": "/tmp/ui-critique-components-datepicker--range-selection.png"
     }
   ],
 }
 ```
 
-Each tested flow maps to one entry in `statuses`. `description` must briefly describe what was opened and what interaction was tested. Always include `link` — the full Storybook URL for the story (use `?path=/story/{story-id}` format, not the iframe URL). Only include `problem` when `state` is `"FAILURE"`. Omit `issues` entirely — ui-critique never produces issues.
+Each tested flow maps to one entry in `statuses`. `description` must briefly describe what was opened and what interaction was tested. Always include `link` — the full Storybook URL for the story (use `?path=/story/{story-id}` format, not the iframe URL). Always include `screenshot_path` — the `/tmp` path where the screenshot was saved. Only include `problem` when `state` is `"FAILURE"`. Omit `issues` entirely — ui-critique never produces issues.
