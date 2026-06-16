@@ -20,7 +20,7 @@ const CardSurface = styled(BaseBox)<CardSurfaceProps>(
     ...(variant === 'primary'
       ? getSurfaceStyles(theme, colorScheme, { hideBorder: isSelected })
       : {
-          border: `${theme.border.width.thin}px solid ${theme.colors.surface.border.gray.muted}`,
+          border: 'none',
           boxShadow: 'none',
           backgroundImage: 'none',
           backgroundColor: theme.colors.surface.background.gray.moderate,

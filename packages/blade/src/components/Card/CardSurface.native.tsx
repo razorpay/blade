@@ -12,12 +12,16 @@ const CardSurfaceStyled = styled(BaseBox)<{ variant?: CardVariant }>(
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      borderWidth: makeBorderSize(theme.border.width.thin),
-      borderStyle: 'solid',
-      borderColor: `${theme.colors.surface.border.gray.muted}`,
-      ...(variant === 'secondary' && {
-        backgroundColor: theme.colors.surface.background.gray.moderate,
-      }),
+      ...(variant === 'primary'
+        ? {
+            borderWidth: makeBorderSize(theme.border.width.thin),
+            borderStyle: 'solid',
+            borderColor: `${theme.colors.surface.border.gray.muted}`,
+          }
+        : {
+            borderWidth: 0,
+            backgroundColor: theme.colors.surface.background.gray.moderate,
+          }),
     };
   },
 );
