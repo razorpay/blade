@@ -41,10 +41,17 @@ function stateIcon(state) {
   return '⏳';
 }
 
-function buildStatusSection(statuses) {
+function buildStatusSection(statuses, screenshotCdnMap = {}) {
   const failed = statuses.filter((s) => s.state !== 'SUCCESS' && s.state !== 'SKIPPED');
   const passed = statuses.filter((s) => s.state === 'SUCCESS');
   const skipped = statuses.filter((s) => s.state === 'SKIPPED');
+
+  const hasScreenshots = statuses.some((s) => screenshotCdnMap[s.screenshot_path]);
+
+  const screenshotCell = (s) => {
+    const cdn = s.screenshot_path && screenshotCdnMap[s.screenshot_path];
+    return cdn ? `<a href="${cdn}"><img src="${cdn}" width="400" /></a>` : '';
+  };
 
   const parts = [];
 
@@ -58,23 +65,31 @@ function buildStatusSection(statuses) {
     .join(' · ');
   parts.push(summary);
 
-  // Failures table (2 columns — no empty Details clutter)
+  // Failures table
   if (failed.length) {
+    const header = hasScreenshots
+      ? ['| Check | Problem | Screenshot |', '|-------|---------|------------|']
+      : ['| Check | Problem |', '|-------|---------|'];
     const rows = failed.map((s) => {
       const name = s.link ? `[${s.name}](${s.link})` : s.name;
       const detail = [s.problem, s.suggestion].filter(Boolean).join('<br><br>**Suggestion:** ');
-      return `| ${name} | ${detail} |`;
+      return hasScreenshots
+        ? `| ${name} | ${detail} | ${screenshotCell(s)} |`
+        : `| ${name} | ${detail} |`;
     });
-    parts.push(['| Check | Problem |', '|-------|---------|', ...rows].join('\n'));
+    parts.push([...header, ...rows].join('\n'));
   }
 
   // Passing checks collapsed
   if (passed.length) {
+    const header = hasScreenshots
+      ? ['| Check | Screenshot |', '|-------|------------|']
+      : ['| Check |', '|-------|'];
     const rows = passed.map((s) => {
       const name = s.link ? `[${s.name}](${s.link})` : s.name;
-      return `| ✅ ${name} |`;
+      return hasScreenshots ? `| ✅ ${name} | ${screenshotCell(s)} |` : `| ✅ ${name} |`;
     });
-    const inner = ['| Check |', '|-------|', ...rows].join('\n');
+    const inner = [...header, ...rows].join('\n');
     parts.push(
       `<details>\n<summary>Passing checks (${passed.length})</summary>\n\n${inner}\n\n</details>`,
     );
@@ -83,7 +98,7 @@ function buildStatusSection(statuses) {
   return parts.join('\n\n');
 }
 
-function formatOverviewComment(overview, reviewStatus, isSelfReview) {
+function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotCdnMap = {}) {
   const parts = ['## ✨ Agentic PR Review ✨'];
 
   if (reviewStatus === 'approved') {
@@ -109,7 +124,7 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview) {
 
     parts.push('### UI Review');
     if (storybookLine) parts.push(storybookLine);
-    parts.push(buildStatusSection(ui.statuses));
+    parts.push(buildStatusSection(ui.statuses, screenshotCdnMap));
   }
 
   if (sanity) {
@@ -139,6 +154,74 @@ function formatInlineComment(c) {
   if (c.suggestion) lines.push('', `**Suggestion:** ${c.suggestion}`);
   return lines.join('\n');
 }
+
+// ---------------------------------------------------------------------------
+// Archive UI critique screenshots to __ci_artifacts branch
+// ---------------------------------------------------------------------------
+
+function archiveUiScreenshots(reviewJson, repoArg) {
+  const uiStatuses = reviewJson?.['overview-comment']?.['ui-review']?.statuses ?? [];
+  const screenshots = uiStatuses.filter((s) => s.screenshot_path);
+  if (screenshots.length === 0) return {};
+
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, '0');
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const yy = String(now.getFullYear()).slice(-2);
+  const hh = String(now.getHours()).padStart(2, '0');
+  const min = String(now.getMinutes()).padStart(2, '0');
+  const sec = String(now.getSeconds()).padStart(2, '0');
+  const timestamp = `${dd}-${mm}-${yy}--${hh}-${min}-${sec}`;
+  const destDir = `artifacts/review/${timestamp}/ui-critique`;
+
+  const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+  const cdnMap = {};
+  let stashed = false;
+
+  try {
+    const dirty = execSync('git status --porcelain').toString().trim();
+    if (dirty) {
+      execSync('git stash --include-untracked', { stdio: 'pipe' });
+      stashed = true;
+    }
+
+    try {
+      execSync('git fetch origin __ci_artifacts:__ci_artifacts --no-tags', { stdio: 'pipe' });
+    } catch (_) {
+      // branch may not exist on remote yet — that's fine
+    }
+    try {
+      execSync('git checkout __ci_artifacts', { stdio: 'pipe' });
+    } catch (_) {
+      execSync('git checkout --orphan __ci_artifacts', { stdio: 'pipe' });
+      execSync('git rm -rf . --quiet', { stdio: 'pipe' });
+    }
+
+    execSync(`mkdir -p ${destDir}`);
+
+    screenshots.forEach((s, i) => {
+      if (!fs.existsSync(s.screenshot_path)) return;
+      const storyIdMatch = s.link?.match(/[?&]path=\/story\/([^&]+)/);
+      const storyId = storyIdMatch ? storyIdMatch[1].replace(/[^a-zA-Z0-9_-]/g, '-') : `story-${i}`;
+      const dest = `${destDir}/${storyId}-${i + 1}.png`;
+      fs.copyFileSync(s.screenshot_path, dest);
+      execSync(`git add ${dest}`);
+      cdnMap[s.screenshot_path] =
+        `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
+    });
+
+    execSync(`git commit -m "chore: add ui-critique screenshots for ${timestamp}" --allow-empty`);
+    execSync('git push origin __ci_artifacts');
+    console.log(`\nUI screenshots archived to __ci_artifacts: ${destDir}`);
+  } finally {
+    execSync(`git checkout ${currentBranch}`);
+    if (stashed) execSync('git stash pop', { stdio: 'pipe' });
+  }
+
+  return cdnMap;
+}
+
+const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo);
 
 // ---------------------------------------------------------------------------
 // Build payload
@@ -176,6 +259,7 @@ const overviewBody = formatOverviewComment(
   filterIgnoredChecks(reviewJson['overview-comment']),
   reviewJson['reviewStatus'],
   isSelfReview,
+  screenshotCdnMap,
 );
 
 const SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
