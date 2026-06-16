@@ -1,4 +1,4 @@
-name: Agentic Merge Ready Label
+name: Agentic Repo / Auto-Merge Ready Check
 
 on:
   pull_request_review:
