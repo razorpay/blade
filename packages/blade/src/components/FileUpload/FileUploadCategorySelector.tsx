@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { BladeFile, FileCategoryProps } from './types';
-import { Dropdown } from '~components/Dropdown';
-import { DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
@@ -37,10 +36,7 @@ type CategoryTriggerProps = {
   fileName: string;
 };
 
-const _CategoryTrigger = ({
-  displayLabel,
-  fileName,
-}: CategoryTriggerProps): React.ReactElement => {
+const _CategoryTrigger = ({ displayLabel, fileName }: CategoryTriggerProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -59,13 +55,12 @@ const _CategoryTrigger = ({
       aria-haspopup={getActionListContainerRole(hasFooterAction, 'DropdownButton')}
       aria-expanded={isOpen}
       aria-controls={`${dropdownBaseId}-actionlist`}
-      aria-activedescendant={
-        activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined
-      }
+      aria-activedescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
       onClick={() => onTriggerClick()}
-      onKeyDown={(e) => onTriggerKeydown?.({ event: e as unknown as React.KeyboardEvent<HTMLInputElement> })}
+      onKeyDown={(e) =>
+        onTriggerKeydown?.({ event: (e as unknown) as React.KeyboardEvent<HTMLInputElement> })
+      }
     >
-
       <BaseBox overflow="hidden" maxWidth="100%" marginX="spacing.2">
         <Text
           size="small"
@@ -77,7 +72,6 @@ const _CategoryTrigger = ({
         </Text>
       </BaseBox>
       <ChevronDownIcon size="medium" color="interactive.icon.gray.subtle" />
-
     </StyledCategoryTrigger>
   );
 };
