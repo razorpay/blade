@@ -51,6 +51,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         display="flex"
         alignItems="center"
         justifyContent="center"
+        position="relative"
         onClick={handleClick}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
       >
@@ -77,6 +78,8 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
           aria-hidden="true"
           style={{
             position: 'absolute',
+            top: '100%',
+            left: 0,
             width: 0,
             height: 0,
             opacity: 0,
