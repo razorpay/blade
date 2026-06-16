@@ -102,12 +102,7 @@ export type {
 } from './Toast/types';
 
 // BottomSheet
-export {
-  BottomSheet,
-  BottomSheetHeader,
-  BottomSheetBody,
-  BottomSheetFooter,
-} from './BottomSheet';
+export { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from './BottomSheet';
 export type {
   BottomSheetProps,
   BottomSheetHeaderProps,
