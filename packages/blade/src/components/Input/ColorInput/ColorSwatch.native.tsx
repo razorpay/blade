@@ -1,0 +1,37 @@
+import React from 'react';
+import { View } from 'react-native';
+import type { BaseInputProps } from '~components/Input/BaseInput';
+
+type ColorSwatchProps = {
+  color: string;
+  size: NonNullable<BaseInputProps['size']>;
+  isDisabled?: boolean;
+  onChange: (hex: string) => void;
+};
+
+const swatchSize = {
+  xsmall: 16,
+  small: 16,
+  medium: 20,
+  large: 24,
+} as const;
+
+const ColorSwatch = ({ color, size, isDisabled }: ColorSwatchProps): React.ReactElement => {
+  const dimension = swatchSize[size];
+
+  return (
+    <View
+      style={{
+        width: dimension,
+        height: dimension,
+        backgroundColor: `#${color || 'FFFFFF'}`,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.12)',
+        opacity: isDisabled ? 0.5 : 1,
+      }}
+    />
+  );
+};
+
+export { ColorSwatch };
