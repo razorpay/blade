@@ -101,7 +101,12 @@ const PopupArrow = React.forwardRef<SvgProps, PopupArrowProps>(
           viewBox={`0 0 ${width} ${width}`}
           styles={newStyles}
         >
-          <Path fill="none" stroke={strokeColor} strokeWidth={`${strokeWidth}px`} d={dValue} />
+          {strokeColor ? (
+            <Path fill="none" stroke={strokeColor} strokeWidth={`${strokeWidth}px`} d={dValue} />
+          ) : null}
+          {/* Opaque backing: fillColor is semi-transparent and relies on backdropFilter on web.
+              On native we render the surface color beneath so content doesn't bleed through. */}
+          <Path fill={theme.colors.surface.background.gray.intense} stroke="none" d={dValue} />
           <Path fill={fillColor} stroke="none" d={dValue} />
         </StyledSvg>
       </View>

@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
@@ -73,7 +74,10 @@ type BottomNavItemProps = {
   /**
    * onClick handler of BottomNavItem
    */
-  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onClick?: Platform.Select<{
+    web: React.MouseEventHandler;
+    native: (event: GestureResponderEvent) => void;
+  }>;
 } & TestID &
   DataAnalyticsAttribute;
 

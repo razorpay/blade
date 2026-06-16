@@ -7,6 +7,10 @@ export {
   getAvatarWrapperClasses,
   avatarButtonStyles,
   getAvatarButtonClasses,
+  getAvatarGroupOverflowButtonClasses,
+  avatarGroupOverflowTextColorToken,
+  avatarGroupOverflowTextSizeMapping,
+  getAvatarGroupOverflowBodyTextSize,
   avatarGroupStyles,
   getAvatarGroupClasses,
   avatarIconSizeTokens,
@@ -17,4 +21,9 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './avatar';

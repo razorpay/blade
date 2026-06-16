@@ -30,17 +30,21 @@ export {
   getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
-  loadingSpinnerClass,
   loadingClass,
   animatedContentClass,
   pressedClass,
+  dotsLoaderClass,
+  progressOverlayClass,
+  progressFillClass,
+  definiteLoadingClass,
+  liveRegionClass,
   getButtonBackgroundColorToken,
+  getButtonProgressRestColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
-  getButtonSpinnerSize,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
 export { utilityClasses, getUtilityClass } from './utilities';
@@ -194,6 +198,10 @@ export {
   getAvatarWrapperClasses,
   avatarButtonStyles,
   getAvatarButtonClasses,
+  getAvatarGroupOverflowButtonClasses,
+  avatarGroupOverflowTextColorToken,
+  avatarGroupOverflowTextSizeMapping,
+  getAvatarGroupOverflowBodyTextSize,
   avatarGroupStyles,
   getAvatarGroupClasses,
   avatarIconSizeTokens,
@@ -204,7 +212,12 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './Avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './Avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './Avatar';
 export {
   breadcrumbNavClass,
   breadcrumbListClass,

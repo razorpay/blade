@@ -46,6 +46,7 @@ type TextInputCommonProps = Pick<
   | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
+  | 'validationTextPlacement'
   | 'helpText'
   | 'errorText'
   | 'successText'
@@ -211,6 +212,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -423,7 +425,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );
@@ -431,7 +433,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (showClearButton && hasTrailingInteractionElement) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
         </BaseBox>
       );
@@ -534,6 +536,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
+      validationTextPlacement={validationTextPlacement}
       errorText={errorText}
       helpText={helpText}
       successText={successText}

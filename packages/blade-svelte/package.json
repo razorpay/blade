@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-svelte",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
@@ -46,12 +46,13 @@
     "dev": "npm-run-all --parallel dev:blade-core storybook",
     "dev:blade-core": "cd ../blade-core && yarn build:watch",
     "prestorybook": "cd ../blade-core && yarn build",
+    "start:web": "yarn dev",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",
-    "@razorpay/blade-core": ">=0.6.0",
+    "@razorpay/blade-core": ">=0.7.0",
     "@razorpay/i18nify-js": "1.12.3",
     "@use-gesture/vanilla": "10.2.24",
     "body-scroll-lock-upgrade": "1.1.0",
