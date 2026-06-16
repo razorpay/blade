@@ -16,7 +16,12 @@ const swatchSize = {
   large: 24,
 } as const;
 
-const ColorSwatch = ({ color, size, isDisabled }: ColorSwatchProps): React.ReactElement => {
+const ColorSwatch = ({
+  color,
+  size,
+  isDisabled,
+  onChange: _onChange,
+}: ColorSwatchProps): React.ReactElement => {
   const dimension = swatchSize[size];
 
   return (

@@ -99,10 +99,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       width="100%"
       {...metaAttribute({ name: MetaConstants.ColorInput, testID })}
     >
-      <BaseBox
-        display="flex"
-        flexDirection="column"
-      >
+      <BaseBox display="flex" flexDirection="column">
         {label && (
           <FormLabel
             as="span"
@@ -132,6 +129,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               isDisabled={isDisabled}
               isRequired={isRequired}
               validationState={validationState}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus={autoFocus}
               maxCharacters={6}
               hideFormHint

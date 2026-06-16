@@ -1,6 +1,7 @@
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ColorSwatchProps = {
   color: string;
@@ -20,7 +21,7 @@ const swatchSize = {
   large: 24,
 } as const;
 
-const ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
+const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
   ({ color, size, isDisabled, onChange }, ref) => {
     const colorInputRef = useRef<HTMLInputElement>(null);
 
@@ -88,7 +89,9 @@ const ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
   },
 );
 
-ColorSwatch.displayName = 'ColorSwatch';
+const ColorSwatch = assignWithoutSideEffects(_ColorSwatch, {
+  displayName: 'ColorSwatch',
+});
 
 export { ColorSwatch };
 export type { ColorSwatchRef };

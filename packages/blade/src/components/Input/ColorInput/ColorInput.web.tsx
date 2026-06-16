@@ -181,6 +181,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               isDisabled={isDisabled}
               isRequired={isRequired}
               validationState={validationState}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus={autoFocus}
               maxCharacters={6}
               hideFormHint

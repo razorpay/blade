@@ -31,9 +31,7 @@ describe('<ColorInput />', () => {
     );
     const hexInput = getByDisplayValue('FFFFFF');
     fireEvent.change(hexInput, { target: { value: 'abc123' } });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ hex: 'ABC123', opacity: 100 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'ABC123', opacity: 100 }));
   });
 
   it('should reject invalid hex characters', () => {
@@ -53,9 +51,7 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('100');
     fireEvent.change(opacityInput, { target: { value: '50' } });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ hex: 'FF0000', opacity: 50 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 50 }));
   });
 
   it('should reject opacity values over 100', () => {
@@ -138,9 +134,7 @@ describe('<ColorInput />', () => {
     );
     const colorInput = container.querySelector('input[type="color"]') as HTMLInputElement;
     fireEvent.change(colorInput, { target: { value: '#00FF00' } });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ hex: '00FF00', opacity: 100 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: '00FF00', opacity: 100 }));
   });
 
   it('should open color picker when clicking the hex input area', () => {
@@ -162,9 +156,7 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('50');
     fireEvent.keyDown(opacityInput, { key: 'ArrowUp' });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ hex: 'FF0000', opacity: 51 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 51 }));
   });
 
   it('should decrement opacity with ArrowDown key', () => {
@@ -174,9 +166,7 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('50');
     fireEvent.keyDown(opacityInput, { key: 'ArrowDown' });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ hex: 'FF0000', opacity: 49 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 49 }));
   });
 
   it('should not go below 0% with ArrowDown', () => {
