@@ -13,7 +13,7 @@ const swatchSize = {
   xsmall: 20,
   small: 24,
   medium: 28,
-  large: 36,
+  large: 40,
 } as const;
 
 const ColorSwatch = ({

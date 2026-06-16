@@ -18,7 +18,14 @@ const swatchSize = {
   xsmall: 20,
   small: 24,
   medium: 28,
-  large: 36,
+  large: 40,
+} as const;
+
+const swatchMarginRight = {
+  xsmall: 0,
+  small: 0,
+  medium: -2,
+  large: -4,
 } as const;
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
@@ -54,6 +61,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         position="relative"
         onClick={handleClick}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
+        style={{ marginRight: `${swatchMarginRight[size]}px` }}
       >
         <BaseBox
           as="div"
