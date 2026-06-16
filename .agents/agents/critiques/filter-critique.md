@@ -52,9 +52,15 @@ For each duplicate group, keep one entry using this priority:
 
 For non-critical files such as tests, docs, changes in packages other than `blade-svelte`, `blade-core`, or `blade`, filter out the "minor" severity comments.
 
-### 4. Re-sort
+### 3. Filter out non-imporant comments
 
-Sort the remaining comments by severity: `critical` → `major` → `minor`.
+Goal of our review is to add most minimal set of comments while flagging the right issues.
+
+What counts as non-important comments:
+
+- Nitpicks in the code
+- Minor suggestions that are not really issues
+- Asking clarification on part that can confidently be assumed
 
 ## Output
 
