@@ -17,6 +17,7 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
     return {
       display: 'flex',
       borderColor: getIn(theme.colors, borderColor),
+      // Intentionally overrides the borderWidth BaseBox prop passed from Chip.tsx (thinner/thin tokens) — styled fn wins on native.
       borderWidth: outerBorderWidth,
       borderRadius: makeBorderSize(outerRadius - outerBorderWidth),
       // Clipping is handled by AnimatedChip's overflow:hidden; avoid double-clip artifact.

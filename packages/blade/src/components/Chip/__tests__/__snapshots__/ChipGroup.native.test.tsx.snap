@@ -343,6 +343,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -556,6 +557,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -769,6 +771,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -1244,6 +1247,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -1458,6 +1462,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -1672,6 +1677,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
