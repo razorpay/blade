@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg';
+import Svg, { Defs, RadialGradient, Stop, Rect, ClipPath } from 'react-native-svg';
 
 type ButtonShadowOverlayProps = {
   borderRadius: number;
@@ -24,50 +24,15 @@ const ButtonShadowOverlay = ({
   showGradient = false,
 }: ButtonShadowOverlayProps): React.ReactElement => (
   <View style={StyleSheet.absoluteFill} pointerEvents="none">
-    {highlightColor ? (
-      <View
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: highlightHeight,
-          backgroundColor: highlightColor,
-          borderTopLeftRadius: borderRadius,
-          borderTopRightRadius: borderRadius,
-        }}
-      />
-    ) : null}
-    {shadowColor ? (
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: borderRadius,
-          right: borderRadius,
-          height: shadowHeight,
-          backgroundColor: shadowColor,
-        }}
-      />
-    ) : null}
-    <View
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        borderTopWidth: ringWidth,
-        borderBottomWidth: ringWidth,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderColor: borderColor,
-        borderRadius: borderRadius,
-      }}
-    />
-    {showGradient ? (
-      <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
-        <Defs>
+    <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
+      <Defs>
+        <ClipPath id="topClip">
+          <Rect x="0" y="0" width="100%" height="20%" />
+        </ClipPath>
+        <ClipPath id="bottomClip">
+          <Rect x="0" y="80%" width="100%" height="20%" />
+        </ClipPath>
+        {showGradient ? (
           <RadialGradient
             id="btnGlow"
             cx={0}
@@ -79,7 +44,62 @@ const ButtonShadowOverlay = ({
             <Stop offset="0" stopColor="#ffffff" stopOpacity={0.18} />
             <Stop offset="1" stopColor="#ffffff" stopOpacity={0} />
           </RadialGradient>
-        </Defs>
+        ) : null}
+      </Defs>
+      {highlightColor ? (
+        <Rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx={borderRadius}
+          ry={borderRadius}
+          fill="none"
+          stroke={highlightColor}
+          strokeWidth={4}
+          clipPath="url(#bottomClip)"
+        />
+      ) : null}
+      {highlightColor ? (
+        <Rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx={borderRadius}
+          ry={borderRadius}
+          fill="none"
+          stroke={highlightColor}
+          strokeWidth={highlightHeight * 2}
+          clipPath="url(#topClip)"
+        />
+      ) : null}
+      <Rect
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        rx={borderRadius}
+        ry={borderRadius}
+        fill="none"
+        stroke={borderColor}
+        strokeWidth={ringWidth * 2}
+      />
+      {shadowColor ? (
+        <Rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx={borderRadius}
+          ry={borderRadius}
+          fill="none"
+          stroke={shadowColor}
+          strokeWidth={shadowHeight * 2}
+          clipPath="url(#bottomClip)"
+        />
+      ) : null}
+      {showGradient ? (
         <Rect
           x={0}
           y={0}
@@ -89,8 +109,8 @@ const ButtonShadowOverlay = ({
           ry={borderRadius}
           fill="url(#btnGlow)"
         />
-      </Svg>
-    ) : null}
+      ) : null}
+    </Svg>
   </View>
 );
 
