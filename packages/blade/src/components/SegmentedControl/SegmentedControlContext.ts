@@ -11,6 +11,7 @@ type SegmentedControlContextProps = {
   name?: string;
   baseId: string;
   totalItems: number;
+  firstEnabledValue?: string;
   itemRefs?: React.MutableRefObject<Map<string, HTMLElement>>;
 } | null;
 

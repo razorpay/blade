@@ -85,6 +85,7 @@ const SegmentedControlItem = ({
     isDisabled: isGroupDisabled,
     baseId,
     totalItems,
+    firstEnabledValue,
     itemRefs,
   } = useSegmentedControlContext();
 
@@ -92,15 +93,8 @@ const SegmentedControlItem = ({
   const isSelected = selectedValue === value;
   const isDisabled = isGroupDisabled || isItemDisabled;
 
-  const shouldReceiveFocus = (() => {
-    if (isSelected) return true;
-    if (selectedValue !== undefined) return false;
-    if (isDisabled) return false;
-    if (!itemRefs) return false;
-    const entries = Array.from(itemRefs.current.entries());
-    const firstEnabled = entries.find(([, el]) => !(el as HTMLButtonElement).disabled);
-    return firstEnabled?.[0] === value;
-  })();
+  const shouldReceiveFocus =
+    isSelected || (selectedValue === undefined && !isDisabled && value === firstEnabledValue);
 
   React.useEffect(() => {
     if (!itemRefs) return undefined;

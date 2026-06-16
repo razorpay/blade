@@ -66,6 +66,17 @@ const _SegmentedControl = (
   const labelId = `${baseId}-label`;
   const totalItems = React.Children.count(children);
 
+  const firstEnabledValue = React.useMemo(() => {
+    let first: string | undefined;
+    React.Children.forEach(children, (child) => {
+      if (first !== undefined) return;
+      if (React.isValidElement(child) && !child.props.isDisabled) {
+        first = child.props.value;
+      }
+    });
+    return first;
+  }, [children]);
+
   const contextValue = React.useMemo(
     () => ({
       selectedValue,
@@ -75,9 +86,19 @@ const _SegmentedControl = (
       name,
       baseId,
       totalItems,
+      firstEnabledValue,
       itemRefs,
     }),
-    [selectedValue, setSelectedValue, size, isDisabled, name, baseId, totalItems],
+    [
+      selectedValue,
+      setSelectedValue,
+      size,
+      isDisabled,
+      name,
+      baseId,
+      totalItems,
+      firstEnabledValue,
+    ],
   );
 
   const showError = validationState === 'error' && errorText;
