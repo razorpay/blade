@@ -1,6 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Svg, { Defs, RadialGradient, Stop, Rect, ClipPath } from 'react-native-svg';
+import Svg, {
+  Defs,
+  RadialGradient,
+  LinearGradient,
+  Stop,
+  Rect,
+  Mask,
+} from 'react-native-svg';
 
 type ButtonShadowOverlayProps = {
   borderRadius: number;
@@ -26,12 +33,20 @@ const ButtonShadowOverlay = ({
   <View style={StyleSheet.absoluteFill} pointerEvents="none">
     <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
       <Defs>
-        <ClipPath id="topClip">
-          <Rect x="0" y="0" width="100%" height="20%" />
-        </ClipPath>
-        <ClipPath id="bottomClip">
-          <Rect x="0" y="80%" width="100%" height="20%" />
-        </ClipPath>
+        <LinearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+          <Stop offset="0" stopColor="white" stopOpacity={1} />
+          <Stop offset="1" stopColor="white" stopOpacity={0} />
+        </LinearGradient>
+        <LinearGradient id="bottomFade" x1="0" y1="1" x2="0" y2="0">
+          <Stop offset="0" stopColor="white" stopOpacity={1} />
+          <Stop offset="1" stopColor="white" stopOpacity={0} />
+        </LinearGradient>
+        <Mask id="topMask">
+          <Rect x="0" y="0" width="100%" height="20%" fill="url(#topFade)" />
+        </Mask>
+        <Mask id="bottomMask">
+          <Rect x="0" y="80%" width="100%" height="20%" fill="url(#bottomFade)" />
+        </Mask>
         {showGradient ? (
           <RadialGradient
             id="btnGlow"
@@ -56,8 +71,8 @@ const ButtonShadowOverlay = ({
           ry={borderRadius}
           fill="none"
           stroke={highlightColor}
-          strokeWidth={4}
-          clipPath="url(#bottomClip)"
+          strokeWidth={6}
+          mask="url(#bottomMask)"
         />
       ) : null}
       {highlightColor ? (
@@ -70,8 +85,8 @@ const ButtonShadowOverlay = ({
           ry={borderRadius}
           fill="none"
           stroke={highlightColor}
-          strokeWidth={highlightHeight * 2}
-          clipPath="url(#topClip)"
+          strokeWidth={(highlightHeight + 1) * 2}
+          mask="url(#topMask)"
         />
       ) : null}
       <Rect
@@ -96,7 +111,7 @@ const ButtonShadowOverlay = ({
           fill="none"
           stroke={shadowColor}
           strokeWidth={shadowHeight * 2}
-          clipPath="url(#bottomClip)"
+          mask="url(#bottomMask)"
         />
       ) : null}
       {showGradient ? (
