@@ -10,6 +10,14 @@ import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
   ({ theme, backgroundColor, ...props }) => {
+    const size = props.size ?? 'small';
+    const isSmallSize = size === 'xsmall' || size === 'small';
+    // Mirror StyledChipWrapper's border width logic so the clip radius exactly matches
+    // the outer edge of the visible border and avoids corner bleed.
+    const borderWidth = getIn(
+      theme,
+      isSmallSize ? 'border.width.thick' : 'border.width.thicker',
+    ) as number;
     return {
       ...getAnimatedChipStyles({ theme, ...props }),
       alignSelf: 'center',
@@ -17,8 +25,7 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>(
       backgroundColor: backgroundColor ? getIn(theme.colors, backgroundColor) : 'transparent',
       // StyledChipWrapper renders the visible border; suppress AnimatedChip's own border to avoid double border
       borderWidth: 0,
-      // Clip radius must match StyledChipWrapper's outer border radius (outerRadius - thick = 8 - 1.5 = 6.5)
-      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[props.size ?? 'small']] - (getIn(theme, 'border.width.thick') as number)),
+      borderRadius: makeBorderSize(theme.border.radius[chipBorderRadiusTokens[size]] - borderWidth),
     };
   },
 );
@@ -29,6 +36,7 @@ const AnimatedChip = ({
   children,
   isPressed,
   isDisabled,
+  size,
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -53,6 +61,7 @@ const AnimatedChip = ({
       borderColor={borderColor}
       backgroundColor={backgroundColor}
       isDisabled={isDisabled}
+      size={size}
       style={chipAnimation}
     >
       {children}

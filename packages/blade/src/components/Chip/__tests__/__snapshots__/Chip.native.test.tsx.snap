@@ -215,6 +215,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     backgroundColor="transparent"
                     borderColor="interactive.border.gray.disabled"
                     isDisabled={true}
+                    size="small"
                     style={
                       [
                         {
@@ -428,6 +429,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -772,6 +774,7 @@ exports[`<Chip /> should render chip 1`] = `
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -985,6 +988,7 @@ exports[`<Chip /> should render chip 1`] = `
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -1329,6 +1333,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -1642,6 +1647,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
@@ -2086,6 +2092,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     backgroundColor="transparent"
                     borderColor="interactive.border.gray.disabled"
                     isDisabled={true}
+                    size="small"
                     style={
                       [
                         {
@@ -2299,6 +2306,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
+                    size="small"
                     style={
                       [
                         {
