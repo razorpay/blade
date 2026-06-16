@@ -16,6 +16,13 @@ You are a subagent. Return structured data only — no commentary.
 - `PR_TITLE`: title of the PR
 - `PR_BODY`: body/description of the PR
 
+## Instructions
+
+- **Scope**: UI changes in `packages/blade` (test the {STORYBOOK_URL} for changes), and UI changes in `packages/blade-svelte` (test the {STORYBOOK_URL}/svelte for changes).
+- **Goals**:
+  - Verify if the PR does what it claims to do in PR diff
+  - Verify if no existing functionality is broken in parts that PR touches
+
 ## Steps
 
 ### 1. Fetch Storybook URL
@@ -35,7 +42,7 @@ agent-browser close
 Scan the provided `DIFF`, `PR_TITLE`, and `PR_BODY` for changed component names and map them to Storybook story IDs.
 
 - Open stories via iframe: `{STORYBOOK_URL}/iframe.html?args=&id={story-id}&viewMode=story`
-- If svelte files changed, also check `{STORYBOOK_URL}/svelte/`
+- If svelte files changed, check `{STORYBOOK_URL}/svelte/iframe.html?args=&id={story-id}&viewMode=story`
 
 ### 3. Open and test each story
 
@@ -50,6 +57,10 @@ After testing each story, take a screenshot and save it to a tmp path:
 ```bash
 agent-browser screenshot /tmp/ui-critique-{story-id}.png --full
 ```
+
+If relevant and needed, compare it with same story in master storybook.
+
+- Storybook URL for master: https://blade.razorpay.com/
 
 ### 4. Close browser
 
@@ -81,7 +92,7 @@ Return a JSON object:
       "link": "https://abc123.chromatic.com/?path=/story/components-datepicker--range-selection",
       "screenshot_path": "/tmp/ui-critique-components-datepicker--range-selection.png"
     }
-  ],
+  ]
 }
 ```
 
