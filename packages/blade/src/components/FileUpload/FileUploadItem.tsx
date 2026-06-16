@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps, InternalFileUploadItemSize } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { FileUploadItemThumbnail } from './FileUploadItemThumbnail';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import {
@@ -26,6 +27,7 @@ type InternalFileUploadItemProps = Omit<FileUploadItemProps, 'size'> & {
 const FileUploadItem = memo(
   ({
     file,
+    thumbnail,
     onPreview,
     onRemove,
     onReupload,
@@ -76,11 +78,27 @@ const FileUploadItem = memo(
               display="flex"
               flexDirection="row"
               alignItems="center"
-              margin={['spacing.2', 'spacing.3', 'spacing.2', 'spacing.3']}
+              margin={
+                thumbnail
+                  ? ['spacing.1', 'spacing.3', 'spacing.1', 'spacing.1']
+                  : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.3']
+              }
             >
-              {/* paddingTop is intentional for visual balance with the text baseline at this icon size */}
-              <BaseBox marginRight="spacing.3" paddingTop="spacing.2">
-                <FileUploadItemIcon fileName={name} uploadStatus={status} iconSize="small" />
+              <BaseBox
+                marginRight="spacing.3"
+                {...(!thumbnail && { paddingTop: 'spacing.2' })}
+              >
+                {thumbnail ? (
+                  <FileUploadItemThumbnail
+                    thumbnail={thumbnail}
+                    size="small"
+                    fallback={
+                      <FileUploadItemIcon fileName={name} uploadStatus={status} iconSize="small" />
+                    }
+                  />
+                ) : (
+                  <FileUploadItemIcon fileName={name} uploadStatus={status} iconSize="small" />
+                )}
               </BaseBox>
               <BaseBox flexGrow={1} display="flex" flexDirection="row" alignItems="baseline">
                 <Text
@@ -163,13 +181,24 @@ const FileUploadItem = memo(
               display="flex"
               flexDirection="row"
               margin={
-                containerSize === 'large'
-                  ? 'spacing.4'
-                  : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
+                thumbnail
+                  ? 'spacing.1'
+                  : containerSize === 'large'
+                    ? 'spacing.4'
+                    : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
               }
+              alignItems={thumbnail ? 'center' : undefined}
             >
               <BaseBox marginRight="spacing.4">
-                <FileUploadItemIcon fileName={name} uploadStatus={status} />
+                {thumbnail ? (
+                  <FileUploadItemThumbnail
+                    thumbnail={thumbnail}
+                    size={containerSize ?? 'medium'}
+                    fallback={<FileUploadItemIcon fileName={name} uploadStatus={status} />}
+                  />
+                ) : (
+                  <FileUploadItemIcon fileName={name} uploadStatus={status} />
+                )}
               </BaseBox>
               <BaseBox flexGrow={1}>
                 <BaseBox alignItems="center" display="flex">

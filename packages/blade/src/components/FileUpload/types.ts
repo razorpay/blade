@@ -189,6 +189,12 @@ type FileUploadItemProps = Pick<
    */
   size?: 'small' | 'medium' | 'large';
   file: BladeFile;
+  /**
+   * Thumbnail preview for image files. Pass a URL string or a custom ReactNode.
+   * Renders a square preview in place of the default file-type icon.
+   * Falls back to the default icon if the image fails to load.
+   */
+  thumbnail?: string | React.ReactNode;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
