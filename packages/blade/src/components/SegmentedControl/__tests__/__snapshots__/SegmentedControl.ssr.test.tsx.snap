@@ -227,8 +227,10 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
       aria-setsize="3"
       class="c1"
       data-blade-component="segmented-control-item"
+      data-value="daily"
       id="segmented-control-1-daily-item"
       role="radio"
+      tabindex="0"
       type="button"
     >
       <span
@@ -244,8 +246,10 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
       aria-setsize="3"
       class="c3"
       data-blade-component="segmented-control-item"
+      data-value="weekly"
       id="segmented-control-1-weekly-item"
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
@@ -261,8 +265,10 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
       aria-setsize="3"
       class="c3"
       data-blade-component="segmented-control-item"
+      data-value="monthly"
       id="segmented-control-1-monthly-item"
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span

@@ -93,7 +93,7 @@ const SegmentedControlItem = ({
   const isDisabled = isGroupDisabled || isItemDisabled;
 
   React.useEffect(() => {
-    if (!itemRefs) return;
+    if (!itemRefs) return undefined;
     const map = itemRefs.current;
     const node = buttonRef.current;
     if (node) map.set(value, node);

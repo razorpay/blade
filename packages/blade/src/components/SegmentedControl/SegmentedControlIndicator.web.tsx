@@ -22,14 +22,13 @@ const SegmentedControlIndicator = ({
   const updateDimensions = React.useCallback(() => {
     if (!selectedValue || !itemRefs) return;
     const activeItem = itemRefs.current.get(selectedValue);
-    if (!activeItem || (activeItem as HTMLElement).offsetWidth === 0) return;
+    if (!activeItem || activeItem.offsetWidth === 0) return;
 
-    const el = activeItem as HTMLElement;
     setDimensions({
-      width: el.offsetWidth,
-      height: el.offsetHeight,
-      x: el.offsetLeft,
-      y: el.offsetTop,
+      width: activeItem.offsetWidth,
+      height: activeItem.offsetHeight,
+      x: activeItem.offsetLeft,
+      y: activeItem.offsetTop,
     });
 
     if (!hasInitializedRef.current) {
