@@ -99,20 +99,39 @@ type SegmentedControlPropsWithA11yLabel = {
 type SegmentedControlProps = (SegmentedControlPropsWithLabel | SegmentedControlPropsWithA11yLabel) &
   SegmentedControlCommonProps;
 
-type SegmentedControlItemWithIconProps = {
+type SegmentedControlItemIconWithLabel = {
   /**
    * A leading icon component.
    */
   leading: IconComponent;
   /**
-   * The label content of the item. Optional when leading icon is provided.
+   * The label content of the item.
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /**
-   * Accessibility label for the item. Required for icon-only items.
+   * Accessibility label for the item.
    */
   accessibilityLabel?: string;
 };
+
+type SegmentedControlItemIconOnly = {
+  /**
+   * A leading icon component.
+   */
+  leading: IconComponent;
+  /**
+   * The label content of the item. Omit for icon-only items.
+   */
+  children?: undefined;
+  /**
+   * Accessibility label for the item. Required for icon-only items.
+   */
+  accessibilityLabel: string;
+};
+
+type SegmentedControlItemWithIconProps =
+  | SegmentedControlItemIconWithLabel
+  | SegmentedControlItemIconOnly;
 
 type SegmentedControlItemWithoutIconProps = {
   /**
