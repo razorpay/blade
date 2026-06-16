@@ -445,6 +445,7 @@ exports[`<Popover /> should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -454,7 +455,7 @@ exports[`<Popover /> should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1033,6 +1034,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -1042,7 +1044,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1607,6 +1609,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                   fontSize={200}
                   fontStyle="normal"
                   fontWeight="semibold"
+                  letterSpacing={25}
                   lineHeight={200}
                   style={
                     [
@@ -1616,7 +1619,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                         "fontSize": 16,
                         "fontStyle": "normal",
                         "fontWeight": "600",
-                        "letterSpacing": 0,
+                        "letterSpacing": -0.528,
                         "lineHeight": 24,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -1761,6 +1764,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -1770,7 +1774,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1790,10 +1794,13 @@ exports[`<Popover /> should render with title,footer 1`] = `
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "alignSelf": "flex-start",
+                },
               ]
             }
           >
@@ -1805,6 +1812,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1814,7 +1822,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,

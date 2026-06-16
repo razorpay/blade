@@ -101,7 +101,6 @@ const _AccordionItemHeader = ({
         alignItems={!subtitle && !isLeadingNumberOrIcon ? 'center' : 'flex-start'}
         dividerProps={{
           thickness: 'thinner',
-          marginX: 'spacing.5',
         }}
         trailingInteractionElement={
           <CollapsibleChevronIcon

@@ -170,7 +170,7 @@ const TabBarIndicator = ({
           : {
               height: theme.border.width.thicker,
               bottom: 0,
-              backgroundColor: theme.colors.interactive.border.primary.default,
+              backgroundColor: theme.colors.interactive.border.neutral.highlighted,
             },
         animStyle,
       ]}

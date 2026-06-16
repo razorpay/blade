@@ -181,6 +181,7 @@ exports[`<Alert /> should render 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -190,7 +191,7 @@ exports[`<Alert /> should render 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -487,6 +488,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -496,7 +498,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -793,6 +795,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -802,7 +805,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
