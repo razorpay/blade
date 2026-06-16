@@ -1,0 +1,363 @@
+/* BottomSheet — surface, backdrop, header, body, footer, grab-handle.
+ *
+ * Mirrors the React BottomSheet styles in blade/src/components/BottomSheet/.
+ * Surface position (`height` / `bottom`), opacity, and `pointer-events` are
+ * driven by inline CSS variables set from the Svelte component:
+ *   --bs-position-y → height of the sheet in px
+ *   --bs-z-index   → z-index for surface and backdrop
+ */
+
+/* ===== SURFACE ===== */
+.surface {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+
+  background-color: var(--popup-background-gray-subtle);
+  border-color: var(--popup-border-gray-subtle);
+  border-top-left-radius: var(--border-radius-large);
+  border-top-right-radius: var(--border-radius-large);
+  /* Reverse top elevation of highRaised elevation token. */
+  box-shadow: 0 -24px 48px -12px hsla(217, 56%, 17%, 0.18);
+
+  height: var(--bs-position-y, 0px);
+  z-index: var(--bs-z-index, 100);
+  opacity: 0;
+  pointer-events: none;
+  touch-action: none;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  will-change: transform, opacity, height;
+  transition-property: transform, opacity, height;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+}
+
+.surface[data-state='open'] {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.surface[data-dragging='true'] {
+  transition-duration: 0s;
+}
+
+/* ===== INNER WRAPPER (flex column inside surface) ===== */
+.innerWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== BACKDROP ===== */
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--bs-z-index, 100);
+  background-color: var(--overlay-background-subtle);
+  opacity: 0;
+  pointer-events: none;
+
+  transition-property: opacity;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-exit);
+}
+
+.backdrop[data-state='open'] {
+  opacity: 1;
+  pointer-events: all;
+  transition-timing-function: var(--easing-entrance);
+}
+
+/* ===== GRAB HANDLE ===== */
+.grabHandle {
+  position: relative;
+  flex-shrink: 0;
+  padding-top: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
+  touch-action: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.grabHandleFloating {
+  position: absolute;
+}
+
+.grabHandle::after {
+  content: '';
+  margin: auto;
+  width: 56px;
+  height: 4px;
+  background-color: var(--interactive-background-gray-faded);
+  border-radius: var(--spacing-5);
+}
+
+/* ===== HEADER ===== */
+.header {
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.header[data-empty='true'] {
+  overflow: visible;
+}
+
+.headerEmpty {
+  position: relative;
+  height: 32px;
+  touch-action: none;
+}
+
+.headerEmptyFloating {
+  position: absolute;
+  top: var(--spacing-5);
+  right: 0;
+}
+
+/* Container around the close button — 28x28 round capsule. */
+.closeButtonCapsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: var(--spacing-5);
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background-color: var(--popup-background-gray-subtle);
+  border-radius: var(--border-radius-max);
+  z-index: 100;
+}
+
+.closeButtonCapsuleFloating {
+  top: 0;
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius-max);
+  color: var(--interactive-icon-gray-muted);
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.closeButton:hover:not([disabled]),
+.closeButton:active {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
+  outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
+}
+
+/* Header content row (when not empty).
+ * `align-items: flex-start` matches React's BaseHeader where the row uses
+ * `alignItems="flex-start"`. Each slot (title, close button) is centered within
+ * its own 28px-tall virtual box anchored to the top, so the close icon aligns
+ * with the title rather than the vertical center of the title+subtitle block. */
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--spacing-5);
+  gap: var(--spacing-3);
+}
+
+.headerLeading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.headerTitleBlock {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.headerTitle {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+  letter-spacing: var(--letter-spacing-25);
+  color: var(--surface-text-gray-normal);
+  margin: 1px 0 0 0;
+}
+
+.headerSubtitle {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
+  color: var(--surface-text-gray-muted);
+  margin: var(--spacing-1) 0 0 0;
+}
+
+.headerTrailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.headerBackButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius-max);
+  color: var(--interactive-icon-gray-muted);
+  flex-shrink: 0;
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.headerBackButton:hover:not([disabled]),
+.headerBackButton:active {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.headerBackButton:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
+  outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
+}
+
+/* Close button hugs its icon (no fixed 28px width). Height kept for vertical
+ * centering parity with the React `centerBoxProps` virtual box. */
+.headerCloseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  margin-left: var(--spacing-3);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius-max);
+  color: var(--interactive-icon-gray-muted);
+  flex-shrink: 0;
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.headerCloseButton:hover:not([disabled]),
+.headerCloseButton:active {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.headerCloseButton:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
+  outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.headerDivider {
+  border-bottom-width: var(--border-width-thin);
+  border-bottom-style: solid;
+  border-bottom-color: var(--surface-border-gray-muted);
+  width: 100%;
+}
+
+/* ===== BODY ===== */
+.body {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  user-select: auto;
+  touch-action: none;
+  -webkit-tap-highlight-color: revert;
+  -webkit-touch-callout: revert;
+  -webkit-user-select: auto;
+}
+
+.bodyOverflowAuto {
+  overflow: auto;
+}
+
+.bodyOverflowHidden {
+  overflow: hidden;
+}
+
+.bodyOverflowVisible {
+  overflow: visible;
+}
+
+.bodyContent {
+  padding: var(--spacing-5);
+}
+
+.bodyContentZeroPadding {
+  padding: var(--spacing-0);
+}
+
+.bodyContentActionList {
+  padding: var(--spacing-3);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  background-color: var(--popup-background-gray-subtle);
+  touch-action: none;
+  z-index: 2;
+}
+
+.footerInner {
+  padding: var(--spacing-5);
+  border-top: 1px solid var(--surface-border-gray-muted);
+}
+
+@media (min-width: 768px) {
+  .headerContent {
+    padding: var(--spacing-6);
+  }
+}
