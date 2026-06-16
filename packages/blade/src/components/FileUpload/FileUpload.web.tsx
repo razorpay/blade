@@ -8,7 +8,6 @@ import type {
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
-  fileUploadHeightTokens,
   fileUploadInputHeightTokens,
   fileUploadLinkBorderTokens,
   getFileUploadInputHoverTokens,
