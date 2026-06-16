@@ -60,7 +60,9 @@ agent-browser screenshot /tmp/ui-critique-{story-id}.png --full
 
 If relevant and needed, compare it with same story in master storybook.
 
-- Storybook URL for master: https://blade.razorpay.com/
+Storybook URL for master:
+- For packages/blade changes: https://blade.razorpay.com/
+- For packages/blade-svelte changes: https://blade.razorpay.com/svelte
 
 ### 4. Close browser
 
