@@ -497,7 +497,7 @@ const _Carousel = (
     scrollToSlide(activeSlide);
   }, [activeSlide]);
 
-  const isAutoPlaying = autoPlay && !shouldPauseAutoplay;
+  const isAutoPlaying = Boolean(autoPlay && !shouldPauseAutoplay);
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {

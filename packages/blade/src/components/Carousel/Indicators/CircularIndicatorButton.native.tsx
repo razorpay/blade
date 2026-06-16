@@ -75,7 +75,8 @@ const CircularIndicatorButton = ({
     <Pressable
       onPress={onClick}
       {...rest}
-      testID={`carousel-indicator-${slideIndex}`}
+      // @ts-expect-error slideIndex is a custom prop used by tests to identify indicator buttons
+      slideIndex={slideIndex}
       style={{
         minWidth: SVG_SIZE,
         minHeight: SVG_SIZE,
