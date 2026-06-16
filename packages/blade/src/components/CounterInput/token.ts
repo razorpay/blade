@@ -1,5 +1,12 @@
 import { size as sizeTokens, spacing, border } from '~tokens/global';
 
+export const COUNTER_INPUT_ICON_SIZE_MAP = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'large',
+  large: 'xlarge',
+} as const;
+
 export const COUNTER_INPUT_TOKEN = {
   width: {
     xsmall: sizeTokens[78],
