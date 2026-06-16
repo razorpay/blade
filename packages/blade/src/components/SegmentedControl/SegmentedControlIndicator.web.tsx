@@ -14,27 +14,29 @@ const SegmentedControlIndicator = ({
   containerRef: React.RefObject<HTMLElement | null>;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const { selectedValue, baseId, size, isDisabled } = useSegmentedControlContext();
+  const { selectedValue, size, isDisabled, itemRefs } = useSegmentedControlContext();
   const [shouldAnimate, setShouldAnimate] = React.useState(false);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
   const hasInitializedRef = React.useRef(false);
 
   const updateDimensions = React.useCallback(() => {
-    const activeItem = document.getElementById(`${baseId}-${selectedValue}-item`);
-    if (!activeItem || activeItem.offsetWidth === 0) return;
+    if (!selectedValue || !itemRefs) return;
+    const activeItem = itemRefs.current.get(selectedValue);
+    if (!activeItem || (activeItem as HTMLElement).offsetWidth === 0) return;
 
+    const el = activeItem as HTMLElement;
     setDimensions({
-      width: activeItem.offsetWidth,
-      height: activeItem.offsetHeight,
-      x: activeItem.offsetLeft,
-      y: activeItem.offsetTop,
+      width: el.offsetWidth,
+      height: el.offsetHeight,
+      x: el.offsetLeft,
+      y: el.offsetTop,
     });
 
     if (!hasInitializedRef.current) {
       hasInitializedRef.current = true;
       requestAnimationFrame(() => setShouldAnimate(true));
     }
-  }, [baseId, selectedValue]);
+  }, [selectedValue, itemRefs]);
 
   useIsomorphicLayoutEffect(() => {
     if (!selectedValue) return;

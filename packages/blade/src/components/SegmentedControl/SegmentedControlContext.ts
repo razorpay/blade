@@ -11,6 +11,7 @@ type SegmentedControlContextProps = {
   name?: string;
   baseId: string;
   totalItems: number;
+  itemRefs?: React.MutableRefObject<Map<string, HTMLElement>>;
 } | null;
 
 const SegmentedControlContext = React.createContext<SegmentedControlContextProps>(null);

@@ -85,10 +85,50 @@ const SegmentedControlItem = ({
     isDisabled: isGroupDisabled,
     baseId,
     totalItems,
+    itemRefs,
   } = useSegmentedControlContext();
 
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
   const isSelected = selectedValue === value;
   const isDisabled = isGroupDisabled || isItemDisabled;
+
+  React.useEffect(() => {
+    if (!itemRefs) return;
+    const map = itemRefs.current;
+    const node = buttonRef.current;
+    if (node) map.set(value, node);
+    return () => {
+      map.delete(value);
+    };
+  }, [value, itemRefs]);
+
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      const container = e.currentTarget.parentElement;
+      if (!container) return;
+
+      const items = Array.from(
+        container.querySelectorAll<HTMLButtonElement>('[role="radio"]:not(:disabled)'),
+      );
+      const currentIndex = items.indexOf(e.currentTarget);
+      let nextIndex = -1;
+
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        nextIndex = (currentIndex + 1) % items.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        nextIndex = (currentIndex - 1 + items.length) % items.length;
+      }
+
+      if (nextIndex >= 0) {
+        e.preventDefault();
+        const nextItem = items[nextIndex];
+        nextItem.focus();
+        const nextValue = nextItem.dataset.value;
+        if (nextValue) setSelectedValue(() => nextValue);
+      }
+    },
+    [setSelectedValue],
+  );
 
   const textColor = isDisabled
     ? 'interactive.text.gray.disabled'
@@ -103,14 +143,18 @@ const SegmentedControlItem = ({
 
   return (
     <StyledSegmentedControlButton
+      ref={buttonRef}
       type="button"
       id={`${baseId}-${value}-item`}
+      data-value={value}
+      tabIndex={isSelected ? 0 : -1}
       $size={size}
       $isSelected={isSelected}
       disabled={isDisabled}
       onClick={() => {
         setSelectedValue(() => value);
       }}
+      onKeyDown={handleKeyDown}
       {...makeAccessible({
         role: 'radio',
         checked: isSelected,

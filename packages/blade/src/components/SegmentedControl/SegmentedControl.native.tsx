@@ -78,7 +78,6 @@ const _SegmentedControl = (
       }}
       accessibilityRole="radiogroup"
       accessibilityLabel={label || accessibilityLabel || name}
-      accessibilityState={{ expanded: undefined }}
       {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
     >
       {children}

@@ -60,6 +60,7 @@ const _SegmentedControl = (
 
   const baseId = useId('segmented-control');
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const itemRefs = React.useRef<Map<string, HTMLElement>>(new Map());
   const labelId = `${baseId}-label`;
   const totalItems = React.Children.count(children);
 
@@ -72,6 +73,7 @@ const _SegmentedControl = (
       name,
       baseId,
       totalItems,
+      itemRefs,
     }),
     [selectedValue, setSelectedValue, size, isDisabled, name, baseId, totalItems],
   );
