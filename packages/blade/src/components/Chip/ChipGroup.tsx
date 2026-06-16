@@ -33,7 +33,6 @@ const _ChipGroup = (
     color = 'primary',
     testID,
     selectionType = 'single',
-    isFullWidth = false,
     ...rest
   }: ChipGroupProps,
   ref: React.Ref<BladeElementRef>,
@@ -50,7 +49,6 @@ const _ChipGroup = (
     isRequired,
     validationState,
     necessityIndicator,
-    isFullWidth,
   });
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;

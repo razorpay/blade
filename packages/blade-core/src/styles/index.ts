@@ -311,3 +311,4 @@ export {
   bottomSheetBodyClass,
 } from './BottomSheet';
 export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';
+export { getTabsClasses } from "./Tabs";
