@@ -1,15 +1,11 @@
 import { useCarouselContext } from '../CarouselContext';
-import { IndicatorButton } from './IndicatorButton';
 import { CircularIndicatorButton } from './CircularIndicatorButton';
 import type { IndicatorsProps } from './types';
 import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 
 const Indicators = (props: IndicatorsProps): React.ReactElement => {
-  const { carouselId, isResponsive, visibleItems } = useCarouselContext();
-
-  const ButtonComponent = props.isMobile ? CircularIndicatorButton : IndicatorButton;
-
+  const { carouselId, isResponsive, visibleItems, isAutoPlaying } = useCarouselContext();
   return (
     <BaseBox
       display="flex"
@@ -23,22 +19,20 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
           _visibleItems = 1;
         }
 
-        const accessibleProps = makeAccessible({
-          role: 'tab',
-          label: `Slide ${idx * _visibleItems + 1}`,
-          selected: idx === props.activeIndex,
-          controls: `${carouselId}-carousel-item-${idx * _visibleItems}`,
-        });
-
         return (
-          <ButtonComponent
+          <CircularIndicatorButton
             key={idx}
-            {...accessibleProps}
+            {...makeAccessible({
+              role: 'tab',
+              label: `Slide ${idx * _visibleItems + 1}`,
+              selected: idx === props.activeIndex,
+              controls: `${carouselId}-carousel-item-${idx * _visibleItems}`,
+            })}
             slideIndex={idx * _visibleItems}
             isActive={idx === props.activeIndex}
             onClick={() => props?.onClick?.(idx)}
             variant={props.variant}
-            isAutoPlaying={props.isAutoPlaying}
+            isAutoPlaying={isAutoPlaying}
           />
         );
       })}

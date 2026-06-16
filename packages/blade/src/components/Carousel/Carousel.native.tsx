@@ -38,7 +38,6 @@ type ControlsProps = Required<
   onIndicatorButtonClick: (index: number) => void;
   onNextButtonClick: () => void;
   onPreviousButtonClick: () => void;
-  isAutoPlaying: boolean;
 };
 
 const Controls = ({
@@ -50,7 +49,6 @@ const Controls = ({
   onPreviousButtonClick,
   indicatorVariant,
   navigationButtonVariant,
-  isAutoPlaying,
 }: ControlsProps): React.ReactElement => {
   return (
     <BaseBox
@@ -73,8 +71,6 @@ const Controls = ({
           activeIndex={activeIndicator}
           totalItems={totalSlides}
           variant={indicatorVariant}
-          isAutoPlaying={isAutoPlaying}
-          isMobile={true}
         />
       ) : null}
       <BaseBox>
@@ -154,8 +150,9 @@ const _Carousel = (
       setActiveIndicator: setActiveSlide,
       carouselItemAlignment: undefined,
       shouldAddStartEndSpacing: false,
+      isAutoPlaying,
     };
-  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide]);
+  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide, isAutoPlaying]);
 
   // auto play
   useInterval(
@@ -242,7 +239,6 @@ const _Carousel = (
           onPreviousButtonClick={goToPreviousSlide}
           indicatorVariant={indicatorVariant}
           navigationButtonVariant={navigationButtonVariant}
-          isAutoPlaying={isAutoPlaying}
         />
       </BaseBox>
     </CarouselContext.Provider>

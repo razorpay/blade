@@ -58,6 +58,7 @@ const CircularIndicatorButton = ({
   isActive,
   variant,
   isAutoPlaying,
+  slideIndex: _slideIndex,
   ...rest
 }: CircularIndicatorButtonProps): React.ReactElement => {
   const { theme } = useTheme();
