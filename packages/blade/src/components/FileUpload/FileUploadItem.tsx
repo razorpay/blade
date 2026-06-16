@@ -130,7 +130,7 @@ const FileUploadItem = memo(
                       <IconButton
                         size="small"
                         accessibilityLabel={`Remove ${name}`}
-                        icon={TrashIcon}
+                        icon={CloseIcon}
                         onClick={() => onRemove({ file })}
                       />
                     </>
@@ -152,7 +152,7 @@ const FileUploadItem = memo(
                   <IconButton
                     size="small"
                     accessibilityLabel={`Remove ${name}`}
-                    icon={TrashIcon}
+                    icon={CloseIcon}
                     onClick={() => onRemove?.({ file })}
                   />
                 </BaseBox>
