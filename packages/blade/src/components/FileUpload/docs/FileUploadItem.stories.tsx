@@ -187,7 +187,8 @@ SmallAllStates.storyName = 'Small Size - All States';
 
 // Thumbnail Preview
 const ThumbnailTemplate: StoryFn<typeof FileUploadItem> = () => {
-  const sampleImageUrl = 'https://placekitten.com/200/200';
+  const sampleImageUrl =
+    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhMWEyZSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0iIzRhOTBkOSIvPjxwYXRoIGQ9Ik0wIDE0MCBMNjAgMTAwIEwxMjAgMTMwIEwxNjAgOTAgTDIwMCAxMjAgTDIwMCAyMDAgTDAgMjAwIFoiIGZpbGw9IiMyZDZiNGUiLz48L3N2Zz4=';
 
   return (
     <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.4">

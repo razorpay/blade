@@ -80,13 +80,13 @@ const FileUploadItem = memo(
               alignItems="center"
               margin={
                 thumbnail
-                  ? ['spacing.1', 'spacing.3', 'spacing.1', 'spacing.1']
+                  ? ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.2']
                   : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.3']
               }
             >
               <BaseBox
                 marginRight="spacing.3"
-                {...(!thumbnail && { paddingTop: 'spacing.2' })}
+                {...(!thumbnail && { paddingTop: 'spacing.1' })}
               >
                 {thumbnail ? (
                   <FileUploadItemThumbnail
@@ -182,7 +182,7 @@ const FileUploadItem = memo(
               flexDirection="row"
               margin={
                 thumbnail
-                  ? 'spacing.1'
+                  ? 'spacing.2'
                   : containerSize === 'large'
                     ? 'spacing.4'
                     : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']

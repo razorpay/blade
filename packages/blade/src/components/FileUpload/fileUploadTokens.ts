@@ -24,7 +24,7 @@ const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | Eas
 };
 
 const fileUploadHeightTokens = {
-  small: size['36'],
+  small: size['32'],
   medium: size['56'],
   large: size['64'],
 };
@@ -36,7 +36,7 @@ const fileUploadInputHeightTokens = {
 };
 
 const fileUploadThumbnailSizeTokens = {
-  small: size['28'],
+  small: size['24'],
   medium: size['48'],
   large: size['56'],
 };
