@@ -27,6 +27,10 @@ const progressAnimationStyles = css`
   animation: ${progressAnimation} ${CAROUSEL_AUTOPLAY_INTERVAL}ms linear forwards;
 `;
 
+const ProgressRing = styled.circle`
+  ${progressAnimationStyles}
+`;
+
 const StyledCircularButton = styled.button(({ theme }) => ({
   border: 'none',
   cursor: 'pointer',
@@ -95,10 +99,6 @@ const CircularIndicatorButton = ({
     </StyledCircularButton>
   );
 };
-
-const ProgressRing = styled.circle`
-  ${progressAnimationStyles}
-`;
 
 export { CircularIndicatorButton };
 export type { CircularIndicatorButtonProps };
