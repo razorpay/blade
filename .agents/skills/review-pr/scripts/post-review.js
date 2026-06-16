@@ -147,13 +147,13 @@ function formatInlineComment(c) {
 const prAuthor = execSync(`gh api repos/${repo}/pulls/${prNumber} --jq '.user.login'`)
   .toString()
   .trim();
-let currentUser = '';
+let currentUser;
 try {
   currentUser = execSync("gh api user --jq '.login'").toString().trim();
-} catch {
-  currentUser = '';
+} catch (_) {
+  currentUser = null;
 }
-const isSelfReview = currentUser !== '' && prAuthor === currentUser;
+const isSelfReview = currentUser !== null && prAuthor === currentUser;
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];
