@@ -159,20 +159,12 @@ function formatInlineComment(c) {
 // Archive UI critique screenshots to __ci_artifacts branch
 // ---------------------------------------------------------------------------
 
-function archiveUiScreenshots(reviewJson, repoArg) {
+function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   const uiStatuses = reviewJson?.['overview-comment']?.['ui-review']?.statuses ?? [];
   const screenshots = uiStatuses.filter((s) => s.screenshot_path);
   if (screenshots.length === 0) return {};
 
-  const now = new Date();
-  const dd = String(now.getDate()).padStart(2, '0');
-  const mm = String(now.getMonth() + 1).padStart(2, '0');
-  const yy = String(now.getFullYear()).slice(-2);
-  const hh = String(now.getHours()).padStart(2, '0');
-  const min = String(now.getMinutes()).padStart(2, '0');
-  const sec = String(now.getSeconds()).padStart(2, '0');
-  const timestamp = `${dd}-${mm}-${yy}--${hh}-${min}-${sec}`;
-  const destDir = `artifacts/review/${timestamp}/ui-critique`;
+  const destDir = `artifacts/review/PR-${prNum}/ui-critique`;
 
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
   const cdnMap = {};
@@ -197,6 +189,13 @@ function archiveUiScreenshots(reviewJson, repoArg) {
       execSync('git rm -rf . --quiet', { stdio: 'pipe' });
     }
 
+    // Remove previous artifacts for this PR before writing new ones
+    try {
+      execSync(`git rm -rf ${destDir} --quiet`, { stdio: 'pipe' });
+    } catch (_) {
+      // destDir may not exist yet on first review — that's fine
+    }
+
     execSync(`mkdir -p ${destDir}`);
 
     screenshots.forEach((s, i) => {
@@ -210,7 +209,7 @@ function archiveUiScreenshots(reviewJson, repoArg) {
         `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
     });
 
-    execSync(`git commit -m "chore: add ui-critique screenshots for ${timestamp}" --allow-empty`);
+    execSync(`git commit -m "chore: add ui-critique screenshots for PR-${prNum}" --allow-empty`);
     execSync('git push origin __ci_artifacts');
     console.log(`\nUI screenshots archived to __ci_artifacts: ${destDir}`);
   } finally {
@@ -221,7 +220,7 @@ function archiveUiScreenshots(reviewJson, repoArg) {
   return cdnMap;
 }
 
-const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo);
+const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
 
 // ---------------------------------------------------------------------------
 // Build payload
