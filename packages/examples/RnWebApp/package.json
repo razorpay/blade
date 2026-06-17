@@ -1,0 +1,38 @@
+{
+  "name": "rn-web-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@floating-ui/react": "0.26.13",
+    "@floating-ui/react-native": "^0.10.0",
+    "@gorhom/bottom-sheet": "^4.4.6",
+    "@gorhom/portal": "^1.0.14",
+    "react-native-pager-view": "^6.2.1",
+    "@formatjs/intl-locale": "^3.0.0",
+    "@formatjs/intl-displaynames": "^6.0.0",
+    "framer-motion": "^11.0.0",
+    "@razorpay/blade": "latest",
+    "@razorpay/i18nify-js": "^1.12.3",
+    "@razorpay/i18nify-react": "^4.0.12",
+    "react": "18.3.1",
+    "react-native": "0.76.9",
+    "react-native-gesture-handler": "2.21.2",
+    "react-native-reanimated": "3.16.7",
+    "react-native-safe-area-context": "^4.14.1",
+    "react-native-svg": "15.15.0",
+    "react-native-web": "^0.19.13",
+    "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "5.0.4",
+    "vite": "^5.4.0"
+  }
+}
