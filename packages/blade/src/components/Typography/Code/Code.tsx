@@ -168,8 +168,6 @@ const _Code = (
         lineHeight={lineHeight}
         letterSpacing={letterSpacing}
         textTransform={textTransform}
-        // Android's default font padding nudges inline code up relative to adjacent text on native.
-        style={(!isPlatformWeb ? { includeFontPadding: false } : undefined) as never}
       >
         {children}
       </BaseText>

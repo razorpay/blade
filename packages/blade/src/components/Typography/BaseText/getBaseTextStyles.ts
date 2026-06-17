@@ -105,6 +105,8 @@ const getBaseTextStyles = ({
     textTransform,
     ...truncateStyles,
     ...wordBreakStyles,
+    // Android adds extra font padding that nudges inline text up relative to adjacent elements.
+    ...(isReactNative() ? ({ includeFontPadding: false } as unknown as CSSObject) : {}),
   };
 };
 
