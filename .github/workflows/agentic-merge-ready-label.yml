@@ -43,7 +43,6 @@ jobs:
           import os, subprocess, json, sys, urllib.parse
 
           LABEL = "✨ Agentic Merge Ready ✨"
-          SLASH_REVIEWER = "rzp-slash-reviewer"
           # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
           AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
           # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
