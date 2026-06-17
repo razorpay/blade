@@ -24,9 +24,8 @@
   const isExpanded = $derived(itemCtx.isExpanded);
   const collapsibleBodyId = $derived(itemCtx.collapsibleBodyId);
   const accordionSize = $derived(accordionCtx.size);
-  const bodyBackground = $derived(accordionCtx.bodyBackground);
 
-  const isGrayBody = $derived(bodyBackground === 'gray');
+  const isGrayBody = $derived(accordionCtx.hasGrayBody);
   // When the gray body belongs to the last item, round its bottom corners so the
   // edge-to-edge gray surface follows the filled card's rounded bottom.
   const isLastItem = $derived(

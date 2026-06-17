@@ -560,13 +560,12 @@
     Design assumption: AvatarGroup sits in the same titleSuffix slot as Badge.
     Since titleSuffix is an open Snippet, no prop changes are required — consumers
     just pass an AvatarGroup snippet instead of a Badge snippet.
-    titleSuffixType="avatarGroup" is a documentation hint only.
   -->
   <Accordion variant="filled">
     {#snippet children()}
       <AccordionItem>
         {#snippet children()}
-          <AccordionItemHeader title="Team members" subtitle="Assigned reviewers" titleSuffixType="avatarGroup">
+          <AccordionItemHeader title="Team members" subtitle="Assigned reviewers">
             {#snippet titleSuffix()}
               <AvatarGroup size="xsmall" maxCount={3}>
                 {#snippet children()}
@@ -608,13 +607,13 @@
 
 <Story name="With Gray Body Background (Checkout)" asChild>
   <!--
-    Design assumption: The gray body background (`--surface-background-gray-subtle`)
-    is applied via the `bodyBackground="gray"` prop on the Accordion root.
+    Design assumption: The gray body uses `hasGrayBody` on the Accordion root
+    and `--surface-background-gray-subtle`.
     This matches the checkout theme where payment method bodies use a recessed
     surface to distinguish content from the card container.
   -->
   <div style="max-width: 480px;">
-    <Accordion variant="filled" bodyBackground="gray">
+    <Accordion variant="filled" hasGrayBody>
       {#snippet children()}
         <AccordionItem>
           {#snippet children()}
