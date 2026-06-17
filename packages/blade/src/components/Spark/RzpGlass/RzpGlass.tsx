@@ -28,6 +28,7 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
     gradientMapCanvas,
     gradientMapSrc: gradientMapSrcProp,
     gradientMap2Src: gradientMap2SrcProp,
+    centerGradientMapSrc: centerGradientMapSrcProp,
     imageSrc: imageSrcProp,
     ...configProps
   } = props;
@@ -45,7 +46,7 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
   const gradientMap2Src =
     gradientMap2SrcProp ?? presetAssets.gradientMap2Src ?? defaultAssets.gradientMap2Src;
   const centerGradientMapSrc =
-    presetAssets.centerGradientMapSrc ?? defaultAssets.centerGradientMapSrc;
+    centerGradientMapSrcProp ?? presetAssets.centerGradientMapSrc ?? defaultAssets.centerGradientMapSrc;
 
   const [isInitialized, setIsInitialized] = useState(false);
   const [error, setError] = useState<Error | null>(null);

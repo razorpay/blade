@@ -23,6 +23,19 @@ import { Divider } from '~components/Divider';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
 
+const LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP = new URL(
+  '../../../../assets/spark/new/n-colorama-gm-primary.png',
+  import.meta.url,
+).href;
+const LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP = new URL(
+  '../../../../assets/spark/new/n-colorama-gm-secondary.png',
+  import.meta.url,
+).href;
+const LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP = new URL(
+  '../../../../assets/spark/new/n-colorama-gm-center.png',
+  import.meta.url,
+).href;
+
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
@@ -55,6 +68,13 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
 };
 
 export const Default = RazorSenseTemplate.bind({});
+
+export const LocalBaseVideo = RazorSenseTemplate.bind({});
+LocalBaseVideo.args = {
+  gradientMapSrc: LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
+  gradientMap2Src: LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
+  centerGradientMapSrc: LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
+};
 
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
