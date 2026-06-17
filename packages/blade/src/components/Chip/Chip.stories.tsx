@@ -1,6 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
+import { Code, Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
@@ -25,6 +25,10 @@ const Page = (): React.ReactElement => {
           >
             here.
           </Link>
+          <br />
+          Use <Code size="medium">icon</Code> for Blade icons and <Code size="medium">leading</Code>{' '}
+          for custom leading elements like flags or avatars. They are mutually exclusive and should
+          not be used together.
         </Text>
       }
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75272-53870&t=TGcKiXJiozSRKwOG-1&scaling=min-zoom&page-id=52377%3A23885&mode=design"
@@ -65,7 +69,8 @@ export default {
     },
     icon: {
       name: 'icon',
-      description: 'Displays the Blade Icon component within the Chip',
+      description:
+        'Displays a Blade Icon component within the Chip. Mutually exclusive with `leading`.',
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
@@ -73,6 +78,17 @@ export default {
         category: propsCategory.CHIP,
         type: {
           summary: 'IconComponent',
+        },
+      },
+    },
+    leading: {
+      description:
+        'Custom leading element rendered before the label, such as a flag, avatar, logo, or SVG asset. Mutually exclusive with `icon`.',
+      control: false,
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: 'React.ReactNode',
         },
       },
     },
@@ -123,7 +139,7 @@ Default.args = {
   color: 'primary',
 };
 
-const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
+const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = ({ icon, value, ...args }) => {
   return (
     <Box>
       <Text marginBottom="spacing.4">Chip with leading element (e.g., country flags):</Text>
@@ -133,6 +149,7 @@ const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
         label="Country"
       >
         <ChipComponent
+          {...args}
           value="IN"
           leading={
             <img
@@ -147,6 +164,7 @@ const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
           India
         </ChipComponent>
         <ChipComponent
+          {...args}
           value="US"
           leading={
             <img
@@ -161,6 +179,7 @@ const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
           United States
         </ChipComponent>
         <ChipComponent
+          {...args}
           value="GB"
           leading={
             <img
@@ -181,3 +200,23 @@ const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = () => {
 
 export const WithLeading = ChipWithLeadingTemplate.bind({});
 WithLeading.storyName = 'With Leading (Flags)';
+WithLeading.args = {
+  color: 'primary',
+};
+WithLeading.argTypes = {
+  icon: {
+    control: false,
+    table: {
+      disable: true,
+    },
+  },
+  leading: {
+    control: false,
+  },
+  value: {
+    control: false,
+    table: {
+      disable: true,
+    },
+  },
+};

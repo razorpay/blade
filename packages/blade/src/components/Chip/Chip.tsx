@@ -69,6 +69,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
           '<Chip /> component should only be used within the context of a <ChipGroup /> component',
       });
     }
+
+    if (Icon && leading) {
+      throwBladeError({
+        moduleName: 'Chip',
+        message: "icon and leading shouldn't be used together",
+      });
+    }
   }
 
   const hasError = groupProps?.validationState === 'error';
