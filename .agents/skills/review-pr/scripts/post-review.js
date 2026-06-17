@@ -300,9 +300,24 @@ const reviewPayload = {
   }),
 };
 
-const result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
-  input: JSON.stringify(reviewPayload),
-});
+let result;
+let actualEvent = submitEvent;
+try {
+  result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
+    input: JSON.stringify(reviewPayload),
+  });
+} catch (err) {
+  if (submitEvent === 'APPROVE') {
+    console.warn('\nAPPROVE rejected (e.g. draft PR) — retrying as COMMENT…');
+    actualEvent = 'COMMENT';
+    const fallbackPayload = { ...reviewPayload, event: 'COMMENT' };
+    result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
+      input: JSON.stringify(fallbackPayload),
+    });
+  } else {
+    throw err;
+  }
+}
 const created = JSON.parse(result.toString());
 
 if (isPending) {
@@ -313,6 +328,6 @@ if (isPending) {
     `  gh api repos/${repo}/pulls/${prNumber}/reviews/${created.id}/events --method POST --field event=COMMENT`,
   );
 } else {
-  console.log(`\nReview submitted as ${submitEvent} (id: ${created.id})`);
+  console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
 }
