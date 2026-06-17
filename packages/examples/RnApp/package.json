@@ -1,0 +1,53 @@
+{
+  "name": "RnApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@floating-ui/react-native": "^0.10.0",
+    "@gorhom/bottom-sheet": "^4.4.6",
+    "@gorhom/portal": "^1.0.14",
+    "@razorpay/blade": "latest",
+    "@razorpay/i18nify-js": "^1.12.3",
+    "@razorpay/i18nify-react": "^4.0.12",
+    "react": "18.3.1",
+    "react-native": "0.76.9",
+    "react-native-gesture-handler": "2.21.2",
+    "react-native-pager-view": "^6.2.1",
+    "react-native-reanimated": "3.16.7",
+    "react-native-safe-area-context": "^4.14.1",
+    "react-native-svg": "15.15.0",
+    "react-native-tab-view": "^3.5.2",
+    "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-class-static-block": "^7.29.7",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native-community/cli-platform-android": "15.0.1",
+    "@react-native-community/cli-platform-ios": "15.0.1",
+    "@react-native/babel-preset": "0.76.9",
+    "@react-native/eslint-config": "0.76.9",
+    "@react-native/metro-config": "0.76.9",
+    "@react-native/typescript-config": "0.76.9",
+    "@types/react": "^18.2.6",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.6.3",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "18.3.1",
+    "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
