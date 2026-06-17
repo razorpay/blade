@@ -105,9 +105,22 @@ NonHighlighted.args = {
 };
 
 export const ParagraphUse = (): React.ReactElement => {
-  return (
+  const isReactNative = getPlatformType() === 'react-native';
+  return isReactNative ? (
     <>
-      {/* For React Native, use flex to align items correctly */}
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text>Lorem ipsum normal text </Text>
+        <CodeComponent>CODE</CodeComponent>
+        <Text> component</Text>
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text>Blade is Super Cool DS </Text>
+        <CodeComponent>CODE</CodeComponent>
+        <Text> component</Text>
+      </BaseBox>
+    </>
+  ) : (
+    <>
       <Text>
         Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
       </Text>
