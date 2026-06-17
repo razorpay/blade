@@ -100,3 +100,6 @@ knowledgebase-ts-errors.json
 .cursor/worktrees/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
+
+# local-only explanation docs
+packages/blade/src/components/SideNav/SIDENAV_EXPLAINED.md

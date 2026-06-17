@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
-import { classes, getNavItemTransition, NAV_ITEM_HEIGHT } from '../tokens';
+import {
+  classes,
+  getNavItemPressTransitions,
+  getNavItemTransition,
+  NAV_ITEM_HEIGHT,
+  NAV_ITEM_PRESSED_SCALE,
+} from '../tokens';
 import type { SideNavLinkProps } from '../types';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -21,13 +27,39 @@ import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK } = classes;
+const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK, PRESSED } = classes;
+
+// Direct DOM class mutation — no re-renders. Toggles the press class on the container so
+// the CSS below can shrink the inner content (icon, text, badge, chevron, trailing button)
+// while the row itself stays at full size.
+const navLinkPressHandlers = {
+  onPointerDown: (e: React.PointerEvent) => e.currentTarget.classList.add(PRESSED),
+  onPointerUp: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
+  onPointerLeave: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
+  onPointerCancel: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
+};
 
 const StyledNavLinkContainer = styled(BaseBox)<{ $hasDescription: boolean }>((props) => {
+  const pressTransitions = getNavItemPressTransitions(props.theme);
+
   return {
     width: '100%',
+    // Press effect: only the inner content shrinks — the row/background stays full-size.
+    // `.styled-nav-link > *` covers the icon/text/badge group and the L2 chevron;
+    // `.show-on-link-hover` covers the trailing button. The `.nav-link-pressed` class is
+    // toggled on this container by the pointer handlers above.
+    [`.${STYLED_NAV_LINK} > *`]: {
+      transform: 'scale(1)',
+      transition: pressTransitions.release,
+    },
+    [`&.${PRESSED} .${STYLED_NAV_LINK} > *, &.${PRESSED} .${SHOW_ON_LINK_HOVER}`]: {
+      transform: `scale(${NAV_ITEM_PRESSED_SCALE})`,
+      transition: pressTransitions.press,
+    },
     [`.${SHOW_ON_LINK_HOVER}`]: {
       opacity: 0,
+      transform: 'scale(1)',
+      transition: pressTransitions.release,
       '&:focus-within, &:focus-visible': {
         opacity: 1,
       },
@@ -173,7 +205,7 @@ const L3Trigger = ({
 
   return (
     <TooltipifyComponent tooltip={tooltip}>
-      <StyledNavLinkContainer $hasDescription={Boolean(description)}>
+      <StyledNavLinkContainer $hasDescription={Boolean(description)} {...navLinkPressHandlers}>
         <BaseBox
           className={STYLED_NAV_LINK}
           as={href ? as : 'button'}
@@ -311,6 +343,7 @@ const SideNavLink = ({
           <StyledNavLinkContainer
             $hasDescription={currentLevel !== 1 && Boolean(description)}
             position="relative"
+            {...navLinkPressHandlers}
           >
             <TooltipifyComponent tooltip={tooltip}>
               <BaseBox

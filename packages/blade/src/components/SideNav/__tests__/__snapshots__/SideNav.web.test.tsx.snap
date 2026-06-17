@@ -566,8 +566,33 @@ exports[`SideNav should render 1`] = `
   width: 100%;
 }
 
+.c12.c12.c12.c12.c12 .styled-nav-link > * {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform 280ms cubic-bezier(0.5,0,0.3,1.5);
+  -webkit-transition: transform 280ms cubic-bezier(0.5,0,0.3,1.5);
+  transition: transform 280ms cubic-bezier(0.5,0,0.3,1.5);
+}
+
+.c12.c12.c12.c12.c12.nav-link-pressed .styled-nav-link > *,
+.c12.c12.c12.c12.c12.nav-link-pressed .show-on-link-hover {
+  -webkit-transform: scale(0.98);
+  -ms-transform: scale(0.98);
+  transform: scale(0.98);
+  -webkit-transition: -webkit-transform 80ms cubic-bezier(0.5,0,0,1);
+  -webkit-transition: transform 80ms cubic-bezier(0.5,0,0,1);
+  transition: transform 80ms cubic-bezier(0.5,0,0,1);
+}
+
 .c12.c12.c12.c12.c12 .show-on-link-hover {
   opacity: 0;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform 280ms cubic-bezier(0.5,0,0.3,1.5);
+  -webkit-transition: transform 280ms cubic-bezier(0.5,0,0.3,1.5);
+  transition: transform 280ms cubic-bezier(0.5,0,0.3,1.5);
 }
 
 .c12.c12.c12.c12.c12 .show-on-link-hover:focus-within,
