@@ -102,7 +102,16 @@
   let inputEl: HTMLInputElement | undefined = $state();
 
   export function focus(): void {
-    inputEl?.focus();
+    // Request a *visible* focus ring. The ring is driven by `:focus-visible`,
+    // which the browser would otherwise suppress when focus is moved
+    // programmatically as a result of a mouse interaction (e.g. clicking a
+    // button that calls this method). `focusVisible` is not supported in every
+    // browser, so fall back to a plain focus().
+    try {
+      inputEl?.focus({ focusVisible: true } as FocusOptions);
+    } catch {
+      inputEl?.focus();
+    }
   }
 
   // indeterminate is an IDL prop, not an attribute — set it imperatively.
