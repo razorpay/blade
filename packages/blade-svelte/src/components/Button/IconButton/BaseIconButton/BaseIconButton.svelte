@@ -31,8 +31,6 @@
     onFocus,
     onMouseLeave,
     onMouseMove,
-    onMouseDown,
-    onMouseUp,
     onPointerDown,
     onPointerEnter,
     onTouchStart,
@@ -99,18 +97,6 @@
     }
   }
 
-  function handleMouseDown(event: MouseEvent): void {
-    if (!isDisabled) {
-      onMouseDown?.(event);
-    }
-  }
-
-  function handleMouseUp(event: MouseEvent): void {
-    if (!isDisabled) {
-      onMouseUp?.(event);
-    }
-  }
-
   function handlePointerDown(event: PointerEvent): void {
     if (!isDisabled) {
       onPointerDown?.(event);
@@ -155,8 +141,6 @@
   onfocus={handleFocus}
   onmouseleave={handleMouseLeave}
   onmousemove={handleMouseMove}
-  onmousedown={handleMouseDown}
-  onmouseup={handleMouseUp}
   onpointerdown={handlePointerDown}
   onpointerenter={handlePointerEnter}
   ontouchstart={handleTouchStart}

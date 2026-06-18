@@ -1,8 +1,12 @@
-import type { AccessibilityProps, StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type {
+  AccessibilityProps,
+  DataAnalyticsAttribute,
+  StyledPropsBlade,
+} from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../../../Icons/iconMap';
 import type { IconButtonEmphasis, IconButtonSize } from '../types';
 
-export interface BaseIconButtonProps extends StyledPropsBlade {
+export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /**
    * Icon component to be rendered, eg. `CloseIcon`.
    */
@@ -50,10 +54,6 @@ export interface BaseIconButtonProps extends StyledPropsBlade {
   onMouseLeave?: (event: MouseEvent) => void;
   /** Called when the pointer moves over the IconButton. */
   onMouseMove?: (event: MouseEvent) => void;
-  /** Called when a mouse button is pressed on the IconButton. */
-  onMouseDown?: (event: MouseEvent) => void;
-  /** Called when a mouse button is released over the IconButton. */
-  onMouseUp?: (event: MouseEvent) => void;
   /** Called when a pointer becomes active over the IconButton. */
   onPointerDown?: (event: PointerEvent) => void;
   /** Called when a pointer enters the IconButton. */
@@ -68,6 +68,4 @@ export interface BaseIconButtonProps extends StyledPropsBlade {
    * Test id that can be used to select the element in testing environments.
    */
   testID?: string;
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
 }

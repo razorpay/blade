@@ -1,19 +1,10 @@
-import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { DataAnalyticsAttribute, StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { IconButtonEmphasis, IconButtonSize } from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../../Icons/iconMap';
 
-/**
- * Visual emphasis of the IconButton's icon.
- * - `intense`: gray icon (use on light/neutral surfaces)
- * - `subtle`: static white icon (use on dark/intense surfaces)
- */
-export type IconButtonEmphasis = 'subtle' | 'intense';
+export type { IconButtonEmphasis, IconButtonSize } from '@razorpay/blade-core/styles';
 
-/**
- * Size of the IconButton's icon.
- */
-export type IconButtonSize = 'small' | 'medium' | 'large';
-
-export interface IconButtonProps extends StyledPropsBlade {
+export interface IconButtonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /**
    * Icon component to be rendered, eg. `CloseIcon`.
    */
@@ -52,7 +43,7 @@ export interface IconButtonProps extends StyledPropsBlade {
   /**
    * Called when the IconButton is clicked.
    */
-  onClick?: (event: MouseEvent) => void;
+  onClick: (event: MouseEvent) => void;
   /** Called when the IconButton loses focus. */
   onBlur?: (event: FocusEvent) => void;
   /** Called when the IconButton receives focus. */
@@ -61,10 +52,6 @@ export interface IconButtonProps extends StyledPropsBlade {
   onMouseLeave?: (event: MouseEvent) => void;
   /** Called when the pointer moves over the IconButton. */
   onMouseMove?: (event: MouseEvent) => void;
-  /** Called when a mouse button is pressed on the IconButton. */
-  onMouseDown?: (event: MouseEvent) => void;
-  /** Called when a mouse button is released over the IconButton. */
-  onMouseUp?: (event: MouseEvent) => void;
   /** Called when a pointer becomes active over the IconButton. */
   onPointerDown?: (event: PointerEvent) => void;
   /** Called when a pointer enters the IconButton. */
@@ -75,6 +62,4 @@ export interface IconButtonProps extends StyledPropsBlade {
   onTouchEnd?: (event: TouchEvent) => void;
   /** Called when a key is pressed while the IconButton is focused. */
   onKeyDown?: (event: KeyboardEvent) => void;
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
 }
