@@ -4,6 +4,7 @@ import { Code, Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
+import type { ChipProps } from './types';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -139,7 +140,50 @@ Default.args = {
   color: 'primary',
 };
 
-const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = ({ icon, value, ...args }) => {
+const countryFlags = {
+  IN: {
+    label: 'India',
+    alt: 'India',
+    src: 'https://flagcdn.com/w40/in.png',
+  },
+  US: {
+    label: 'United States',
+    alt: 'US',
+    src: 'https://flagcdn.com/w40/us.png',
+  },
+  GB: {
+    label: 'United Kingdom',
+    alt: 'UK',
+    src: 'https://flagcdn.com/w40/gb.png',
+  },
+} as const;
+
+type CountryCode = keyof typeof countryFlags;
+
+type ChipWithLeadingStoryArgs = Omit<ChipProps, 'icon' | 'leading' | 'value'> & {
+  size?: ChipGroupProps['size'];
+  value?: CountryCode;
+  leading?: React.ReactNode;
+};
+
+const getFlagLeading = (countryCode: CountryCode): React.ReactElement => {
+  const flag = countryFlags[countryCode];
+
+  return <img src={flag.src} width={16} height={12} alt={flag.alt} style={{ borderRadius: 2 }} />;
+};
+
+const ChipWithLeadingTemplate: StoryFn<ChipWithLeadingStoryArgs> = ({
+  size,
+  value = 'IN',
+  leading,
+  ...args
+}) => {
+  const [selectedValue, setSelectedValue] = React.useState<CountryCode>(value);
+
+  React.useEffect(() => {
+    setSelectedValue(value);
+  }, [value]);
+
   return (
     <Box>
       <Text marginBottom="spacing.4">Chip with leading element (e.g., country flags):</Text>
@@ -147,52 +191,20 @@ const ChipWithLeadingTemplate: StoryFn<typeof ChipComponent> = ({ icon, value, .
         selectionType="single"
         accessibilityLabel="Select country"
         label="Country"
+        size={size}
+        value={selectedValue}
+        onChange={({ values }) => setSelectedValue(values[0] as CountryCode)}
       >
-        <ChipComponent
-          {...args}
-          value="IN"
-          leading={
-            <img
-              src="https://flagcdn.com/w40/in.png"
-              width={16}
-              height={12}
-              alt="India"
-              style={{ borderRadius: 2 }}
-            />
-          }
-        >
-          India
-        </ChipComponent>
-        <ChipComponent
-          {...args}
-          value="US"
-          leading={
-            <img
-              src="https://flagcdn.com/w40/us.png"
-              width={16}
-              height={12}
-              alt="US"
-              style={{ borderRadius: 2 }}
-            />
-          }
-        >
-          United States
-        </ChipComponent>
-        <ChipComponent
-          {...args}
-          value="GB"
-          leading={
-            <img
-              src="https://flagcdn.com/w40/gb.png"
-              width={16}
-              height={12}
-              alt="UK"
-              style={{ borderRadius: 2 }}
-            />
-          }
-        >
-          United Kingdom
-        </ChipComponent>
+        {Object.entries(countryFlags).map(([countryCode, country]) => (
+          <ChipComponent
+            {...args}
+            key={countryCode}
+            value={countryCode}
+            leading={leading ?? getFlagLeading(countryCode as CountryCode)}
+          >
+            {country.label}
+          </ChipComponent>
+        ))}
       </ChipGroupComponent>
     </Box>
   );
@@ -202,21 +214,59 @@ export const WithLeading = ChipWithLeadingTemplate.bind({});
 WithLeading.storyName = 'With Leading (Flags)';
 WithLeading.args = {
   color: 'primary',
+  size: 'small',
+  value: 'IN',
 };
 WithLeading.argTypes = {
   icon: {
-    control: false,
     table: {
       disable: true,
     },
   },
-  leading: {
-    control: false,
+  size: {
+    description: 'Specifies the size of the rendered Chips.',
+    options: ['xsmall', 'small', 'medium', 'large'],
+    control: {
+      type: 'radio',
+    },
+    table: {
+      category: propsCategory.CHIP_GROUP,
+      type: {
+        summary: '"xsmall" | "small" | "medium" | "large"',
+      },
+    },
   },
   value: {
-    control: false,
+    description: 'Selected country value for the ChipGroup.',
+    options: Object.keys(countryFlags),
+    control: {
+      type: 'select',
+    },
     table: {
-      disable: true,
+      category: propsCategory.CHIP_GROUP,
+      type: {
+        summary: '"IN" | "US" | "GB"',
+      },
+    },
+  },
+  leading: {
+    description:
+      'Overrides the leading element for all chips. Select "Default flags" to render each country-specific flag.',
+    options: ['Default flags', 'India flag', 'US flag', 'UK flag'],
+    mapping: {
+      'Default flags': undefined,
+      'India flag': getFlagLeading('IN'),
+      'US flag': getFlagLeading('US'),
+      'UK flag': getFlagLeading('GB'),
+    },
+    control: {
+      type: 'select',
+    },
+    table: {
+      category: propsCategory.CHIP,
+      type: {
+        summary: 'React.ReactNode',
+      },
     },
   },
 };
