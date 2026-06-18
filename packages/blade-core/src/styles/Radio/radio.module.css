@@ -164,16 +164,19 @@
 .titleSmall {
   font-size: var(--font-size-75);
   line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .titleMedium {
   font-size: var(--font-size-100);
   line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .titleLarge {
   font-size: var(--font-size-200);
   line-height: var(--line-height-200);
+  letter-spacing: var(--letter-spacing-25);
 }
 
 /* ── SelectorSupportText (per-radio helpText) ── */
@@ -201,16 +204,19 @@
 }
 
 .supportTextSizeSmall {
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .supportTextSizeMedium {
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .supportTextSizeLarge {
   font-size: var(--font-size-100);
-  line-height: var(--line-height-100);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
 }

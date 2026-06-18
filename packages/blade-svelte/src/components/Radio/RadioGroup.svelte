@@ -10,6 +10,8 @@
     getRadioGroupFieldClasses,
     getRadioGroupItemsClasses,
     getRadioGroupLabelSizeClass,
+    getRadioGroupHintTextClass,
+    getRadioGroupHintMarginClass,
     getRadioGroupTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { setRadioGroupContext } from './radioContext';
@@ -41,18 +43,12 @@
   let idCounter = 0;
   const idBase = `radio-group-${++idCounter}-${Math.random().toString(36).slice(2, 6)}`;
   const labelId = `${idBase}-label`;
-  const fallbackName = name ?? idBase;
+  const fallbackName = $derived(name ?? idBase);
 
   const isControlled = $derived(controlledValue !== undefined);
 
-  let internalValue = $state<string | undefined>(defaultValue);
-
-  // Sync controlled value into local state.
-  $effect(() => {
-    if (controlledValue !== undefined) {
-      internalValue = controlledValue;
-    }
-  });
+  const getInitialDefaultValue = (): string | undefined => defaultValue;
+  let internalValue = $state<string | undefined>(getInitialDefaultValue());
 
   const checkedValue = $derived(isControlled ? controlledValue : internalValue);
 
@@ -113,13 +109,15 @@
   const fieldClasses = $derived(getRadioGroupFieldClasses({ labelPosition }));
   const itemsClasses = $derived(getRadioGroupItemsClasses({ orientation, size }));
   const labelSizeClass = $derived(getRadioGroupLabelSizeClass(size, labelPosition));
+  const hintTextClass = $derived(getRadioGroupHintTextClass(size));
+  const hintMarginClass = $derived(getRadioGroupHintMarginClass(size));
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const wrapperClasses = $derived(
     [...(styledProps.classes || [])].filter(Boolean).join(' ') || undefined,
   );
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.RadioGroup, testID });
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.RadioGroup, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
     makeAccessible({
@@ -152,14 +150,21 @@
         {@render children()}
       </div>
       {#if showError}
-        <span class={templateClasses.hintWrapper}>
+        <span class={[templateClasses.hintWrapper, hintMarginClass].filter(Boolean).join(' ')}>
           <span class={templateClasses.hintIcon}>
             <InfoIcon size={hintIconSize} color="feedback.icon.negative.intense" />
           </span>
-          <span class={templateClasses.errorText}>{errorText}</span>
+          <span class={[templateClasses.errorText, hintTextClass].filter(Boolean).join(' ')}>
+            {errorText}
+          </span>
         </span>
       {:else if showHelpText}
-        <span class={templateClasses.helpText}>{helpText}</span>
+        <span class={[templateClasses.helpText, hintTextClass, hintMarginClass]
+          .filter(Boolean)
+          .join(' ')}
+        >
+          {helpText}
+        </span>
       {/if}
     </div>
   </div>

@@ -213,6 +213,24 @@ export function getRadioGroupLabelSizeClass(
   return map[size];
 }
 
+export function getRadioGroupHintTextClass(size: RadioSize): string {
+  const map: Record<RadioSize, string> = {
+    small: groupStyles.hintTextSmall,
+    medium: groupStyles.hintTextMedium,
+    large: groupStyles.hintTextLarge,
+  };
+  return map[size];
+}
+
+export function getRadioGroupHintMarginClass(size: RadioSize): string {
+  const map: Record<RadioSize, string> = {
+    small: groupStyles.hintMarginSmall,
+    medium: groupStyles.hintMarginMedium,
+    large: groupStyles.hintMarginLarge,
+  };
+  return map[size];
+}
+
 export function getRadioGroupTemplateClasses(): {
   groupLabel: string;
   necessityRequired: string;

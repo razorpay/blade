@@ -47,9 +47,7 @@
   gap: var(--spacing-4);
 }
 
-/* Group label (FormLabel as span).
-   Top position: inline-flex row, label + (optional) on the same line.
-   Default text size matches React `labelTextSize.top` (small/small/medium). */
+/* Group label (FormLabel as span). */
 .groupLabel {
   display: inline-flex;
   flex-direction: row;
@@ -65,16 +63,19 @@
 .labelSmall {
   font-size: var(--font-size-75);
   line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .labelMedium {
-  font-size: var(--font-size-100);
-  line-height: var(--line-height-100);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .labelLarge {
-  font-size: var(--font-size-200);
-  line-height: var(--line-height-200);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 /* ── Left-position label column (React FormLabel isLabelLeftPositioned) ──
@@ -94,6 +95,7 @@
   margin-right: var(--spacing-3);
   font-size: var(--font-size-75);
   line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .labelLeftMedium {
@@ -101,6 +103,7 @@
   margin-right: var(--spacing-4);
   font-size: var(--font-size-100);
   line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 .labelLeftLarge {
@@ -108,6 +111,7 @@
   margin-right: var(--spacing-5);
   font-size: var(--font-size-200);
   line-height: var(--line-height-200);
+  letter-spacing: var(--letter-spacing-25);
 }
 
 /* React forces label position to `top` on mobile (< 768px) via platform.
@@ -118,6 +122,18 @@
     width: 100%;
     margin-right: 0;
     margin-bottom: var(--spacing-2);
+  }
+
+  .labelLeftMedium {
+    font-size: var(--font-size-75);
+    line-height: var(--line-height-75);
+    letter-spacing: var(--letter-spacing-50);
+  }
+
+  .labelLeftLarge {
+    font-size: var(--font-size-100);
+    line-height: var(--line-height-100);
+    letter-spacing: var(--letter-spacing-50);
   }
 }
 
@@ -136,8 +152,9 @@
   content: '(optional)';
   color: var(--surface-text-gray-muted);
   font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
 }
 
 /* Help text (FormHint type=help) */
@@ -145,10 +162,7 @@
   display: block;
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
   color: var(--surface-text-gray-muted);
-  margin-top: var(--spacing-2);
 }
 
 /* Error text (FormHint type=error) */
@@ -156,21 +170,45 @@
   display: block;
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
   color: var(--feedback-text-negative-intense);
+}
+
+.hintTextSmall {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.hintTextMedium {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.hintTextLarge {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.hintMarginSmall {
   margin-top: var(--spacing-2);
 }
 
-/* FormHintWrapper — row with the error icon + text (React: display flex,
-   align-items flex-start, gap spacing.2). Carries the errorText margin-top
-   so the row (not just the text) is offset below the radios. */
+.hintMarginMedium {
+  margin-top: var(--spacing-2);
+}
+
+.hintMarginLarge {
+  margin-top: var(--spacing-3);
+}
+
+/* FormHintWrapper — row with the error icon + text. */
 .hintWrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: var(--spacing-2);
-  margin-top: var(--spacing-2);
 }
 
 /* The errorText inside the wrapper must not double the top margin. */

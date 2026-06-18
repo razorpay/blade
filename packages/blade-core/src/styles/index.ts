@@ -293,6 +293,8 @@ export {
   radioGroupItemsStyles,
   getRadioGroupItemsClasses,
   getRadioGroupLabelSizeClass,
+  getRadioGroupHintTextClass,
+  getRadioGroupHintMarginClass,
   getRadioGroupTemplateClasses,
 } from './Radio';
 export type { RadioSize, RadioVariant, RadioIconWrapperVariants } from './Radio';
