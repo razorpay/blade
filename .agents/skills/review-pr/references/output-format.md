@@ -66,6 +66,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
       "line": 42,
       "side": "RIGHT",
       "severity": "critical",
+      "confidence": 9,
       "critique": "code-quality-critique",
       "problem": "Description of the problem.",
       "suggestion": "How to fix it."
@@ -75,9 +76,9 @@ Assemble the outputs from all critique agents into a single JSON object matching
       "line": 17,
       "side": "LEFT",
       "severity": "minor",
+      "confidence": 4,
       "critique": "api-decision-critique",
-      "problem": "Description of the API inconsistency.",
-      "suggestion": "What the correct pattern is."
+      "clarification": "Question for the PR author when AI is not confident this is a real issue."
     }
   ]
 }

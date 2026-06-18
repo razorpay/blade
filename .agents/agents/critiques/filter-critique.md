@@ -72,10 +72,22 @@ What counts as non-important comments:
       "line": 42,
       "side": "RIGHT",
       "severity": "critical",
+      "confidence": 9,
       "critique": "code-quality-critique",
       "problem": "description of the problem",
       "suggestion": "how to fix it"
+    },
+    {
+      "file": "packages/blade/src/components/Foo/Foo.tsx",
+      "line": 17,
+      "side": "RIGHT",
+      "severity": "minor",
+      "confidence": 4,
+      "critique": "api-decision-critique",
+      "clarification": "question for the PR author"
     }
   ]
 }
 ```
+
+Preserve `clarification` comments as-is — do not remove them unless they are exact duplicates of another clarification already in the list.

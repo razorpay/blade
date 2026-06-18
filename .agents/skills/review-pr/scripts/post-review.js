@@ -98,7 +98,13 @@ function buildStatusSection(statuses, screenshotCdnMap = {}) {
   return parts.join('\n\n');
 }
 
-function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotCdnMap = {}, usage = null) {
+function formatOverviewComment(
+  overview,
+  reviewStatus,
+  isSelfReview,
+  screenshotCdnMap = {},
+  usage = null,
+) {
   const parts = ['## ✨ Agentic PR Review ✨'];
 
   if (reviewStatus === 'approved') {
@@ -150,9 +156,13 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
 const SEVERITY_EMOJI = { critical: '🔴', major: '🟠', minor: '🔵' };
 
 function formatInlineComment(c) {
+  const confidenceStr = c.confidence != null ? ` · confidence: ${c.confidence}/10` : '';
+  if (c.clarification) {
+    return [`🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`, '', c.clarification].join('\n');
+  }
   const emoji = SEVERITY_EMOJI[c.severity] || '⚪';
   const lines = [
-    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_`,
+    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_${confidenceStr}`,
     '',
     `**Problem:** ${c.problem}`,
   ];
@@ -337,4 +347,10 @@ if (isPending) {
 } else {
   console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
+}
+
+const hasClarifications = allComments.some((c) => c.clarification);
+if (hasClarifications) {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "Human Help Needed 🧑🏻‍💻"`);
+  console.log('Added label: Human Help Needed 🧑🏻‍💻');
 }

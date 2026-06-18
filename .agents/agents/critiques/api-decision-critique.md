@@ -130,11 +130,24 @@ Ask yourself: do we need this change? or do we already have a prop on this compo
       "line": 42,
       "side": "RIGHT",
       "severity": "critical" | "major" | "minor",
+      "confidence": 8,
       "problem": "concise title of the issue",
       "suggestion": "small concise suggestion for the fix"
+    },
+    {
+      "file": "packages/blade/src/components/Foo/Foo.tsx",
+      "line": 17,
+      "side": "RIGHT",
+      "severity": "minor",
+      "confidence": 4,
+      "clarification": "question to ask the PR author about this code"
     }
   ]
 }
 ```
+
+Each issue has either `problem` + `suggestion` (a definite issue) **or** `clarification` (a question for the PR author — use this when you cannot confidently determine if something is a real issue without more context).
+
+`confidence`: a number from 1–10 indicating how confident you are this is a valid review comment (1 = not confident at all, 10 = completely confident). Use `clarification` instead of `problem`/`suggestion` when confidence is below 5.
 
 `file` and `line` must point to the specific location in the diff where the issue exists. If there is no specific line (e.g. a structural observation), set `line` to `null`. `side`: `"RIGHT"` for added/modified lines, `"LEFT"` for deleted lines.
