@@ -29,6 +29,8 @@ You are a subagent. Return structured data only — no commentary.
 > If the PR is for changes in react native components of `packages/blade`, use the PR_BODY screenshots / videos for verification instead of agent-browser and skip the steps below. If PR_BODY does not contain screenshots / videos, in statuses array, set `state` to `"FAILURE"` and `problem` to `"No screenshots / videos found in PR_BODY (required for react native components)"`.
 >
 > Use the screenshots / videos in PR_BODY to verify the changes.
+>
+> If change impacts both react native and web components, verify both (screenshots for react native and agent-browser steps below for web components)
 
 ### 1. Fetch Storybook URL
 
