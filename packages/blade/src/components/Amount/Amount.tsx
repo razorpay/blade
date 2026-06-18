@@ -12,7 +12,7 @@ import {
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
-import { getPlatformType } from '~utils';
+import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -26,7 +26,6 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils/useBreakpoint';
 
-const IS_REACT_NATIVE = getPlatformType() === 'react-native';
 
 // `includeFontPadding: false` is a React-Native-only TextStyle field used to fix Android
 // baseline alignment. BaseText's `style` is typed as web CSSProperties, so the cast lives
@@ -163,7 +162,7 @@ const AmountValue = ({
   const affixFontSize = isAffixSubtle ? subtleFontSizes[type][size] : normalAmountSizes[type][size];
   const numberFontFamily: keyof FontFamily = type === 'body' ? 'text' : 'heading';
   if (suffix === 'decimals' && isAffixSubtle) {
-    if (IS_REACT_NATIVE) {
+    if (isReactNative()) {
       // Align the small decimal to the large integer by their text BASELINE (not view
       // bottoms). alignItems:'flex-end' aligns view bottoms, which misplaces a smaller
       // glyph because each font size has different descent/leading — that was the cause
@@ -202,6 +201,7 @@ const AmountValue = ({
       );
     }
 
+    // RN path returned early above, so this is always the web path — React.Fragment directly.
     return (
       <React.Fragment>
         <BaseText
@@ -236,7 +236,7 @@ const AmountValue = ({
       fontFamily={numberFontFamily}
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
-      style={IS_REACT_NATIVE ? RN_FONT_PADDING_FIX : undefined}
+      style={isReactNative() ? RN_FONT_PADDING_FIX : undefined}
     >
       {amount.integer}
       {amount.decimal}
@@ -427,14 +427,14 @@ const _Amount = (
   return (
     <BaseBox
       ref={ref as never}
-      display={(IS_REACT_NATIVE ? 'flex' : 'inline-flex') as never}
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox
-        display={(IS_REACT_NATIVE ? 'flex' : 'inline-flex') as never}
+        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
         alignItems="baseline"
         flexDirection="row"
         position="relative"
@@ -445,9 +445,9 @@ const _Amount = (
             fontWeight={weight}
             lineHeight={amountLineHeights[type][size]}
             color={amountValueColor}
-            as={IS_REACT_NATIVE ? undefined : 'span'}
+            as={isReactNative() ? undefined : 'span'}
             marginX="spacing.2"
-            style={IS_REACT_NATIVE ? RN_FONT_PADDING_FIX : undefined}
+            style={isReactNative() ? RN_FONT_PADDING_FIX : undefined}
           >
             {renderedValue.minusSign}
           </BaseText>
@@ -457,11 +457,11 @@ const _Amount = (
             marginRight="spacing.1"
             fontWeight={weight}
             fontSize={currencyFontProps.fontSize}
-            lineHeight={IS_REACT_NATIVE ? currencyFontProps.fontSize : undefined}
+            lineHeight={isReactNative() ? currencyFontProps.fontSize : undefined}
             color={amountValueColor}
-            as={IS_REACT_NATIVE ? undefined : 'span'}
+            as={isReactNative() ? undefined : 'span'}
             opacity={isAffixSubtle ? opacity[800] : 1}
-            style={IS_REACT_NATIVE ? RN_FONT_PADDING_FIX : currencyFontProps.style}
+            style={isReactNative() ? RN_FONT_PADDING_FIX : currencyFontProps.style}
           >
             {currencySymbolOrCode}
           </BaseText>
@@ -481,11 +481,11 @@ const _Amount = (
             marginLeft="spacing.1"
             fontWeight={weight}
             fontSize={currencyFontProps.fontSize}
-            lineHeight={IS_REACT_NATIVE ? currencyFontProps.fontSize : undefined}
+            lineHeight={isReactNative() ? currencyFontProps.fontSize : undefined}
             color={amountValueColor}
-            as={IS_REACT_NATIVE ? undefined : 'span'}
+            as={isReactNative() ? undefined : 'span'}
             opacity={isAffixSubtle ? opacity[800] : 1}
-            style={IS_REACT_NATIVE ? RN_FONT_PADDING_FIX : currencyFontProps.style}
+            style={isReactNative() ? RN_FONT_PADDING_FIX : currencyFontProps.style}
           >
             {currencySymbolOrCode}
           </BaseText>
