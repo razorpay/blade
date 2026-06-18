@@ -8,17 +8,6 @@ import type { BoxProps } from '~components/Box/BaseBox/types/propsTypes';
 
 type ChipCommonProps = {
   /**
-   * Displays the Blade Icon component within the Chip
-   * Accepts a component of type `IconComponent` from Blade.
-   *
-   */
-  icon?: IconComponent;
-  /**
-   * Custom leading element rendered before the label (e.g., a flag image, avatar).
-   * Mutually exclusive with `icon`.
-   */
-  leading?: React.ReactNode;
-  /**
    * Sets the Chip's visual color.
    *
    */
@@ -65,6 +54,11 @@ type ChipWithoutIconProps = ChipCommonProps & {
   Optional children prop when icon is provided
 */
 type ChipWithIconProps = ChipCommonProps & {
+  /**
+   * Displays the Blade Icon component within the Chip.
+   * Accepts a component of type `IconComponent` from Blade.
+   * Mutually exclusive with `leading`.
+   */
   icon: IconComponent;
   leading?: undefined;
   children?: StringChildrenType;
@@ -75,6 +69,10 @@ type ChipWithIconProps = ChipCommonProps & {
 */
 type ChipWithLeadingProps = ChipCommonProps & {
   icon?: undefined;
+  /**
+   * Custom leading element rendered before the label (e.g., a flag image, avatar).
+   * Mutually exclusive with `icon`.
+   */
   leading: React.ReactNode;
   children?: StringChildrenType;
 };
