@@ -29,6 +29,7 @@ Use the provided `DIFF`, `PR_TITLE`, and `PR_BODY` directly and try to understan
 
 Judging Criteria:
 
+- **Importance of the file / part of the code**: Some files are more important than others. There is no need for flagging code-quality issues in code snippets of markdown files or not-so-important files. Only flag issues in core code logic files and ignore other files.
 - **Reusability**: Some existing util already exists for the same functionality that can be extended
 - **Bug in the code**: The code has a bug or missing edge cases
   - Some change intended for react native that breaks the web code (only flag when you actually know that something is breaking in the web)
