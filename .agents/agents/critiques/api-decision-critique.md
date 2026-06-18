@@ -24,7 +24,41 @@ You are a subagent. Return structured data only — no commentary.
 
 ## Steps
 
-### 1. Sample existing component APIs for context
+### 1. Create a snippet of how the change will be used by consumers
+
+Create a simple code snippet of how the change will be used by consumers of the design-system. If there is no change in the usage of the component, skip API decision critique and return an empty issues array as there is no API change to critique.
+
+#### Examples of Usage:
+
+1. A new "leading" prop is added to a Button component by the PR
+
+- Code Snippet:
+
+  ```jsx
+  // imports
+  import { Button, Icon } from '@razorpay/blade/components';
+
+  // usage
+  <Button leading={<Icon name="arrow-left" />}>Back</Button>;
+  ```
+
+2. A new component "TreeView" is added to the PR
+
+- Code Snippet:
+
+  ```jsx
+  // imports
+  import { TreeView, TreeViewItem } from '@razorpay/blade/components';
+
+  // usage
+  <TreeView>
+    <TreeViewItem label="Root">
+      <TreeViewItem label="Child" />
+    </TreeViewItem>
+  </TreeView>;
+  ```
+
+### 2. Sample existing component APIs for context
 
 ```bash
 ls packages/blade/src/components/
@@ -34,7 +68,11 @@ Pick 3–5 components similar to the one being changed and skim their prop type 
 
 Use their type definitions as a source of truth since api decision docs could be outdated or not up to date with the latest changes.
 
-### 2. Review API decisions
+#### Historical Context:
+
+Earlier our design-system used to be more restrictive in terms of API (e.g. `leading={<ActionListItemIcon icon={} />}` instead of `leading={<Icon />}` or `<CardHeaderLeading>`, `<CardHeaderTrailing>` instead of `<CardHeader leading={} trailing={}>`) but we have since moved to a more flexible API pattern where we are fine to allow `leading` as `React.ReactNode` or open up the children as a slot. This is concious call so remember to not be biased towards the older restrictive patterns if newer flexible patters are available for similar usecase in other components.
+
+### 3. Review API decisions
 
 Using `PR_TITLE`, `PR_BODY`, and `DIFF`, evaluate the component API against the following checks:
 
@@ -75,20 +113,25 @@ Using `PR_TITLE`, `PR_BODY`, and `DIFF`, evaluate the component API against the 
 
 Use your judgment. Surface only real concerns — not stylistic preferences. If an API decision is clearly consistent with existing patterns, do not flag it.
 
+### 4. Do we need this change?
+
+Ask yourself: do we need this change? or do we already have a prop on this component or a feasible alternative. The alternative should not be something that degrades experience, requires more effort to implement, or is not a good user experience
+
 ## Output
 
 ```json
 {
   "pr_number": 1234,
   "critique_name": "api-decision-critique",
+  "usage": "import { Button, Icon } from '@razorpay/blade/components';\n\n<Button leading={<Icon name=\"arrow-left\" />}>Back</Button>",
   "issues": [
     {
       "file": "packages/blade/src/components/Foo/Foo.tsx",
       "line": 42,
       "side": "RIGHT",
       "severity": "critical" | "major" | "minor",
-      "problem": "description of the inconsistency or concern",
-      "suggestion": "what the correct pattern is or what to verify"
+      "problem": "concise title of the issue",
+      "suggestion": "small concise suggestion for the fix"
     }
   ]
 }

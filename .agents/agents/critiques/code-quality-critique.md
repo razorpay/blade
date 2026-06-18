@@ -52,8 +52,8 @@ Judging Criteria:
       "line": 42,
       "side": "RIGHT",
       "severity": "critical" | "major" | "minor",
-      "problem": "description of the problem",
-      "suggestion": "how to fix it"
+      "problem": "concise title of the issue",
+      "suggestion": "small concise suggestion for the fix"
     }
   ]
 }
