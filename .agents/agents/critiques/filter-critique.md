@@ -41,18 +41,18 @@ Two comments in `INLINED_COMMENTS` are duplicates when they describe the **same 
 
 Do **not** remove comments that merely touch the same file or component — only remove when the conceptual issue is identical.
 
-### 2. Deduplicate
+### 4. Deduplicate
 
 For each duplicate group, keep one entry using this priority:
 
 1. Higher severity wins (`critical` > `major` > `minor`)
 2. On equal severity, prefer by critique: `api-decision-critique` > `usecase-critique` > `code-quality-critique`
 
-### 3. Filter out some minor comments
+### 5. Filter out some minor comments
 
 For non-critical files such as tests, docs, changes in packages other than `blade-svelte`, `blade-core`, or `blade`, filter out the "minor" severity comments.
 
-### 3. Filter out non-imporant comments
+### 6. Filter out non-imporant comments
 
 Goal of our review is to add most minimal set of comments while flagging the right issues.
 
@@ -61,6 +61,10 @@ What counts as non-important comments:
 - Nitpicks in the code
 - Minor suggestions that are not really issues
 - Asking clarification on part that can confidently be assumed
+
+### 7. Bias towards approval
+
+If it is just 1-2 comments that are not that important, be biased towards filtering them out and returning an empty array as `inlined-comments` or marking them as `minor` severity to make sure that the PR is not blocked because of small issues / nitpicks.
 
 ## Output
 

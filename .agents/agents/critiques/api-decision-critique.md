@@ -146,7 +146,7 @@ Ask yourself: do we need this change? or do we already have a prop on this compo
 }
 ```
 
-Each issue has either `problem` + `suggestion` (a definite issue) **or** `clarification` (a question for the PR author — use this when you cannot confidently determine if something is a real issue without more context).
+Each issue has either `problem` + `suggestion` (a definite issue) **or** `clarification` (a question for the PR author — use this when you cannot confidently determine if something is a real issue without more context). Do not use `clarification` for issues that you can go and figure out yourself from the code or are obvious and not worth asking the PR author.
 
 `confidence`: a number from 1–10 indicating how confident you are this is a valid review comment (1 = not confident at all, 10 = completely confident). Use `clarification` instead of `problem`/`suggestion` when confidence is below 5.
 
