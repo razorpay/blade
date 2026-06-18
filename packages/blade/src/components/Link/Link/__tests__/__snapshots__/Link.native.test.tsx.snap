@@ -103,9 +103,6 @@ exports[`<Link /> should render button variant of link 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -220,9 +217,6 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -339,9 +333,6 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -456,9 +447,6 @@ exports[`<Link /> should render disabled primary color link 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -575,9 +563,6 @@ exports[`<Link /> should render disabled white color link 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -692,9 +677,6 @@ exports[`<Link /> should render link with default properties 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -914,9 +896,6 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -1135,9 +1114,6 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -1252,9 +1228,6 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -1577,9 +1550,6 @@ exports[`<Link /> should render link with icon without text 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -1692,9 +1662,6 @@ exports[`<Link /> should render neutral color link 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -1811,9 +1778,6 @@ exports[`<Link /> should render primary color link 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            {
-              "includeFontPadding": false,
-            },
           ]
         }
         textAlign="center"
@@ -1928,9 +1892,6 @@ exports[`<Link /> should render white color link 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }
@@ -2149,9 +2110,6 @@ exports[`<Link /> should render with small size 1`] = `
               "paddingTop": 0,
               "textAlign": "center",
               "textDecorationLine": "none",
-            },
-            {
-              "includeFontPadding": false,
             },
           ]
         }

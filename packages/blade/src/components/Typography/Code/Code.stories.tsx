@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
-import { getPlatformType } from '~utils';
+import { isReactNative } from '~utils';
 import { Title } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -55,8 +55,7 @@ const CodeStoryMeta: Meta = {
 };
 
 const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => {
-  const isReactNative = getPlatformType() === 'react-native';
-  return isReactNative ? (
+  return isReactNative() ? (
     <>
       <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
         <Text size="medium">Lorem ipsum normal text </Text>
@@ -105,8 +104,7 @@ NonHighlighted.args = {
 };
 
 export const ParagraphUse = (): React.ReactElement => {
-  const isReactNative = getPlatformType() === 'react-native';
-  return isReactNative ? (
+  return isReactNative() ? (
     <>
       <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
         <Text>Lorem ipsum normal text </Text>

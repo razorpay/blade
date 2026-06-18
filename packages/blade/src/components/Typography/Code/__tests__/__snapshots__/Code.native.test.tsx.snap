@@ -58,9 +58,6 @@ exports[`<Code /> should render Code with color 1`] = `
             "paddingTop": 0,
             "textDecorationLine": "none",
           },
-          {
-            "includeFontPadding": false,
-          },
         ]
       }
     >
@@ -129,9 +126,6 @@ exports[`<Code /> should render Code with default properties 1`] = `
             "paddingTop": 0,
             "textDecorationLine": "none",
           },
-          {
-            "includeFontPadding": false,
-          },
         ]
       }
     >
@@ -198,9 +192,6 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
             "paddingRight": 0,
             "paddingTop": 0,
             "textDecorationLine": "none",
-          },
-          {
-            "includeFontPadding": false,
           },
         ]
       }
@@ -270,9 +261,6 @@ exports[`<Code /> should render medium Code 1`] = `
             "paddingTop": 0,
             "textDecorationLine": "none",
           },
-          {
-            "includeFontPadding": false,
-          },
         ]
       }
     >
@@ -340,9 +328,6 @@ exports[`<Code /> should render small Code 1`] = `
             "paddingRight": 0,
             "paddingTop": 0,
             "textDecorationLine": "none",
-          },
-          {
-            "includeFontPadding": false,
           },
         ]
       }
