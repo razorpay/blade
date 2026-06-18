@@ -430,6 +430,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           lineHeight={lineHeight}
           textAlign="center"
           fontWeight="medium"
+          // Android's default font padding nudges inline links up relative to adjacent text on native.
+          style={(isReactNative() ? { includeFontPadding: false } : undefined) as never}
         >
           {children}
         </BaseText>
