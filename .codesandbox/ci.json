@@ -5,5 +5,5 @@
   "//": "we don't want to build since post install and prepublish our build automatically runs",
   "buildCommand": false,
   "sandboxes": ["/packages/examples/basic/"],
-  "disablePRComment": true
+  "silent": true
 }
