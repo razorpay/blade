@@ -300,7 +300,7 @@ const getProps = ({
     shadowBottomHeight?: number;
     shadowBorderColor?: string;
     shadowRingWidth?: number;
-    shadowShowGradient?: boolean;
+    isShadowGradientVisible?: boolean;
   } => {
     const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
     if (shadowTokens.length === 0) return {};
@@ -328,12 +328,12 @@ const getProps = ({
 
     return {
       shadowHighlightColor: highlightColor,
-      shadowHighlightHeight: highlightHeight || undefined,
+      shadowHighlightHeight: highlightHeight !== 0 ? highlightHeight : undefined,
       shadowBottomColor: bottomColor,
-      shadowBottomHeight: bottomHeight || undefined,
+      shadowBottomHeight: bottomHeight !== 0 ? bottomHeight : undefined,
       shadowBorderColor: borderColor,
-      shadowRingWidth: ringWidth || undefined,
-      shadowShowGradient: variant === 'primary',
+      shadowRingWidth: ringWidth !== 0 ? ringWidth : undefined,
+      isShadowGradientVisible: variant === 'primary',
     };
   };
 
@@ -391,7 +391,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...getNativeShadowColors(color),
+    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
   };
 
   if (isDisabled) {
@@ -416,13 +416,6 @@ const getProps = ({
     props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBoxShadow = getBoxShadow('disabled', color);
-    props.shadowHighlightColor = undefined;
-    props.shadowHighlightHeight = undefined;
-    props.shadowBottomColor = undefined;
-    props.shadowBottomHeight = undefined;
-    props.shadowBorderColor = undefined;
-    props.shadowRingWidth = undefined;
-    props.shadowShowGradient = undefined;
   }
 
   return props;

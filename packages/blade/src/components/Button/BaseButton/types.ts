@@ -50,7 +50,7 @@ export type BaseButtonStyleProps = {
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
   shadowRingWidth?: number;
-  shadowShowGradient?: boolean;
+  isShadowGradientVisible?: boolean;
 };
 
 export type StyledBaseButtonProps = Omit<
@@ -88,7 +88,7 @@ export type StyledBaseButtonProps = Omit<
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
   shadowRingWidth?: number;
-  shadowShowGradient?: boolean;
+  isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;
   isPressed: boolean;
 } & StyledPropsBlade &

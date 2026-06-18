@@ -88,7 +88,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     shadowBottomHeight,
     shadowBorderColor,
     shadowRingWidth,
-    shadowShowGradient,
+    isShadowGradientVisible,
     ...styledProps
   },
   ref,
@@ -171,14 +171,14 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
           <>
             {shadowBorderColor ? (
               <ButtonShadowOverlay
-                borderRadius={parseFloat(String(borderRadius)) || 0}
+                borderRadius={Number(String(borderRadius).replace('px', '')) || 0}
                 highlightColor={shadowHighlightColor}
                 highlightHeight={shadowHighlightHeight}
                 shadowColor={shadowBottomColor}
                 shadowHeight={shadowBottomHeight}
                 borderColor={shadowBorderColor}
                 ringWidth={shadowRingWidth}
-                showGradient={shadowShowGradient}
+                showGradient={isShadowGradientVisible}
               />
             ) : null}
             {children}
