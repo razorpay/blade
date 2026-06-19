@@ -61,10 +61,21 @@
     if (!_isChecked) {
       groupCtx?.state?.setValue(value, event);
     }
+    /* Reconcile DOM with source-of-truth.
+     *
+     * The browser flips `inputEl.checked` synchronously on click, before
+     * `onChange` fires. In controlled mode the consumer may reject the
+     * change (not update `value` in their handler) — when that happens,
+     * `_isChecked` does not change, so Svelte's `checked={_isChecked}`
+     * attribute binding does not re-sync, leaving the DOM input visually
+     * checked while the source-of-truth stays at the previous value.
+     * Re-asserting here keeps the DOM aligned. Mirrors Switch.svelte. */
+    if (inputEl && inputEl.checked !== _isChecked) {
+      inputEl.checked = _isChecked;
+    }
   }
 
-  let idCounter = 0;
-  const idBase = `radio-${++idCounter}-${Math.random().toString(36).slice(2, 6)}`;
+  const idBase = `radio-${Math.random().toString(36).slice(2, 9)}`;
   const helpTextId = `${idBase}-helptext`;
 
   const titleClasses = $derived(getRadioTitleClasses({ size: _size }));

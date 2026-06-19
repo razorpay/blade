@@ -40,8 +40,7 @@
     ...rest
   }: RadioGroupProps = $props();
 
-  let idCounter = 0;
-  const idBase = `radio-group-${++idCounter}-${Math.random().toString(36).slice(2, 6)}`;
+  const idBase = `radio-group-${Math.random().toString(36).slice(2, 9)}`;
   const labelId = `${idBase}-label`;
   const fallbackName = $derived(name ?? idBase);
 
