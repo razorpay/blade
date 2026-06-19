@@ -1,4 +1,4 @@
-name: Agentic Repo / Slash CI Healer
+name: Agentic Repo / Slash PR Healer
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ on:
     types: [completed]
 
 concurrency:
-  group: ${{ github.repository }}-${{ github.event.inputs.pr_number || github.event.workflow_run.head_sha }}-slash-ci-healer
+  group: ${{ github.repository }}-${{ github.event.inputs.pr_number || github.event.workflow_run.head_sha }}-slash-pr-healer
   cancel-in-progress: false
 
 jobs:
@@ -62,7 +62,7 @@ jobs:
           sparse-checkout: |
             .github/scripts
 
-      - name: Trigger Slash CI Healer
+      - name: Trigger Slash PR Healer
         id: trigger-slash
         if: steps.pr-meta.outputs.skip != 'true'
         env:
@@ -99,7 +99,7 @@ jobs:
         run: |
           gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
             --method POST \
-            --field body="🤖 **Slash CI Healer** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
+            --field body="🤖 **Slash PR Healer** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
 
       - name: Post PR comment on failure
         if: failure() && steps.pr-meta.outputs.skip != 'true'
@@ -111,4 +111,4 @@ jobs:
         run: |
           gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
             --method POST \
-            --field body="⚠️ **Slash CI Healer** failed to trigger. [View workflow run](${RUN_URL})"
+            --field body="⚠️ **Slash PR Healer** failed to trigger. [View workflow run](${RUN_URL})"

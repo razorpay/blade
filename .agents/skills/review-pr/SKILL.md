@@ -29,7 +29,6 @@ disable-model-invocation: true
   {
     "overview-comment": {
       "sanity-review": {
-        "critique": "pr-sanity-critique",
         "issues": [
           {
             "problem": "Could not spawn the subagents. Please check the logs for more details."

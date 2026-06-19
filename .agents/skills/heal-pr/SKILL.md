@@ -30,7 +30,7 @@ gh pr checkout {PR_NUMBER} --repo razorpay/blade
 ```
 
 - **Failing CI**: investigate with `gh run view --job {JOB_ID} --repo razorpay/blade`, then fix the root cause (code, tests, config)
-- **Missing changeset**: create the `.changeset` file with appropriate bump type
+- **Missing changeset**: create the `.changeset` file with appropriate bump type — **only if the PR contains actual source code changes**. Skip changeset creation for PRs with purely test file changes (e.g. `*.test.ts`, `*.spec.tsx`) or documentation-only changes (e.g. `*.md`, `docs/`).
 - **Any other issue**: follow the critique's suggestion
 
 For test or lint failures, verify the fix locally by re-running the failing check before committing.
@@ -40,7 +40,7 @@ For test or lint failures, verify the fix locally by re-running the failing chec
 If any issue cannot be fixed (infra outage, external service downtime, flaky environment), post a comment:
 
 ```bash
-gh pr comment {PR_NUMBER} --repo razorpay/blade --body ":sparkles: Agentic CI Healer :sparkles:
+gh pr comment {PR_NUMBER} --repo razorpay/blade --body ":sparkles: Agentic PR Healer :sparkles:
 
 **Could not auto-fix the following issues:**
 
@@ -52,5 +52,5 @@ These require manual intervention."
 ### 4. Push
 
 ```bash
-git add -A && git diff --cached --quiet || (git commit -m "fix: auto-heal PR via Slash CI Healer" && git push)
+git add -A && git diff --cached --quiet || (git commit -m "fix: auto-heal PR via Slash PR Healer" && git push)
 ```
