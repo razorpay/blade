@@ -98,7 +98,13 @@ function buildStatusSection(statuses, screenshotCdnMap = {}) {
   return parts.join('\n\n');
 }
 
-function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotCdnMap = {}) {
+function formatOverviewComment(
+  overview,
+  reviewStatus,
+  isSelfReview,
+  screenshotCdnMap = {},
+  usage = null,
+) {
   const parts = ['## ✨ Agentic PR Review ✨'];
 
   if (reviewStatus === 'approved') {
@@ -107,7 +113,7 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
 
   if (isSelfReview) {
     parts.push(
-      '<img src="https://i.imgur.com/dOeSiPZ.jpeg" alt="obama giving obama medal" width="300px" />',
+      '<img src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/__ci_artifacts/artifacts/review-assets/Obama-giving-Obama-award.png" alt="obama giving obama medal" width="300px" />',
     );
   }
 
@@ -135,6 +141,11 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
     }
   }
 
+  if (usage) {
+    parts.push('### Usage');
+    parts.push('```jsx\n' + usage + '\n```');
+  }
+
   return parts.join('\n\n');
 }
 
@@ -145,9 +156,13 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
 const SEVERITY_EMOJI = { critical: '🔴', major: '🟠', minor: '🔵' };
 
 function formatInlineComment(c) {
+  const confidenceStr = c.confidence != null ? ` · confidence: ${c.confidence}/10` : '';
+  if (c.clarification) {
+    return [`🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`, '', c.clarification].join('\n');
+  }
   const emoji = SEVERITY_EMOJI[c.severity] || '⚪';
   const lines = [
-    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_`,
+    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_${confidenceStr}`,
     '',
     `**Problem:** ${c.problem}`,
   ];
@@ -205,8 +220,9 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
       const dest = `${destDir}/${storyId}-${i + 1}.png`;
       fs.copyFileSync(s.screenshot_path, dest);
       execSync(`git add ${dest}`);
-      cdnMap[s.screenshot_path] =
-        `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
+      cdnMap[
+        s.screenshot_path
+      ] = `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
     });
 
     execSync(`git commit -m "chore: add ui-critique screenshots for PR-${prNum}" --allow-empty`);
@@ -259,6 +275,7 @@ const overviewBody = formatOverviewComment(
   reviewJson['reviewStatus'],
   isSelfReview,
   screenshotCdnMap,
+  reviewJson['overview-comment']?.['usage'] ?? null,
 );
 
 const SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
@@ -286,8 +303,8 @@ const reviewStatus = reviewJson['reviewStatus'];
 const submitEvent = isPending
   ? undefined
   : reviewStatus === 'approved' && !isSelfReview
-    ? 'APPROVE'
-    : 'COMMENT';
+  ? 'APPROVE'
+  : 'COMMENT';
 
 const reviewPayload = {
   body: overviewBody,
@@ -330,4 +347,10 @@ if (isPending) {
 } else {
   console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
+}
+
+const hasClarifications = allComments.some((c) => c.clarification);
+if (hasClarifications) {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "Human Help Needed 🧑🏻‍💻"`);
+  console.log('Added label: Human Help Needed 🧑🏻‍💻');
 }

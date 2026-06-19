@@ -76,17 +76,6 @@ prompt: |
   DIFF={DIFF}
 ```
 
-**usecase-critique:**
-
-```
-subagent_type: usecase-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
 **api-decision-critique** (only if the diff contains component changes):
 
 ```
