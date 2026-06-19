@@ -79,7 +79,7 @@ jobs:
           echo "$RESPONSE_OUTPUT"
 
           RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
-          TASK_ID=$(echo "$RESPONSE_JSON" | grep -oP '"task_id"\s*:\s*"\K[^"]+' || true)
+          TASK_ID=$(echo "$RESPONSE_JSON" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('task_id',''))" 2>/dev/null || true)
 
           if [ -n "$TASK_ID" ]; then
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"

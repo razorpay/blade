@@ -52,5 +52,5 @@ These require manual intervention."
 ### 4. Push
 
 ```bash
-git add -A && git commit -m "fix: auto-heal PR via Slash CI Healer" && git push
+git add -A && git diff --cached --quiet || (git commit -m "fix: auto-heal PR via Slash CI Healer" && git push)
 ```
