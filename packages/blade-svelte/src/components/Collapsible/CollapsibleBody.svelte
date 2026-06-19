@@ -30,7 +30,7 @@
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(!isStringChildren ? (children as Snippet) : undefined);
 
-  const bodyContentClass = $derived(getCollapsibleBodyClasses({ isExpanded }));
+  const bodyContentClass = getCollapsibleBodyClasses();
   const innerStyle = $derived(
     _hasMargin
       ? `margin-top: ${direction === 'bottom' ? 'var(--spacing-4)' : '0px'}; margin-bottom: ${

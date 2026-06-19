@@ -1,14 +1,19 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { ButtonProps } from '../Button/types';
+import type { TextColors } from '../Typography/BaseText/types';
 import type { CollapsibleDirection } from './context';
 
 type CollapsibleLinkColor = 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
 type CollapsibleLinkSize = 'xsmall' | 'small' | 'medium' | 'large';
 
+export type CollapsibleTextColor = TextColors;
+export type CollapsibleTextSize = 'small' | 'medium' | 'large';
+export type CollapsibleTextWeight = 'regular' | 'medium' | 'semibold';
+
 export type CollapsibleProps = {
   /**
-   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
+   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleText`, `CollapsibleBody`
    */
   children: Snippet;
 
@@ -50,13 +55,29 @@ export type CollapsibleProps = {
    */
   _shouldApplyWidthRestrictions?: boolean;
 
+  /**
+   * **Internal**: disables trigger validations. Used for AccordionItem internally
+   * so an `AccordionItemHeader` can act as the trigger without tripping the
+   * allowed-children check.
+   *
+   * @default false
+   */
+  _dangerouslyDisableValidations?: boolean;
+
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
 } & StyledPropsBlade;
 
 export type CollapsibleButtonProps = Pick<
   ButtonProps,
-  'variant' | 'size' | 'iconPosition' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'icon' | 'children'
+  | 'variant'
+  | 'size'
+  | 'iconPosition'
+  | 'isDisabled'
+  | 'testID'
+  | 'accessibilityLabel'
+  | 'icon'
+  | 'children'
 > & {
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
@@ -75,6 +96,43 @@ export type CollapsibleLinkProps = {
   accessibilityLabel?: string;
   /** Link content */
   children?: Snippet | string;
+  /** Analytics data attributes. */
+  [key: `data-analytics-${string}`]: string;
+} & StyledPropsBlade;
+
+export type CollapsibleTextProps = {
+  /** Text content rendered alongside the chevron. */
+  children: Snippet | string;
+
+  /**
+   * Size of the text.
+   * @default 'medium'
+   */
+  size?: CollapsibleTextSize;
+
+  /**
+   * Weight of the text.
+   * @default 'regular'
+   */
+  weight?: CollapsibleTextWeight;
+
+  /**
+   * Overrides the color of the text.
+   */
+  color?: CollapsibleTextColor;
+
+  /**
+   * Whether the trigger is disabled.
+   * @default false
+   */
+  isDisabled?: boolean;
+
+  /** Accessible label for the trigger. */
+  accessibilityLabel?: string;
+
+  /** Test ID for the trigger. */
+  testID?: string;
+
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
 } & StyledPropsBlade;

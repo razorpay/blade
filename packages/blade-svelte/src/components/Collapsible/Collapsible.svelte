@@ -16,6 +16,11 @@
     onExpandChange,
     testID,
     _shouldApplyWidthRestrictions = true,
+    // Accepted for API parity with React. Svelte renders children as opaque
+    // snippets, so the allowed-children check React performs cannot be mirrored
+    // here. The flag lets callers (e.g. AccordionItem) document that an
+    // arbitrary trigger is intentional.
+    _dangerouslyDisableValidations = false,
     ...rest
   }: CollapsibleProps = $props();
 

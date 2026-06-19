@@ -26,6 +26,7 @@
 <script lang="ts">
   import CollapsibleButton from './CollapsibleButton.svelte';
   import CollapsibleLink from './CollapsibleLink.svelte';
+  import CollapsibleText from './CollapsibleText.svelte';
   import CollapsibleBody from './CollapsibleBody.svelte';
   import Text from '../Typography/Text/Text.svelte';
   import Amount from '../Amount/Amount.svelte';
@@ -77,6 +78,30 @@
   {#snippet template(args)}
     <Collapsible {...getCollapsibleArgs(args)}>
       <CollapsibleLink>View Price Breakdown</CollapsibleLink>
+      <CollapsibleBody>
+        {@render priceBreakdown()}
+      </CollapsibleBody>
+    </Collapsible>
+  {/snippet}
+</Story>
+
+<!-- Compose Collapsible with CollapsibleText (text + chevron trigger) and CollapsibleBody -->
+<Story name="With Collapsible Text">
+  {#snippet template(args)}
+    <Collapsible {...getCollapsibleArgs(args)}>
+      <CollapsibleText>View Price Breakdown</CollapsibleText>
+      <CollapsibleBody>
+        {@render priceBreakdown()}
+      </CollapsibleBody>
+    </Collapsible>
+  {/snippet}
+</Story>
+
+<!-- A disabled CollapsibleText trigger cannot be toggled -->
+<Story name="With Disabled Collapsible Text">
+  {#snippet template(args)}
+    <Collapsible {...getCollapsibleArgs(args)}>
+      <CollapsibleText isDisabled>View Price Breakdown</CollapsibleText>
       <CollapsibleBody>
         {@render priceBreakdown()}
       </CollapsibleBody>

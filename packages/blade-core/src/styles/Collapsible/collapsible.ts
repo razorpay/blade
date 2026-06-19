@@ -21,15 +21,21 @@ export const getCollapsibleChevronClasses = cva(styles.triggerChevron, {
  * Animated body-content wrapper. Height + opacity are transitioned imperatively
  * via inline styles in the component; this class provides the transition config.
  */
-export const getCollapsibleBodyClasses = cva(styles.bodyContent, {
+export const getCollapsibleBodyClasses = cva(styles.bodyContent);
+
+/**
+ * Text trigger wrapper used by `CollapsibleText`. Lays out the text + chevron in
+ * a full-width row and dims itself when disabled.
+ */
+export const getCollapsibleTextClasses = cva(styles.trigger, {
   variants: {
-    isExpanded: {
-      true: null,
+    isDisabled: {
+      true: styles.triggerDisabled,
       false: null,
     },
   },
   defaultVariants: {
-    isExpanded: false,
+    isDisabled: false,
   },
 });
 
@@ -44,6 +50,6 @@ export type CollapsibleChevronVariants = {
   isExpanded?: boolean;
 };
 
-export type CollapsibleBodyVariants = {
-  isExpanded?: boolean;
+export type CollapsibleTextVariants = {
+  isDisabled?: boolean;
 };

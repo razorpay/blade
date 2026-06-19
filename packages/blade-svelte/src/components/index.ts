@@ -46,11 +46,18 @@ export type { SkeletonProps } from './Skeleton/types';
 export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
 
 // Collapsible
-export { Collapsible, CollapsibleButton, CollapsibleLink, CollapsibleBody } from './Collapsible';
+export {
+  Collapsible,
+  CollapsibleButton,
+  CollapsibleLink,
+  CollapsibleText,
+  CollapsibleBody,
+} from './Collapsible';
 export type {
   CollapsibleProps,
   CollapsibleButtonProps,
   CollapsibleLinkProps,
+  CollapsibleTextProps,
   CollapsibleBodyProps,
 } from './Collapsible';
 

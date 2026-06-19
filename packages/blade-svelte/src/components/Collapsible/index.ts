@@ -29,11 +29,13 @@
 export { default as Collapsible } from './Collapsible.svelte';
 export { default as CollapsibleButton } from './CollapsibleButton.svelte';
 export { default as CollapsibleLink } from './CollapsibleLink.svelte';
+export { default as CollapsibleText } from './CollapsibleText.svelte';
 export { default as CollapsibleBody } from './CollapsibleBody.svelte';
 
 export type {
   CollapsibleProps,
   CollapsibleButtonProps,
   CollapsibleLinkProps,
+  CollapsibleTextProps,
   CollapsibleBodyProps,
 } from './types';

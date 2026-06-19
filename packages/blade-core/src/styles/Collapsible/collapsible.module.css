@@ -36,3 +36,26 @@
 .bodyInner {
   display: block;
 }
+
+/* Text trigger used by CollapsibleText – full-width row with text + chevron.
+ * Rendered as a <button> so it is keyboard-focusable and announces correctly;
+ * the default button chrome is reset so it reads as plain text + chevron. */
+.trigger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: var(--spacing-0);
+  padding: var(--spacing-0);
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--interactive-text-gray-subtle);
+}
+
+.triggerDisabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
