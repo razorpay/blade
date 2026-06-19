@@ -15,6 +15,11 @@ export { default as Code } from './Typography/Code/Code.svelte';
 // Button
 export { default as Button } from './Button/Button.svelte';
 
+// IconButton
+export { default as IconButton } from './Button/IconButton/IconButton.svelte';
+export type { IconButtonProps } from './Button/IconButton/types';
+export { BaseIconButton } from './Button/IconButton/BaseIconButton';
+
 // Link
 export { default as Link } from './Link/Link.svelte';
 

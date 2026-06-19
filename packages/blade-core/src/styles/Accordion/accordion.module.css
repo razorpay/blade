@@ -3,13 +3,61 @@
   width: 100%;
 }
 
-/* Filled variant wrapper */
+/* Filled variant wrapper — Card surface treatment:
+   elevation shadow, top-highlight gradient, and inset border ring
+   matching card.module.css .cardSurface approach.
+
+   The inset border ring + bottom "lip" are painted via an `::after`
+   overlay (see `.filled::after`) instead of directly on the wrapper.
+   An edge-to-edge gray body (`.collapsibleContentGray`) paints its own
+   background *on top of* the wrapper's box-shadow, which would otherwise
+   clip the inset ring along the body's left/right/bottom edges. Rendering
+   the ring as a non-interactive overlay keeps it above the gray surface. */
 .filled {
-  background-color: var(--surface-background-gray-intense);
+  position: relative;
   border-radius: var(--border-radius-medium);
-  border-width: var(--border-width-thinner);
-  border-style: solid;
-  border-color: var(--surface-border-gray-subtle);
+  border: none;
+  background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%),
+    linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  /* Only the elevation drop shadow lives on the wrapper. */
+  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06);
+}
+
+/* Inset border ring + bottom lip overlay — painted above the body so an
+   edge-to-edge gray body background can't cover it. */
+.filled::after {
+  content: '';
+  position: absolute;
+  /* Longhand instead of `inset: 0` to support pre-2021 browsers (inset
+     shorthand is Baseline only since Apr 2021 / Safari 14.1). */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: var(--border-radius-medium);
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
+}
+
+/* Dark theme overrides for filled variant */
+:root body[data-theme='dark'] .filled {
+  border-top: 1px solid var(--surface-border-gray-subtle);
+  background-image: linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%),
+    linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%);
+  background-position: center top, center calc(100% - 1px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06);
+}
+
+:root body[data-theme='dark'] .filled::after {
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
 /* Transparent variant wrapper */
@@ -208,10 +256,10 @@
   transform: rotate(-180deg);
 }
 
-/* Header divider shown when expanded */
+/* Header divider shown when expanded — full-width, no horizontal padding */
 .headerDivider {
-  padding-left: var(--spacing-5);
-  padding-right: var(--spacing-5);
+  padding-left: var(--spacing-0);
+  padding-right: var(--spacing-0);
 }
 
 /* Collapsible body content */
@@ -231,6 +279,32 @@
   margin-bottom: var(--spacing-5);
   margin-left: var(--spacing-5);
   margin-right: var(--spacing-5);
+}
+
+/*
+ * Gray body background — for checkout/surface-gray contexts.
+ *
+ * The gray surface must fill the *entire* body pane edge-to-edge (matching
+ * design), so the background lives on the full-width collapsible wrapper.
+ * The inner `.body` then uses padding instead of margins so its spacing sits
+ * *inside* the gray surface rather than leaving a white frame around it.
+ */
+.collapsibleContentGray {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Last item's gray body follows the filled card's rounded bottom corners. */
+.collapsibleContentGrayLast {
+  border-bottom-left-radius: var(--border-radius-medium);
+  border-bottom-right-radius: var(--border-radius-medium);
+}
+
+.bodyGray {
+  margin: var(--spacing-0);
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-5);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
 }
 
 /* Responsive width defaults */
