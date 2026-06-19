@@ -58,13 +58,6 @@ Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
 
 ### 2. Spawn Critique Subagents in parallel
 
-**pr-sanity-critique:**
-
-```
-subagent_type: pr-sanity-critique
-prompt: "PR_NUMBER={PR_NUMBER}"
-```
-
 **code-quality-critique:**
 
 ```
