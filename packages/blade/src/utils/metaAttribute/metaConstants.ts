@@ -1,5 +1,7 @@
 export const MetaConstants = {
   Accordion: 'accordion',
+  CurrencySelector: 'currency-selector',
+  CurrencySelectorItem: 'currency-selector-item',
   AccordionButton: 'accordion-button',
   AccordionItem: 'accordion-item',
   AccordionItemHeader: 'accordion-item-header',
