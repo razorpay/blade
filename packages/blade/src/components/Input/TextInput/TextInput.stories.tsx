@@ -1,6 +1,6 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
@@ -57,6 +57,7 @@ export default {
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
+    validationTextPlacement: 'outside',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
@@ -214,6 +215,11 @@ export default {
       },
     },
     successText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    validationTextPlacement: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },

@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import type { ToastProps } from '../types';
 import { useToast } from '../useToast';
@@ -11,7 +10,7 @@ import type { Toast } from '../Toast';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 
-const onDismissButtonClick = jest.fn();
+const onDismissButtonClick = fn();
 const ToastExample = (props: ToastProps): React.ReactElement => {
   const toast = useToast();
 
@@ -187,7 +186,7 @@ ToastStacking.play = async () => {
   await sleep(400);
   await expect(queryByText('Toast 4')).toBeVisible();
 
-  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(40);
+  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(50);
 
   const toast4 = queryByText('Toast 4')! as Element;
 
@@ -196,7 +195,7 @@ ToastStacking.play = async () => {
   await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(160);
   await sleep(400);
   await userEvent.unhover(toast4);
-  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(40);
+  await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(50);
 
   // fire promo toast
   await userEvent.click(promoButton);

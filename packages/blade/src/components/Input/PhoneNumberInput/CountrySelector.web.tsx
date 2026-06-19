@@ -50,7 +50,7 @@ const CountrySelector = ({
   const isMobile = useIsMobile();
 
   const actionList = (
-    <ActionList isVirtualized={!isMobile}>
+    <ActionList isVirtualized={true}>
       {countryData.map((country) => {
         return (
           <ActionListItem
@@ -86,6 +86,7 @@ const CountrySelector = ({
         isDisabled={isDisabled}
         size={size}
         leading={flagImage}
+        showDisplayValue={false}
       />
       {isMobile ? (
         <BottomSheet>

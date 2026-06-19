@@ -248,6 +248,7 @@ type ChipBorderColors =
 
 type AnimatedChipProps = {
   borderColor: ChipBorderColors;
+  backgroundColor?: ChipBackgroundColors;
   isPressed?: boolean;
   isDisabled?: boolean;
   isDesktop?: boolean;

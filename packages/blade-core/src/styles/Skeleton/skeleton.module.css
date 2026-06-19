@@ -1,0 +1,73 @@
+.skeleton {
+  display: block;
+  opacity: 0;
+  background-color: var(--interactive-background-gray-default);
+  animation-name: skeleton-fade-in, skeleton-pulse;
+  animation-duration: var(--duration-2xgentle), 1320ms;
+  animation-delay: 0ms, var(--duration-2xgentle);
+  animation-timing-function: var(--easing-standard), var(--easing-standard);
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes skeleton-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-color: var(--interactive-background-gray-default);
+  }
+  25% {
+    background-color: var(--interactive-background-gray-default);
+  }
+  100% {
+    background-color: var(--interactive-background-gray-highlighted);
+  }
+}
+
+.radius-none {
+  border-radius: var(--border-radius-none);
+}
+
+.radius-2xsmall {
+  border-radius: var(--border-radius-2xsmall);
+}
+
+.radius-xsmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.radius-small {
+  border-radius: var(--border-radius-small);
+}
+
+.radius-medium {
+  border-radius: var(--border-radius-medium);
+}
+
+.radius-large {
+  border-radius: var(--border-radius-large);
+}
+
+.radius-xlarge {
+  border-radius: var(--border-radius-xlarge);
+}
+
+.radius-2xlarge {
+  border-radius: var(--border-radius-2xlarge);
+}
+
+.radius-max {
+  border-radius: var(--border-radius-max);
+}
+
+.radius-round {
+  border-radius: var(--border-radius-round);
+}

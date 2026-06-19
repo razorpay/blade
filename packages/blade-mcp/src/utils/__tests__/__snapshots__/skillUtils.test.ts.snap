@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`skillUtils > skillCreationInstructions > should return consistent instructions for skill creation (snapshot) 1`] = `
+"
+**Instructions:**
+
+1. Change to the working directory: \`cd "/Users/test/project"\`
+
+2. Run the bash script below (copy and execute the commands from the script)
+
+3. This will create the blade skill at \`.agents/skills/ui-code-guidelines/SKILL.md\` and a symlink at \`.claude/skills/ui-code-guidelines\`
+
+Run the following bash script to create the blade skill:
+
+**Bash Script:**
+
+\`\`\`bash
+
+  #!/bin/bash
+  # Download ui-code-guidelines skill from GitHub
+  SKILL_DIR=".agents/skills/ui-code-guidelines"
+  REFS_DIR="$SKILL_DIR/references"
+  SYMLINK_DIR=".claude/skills/ui-code-guidelines"
+  BASE_URL="https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-mcp/skillTemplate"
+  # Create directories
+  mkdir -p "$SKILL_DIR"
+  mkdir -p "$REFS_DIR"
+  # Download SKILL.md and reference files
+  curl -sSL "$BASE_URL/SKILL.md" -o "$SKILL_DIR/SKILL.md"
+  curl -sSL "$BASE_URL/references/styled-props-types.md" -o "$REFS_DIR/styled-props-types.md"
+  curl -sSL "$BASE_URL/references/common-utility-types.md" -o "$REFS_DIR/common-utility-types.md"
+  # Create symlink for Claude Code support
+  mkdir -p ".claude/skills"
+  if [ ! -L "$SYMLINK_DIR" ] && [ ! -e "$SYMLINK_DIR" ]; then
+    ln -s "../../.agents/skills/ui-code-guidelines" "$SYMLINK_DIR"
+  fi
+  
+\`\`\`
+
+**Working Directory:** \`/Users/test/project\`
+"
+`;

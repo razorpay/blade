@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Morph } from './';
 import type { MorphProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

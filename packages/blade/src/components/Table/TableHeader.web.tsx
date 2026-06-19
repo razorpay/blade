@@ -107,8 +107,8 @@ const StyledHeaderCell = styled(HeaderCell)<{
   $rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   $hasPadding: boolean;
   $textAlign: 'left' | 'center' | 'right';
-  gridRow?: string;
-}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign, gridRow }) => ({
+  $gridRow?: string;
+}>(({ theme, $isSortable, $backgroundColor, $rowDensity, $hasPadding, $textAlign, $gridRow }) => ({
   '&&&': {
     display: $textAlign ? 'flex' : 'block',
     justifyContent: $textAlign ? 'space-between' : 'initial',
@@ -121,7 +121,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     cursor: $isSortable ? 'pointer' : 'auto',
-    gridRow,
+    gridRow: $gridRow,
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -172,7 +172,7 @@ const _TableHeaderCell = ({
       className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
-      gridRow={gridRowValue}
+      $gridRow={gridRowValue}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
       $rowDensity={headerRowDensity ?? rowDensity}

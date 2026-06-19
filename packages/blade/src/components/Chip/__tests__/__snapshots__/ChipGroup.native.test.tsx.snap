@@ -69,6 +69,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -79,7 +80,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -133,6 +134,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -142,7 +144,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -205,6 +207,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -214,7 +217,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -251,11 +254,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -315,11 +320,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -337,6 +340,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -344,7 +348,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -353,6 +357,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -396,15 +401,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -425,6 +430,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -435,7 +441,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -460,11 +466,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -524,11 +532,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -546,6 +552,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -553,7 +560,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -562,6 +569,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -605,15 +613,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -634,6 +642,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -644,7 +653,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -669,11 +678,13 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -733,11 +744,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -755,6 +764,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -762,7 +772,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -771,6 +781,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -814,15 +825,15 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -843,6 +854,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -853,7 +865,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -954,6 +966,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -964,7 +977,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1018,6 +1031,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1027,7 +1041,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1090,6 +1104,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -1099,7 +1114,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1136,11 +1151,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           }
         >
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1201,11 +1218,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1223,6 +1238,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1230,7 +1246,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -1239,6 +1255,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1282,15 +1299,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1311,6 +1328,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1321,7 +1339,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1346,11 +1364,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1411,11 +1431,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1433,6 +1451,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1440,7 +1459,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -1449,6 +1468,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1492,15 +1512,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1521,6 +1541,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1531,7 +1552,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1556,11 +1577,13 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </View>
           </View>
           <View
+            alignSelf="flex-start"
             data-blade-component="chip"
             display="flex"
             style={
               [
                 {
+                  "alignSelf": "flex-start",
                   "display": "flex",
                 },
               ]
@@ -1621,11 +1644,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     {
                       "display": "flex",
                       "flexDirection": "column",
-                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
                 <View
                   alignItems="center"
@@ -1643,6 +1664,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   }
                 >
                   <View
+                    backgroundColor="surface.background.gray.intense"
                     borderColor="interactive.border.gray.faded"
                     isDisabled={false}
                     style={
@@ -1650,7 +1672,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "hsla(0, 0%, 100%, 1)",
                           "borderColor": "hsla(206, 10%, 29%, 0.18)",
                           "borderRadius": 8,
                           "borderWidth": 1,
@@ -1659,6 +1681,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           "flexWrap": "nowrap",
                           "justifyContent": "center",
                           "maxWidth": 280,
+                          "overflow": "hidden",
                           "textAlign": "left",
                           "textOverflow": "ellipsis",
                         },
@@ -1702,15 +1725,15 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "overflow": "hidden",
                             "paddingLeft": 8,
                             "paddingRight": 8,
-                            "width": "100%",
                           },
                           {
                             "borderColor": "transparent",
+                            "borderRadius": 7,
                             "display": "flex",
+                            "overflow": "visible",
                           },
                         ]
                       }
-                      width="100%"
                     >
                       <View
                         data-blade-component="base-box"
@@ -1731,6 +1754,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           fontSize={100}
                           fontStyle="normal"
                           fontWeight="regular"
+                          letterSpacing={50}
                           lineHeight={100}
                           numberOfLines={1}
                           style={
@@ -1741,7 +1765,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.18200000000000002,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

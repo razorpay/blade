@@ -30,7 +30,7 @@ exports[`Menu renders a Menu 1`] = `
 
 .c7.c7.c7.c7.c7 {
   padding-top: 8px;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
   padding-right: 8px;
   padding-left: 8px;
   background-color: hsla(0,0%,100%,0.94);
@@ -141,6 +141,9 @@ exports[`Menu renders a Menu 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -236,6 +239,8 @@ exports[`Menu renders a Menu 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
@@ -277,6 +282,8 @@ exports[`Menu renders a Menu 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),
@@ -1093,7 +1100,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
 
 .c7.c7.c7.c7.c7 {
   padding-top: 8px;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
   padding-right: 8px;
   padding-left: 8px;
   background-color: hsla(0,0%,100%,0.94);
@@ -1204,6 +1211,9 @@ exports[`Menu should support data-analytics attribute 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1299,6 +1309,8 @@ exports[`Menu should support data-analytics attribute 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
@@ -1340,6 +1352,8 @@ exports[`Menu should support data-analytics attribute 1`] = `
   cursor: pointer;
   width: 100%;
   padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),

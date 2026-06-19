@@ -32,6 +32,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -44,13 +45,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -71,6 +84,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -80,7 +94,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -167,6 +181,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -176,7 +191,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -201,6 +216,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               style={
                 [
@@ -210,7 +226,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -233,25 +249,30 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.5"
             style={
               [
                 {
                   "alignSelf": "auto",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 16,
                   "marginLeft": 0,
                   "marginTop": 16,
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="base-box"
-              flexGrow={1}
               style={
                 [
                   {
+                    "flexBasis": 0,
                     "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
@@ -276,7 +297,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   }
                 }
                 accessible={true}
-                borderRadius="8px"
+                borderRadius={8}
                 buttonPaddingBottom="0px"
                 buttonPaddingLeft="12px"
                 buttonPaddingRight="12px"
@@ -430,18 +451,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               style={
                 [
                   {
-                    "marginLeft": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              data-blade-component="base-box"
-              flexGrow={1}
-              style={
-                [
-                  {
+                    "flexBasis": 0,
                     "flexGrow": 1,
+                    "flexShrink": 1,
                   },
                 ]
               }
@@ -466,7 +478,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   }
                 }
                 accessible={true}
-                borderRadius="8px"
+                borderRadius={8}
                 buttonPaddingBottom="0px"
                 buttonPaddingLeft="12px"
                 buttonPaddingRight="12px"
@@ -655,6 +667,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -667,13 +680,25 @@ exports[`<Card /> should render a Card with Header 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -708,12 +733,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="column"
+            flexShrink={1}
             gap="spacing.4"
             style={
               [
                 {
                   "display": "flex",
                   "flexDirection": "column",
+                  "flexShrink": 1,
                   "gap": 12,
                 },
               ]
@@ -727,10 +754,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 [
                   {
                     "display": "flex",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                   },
                 ]
               }
@@ -840,9 +864,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </View>
               <View
                 data-blade-component="base-box"
+                flexShrink={1}
                 style={
                   [
                     {
+                      "flexShrink": 1,
                       "marginRight": 16,
                     },
                   ]
@@ -873,6 +899,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fontSize={200}
                     fontStyle="normal"
                     fontWeight="semibold"
+                    letterSpacing={25}
                     lineHeight={200}
                     style={
                       [
@@ -882,7 +909,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           "fontSize": 16,
                           "fontStyle": "normal",
                           "fontWeight": "600",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.528,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -980,6 +1007,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             fontSize={75}
                             fontStyle="normal"
                             fontWeight="medium"
+                            letterSpacing={50}
                             lineHeight={75}
                             numberOfLines={1}
                             style={
@@ -990,7 +1018,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                                   "fontSize": 12,
                                   "fontStyle": "normal",
                                   "fontWeight": "500",
-                                  "letterSpacing": 0,
+                                  "letterSpacing": -0.15600000000000003,
                                   "lineHeight": 17,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1022,6 +1050,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   fontSize={75}
                   fontStyle="normal"
                   fontWeight="regular"
+                  letterSpacing={50}
                   lineHeight={75}
                   style={
                     [
@@ -1031,7 +1060,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         "fontSize": 12,
                         "fontStyle": "normal",
                         "fontWeight": "400",
-                        "letterSpacing": 0,
+                        "letterSpacing": -0.15600000000000003,
                         "lineHeight": 17,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -1093,6 +1122,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       "borderRadius": 9999,
                       "display": "flex",
                       "flexWrap": "nowrap",
+                      "justifyContent": "center",
+                      "paddingBottom": 0.5,
                     },
                   ]
                 }
@@ -1127,6 +1158,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="medium"
+                    letterSpacing={50}
                     lineHeight={75}
                     marginX="spacing.2"
                     numberOfLines={1}
@@ -1138,7 +1170,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "500",
-                          "letterSpacing": 0,
+                          "letterSpacing": -0.15600000000000003,
                           "lineHeight": 17,
                           "marginBottom": 0,
                           "marginLeft": 4,
@@ -1199,6 +1231,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -1208,7 +1241,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1263,6 +1296,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="lowRaised"
       style={
         [
           {
@@ -1275,13 +1309,25 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 8,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 2,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1333,6 +1379,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="none"
       style={
         [
           {
@@ -1345,13 +1392,25 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 0,
+            "shadowColor": "",
+            "shadowOffset": {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1372,6 +1431,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -1381,7 +1441,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1436,6 +1496,7 @@ exports[`<Card /> should render a plain Card 1`] = `
       backgroundColor="surface.background.gray.intense"
       borderRadius="medium"
       data-blade-component="base-box"
+      elevation="highRaised"
       style={
         [
           {
@@ -1448,13 +1509,25 @@ exports[`<Card /> should render a plain Card 1`] = `
             "textAlign": "left",
           },
           {
-            "borderColor": "hsla(206, 10%, 29%, 0.12)",
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
+            "elevation": 24,
+            "shadowColor": "hsla(200, 10%, 18%, 1)",
+            "shadowOffset": {
+              "height": 8,
+              "width": 0,
+            },
+            "shadowOpacity": 0.06,
+            "shadowRadius": 12,
           },
+          [
+            {
+              "borderColor": "hsla(206, 10%, 29%, 0.12)",
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+            },
+          ],
         ]
       }
       textAlign="left"
@@ -1475,6 +1548,7 @@ exports[`<Card /> should render a plain Card 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -1484,7 +1558,7 @@ exports[`<Card /> should render a plain Card 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,

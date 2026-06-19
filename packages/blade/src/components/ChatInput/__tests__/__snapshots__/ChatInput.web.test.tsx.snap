@@ -454,6 +454,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 .c6.c6.c6.c6.c6 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -482,6 +483,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 .c6.c6.c6.c6.c6:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -512,6 +514,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
 .c6.c6.c6.c6.c6:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 16px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

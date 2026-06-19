@@ -25,6 +25,7 @@ import { DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
+import { useModalContext } from '~components/Modal/ModalContext';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -154,6 +155,8 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
 
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
+  const modalContext = useModalContext();
+
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
@@ -243,7 +246,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
 
     if (shouldShowClearButton && trailingDropdown) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );
@@ -328,7 +331,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   );
 
   return (
-    <TopNavOverlayThemeOverride shouldOverrideTheme={isSearchFocused}>
+    <TopNavOverlayThemeOverride
+      shouldOverrideTheme={modalContext.isInsideModal ? true : isSearchFocused}
+    >
       {searchContent}
     </TopNavOverlayThemeOverride>
   );

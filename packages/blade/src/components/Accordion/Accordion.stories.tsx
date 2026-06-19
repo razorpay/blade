@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
@@ -28,6 +28,7 @@ import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 import { TextInput } from '~components/Input/TextInput';
+import { Avatar, AvatarGroup } from '~components/Avatar';
 import { Indicator } from '~components/Indicator';
 import { Amount } from '~components/Amount';
 
@@ -513,6 +514,23 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" />}
+            title="Item with AvatarGroup"
+            titleSuffix={
+              <AvatarGroup size="xsmall" density="comfortable">
+                <Avatar name="John Doe" src="https://i.pravatar.cc/150?img=1" />
+                <Avatar name="Jane Smith" src="https://i.pravatar.cc/150?img=2" />
+                <Avatar name="Bob Wilson" src="https://i.pravatar.cc/150?img=3" />
+              </AvatarGroup>
+            }
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
             leading={<ArrowUpIcon size="large" />}
             title="Item without subtitle"
           />
@@ -612,6 +630,11 @@ const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ..
           <Text>Deprecated slot</Text>
         </Box>
       </AccordionItem>
+      <AccordionItem
+        icon={AnnouncementIcon}
+        title="How can I setup Payouts?"
+        description="Use Razorpay Payouts to send money to bank accounts, UPI IDs, or wallets instantly. You can automate bulk payouts via APIs or manage them from the dashboard."
+      />
     </AccordionComponent>
   );
 };

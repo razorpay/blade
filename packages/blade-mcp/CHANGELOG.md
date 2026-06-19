@@ -1,5 +1,56 @@
 # @razorpay/blade-mcp
 
+## 1.27.1
+
+### Patch Changes
+
+- 1aec424ef: docs(blade-mcp): update knowledgebase with icons and tokens
+
+## 1.27.0
+
+### Minor Changes
+
+- 8f0547610: feat(blade-mcp): move from cursor to claude-code compatible guidelines
+
+## 1.26.1
+
+### Patch Changes
+
+- f243e927e: feat(blade): add `variant` prop for primary and neutral backgrounds in TopNav
+
+  Added a new `variant` prop to `TopNav` component with two options:
+
+  - `variant="neutral"` (default) — existing dark/black background, fully backward-compatible
+  - `variant="primary"` — uses brand primary color background (Razorpay blue)
+
+  The explicit `backgroundColor` prop still takes precedence over `variant`, preserving the escape hatch for custom backgrounds.
+
+  **Usage:**
+
+  ```jsx
+  // Default neutral variant (existing behavior)
+  <TopNav>...</TopNav>
+
+  // Primary brand color variant
+  <TopNav variant="primary">...</TopNav>
+
+  // Custom background still works
+  <TopNav backgroundColor="surface.background.gray.intense">...</TopNav>
+  ```
+
+## 1.26.0
+
+### Minor Changes
+
+- a8823b007: feat(blade): update razorsense cdn path & added preloadRazorSenseAssets utility
+  feat(blade-mcp): add knowledgebase for RazorSense and RazorSenseGradient
+
+## 1.25.3
+
+### Patch Changes
+
+- 06e127d3f: feat(SideNav): MCP update, mobile sidenav bug fix, refactors
+
 ## 1.25.2
 
 ### Patch Changes

@@ -5,11 +5,12 @@ import type { ColorSchemeNames, ColorSchemeNamesInput, ThemeTokens } from '~toke
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { TypographyPlatforms } from '~tokens/global';
 import type { ColorSchemeModes } from '~tokens/theme/theme';
-import { toTitleCase } from '~utils/toTitleCase';
 import { throwBladeError } from '~utils/logger';
+import { toTitleCase } from '~utils/toTitleCase';
 
 type ThemeContextValue = {
   theme: Theme;
+  themeTokens: ThemeTokens;
   colorScheme: ColorSchemeNames;
   setColorScheme: (colorScheme: ColorSchemeNamesInput) => void;
   platform: TypographyPlatforms;
@@ -61,6 +62,7 @@ const useBladeProvider = ({
 
   const themeContextValue = {
     theme,
+    themeTokens,
     colorScheme,
     setColorScheme,
     platform: onDeviceType,

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Title } from '@storybook/addon-docs';
-import type { StoryFn, Meta } from '@storybook/react';
+import { Title } from '@storybook/addon-docs/blocks';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';

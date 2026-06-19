@@ -295,6 +295,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -324,6 +325,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 .c10.c10.c10.c10.c10:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -355,6 +357,7 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -841,6 +844,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -870,6 +874,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 .c10.c10.c10.c10.c10:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -901,6 +906,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1384,6 +1390,7 @@ exports[`<SearchInput /> should render 1`] = `
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1413,6 +1420,7 @@ exports[`<SearchInput /> should render 1`] = `
 .c10.c10.c10.c10.c10:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1444,6 +1452,7 @@ exports[`<SearchInput /> should render 1`] = `
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1961,6 +1970,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1990,6 +2000,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2021,6 +2032,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2608,6 +2620,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2637,6 +2650,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 .c10.c10.c10.c10.c10:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2668,6 +2682,7 @@ exports[`<SearchInput /> should render large size 1`] = `
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

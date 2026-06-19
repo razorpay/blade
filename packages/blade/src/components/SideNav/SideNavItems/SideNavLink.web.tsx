@@ -240,7 +240,7 @@ const SideNavLink = ({
     onLinkActiveChange,
     closeMobileNav,
     isL1Collapsed,
-    isSideNavFullyCollapsed,
+    isSideNavCollapsed,
     setIsL1Collapsed,
   } = useSideNav();
   const { level: _prevLevel } = useNavLink();
@@ -283,8 +283,7 @@ const SideNavLink = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
-  const shouldHideActiveL1ItemWithoutIconOnFullCollapse =
-    currentLevel === 1 && !icon && isSideNavFullyCollapsed;
+  const shouldHideL1Item = currentLevel === 1 && !icon && isSideNavCollapsed;
 
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, title }}>
@@ -315,9 +314,7 @@ const SideNavLink = ({
           >
             <TooltipifyComponent tooltip={tooltip}>
               <BaseBox
-                className={`${STYLED_NAV_LINK} ${
-                  shouldHideActiveL1ItemWithoutIconOnFullCollapse ? HIDE_WHEN_COLLAPSED : ''
-                }`}
+                className={`${STYLED_NAV_LINK} ${shouldHideL1Item ? HIDE_WHEN_COLLAPSED : ''}`}
                 as={as ?? 'a'}
                 to={href}
                 href={as ? undefined : href}
@@ -346,12 +343,7 @@ const SideNavLink = ({
                   // Which can make L1 to expand when tabs / windows are changed
                   // Adding focus-visible check ensures this behaviour of closing menus is only applicable when there is visible focus ring on it (while tabbing)
                   const hasFocusRing = e.target?.matches(':focus-visible');
-                  if (
-                    isL1Collapsed &&
-                    !isSideNavFullyCollapsed &&
-                    currentLevel === 1 &&
-                    hasFocusRing
-                  ) {
+                  if (isL1Collapsed && !isSideNavCollapsed && currentLevel === 1 && hasFocusRing) {
                     setIsL1Collapsed?.(false);
                   }
                 }}

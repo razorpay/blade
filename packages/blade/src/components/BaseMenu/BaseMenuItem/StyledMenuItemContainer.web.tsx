@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import type { StyledBaseMenuItemContainerProps } from '../types';
 import { getBaseMenuItemStyles } from './getBaseMenuItemStyles';
 import { getItemPadding } from './tokens';
-import { getMediaQuery, makeSize } from '~utils';
+import { getMediaQuery, makeSize, makeSpace } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -10,6 +10,8 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
   return {
     ...getBaseMenuItemStyles({ theme: props.theme }),
     padding: makeSize(getItemPadding(props.theme).itemPaddingMobile),
+    marginTop: makeSpace(props.theme.spacing[1]),
+    marginBottom: makeSpace(props.theme.spacing[1]),
     display: props.isVisible ? 'flex' : 'none',
     [`@media ${getMediaQuery({ min: props.theme.breakpoints.m })}`]: {
       padding: makeSize(getItemPadding(props.theme).itemPaddingDesktop),

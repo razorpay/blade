@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import type { GenUIComponent } from './GenUIComponents';
 import { useGenUI, GenUIContext } from './GenUIContext';
 import type { AnimateOptions } from './rehypeAnimate';
 import { useResize } from '~utils/useResize';
+
+/**
+ * Fallback component shown when a GenUI component fails to render
+ */
+const ComponentErrorFallback = () => {
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <></>;
+};
 
 /**
  * Block-level component types that should have the animated gradient border effect
@@ -262,7 +271,7 @@ type ComponentRendererProps = {
  * Internal component that renders a single GenUI component based on its schema
  * Must be used within a GenUIProvider
  */
-const ComponentRenderer = memo(({ component, index }: ComponentRendererProps) => {
+const ComponentRendererInner = memo(({ component, index }: ComponentRendererProps) => {
   const { registry, validComponentTypes } = useGenUI();
 
   // Handle incomplete components during streaming
@@ -308,6 +317,14 @@ const ComponentRenderer = memo(({ component, index }: ComponentRendererProps) =>
 
   console.warn(`[GenUI]: Unsupported component: ${componentType}`);
   return null;
+});
+
+const ComponentRenderer = memo(({ component, index }: ComponentRendererProps) => {
+  return (
+    <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
+      <ComponentRendererInner component={component} index={index} />
+    </ErrorBoundary>
+  );
 });
 
 type GenUISchemaRendererProps = {

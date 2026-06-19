@@ -396,6 +396,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 .c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -424,6 +425,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 .c12.c12.c12.c12.c12:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -454,6 +456,7 @@ exports[`InputGroup should handle validation states correctly 1`] = `
 .c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -890,6 +893,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 .c6.c6.c6.c6.c6 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -918,6 +922,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 .c6.c6.c6.c6.c6:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -948,6 +953,7 @@ exports[`InputGroup should render InputGroup with large size 1`] = `
 .c6.c6.c6.c6.c6:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1355,6 +1361,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 .c6.c6.c6.c6.c6 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1383,6 +1390,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 .c6.c6.c6.c6.c6:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1413,6 +1421,7 @@ exports[`InputGroup should render InputGroup with medium size 1`] = `
 .c6.c6.c6.c6.c6:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2061,6 +2070,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 .c12.c12.c12.c12.c12 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2089,6 +2099,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 .c12.c12.c12.c12.c12:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2119,6 +2130,7 @@ exports[`InputGroup should render Inputgroup with default properties 1`] = `
 .c12.c12.c12.c12.c12:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2665,6 +2677,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 .c6.c6.c6.c6.c6 {
   background-color: hsla(0,0%,97%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2693,6 +2706,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 .c6.c6.c6.c6.c6:hover {
   background-color: hsla(0,0%,97%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2723,6 +2737,7 @@ exports[`InputGroup should render disabled ButtonGroup 1`] = `
 .c6.c6.c6.c6.c6:focus-within {
   background-color: hsla(0,0%,97%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

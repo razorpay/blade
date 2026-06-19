@@ -28,7 +28,7 @@ exports[`<Tooltip /> should render 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -175,244 +175,240 @@ exports[`<Tooltip /> should render 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 1100,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 1100,
           }
         }
       >
-        <View
-          collapse={false}
-          colorScheme="light"
-          data-blade-component="base-box"
-          display="flex"
-          elevation={20}
-          flexDirection="column"
-          gap="spacing.2"
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
           style={
             [
               {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "maxWidth": 200,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
-                "borderRadius": 12,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 1100,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 1100,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 17,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
                 },
               ]
             }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
           >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
-              }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4281810499,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={
-                    {
-                      "payload": 3087007744,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -444,7 +440,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -591,244 +587,240 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 9999,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 9999,
           }
         }
       >
-        <View
-          collapse={false}
-          colorScheme="light"
-          data-blade-component="base-box"
-          display="flex"
-          elevation={20}
-          flexDirection="column"
-          gap="spacing.2"
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
           style={
             [
               {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "maxWidth": 200,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
-                "borderRadius": 12,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 9999,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 9999,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 17,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
                 },
               ]
             }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
           >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
-              }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4281810499,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={
-                    {
-                      "payload": 3087007744,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -860,7 +852,7 @@ exports[`<Tooltip /> should render with title 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1007,277 +999,274 @@ exports[`<Tooltip /> should render with title 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 1100,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 1100,
           }
         }
       >
-        <View
-          collapse={false}
-          colorScheme="light"
-          data-blade-component="base-box"
-          display="flex"
-          elevation={20}
-          flexDirection="column"
-          gap="spacing.2"
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="semibold"
+          letterSpacing={50}
+          lineHeight={100}
           style={
             [
               {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "maxWidth": 200,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
-                "borderRadius": 12,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 1100,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Tooltip title
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 1100,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={100}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
                 },
-              ]
-            }
-          >
-            Tooltip title
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 17,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
                 [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
+                },
+              ]
+            }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4281810499,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,8 Q7,8 7,8 Z"
-                  fill={
-                    {
-                      "payload": 3087007744,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;

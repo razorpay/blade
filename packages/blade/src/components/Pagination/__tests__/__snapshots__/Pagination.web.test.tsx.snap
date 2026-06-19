@@ -1178,6 +1178,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 .c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1207,6 +1208,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 .c10.c10.c10.c10.c10:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1238,6 +1240,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 .c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3289,6 +3292,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 .c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3318,6 +3322,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 .c8.c8.c8.c8.c8:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -3349,6 +3354,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 .c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

@@ -20,7 +20,7 @@ const ListViewSurface = styled(BaseBox)<{ colorScheme: ColorSchemeNames }>(
       position: 'relative',
       flexDirection: 'column',
       boxSizing: 'border-box',
-      ...getSurfaceStyles(theme, colorScheme, { beforeGradientZIndex: 0 }),
+      ...getSurfaceStyles(theme, colorScheme),
       boxShadow: `${elevation}, ${top}`,
       borderLeft: `1px solid ${borderColor}`,
       borderRight: `1px solid ${borderColor}`,

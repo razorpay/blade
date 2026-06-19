@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserFilledIcon /> should render UserFilledIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      clip-rule="evenodd"
+      d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2Z"
+      data-blade-component="svg-path"
+      fill="hsla(200, 10%, 18%, 1)"
+      fill-rule="evenodd"
+    />
+    <path
+      d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 7.53848 22 12.0385 22H20C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z"
+      data-blade-component="svg-path"
+      fill="hsla(200, 10%, 18%, 1)"
+    />
+  </svg>
+</div>
+`;

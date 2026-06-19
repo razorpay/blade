@@ -23,6 +23,13 @@ The SideNav component provides a responsive side navigation layout positioned al
 The following types represent the props that the SideNav component and its subcomponents accept. These types help configure the navigation structure properly.
 
 ````typescript
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
+
+type SideNavBackgroundColor = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
+>}`;
+
 /**
  * Props for the SideNav component
  */
@@ -54,11 +61,37 @@ type SideNavProps = {
    */
   onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
   /**
+   * Callback that gets triggered when controlled full expand state changes.
+   *
+   * **Only applicable in desktop**
+   */
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  /**
+   * Callback that gets triggered when controlled full expand/collapse transition ends.
+   *
+   * **Only applicable in desktop**
+   */
+  onExpandTransitionEnd?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  /**
+   * **Only applicable in desktop**
+   *
+   * Controls whether SideNav should remain fully expanded.
+   * - `true` (default): existing behavior with hover-based temporary expansion.
+   * - `false`: keeps SideNav collapsed and disables hover/focus-based expansion.
+   */
+  isExpanded?: boolean;
+  /**
    * Banner slot for usecases like adding Activation Panel
    *
    * IMPORTANT: Avoid adding promotional items in this
    */
   banner?: React.ReactElement;
+  /**
+   * Sets background color of the SideNav surface.
+   *
+   * @default `surface.background.gray.moderate`
+   */
+  backgroundColor?: SideNavBackgroundColor;
   /**
    * Position of the SideNav.
    *

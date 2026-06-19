@@ -78,6 +78,12 @@ type BaseInputDropDownButtonProps = {
    */
   leading?: React.ReactNode;
   /**
+   * showDisplayValue shows the selected value text in the trigger button.
+   * When false, only the leading element (e.g., a flag) is shown.
+   * @default true
+   */
+  showDisplayValue?: boolean;
+  /**
    * size is the size of the dropdown button (inherited from parent input)
    * @default 'medium'
    */
@@ -157,6 +163,7 @@ const _InputDropdownButton = ({
   defaultValue,
   icon: Icon,
   leading,
+  showDisplayValue = true,
   size = 'medium',
   ...rest
 }: InputDropDownButtonProps): React.ReactElement | null => {
@@ -194,6 +201,7 @@ const _InputDropdownButton = ({
     <StyledSearchTrailingDropdown
       type="button"
       $size={size}
+      disabled={isDisabled}
       onClick={(e) => {
         if (isDisabled) return;
         onTriggerClick();
@@ -253,14 +261,16 @@ const _InputDropdownButton = ({
           />
         )}
 
-        <Text
-          variant="body"
-          size="medium"
-          weight="regular"
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
-        >
-          {displayValue}
-        </Text>
+        {showDisplayValue && (
+          <Text
+            variant="body"
+            size="medium"
+            weight="regular"
+            color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+          >
+            {displayValue}
+          </Text>
+        )}
         <ChevronUpDownIcon
           color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.muted'}
         />

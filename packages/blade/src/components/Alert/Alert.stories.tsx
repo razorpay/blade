@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
@@ -227,6 +227,7 @@ const intents = [
   { label: 'Notice', color: 'notice' },
   { label: 'Information', color: 'information' },
   { label: 'Neutral', color: 'neutral' },
+  { label: 'Primary', color: 'primary' },
 ] as const;
 
 const renderAlertGrid = ({ isFullWidth }: { isFullWidth: boolean }): ReactElement => {

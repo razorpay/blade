@@ -6,12 +6,12 @@ import {
   createNewBladeProjectToolCallback,
 } from './tools/createNewBladeProject.js';
 import {
-  createBladeCursorRulesToolName,
-  createBladeCursorRulesToolDescription,
-  createBladeCursorRulesToolSchema,
-  createBladeCursorRulesStdioCallback,
-  createBladeCursorRulesHttpCallback,
-} from './tools/createBladeCursorRules.js';
+  createBladeSkillToolName,
+  createBladeSkillToolDescription,
+  createBladeSkillToolSchema,
+  createBladeSkillStdioCallback,
+  createBladeSkillHttpCallback,
+} from './tools/createBladeSkill.js';
 import {
   getBladeComponentDocsToolName,
   getBladeComponentDocsToolDescription,
@@ -66,10 +66,10 @@ import { setMcpSseAnalyticsContext } from './utils/analyticsUtils.js';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const httpsServerTools = (server: McpServer): void => {
   server.tool(
-    createBladeCursorRulesToolName,
-    createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
-    createBladeCursorRulesHttpCallback,
+    createBladeSkillToolName,
+    createBladeSkillToolDescription,
+    createBladeSkillToolSchema,
+    createBladeSkillHttpCallback,
   );
 
   server.tool(
@@ -96,10 +96,10 @@ const httpsServerTools = (server: McpServer): void => {
 
 const stdioServerTools = (server: McpServer): void => {
   server.tool(
-    createBladeCursorRulesToolName,
-    createBladeCursorRulesToolDescription,
-    createBladeCursorRulesToolSchema,
-    createBladeCursorRulesStdioCallback,
+    createBladeSkillToolName,
+    createBladeSkillToolDescription,
+    createBladeSkillToolSchema,
+    createBladeSkillStdioCallback,
   );
 
   server.tool(

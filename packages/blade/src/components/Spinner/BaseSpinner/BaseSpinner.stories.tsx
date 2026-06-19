@@ -1,6 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Link } from '@storybook/design-system';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title, Subtitle, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { BaseSpinnerProps } from './BaseSpinner';
 import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';
@@ -11,14 +10,13 @@ const Page = (): ReactElement => {
     <>
       <Title />
       <Subtitle>This is the BaseSpinner Internal component.</Subtitle>
-      <Link
-        withArrow={true}
+      <a
         href="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85575&t=493DSapGGbdA42Lb-1&scaling=min-zoom&page-id=14825%3A203537&mode=design"
         target="_blank"
         rel="noreferrer noopener"
       >
         View in Figma
-      </Link>
+      </a>
       <br />
       <br />
       <Title>Example</Title>
@@ -28,7 +26,7 @@ const Page = (): ReactElement => {
       </Subtitle>
       <Primary />
       <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
+      <Controls />
       <Stories />
     </>
   );

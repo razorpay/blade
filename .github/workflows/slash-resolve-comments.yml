@@ -1,0 +1,92 @@
+name: Agentic Repo / Slash Auto-Resolve PR Comments
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+concurrency:
+  # One resolution job per PR at a time to avoid conflicting edits.
+  group: ${{ github.repository }}-${{ github.event.pull_request.number }}-slash-resolve-comments
+  cancel-in-progress: false
+
+jobs:
+  resolve-comments:
+    name: Resolve PR review comments via Slash
+    # Skip reviews from bots (including Slash itself) to prevent feedback loops.
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      github.actor != 'rzp-slash' &&
+      github.actor != 'rzp-slash[bot]' &&
+      github.actor != 'rzp-slash-public' &&
+      github.actor != 'rzp-slash-public[bot]' &&
+      github.actor != 'rzp-slash-reviewer' &&
+      github.actor != 'rzp-slash-reviewer[bot]'
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+            CODEOWNERS
+
+      - name: Check if reviewer is CODEOWNER or PR author
+        id: auth-check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          if [ "$ACTOR" = "$PR_AUTHOR" ]; then
+            echo "Actor is the PR author — authorized."
+            echo "authorized=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Extract all GitHub usernames from CODEOWNERS (lines starting with /, strip @ prefix)
+          CODEOWNERS=$(grep -oP '@\K[A-Za-z0-9_-]+' CODEOWNERS | sort -u)
+
+          if echo "$CODEOWNERS" | grep -qx "$ACTOR"; then
+            echo "Actor '$ACTOR' is a CODEOWNER — authorized."
+            echo "authorized=true" >> $GITHUB_OUTPUT
+          else
+            echo "Actor '$ACTOR' is neither the PR author nor a CODEOWNER — skipping."
+            echo "authorized=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fetch review comments and trigger Slash
+        if: steps.auth-check.outputs.authorized == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_ID: ${{ github.event.review.id }}
+        run: |
+          COMMENT_DATA=$(gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews/${REVIEW_ID}/comments" --jq '[.[] | select(.body | contains("@rzp-slash-public")) | {id: .id, html_url: .html_url}]')
+
+          COMMENT_URLS=$(echo "$COMMENT_DATA" | jq -r '.[].html_url')
+          COMMENT_IDS=$(echo "$COMMENT_DATA" | jq -r '.[].id')
+
+          if [ -z "$COMMENT_URLS" ]; then
+            echo "No comments mentioning @rzp-slash-public in this review, skipping."
+            exit 0
+          fi
+
+          PROMPT=$'Resolve the following PR review comments that were just submitted in a single review.\n\nComment URLs:\n'"${COMMENT_URLS}"$'\n\nInstructions:\n  - Fetch the details of the PR and each comment with `gh` CLI.\n  - For each comment: when it asks for clarification, reply to the comment with a response (including "[resolved by agent]" at the end) OR push a code fix to the PR branch.\n  - Whenever applicable, create a fix commit and push it to the PR branch, reply to the relevant comment(s) with "[resolved by agent]" at the end.\n  - If you need clarification from the PR author for any comment, add the label "Human Help Needed" to the PR instead of guessing.'
+
+          RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          echo "$RESPONSE_OUTPUT"
+
+          RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+          TASK_ID=$(echo "$RESPONSE_JSON" | grep -oP '"task_id"\s*:\s*"\K[^"]+' || true)
+
+          if [ -n "$TASK_ID" ]; then
+            EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+            for COMMENT_ID in $COMMENT_IDS; do
+              gh api "repos/${{ github.repository }}/pulls/${PR_NUMBER}/comments/${COMMENT_ID}/replies" \
+                --method POST \
+                --field body="**✨ Agentic Resolution ✨:** Auto Comment Resolution Triggered ([**View Logs**](${EXECUTION_URL}))"
+            done
+          fi

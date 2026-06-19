@@ -25,6 +25,36 @@ type ComponentStatusDataType = {
 
 const componentData: ComponentStatusDataType = [
   {
+    name: 'Avatar',
+    description: 'Avatar component for displaying user profile images or initials.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.101.6',
+        storybookLink: 'Components/Avatar/Avatar',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'AvatarGroup',
+    description: 'AvatarGroup component for displaying a group of avatars with overflow count.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.101.6',
+        storybookLink: 'Components/Avatar/AvatarGroup',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'EmptyState',
     description: 'EmptyState component for displaying empty state messages and illustrations.',
     platform: 'all',
@@ -875,7 +905,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'DatePicker',
     description: 'DatePicker will provide an easy way to input dates and ranges',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
         status: 'released',
@@ -906,7 +936,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'Toast',
     description: 'Toast is a component to show a simple floating messages to your users',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
         status: 'released',
@@ -1257,6 +1287,21 @@ const componentData: ComponentStatusDataType = [
         status: 'released',
         releasedIn: '12.49.7',
         storybookLink: 'Components/LineChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'SankeyChart',
+    description:
+      'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with Recharts and Blade design system styling.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/SankeyChart',
       },
       svelte: {
         status: 'to-be-decided',

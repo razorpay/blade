@@ -376,6 +376,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -405,6 +406,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -436,6 +438,7 @@ exports[`<Dropdown /> should render autocomplete inside dropdown 1`] = `
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1128,6 +1131,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1157,6 +1161,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1188,6 +1193,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1875,6 +1881,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1904,6 +1911,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1935,6 +1943,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;

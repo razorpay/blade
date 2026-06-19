@@ -73,6 +73,21 @@ type TabNavItemProps = {
    */
   title?: string;
   /**
+   * Element rendered right after the title text, before the trailing element.
+   * Useful for adding status tags like Badge (e.g., BETA, NEW, ALPHA).
+   *
+   * @example
+   * ```jsx
+   * <TabNavItem
+   *   title="Ray AI"
+   *   titleSuffix={<Badge size="small" color="positive">BETA</Badge>}
+   * />
+   * ```
+   *
+   * @default undefined
+   */
+  titleSuffix?: React.ReactElement;
+  /**
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;

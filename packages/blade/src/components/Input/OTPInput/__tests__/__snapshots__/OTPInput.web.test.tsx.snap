@@ -147,6 +147,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -175,17 +176,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -193,17 +195,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -211,17 +214,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -229,17 +233,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -252,6 +257,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -280,6 +286,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -310,6 +317,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -760,6 +768,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -788,17 +797,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -806,17 +816,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -824,17 +835,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -842,17 +854,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -865,6 +878,7 @@ exports[`<OTPInput /> should render 1`] = `
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -893,6 +907,7 @@ exports[`<OTPInput /> should render 1`] = `
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -923,6 +938,7 @@ exports[`<OTPInput /> should render 1`] = `
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1447,6 +1463,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1475,17 +1492,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1493,17 +1511,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1511,17 +1530,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1529,17 +1549,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1552,6 +1573,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1580,6 +1602,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 .c11.c11.c11.c11.c11:hover {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1610,6 +1633,7 @@ exports[`<OTPInput /> should render large size 1`] = `
 .c11.c11.c11.c11.c11:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+  overflow: hidden;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
