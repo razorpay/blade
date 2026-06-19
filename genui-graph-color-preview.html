@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenUI Graph Color Fix — Live Preview</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #1a1a2e;
+      padding: 32px 24px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #0d1117;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #5c6370;
+      margin-bottom: 36px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .section-label.current { background: #ffeaea; color: #c0392b; }
+    .section-label.option-a { background: #e8f4fd; color: #1565c0; }
+    .section-label.option-b { background: #e8f9f1; color: #1b5e20; }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: #5c6370;
+      margin-bottom: 20px;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: 'SFMono-Regular', 'Fira Code', monospace;
+      background: #eef0f3;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #c0392b;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .chart-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border: 1px solid #e8eaed;
+    }
+
+    .chart-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #3d4451;
+      margin-bottom: 4px;
+    }
+
+    .chart-subtitle {
+      font-size: 11px;
+      color: #9aa0ab;
+      margin-bottom: 16px;
+    }
+
+    canvas { width: 100% !important; }
+
+    .color-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #5c6370;
+      margin-top: 10px;
+    }
+
+    .color-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e8eaed;
+      margin: 40px 0;
+    }
+
+    .diff-box {
+      background: #0d1117;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'SFMono-Regular', 'Fira Code', monospace;
+      font-size: 12.5px;
+      line-height: 1.8;
+      color: #e6edf3;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .diff-remove { color: #ff7b72; }
+    .diff-add    { color: #3fb950; }
+    .diff-ctx    { color: #8b949e; }
+    .diff-path   { color: #d2a8ff; }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .badge.scope-global { background: #fff3e0; color: #e65100; }
+    .badge.scope-local  { background: #e8f5e9; color: #2e7d32; }
+    .badge.risk-low     { background: #e8f5e9; color: #2e7d32; }
+    .badge.risk-med     { background: #fff8e1; color: #f57f17; }
+  </style>
+</head>
+<body>
+
+  <h1>GenUI — Graph Color Fix: Live Preview</h1>
+  <p class="subtitle">
+    Root cause: <code>assignDataColorMapping</code> forces <code>gray.moderate</code> for any single-series chart.
+    Below are all three states side-by-side across Bar, Line, and Area charts.
+  </p>
+
+  <!-- ─────────────────────────────────────────────
+       SECTION 1 — CURRENT BEHAVIOUR (grey)
+  ───────────────────────────────────────────────── -->
+  <div class="section">
+    <div><span class="section-label current">Current — Broken</span></div>
+    <div class="section-title">Single-series charts render in grey</div>
+    <p class="section-desc">
+      When GenUI renders a chart with one data key, <code>assignDataColorMapping</code> overrides the color to
+      <code>DEFAULT_COLOR = 'data.background.categorical.gray.moderate'</code>
+      (resolved: <code>hsla(200, 10%, 94%)</code> in light mode — barely visible against white).
+      Multi-series charts work fine because the override only fires when <code>Object.keys(dataColorMapping).length === 1</code>.
+    </p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Bar Chart — Single Series</div>
+        <div class="chart-subtitle">1 data key → grey override</div>
+        <canvas id="bar-current-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(200,10%,94%,1);"></span>
+          gray.moderate · hsla(200,10%,94%) — nearly invisible
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Line Chart — Single Series</div>
+        <div class="chart-subtitle">1 data key → grey override</div>
+        <canvas id="line-current-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(200,10%,94%,1);"></span>
+          gray.moderate · hsla(200,10%,94%)
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Bar Chart — Multi Series (works fine)</div>
+        <div class="chart-subtitle">2+ data keys → categorical palette applied</div>
+        <canvas id="bar-current-multi"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(218,100%,92%,1);"></span>
+          blue.faint &nbsp;
+          <span class="color-swatch" style="background:hsla(149,38%,86%,1);"></span>
+          green.faint &nbsp;
+          <span class="color-swatch" style="background:hsla(46,86%,83%,1);"></span>
+          gold.faint
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────────
+       SECTION 2 — OPTION A: Change DEFAULT_COLOR
+  ───────────────────────────────────────────────── -->
+  <div class="section">
+    <div><span class="section-label option-a">Option A — Global Fix</span></div>
+    <div class="section-title">Change <code>DEFAULT_COLOR</code> in <code>tokens.ts</code></div>
+
+    <div class="badge-row">
+      <span class="badge scope-global">Scope: all charts globally</span>
+      <span class="badge risk-med">Risk: medium — affects all consumers</span>
+    </div>
+
+    <div class="diff-box">
+<span class="diff-path">// packages/blade/src/components/Charts/utils/tokens.ts</span>
+<span class="diff-remove">- const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';</span>
+<span class="diff-add">+ const DEFAULT_COLOR = 'data.background.categorical.blue.moderate';</span>
+    </div>
+
+    <p class="section-desc">
+      Changing the token from <code>gray.moderate</code> → <code>blue.moderate</code>
+      (<code>hsla(217,100%,73%)</code> in light mode) makes every single-series chart render in Blade blue by default.
+      This also aligns with the categorical sequence order where blue is index 0.
+    </p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Bar Chart — Single Series</div>
+        <div class="chart-subtitle">DEFAULT_COLOR → blue.moderate</div>
+        <canvas id="bar-optA-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span>
+          blue.moderate · hsla(217,100%,73%)
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Line Chart — Single Series</div>
+        <div class="chart-subtitle">DEFAULT_COLOR → blue.moderate</div>
+        <canvas id="line-optA-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span>
+          blue.moderate · hsla(217,100%,73%)
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Area Chart — Single Series</div>
+        <div class="chart-subtitle">DEFAULT_COLOR → blue.moderate</div>
+        <canvas id="area-optA-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span>
+          blue.moderate · hsla(217,100%,73%)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────────
+       SECTION 3 — OPTION B: Explicit color in GenUI
+  ───────────────────────────────────────────────── -->
+  <div class="section">
+    <div><span class="section-label option-b">Option B — Scoped Fix (GenUI only)</span></div>
+    <div class="section-title">Pass explicit <code>color</code> prop to chart children in <code>GenUIComponents.web.tsx</code></div>
+
+    <div class="badge-row">
+      <span class="badge scope-local">Scope: GenUI only</span>
+      <span class="badge risk-low">Risk: low — no impact on Blade chart consumers</span>
+    </div>
+
+    <div class="diff-box">
+<span class="diff-path">// packages/blade/src/components/GenUI/GenUIComponents.web.tsx</span>
+<span class="diff-ctx">  {keysToPlot.map((key, index) => (</span>
+<span class="diff-remove">-   &lt;ChartBar key={key} dataKey={key} name={key} /&gt;</span>
+<span class="diff-add">+   &lt;ChartBar key={key} dataKey={key} name={key} color={GENUI_CHART_COLORS[index % GENUI_CHART_COLORS.length]} /&gt;</span>
+<span class="diff-ctx">  ))}</span>
+<span class="diff-ctx">  // Same for ChartLine and ChartArea</span>
+<span class="diff-ctx"></span>
+<span class="diff-ctx">  // Add at top of file:</span>
+<span class="diff-add">+ const GENUI_CHART_COLORS = [</span>
+<span class="diff-add">+   'data.background.categorical.blue.moderate',</span>
+<span class="diff-add">+   'data.background.categorical.green.moderate',</span>
+<span class="diff-add">+   'data.background.categorical.gold.moderate',</span>
+<span class="diff-add">+   'data.background.categorical.purple.moderate',</span>
+<span class="diff-add">+   'data.background.categorical.orange.moderate',</span>
+<span class="diff-add">+ ] as const;</span>
+    </div>
+
+    <p class="section-desc">
+      Passing an explicit <code>color</code> to each chart child bypasses the <code>assignDataColorMapping</code> grey override entirely
+      (because <code>isCustomColor</code> becomes <code>true</code> and the single-series shortcut is skipped).
+      Multi-series charts also benefit — they now use <code>moderate</code> intensity across the palette, giving stronger visual contrast than the default <code>faint</code> fallback.
+    </p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Bar Chart — Single Series</div>
+        <div class="chart-subtitle">Explicit blue.moderate passed via prop</div>
+        <canvas id="bar-optB-single"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span>
+          blue.moderate (explicit)
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Bar Chart — Multi Series</div>
+        <div class="chart-subtitle">Categorical moderate palette — stronger contrast</div>
+        <canvas id="bar-optB-multi"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span> blue &nbsp;
+          <span class="color-swatch" style="background:hsla(150,38%,58%,1);"></span> green &nbsp;
+          <span class="color-swatch" style="background:hsla(46,75%,55%,1);"></span> gold &nbsp;
+          <span class="color-swatch" style="background:hsla(261,100%,79%,1);"></span> purple
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Line Chart — Multi Series</div>
+        <div class="chart-subtitle">Categorical moderate palette</div>
+        <canvas id="line-optB-multi"></canvas>
+        <div class="color-badge">
+          <span class="color-swatch" style="background:hsla(217,100%,73%,1);"></span> blue &nbsp;
+          <span class="color-swatch" style="background:hsla(150,38%,58%,1);"></span> green &nbsp;
+          <span class="color-swatch" style="background:hsla(24,100%,71%,1);"></span> orange
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Palette swatch reference -->
+  <div class="section">
+    <div><span class="section-label option-a">Palette Reference</span></div>
+    <div class="section-title">Blade categorical color sequence (light theme, moderate intensity)</div>
+    <p class="section-desc">
+      The color sequence defined in <code>tokens.ts</code>: blue, green, gold, purple, orange, pink, skyBlue, red, gray.
+      Both options above pick from this palette — the only question is which applies globally vs. GenUI-scoped.
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(217,100%,73%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">blue</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(150,38%,58%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">green</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(46,75%,55%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">gold</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(261,100%,79%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">purple</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(24,100%,71%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">orange</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(316,90%,73%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">pink</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(200,35%,70%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">skyBlue</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(5,77%,75%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">red</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:8px;background:hsla(200,10%,94%,1);margin:0 auto 4px;border:1px solid rgba(0,0,0,0.08)"></div>
+        <div style="font-size:11px;color:#5c6370">gray ← bug</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ─── shared data ───────────────────────────────────────────
+  const labels  = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  const d1      = [4200, 5800, 5200, 6700, 7100, 6300];
+  const d2      = [2100, 3300, 2800, 3900, 4200, 3700];
+  const d3      = [900,  1500, 1200, 1800, 2100, 1600];
+
+  // ─── palette ──────────────────────────────────────────────
+  const gray_mod   = 'hsla(200,10%,94%,1)';
+  const blue_mod   = 'hsla(217,100%,73%,1)';
+  const blue_modfill = 'hsla(217,100%,73%,0.15)';
+  const green_mod  = 'hsla(150,38%,58%,1)';
+  const gold_mod   = 'hsla(46,75%,55%,1)';
+  const purple_mod = 'hsla(261,100%,79%,1)';
+  const orange_mod = 'hsla(24,100%,71%,1)';
+
+  // faint (current multi-series fallback)
+  const blue_faint  = 'hsla(218,100%,92%,1)';
+  const green_faint = 'hsla(149,38%,86%,1)';
+  const gold_faint  = 'hsla(46,86%,83%,1)';
+
+  const opts = {
+    responsive: true,
+    animation: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#f0f0f0' }, ticks: { font: { size: 10 } } },
+      y: { grid: { color: '#f0f0f0' }, ticks: { font: { size: 10 } } },
+    },
+  };
+
+  const lineOpts = JSON.parse(JSON.stringify(opts));
+
+  // ── CURRENT: single bar (grey)
+  new Chart(document.getElementById('bar-current-single'), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, backgroundColor: gray_mod, borderColor: gray_mod, borderWidth: 1 }] },
+    options: opts,
+  });
+
+  // ── CURRENT: single line (grey)
+  new Chart(document.getElementById('line-current-single'), {
+    type: 'line',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, borderColor: gray_mod, backgroundColor: 'hsla(200,10%,94%,0.1)', tension: 0.4, fill: true, pointRadius: 3 }] },
+    options: lineOpts,
+  });
+
+  // ── CURRENT: multi bar (categorical faint — works fine)
+  new Chart(document.getElementById('bar-current-multi'), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Revenue', data: d1, backgroundColor: blue_faint, borderColor: blue_faint, borderWidth: 1 },
+      { label: 'Refunds', data: d2, backgroundColor: green_faint, borderColor: green_faint, borderWidth: 1 },
+      { label: 'Disputes', data: d3, backgroundColor: gold_faint, borderColor: gold_faint, borderWidth: 1 },
+    ]},
+    options: { ...opts, plugins: { legend: { display: true, labels: { font: { size: 10 } } } } },
+  });
+
+  // ── OPTION A: single bar (blue.moderate)
+  new Chart(document.getElementById('bar-optA-single'), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, backgroundColor: blue_mod, borderColor: blue_mod, borderWidth: 1 }] },
+    options: opts,
+  });
+
+  // ── OPTION A: single line (blue.moderate)
+  new Chart(document.getElementById('line-optA-single'), {
+    type: 'line',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, borderColor: blue_mod, backgroundColor: blue_modfill, tension: 0.4, fill: true, pointRadius: 3 }] },
+    options: lineOpts,
+  });
+
+  // ── OPTION A: area (blue.moderate)
+  new Chart(document.getElementById('area-optA-single'), {
+    type: 'line',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, borderColor: blue_mod, backgroundColor: blue_modfill, tension: 0.4, fill: true, pointRadius: 3 }] },
+    options: { ...lineOpts, plugins: { ...lineOpts.plugins, filler: { propagate: false } } },
+  });
+
+  // ── OPTION B: single bar (explicit blue.moderate prop)
+  new Chart(document.getElementById('bar-optB-single'), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'Revenue', data: d1, backgroundColor: blue_mod, borderColor: blue_mod, borderWidth: 1 }] },
+    options: opts,
+  });
+
+  // ── OPTION B: multi bar (explicit moderate palette — stronger contrast vs faint)
+  new Chart(document.getElementById('bar-optB-multi'), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Revenue',  data: d1, backgroundColor: blue_mod,   borderColor: blue_mod,   borderWidth: 1 },
+      { label: 'Refunds',  data: d2, backgroundColor: green_mod,  borderColor: green_mod,  borderWidth: 1 },
+      { label: 'Disputes', data: d3, backgroundColor: gold_mod,   borderColor: gold_mod,   borderWidth: 1 },
+    ]},
+    options: { ...opts, plugins: { legend: { display: true, labels: { font: { size: 10 } } } } },
+  });
+
+  // ── OPTION B: multi line (explicit moderate palette)
+  new Chart(document.getElementById('line-optB-multi'), {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: 'Revenue',  data: d1, borderColor: blue_mod,   backgroundColor: 'hsla(217,100%,73%,0.1)',  tension: 0.4, fill: true, pointRadius: 3 },
+      { label: 'Refunds',  data: d2, borderColor: green_mod,  backgroundColor: 'hsla(150,38%,58%,0.1)',   tension: 0.4, fill: true, pointRadius: 3 },
+      { label: 'Disputes', data: d3, borderColor: orange_mod, backgroundColor: 'hsla(24,100%,71%,0.1)',   tension: 0.4, fill: true, pointRadius: 3 },
+    ]},
+    options: { ...lineOpts, plugins: { legend: { display: true, labels: { font: { size: 10 } } } } },
+  });
+</script>
+</body>
+</html>
