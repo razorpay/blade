@@ -1,0 +1,35 @@
+/* AnnouncementBanner Base Styles */
+.announcement-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2); /* 4px icon→text */
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--spacing-3) var(--spacing-5); /* 8px vertical, 16px horizontal */
+}
+
+/* Theme */
+.theme-dark {
+  background-color: var(--interactive-background-static-black-faded-highlighted);
+}
+
+.theme-light {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Alignment */
+.align-center {
+  justify-content: center;
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+/* Icon wrapper */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

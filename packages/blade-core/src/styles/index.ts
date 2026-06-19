@@ -251,6 +251,19 @@ export {
 } from './Alert';
 export type { AlertVariants, AlertColor, AlertEmphasis } from './Alert';
 export {
+  announcementBannerStyles,
+  getAnnouncementBannerClasses,
+  getAnnouncementBannerTemplateClasses,
+  getAnnouncementBannerTextColorToken,
+  getAnnouncementBannerIconColorToken,
+  announcementBannerIconWrapperClass,
+} from './AnnouncementBanner';
+export type {
+  AnnouncementBannerVariants,
+  AnnouncementBannerTheme,
+  AnnouncementBannerAlignment,
+} from './AnnouncementBanner';
+export {
   avatarWrapperStyles,
   getAvatarWrapperClasses,
   avatarButtonStyles,
