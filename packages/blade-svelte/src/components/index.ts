@@ -83,6 +83,18 @@ export type {
   CheckboxInstance,
   CheckboxSize,
 } from './Checkbox/types';
+
+// Radio
+export { default as Radio } from './Radio/Radio.svelte';
+export { default as RadioGroup } from './Radio/RadioGroup.svelte';
+export type {
+  RadioProps,
+  RadioGroupProps,
+  RadioGroupOnChange,
+  RadioInstance,
+  RadioSize,
+} from './Radio/types';
+
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
 
