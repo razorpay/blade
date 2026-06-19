@@ -34,6 +34,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
         }
       ]
     },
+    "usage": "import { Button, Icon } from '@razorpay/blade/components';\n\n<Button leading={<Icon name=\"arrow-left\" />}>Back</Button>",
     "sanity-review": {
       "critique": "pr-sanity-critique",
       "statuses": [
@@ -65,6 +66,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
       "line": 42,
       "side": "RIGHT",
       "severity": "critical",
+      "confidence": 9,
       "critique": "code-quality-critique",
       "problem": "Description of the problem.",
       "suggestion": "How to fix it."
@@ -74,9 +76,9 @@ Assemble the outputs from all critique agents into a single JSON object matching
       "line": 17,
       "side": "LEFT",
       "severity": "minor",
+      "confidence": 4,
       "critique": "api-decision-critique",
-      "problem": "Description of the API inconsistency.",
-      "suggestion": "What the correct pattern is."
+      "clarification": "Question for the PR author when AI is not confident this is a real issue."
     }
   ]
 }
@@ -84,9 +86,10 @@ Assemble the outputs from all critique agents into a single JSON object matching
 
 ## Assembly rules
 
+- `overview-comment.usage`: the `usage` field from `api-decision-critique`. Omit this key if `api-decision-critique` was skipped or returned no usage.
 - `overview-comment.ui-review`: populated from `ui-critique.statuses`. Omit this key entirely if `ShouldReviewUI` is false. Preserve all fields from the agent output verbatim, including `screenshot_path` — the post-review script uses this to upload screenshots and embed them in the comment.
 - `overview-comment.sanity-review`: `statuses` and `issues` come directly from `pr-sanity-critique`.
-- `inlined-comments`: one entry per item in `issues[]` from `code-quality-critique`, `api-decision-critique`, and `usecase-critique`. Inject `critique` (the agent's `critique_name`) and copy `file`, `line`, `side`, `severity`, `problem`, `suggestion` directly. Sort by severity: critical → major → minor.
+- `inlined-comments`: one entry per item in `issues[]` from `code-quality-critique` and `api-decision-critique`. Inject `critique` (the agent's `critique_name`) and copy `file`, `line`, `side`, `severity`, `problem`, `suggestion` directly. Sort by severity: critical → major → minor.
 - `side`: `"RIGHT"` for added/modified lines, `"LEFT"` for deleted lines.
 - Omit `statuses` or `issues` keys entirely when the agent did not return them (never include empty arrays).
 - `inlined-comments` is an empty array `[]` if no issues were found across all agents.
