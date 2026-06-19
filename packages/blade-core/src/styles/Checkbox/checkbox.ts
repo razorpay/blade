@@ -276,6 +276,7 @@ export function getCheckboxGroupFieldClasses(props: CheckboxGroupFieldVariants):
 export type CheckboxGroupOptionsVariants = {
   orientation?: 'vertical' | 'horizontal';
   size?: CheckboxSize;
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
 };
 
 export const checkboxGroupOptionsCva = cva(styles.options, {
@@ -289,10 +290,16 @@ export const checkboxGroupOptionsCva = cva(styles.options, {
       medium: styles['gap-medium'],
       large: styles['gap-large'],
     },
+    flexWrap: {
+      nowrap: styles['flex-wrap-nowrap'],
+      wrap: styles['flex-wrap-wrap'],
+      'wrap-reverse': styles['flex-wrap-wrap-reverse'],
+    },
   },
   defaultVariants: {
     orientation: 'vertical',
     size: 'medium',
+    flexWrap: 'nowrap',
   },
 });
 

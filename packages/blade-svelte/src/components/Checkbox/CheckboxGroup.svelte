@@ -115,7 +115,7 @@
   const hintIconSize = $derived(size === 'large' ? 'medium' : 'small');
 
   const fieldClasses = $derived(getCheckboxGroupFieldClasses({ labelPosition }));
-  const optionsClasses = $derived(getCheckboxGroupOptionsClasses({ orientation, size }));
+  const optionsClasses = $derived(getCheckboxGroupOptionsClasses({ orientation, size, flexWrap }));
   const labelSizeClass = $derived(getCheckboxGroupLabelSizeClass(size));
   const hintClasses = $derived(
     getCheckboxHintClasses({ size, type: validationState === 'error' ? 'error' : 'help' }),
@@ -134,13 +134,10 @@
     [...(styledProps.classes || [])].filter(Boolean).join(' ') || undefined,
   );
   const wrapperStyles = $derived(
-    [
-      ...Object.entries(styledProps.inlineStyles || {}).map(([prop, val]) => `${prop}: ${val}`),
-      `flex-wrap: ${flexWrap}`,
-    ].join('; ') || undefined,
+    Object.entries(styledProps.inlineStyles || {})
+      .map(([prop, val]) => `${prop}: ${val}`)
+      .join('; ') || undefined,
   );
-
-  const optionsStyles = $derived(`flex-wrap: ${flexWrap}`);
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.CheckboxGroup, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -171,7 +168,7 @@
       </span>
     {/if}
     <div>
-      <div class={optionsClasses} style={optionsStyles}>
+      <div class={optionsClasses}>
         {@render children()}
       </div>
       {#if showError}

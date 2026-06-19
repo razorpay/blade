@@ -149,7 +149,7 @@
   const supportClasses = $derived(getCheckboxSupportClasses({ size: _size }));
   const supportTextClasses = $derived(getCheckboxSupportTextClasses({ size: _size }));
   const hintClasses = $derived(
-    getCheckboxHintClasses({ size: _size, type: validationState === 'error' ? 'error' : 'help' }),
+    getCheckboxHintClasses({ size: _size, type: _hasError ? 'error' : 'help' }),
   );
   const hintWrapperClasses = $derived(getCheckboxHintWrapperClasses({ size: _size }));
 
@@ -179,7 +179,7 @@
     }),
   );
 
-  const showFormHint = $derived(Boolean(errorText));
+  const showFormHint = $derived(_hasError && Boolean(errorText));
 
   // React FormHint icon sizing: small/medium hint -> 'small', large -> 'medium'.
   const hintIconSize = $derived(_size === 'large' ? 'medium' : 'small');

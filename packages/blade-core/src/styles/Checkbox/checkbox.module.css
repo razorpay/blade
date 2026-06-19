@@ -123,15 +123,17 @@
   border-color: var(--interactive-border-negative-default);
 }
 
-/* ── Hover — adjacent sibling selectors, suppressed when disabled/error ──
-   The hover variants only apply to the `default` (non-disabled, non-negative)
-   icon, matching React's checkboxHoverTokens which is skipped for those. */
-.input:hover:not(:disabled) + .default-checked {
+/* ── Hover — driven by hover on the parent label so the visible icon area
+   triggers it (the `.input` element is visually-hidden 1px and would never
+   reliably catch :hover). Suppressed when disabled (label carries
+   [data-disabled]); the `default-*` classes already gate out the negative
+   variant since icon class is mutually exclusive with negative-*. */
+.label:hover:not([data-disabled]) .default-checked {
   background-color: var(--interactive-background-primary-highlighted);
   border-color: var(--interactive-background-primary-highlighted);
 }
 
-.input:hover:not(:disabled) + .default-unchecked {
+.label:hover:not([data-disabled]) .default-unchecked {
   background-color: var(--interactive-background-gray-faded);
   border-color: var(--interactive-border-gray-highlighted);
 }
@@ -377,6 +379,19 @@
 
 .options-horizontal {
   flex-direction: row;
+}
+
+/* flexWrap variants — applied on the options container (a real flex parent). */
+.flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
 }
 
 /* Gap between options per size */
