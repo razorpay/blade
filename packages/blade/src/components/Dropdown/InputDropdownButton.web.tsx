@@ -201,6 +201,7 @@ const _InputDropdownButton = ({
     <StyledSearchTrailingDropdown
       type="button"
       $size={size}
+      disabled={isDisabled}
       onClick={(e) => {
         if (isDisabled) return;
         onTriggerClick();

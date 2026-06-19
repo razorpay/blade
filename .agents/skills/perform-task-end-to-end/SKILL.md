@@ -43,5 +43,6 @@ This is a checklist that makes sure that basic sanity of feature / bugfix is mai
 - [ ] Tests: Run tests for changed parts (refer to CLAUDE.md of the package for command)
   - [ ] Fix tests if they are failing (either fix the test if issue is in test or fix the code if its implementation issue)
 - [ ] Lint: Run and fix linting issues on changed files
+- [ ] Build: Run and fix build package issues (refer to CLAUDE.md of the package for command)
 - [ ] Typecheck: Run and fix typecheck (refer to CLAUDE.md of the package for command)
 - [ ] Reiterate over the failures and fix them one by one

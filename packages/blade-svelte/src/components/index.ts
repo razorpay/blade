@@ -15,6 +15,11 @@ export { default as Code } from './Typography/Code/Code.svelte';
 // Button
 export { default as Button } from './Button/Button.svelte';
 
+// IconButton
+export { default as IconButton } from './Button/IconButton/IconButton.svelte';
+export type { IconButtonProps } from './Button/IconButton/types';
+export { BaseIconButton } from './Button/IconButton/BaseIconButton';
+
 // Link
 export { default as Link } from './Link/Link.svelte';
 
@@ -109,6 +114,16 @@ export type {
   BladeToast,
   UseToastReturn,
 } from './Toast/types';
+
+// BottomSheet
+export { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from './BottomSheet';
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetBodyProps,
+  BottomSheetFooterProps,
+  SnapPoints,
+} from './BottomSheet';
 
 // BladeProvider
 export * from './BladeProvider';

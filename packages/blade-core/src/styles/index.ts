@@ -30,19 +30,31 @@ export {
   getButtonTemplateClasses,
   buttonContentClass,
   buttonIconClass,
-  loadingSpinnerClass,
   loadingClass,
   animatedContentClass,
   pressedClass,
+  dotsLoaderClass,
+  progressOverlayClass,
+  progressFillClass,
+  definiteLoadingClass,
+  liveRegionClass,
   getButtonBackgroundColorToken,
+  getButtonProgressRestColorToken,
   getButtonTextColorToken,
   getButtonTextSizes,
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
-  getButtonSpinnerSize,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export {
+  iconButtonStyles,
+  getIconButtonClasses,
+  getIconButtonTemplateClasses,
+  getIconButtonIconColorToken,
+  highlightedButtonSizeMap,
+} from './IconButton';
+export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -200,6 +212,10 @@ export {
   getAvatarWrapperClasses,
   avatarButtonStyles,
   getAvatarButtonClasses,
+  getAvatarGroupOverflowButtonClasses,
+  avatarGroupOverflowTextColorToken,
+  avatarGroupOverflowTextSizeMapping,
+  getAvatarGroupOverflowBodyTextSize,
   avatarGroupStyles,
   getAvatarGroupClasses,
   avatarIconSizeTokens,
@@ -210,7 +226,12 @@ export {
   getTopAddonClass,
   getBottomAddonClass,
 } from './Avatar';
-export type { AvatarWrapperVariants, AvatarButtonVariants, AvatarGroupVariants } from './Avatar';
+export type {
+  AvatarWrapperVariants,
+  AvatarButtonVariants,
+  AvatarGroupVariants,
+  AvatarDensity,
+} from './Avatar';
 export {
   breadcrumbNavClass,
   breadcrumbListClass,
@@ -270,3 +291,37 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export {
+  BOTTOM_SHEET_EASING,
+  BOTTOM_SHEET_Z_INDEX,
+  AUTOCOMPLETE_DEFAULT_SNAPPOINT,
+  BOTTOM_SHEET_DEFAULT_SNAP_POINTS,
+  getBottomSheetBodyContentClasses,
+  getBottomSheetBodyClasses,
+  getBottomSheetTemplateClasses,
+  bottomSheetSurfaceClass,
+  bottomSheetBackdropClass,
+  bottomSheetInnerWrapperClass,
+  bottomSheetGrabHandleClass,
+  bottomSheetGrabHandleFloatingClass,
+  bottomSheetHeaderClass,
+  bottomSheetHeaderContentClass,
+  bottomSheetHeaderLeadingClass,
+  bottomSheetHeaderTitleBlockClass,
+  bottomSheetHeaderTitleRowClass,
+  bottomSheetHeaderTitleClass,
+  bottomSheetHeaderSubtitleClass,
+  bottomSheetHeaderTrailingClass,
+  bottomSheetHeaderBackButtonClass,
+  bottomSheetHeaderCloseButtonClass,
+  bottomSheetHeaderDividerClass,
+  bottomSheetEmptyHeaderClass,
+  bottomSheetEmptyHeaderFloatingClass,
+  bottomSheetCloseButtonCapsuleClass,
+  bottomSheetCloseButtonCapsuleFloatingClass,
+  bottomSheetCloseButtonClass,
+  bottomSheetFooterClass,
+  bottomSheetFooterInnerClass,
+  bottomSheetBodyClass,
+} from './BottomSheet';
+export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';

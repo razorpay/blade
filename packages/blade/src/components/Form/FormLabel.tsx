@@ -3,6 +3,7 @@ import {
   labelLeftMarginRight,
   labelMarginBottom,
   labelOptionalIndicatorTextSize,
+  labelTextColor,
   labelTextSize,
   labelWidth,
 } from './formTokens';
@@ -144,7 +145,7 @@ const FormLabel = ({
       <Text
         variant="body"
         size={labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size]}
-        color="surface.text.gray.subtle"
+        color={labelTextColor[size]}
         truncateAfterLines={2}
         weight="medium"
         wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}

@@ -12,6 +12,7 @@ export type AccordionContextState = {
   numberOfItems: number;
   size: 'large' | 'medium';
   registerItem: () => number;
+  hasGrayBody: boolean;
 };
 
 export type AccordionItemContextState = {

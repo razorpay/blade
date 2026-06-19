@@ -158,16 +158,20 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
 
 export const BaseFooterSink = (): React.ReactElement => {
   return (
-    <Box backgroundColor="surface.background.gray.intense" maxWidth={{ base: '100%', m: '500px' }}>
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      maxWidth={{ base: '100%', m: '500px' }}
+      width="100%"
+    >
       <BaseFooter>
         <Button isFullWidth>Submit</Button>
       </BaseFooter>
       <BaseFooter>
-        <Box display="flex" alignItems="center">
+        <Box display="flex" flexDirection="row" alignItems="center">
           <Box flex="1">
             <Checkbox>I agree terms and conditions</Checkbox>
           </Box>
-          <Box display="flex">
+          <Box display="flex" flexDirection="row">
             <Button variant="secondary">Sign Up</Button>
             <Button marginLeft="spacing.4">Sign In</Button>
           </Box>

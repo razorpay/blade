@@ -24,6 +24,29 @@
   const collapsibleBodyId = $derived(itemCtx.collapsibleBodyId);
   const accordionSize = $derived(accordionCtx.size);
 
+  const isGrayBody = $derived(accordionCtx.hasGrayBody);
+  // When the gray body belongs to the last item, round its bottom corners so the
+  // edge-to-edge gray surface follows the filled card's rounded bottom.
+  const isLastItem = $derived(
+    typeof itemCtx.index === 'number' && itemCtx.index === accordionCtx.numberOfItems - 1,
+  );
+
+  const collapsibleContentClass = $derived(
+    [
+      templateClasses.collapsibleContent,
+      isGrayBody ? templateClasses.collapsibleContentGray : '',
+      isGrayBody && isLastItem ? templateClasses.collapsibleContentGrayLast : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+
+  const bodyClass = $derived(
+    [templateClasses.body, isGrayBody ? templateClasses.bodyGray : '']
+      .filter(Boolean)
+      .join(' '),
+  );
+
   const descriptionFontSize = $derived(accordionSize === 'large' ? 100 : 75);
   const descriptionLineHeight = $derived(accordionSize === 'large' ? 100 : 75);
 
@@ -106,13 +129,13 @@
 <div
   bind:this={bodyRef}
   id={collapsibleBodyId}
-  class={templateClasses.collapsibleContent}
+  class={collapsibleContentClass}
   ontransitionend={onTransitionEnd}
   {...bodyA11y}
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  <div class={templateClasses.body}>
+  <div class={bodyClass}>
     <BaseText
       as="div"
       color="surface.text.gray.subtle"

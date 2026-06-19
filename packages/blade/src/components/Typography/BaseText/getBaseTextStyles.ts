@@ -76,6 +76,14 @@ const getBaseTextStyles = ({
   // Apply dotted styles only on web
   const dottedStyles = isDotted && !isReactNative() ? DOTTED_UNDERLINE_STYLES : {};
 
+  // Apply Display optical size (opsz: 60) for heading font on web.
+  // The TASA Orbiter variable font has three named optical-size instances:
+  //   Text (opsz:8), Deck (opsz:32), Display (opsz:60).
+  // Without this, browsers default to opsz:8 (Text), which doesn't match
+  // "TASA Orbiter Display" that designers have installed locally.
+  const headingVariationStyles: CSSObject =
+    fontFamily === 'heading' && !isReactNative() ? { fontVariationSettings: "'opsz' 60" } : {};
+
   return {
     color: textColor,
     fontFamily: themeFontFamily,
@@ -84,6 +92,7 @@ const getBaseTextStyles = ({
     fontStyle,
     textDecorationLine: actualTextDecorationLine,
     ...dottedStyles,
+    ...headingVariationStyles,
     ...(textDecorationLine !== 'none' && {
       textDecorationColor: textColor,
     }),

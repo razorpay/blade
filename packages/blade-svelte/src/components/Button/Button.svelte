@@ -10,6 +10,10 @@
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
+    loadingTimer,
+    onLoadingComplete,
+    avatars,
     href,
     target,
     rel,
@@ -64,6 +68,10 @@
   {type}
   {variant}
   {isLoading}
+  {loadingType}
+  {loadingTimer}
+  {onLoadingComplete}
+  {avatars}
   {testID}
   {onBlur}
   {onFocus}

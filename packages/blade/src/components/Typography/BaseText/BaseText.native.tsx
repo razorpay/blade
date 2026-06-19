@@ -58,6 +58,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
     fontStyle,
     textDecorationLine,
     lineHeight,
+    letterSpacing,
     textAlign,
     children,
     truncateAfterLines,
@@ -83,6 +84,7 @@ const _BaseText: React.ForwardRefRenderFunction<BladeElementRef, BaseTextProps> 
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
+      letterSpacing={letterSpacing}
       as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
