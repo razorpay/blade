@@ -161,32 +161,54 @@ git commit -m "feat(design-sync): Update Button preview"
 git push
 ```
 
-## 🌿 Branch Strategy
+## 🌿 Merge Strategy
 
-This work lives on a **separate branch** (`design-sync/claude-design-previews`), not merged to master. This allows:
+This PR **merges design-sync files into master** for the following reasons:
 
-- **Independent iteration** - Update previews without affecting main Blade development
-- **Clean separation** - Design-sync commits don't clutter main branch history
-- **Optional review** - Can create PRs for team review if desired
-- **Easy updates** - Future preview updates committed to same branch
+- **Always available** - `.design-sync/` files present on every checkout of master
+- **No branch switching** - Update previews directly from master branch
+- **Team visibility** - Everyone can discover, use, and contribute to previews
+- **Single source of truth** - No branch divergence or stale preview issues
+- **Gitignore protection** - Build artifacts (`.ds-sync/`, `ds-bundle/`) automatically excluded on all checkouts
+- **Small footprint** - Only ~50KB of source files committed (not the 7MB build output)
 
-See `.design-sync/BRANCH-STRATEGY.md` for full rationale.
+Future updates can be made directly on master or via feature branches that merge back to master.
 
 ## 🔍 How to Review
 
-### Visual Review (Recommended)
+### Code Review (Primary)
 
-1. **Checkout branch**:
-   ```bash
-   git checkout design-sync/claude-design-previews
-   ```
+Focus on the source files being committed:
 
-2. **You'll need converter scripts** (not committed):
-   - Ask for `.ds-sync/` to be staged, OR
-   - Extract from archive if available, OR
-   - Skip rebuild and review docs only
+1. **Preview files** (`.design-sync/previews/*.tsx`) - 29 files
+   - Check TypeScript correctness and proper imports
+   - Verify realistic Razorpay domain content
+   - Confirm proper component composition patterns
 
-3. **Rebuild bundle** (if you have `.ds-sync/`):
+2. **Documentation** (`.design-sync/*.md`) - 9 files
+   - NOTES.md - Component patterns well-documented?
+   - MAINTENANCE.md - Update procedures clear?
+   - QUICKSTART.md - Fast-track commands accurate?
+
+3. **Configuration**
+   - `.design-sync/config.json` - Build settings correct?
+   - `.gitignore` - Build artifacts properly excluded?
+
+4. **Impact on main repo**
+   - Only ~50KB of source files added
+   - No changes to Blade runtime or published package
+   - No changes to existing components or tests
+   - Build artifacts gitignored (won't bloat repo)
+
+### Visual Review (Optional)
+
+If you want to see rendered components:
+
+1. **You'll need converter scripts** (not in this PR):
+   - Ask for `.ds-sync/` to be staged
+   - Or skip visual review (source code review is sufficient)
+
+2. **Rebuild bundle** (if you have `.ds-sync/`):
    ```bash
    cd .ds-sync
    node package-build.mjs \
@@ -196,16 +218,11 @@ See `.design-sync/BRANCH-STRATEGY.md` for full rationale.
      --out ../ds-bundle
    ```
 
-4. **Serve for visual review**:
+3. **Serve and review**:
    ```bash
    node .ds-sync/storybook/http-serve.mjs ./ds-bundle
-   # Open http://127.0.0.1:<port>/.review.html
+   # Open http://127.0.0.1:<port>/components/{group}/{Component}/{Component}.html
    ```
-
-5. **Review components**:
-   - Check that all 29 components render correctly
-   - Verify design system styling (not browser defaults)
-   - Confirm realistic content (Razorpay domain terminology)
 
 ### Code Review
 
@@ -231,33 +248,27 @@ Focus on:
 - **Build success**: 100% (no failed builds)
 - **Bundle size**: 7.1MB (666 total components, 29 authored)
 
-## 🎯 Next Steps (After Merge/Approval)
+## 🎯 Next Steps (After Merge)
 
 1. **Upload to Claude Design**:
    - Create Claude Design project: "Blade Design System - Razorpay"
-   - Upload `ds-bundle/` directory
+   - Upload `ds-bundle/` directory (generated locally, not committed)
    - Verify components are searchable and usable
 
-2. **Future Updates**:
-   - Edit preview files in `.design-sync/previews/`
+2. **Future Updates** (on master):
+   - Edit preview files: `.design-sync/previews/Button.tsx`
    - Rebuild with scoped `--components` flag
-   - Commit and push to same branch
+   - Commit directly to master or create feature branch
    - See `.design-sync/QUICKSTART.md` for fast-track commands
 
 3. **Expand Coverage** (Optional):
    - Add previews for remaining 637 components (as needed)
    - Follow same workflow documented in MAINTENANCE.md
 
-## 🤝 Team Decision Points
-
-**This PR is informational** - no merge to master required unless team decides:
-
-- [ ] **Keep as separate branch** (recommended) - Independent iteration, no impact on main
-- [ ] **Merge to master** - Make design-sync part of official repo
-- [ ] **Add to CI/CD** - Automate bundle generation on commits
-- [ ] **Document in main README** - Add design-sync section to main docs
-
-See `.design-sync/BRANCH-STRATEGY.md` for detailed pros/cons.
+4. **Team Considerations** (Optional future work):
+   - [ ] Add to CI/CD - Automate bundle generation on commits
+   - [ ] Add to main README - Document design-sync in main docs
+   - [ ] Create release workflow - Auto-upload to Claude Design on Blade releases
 
 ## 📚 Related Documentation
 
@@ -287,4 +298,6 @@ See `.design-sync/BRANCH-STRATEGY.md` for detailed pros/cons.
 
 **Blade Version**: 12.107.1  
 **Created**: 2026-06-19  
-**Branch**: `design-sync/claude-design-previews`
+**Target Branch**: `master`  
+**Files Added**: 40 files (~50KB total)  
+**Build Artifacts**: Gitignored (`.ds-sync/`, `ds-bundle/` not committed)
