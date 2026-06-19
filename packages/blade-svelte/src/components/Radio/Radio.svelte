@@ -25,7 +25,6 @@
     value,
     isDisabled,
     size = 'medium',
-    _hideRadioIcon = false,
     testID,
     ...rest
   }: RadioProps = $props();
@@ -108,14 +107,12 @@
           onchange={handleChange}
           {...a11yAttrs}
         />
-        {#if !_hideRadioIcon}
-          <RadioIcon
-            size={_size}
-            isChecked={_isChecked}
-            isDisabled={_isDisabled}
-            isNegative={hasError}
-          />
-        {/if}
+        <RadioIcon
+          size={_size}
+          isChecked={_isChecked}
+          isDisabled={_isDisabled}
+          isNegative={hasError}
+        />
         {#if hasChildren}
           <span class={titleClasses} data-disabled={_isDisabled || undefined}>
             {#if isStringChildren}

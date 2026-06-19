@@ -32,12 +32,6 @@ export interface RadioProps extends StyledPropsBlade, DataAnalyticsAttribute {
    */
   size?: RadioSize;
   /**
-   * @private
-   * Internal prop to hide the radio icon.
-   * @default false
-   */
-  _hideRadioIcon?: boolean;
-  /**
    * Test ID for the element.
    */
   testID?: string;
