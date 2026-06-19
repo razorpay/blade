@@ -2,19 +2,23 @@
 
 ## Overview
 
-The design-sync work for Claude Design integration is maintained on a **separate branch** rather than merged directly to master. This provides:
+The design-sync work for Claude Design integration is **merged into master**. This provides:
 
-- **Independent iteration** - Update previews without affecting main Blade development
-- **Team visibility** - Clear separation makes it easy to track design-sync changes
-- **Optional review** - Can create PRs for team review if desired
-- **Clean history** - Design-sync commits don't clutter main branch history
-- **Easy updates** - Future preview updates can be committed to the same branch
+- **Always available** - `.design-sync/` files present on every checkout of master
+- **No branch switching** - Update previews directly from master branch
+- **Team visibility** - Everyone can discover, use, and contribute to previews
+- **Single source of truth** - No branch divergence or stale preview issues
+- **Gitignore protection** - Build artifacts automatically excluded on all checkouts
+- **Small footprint** - Only ~50KB of source files (not 7MB build output)
 
-## Branch Name
+## Development Branch (Initial Work)
 
+Initial authoring was done on:
 ```
 design-sync/claude-design-previews
 ```
+
+This branch will be merged to master and can be deleted afterward.
 
 ## What Lives on This Branch
 
@@ -35,28 +39,16 @@ design-sync/claude-design-previews
 
 ## Workflow
 
-### Initial Setup (One-time)
+### ✅ Merged to Master
+
+Design-sync files are now part of master. Future updates follow standard workflow:
+
 ```bash
-# Create and switch to design-sync branch
-git checkout -b design-sync/claude-design-previews
-
-# Stage durable files
-git add .design-sync/
-
-# Commit
-git commit -m "feat(design-sync): Add Claude Design previews for 29 core components"
-
-# Push to remote
-git push -u origin design-sync/claude-design-previews
-```
-
-### Future Updates
-```bash
-# Switch to design-sync branch
-git checkout design-sync/claude-design-previews
+# Work on master or create feature branch
+git checkout master
 
 # Make changes to previews
-# Edit .design-sync/previews/Button.tsx (example)
+vim .design-sync/previews/Button.tsx
 
 # Rebuild affected components
 node .ds-sync/lib/preview-rebuild.mjs \
@@ -66,31 +58,39 @@ node .ds-sync/lib/preview-rebuild.mjs \
   --components Button
 
 # Test changes via server
-# http://127.0.0.1:53239/components/general/Button/Button.html
+node .ds-sync/storybook/http-serve.mjs ./ds-bundle
+# http://127.0.0.1:<port>/components/general/Button/Button.html
 
 # Commit changes
 git add .design-sync/previews/Button.tsx
 git commit -m "feat(design-sync): Update Button preview with new variants"
 
-# Push updates
-git push
-```
-
-### Merging to Master (If Desired)
-
-The design-sync branch can remain separate indefinitely, or be merged to master if desired:
-
-```bash
-# From master branch
-git checkout master
-git merge design-sync/claude-design-previews
-
-# Resolve any conflicts
-# Push to master
+# Push to master (or create PR for review)
 git push origin master
 ```
 
-**Recommendation**: Keep as separate branch unless design-sync previews become part of official Blade build pipeline.
+### Feature Branch Workflow (Optional)
+
+For larger updates, use feature branches:
+
+```bash
+# Create feature branch from master
+git checkout -b feat/update-form-previews
+
+# Make changes, rebuild, test
+vim .design-sync/previews/TextInput.tsx
+# ... rebuild and test ...
+
+# Commit and push
+git commit -am "feat(design-sync): Update form component previews"
+git push -u origin feat/update-form-previews
+
+# Create PR to master
+gh pr create --base master --title "Update form previews"
+
+# After merge, delete feature branch
+git branch -d feat/update-form-previews
+```
 
 ## Pull Request Workflow (Optional)
 
@@ -140,17 +140,25 @@ Until then, keep as separate branch for independent iteration.
 
 ## Rationale
 
-**Why separate branch?**
-- Design-sync is infrastructure work, not a Blade feature
-- Previews may change frequently as Claude Design evolves
-- No impact on published npm package
-- Easier to experiment without affecting main development
-- Can be deleted/recreated if needed
+**Why merge to master?**
+- **Discoverability** - Team members can find and use design-sync on master
+- **No branch switching** - Update previews without checkout dance
+- **Gitignore works everywhere** - Build artifacts excluded on all checkouts
+- **Single source of truth** - No stale previews or branch divergence
+- **Small footprint** - Only ~50KB source files (build output gitignored)
+- **Future-proof** - Easy to automate in CI/CD from master
 
-**Why not gitignore?**
+**Why not separate branch?**
+- Creates friction: must remember to switch branches for updates
+- Gitignore rules missing on master unless cherry-picked
+- Team members on master won't have access to previews
+- Risk of branch divergence if master evolves independently
+
+**Why not gitignore everything?**
 - Preview files (.design-sync/previews/*.tsx) are source code worth versioning
 - Documentation (NOTES.md, etc.) has value for future contributors
 - Want history of how previews evolved over time
+- Config (config.json) needed for reproducible builds
 
 **Why not monorepo package?**
 - Design-sync is build tooling, not a published package
