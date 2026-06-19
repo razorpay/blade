@@ -3,6 +3,7 @@ export * from './ActionList';
 export * from './Alert';
 export * from './Amount';
 export * from './AnimateInteractions';
+export * from './AppBar';
 export * from './Avatar';
 export * from './Badge';
 export * from './BladeProvider';

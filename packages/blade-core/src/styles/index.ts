@@ -145,6 +145,8 @@ export type {
   CardHeaderVariants,
   CardFooterVariants,
 } from './Card';
+export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppBar';
+export type { AppBarVariants } from './AppBar';
 export {
   animatedChipCva,
   getAnimatedChipClasses,

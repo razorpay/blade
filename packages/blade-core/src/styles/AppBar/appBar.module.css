@@ -1,0 +1,141 @@
+/* ============================================
+   AppBar Component Styles
+   Mirrors packages/blade/src/components/AppBar/AppBar.web.tsx
+   ============================================ */
+
+/* --- AppBar root ---
+   React renders a BaseBox: display grid, two columns (leading 1fr, actions auto),
+   height size[64] = 64px, sticky/top driven by isSticky, padding from appBarTokens.
+   paddingX = spacing.5 mobile / spacing.6 desktop, paddingY = spacing.3. */
+.appBar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--spacing-3);
+  width: 100%;
+  height: 64px;
+  box-sizing: border-box;
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+  z-index: 1000;
+}
+
+/* Desktop horizontal padding bumps to spacing.6 (Figma: 24px) */
+@media (min-width: 768px) {
+  .appBar {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+}
+
+/* Sticky behaviour (default). isSticky=false → relative, top unset (set via data attr). */
+.appBar[data-sticky='true'] {
+  position: sticky;
+  top: 0;
+}
+
+.appBar[data-sticky='false'] {
+  position: relative;
+}
+
+/* --- Variant: neutral (static-black surface, light foreground) ---
+   React forces a dark colorScheme so foreground tokens contrast against the
+   static-black surface. Svelte BladeProvider colorScheme scoping is limited, so
+   foreground colors are passed explicitly to Text/Icon (static-white) from the
+   components based on the variant; only the surface background lives here. */
+.appBarNeutral {
+  background-color: var(--interactive-background-static-black-default);
+}
+
+/* --- Variant: subtle (adaptive gray surface) --- */
+.appBarSubtle {
+  background-color: var(--surface-background-gray-intense);
+}
+
+/* --- AppBar back button cell --- */
+.appBarBackButton {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --- AppBarLeading ---
+   React: flex row, align center, gap spacing.3, minWidth 0 (truncation). */
+.appBarLeading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.appBarLeadingPrefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.appBarLeadingLogo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.appBarLeadingTitleWrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.appBarLeadingTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.appBarLeadingTitleSuffix {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --- RTB (Razorpay Trusted Business) pill ---
+   React RTBBadge: flex row, gap spacing.2, paddingX spacing.3, paddingY spacing.1,
+   borderRadius large, bg interactive.background.staticWhite.faded. */
+.appBarRtbPill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  border-radius: var(--border-radius-large);
+  background-color: var(--interactive-background-static-white-faded);
+  flex-shrink: 0;
+}
+
+/* RTB shield icon is decorative (aria-hidden); the visible text is announced.
+   Foreground colors are passed explicitly to the icon/text components. */
+.appBarRtbShield {
+  display: flex;
+  align-items: center;
+}
+
+/* --- AppBarActions ---
+   React: flex row, align center, gap spacing.3, flexShrink 0, marginLeft auto.
+   marginLeft auto pushes the trailing actions to the right edge of the leading row,
+   matching Figma's right-aligned actions. */
+.appBarActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+  margin-left: auto;
+}

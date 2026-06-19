@@ -68,6 +68,16 @@ export {
   CardFooterTrailing,
 } from './Card';
 
+// AppBar
+export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
+export type {
+  AppBarProps,
+  AppBarLeadingProps,
+  AppBarActionsProps,
+  AppBarVariant,
+  AppBarBackButton,
+} from './AppBar';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
