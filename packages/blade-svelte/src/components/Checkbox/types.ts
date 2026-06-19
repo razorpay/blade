@@ -226,7 +226,7 @@ export type CheckboxGroupContextType = Pick<
  */
 export interface CheckboxInstance {
   /** Move keyboard focus to the underlying input element. */
-  focus: () => void;
+  focus: (options?: FocusOptions) => void;
 }
 
 /**

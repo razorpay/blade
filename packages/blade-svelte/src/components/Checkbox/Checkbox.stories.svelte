@@ -96,7 +96,10 @@
   let checkboxInstance: CheckboxInstance | undefined = $state();
 
   function focusCheckbox(): void {
-    checkboxInstance?.focus();
+    // `focusVisible: true` requests the focus ring even though focus is moved
+    // programmatically as a result of a mouse click on the button (browsers
+    // otherwise suppress `:focus-visible` for pointer-triggered focus).
+    checkboxInstance?.focus({ focusVisible: true } as FocusOptions);
   }
 
   const showcaseSizes = [

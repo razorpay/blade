@@ -101,8 +101,8 @@
 
   let inputEl: HTMLInputElement | undefined = $state();
 
-  export function focus(): void {
-    inputEl?.focus();
+  export function focus(options?: FocusOptions): void {
+    inputEl?.focus(options);
   }
 
   // indeterminate is an IDL prop, not an attribute — set it imperatively.
