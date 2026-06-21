@@ -34,7 +34,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import { BaseSpinner } from '~components/Spinner/BaseSpinner';
+import { ButtonDotLoader } from './ButtonDotLoader';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type {
@@ -77,6 +77,15 @@ type BaseButtonCommonProps = {
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
+  /**
+   * Determines the type of loading indicator displayed when `isLoading` is true.
+   *
+   * - `'indefinite'`: Shows a 3-dot loader (default)
+   * - `'definite'`: Shows a progress indicator based on `loadingProgress`
+   *
+   * @default 'indefinite'
+   */
+  loadingType?: 'indefinite' | 'definite';
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?:
@@ -393,6 +402,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
     onClick,
     onBlur,
     onKeyDown,
@@ -594,7 +604,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         motionEasing={motionEasing}
         isPressed={isPressed}
       >
-        {isLoading ? (
+        {isLoading && loadingType === 'indefinite' ? (
           <BaseBox
             display="flex"
             justifyContent="center"
@@ -606,16 +616,26 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner
-              accessibilityLabel="Loading"
-              size={spinnerSize}
-              color={
-                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
-                  ? spinnerColor[color as keyof typeof spinnerColor][
-                      variant as 'primary' | 'secondary'
-                    ]
-                  : spinnerColor.base[variant]
-              }
+            <ButtonDotLoader
+              size={spinnerSize === 'large' ? 20 : 16}
+              color={(() => {
+                const resolvedSpinnerColor =
+                  color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
+                    ? spinnerColor[color as keyof typeof spinnerColor][
+                        variant as 'primary' | 'secondary'
+                      ]
+                    : spinnerColor.base[variant];
+                if (resolvedSpinnerColor === 'white') {
+                  return getIn(theme.colors, 'interactive.icon.staticWhite.subtle');
+                }
+                if (resolvedSpinnerColor !== 'neutral') {
+                  return getIn(
+                    theme.colors,
+                    `interactive.icon.${resolvedSpinnerColor}.subtle` as any,
+                  );
+                }
+                return getIn(theme.colors, 'interactive.icon.gray.muted');
+              })()}
             />
           </BaseBox>
         ) : null}
