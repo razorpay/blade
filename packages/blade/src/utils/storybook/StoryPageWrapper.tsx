@@ -179,7 +179,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                {props.argTableComponent ? <Controls of={props.argTableComponent} /> : <Controls />}
+                <Box overflow="auto">
+                  {props.argTableComponent ? <Controls of={props.argTableComponent} /> : <Controls />}
+                </Box>
               </>
             ) : null}
 
