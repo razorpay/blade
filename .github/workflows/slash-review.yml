@@ -5,7 +5,7 @@ on:
     workflows: ['Blade Validate']
     types: [completed]
   pull_request:
-    types: [labeled]
+    types: [review_requested]
 
 concurrency:
   group: ${{ github.repository }}-${{ github.event.pull_request.number || github.event.check_suite.head_sha || github.sha }}-${{ github.workflow }}
@@ -15,7 +15,7 @@ jobs:
   slash-review:
     name: Request Slash AI review
     # For workflow_run: fires when 'Blade Validate' completes, without waiting for slower checks like Bundle Size.
-    # For pull_request: only fire on the 'Run Slash Review' label (manual re-run path).
+    # For pull_request: fires when a review is requested (or re-requested) from 'rzp-slash-public'.
     # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
     # so that Slash-authored PRs also get reviewed).
     if: |
@@ -24,7 +24,8 @@ jobs:
         github.event_name == 'workflow_run' ||
         (
           github.event_name == 'pull_request' &&
-          github.event.label.name == 'Run Slash Review'
+          github.event.action == 'review_requested' &&
+          github.event.requested_reviewer.login == 'rzp-slash-public'
         )
       )
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
