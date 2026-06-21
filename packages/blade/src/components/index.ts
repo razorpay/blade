@@ -57,6 +57,7 @@ export * from './Radio';
 export * from './Scale';
 export * from './SideNav';
 export * from './Skeleton';
+export * from './SliderInput';
 export * from './SkipNav';
 export * from './Spinner';
 export * from './SpotlightPopoverTour';
