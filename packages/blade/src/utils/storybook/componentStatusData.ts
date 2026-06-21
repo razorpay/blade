@@ -607,6 +607,18 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'Timestamp',
+    description:
+      'Timestamp component renders a date and/or time value in a standardised, human-readable format. Supports relative ("5 minutes ago"), dateTime, date, and time formats with locale awareness and auto-updating relative labels.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-progress',
+        storybookLink: 'Components/Timestamp',
+      },
+    },
+  },
+  {
     name: 'Amount',
     description: 'Amount component is used to display & format various currencies',
     platform: 'all',
