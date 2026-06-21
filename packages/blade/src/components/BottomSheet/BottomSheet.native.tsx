@@ -29,9 +29,8 @@ import { componentZIndices } from '~utils/componentZIndices';
 
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
   return {
-    // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(theme.spacing[5]),
-    borderTopRightRadius: makeSpace(theme.spacing[5]),
+    borderTopLeftRadius: makeSpace(theme.border.radius.large),
+    borderTopRightRadius: makeSpace(theme.border.radius.large),
     backgroundColor: theme.colors.popup.background.gray.subtle,
     justifyContent: 'center',
     alignItems: 'center',
