@@ -835,13 +835,14 @@ TextInputWithLabelSuffixTrailing.args = {
 export const TextInputWithFocusRing: StoryFn<typeof TextInputComponent> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
-      {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+      {/* eslint-disable jsx-a11y/no-autofocus */}
       <TextInputComponent
         label="Focused Input (autoFocus)"
         placeholder="This input is focused"
         autoFocus
         helpText="On React Native this input shows the expanding focus ring animation (border expands outward 0→4px and thickens on focus)"
       />
+      {/* eslint-enable jsx-a11y/no-autofocus */}
       <TextInputComponent
         label="Unfocused Input"
         placeholder="Tap to see the focus ring animate in"
