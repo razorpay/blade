@@ -625,6 +625,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       data-blade-component="base-text"
                       fontSize={25}
                       fontWeight="regular"
+                      lineHeight={100}
                       marginRight="spacing.1"
                       opacity={0.64}
                       style={
@@ -648,40 +649,23 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                             "paddingTop": 0,
                             "textDecorationLine": "none",
                           },
+                          {
+                            "includeFontPadding": false,
+                          },
                         ]
                       }
                     >
                       ₹
                     </Text>
-                    <Text
-                      accessible={true}
-                      color="surface.text.gray.normal"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      letterSpacing={50}
-                      lineHeight={100}
+                    <View
+                      alignItems="baseline"
+                      data-blade-component="base-box"
+                      flexDirection="row"
                       style={
                         [
                           {
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "alignItems": "baseline",
+                            "flexDirection": "row",
                           },
                         ]
                       }
@@ -714,6 +698,9 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
+                            {
+                              "includeFontPadding": false,
+                            },
                           ]
                         }
                       >
@@ -726,6 +713,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
+                        lineHeight={25}
                         opacity={0.64}
                         style={
                           [
@@ -736,7 +724,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "letterSpacing": 0,
-                              "lineHeight": 20,
+                              "lineHeight": 13,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -748,13 +736,16 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
+                            {
+                              "includeFontPadding": false,
+                            },
                           ]
                         }
                       >
                         .
                         00
                       </Text>
-                    </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1133,6 +1124,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       data-blade-component="base-text"
                       fontSize={25}
                       fontWeight="regular"
+                      lineHeight={100}
                       marginRight="spacing.1"
                       opacity={0.64}
                       style={
@@ -1156,40 +1148,23 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                             "paddingTop": 0,
                             "textDecorationLine": "none",
                           },
+                          {
+                            "includeFontPadding": false,
+                          },
                         ]
                       }
                     >
                       ₹
                     </Text>
-                    <Text
-                      accessible={true}
-                      color="surface.text.gray.normal"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      letterSpacing={50}
-                      lineHeight={100}
+                    <View
+                      alignItems="baseline"
+                      data-blade-component="base-box"
+                      flexDirection="row"
                       style={
                         [
                           {
-                            "color": "hsla(0, 0%, 2%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
+                            "alignItems": "baseline",
+                            "flexDirection": "row",
                           },
                         ]
                       }
@@ -1222,6 +1197,9 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
+                            {
+                              "includeFontPadding": false,
+                            },
                           ]
                         }
                       >
@@ -1234,6 +1212,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
+                        lineHeight={25}
                         opacity={0.64}
                         style={
                           [
@@ -1244,7 +1223,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "letterSpacing": 0,
-                              "lineHeight": 20,
+                              "lineHeight": 13,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -1256,13 +1235,16 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
+                            {
+                              "includeFontPadding": false,
+                            },
                           ]
                         }
                       >
                         .
                         00
                       </Text>
-                    </Text>
+                    </View>
                   </View>
                 </View>
               </View>

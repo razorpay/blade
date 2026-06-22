@@ -21,7 +21,7 @@ import type {
 } from '~utils/types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { isAndroid, isReactNative } from '~utils';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type {
   BaseTextProps,
@@ -430,6 +430,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           lineHeight={lineHeight}
           textAlign="center"
           fontWeight="medium"
+          // Android's default font padding nudges inline links up relative to adjacent text.
+          style={(isAndroid() ? { includeFontPadding: false } : undefined) as never}
         >
           {children}
         </BaseText>
