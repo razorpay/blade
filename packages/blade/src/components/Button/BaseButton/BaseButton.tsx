@@ -391,7 +391,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
+    ...(!isDisabled ? getNativeShadowColors(color) : {}),
   };
 
   if (isDisabled) {
