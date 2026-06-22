@@ -44,7 +44,7 @@
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(!isStringChildren ? (children as Snippet) : undefined);
 
-  const triggerClass = $derived(getCollapsibleTextClasses({ isDisabled }));
+  const triggerClass = $derived(getCollapsibleTextClasses());
   const styledProps = $derived(getStyledPropsClasses(rest));
   const rootClass = $derived(
     [triggerClass, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),

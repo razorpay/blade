@@ -130,7 +130,6 @@ export {
 } from './Collapsible';
 export type {
   CollapsibleChevronVariants,
-  CollapsibleTextVariants,
   CollapsibleInnerVariants,
   CollapsibleBodyInnerVariants,
 } from './Collapsible';

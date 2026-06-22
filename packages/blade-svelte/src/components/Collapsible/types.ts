@@ -70,15 +70,14 @@ export type CollapsibleProps = {
 
 export type CollapsibleButtonProps = Pick<
   ButtonProps,
-  | 'variant'
-  | 'size'
-  | 'iconPosition'
-  | 'isDisabled'
-  | 'testID'
-  | 'accessibilityLabel'
-  | 'icon'
-  | 'children'
+  'variant' | 'size' | 'iconPosition' | 'isDisabled' | 'testID' | 'accessibilityLabel' | 'icon'
 > & {
+  /**
+   * Trigger content. Accepts a snippet or a plain string — `CollapsibleButton`
+   * handles both at runtime (mirrors React's `ReactNode`).
+   */
+  children?: Snippet | string;
+
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
 };
@@ -144,7 +143,9 @@ export type CollapsibleBodyProps = {
   children: Snippet | string;
 
   /**
-   * Width of the collapsible body content.
+   * Width of the collapsible body content. Accepts any CSS dimension string
+   * (e.g. `'100%'`, `'320px'`). Mirrors React's `BaseBoxProps['width']`; kept as
+   * `string` to match the blade-svelte styled-props convention.
    */
   width?: string;
 

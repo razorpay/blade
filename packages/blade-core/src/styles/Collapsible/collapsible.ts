@@ -25,19 +25,11 @@ export const getCollapsibleBodyClasses = cva(styles.bodyContent);
 
 /**
  * Text trigger wrapper used by `CollapsibleText`. Lays out the text + chevron in
- * a full-width row and dims itself when disabled.
+ * a full-width row. The disabled appearance is driven by the `[disabled]`
+ * attribute selector on the rendered `<button>` (project convention), so no
+ * `isDisabled` variant is needed here.
  */
-export const getCollapsibleTextClasses = cva(styles.trigger, {
-  variants: {
-    isDisabled: {
-      true: styles.triggerDisabled,
-      false: null,
-    },
-  },
-  defaultVariants: {
-    isDisabled: false,
-  },
-});
+export const getCollapsibleTextClasses = cva(styles.trigger);
 
 /**
  * Inner content margin wrapper for CollapsibleBody. Margin top/bottom depends on
@@ -95,24 +87,22 @@ export const getCollapsibleInnerClasses = cva(styles.inner, {
   },
 });
 
-export const getCollapsibleTemplateClasses = (): Record<string, string> => ({
-  triggerChevron: styles.triggerChevron,
-  chevronExpanded: styles.chevronExpanded,
-  bodyContent: styles.bodyContent,
-  bodyInner: styles.bodyInner,
-  inner: styles.inner,
-  innerDirectionBottom: styles.innerDirectionBottom,
-  innerDirectionTop: styles.innerDirectionTop,
-  innerWidthRestricted: styles.innerWidthRestricted,
-  innerWidthUnrestricted: styles.innerWidthUnrestricted,
-});
+export function getCollapsibleTemplateClasses(): Record<string, string> {
+  return {
+    triggerChevron: styles.triggerChevron,
+    chevronExpanded: styles.chevronExpanded,
+    bodyContent: styles.bodyContent,
+    bodyInner: styles.bodyInner,
+    inner: styles.inner,
+    innerDirectionBottom: styles.innerDirectionBottom,
+    innerDirectionTop: styles.innerDirectionTop,
+    innerWidthRestricted: styles.innerWidthRestricted,
+    innerWidthUnrestricted: styles.innerWidthUnrestricted,
+  };
+}
 
 export type CollapsibleChevronVariants = {
   isExpanded?: boolean;
-};
-
-export type CollapsibleTextVariants = {
-  isDisabled?: boolean;
 };
 
 export type CollapsibleInnerVariants = {

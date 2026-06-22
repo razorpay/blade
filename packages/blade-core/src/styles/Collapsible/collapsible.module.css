@@ -70,7 +70,7 @@
   color: var(--interactive-text-gray-subtle);
 }
 
-.triggerDisabled {
+.trigger[disabled] {
   cursor: not-allowed;
   opacity: 0.4;
 }
