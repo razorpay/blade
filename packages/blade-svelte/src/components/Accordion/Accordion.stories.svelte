@@ -38,6 +38,8 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Button from '../Button/Button.svelte';
+  import Avatar from '../Avatar/Avatar.svelte';
+  import AvatarGroup from '../Avatar/AvatarGroup.svelte';
   import { CheckIcon } from '../Icons/CheckIcon';
   import { InfoIcon } from '../Icons/InfoIcon';
   import { SearchIcon } from '../Icons/SearchIcon';
@@ -550,6 +552,101 @@
         {/snippet}
       </Accordion>
     </div>
+  </div>
+</Story>
+
+<Story name="With AvatarGroup in TitleSuffix" asChild>
+  <!--
+    Design assumption: AvatarGroup sits in the same titleSuffix slot as Badge.
+    Since titleSuffix is an open Snippet, no prop changes are required — consumers
+    just pass an AvatarGroup snippet instead of a Badge snippet.
+  -->
+  <Accordion variant="filled">
+    {#snippet children()}
+      <AccordionItem>
+        {#snippet children()}
+          <AccordionItemHeader title="Team members" subtitle="Assigned reviewers">
+            {#snippet titleSuffix()}
+              <AvatarGroup size="xsmall" maxCount={3}>
+                {#snippet children()}
+                  <Avatar name="Anurag Hazra" src="https://avatars.githubusercontent.com/u/12962469?v=4" />
+                  <Avatar name="Saransh Chopra" src="https://avatars.githubusercontent.com/u/41524992?v=4" />
+                  <Avatar name="Kamlesh Chandnani" src="https://avatars.githubusercontent.com/u/4329423?v=4" />
+                  <Avatar name="Saurav Gupta" src="https://avatars.githubusercontent.com/u/35374649?v=4" />
+                {/snippet}
+              </AvatarGroup>
+            {/snippet}
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            Reviewers are notified when this item is expanded. You can assign up to 10 reviewers
+            per accordion item.
+          </AccordionItemBody>
+        {/snippet}
+      </AccordionItem>
+      <AccordionItem>
+        {#snippet children()}
+          <AccordionItemHeader title="Watchers">
+            {#snippet titleSuffix()}
+              <AvatarGroup size="xsmall" maxCount={2}>
+                {#snippet children()}
+                  <Avatar name="Alice Johnson" src="https://avatars.githubusercontent.com/u/46647141?v=4" />
+                  <Avatar name="Bob Smith" src="https://avatars.githubusercontent.com/u/6682655?v=4" />
+                  <Avatar name="Charlie Brown" src="https://avatars.githubusercontent.com/u/11075561?v=4" />
+                {/snippet}
+              </AvatarGroup>
+            {/snippet}
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            Watchers receive notifications but cannot approve changes.
+          </AccordionItemBody>
+        {/snippet}
+      </AccordionItem>
+    {/snippet}
+  </Accordion>
+</Story>
+
+<Story name="With Gray Body Background (Checkout)" asChild>
+  <!--
+    Design assumption: The gray body uses `hasGrayBody` on the Accordion root
+    and `--surface-background-gray-subtle`.
+    This matches the checkout theme where payment method bodies use a recessed
+    surface to distinguish content from the card container.
+  -->
+  <div style="max-width: 480px;">
+    <Accordion variant="filled" hasGrayBody>
+      {#snippet children()}
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="PhonePe Wallet" subtitle="+ ₹50 Extra Charge" />
+            <AccordionItemBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <input type="tel" placeholder="Enter Phone Number" style="padding: 8px 12px; border: 1px solid var(--surface-border-gray-subtle); border-radius: 4px; font-size: 14px;" />
+                  <Button>Continue</Button>
+                </div>
+              {/snippet}
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="HDFC Credit Card" subtitle="No EMI Cost Available">
+              {#snippet titleSuffix()}
+                <Badge color="positive">Upto ₹500 off</Badge>
+              {/snippet}
+            </AccordionItemHeader>
+            <AccordionItemBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <input type="number" placeholder="Enter Card Number" style="padding: 8px 12px; border: 1px solid var(--surface-border-gray-subtle); border-radius: 4px; font-size: 14px;" />
+                  <Button>Continue</Button>
+                </div>
+              {/snippet}
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+      {/snippet}
+    </Accordion>
   </div>
 </Story>
 

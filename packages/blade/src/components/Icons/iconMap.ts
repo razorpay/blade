@@ -6,6 +6,7 @@ import ActivityIconComponent from './ActivityIcon';
 import AddressBookIconComponent from './AddressBookIcon';
 import AffordabilityFilledIconComponent from './AffordabilityFilledIcon';
 import AffordabilityIconComponent from './AffordabilityIcon';
+import AgentStudioIconComponent from './AgentStudioIcon';
 import AirplayIconComponent from './AirplayIcon';
 import AlertCircleIconComponent from './AlertCircleIcon';
 import AlertOctagonIconComponent from './AlertOctagonIcon';
@@ -76,6 +77,7 @@ import BulkPayoutsIconComponent from './BulkPayoutsIcon';
 import BusinessBankingIconComponent from './BusinessBankingIcon';
 import BusinessSpendManagementFilledIconComponent from './BusinessSpendManagementFilledIcon';
 import BusinessSpendManagementIconComponent from './BusinessSpendManagementIcon';
+import CalendarFilledIconComponent from './CalendarFilledIcon';
 import CalendarIconComponent from './CalendarIcon';
 import CameraIconComponent from './CameraIcon';
 import CameraOffIconComponent from './CameraOffIcon';
@@ -97,6 +99,7 @@ import ChevronsUpIconComponent from './ChevronsUpIcon';
 import ChromeIconComponent from './ChromeIcon';
 import CircleIconComponent from './CircleIcon';
 import ClipboardIconComponent from './ClipboardIcon';
+import ClockFilledIconComponent from './ClockFilledIcon';
 import ClockIconComponent from './ClockIcon';
 import CloseIconComponent from './CloseIcon';
 import ClosedCaptioningIconComponent from './ClosedCaptioningIcon';
@@ -128,6 +131,7 @@ import CornerRightUpIconComponent from './CornerRightUpIcon';
 import CornerUpLeftIconComponent from './CornerUpLeftIcon';
 import CornerUpRightIconComponent from './CornerUpRightIcon';
 import CpuIconComponent from './CpuIcon';
+import CreditCardFilledIconComponent from './CreditCardFilledIcon';
 import CreditCardIconComponent from './CreditCardIcon';
 import CreditsAndLoansFilledIconComponent from './CreditsAndLoansFilledIcon';
 import CreditsAndLoansIconComponent from './CreditsAndLoansIcon';
@@ -407,10 +411,12 @@ import UnderlineIconComponent from './UnderlineIcon';
 import UnlockIconComponent from './UnlockIcon';
 import UpiAutopayFilledIconComponent from './UpiAutopayFilledIcon';
 import UpiAutopayIconComponent from './UpiAutopayIcon';
+import UpiFilledIconComponent from './UpiFilledIcon';
 import UpiIconComponent from './UpiIcon';
 import UploadCloudIconComponent from './UploadCloudIcon';
 import UploadIconComponent from './UploadIcon';
 import UserCheckIconComponent from './UserCheckIcon';
+import UserFilledIconComponent from './UserFilledIcon';
 import UserIconComponent from './UserIcon';
 import UserMinusIconComponent from './UserMinusIcon';
 import UserPlusIconComponent from './UserPlusIcon';
@@ -430,6 +436,7 @@ import VolumeLowIconComponent from './VolumeLowIcon';
 import VolumeMuteIconComponent from './VolumeMuteIcon';
 import VolumeOffIconComponent from './VolumeOffIcon';
 import VolumeOnIconComponent from './VolumeOnIcon';
+import WalletFilledIconComponent from './WalletFilledIcon';
 import WalletIconComponent from './WalletIcon';
 import WatchIconComponent from './WatchIcon';
 import WhatsAppIconComponent from './WhatsAppIcon';
@@ -452,6 +459,7 @@ const iconMap: Record<string, IconComponent> = {
   AddressBookIcon: AddressBookIconComponent,
   AffordabilityFilledIcon: AffordabilityFilledIconComponent,
   AffordabilityIcon: AffordabilityIconComponent,
+  AgentStudioIcon: AgentStudioIconComponent,
   AirplayIcon: AirplayIconComponent,
   AlertCircleIcon: AlertCircleIconComponent,
   AlertOctagonIcon: AlertOctagonIconComponent,
@@ -522,6 +530,7 @@ const iconMap: Record<string, IconComponent> = {
   BusinessBankingIcon: BusinessBankingIconComponent,
   BusinessSpendManagementFilledIcon: BusinessSpendManagementFilledIconComponent,
   BusinessSpendManagementIcon: BusinessSpendManagementIconComponent,
+  CalendarFilledIcon: CalendarFilledIconComponent,
   CalendarIcon: CalendarIconComponent,
   CameraIcon: CameraIconComponent,
   CameraOffIcon: CameraOffIconComponent,
@@ -543,6 +552,7 @@ const iconMap: Record<string, IconComponent> = {
   ChromeIcon: ChromeIconComponent,
   CircleIcon: CircleIconComponent,
   ClipboardIcon: ClipboardIconComponent,
+  ClockFilledIcon: ClockFilledIconComponent,
   ClockIcon: ClockIconComponent,
   CloseIcon: CloseIconComponent,
   ClosedCaptioningIcon: ClosedCaptioningIconComponent,
@@ -574,6 +584,7 @@ const iconMap: Record<string, IconComponent> = {
   CornerUpLeftIcon: CornerUpLeftIconComponent,
   CornerUpRightIcon: CornerUpRightIconComponent,
   CpuIcon: CpuIconComponent,
+  CreditCardFilledIcon: CreditCardFilledIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   CreditsAndLoansFilledIcon: CreditsAndLoansFilledIconComponent,
   CreditsAndLoansIcon: CreditsAndLoansIconComponent,
@@ -853,10 +864,12 @@ const iconMap: Record<string, IconComponent> = {
   UnlockIcon: UnlockIconComponent,
   UpiAutopayFilledIcon: UpiAutopayFilledIconComponent,
   UpiAutopayIcon: UpiAutopayIconComponent,
+  UpiFilledIcon: UpiFilledIconComponent,
   UpiIcon: UpiIconComponent,
   UploadCloudIcon: UploadCloudIconComponent,
   UploadIcon: UploadIconComponent,
   UserCheckIcon: UserCheckIconComponent,
+  UserFilledIcon: UserFilledIconComponent,
   UserIcon: UserIconComponent,
   UserMinusIcon: UserMinusIconComponent,
   UserPlusIcon: UserPlusIconComponent,
@@ -876,6 +889,7 @@ const iconMap: Record<string, IconComponent> = {
   VolumeMuteIcon: VolumeMuteIconComponent,
   VolumeOffIcon: VolumeOffIconComponent,
   VolumeOnIcon: VolumeOnIconComponent,
+  WalletFilledIcon: WalletFilledIconComponent,
   WalletIcon: WalletIconComponent,
   WatchIcon: WatchIconComponent,
   WhatsAppIcon: WhatsAppIconComponent,
