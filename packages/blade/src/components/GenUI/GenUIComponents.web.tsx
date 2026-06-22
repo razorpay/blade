@@ -13,6 +13,7 @@ import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './
 import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
+import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
 import { Box } from '~components/Box';
 import { Text, Heading } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -95,6 +96,12 @@ const TextAnimationStyles = createGlobalStyle`
     animation: animate-fadeIn
       var(--animate-duration, 400ms)
       var(--animate-easing, ease) both;
+  }
+`;
+
+const GenUITableSpacingStyles = createGlobalStyle`
+  .genui-table-spacing-contract [role='rowheader'] > * > div {
+    min-height: ${genUISpacingContract.tableRowHeight};
   }
 `;
 
@@ -383,7 +390,7 @@ const ComponentErrorFallback = () => {
       height="100%"
       width="100%"
     >
-      <Text size="medium" weight="semibold">
+      <Text size="medium" weight="regular">
         Error rendering component
       </Text>
     </Box>
@@ -427,27 +434,62 @@ const ChartSkeletonLoader = ({
  */
 const markdownComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom="spacing.4" size="large">
+    <Heading marginBottom={genUISpacingContract.headingToText} size="large" weight="semibold">
       {children}
     </Heading>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom="spacing.3" size="medium">
+    <Heading marginBottom={genUISpacingContract.headingToText} size="medium" weight="semibold">
       {children}
     </Heading>
   ),
   h3: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom="spacing.3" size="small">
+    <Heading
+      marginTop={genUISpacingContract.textToH3}
+      marginBottom={genUISpacingContract.h3ToCardTable}
+      size="small"
+      weight="medium"
+    >
       {children}
     </Heading>
   ),
   h4: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom="spacing.3" size="small">
+    <Heading
+      marginTop={genUISpacingContract.textToH3}
+      marginBottom={genUISpacingContract.h3ToCardTable}
+      size="small"
+      weight="medium"
+    >
+      {children}
+    </Heading>
+  ),
+  h5: ({ children }: { children?: React.ReactNode }) => (
+    <Heading
+      marginTop={genUISpacingContract.textToH3}
+      marginBottom={genUISpacingContract.h3ToCardTable}
+      size="small"
+      weight="medium"
+    >
+      {children}
+    </Heading>
+  ),
+  h6: ({ children }: { children?: React.ReactNode }) => (
+    <Heading
+      marginTop={genUISpacingContract.textToH3}
+      marginBottom={genUISpacingContract.h3ToCardTable}
+      size="small"
+      weight="medium"
+    >
       {children}
     </Heading>
   ),
   b: ({ children }: { children?: React.ReactNode }) => (
-    <Text size="medium" weight="semibold" color="surface.text.gray.subtle">
+    <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+      {children}
+    </Text>
+  ),
+  strong: ({ children }: { children?: React.ReactNode }) => (
+    <Text as="span" size="medium" weight="semibold" color="surface.text.gray.subtle">
       {children}
     </Text>
   ),
@@ -464,7 +506,7 @@ const markdownComponents = {
     </Link>
   ),
   li: ({ children }: { children?: React.ReactNode }) => (
-    <Text marginY="spacing.3" size="medium">
+    <Text marginBottom={genUISpacingContract.textParagraphGap} size="medium">
       <DotIcon marginBottom="1px" size="xsmall" /> {children}
     </Text>
   ),
@@ -485,7 +527,11 @@ const markdownComponents = {
     </Text>
   ),
   p: ({ children }: { children?: React.ReactNode }) => (
-    <Text marginY="spacing.2" size="medium" color="surface.text.gray.subtle">
+    <Text
+      marginBottom={genUISpacingContract.textParagraphGap}
+      size="medium"
+      color="surface.text.gray.subtle"
+    >
       {children}
     </Text>
   ),
@@ -645,7 +691,7 @@ const RenderChartComponent = memo(
           {title && !isTiny ? (
             <Text
               size="large"
-              weight="semibold"
+              weight="regular"
               color="surface.text.gray.subtle"
               marginBottom="spacing.3"
             >
@@ -997,50 +1043,53 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
   };
 
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.3">
-      <Table
-        data={tableData}
-        backgroundColor="transparent"
-        rowDensity="compact"
-        gridTemplateColumns={columnWidths.join(' ')}
-      >
-        {(data) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                {headers.map((header, index) => (
-                  <TableHeaderCell key={index}>{header}</TableHeaderCell>
-                ))}
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((item, rowIndex) => (
-                <TableRow
-                  key={rowIndex}
-                  item={item}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
-                  hoverActions={
-                    rowActions && rowActions.length > 0 ? (
-                      <TableRowHoverActions
-                        rowActions={rowActions}
-                        rowIndex={rowIndex}
-                        rowData={item.cells}
-                      />
-                    ) : undefined
-                  }
-                >
-                  {item.cells.map((cell, cellIndex) => (
-                    <TableCell key={cellIndex}>
-                      <RenderTableCellContent cell={cell} />
-                    </TableCell>
+    <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
+      <GenUITableSpacingStyles />
+      <div className="genui-table-spacing-contract">
+        <Table
+          data={tableData}
+          backgroundColor="transparent"
+          rowDensity="normal"
+          gridTemplateColumns={columnWidths.join(' ')}
+        >
+          {(data) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  {headers.map((header, index) => (
+                    <TableHeaderCell key={index}>{header}</TableHeaderCell>
                   ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </Table>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {data.map((item, rowIndex) => (
+                  <TableRow
+                    key={rowIndex}
+                    item={item}
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
+                    hoverActions={
+                      rowActions && rowActions.length > 0 ? (
+                        <TableRowHoverActions
+                          rowActions={rowActions}
+                          rowIndex={rowIndex}
+                          rowData={item.cells}
+                        />
+                      ) : undefined
+                    }
+                  >
+                    {item.cells.map((cell, cellIndex) => (
+                      <TableCell key={cellIndex}>
+                        <RenderTableCellContent cell={cell} />
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      </div>
     </Box>
   );
 });
@@ -1049,8 +1098,13 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
   const hasHeader = title || description;
 
   return (
-    <Box height="100%" display="flex" flexDirection="column" gap="spacing.3">
-      <Card width="100%" height="100%" padding="spacing.7">
+    <Box
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      gap={genUISpacingContract.compactCardRowGap}
+    >
+      <Card width="100%" height="100%" padding={genUISpacingContract.compactCardPadding}>
         {hasHeader ? (
           <CardHeader>
             <CardHeaderLeading title={title || ''} subtitle={description || ''} />
@@ -1059,7 +1113,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
 
         {children && children.length > 0 ? (
           <CardBody height="100%">
-            <Box display="flex" flexDirection="column" gap="spacing.5">
+            <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
               {children.map((child, index) => {
                 return <GenUIComponentRenderer key={index} component={child} index={index} />;
               })}
@@ -1068,7 +1122,11 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
         ) : null}
 
         {footer ? (
-          <CardFooter showDivider={true}>
+          <CardFooter
+            showDivider={true}
+            marginTop={genUISpacingContract.cardTableToFooterAction}
+            paddingTop={genUISpacingContract.cardTableToFooterAction}
+          >
             <CardFooterLeading subtitle={footer} />
           </CardFooter>
         ) : null}
@@ -1375,6 +1433,11 @@ const createBuiltInRegistry = (): GenUIComponentRegistry => ({
 export {
   // Built-in registry creator (used by GenUIProvider)
   createBuiltInRegistry,
+  // Markdown renderer overrides
+  markdownComponents,
+  // Spacing contract
+  genUISpacingContract,
+  getGenUIComponentTopSpacing,
   // Constants
   ComponentType,
 };

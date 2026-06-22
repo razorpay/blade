@@ -7,6 +7,11 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
+import {
+  getGenUIComponentTopSpacing,
+  genUISpacingContract,
+  markdownComponents,
+} from '../GenUIComponents';
 import type { GenUIComponent } from '../GenUIComponents';
 import { useGenUI } from '../GenUIContext.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -3476,6 +3481,114 @@ describe('<GenUI />', () => {
     });
 
     describe('TEXT component markdown variations', () => {
+      it('should expose the GenUI spacing contract in one tweakable place', () => {
+        expect(genUISpacingContract).toMatchObject({
+          headingToText: 'spacing.3',
+          textToH3: 'spacing.7',
+          h3ToCardTable: 'spacing.3',
+          textToCardTable: 'spacing.7',
+          cardTableToNextH3: 'spacing.7',
+          cardTableToFooterAction: 'spacing.7',
+          textParagraphGap: 'spacing.3',
+          compactCardPadding: 'spacing.5',
+          compactCardRowGap: 'spacing.3',
+          tableRowHeight: '48px',
+        });
+      });
+
+      it('should resolve GenUI component spacing relationships from the contract', () => {
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TEXT', content: 'Summary text' },
+            { component: 'TABLE' },
+          ),
+        ).toBe(genUISpacingContract.textToCardTable);
+
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TEXT', content: '### Metrics' },
+            { component: 'CARD' },
+          ),
+        ).toBe(genUISpacingContract.h3ToCardTable);
+
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TABLE' },
+            { component: 'TEXT', content: '### Next section' },
+          ),
+        ).toBe(genUISpacingContract.cardTableToNextH3);
+
+        expect(
+          getGenUIComponentTopSpacing({ component: 'CARD' }, { component: 'BUTTON', text: 'Act' }),
+        ).toBe(genUISpacingContract.cardTableToFooterAction);
+      });
+
+      it('should render markdown block spacing from the contract', () => {
+        const H2Component = markdownComponents.h2;
+        const H3Component = markdownComponents.h3;
+        const ParagraphComponent = markdownComponents.p;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H2Component>Heading 2 spacing</H2Component>
+            <ParagraphComponent>Paragraph spacing</ParagraphComponent>
+            <H3Component>Heading 3 spacing</H3Component>
+          </>,
+        );
+
+        expect(getByText('Heading 2 spacing')).toHaveStyle({ marginBottom: '8px' });
+        expect(getByText('Paragraph spacing')).toHaveStyle({ marginBottom: '8px' });
+        expect(getByText('Heading 3 spacing')).toHaveStyle({
+          marginTop: '24px',
+          marginBottom: '8px',
+        });
+      });
+
+      it('should render h2 and above with semibold weight', () => {
+        const H1Component = markdownComponents.h1;
+        const H2Component = markdownComponents.h2;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H1Component>Heading 1</H1Component>
+            <H2Component>Heading 2</H2Component>
+          </>,
+        );
+
+        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '600' });
+      });
+
+      it('should render h3 and below with medium weight', () => {
+        const H3Component = markdownComponents.h3;
+        const H4Component = markdownComponents.h4;
+        const H5Component = markdownComponents.h5;
+        const H6Component = markdownComponents.h6;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H3Component>Heading 3</H3Component>
+            <H4Component>Heading 4</H4Component>
+            <H5Component>Heading 5</H5Component>
+            <H6Component>Heading 6</H6Component>
+          </>,
+        );
+
+        expect(getByText('Heading 3')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 4')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 5')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 6')).toHaveStyle({ fontWeight: '500' });
+      });
+
+      it('should render strong markdown with semibold weight', () => {
+        const StrongComponent = markdownComponents.strong;
+
+        const { getByText } = renderWithTheme(<StrongComponent>Strong text</StrongComponent>);
+
+        expect(getByText('Strong text')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Strong text').tagName).toBe('SPAN');
+      });
+
       it('should render text with bold markdown', () => {
         const components: GenUIComponent[] = [{ component: 'TEXT', content: '**Bold text**' }];
 
@@ -3572,7 +3685,7 @@ describe('<GenUI />', () => {
           </GenUIProvider>,
         );
 
-        expect(getByText('Chart Title')).toBeInTheDocument();
+        expect(getByText('Chart Title')).toHaveStyle({ fontWeight: '400' });
       });
     });
   });

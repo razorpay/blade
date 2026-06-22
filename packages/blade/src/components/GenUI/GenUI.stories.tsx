@@ -523,6 +523,37 @@ const SimpleGenUITemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element
 
 export const SimpleGenUI = SimpleGenUITemplate.bind({});
 
+type TextStringStoryArgs = {
+  content: string;
+};
+
+const TextStringTemplate: StoryFn<TextStringStoryArgs> = ({ content }): JSX.Element => {
+  return (
+    <GenUIProvider>
+      <GenUISchemaRenderer
+        isAnimating={false}
+        components={[
+          {
+            component: 'TEXT',
+            content,
+          },
+        ]}
+      />
+    </GenUIProvider>
+  );
+};
+
+export const TextString = TextStringTemplate.bind({});
+TextString.args = {
+  content:
+    '## Text preview\n\nThis story renders a single GenUI text string. Try **bold text**, *italic text*, links, and lists from Storybook controls.',
+};
+TextString.argTypes = {
+  content: {
+    control: 'text',
+  },
+};
+
 const defaultTableRowActions = [
   {
     type: 'ICON_BUTTON',
