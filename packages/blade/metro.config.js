@@ -15,6 +15,8 @@ const nodeModulesDir = path.resolve(__dirname, 'node_modules');
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
 // Manually resolve subpath exports for storybook packages.
+const pkgJsonCache = new Map();
+
 function resolveSubpathExport(moduleName) {
   const parts = moduleName.match(/^(@[^/]+\/[^/]+|[^/]+)(\/.*)?$/);
   if (!parts) return null;
@@ -23,9 +25,16 @@ function resolveSubpathExport(moduleName) {
   const subpath = parts[2] ? `.${parts[2]}` : '.';
 
   const pkgJsonPath = path.resolve(nodeModulesDir, pkgName, 'package.json');
-  if (!fs.existsSync(pkgJsonPath)) return null;
 
-  const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+  let pkgJson;
+  if (pkgJsonCache.has(pkgJsonPath)) {
+    pkgJson = pkgJsonCache.get(pkgJsonPath);
+  } else {
+    if (!fs.existsSync(pkgJsonPath)) return null;
+    pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+    pkgJsonCache.set(pkgJsonPath, pkgJson);
+  }
+
   const exports = pkgJson.exports;
   if (!exports || !exports[subpath]) return null;
 

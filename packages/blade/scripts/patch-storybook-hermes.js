@@ -132,7 +132,7 @@ for (const file of idFiles) {
   if (semiIdx < 0) continue;
   const lineEnd = semiIdx + 1;
   content = content.substring(0, lineStart) +
-    '        var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9\\-]/;' +
+    '        var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9]/;' +
     content.substring(lineEnd);
   fs.writeFileSync(file, content);
   console.log('[patch-storybook-hermes] Patched identifierRegex:', file);

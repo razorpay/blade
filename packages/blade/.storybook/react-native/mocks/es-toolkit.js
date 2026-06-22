@@ -8,6 +8,11 @@ function isEqual(a, b) {
   if (typeof a !== typeof b) return false;
   if (typeof a !== 'object') return false;
 
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.length === b.length && a.every((v, i) => isEqual(v, b[i]));
+  }
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+
   const keysA = Object.keys(a);
   const keysB = Object.keys(b);
   if (keysA.length !== keysB.length) return false;
