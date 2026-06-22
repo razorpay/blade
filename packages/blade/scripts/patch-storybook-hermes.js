@@ -1,7 +1,15 @@
 #!/usr/bin/env node
-// Patches es-toolkit Unicode property escapes (\p{Lu}) with ASCII equivalents.
+// Patches Unicode property escapes (\p{Lu}, \p{ID_Start}, etc.) with ASCII equivalents.
 // Hermes in RN 0.72 doesn't support Unicode property escapes in RegExp.
-// The regex is inlined in multiple storybook dist files via bundling.
+//
+// Affected dependencies:
+//   - es-toolkit (CASE_SPLIT_PATTERN uses \p{Lu}/\p{Ll}) — bundled into Storybook chunks
+//   - jsdoc-type-pratt-parser (identifierStartRegex uses \p{ID_Start}) — bundled into Storybook chunks
+//
+// Why not upgrade RN? RN 0.76+ ships Hermes with Unicode property escape support,
+// but requires React 19 which is incompatible with blade's React 18 peer dependency.
+// See: https://github.com/nicolo-ribaudo/tc39-proposal-regexp-unicode-property-escapes
+//      https://hermesengine.dev/docs/language-features
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
