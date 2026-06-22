@@ -21,7 +21,7 @@ There is **no** action button, **no** dismiss/close affordance, and **no** feedb
 
 ## API
 
-The component is prop-driven. The message is passed as `children` (text or inline `Link`) and layout by `alignment`. The colour treatment (dark/light) is resolved automatically from the app `colorScheme` via `useTheme`, so there is no `theme` prop. The leading icon is shown when `showIcon` is `true` and an `icon` is provided.
+The component is prop-driven. The message is passed as `children` (text or inline `Link`) and layout by `alignment`. The colour treatment (dark/light) is resolved automatically from the app `colorScheme` via `useTheme`, so there is no `theme` prop. The leading icon is rendered when an `icon` is provided; omit the prop to render without an icon.
 
 ```jsx
 import { AnnouncementBanner } from '@razorpay/blade/components';
@@ -32,7 +32,7 @@ import { BankAccountVerificationIcon } from '@razorpay/blade/components';
 </AnnouncementBanner>;
 ```
 
-This maps the Figma to code as: `Alignment` → `alignment`, `showIcon` → `showIcon`, `text` → `children`. The Figma `Theme = Dark | Light` is not a prop — it follows the app `colorScheme`.
+This maps the Figma to code as: `Alignment` → `alignment`, `showIcon` → presence/absence of the `icon` prop (no separate `showIcon` boolean), `text` → `children`. The Figma `Theme = Dark | Light` is not a prop — it follows the app `colorScheme`.
 
 <details>
   <summary>Alternate APIs considered</summary>
@@ -109,18 +109,11 @@ type AnnouncementBannerProps = {
   alignment?: 'center' | 'left';
 
   /**
-   * Leading icon shown before the message. Rendered only when `showIcon` is true.
+   * Leading icon shown before the message. Omit to render the banner without an icon.
    *
    * @default -
    */
   icon?: IconComponent;
-
-  /**
-   * Whether to show the leading icon.
-   *
-   * @default true
-   */
-  showIcon?: boolean;
 
   /**
    * Accessible label for the banner region, announced by screen readers.
@@ -168,7 +161,7 @@ The banner follows the app `colorScheme`. Inside a `BladeProvider` with `colorSc
 ### Without icon
 
 ```jsx
-<AnnouncementBanner showIcon={false}>
+<AnnouncementBanner>
   Enter promotional text here
 </AnnouncementBanner>
 ```
@@ -208,8 +201,8 @@ The treatment is selected by the app `colorScheme` (`useTheme().colorScheme`), n
 
 - **Q1. How is the Dark/Light treatment selected?** Figma models the visual with `Theme = Dark | Light`. Should this be a `theme` prop (1:1 with Figma) or be derived from the app theme?
   - **A1.** Decision: **derive it from the app `colorScheme`** (`useTheme().colorScheme`) — there is no `theme` prop. Light/dark is owned by `BladeProvider` and read by every Blade component; a separate `theme` prop on the banner would be a second source of truth that can disagree with the app (e.g. a light banner in a dark app) and is inconsistent with components like `TopNav`/`Toast`. No feedback `color` and no `emphasis` props in v1. If a deliberately theme-independent, high-contrast banner is needed later, that is a separate intent prop (`color`/`emphasis`), not `theme`.
-- **Q2. `showIcon` vs `icon`.** Figma has a boolean `showIcon` and the icon is shown in all default variants. We keep `showIcon` (default `true`) to match Figma, and require an `icon` to be passed to actually render one.
-  - **A2.** Decision: keep `showIcon` (default `true`); render the leading icon only when `showIcon` and `icon` are both present.
+- **Q2. `showIcon` vs `icon`.** Figma has a boolean `showIcon` and the icon is shown in all default variants. Should the API expose a separate `showIcon` boolean alongside an optional `icon`?
+  - **A2.** Decision: **drop `showIcon`**; the icon is rendered when (and only when) the `icon` prop is provided. A separate boolean is redundant given `icon` is already optional, and aligns with `Alert` / `Badge` / `Button` which take only an optional `icon`. Consumers omit `icon` to render without one.
 - **Q3. Actions / dismiss.** Not present in Figma. Deliberately excluded from v1 to keep parity with the design and avoid the centered-alignment layout problem that a trailing control would introduce. Can be revisited in a future iteration if product needs it.
   - **A3.** Decision: no `action`, no `isDismissible`, no `onDismiss` in v1.
 

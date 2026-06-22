@@ -16,9 +16,6 @@
         control: 'select',
         options: ['center', 'left'],
       },
-      showIcon: {
-        control: 'boolean',
-      },
       accessibilityLabel: {
         control: 'text',
       },
@@ -26,7 +23,6 @@
     args: {
       theme: 'dark',
       alignment: 'center',
-      showIcon: true,
       icon: InfoIcon,
       children: 'Enter promotional text here',
     },
@@ -65,7 +61,7 @@
   name="WithoutIcon"
   args={{
     theme: 'light',
-    showIcon: false,
+    icon: undefined,
   }}
 />
 

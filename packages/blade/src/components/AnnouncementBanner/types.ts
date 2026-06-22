@@ -20,18 +20,11 @@ export type AnnouncementBannerProps = {
   alignment?: AnnouncementBannerAlignment;
 
   /**
-   * Leading icon shown before the message. Rendered only when `showIcon` is true.
+   * Leading icon shown before the message. Omit to render the banner without an icon.
    *
    * @default -
    */
   icon?: IconComponent;
-
-  /**
-   * Whether to show the leading icon.
-   *
-   * @default true
-   */
-  showIcon?: boolean;
 
   /**
    * Accessible label for the banner region, announced by screen readers.

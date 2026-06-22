@@ -19,7 +19,6 @@ const _AnnouncementBanner = (
     children,
     alignment = 'center',
     icon: Icon,
-    showIcon = true,
     accessibilityLabel = 'Announcement',
     testID,
     ...rest
@@ -34,8 +33,6 @@ const _AnnouncementBanner = (
     label: accessibilityLabel,
   });
 
-  const shouldShowIcon = showIcon && Boolean(Icon);
-
   return (
     <StyledAnnouncementBanner
       ref={ref as never}
@@ -46,7 +43,7 @@ const _AnnouncementBanner = (
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      {shouldShowIcon && Icon ? (
+      {Icon ? (
         <BaseBox
           display="flex"
           alignItems="center"
