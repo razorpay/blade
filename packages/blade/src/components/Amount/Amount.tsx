@@ -27,7 +27,6 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils/useBreakpoint';
 
-
 // `includeFontPadding: false` is a React-Native-only TextStyle field used to fix Android
 // baseline alignment. BaseText's `style` is typed as web CSSProperties, so the cast lives
 // here once instead of at every call site.
