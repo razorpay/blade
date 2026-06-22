@@ -43,10 +43,10 @@
     ...rest
   }: CheckboxGroupProps = $props();
 
-  // ── ids ── (initial-only reads of `name`)
+  // ── ids ──
   const idBase = `checkbox-group-${Math.random().toString(36).slice(2, 8)}`;
   const labelId = `${idBase}-label`;
-  const fallbackName = untrack(() => name) ?? idBase;
+  const fallbackName = $derived(name ?? idBase);
 
   // ── Controllable value[] (Chip pattern) ── (initial-only seed)
   const initialValue = untrack(() => controlledValue ?? defaultValue ?? []);
