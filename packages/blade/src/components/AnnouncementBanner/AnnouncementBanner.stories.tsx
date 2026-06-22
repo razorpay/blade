@@ -48,7 +48,6 @@ const meta: Meta<AnnouncementBannerProps> = {
   args: {
     children: 'Enter promotional text here',
     alignment: 'center',
-    showIcon: true,
     icon: AnnouncementIcon,
   },
   tags: ['autodocs'],
@@ -109,12 +108,12 @@ LeftAligned.parameters = {
 
 export const WithoutIcon = AnnouncementBannerTemplate.bind({});
 WithoutIcon.args = {
-  showIcon: false,
+  icon: undefined,
 };
 WithoutIcon.parameters = {
   docs: {
     description: {
-      story: 'The leading icon can be hidden by setting `showIcon` to false.',
+      story: 'Omit the `icon` prop to render the banner without a leading icon.',
     },
   },
 };

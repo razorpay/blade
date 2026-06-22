@@ -27,7 +27,6 @@
     theme = 'dark',
     alignment = 'center',
     icon: Icon,
-    showIcon = true,
     accessibilityLabel = 'Announcement',
     testID,
     ...rest
@@ -74,7 +73,7 @@
   {...a11yAttrs}
   {...analyticsAttrs}
 >
-  {#if showIcon && Icon}
+  {#if Icon}
     <div class={announcementBannerIconWrapperClass} aria-hidden="true">
       <Icon size="small" color={iconColorToken} />
     </div>

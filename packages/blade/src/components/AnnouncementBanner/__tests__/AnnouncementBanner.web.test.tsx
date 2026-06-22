@@ -38,11 +38,9 @@ describe('<AnnouncementBanner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should hide the icon when showIcon is false', () => {
+  it('should not render the icon when icon prop is omitted', () => {
     const { queryByRole } = renderWithTheme(
-      <AnnouncementBanner showIcon={false} icon={AnnouncementIcon}>
-        Enter promotional text here
-      </AnnouncementBanner>,
+      <AnnouncementBanner>Enter promotional text here</AnnouncementBanner>,
     );
 
     expect(queryByRole('img', { hidden: true })).not.toBeInTheDocument();

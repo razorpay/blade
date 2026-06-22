@@ -39,7 +39,7 @@ export const AnnouncementBannerKitchenSink = (): JSX.Element => {
                 <Text size="small" weight="semibold" color="surface.text.gray.muted">
                   Without icon
                 </Text>
-                <AnnouncementBanner alignment={alignment} showIcon={false}>
+                <AnnouncementBanner alignment={alignment}>
                   Enter promotional text here
                 </AnnouncementBanner>
               </Box>
