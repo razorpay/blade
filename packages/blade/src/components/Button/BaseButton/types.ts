@@ -44,6 +44,13 @@ export type BaseButtonStyleProps = {
   borderRadius: BorderRadiusValues | number;
   height?: string;
   width?: string;
+  shadowHighlightColor?: string;
+  shadowHighlightHeight?: number;
+  shadowBottomColor?: string;
+  shadowBottomHeight?: number;
+  shadowBorderColor?: string;
+  shadowRingWidth?: number;
+  isShadowGradientVisible?: boolean;
 };
 
 export type StyledBaseButtonProps = Omit<
@@ -75,6 +82,13 @@ export type StyledBaseButtonProps = Omit<
   motionEasing: EasingString;
   borderRadius: BorderRadiusValues | number;
   borderWidth?: string;
+  shadowHighlightColor?: string;
+  shadowHighlightHeight?: number;
+  shadowBottomColor?: string;
+  shadowBottomHeight?: number;
+  shadowBorderColor?: string;
+  shadowRingWidth?: number;
+  isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;
   isPressed: boolean;
 } & StyledPropsBlade &

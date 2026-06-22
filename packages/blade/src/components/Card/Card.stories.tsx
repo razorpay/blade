@@ -36,6 +36,7 @@ import {
   ArrowRightIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
+import { isReactNative } from '~utils';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
@@ -43,6 +44,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
+import { StoryScrollView } from '~utils/storybook/StoryScrollView';
 
 const Page = (): React.ReactElement => {
   return (
@@ -643,19 +645,27 @@ const CardWithOverflowExample = (): React.ReactElement => {
           <CardHeaderLeading title="Scrollable Content" />
         </CardHeader>
         <CardBody>
-          <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </Text>
-          <Text marginTop="spacing.5">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s.
-          </Text>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
+            <StoryScrollView>
+              <Text>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem
+                Ipsum.
+              </Text>
+              <Text marginTop="spacing.5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s.
+              </Text>
+            </StoryScrollView>
+          </Box>
         </CardBody>
       </Card>
 
@@ -683,15 +693,23 @@ const CardWithOverflowExample = (): React.ReactElement => {
           <CardHeaderLeading title="Vertical Scroll Only" />
         </CardHeader>
         <CardBody>
-          <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </Text>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
+            <StoryScrollView>
+              <Text>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem
+                Ipsum.
+              </Text>
+            </StoryScrollView>
+          </Box>
         </CardBody>
       </Card>
     </Box>
