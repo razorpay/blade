@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import { untrack, type Snippet } from 'svelte';
+  import { untrack, useId, type Snippet } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -31,6 +31,7 @@
     defaultChecked,
     onChange,
     children,
+    accessibilityLabel,
     helpText,
     errorText,
     isIndeterminate = false,
@@ -139,7 +140,7 @@
   const hasChildren = $derived(Boolean(children));
 
   // ── ids ──
-  const idBase = `checkbox-${Math.random().toString(36).slice(2, 8)}`;
+  const idBase = useId();
   const helpTextId = `${idBase}-help`;
   const errorTextId = `${idBase}-error`;
 
@@ -172,6 +173,7 @@
       invalid: _hasError,
       disabled: _isDisabled,
       checked: isIndeterminate ? 'mixed' : isCheckedState,
+      ...(!hasChildren && accessibilityLabel ? { label: accessibilityLabel } : {}),
       ...(_hasError ? { errorMessage: errorTextId } : {}),
       ...(showSupportingText ? { describedBy: helpTextId } : {}),
     }),

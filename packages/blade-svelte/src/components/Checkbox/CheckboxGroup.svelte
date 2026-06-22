@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { untrack } from 'svelte';
+  import { untrack, useId } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -23,6 +23,7 @@
   let {
     children,
     label,
+    accessibilityLabel,
     helpText,
     errorText,
     validationState = 'none',
@@ -44,7 +45,7 @@
   }: CheckboxGroupProps = $props();
 
   // ── ids ──
-  const idBase = `checkbox-group-${Math.random().toString(36).slice(2, 8)}`;
+  const idBase = useId();
   const labelId = `${idBase}-label`;
   const fallbackName = $derived(name ?? idBase);
 
@@ -145,6 +146,7 @@
     makeAccessible({
       role: 'group',
       labelledBy: label ? labelId : undefined,
+      label: !label ? accessibilityLabel : undefined,
     }),
   );
 </script>
@@ -165,7 +167,12 @@
             <span class={templateClasses.labelTrailing}>{@render labelTrailing()}</span>
           {/if}
         </span>
+        {#if accessibilityLabel}
+          <span class={templateClasses.srOnly}>, {accessibilityLabel}</span>
+        {/if}
       </span>
+    {:else if accessibilityLabel}
+      <span class={templateClasses.srOnly}>{accessibilityLabel}</span>
     {/if}
     <div>
       <div class={optionsClasses}>

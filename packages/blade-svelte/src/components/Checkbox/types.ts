@@ -40,6 +40,11 @@ export interface CheckboxProps extends StyledPropsBlade, DataAnalyticsAttribute 
    */
   children?: Snippet | string;
   /**
+   * Accessible label for the checkbox when no visible `children` label is provided.
+   * Mirrors the React `accessibilityLabel` prop.
+   */
+  accessibilityLabel?: string;
+  /**
    * Help text for the checkbox.
    */
   helpText?: string;
@@ -97,104 +102,117 @@ export interface CheckboxProps extends StyledPropsBlade, DataAnalyticsAttribute 
   testID?: string;
 }
 
-export interface CheckboxGroupProps extends StyledPropsBlade, DataAnalyticsAttribute {
-  /**
-   * Accepts multiple checkboxes as children.
-   */
-  children: Snippet;
-  /**
-   * Help text of the checkbox group.
-   */
-  helpText?: string;
-  /**
-   * Error text of the checkbox group.
-   * Renders when `validationState` is set to 'error'. Overrides helpText.
-   */
-  errorText?: string;
-  /**
-   * Sets the error state of the CheckboxGroup.
-   * If set to `error` it will render the `errorText` of the group,
-   * and propagate `invalid` prop to every checkbox.
-   *
-   * @default 'none'
-   */
-  validationState?: 'error' | 'none';
-  /**
-   * Renders a necessity indicator after CheckboxGroup label.
-   *
-   * @default 'none'
-   */
-  necessityIndicator?: 'required' | 'optional' | 'none';
-  /**
-   * Sets the disabled state of the CheckboxGroup.
-   * If set to `true` it propagates down to all the checkboxes.
-   *
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * Sets the required state of the CheckboxGroup.
-   *
-   * @default false
-   */
-  isRequired?: boolean;
-  /**
-   * Renders the label of the checkbox group.
-   */
-  label?: string;
-  /**
-   * Sets the position of the label.
-   *
-   * @default 'top'
-   */
-  labelPosition?: 'top' | 'left';
-  /**
-   * Initial value of the checkbox group (uncontrolled).
-   */
-  defaultValue?: string[];
-  /**
-   * Value of the checkbox group (controlled). Use `onChange` to update its value.
-   */
-  value?: string[];
-  /**
-   * The callback invoked when any of the checkbox's state changes.
-   */
-  onChange?: CheckboxGroupOnChange;
-  /**
-   * The name of the input field in a checkbox (useful for form submission).
-   */
-  name?: string;
-  /**
-   * Size of the checkboxes within the group.
-   *
-   * @default 'medium'
-   */
-  size?: CheckboxSize;
-  /**
-   * Orientation of the checkbox group.
-   *
-   * @default 'vertical'
-   */
-  orientation?: 'vertical' | 'horizontal';
-  /**
-   * Controls wrapping of the checkbox options container.
-   *
-   * @default 'nowrap'
-   */
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  /**
-   * Snippet rendered immediately after the group label (e.g. an info tooltip).
-   */
-  labelSuffix?: Snippet;
-  /**
-   * Snippet rendered trailing the group label, pushed to the far end (e.g. a link).
-   */
-  labelTrailing?: Snippet;
-  /**
-   * Test ID for the outer wrapper element.
-   */
-  testID?: string;
-}
+type CheckboxGroupPropsCommon = StyledPropsBlade &
+  DataAnalyticsAttribute & {
+    /**
+     * Accepts multiple checkboxes as children.
+     */
+    children: Snippet;
+    /**
+     * Help text of the checkbox group.
+     */
+    helpText?: string;
+    /**
+     * Error text of the checkbox group.
+     * Renders when `validationState` is set to 'error'. Overrides helpText.
+     */
+    errorText?: string;
+    /**
+     * Sets the error state of the CheckboxGroup.
+     * If set to `error` it will render the `errorText` of the group,
+     * and propagate `invalid` prop to every checkbox.
+     *
+     * @default 'none'
+     */
+    validationState?: 'error' | 'none';
+    /**
+     * Renders a necessity indicator after CheckboxGroup label.
+     *
+     * @default 'none'
+     */
+    necessityIndicator?: 'required' | 'optional' | 'none';
+    /**
+     * Sets the disabled state of the CheckboxGroup.
+     * If set to `true` it propagates down to all the checkboxes.
+     *
+     * @default false
+     */
+    isDisabled?: boolean;
+    /**
+     * Sets the required state of the CheckboxGroup.
+     *
+     * @default false
+     */
+    isRequired?: boolean;
+    /**
+     * Sets the position of the label.
+     *
+     * @default 'top'
+     */
+    labelPosition?: 'top' | 'left';
+    /**
+     * Initial value of the checkbox group (uncontrolled).
+     */
+    defaultValue?: string[];
+    /**
+     * Value of the checkbox group (controlled). Use `onChange` to update its value.
+     */
+    value?: string[];
+    /**
+     * The callback invoked when any of the checkbox's state changes.
+     */
+    onChange?: CheckboxGroupOnChange;
+    /**
+     * The name of the input field in a checkbox (useful for form submission).
+     */
+    name?: string;
+    /**
+     * Size of the checkboxes within the group.
+     *
+     * @default 'medium'
+     */
+    size?: CheckboxSize;
+    /**
+     * Orientation of the checkbox group.
+     *
+     * @default 'vertical'
+     */
+    orientation?: 'vertical' | 'horizontal';
+    /**
+     * Controls wrapping of the checkbox options container.
+     *
+     * @default 'nowrap'
+     */
+    flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+    /**
+     * Snippet rendered immediately after the group label (e.g. an info tooltip).
+     */
+    labelSuffix?: Snippet;
+    /**
+     * Snippet rendered trailing the group label, pushed to the far end (e.g. a link).
+     */
+    labelTrailing?: Snippet;
+    /**
+     * Test ID for the outer wrapper element.
+     */
+    testID?: string;
+  };
+
+type CheckboxGroupPropsWithLabel = {
+  /** Visible label for the checkbox group. */
+  label: string;
+  /** Additional accessibility label, rendered as screen-reader-only text alongside the visible label. */
+  accessibilityLabel?: string;
+};
+
+type CheckboxGroupPropsWithA11yLabel = {
+  label?: undefined;
+  /** Accessibility label used as the group's accessible name when no visible label is provided. */
+  accessibilityLabel: string;
+};
+
+export type CheckboxGroupProps = (CheckboxGroupPropsWithLabel | CheckboxGroupPropsWithA11yLabel) &
+  CheckboxGroupPropsCommon;
 
 /**
  * Selection state shared via context to child Checkboxes inside a CheckboxGroup.
@@ -207,16 +225,13 @@ export type State = {
 };
 
 export type CheckboxGroupContextType = Pick<
-  CheckboxGroupProps,
+  CheckboxGroupPropsCommon,
   | 'validationState'
   | 'isDisabled'
   | 'isRequired'
   | 'labelPosition'
   | 'name'
   | 'necessityIndicator'
-  | 'defaultValue'
-  | 'value'
-  | 'onChange'
   | 'size'
 > & { state?: State };
 
