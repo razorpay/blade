@@ -17,6 +17,7 @@ const BOTTOM_DOCK_SAFE_AREA_FALLBACK = '23px';
 
 const StyledBottomDock = styled(BaseBox)<{ $boxShadowColor: string }>(({ $boxShadowColor }) => {
   return {
+    // Figma _components/Bottom Nav: 0px -8px 24px 0px _styles.bottomNav.color.
     boxShadow: `0px ${BOTTOM_DOCK_SHADOW_Y_OFFSET}px ${BOTTOM_DOCK_SHADOW_BLUR_RADIUS}px 0px ${$boxShadowColor}`,
     // Figma's Dragger is device chrome; reserve its layout space without rendering the pill.
     paddingBottom: `max(env(safe-area-inset-bottom), ${BOTTOM_DOCK_SAFE_AREA_FALLBACK})`,

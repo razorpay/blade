@@ -13,6 +13,11 @@ import { metaAttribute } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
+const BOTTOM_DOCK_SHADOW_Y_OFFSET = -8;
+const BOTTOM_DOCK_SHADOW_BLUR_RADIUS = 24;
+const BOTTOM_DOCK_SHADOW_OPACITY = 1;
+const BOTTOM_DOCK_ANDROID_ELEVATION = 8;
+
 const StyledBottomDock = styled(View)<{
   backgroundColor: string;
   borderTopWidth: number;
@@ -44,18 +49,19 @@ const _BottomDock = (
 
   const shadowStyle = React.useMemo<ViewStyle>(() => {
     if (Platform.OS === 'ios') {
+      // Figma _components/Bottom Nav: 0px -8px 24px 0px _styles.bottomNav.color.
       return {
         shadowColor:
           colorScheme === 'light'
             ? globalColors.neutral.blueGrayLight.a912
             : globalColors.neutral.black[100],
-        shadowOffset: { width: 0, height: -8 },
-        shadowRadius: 24,
-        shadowOpacity: 1,
+        shadowOffset: { width: 0, height: BOTTOM_DOCK_SHADOW_Y_OFFSET },
+        shadowRadius: BOTTOM_DOCK_SHADOW_BLUR_RADIUS,
+        shadowOpacity: BOTTOM_DOCK_SHADOW_OPACITY,
       };
     }
 
-    return { elevation: 8 };
+    return { elevation: BOTTOM_DOCK_ANDROID_ELEVATION };
   }, [colorScheme]);
 
   return (
