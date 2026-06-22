@@ -336,8 +336,8 @@ const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({
   return (
     <TextInputComponent
       {...args}
-      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+      leadingIcon={iconMap[leadingIcon as unknown as string]}
+      trailingIcon={iconMap[trailingIcon as unknown as string]}
     />
   );
 };
@@ -425,8 +425,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        leadingIcon={iconMap[leadingIcon as unknown as string]}
+        trailingIcon={iconMap[trailingIcon as unknown as string]}
         size="medium"
       />
       <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
@@ -434,8 +434,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        leadingIcon={iconMap[leadingIcon as unknown as string]}
+        trailingIcon={iconMap[trailingIcon as unknown as string]}
         size="large"
       />
     </Box>
@@ -605,7 +605,8 @@ inputRef.parameters = {
 
 // Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
 const isValidEmail = (email: string): boolean => {
-  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regex.test(email);
 };
 
@@ -830,6 +831,38 @@ TextInputWithLabelSuffixTrailing.args = {
     </Tooltip>
   ),
   labelTrailing: <Link size="small">Learn more</Link>,
+};
+
+export const TextInputWithFocusRing: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <TextInputComponent
+        label="Focused Input (autoFocus)"
+        placeholder="This input is focused"
+        autoFocus
+        helpText="On React Native this input shows the expanding focus ring animation (border expands outward 0→4px and thickens on focus)"
+      />
+      <TextInputComponent
+        label="Unfocused Input"
+        placeholder="Tap to see the focus ring animate in"
+      />
+      <TextInputComponent
+        label="Error State"
+        placeholder="Error input"
+        validationState="error"
+        errorText="This field is required"
+      />
+    </Box>
+  );
+};
+TextInputWithFocusRing.storyName = 'With Focus Ring (RN)';
+TextInputWithFocusRing.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates the expanding focus ring animation on React Native. When an input receives focus, the border expands outward (0→4px) and thickens from thin to thick. Tap/click any input to see the animation.',
+    },
+  },
 };
 
 export const TextInputShowcase: StoryFn<typeof TextInputComponent> = () => {
