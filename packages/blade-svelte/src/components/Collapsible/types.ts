@@ -8,7 +8,7 @@ type CollapsibleLinkColor = 'primary' | 'white' | 'neutral' | 'negative' | 'posi
 type CollapsibleLinkSize = 'xsmall' | 'small' | 'medium' | 'large';
 
 export type CollapsibleTextColor = TextColors;
-export type CollapsibleTextSize = 'small' | 'medium' | 'large';
+export type CollapsibleTextSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type CollapsibleTextWeight = 'regular' | 'medium' | 'semibold';
 
 export type CollapsibleProps = {

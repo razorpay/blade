@@ -39,11 +39,38 @@ export const getCollapsibleTextClasses = cva(styles.trigger, {
   },
 });
 
+/**
+ * Inner flex wrapper for Collapsible. Replaces inline style for flex-direction
+ * and min/max width restrictions — driven by `direction` and
+ * `_shouldApplyWidthRestrictions` props.
+ */
+export const getCollapsibleInnerClasses = cva(styles.inner, {
+  variants: {
+    direction: {
+      bottom: styles.innerDirectionBottom,
+      top: styles.innerDirectionTop,
+    },
+    shouldApplyWidthRestrictions: {
+      true: styles.innerWidthRestricted,
+      false: styles.innerWidthUnrestricted,
+    },
+  },
+  defaultVariants: {
+    direction: 'bottom',
+    shouldApplyWidthRestrictions: true,
+  },
+});
+
 export const getCollapsibleTemplateClasses = (): Record<string, string> => ({
   triggerChevron: styles.triggerChevron,
   chevronExpanded: styles.chevronExpanded,
   bodyContent: styles.bodyContent,
   bodyInner: styles.bodyInner,
+  inner: styles.inner,
+  innerDirectionBottom: styles.innerDirectionBottom,
+  innerDirectionTop: styles.innerDirectionTop,
+  innerWidthRestricted: styles.innerWidthRestricted,
+  innerWidthUnrestricted: styles.innerWidthUnrestricted,
 });
 
 export type CollapsibleChevronVariants = {
@@ -52,4 +79,9 @@ export type CollapsibleChevronVariants = {
 
 export type CollapsibleTextVariants = {
   isDisabled?: boolean;
+};
+
+export type CollapsibleInnerVariants = {
+  direction?: 'bottom' | 'top';
+  shouldApplyWidthRestrictions?: boolean;
 };

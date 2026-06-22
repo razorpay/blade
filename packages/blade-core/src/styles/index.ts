@@ -124,9 +124,14 @@ export {
   getCollapsibleChevronClasses,
   getCollapsibleBodyClasses,
   getCollapsibleTextClasses,
+  getCollapsibleInnerClasses,
   getCollapsibleTemplateClasses,
 } from './Collapsible';
-export type { CollapsibleChevronVariants, CollapsibleTextVariants } from './Collapsible';
+export type {
+  CollapsibleChevronVariants,
+  CollapsibleTextVariants,
+  CollapsibleInnerVariants,
+} from './Collapsible';
 export {
   skeletonStyles,
   skeletonClass,

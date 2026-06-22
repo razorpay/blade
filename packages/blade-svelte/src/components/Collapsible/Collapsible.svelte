@@ -5,6 +5,7 @@
     makeAnalyticsAttribute,
     getStyledPropsClasses,
   } from '@razorpay/blade-core/utils';
+  import { getCollapsibleInnerClasses } from '@razorpay/blade-core/styles';
   import { setCollapsibleContext } from './context';
   import type { CollapsibleProps } from './types';
 
@@ -63,23 +64,16 @@
   const styledProps = $derived(getStyledPropsClasses(rest));
   const rootClass = $derived((styledProps.classes ?? []).filter(Boolean).join(' '));
 
-  // Width restrictions mirror React: min-width spacing.200, responsive max-width.
-  const MIN_WIDTH = 'var(--spacing-2)';
-  const MAX_WIDTH = 'min(calc(100vw - var(--spacing-10)), 1136px)';
-
-  const innerStyle = $derived(
-    [
-      'display: flex',
-      `flex-direction: ${direction === 'bottom' ? 'column' : 'column-reverse'}`,
-      'align-items: flex-start',
-      `min-width: ${_shouldApplyWidthRestrictions ? MIN_WIDTH : '0px'}`,
-      `max-width: ${_shouldApplyWidthRestrictions ? MAX_WIDTH : 'none'}`,
-    ].join('; '),
+  const innerClass = $derived(
+    getCollapsibleInnerClasses({
+      direction,
+      shouldApplyWidthRestrictions: _shouldApplyWidthRestrictions,
+    }),
   );
 </script>
 
 <div class={rootClass} {...metaAttrs} {...analyticsAttrs}>
-  <div style={innerStyle}>
+  <div class={innerClass}>
     {@render children()}
   </div>
 </div>
