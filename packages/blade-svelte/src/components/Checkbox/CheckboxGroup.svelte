@@ -69,15 +69,15 @@
       if (isDisabled) return;
       if (!checkedValues.includes(val)) {
         checkedValues = [...checkedValues, val];
+        onChange?.({ name: fallbackName, values: checkedValues });
       }
-      onChange?.({ name: fallbackName, values: checkedValues });
     },
     removeValue(val: string) {
       if (isDisabled) return;
       if (checkedValues.includes(val)) {
         checkedValues = checkedValues.filter((existing) => existing !== val);
+        onChange?.({ name: fallbackName, values: checkedValues });
       }
-      onChange?.({ name: fallbackName, values: checkedValues });
     },
   };
 

@@ -1,3 +1,7 @@
+<script module lang="ts">
+  declare const __DEV__: boolean;
+</script>
+
 <script lang="ts">
   import { untrack, type Snippet } from 'svelte';
   import {
@@ -43,8 +47,7 @@
 
   const groupProps = getCheckboxGroupContext();
 
-  const isDev = typeof process === 'undefined' || process.env.NODE_ENV !== 'production';
-  if (isDev) {
+  if (typeof __DEV__ !== 'undefined' && __DEV__) {
     const hasBannedProp =
       validationState !== undefined ||
       name !== undefined ||
@@ -129,11 +132,6 @@
       internalChecked = next;
     }
     onChange?.({ isChecked: next, value, event });
-    // Reconcile the DOM checkbox with the source-of-truth after onChange runs,
-    // in case a controlled consumer rejected the toggle (Switch pattern).
-    if (inputEl && inputEl.checked !== isCheckedState) {
-      inputEl.checked = isCheckedState;
-    }
   }
 
   const isStringChildren = $derived(typeof children === 'string');
