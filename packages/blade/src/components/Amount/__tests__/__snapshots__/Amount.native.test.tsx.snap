@@ -45,7 +45,7 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -57,7 +57,7 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -215,7 +215,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -227,7 +227,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -385,7 +385,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -397,7 +397,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -591,7 +591,7 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -603,7 +603,7 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -761,7 +761,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -773,7 +773,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -931,7 +931,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -943,7 +943,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1101,7 +1101,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1113,7 +1113,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1260,7 +1260,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="semibold"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1272,7 +1272,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1419,7 +1419,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={75}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1431,7 +1431,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 17,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1578,7 +1578,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="semibold"
-        lineHeight={25}
+        lineHeight={75}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1590,7 +1590,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 17,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1737,7 +1737,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="regular"
-        lineHeight={200}
+        lineHeight={500}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1749,7 +1749,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 24,
+              "lineHeight": 26,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1896,7 +1896,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="semibold"
-        lineHeight={200}
+        lineHeight={500}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -1908,7 +1908,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 24,
+              "lineHeight": 26,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2055,7 +2055,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
-        lineHeight={75}
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2067,7 +2067,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 17,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2214,7 +2214,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="semibold"
-        lineHeight={75}
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2226,7 +2226,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 17,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2373,7 +2373,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={700}
         fontWeight="regular"
-        lineHeight={700}
+        lineHeight={900}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2385,7 +2385,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 38,
+              "lineHeight": 42,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2543,7 +2543,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
-        lineHeight={75}
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2555,7 +2555,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 17,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2713,7 +2713,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
-        lineHeight={75}
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2725,7 +2725,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 17,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2831,7 +2831,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -2843,7 +2843,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -3001,7 +3001,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -3013,7 +3013,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -3290,7 +3290,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -3302,7 +3302,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -3481,7 +3481,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
-        lineHeight={25}
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
@@ -3493,7 +3493,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 13,
+              "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
