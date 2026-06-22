@@ -13,6 +13,10 @@ function getAbsolutePath(value) {
 
 /** @type { import('@storybook/svelte-vite').StorybookConfig } */
 const config = {
+  core: {
+    disableWhatsNewNotifications: true,
+    disableTelemetry: true,
+  },
   stories: ['../src/**/*.stories.@(js|ts|svelte|mdx)'],
   addons: [
     getAbsolutePath('@storybook/addon-svelte-csf'),

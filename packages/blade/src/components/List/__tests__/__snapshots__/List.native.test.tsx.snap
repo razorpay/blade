@@ -139,7 +139,10 @@ exports[`<List /> should render List with default properties 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -319,7 +322,10 @@ exports[`<List /> should render List with default properties 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -497,7 +503,10 @@ exports[`<List /> should render List with default properties 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -691,7 +700,10 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -905,7 +917,10 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -1093,7 +1108,10 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -1354,7 +1372,10 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -1542,7 +1563,10 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -1716,7 +1740,10 @@ exports[`<List /> should render large ordered List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -1896,7 +1923,10 @@ exports[`<List /> should render large ordered List 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -2074,7 +2104,10 @@ exports[`<List /> should render large ordered List 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -2258,7 +2291,10 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -2405,7 +2441,10 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -2552,7 +2591,10 @@ exports[`<List /> should render large ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -2738,7 +2780,10 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -2910,7 +2955,10 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -3088,7 +3136,10 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -3268,7 +3319,10 @@ exports[`<List /> should render medium ordered List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -3448,7 +3502,10 @@ exports[`<List /> should render medium ordered List 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -3626,7 +3683,10 @@ exports[`<List /> should render medium ordered List 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -3810,7 +3870,10 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -3957,7 +4020,10 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -4104,7 +4170,10 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -4290,7 +4359,10 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -4462,7 +4534,10 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -4640,7 +4715,10 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -4820,7 +4898,10 @@ exports[`<List /> should render small ordered List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -5000,7 +5081,10 @@ exports[`<List /> should render small ordered List 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -5178,7 +5262,10 @@ exports[`<List /> should render small ordered List 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -5362,7 +5449,10 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -5509,7 +5599,10 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -5656,7 +5749,10 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -5842,7 +5938,10 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -6014,7 +6113,10 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -6192,7 +6294,10 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
@@ -6386,7 +6491,10 @@ exports[`<List /> should render unordered List of small size 1`] = `
               [
                 {
                   "display": "flex",
+                  "flexBasis": 0,
                   "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "flexWrap": "wrap",
                 },
               ]
@@ -6566,7 +6674,10 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     [
                       {
                         "display": "flex",
+                        "flexBasis": 0,
                         "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                         "flexWrap": "wrap",
                       },
                     ]
@@ -6744,7 +6855,10 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           [
                             {
                               "display": "flex",
+                              "flexBasis": 0,
                               "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "flexWrap": "wrap",
                             },
                           ]
