@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 12.107.2
+
+### Patch Changes
+
+- 629a77e9d: fix(rn): fix ListItem text overflow on React Native
+- aab9b4c79: fix(rn): card header subtitle wraps correctly, footer buttons stay within bounds
+- 5f8e7401d: fix(rn): display tags in a horizontal row in Tag story
+- 48be721d8: fix(rn): spark upgrade RN easy layout fixes
+- c8b01213f: fix(rn): implement CounterInput for React Native with text centering, semibold weight, and slide animation
+- c6393ea73: fix(rn): fix double border on selected ChipGroup items
+- 9566bd6e3: fix(rn): fix Popover animation flash and story flex layout
+- f8907d623: feat(native): add native shadow overlay to match web 3D styling
+- 1a370c524: fix(rn): make overflow cards scrollable in Card story
+- 58ba1549d: feat(icons): add AgentStudioIcon and 6 filled icon variants
+- 1cd4cafa7: fix(native): add expanding focus ring animation for all inputs
+
 ## 12.107.1
 
 ### Patch Changes
