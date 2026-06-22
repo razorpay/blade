@@ -47,6 +47,14 @@ export {
   getButtonIconOnlySize,
 } from './Button';
 export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export {
+  iconButtonStyles,
+  getIconButtonClasses,
+  getIconButtonTemplateClasses,
+  getIconButtonIconColorToken,
+  highlightedButtonSizeMap,
+} from './IconButton';
+export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -277,6 +285,27 @@ export type {
   ToastColor as ToastColorVariant,
   ToastType as ToastTypeVariant,
 } from './Toast';
+export {
+  radioIconWrapperStyles,
+  getRadioIconWrapperClasses,
+  getRadioIconVariant,
+  radioTitleStyles,
+  getRadioTitleClasses,
+  radioSupportTextWrapperStyles,
+  getRadioSupportTextWrapperClasses,
+  radioSupportTextStyles,
+  getRadioSupportTextClasses,
+  getRadioTemplateClasses,
+  radioGroupFieldStyles,
+  getRadioGroupFieldClasses,
+  radioGroupItemsStyles,
+  getRadioGroupItemsClasses,
+  getRadioGroupLabelSizeClass,
+  getRadioGroupHintTextClass,
+  getRadioGroupHintMarginClass,
+  getRadioGroupTemplateClasses,
+} from './Radio';
+export type { RadioSize, RadioVariant, RadioIconWrapperVariants } from './Radio';
 export {
   BOTTOM_SHEET_EASING,
   BOTTOM_SHEET_Z_INDEX,

@@ -43,7 +43,6 @@ jobs:
           import os, subprocess, json, sys, urllib.parse
 
           LABEL = "✨ Agentic Merge Ready ✨"
-          SLASH_REVIEWER = "rzp-slash-reviewer"
           # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
           AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
           # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
@@ -96,7 +95,7 @@ jobs:
               body = os.environ.get("REVIEW_BODY", "")
               print(f"Review by '{author}' state='{state}' PR #{pr_number}")
 
-              if normalize_user(author) == SLASH_REVIEWER:
+              if normalize_user(author) in AGENT_USERS:
                   # Approved either via actual approval state or "Status: Approved" in review body
                   is_approved = state == "approved" or "status: approved" in body.lower()
                   if is_approved:
@@ -131,7 +130,7 @@ jobs:
               body = os.environ.get("COMMENT_BODY", "")
               print(f"PR comment by '{author}' on PR #{pr_number}")
 
-              if normalize_user(author) == SLASH_REVIEWER and "status: approved" in body.lower():
+              if normalize_user(author) in AGENT_USERS and "status: approved" in body.lower():
                   # Slash-reviewer can also signal approval via an issue comment
                   print("Slash-reviewer posted 'Status: Approved' — checking for human comments...")
                   if not has_human_comments(repo, pr_number):
