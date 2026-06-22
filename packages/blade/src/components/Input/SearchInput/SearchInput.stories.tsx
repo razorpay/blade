@@ -11,6 +11,8 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import { isReactNative } from '~utils';
 import {
   ActionList,
   ActionListItem,
@@ -496,6 +498,55 @@ SearchInputWithControlledDropdown.storyName = 'With Controlled Dropdown';
 
 export const SearchInputWithDisabledDropdown = SearchInputWithDisabledDropdownTemplate.bind({});
 SearchInputWithDisabledDropdown.storyName = 'With Dropdown Disabled';
+
+const SearchInputWithClearAndDropdownTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+  const [searchValue, setSearchValue] = React.useState('Transactions');
+
+  return (
+    <SearchInputComponent
+      label="Search"
+      placeholder="Search here"
+      {...args}
+      value={searchValue}
+      onChange={({ value }) => setSearchValue(value as string)}
+      onClearButtonClick={() => setSearchValue('')}
+      trailing={
+        <Dropdown>
+          <InputDropdownButton defaultValue="home" />
+          {isReactNative() ? (
+            <BottomSheet>
+              <BottomSheetHeader title="Filter by section" />
+              <BottomSheetBody>
+                <ActionList>
+                  <ActionListItem title="Home" value="home" />
+                  <ActionListItem title="Pricing" value="pricing" />
+                </ActionList>
+              </BottomSheetBody>
+            </BottomSheet>
+          ) : (
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </DropdownOverlay>
+          )}
+        </Dropdown>
+      }
+    />
+  );
+};
+
+export const SearchInputWithClearAndDropdown = SearchInputWithClearAndDropdownTemplate.bind({});
+SearchInputWithClearAndDropdown.storyName = 'With Clear Button & Dropdown';
+SearchInputWithClearAndDropdown.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates the clear button and trailing BottomSheet rendered side-by-side correctly on React Native when both are present simultaneously. On mobile, the Dropdown uses BottomSheet as its overlay instead of DropdownOverlay.',
+    },
+  },
+};
 
 const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () => {
   const [searchTerm, setSearchTerm] = React.useState('');

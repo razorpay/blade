@@ -717,3 +717,54 @@ const CardWithOverflowExample = (): React.ReactElement => {
 };
 
 export const CardWithOverflow = CardWithOverflowExample.bind({});
+
+const CardWithLongSubtitleAndFooterActionsTemplate: StoryFn<typeof Card> = () => {
+  return (
+    <Box maxWidth="400px">
+      <Card>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Payment Links"
+            subtitle="Share payment link via an email, SMS, messenger, chatbot, or any other channel of your choice to accept payments."
+            prefix={<CardHeaderIcon icon={ArrowRightIcon} />}
+          />
+          <CardHeaderTrailing visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payment Links and share them with your customers to start accepting
+            payments instantly without any coding.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Accept',
+                onClick: () => console.log('Primary action'),
+              },
+              secondary: {
+                text: 'Cancel',
+                onClick: () => console.log('Secondary action'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </Box>
+  );
+};
+
+export const CardWithLongSubtitleAndFooterActions = CardWithLongSubtitleAndFooterActionsTemplate.bind(
+  {},
+);
+CardWithLongSubtitleAndFooterActions.storyName = 'With Long Subtitle & Footer Actions';
+CardWithLongSubtitleAndFooterActions.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates that CardHeaderLeading subtitle wraps correctly and CardFooterTrailing buttons stay within bounds on React Native, even in constrained width containers.',
+    },
+  },
+};
