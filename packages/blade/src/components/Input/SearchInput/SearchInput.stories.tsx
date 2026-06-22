@@ -12,6 +12,7 @@ import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import { isReactNative } from '~utils';
 import {
   ActionList,
   ActionListItem,
@@ -512,15 +513,24 @@ const SearchInputWithClearAndDropdownTemplate: StoryFn<typeof SearchInputCompone
       trailing={
         <Dropdown>
           <InputDropdownButton defaultValue="home" />
-          <BottomSheet>
-            <BottomSheetHeader title="Filter by section" />
-            <BottomSheetBody>
+          {isReactNative() ? (
+            <BottomSheet>
+              <BottomSheetHeader title="Filter by section" />
+              <BottomSheetBody>
+                <ActionList>
+                  <ActionListItem title="Home" value="home" />
+                  <ActionListItem title="Pricing" value="pricing" />
+                </ActionList>
+              </BottomSheetBody>
+            </BottomSheet>
+          ) : (
+            <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Home" value="home" />
                 <ActionListItem title="Pricing" value="pricing" />
               </ActionList>
-            </BottomSheetBody>
-          </BottomSheet>
+            </DropdownOverlay>
+          )}
         </Dropdown>
       }
     />
