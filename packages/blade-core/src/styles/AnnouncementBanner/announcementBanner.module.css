@@ -7,15 +7,12 @@
   width: 100%;
   box-sizing: border-box;
   padding: var(--spacing-3) var(--spacing-5); /* 8px vertical, 16px horizontal */
-}
-
-/* Theme */
-.theme-dark {
-  background-color: var(--interactive-background-static-black-faded-highlighted);
-}
-
-.theme-light {
   background-color: var(--surface-background-gray-subtle);
+}
+
+/* Dark color scheme — driven by data-theme on body (matches React's useTheme colorScheme) */
+:global(body[data-theme='dark']) .announcement-banner {
+  background-color: var(--interactive-background-static-black-faded-highlighted);
 }
 
 /* Alignment */

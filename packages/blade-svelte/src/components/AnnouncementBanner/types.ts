@@ -2,7 +2,6 @@ import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../Icons';
 
-export type AnnouncementBannerTheme = 'dark' | 'light';
 export type AnnouncementBannerAlignment = 'center' | 'left';
 
 export interface AnnouncementBannerProps extends StyledPropsBlade {
@@ -11,14 +10,6 @@ export interface AnnouncementBannerProps extends StyledPropsBlade {
    * Keep it short — the banner is single-line.
    */
   children: Snippet | string;
-
-  /**
-   * Colour treatment of the banner.
-   * `dark` renders a translucent dark background with light text,
-   * `light` renders a subtle gray background with dark text.
-   * @default 'dark'
-   */
-  theme?: AnnouncementBannerTheme;
 
   /**
    * Horizontal alignment of the banner content.
