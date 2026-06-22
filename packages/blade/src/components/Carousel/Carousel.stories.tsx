@@ -679,19 +679,23 @@ export const CarouselInScrollView: StoryFn<typeof CarouselComponent> = () => {
   const items = [
     {
       title: 'Instant Payments',
-      body: 'Accept payments from 100+ payment modes including UPI, cards, netbanking, and wallets.',
+      body:
+        'Accept payments from 100+ payment modes including UPI, cards, netbanking, and wallets.',
     },
     {
       title: 'Smart Analytics',
-      body: 'Get real-time insights into your payment performance with detailed dashboards and reports.',
+      body:
+        'Get real-time insights into your payment performance with detailed dashboards and reports.',
     },
     {
       title: 'International Support',
-      body: 'Accept international payments in 100+ currencies with automatic exchange rate conversion.',
+      body:
+        'Accept international payments in 100+ currencies with automatic exchange rate conversion.',
     },
     {
       title: 'Developer Friendly',
-      body: 'Integrate with our APIs in minutes using SDKs available for all major programming languages.',
+      body:
+        'Integrate with our APIs in minutes using SDKs available for all major programming languages.',
     },
   ];
 
