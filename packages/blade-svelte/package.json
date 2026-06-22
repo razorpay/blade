@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-svelte",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",
-    "@razorpay/blade-core": ">=0.7.0",
+    "@razorpay/blade-core": ">=0.7.1",
     "@razorpay/i18nify-js": "1.12.3",
     "@use-gesture/vanilla": "10.2.24",
     "body-scroll-lock-upgrade": "1.1.0",
