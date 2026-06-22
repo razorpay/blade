@@ -1,5 +1,13 @@
 # @razorpay/blade-core
 
+## 0.7.1
+
+### Patch Changes
+
+- 19e2b963e: feat(blade-svelte): Accordion enhancements — card surface filled variant, AvatarGroup in titleSuffix, full-width divider, gray body background prop
+- b05f5f919: feat(blade-svelte): add BottomSheet component
+- b50dad37b: feat(blade-svelte): add IconButton component
+
 ## 0.7.0
 
 ### Minor Changes
