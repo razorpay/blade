@@ -320,3 +320,44 @@ const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
 };
 export const ListWithListItemText = ListWithListItemTextTemplate.bind({});
 ListWithListItemText.storyName = 'With ListItemText';
+
+const ListWithLongTextTemplate: StoryFn<typeof List> = ({ ...args }) => {
+  return (
+    <BaseBox maxWidth="300px">
+      <List variant="unordered" {...args}>
+        <ListItem>
+          Accept payments via credit cards, debit cards, UPI, wallets, and net banking all through a
+          single integration
+        </ListItem>
+        <ListItem>
+          Settlements are processed within T+2 business days directly to your registered bank
+          account
+        </ListItem>
+        <ListItem>
+          Supports international payments in 100+ currencies with automatic exchange rate conversion
+          <List variant="unordered" {...args}>
+            <ListItem>USD, EUR, GBP, JPY, AUD and many more currencies accepted globally</ListItem>
+            <ListItem>
+              Real-time exchange rates applied at the time of transaction settlement
+            </ListItem>
+          </List>
+        </ListItem>
+        <ListItem>
+          Comprehensive fraud detection and prevention using machine learning models trained on
+          millions of transactions
+        </ListItem>
+      </List>
+    </BaseBox>
+  );
+};
+
+export const ListWithLongText = ListWithLongTextTemplate.bind({});
+ListWithLongText.storyName = 'With Long Text (No Overflow)';
+ListWithLongText.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates that ListItem text wraps correctly without overflow on React Native when list items contain long text content.',
+    },
+  },
+};
