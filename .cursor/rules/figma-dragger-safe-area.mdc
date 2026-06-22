@@ -1,0 +1,18 @@
+---
+description: Treat Figma Dragger components as safe-area spacing in Blade component code
+globs: packages/blade/src/components/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Figma Dragger Means Safe-Area Spacing
+
+When adapting Figma designs for Blade components, do not render a `Dragger`, home indicator, or pill-shaped indicator element in code.
+
+If a Figma node includes a `Dragger` component, treat it as device chrome/reference only:
+
+- On React Native, reserve the bottom space with `useSafeAreaInsets()` from `react-native-safe-area-context`.
+- On web, reserve the bottom space with CSS safe-area padding plus a fallback for the Dragger's layout space, e.g. `padding-bottom: max(env(safe-area-inset-bottom), 23px)`.
+- Keep the spacing behavior in the shared surface/container layer when possible, not in each consumer.
+- Do not expose Dragger-related props in public component APIs.
+
+The rendered output should take the bottom safe-area space but should not include the actual Dragger visual element.
