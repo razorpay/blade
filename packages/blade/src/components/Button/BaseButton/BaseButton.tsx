@@ -305,11 +305,11 @@ const getProps = ({
     const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
     if (shadowTokens.length === 0) return {};
 
-    let highlightColor: string | undefined;
+    let highlightColor: string | undefined,
+      bottomColor: string | undefined,
+      borderColor: string | undefined;
     let highlightHeight = 0;
-    let bottomColor: string | undefined;
     let bottomHeight = 0;
-    let borderColor: string | undefined;
     let ringWidth = 0;
 
     for (const shadow of shadowTokens) {

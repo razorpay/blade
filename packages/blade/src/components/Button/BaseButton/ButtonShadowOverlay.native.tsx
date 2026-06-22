@@ -1,13 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Svg, {
-  Defs,
-  RadialGradient,
-  LinearGradient,
-  Stop,
-  Rect,
-  Mask,
-} from 'react-native-svg';
+import Svg, { Defs, RadialGradient, LinearGradient, Stop, Rect, Mask } from 'react-native-svg';
 
 type ButtonShadowOverlayProps = {
   borderRadius: number;
@@ -48,14 +41,7 @@ const ButtonShadowOverlay = ({
           <Rect x="0" y="80%" width="100%" height="20%" fill="url(#bottomFade)" />
         </Mask>
         {showGradient ? (
-          <RadialGradient
-            id="btnGlow"
-            cx={0}
-            cy={0}
-            rx={64}
-            ry={64}
-            gradientUnits="userSpaceOnUse"
-          >
+          <RadialGradient id="btnGlow" cx={0} cy={0} rx={64} ry={64} gradientUnits="userSpaceOnUse">
             <Stop offset="0" stopColor="#ffffff" stopOpacity={0.18} />
             <Stop offset="1" stopColor="#ffffff" stopOpacity={0} />
           </RadialGradient>
