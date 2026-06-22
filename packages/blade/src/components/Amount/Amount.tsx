@@ -20,6 +20,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
 import { opacity } from '~tokens/global';
 import type { FontFamily, FontSize } from '~tokens/global';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -201,9 +202,9 @@ const AmountValue = ({
       );
     }
 
-    // RN path returned early above, so this is always the web path — React.Fragment directly.
+    const AmountWrapper = isReactNative() ? Text : React.Fragment;
     return (
-      <React.Fragment>
+      <AmountWrapper>
         <BaseText
           fontSize={normalAmountSizes[type][size]}
           fontWeight={weight}
@@ -225,7 +226,7 @@ const AmountValue = ({
           {amount.decimal}
           {amount.fraction}
         </BaseText>
-      </React.Fragment>
+      </AmountWrapper>
     );
   }
 
