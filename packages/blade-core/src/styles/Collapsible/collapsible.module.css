@@ -32,9 +32,24 @@
   opacity: 1;
 }
 
-/* Inner content area – margin (not padding) is applied inline based on direction */
+/* Inner content area – margin is direction-aware via CVA compoundVariants. */
 .bodyInner {
   display: block;
+}
+
+.bodyInnerMarginBottom {
+  margin-top: var(--spacing-4);
+  margin-bottom: 0px;
+}
+
+.bodyInnerMarginTop {
+  margin-top: 0px;
+  margin-bottom: var(--spacing-4);
+}
+
+.bodyInnerNoMargin {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 /* Text trigger used by CollapsibleText – full-width row with text + chevron.

@@ -40,6 +40,40 @@ export const getCollapsibleTextClasses = cva(styles.trigger, {
 });
 
 /**
+ * Inner content margin wrapper for CollapsibleBody. Margin top/bottom depends on
+ * `direction` and `hasMargin`. Encoded as CVA compoundVariants instead of
+ * inline styles.
+ */
+export const getCollapsibleBodyInnerClasses = cva(styles.bodyInner, {
+  variants: {
+    direction: {
+      bottom: null,
+      top: null,
+    },
+    hasMargin: {
+      true: null,
+      false: styles.bodyInnerNoMargin,
+    },
+  },
+  compoundVariants: [
+    {
+      direction: 'bottom',
+      hasMargin: true,
+      class: styles.bodyInnerMarginBottom,
+    },
+    {
+      direction: 'top',
+      hasMargin: true,
+      class: styles.bodyInnerMarginTop,
+    },
+  ],
+  defaultVariants: {
+    direction: 'bottom',
+    hasMargin: true,
+  },
+});
+
+/**
  * Inner flex wrapper for Collapsible. Replaces inline style for flex-direction
  * and min/max width restrictions — driven by `direction` and
  * `_shouldApplyWidthRestrictions` props.
@@ -84,4 +118,9 @@ export type CollapsibleTextVariants = {
 export type CollapsibleInnerVariants = {
   direction?: 'bottom' | 'top';
   shouldApplyWidthRestrictions?: boolean;
+};
+
+export type CollapsibleBodyInnerVariants = {
+  direction?: 'bottom' | 'top';
+  hasMargin?: boolean;
 };

@@ -6,11 +6,12 @@
     makeAccessible,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getCollapsibleBodyClasses, getCollapsibleTemplateClasses } from '@razorpay/blade-core/styles';
+  import {
+    getCollapsibleBodyClasses,
+    getCollapsibleBodyInnerClasses,
+  } from '@razorpay/blade-core/styles';
   import { getCollapsibleContext } from './context';
   import type { CollapsibleBodyProps } from './types';
-
-  const templateClasses = getCollapsibleTemplateClasses();
 
   let { children, width, testID, _hasMargin = true, ...rest }: CollapsibleBodyProps = $props();
 
@@ -31,12 +32,8 @@
   const snippetChildren = $derived(!isStringChildren ? (children as Snippet) : undefined);
 
   const bodyContentClass = getCollapsibleBodyClasses();
-  const innerStyle = $derived(
-    _hasMargin
-      ? `margin-top: ${direction === 'bottom' ? 'var(--spacing-4)' : '0px'}; margin-bottom: ${
-          direction === 'top' ? 'var(--spacing-4)' : '0px'
-        }`
-      : '',
+  const bodyInnerClass = $derived(
+    getCollapsibleBodyInnerClasses({ direction, hasMargin: _hasMargin }),
   );
 
   let bodyRef: HTMLDivElement | undefined = $state(undefined);
@@ -127,7 +124,7 @@
     data-default-expanded={defaultIsExpanded ? 'true' : 'false'}
     ontransitionend={onTransitionEnd}
   >
-    <div class={templateClasses.bodyInner} style={innerStyle}>
+    <div class={bodyInnerClass}>
       {#if isStringChildren}
         {children}
       {:else if snippetChildren}

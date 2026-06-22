@@ -1,6 +1,7 @@
 export {
   getCollapsibleChevronClasses,
   getCollapsibleBodyClasses,
+  getCollapsibleBodyInnerClasses,
   getCollapsibleTextClasses,
   getCollapsibleInnerClasses,
   getCollapsibleTemplateClasses,
@@ -9,4 +10,5 @@ export type {
   CollapsibleChevronVariants,
   CollapsibleTextVariants,
   CollapsibleInnerVariants,
+  CollapsibleBodyInnerVariants,
 } from './collapsible';
