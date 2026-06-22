@@ -15,6 +15,11 @@ export { default as Code } from './Typography/Code/Code.svelte';
 // Button
 export { default as Button } from './Button/Button.svelte';
 
+// IconButton
+export { default as IconButton } from './Button/IconButton/IconButton.svelte';
+export type { IconButtonProps } from './Button/IconButton/types';
+export { BaseIconButton } from './Button/IconButton/BaseIconButton';
+
 // Link
 export { default as Link } from './Link/Link.svelte';
 
@@ -66,6 +71,17 @@ export {
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+
+// Radio
+export { default as Radio } from './Radio/Radio.svelte';
+export { default as RadioGroup } from './Radio/RadioGroup.svelte';
+export type {
+  RadioProps,
+  RadioGroupProps,
+  RadioGroupOnChange,
+  RadioInstance,
+  RadioSize,
+} from './Radio/types';
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
 
