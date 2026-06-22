@@ -16,6 +16,7 @@ import { Link } from '~components/Link';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { InputDropdownButton } from '~components/Dropdown/InputDropdownButton';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { BankIcon, GlobeIcon, InfoIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
@@ -799,13 +800,16 @@ export const TextInputWithClearButtonAndTrailingDropdown: StoryFn<
         trailing={
           <Dropdown>
             <InputDropdownButton defaultValue="sbi" icon={BankIcon} />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="@oksbi" value="sbi" />
-                <ActionListItem title="@okhdfc" value="hdfc" />
-                <ActionListItem title="@razorpay-airtelbank" value="razorpay" />
-              </ActionList>
-            </DropdownOverlay>
+            <BottomSheet>
+              <BottomSheetHeader title="Select bank" />
+              <BottomSheetBody>
+                <ActionList>
+                  <ActionListItem title="@oksbi" value="sbi" />
+                  <ActionListItem title="@okhdfc" value="hdfc" />
+                  <ActionListItem title="@razorpay-airtelbank" value="razorpay" />
+                </ActionList>
+              </BottomSheetBody>
+            </BottomSheet>
           </Dropdown>
         }
       />
@@ -818,7 +822,7 @@ TextInputWithClearButtonAndTrailingDropdown.parameters = {
   docs: {
     description: {
       story:
-        'Demonstrates the clear button and trailing dropdown rendered side-by-side correctly on React Native when both showClearButton and a trailing dropdown are present.',
+        'Demonstrates the clear button and trailing BottomSheet rendered side-by-side correctly on React Native when both showClearButton and a trailing dropdown are present. On mobile, the Dropdown uses BottomSheet as its overlay.',
     },
   },
 };

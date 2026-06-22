@@ -11,6 +11,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Text, Code } from '~components/Typography';
 import { Dropdown, DropdownOverlay, InputDropdownButton } from '~components/Dropdown';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import {
   ActionList,
   ActionListItem,
@@ -511,12 +512,15 @@ const SearchInputWithClearAndDropdownTemplate: StoryFn<typeof SearchInputCompone
       trailing={
         <Dropdown>
           <InputDropdownButton defaultValue="home" />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Home" value="home" />
-              <ActionListItem title="Pricing" value="pricing" />
-            </ActionList>
-          </DropdownOverlay>
+          <BottomSheet>
+            <BottomSheetHeader title="Filter by section" />
+            <BottomSheetBody>
+              <ActionList>
+                <ActionListItem title="Home" value="home" />
+                <ActionListItem title="Pricing" value="pricing" />
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheet>
         </Dropdown>
       }
     />
@@ -529,7 +533,7 @@ SearchInputWithClearAndDropdown.parameters = {
   docs: {
     description: {
       story:
-        'Demonstrates the clear button and trailing dropdown rendered side-by-side correctly on React Native when both are present simultaneously.',
+        'Demonstrates the clear button and trailing BottomSheet rendered side-by-side correctly on React Native when both are present simultaneously. On mobile, the Dropdown uses BottomSheet as its overlay instead of DropdownOverlay.',
     },
   },
 };
