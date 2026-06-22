@@ -185,7 +185,8 @@ export default {
     footerSubtitle: 'By Developers.',
     footerMarginTop: 'spacing.4',
     footerPaddingTop: 'spacing.4',
-    body: 'Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.',
+    body:
+      'Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.',
     footerPrimaryAction: {
       text: 'Learn More',
       onClick: () => {
@@ -210,7 +211,7 @@ export default {
       isLoading: false,
       type: undefined,
     },
-    prefix: 'LinkIcon' as unknown as IconComponent,
+    prefix: ('LinkIcon' as unknown) as IconComponent,
     suffix: 12,
     visual: 'Badge',
   },
@@ -755,8 +756,9 @@ const CardWithLongSubtitleAndFooterActionsTemplate: StoryFn<typeof Card> = () =>
   );
 };
 
-export const CardWithLongSubtitleAndFooterActions =
-  CardWithLongSubtitleAndFooterActionsTemplate.bind({});
+export const CardWithLongSubtitleAndFooterActions = CardWithLongSubtitleAndFooterActionsTemplate.bind(
+  {},
+);
 CardWithLongSubtitleAndFooterActions.storyName = 'With Long Subtitle & Footer Actions';
 CardWithLongSubtitleAndFooterActions.parameters = {
   docs: {

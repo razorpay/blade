@@ -338,8 +338,8 @@ const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({
   return (
     <TextInputComponent
       {...args}
-      leadingIcon={iconMap[leadingIcon as unknown as string]}
-      trailingIcon={iconMap[trailingIcon as unknown as string]}
+      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
     />
   );
 };
@@ -427,8 +427,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[leadingIcon as unknown as string]}
-        trailingIcon={iconMap[trailingIcon as unknown as string]}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
         size="medium"
       />
       <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
@@ -436,8 +436,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[leadingIcon as unknown as string]}
-        trailingIcon={iconMap[trailingIcon as unknown as string]}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
         size="large"
       />
     </Box>
@@ -607,8 +607,7 @@ inputRef.parameters = {
 
 // Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
 const isValidEmail = (email: string): boolean => {
-  const regex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regex.test(email);
 };
 
