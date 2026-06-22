@@ -4,6 +4,8 @@ import type {
   BladeFile,
   BladeFileList,
   FileUploadVariableSizeProps,
+  FileCategoryConfig,
+  FileCategoryOption,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -230,6 +232,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
+  const getFileCategoryValue = (file: BladeFile): string | undefined => {
+    return file.id ? fileCategory?.value?.[file.id] : undefined;
+  };
 
   return (
     <BaseBox
@@ -375,7 +380,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               fileCategory
                 ? {
                     options: fileCategory.options,
-                    value: fileCategory.getValue(selectedFiles[0]),
+                    value: getFileCategoryValue(selectedFiles[0]),
                     onChange: fileCategory.onChange,
                     placeholder: fileCategory.placeholder,
                   }
@@ -451,7 +456,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 fileCategory
                   ? {
                       options: fileCategory.options,
-                      value: fileCategory.getValue(file),
+                      value: getFileCategoryValue(file),
                       onChange: fileCategory.onChange,
                       placeholder: fileCategory.placeholder,
                     }
@@ -544,4 +549,4 @@ const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
 });
 
 export { FileUpload };
-export type { BladeFile, BladeFileList, FileUploadProps };
+export type { BladeFile, BladeFileList, FileCategoryConfig, FileCategoryOption, FileUploadProps };

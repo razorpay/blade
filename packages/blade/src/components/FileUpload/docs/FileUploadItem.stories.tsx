@@ -222,7 +222,7 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
             fileCategory={{
               options: categoryOptions,
               value: selectedCategory,
-              onChange: ({ value }) => setSelectedCategory(value),
+              onChange: ({ values }) => setSelectedCategory(values[0]),
               placeholder: 'Type',
             }}
             onRemove={({ file }) => action('onRemove')(file.name)}
@@ -239,7 +239,7 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
             fileCategory={{
               options: categoryOptions,
               value: selectedCategory,
-              onChange: ({ value }) => setSelectedCategory(value),
+              onChange: ({ values }) => setSelectedCategory(values[0]),
               placeholder: 'Type',
             }}
             onRemove={({ file }) => action('onRemove')(file.name)}
@@ -256,7 +256,7 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
             fileCategory={{
               options: categoryOptions,
               value: undefined,
-              onChange: ({ value }) => action('onChange')(value),
+              onChange: ({ values }) => action('onChange')(values),
               placeholder: 'Type',
             }}
             onRemove={({ file }) => action('onRemove')(file.name)}

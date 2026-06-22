@@ -11,6 +11,7 @@ import { Text } from '~components/Typography';
 import { BaseBox } from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils';
+import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 
 const StyledCategoryTrigger = styled.button(({ theme }) => ({
   display: 'flex',
@@ -33,10 +34,17 @@ const StyledCategoryTrigger = styled.button(({ theme }) => ({
 
 type CategoryTriggerProps = {
   displayLabel: string;
-  fileName: string;
+  file: BladeFile;
+  value: FileCategoryProps['value'];
+  onChange: FileCategoryProps['onChange'];
 };
 
-const _CategoryTrigger = ({ displayLabel, fileName }: CategoryTriggerProps): React.ReactElement => {
+const _CategoryTrigger = ({
+  displayLabel,
+  file,
+  value,
+  onChange,
+}: CategoryTriggerProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -45,13 +53,31 @@ const _CategoryTrigger = ({ displayLabel, fileName }: CategoryTriggerProps): Rea
     activeIndex,
     hasFooterAction,
     triggererRef,
+    options,
+    setActiveIndex,
   } = useDropdown();
+
+  useControlledDropdownInput({
+    value: value ?? '',
+    onChange: ({ values }) => onChange({ values, file }),
+    name: file.id,
+    triggererRef,
+    isSelectInput: true,
+  });
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    setActiveIndex(options.findIndex((option) => option.value === value));
+  }, [isOpen, options, setActiveIndex, value]);
 
   return (
     <StyledCategoryTrigger
       ref={triggererRef as React.Ref<HTMLButtonElement>}
       type="button"
-      aria-label={`Select file category for ${fileName}`}
+      aria-label={`Select file category for ${file.name}`}
       aria-haspopup={getActionListContainerRole(hasFooterAction, 'DropdownButton')}
       aria-expanded={isOpen}
       aria-controls={`${dropdownBaseId}-actionlist`}
@@ -96,7 +122,7 @@ const FileUploadCategorySelector = ({
 
   return (
     <Dropdown selectionType="single">
-      <CategoryTrigger displayLabel={displayLabel} fileName={file.name} />
+      <CategoryTrigger displayLabel={displayLabel} file={file} value={value} onChange={onChange} />
       <DropdownOverlay>
         <ActionList>
           {options.map((option) => (
@@ -105,7 +131,6 @@ const FileUploadCategorySelector = ({
               title={option.title}
               value={option.value}
               isSelected={option.value === value}
-              onClick={() => onChange({ value: option.value, file })}
             />
           ))}
         </ActionList>
