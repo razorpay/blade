@@ -343,7 +343,6 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               size="large"
             />
           }
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -602,7 +601,6 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
           color="positive"
           title="Settlements"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -758,7 +756,6 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
           color="notice"
           title="Payment QR Code"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -1018,7 +1015,6 @@ const DetailedViewWithQRCodeAndFooterTemplate: StoryFn<typeof Drawer> = ({ ...ar
           color="notice"
           title="Payment QR Code"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -1293,7 +1289,6 @@ const DetailedViewWithContiguousBackgroundTemplate: StoryFn<typeof Drawer> = ({ 
       >
         <DrawerHeader
           color="positive"
-          variant="contiguous"
           title="Payout Details"
           trailing={
             <IconButton

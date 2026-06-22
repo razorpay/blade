@@ -349,7 +349,6 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
               size="large"
             />
           }
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -594,7 +593,6 @@ export const ContiguousBackground = (args: DrawerProps): React.ReactElement => {
       >
         <DrawerHeader
           color="positive"
-          variant="contiguous"
           title="Settlements"
           trailing={
             <IconButton

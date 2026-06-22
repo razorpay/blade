@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { FeedbackColors } from '~tokens/theme/theme';
-import type { DrawerHeaderVariant } from './types';
 
 type DrawerHeaderConfig = {
   color?: FeedbackColors;
-  variant?: DrawerHeaderVariant;
 };
 
 type DrawerContextType = {
