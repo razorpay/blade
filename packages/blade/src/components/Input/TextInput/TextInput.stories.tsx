@@ -330,8 +330,8 @@ const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({
   return (
     <TextInputComponent
       {...args}
-      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+      leadingIcon={iconMap[leadingIcon as unknown as string]}
+      trailingIcon={iconMap[trailingIcon as unknown as string]}
     />
   );
 };
@@ -419,8 +419,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        leadingIcon={iconMap[leadingIcon as unknown as string]}
+        trailingIcon={iconMap[trailingIcon as unknown as string]}
         size="medium"
       />
       <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
@@ -428,8 +428,8 @@ const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
       </Text>
       <TextInputComponent
         {...args}
-        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        leadingIcon={iconMap[leadingIcon as unknown as string]}
+        trailingIcon={iconMap[trailingIcon as unknown as string]}
         size="large"
       />
     </Box>
@@ -599,7 +599,8 @@ inputRef.parameters = {
 
 // Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
 const isValidEmail = (email: string): boolean => {
-  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regex.test(email);
 };
 
@@ -777,6 +778,43 @@ export const TextInputWithLeadingDropdown: StoryFn<typeof TextInputComponent> = 
       />
     </Box>
   );
+};
+
+export const TextInputWithClearButtonAndTrailingDropdown: StoryFn<
+  typeof TextInputComponent
+> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInputComponent
+        label="Enter your UPI ID"
+        placeholder="98000xxxxx"
+        defaultValue="9800012345"
+        showClearButton
+        trailing={
+          <Dropdown>
+            <InputDropdownButton defaultValue="sbi" icon={BankIcon} />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="@oksbi" value="sbi" />
+                <ActionListItem title="@okhdfc" value="hdfc" />
+                <ActionListItem title="@razorpay-airtelbank" value="razorpay" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        }
+      />
+    </Box>
+  );
+};
+TextInputWithClearButtonAndTrailingDropdown.storyName =
+  'TextInput with Clear Button & Trailing Dropdown';
+TextInputWithClearButtonAndTrailingDropdown.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates the clear button and trailing dropdown rendered side-by-side correctly on React Native when both showClearButton and a trailing dropdown are present.',
+    },
+  },
 };
 
 export const TextInputWithLeadingIcon: StoryFn<typeof TextInputComponent> = () => {
