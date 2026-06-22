@@ -34,7 +34,6 @@ const _BottomDock = (
     role,
     testID,
     metaName,
-    dockLayoutProps: _dockLayoutProps,
     nativeStyle,
     ...rest
   }: BottomDockProps,
@@ -65,7 +64,7 @@ const _BottomDock = (
       backgroundColor={theme.colors.surface.background.gray.intense}
       borderTopWidth={theme.border.width.thin}
       borderTopColor={theme.colors.surface.border.gray.muted}
-      style={[shadowStyle, { zIndex, paddingBottom: insets.bottom }, nativeStyle]}
+      style={[shadowStyle, nativeStyle, { zIndex, paddingBottom: insets.bottom }]}
       {...makeAccessible({ role })}
       {...metaAttribute({
         testID,

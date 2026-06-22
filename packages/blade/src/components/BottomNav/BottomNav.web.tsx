@@ -71,11 +71,9 @@ const _BottomNav = (
     <BottomDock
       ref={ref as never}
       role="navigation"
-      dockLayoutProps={{
-        paddingX: 'spacing.2',
-        display: 'flex',
-        flexDirection: 'row',
-      }}
+      paddingX="spacing.2"
+      display="flex"
+      flexDirection="row"
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomNav}

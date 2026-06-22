@@ -9,12 +9,17 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useTheme } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const BOTTOM_DOCK_SHADOW_Y_OFFSET = -8;
+const BOTTOM_DOCK_SHADOW_BLUR_RADIUS = 24;
+const BOTTOM_DOCK_SAFE_AREA_FALLBACK = '23px';
 
 const StyledBottomDock = styled(BaseBox)<{ $boxShadowColor: string }>(({ $boxShadowColor }) => {
   return {
-    boxShadow: `0px -8px 24px 0px ${$boxShadowColor}`,
+    boxShadow: `0px ${BOTTOM_DOCK_SHADOW_Y_OFFSET}px ${BOTTOM_DOCK_SHADOW_BLUR_RADIUS}px 0px ${$boxShadowColor}`,
     // Figma's Dragger is device chrome; reserve its layout space without rendering the pill.
-    paddingBottom: 'max(env(safe-area-inset-bottom), 23px)',
+    paddingBottom: `max(env(safe-area-inset-bottom), ${BOTTOM_DOCK_SAFE_AREA_FALLBACK})`,
   };
 });
 
@@ -25,7 +30,14 @@ const _BottomDock = (
     role,
     testID,
     metaName,
-    dockLayoutProps,
+    display,
+    flexDirection,
+    gap,
+    paddingTop,
+    paddingX,
+    paddingBottom,
+    alignItems,
+    justifyContent,
     nativeStyle: _nativeStyle,
     ...rest
   }: BottomDockProps,
@@ -49,7 +61,14 @@ const _BottomDock = (
       backgroundColor="surface.background.gray.intense"
       borderTopWidth="thin"
       borderTopColor="surface.border.gray.muted"
-      {...dockLayoutProps}
+      display={display}
+      flexDirection={flexDirection}
+      gap={gap}
+      paddingTop={paddingTop}
+      paddingX={paddingX}
+      paddingBottom={paddingBottom}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
       {...getStyledProps(rest)}
       zIndex={zIndex}
       {...metaAttribute({
@@ -63,6 +82,8 @@ const _BottomDock = (
   );
 };
 
-const BottomDock = React.forwardRef(_BottomDock);
+const BottomDock = assignWithoutSideEffects(React.forwardRef(_BottomDock), {
+  displayName: 'BottomDock',
+});
 
 export { BottomDock };

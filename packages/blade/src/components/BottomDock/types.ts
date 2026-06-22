@@ -4,6 +4,20 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { AriaRoles } from '~utils/makeAccessible';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { MetaConstants } from '~utils/metaAttribute';
+
+type MetaConstantsValues = typeof MetaConstants[keyof typeof MetaConstants];
+type BottomDockLayoutProps = Pick<
+  BaseBoxProps,
+  | 'display'
+  | 'flexDirection'
+  | 'gap'
+  | 'paddingX'
+  | 'paddingTop'
+  | 'paddingBottom'
+  | 'alignItems'
+  | 'justifyContent'
+>;
 
 type BottomDockProps = {
   children: React.ReactNode;
@@ -23,28 +37,14 @@ type BottomDockProps = {
   /**
    * Internal metaAttribute component name.
    */
-  metaName: string;
-
-  /**
-   * Internal layout props for the dock content surface.
-   */
-  dockLayoutProps?: Pick<
-    BaseBoxProps,
-    | 'display'
-    | 'flexDirection'
-    | 'gap'
-    | 'paddingX'
-    | 'paddingTop'
-    | 'paddingBottom'
-    | 'alignItems'
-    | 'justifyContent'
-  >;
+  metaName: MetaConstantsValues;
 
   /**
    * Internal native styles for composing platform components.
    */
   nativeStyle?: ViewStyle;
 } & StyledPropsBlade &
+  BottomDockLayoutProps &
   TestID &
   DataAnalyticsAttribute;
 

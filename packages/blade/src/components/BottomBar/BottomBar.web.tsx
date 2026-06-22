@@ -31,13 +31,11 @@ const _BottomBar = (
     <BottomDock
       ref={ref as never}
       role="group"
-      dockLayoutProps={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'spacing.3',
-        paddingTop: 'spacing.2',
-        paddingX: 'spacing.2',
-      }}
+      display="flex"
+      flexDirection="column"
+      gap="spacing.3"
+      paddingTop="spacing.2"
+      paddingX="spacing.2"
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomBar}
