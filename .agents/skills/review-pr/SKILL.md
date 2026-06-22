@@ -76,17 +76,6 @@ prompt: |
   DIFF={DIFF}
 ```
 
-**usecase-critique:**
-
-```
-subagent_type: usecase-critique
-prompt: |
-  PR_NUMBER={PR_NUMBER}
-  PR_TITLE={PR_TITLE}
-  PR_BODY={PR_BODY}
-  DIFF={DIFF}
-```
-
 **api-decision-critique** (only if the diff contains component changes):
 
 ```
@@ -126,6 +115,14 @@ prompt: |
 ```
 
 Replace `inlined-comments` in the review JSON with the filtered array returned by the agent.
+
+Then recalculate `reviewStatus` based on the filtered array:
+- Set `reviewStatus` to `'approved'` if **both** of these hold:
+  - The filtered `inlined-comments` array contains no items with `severity` of `major` or `critical`
+  - All CI/UI check statuses in the `overview-comment` passed (no `FAILURE` entries)
+- Otherwise, set `reviewStatus` to `'commented'`
+
+Update `reviewStatus` in the review JSON before proceeding to Step 5.
 
 ### 5. Post review to GitHub
 

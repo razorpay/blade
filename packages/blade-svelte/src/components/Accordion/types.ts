@@ -54,6 +54,16 @@ export type AccordionProps = {
   minWidth?: string;
 
   /**
+   * Renders expanded body on a recessed gray surface.
+   * Uses `surface.background.gray.subtle`.
+   *
+   * Recommended with `variant="filled"` for checkout-style accordions.
+   *
+   * @default false
+   */
+  hasGrayBody?: boolean;
+
+  /**
    * Test ID for the element.
    */
   testID?: string;
@@ -110,7 +120,8 @@ export type AccordionItemHeaderProps = {
   trailing?: Snippet;
 
   /**
-   * Title suffix element snippet (e.g., Badge).
+   * Element placed adjacent to the title.
+   * Typically used for `Badge`, `Counter`, or `AvatarGroup`.
    */
   titleSuffix?: Snippet;
 

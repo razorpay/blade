@@ -35,6 +35,7 @@ import {
 | AcceptPaymentsIcon | Razorpay product icon for accepting payments |
 | AcceptPaymentsFilledIcon | Filled variant of AcceptPaymentsIcon |
 | ActivityIcon | Heart-rate/pulse line representing activity or health monitoring |
+| AgentStudioIcon | AI agent or bot represented as a monitor with eyes and a sparkle |
 | AddressBookIcon | Contact book for managing addresses or contacts |
 | AffordabilityIcon | Razorpay product icon for affordability solutions (EMI, pay later) |
 | AffordabilityFilledIcon | Filled variant of AffordabilityIcon |
@@ -108,6 +109,7 @@ import {
 | BusinessBankingIcon | Razorpay product icon for business banking |
 | BusinessSpendManagementIcon | Razorpay product icon for business spend management |
 | BusinessSpendManagementFilledIcon | Filled variant of BusinessSpendManagementIcon |
+| CalendarFilledIcon | Filled variant of CalendarIcon |
 | CalendarIcon | Calendar for dates and scheduling |
 | CameraIcon | Camera for photos or screenshots |
 | CameraOffIcon | Disabled camera |
@@ -129,6 +131,7 @@ import {
 | ChromeIcon | Google Chrome browser logo |
 | CircleIcon | Simple circle shape |
 | ClipboardIcon | Clipboard for copy/paste operations |
+| ClockFilledIcon | Filled variant of ClockIcon |
 | ClockIcon | Clock for time or schedule |
 | CloseIcon | X mark for closing or dismissing |
 | ClosedCaptioningIcon | CC symbol for subtitles/closed captions |
@@ -160,6 +163,7 @@ import {
 | CornerUpLeftIcon | Arrow curving up then left |
 | CornerUpRightIcon | Arrow curving up then right |
 | CpuIcon | CPU/processor chip |
+| CreditCardFilledIcon | Filled variant of CreditCardIcon |
 | CreditCardIcon | Credit/debit card for payments |
 | CreditsAndLoansIcon | Razorpay product icon for credits and loans |
 | CreditsAndLoansFilledIcon | Filled variant of CreditsAndLoansIcon |
@@ -439,10 +443,12 @@ import {
 | UnlockIcon | Unlocked padlock for open access |
 | UpiAutopayIcon | Razorpay product icon for UPI Autopay recurring payments |
 | UpiAutopayFilledIcon | Filled variant of UpiAutopayIcon |
+| UpiFilledIcon | Filled variant of UpiIcon |
 | UpiIcon | UPI (Unified Payments Interface) logo |
 | UploadCloudIcon | Cloud with upload arrow |
 | UploadIcon | Upload arrow for sending files |
 | UserCheckIcon | Person with checkmark for verified user |
+| UserFilledIcon | Filled variant of UserIcon |
 | UserIcon | Single person silhouette |
 | UserMinusIcon | Person with minus sign for removing user |
 | UserPlusIcon | Person with plus sign for adding user |
@@ -462,6 +468,7 @@ import {
 | VolumeMuteIcon | Muted speaker with X |
 | VolumeOffIcon | Speaker turned off |
 | VolumeOnIcon | Speaker turned on |
+| WalletFilledIcon | Filled variant of WalletIcon |
 | WalletIcon | Wallet for payments or money |
 | WatchIcon | Wristwatch or smartwatch |
 | WhatsAppIcon | WhatsApp messaging platform logo |

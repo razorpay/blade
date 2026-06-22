@@ -8725,6 +8725,13 @@
   dependencies:
     "@use-gesture/core" "10.2.24"
 
+"@use-gesture/vanilla@10.2.24":
+  version "10.2.24"
+  resolved "https://registry.yarnpkg.com/@use-gesture/vanilla/-/vanilla-10.2.24.tgz#25c5d52cceeaebec8b47cb09a1af97573e59a310"
+  integrity sha512-vJ0Upd2dhhiQj0Q/joBweJl+e38uf7hT+mCFkkPYtpk2yzaV8Rf9DSjzpPaEw3vgFvC60Kvfz/GlX2Tz2seDUQ==
+  dependencies:
+    "@use-gesture/core" "10.2.24"
+
 "@vitejs/plugin-react@^5.1.4":
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-react/-/plugin-react-5.1.4.tgz#5b477e060bf612a7394c4febacc5de33a219b0e4"
