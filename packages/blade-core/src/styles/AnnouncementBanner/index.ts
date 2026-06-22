@@ -8,6 +8,5 @@ export {
 } from './announcementBanner';
 export type {
   AnnouncementBannerVariants,
-  AnnouncementBannerTheme,
   AnnouncementBannerAlignment,
 } from './announcementBanner';

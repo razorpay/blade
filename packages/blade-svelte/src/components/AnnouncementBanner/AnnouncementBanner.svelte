@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
   import {
     metaAttribute,
@@ -24,7 +25,6 @@
 
   let {
     children,
-    theme = 'dark',
     alignment = 'center',
     icon: Icon,
     accessibilityLabel = 'Announcement',
@@ -32,22 +32,35 @@
     ...rest
   }: AnnouncementBannerProps = $props();
 
+  // Mirror React's useTheme() colorScheme — read from the data-theme body attribute
+  // set by BladeProvider (or ThemeSwitcher in dev). A MutationObserver keeps it reactive.
+  let isDark = $state(false);
+
+  onMount(() => {
+    isDark = document.body.getAttribute('data-theme') === 'dark';
+    const observer = new MutationObserver(() => {
+      isDark = document.body.getAttribute('data-theme') === 'dark';
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  });
+
   // Check if children is a string or a snippet
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(
     !isStringChildren ? (children as Snippet) : undefined,
   );
 
-  // Text and icon color tokens based on theme
+  // Text and icon color tokens based on color scheme
   const textColorToken = $derived(
-    getAnnouncementBannerTextColorToken(theme) as TextColors,
+    getAnnouncementBannerTextColorToken(isDark) as TextColors,
   );
   const iconColorToken = $derived(
-    getAnnouncementBannerIconColorToken(theme) as IconColor,
+    getAnnouncementBannerIconColorToken(isDark) as IconColor,
   );
 
   // Container classes
-  const bannerClasses = $derived(getAnnouncementBannerClasses({ theme, alignment }));
+  const bannerClasses = $derived(getAnnouncementBannerClasses({ alignment }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
     [bannerClasses, ...(styledProps.classes || [])].filter(Boolean).join(' '),
