@@ -514,6 +514,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     borderRadius,
     motionDuration,
     motionEasing,
+    shadowHighlightColor,
+    shadowHighlightHeight,
+    shadowBottomColor,
+    shadowBottomHeight,
+    shadowBorderColor,
+    shadowRingWidth,
+    isShadowGradientVisible,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
@@ -632,6 +639,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseUp={handlePointerPressedOut}
       onMouseOut={handlePointerPressedOut}
       onKeyUp={handleKeyboardPressedOut}
+      shadowHighlightColor={shadowHighlightColor}
+      shadowHighlightHeight={shadowHighlightHeight}
+      shadowBottomColor={shadowBottomColor}
+      shadowBottomHeight={shadowBottomHeight}
+      shadowBorderColor={shadowBorderColor}
+      shadowRingWidth={shadowRingWidth}
+      isShadowGradientVisible={isShadowGradientVisible}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
