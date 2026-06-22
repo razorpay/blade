@@ -197,11 +197,11 @@ describe('Drawer', () => {
     });
   });
 
-  describe('DrawerHeader variant', () => {
-    it('renders contiguous variant on the drawer container', () => {
+  describe('DrawerHeader color gradient', () => {
+    it('renders contiguous gradient on the drawer container when color is set', () => {
       const { getByRole } = renderWithTheme(
         <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
-          <DrawerHeader title="Payout Details" color="positive" variant="contiguous" />
+          <DrawerHeader title="Payout Details" color="positive" />
           <DrawerBody>
             <Text>Test Content</Text>
           </DrawerBody>
@@ -210,10 +210,10 @@ describe('Drawer', () => {
       expect(getByRole('dialog')).toMatchSnapshot();
     });
 
-    it('does not show divider by default when variant is contiguous', () => {
+    it('does not show divider by default', () => {
       const { queryByTestId } = renderWithTheme(
         <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
-          <DrawerHeader title="Payout Details" color="positive" variant="contiguous" />
+          <DrawerHeader title="Payout Details" color="positive" />
           <DrawerBody>
             <Text>Test Content</Text>
           </DrawerBody>
@@ -222,15 +222,22 @@ describe('Drawer', () => {
       expect(queryByTestId('divider')).not.toBeInTheDocument();
     });
 
-    it('shows divider when explicitly set even with contiguous variant', () => {
+    it('shows divider when explicitly set', () => {
       const { getByRole } = renderWithTheme(
         <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
-          <DrawerHeader
-            title="Payout Details"
-            color="positive"
-            variant="contiguous"
-            showDivider={true}
-          />
+          <DrawerHeader title="Payout Details" color="positive" showDivider={true} />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('renders no gradient when color is not provided', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Details" />
           <DrawerBody>
             <Text>Test Content</Text>
           </DrawerBody>

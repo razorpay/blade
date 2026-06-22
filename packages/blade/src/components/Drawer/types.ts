@@ -2,8 +2,6 @@ import type React from 'react';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
-type DrawerHeaderVariant = 'default' | 'contiguous';
-
 type DrawerProps = {
   /**
    * Controls the state of the drawer, indicating whether it is open or closed
@@ -100,23 +98,13 @@ type DrawerHeaderProps = {
   children?: React.ReactElement | React.ReactElement[];
 
   /**
-   * Color of the header gradient background.
-   *
-   * @default 'information'
+   * Color of the header gradient background. When provided, a radial gradient using this color
+   * spans the full drawer from the top, creating a seamless surface between header and body.
    */
   color?: FeedbackColors;
   /**
-   * Controls how the drawer background gradient is rendered.
-   *
-   * - `'default'`: gradient is applied only to the header section, with a divider separating header from body.
-   * - `'contiguous'`: gradient spans the full drawer height from the top, creating a seamless surface without a visual break between header and body. Divider is hidden by default.
-   *
-   * @default 'default'
-   */
-  variant?: DrawerHeaderVariant;
-  /**
    * Whether to show the divider below the header.
-   * @default true
+   * @default false
    */
   showDivider?: boolean;
 } & DataAnalyticsAttribute;
@@ -133,4 +121,4 @@ type DrawerFooterProps = {
   showDivider?: boolean;
 } & DataAnalyticsAttribute;
 
-export type { DrawerProps, DrawerHeaderProps, DrawerFooterProps, DrawerHeaderVariant };
+export type { DrawerProps, DrawerHeaderProps, DrawerFooterProps };
