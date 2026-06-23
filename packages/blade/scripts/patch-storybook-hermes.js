@@ -44,14 +44,17 @@ export { words };
 `;
 
 // Find all files containing Unicode property escapes
-let files = [];
+const files = [];
 for (const nodeModules of [localNodeModules, rootNodeModules]) {
   if (!fs.existsSync(nodeModules)) continue;
   try {
     const found = execSync(
       `grep -rl "\\\\p{" "${nodeModules}" --include="*.js" --include="*.mjs" 2>/dev/null || true`,
-      { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }
-    ).trim().split('\n').filter(Boolean);
+      { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 },
+    )
+      .trim()
+      .split('\n')
+      .filter(Boolean);
     files.push(...found);
   } catch {
     // ignore
@@ -84,7 +87,8 @@ for (const file of files) {
     const line = content.substring(lineStart, lineEnd);
 
     if (line.includes('\\p{') || line.includes('/\\p{')) {
-      content = content.substring(0, lineStart) + CASE_SPLIT_REPLACEMENT + content.substring(lineEnd);
+      content =
+        content.substring(0, lineStart) + CASE_SPLIT_REPLACEMENT + content.substring(lineEnd);
       fs.writeFileSync(file, content);
       console.log('[patch-storybook-hermes] Patched CASE_SPLIT:', file);
       patched++;
@@ -97,16 +101,16 @@ for (const file of files) {
     // Replace the Unicode word regex pattern with ASCII equivalent
     content = content.replace(
       /var CASE_SPLIT_PATTERN\s*=\s*\/[^/]+\/[gimusy]*;/g,
-      CASE_SPLIT_REPLACEMENT
+      CASE_SPLIT_REPLACEMENT,
     );
     // Also replace string-built Unicode regexes referencing \p{Lu} etc
     content = content.replace(
       /const rUnicodeUpper\s*=\s*['"]\\\\p\{Lu\}['"];/g,
-      "const rUnicodeUpper = '[A-Z]';"
+      "const rUnicodeUpper = '[A-Z]';",
     );
     content = content.replace(
       /const rUnicodeLower\s*=\s*['"]\\\\p\{Ll\}['"];/g,
-      "const rUnicodeLower = '[a-z]';"
+      "const rUnicodeLower = '[a-z]';",
     );
     fs.writeFileSync(file, content);
     console.log('[patch-storybook-hermes] Patched bundle:', file);
@@ -115,14 +119,17 @@ for (const file of files) {
 }
 
 // Patch identifierStartRegex from jsdoc-type-pratt-parser (uses \p{ID_Start}, \p{Hex_Digit})
-let idFiles = [];
+const idFiles = [];
 for (const nodeModules of [localNodeModules, rootNodeModules]) {
   if (!fs.existsSync(nodeModules)) continue;
   try {
     const found = execSync(
       `grep -rl "identifierStartRegex = new RegExp" "${nodeModules}" --include="*.js" --include="*.mjs" 2>/dev/null || true`,
-      { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }
-    ).trim().split('\n').filter(Boolean);
+      { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 },
+    )
+      .trim()
+      .split('\n')
+      .filter(Boolean);
     idFiles.push(...found);
   } catch {}
 }
