@@ -227,7 +227,7 @@ const _Table = <Item,>({
   const tableContainerRef = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
-    if (effectiveStickyColumns <= 0) return;
+    if (effectiveStickyColumns <= 0) return undefined;
 
     const measureOffsets = (): void => {
       const container = tableContainerRef.current;
