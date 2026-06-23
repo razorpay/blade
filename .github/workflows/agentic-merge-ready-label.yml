@@ -100,7 +100,7 @@ jobs:
               body = os.environ.get("REVIEW_BODY", "")
               print(f"Review by '{author}' state='{state}' PR #{pr_number}")
 
-                if normalize_user(author) in AGENT_USERS:
+              if normalize_user(author) in AGENT_USERS:
                   # Approved either via actual approval state or "Status: Approved" in review body
                   is_approved = state == "approved" or is_status_approved(body)
                   if is_approved:
