@@ -126,17 +126,21 @@ type TabBarIndicatorProps = {
   tabWidths: number[];
   selectedIndex: number;
   variant: NonNullable<TabsProps['variant']>;
+  tabGap: number;
 };
 
 const TabBarIndicator = ({
   tabWidths,
   selectedIndex,
   variant,
+  tabGap,
 }: TabBarIndicatorProps): React.ReactElement | null => {
   const { theme } = useTheme();
   const isFilled = variant === 'filled';
 
-  const targetLeft = tabWidths.slice(0, selectedIndex).reduce((sum, w) => sum + w, 0);
+  const targetLeft =
+    tabWidths.slice(0, selectedIndex).reduce((sum, w) => sum + w, 0) +
+    selectedIndex * tabGap;
   const targetWidth = tabWidths[selectedIndex] ?? 0;
 
   const animLeft = useSharedValue(targetLeft);
@@ -241,7 +245,11 @@ const CustomTabBar = ({
         horizontal
         scrollEnabled={scrollable}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={isFullWidthTabItem || isFilled ? styles.tabBarFullWidth : undefined}
+        contentContainerStyle={
+          isFullWidthTabItem || isFilled
+            ? styles.tabBarFullWidth
+            : { gap: theme.spacing[2] }
+        }
       >
         {routes.map((route, index) => {
           const focused = index === selectedIndex;
@@ -267,7 +275,7 @@ const CustomTabBar = ({
               <StyledTabButton
                 size={size}
                 variant={variant}
-                isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+                isFullWidthTabItem={isFullWidthTabItem || isFilled}
                 {...metaAttribute({ name: MetaConstants.TabItem })}
               >
                 <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
@@ -294,7 +302,12 @@ const CustomTabBar = ({
 
       {/* Animated indicator rendered absolutely on top of the tab bar */}
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
-        <TabBarIndicator tabWidths={tabWidths} selectedIndex={selectedIndex} variant={variant} />
+        <TabBarIndicator
+          tabWidths={tabWidths}
+          selectedIndex={selectedIndex}
+          variant={variant}
+          tabGap={scrollable ? theme.spacing[2] : 0}
+        />
       </View>
     </View>
   );

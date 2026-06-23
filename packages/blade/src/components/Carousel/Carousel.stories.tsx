@@ -9,6 +9,7 @@ import { Box } from '~components/Box';
 import { Code, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { StoryScrollView } from '~utils/storybook/StoryScrollView';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
 import { List, ListItem } from '~components/List';
@@ -216,37 +217,39 @@ const TestimonialCard = ({
   return (
     <Card height="100%" marginBottom="spacing.4">
       <CardBody height="100%">
-        <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
-          <QuoteSvg />
-          <Box>
-            <Heading weight="semibold" size="large">
-              {quote}
-            </Heading>
-            <Text size="medium" marginTop="spacing.4">
-              {longQuote}
-            </Text>
-          </Box>
-          <Divider marginY="spacing.4" />
-          <Box
-            display="flex"
-            alignItems={isReactNative() ? 'flex-start' : 'center'}
-            gap="spacing.4"
-          >
-            <Avatar name={name} />
+        <StoryScrollView>
+          <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
+            <QuoteSvg />
             <Box>
-              <Text size="large" weight="semibold">
-                {name}
-              </Text>
-              <Text>
-                <Text as="span" weight="semibold">
-                  {company}
-                </Text>
-                {', '}
-                <Text as="span">{role}</Text>
+              <Heading weight="semibold" size="large">
+                {quote}
+              </Heading>
+              <Text size="medium" marginTop="spacing.4">
+                {longQuote}
               </Text>
             </Box>
+            <Divider marginY="spacing.4" />
+            <Box
+              display="flex"
+              alignItems={isReactNative() ? 'flex-start' : 'center'}
+              gap="spacing.4"
+            >
+              <Avatar name={name} />
+              <Box>
+                <Text size="large" weight="semibold">
+                  {name}
+                </Text>
+                <Text>
+                  <Text as="span" weight="semibold">
+                    {company}
+                  </Text>
+                  {', '}
+                  <Text as="span">{role}</Text>
+                </Text>
+              </Box>
+            </Box>
           </Box>
-        </Box>
+        </StoryScrollView>
       </CardBody>
     </Card>
   );
