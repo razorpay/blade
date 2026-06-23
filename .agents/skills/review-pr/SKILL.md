@@ -29,7 +29,6 @@ disable-model-invocation: true
   {
     "overview-comment": {
       "sanity-review": {
-        "critique": "pr-sanity-critique",
         "issues": [
           {
             "problem": "Could not spawn the subagents. Please check the logs for more details."
@@ -57,13 +56,6 @@ gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
 Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
 
 ### 2. Spawn Critique Subagents in parallel
-
-**pr-sanity-critique:**
-
-```
-subagent_type: pr-sanity-critique
-prompt: "PR_NUMBER={PR_NUMBER}"
-```
 
 **code-quality-critique:**
 
