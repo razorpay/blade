@@ -1589,13 +1589,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
               <View
                 backgroundColor="feedback.background.neutral.subtle"
                 data-blade-component="base-box"
-                height="20px"
-                size="medium"
+                height="24px"
+                size="large"
                 style={
                   [
                     {
                       "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-                      "height": 20,
+                      "height": 24,
                       "textAlign": "left",
                     },
                     {
@@ -1626,8 +1626,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "overflow": "hidden",
-                        "paddingLeft": 4,
-                        "paddingRight": 4,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
                       },
                     ]
                   }
