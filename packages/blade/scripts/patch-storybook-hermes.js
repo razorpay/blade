@@ -131,7 +131,9 @@ for (const nodeModules of [localNodeModules, rootNodeModules]) {
       .split('\n')
       .filter(Boolean);
     idFiles.push(...found);
-  } catch {}
+  } catch {
+    // ignore
+  }
 }
 
 for (const file of idFiles) {
@@ -146,9 +148,12 @@ for (const file of idFiles) {
   const semiIdx = content.indexOf(';', contIdx);
   if (semiIdx < 0) continue;
   const lineEnd = semiIdx + 1;
-  content = content.substring(0, lineStart) +
-    '        var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9]/;' +
-    content.substring(lineEnd);
+  content = `${content.substring(
+    0,
+    lineStart,
+  )}        var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9]/;${content.substring(
+    lineEnd,
+  )}`;
   fs.writeFileSync(file, content);
   console.log('[patch-storybook-hermes] Patched identifierRegex:', file);
   patched++;
