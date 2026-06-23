@@ -259,6 +259,12 @@ type RzpGlassProps = RzpGlassConfig & {
    * e.g. `gradientMap2Src="/colorama-gradient-map-green.jpg"`
    */
   gradientMap2Src?: string;
+  /**
+   * URL to the center gradient map image for the center/light effect.
+   * Changing this value re-initializes the WebGL context.
+   * e.g. `centerGradientMapSrc="/colorama-center-gradient-map.jpg"`
+   */
+  centerGradientMapSrc?: string;
   /** Callback when assets are loaded */
   onLoad?: () => void;
   /** Callback on error */
