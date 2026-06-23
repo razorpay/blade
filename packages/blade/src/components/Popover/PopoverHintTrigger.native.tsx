@@ -2,9 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography/Text';
-import type { BaseTextSizes } from '~components/Typography/BaseText/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import type { HintTriggerIntent, PopoverHintTriggerProps } from './PopoverHintTrigger.web';
+import type { HintTriggerIntent, PopoverHintTriggerProps } from './types';
 
 const _PopoverHintTrigger = ({
   intent = 'neutral',
@@ -27,7 +26,7 @@ const _PopoverHintTrigger = ({
       <Text
         as="span"
         color={`feedback.text.${intent}.intense`}
-        size={size as Extract<BaseTextSizes, 'xsmall' | 'small' | 'medium' | 'large'>}
+        size={size}
         weight={weight}
       >
         {children}

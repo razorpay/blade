@@ -2,7 +2,6 @@
 import React from 'react';
 import { Popover, PopoverHintTrigger } from '..';
 import { Text } from '~components/Typography';
-import { MetaConstants } from '~utils/metaAttribute';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 const popoverContent = <Text>Breakdown details</Text>;
