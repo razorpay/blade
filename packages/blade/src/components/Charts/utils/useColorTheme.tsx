@@ -15,9 +15,9 @@ const useChartsColorTheme = ({
   chartName?: ChartName;
   chartDataIndicators?: number;
 }): CategoricalColorToken[] => {
-  // Single data point should use Blade's default chart color.
+  // Single data point should be gray
   if (chartDataIndicators === 1 && chartName !== 'donut') {
-    return ['data.background.categorical.blue.moderate'];
+    return ['data.background.categorical.gray.moderate'];
   }
 
   // Intensity sequence based on chart type

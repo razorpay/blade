@@ -15,7 +15,7 @@ describe('assignDataColorMapping', () => {
 
     const result = assignDataColorMapping(dataColorMapping, themeColors);
 
-    expect(result.data1.colorToken).toBe('data.background.categorical.blue.moderate');
+    expect(result.data1.colorToken).toBe('data.background.categorical.gray.moderate');
     expect(result.data1.isCustomColor).toBe(false);
   });
 
