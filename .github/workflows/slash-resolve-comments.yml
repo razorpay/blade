@@ -18,7 +18,7 @@ jobs:
       github.actor != 'github-actions[bot]' &&
       github.actor != 'rzp-slash' &&
       github.actor != 'rzp-slash[bot]' &&
-      github.actor != 'rzp-slash-public[bot]' &&
+      github.actor != 'rzp-slash-public' &&
       github.actor != 'rzp-slash-reviewer' &&
       github.actor != 'rzp-slash-reviewer[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner

@@ -25,8 +25,8 @@ if (actor === prAuthor) {
   process.exit(0);
 }
 
-if (actor === 'rzp-slash-public') {
-  console.log('Actor is rzp-slash-public — authorized for high-confidence comment resolution.');
+if (actor === 'rzp-slash-public[bot]') {
+  console.log('Actor is rzp-slash-public[bot] — authorized for high-confidence comment resolution.');
   output('true');
   process.exit(0);
 }
