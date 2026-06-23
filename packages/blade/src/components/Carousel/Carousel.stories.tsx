@@ -675,4 +675,87 @@ export const WithOverlap: StoryFn<typeof CarouselComponent> = () => {
   );
 };
 
+export const CarouselInScrollView: StoryFn<typeof CarouselComponent> = () => {
+  const items = [
+    {
+      title: 'Instant Payments',
+      body:
+        'Accept payments from 100+ payment modes including UPI, cards, netbanking, and wallets.',
+    },
+    {
+      title: 'Smart Analytics',
+      body:
+        'Get real-time insights into your payment performance with detailed dashboards and reports.',
+    },
+    {
+      title: 'International Support',
+      body:
+        'Accept international payments in 100+ currencies with automatic exchange rate conversion.',
+    },
+    {
+      title: 'Developer Friendly',
+      body:
+        'Integrate with our APIs in minutes using SDKs available for all major programming languages.',
+    },
+  ];
+
+  return (
+    <Box
+      height={isReactNative() ? '500px' : 'auto'}
+      overflow={isReactNative() ? 'scroll' : undefined}
+    >
+      <Box padding="spacing.6" display="flex" flexDirection="column" gap="spacing.6">
+        <Heading size="large">Features Overview</Heading>
+        <Text color="surface.text.gray.muted">
+          Scroll down to see the Carousel nested inside a scrollable container. On React Native, the
+          Carousel can now scroll horizontally even when placed inside a vertical ScrollView.
+        </Text>
+
+        <CarouselComponent
+          carouselItemWidth={isReactNative() ? '80%' : '300px'}
+          carouselItemAlignment="stretch"
+          accessibilityLabel="Features"
+        >
+          {items.map((item) => (
+            <CarouselItem key={item.title}>
+              <Card>
+                <CardBody>
+                  <Heading size="small" marginBottom="spacing.3">
+                    {item.title}
+                  </Heading>
+                  <Text size="small" color="surface.text.gray.muted">
+                    {item.body}
+                  </Text>
+                </CardBody>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+
+        <Divider />
+
+        <Text>
+          More page content below the carousel. On React Native, scrolling the page vertically and
+          swiping the carousel horizontally both work without conflict thanks to the
+          nestedScrollEnabled prop.
+        </Text>
+        <List variant="unordered">
+          <ListItem>Swipe the carousel left/right to navigate slides</ListItem>
+          <ListItem>Scroll the page up/down independently</ListItem>
+          <ListItem>Both gestures work without interfering with each other</ListItem>
+        </List>
+      </Box>
+    </Box>
+  );
+};
+CarouselInScrollView.storyName = 'Carousel in ScrollView (Nested Scroll)';
+CarouselInScrollView.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates that a Carousel nested inside a ScrollView works correctly on React Native. The nestedScrollEnabled prop allows horizontal carousel swipes and vertical page scrolls to coexist without gesture conflicts.',
+    },
+  },
+};
+
 export default meta;

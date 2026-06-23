@@ -6,6 +6,7 @@ import { Text as TextComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): ReactElement => {
   return (
@@ -83,4 +84,48 @@ const AsPropTemplate: StoryFn<typeof TextComponent> = (args) => {
 export const AsProp = AsPropTemplate.bind({});
 AsProp.args = {
   truncateAfterLines: undefined,
+};
+
+const TextAllSizesTemplate: StoryFn<typeof TextComponent> = () => {
+  const sizes = ['small', 'medium', 'large'] as const;
+  const weights = ['regular', 'medium', 'semibold'] as const;
+
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.6">
+      {sizes.map((size) => (
+        <BaseBox key={size} display="flex" flexDirection="column" gap="spacing.3">
+          <TextComponent size="small" weight="semibold" color="surface.text.gray.muted">
+            size=&quot;{size}&quot;
+          </TextComponent>
+          <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+            {weights.map((weight) => (
+              <TextComponent key={weight} variant="body" size={size} weight={weight}>
+                {weight}: The quick brown fox jumps over the lazy dog
+              </TextComponent>
+            ))}
+          </BaseBox>
+        </BaseBox>
+      ))}
+      <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+        <TextComponent size="small" weight="semibold" color="surface.text.gray.muted">
+          variant=&quot;caption&quot;
+        </TextComponent>
+        <TextComponent variant="caption">
+          caption: The quick brown fox jumps over the lazy dog
+        </TextComponent>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const TextAllSizes = TextAllSizesTemplate.bind({});
+TextAllSizes.storyName = 'All Sizes & Weights';
+TextAllSizes.parameters = {
+  controls: { disable: true },
+  docs: {
+    description: {
+      story:
+        'Shows all Text size and weight variants side-by-side. On React Native, each variant now correctly applies its letter-spacing value derived from design tokens (previously all letter-spacing was silently ignored on RN).',
+    },
+  },
 };

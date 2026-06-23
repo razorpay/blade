@@ -832,6 +832,40 @@ TextInputWithLabelSuffixTrailing.args = {
   labelTrailing: <Link size="small">Learn more</Link>,
 };
 
+export const TextInputWithFocusRing: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      {/* eslint-disable jsx-a11y/no-autofocus */}
+      <TextInputComponent
+        label="Focused Input (autoFocus)"
+        placeholder="This input is focused"
+        autoFocus
+        helpText="On React Native this input shows the expanding focus ring animation (border expands outward 0→4px and thickens on focus)"
+      />
+      {/* eslint-enable jsx-a11y/no-autofocus */}
+      <TextInputComponent
+        label="Unfocused Input"
+        placeholder="Tap to see the focus ring animate in"
+      />
+      <TextInputComponent
+        label="Error State"
+        placeholder="Error input"
+        validationState="error"
+        errorText="This field is required"
+      />
+    </Box>
+  );
+};
+TextInputWithFocusRing.storyName = 'With Focus Ring (RN)';
+TextInputWithFocusRing.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates the expanding focus ring animation on React Native. When an input receives focus, the border expands outward (0→4px) and thickens from thin to thick. Tap/click any input to see the animation.',
+    },
+  },
+};
+
 export const TextInputShowcase: StoryFn<typeof TextInputComponent> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.8">
