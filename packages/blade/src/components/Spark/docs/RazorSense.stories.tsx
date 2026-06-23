@@ -1919,4 +1919,46 @@ RefreshedRazorSense.args = {
   gradientMapSrc: LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
   gradientMap2Src: LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
   centerGradientMapSrc: LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
+  paused: false,
+  displacementX: -3,
+  displacementY: -5,
+  edgeFeather: [0, 1, 0, 0],
+  panX: 0,
+  panY: 0,
+  numSegments: 28,
+  slitAngle: 0.08,
+};
+RefreshedRazorSense.argTypes = {
+  paused: {
+    control: 'boolean',
+    description: 'Pause or play the RazorSense video animation.',
+  },
+  displacementX: {
+    control: { type: 'number', min: -30, max: 30, step: 1 },
+    description: 'Horizontal displacement strength. Lower magnitude reduces edge bending.',
+  },
+  displacementY: {
+    control: { type: 'number', min: -30, max: 30, step: 1 },
+    description: 'Vertical displacement strength. Lower magnitude reduces edge stretching.',
+  },
+  edgeFeather: {
+    control: 'object',
+    description: 'Per-side edge feathering as [top, right, bottom, left].',
+  },
+  panX: {
+    control: { type: 'number', min: -1, max: 1, step: 0.01 },
+    description: 'Horizontal pan offset for positioning the animation inside the canvas.',
+  },
+  panY: {
+    control: { type: 'number', min: -1, max: 1, step: 0.01 },
+    description: 'Vertical pan offset for positioning the animation inside the canvas.',
+  },
+  numSegments: {
+    control: { type: 'number', min: 5, max: 80, step: 1 },
+    description: 'Number of glass/refraction segments.',
+  },
+  slitAngle: {
+    control: { type: 'number', min: -1, max: 1, step: 0.01 },
+    description: 'Angle of the glass/refraction slits in radians.',
+  },
 };
