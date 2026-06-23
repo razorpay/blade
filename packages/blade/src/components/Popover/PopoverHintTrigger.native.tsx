@@ -23,12 +23,7 @@ const _PopoverHintTrigger = ({
         alignSelf: 'flex-start',
       }}
     >
-      <Text
-        as="span"
-        color={`feedback.text.${intent}.intense`}
-        size={size}
-        weight={weight}
-      >
+      <Text as="span" color={`feedback.text.${intent}.intense`} size={size} weight={weight}>
         {children}
       </Text>
     </View>
