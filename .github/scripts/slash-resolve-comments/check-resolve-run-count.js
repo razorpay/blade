@@ -21,7 +21,8 @@ function output(allowed) {
   else process.stdout.write(line);
 }
 
-const workflowFilename = workflowRef.split('/').pop().split('@')[0];
+// GITHUB_WORKFLOW_REF format: "org/repo/.github/workflows/filename.yml@refs/heads/branch"
+const workflowFilename = workflowRef.split('@')[0].split('/').pop();
 
 const response = execSync(
   `gh api "repos/${repo}/actions/workflows/${workflowFilename}/runs?event=pull_request_review&per_page=100"`,
