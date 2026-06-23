@@ -14,7 +14,6 @@ const genUISpacingContract = {
   textParagraphGap: 'spacing.3',
   compactCardPadding: 'spacing.5',
   compactCardRowGap: 'spacing.3',
-  tableRowHeight: '48px',
 } as const;
 
 const cardTableComponentTypes = new Set(['CARD', 'TABLE']);

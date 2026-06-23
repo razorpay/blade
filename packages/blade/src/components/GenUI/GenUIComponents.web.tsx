@@ -99,12 +99,6 @@ const TextAnimationStyles = createGlobalStyle`
   }
 `;
 
-const GenUITableSpacingStyles = createGlobalStyle`
-  .genui-table-spacing-contract [role='rowheader'] > * > div {
-    min-height: ${genUISpacingContract.tableRowHeight};
-  }
-`;
-
 /**
  * Built-in component types supported by GenUI
  */
@@ -1044,52 +1038,49 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
 
   return (
     <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
-      <GenUITableSpacingStyles />
-      <div className="genui-table-spacing-contract">
-        <Table
-          data={tableData}
-          backgroundColor="transparent"
-          rowDensity="normal"
-          gridTemplateColumns={columnWidths.join(' ')}
-        >
-          {(data) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  {headers.map((header, index) => (
-                    <TableHeaderCell key={index}>{header}</TableHeaderCell>
-                  ))}
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {data.map((item, rowIndex) => (
-                  <TableRow
-                    key={rowIndex}
-                    item={item}
-                    // eslint-disable-next-line @typescript-eslint/no-empty-function
-                    onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
-                    hoverActions={
-                      rowActions && rowActions.length > 0 ? (
-                        <TableRowHoverActions
-                          rowActions={rowActions}
-                          rowIndex={rowIndex}
-                          rowData={item.cells}
-                        />
-                      ) : undefined
-                    }
-                  >
-                    {item.cells.map((cell, cellIndex) => (
-                      <TableCell key={cellIndex}>
-                        <RenderTableCellContent cell={cell} />
-                      </TableCell>
-                    ))}
-                  </TableRow>
+      <Table
+        data={tableData}
+        backgroundColor="transparent"
+        rowDensity="compact"
+        gridTemplateColumns={columnWidths.join(' ')}
+      >
+        {(data) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                {headers.map((header, index) => (
+                  <TableHeaderCell key={index}>{header}</TableHeaderCell>
                 ))}
-              </TableBody>
-            </>
-          )}
-        </Table>
-      </div>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {data.map((item, rowIndex) => (
+                <TableRow
+                  key={rowIndex}
+                  item={item}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
+                  hoverActions={
+                    rowActions && rowActions.length > 0 ? (
+                      <TableRowHoverActions
+                        rowActions={rowActions}
+                        rowIndex={rowIndex}
+                        rowData={item.cells}
+                      />
+                    ) : undefined
+                  }
+                >
+                  {item.cells.map((cell, cellIndex) => (
+                    <TableCell key={cellIndex}>
+                      <RenderTableCellContent cell={cell} />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
     </Box>
   );
 });
