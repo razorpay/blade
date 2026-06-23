@@ -234,7 +234,8 @@ try {
 } catch (_) {
   currentUser = null;
 }
-const isSelfReview = currentUser !== null && prAuthor === currentUser;
+const normalize = (login) => login?.replace(/\[bot\]$/, '');
+const isSelfReview = currentUser !== null && normalize(prAuthor) === normalize(currentUser);
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];
