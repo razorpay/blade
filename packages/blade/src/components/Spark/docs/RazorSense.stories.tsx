@@ -69,13 +69,6 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
 
 export const Default = RazorSenseTemplate.bind({});
 
-export const LocalBaseVideo = RazorSenseTemplate.bind({});
-LocalBaseVideo.args = {
-  gradientMapSrc: LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
-  gradientMap2Src: LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
-  centerGradientMapSrc: LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
-};
-
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
@@ -1919,3 +1912,11 @@ const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 
 export const LoginPage = LoginPageTemplate.bind({});
 LoginPage.storyName = 'Login Page';
+
+export const RefreshedRazorSense = RazorSenseTemplate.bind({});
+RefreshedRazorSense.storyName = 'Refreshed RazorSense';
+RefreshedRazorSense.args = {
+  gradientMapSrc: LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
+  gradientMap2Src: LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
+  centerGradientMapSrc: LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
+};
