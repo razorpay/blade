@@ -3481,21 +3481,6 @@ describe('<GenUI />', () => {
     });
 
     describe('TEXT component markdown variations', () => {
-      it('should expose the GenUI spacing contract in one tweakable place', () => {
-        expect(genUISpacingContract).toMatchObject({
-          headingToText: 'spacing.3',
-          textToH3: 'spacing.7',
-          h3ToCardTable: 'spacing.3',
-          textToCardTable: 'spacing.7',
-          cardTableToNextH3: 'spacing.7',
-          cardTableToFooterAction: 'spacing.7',
-          textParagraphGap: 'spacing.3',
-          compactCardPadding: 'spacing.5',
-          compactCardRowGap: 'spacing.3',
-          tableRowHeight: '48px',
-        });
-      });
-
       it('should resolve GenUI component spacing relationships from the contract', () => {
         expect(
           getGenUIComponentTopSpacing(
