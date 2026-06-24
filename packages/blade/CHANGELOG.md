@@ -1,5 +1,32 @@
 # @razorpay/blade
 
+## 12.108.2
+
+### Patch Changes
+
+- 8b8c852e8: fix(native) :- fixed left padding in phone input's country selector
+
+## 12.108.1
+
+### Patch Changes
+
+- 3595bf51b: fix(blade): genui font weights and spacing
+
+## 12.108.0
+
+### Minor Changes
+
+- 90ddaed4c: **Alert:** Full-width Alert now has `border-radius: medium` instead of `none`.
+
+  > **⚠️ Visual Breaking Change:** If you use `isFullWidth` Alert in edge-to-edge/full-bleed layouts, the component will now render with rounded corners instead of sharp edges. Verify your layouts to ensure the rounded corners work with your design.
+
+### Patch Changes
+
+- 595326e84: fix(Preview): use theme-aware color for dot grid in dark mode
+- 90ddaed4c: feat(Alert): add maxWidth prop for custom width override
+- 06b8ed0e2: feat(Card): add variant prop
+- 8dd58d81f: chore(blade): setup React Native Storybook v10 with Hermes compatibility patches
+
 ## 12.107.3
 
 ### Patch Changes
