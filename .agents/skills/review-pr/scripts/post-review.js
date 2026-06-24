@@ -117,28 +117,11 @@ function formatOverviewComment(
     );
   }
 
-  const sanity = overview['sanity-review'];
   const ui = overview['ui-review'];
 
   if (ui) {
-    const storybookStatus = sanity?.statuses?.find((s) =>
-      s.name.toLowerCase().includes('storybook'),
-    );
-    const storybookLine = storybookStatus?.link
-      ? `🔗 Storybook: [Preview](${storybookStatus.link})`
-      : null;
-
     parts.push('### UI Review');
-    if (storybookLine) parts.push(storybookLine);
     parts.push(buildStatusSection(ui.statuses, screenshotCdnMap));
-  }
-
-  if (sanity) {
-    parts.push('### CI / Sanity');
-    parts.push(buildStatusSection(sanity.statuses));
-    if (sanity.issues?.length) {
-      parts.push(sanity.issues.map((i) => `> ⚠️ ${i.problem}`).join('\n'));
-    }
   }
 
   if (usage) {
@@ -251,13 +234,14 @@ try {
 } catch (_) {
   currentUser = null;
 }
-const isSelfReview = currentUser !== null && prAuthor === currentUser;
+const normalize = (login) => login?.replace(/\[bot\]$/, '');
+const isSelfReview = currentUser !== null && normalize(prAuthor) === normalize(currentUser);
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];
 function filterIgnoredChecks(overview) {
   const filtered = { ...overview };
-  for (const key of ['sanity-review', 'ui-review']) {
+  for (const key of ['ui-review']) {
     if (filtered[key]?.statuses) {
       filtered[key] = {
         ...filtered[key],

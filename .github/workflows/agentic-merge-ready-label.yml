@@ -46,7 +46,7 @@ jobs:
           # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
           AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
           # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
-          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"}
+          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "rzpcibot"}
 
           def gh_json(*args):
               r = subprocess.run(["gh", *args], capture_output=True, text=True)
@@ -58,6 +58,11 @@ jobs:
 
           def normalize_user(login):
               return login.replace("app/", "").replace("[bot]", "")
+
+          def is_status_approved(body):
+              """Check for 'Status: Approved' allowing markdown bold (**Status:**)."""
+              normalized = body.lower().replace("**", "")
+              return "status: approved" in normalized
 
           def is_human(login):
               return login not in BOT_COMMENTERS and normalize_user(login) not in AGENT_USERS
@@ -97,7 +102,7 @@ jobs:
 
               if normalize_user(author) in AGENT_USERS:
                   # Approved either via actual approval state or "Status: Approved" in review body
-                  is_approved = state == "approved" or "status: approved" in body.lower()
+                  is_approved = state == "approved" or is_status_approved(body)
                   if is_approved:
                       print("Slash-reviewer approved — checking for human comments...")
                       if not has_human_comments(repo, pr_number):
@@ -130,7 +135,7 @@ jobs:
               body = os.environ.get("COMMENT_BODY", "")
               print(f"PR comment by '{author}' on PR #{pr_number}")
 
-              if normalize_user(author) in AGENT_USERS and "status: approved" in body.lower():
+              if normalize_user(author) in AGENT_USERS and is_status_approved(body):
                   # Slash-reviewer can also signal approval via an issue comment
                   print("Slash-reviewer posted 'Status: Approved' — checking for human comments...")
                   if not has_human_comments(repo, pr_number):
