@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, TextInput, StyleSheet, Text } from 'react-native';
+import type { TextStyle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -64,12 +65,7 @@ type DigitSlotProps = {
   isAnimating: boolean;
   direction: 'up' | 'down';
   duration: number;
-  digitStyle: {
-    color: string;
-    fontSize: number;
-    fontFamily: string;
-    fontWeight: string;
-  };
+  digitStyle: Pick<TextStyle, 'color' | 'fontSize' | 'fontFamily' | 'fontWeight'>;
 };
 
 /**
@@ -245,7 +241,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       weight: 'semibold',
     });
 
-    const digitTextStyle = {
+    const digitTextStyle: Pick<TextStyle, 'color' | 'fontSize' | 'fontFamily' | 'fontWeight'> = {
       color: valueColor,
       fontSize: theme.typography.fonts.size[fontSizeToken],
       fontFamily: theme.typography.fonts.family.text,
