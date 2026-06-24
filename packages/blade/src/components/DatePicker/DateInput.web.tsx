@@ -4,6 +4,7 @@
 import React from 'react';
 import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps, DateInputProps } from './types';
+import { useControllableState } from '~utils/useControllable';
 import {
   getFormattedDate,
   rangeFormattedValue,
@@ -57,6 +58,20 @@ const _DateInput = (
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const [isFocused, setIsFocused] = React.useState(false);
+
+  // Controllable validation state handles the controlled/uncontrolled pattern:
+  // - Controlled: consumer passes validationState prop (external control)
+  // - Uncontrolled: DateInput manages it internally based on typing errors
+  // useControllableState's useCallbackRef internals ensure onValidationStateChange is always fresh
+  const [effectiveValidationState, setEffectiveValidationState] = useControllableState<
+    'error' | 'success' | 'none'
+  >({
+    value: textInputProps.validationState as 'error' | 'success' | 'none' | undefined,
+    defaultValue: 'none',
+    onChange: (state) => {
+      onValidationStateChange?.({ validationState: state });
+    },
+  });
   const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // Determine selection type: prefer preset context calculation over props
@@ -85,19 +100,9 @@ const _DateInput = (
   // clearing errors during typing/blur unless the value truly updated.
   React.useEffect(() => {
     setValidationError(undefined);
+    setEffectiveValidationState(() => 'none');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
-
-  // Keep refs in sync so the effect below never needs these values in its
-  // dependency array, preventing spurious calls on every render.
-  const onValidationStateChangeRef = React.useRef(onValidationStateChange);
-  onValidationStateChangeRef.current = onValidationStateChange;
-  const externalValidationStateRef = React.useRef(textInputProps.validationState);
-  externalValidationStateRef.current = textInputProps.validationState;
-
-  React.useEffect(() => {
-    const effectiveState = validationError ? 'error' : externalValidationStateRef.current ?? 'none';
-    onValidationStateChangeRef.current?.({ validationState: effectiveState });
-  }, [validationError]);
 
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
@@ -148,6 +153,7 @@ const _DateInput = (
   const handleInputChange = ({ value }: { value?: string }): void => {
     const inputValue = value ?? '';
     setValidationError(undefined);
+    setEffectiveValidationState(() => 'none');
 
     if (inputValue?.trim()) {
       const validation = validateAndParseDateInput(inputValue, isRange, format, {
@@ -158,6 +164,7 @@ const _DateInput = (
 
       if (validation.shouldBlock && validation.error) {
         setValidationError(validation.error);
+        setEffectiveValidationState(() => 'error');
       }
     }
 
@@ -169,6 +176,7 @@ const _DateInput = (
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value ?? params.value ?? '';
       setValidationError(undefined);
+      setEffectiveValidationState(() => 'none');
 
       if (currentInputValue?.trim()) {
         // Validate complete input and show errors to user on blur (includes all constraints)
@@ -180,6 +188,7 @@ const _DateInput = (
 
         if (validation.shouldBlock && validation.error) {
           setValidationError(validation.error);
+          setEffectiveValidationState(() => 'error');
           return; // Don't apply invalid values
         }
       }
@@ -268,7 +277,7 @@ const _DateInput = (
       leadingIcon: showLeadingIcon,
       ...(showLeadingDropdown ? { leading: showLeadingDropdown } : {}),
       format: dateInputFormat,
-      validationState: validationError ? 'error' : textInputProps.validationState,
+      validationState: validationError ? 'error' : effectiveValidationState,
       errorText: textInputProps.errorText ?? validationError,
       onChange: handleInputChange,
       onBlur: handleBlurWithFocusState,
