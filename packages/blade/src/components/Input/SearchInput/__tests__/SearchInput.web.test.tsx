@@ -423,12 +423,7 @@ describe('<SearchInput />', () => {
 
   it('should apply width, minWidth, and maxWidth props', () => {
     const { container } = renderWithTheme(
-      <SearchInput
-        label="Search here"
-        width="300px"
-        minWidth="200px"
-        maxWidth="500px"
-      />,
+      <SearchInput label="Search here" width="300px" minWidth="200px" maxWidth="500px" />,
     );
 
     expect(container).toMatchSnapshot();
