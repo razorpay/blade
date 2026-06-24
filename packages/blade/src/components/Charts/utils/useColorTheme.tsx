@@ -1,5 +1,5 @@
 import type { ColorTheme, ChartName, ChartColorTokenNames, ColorIntensity } from './types';
-import { colorSequence } from './tokens';
+import { colorSequence, DEFAULT_COLOR } from './tokens';
 /**
  * The color theme of the chart.
  * @default 'categorical'
@@ -17,7 +17,7 @@ const useChartsColorTheme = ({
 }): CategoricalColorToken[] => {
   // Single data point should use Blade's default chart color.
   if (chartDataIndicators === 1 && chartName !== 'donut') {
-    return ['data.background.categorical.blue.moderate'];
+    return [DEFAULT_COLOR];
   }
 
   // Intensity sequence based on chart type
@@ -53,6 +53,7 @@ const useChartsColorTheme = ({
 /**
  * Color token types for type safety
  */
-type CategoricalColorToken = `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
+type CategoricalColorToken =
+  `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
 
 export default useChartsColorTheme;
