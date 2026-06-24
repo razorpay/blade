@@ -1059,6 +1059,7 @@ exports[`<SearchInput /> should apply width, minWidth, and maxWidth props 1`] = 
                         hasLeadingDropdown={false}
                         hasTags={false}
                         id="searchinput-235-input-236"
+                        includeFontPadding={false}
                         isDropdownTrigger={true}
                         isFocused={false}
                         isInsideCounterInput={false}
