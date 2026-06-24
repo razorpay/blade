@@ -1127,9 +1127,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             size={_size}
             borderRadius={borderRadius}
             numberOfLines={numberOfLines}
-            onClick={() => {
+            onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
+                // If click didn't originate from the input itself (e.g., clicked on
+                // leading icon like DatePicker's calendar icon), dispatch a click on
+                // the input to trigger its onClick handlers (e.g., floating-ui toggle)
+                if (e.target !== inputRef.current) {
+                  inputRef.current?.click();
+                }
               }
             }}
             isTableInputCell={isTableInputCell}
