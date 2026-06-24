@@ -191,7 +191,10 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
         setDigitAnimState({ digits: currStr.split(''), animatingIndices, direction });
         if (animTimeoutRef.current !== null) clearTimeout(animTimeoutRef.current);
-        animTimeoutRef.current = setTimeout(() => setDigitAnimState(null), theme.motion.duration.quick);
+        animTimeoutRef.current = setTimeout(
+          () => setDigitAnimState(null),
+          theme.motion.duration.quick,
+        );
         lastActionRef.current = null;
       }
 
