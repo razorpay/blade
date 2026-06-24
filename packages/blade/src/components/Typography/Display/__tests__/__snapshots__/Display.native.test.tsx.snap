@@ -17,6 +17,7 @@ exports[`<Display /> should render Display with color 1`] = `
     fontSize={800}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={800}
     style={
       [
@@ -63,6 +64,7 @@ exports[`<Display /> should render Display with default properties 1`] = `
     fontSize={800}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={800}
     style={
       [
@@ -109,6 +111,7 @@ exports[`<Display /> should render Display with mixed color 1`] = `
     fontSize={800}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={800}
     style={
       [
@@ -144,6 +147,7 @@ exports[`<Display /> should render Display with mixed color 1`] = `
       fontSize={800}
       fontStyle="normal"
       fontWeight="semibold"
+      letterSpacing={100}
       lineHeight={800}
       style={
         [
@@ -191,6 +195,7 @@ exports[`<Display /> should render Display with variant "large" 1`] = `
     fontSize={1000}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={1000}
     style={
       [
@@ -237,6 +242,7 @@ exports[`<Display /> should render Display with variant "medium" 1`] = `
     fontSize={900}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={900}
     style={
       [
@@ -283,6 +289,7 @@ exports[`<Display /> should render Display with variant "small" 1`] = `
     fontSize={800}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={800}
     style={
       [
@@ -329,6 +336,7 @@ exports[`<Display /> should render Display with variant "small" and contrast "hi
     fontSize={800}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={800}
     style={
       [
@@ -375,6 +383,7 @@ exports[`<Display /> should render Display with variant "xlarge" 1`] = `
     fontSize={1100}
     fontStyle="normal"
     fontWeight="semibold"
+    letterSpacing={100}
     lineHeight={1100}
     style={
       [

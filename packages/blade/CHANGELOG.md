@@ -1,5 +1,68 @@
 # @razorpay/blade
 
+## 12.108.2
+
+### Patch Changes
+
+- 8b8c852e8: fix(native) :- fixed left padding in phone input's country selector
+
+## 12.108.1
+
+### Patch Changes
+
+- 3595bf51b: fix(blade): genui font weights and spacing
+
+## 12.108.0
+
+### Minor Changes
+
+- 90ddaed4c: **Alert:** Full-width Alert now has `border-radius: medium` instead of `none`.
+
+  > **⚠️ Visual Breaking Change:** If you use `isFullWidth` Alert in edge-to-edge/full-bleed layouts, the component will now render with rounded corners instead of sharp edges. Verify your layouts to ensure the rounded corners work with your design.
+
+### Patch Changes
+
+- 595326e84: fix(Preview): use theme-aware color for dot grid in dark mode
+- 90ddaed4c: feat(Alert): add maxWidth prop for custom width override
+- 06b8ed0e2: feat(Card): add variant prop
+- 8dd58d81f: chore(blade): setup React Native Storybook v10 with Hermes compatibility patches
+
+## 12.107.3
+
+### Patch Changes
+
+- a0cc2ca58: fix(rn): vertically align inline `Code` and `Link` with adjacent text on React Native by disabling Android's default font padding (`includeFontPadding: false`). Web rendering is unchanged.
+- 2df5b2b70: fix(rn): baseline-align and prevent clipping of Amount currency/decimal
+
+## 12.107.2
+
+### Patch Changes
+
+- 629a77e9d: fix(rn): fix ListItem text overflow on React Native
+- aab9b4c79: fix(rn): card header subtitle wraps correctly, footer buttons stay within bounds
+- 5f8e7401d: fix(rn): display tags in a horizontal row in Tag story
+- 48be721d8: fix(rn): spark upgrade RN easy layout fixes
+- c8b01213f: fix(rn): implement CounterInput for React Native with text centering, semibold weight, and slide animation
+- c6393ea73: fix(rn): fix double border on selected ChipGroup items
+- 9566bd6e3: fix(rn): fix Popover animation flash and story flex layout
+- f8907d623: feat(native): add native shadow overlay to match web 3D styling
+- 1a370c524: fix(rn): make overflow cards scrollable in Card story
+- 58ba1549d: feat(icons): add AgentStudioIcon and 6 filled icon variants
+- 1cd4cafa7: fix(native): add expanding focus ring animation for all inputs
+
+## 12.107.1
+
+### Patch Changes
+
+- 3891126cc: fix(Accordion): animation race condition
+- 90c660fef: fix(rn): fix BaseFooterSink layout for React Native
+- 7e8ffc9bf: fix(rn): fix Avatar story label wrapping on React Native
+- 57703cf66: fix(Drawer): fix stale closure in StackProvider causing back button to appear on L0 after closing all drawers
+- 0ae4f1c5a: feat(Input): update input sizing, success border, and add validationTextPlacement prop
+- 5cd3af431: feat(Accordion): apply Card surface styling to filled variant
+- ce3bf0b4e: fix(rn): fix story layout issues for Divider, Link, and Code components
+- c448696eb: fix(native): pass letterSpacing prop through BaseText.native.tsx
+
 ## 12.107.0
 
 ### Minor Changes

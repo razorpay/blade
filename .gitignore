@@ -32,6 +32,10 @@ yarn-debug.log*
 yarn-error.log*
 debug-storybook.log
 
+# design-sync artifacts (keep .design-sync/ source files, ignore build outputs)
+/.ds-sync/
+/ds-bundle/
+
 
 # React Native Specific:
 

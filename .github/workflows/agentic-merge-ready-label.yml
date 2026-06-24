@@ -1,0 +1,174 @@
+name: Agentic Repo / Auto-Merge Ready Check
+
+on:
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [synchronize]
+
+jobs:
+  manage-label:
+    name: Manage Agentic Merge Ready label
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Manage Agentic Merge Ready label
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          # pull_request_review fields
+          REVIEW_STATE: ${{ github.event.review.state }}
+          REVIEW_BODY: ${{ github.event.review.body }}
+          REVIEW_AUTHOR: ${{ github.event.review.user.login }}
+          # issue_comment / pull_request_review_comment fields
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          # true when issue_comment fires on a PR (not a plain issue)
+          IS_PR_COMMENT: ${{ toJSON(github.event.issue.pull_request) != 'null' }}
+          # PR number — varies by event type
+          PR_NUMBER_FROM_PR_EVENT: ${{ github.event.pull_request.number }}
+          PR_NUMBER_FROM_ISSUE_EVENT: ${{ github.event.issue.number }}
+          # Actor who triggered the event (used to skip bot-initiated synchronize)
+          ACTOR: ${{ github.actor }}
+        run: |
+          python3 << 'EOF'
+          import os, subprocess, json, sys, urllib.parse
+
+          LABEL = "✨ Agentic Merge Ready ✨"
+          # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
+          AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
+          # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
+          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "rzpcibot"}
+
+          def gh_json(*args):
+              r = subprocess.run(["gh", *args], capture_output=True, text=True)
+              return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else None
+
+          def gh_cmd(*args):
+              r = subprocess.run(["gh", *args], capture_output=True, text=True)
+              return r.returncode == 0
+
+          def normalize_user(login):
+              return login.replace("app/", "").replace("[bot]", "")
+
+          def is_status_approved(body):
+              """Check for 'Status: Approved' allowing markdown bold (**Status:**)."""
+              normalized = body.lower().replace("**", "")
+              return "status: approved" in normalized
+
+          def is_human(login):
+              return login not in BOT_COMMENTERS and normalize_user(login) not in AGENT_USERS
+
+          def has_human_comments(repo, pr_number):
+              """
+              Follows blade-agentic-metrics logic exactly: checks only inline review
+              comments and issue-level comments (not review body text).
+              """
+              review_comments = gh_json("api", f"repos/{repo}/pulls/{pr_number}/comments", "--paginate") or []
+              issue_comments = gh_json("api", f"repos/{repo}/issues/{pr_number}/comments", "--paginate") or []
+              for c in [*review_comments, *issue_comments]:
+                  if is_human(c["user"]["login"]):
+                      return True
+              return False
+
+          def has_human_commits(repo, pr_number):
+              """
+              Check whether any commits on the PR were authored by a human
+              (i.e. not a bot commenter and not an agent user).
+              """
+              commits = gh_json("api", f"repos/{repo}/pulls/{pr_number}/commits", "--paginate") or []
+              for c in commits:
+                  author_login = c.get("author", {}).get("login", "") if c.get("author") else ""
+                  if author_login and is_human(author_login):
+                      return True
+              return False
+
+          def add_label(repo, pr_number):
+              gh_cmd("api", f"repos/{repo}/issues/{pr_number}/labels",
+                     "--method", "POST", "--field", f"labels[]={LABEL}")
+              print(f"Added '{LABEL}' to PR #{pr_number}")
+
+          def remove_label(repo, pr_number):
+              encoded = urllib.parse.quote(LABEL, safe="")
+              ok = gh_cmd("api", f"repos/{repo}/issues/{pr_number}/labels/{encoded}", "--method", "DELETE")
+              print(f"{'Removed' if ok else 'Label not present on'} PR #{pr_number}")
+
+          repo = os.environ["REPOSITORY"]
+          event_name = os.environ["EVENT_NAME"]
+          event_action = os.environ.get("EVENT_ACTION", "")
+
+          if event_name == "pull_request_review":
+              pr_number = os.environ.get("PR_NUMBER_FROM_PR_EVENT", "")
+              author = os.environ.get("REVIEW_AUTHOR", "")
+              state = os.environ.get("REVIEW_STATE", "").lower()
+              body = os.environ.get("REVIEW_BODY", "")
+              print(f"Review by '{author}' state='{state}' PR #{pr_number}")
+
+              if normalize_user(author) in AGENT_USERS:
+                  # Approved either via actual approval state or "Status: Approved" in review body
+                  is_approved = state == "approved" or is_status_approved(body)
+                  if is_approved:
+                      print("Slash-reviewer approved — checking for human comments and commits...")
+                      if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
+                          add_label(repo, pr_number)
+                      else:
+                          print(f"PR #{pr_number} has human comments or commits — skipping label")
+                  else:
+                      print(f"Slash-reviewer review is not an approval (state={state}), skipping")
+              else:
+                  print(f"Review by non-slash user '{author}' — no label change on review submission")
+
+          elif event_name == "pull_request_review_comment":
+              pr_number = os.environ.get("PR_NUMBER_FROM_PR_EVENT", "")
+              author = os.environ.get("COMMENT_AUTHOR", "")
+              print(f"Inline review comment by '{author}' on PR #{pr_number}")
+
+              if is_human(author):
+                  remove_label(repo, pr_number)
+              else:
+                  print(f"Comment by agent/bot '{author}' — no label change")
+
+          elif event_name == "issue_comment":
+              is_pr = os.environ.get("IS_PR_COMMENT", "false").lower() == "true"
+              if not is_pr:
+                  print("Not a PR comment — skipping")
+                  sys.exit(0)
+
+              pr_number = os.environ.get("PR_NUMBER_FROM_ISSUE_EVENT", "")
+              author = os.environ.get("COMMENT_AUTHOR", "")
+              body = os.environ.get("COMMENT_BODY", "")
+              print(f"PR comment by '{author}' on PR #{pr_number}")
+
+              if normalize_user(author) in AGENT_USERS and is_status_approved(body):
+                  # Slash-reviewer can also signal approval via an issue comment
+                  print("Slash-reviewer posted 'Status: Approved' — checking for human comments and commits...")
+                  if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
+                      add_label(repo, pr_number)
+                  else:
+                      print(f"PR #{pr_number} has human comments or commits — skipping label")
+              elif is_human(author):
+                  remove_label(repo, pr_number)
+              else:
+                  print(f"Comment by agent/bot '{author}' — no label change")
+
+          elif event_name == "pull_request" and event_action == "synchronize":
+              pr_number = os.environ.get("PR_NUMBER_FROM_PR_EVENT", "")
+              actor = os.environ.get("ACTOR", "")
+              # Skip automated bot commits (e.g. github-actions[bot] version bumps)
+              if actor in BOT_COMMENTERS:
+                  print(f"Synchronize triggered by bot '{actor}' — skipping label removal")
+              else:
+                  print(f"New commit by '{actor}' on PR #{pr_number} — removing label")
+                  remove_label(repo, pr_number)
+
+          else:
+              print(f"Unhandled event: {event_name}/{event_action} — skipping")
+          EOF

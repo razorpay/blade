@@ -3,6 +3,7 @@ set -e
 
 # Default output directory
 OUTPUT_DIR="storybook-site"
+SKIP_DASHBOARD=false
 OTHER_ARGS=()
 
 # Parse arguments and forward them to storybook build
@@ -15,6 +16,10 @@ while [[ $# -gt 0 ]]; do
     -o)
       OUTPUT_DIR="$2"
       shift 2
+      ;;
+    --skip-dashboard)
+      SKIP_DASHBOARD=true
+      shift
       ;;
     *)
       # Forward all other arguments to storybook build
@@ -31,7 +36,9 @@ yarn generate-docs-lockfile
 cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o "$OUTPUT_DIR" --quiet "${OTHER_ARGS[@]}"
 
 # Copy dashboard to the output directory (works for both default and Chromatic's custom dir)
-node ./scripts/copyDashboard.js "$OUTPUT_DIR"
+if [ "$SKIP_DASHBOARD" = false ]; then
+  node ./scripts/copyDashboard.js "$OUTPUT_DIR"
+fi
 
 # Copy svelte storybook to the output directory (serves at /svelte route)
 node ./scripts/copySvelteStorybook.js "$OUTPUT_DIR"
