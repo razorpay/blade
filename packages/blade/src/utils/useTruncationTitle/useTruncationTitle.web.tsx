@@ -34,7 +34,11 @@ const useTruncationTitle = ({
       return;
     }
 
-    if (textRef.current.scrollHeight > containerRef.current.clientHeight && content) {
+    const isTextTruncated =
+      textRef.current.scrollHeight > containerRef.current.clientHeight ||
+      textRef.current.scrollWidth > containerRef.current.clientWidth;
+
+    if (isTextTruncated && content) {
       textRef.current.setAttribute('title', content);
     }
   }, [content]);
