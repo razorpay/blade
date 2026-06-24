@@ -1,5 +1,305 @@
 # @razorpay/blade
 
+## 12.108.2
+
+### Patch Changes
+
+- 8b8c852e8: fix(native) :- fixed left padding in phone input's country selector
+
+## 12.108.1
+
+### Patch Changes
+
+- 3595bf51b: fix(blade): genui font weights and spacing
+
+## 12.108.0
+
+### Minor Changes
+
+- 90ddaed4c: **Alert:** Full-width Alert now has `border-radius: medium` instead of `none`.
+
+  > **⚠️ Visual Breaking Change:** If you use `isFullWidth` Alert in edge-to-edge/full-bleed layouts, the component will now render with rounded corners instead of sharp edges. Verify your layouts to ensure the rounded corners work with your design.
+
+### Patch Changes
+
+- 595326e84: fix(Preview): use theme-aware color for dot grid in dark mode
+- 90ddaed4c: feat(Alert): add maxWidth prop for custom width override
+- 06b8ed0e2: feat(Card): add variant prop
+- 8dd58d81f: chore(blade): setup React Native Storybook v10 with Hermes compatibility patches
+
+## 12.107.3
+
+### Patch Changes
+
+- a0cc2ca58: fix(rn): vertically align inline `Code` and `Link` with adjacent text on React Native by disabling Android's default font padding (`includeFontPadding: false`). Web rendering is unchanged.
+- 2df5b2b70: fix(rn): baseline-align and prevent clipping of Amount currency/decimal
+
+## 12.107.2
+
+### Patch Changes
+
+- 629a77e9d: fix(rn): fix ListItem text overflow on React Native
+- aab9b4c79: fix(rn): card header subtitle wraps correctly, footer buttons stay within bounds
+- 5f8e7401d: fix(rn): display tags in a horizontal row in Tag story
+- 48be721d8: fix(rn): spark upgrade RN easy layout fixes
+- c8b01213f: fix(rn): implement CounterInput for React Native with text centering, semibold weight, and slide animation
+- c6393ea73: fix(rn): fix double border on selected ChipGroup items
+- 9566bd6e3: fix(rn): fix Popover animation flash and story flex layout
+- f8907d623: feat(native): add native shadow overlay to match web 3D styling
+- 1a370c524: fix(rn): make overflow cards scrollable in Card story
+- 58ba1549d: feat(icons): add AgentStudioIcon and 6 filled icon variants
+- 1cd4cafa7: fix(native): add expanding focus ring animation for all inputs
+
+## 12.107.1
+
+### Patch Changes
+
+- 3891126cc: fix(Accordion): animation race condition
+- 90c660fef: fix(rn): fix BaseFooterSink layout for React Native
+- 7e8ffc9bf: fix(rn): fix Avatar story label wrapping on React Native
+- 57703cf66: fix(Drawer): fix stale closure in StackProvider causing back button to appear on L0 after closing all drawers
+- 0ae4f1c5a: feat(Input): update input sizing, success border, and add validationTextPlacement prop
+- 5cd3af431: feat(Accordion): apply Card surface styling to filled variant
+- ce3bf0b4e: fix(rn): fix story layout issues for Divider, Link, and Code components
+- c448696eb: fix(native): pass letterSpacing prop through BaseText.native.tsx
+
+## 12.107.0
+
+### Minor Changes
+
+- 11f7f0141: feat(native): added phone number input component in native
+
+### Patch Changes
+
+- 5f5289683: fix(Menu): fix asymmetric top/bottom padding in menu overlay
+
+## 12.106.1
+
+### Patch Changes
+
+- e657a6a1f: fix(Tabs): center tab labels on React Native to match web
+
+  `TabItem.native`'s `StyledTabButton` was missing `justifyContent: 'center'`, so full-width tab items (`isFullWidthTabItem`) left-aligned their labels on React Native, while the web variant (`TabItem.web`) centers them. Added the missing property to restore web/native parity.
+
+## 12.106.0
+
+### Minor Changes
+
+- bcdbef2f8: Adds a new SankeyChart component for visualising flow and proportional
+  relationships between nodes. Built on Recharts' native Sankey component.
+  Supports Blade color tokens, hover interactions, tooltips, label chips,
+  responsive resize, and click callbacks.
+
+### Patch Changes
+
+- 4fc149e14: fix(native): added scroll in carousel component
+
+## 12.105.1
+
+### Patch Changes
+
+- f116b3cae: fix: externalize react-native-safe-area-context as peer dependency
+
+## 12.105.0
+
+### Minor Changes
+
+- 374cb0479: feat(native): Added BottomNav component in React Native
+- 7268d4bf2: feat(native): Added Skeleton Loader for React Native
+
+### Patch Changes
+
+- 0f9dc0876: fix(typography): apply TASA Orbiter Display optical size on web headings
+
+## 12.104.2
+
+### Patch Changes
+
+- 37a1f0dd4: feat(blade): add checkboxDisplay prop for on-hover row checkbox visibility in table
+
+## 12.104.1
+
+### Patch Changes
+
+- 3b566c927: fix(native): transparency issue in tooltip for native
+
+## 12.104.0
+
+### Minor Changes
+
+- 07ba06c3f: feat(Table): change loading to use skeleton instead of spinner
+
+## 12.103.0
+
+### Minor Changes
+
+- e4b90e565: Fixed styled-components v6 error in BaseBox.native.tsx
+  Fixed makeBorderSize string issue with a native-only implementation
+  Fixed reanimated crash in Popover and Tooltip content wrappers
+  Fixed badge spacing, chips styling, switch AnimatedThumb, and TextInput label on native
+  Fixed Tooltip native implementation
+  Fixed Popover on iOS, Android, and crash on re-render
+  Added Avatar, AvatarGroup, and EmptyState native implementations
+  Added Spark native stubs (FluidGradient, RzpGlass)
+  Added native stubs for web-only components (MotionDashboard, StepperRouter, Rotate, Calendar, CustomMenu, SpinWheel)
+  Added StyledDropdownOverlay native stub
+
+## 12.102.0
+
+### Minor Changes
+
+- a9544ac6a: feat(native): flesh out DatePicker, BarChart, CommonChartComponents, and Toast native implementations
+
+  Builds out the native (React Native) implementations of components that previously shipped only as scaffolds:
+
+  - **DatePicker.native.tsx** — full Tier-1 native picker (was a stub). Calendar
+    renders inside a `BottomSheet`; supports `single` / `range` selection, presets,
+    min/max date, controlled state, locale-aware weekday labels via dayjs,
+    customisable header / apply / cancel / clear-button labels, and accessibility
+    state on day cells. Unsupported web-only props (`picker`, masked input, form
+    validation props) emit a `__DEV__` warning and are otherwise ignored.
+  - **Charts/BarChart/BarChart.native.tsx** — Tier-1 bar chart implementation.
+    Renders horizontal stacked / grouped bars via `react-native-svg`, with axes,
+    legend, grid, reference lines, secondary X-axis labels, and an empty-state
+    message when `data` is empty. `layout="vertical"` is a tracked follow-up and
+    emits a `__DEV__` warning today.
+  - **Charts/CommonChartComponents/** — native marker components for axes,
+    legend, grid, reference line, and tooltip. The tooltip emits a one-shot
+    `__DEV__` warning when used on native (native tooltip is a follow-up).
+  - **Toast** — `Toast.native.tsx`, `ToastContainer.native.tsx`, and
+    `useToast.native.tsx` replace the previous web-only Toast stack. `show()`,
+    `dismiss()`, promotional toast deduping, auto-dismiss, and the entrance /
+    exit animation are all wired up. Cross-platform `ToastProps.action.onClick`
+    type is corrected (was `event: ButtonProps['onClick']`, now
+    `event: React.MouseEvent<HTMLButtonElement>` — a fix to an existing typo).
+
+  Driven by the Razorpay merchant mobile app's Blade v12 migration spike, where
+  the prior native stubs were insufficient for the home/payments screens.
+
+- a9544ac6a: fix(Tabs.native): drop react-native-tab-view, rebuild on react-native-pager-view
+
+  > **Why minor (not patch):** this changeset removes `react-native-tab-view` from
+  > `peerDependencies` and broadens the `react-native-pager-view` peer range to
+  > `^6.2.1 || ^8.0.0`. Both are peer-dep contract changes that consumers must
+  > react to, which by convention warrants a minor bump.
+
+  Replaces the `react-native-tab-view@3.x` dependency (which declares `react: ~16.13.1` in devDeps
+  and triggers an "Invalid hook call" crash on React 19.2 + RN 0.85) with a direct
+  `react-native-pager-view` implementation.
+
+  **What changed:**
+
+  - `Tabs.native.tsx` — new implementation: custom `CustomTabBar` (ScrollView + Pressable +
+    `react-native-reanimated` animated indicator) + `PagerView` for swipe-between-panels.
+    No `TabBar` / `TabView` from `react-native-tab-view` anywhere in the render tree.
+  - `TabIndicator.native.tsx` — indicator logic moved inline; file retained as a no-op for
+    internal import compatibility.
+  - `SafeSceneMap.native.tsx` — removed `react-native-tab-view` type import; kept as a backwards-
+    compatible export (no longer used by `Tabs.native.tsx`).
+  - `packages/blade/package.json` — removed `react-native-tab-view` from `peerDependencies` and
+    `devDependencies`; broadened `react-native-pager-view` peer range to `^6.2.1 || ^8.0.0` so
+    consumers on RN 0.85 with pager-view 8.x (e.g. `razorpay/frontend-mobile-app`) are covered
+    without a breaking peer-dep bump.
+
+  **Visual/behavioural parity:** all three variants (bordered, borderless, filled), sizes, and
+  `isFullWidthTabItem` are preserved. Animated indicator uses `withTiming` from reanimated (already
+  a Blade peer dep) for smooth transitions.
+
+  **Consumers:** `razorpay/frontend-mobile-app` — `react-native-tab-view@3.1.1` was already
+  installed there as a transitive dep; it is no longer required by Blade and can be removed from
+  the consumer's direct deps if desired.
+
+### Patch Changes
+
+- 40aca8649: feat(Icons): add block layout icons
+
+## 12.101.5
+
+### Patch Changes
+
+- ef481b003: feat(ChatInput): add hideFileUpload and autoFocus props
+
+## 12.101.4
+
+### Patch Changes
+
+- b18c31986: fix(OTPInput): match placeholder font size to input value font size
+
+## 12.101.3
+
+### Patch Changes
+
+- 376037488: fix(topnav): scope primary overlay and align global styles
+
+## 12.101.2
+
+### Patch Changes
+
+- 97a47b788: feat(blade-svelte): add Chip component
+- 9f6eee519: fix(build): disable tree-shaking in native rollup config
+
+  The native build's `getNativeConfig` was tree-shaking aggressively, dropping bindings whose usage rollup couldn't see across the separately-bundled entries (components, tokens, utils). This silently broke multi-statement modules — for example `tokens/global/motion.ts` shipped with only the `easing` object literal as a discarded expression, with `delay`, `duration`, and the `motion` wrapper (and its export) stripped entirely. Same pattern affected `tokens/global/typography.ts`, `utils/logger/logger.ts`, and ~24 other native files. Result: `import { motion }` / `import { logger }` / etc. resolved to `undefined` at runtime in the published `@razorpay/blade@12.101.1` native bundle, which made every component depending on `theme.motion`, the BladeProvider, the Toast, and the React-Native splash flow crash.
+
+  Mirrors the existing `treeshake: false` setting (and rationale comment) on `getWebConfig`. Consumers (the React Native app's Metro bundler) tree-shake their own bundle, so disabling rollup-level tree-shaking on the published native artifact is the correct call.
+
+- 481284546: feat(TopNav): add glow toggle and bottom overlay for primary variant
+
+## 12.101.1
+
+### Patch Changes
+
+- 24a2fff2e: feat(ChatInput, FileUploadItem): disabled submit on file error, trash icon in error state, autoscroll, fixed file item width
+
+## 12.101.0
+
+### Minor Changes
+
+- c25481570: fix(ChatInput): wire onDismiss so close button works on uploading files
+
+## 12.100.0
+
+### Minor Changes
+
+- d93fbc833: feat(TopNav): add paddingY prop to TopNavBrand component
+
+## 12.99.1
+
+### Patch Changes
+
+- cbfd2e804: fix(Table): hide Deselect when nothing selected; decouple row & checkbox click
+
+## 12.99.0
+
+### Minor Changes
+
+- f243e927e: feat(blade): add `variant` prop for primary and neutral backgrounds in TopNav
+
+  Added a new `variant` prop to `TopNav` component with two options:
+
+  - `variant="neutral"` (default) — existing dark/black background, fully backward-compatible
+  - `variant="primary"` — uses brand primary color background (Razorpay blue)
+
+  The explicit `backgroundColor` prop still takes precedence over `variant`, preserving the escape hatch for custom backgrounds.
+
+  **Usage:**
+
+  ```jsx
+  // Default neutral variant (existing behavior)
+  <TopNav>...</TopNav>
+
+  // Primary brand color variant
+  <TopNav variant="primary">...</TopNav>
+
+  // Custom background still works
+  <TopNav backgroundColor="surface.background.gray.intense">...</TopNav>
+  ```
+
+## 12.98.1
+
+### Patch Changes
+
+- 14beb5447: fix(blade): remove country name from dial code selector in PhoneNumberInput
+
 ## 12.98.0
 
 ### Minor Changes

@@ -1,5 +1,6 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title, Description } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { getPlatformType } from '~utils';
+import { Title, Description } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
@@ -90,7 +91,13 @@ Default.args = {
 };
 
 const LinkInlineTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = '', ...args }) => {
-  return (
+  const isReactNative = getPlatformType() === 'react-native';
+  return isReactNative ? (
+    <BaseBox display="flex" flexDirection="row" alignItems="center">
+      <Text>Find more details at the </Text>
+      <LinkComponent {...args}>{children}</LinkComponent>
+    </BaseBox>
+  ) : (
     <Text>
       Find more details at the <LinkComponent {...args}>{children}</LinkComponent>
     </Text>
@@ -132,7 +139,13 @@ const LinkButtonInlineTemplate: StoryFn<typeof LinkComponent> = ({
   children = '',
   ...args
 }) => {
-  return (
+  const isReactNative = getPlatformType() === 'react-native';
+  return isReactNative ? (
+    <BaseBox display="flex" flexDirection="row" alignItems="center">
+      <Text>Forgot Password? </Text>
+      <LinkComponent {...args}>{children}</LinkComponent>
+    </BaseBox>
+  ) : (
     <Text>
       Forgot Password? <LinkComponent {...args}>{children}</LinkComponent>
     </Text>

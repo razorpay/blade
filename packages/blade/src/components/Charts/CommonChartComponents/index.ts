@@ -21,4 +21,4 @@ export {
   CommonChartComponentsContext,
   useCommonChartComponentsContext,
 } from './CommonChartComponentsContext';
-export { DEFAULT_COLOR } from './tokens';
+export { DEFAULT_COLOR, componentId } from './tokens';

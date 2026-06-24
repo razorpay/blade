@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
+import { Title } from '@storybook/addon-docs/blocks';
+import { action } from 'storybook/actions';
 import type { PopoverTriggerProps } from './types';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
@@ -112,16 +112,16 @@ const Content = () => {
         borderWidth="thin"
         borderColor="surface.border.gray.subtle"
       >
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Gross Settlements</Text>
           <Amount size="medium" value={5000} />
         </Box>
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Deductions</Text>
           <Amount color="negative" size="medium" value={250} />
         </Box>
         <Divider variant="subtle" />
-        <Box display="flex" justifyContent="space-between" gap="spacing.5">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.5">
           <Text weight="semibold" size="medium">
             Net Settlements
           </Text>

@@ -28,7 +28,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -100,6 +100,290 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -206,7 +490,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -278,6 +562,290 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -384,7 +952,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -456,6 +1024,290 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -666,7 +1518,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -738,6 +1590,290 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -948,7 +2084,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1020,6 +2156,290 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -1230,7 +2650,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="0px"
     buttonPaddingRight="0px"
@@ -1305,6 +2725,290 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     type="button"
     width="36px"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -1480,7 +3184,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1655,7 +3359,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1830,7 +3534,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2008,7 +3712,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2183,7 +3887,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2361,7 +4065,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2536,7 +4240,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2714,7 +4418,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -2889,7 +4593,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3067,7 +4771,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3242,7 +4946,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3420,7 +5124,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3595,7 +5299,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3773,7 +5477,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -3951,7 +5655,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4126,7 +5830,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4304,7 +6008,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4482,7 +6186,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4554,6 +6258,290 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4278225873,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4278218920,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -4660,7 +6648,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4732,6 +6720,204 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -4838,7 +7024,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="12px"
+    borderRadius={12}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="16px"
     buttonPaddingRight="16px"
@@ -4910,6 +7096,290 @@ exports[`<BaseButton /> should render large size button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={12}
+            ry={12}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={12}
+            ry={12}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={12}
+            ry={12}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={12}
+            ry={12}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={12}
+            ry={12}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5016,7 +7486,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5358,7 +7828,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5430,6 +7900,290 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5536,7 +8290,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5608,6 +8362,290 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4291829265,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4289337358,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5714,7 +8752,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5786,6 +8824,204 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5892,7 +9128,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5964,6 +9200,290 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279835935,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4278519045,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6070,7 +9590,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -6142,6 +9662,204 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6248,7 +9966,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -6320,6 +10038,290 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292894208,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4291252992,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6426,7 +10428,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -6498,6 +10500,204 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6604,7 +10804,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -6676,6 +10876,290 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4278226759,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4278220091,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6782,7 +11266,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -6854,6 +11338,204 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -6960,7 +11642,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -7032,6 +11714,290 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -7138,7 +12104,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -7210,6 +12176,204 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -7316,7 +12480,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -7388,6 +12552,204 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4292796899,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -7494,7 +12856,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
     buttonPaddingRight="8px"
@@ -7566,6 +12928,290 @@ exports[`<BaseButton /> should render small size button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -7672,7 +13318,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -7744,6 +13390,242 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4294967295,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -7850,7 +13732,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -7922,6 +13804,204 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 3439329279,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -8028,7 +14108,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -8100,6 +14180,204 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 3439329279,
+                "type": 0,
+              }
+            }
+            strokeWidth={2}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 771751936,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -8206,7 +14484,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="8px"
     buttonPaddingRight="8px"
@@ -8278,6 +14556,290 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {

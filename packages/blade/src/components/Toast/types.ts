@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type React from 'react';
-import type { ButtonProps } from '~components/Button';
 import type { FeedbackColors } from '~tokens/theme/theme';
 
 type ToastProps = {
@@ -58,7 +57,13 @@ type ToastProps = {
    */
   action?: {
     text: string;
-    onClick?: ({ event, toastId }: { event: ButtonProps['onClick']; toastId: string }) => void;
+    onClick?: ({
+      event,
+      toastId,
+    }: {
+      event: React.MouseEvent<HTMLButtonElement>;
+      toastId: string;
+    }) => void;
     isLoading?: boolean;
   };
 

@@ -18,20 +18,20 @@
 
 .small {
   height: 16px;
-  padding-left: var(--spacing-3);
-  padding-right: var(--spacing-3);
+  padding-left: var(--spacing-2);
+  padding-right: var(--spacing-2);
 }
 
 .medium {
   height: 20px;
-  padding-left: var(--spacing-3);
-  padding-right: var(--spacing-3);
+  padding-left: var(--spacing-2);
+  padding-right: var(--spacing-2);
 }
 
 .large {
   height: 24px;
-  padding-left: var(--spacing-4);
-  padding-right: var(--spacing-4);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
 }
 
 /* Badge Content Wrapper */
@@ -121,4 +121,21 @@
 
 .color-primary.emphasis-intense {
   background-color: var(--surface-background-primary-intense);
+}
+
+/* Checkout shape variants — scoped to checkout context
+ * subtle → pill (border-radius-max)
+ * intense + large → border-radius-small
+ * intense + xsmall/small/medium → border-radius-xsmall
+ */
+.shape-pill {
+  border-radius: var(--border-radius-max);
+}
+
+.shape-size-large {
+  border-radius: var(--border-radius-small);
+}
+
+.shape-size-default {
+  border-radius: var(--border-radius-xsmall);
 }

@@ -270,7 +270,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
 
     if (shouldShowClearButton && trailingDropdown) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );

@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-vite';
 import * as searchInputStories from './SearchInput.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';

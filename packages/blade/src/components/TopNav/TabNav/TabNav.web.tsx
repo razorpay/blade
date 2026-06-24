@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useTopNavContext } from '../TopNavContext';
 import { TabNavContext } from './TabNavContext';
 import { TabNavIndicator } from './TabNavIndicator.web';
 import type { TabNavItemData, TabNavProps } from './types';
@@ -13,6 +14,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BoxProps } from '~components/Box';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import { size, backdropBlur } from '~tokens/global';
+import { makeSize } from '~utils';
 
 const TabNavItems = ({ children, ...rest }: BoxProps): React.ReactElement => {
   return (
@@ -43,6 +46,8 @@ const TabNav = ({
 }: TabNavProps & StyledPropsBlade & DataAnalyticsAttribute): React.ReactElement => {
   const ref = React.useRef<HTMLDivElement>(null);
   const itemsRowRef = React.useRef<HTMLDivElement>(null);
+  const topNavContext = useTopNavContext();
+  const isPrimaryVariant = topNavContext?.variant === 'primary';
   const [controlledItems, setControlledItems] = React.useState<TabNavItemData[]>(items);
 
   const overflowingItems = controlledItems.filter(
@@ -109,9 +114,25 @@ const TabNav = ({
             position="relative"
           >
             {children({ items: _items, overflowingItems })}
-            <TabNavIndicator containerRef={itemsRowRef} />
+            <TabNavIndicator containerRef={itemsRowRef} showGlow={!isPrimaryVariant} />
           </BaseBox>
         </BaseBox>
+        {isPrimaryVariant && (
+          <BaseBox
+            display={{ base: 'none', m: 'block' }}
+            position="absolute"
+            bottom="-4px"
+            left="spacing.3"
+            right="0px"
+            height={makeSize(size[20])}
+            style={{
+              background:
+                'radial-gradient(ellipse at center bottom, rgba(0, 0, 0, 0.4), transparent 100%)',
+              filter: `blur(${backdropBlur.medium}px)`,
+              pointerEvents: 'none',
+            }}
+          />
+        )}
       </BaseBox>
     </TabNavContext.Provider>
   );

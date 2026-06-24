@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import qrCodesImage from './docs-qrcodes.svg';
 import { Scale } from './';

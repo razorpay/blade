@@ -4,4 +4,11 @@ const chatInputMaxTextAreaHeight = 200;
 
 const chatInputSuggestionCycleInterval = 4000;
 
-export { chatInputBorderRadius, chatInputMaxTextAreaHeight, chatInputSuggestionCycleInterval };
+const chatInputFilePreviewItemWidth = '200px';
+
+export {
+  chatInputBorderRadius,
+  chatInputMaxTextAreaHeight,
+  chatInputSuggestionCycleInterval,
+  chatInputFilePreviewItemWidth,
+};

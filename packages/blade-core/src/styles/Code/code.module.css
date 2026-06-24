@@ -1,9 +1,10 @@
 .base {
   padding: var(--spacing-0) var(--spacing-2);
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-xsmall);
   display: inline-block;
   vertical-align: middle;
   line-height: var(--line-height-0);
+  letter-spacing: var(--letter-spacing-100);
 }
 
 .highlighted {
