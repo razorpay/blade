@@ -46,7 +46,7 @@ jobs:
           # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
           AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
           # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
-          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"}
+          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "rzpcibot"}
 
           def gh_json(*args):
               r = subprocess.run(["gh", *args], capture_output=True, text=True)
