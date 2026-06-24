@@ -10,6 +10,7 @@ import {
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
+  TableWithStickyColumnsStory,
   TableWithDisabledRowsStory,
   TableWithBackgroundColorStory,
   TableWithIsLoadingStory,
@@ -73,6 +74,14 @@ export const TableWithStickyFirstColumn = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {TableWithStickyFirstColumnStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithStickyColumns = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {TableWithStickyColumnsStory}
     </Sandbox>
   );
 };
