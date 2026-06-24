@@ -226,8 +226,10 @@ const useChatInput = (
       if (validFiles.length > 0) {
         const merged = [...files, ...validFiles] as BladeFileList;
         const newFileList = maxCount !== undefined ? merged.slice(0, maxCount) : merged;
-        setFiles(() => newFileList);
-        onFileChange?.({ fileList: newFileList });
+        if (newFileList.length > files.length) {
+          setFiles(() => newFileList);
+          onFileChange?.({ fileList: newFileList });
+        }
       }
     },
     [accept, maxCount, files, setFiles, onFileChange],
