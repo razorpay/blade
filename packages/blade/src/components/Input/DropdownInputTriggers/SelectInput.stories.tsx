@@ -1,6 +1,6 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import { SelectInput } from './SelectInput';
 import { bladeTheme } from '~tokens/theme';

@@ -32,16 +32,19 @@ const useStacking = (): [
   const [stack, setStack] = React.useState<GlobalStackStateType['drawerStack']>({});
 
   const addToStack: AddToStackType = ({ elementId, onDismiss }) => {
-    if (stack[elementId]) {
-      return;
-    }
-
-    setStack({ ...stack, [elementId]: onDismiss });
+    setStack((prevStack) => {
+      if (prevStack[elementId]) {
+        return prevStack;
+      }
+      return { ...prevStack, [elementId]: onDismiss };
+    });
   };
 
   const removeFromStack: RemoveFromStackType = ({ elementId }) => {
-    const { [elementId]: _, ...newStack } = stack;
-    setStack(newStack);
+    setStack((prevStack) => {
+      const { [elementId]: _, ...newStack } = prevStack;
+      return newStack;
+    });
   };
 
   return [stack, addToStack, removeFromStack];

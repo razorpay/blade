@@ -33,6 +33,10 @@ const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';
 const componentId = {
   chartLegend: 'chart-legend',
   chartXAxis: 'chart-x-axis',
+  chartYAxis: 'chart-y-axis',
+  chartCartesianGrid: 'chart-cartesian-grid',
+  chartTooltip: 'chart-tooltip',
+  chartReferenceLine: 'chart-reference-line',
 };
 
 export {

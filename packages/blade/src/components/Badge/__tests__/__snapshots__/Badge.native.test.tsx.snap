@@ -37,6 +37,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -171,6 +173,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -182,7 +185,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -242,6 +245,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -276,6 +281,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -287,7 +293,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -347,6 +353,8 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -381,6 +389,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -392,7 +401,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -452,6 +461,8 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -486,6 +497,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -497,7 +509,7 @@ exports[`<Badge /> should render intense emphasis information color Badge 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -557,6 +569,8 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -591,6 +605,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -602,7 +617,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -662,6 +677,8 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -696,6 +713,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -707,7 +725,7 @@ exports[`<Badge /> should render intense emphasis negative color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -767,6 +785,8 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -801,6 +821,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -812,7 +833,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -872,6 +893,8 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -906,6 +929,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -917,7 +941,7 @@ exports[`<Badge /> should render intense emphasis neutral color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -977,6 +1001,8 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1011,6 +1037,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1022,7 +1049,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1082,6 +1109,8 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1116,6 +1145,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1127,7 +1157,7 @@ exports[`<Badge /> should render intense emphasis notice color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1187,6 +1217,8 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1221,6 +1253,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1232,7 +1265,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1292,6 +1325,8 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1326,6 +1361,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1337,7 +1373,7 @@ exports[`<Badge /> should render intense emphasis positive color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1397,6 +1433,8 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1431,6 +1469,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1442,7 +1481,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1502,6 +1541,8 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1536,6 +1577,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1547,7 +1589,7 @@ exports[`<Badge /> should render intense emphasis primary color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1607,6 +1649,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1641,6 +1685,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1652,7 +1697,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1712,6 +1757,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1746,6 +1793,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1757,7 +1805,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -1817,6 +1865,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1851,6 +1901,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={25}
           marginX="spacing.1"
           numberOfLines={1}
@@ -1862,7 +1913,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.13,
                 "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1922,6 +1973,8 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -1956,6 +2009,7 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -1967,7 +2021,7 @@ exports[`<Badge /> should render subtle emphasis information color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2027,6 +2081,8 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2061,6 +2117,7 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2072,7 +2129,7 @@ exports[`<Badge /> should render subtle emphasis information color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2132,6 +2189,8 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2166,6 +2225,7 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2177,7 +2237,7 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2237,6 +2297,8 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2271,6 +2333,7 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2282,7 +2345,7 @@ exports[`<Badge /> should render subtle emphasis negative color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2342,6 +2405,8 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2376,6 +2441,7 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2387,7 +2453,7 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2447,6 +2513,8 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2481,6 +2549,7 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2492,7 +2561,7 @@ exports[`<Badge /> should render subtle emphasis neutral color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2552,6 +2621,8 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2586,6 +2657,7 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2597,7 +2669,7 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2657,6 +2729,8 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2691,6 +2765,7 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2702,7 +2777,7 @@ exports[`<Badge /> should render subtle emphasis notice color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2762,6 +2837,8 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2796,6 +2873,7 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2807,7 +2885,7 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2867,6 +2945,8 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -2901,6 +2981,7 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -2912,7 +2993,7 @@ exports[`<Badge /> should render subtle emphasis positive color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -2972,6 +3053,8 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -3006,6 +3089,7 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -3017,7 +3101,7 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,
@@ -3077,6 +3161,8 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
+            "paddingBottom": 0.5,
           },
         ]
       }
@@ -3111,6 +3197,7 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           marginX="spacing.2"
           numberOfLines={1}
@@ -3122,7 +3209,7 @@ exports[`<Badge /> should render subtle emphasis primary color Badge 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 4,

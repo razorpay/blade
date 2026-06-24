@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type {
   ChartReferenceLineProps,
   ChartXAxisProps,
@@ -7,62 +7,49 @@ import type {
   ChartLegendProps,
   ChartCartesianGridProps,
 } from './types';
-import { throwBladeError } from '~utils/logger';
-import { Text } from '~components/Typography';
+import { componentId } from './tokens';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const ChartXAxis: React.FC<ChartXAxisProps> = () => {
-  throwBladeError({
-    message: 'XAxis is not yet implemented for native',
-    moduleName: 'XAxis',
-  });
+/**
+ * On native, common chart components are *marker* components.
+ * Chart wrappers (ChartBarWrapper, ChartLineWrapper, ...) read their props
+ * via `React.Children.forEach` + `getComponentId(child)` and render the chart
+ * themselves with `react-native-svg`. The marker components themselves render
+ * nothing.
+ *
+ * ChartTooltip is consumed by ChartBarWrapper today. Other chart wrappers
+ * that haven't yet implemented tooltip rendering will silently ignore it
+ * until support lands.
+ */
+const _ChartXAxis = (_props: ChartXAxisProps): React.ReactElement | null => null;
+const ChartXAxis = assignWithoutSideEffects(_ChartXAxis, {
+  componentId: componentId.chartXAxis,
+});
 
-  return <Text>LineChart is not available for Native mobile apps.</Text>;
-};
+const _ChartYAxis = (_props: ChartYAxisProps): React.ReactElement | null => null;
+const ChartYAxis = assignWithoutSideEffects(_ChartYAxis, {
+  componentId: componentId.chartYAxis,
+});
 
-const ChartYAxis: React.FC<ChartYAxisProps> = () => {
-  throwBladeError({
-    message: 'ChartYAxis is not yet implemented for native',
-    moduleName: 'ChartYAxis',
-  });
+const _ChartCartesianGrid = (_props: ChartCartesianGridProps): React.ReactElement | null => null;
+const ChartCartesianGrid = assignWithoutSideEffects(_ChartCartesianGrid, {
+  componentId: componentId.chartCartesianGrid,
+});
 
-  return <Text>LineChart is not available for Native mobile apps.</Text>;
-};
+const _ChartTooltip = (_props: ChartTooltipProps): React.ReactElement | null => null;
+const ChartTooltip = assignWithoutSideEffects(_ChartTooltip, {
+  componentId: componentId.chartTooltip,
+});
 
-const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = () => {
-  throwBladeError({
-    message: 'ChartCartesianGrid is not yet implemented for native',
-    moduleName: 'ChartCartesianGrid',
-  });
+const _ChartLegend = (_props: ChartLegendProps): React.ReactElement | null => null;
+const ChartLegend = assignWithoutSideEffects(_ChartLegend, {
+  componentId: componentId.chartLegend,
+});
 
-  return <Text>LineChart is not available for Native mobile apps.</Text>;
-};
-
-const ChartTooltip: React.FC<ChartTooltipProps> = () => {
-  throwBladeError({
-    message: 'ChartTooltip is not yet implemented for native',
-    moduleName: 'ChartTooltip',
-  });
-
-  return <Text>ChartTooltip is not available for Native mobile apps.</Text>;
-};
-
-const ChartLegend: React.FC<ChartLegendProps> = () => {
-  throwBladeError({
-    message: 'ChartLegend is not yet implemented for native',
-    moduleName: 'ChartLegend',
-  });
-
-  return <Text>ChartLegend is not available for Native mobile apps.</Text>;
-};
-
-const ChartReferenceLine: React.FC<ChartReferenceLineProps> = () => {
-  throwBladeError({
-    message: 'XAxis is not yet implemented for native',
-    moduleName: 'XAxis',
-  });
-
-  return <Text>XAxis is not available for Native mobile apps.</Text>;
-};
+const _ChartReferenceLine = (_props: ChartReferenceLineProps): React.ReactElement | null => null;
+const ChartReferenceLine = assignWithoutSideEffects(_ChartReferenceLine, {
+  componentId: componentId.chartReferenceLine,
+});
 
 export type {
   ChartReferenceLineProps,

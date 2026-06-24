@@ -1,2 +1,4 @@
-/packages/blade/ @chaitanyadeorukhkar @kamleshchandnani @anuraghazra @saurabhdaware @tewarig @swapnil-kr1 @ravikumar-rajagopalan
+/packages/blade/ @kamleshchandnani @anuraghazra @saurabhdaware @swapnil-kr1 @ravikumar-rajagopalan @rohankokane-dev @saurav12
 
+/packages/blade/*/package.json*
+*/packages/blade/*/CHANGELOG.md

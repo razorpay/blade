@@ -3,7 +3,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { inputDropdownButtonPadding } from './baseInputTokens';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -31,8 +31,11 @@ type InputVisuals = Pick<
   | 'showHintsAsTooltip'
   | 'errorText'
   | 'successText'
+  | 'validationTextPlacement'
 > & {
   size: NonNullable<BaseInputProps['size']>;
+  errorTextId?: string;
+  successTextId?: string;
 };
 
 const getVisualContainerStyles = ({
@@ -64,6 +67,19 @@ const textSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
+} as const;
+
+const validationTextSize = {
+  xsmall: 'xsmall',
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+const validationTextColor = {
+  success: 'feedback.text.positive.intense',
+  error: 'feedback.text.negative.intense',
+  none: 'surface.text.gray.subtle', // TypeScript exhaustiveness — never reached at runtime
 } as const;
 
 const getPrefixStyles = ({
@@ -263,7 +279,10 @@ export const BaseInputVisuals = ({
   showHintsAsTooltip,
   errorText,
   successText,
+  validationTextPlacement,
   trailingButton: TrailingButton,
+  errorTextId,
+  successTextId,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -288,6 +307,14 @@ export const BaseInputVisuals = ({
     size,
   });
 
+  const insideValidationText =
+    validationTextPlacement === 'inside' && validationState !== 'none'
+      ? validationState === 'error'
+        ? errorText
+        : successText
+      : undefined;
+  const hasInsideValidationText = Boolean(insideValidationText);
+
   const hasLeadingVisuals =
     hasLeadingInteractionElement || hasLeadingIcon || hasPrefix || hasLeadingDropDown;
   const hasTrailingVisuals =
@@ -295,13 +322,23 @@ export const BaseInputVisuals = ({
     hasSuffix ||
     hasTrailingIcon ||
     hasTrailingButton ||
-    hasTrailingDropDown;
+    hasTrailingDropDown ||
+    hasInsideValidationText;
 
   if (__DEV__) {
     if (hasTrailingButton && !isValidAllowedChildren(TrailingButton, 'Link')) {
       throwBladeError({
         message: 'trailingButton must be a valid Blade Link component',
         moduleName: 'BaseInput',
+      });
+    }
+
+    if (hasInsideValidationText && (hasTrailingIcon || hasTrailingButton || hasSuffix)) {
+      logger({
+        message:
+          'Using validationTextPlacement="inside" with trailingIcon, trailingButton, or suffix may cause layout conflicts. Consider using validationTextPlacement="outside" when trailing visuals are present.',
+        moduleName: 'BaseInput',
+        type: 'warn',
       });
     }
   }
@@ -402,6 +439,23 @@ export const BaseInputVisuals = ({
               color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
             >
               {suffix}
+            </Text>
+          </BaseBox>
+        ) : null}
+        {hasInsideValidationText ? (
+          <BaseBox
+            id={validationState === 'error' ? errorTextId : successTextId}
+            paddingRight={size === 'xsmall' || size === 'small' ? 'spacing.3' : 'spacing.4'}
+            display="flex"
+            alignItems="center"
+          >
+            <Text
+              size={validationTextSize[size]}
+              variant="body"
+              weight="medium"
+              color={validationTextColor[validationState]}
+            >
+              {insideValidationText}
             </Text>
           </BaseBox>
         ) : null}

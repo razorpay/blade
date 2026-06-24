@@ -1,10 +1,37 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { useTopNavContext } from './TopNavContext';
-import { bladeTheme } from '~tokens/theme';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import type { Theme } from '~components/BladeProvider';
 import { ThemeContext } from '~components/BladeProvider/useTheme';
+
+const getOverrideColorScheme = ({
+  isPrimaryVariant,
+  shouldOverrideTheme,
+  topNavContext,
+}: {
+  isPrimaryVariant: boolean;
+  shouldOverrideTheme: boolean | undefined;
+  topNavContext: ReturnType<typeof useTopNavContext>;
+}): 'light' | 'dark' => {
+  if (isPrimaryVariant) return 'light';
+  if (shouldOverrideTheme) return topNavContext?.colorScheme ?? 'light';
+  return 'dark';
+};
+
+const getIsDark = ({
+  isPrimaryVariant,
+  shouldOverrideTheme,
+  topNavContext,
+}: {
+  isPrimaryVariant: boolean;
+  shouldOverrideTheme: boolean | undefined;
+  topNavContext: ReturnType<typeof useTopNavContext>;
+}): boolean => {
+  if (isPrimaryVariant) return false;
+  if (shouldOverrideTheme) return topNavContext?.colorScheme === 'dark';
+  return true;
+};
 
 type TopNavOverlayThemeOverrideProps = {
   children: React.ReactNode;
@@ -39,17 +66,18 @@ const TopNavOverlayThemeOverride = ({
   shouldOverrideTheme,
 }: TopNavOverlayThemeOverrideProps): React.ReactElement => {
   const topNavContext = useTopNavContext();
-  const { platform } = useTheme();
+  const { platform, themeTokens } = useTheme();
 
-  const isDark = shouldOverrideTheme ? topNavContext?.colorScheme === 'dark' : true;
+  const isPrimaryVariant = topNavContext?.variant === 'primary';
+  const isDark = getIsDark({ isPrimaryVariant, shouldOverrideTheme, topNavContext });
   const overrideTheme: Theme = React.useMemo(
     () => ({
-      ...bladeTheme,
-      colors: isDark ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
-      elevation: isDark ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
-      typography: bladeTheme.typography[platform],
+      ...themeTokens,
+      colors: isDark ? themeTokens.colors.onDark : themeTokens.colors.onLight,
+      elevation: isDark ? themeTokens.elevation.onDark : themeTokens.elevation.onLight,
+      typography: themeTokens.typography[platform],
     }),
-    [isDark, platform],
+    [isDark, platform, themeTokens],
   );
 
   if (!topNavContext) {
@@ -65,7 +93,12 @@ const TopNavOverlayThemeOverride = ({
       <ThemeContext.Provider
         value={{
           theme: overrideTheme,
-          colorScheme: shouldOverrideTheme ? topNavContext.colorScheme : 'dark',
+          themeTokens,
+          colorScheme: getOverrideColorScheme({
+            isPrimaryVariant,
+            shouldOverrideTheme,
+            topNavContext,
+          }),
           setColorScheme: noop,
           platform,
         }}
@@ -76,7 +109,10 @@ const TopNavOverlayThemeOverride = ({
   }
 
   return (
-    <BladeProvider themeTokens={bladeTheme} colorScheme={topNavContext.colorScheme}>
+    <BladeProvider
+      themeTokens={themeTokens}
+      colorScheme={isPrimaryVariant ? 'light' : topNavContext.colorScheme}
+    >
       {children}
     </BladeProvider>
   );

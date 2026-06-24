@@ -182,6 +182,16 @@ const getNativeConfig = (inputs) => {
 
   return {
     input: inputs,
+    // Mirror getWebConfig: each export category (components, tokens, utils) is
+    // bundled as its own rollup entry, so cross-category usages (e.g. a token
+    // referenced by a component) are invisible to rollup's tree-shaker. With
+    // tree-shaking on, rollup drops bindings whose usage it can't see, leaving
+    // only side-effect-bearing expressions behind — which silently breaks
+    // multi-statement modules like `tokens/global/motion.ts` (delay, duration,
+    // and the motion wrapper get stripped, only the easing object literal
+    // survives as a discarded expression). Disable tree-shaking; the consumer
+    // will tree-shake instead.
+    treeshake: false,
     output: [
       {
         dir: `${outputRootDirectory}/${libDirectory}/${platform}`,

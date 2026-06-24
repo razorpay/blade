@@ -11,16 +11,20 @@ import {
   InfoIcon,
 } from '~components/Icons';
 import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
+import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
+import type { AlertColors } from './types';
+import { getAlertIconColor } from './styles';
 import { useTheme } from '~components/BladeProvider';
 import type {
   DataAnalyticsAttribute,
@@ -91,16 +95,23 @@ type AlertProps = {
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`.
-   * This also makes the alert borderless, useful for creating full bleed layouts.
    *
    * @default false
    */
   isFullWidth?: boolean;
 
   /**
+   * Sets a custom max-width for the Alert.
+   * Has no effect when `isFullWidth` is true.
+   *
+   * @default '584px' (derived from global size token `size[584]`)
+   */
+  maxWidth?: BoxProps['maxWidth'];
+
+  /**
    * Sets the color tone
    */
-  color?: FeedbackColors;
+  color?: AlertColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -119,6 +130,8 @@ type AlertProps = {
   StyledPropsBlade &
   DataAnalyticsAttribute;
 
+const DEFAULT_MAX_WIDTH = makeSize(size[584]);
+
 const isReactNative = getPlatformType() === 'react-native';
 
 // Need extra wrappers on React Native only for alignment
@@ -130,6 +143,7 @@ const intentIconMap = {
   information: InfoIcon,
   neutral: InfoIcon,
   notice: AlertTriangleIcon,
+  primary: InfoIcon,
 };
 
 const _Alert = (
@@ -140,6 +154,7 @@ const _Alert = (
     onDismiss,
     emphasis = 'subtle',
     isFullWidth = false,
+    maxWidth,
     color = 'neutral',
     actions,
     testID,
@@ -191,14 +206,7 @@ const _Alert = (
 
   const leadingIcon = (
     <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
-      <Icon
-        color={
-          emphasis === 'intense'
-            ? 'surface.icon.staticWhite.normal'
-            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
-        }
-        size="medium"
-      />
+      <Icon color={getAlertIconColor(color, emphasis)} size="medium" />
     </BaseBox>
   );
 
@@ -335,6 +343,7 @@ const _Alert = (
         emphasis={emphasis}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
+        maxWidth={isFullWidth ? 'auto' : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
         {leadingIcon}
@@ -356,5 +365,5 @@ const _Alert = (
 
 const Alert = forwardRef(_Alert);
 
-export type { AlertProps };
+export type { AlertProps, AlertColors };
 export { Alert };

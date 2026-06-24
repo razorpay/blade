@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
+import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
@@ -20,6 +21,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { useMergeRefs } from '~utils/useMergeRefs';
 import { msToSeconds } from '~utils/msToSeconds';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
 
@@ -43,6 +45,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     fileList,
     onFileChange,
     onFileRemove,
+    onFileDismiss,
     onFileReupload,
     accept,
     suggestions,
@@ -50,6 +53,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     validationState,
     errorText,
     onErrorDismiss,
+    hideFileUpload = false,
+    autoFocus = false,
     accessibilityLabel = 'Chat input',
     testID,
     ...rest
@@ -73,6 +78,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     handleUploadClick,
     handleFileInputChange,
     handleFileRemove,
+    handleFileDismiss,
     handlePaste,
     handleInnerMouseDownCapture,
   } = useChatInput(
@@ -87,6 +93,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       fileList,
       onFileChange,
       onFileRemove,
+      onFileDismiss,
       accept,
       suggestions,
       onSuggestionAccept,
@@ -135,11 +142,36 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     },
   };
 
+  const inputRef = useRef<BladeElementRef>(null);
+  const combinedRef = useMergeRefs(mergedRef, inputRef);
+
+  useEffect(() => {
+    if (autoFocus && inputRef.current instanceof HTMLElement) {
+      inputRef.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fileScrollRef = useRef<HTMLDivElement>(null);
+  const prevFileCountRef = useRef(files.length);
+
+  useEffect(() => {
+    const prevCount = prevFileCountRef.current;
+    prevFileCountRef.current = files.length;
+    if (files.length > prevCount && fileScrollRef.current) {
+      fileScrollRef.current.scrollTo({
+        left: fileScrollRef.current.scrollWidth,
+        behavior: 'smooth',
+      });
+    }
+  }, [files]);
+
   const filePreviewContent = (
     <AnimatePresence>
       {hasFiles ? (
         <BaseMotionBox motionVariants={filePreviewMotionVariants}>
           <HiddenScrollbarBox
+            ref={fileScrollRef}
             display="flex"
             flexDirection="row"
             gap="spacing.3"
@@ -151,17 +183,18 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             flexWrap="nowrap"
           >
             {files.map((file) => (
-              <FileUploadItem
-                flexShrink={0}
-                flexGrow={1}
-                flexBasis={1}
-                minWidth="160px"
-                maxWidth="200px"
+              <BaseBox
                 key={file.id ?? file.name}
-                file={file}
-                onRemove={() => handleFileRemove(file)}
-                onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
-              />
+                flexShrink={0}
+                width={chatInputFilePreviewItemWidth}
+              >
+                <FileUploadItem
+                  file={file}
+                  onRemove={() => handleFileRemove(file)}
+                  onDismiss={() => handleFileDismiss(file)}
+                  onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
+                />
+              </BaseBox>
             ))}
           </HiddenScrollbarBox>
         </BaseMotionBox>
@@ -174,6 +207,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isDisabled={isDisabled}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
+      hideFileUpload={hideFileUpload}
       onUploadClick={handleUploadClick}
       onSubmit={handleSubmit}
       onStop={onStop}
@@ -202,7 +236,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
-          ref={mergedRef}
+          ref={combinedRef}
           as="textarea"
           id="chat-input"
           elevation="highRaised"

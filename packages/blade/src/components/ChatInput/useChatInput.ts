@@ -20,6 +20,7 @@ type UseChatInputProps = Pick<
   | 'fileList'
   | 'onFileChange'
   | 'onFileRemove'
+  | 'onFileDismiss'
   | 'accept'
   | 'suggestions'
   | 'onSuggestionAccept'
@@ -34,6 +35,7 @@ const useChatInput = (
     fileList: controlledFileList,
     onFileChange,
     onFileRemove,
+    onFileDismiss,
     accept,
     suggestions,
     onSuggestionAccept,
@@ -61,6 +63,7 @@ const useChatInput = (
   handleUploadClick: () => void;
   handleFileInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleFileRemove: (file: BladeFile) => void;
+  handleFileDismiss: (file: BladeFile) => void;
   handlePaste: (event: React.ClipboardEvent<HTMLInputElement>) => void;
   handleInnerMouseDownCapture: (event: React.MouseEvent) => void;
 } => {
@@ -87,7 +90,8 @@ const useChatInput = (
 
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
-  const isSubmitDisabled = !hasText && !hasFiles;
+  const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
+  const isSubmitDisabled = (!hasText && !hasFiles) || hasErrorFiles;
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
   const adjustTextareaHeight = React.useCallback(() => {
@@ -187,6 +191,15 @@ const useChatInput = (
     [files, setFiles, onFileRemove],
   );
 
+  const handleFileDismiss = React.useCallback(
+    (file: BladeFile) => {
+      const newFileList = files.filter((f) => f.id !== file.id);
+      setFiles(() => newFileList);
+      onFileDismiss?.({ file });
+    },
+    [files, setFiles, onFileDismiss],
+  );
+
   const handlePaste = React.useCallback(
     (event: React.ClipboardEvent<HTMLInputElement>) => {
       const clipboardFiles = Array.from(event.clipboardData?.files ?? []);
@@ -237,6 +250,7 @@ const useChatInput = (
     handleUploadClick,
     handleFileInputChange,
     handleFileRemove,
+    handleFileDismiss,
     handlePaste,
     handleInnerMouseDownCapture,
   };

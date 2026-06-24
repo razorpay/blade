@@ -1,16 +1,97 @@
 import React from 'react';
-/* eslint-disable react/jsx-no-useless-fragment */
+import { emptyStateSizeTokens } from './emptyStateTokens';
 import type { EmptyStateProps } from './types';
-import { Text } from '~components/Typography';
-import { throwBladeError } from '~utils/logger';
+import type { BladeElementRef } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import BaseBox from '~components/Box/BaseBox';
+import { Heading, Text } from '~components/Typography';
+import { getStyledProps } from '~components/Box/styledProps';
 
-const EmptyState = (_props: EmptyStateProps): React.ReactElement => {
-  throwBladeError({
-    message: 'EmptyState is not yet implemented for native',
-    moduleName: 'EmptyState',
-  });
+const _EmptyState: React.ForwardRefRenderFunction<BladeElementRef, EmptyStateProps> = (
+  { asset, title, description, children, size = 'medium', testID, ...props },
+  ref,
+) => {
+  const tokens = emptyStateSizeTokens[size];
 
-  return <Text>EmptyState Component is not available for Native mobile apps.</Text>;
+  return (
+    <BaseBox
+      ref={ref as never}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      gap={tokens.gapBetweenSections}
+      {...metaAttribute({ name: MetaConstants.EmptyState, testID })}
+      {...getStyledProps(props)}
+      {...makeAnalyticsAttribute(props)}
+    >
+      {asset ? (
+        <BaseBox alignItems="center" justifyContent="center">
+          {asset}
+        </BaseBox>
+      ) : null}
+
+      <BaseBox
+        display="flex"
+        flexDirection="column"
+        gap={tokens.gapInsideContentSection}
+        alignItems="center"
+      >
+        {title ? (
+          <Heading
+            textAlign="center"
+            size={tokens.titleSize}
+            weight="semibold"
+            color="surface.text.gray.subtle"
+          >
+            {title}
+          </Heading>
+        ) : null}
+
+        {description ? (
+          <Text
+            textAlign="center"
+            size={tokens.descriptionSize}
+            color="surface.text.gray.muted"
+            weight="regular"
+            variant="body"
+          >
+            {description}
+          </Text>
+        ) : null}
+      </BaseBox>
+
+      {children}
+    </BaseBox>
+  );
 };
+
+/**
+ * ### EmptyState Component
+ *
+ * Displays an empty state with an optional asset, title, description and action slot.
+ *
+ * ---
+ *
+ * #### Usage
+ *
+ * ```jsx
+ * <EmptyState
+ *   asset={<Image source={require('./empty.png')} />}
+ *   title="No transactions yet"
+ *   description="Once you start accepting payments your transactions will appear here."
+ * >
+ *   <Button>Create Payment Link</Button>
+ * </EmptyState>
+ * ```
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-emptystate EmptyState Documentation}
+ */
+const EmptyState = assignWithoutSideEffects(React.forwardRef(_EmptyState), {
+  displayName: 'EmptyState',
+  componentId: 'EmptyState',
+});
 
 export { EmptyState };

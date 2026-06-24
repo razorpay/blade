@@ -1,0 +1,6 @@
+{
+  "pkg": "@razorpay/blade",
+  "globalName": "Blade",
+  "shape": "package",
+  "buildCmd": "pnpm -F \"@razorpay/blade...\" build"
+}
