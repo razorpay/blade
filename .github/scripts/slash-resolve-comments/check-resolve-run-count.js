@@ -13,7 +13,7 @@ const repo = process.env.GITHUB_REPOSITORY;
 const prNumber = parseInt(process.env.PR_NUMBER, 10);
 const workflowRef = process.env.GITHUB_WORKFLOW_REF;
 const githubOutput = process.env.GITHUB_OUTPUT;
-const MAX_RUNS = 5;
+const MAX_RUNS = 10;
 
 function output(allowed) {
   const line = `allowed=${allowed}\n`;
