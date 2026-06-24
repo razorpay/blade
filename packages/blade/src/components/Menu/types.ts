@@ -48,7 +48,7 @@ type MenuProps = {
    *
    * @default 'bottom-start'
    */
-  placement?: Placement;
+  defaultPlacement?: Placement;
 };
 
 type MenuItemProps = {
@@ -191,7 +191,7 @@ type MenuContextType = {
 
 type UseFloatingMenuProps = Pick<
   MenuProps,
-  'openInteraction' | 'onOpenChange' | 'isOpen' | 'placement'
+  'openInteraction' | 'onOpenChange' | 'isOpen' | 'defaultPlacement'
 > & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
   overlayOffset?: OffsetOptions;

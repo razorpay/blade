@@ -135,20 +135,19 @@ describe('Menu', () => {
     expect(document.body).toMatchSnapshot();
   });
 
-  it('should accept placement prop and render overlay', async () => {
+  it('should accept defaultPlacement prop and set data-placement on overlay', async () => {
     const user = userEvents.setup();
-    const { getByRole } = renderWithTheme(<BasicMenu placement="top-start" />);
+    const { getByRole } = renderWithTheme(<BasicMenu defaultPlacement="top-start" />);
     await user.click(getByRole('button', { name: 'Open Menu' }));
     await waitFor(() => expect(getByRole('menu')).toBeVisible());
-    // The menu should be visible regardless of placement
-    expect(getByRole('menu')).toBeVisible();
+    expect(getByRole('menu')).toHaveAttribute('data-placement', 'top-start');
   });
 
-  it('should default to bottom-start placement when no placement is provided', async () => {
+  it('should default to bottom-start placement when no defaultPlacement is provided', async () => {
     const user = userEvents.setup();
     const { getByRole } = renderWithTheme(<BasicMenu />);
     await user.click(getByRole('button', { name: 'Open Menu' }));
     await waitFor(() => expect(getByRole('menu')).toBeVisible());
-    expect(getByRole('menu')).toBeVisible();
+    expect(getByRole('menu')).toHaveAttribute('data-placement', 'bottom-start');
   });
 });

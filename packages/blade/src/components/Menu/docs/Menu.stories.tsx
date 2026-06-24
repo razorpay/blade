@@ -526,7 +526,7 @@ export const WithPlacement = (props: MenuProps): React.ReactElement => {
       paddingBottom="spacing.15"
     >
       {placements.map((placement) => (
-        <Menu key={placement} {...props} placement={placement}>
+        <Menu key={placement} {...props} defaultPlacement={placement}>
           <Button>{placement}</Button>
           <MenuOverlay>
             <MenuItem title={`${placement} item 1`} />

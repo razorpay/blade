@@ -42,7 +42,7 @@ const useFloatingMenuSetup = ({
   onOpenChange,
   isOpen,
   overlayOffset,
-  placement = 'bottom-start',
+  defaultPlacement = 'bottom-start',
 }: UseFloatingMenuProps): UseFloatingMenuReturnType => {
   const [isControllableOpen, setIsControllableOpen] = useControllableState({
     value: isOpen,
@@ -67,7 +67,7 @@ const useFloatingMenuSetup = ({
     nodeId,
     open: isControllableOpen,
     onOpenChange: (_isOpen) => setIsControllableOpen(() => _isOpen),
-    placement: isNested ? 'right-start' : placement,
+    placement: isNested ? 'right-start' : defaultPlacement,
     middleware: [
       offset(overlayOffset ?? resolvedDefaultOffset),
       flip(),

@@ -44,7 +44,7 @@ type MenuProps = {
    *
    * @default 'bottom-start'
    */
-  placement?: Placement;
+  defaultPlacement?: Placement;
 };
 
 // MenuItem props
