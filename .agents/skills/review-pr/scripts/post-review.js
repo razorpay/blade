@@ -246,7 +246,6 @@ const SLASH_ACCOUNTS = ['rzp-slash-public', 'rzp-slash'];
 const isSelfReview =
   currentUser !== null &&
   (normalize(prAuthor) === normalize(currentUser) ||
-    normalize(prAuthor)?.includes(normalize(currentUser)) ||
     (normalize(currentUser) === 'slash' && SLASH_ACCOUNTS.includes(normalize(prAuthor))));
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
