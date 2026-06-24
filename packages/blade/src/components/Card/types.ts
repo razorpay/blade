@@ -28,4 +28,6 @@ type LinkOverlayProps = {
   href?: string;
 } & BaseBoxProps;
 
-export type { CardRootProps, LinkOverlayProps, CardSpacingValueType };
+type CardVariant = 'primary' | 'secondary';
+
+export type { CardRootProps, LinkOverlayProps, CardSpacingValueType, CardVariant };

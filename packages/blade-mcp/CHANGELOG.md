@@ -1,5 +1,17 @@
 # @razorpay/blade-mcp
 
+## 1.27.2
+
+### Patch Changes
+
+- 58ba1549d: feat(icons): add AgentStudioIcon and 6 filled icon variants
+
+## 1.27.1
+
+### Patch Changes
+
+- 1aec424ef: docs(blade-mcp): update knowledgebase with icons and tokens
+
 ## 1.27.0
 
 ### Minor Changes
