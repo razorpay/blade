@@ -26,7 +26,7 @@ const workflowFilename = workflowRef.split('@')[0].split('/').pop();
 
 const response = execSync(
   `gh api "repos/${repo}/actions/workflows/${workflowFilename}/runs?event=pull_request_review&per_page=100"`,
-  { encoding: 'utf8' },
+  { encoding: 'utf8', maxBuffer: 50 * 1024 * 1024 },
 );
 
 const { workflow_runs: runs } = JSON.parse(response);
