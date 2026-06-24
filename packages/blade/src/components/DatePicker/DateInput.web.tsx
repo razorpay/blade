@@ -95,9 +95,7 @@ const _DateInput = (
   externalValidationStateRef.current = textInputProps.validationState;
 
   React.useEffect(() => {
-    const effectiveState = validationError
-      ? 'error'
-      : (externalValidationStateRef.current ?? 'none');
+    const effectiveState = validationError ? 'error' : externalValidationStateRef.current ?? 'none';
     onValidationStateChangeRef.current?.({ validationState: effectiveState });
   }, [validationError]);
 
