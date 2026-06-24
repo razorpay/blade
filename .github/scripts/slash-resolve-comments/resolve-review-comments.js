@@ -42,6 +42,7 @@ Instructions:
   - Fetch the details of the PR and each comment with \`gh\` CLI.
   - For each comment: when it asks for clarification, reply to the comment with a response (including "[resolved by agent]" at the end) OR push a code fix to the PR branch.
   - Whenever applicable, create a fix commit and push it to the PR branch, reply to the relevant comment(s) with "[resolved by agent]" at the end and also mark the comment thread as resolved on github.
+  - After investigation and looking at the other code, if you find that a comment is invalid or irrelevant, skip resolving it and just reply to the comment with why that is invalid or irrelevant (add [resolved by agent] at the end).
   - If you need clarification from the PR author for any comment, add the label "Human Help Needed 🧑🏻‍💻" to the PR instead of guessing.`;
 
 const responseOutput = execSync(`node .github/scripts/run-slash.js ${JSON.stringify(prompt)}`, {
@@ -60,7 +61,9 @@ const executionUrl = `https://slash.concierge.razorpay.com/tasks/${taskIdMatch[1
 
 for (const commentId of commentIds) {
   execSync(
-    `gh api "repos/${repo}/pulls/${prNumber}/comments/${commentId}/replies" --method POST --field body=${JSON.stringify(`**✨ Agentic Resolution ✨:** Auto Comment Resolution Triggered ([**View Logs**](${executionUrl}))`)}`,
+    `gh api "repos/${repo}/pulls/${prNumber}/comments/${commentId}/replies" --method POST --field body=${JSON.stringify(
+      `**✨ Agentic Resolution ✨:** Auto Comment Resolution Triggered ([**View Logs**](${executionUrl}))`,
+    )}`,
     { encoding: 'utf8' },
   );
 }
