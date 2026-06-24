@@ -1133,8 +1133,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 // If click didn't originate from the input itself (e.g., clicked on
                 // leading icon like DatePicker's calendar icon), dispatch a click on
                 // the input to trigger its onClick handlers (e.g., floating-ui toggle)
-                if (e.target !== inputRef.current) {
-                  inputRef.current?.click();
+                const inputEl = inputRef.current as HTMLElement | null;
+                if (e.target !== inputEl) {
+                  inputEl?.click();
                 }
               }
             }}
