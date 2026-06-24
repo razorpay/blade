@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.108.4
+
+### Patch Changes
+
+- d4a77ab80: fix(rn): disable includeFontPadding on TextInput to fix placeholder vertical alignment
+
 ## 12.108.3
 
 ### Patch Changes
