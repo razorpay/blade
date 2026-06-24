@@ -201,3 +201,45 @@ CustomPreview.args = {
   isRequired: true,
   necessityIndicator: 'required',
 };
+
+// Small Size Variant
+const SmallSizeTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
+  return (
+    <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.6">
+      <Heading size="small">Small - Default</Heading>
+      <FileUploadComponent
+        {...args}
+        label="Upload Logo"
+        helpText="PNG or JPEG up to 1MB"
+        accept=".png, .jpg, .jpeg"
+        size="small"
+        uploadType="single"
+        maxSize={1024 * 1024}
+      />
+
+      <Heading size="small">Small - Disabled</Heading>
+      <FileUploadComponent
+        {...args}
+        label="Upload Logo"
+        helpText="PNG or JPEG up to 1MB"
+        accept=".png, .jpg, .jpeg"
+        size="small"
+        uploadType="single"
+        isDisabled
+      />
+
+      <Heading size="small">Small - Multiple Files</Heading>
+      <FileUploadComponent
+        {...args}
+        label="Attachments"
+        helpText="Upload up to 3 files"
+        size="small"
+        uploadType="multiple"
+        maxCount={3}
+      />
+    </Box>
+  );
+};
+
+export const SmallSize = SmallSizeTemplate.bind({});
+SmallSize.storyName = 'Small Size Variant';

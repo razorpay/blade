@@ -116,14 +116,14 @@ type FileUploadCommonProps = {
 } & StyledPropsBlade &
   MotionMetaProp;
 
-// Standard size props (medium or large)
+// Standard size props (small, medium, or large)
 type FileUploadStandardSizeProps = FileUploadCommonProps & {
   /**
    * Size of the FileUpload component
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 // Variable size props with custom text options
@@ -180,9 +180,21 @@ type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel)
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
-  'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
+  'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload'
 > & {
+  /**
+   * Size of the FileUploadItem component
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
   file: BladeFile;
+  /**
+   * Thumbnail preview for image files. Pass a URL string or a custom ReactNode.
+   * Renders a square preview in place of the default file-type icon.
+   * Falls back to the default icon if the image fails to load.
+   */
+  thumbnail?: string | React.ReactNode;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
@@ -191,6 +203,8 @@ type FileUploadItemProps = Pick<
   flexBasis?: BoxProps['flexBasis'];
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
+
+type InternalFileUploadItemSize = NonNullable<FileUploadItemProps['size']> | 'variable';
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
@@ -202,7 +216,7 @@ type StyledFileUploadWrapperProps = {
 
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
-  size: NonNullable<FileUploadProps['size']>;
+  size: InternalFileUploadItemSize;
   theme: Theme;
   children: React.ReactNode;
 };
@@ -224,6 +238,7 @@ export type {
   BladeFileList,
   FileUploadProps,
   FileUploadItemProps,
+  InternalFileUploadItemSize,
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
   FileUploadItemBackgroundColors,
