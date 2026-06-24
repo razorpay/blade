@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.108.2
+
+### Patch Changes
+
+- 8b8c852e8: fix(native) :- fixed left padding in phone input's country selector
+
 ## 12.108.1
 
 ### Patch Changes
