@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.108.1
+
+### Patch Changes
+
+- 3595bf51b: fix(blade): genui font weights and spacing
+
 ## 12.108.0
 
 ### Minor Changes
