@@ -5,14 +5,30 @@ import styles from './button.module.css';
 
 export type ButtonVariants = {
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative' | 'transparent';
+  color?:
+    | 'primary'
+    | 'white'
+    | 'positive'
+    | 'negative'
+    | 'information'
+    | 'notice'
+    | 'neutral'
+    | 'transparent';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isIconOnly?: boolean;
 };
 
-export type ButtonColor = 'primary' | 'white' | 'positive' | 'negative' | 'transparent';
+export type ButtonColor =
+  | 'primary'
+  | 'white'
+  | 'positive'
+  | 'negative'
+  | 'information'
+  | 'notice'
+  | 'neutral'
+  | 'transparent';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
@@ -41,16 +57,22 @@ export function getButtonBackgroundColorToken({
       return `interactive.${property}.staticWhite.${_state}`;
     }
     if (variant === 'secondary') {
-      return isBorder
-        ? 'interactive.border.staticWhite.highlighted'
-        : _state === 'default'
-        ? 'transparent'
-        : 'interactive.background.staticWhite.faded';
+      if (isBorder) {
+        return 'interactive.border.staticWhite.highlighted';
+      }
+      return _state === 'default'
+        ? 'interactive.background.staticWhite.faded'
+        : _state === 'disabled'
+        ? 'interactive.background.gray.disabled'
+        : 'interactive.background.staticBlack.faded';
     }
     if (variant === 'tertiary') {
-      return `interactive.background.staticWhite.faded${
-        _state === 'highlighted' ? 'Highlighted' : ''
-      }`;
+      if (_state === 'disabled') {
+        return 'interactive.background.gray.disabled';
+      }
+      return _state === 'highlighted'
+        ? 'interactive.background.staticBlack.faded'
+        : 'interactive.background.staticWhite.faded';
     }
   }
 
@@ -86,17 +108,42 @@ export function getButtonBackgroundColorToken({
     return `interactive.${property}.primary.${_state}`;
   }
   if (variant === 'secondary') {
-    return isBorder
-      ? 'interactive.border.primary.default'
-      : _state === 'default'
-      ? 'transparent'
-      : 'interactive.background.primary.faded';
+    if (isBorder) {
+      return 'interactive.border.primary.default';
+    }
+    return 'surface.background.gray.intense';
   }
   if (variant === 'tertiary') {
-    return `interactive.${property}.gray.${_state}`;
+    if (_state === 'disabled') {
+      return 'interactive.background.staticWhite.ghost';
+    }
+    return 'surface.background.gray.intense';
   }
 
   return `interactive.${property}.primary.${_state}`;
+}
+
+/**
+ * Get the progress "rest" (unfilled) background token for the definite loader.
+ *
+ * Inverted-layer model: the button base stays its normal color and a rest-colored
+ * cover recedes over it. This returns that rest color — the button's disabled-state
+ * background, which the receding cover paints. It reuses the standard disabled
+ * background token for the variant/color.
+ */
+export function getButtonProgressRestColorToken({
+  variant,
+  color,
+}: {
+  variant: ButtonVariant;
+  color: ButtonColor;
+}): string {
+  return getButtonBackgroundColorToken({
+    variant,
+    color,
+    state: 'disabled',
+    property: 'background',
+  });
 }
 
 /**
@@ -168,7 +215,7 @@ export function getButtonTextColorToken({
     return `interactive.${property}.onPrimary.normal`;
   }
   if (variant === 'secondary') {
-    return `interactive.${property}.primary.${state === 'disabled' ? 'disabled' : 'subtle'}`;
+    return `interactive.${property}.gray.${state === 'disabled' ? 'disabled' : 'normal'}`;
   }
   if (variant === 'tertiary') {
     return `interactive.${property}.gray.${stateSuffix}`;
@@ -240,22 +287,6 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
   } as const;
 }
 
-/**
- * Get spinner size mapping for buttons
- * Maps button sizes to appropriate spinner sizes
- */
-export function getButtonSpinnerSize(): Record<
-  'xsmall' | 'small' | 'medium' | 'large',
-  'medium' | 'large' | 'xlarge'
-> {
-  return {
-    xsmall: 'medium',
-    small: 'large',
-    medium: 'large',
-    large: 'xlarge',
-  } as const;
-}
-
 export const buttonStyles = cva(styles.btn, {
   variants: {
     variant: {
@@ -268,6 +299,9 @@ export const buttonStyles = cva(styles.btn, {
       white: styles['color-white'],
       positive: styles['color-positive'],
       negative: styles['color-negative'],
+      information: styles['color-information'],
+      notice: styles['color-notice'],
+      neutral: styles['color-neutral'],
       transparent: styles['color-transparent'],
     },
     size: {
@@ -302,10 +336,14 @@ export const buttonStyles = cva(styles.btn, {
 // Export content and icon classes for use in component templates
 export const buttonContentClass = styles.content;
 export const buttonIconClass = styles.icon;
-export const loadingSpinnerClass = styles['loading-spinner'];
 export const loadingClass = styles.loading;
 export const animatedContentClass = styles['animated-content'];
 export const pressedClass = styles.pressed;
+export const dotsLoaderClass = styles['dots-loader'];
+export const progressOverlayClass = styles['progress-overlay'];
+export const progressFillClass = styles['progress-overlay-fill'];
+export const definiteLoadingClass = styles['definite-loading'];
+export const liveRegionClass = styles['live-region'];
 
 /**
  * Get all Button component template classes as an object.
@@ -322,10 +360,15 @@ export function getButtonTemplateClasses(): Record<string, string> {
     icon: buttonIconClass,
     iconLeft: styles['icon-left'],
     iconRight: styles['icon-right'],
-    loadingSpinner: loadingSpinnerClass,
+    avatarGroup: styles['avatar-group'],
     loading: loadingClass,
     animatedContent: animatedContentClass,
     pressed: pressedClass,
+    dotsLoader: dotsLoaderClass,
+    progressOverlay: progressOverlayClass,
+    progressFill: progressFillClass,
+    definiteLoading: definiteLoadingClass,
+    liveRegion: liveRegionClass,
   } as const;
 }
 

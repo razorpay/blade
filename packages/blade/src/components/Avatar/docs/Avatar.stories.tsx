@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { AvatarProps } from '../Avatar';
 import { Avatar as AvatarComponent } from '../Avatar';
 import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup';
@@ -114,25 +114,13 @@ InteractiveNonInteractive.storyName = 'Interactive and NonInteractive Avatar';
 const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {sizes.map((size) => (
-        <Box
-          key={size}
-          display="flex"
-          flex="1 1 auto"
-          alignItems="center"
-          justifyItems="center"
-          alignContent="center"
-          gap="spacing.5"
-          flexWrap="nowrap"
-          width="120px"
-        >
-          <Box width="50px">
+        <Box key={size} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
+          <Box minWidth="80px">
             <Heading>{size}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent {...args} size={size} />
-          </Box>
+          <AvatarComponent {...args} size={size} />
         </Box>
       ))}
     </Box>
@@ -145,25 +133,13 @@ AllSizes.storyName = 'All Sizes';
 const AvatarColorsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const colors = ['primary', 'positive', 'negative', 'neutral', 'notice', 'information'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {colors.map((color) => (
-        <Box
-          key={color}
-          display="flex"
-          flex="1 1 auto"
-          alignItems="center"
-          justifyItems="center"
-          alignContent="center"
-          gap="spacing.5"
-          flexWrap="nowrap"
-          width="200px"
-        >
-          <Box width="40px">
+        <Box key={color} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
+          <Box minWidth="100px">
             <Heading>{color}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent size="medium" {...args} color={color} />
-          </Box>
+          <AvatarComponent size="medium" {...args} color={color} />
         </Box>
       ))}
     </Box>
@@ -176,25 +152,13 @@ AllColors.storyName = 'All Colors';
 const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const variants = ['circle', 'square'] as const;
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
+    <Box display="flex" flexDirection="column" gap="spacing.5" alignItems="flex-start">
       {variants.map((variant) => (
-        <Box
-          key={variant}
-          display="flex"
-          flex="1 1 auto"
-          alignItems="center"
-          justifyItems="center"
-          alignContent="center"
-          gap="spacing.5"
-          flexWrap="nowrap"
-          width="120px"
-        >
-          <Box width="40px">
+        <Box key={variant} display="flex" flexDirection="row" alignItems="center" gap="spacing.5">
+          <Box minWidth="80px">
             <Heading>{variant}</Heading>
           </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent size="medium" {...args} variant={variant} />
-          </Box>
+          <AvatarComponent size="medium" {...args} variant={variant} />
         </Box>
       ))}
     </Box>
@@ -210,7 +174,7 @@ const AvatarWithAddonsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       {sizes.map((size) => (
-        <Box key={size} width="100%" display="flex" gap="spacing.5">
+        <Box key={size} width="100%" display="flex" flexDirection="row" gap="spacing.5">
           <AvatarComponent
             {...args}
             size={size}
@@ -249,7 +213,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Variants
         </Text>
-        <Box display="flex" gap="spacing.5">
+        <Box display="flex" flexDirection="row" gap="spacing.5">
           <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.2">
             <AvatarComponent variant="circle" size="large" name="Anurag Hazra" />
             <Text size="small">Circle</Text>
@@ -271,7 +235,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Sizes - Circle Variant
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -297,7 +261,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Sizes - Square Variant
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -323,7 +287,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Colors
         </Text>
-        <Box display="flex" gap="spacing.5" flexWrap="wrap">
+        <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
           {colors.map((color) => (
             <Box
               key={color}
@@ -349,7 +313,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Image Avatars
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -379,7 +343,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Letter Avatars
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -405,7 +369,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Icon Avatars
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -431,7 +395,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           With Addons - Circle
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -462,7 +426,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           With Addons - Square
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -494,7 +458,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Interactive Avatars
         </Text>
-        <Box display="flex" gap="spacing.5">
+        <Box display="flex" flexDirection="row" gap="spacing.5">
           <Box display="flex" flexDirection="column" alignItems="center" gap="spacing.2">
             <AvatarComponent
               size="large"
@@ -533,7 +497,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         >
           Image with Addons
         </Text>
-        <Box display="flex" gap="spacing.5" alignItems="flex-end">
+        <Box display="flex" flexDirection="row" gap="spacing.5" alignItems="flex-end">
           {sizes.map((size) => (
             <Box
               key={size}
@@ -567,7 +531,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
         </Text>
         <Box display="flex" flexDirection="column" gap="spacing.5">
           {sizes.map((size) => (
-            <Box key={size} display="flex" alignItems="center" gap="spacing.4">
+            <Box key={size} display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
               <Box width="60px">
                 <Text size="small">{size}</Text>
               </Box>
@@ -594,7 +558,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
           Avatar Group with Max Count
         </Text>
         <Box display="flex" flexDirection="column" gap="spacing.5">
-          <Box display="flex" alignItems="center" gap="spacing.4">
+          <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
             <Box width="100px">
               <Text size="small">maxCount=3</Text>
             </Box>
@@ -606,7 +570,7 @@ export const AvatarShowcase: StoryFn<typeof AvatarComponent> = () => {
               <AvatarComponent color="notice" name="Chaitanya Deorukhkar" />
             </AvatarGroupComponent>
           </Box>
-          <Box display="flex" alignItems="center" gap="spacing.4">
+          <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
             <Box width="100px">
               <Text size="small">maxCount=2</Text>
             </Box>

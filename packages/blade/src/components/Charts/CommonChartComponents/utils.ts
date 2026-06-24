@@ -1,16 +1,34 @@
 import { MIN_WIDTH, MAX_WIDTH, PADDING_HORIZONTAL } from './tokens';
 import type { Theme } from '~components/BladeProvider';
 
-const calculateTextWidth = (text: string, theme: Theme): { width: number; displayText: string } => {
+/**
+ * Measures text width using the Canvas API, returning the pixel width and a
+ * (possibly truncated) display string.
+ *
+ * @param options.fontSize    Override the default font size (theme.typography.fonts.size[50]).
+ *                            SankeyChart uses size[75] for node labels.
+ * @param options.fontWeight  Override the default font weight (theme.typography.fonts.weight.medium).
+ *                            SankeyChart uses semibold/regular depending on label part.
+ * @param options.skipPadding When true, returns the raw canvas pixel width without applying the
+ *                            MIN_WIDTH floor or PADDING_HORIZONTAL addition. Use this when measuring
+ *                            individual text segments for layout decisions (e.g. SankeyChart chip
+ *                            wrapping) where the caller needs actual glyph widths, not padded chip widths.
+ */
+const calculateTextWidth = (
+  text: string,
+  theme: Theme,
+  options?: { fontSize?: number; fontWeight?: number | string; skipPadding?: boolean },
+): { width: number; displayText: string } => {
   // Create a temporary canvas to measure text
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
   if (!context) return { width: 80, displayText: text }; // fallback
 
-  // Set font properties to match the text styling
-  const fontSize = theme.typography.fonts.size[50];
+  // Set font properties to match the text styling — callers can override both
+  // fontSize and fontWeight for components that use different type ramps.
+  const fontSize = options?.fontSize ?? theme.typography.fonts.size[50];
   const fontFamily = theme.typography.fonts.family.text;
-  const fontWeight = theme.typography.fonts.weight.medium;
+  const fontWeight = options?.fontWeight ?? theme.typography.fonts.weight.medium;
 
   context.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
 
@@ -20,6 +38,10 @@ const calculateTextWidth = (text: string, theme: Theme): { width: number; displa
 
   // If text fits within max width, use it as is
   if (fullTextWidth <= availableWidth) {
+    // skipPadding: skip the MIN_WIDTH floor and PADDING_HORIZONTAL addition.
+    // Used by SankeyChart to measure individual text segments for layout decisions —
+    // those callers need the raw canvas pixel width, not a padded chip width.
+    if (options?.skipPadding) return { width: fullTextWidth, displayText: text };
     const finalWidth = Math.max(MIN_WIDTH, fullTextWidth + PADDING_HORIZONTAL);
     return { width: finalWidth, displayText: text };
   }
@@ -48,8 +70,15 @@ const calculateTextWidth = (text: string, theme: Theme): { width: number; displa
   }
 
   const truncatedText = bestFit + ELLIPSIS;
-  const finalWidth = Math.max(MIN_WIDTH, MAX_WIDTH);
 
+  // skipPadding: return the raw measured width of the truncated string,
+  // consistent with the non-truncated skipPadding path above.
+  if (options?.skipPadding) {
+    const truncatedWidth = context.measureText(truncatedText).width;
+    return { width: truncatedWidth, displayText: truncatedText };
+  }
+
+  const finalWidth = Math.max(MIN_WIDTH, MAX_WIDTH);
   return { width: finalWidth, displayText: truncatedText };
 };
 

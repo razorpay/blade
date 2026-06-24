@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Tag } from './Tag';
 import type { TagProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -135,7 +135,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
 
   return (
     <Box>
-      <Box paddingY="spacing.4">
+      <Box paddingY="spacing.4" display="flex" flexDirection="row" flexWrap="wrap">
         {tags.map((tagName) => (
           <Tag
             key={tagName}

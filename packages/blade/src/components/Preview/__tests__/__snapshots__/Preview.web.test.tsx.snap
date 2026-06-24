@@ -197,7 +197,7 @@ exports[`<PreviewWindow/> should render preview header without title correctly 1
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  background-image: radial-gradient( circle, rgba(0,0,0,0.1) 1px, transparent 1px );
+  background-image: radial-gradient( circle, hsla(206,10%,29%,0.12) 1px, transparent 1px );
   background-size: 16px 16px;
   -webkit-transition: cursor 0.1s ease;
   transition: cursor 0.1s ease;
@@ -469,6 +469,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -591,7 +592,7 @@ exports[`<PreviewWindow/> should render preview window correctly 1`] = `
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
-  background-image: radial-gradient( circle, rgba(0,0,0,0.1) 1px, transparent 1px );
+  background-image: radial-gradient( circle, hsla(206,10%,29%,0.12) 1px, transparent 1px );
   background-size: 16px 16px;
   -webkit-transition: cursor 0.1s ease;
   transition: cursor 0.1s ease;

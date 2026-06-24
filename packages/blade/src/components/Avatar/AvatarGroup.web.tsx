@@ -3,7 +3,9 @@ import type { AvatarGroupProps, AvatarGroupContextType } from './types';
 import { StyledAvatarGroup } from './StyledAvatarGroup';
 import { StyledAvatar } from './StyledAvatar';
 import { AvatarGroupProvider } from './AvatarGroupContext';
-import { AvatarButton } from './AvatarButton';
+import { avatarTextSizeMapping } from './avatarTokens';
+import BaseBox from '~components/Box/BaseBox';
+import { Heading, Text } from '~components/Typography';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -14,6 +16,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 const _AvatarGroup = ({
   children,
   size = 'medium',
+  density = 'compact',
   maxCount,
   testID,
   ...rest
@@ -31,6 +34,7 @@ const _AvatarGroup = ({
         {...makeAnalyticsAttribute(rest)}
         role="group"
         size={size}
+        density={density}
       >
         {React.Children.map(children, (child, index) => {
           if (__DEV__) {
@@ -45,16 +49,42 @@ const _AvatarGroup = ({
 
           if (maxCount && maxCount <= childrenCount) {
             if (index === maxCount) {
+              const overflowText = `+${String(childrenCount - maxCount)}`;
               return (
                 <StyledAvatar
                   {...metaAttribute({ name: MetaConstants.Avatar, testID })}
-                  backgroundColor="surface.background.gray.intense"
+                  backgroundColor="surface.background.gray.subtle"
                   size={size}
                   variant="circle"
                 >
-                  <AvatarButton variant="circle" color="neutral" size={size}>
-                    {`+${String(childrenCount - maxCount)}`}
-                  </AvatarButton>
+                  <BaseBox
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="100%"
+                    height="100%"
+                  >
+                    {size === 'xlarge' ? (
+                      <Heading
+                        size="small"
+                        weight="semibold"
+                        color="interactive.text.neutral.muted"
+                        textAlign="center"
+                      >
+                        {overflowText}
+                      </Heading>
+                    ) : (
+                      <Text
+                        size={avatarTextSizeMapping[size]}
+                        weight="semibold"
+                        color="interactive.text.neutral.muted"
+                        textAlign="center"
+                      >
+                        {overflowText}
+                      </Text>
+                    )}
+                  </BaseBox>
                 </StyledAvatar>
               );
             }

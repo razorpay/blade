@@ -13,8 +13,8 @@ export const baseInputHeight: Record<
   NonNullable<BaseInputProps['size']>,
   typeof size[keyof typeof size]
 > = {
-  xsmall: size['26'],
-  small: size['30'],
+  xsmall: size['28'],
+  small: size['32'],
   medium: size['36'],
   large: size['48'],
 };
@@ -37,7 +37,7 @@ export const baseInputBorderColor = {
   focused: 'interactive.border.primary.default',
   disabled: 'interactive.border.gray.disabled',
   error: 'interactive.border.negative.default',
-  success: 'interactive.border.positive.default',
+  success: 'interactive.border.gray.default',
 } as const;
 
 export const baseInputBackgroundColor = {
@@ -101,7 +101,7 @@ export const baseInputBorderWidth = {
   disabled: 'thin',
   focused: 'thick',
   error: 'thick',
-  success: 'thick',
+  success: 'thin',
 } as const;
 
 export const baseInputBorderBackgroundMotion = {

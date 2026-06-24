@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { SideNavLinkProps } from '../types';
 import { SideNav, SideNavBody, SideNavLink } from '../index';
 import { Box } from '~components/Box';
@@ -27,6 +27,7 @@ const trailingMapping = {
 export default {
   title: 'Components/SideNav/SideNavLink Playground',
   component: SideNavLink,
+
   argTypes: {
     icon: {
       name: 'icon',
@@ -47,7 +48,6 @@ export default {
       mapping: trailingMapping,
     } as unknown,
   },
-  parameters: {},
 } as Meta<SideNavLinkProps>;
 
 const SideNavLinkTemplate: StoryFn<typeof SideNavLink> = (args) => {

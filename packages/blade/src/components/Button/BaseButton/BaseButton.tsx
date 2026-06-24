@@ -291,6 +291,52 @@ const getProps = ({
     return shadows.join(', ');
   };
 
+  const getNativeShadowColors = (
+    btnColor: BaseButtonProps['color'],
+  ): {
+    shadowHighlightColor?: string;
+    shadowHighlightHeight?: number;
+    shadowBottomColor?: string;
+    shadowBottomHeight?: number;
+    shadowBorderColor?: string;
+    shadowRingWidth?: number;
+    isShadowGradientVisible?: boolean;
+  } => {
+    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
+    if (shadowTokens.length === 0) return {};
+
+    let highlightColor: string | undefined,
+      bottomColor: string | undefined,
+      borderColor: string | undefined;
+    let highlightHeight = 0;
+    let bottomHeight = 0;
+    let ringWidth = 0;
+
+    for (const shadow of shadowTokens) {
+      const resolved = getIn(theme.colors, shadow.color);
+      if (shadow.y > 0 && !highlightColor) {
+        highlightColor = resolved;
+        highlightHeight = shadow.y;
+      } else if (shadow.y < 0 && !bottomColor) {
+        bottomColor = resolved;
+        bottomHeight = Math.abs(shadow.y);
+      } else if (shadow.spread > 0 && !borderColor) {
+        borderColor = resolved;
+        ringWidth = shadow.spread;
+      }
+    }
+
+    return {
+      shadowHighlightColor: highlightColor,
+      shadowHighlightHeight: highlightHeight !== 0 ? highlightHeight : undefined,
+      shadowBottomColor: bottomColor,
+      shadowBottomHeight: bottomHeight !== 0 ? bottomHeight : undefined,
+      shadowBorderColor: borderColor,
+      shadowRingWidth: ringWidth !== 0 ? ringWidth : undefined,
+      isShadowGradientVisible: variant === 'primary',
+    };
+  };
+
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
@@ -345,6 +391,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
+    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
   };
 
   if (isDisabled) {
@@ -467,6 +514,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     borderRadius,
     motionDuration,
     motionEasing,
+    shadowHighlightColor,
+    shadowHighlightHeight,
+    shadowBottomColor,
+    shadowBottomHeight,
+    shadowBorderColor,
+    shadowRingWidth,
+    isShadowGradientVisible,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
@@ -585,6 +639,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseUp={handlePointerPressedOut}
       onMouseOut={handlePointerPressedOut}
       onKeyUp={handleKeyboardPressedOut}
+      shadowHighlightColor={shadowHighlightColor}
+      shadowHighlightHeight={shadowHighlightHeight}
+      shadowBottomColor={shadowBottomColor}
+      shadowBottomHeight={shadowBottomHeight}
+      shadowBorderColor={shadowBorderColor}
+      shadowRingWidth={shadowRingWidth}
+      isShadowGradientVisible={isShadowGradientVisible}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
