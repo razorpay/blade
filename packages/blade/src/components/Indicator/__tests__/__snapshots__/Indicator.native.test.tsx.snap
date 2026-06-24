@@ -113,6 +113,7 @@ exports[`<Indicator /> should render 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -122,7 +123,7 @@ exports[`<Indicator /> should render 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -258,6 +259,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -267,7 +269,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -392,6 +394,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -401,7 +404,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -526,6 +529,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -535,7 +539,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -660,6 +664,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
@@ -669,7 +674,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -821,6 +826,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -830,7 +836,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,

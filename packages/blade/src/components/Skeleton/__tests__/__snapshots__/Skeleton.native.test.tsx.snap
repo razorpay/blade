@@ -11,7 +11,6 @@ exports[`<Skeleton /> should render skeleton 1`] = `
   <View
     accessibilityElementsHidden={true}
     data-blade-component="skeleton"
-    entering={[Function]}
     height="50px"
     importantForAccessibility="no-hide-descendants"
     style={
@@ -21,12 +20,30 @@ exports[`<Skeleton /> should render skeleton 1`] = `
           "width": "100%",
         },
         {
-          "backgroundColor": undefined,
+          "overflow": "hidden",
         },
       ]
     }
     width="100%"
-  />
+  >
+    <View
+      style={
+        [
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          {
+            "backgroundColor": "hsl(206, 10%, 29%)",
+            "opacity": NaN,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;
 

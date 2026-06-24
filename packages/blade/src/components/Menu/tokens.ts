@@ -6,7 +6,7 @@ import getIn from '~utils/lodashButBetter/get';
 
 const overlayPaddingX = 'spacing.3';
 const overlayPaddingTop = 'spacing.3';
-const overlayPaddingBottom = 'spacing.4';
+const overlayPaddingBottom = 'spacing.3';
 const headerMarginBottom = 'spacing.3';
 const footerPaddingTop = 'spacing.3';
 

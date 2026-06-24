@@ -117,7 +117,7 @@ TestOnRemove.play = async ({ canvasElement }) => {
   await userEvent.upload(input as HTMLElement, file);
   await expect(getByText(filename)).toBeVisible();
 
-  const removeButton = getByRole('button', { name: 'Remove File' });
+  const removeButton = getByRole('button', { name: `Remove ${filename}` });
   await userEvent.click(removeButton);
   await expect(queryByText(filename)).not.toBeInTheDocument();
 };
@@ -139,7 +139,7 @@ export const TestOnRemoveWithMultipleFiles: StoryFn<typeof FileUpload> = (): Rea
 };
 
 TestOnRemoveWithMultipleFiles.play = async ({ canvasElement }) => {
-  const { getByText, getAllByRole, queryByText } = within(canvasElement);
+  const { getByText, getByRole, queryByText } = within(canvasElement);
 
   // Create files
   const blob = new Blob([imageBlob]);
@@ -159,7 +159,8 @@ TestOnRemoveWithMultipleFiles.play = async ({ canvasElement }) => {
   await expect(getByText('my-image.png')).toBeInTheDocument();
   await expect(getByText('my-image2.png')).toBeInTheDocument();
 
-  const [removeButton1, removeButton2] = getAllByRole('button', { name: 'Remove File' });
+  const removeButton1 = getByRole('button', { name: 'Remove my-image.png' });
+  const removeButton2 = getByRole('button', { name: 'Remove my-image2.png' });
 
   await userEvent.click(removeButton2);
   await expect(queryByText('my-image.png')).toBeInTheDocument();

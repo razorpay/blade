@@ -49,6 +49,8 @@ export type TableContextType<Item> = {
   tableData: LocalTableNode<Item>[];
   isGrouped: boolean;
   tableToolbarPlacement: TableToolbarPlacement;
+  /** @see TableProps['checkboxDisplay'] */
+  checkboxDisplay: NonNullable<TableProps<unknown>['checkboxDisplay']>;
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
@@ -82,6 +84,7 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   tableData: [],
   isGrouped: false,
   tableToolbarPlacement: 'inline',
+  checkboxDisplay: 'always',
 });
 
 const useTableContext = <Item,>(): TableContextType<Item> => {

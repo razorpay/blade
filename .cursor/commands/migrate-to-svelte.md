@@ -9,7 +9,7 @@
 
 Before you take ANY action, confirm you understand:
 
-- [ ] I will spawn agents via the **Task tool** (`subagent_type: planner | execute | verify`).
+- [ ] I will spawn agents via the **Task tool** (`subagent_type: plan-svelte-migration | execute-svelte-migration | verify-svelte-migration`).
 - [ ] I will NOT read `.cursor/agents/*.md` myself — those files are loaded by the Task tool when the matching `subagent_type` is invoked.
 - [ ] I will pass each component's worktree absolute path in the Task `prompt` so the agent can scope all its file/shell operations to that worktree.
 - [ ] To run agents in parallel for a phase, I will send **one message containing multiple Task tool calls** (one per component). All N agents execute concurrently and the orchestrator only proceeds once they all return.
@@ -20,7 +20,7 @@ Before you take ANY action, confirm you understand:
 # Spawn an agent in the worktree (parent waits for all parallel calls in the
 # same message to complete):
 Task(
-  subagent_type: "planner" | "execute" | "verify",
+  subagent_type: "plan-svelte-migration" | "execute-svelte-migration" | "verify-svelte-migration",
   description: "<short, distinct title>",
   prompt: "<see prompt templates in Steps 1, 4, 5>",
   run_in_background: false,
@@ -175,7 +175,7 @@ Spawn one Plan agent per component (parallel pattern — see pre-flight).
 
 Per Task call:
 
-- `subagent_type`: `planner`
+- `subagent_type`: `plan-svelte-migration`
 - `description`: `Plan {Name} migration`
 - `run_in_background`: `false`
 - `prompt`: see template below
@@ -258,7 +258,7 @@ Spawn one Execute agent per plan-approved component (parallel pattern — see pr
 
 Per Task call:
 
-- `subagent_type`: `execute`
+- `subagent_type`: `execute-svelte-migration`
 - `description`: `Execute {Name} migration`
 - `run_in_background`: `false`
 - `prompt`: see template below
@@ -290,7 +290,7 @@ Spawn one Verify agent per executed component (parallel pattern — see pre-flig
 
 Per Task call:
 
-- `subagent_type`: `verify`
+- `subagent_type`: `verify-svelte-migration`
 - `description`: `Verify {Name} migration`
 - `run_in_background`: `false`
 - `prompt`: see template below

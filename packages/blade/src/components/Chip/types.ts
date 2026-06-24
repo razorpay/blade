@@ -234,9 +234,11 @@ type ChipBorderColors =
 
 type AnimatedChipProps = {
   borderColor: ChipBorderColors;
+  backgroundColor?: ChipBackgroundColors;
   isPressed?: boolean;
   isDisabled?: boolean;
   isDesktop?: boolean;
+  isChecked?: boolean;
   theme: Theme;
   children: React.ReactNode;
   width?: BoxProps['width'];

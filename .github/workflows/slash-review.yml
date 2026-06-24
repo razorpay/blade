@@ -1,0 +1,123 @@
+name: Agentic Repo / Slash Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled]
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.pull_request.number }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  slash-review:
+    name: Request Slash AI review
+    # Triggers on PR open, push to PR branch (synchronize), and manual 'Run Slash Review' label.
+    # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
+    # so that Slash-authored PRs also get reviewed).
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      (
+        github.event.action == 'opened' ||
+        github.event.action == 'synchronize' ||
+        github.event.label.name == 'Run Slash Review'
+      )
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Resolve PR metadata
+        id: pr-meta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BRANCH: ${{ github.head_ref }}
+        run: |
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found for this commit — skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Checkout repository
+        if: steps.pr-meta.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+
+      - name: Terminate previous Slash review
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+        run: |
+          PREV_TASK_ID=$(gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --jq '.[].body' \
+            | grep -oP '<!-- slash-task-id: \K\S+(?= -->)' \
+            | tail -1 2>/dev/null || true)
+
+          if [ -n "$PREV_TASK_ID" ]; then
+            echo "Terminating previous Slash task: $PREV_TASK_ID"
+            node .github/scripts/terminate-slash.js "$PREV_TASK_ID" || true
+          else
+            echo "No previous Slash task found — skipping termination."
+          fi
+
+      - name: Request Slash review
+        id: request-slash-review
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          SLASH_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
+          PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+        run: |
+          echo "Requesting Slash review for PR #${PR_NUMBER} (${PR_URL})"
+
+          PROMPT="Review the pull request at ${PR_URL} using the /review-pr skill from the blade repo. shouldReviewUI=true, shouldRunHeadedBrowser=false, and shouldSubmitReview=true. Strictly use review-pr skill from blade repo only. Do not use any other skill."
+
+          RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          echo "$RESPONSE_OUTPUT"
+
+          RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+          TASK_ID=$(echo "$RESPONSE_JSON" | grep -oP '"task_id"\s*:\s*"\K[^"]+' || true)
+
+          if [ -n "$TASK_ID" ]; then
+            EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+            echo "Execution logs: ${EXECUTION_URL}"
+            echo "execution_url=$EXECUTION_URL" >> $GITHUB_OUTPUT
+            echo "task_id=$TASK_ID" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post PR comment with execution log link
+        if: steps.pr-meta.outputs.skip != 'true' && steps.request-slash-review.outputs.execution_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          EXECUTION_URL: ${{ steps.request-slash-review.outputs.execution_url }}
+          TASK_ID: ${{ steps.request-slash-review.outputs.task_id }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
+
+      - name: Post PR comment on failure
+        if: failure() && steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="⚠️ **Slash AI Review** failed to trigger. [View workflow run](${RUN_URL})"

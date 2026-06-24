@@ -68,6 +68,7 @@ exports[`<Tag /> should render tag 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           marginRight="spacing.2"
           numberOfLines={1}
@@ -79,7 +80,7 @@ exports[`<Tag /> should render tag 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
