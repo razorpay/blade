@@ -425,7 +425,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );
@@ -433,7 +433,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (showClearButton && hasTrailingInteractionElement) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
         </BaseBox>
       );
