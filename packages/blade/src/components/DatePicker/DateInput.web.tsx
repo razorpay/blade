@@ -44,6 +44,7 @@ const _DateInput = (
     selectedPresetLabel,
     showClearButton,
     onClearButtonClick,
+    onValidationStateChange,
     ...textInputProps
   } = props;
 
@@ -85,6 +86,14 @@ const _DateInput = (
   React.useEffect(() => {
     setValidationError(undefined);
   }, [date]);
+
+  // Notify parent component when validation state changes so consumers can
+  // react to error states (e.g., disabling a form submit button).
+  // Neither onChange nor onApply fires when the input is invalid, so this
+  // callback is the only way to detect the error state programmatically.
+  React.useEffect(() => {
+    onValidationStateChange?.(validationError === undefined);
+  }, [validationError, onValidationStateChange]);
 
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
@@ -342,6 +351,7 @@ const _DatePickerInput = (
     showClearButton,
     onClearButtonClick,
     selectedPresetLabel,
+    onValidationStateChange,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -395,6 +405,7 @@ const _DatePickerInput = (
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
           selectedPresetLabel={selectedPresetLabel}
+          onValidationStateChange={onValidationStateChange}
           {...props}
           {...referenceProps}
         />
@@ -474,6 +485,7 @@ const _DatePickerInput = (
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
           selectedPresetLabel={selectedPresetLabel}
+          onValidationStateChange={onValidationStateChange}
           {...props}
           {...referenceProps}
         />

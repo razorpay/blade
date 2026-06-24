@@ -200,6 +200,21 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
      */
     onClearButtonClick?: () => void;
+    /**
+     * Callback fired when the validation state of the date input changes.
+     *
+     * Use this to react to error states — for example, disabling a form submit button
+     * when the user has typed an invalid date. Neither `onChange` nor `onApply` fires
+     * when the input is in an error state, so this callback is the only way to detect it.
+     *
+     * @param isValid - `true` when the input is valid or empty, `false` when there is a validation error
+     *
+     * @example
+     * <DatePicker
+     *   onValidationStateChange={(isValid) => setSubmitDisabled(!isValid)}
+     * />
+     */
+    onValidationStateChange?: (isValid: boolean) => void;
   };
 
 type DatePickerRangeInputProps = {
@@ -262,6 +277,11 @@ type DatePickerInputProps = DatePickerCommonInputProps &
      * The label of the currently selected preset to display when displayFormat is 'compact'.
      */
     selectedPresetLabel?: string | null;
+    /**
+     * Callback fired when the validation state of the date input changes.
+     * Threaded through from DatePicker's `onValidationStateChange` prop.
+     */
+    onValidationStateChange?: (isValid: boolean) => void;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -303,6 +323,11 @@ type DateInputProps = BaseInputProps & {
    * The label of the currently selected preset to display when displayFormat is 'compact'.
    */
   selectedPresetLabel?: string | null;
+  /**
+   * Callback fired when the validation state of the date input changes.
+   * Called with `true` when the input is valid or empty, `false` when there is a validation error.
+   */
+  onValidationStateChange?: (isValid: boolean) => void;
 };
 
 export type {
