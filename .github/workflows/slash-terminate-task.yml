@@ -1,0 +1,32 @@
+name: Agentic Repo / Slash Terminate Task
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: 'Slash task ID to terminate'
+        required: true
+        type: string
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.inputs.task_id }}-slash-terminate-task
+  cancel-in-progress: false
+
+jobs:
+  terminate-task:
+    name: Terminate Slash Task
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+
+      - name: Terminate Slash Task
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          TASK_ID: ${{ github.event.inputs.task_id }}
+        run: |
+          node .github/scripts/terminate-slash.js "$TASK_ID"
