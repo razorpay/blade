@@ -57,6 +57,7 @@ export default {
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
+    validationTextPlacement: 'outside',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
@@ -214,6 +215,11 @@ export default {
       },
     },
     successText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    validationTextPlacement: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },

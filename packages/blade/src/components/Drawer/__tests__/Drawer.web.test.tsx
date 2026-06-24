@@ -33,6 +33,28 @@ const BasicDrawer = (props: Partial<DrawerProps>): React.ReactElement => {
   );
 };
 
+const StackedDrawer = (): React.ReactElement => {
+  const [isL0Open, setIsL0Open] = React.useState(false);
+  const [isL1Open, setIsL1Open] = React.useState(false);
+  return (
+    <>
+      <Button onClick={() => setIsL0Open(true)}>Open L0</Button>
+      <Drawer isOpen={isL0Open} onDismiss={() => setIsL0Open(false)} accessibilityLabel="L0 Drawer">
+        <DrawerHeader title="L0 Drawer" />
+        <DrawerBody>
+          <Button onClick={() => setIsL1Open(true)}>Open L1</Button>
+        </DrawerBody>
+      </Drawer>
+      <Drawer isOpen={isL1Open} onDismiss={() => setIsL1Open(false)} accessibilityLabel="L1 Drawer">
+        <DrawerHeader title="L1 Drawer" />
+        <DrawerBody>
+          <Text>L1 Content</Text>
+        </DrawerBody>
+      </Drawer>
+    </>
+  );
+};
+
 describe('Drawer', () => {
   it('renders a Drawer', () => {
     const { getByRole } = renderWithTheme(
@@ -145,6 +167,34 @@ describe('Drawer', () => {
     expect(getByText('Custom Header')).toBeInTheDocument();
     expect(getByText('Custom Content')).toBeInTheDocument();
     expect(getByRole('dialog')).toMatchSnapshot();
+  });
+
+  describe('stacked drawers', () => {
+    it('should not show back button on L0 drawer after closing all drawers via close button', async () => {
+      const user = userEvents.setup();
+      const { getByRole, getByLabelText, getAllByLabelText, queryByLabelText } = renderWithTheme(
+        <StackedDrawer />,
+      );
+
+      // Open L0
+      await user.click(getByRole('button', { name: 'Open L0' }));
+      await waitFor(() => expect(getByRole('button', { name: 'Open L1' })).toBeInTheDocument());
+
+      // Open L1 (stacked on top of L0) — Back button should appear in L1's header
+      await user.click(getByRole('button', { name: 'Open L1' }));
+      await waitFor(() => expect(getByLabelText('Back')).toBeInTheDocument());
+
+      // Close all via the Close button on L1 (not Back) — closeAllDrawers dismisses both drawers
+      const closeButtons = getAllByLabelText('Close');
+      await user.click(closeButtons[closeButtons.length - 1]);
+      await waitFor(() => expect(queryByLabelText('L0 Drawer')).not.toBeInTheDocument());
+      await waitFor(() => expect(queryByLabelText('L1 Drawer')).not.toBeInTheDocument());
+
+      // Reopen L0 — back button must NOT appear (regression check for stale closure bug)
+      await user.click(getByRole('button', { name: 'Open L0' }));
+      await waitFor(() => expect(getByRole('button', { name: 'Open L1' })).toBeInTheDocument());
+      expect(queryByLabelText('Back')).not.toBeInTheDocument();
+    });
   });
 
   describe('DrawerFooter', () => {

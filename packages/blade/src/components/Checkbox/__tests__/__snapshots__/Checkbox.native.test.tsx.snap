@@ -133,6 +133,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -142,7 +143,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -300,6 +301,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -309,7 +311,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -467,6 +469,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             fontSize={100}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={100}
             style={
               [
@@ -476,7 +479,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.18200000000000002,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -635,6 +638,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           fontSize={50}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={50}
           marginTop="spacing.0"
           style={
@@ -645,7 +649,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                 "fontSize": 11,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.14300000000000002,
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
