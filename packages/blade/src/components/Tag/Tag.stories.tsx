@@ -103,6 +103,28 @@ Disabled.args = {
   isDisabled: true,
 } as TagProps & { icon: string };
 
+const TextTruncationTemplate: StoryFn<typeof Tag> = ({ children, ...args }) => {
+  const [isTagVisible, setIsTagVisible] = React.useState(true);
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4" maxWidth="spacing.40">
+      <Box>
+        {isTagVisible ? (
+          <Tag {...args} onDismiss={() => setIsTagVisible(false)}>
+            {children}
+          </Tag>
+        ) : null}
+      </Box>
+    </Box>
+  );
+};
+
+export const TagTextTruncation = TextTruncationTemplate.bind({});
+TagTextTruncation.args = {
+  children: 'This is a very long tag label that will get truncated',
+  icon: 'FileTextIcon',
+} as TagProps & { icon: string };
+TagTextTruncation.storyName = 'Text Truncation Tooltip';
+
 const CrossPlatformForm = ({
   children,
   onSubmit,
