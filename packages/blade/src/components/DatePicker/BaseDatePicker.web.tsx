@@ -261,8 +261,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       const isComplete = isSingle
         ? Boolean(controlledValue)
         : Boolean(
-            (controlledValue as DatesRangeValue)?.[0] &&
-              (controlledValue as DatesRangeValue)?.[1],
+            (controlledValue as DatesRangeValue)?.[0] && (controlledValue as DatesRangeValue)?.[1],
           );
 
       if (isComplete) {
