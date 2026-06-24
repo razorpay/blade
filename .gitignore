@@ -104,3 +104,4 @@ knowledgebase-ts-errors.json
 .cursor/worktrees/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
+packages/blade/tmp/
