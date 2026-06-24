@@ -53,7 +53,6 @@ const useChartsColorTheme = ({
 /**
  * Color token types for type safety
  */
-type CategoricalColorToken =
-  `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
+type CategoricalColorToken = `data.background.categorical.${ChartColorTokenNames}.${ColorIntensity}`;
 
 export default useChartsColorTheme;
