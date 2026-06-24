@@ -11,7 +11,6 @@ const fs = require('fs');
 
 const repo = process.env.GITHUB_REPOSITORY;
 const prNumber = parseInt(process.env.PR_NUMBER, 10);
-const prHeadRef = process.env.PR_HEAD_REF;
 const workflowRef = process.env.GITHUB_WORKFLOW_REF;
 const githubOutput = process.env.GITHUB_OUTPUT;
 const MAX_RUNS = 5;
@@ -25,13 +24,13 @@ function output(allowed) {
 // GITHUB_WORKFLOW_REF format: "org/repo/.github/workflows/filename.yml@refs/heads/branch"
 const workflowFilename = workflowRef.split('@')[0].split('/').pop();
 
-const response = execSync(
-  `gh api "repos/${repo}/actions/workflows/${workflowFilename}/runs?event=pull_request_review&branch=${prHeadRef}&per_page=100"`,
-  { encoding: 'utf8' },
+const count = parseInt(
+  execSync(
+    `gh api "repos/${repo}/actions/workflows/${workflowFilename}/runs?event=pull_request_review&per_page=100" --jq '[.workflow_runs[] | select(.pull_requests[]?.number == ${prNumber})] | length'`,
+    { encoding: 'utf8' },
+  ).trim(),
+  10,
 );
-
-const { workflow_runs: runs } = JSON.parse(response);
-const count = runs.filter((run) => run.pull_requests?.some((pr) => pr.number === prNumber)).length;
 
 console.log(`Auto-resolve has run ${count} time(s) on this PR (max: ${MAX_RUNS}).`);
 
