@@ -314,16 +314,6 @@ exports[`Tabs should render 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -359,8 +349,6 @@ exports[`Tabs should render 1`] = `
               >
                 Payments Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
       <View
@@ -391,16 +379,6 @@ exports[`Tabs should render 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -436,8 +414,6 @@ exports[`Tabs should render 1`] = `
               >
                 Refunds Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -803,16 +779,6 @@ exports[`Tabs should render with filled variant 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -848,8 +814,6 @@ exports[`Tabs should render with filled variant 1`] = `
               >
                 Payments Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
       <View
@@ -880,16 +844,6 @@ exports[`Tabs should render with filled variant 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -925,8 +879,6 @@ exports[`Tabs should render with filled variant 1`] = `
               >
                 Refunds Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -1261,16 +1213,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -1306,8 +1248,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
               >
                 Payments Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
       <View
@@ -1338,16 +1278,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -1383,8 +1313,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
               >
                 Refunds Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
@@ -1706,16 +1634,6 @@ exports[`Tabs should render with large size 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -1751,8 +1669,6 @@ exports[`Tabs should render with large size 1`] = `
               >
                 Payments Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
       <View
@@ -1783,16 +1699,6 @@ exports[`Tabs should render with large size 1`] = `
             ]
           }
         >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexGrow": 1,
-              }
-            }
-            nestedScrollEnabled={true}
-            showsVerticalScrollIndicator={false}
-          >
-            <View>
               <Text
                 accessible={true}
                 color="surface.text.gray.normal"
@@ -1828,8 +1734,6 @@ exports[`Tabs should render with large size 1`] = `
               >
                 Refunds Panel
               </Text>
-            </View>
-          </RCTScrollView>
         </View>
       </View>
     </RNCViewPager>
