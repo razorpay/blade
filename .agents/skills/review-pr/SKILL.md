@@ -27,16 +27,18 @@ disable-model-invocation: true
 - If you're unable to spawn the subagents, stop the skill immediately and respond with error message.
   ```json
   {
-    "overview-comment": {
-      "sanity-review": {
-        "critique": "pr-sanity-critique",
-        "issues": [
-          {
-            "problem": "Could not spawn the subagents. Please check the logs for more details."
-          }
-        ]
+    "overview-comment": {},
+    "inlined-comments": [
+      {
+        "file": "",
+        "line": 0,
+        "side": "RIGHT",
+        "severity": "critical",
+        "confidence": 10,
+        "critique": "code-quality-critique",
+        "problem": "Could not spawn the subagents. Please check the logs for more details."
       }
-    }
+    ]
   }
   ```
 
@@ -57,13 +59,6 @@ gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
 Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
 
 ### 2. Spawn Critique Subagents in parallel
-
-**pr-sanity-critique:**
-
-```
-subagent_type: pr-sanity-critique
-prompt: "PR_NUMBER={PR_NUMBER}"
-```
 
 **code-quality-critique:**
 
@@ -117,9 +112,9 @@ prompt: |
 Replace `inlined-comments` in the review JSON with the filtered array returned by the agent.
 
 Then recalculate `reviewStatus` based on the filtered array:
-- Set `reviewStatus` to `'approved'` if **both** of these hold:
-  - The filtered `inlined-comments` array contains no items with `severity` of `major` or `critical`
-  - All CI/UI check statuses in the `overview-comment` passed (no `FAILURE` entries)
+
+- Set `reviewStatus` to `'approved'` if:
+  - Check `reviewStatusReason` to see if reviewStatus was not approved only because of inlined comments array before filtering and that changes now. If so, set `reviewStatus` to `'approved'` now since the issues are filtered out now.
 - Otherwise, set `reviewStatus` to `'commented'`
 
 Update `reviewStatus` in the review JSON before proceeding to Step 5.
