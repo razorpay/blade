@@ -59,7 +59,7 @@ const getTabPanels = (
     .map((child) => ({
       value: child.props.value,
       children: child.props.children,
-      isScrollable: child.props.isScrollable ?? true,
+      isScrollable: child.props.isScrollable ?? false,
     }));
 };
 
@@ -427,10 +427,10 @@ const _Tabs = (
             return (
               <View key={panel.value} style={styles.pagerView}>
                 {shouldRender ? (
-                  // Skip auto-wrap when: consumer opted out via isScrollable=false,
-                  // or the single top-level child is already a RN / RNGH ScrollView.
+                  // Auto-wrap only when consumer opted in via isScrollable=true.
+                  // Also skip if the single top-level child is already a RN / RNGH ScrollView.
                   // For other scroll containers (Animated.ScrollView,
-                  // KeyboardAwareScrollView, etc.) set isScrollable={false} on TabPanel.
+                  // KeyboardAwareScrollView, etc.) leave isScrollable at its default false.
                   !panel.isScrollable ||
                   (React.isValidElement(panel.children) &&
                     (panel.children.type === ScrollView ||
