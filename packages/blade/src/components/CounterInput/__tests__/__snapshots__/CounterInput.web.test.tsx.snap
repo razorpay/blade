@@ -9,6 +9,9 @@ exports[`<CounterInput /> should apply font-variant-numeric tabular-nums styling
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -773,6 +776,9 @@ exports[`<CounterInput /> should not clip three-digit numbers — container grow
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1537,6 +1543,9 @@ exports[`<CounterInput /> should not clip two-digit numbers — container uses m
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2301,6 +2310,9 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3066,6 +3078,9 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3831,6 +3846,9 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4596,6 +4614,9 @@ exports[`<CounterInput /> should render xsmall size 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c2.c2.c2.c2.c2 {

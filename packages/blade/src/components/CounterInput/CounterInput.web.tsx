@@ -289,6 +289,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
             alignItems={isLabelLeftPositioned ? 'center' : undefined}
+            width="fit-content"
           >
             {label && (
               <FormLabel
