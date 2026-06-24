@@ -504,3 +504,37 @@ export const WithTooltip = (props: MenuProps): React.ReactElement => {
     </Box>
   );
 };
+
+export const WithPlacement = (props: MenuProps): React.ReactElement => {
+  const placements = [
+    'bottom-start',
+    'bottom-end',
+    'top-start',
+    'top-end',
+    'left',
+    'right',
+  ] as const;
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      gap="spacing.8"
+      paddingTop="spacing.15"
+      paddingBottom="spacing.15"
+    >
+      {placements.map((placement) => (
+        <Menu key={placement} {...props} placement={placement}>
+          <Button>{placement}</Button>
+          <MenuOverlay>
+            <MenuItem title={`${placement} item 1`} />
+            <MenuItem title={`${placement} item 2`} />
+            <MenuItem title={`${placement} item 3`} />
+          </MenuOverlay>
+        </Menu>
+      ))}
+    </Box>
+  );
+};

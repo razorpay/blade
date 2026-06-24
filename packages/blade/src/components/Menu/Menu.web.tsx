@@ -17,6 +17,7 @@ const MenuTree = ({
   openInteraction = 'click',
   onOpenChange,
   isOpen: isOpenControlled,
+  placement,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
@@ -48,6 +49,7 @@ const MenuTree = ({
     onOpenChange,
     isOpen: isOpenControlled,
     overlayOffset,
+    placement,
   });
 
   const referenceProps = {
