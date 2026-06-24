@@ -40,6 +40,8 @@ const useTruncationTitle = ({
 
     if (isTextTruncated && content) {
       textRef.current.setAttribute('title', content);
+    } else {
+      textRef.current.removeAttribute('title');
     }
   }, [content]);
 
