@@ -227,6 +227,7 @@ const intents = [
   { label: 'Notice', color: 'notice' },
   { label: 'Information', color: 'information' },
   { label: 'Neutral', color: 'neutral' },
+  { label: 'Primary', color: 'primary' },
 ] as const;
 
 const renderAlertGrid = ({ isFullWidth }: { isFullWidth: boolean }): ReactElement => {

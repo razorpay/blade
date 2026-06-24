@@ -1,4 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
+import { isReactNative } from '~utils';
 import { Title } from '@storybook/addon-docs/blocks';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -53,17 +54,31 @@ const CodeStoryMeta: Meta = {
   argTypes: getStyledPropsArgTypes(),
 };
 
-const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => (
-  // For React Native, use flex to align items correctly
-  <>
-    <Text size="medium">
-      Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
-    </Text>
-    <Text size="small">
-      Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
-    </Text>
-  </>
-);
+const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => {
+  return isReactNative() ? (
+    <>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text size="medium">Lorem ipsum normal text </Text>
+        <CodeComponent {...args} size="medium" />
+        <Text size="medium"> component</Text>
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text size="small">Lorem ipsum normal text </Text>
+        <CodeComponent {...args} size="small" />
+        <Text size="small"> component</Text>
+      </BaseBox>
+    </>
+  ) : (
+    <>
+      <Text size="medium">
+        Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
+      </Text>
+      <Text size="small">
+        Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
+      </Text>
+    </>
+  );
+};
 
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
@@ -89,9 +104,21 @@ NonHighlighted.args = {
 };
 
 export const ParagraphUse = (): React.ReactElement => {
-  return (
+  return isReactNative() ? (
     <>
-      {/* For React Native, use flex to align items correctly */}
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text>Lorem ipsum normal text </Text>
+        <CodeComponent>CODE</CodeComponent>
+        <Text> component</Text>
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+        <Text>Blade is Super Cool DS </Text>
+        <CodeComponent>CODE</CodeComponent>
+        <Text> component</Text>
+      </BaseBox>
+    </>
+  ) : (
+    <>
       <Text>
         Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
       </Text>

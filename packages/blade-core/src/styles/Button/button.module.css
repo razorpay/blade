@@ -357,6 +357,14 @@
   padding-left: var(--spacing-2);
 }
 
+/* Avatar group inside large button — centered vertically with spacing from the text. */
+.avatar-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: var(--spacing-3);
+}
+
 /* Animated content wrapper - wraps all button content for scale animation */
 .animated-content {
   display: flex;
@@ -383,8 +391,12 @@
   }
 }
 
-/* Loading spinner container */
-.loading-spinner {
+/*
+ * Indefinite loader — pure-CSS 3 dots.
+ * Replaces the spinner for indefinite loading. Centered absolutely over the button,
+ * dot color is tokenized via --btn-dots-color (defaults to the resolved button text color).
+ */
+.dots-loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -394,4 +406,200 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+}
+
+.dots-loader::before {
+  content: '';
+  width: 24px;
+  aspect-ratio: 2;
+  --_dots-gradient: no-repeat
+    radial-gradient(circle closest-side, var(--btn-dots-color, currentColor) 90%, transparent);
+  background: var(--_dots-gradient) 0% 50%, var(--_dots-gradient) 50% 50%,
+    var(--_dots-gradient) 100% 50%;
+  background-size: calc(100% / 3) 50%;
+  animation: btnDots 1s infinite linear;
+}
+
+@keyframes btnDots {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
+
+/*
+ * Definite loader — left-to-right progress fill (inverted-layer model).
+ *
+ * The button base is rendered in its NORMAL (default) color and a rest/disabled
+ * cover (`.progress-overlay-fill`) recedes from 100% → 0% width over
+ * --btn-progress-duration, revealing the normal base as it goes — so the button
+ * visually transitions disabled → normal as loading completes. Content
+ * (text/icon/avatars) remains visible above it.
+ */
+/*
+ * While definite loading, the element carries the `disabled` attribute. The
+ * variant's `[disabled]` rules would flatten the button (swap to the disabled
+ * color and remove the box-shadow / radial highlight). We override them with an
+ * explicit `[data-definite-loading='true']` attribute selector combined with
+ * `[disabled]`. This selector's specificity (one class + two attributes) matches
+ * or exceeds every variant `[disabled]` rule above, and because it is declared
+ * after all of them, it wins any specificity tie via source order. The
+ * data-attribute also documents intent — far clearer than the previous repeated
+ * class hack used purely to inflate specificity.
+ *
+ * Inverted-layer model: the button base stays in its NORMAL (default) color and
+ * keeps the primary variant's tactile treatment (inset box-shadow borders +
+ * radial highlight) for the whole run. A receding cover (`.progress-overlay-fill`)
+ * paints the rest/disabled color on top, starting full-width and shrinking to 0%
+ * as loading completes — so the button visually transitions disabled → normal.
+ *
+ * Because the base is genuinely the normal color underneath, when the cover
+ * reaches 0% (and the overlay later unmounts) there is nothing left to reveal —
+ * no color hand-off, so no blink.
+ *
+ * Scoped to `.primary` only: secondary and tertiary buttons do not use accent
+ * tokens, so they must not receive this override. They fall through to their own
+ * `[disabled]` rules and the progress overlay animates on top of the outlined
+ * appearance unchanged.
+ */
+.primary.definite-loading[data-definite-loading='true'][disabled] {
+  background-color: var(--btn-accent-bg-default);
+  background-image: radial-gradient(
+    var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
+    var(--interactive-background-static-white-faded) 0%,
+    transparent 100%
+  );
+  box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+    inset 0 0 0 0.5px var(--btn-accent-border-default),
+    inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
+    inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* Match the button's rounding so the receding cover clips to the corners. */
+  border-radius: inherit;
+}
+
+/*
+ * Tactile frame re-painted above the receding cover.
+ *
+ * The opaque cover sits above the button's own inset box-shadow in the still-
+ * covered (rest) region, hiding the tactile borders there. This layer re-applies
+ * the same primary-variant inset borders on top of the cover so the tactile edges
+ * stay visible across the whole button for the duration of the loader. In the
+ * revealed (normal) region the base's identical box-shadow shows through, so the
+ * frame is seamless end-to-end.
+ *
+ * Scoped to `.primary` only: secondary and tertiary use their own border tokens
+ * (gray, not accent), so their `[disabled]` box-shadow already provides the
+ * correct frame — no re-paint needed.
+ */
+.primary .progress-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
+    inset 0 0 0 0.5px var(--btn-accent-border-default),
+    inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
+    inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+}
+
+/*
+ * Receding rest/disabled cover.
+ *
+ * Anchored to the RIGHT and shrinking from 100% → 0% width, so the unfilled
+ * (rest) region sits on the right and recedes rightward — revealing the
+ * normal-color base from the left, matching a conventional left → right progress.
+ * (`.progress-overlay::after` re-paints the tactile frame above this cover.)
+ *
+ * IMPORTANT — opacity: the disabled background token (`--btn-progress-rest-color`)
+ * is intentionally *translucent* (e.g. primary disabled = the accent hue at ~0.18
+ * alpha) because it is normally composited over the page surface. Here the cover
+ * sits on top of the button's *opaque normal-color* base, so painting the
+ * translucent token alone would just tint same-hue-over-same-hue and be nearly
+ * invisible. We therefore composite it the way the eye actually sees a disabled
+ * button: the translucent disabled token layered over an opaque surface backing.
+ *
+ * The backing is read from `--btn-progress-surface-backing`, defaulting to
+ * `--surface-background-gray-intense` (the page background in light/dark). This
+ * default is correct for buttons on the default surface; when a button sits on a
+ * different surface (card, modal, colored container) the consumer can set
+ * `--btn-progress-surface-backing` on the button (or an ancestor) to that surface's
+ * background so the receding cover composites correctly there too. Either way it
+ * reproduces the true "rest" appearance AND gives the receding edge real contrast
+ * against the normal base.
+ */
+.progress-overlay-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(
+    --btn-progress-surface-backing,
+    var(--surface-background-gray-intense)
+  );
+  background-image: linear-gradient(
+    var(--btn-progress-rest-color, var(--btn-accent-bg-disabled)),
+    var(--btn-progress-rest-color, var(--btn-accent-bg-disabled))
+  );
+  animation-name: btnProgressRecede;
+  animation-duration: var(--btn-progress-duration, 0ms);
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes btnProgressRecede {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/*
+ * Visually-hidden live region used to politely announce loading start/stop to
+ * assistive tech. Kept here (alongside the rest of the button styles) rather than
+ * in a component-scoped block so all button styling lives in one place.
+ */
+.live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect reduced-motion: freeze animations to a static, non-distracting state */
+@media (prefers-reduced-motion: reduce) {
+  .dots-loader::before {
+    animation: none;
+  }
+  .progress-overlay-fill {
+    animation: none;
+    width: 0%;
+  }
 }

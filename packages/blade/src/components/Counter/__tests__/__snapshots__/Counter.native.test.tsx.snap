@@ -79,6 +79,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -89,7 +90,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -193,6 +194,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -203,7 +205,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -307,6 +309,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -317,7 +320,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -421,6 +424,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -431,7 +435,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -535,6 +539,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -545,7 +550,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -649,6 +654,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -659,7 +665,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -763,6 +769,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -773,7 +780,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -877,6 +884,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -887,7 +895,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -991,6 +999,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1001,7 +1010,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1105,6 +1114,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1115,7 +1125,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1219,6 +1229,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1229,7 +1240,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1333,6 +1344,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1343,7 +1355,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1447,6 +1459,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1457,7 +1470,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1561,6 +1574,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           numberOfLines={1}
           style={
@@ -1571,7 +1585,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1675,6 +1689,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1685,7 +1700,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1789,6 +1804,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={25}
           numberOfLines={1}
           style={
@@ -1799,7 +1815,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.13,
                 "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1903,6 +1919,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1913,7 +1930,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2017,6 +2034,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2027,7 +2045,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2131,6 +2149,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2141,7 +2160,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2245,6 +2264,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2255,7 +2275,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2359,6 +2379,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2369,7 +2390,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2473,6 +2494,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2483,7 +2505,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2587,6 +2609,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2597,7 +2620,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2701,6 +2724,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2711,7 +2735,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2815,6 +2839,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2825,7 +2850,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2929,6 +2954,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -2939,7 +2965,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -3043,6 +3069,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -3053,7 +3080,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -3157,6 +3184,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -3167,7 +3195,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,

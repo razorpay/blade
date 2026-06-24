@@ -6,82 +6,139 @@ disable-model-invocation: true
 
 # Review Blade PR
 
-Review PRs in the razorpay/blade repository by fetching the diff, checking CI status, and extracting the Storybook preview URL.
-
-## Arguments / Clarifications (Use Cursor's AskQuestion tool to get clarifications)
+## Arguments / Clarifications
 
 - PR: Link / Number of the PR to review
-- ShouldReviewUI: Whether UI should be reviewed or not. Get it clarified if not mentioned.
-- ShouldRunHeadedBrowser: Whether to run the browser in headed mode or not. Get it clarified if not mentioned.
+- ShouldReviewUI: Whether UI should be reviewed or not. Clarify if not mentioned.
+- ShouldRunHeadedBrowser: Whether to run the browser in headed mode. Clarify if not mentioned.
+- ShouldSubmitReview: Whether to submit the review as a live comment or keep it as a pending draft. Default: `true`. If `false`, the review is saved as pending and not visible on the PR until submitted manually.
 
 ## Prerequisites
 
 - GitHub CLI (`gh`) must be installed and authenticated
-- `agent-browser` command must be installed (if ShouldReviewUI is true)
-
-## Guidelines
-
-- Avoid printing intermediate commentary; only output the final review in the main chat
-
-## Steps (Create checklist for each step)
-
-### 1. Fetch the PR Diff and CI Status in Main Agent
-
-```
-https://patch-diff.githubusercontent.com/raw/razorpay/blade/pull/{PR_NUMBER}.diff
-```
-
-(Ignore the lock file changes from diff)
-
-Fetch status checks once and extract both CI status and Storybook URL:
-
-```bash
-gh pr checks {PR_NUMBER} --repo razorpay/blade
-```
-
-#### If checks are failing / skipped, get the details from the checks on why they are failing / skipped
-
-Use the following command (replace `{JOB_ID}` with the job id from the previous `gh pr checks` output):
-
-```bash
-gh run view --job {JOB_ID} --repo razorpay/blade
-```
-
-### 2. UI Review the Changes (if ShouldReviewUI is true)
-
-- Using agent-browser (Do NOT use Playwright MCP), open the Storybook URL (returned by earlier subagent)
-  - `agent-browser --help` on docs on how to use it
-- Determine which URL to open based on the PR changes
-- `agent-browser close` to close any earlier opened browser instances
-- Open the URL with the agent-browser and test the functionality of the changes
+- `agent-browser` command must be installed (if ShouldReviewUI is true). If not installed, go ahead and install it.
   ```sh
-  agent-browser open {storybook_url} --headed (if ShouldRunHeadedBrowser is true)
+  npm install -g agent-browser
+  agent-browser install
   ```
-- Close the agent-browser at the end with `agent-browser close`
 
-#### How to Find Changes
+## Instructions
 
-- You can open the story outside iframe using the `iframe.html` url of storybook
-  - E.g. `https://61c19ee8d3d282003ac1d81c-rzqbxanzgn.chromatic.com/?path=/story/components-datepicker--date-picker-presets-with-display-format-compact` this story can be opened as an iframe in `https://61c19ee8d3d282003ac1d81c-rzqbxanzgn.chromatic.com/iframe.html?args=&id=components-datepicker--date-picker-presets-with-display-format-compact&viewMode=story`
-  - If iframe is not working, open the storybook url directly and find the story in the sidebar
-- If changes are in svelte components, check the svelte version of storybook on `{storybook_base_url}/svelte/` route
+- If you're unable to spawn the subagents, stop the skill immediately and respond with error message.
+  ```json
+  {
+    "overview-comment": {},
+    "inlined-comments": [
+      {
+        "file": "",
+        "line": 0,
+        "side": "RIGHT",
+        "severity": "critical",
+        "confidence": 10,
+        "critique": "code-quality-critique",
+        "problem": "Could not spawn the subagents. Please check the logs for more details."
+      }
+    ]
+  }
+  ```
 
-Report the flows / features that were tested, if they are working as expected or not, and the issues found.
+## Steps
 
-### 3. Code Review the Changes
+### 1. Fetch the diff and PR metadata
 
-Analyze the diff for:
+Run these in parallel:
 
-- Potential bugs or logic errors
-- TypeScript/type safety issues
-- Missing tests for new functionality
-- Accessibility concerns
-- Performance implications
-- API Breaking changes
-- Do not review the changes in the codebase, only review the changes in the diff.
+```bash
+gh api repos/razorpay/blade/pulls/{PR_NUMBER}/files --jq '[.[] | select(.filename | test("lock$|lock\\.json$|lock\\.yaml$") | not) | {filename, patch}]'
+```
 
-## Output Format
+```bash
+gh pr view {PR_NUMBER} --repo razorpay/blade --json title,body
+```
 
-The subagent should return all the gathered information. Then in the main chat strictly following the output format mentioned in references/output-format.md
+Store the outputs as `DIFF`, `PR_TITLE`, and `PR_BODY`.
+
+### 2. Spawn Critique Subagents in parallel
+
+**code-quality-critique:**
+
+```
+subagent_type: code-quality-critique
+prompt: |
+  PR_NUMBER={PR_NUMBER}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
+  DIFF={DIFF}
+```
+
+**api-decision-critique** (only if the diff contains component changes):
+
+```
+subagent_type: api-decision-critique
+prompt: |
+  PR_NUMBER={PR_NUMBER}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
+  DIFF={DIFF}
+```
+
+**ui-critique** (only if ShouldReviewUI is true):
+
+```
+subagent_type: ui-critique
+prompt: |
+  PR_NUMBER={PR_NUMBER}
+  HEADED={ShouldRunHeadedBrowser}
+  PR_TITLE={PR_TITLE}
+  PR_BODY={PR_BODY}
+  DIFF={DIFF}
+```
+
+### 3. Synthesize
+
+Combine all subagent outputs into a single JSON object. Follow the output format in references/output-format.md exactly.
 
 - [Output Format](./references/output-format.md)
+
+### 4. Spawn filter-critique subagent
+
+```
+subagent_type: filter-critique
+prompt: |
+  PR_NUMBER={PR_NUMBER}
+  INLINED_COMMENTS={INLINED_COMMENTS}
+```
+
+Replace `inlined-comments` in the review JSON with the filtered array returned by the agent.
+
+Then recalculate `reviewStatus` based on the filtered array:
+
+- Set `reviewStatus` to `'approved'` if:
+  - Check `reviewStatusReason` to see if reviewStatus was not approved only because of inlined comments array before filtering and that changes now. If so, set `reviewStatus` to `'approved'` now since the issues are filtered out now.
+- Otherwise, set `reviewStatus` to `'commented'`
+
+Update `reviewStatus` in the review JSON before proceeding to Step 5.
+
+### 5. Post review to GitHub
+
+Save the synthesized JSON to a temp file and run the post script. Pass `--pending` if `ShouldSubmitReview` is `false` — in that case the review is saved as a draft and will not be visible on the PR until submitted manually.
+
+```bash
+# Save the review JSON to a temp file
+cat > /tmp/blade-review-{PR_NUMBER}.json << 'EOF'
+{REVIEW_JSON}
+EOF
+
+# If ShouldPostComment is true (default):
+node .agents/skills/review-pr/scripts/post-review.js /tmp/blade-review-{PR_NUMBER}.json {PR_NUMBER}
+
+# If ShouldPostComment is false:
+node .agents/skills/review-pr/scripts/post-review.js /tmp/blade-review-{PR_NUMBER}.json {PR_NUMBER} razorpay/blade --pending
+```
+
+When `--pending` is used, the script prints the review ID and a command to submit it when ready:
+
+```bash
+# To submit the pending review later:
+gh api repos/razorpay/blade/pulls/{PR_NUMBER}/reviews/{REVIEW_ID}/events --method POST --field event=COMMENT
+```
