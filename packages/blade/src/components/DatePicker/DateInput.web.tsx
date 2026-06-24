@@ -87,13 +87,15 @@ const _DateInput = (
     setValidationError(undefined);
   }, [date]);
 
-  // Notify parent component when validation state changes so consumers can
-  // react to error states (e.g., disabling a form submit button).
-  // Neither onChange nor onApply fires when the input is invalid, so this
-  // callback is the only way to detect the error state programmatically.
+  // Keep ref in sync so the effect below never needs onValidationStateChange
+  // in its dependency array, preventing spurious calls when the consumer
+  // passes an unstable (non-memoized) inline function.
+  const onValidationStateChangeRef = React.useRef(onValidationStateChange);
+  onValidationStateChangeRef.current = onValidationStateChange;
+
   React.useEffect(() => {
-    onValidationStateChange?.(validationError === undefined);
-  }, [validationError, onValidationStateChange]);
+    onValidationStateChangeRef.current?.(validationError === undefined);
+  }, [validationError]);
 
   const applyDateValue = React.useCallback(
     (inputValue: string, shouldClearWhenEmpty = false): void => {
