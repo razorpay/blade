@@ -207,14 +207,18 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * when the user has typed an invalid date. Neither `onChange` nor `onApply` fires
      * when the input is in an error state, so this callback is the only way to detect it.
      *
-     * @param isValid - `true` when the input is valid or empty, `false` when there is a validation error
+     * @param validationState - `'error'` when there is a validation error, `'success'` or `'none'` otherwise
      *
      * @example
      * <DatePicker
-     *   onValidationStateChange={(isValid) => setSubmitDisabled(!isValid)}
+     *   onValidationStateChange={({ validationState }) => setSubmitDisabled(validationState === 'error')}
      * />
      */
-    onValidationStateChange?: (isValid: boolean) => void;
+    onValidationStateChange?: ({
+      validationState,
+    }: {
+      validationState: 'success' | 'error' | 'none';
+    }) => void;
   };
 
 type DatePickerRangeInputProps = {
@@ -281,7 +285,11 @@ type DatePickerInputProps = DatePickerCommonInputProps &
      * Callback fired when the validation state of the date input changes.
      * Threaded through from DatePicker's `onValidationStateChange` prop.
      */
-    onValidationStateChange?: (isValid: boolean) => void;
+    onValidationStateChange?: ({
+      validationState,
+    }: {
+      validationState: 'success' | 'error' | 'none';
+    }) => void;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -325,9 +333,13 @@ type DateInputProps = BaseInputProps & {
   selectedPresetLabel?: string | null;
   /**
    * Callback fired when the validation state of the date input changes.
-   * Called with `true` when the input is valid or empty, `false` when there is a validation error.
+   * Called with `{ validationState: 'error' }` when there is a validation error, or `{ validationState: 'success' | 'none' }` otherwise.
    */
-  onValidationStateChange?: (isValid: boolean) => void;
+  onValidationStateChange?: ({
+    validationState,
+  }: {
+    validationState: 'success' | 'error' | 'none';
+  }) => void;
 };
 
 export type {

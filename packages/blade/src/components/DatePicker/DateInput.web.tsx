@@ -87,14 +87,18 @@ const _DateInput = (
     setValidationError(undefined);
   }, [date]);
 
-  // Keep ref in sync so the effect below never needs onValidationStateChange
-  // in its dependency array, preventing spurious calls when the consumer
-  // passes an unstable (non-memoized) inline function.
+  // Keep refs in sync so the effect below never needs these values in its
+  // dependency array, preventing spurious calls on every render.
   const onValidationStateChangeRef = React.useRef(onValidationStateChange);
   onValidationStateChangeRef.current = onValidationStateChange;
+  const externalValidationStateRef = React.useRef(textInputProps.validationState);
+  externalValidationStateRef.current = textInputProps.validationState;
 
   React.useEffect(() => {
-    onValidationStateChangeRef.current?.(validationError === undefined);
+    const effectiveState = validationError
+      ? 'error'
+      : (externalValidationStateRef.current ?? 'none');
+    onValidationStateChangeRef.current?.({ validationState: effectiveState });
   }, [validationError]);
 
   const applyDateValue = React.useCallback(
