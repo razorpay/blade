@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.108.4
+
+### Patch Changes
+
+- d4a77ab80: fix(rn): disable includeFontPadding on TextInput to fix placeholder vertical alignment
+
+## 12.108.3
+
+### Patch Changes
+
+- d95ebf0b4: fix: resolve TypeScript errors in DatePicker calendar icon click handler by casting BladeElementRef to HTMLElement
+
 ## 12.108.2
 
 ### Patch Changes
