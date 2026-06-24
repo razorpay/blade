@@ -201,18 +201,35 @@ exports[`<CounterInput /> should apply font-variant-numeric tabular-nums styling
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -968,18 +985,35 @@ exports[`<CounterInput /> should not clip three-digit numbers — container grow
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1735,18 +1769,35 @@ exports[`<CounterInput /> should not clip two-digit numbers — container uses m
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -2502,18 +2553,35 @@ exports[`<CounterInput /> should render 1`] = `
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -3270,18 +3338,35 @@ exports[`<CounterInput /> should render large size 1`] = `
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -3574,7 +3659,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 8px;
-  padding: 8px;
+  padding: 4px;
   margin: 4px 0px 4px 4px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -3618,7 +3703,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   border-radius: 8px;
-  padding: 8px;
+  padding: 4px;
   margin: 4px 4px 4px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
@@ -4038,18 +4123,35 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -4806,18 +4908,35 @@ exports[`<CounterInput /> should render xsmall size 1`] = `
   overflow: hidden;
   display: inline-block;
   line-height: 1;
+  position: relative;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-up {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-up {
   display: inline-block;
   -webkit-animation: kjKtAP-450290765 0.2s ease-out;
   animation: kjKtAP-450290765 0.2s ease-out;
 }
 
-.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-animate-down {
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-enter-down {
   display: inline-block;
   -webkit-animation: dhJCqm-450290765 0.2s ease-out;
   animation: dhJCqm-450290765 0.2s ease-out;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-up {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: dhJCqm-450290765 0.2s ease-out reverse;
+  animation: dhJCqm-450290765 0.2s ease-out reverse;
+}
+
+.c0.c0.c0.c0.c0.__blade-counter-input .__blade-counter-input-digit-exit-down {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  -webkit-animation: kjKtAP-450290765 0.2s ease-out reverse;
+  animation: kjKtAP-450290765 0.2s ease-out reverse;
 }
 
 .c5.c5.c5.c5.c5 {

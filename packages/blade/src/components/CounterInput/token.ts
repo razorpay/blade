@@ -38,7 +38,7 @@ export const COUNTER_INPUT_TOKEN = {
   iconPadding: {
     xsmall: spacing[2],
     medium: spacing[2],
-    large: spacing[3],
+    large: spacing[2],
   },
 
   emphasis: {

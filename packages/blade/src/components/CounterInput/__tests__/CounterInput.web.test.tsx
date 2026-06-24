@@ -244,9 +244,9 @@ describe('<CounterInput />', () => {
       expect(overlay).toBeInTheDocument();
     });
 
-    // Overlay shows the updated value's digits
-    const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
-    expect(overlay?.textContent).toBe('16');
+    // Overlay has two digit slots for "16"
+    const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
+    expect(slots).toHaveLength(2);
   });
 
   it('should only animate the units digit when tens digit is unchanged (15 → 16)', async () => {
@@ -268,13 +268,22 @@ describe('<CounterInput />', () => {
     const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
     expect(slots).toHaveLength(2); // "16" has two digits
 
-    // First digit ("1") should NOT have the animation class — it didn't change
-    const firstInner = slots[0]?.querySelector('span');
-    expect(firstInner?.className ?? '').not.toContain('animate');
+    // Helper: get the entering (last) span in a slot — exit span is first if present
+    const getEnterSpan = (slot: Element | undefined): Element | undefined => {
+      const spans = slot?.querySelectorAll('span');
+      return spans?.[spans.length - 1];
+    };
 
-    // Second digit ("6") SHOULD have the slide-up animation class
-    const secondInner = slots[1]?.querySelector('span');
-    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
+    // First slot ("1") did not change — its only span has no animation class
+    expect(getEnterSpan(slots[0])?.className ?? '').not.toContain('animate');
+    expect(getEnterSpan(slots[0])?.className ?? '').not.toContain('enter');
+
+    // Second slot ("6") changed — its enter span has slide-up class
+    expect(getEnterSpan(slots[1])?.className ?? '').toContain(
+      '__blade-counter-input-digit-enter-up',
+    );
+    // Second slot also has an exit span for the rolling effect
+    expect(slots[1]?.querySelector('.__blade-counter-input-digit-exit-up')).toBeInTheDocument();
   });
 
   it('should animate all digits when crossing decade boundary (9 → 10)', async () => {
@@ -295,11 +304,21 @@ describe('<CounterInput />', () => {
     const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
     expect(slots).toHaveLength(2); // "10" has two digits
 
-    // Both digits changed (0→1 tens, 9→0 units) — both should have animation class
-    const firstInner = slots[0]?.querySelector('span');
-    const secondInner = slots[1]?.querySelector('span');
-    expect(firstInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
-    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
+    // Helper: last span in slot is always the entering digit
+    const getEnterSpan = (slot: Element | undefined): Element | undefined => {
+      const spans = slot?.querySelectorAll('span');
+      return spans?.[spans.length - 1];
+    };
+
+    // Both digits changed — both enter spans have slide-up class
+    expect(getEnterSpan(slots[0])?.className ?? '').toContain(
+      '__blade-counter-input-digit-enter-up',
+    );
+    expect(getEnterSpan(slots[1])?.className ?? '').toContain(
+      '__blade-counter-input-digit-enter-up',
+    );
+    // Only slot[1] has an exit span (slot[0] was a newly-appeared digit — no previous value)
+    expect(slots[1]?.querySelector('.__blade-counter-input-digit-exit-up')).toBeInTheDocument();
   });
 
   it('should use slide-down animation on decrement', async () => {
@@ -318,8 +337,10 @@ describe('<CounterInput />', () => {
     });
 
     const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
-    const secondInner = slots[1]?.querySelector('span');
-    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-down');
+    const spans1 = slots[1]?.querySelectorAll('span');
+    const enterSpan = spans1?.[spans1.length - 1]; // entering digit is always last
+    expect(enterSpan?.className ?? '').toContain('__blade-counter-input-digit-enter-down');
+    expect(slots[1]?.querySelector('.__blade-counter-input-digit-exit-down')).toBeInTheDocument();
   });
 
   it('should apply font-variant-numeric tabular-nums styling to the input', () => {

@@ -78,23 +78,36 @@ const StyledCounterInput = styled(BaseBox)`
     font-variant-numeric: tabular-nums;
   }
 
-  /* Individual digit slot — clips the sliding animation */
+  /* Individual digit slot — clips the rolling animation */
   &.__blade-counter-input .__blade-counter-input-digit-slot {
     overflow: hidden;
     display: inline-block;
     line-height: 1;
+    position: relative;
   }
 
-  /* Per-digit slide-up animation (increment) */
-  &.__blade-counter-input .__blade-counter-input-digit-animate-up {
+  /* Entering digit scrolls in (increment = from below, decrement = from above) */
+  &.__blade-counter-input .__blade-counter-input-digit-enter-up {
     display: inline-block;
     animation: ${digitSlideUp} 0.2s ease-out;
   }
-
-  /* Per-digit slide-down animation (decrement) */
-  &.__blade-counter-input .__blade-counter-input-digit-animate-down {
+  &.__blade-counter-input .__blade-counter-input-digit-enter-down {
     display: inline-block;
     animation: ${digitSlideDown} 0.2s ease-out;
+  }
+
+  /* Exiting digit scrolls out the opposite direction (position: absolute overlays the slot) */
+  &.__blade-counter-input .__blade-counter-input-digit-exit-up {
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    animation: ${digitSlideDown} 0.2s ease-out reverse;
+  }
+  &.__blade-counter-input .__blade-counter-input-digit-exit-down {
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    animation: ${digitSlideUp} 0.2s ease-out reverse;
   }
 `;
 

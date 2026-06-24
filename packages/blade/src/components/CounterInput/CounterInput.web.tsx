@@ -41,6 +41,8 @@ const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
 
 type DigitAnimationState = {
   digits: string[];
+  // null = slot didn't exist before (newly appeared digit — no exit animation)
+  prevDigits: (string | null)[];
   animatingIndices: Set<number>;
   direction: 'up' | 'down';
 } | null;
@@ -189,7 +191,15 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
           }
         }
 
-        setDigitAnimState({ digits: currStr.split(''), animatingIndices, direction });
+        // For rolling animation: what each display slot showed before (null = newly appeared)
+        const prevDigits = currStr
+          .split('')
+          .map((_, di) =>
+            di < currStr.length - prevStr.length
+              ? null
+              : paddedPrev[di + (maxLen - currStr.length)],
+          );
+        setDigitAnimState({ digits: currStr.split(''), prevDigits, animatingIndices, direction });
         if (animTimeoutRef.current !== null) clearTimeout(animTimeoutRef.current);
         animTimeoutRef.current = setTimeout(
           () => setDigitAnimState(null),
@@ -375,10 +385,20 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                           key={i}
                           className="__blade-counter-input-digit-slot"
                         >
+                          {/* Exiting digit scrolls out (position: absolute, opposite direction) */}
+                          {digitAnimState.animatingIndices.has(i) &&
+                            digitAnimState.prevDigits[i] !== null && (
+                              <span
+                                className={`__blade-counter-input-digit-exit-${digitAnimState.direction}`}
+                              >
+                                {digitAnimState.prevDigits[i]}
+                              </span>
+                            )}
+                          {/* Entering digit scrolls in */}
                           <span
                             className={
                               digitAnimState.animatingIndices.has(i)
-                                ? `__blade-counter-input-digit-animate-${digitAnimState.direction}`
+                                ? `__blade-counter-input-digit-enter-${digitAnimState.direction}`
                                 : undefined
                             }
                           >
