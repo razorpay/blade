@@ -192,6 +192,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               borderColor={chipBorderColor}
               {...(isReactNative() && { backgroundColor: chipBackgroundColor })}
               isDisabled={_isDisabled}
+              isChecked={_isChecked}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
               size={_size}
@@ -204,7 +205,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 size={_size}
                 display="flex"
                 flexDirection="row"
-                justifyContent="center"
+                justifyContent={isReactNative() ? 'flex-start' : 'center'}
                 alignItems="center"
                 overflow="hidden"
                 backgroundColor={chipBackgroundColor}

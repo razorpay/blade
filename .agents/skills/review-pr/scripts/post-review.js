@@ -98,7 +98,13 @@ function buildStatusSection(statuses, screenshotCdnMap = {}) {
   return parts.join('\n\n');
 }
 
-function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotCdnMap = {}) {
+function formatOverviewComment(
+  overview,
+  reviewStatus,
+  isSelfReview,
+  screenshotCdnMap = {},
+  usage = null,
+) {
   const parts = ['## ✨ Agentic PR Review ✨'];
 
   if (reviewStatus === 'approved') {
@@ -107,32 +113,20 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
 
   if (isSelfReview) {
     parts.push(
-      '<img src="https://i.imgur.com/dOeSiPZ.jpeg" alt="obama giving obama medal" width="300px" />',
+      '<img src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/__ci_artifacts/artifacts/review-assets/Obama-giving-Obama-award.png" alt="obama giving obama medal" width="300px" />',
     );
   }
 
-  const sanity = overview['sanity-review'];
   const ui = overview['ui-review'];
 
   if (ui) {
-    const storybookStatus = sanity?.statuses?.find((s) =>
-      s.name.toLowerCase().includes('storybook'),
-    );
-    const storybookLine = storybookStatus?.link
-      ? `🔗 Storybook: [Preview](${storybookStatus.link})`
-      : null;
-
     parts.push('### UI Review');
-    if (storybookLine) parts.push(storybookLine);
     parts.push(buildStatusSection(ui.statuses, screenshotCdnMap));
   }
 
-  if (sanity) {
-    parts.push('### CI / Sanity');
-    parts.push(buildStatusSection(sanity.statuses));
-    if (sanity.issues?.length) {
-      parts.push(sanity.issues.map((i) => `> ⚠️ ${i.problem}`).join('\n'));
-    }
+  if (usage) {
+    parts.push('### Usage');
+    parts.push('```jsx\n' + usage + '\n```');
   }
 
   return parts.join('\n\n');
@@ -145,9 +139,13 @@ function formatOverviewComment(overview, reviewStatus, isSelfReview, screenshotC
 const SEVERITY_EMOJI = { critical: '🔴', major: '🟠', minor: '🔵' };
 
 function formatInlineComment(c) {
+  const confidenceStr = c.confidence != null ? ` · confidence: ${c.confidence}/10` : '';
+  if (c.clarification) {
+    return [`🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`, '', c.clarification].join('\n');
+  }
   const emoji = SEVERITY_EMOJI[c.severity] || '⚪';
   const lines = [
-    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_`,
+    `${emoji} **[${c.severity.toUpperCase()}]** · _${c.critique}_${confidenceStr}`,
     '',
     `**Problem:** ${c.problem}`,
   ];
@@ -205,8 +203,9 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
       const dest = `${destDir}/${storyId}-${i + 1}.png`;
       fs.copyFileSync(s.screenshot_path, dest);
       execSync(`git add ${dest}`);
-      cdnMap[s.screenshot_path] =
-        `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
+      cdnMap[
+        s.screenshot_path
+      ] = `https://raw.githubusercontent.com/${repoArg}/__ci_artifacts/${dest}`;
     });
 
     execSync(`git commit -m "chore: add ui-critique screenshots for PR-${prNum}" --allow-empty`);
@@ -233,15 +232,27 @@ let currentUser;
 try {
   currentUser = execSync("gh api user --jq '.login'").toString().trim();
 } catch (_) {
-  currentUser = null;
+  // gh api user returns 403 for GitHub App tokens; fall back to gh auth status
+  try {
+    const statusOutput = execSync('gh auth status 2>&1').toString();
+    const match = statusOutput.match(/account\s+(\S+)/i);
+    currentUser = match ? match[1].replace(/\[bot\]$/i, '') : null;
+  } catch (_2) {
+    currentUser = null;
+  }
 }
-const isSelfReview = currentUser !== null && prAuthor === currentUser;
+const normalize = (login) => login?.replace(/\[bot\]$/i, '').toLowerCase();
+const SLASH_ACCOUNTS = ['rzp-slash-public', 'rzp-slash'];
+const isSelfReview =
+  currentUser !== null &&
+  (normalize(prAuthor) === normalize(currentUser) ||
+    (normalize(currentUser) === 'slash' && SLASH_ACCOUNTS.includes(normalize(prAuthor))));
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];
 function filterIgnoredChecks(overview) {
   const filtered = { ...overview };
-  for (const key of ['sanity-review', 'ui-review']) {
+  for (const key of ['ui-review']) {
     if (filtered[key]?.statuses) {
       filtered[key] = {
         ...filtered[key],
@@ -259,6 +270,7 @@ const overviewBody = formatOverviewComment(
   reviewJson['reviewStatus'],
   isSelfReview,
   screenshotCdnMap,
+  reviewJson['overview-comment']?.['usage'] ?? null,
 );
 
 const SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
@@ -286,8 +298,8 @@ const reviewStatus = reviewJson['reviewStatus'];
 const submitEvent = isPending
   ? undefined
   : reviewStatus === 'approved' && !isSelfReview
-    ? 'APPROVE'
-    : 'COMMENT';
+  ? 'APPROVE'
+  : 'COMMENT';
 
 const reviewPayload = {
   body: overviewBody,
@@ -300,9 +312,24 @@ const reviewPayload = {
   }),
 };
 
-const result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
-  input: JSON.stringify(reviewPayload),
-});
+let result;
+let actualEvent = submitEvent;
+try {
+  result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
+    input: JSON.stringify(reviewPayload),
+  });
+} catch (err) {
+  if (submitEvent === 'APPROVE') {
+    console.warn('\nAPPROVE rejected (e.g. draft PR) — retrying as COMMENT…');
+    actualEvent = 'COMMENT';
+    const fallbackPayload = { ...reviewPayload, event: 'COMMENT' };
+    result = execSync(`gh api repos/${repo}/pulls/${prNumber}/reviews --method POST --input -`, {
+      input: JSON.stringify(fallbackPayload),
+    });
+  } else {
+    throw err;
+  }
+}
 const created = JSON.parse(result.toString());
 
 if (isPending) {
@@ -313,6 +340,12 @@ if (isPending) {
     `  gh api repos/${repo}/pulls/${prNumber}/reviews/${created.id}/events --method POST --field event=COMMENT`,
   );
 } else {
-  console.log(`\nReview submitted as ${submitEvent} (id: ${created.id})`);
+  console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
+}
+
+const hasClarifications = allComments.some((c) => c.clarification);
+if (hasClarifications) {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "Human Help Needed 🧑🏻‍💻"`);
+  console.log('Added label: Human Help Needed 🧑🏻‍💻');
 }
