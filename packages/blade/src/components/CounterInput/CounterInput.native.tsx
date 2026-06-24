@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { Pressable, TextInput, StyleSheet } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Pressable, TextInput, StyleSheet, Text } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -59,6 +59,71 @@ const getButtonStyle = (
   };
 };
 
+type DigitSlotProps = {
+  char: string;
+  isAnimating: boolean;
+  direction: 'up' | 'down';
+  duration: number;
+  digitStyle: {
+    color: string;
+    fontSize: number;
+    fontFamily: string;
+    fontWeight: string;
+  };
+};
+
+/**
+ * A single digit slot with its own Reanimated values so only the changed
+ * digit plays the slide animation (slot-machine style).
+ */
+const DigitSlot = ({
+  char,
+  isAnimating,
+  direction,
+  duration,
+  digitStyle,
+}: DigitSlotProps): JSX.Element => {
+  const translateY = useSharedValue(0);
+  const opacity = useSharedValue(1);
+
+  useEffect(() => {
+    if (isAnimating) {
+      const startY = direction === 'up' ? 16 : -16;
+      translateY.value = startY;
+      opacity.value = 0;
+      translateY.value = withTiming(0, { duration, easing: Easing.out(Easing.ease) });
+      opacity.value = withTiming(1, { duration, easing: Easing.out(Easing.ease) });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAnimating]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+    opacity: opacity.value,
+  }));
+
+  return (
+    <Animated.View style={animatedStyle}>
+      <Text
+        style={{
+          ...digitStyle,
+          includeFontPadding: false,
+          padding: 0,
+          fontVariant: ['tabular-nums'],
+        }}
+      >
+        {char}
+      </Text>
+    </Animated.View>
+  );
+};
+
+type NativeDigitState = {
+  digits: string[];
+  animatingIndices: Set<number>;
+  direction: 'up' | 'down';
+};
+
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
     {
@@ -89,8 +154,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       onChange: (newValue) => onChange?.({ value: newValue }),
     });
 
-    const translateY = useSharedValue(0);
-    const opacity = useSharedValue(1);
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
 
@@ -101,22 +164,43 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     const duration = theme.motion.duration.quick;
 
+    const [digitState, setDigitState] = useState<NativeDigitState>(() => ({
+      digits: String(internalValue ?? min ?? 0).split(''),
+      animatingIndices: new Set<number>(),
+      direction: 'up' as const,
+    }));
+
     useEffect(() => {
       if (lastActionRef.current && internalValue !== previousValueRef.current) {
-        const startY = lastActionRef.current === 'increment' ? 8 : -8;
-        translateY.value = startY;
-        opacity.value = 0;
-        translateY.value = withTiming(0, { duration, easing: Easing.out(Easing.ease) });
-        opacity.value = withTiming(1, { duration, easing: Easing.out(Easing.ease) });
-        lastActionRef.current = null;
-      }
-      previousValueRef.current = internalValue;
-    }, [internalValue, duration]);
+        const direction = lastActionRef.current === 'increment' ? 'up' : 'down';
+        const prevStr = String(previousValueRef.current ?? min ?? 0);
+        const currStr = String(internalValue ?? 0);
 
-    const animatedStyle = useAnimatedStyle(() => ({
-      transform: [{ translateY: translateY.value }],
-      opacity: opacity.value,
-    }));
+        const maxLen = Math.max(prevStr.length, currStr.length);
+        const paddedPrev = prevStr.padStart(maxLen, '0');
+        const paddedCurr = currStr.padStart(maxLen, '0');
+
+        const displayOffset = maxLen - currStr.length;
+        const animatingIndices = new Set<number>();
+        for (let i = 0; i < maxLen; i++) {
+          if (paddedPrev[i] !== paddedCurr[i]) {
+            const displayIdx = i - displayOffset;
+            if (displayIdx >= 0) {
+              animatingIndices.add(displayIdx);
+            }
+          }
+        }
+
+        setDigitState({ digits: currStr.split(''), animatingIndices, direction });
+        lastActionRef.current = null;
+      } else if (!lastActionRef.current && internalValue !== previousValueRef.current) {
+        // Value changed via direct text input — update display without animation
+        const currStr = String(internalValue ?? min ?? 0);
+        setDigitState({ digits: currStr.split(''), animatingIndices: new Set(), direction: 'up' });
+      }
+
+      previousValueRef.current = internalValue;
+    }, [internalValue, min]);
 
     const handleInputChange = useCallback(
       (text: string) => {
@@ -161,24 +245,18 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       weight: 'semibold',
     });
 
+    const digitTextStyle = {
+      color: valueColor,
+      fontSize: theme.typography.fonts.size[fontSizeToken],
+      fontFamily: theme.typography.fonts.family.text,
+      fontWeight: '600',
+    };
+
     const containerStyle = StyleSheet.create({
       box: {
-        width: COUNTER_INPUT_TOKEN.width[size],
+        // minWidth lets the container grow for numbers beyond two digits
+        minWidth: COUNTER_INPUT_TOKEN.width[size],
         height: COUNTER_INPUT_TOKEN.height[size],
-      },
-    });
-
-    const textInputStyle = StyleSheet.create({
-      input: {
-        flex: 1,
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        includeFontPadding: false,
-        padding: 0,
-        color: valueColor,
-        fontSize: theme.typography.fonts.size[fontSizeToken],
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: '600',
       },
     });
 
@@ -241,7 +319,33 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </Pressable>
 
-                <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+                {/*
+                 * Digit display area: each digit is its own DigitSlot so only the
+                 * changed digit animates. A transparent TextInput sits on top for
+                 * accessibility and direct keyboard input.
+                 */}
+                <BaseBox
+                  flex={1}
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="relative"
+                >
+                  {digitState.digits.map((char, i) => (
+                    <DigitSlot
+                      // Key based on position-from-right keeps the units digit stable
+                      // across digit-count changes (e.g. "9" → "10")
+                      key={`digit-${digitState.digits.length - 1 - i}`}
+                      char={char}
+                      isAnimating={digitState.animatingIndices.has(i)}
+                      direction={digitState.direction}
+                      duration={duration}
+                      digitStyle={digitTextStyle}
+                    />
+                  ))}
+
+                  {/* Transparent TextInput for accessibility and keyboard input */}
                   <TextInput
                     value={internalValue?.toString() ?? String(min)}
                     onChangeText={handleInputChange}
@@ -249,11 +353,11 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     onBlur={() => onBlur?.({ name, value: internalValue?.toString() })}
                     editable={!_isDisabled}
                     keyboardType="numeric"
-                    style={textInputStyle.input}
+                    style={StyleSheet.flatten([StyleSheet.absoluteFillObject, { opacity: 0 }])}
                     accessibilityLabel={accessibilityLabel ?? label}
                     accessibilityRole="spinbutton"
                   />
-                </Animated.View>
+                </BaseBox>
 
                 <Pressable
                   onPress={handleIncrement}

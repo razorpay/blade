@@ -17,12 +17,36 @@ import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint, makeSpace, castWebType, makeMotionTime, makeBorderSize } from '~utils';
+import {
+  useBreakpoint,
+  makeSpace,
+  castWebType,
+  makeMotionTime,
+  makeBorderSize,
+  makeTypographySize,
+} from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { getTextProps } from '~components/Typography/Text/Text';
+
+const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+// Horizontal padding inside the input (spacing[2] left + spacing[2] right = 4px + 4px)
+const INPUT_PADDING_X = 8;
+
+type DigitAnimationState = {
+  digits: string[];
+  animatingIndices: Set<number>;
+  direction: 'up' | 'down';
+} | null;
 
 const StyledCounterButton = styled.button<{
   disabled?: boolean;
@@ -107,10 +131,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
     const _isDisabled = isDisabled || isLoading;
-    const [animationClass, setAnimationClass] = useState('');
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // Per-digit animation state: tracks which digit positions are animating and direction
+    const [digitAnimState, setDigitAnimState] = useState<DigitAnimationState>(null);
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
@@ -138,24 +164,38 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       };
     }, []);
 
-    // Animation effect - triggers only when value actually changes
+    // Per-digit animation effect — only animates the digits that actually changed
     useEffect(() => {
-      // Only animate if:
-      // 1. We have a stored action (button was clicked)
-      // 2. Value actually changed from previous value
-      // 3. Not currently loading
       if (lastActionRef.current && !isLoading && internalValue !== previousValueRef.current) {
-        const animationClass =
-          lastActionRef.current === 'increment'
-            ? '__blade-counter-input-animate-slide-up'
-            : '__blade-counter-input-animate-slide-down';
-        setAnimationClass(animationClass);
-        setTimeout(() => setAnimationClass(''), 300);
+        const direction = lastActionRef.current === 'increment' ? 'up' : 'down';
+        const prevStr = String(previousValueRef.current ?? min ?? 0);
+        const currStr = String(internalValue ?? 0);
+
+        const maxLen = Math.max(prevStr.length, currStr.length);
+        const paddedPrev = prevStr.padStart(maxLen, '0');
+        const paddedCurr = currStr.padStart(maxLen, '0');
+
+        // Compute which positions (from the left of currStr) actually changed.
+        // paddedPrev and paddedCurr are aligned from the left so index 0 = most-significant digit.
+        // displayOffset converts from padded-index to currStr-index (skips leading padding zeros).
+        const displayOffset = maxLen - currStr.length;
+        const animatingIndices = new Set<number>();
+        for (let i = 0; i < maxLen; i++) {
+          if (paddedPrev[i] !== paddedCurr[i]) {
+            const displayIdx = i - displayOffset;
+            if (displayIdx >= 0) {
+              animatingIndices.add(displayIdx);
+            }
+          }
+        }
+
+        setDigitAnimState({ digits: currStr.split(''), animatingIndices, direction });
+        setTimeout(() => setDigitAnimState(null), 300);
         lastActionRef.current = null;
       }
 
       previousValueRef.current = internalValue;
-    }, [internalValue, isLoading]);
+    }, [internalValue, isLoading, min]);
 
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
@@ -167,7 +207,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         if (max !== undefined && constrainedValue > max) constrainedValue = max;
         setInternalValue(() => constrainedValue);
       },
-      [min, max, onChange, name],
+      [min, max, setInternalValue],
     );
 
     const handleIncrement = useCallback(() => {
@@ -192,6 +232,25 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
     const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
     const isIncrementDisabled = _isDisabled || (max !== undefined && (internalValue ?? min) >= max);
+
+    // Compute the width of the input area based on digit count.
+    // minWidth keeps two-digit space by default; grows for longer numbers.
+    const valueStr = String(internalValue ?? min ?? 0);
+    const digitCount = Math.max(2, valueStr.length);
+    const inputAreaWidth = `calc(${digitCount}ch + ${INPUT_PADDING_X}px)`;
+
+    // Font properties for the per-digit overlay — must match BaseInput's body/semibold styling
+    const textSize =
+      COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size as keyof typeof COUNTER_INPUT_SIZE_TO_TEXT_SIZE];
+    const { fontSize: fontSizeToken = 200 } = getTextProps({
+      variant: 'body',
+      size: textSize,
+      weight: 'semibold',
+    });
+    const overlayFontSize = makeTypographySize(theme.typography.fonts.size[fontSizeToken]);
+    const overlayColor = _isDisabled
+      ? (get(theme.colors, emphasisTokens.disabledColor, '') as string)
+      : (get(theme.colors, emphasisTokens.color, '') as string);
 
     const contextValue = {
       size,
@@ -241,7 +300,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   ? emphasisTokens.loadingOrDisabledBgColor
                   : emphasisTokens.backgroundColor
               }
-              width={`${COUNTER_INPUT_TOKEN.width[size]}px`}
+              // minWidth preserves two-digit default size; container grows for longer numbers
+              minWidth={`${COUNTER_INPUT_TOKEN.width[size]}px`}
               height={`${COUNTER_INPUT_TOKEN.height[size]}px`}
               borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
@@ -269,7 +329,52 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
-                <BaseBox className={animationClass}>
+                {/*
+                 * Input area: dynamic width keeps two-digit minimum, grows for longer numbers.
+                 * During animation the real input text is hidden and the digit overlay is shown
+                 * so that only changed digits animate (slot-machine style).
+                 */}
+                <BaseBox
+                  position="relative"
+                  style={{ width: inputAreaWidth }}
+                  className={digitAnimState ? '__blade-counter-input-hide-text' : undefined}
+                >
+                  {/* Per-digit animation overlay — visible only during button-click animations */}
+                  {digitAnimState && (
+                    <BaseBox
+                      position="absolute"
+                      top="spacing.0"
+                      bottom="spacing.0"
+                      left="spacing.0"
+                      right="spacing.0"
+                      className="__blade-counter-input-digit-overlay"
+                      aria-hidden="true"
+                      style={{
+                        fontSize: overlayFontSize,
+                        fontFamily: theme.typography.fonts.family.text,
+                        fontWeight: 600,
+                        color: overlayColor,
+                      }}
+                    >
+                      {digitAnimState.digits.map((char, i) => (
+                        <span
+                          // eslint-disable-next-line react/no-array-index-key
+                          key={i}
+                          className="__blade-counter-input-digit-slot"
+                        >
+                          <span
+                            className={
+                              digitAnimState.animatingIndices.has(i)
+                                ? `__blade-counter-input-digit-animate-${digitAnimState.direction}`
+                                : undefined
+                            }
+                          >
+                            {char}
+                          </span>
+                        </span>
+                      ))}
+                    </BaseBox>
+                  )}
                   <BaseInput
                     ref={ref}
                     id={inputId}

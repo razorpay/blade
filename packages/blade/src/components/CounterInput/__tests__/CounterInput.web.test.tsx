@@ -1,4 +1,5 @@
 import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import { CounterInput } from '../CounterInput';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -203,8 +204,127 @@ describe('<CounterInput />', () => {
     expect(input).toBeValid();
     expect(input).toBeEnabled();
 
+    const originalGetComputedStyle = window.getComputedStyle;
     window.getComputedStyle = jest.fn();
     await assertAccessible(input);
-    jest.clearAllMocks();
+    window.getComputedStyle = originalGetComputedStyle;
+  });
+
+  it('should not clip two-digit numbers — container uses minWidth instead of fixed width', () => {
+    const { container } = renderWithTheme(<CounterInput label="Quantity" value={99} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not clip three-digit numbers — container grows beyond default size', () => {
+    const { container } = renderWithTheme(<CounterInput label="Quantity" value={999} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render xsmall size', () => {
+    const { container } = renderWithTheme(
+      <CounterInput label="Quantity" size="xsmall" value={5} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should show per-digit animation overlay immediately on increment', async () => {
+    const user = userEvent.setup();
+
+    // Use defaultValue (uncontrolled) so internalValue actually updates on button click
+    const { getByRole, container } = renderWithTheme(
+      <CounterInput label="Quantity" defaultValue={15} />,
+    );
+
+    const incrementButton = getByRole('button', { name: /increment/i });
+    await user.click(incrementButton);
+
+    // After click the digit overlay should appear immediately
+    await waitFor(() => {
+      const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
+      expect(overlay).toBeInTheDocument();
+    });
+
+    // Overlay shows the updated value's digits
+    const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
+    expect(overlay?.textContent).toBe('16');
+  });
+
+  it('should only animate the units digit when tens digit is unchanged (15 → 16)', async () => {
+    const user = userEvent.setup();
+
+    // Use defaultValue so the internal state updates on button click
+    const { getByRole, container } = renderWithTheme(
+      <CounterInput label="Quantity" defaultValue={15} />,
+    );
+
+    const incrementButton = getByRole('button', { name: /increment/i });
+    await user.click(incrementButton);
+
+    await waitFor(() => {
+      const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
+      expect(overlay).toBeInTheDocument();
+    });
+
+    const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
+    expect(slots).toHaveLength(2); // "16" has two digits
+
+    // First digit ("1") should NOT have the animation class — it didn't change
+    const firstInner = slots[0]?.querySelector('span');
+    expect(firstInner?.className ?? '').not.toContain('animate');
+
+    // Second digit ("6") SHOULD have the slide-up animation class
+    const secondInner = slots[1]?.querySelector('span');
+    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
+  });
+
+  it('should animate all digits when crossing decade boundary (9 → 10)', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, container } = renderWithTheme(
+      <CounterInput label="Quantity" defaultValue={9} />,
+    );
+
+    const incrementButton = getByRole('button', { name: /increment/i });
+    await user.click(incrementButton);
+
+    await waitFor(() => {
+      const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
+      expect(overlay).toBeInTheDocument();
+    });
+
+    const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
+    expect(slots).toHaveLength(2); // "10" has two digits
+
+    // Both digits changed (0→1 tens, 9→0 units) — both should have animation class
+    const firstInner = slots[0]?.querySelector('span');
+    const secondInner = slots[1]?.querySelector('span');
+    expect(firstInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
+    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-up');
+  });
+
+  it('should use slide-down animation on decrement', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, container } = renderWithTheme(
+      <CounterInput label="Quantity" defaultValue={15} min={0} />,
+    );
+
+    const decrementButton = getByRole('button', { name: /decrement/i });
+    await user.click(decrementButton);
+
+    await waitFor(() => {
+      const overlay = container.querySelector('.__blade-counter-input-digit-overlay');
+      expect(overlay).toBeInTheDocument();
+    });
+
+    const slots = container.querySelectorAll('.__blade-counter-input-digit-slot');
+    const secondInner = slots[1]?.querySelector('span');
+    expect(secondInner?.className ?? '').toContain('__blade-counter-input-digit-animate-down');
+  });
+
+  it('should apply font-variant-numeric tabular-nums styling to the input', () => {
+    const { container } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
+    // The input should be rendered correctly; tabular-nums CSS is verified in snapshot
+    expect(container).toMatchSnapshot();
   });
 });

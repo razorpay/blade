@@ -28,6 +28,7 @@ const baseConfig = {
     '^\\~utils$': '<rootDir>/src/utils',
     '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
+    '^canvas$': '<rootDir>/tmp/canvas-mock.js',
   },
   globals: {
     __DEV__: true,
