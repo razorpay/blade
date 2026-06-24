@@ -112,9 +112,9 @@ prompt: |
 Replace `inlined-comments` in the review JSON with the filtered array returned by the agent.
 
 Then recalculate `reviewStatus` based on the filtered array:
-- Set `reviewStatus` to `'approved'` if **both** of these hold:
-  - The filtered `inlined-comments` array contains no items with `severity` of `major` or `critical`
-  - All UI check statuses in the `overview-comment` passed (no `FAILURE` entries)
+
+- Set `reviewStatus` to `'approved'` if:
+  - Check `reviewStatusReason` to see if reviewStatus was not approved only because of inlined comments array before filtering and that changes now. If so, set `reviewStatus` to `'approved'` now since the issues are filtered out now.
 - Otherwise, set `reviewStatus` to `'commented'`
 
 Update `reviewStatus` in the review JSON before proceeding to Step 5.

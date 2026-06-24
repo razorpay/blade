@@ -6,7 +6,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
 - Set to `approved` if:
   - All UI checks passed
   - There are no 'major' or 'critical' severity issues found
-  - Earlier 'major' or 'critical' severity issues are addressed either by a valid response or by commit push
+  - Earlier 'major' or 'critical' severity issues are addressed either by a valid response or by commit push related to the issue
 - Set to `commented` for everything else
 
 ## Output Format
@@ -14,6 +14,7 @@ Assemble the outputs from all critique agents into a single JSON object matching
 ```json
 {
   "reviewStatus": "approved" | "commented",
+  "reviewStatusReason": "PR not approved due to 3 existing unresolved comments, 2 major inlined comments, and failing UI review checks",
   "overview-comment": {
     "ui-review": {
       "critique": "ui-critique",
