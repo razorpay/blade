@@ -79,6 +79,18 @@ jobs:
                       return True
               return False
 
+          def has_human_commits(repo, pr_number):
+              """
+              Check whether any commits on the PR were authored by a human
+              (i.e. not a bot commenter and not an agent user).
+              """
+              commits = gh_json("api", f"repos/{repo}/pulls/{pr_number}/commits", "--paginate") or []
+              for c in commits:
+                  author_login = c.get("author", {}).get("login", "") if c.get("author") else ""
+                  if author_login and is_human(author_login):
+                      return True
+              return False
+
           def add_label(repo, pr_number):
               gh_cmd("api", f"repos/{repo}/issues/{pr_number}/labels",
                      "--method", "POST", "--field", f"labels[]={LABEL}")
@@ -104,11 +116,11 @@ jobs:
                   # Approved either via actual approval state or "Status: Approved" in review body
                   is_approved = state == "approved" or is_status_approved(body)
                   if is_approved:
-                      print("Slash-reviewer approved — checking for human comments...")
-                      if not has_human_comments(repo, pr_number):
+                      print("Slash-reviewer approved — checking for human comments and commits...")
+                      if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
                           add_label(repo, pr_number)
                       else:
-                          print(f"PR #{pr_number} has human comments — skipping label")
+                          print(f"PR #{pr_number} has human comments or commits — skipping label")
                   else:
                       print(f"Slash-reviewer review is not an approval (state={state}), skipping")
               else:
@@ -137,11 +149,11 @@ jobs:
 
               if normalize_user(author) in AGENT_USERS and is_status_approved(body):
                   # Slash-reviewer can also signal approval via an issue comment
-                  print("Slash-reviewer posted 'Status: Approved' — checking for human comments...")
-                  if not has_human_comments(repo, pr_number):
+                  print("Slash-reviewer posted 'Status: Approved' — checking for human comments and commits...")
+                  if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
                       add_label(repo, pr_number)
                   else:
-                      print(f"PR #{pr_number} has human comments — skipping label")
+                      print(f"PR #{pr_number} has human comments or commits — skipping label")
               elif is_human(author):
                   remove_label(repo, pr_number)
               else:
