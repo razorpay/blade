@@ -6,6 +6,9 @@ import { Text as TextComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
+import { Popover, PopoverInteractiveWrapper } from '~components/Popover';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -29,6 +32,55 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Title>Dotted Underline</Title>
+      <Sandbox>
+        {`
+          import {
+            Box,
+            Popover,
+            PopoverInteractiveWrapper,
+            Text,
+            Tooltip,
+            TooltipInteractiveWrapper,
+          } from '@razorpay/blade/components';
+
+          function App() {
+            return (
+              <Box display="flex" gap="spacing.6" alignItems="center">
+                <Tooltip content="Acceptance ratio calculated by NPCI">
+                  <TooltipInteractiveWrapper>
+                    <Text as="span" textDecorationLine="dotted">
+                      75.00%
+                    </Text>
+                  </TooltipInteractiveWrapper>
+                </Tooltip>
+
+                <Popover
+                  openInteraction="hover"
+                  content={
+                    <Text size="small">
+                      Success rate is calculated from attempted mandates and accepted mandates.
+                    </Text>
+                  }
+                >
+                  <PopoverInteractiveWrapper accessibilityLabel="View success rate breakdown">
+                    <Text as="span" textDecorationLine="dotted">
+                      SR%
+                    </Text>
+                  </PopoverInteractiveWrapper>
+                </Popover>
+              </Box>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+      <TextComponent>
+        Use dotted underline text only when the text reveals additional context. Use it with Tooltip
+        for short explanatory content and Popover for richer contextual breakdowns. Do not use
+        dotted underline for visual emphasis only, and do not use Link unless the text navigates.
+      </TextComponent>
     </StoryPageWrapper>
   );
 };
@@ -82,5 +134,38 @@ const AsPropTemplate: StoryFn<typeof TextComponent> = (args) => {
 
 export const AsProp = AsPropTemplate.bind({});
 AsProp.args = {
+  truncateAfterLines: undefined,
+};
+
+const DottedUnderlineTemplate: StoryFn<typeof TextComponent> = () => {
+  return (
+    <Box display="flex" gap="spacing.6" alignItems="center">
+      <Tooltip content="Acceptance ratio calculated by NPCI">
+        <TooltipInteractiveWrapper>
+          <TextComponent as="span" textDecorationLine="dotted">
+            75.00%
+          </TextComponent>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+      <Popover
+        openInteraction="hover"
+        content={
+          <TextComponent size="small">
+            Success rate is calculated from attempted mandates and accepted mandates.
+          </TextComponent>
+        }
+      >
+        <PopoverInteractiveWrapper accessibilityLabel="View success rate breakdown">
+          <TextComponent as="span" textDecorationLine="dotted">
+            SR%
+          </TextComponent>
+        </PopoverInteractiveWrapper>
+      </Popover>
+    </Box>
+  );
+};
+
+export const DottedUnderline = DottedUnderlineTemplate.bind({});
+DottedUnderline.args = {
   truncateAfterLines: undefined,
 };

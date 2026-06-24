@@ -1,31 +1,25 @@
 name: Agentic Repo / Slash Code Review
 
 on:
-  workflow_run:
-    workflows: ['Blade Validate']
-    types: [completed]
   pull_request:
-    types: [labeled]
+    types: [opened, synchronize, labeled]
 
 concurrency:
-  group: ${{ github.repository }}-${{ github.event.pull_request.number || github.event.check_suite.head_sha || github.sha }}-${{ github.workflow }}
+  group: ${{ github.repository }}-${{ github.event.pull_request.number }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
   slash-review:
     name: Request Slash AI review
-    # For workflow_run: fires when 'Blade Validate' completes, without waiting for slower checks like Bundle Size.
-    # For pull_request: only fire on the 'Run Slash Review' label (manual re-run path).
+    # Triggers on PR open, push to PR branch (synchronize), and manual 'Run Slash Review' label.
     # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
     # so that Slash-authored PRs also get reviewed).
     if: |
       github.actor != 'github-actions[bot]' &&
       (
-        github.event_name == 'workflow_run' ||
-        (
-          github.event_name == 'pull_request' &&
-          github.event.label.name == 'Run Slash Review'
-        )
+        github.event.action == 'opened' ||
+        github.event.action == 'synchronize' ||
+        github.event.label.name == 'Run Slash Review'
       )
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
@@ -33,25 +27,10 @@ jobs:
         id: pr-meta
         env:
           GH_TOKEN: ${{ github.token }}
-          EVENT_NAME: ${{ github.event_name }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
-          REPOSITORY: ${{ github.repository }}
-          PR_URL_FALLBACK: ${{ github.event.pull_request.html_url }}
-          PR_NUMBER_FALLBACK: ${{ github.event.pull_request.number }}
-          PR_BRANCH_FALLBACK: ${{ github.head_ref }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BRANCH: ${{ github.head_ref }}
         run: |
-          if [ "$EVENT_NAME" = "workflow_run" ]; then
-            PR_JSON=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/pulls" \
-              --header "Accept: application/vnd.github+json")
-            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
-            PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
-            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
-          else
-            PR_URL="$PR_URL_FALLBACK"
-            PR_NUMBER="$PR_NUMBER_FALLBACK"
-            PR_BRANCH="$PR_BRANCH_FALLBACK"
-          fi
-
           if [ -z "$PR_NUMBER" ]; then
             echo "No PR found for this commit — skipping."
             echo "skip=true" >> $GITHUB_OUTPUT
@@ -68,6 +47,27 @@ jobs:
         with:
           sparse-checkout: |
             .github/scripts
+
+      - name: Terminate previous Slash review
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+        run: |
+          PREV_TASK_ID=$(gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --jq '.[].body' \
+            | grep -oP '<!-- slash-task-id: \K\S+(?= -->)' \
+            | tail -1 2>/dev/null || true)
+
+          if [ -n "$PREV_TASK_ID" ]; then
+            echo "Terminating previous Slash task: $PREV_TASK_ID"
+            node .github/scripts/terminate-slash.js "$PREV_TASK_ID" || true
+          else
+            echo "No previous Slash task found — skipping termination."
+          fi
 
       - name: Request Slash review
         id: request-slash-review
@@ -94,6 +94,7 @@ jobs:
             EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
             echo "Execution logs: ${EXECUTION_URL}"
             echo "execution_url=$EXECUTION_URL" >> $GITHUB_OUTPUT
+            echo "task_id=$TASK_ID" >> $GITHUB_OUTPUT
           fi
 
       - name: Post PR comment with execution log link
@@ -103,10 +104,11 @@ jobs:
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
           EXECUTION_URL: ${{ steps.request-slash-review.outputs.execution_url }}
+          TASK_ID: ${{ steps.request-slash-review.outputs.task_id }}
         run: |
           gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
             --method POST \
-            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})"
+            --field body="🤖 **Slash AI Review** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
 
       - name: Post PR comment on failure
         if: failure() && steps.pr-meta.outputs.skip != 'true'
