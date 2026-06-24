@@ -39,9 +39,6 @@ const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
   large: 'large',
 } as const;
 
-// Horizontal padding inside the input (spacing[2] left + spacing[2] right = 4px + 4px)
-const INPUT_PADDING_X = 8;
-
 type DigitAnimationState = {
   digits: string[];
   animatingIndices: Set<number>;
@@ -128,6 +125,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const labelId = `${idBase}-label`;
     const { theme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+    // Horizontal padding inside the input: spacing[2] left + spacing[2] right
+    const inputPaddingX = theme.spacing[2] * 2;
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const emphasisTokens = COUNTER_INPUT_TOKEN.emphasis[emphasis];
     const _isDisabled = isDisabled || isLoading;
@@ -192,7 +191,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
         setDigitAnimState({ digits: currStr.split(''), animatingIndices, direction });
         if (animTimeoutRef.current !== null) clearTimeout(animTimeoutRef.current);
-        animTimeoutRef.current = setTimeout(() => setDigitAnimState(null), 300);
+        animTimeoutRef.current = setTimeout(() => setDigitAnimState(null), theme.motion.duration.quick);
         lastActionRef.current = null;
       }
 
@@ -205,6 +204,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       };
     }, []);
 
+    // onChange and name are intentionally omitted from deps: setInternalValue is stable (via
+    // useCallbackRef inside useControllableState) and always invokes the latest onChange prop.
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
         const numericValue = inputValue ? parseInt(inputValue, 10) : min;
@@ -245,7 +246,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     // minWidth keeps two-digit space by default; grows for longer numbers.
     const valueStr = String(internalValue ?? min ?? 0);
     const digitCount = Math.max(2, valueStr.length);
-    const inputAreaWidth = `calc(${digitCount}ch + ${INPUT_PADDING_X}px)`;
+    const inputAreaWidth = `calc(${digitCount}ch + ${inputPaddingX}px)`;
 
     // Font properties for the per-digit overlay — must match BaseInput's body/semibold styling
     const textSize =
