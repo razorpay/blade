@@ -166,6 +166,14 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       direction: 'up' as const,
     }));
 
+    const animResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+      return () => {
+        if (animResetRef.current !== null) clearTimeout(animResetRef.current);
+      };
+    }, []);
+
     useEffect(() => {
       if (lastActionRef.current && internalValue !== previousValueRef.current) {
         const direction = lastActionRef.current === 'increment' ? 'up' : 'down';
@@ -188,6 +196,10 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         }
 
         setDigitState({ digits: currStr.split(''), animatingIndices, direction });
+        if (animResetRef.current !== null) clearTimeout(animResetRef.current);
+        animResetRef.current = setTimeout(() => {
+          setDigitState((prev) => ({ ...prev, animatingIndices: new Set() }));
+        }, duration);
         lastActionRef.current = null;
       } else if (!lastActionRef.current && internalValue !== previousValueRef.current) {
         // Value changed via direct text input — update display without animation
@@ -196,7 +208,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       }
 
       previousValueRef.current = internalValue;
-    }, [internalValue, min]);
+    }, [internalValue, min, duration]);
 
     const handleInputChange = useCallback(
       (text: string) => {

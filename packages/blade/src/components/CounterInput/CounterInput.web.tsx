@@ -134,6 +134,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
     const containerRef = useRef<HTMLDivElement>(null);
+    const animTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     // Per-digit animation state: tracks which digit positions are animating and direction
     const [digitAnimState, setDigitAnimState] = useState<DigitAnimationState>(null);
@@ -190,12 +191,19 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         }
 
         setDigitAnimState({ digits: currStr.split(''), animatingIndices, direction });
-        setTimeout(() => setDigitAnimState(null), 300);
+        if (animTimeoutRef.current !== null) clearTimeout(animTimeoutRef.current);
+        animTimeoutRef.current = setTimeout(() => setDigitAnimState(null), 300);
         lastActionRef.current = null;
       }
 
       previousValueRef.current = internalValue;
     }, [internalValue, isLoading, min]);
+
+    useEffect(() => {
+      return () => {
+        if (animTimeoutRef.current !== null) clearTimeout(animTimeoutRef.current);
+      };
+    }, []);
 
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
