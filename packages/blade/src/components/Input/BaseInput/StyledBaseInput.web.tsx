@@ -5,6 +5,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
+import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -42,13 +43,20 @@ const getWebInputStyles = (
     border: 'none',
     caretColor: props.$caretColor ? getIn(props.theme.colors, props.$caretColor) : undefined,
     '::placeholder': {
-      ...getTextStyles({
-        size: props.$size,
-        variant: 'body',
-        weight: 'regular',
-        color: 'surface.text.gray.disabled',
-        theme: props.theme,
-      }),
+      ...(props.valueComponentType === 'heading'
+        ? getHeadingStyles({
+            size: props.$size === 'xsmall' ? 'small' : props.$size,
+            weight: 'regular',
+            color: 'surface.text.gray.disabled',
+            theme: props.theme,
+          })
+        : getTextStyles({
+            size: props.$size,
+            variant: 'body',
+            weight: 'regular',
+            color: 'surface.text.gray.disabled',
+            theme: props.theme,
+          })),
       textAlign: props.textAlign,
     },
     ':focus': {

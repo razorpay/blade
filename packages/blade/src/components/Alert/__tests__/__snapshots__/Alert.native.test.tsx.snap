@@ -24,9 +24,11 @@ exports[`<Alert /> should render 1`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={false}
+      maxWidth="584px"
       style={
         [
           {
+            "maxWidth": 584,
             "textAlign": "left",
           },
           {
@@ -36,7 +38,6 @@ exports[`<Alert /> should render 1`] = `
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": 584,
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,
@@ -181,6 +182,7 @@ exports[`<Alert /> should render 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -190,7 +192,7 @@ exports[`<Alert /> should render 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -346,19 +348,20 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={true}
+      maxWidth="auto"
       style={
         [
           {
+            "maxWidth": "auto",
             "textAlign": "left",
           },
           {
             "alignItems": "flex-start",
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "borderRadius": 0,
+            "borderRadius": 12,
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": "auto",
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,
@@ -487,6 +490,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -496,7 +500,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -652,19 +656,20 @@ exports[`<Alert /> should render positive color and full width 2`] = `
       emphasis="subtle"
       isDesktop={false}
       isFullWidth={true}
+      maxWidth="auto"
       style={
         [
           {
+            "maxWidth": "auto",
             "textAlign": "left",
           },
           {
             "alignItems": "flex-start",
             "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-            "borderRadius": 0,
+            "borderRadius": 12,
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
-            "maxWidth": "auto",
             "paddingBottom": 12,
             "paddingLeft": 12,
             "paddingRight": 12,
@@ -793,6 +798,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -802,7 +808,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,

@@ -32,13 +32,14 @@ import type {
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
 import { TableSurface } from './TableSurface.web';
-import { makeBorderSize, makeMotionTime } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
+import { Skeleton } from '~components/Skeleton';
 import { getStyledProps } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -147,6 +148,31 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
+const SKELETON_ROW_COUNT = 7;
+const SKELETON_CELL_WIDTHS = {
+  first: '70%',
+  last: '50%',
+  middle: '75%',
+  headerFirst: '80%',
+  headerRest: '60%',
+} as const;
+
+const StyledSkeletonRow = styled(BaseBox)<{ $columns: number; $isHeader?: boolean }>(
+  ({ theme, $columns, $isHeader }) => ({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${$columns}, minmax(100px, 1fr))`,
+    paddingLeft: makeSpace(theme.spacing[4]),
+    paddingRight: makeSpace(theme.spacing[4]),
+    paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+    paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+    borderBottomWidth: makeSpace(theme.border.width.thin),
+    borderBottomColor: theme.colors.surface.border.gray.muted,
+    borderBottomStyle: 'solid',
+    gap: makeSpace(theme.spacing[4]),
+    alignItems: 'center',
+  }),
+);
+
 const _Table = <Item,>({
   children,
   data,
@@ -170,6 +196,7 @@ const _Table = <Item,>({
   defaultSelectedIds = [],
   backgroundColor = tableBackgroundColor,
   isGrouped = false,
+  checkboxDisplay = 'always',
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -521,12 +548,14 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      multiSelectTrigger,
       columnCount,
       gridTemplateColumns,
       isVirtualized,
       tableData: data.nodes,
       isGrouped,
       tableToolbarPlacement: toolbar?.props?.placement ?? 'inline',
+      checkboxDisplay,
     }),
     [
       selectionType,
@@ -554,9 +583,11 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      multiSelectTrigger,
       isVirtualized,
       data,
       isGrouped,
+      checkboxDisplay,
     ],
   );
 
@@ -573,17 +604,42 @@ const _Table = <Item,>({
       >
         {isLoading ? (
           <BaseBox
-            display="flex"
             flex={1}
-            alignItems="center"
-            justifyContent="center"
-            height={height}
-            paddingY="spacing.11"
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
+            testID="table-skeleton"
           >
-            <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
+            {/* Header skeleton row */}
+            <StyledSkeletonRow $columns={columnCount || 5} $isHeader>
+              {Array.from({ length: columnCount || 5 }).map((_, i) => (
+                <Skeleton
+                  key={i}
+                  width={
+                    i === 0 ? SKELETON_CELL_WIDTHS.headerFirst : SKELETON_CELL_WIDTHS.headerRest
+                  }
+                  height="16px"
+                  borderRadius="medium"
+                />
+              ))}
+            </StyledSkeletonRow>
+            {/* Body skeleton rows */}
+            {Array.from({ length: SKELETON_ROW_COUNT }).map((_, rowIdx) => (
+              <StyledSkeletonRow key={rowIdx} $columns={columnCount || 5}>
+                {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
+                  const cols = columnCount || 5;
+                  const width =
+                    colIdx === 0
+                      ? SKELETON_CELL_WIDTHS.first
+                      : colIdx === cols - 1
+                      ? SKELETON_CELL_WIDTHS.last
+                      : SKELETON_CELL_WIDTHS.middle;
+                  return (
+                    <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />
+                  );
+                })}
+              </StyledSkeletonRow>
+            ))}
           </BaseBox>
         ) : (
           <BaseBox

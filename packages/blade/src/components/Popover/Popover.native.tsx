@@ -1,18 +1,24 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
-import { Modal, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { Portal } from '@gorhom/portal';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
-import { useTheme } from '~components/BladeProvider';
+import { useFloatingPortal } from './useFloatingPortal.native';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
-import { PopupArrow } from '~components/PopupArrow';
-import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useTheme } from '~components/BladeProvider';
+import { PopupArrow } from '~components/PopupArrow';
+
+// Portal container rendered by @gorhom/portal has a 10px top offset on iOS relative
+// to the window coordinate system that measureInWindow doesn't account for.
+const IOS_OFFSET_CORRECTION = 10;
 
 const Popover = ({
   content,
@@ -38,6 +44,7 @@ const Popover = ({
   const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
+
   const context = useFloating({
     sameScrollView: false,
     placement,
@@ -52,8 +59,11 @@ const Popover = ({
     ],
   });
 
-  const { refs, floatingStyles } = context;
+  const { refs, floatingStyles, update } = context;
   const [computedSide] = getFloatingPlacementParts(context.placement);
+
+  const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
+  const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
   const handleOpen = React.useCallback(() => {
     controllableSetIsOpen(() => true);
@@ -65,8 +75,7 @@ const Popover = ({
     onOpenChange?.({ isOpen: false });
   }, [controllableSetIsOpen, onOpenChange]);
 
-  // wait for animation to finish before unmounting modal
-  const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
+  // wait for animation to finish before unmounting
   React.useEffect(() => {
     const id = setTimeout(() => {
       if (!controllableIsOpen) {
@@ -101,51 +110,51 @@ const Popover = ({
         ),
         ref: refs.setReference,
       })}
-      <Modal
-        collapsable={false}
-        transparent
-        visible={Boolean(isVisible)}
-        {...metaAttribute({ testID: 'popover-modal' })}
-      >
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-          }}
-          onPress={handleClose}
-          activeOpacity={1}
-          testID="popover-modal-backdrop"
-          {...metaAttribute({ name: MetaConstants.Popover })}
-        />
-        <PopoverContent
-          titleLeading={titleLeading}
-          title={title}
-          footer={footer}
-          isVisible={controllableIsOpen}
-          ref={refs.setFloating}
-          side={computedSide}
-          style={{
-            ...floatingStyles,
-            // TODO: Tokenize zIndex values
-            zIndex,
-          }}
-          arrow={
-            <PopupArrow
-              ref={arrowRef as never}
-              context={context}
-              width={ARROW_WIDTH}
-              height={ARROW_HEIGHT}
-              fillColor={theme.colors.popup.background.subtle}
-              strokeColor={theme.colors.popup.border.subtle}
-            />
-          }
-        >
-          {content}
-        </PopoverContent>
-      </Modal>
+      {isVisible && (
+        <Portal hostName="BladeBottomSheetPortal">
+          <PopoverContext.Provider value={contextValue}>
+            <TouchableOpacity
+              ref={backdropRef}
+              onLayout={onBackdropLayout}
+              style={StyleSheet.absoluteFill}
+              onPress={handleClose}
+              activeOpacity={1}
+              testID="popover-modal-backdrop"
+              {...metaAttribute({ name: MetaConstants.Popover })}
+            >
+              <PopoverContent
+                titleLeading={titleLeading}
+                title={title}
+                footer={footer}
+                isVisible={controllableIsOpen}
+                ref={refs.setFloating}
+                side={computedSide}
+                style={{
+                  ...floatingStyles,
+                  left: (floatingStyles.left || -200) - backdropOffset.x,
+                  top:
+                    (floatingStyles.top || -200) -
+                    backdropOffset.y -
+                    (Platform.OS === 'ios' ? IOS_OFFSET_CORRECTION : 0),
+                  zIndex,
+                }}
+                arrow={
+                  <PopupArrow
+                    ref={arrowRef as never}
+                    context={context}
+                    width={ARROW_WIDTH}
+                    height={ARROW_HEIGHT}
+                    fillColor={theme.colors.popup.background.subtle}
+                    strokeColor={theme.colors.popup.border.subtle}
+                  />
+                }
+              >
+                {content}
+              </PopoverContent>
+            </TouchableOpacity>
+          </PopoverContext.Provider>
+        </Portal>
+      )}
     </PopoverContext.Provider>
   );
 };

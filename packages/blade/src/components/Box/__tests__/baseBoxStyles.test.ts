@@ -5,6 +5,7 @@ import {
   getBorderRadiusValue,
 } from '../BaseBox/baseBoxStyles';
 import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme';
+import { isReactNative } from '~utils';
 
 export const removeUndefinedValues = (props: Record<string, unknown>): Record<string, unknown> =>
   JSON.parse(JSON.stringify(props));
@@ -22,10 +23,13 @@ describe('getColorValue', () => {
 
 describe('getBorderRadiusValue', () => {
   it('should return correct border-radius value', () => {
-    expect(getBorderRadiusValue('max', bladeLightTheme, 'base')).toBe('9999px');
-    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe('8px');
+    const native = isReactNative();
+    expect(getBorderRadiusValue('max', bladeLightTheme, 'base')).toBe(native ? 9999 : '9999px');
+    expect(getBorderRadiusValue('small', bladeLightTheme, 'base')).toBe(native ? 8 : '8px');
     expect(getBorderRadiusValue(undefined, bladeLightTheme, 'm')).toBe(undefined);
-    expect(getBorderRadiusValue({ base: 'medium', s: 'max' }, bladeLightTheme, 's')).toBe('9999px');
+    expect(getBorderRadiusValue({ base: 'medium', s: 'max' }, bladeLightTheme, 's')).toBe(
+      native ? 9999 : '9999px',
+    );
   });
 });
 

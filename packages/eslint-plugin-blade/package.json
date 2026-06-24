@@ -1,17 +1,18 @@
 {
   "name": "eslint-plugin-blade",
   "version": "1.0.0",
-  "private": "true",
+  "private": true,
   "main": "build/index.js",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
   },
   "devDependencies": {
-    "@types/node": "18.17.1",
     "@types/jest": "29.5.3",
+    "@types/node": "18.17.1",
     "jest": "29.6.1",
-    "ts-jest": "29.1.1"
+    "ts-jest": "29.1.1",
+    "typescript": "5.9.3"
   },
   "scripts": {
     "build": "tsc -b",

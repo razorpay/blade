@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';

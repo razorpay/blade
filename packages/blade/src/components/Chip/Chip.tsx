@@ -156,6 +156,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(rest)}
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      alignSelf={isReactNative() ? 'flex-start' : undefined}
       ref={getOuterMotionRef({ _motionMeta, ref })}
       width={width}
       maxWidth={maxWidth}
@@ -173,10 +174,10 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         inputProps={isReactNative() ? inputProps : {}}
         style={{
           cursor: _isDisabled ? 'not-allowed' : 'pointer',
-          width: '100%',
+          ...(!isReactNative() && { width: '100%' }),
         }}
       >
-        <BaseBox display="flex" flexDirection="column" width="100%">
+        <BaseBox display="flex" flexDirection="column" {...(!isReactNative() && { width: '100%' })}>
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               hoverTokens={getChipInputHoverTokens(chipColor)}
@@ -189,7 +190,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
             />
             <AnimatedChip
               borderColor={chipBorderColor}
+              {...(isReactNative() && { backgroundColor: chipBackgroundColor })}
               isDisabled={_isDisabled}
+              isChecked={_isChecked}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
               size={_size}
@@ -202,7 +205,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 size={_size}
                 display="flex"
                 flexDirection="row"
-                justifyContent="center"
+                justifyContent={isReactNative() ? 'flex-start' : 'center'}
                 alignItems="center"
                 overflow="hidden"
                 backgroundColor={chipBackgroundColor}
@@ -218,7 +221,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
-                width="100%"
+                width={isReactNative() ? undefined : '100%'}
               >
                 {Icon ? (
                   <BaseBox display="flex">

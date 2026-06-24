@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/react-vite';
 
 import * as tabNavStories from './TabNav.stories';
 import { Box } from '~components/Box';

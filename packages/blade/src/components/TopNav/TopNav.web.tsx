@@ -1,25 +1,36 @@
 import React from 'react';
 import { TopNavContext, useTopNavContext } from './TopNavContext';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { componentZIndices } from '~utils/componentZIndices';
 import type { BoxProps } from '~components/Box';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
+import type { BaseBoxProps } from '~components/Box/BaseBox/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
 } from '~components/SideNav/tokens';
-import { size } from '~tokens/global';
-import { bladeTheme } from '~tokens/theme';
-import { makeSize } from '~utils';
-import { componentZIndices } from '~utils/componentZIndices';
-import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 
 const TOP_NAV_HEIGHT = size[56];
 
 type TopNavProps = {
   children: React.ReactNode;
+  /**
+   * Sets the background color variant of the TopNav.
+   *
+   * - `'neutral'` (default): Uses the static black background. Existing behavior.
+   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`).
+   *
+   * Passing an explicit `backgroundColor` prop will override this variant.
+   *
+   * @default 'neutral'
+   */
+  variant?: 'primary' | 'neutral';
 } & Pick<
   BoxProps,
   | 'padding'
@@ -42,18 +53,27 @@ type TopNavProps = {
   TestID &
   StyledPropsBlade;
 
+const TOP_NAV_BACKGROUND_COLOR: Record<
+  NonNullable<TopNavProps['variant']>,
+  BaseBoxProps['backgroundColor']
+> = {
+  neutral: 'interactive.background.staticBlack.default',
+  primary: 'surface.background.primary.intense',
+};
+
 const _TopNav = (
-  { children, ...rest }: TopNavProps,
+  { children, variant = 'neutral', backgroundColor, ...rest }: TopNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const { colorScheme } = useTheme();
+  const { colorScheme, themeTokens } = useTheme();
+  const resolvedBackgroundColor = backgroundColor ?? TOP_NAV_BACKGROUND_COLOR[variant];
 
   return (
-    <TopNavContext.Provider value={{ colorScheme }}>
-      {/* We are forcing the theme to dark here because the TopNav is always in dark mode. 
+    <TopNavContext.Provider value={{ colorScheme, themeTokens, variant }}>
+      {/* We are forcing the theme to dark here because the TopNav is always in dark mode.
        we also want components inside the TopNav to be in the same theme as the TopNav.
       */}
-      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <BladeProvider themeTokens={themeTokens} colorScheme="dark">
         <BaseBox
           ref={ref as never}
           display="grid"
@@ -66,7 +86,8 @@ const _TopNav = (
           paddingX={{ base: 'spacing.4', m: 'spacing.3' }}
           height={makeSize(TOP_NAV_HEIGHT)}
           zIndex={componentZIndices.topnav}
-          backgroundColor="interactive.background.staticBlack.default"
+          backgroundColor={resolvedBackgroundColor}
+          overflow="hidden"
           {...rest}
           {...metaAttribute({ name: MetaConstants.TopNav, testID: rest.testID })}
           {...makeAnalyticsAttribute(rest)}
@@ -80,7 +101,14 @@ const _TopNav = (
 
 const TopNav = React.forwardRef(_TopNav);
 
-const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+type TopNavBrandProps = {
+  children: React.ReactNode;
+} & Pick<BoxProps, 'paddingY'>;
+
+const TopNavBrand = ({
+  children,
+  paddingY = 'spacing.5',
+}: TopNavBrandProps): React.ReactElement => {
   return (
     <BaseBox
       flexDirection="row"
@@ -89,7 +117,7 @@ const TopNavBrand = ({ children }: { children: React.ReactNode }): React.ReactEl
         xl: makeSize(SIDE_NAV_EXPANDED_L1_WIDTH_XL),
       }}
       {...metaAttribute({ name: MetaConstants.TopNavBrand })}
-      paddingY="spacing.5"
+      paddingY={paddingY}
       marginLeft="spacing.6"
     >
       <BaseBox width="100%">{children}</BaseBox>
@@ -113,7 +141,7 @@ const TopNavContent = ({ children }: { children: React.ReactNode }): React.React
 
 const TopNavActions = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const topNavContext = useTopNavContext();
-  const { colorScheme } = useTheme();
+  const { colorScheme, themeTokens } = useTheme();
   const topNavActions = (
     <BaseBox
       alignSelf="flex-start"
@@ -132,12 +160,19 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
   );
 
   if (topNavContext) {
-    return topNavActions;
+    return (
+      <BladeProvider
+        themeTokens={topNavContext.themeTokens}
+        colorScheme={topNavContext.variant === 'primary' ? 'light' : 'dark'}
+      >
+        {topNavActions}
+      </BladeProvider>
+    );
   }
 
   return (
-    <TopNavContext.Provider value={{ colorScheme }}>
-      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+    <TopNavContext.Provider value={{ colorScheme, themeTokens }}>
+      <BladeProvider themeTokens={themeTokens} colorScheme="dark">
         {topNavActions}
       </BladeProvider>
     </TopNavContext.Provider>
@@ -145,4 +180,4 @@ const TopNavActions = ({ children }: { children: React.ReactNode }): React.React
 };
 
 export { TopNav, TopNavBrand, TopNavContent, TopNavActions };
-export type { TopNavProps };
+export type { TopNavProps, TopNavBrandProps };

@@ -6,7 +6,7 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
-import type { CardSpacingValueType, LinkOverlayProps } from './types';
+import type { CardSpacingValueType, CardVariant, LinkOverlayProps } from './types';
 import { CARD_LINK_OVERLAY_ID } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -163,6 +163,15 @@ export type CardProps = {
    */
   onHover?: () => void;
   /**
+   * Sets the visual variant of the Card
+   *
+   * - `primary`: Standard card with full composition (CardHeader, CardBody, CardFooter)
+   * - `secondary`: Simplified card that only accepts CardBody as children
+   *
+   * @default 'primary'
+   */
+  variant?: CardVariant;
+  /**
    * Sets the size of the card header title
    *
    * @default 'large'
@@ -232,6 +241,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     target,
     rel,
     as,
+    variant = 'primary',
     size = 'large',
     cursor,
     opacity,
@@ -250,7 +260,10 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   useVerifyAllowedChildren({
     children,
     componentName: 'Card',
-    allowedComponents: [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
+    allowedComponents:
+      variant === 'secondary'
+        ? [ComponentIds.CardBody]
+        : [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
   });
 
   const linkOverlayProps: LinkOverlayProps = {
@@ -279,7 +292,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   const _validationState = groupProps?.validationState;
 
   return (
-    <CardProvider size={size}>
+    <CardProvider size={size} variant={variant}>
       <CardRoot
         as={as}
         ref={ref as never}
@@ -320,6 +333,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           overflow={overflow}
           overflowX={overflowX}
           overflowY={overflowY}
+          variant={variant}
           $isCard={true}
         >
           {href ? (
