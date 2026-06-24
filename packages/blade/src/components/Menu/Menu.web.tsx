@@ -64,9 +64,9 @@ const MenuTree = ({
     ),
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const floatingProps: any = {
-    ref: refs.setFloating,
+  const floatingProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ref: refs.setFloating as any,
     style: floatingStyles,
     _transitionStyle: floatingTransitionStyles,
     'data-placement': context.placement,
