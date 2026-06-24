@@ -504,6 +504,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -514,7 +515,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -539,6 +540,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               fontSize={75}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.0"
               style={
@@ -549,7 +551,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -825,6 +827,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -835,7 +838,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1110,6 +1113,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -1120,7 +1124,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1336,6 +1340,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -1346,7 +1351,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1371,6 +1376,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               fontSize={75}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.0"
               style={
@@ -1381,7 +1387,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1471,6 +1477,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -1480,7 +1487,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1641,6 +1648,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -1650,7 +1658,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1811,6 +1819,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -1820,7 +1829,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1981,6 +1990,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -1990,7 +2000,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2151,6 +2161,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -2160,7 +2171,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2321,6 +2332,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -2330,7 +2342,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2491,6 +2503,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -2500,7 +2513,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2661,6 +2674,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -2670,7 +2684,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2831,6 +2845,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -2840,7 +2855,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -3001,6 +3016,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -3010,7 +3026,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -3161,6 +3177,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -3170,7 +3187,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -3205,6 +3222,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -3214,7 +3232,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with default p
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -3366,6 +3384,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -3375,7 +3394,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -3410,6 +3429,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -3419,7 +3439,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with medium si
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -3571,6 +3591,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -3580,7 +3601,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -3615,6 +3636,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -3624,7 +3646,7 @@ exports[`<ProgressBar /> should render linear variant ProgressBar with small siz
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -4036,6 +4058,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -4046,7 +4069,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4100,7 +4123,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4172,6 +4195,290 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -4293,6 +4600,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -4302,7 +4610,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -4337,6 +4645,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -4346,7 +4655,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -4472,7 +4781,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4544,6 +4853,290 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -4665,6 +5258,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
@@ -4674,7 +5268,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "letterSpacing": 0,
+                "letterSpacing": -0.15600000000000003,
                 "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -4709,6 +5303,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
+            letterSpacing={50}
             lineHeight={75}
             style={
               [
@@ -4718,7 +5313,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -4844,7 +5439,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -4916,6 +5511,290 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5174,6 +6053,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -5184,7 +6064,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5209,6 +6089,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.0"
               style={
@@ -5219,7 +6100,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5273,7 +6154,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -5345,6 +6226,290 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -5603,6 +6768,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.3"
               style={
@@ -5613,7 +6779,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -5638,6 +6804,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="semibold"
+              letterSpacing={50}
               lineHeight={75}
               marginTop="spacing.0"
               style={
@@ -5648,7 +6815,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "600",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.15600000000000003,
                     "lineHeight": 17,
                     "marginBottom": 0,
                     "marginLeft": 0,

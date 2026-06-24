@@ -105,26 +105,34 @@ const FileUploadItem = memo(
             {status === 'uploading' ? (
               <BaseBox display="flex" alignItems="center">
                 <IconButton
-                  accessibilityLabel="Remove File"
+                  accessibilityLabel={`Remove ${name}`}
                   icon={CloseIcon}
                   onClick={() => onDismiss?.({ file })}
                 />
               </BaseBox>
             ) : status === 'error' ? (
-              <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                 <BaseLink
                   marginX="spacing.1"
                   variant="button"
                   icon={RotateClockWiseIcon}
                   color="negative"
-                  size="small"
+                  size="medium"
                   onClick={() => {
                     onReupload?.({ file });
                   }}
                   data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-                >
-                  Re-upload
-                </BaseLink>
+                />
+                {onRemove ? (
+                  <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+                    <Divider orientation="vertical" thickness="thin" variant="normal" />
+                    <IconButton
+                      accessibilityLabel={`Remove ${name}`}
+                      icon={TrashIcon}
+                      onClick={() => onRemove({ file })}
+                    />
+                  </BaseBox>
+                ) : null}
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center">
@@ -137,20 +145,20 @@ const FileUploadItem = memo(
                     gap="spacing.3"
                   >
                     <IconButton
-                      accessibilityLabel="Preview File"
+                      accessibilityLabel={`Preview ${name}`}
                       icon={EyeIcon}
                       onClick={() => onPreview?.({ file })}
                     />
                     <Divider orientation="vertical" thickness="thinner" variant="normal" />
                     <IconButton
-                      accessibilityLabel="Remove File"
+                      accessibilityLabel={`Remove ${name}`}
                       icon={TrashIcon}
                       onClick={() => onRemove?.({ file })}
                     />
                   </BaseBox>
                 ) : (
                   <IconButton
-                    accessibilityLabel="Remove File"
+                    accessibilityLabel={`Remove ${name}`}
                     icon={TrashIcon}
                     onClick={() => onRemove?.({ file })}
                   />

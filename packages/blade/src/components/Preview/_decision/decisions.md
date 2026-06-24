@@ -144,4 +144,4 @@ Example Usage -
 
 ## Open Questions
 
-- Should we change it's name to PreviewPanel ?
+- Should we change its name to PreviewPanel ?

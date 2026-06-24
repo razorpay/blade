@@ -28,7 +28,7 @@ exports[`<Code /> should render Code with color 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bksIuc  c0"
     data-blade-component="code"
   >
     <code
@@ -71,7 +71,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bksIuc  c0"
     data-blade-component="code"
   >
     <code
@@ -113,7 +113,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bksIuc  c0"
     data-blade-component="code"
   >
     <code
@@ -156,7 +156,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bksIuc  c0"
     data-blade-component="code"
   >
     <code
@@ -199,7 +199,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bksIuc  c0"
     data-blade-component="code"
   >
     <code

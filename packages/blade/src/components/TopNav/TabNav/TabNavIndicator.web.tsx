@@ -4,7 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
-import { size } from '~tokens/global';
+import { size, opacity } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import { useResize } from '~utils/useResize';
@@ -29,7 +29,7 @@ const StyledTabNavIndicatorLine = styled(BaseBox)(({ theme }) => {
   };
 });
 
-const GLOW_OVERFLOW = 32;
+const GLOW_OVERFLOW = size[32];
 const GLOW_HEIGHT = size[56];
 
 const buildGlowMask = (width: number, height: number = GLOW_HEIGHT): string => {
@@ -51,7 +51,7 @@ const StyledIndicatorGlow = styled.div<{
     width: `${totalWidth}px`,
     height: `${GLOW_HEIGHT}px`,
     // Tuned visually to blend the glow into the dark TopNav background without overpowering the indicator line
-    opacity: 0.8,
+    opacity: opacity[1000],
     background: `radial-gradient(50% 100% at 50% 100%, ${glowColor} 0%, transparent 100%)`,
     WebkitMaskImage: glowMask,
     WebkitMaskRepeat: 'no-repeat',
@@ -68,8 +68,10 @@ const ACTIVE_ITEM_SELECTOR = '[data-blade-component="tab-nav-item"][data-active=
 
 const TabNavIndicator = ({
   containerRef,
+  showGlow = true,
 }: {
   containerRef: React.RefObject<HTMLElement | null>;
+  showGlow?: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
   const wrapperRef = React.useRef<HTMLDivElement>(null);
@@ -174,7 +176,7 @@ const TabNavIndicator = ({
       }}
       {...metaAttribute({ name: MetaConstants.TabNavIndicator })}
     >
-      {activeWidth > 0 && (
+      {showGlow && activeWidth > 0 && (
         <StyledIndicatorGlow glowColor={glowColor} glowWidth={activeWidth} glowMask={glowMask} />
       )}
       <StyledTabNavIndicatorLine

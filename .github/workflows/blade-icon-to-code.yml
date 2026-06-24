@@ -20,12 +20,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2. decide what text we’ll put in the file
+      # 2. decide what text we'll put in the file
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
       - name: Install Yarn
         run: npm install --global yarn
 

@@ -1,5 +1,8 @@
 import type { AreaProps as RechartAreaProps } from 'recharts';
-import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
+import type {
+  ChartsCategoricalColorToken,
+  ChartSequentialColorToken,
+} from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
 import type { BoxProps } from '~components/Box';
 
@@ -32,7 +35,7 @@ type ChartAreaProps = {
   /**
    * The color of the area chart.
    */
-  color?: ChartsCategoricalColorToken;
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
    * Whether to show the dot.
    */
@@ -79,14 +82,14 @@ type ChartAreaWrapperProps = {
 
 type ChartColorGradientProps = {
   index: number;
-  color?: ChartsCategoricalColorToken;
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   key: string;
   totalAreaChartChildren: number;
   id: string;
 };
 
 type ChartColorGradientData = {
-  color?: ChartsCategoricalColorToken;
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   dataKey: RechartAreaProps['dataKey'];
 };
 

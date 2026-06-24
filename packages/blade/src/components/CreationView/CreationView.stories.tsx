@@ -1,6 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useEffect } from 'react';
-import storyRouterDecorator from 'storybook-react-router';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import styled from 'styled-components';
@@ -9,6 +8,7 @@ import PayNow from './assets/paynow.png';
 import DonationButton from './assets/donationButton.png';
 import cardImage from './assets/card.png';
 import ModalSideImage from './assets/sideImage.png';
+import storyRouterDecorator from '~utils/storybook/StoryRouter';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import isChromatic from 'chromatic';
 import { SpotlightPopoverTourStep } from '../TourStep';
 import { SpotlightPopoverTourFooter } from '../TourFooter';
@@ -75,7 +75,7 @@ type StoryControlProps = SpotlightPopoverTourProps & {
 export default {
   title: 'Components/SpotlightPopoverTour',
   component: SpotlightPopoverTour,
-  tags: ['autodocs'],
+  tags: [],
   argTypes: {
     tourStepsTitle: {
       name: 'steps[0].title',

@@ -13,7 +13,6 @@ import { InfoIcon } from '~components/Icons';
 
 const triggerId = 'popover-interactive-wrapper';
 const modalBackdropId = 'popover-modal-backdrop';
-const popoverModalId = 'popover-modal';
 const popoverInteractiveWrapperId = 'popover-interactive-wrapper';
 
 describe('<Popover />', () => {
@@ -22,12 +21,12 @@ describe('<Popover />', () => {
   it('should render', async () => {
     const popoverContent = 'Hello world';
     const buttonText = 'Click me';
-    const { toJSON, getByRole, getByTestId } = renderWithTheme(
+    const { toJSON, getByRole, getByTestId, queryByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
 
     expect(getByRole('button', { name: buttonText })).toBeTruthy();
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
@@ -35,7 +34,7 @@ describe('<Popover />', () => {
     await act(async () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.quick);
     });
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     expect(toJSON()).toMatchSnapshot();
   });
@@ -64,7 +63,7 @@ describe('<Popover />', () => {
   it('should work with PopoverInteractiveWrapper', () => {
     const triggerText = 'Press me';
     const popoverContent = 'hello world';
-    const { getByTestId } = renderWithTheme(
+    const { getByTestId, queryByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>}>
         <PopoverInteractiveWrapper testID={popoverInteractiveWrapperId}>
           <Text>{triggerText}</Text>
@@ -73,26 +72,26 @@ describe('<Popover />', () => {
     );
 
     expect(getByTestId(triggerId)).toBeTruthy();
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
 
     fireEvent(getByTestId(triggerId), 'touchEnd');
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
   });
 
   it('should close clicking the close icon', async () => {
     const buttonText = 'Click me';
     const popoverContent = 'hello world';
-    const { getByRole, getByTestId } = renderWithTheme(
+    const { getByRole, getByTestId, queryByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
 
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     // close on clicking close icon
     fireEvent.press(getByRole('button', { name: 'Close' }));
@@ -101,22 +100,22 @@ describe('<Popover />', () => {
     await act(async () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
   });
 
   it('should close on pressing outside of trigger', async () => {
     const buttonText = 'Press me';
     const popoverContent = 'hello world';
-    const { getByRole, getByTestId } = renderWithTheme(
+    const { getByRole, getByTestId, queryByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
 
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     // close on clicking backdrop
     fireEvent.press(getByTestId(modalBackdropId));
@@ -125,7 +124,7 @@ describe('<Popover />', () => {
     await act(async () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
   });
 
   it('should not close when interacting with internal components', async () => {
@@ -140,24 +139,24 @@ describe('<Popover />', () => {
 
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     // should not close when interacting with internal components
     fireEvent.press(getByRole('button', { name: internalButtonText }));
 
     expect(clickFn).toHaveBeenCalledTimes(1);
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
   });
 
   it('should work with uncontrolled state', async () => {
     const buttonText = 'Click me';
     const popoverContent = 'hello world';
-    const { getByRole, getByTestId } = renderWithTheme(
+    const { getByRole, getByTestId, queryByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>} defaultIsOpen>
         <Button>{buttonText}</Button>
       </Popover>,
     );
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
@@ -168,7 +167,7 @@ describe('<Popover />', () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
   });
 
   it('should work with controlled isOpen', async () => {
@@ -191,10 +190,10 @@ describe('<Popover />', () => {
         </>
       );
     };
-    const { getByTestId, getByRole } = renderWithTheme(<ControlledExample />);
+    const { getByTestId, getByRole, queryByTestId } = renderWithTheme(<ControlledExample />);
 
     // should be opened by default
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     // close
     fireEvent.press(getByRole('button', { name: toggleButtonText }));
@@ -204,12 +203,12 @@ describe('<Popover />', () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
 
     // open again
     fireEvent.press(getByRole('button', { name: toggleButtonText }));
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
+    expect(getByTestId(modalBackdropId)).toBeTruthy();
 
     // close again with close icon
     fireEvent.press(getByRole('button', { name: 'Close' }));
@@ -219,7 +218,7 @@ describe('<Popover />', () => {
       jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
-    expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
+    expect(queryByTestId(modalBackdropId)).toBeNull();
   });
 
   it('should render popover with custom zIndex', () => {

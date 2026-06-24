@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Modal } from '../Modal';
 import {
   BasicModalStory,

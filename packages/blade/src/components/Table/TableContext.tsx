@@ -42,12 +42,15 @@ export type TableContextType<Item> = {
   showBorderedCells: NonNullable<TableProps<unknown>['showBorderedCells']>;
   hasHoverActions: boolean;
   setHasHoverActions: (hasHoverActions: boolean) => void;
+  multiSelectTrigger?: TableProps<unknown>['multiSelectTrigger'];
   columnCount: number;
   gridTemplateColumns: string | undefined;
   isVirtualized?: boolean;
   tableData: LocalTableNode<Item>[];
   isGrouped: boolean;
   tableToolbarPlacement: TableToolbarPlacement;
+  /** @see TableProps['checkboxDisplay'] */
+  checkboxDisplay: NonNullable<TableProps<unknown>['checkboxDisplay']>;
 };
 
 const TableContext = React.createContext<TableContextType<unknown>>({
@@ -74,12 +77,14 @@ const TableContext = React.createContext<TableContextType<unknown>>({
   showBorderedCells: false,
   hasHoverActions: false,
   setHasHoverActions: () => {},
+  multiSelectTrigger: 'row',
   columnCount: 0,
   gridTemplateColumns: undefined,
   isVirtualized: false,
   tableData: [],
   isGrouped: false,
   tableToolbarPlacement: 'inline',
+  checkboxDisplay: 'always',
 });
 
 const useTableContext = <Item,>(): TableContextType<Item> => {

@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ChatMessage } from '../ChatMessage';

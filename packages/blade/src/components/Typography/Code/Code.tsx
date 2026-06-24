@@ -6,7 +6,7 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
+import { getPlatformType, isAndroid } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FontSize, Typography } from '~tokens/global';
 import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
@@ -168,6 +168,8 @@ const _Code = (
         lineHeight={lineHeight}
         letterSpacing={letterSpacing}
         textTransform={textTransform}
+        // Android's default font padding nudges inline code up relative to adjacent text.
+        style={(isAndroid() ? { includeFontPadding: false } : undefined) as never}
       >
         {children}
       </BaseText>

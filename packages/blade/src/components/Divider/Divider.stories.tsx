@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { DividerProps } from './Divider';
 import { Divider as DividerComponent } from './Divider';
 import { Heading } from '~components/Typography/Heading';
@@ -159,7 +159,7 @@ const DividerWithTextTemplate: StoryFn<typeof DividerComponent> = () => {
           <Heading marginBottom="spacing.4">Explore multiple payment options</Heading>
           <DividerComponent />
           <BaseBox display="flex" gap="spacing.6" flexDirection="row">
-            <BaseBox width="30%">
+            <BaseBox flex={1}>
               <Text margin="spacing.4">
                 Accept payments with a custom-branded online store using Payment Pages. Accept
                 international and domestic payments with automated payment receipts. Take your store
@@ -167,14 +167,14 @@ const DividerWithTextTemplate: StoryFn<typeof DividerComponent> = () => {
               </Text>
             </BaseBox>
             <DividerComponent orientation="vertical" />
-            <BaseBox width="30%">
+            <BaseBox flex={1}>
               <Text margin="spacing.4">
                 Create payment links which can be shared via an email, SMS, messenger, chatbot etc.
                 and get paid immediately. Accepting payments from customers is now just a link away.
               </Text>
             </BaseBox>
             <DividerComponent orientation="vertical" />
-            <BaseBox width="30%">
+            <BaseBox flex={1}>
               <Text margin="spacing.4">
                 Accept one time and subscription payments on your website in less than 5 minutes.
                 Thousands of NGOs, SMEs, and freelancers are collecting payments by adding a payment

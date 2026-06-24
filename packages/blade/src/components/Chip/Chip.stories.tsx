@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import { Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';

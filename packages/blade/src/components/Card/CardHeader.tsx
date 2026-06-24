@@ -27,6 +27,7 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 import type { AmountProps } from '~components/Amount';
 import { Amount } from '~components/Amount';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { isReactNative } from '~utils';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -199,15 +200,16 @@ const _CardHeaderLeading = ({
       display="flex"
       flexDirection="column"
       gap="spacing.4"
+      flexShrink={isReactNative() ? 1 : undefined}
     >
-      <BaseBox flex={1} display="flex" flexDirection="row">
+      <BaseBox flex={isReactNative() ? undefined : 1} display="flex" flexDirection="row">
         {prefix && (
           <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
             {prefix}
           </BaseBox>
         )}
 
-        <BaseBox marginRight="spacing.5">
+        <BaseBox marginRight="spacing.5" flexShrink={isReactNative() ? 1 : undefined}>
           <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
             <Text color="surface.text.gray.normal" size={size} weight="semibold">
               {title}

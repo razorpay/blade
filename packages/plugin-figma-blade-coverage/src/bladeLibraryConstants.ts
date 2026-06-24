@@ -63,8 +63,25 @@ export const bladeThemeData = {
     'Carousel/Navigation-Buttons': {
       key: 'e3f78706bf5400999cbca416cf26248ae7d0f66e',
     },
+
     Divider: {
       key: '3942574367676524ab7ea045ece704f751984dae',
+    },
+
+    // Chat Message
+    ChatMessage: {
+      key: '2177b8528fee876a39bf2c3642a278ecd7b33b1a',
+    },
+    'ChatMessage/Left': {
+      key: '2745879c3810c5c907e2b8dd1c578b7b0805fead',
+    },
+    'ChatMessage/Right': {
+      key: 'e01c6482fdb3b3905c648e9c0e6433980a5efa5b',
+    },
+
+    // Chat Input
+    ChatInput: {
+      key: 'd8fe45485e1287846fa651b74c016775f1a853b2',
     },
 
     // Drawer
@@ -1688,6 +1705,12 @@ export const bladeThemeData = {
     'surface/text/staticWhite/normal': 'VariableID:ad7dde5a2180f08b9404d6edfd5cc0ac3fd9efdd',
     'surface/text/staticWhite/subtle': 'VariableID:e0b951f5d9acd91438edc1f7bc988381c3fed69e',
     transparent: 'VariableID:c56fe78d12e79891d9e62aeb5509c86a2421c0ba',
+
+    // Styles-specific colors for specific components
+    'styles/card/top-gradient/000': 'VariableID:3e82bdc768d34944e085183a10e79f91f7e47dd1',
+    'styles/card/top-gradient/100': 'VariableID:68d048fc47ad7624d5cee9a9ad368aa56109f70d',
+    'styles/card/bottom-gradient/000': 'VariableID:79564e40ec7362b79731139c07c2f6553c65e337',
+    'styles/card/bottom-gradient/100': 'VariableID:09c36ad67b3f03f73f46507ca889a32f4ba2cc2e',
   },
   textStyles: {
     'Display/XLargeSemibold': 'S:72a9a963db4bfa5273c9ecdf79b66765942dd095',
@@ -1738,11 +1761,15 @@ export const bladeThemeData = {
     'Elevation/highRaised': 'S:83e8795c0548afa8e1e99ecdcaffa261a112a57d',
     // 'Eleation/_bottomSheet': 'S:43bf80562d506bf0541a1237233edd455bbebb7a', // private style
   },
+  componentStyles: {
+    'card/bottom-gradient': 'S:61342ad79e0ef7567678cd0a4544529d9b988213',
+    'card/top-gradient': 'S:c4391a0ea2fc125b6ee06befd0b9101491788fed,',
+  },
   variables: {
     CardBorderRadius: {
-      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/92004:1632',
-      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/92004:1633',
-      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/92004:1634',
+      medium: 'VariableID:4965272d93863faec6d5e08d97e3c834d0e091b4/108189:1686',
+      large: 'VariableID:5c72be3e212b0e87e6ba3e69a5bd812b40b4d456/106885:444',
+      xlarge: 'VariableID:67fc44c355119012a771dabc7c38bb6cfb0117cd/106885:251',
     },
   },
 };
@@ -1806,7 +1833,7 @@ export const BLADE_TEXT_COLOR_STYLE_IDS = Object.entries(bladeThemeData.colorSty
   .flat()
   .filter(Boolean);
 
-const allowedBackgroundColorTokenNames = ['surface/background'];
+const allowedBackgroundColorTokenNames = ['surface/background', 'styles/card'];
 export const BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS = Object.entries(bladeThemeData.colorStyles)
   .map(([colorVariableTokenName, colorVariableKey]) => {
     return allowedBackgroundColorTokenNames.reduce<string[]>((acc, backgroundTokenName) => {

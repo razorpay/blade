@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { waitFor } from '@testing-library/react';
@@ -5,6 +6,7 @@ import { Collapsible } from '../Collapsible';
 import { CollapsibleBody } from '../CollapsibleBody';
 import { CollapsibleButton } from '../CollapsibleButton';
 import { CollapsibleLink } from '../CollapsibleLink';
+import { CollapsibleText } from '../CollapsibleText';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Amount } from '~components/Amount';
@@ -200,6 +202,109 @@ describe('<Collapsible />', () => {
 
     await assertAccessible(container);
   });
+  it('should render with CollapsibleText', () => {
+    const { container } = renderWithTheme(
+      <Collapsible>
+        <CollapsibleText>View Price Breakdown</CollapsibleText>
+        <CollapsibleBody>
+          <Box display="flex" flexDirection="column" minWidth="200px">
+            <Text>Actual amount</Text>
+            <Amount value={1000} color="feedback.text.positive.intense" />
+          </Box>
+        </CollapsibleBody>
+      </Collapsible>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should expand and close with CollapsibleText', async () => {
+    const bodyText = 'Actual amount';
+    const onExpandChange = jest.fn();
+
+    const { getByRole, getByText } = renderWithTheme(
+      <Collapsible onExpandChange={onExpandChange}>
+        <CollapsibleText>View Price Breakdown</CollapsibleText>
+        <CollapsibleBody>
+          <Box display="flex" flexDirection="column" minWidth="200px">
+            <Text>{bodyText}</Text>
+            <Amount value={1000} color="feedback.text.positive.intense" />
+          </Box>
+        </CollapsibleBody>
+      </Collapsible>,
+    );
+
+    const user = userEvent.setup();
+    const trigger = getByRole('button', { name: 'View Price Breakdown' });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(getByText(bodyText)).not.toBeVisible();
+
+    await user.click(trigger);
+    await waitFor(() => expect(getByText(bodyText)).toBeVisible());
+
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(onExpandChange).toHaveBeenCalledTimes(1);
+    expect(onExpandChange).toHaveBeenLastCalledWith({ isExpanded: true });
+  });
+
+  it('should not expand when CollapsibleText is disabled', async () => {
+    const onExpandChange = jest.fn();
+
+    const { getByRole } = renderWithTheme(
+      <Collapsible onExpandChange={onExpandChange}>
+        <CollapsibleText isDisabled>View Price Breakdown</CollapsibleText>
+        <CollapsibleBody>
+          <Text>Content</Text>
+        </CollapsibleBody>
+      </Collapsible>,
+    );
+
+    const user = userEvent.setup();
+    const trigger = getByRole('button', { name: 'View Price Breakdown' });
+
+    await user.click(trigger);
+    expect(onExpandChange).not.toHaveBeenCalled();
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('should accept testID with CollapsibleText', () => {
+    const { getByTestId } = renderWithTheme(
+      <Collapsible testID="collapsible">
+        <CollapsibleText testID="collapsible-text">View Price Breakdown</CollapsibleText>
+        <CollapsibleBody testID="collapsible-body">
+          <Box display="flex" flexDirection="column" minWidth="200px">
+            <Text>Actual amount</Text>
+            <Amount value={1000} color="feedback.text.positive.intense" />
+          </Box>
+        </CollapsibleBody>
+      </Collapsible>,
+    );
+
+    getByTestId('collapsible');
+    getByTestId('collapsible-text');
+    getByTestId('collapsible-body');
+  });
+
+  it('should pass general a11y with CollapsibleText', async () => {
+    const { getByRole } = renderWithTheme(
+      <Collapsible defaultIsExpanded>
+        <CollapsibleText>View Price Breakdown</CollapsibleText>
+        <CollapsibleBody>
+          <Box display="flex" flexDirection="column" minWidth="200px">
+            <Text>Actual amount</Text>
+            <Amount value={1000} color="feedback.text.positive.intense" />
+          </Box>
+        </CollapsibleBody>
+      </Collapsible>,
+    );
+
+    const collapsibleTrigger = getByRole('button');
+    const collapsiblePanel = getByRole('region');
+
+    await assertAccessible(collapsibleTrigger);
+    await assertAccessible(collapsiblePanel);
+  });
+
   it('should support adding data-analytics attributes', () => {
     const { container } = renderWithTheme(
       <Collapsible data-analytics-collapsible="View Breakdown">
