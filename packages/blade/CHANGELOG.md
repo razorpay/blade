@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.108.3
+
+### Patch Changes
+
+- d95ebf0b4: fix: resolve TypeScript errors in DatePicker calendar icon click handler by casting BladeElementRef to HTMLElement
+
 ## 12.108.2
 
 ### Patch Changes
