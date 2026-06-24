@@ -232,10 +232,21 @@ let currentUser;
 try {
   currentUser = execSync("gh api user --jq '.login'").toString().trim();
 } catch (_) {
-  currentUser = null;
+  // gh api user returns 403 for GitHub App tokens; fall back to gh auth status
+  try {
+    const statusOutput = execSync('gh auth status 2>&1').toString();
+    const match = statusOutput.match(/account\s+(\S+)/i);
+    currentUser = match ? match[1].replace(/\[bot\]$/i, '') : null;
+  } catch (_2) {
+    currentUser = null;
+  }
 }
-const normalize = (login) => login?.replace(/\[bot\]$/, '');
-const isSelfReview = currentUser !== null && normalize(prAuthor) === normalize(currentUser);
+const normalize = (login) => login?.replace(/\[bot\]$/i, '').toLowerCase();
+const SLASH_ACCOUNTS = ['rzp-slash-public', 'rzp-slash'];
+const isSelfReview =
+  currentUser !== null &&
+  (normalize(prAuthor) === normalize(currentUser) ||
+    (normalize(currentUser) === 'slash' && SLASH_ACCOUNTS.includes(normalize(prAuthor))));
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];

@@ -33,17 +33,7 @@ if (selected.length === 0) {
 const commentUrls = selected.map((c) => c.html_url).join('\n');
 const commentIds = selected.map((c) => c.id);
 
-const prompt = `Resolve the following PR review comments that were just submitted in a single review.
-
-Comment URLs:
-${commentUrls}
-
-Instructions:
-  - Fetch the details of the PR and each comment with \`gh\` CLI.
-  - For each comment: when it asks for clarification, reply to the comment with a response (including "[resolved by agent]" at the end) OR push a code fix to the PR branch.
-  - Whenever applicable, create a fix commit and push it to the PR branch, reply to the relevant comment(s) with "[resolved by agent]" at the end and also mark the comment thread as resolved on github.
-  - After investigation and looking at the other code, if you find that a comment is invalid or irrelevant, skip resolving it and just reply to the comment with why that is invalid or irrelevant (add [resolved by agent] at the end).
-  - If you need clarification from the PR author for any comment, add the label "Human Help Needed 🧑🏻‍💻" to the PR instead of guessing.`;
+const prompt = `Resolve the review comments on PR #${prNumber} using the /resolve-comments skill from the blade repo. COMMENT_URLS:\n${commentUrls}\n\nStrictly use the resolve-comments skill from the blade repo only. Do not use any other skill.`;
 
 const responseOutput = execSync(`node .github/scripts/run-slash.js ${JSON.stringify(prompt)}`, {
   encoding: 'utf8',

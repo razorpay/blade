@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 12.108.2
+
+### Patch Changes
+
+- 8b8c852e8: fix(native) :- fixed left padding in phone input's country selector
+
+## 12.108.1
+
+### Patch Changes
+
+- 3595bf51b: fix(blade): genui font weights and spacing
+
 ## 12.108.0
 
 ### Minor Changes
