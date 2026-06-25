@@ -37,28 +37,50 @@ Write to absolute paths under `{Worktree}`:
 
 ---
 
-## Step 0: Pre-flight — Ensure Simulator Is Ready
+## Step 0: Pre-flight — Ensure Simulator & Metro Are Ready
+
+Blade Storybook is a dev build — it requires Metro bundler to serve the JS bundle.
 
 1. **Boot iOS simulator:**
    ```bash
-   npx agent-device boot
+   npx agent-device boot --platform ios
    ```
 
-2. **Check if BladeShowcase is installed:**
+2. **Check if Metro is already running:**
    ```bash
-   npx agent-device apps | grep -i "blade\|showcase"
+   curl -s http://localhost:8081/status 2>/dev/null && echo "METRO_UP" || echo "METRO_DOWN"
    ```
 
-3. **If installed, open it:**
+3. **If Metro is DOWN, patch Hermes and start it (background):**
    ```bash
-   npx agent-device open com.bladeshowcase
+   cd {Worktree}/packages/blade && node scripts/patch-storybook-hermes.js && cross-env FRAMEWORK=REACT_NATIVE react-native start --reset-cache &
+   ```
+   The patch script fixes regex patterns in dependencies (e.g., `es-toolkit`) that use syntax unsupported by Hermes. Without it, the app crashes on launch with "Invalid RegExp" errors.
+
+   Wait for Metro to be ready:
+   ```bash
+   for i in $(seq 1 30); do curl -s http://localhost:8081/status && break || sleep 2; done
    ```
 
-4. **If NOT installed** — skip visual verification (Steps 4-5), mark as INCOMPLETE in report. Log: "BladeShowcase not available — visual verification skipped. Run `yarn ios` in BladeShowcase project to install."
-
-5. **Wait for app to be ready:**
+4. **Check if Blade Storybook is installed:**
    ```bash
-   npx agent-device wait --text "Blade Showcase" --timeout 15000
+   npx agent-device apps | grep -i "blade"
+   ```
+
+5. **If installed (look for `org.reactjs.native.example.blade`), open it:**
+   ```bash
+   npx agent-device open org.reactjs.native.example.blade
+   ```
+
+6. **If NOT installed** — build and install via:
+   ```bash
+   cd {Worktree}/packages/blade && yarn react-native:storybook:ios
+   ```
+   This builds and launches the app on the simulator. If the build fails, skip visual verification (Steps 4-5), mark as INCOMPLETE in report. Log: "Blade Storybook build failed — visual verification skipped."
+
+7. **Wait for app to be ready:**
+   ```bash
+   npx agent-device wait text "COMPONENTS" 30000
    ```
 
 ---
@@ -147,31 +169,49 @@ done
 
 ### Step 4: Visual Verification via agent-device
 
-**Pre-check:** If Step 0 determined BladeShowcase is unavailable, skip to Step 6 and mark visual as INCOMPLETE.
+**Pre-check:** If Step 0 determined Blade Storybook is unavailable, skip to Step 6 and mark visual as INCOMPLETE.
 
 #### 4a: Navigate to Component
 
+The RN Storybook uses a bottom-sheet navigator. Navigation pattern:
+1. Take initial screenshot to see current state
+2. Open the navigator by tapping the story path in the bottom bar
+3. Find and tap the target component story in the list
+4. Wait for the component to render
+
 ```bash
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/app-home.png
+# 1. Screenshot current state
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/app-home.png
+
+# 2. Open navigator — tap the story path text in the bottom bar
+#    Use snapshot to find the current path text
+npx agent-device snapshot
+#    Then click it (it shows as "Components/..." in the bottom bar)
+npx agent-device click text="Components/"
+
+# 3. The bottom sheet opens showing the story tree.
+#    Scroll within the bottom sheet if needed, then tap the component name.
+#    Note: scrolling on MAIN content area dismisses the sheet — scroll within the sheet only.
+npx agent-device click text="{Name}"
+
+# 4. Wait for component to render and screenshot
+npx agent-device wait 2000
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png
 ```
 
-Look at the screenshot to find the component's category. Then navigate:
+**If `click text="{Name}"` fails** (component not in visible list):
+- Try scrolling within the bottom sheet first
+- If still not found, check if the component has a story registered in `.storybook/react-native/storybook.requires.ts`
 
-```bash
-npx agent-device click --text "{CategoryName}"
-npx agent-device wait --text "{Name}" --timeout 5000
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-default.png
-```
-
-If the component isn't in BladeShowcase:
-- Log "Component not in showcase app — cannot visually verify"
+If the component isn't in Storybook stories:
+- Log "Component not in Storybook — cannot visually verify"
 - Skip Steps 4b-4e
 - Mark visual as INCOMPLETE (not FAIL)
 
 #### 4b: Screenshot Default State
 
 ```bash
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-default.png
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png
 ```
 
 Read the screenshot with LLM vision. Check:
@@ -186,21 +226,21 @@ For interactive components:
 
 ```bash
 # Tap a button/pressable
-npx agent-device click --text "{ButtonLabel}"
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-pressed.png
+npx agent-device click text="{ButtonLabel}"
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-pressed.png
 
 # Toggle a switch
-npx agent-device click --text "{SwitchLabel}"
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-toggled.png
+npx agent-device click text="{SwitchLabel}"
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-toggled.png
 
 # Type in an input
-npx agent-device click --text "{Placeholder}"
+npx agent-device click text="{Placeholder}"
 npx agent-device type "Hello World"
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-typed.png
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-typed.png
 
 # Scroll to see more
 npx agent-device scroll down
-npx agent-device screenshot .claude/artifacts/{Name}/screenshots/native-scrolled.png
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-scrolled.png
 ```
 
 #### 4d: Accessibility Tree Check
