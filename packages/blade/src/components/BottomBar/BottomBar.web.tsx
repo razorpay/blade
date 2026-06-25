@@ -24,13 +24,20 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
  * ```
  */
 const _BottomBar = (
-  { children, zIndex = componentZIndices.bottomNav, testID, ...rest }: BottomBarProps,
+  {
+    children,
+    zIndex = componentZIndices.bottomNav,
+    testID,
+    accessibilityLabel,
+    ...rest
+  }: BottomBarProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   return (
     <BottomDock
       ref={ref as never}
       role="group"
+      accessibilityLabel={accessibilityLabel}
       display="flex"
       flexDirection="column"
       gap="spacing.3"

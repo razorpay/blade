@@ -37,6 +37,7 @@ const _BottomDock = (
     children,
     zIndex = componentZIndices.bottomNav,
     role,
+    accessibilityLabel,
     testID,
     metaName,
     nativeStyle,
@@ -71,7 +72,7 @@ const _BottomDock = (
       borderTopWidth={theme.border.width.thin}
       borderTopColor={theme.colors.surface.border.gray.muted}
       style={[shadowStyle, nativeStyle, { zIndex, paddingBottom: insets.bottom }]}
-      {...makeAccessible({ role })}
+      {...makeAccessible({ role, label: accessibilityLabel })}
       {...metaAttribute({
         testID,
         name: metaName,

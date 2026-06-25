@@ -28,4 +28,14 @@ describe('<BottomBar /> (native)', () => {
 
     expect(getByTestId('bottombar-test').props.accessibilityRole).toBe('summary');
   });
+
+  it('should support accessibilityLabel', () => {
+    const { getByTestId } = renderWithTheme(
+      <BottomBar testID="bottombar-test" accessibilityLabel="Bottom action bar">
+        <Text>Cancel</Text>
+        <Text>Continue</Text>
+      </BottomBar>,
+    );
+    expect(getByTestId('bottombar-test').props.accessibilityLabel).toBe('Bottom action bar');
+  });
 });

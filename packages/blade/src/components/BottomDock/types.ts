@@ -35,6 +35,12 @@ type BottomDockProps = {
   role?: AriaRoles;
 
   /**
+   * Accessible label for the dock surface, forwarded to `aria-label` on web
+   * and `accessibilityLabel` on native.
+   */
+  accessibilityLabel?: string;
+
+  /**
    * Internal metaAttribute component name.
    */
   metaName: MetaConstantsValues;

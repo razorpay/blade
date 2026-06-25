@@ -25,7 +25,13 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
  * ```
  */
 const _BottomBar = (
-  { children, zIndex = componentZIndices.bottomNav, testID, ...rest }: BottomBarProps,
+  {
+    children,
+    zIndex = componentZIndices.bottomNav,
+    testID,
+    accessibilityLabel,
+    ...rest
+  }: BottomBarProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { theme } = useTheme();
@@ -34,6 +40,7 @@ const _BottomBar = (
     <BottomDock
       ref={ref as never}
       role="region"
+      accessibilityLabel={accessibilityLabel}
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomBar}

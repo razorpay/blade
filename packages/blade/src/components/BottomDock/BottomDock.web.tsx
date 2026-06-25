@@ -5,6 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { colors as globalColors } from '~tokens/global';
 import { componentZIndices } from '~utils/componentZIndices';
+import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
@@ -29,6 +30,7 @@ const _BottomDock = (
     children,
     zIndex = componentZIndices.bottomNav,
     role,
+    accessibilityLabel,
     testID,
     metaName,
     display,
@@ -54,7 +56,7 @@ const _BottomDock = (
     <StyledBottomDock
       ref={ref as never}
       $boxShadowColor={boxShadowColor}
-      role={role}
+      {...makeAccessible({ role, label: accessibilityLabel })}
       position="fixed"
       bottom="spacing.0"
       left="spacing.0"

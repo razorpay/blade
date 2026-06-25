@@ -41,4 +41,11 @@ describe('BottomBar', () => {
 
     expect(getByRole('group')).toHaveAttribute('data-analytics-test', 'test');
   });
+
+  test('should support accessibilityLabel', () => {
+    const { getByRole } = renderWithTheme(
+      <BottomBarExample accessibilityLabel="Bottom action bar" />,
+    );
+    expect(getByRole('group')).toHaveAttribute('aria-label', 'Bottom action bar');
+  });
 });

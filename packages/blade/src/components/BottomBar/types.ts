@@ -14,6 +14,12 @@ type BottomBarProps = {
    * @default 100
    */
   zIndex?: number;
+
+  /**
+   * Accessible label for the BottomBar region/group.
+   * Passed through to `aria-label` on web and `accessibilityLabel` on native.
+   */
+  accessibilityLabel?: string;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;
