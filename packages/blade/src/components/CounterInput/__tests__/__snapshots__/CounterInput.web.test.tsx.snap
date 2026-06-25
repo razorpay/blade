@@ -656,7 +656,7 @@ exports[`<CounterInput /> should render 1`] = `
           <div
             class="__blade-counter-input-number-wrapper"
             data-blade-component="base-box"
-            style="width: calc(2ch + 8px);"
+            style="width: calc(2ch + 8px); font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 0.875rem; font-weight: 600;"
           >
             <div
               class=""
@@ -1385,7 +1385,7 @@ exports[`<CounterInput /> should render large size 1`] = `
           <div
             class="__blade-counter-input-number-wrapper"
             data-blade-component="base-box"
-            style="width: calc(2ch + 8px);"
+            style="width: calc(2ch + 8px); font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 1rem; font-weight: 600;"
           >
             <div
               class=""
@@ -2114,7 +2114,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
           <div
             class="__blade-counter-input-number-wrapper"
             data-blade-component="base-box"
-            style="width: calc(2ch + 8px);"
+            style="width: calc(2ch + 8px); font-family: "Inter", "Inter Fallback Arial", Arial; font-size: 0.875rem; font-weight: 600;"
           >
             <div
               class=""

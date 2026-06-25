@@ -33,6 +33,8 @@ const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
   large: 'large',
 } as const;
 
+const COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO = 0.6;
+
 type CounterInputSize = NonNullable<CounterInputProps['size']>;
 
 const getButtonStyle = (
@@ -170,13 +172,13 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
       theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
     const counterInputFieldWidth =
-      counterValueDigitCount * fontSize + counterInputHorizontalPadding;
+      counterValueDigitCount * fontSize * COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO +
+      counterInputHorizontalPadding;
 
     const containerStyle = StyleSheet.create({
       box: {
         minWidth: COUNTER_INPUT_TOKEN.width[size],
         height: COUNTER_INPUT_TOKEN.height[size],
-        alignSelf: 'flex-start',
       },
     });
 
@@ -195,11 +197,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       },
     });
 
-    const inputWrapperStyle = StyleSheet.create({
-      wrapper: {
-        width: counterInputFieldWidth,
-      },
-    });
+    const inputWrapperStyle = { width: counterInputFieldWidth };
 
     const contextValue = {
       size,
@@ -260,7 +258,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </Pressable>
 
-                <Animated.View style={[inputWrapperStyle.wrapper, animatedStyle]}>
+                <Animated.View style={[inputWrapperStyle, animatedStyle]}>
                   <TextInput
                     value={internalValue?.toString() ?? String(min)}
                     onChangeText={handleInputChange}

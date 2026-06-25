@@ -18,12 +18,20 @@ import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint, makeSpace, castWebType, makeMotionTime, makeBorderSize } from '~utils';
+import {
+  useBreakpoint,
+  makeSpace,
+  castWebType,
+  makeMotionTime,
+  makeBorderSize,
+  makeTypographySize,
+} from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { getTextProps } from '~components/Typography/Text/Text';
 
 const StyledCounterButton = styled.button<{
   disabled?: boolean;
@@ -70,6 +78,13 @@ const StyledCounterButton = styled.button<{
   }
 `;
 
+const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
     {
@@ -115,10 +130,20 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const rawCounterValue = internalValue ?? min;
     const counterValueDigitCount =
       Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
+    const { fontSize: counterInputFontSizeToken = 100 } = getTextProps({
+      variant: 'body',
+      size: COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size],
+      weight: 'semibold',
+    });
     const counterInputHorizontalPadding =
       theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
       theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
     const counterInputFieldWidth = `calc(${counterValueDigitCount}ch + ${counterInputHorizontalPadding}px)` as `calc(${string})`;
+    const counterInputTextStyle = {
+      fontFamily: theme.typography.fonts.family.text,
+      fontSize: makeTypographySize(theme.typography.fonts.size[counterInputFontSizeToken]),
+      fontWeight: theme.typography.fonts.weight.semibold,
+    };
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
@@ -281,7 +306,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
                 <BaseBox
                   className={`__blade-counter-input-number-wrapper ${animationClass}`.trim()}
-                  style={{ width: counterInputFieldWidth }}
+                  style={{ width: counterInputFieldWidth, ...counterInputTextStyle }}
                 >
                   <BaseInput
                     ref={ref}
