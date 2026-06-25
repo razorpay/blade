@@ -163,7 +163,9 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       weight: 'semibold',
     });
     const fontSize = theme.typography.fonts.size[fontSizeToken];
-    const counterValueDigitCount = Math.max(2, String(internalValue ?? min).length);
+    const rawCounterValue = internalValue ?? min;
+    const counterValueDigitCount =
+      Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
     const counterInputHorizontalPadding =
       theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
       theme.spacing[baseInputCounterInputPaddingTokens.right[size]];

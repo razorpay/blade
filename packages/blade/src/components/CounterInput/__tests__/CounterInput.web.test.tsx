@@ -226,6 +226,34 @@ describe('<CounterInput />', () => {
     );
   });
 
+  it('should account for minus sign width when value is negative', () => {
+    // -9 has 1 digit + minus sign → digitCount should be 2 (max) + 1 = 3
+    const { container, rerender } = renderWithTheme(
+      <CounterInput label="Quantity" value={-9} min={-999} />,
+    );
+
+    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
+      'width',
+      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    );
+
+    // -99 has 2 digits + minus sign → digitCount should be 2 + 1 = 3
+    rerender(<CounterInput label="Quantity" value={-99} min={-999} />);
+
+    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
+      'width',
+      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    );
+
+    // -100 has 3 digits + minus sign → digitCount should be 3 + 1 = 4
+    rerender(<CounterInput label="Quantity" value={-100} min={-999} />);
+
+    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
+      'width',
+      getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
+    );
+  });
+
   it('should use tabular numbers', () => {
     const { container } = renderWithTheme(<CounterInput label="Quantity" value={100} />);
 
