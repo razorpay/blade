@@ -1,7 +1,9 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { AnnouncementBannerTheme } from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../Icons';
 
+export type { AnnouncementBannerTheme };
 export type AnnouncementBannerAlignment = 'center' | 'left';
 
 export interface AnnouncementBannerProps extends StyledPropsBlade {

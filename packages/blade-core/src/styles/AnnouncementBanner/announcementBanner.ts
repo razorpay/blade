@@ -4,6 +4,8 @@ import styles from './announcementBanner.module.css';
 
 export type AnnouncementBannerAlignment = 'center' | 'left';
 
+export type AnnouncementBannerTheme = 'light' | 'dark';
+
 export type AnnouncementBannerVariants = {
   alignment?: AnnouncementBannerAlignment;
 };
