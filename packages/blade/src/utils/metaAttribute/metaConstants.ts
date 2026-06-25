@@ -21,6 +21,7 @@ export const MetaConstants = {
   ButtonGroup: 'button-group',
   Breadcrumb: 'breadcrumb',
   BreadcrumbItem: 'breadcrumb-item',
+  BottomBar: 'bottombar',
   BottomNav: 'bottomnav',
   BottomNavItem: 'bottomnav-item',
   Carousel: 'carousel',

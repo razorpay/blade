@@ -1,30 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { BottomNavItemProps, BottomNavProps } from './types';
-import { makeMotionTime, makeSpace, useTheme } from '~utils';
+import { makeMotionTime, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { colors as globalColors } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
-import { getStyledProps } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
 import { componentZIndices } from '~utils/componentZIndices';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-
-const StyledBottomNav = styled(BaseBox)(() => {
-  const { colorScheme } = useTheme();
-
-  const boxShadowColor =
-    colorScheme === 'light'
-      ? globalColors.neutral.blueGrayLight.a912
-      : globalColors.neutral.black[100];
-  return {
-    boxShadow: `0px -8px 24px 0px ${boxShadowColor}`,
-  };
-});
+import { BottomDock } from '~components/BottomDock';
 
 /**
  * ### BottomNav component
@@ -72,7 +59,7 @@ const _BottomNav = (
 ): React.ReactElement => {
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
-    if (childrenCount > 5 && childrenCount < 2) {
+    if (childrenCount > 5 || childrenCount < 2) {
       throwBladeError({
         moduleName: 'BottomNav',
         message: 'children cannot be less than 2 and more than 5',
@@ -81,29 +68,19 @@ const _BottomNav = (
   }
 
   return (
-    <StyledBottomNav
+    <BottomDock
       ref={ref as never}
       role="navigation"
-      position="fixed"
-      bottom="spacing.0"
-      left="spacing.0"
-      width="100%"
-      backgroundColor="surface.background.gray.intense"
-      borderTopWidth="thin"
-      borderTopColor="surface.border.gray.muted"
       paddingX="spacing.2"
       display="flex"
       flexDirection="row"
-      {...getStyledProps(rest)}
       zIndex={zIndex}
-      {...metaAttribute({
-        testID,
-        name: MetaConstants.BottomNav,
-      })}
-      {...makeAnalyticsAttribute(rest)}
+      testID={testID}
+      metaName={MetaConstants.BottomNav}
+      {...rest}
     >
       {children}
-    </StyledBottomNav>
+    </BottomDock>
   );
 };
 

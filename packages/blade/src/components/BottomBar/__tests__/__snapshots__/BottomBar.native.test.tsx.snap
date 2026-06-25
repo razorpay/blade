@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BottomBar /> (native) should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="summary"
+    accessible={true}
+    backgroundColor="hsla(0, 0%, 100%, 1)"
+    borderTopColor="hsla(206, 10%, 29%, 0.12)"
+    borderTopWidth={1}
+    data-blade-component="bottombar"
+    style={
+      [
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderTopColor": "hsla(206, 10%, 29%, 0.12)",
+          "borderTopWidth": 1,
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+        {
+          "shadowColor": "hsla(206, 10%, 29%, 0.12)",
+          "shadowOffset": {
+            "height": -8,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 24,
+        },
+        {
+          "paddingHorizontal": 4,
+          "paddingTop": 4,
+        },
+        {
+          "paddingBottom": 34,
+          "zIndex": 100,
+        },
+      ]
+    }
+    testID="bottombar-test"
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "gap": 4,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+          "paddingVertical": 8,
+          "width": "100%",
+        }
+      }
+    >
+      <Text>
+        Cancel
+      </Text>
+      <Text>
+        Continue
+      </Text>
+    </View>
+  </View>
+</View>
+`;
