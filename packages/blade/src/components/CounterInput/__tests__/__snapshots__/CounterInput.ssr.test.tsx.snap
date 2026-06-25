@@ -659,7 +659,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
           <div
             class="__blade-counter-input-number-wrapper"
             data-blade-component="base-box"
-            style="width:calc(2ch + 8px);font-family:&quot;Inter&quot;, &quot;Inter Fallback Arial&quot;, Arial;font-size:0.875rem;font-weight:600"
+            style="width:calc(2ch + 8px);font-family:"Inter", "Inter Fallback Arial", Arial;font-size:0.875rem;font-weight:600"
           >
             <div
               class=""
