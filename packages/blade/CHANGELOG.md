@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.108.5
+
+### Patch Changes
+
+- bc7c86651: fix(SankeyChart): remove horizontal scroll wrapper so card wraps chart naturally
+
 ## 12.108.4
 
 ### Patch Changes
