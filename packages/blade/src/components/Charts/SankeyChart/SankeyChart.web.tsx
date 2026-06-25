@@ -34,7 +34,6 @@ import {
   CHIP_VALUE_BUDGET,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
-  MIN_CHART_WIDTH,
 } from './tokens';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -196,14 +195,9 @@ const _ChartSankeyWrapper = ({
           {...restProps}
           position="relative"
         >
-          {/* Scroll wrapper — ensures minimum width on narrow viewports */}
-          <BaseBox width="100%" height="100%" overflowX="auto">
-            <BaseBox height="100%" minWidth={`${MIN_CHART_WIDTH}px`}>
-              <ResponsiveContainer width="100%" height="100%">
-                {children}
-              </ResponsiveContainer>
-            </BaseBox>
-          </BaseBox>
+          <ResponsiveContainer width="100%" height="100%">
+            {children}
+          </ResponsiveContainer>
         </BaseBox>
       </SankeyChartContext.Provider>
     </CommonChartComponentsContext.Provider>
