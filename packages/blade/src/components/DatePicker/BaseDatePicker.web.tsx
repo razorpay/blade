@@ -246,11 +246,38 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     updateSelectedFilters();
   };
 
-  // Apply preset selection after state updates to avoid stale values
+  // Apply preset selection after state updates to avoid stale values.
+  // Also auto-close (without re-firing onChange) when showFooterActions=false
+  // and the selection is complete — this is the chip/filter mode behaviour where
+  // selecting a date range is itself the confirmation.
   React.useEffect(() => {
     if (shouldApplyAfterPresetSelection.current) {
       shouldApplyAfterPresetSelection.current = false;
       handleApply();
+      return;
+    }
+
+    if (!showFooterActions && controllableIsOpen) {
+      const isComplete = isSingle
+        ? Boolean(controlledValue)
+        : Boolean(
+            (controlledValue as DatesRangeValue)?.[0] && (controlledValue as DatesRangeValue)?.[1],
+          );
+
+      if (isComplete) {
+        setOldValue(controlledValue);
+        onApply?.(controlledValue as never);
+        setFilterChipGroupSelectedFilters((prev: string[]) =>
+          prev.includes(label as string) ? prev : [...prev, label as string],
+        );
+        setListViewSelectedFilters((prev) => ({
+          ...prev,
+          [label as string]: isSingle
+            ? ([controlledValue] as string[])
+            : (controlledValue as string[]),
+        }));
+        close();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controlledValue]);
@@ -346,6 +373,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
             setSelectedPreset(presetValue);
+            // Mirror leadingDropdown behaviour: trigger handleApply after state update
+            shouldApplyAfterPresetSelection.current = true;
           }}
           presetStates={presetStates}
         />
