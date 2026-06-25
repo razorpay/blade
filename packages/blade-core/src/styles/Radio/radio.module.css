@@ -1,0 +1,222 @@
+/* Outer wrapper (BaseBox replacement) */
+.radioWrapper {
+  display: block;
+}
+
+/* Label wraps the visually-hidden input + icon + title. Drives the click target.
+   React's SelectorLabel sets no cursor, so the native <label> default applies. */
+.label {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+/* Inner column: row (input + icon + title) and optional helpText block */
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Visually-hidden native input — kept as a sibling of `.iconWrapper` so adjacent
+   sibling selectors (`+ .iconWrapper`) handle focus-visible. */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── RadioIcon wrapper: circle whose bg/border depend on variant × checked ── */
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: var(--border-width-thick);
+  border-style: solid;
+  margin: var(--spacing-1);
+  border-radius: var(--border-radius-max);
+  background-color: transparent;
+  transition-property: background-color, border-color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-exit);
+}
+
+/* Icon wrapper sizes (width/height per radioSizes.icon) */
+.iconSmall {
+  min-width: 12px;
+  width: 12px;
+  height: 12px;
+  /* React applies size[3] (3px), NOT spacing.3 (8px), as the small icon's extra top margin. */
+  margin-top: 3px;
+}
+
+.iconMedium {
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.iconLarge {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Compound color variants: variant (default/disabled/negative) × checked/unchecked ── */
+.defaultUnchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-gray-highlighted);
+}
+
+.defaultChecked {
+  background-color: var(--interactive-background-primary-default);
+  border-color: var(--interactive-border-primary-default);
+}
+
+.disabledUnchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-gray-disabled);
+}
+
+.disabledChecked {
+  background-color: var(--interactive-background-primary-disabled);
+  border-color: transparent;
+}
+
+.negativeUnchecked {
+  background-color: transparent;
+  border-color: var(--interactive-border-negative-default);
+}
+
+.negativeChecked {
+  background-color: var(--interactive-background-negative-default);
+  border-color: var(--interactive-border-negative-default);
+}
+
+/* Hover — driven by the input hovering its adjacent icon wrapper (React parity:
+   `input:hover + div`), default variant only, so only the icon area triggers it. */
+.input:hover + .iconWrapper.defaultUnchecked {
+  background-color: var(--interactive-background-gray-faded);
+  border-color: var(--interactive-border-gray-highlighted);
+}
+
+.input:hover + .iconWrapper.defaultChecked {
+  background-color: var(--interactive-background-primary-highlighted);
+  border-color: var(--interactive-background-primary-highlighted);
+}
+
+/* Focus ring — adjacent sibling: input + icon wrapper */
+.input:focus-visible + .iconWrapper {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 1px;
+}
+
+/* ── Animated dot (Fade replacement): CSS scale-in / fade controlled by `.checked` ── */
+.dot {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.3);
+  transition-property: opacity, transform;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-exit);
+}
+
+.dot.checked {
+  opacity: 1;
+  transform: scale(1);
+  transition-timing-function: var(--easing-entrance);
+}
+
+.dotCircle {
+  fill: var(--interactive-icon-on-primary-normal);
+}
+
+/* ── SelectorTitle (label text) ── */
+.title {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  /* React SelectorTitle uses surface.text.gray.subtle for the enabled label. */
+  color: var(--surface-text-gray-subtle);
+  margin-left: var(--spacing-2);
+}
+
+.title[data-disabled] {
+  /* React SelectorTitle uses surface.text.gray.disabled when disabled. */
+  color: var(--surface-text-gray-disabled);
+}
+
+.titleSmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.titleMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.titleLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+  letter-spacing: var(--letter-spacing-25);
+}
+
+/* ── SelectorSupportText (per-radio helpText) ── */
+.supportTextWrapper {
+  display: flex;
+}
+
+/* Left offset = icon width + spacing.3 (per size) */
+.supportSmall {
+  margin-left: calc(12px + var(--spacing-3));
+}
+
+.supportMedium {
+  margin-left: calc(16px + var(--spacing-3));
+}
+
+.supportLarge {
+  margin-left: calc(20px + var(--spacing-3));
+}
+
+.supportText {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  color: var(--surface-text-gray-muted);
+}
+
+.supportTextSizeSmall {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.supportTextSizeMedium {
+  font-size: var(--font-size-50);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
+
+.supportTextSizeLarge {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-50);
+  letter-spacing: var(--letter-spacing-50);
+}
