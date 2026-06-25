@@ -5,6 +5,7 @@ import { StyledCounterInput } from './StyledCounterInput';
 import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
+import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -111,6 +112,11 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
     const containerRef = useRef<HTMLDivElement>(null);
+    const counterValueDigitCount = Math.max(2, String(internalValue ?? min).length);
+    const counterInputHorizontalPadding =
+      theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
+      theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+    const counterInputFieldWidth = `calc(${counterValueDigitCount}ch + ${counterInputHorizontalPadding}px)`;
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
@@ -218,6 +224,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
             alignItems={isLabelLeftPositioned ? 'center' : undefined}
+            width="fit-content"
           >
             {label && (
               <FormLabel
@@ -241,7 +248,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   ? emphasisTokens.loadingOrDisabledBgColor
                   : emphasisTokens.backgroundColor
               }
-              width={`${COUNTER_INPUT_TOKEN.width[size]}px`}
+              width="fit-content"
+              minWidth={`${COUNTER_INPUT_TOKEN.width[size]}px`}
               height={`${COUNTER_INPUT_TOKEN.height[size]}px`}
               borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
@@ -269,7 +277,10 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
-                <BaseBox className={animationClass}>
+                <BaseBox
+                  className={`__blade-counter-input-number-wrapper ${animationClass}`.trim()}
+                  width={counterInputFieldWidth}
+                >
                   <BaseInput
                     ref={ref}
                     id={inputId}

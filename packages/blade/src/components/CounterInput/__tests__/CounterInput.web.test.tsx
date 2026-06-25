@@ -1,10 +1,26 @@
 import userEvent from '@testing-library/user-event';
+import 'jest-styled-components';
 import { CounterInput } from '../CounterInput';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
+import { bladeTheme } from '~tokens/theme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const getCounterInputFieldWidth = ({
+  digitCount,
+  size,
+}: {
+  digitCount: number;
+  size: 'xsmall' | 'medium' | 'large';
+}): string => {
+  const horizontalPadding =
+    bladeTheme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
+    bladeTheme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+  return `calc(${digitCount}ch + ${horizontalPadding}px)`;
+};
 
 describe('<CounterInput />', () => {
   it('should render', () => {
@@ -192,6 +208,30 @@ describe('<CounterInput />', () => {
 
     const input = getByRole('spinbutton');
     expect(input).toHaveAttribute('name', name);
+  });
+
+  it('should reserve two digits and expand for larger values', () => {
+    const { container, rerender } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
+
+    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
+      'width',
+      getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
+    );
+
+    rerender(<CounterInput label="Quantity" value={100} />);
+
+    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
+      'width',
+      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    );
+  });
+
+  it('should use tabular numbers', () => {
+    const { container } = renderWithTheme(<CounterInput label="Quantity" value={100} />);
+
+    expect(container.firstChild).toHaveStyleRule('font-variant-numeric', 'tabular-nums', {
+      modifier: "&.__blade-counter-input input[type='number']",
+    });
   });
 
   it('should pass a11y', async () => {

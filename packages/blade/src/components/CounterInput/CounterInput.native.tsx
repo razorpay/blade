@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Pressable, TextInput, StyleSheet } from 'react-native';
+import type { TextStyle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
+import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { FormLabel } from '~components/Form';
 import { useId } from '~utils/useId';
@@ -160,25 +162,40 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       size: COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size],
       weight: 'semibold',
     });
+    const fontSize = theme.typography.fonts.size[fontSizeToken];
+    const counterValueDigitCount = Math.max(2, String(internalValue ?? min).length);
+    const counterInputHorizontalPadding =
+      theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
+      theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+    const counterInputFieldWidth =
+      counterValueDigitCount * fontSize + counterInputHorizontalPadding;
 
     const containerStyle = StyleSheet.create({
       box: {
-        width: COUNTER_INPUT_TOKEN.width[size],
+        minWidth: COUNTER_INPUT_TOKEN.width[size],
         height: COUNTER_INPUT_TOKEN.height[size],
+        alignSelf: 'flex-start',
       },
     });
 
     const textInputStyle = StyleSheet.create({
       input: {
-        flex: 1,
+        width: '100%',
         textAlign: 'center',
         textAlignVertical: 'center',
         includeFontPadding: false,
         padding: 0,
         color: valueColor,
-        fontSize: theme.typography.fonts.size[fontSizeToken],
+        fontSize,
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: '600',
+        fontVariant: ['tabular-nums'] as TextStyle['fontVariant'],
+      },
+    });
+
+    const inputWrapperStyle = StyleSheet.create({
+      wrapper: {
+        width: counterInputFieldWidth,
       },
     });
 
@@ -241,7 +258,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   />
                 </Pressable>
 
-                <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+                <Animated.View style={[inputWrapperStyle.wrapper, animatedStyle]}>
                   <TextInput
                     value={internalValue?.toString() ?? String(min)}
                     onChangeText={handleInputChange}

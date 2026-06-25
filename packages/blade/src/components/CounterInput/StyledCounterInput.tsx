@@ -60,6 +60,7 @@ const StyledCounterInput = styled(BaseBox)`
 
   &.__blade-counter-input input[type='number'] {
     -moz-appearance: textfield; /* Firefox */
+    font-variant-numeric: tabular-nums;
   }
 
   /* Remove ProgressBar background */
