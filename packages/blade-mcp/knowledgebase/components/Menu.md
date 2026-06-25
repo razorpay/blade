@@ -34,6 +34,17 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+
+  /**
+   * Placement of the menu overlay relative to the trigger.
+   *
+   * Accepts any Floating UI placement value (e.g. 'bottom-start', 'top-end', 'left', 'right-start').
+   * The flip middleware will still automatically flip the placement if there isn't enough space.
+   * Only applies to root-level menus; nested submenus always open to 'right-start'.
+   *
+   * @default 'bottom-start'
+   */
+  defaultPlacement?: Placement;
 };
 
 // MenuItem props
