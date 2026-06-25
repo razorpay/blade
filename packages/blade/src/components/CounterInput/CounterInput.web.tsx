@@ -118,7 +118,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const counterInputHorizontalPadding =
       theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
       theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
-    const counterInputFieldWidth = `calc(${counterValueDigitCount}ch + ${counterInputHorizontalPadding}px)`;
+    const counterInputFieldWidth = `calc(${counterValueDigitCount}ch + ${counterInputHorizontalPadding}px)` as `calc(${string})`;
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
