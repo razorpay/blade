@@ -8,7 +8,11 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import type { CounterInputProps } from './types';
-import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
+import {
+  COUNTER_INPUT_TOKEN,
+  COUNTER_INPUT_ICON_SIZE_MAP,
+  COUNTER_INPUT_SIZE_TO_TEXT_SIZE,
+} from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -25,13 +29,6 @@ import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { getTextProps } from '~components/Typography/Text/Text';
-
-const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
-  xsmall: 'small',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
-} as const;
 
 const COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO = 0.6;
 

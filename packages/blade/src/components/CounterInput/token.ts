@@ -7,6 +7,13 @@ export const COUNTER_INPUT_ICON_SIZE_MAP = {
   large: 'xlarge',
 } as const;
 
+export const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
 export const COUNTER_INPUT_TOKEN = {
   width: {
     xsmall: sizeTokens[78],

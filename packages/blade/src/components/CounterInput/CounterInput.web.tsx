@@ -2,7 +2,11 @@ import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
-import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
+import {
+  COUNTER_INPUT_TOKEN,
+  COUNTER_INPUT_ICON_SIZE_MAP,
+  COUNTER_INPUT_SIZE_TO_TEXT_SIZE,
+} from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
 import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
@@ -77,13 +81,6 @@ const StyledCounterButton = styled.button<{
     }}
   }
 `;
-
-const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
-  xsmall: 'small',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
-} as const;
 
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
