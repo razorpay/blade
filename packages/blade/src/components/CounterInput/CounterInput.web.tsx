@@ -281,7 +281,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
 
                 <BaseBox
                   className={`__blade-counter-input-number-wrapper ${animationClass}`.trim()}
-                  width={counterInputFieldWidth}
+                  style={{ width: counterInputFieldWidth }}
                 >
                   <BaseInput
                     ref={ref}

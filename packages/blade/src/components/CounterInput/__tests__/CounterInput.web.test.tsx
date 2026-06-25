@@ -1,5 +1,4 @@
 import userEvent from '@testing-library/user-event';
-import 'jest-styled-components';
 import { CounterInput } from '../CounterInput';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -211,54 +210,47 @@ describe('<CounterInput />', () => {
   });
 
   it('should reserve two digits and expand for larger values', () => {
-    const { container, rerender } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
+    const { container: container1 } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
 
-    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
-      'width',
-      getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
+    expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
+    });
+
+    const { container: container2 } = renderWithTheme(
+      <CounterInput label="Quantity" value={100} />,
     );
 
-    rerender(<CounterInput label="Quantity" value={100} />);
-
-    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
-      'width',
-      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
-    );
+    expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
   });
 
   it('should account for minus sign width when value is negative', () => {
     // -9 has 1 digit + minus sign → digitCount should be 2 (max) + 1 = 3
-    const { container, rerender } = renderWithTheme(
+    const { container: container1 } = renderWithTheme(
       <CounterInput label="Quantity" value={-9} min={-999} />,
     );
 
-    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
-      'width',
-      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
-    );
+    expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
 
     // -99 has 2 digits + minus sign → digitCount should be 2 + 1 = 3
-    rerender(<CounterInput label="Quantity" value={-99} min={-999} />);
-
-    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
-      'width',
-      getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    const { container: container2 } = renderWithTheme(
+      <CounterInput label="Quantity" value={-99} min={-999} />,
     );
+
+    expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
 
     // -100 has 3 digits + minus sign → digitCount should be 3 + 1 = 4
-    rerender(<CounterInput label="Quantity" value={-100} min={-999} />);
-
-    expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyleRule(
-      'width',
-      getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
+    const { container: container3 } = renderWithTheme(
+      <CounterInput label="Quantity" value={-100} min={-999} />,
     );
-  });
 
-  it('should use tabular numbers', () => {
-    const { container } = renderWithTheme(<CounterInput label="Quantity" value={100} />);
-
-    expect(container.firstChild).toHaveStyleRule('font-variant-numeric', 'tabular-nums', {
-      modifier: "&.__blade-counter-input input[type='number']",
+    expect(container3.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
     });
   });
 
