@@ -263,16 +263,15 @@ describe('SankeyChart — color token resolution', () => {
 // ── Layout ─────────────────────────────────────────────────────────────────────
 
 describe('SankeyChart — layout', () => {
-  it('renders scroll wrapper with minWidth constraint via styled-component class', () => {
+  it('renders ResponsiveContainer without a scroll wrapper', () => {
     const { container } = renderSankey();
-    // BaseBox applies minWidth as a CSS class (styled-components), not inline style.
-    // We verify it is present in the computed styles of one of the wrapper divs.
+    // No overflowX scroll wrapper — chart fills available width directly.
     const divs = Array.from(container.querySelectorAll('div'));
-    const hasMinWidth = divs.some((div) => {
-      const computed = window.getComputedStyle(div).minWidth;
-      return computed && computed !== '0px' && computed !== '';
+    const hasOverflowScroll = divs.some((div) => {
+      const computed = window.getComputedStyle(div).overflowX;
+      return computed === 'auto' || computed === 'scroll';
     });
-    expect(hasMinWidth).toBe(true);
+    expect(hasOverflowScroll).toBe(false);
   });
 });
 
