@@ -33,6 +33,22 @@ describe('<ButtonGroup />', () => {
     expect(button3).toHaveTextContent('Three');
   });
 
+  it('should render tertiary ButtonGroup without collapsed secondary borders', () => {
+    const { getByRole } = renderWithTheme(
+      <ButtonGroup variant="tertiary">
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </ButtonGroup>,
+    );
+
+    const group = getByRole('group');
+    expect(group).not.toHaveStyleRule('margin-left', '-1px', {
+      modifier:
+        '> button[role="button"]:not(:first-child), > *:not(:first-child) button[role="button"]',
+    });
+  });
+
   it('should render ButtonGroup with dropdown', () => {
     const { container, getByRole, getAllByRole } = renderWithTheme(
       <ButtonGroup>

@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import type { BaseButtonProps } from '../BaseButton';
-import BaseButton from '../BaseButton';
+import BaseButton, { getBackgroundColorToken, getBoxShadowToken } from '../BaseButton';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
@@ -202,6 +202,34 @@ describe('<BaseButton />', () => {
     ).toThrowErrorMatchingInlineSnapshot(
       `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "positive""`,
     );
+  });
+
+  it('should use ghost tokens for tertiary primary button', () => {
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'default' }),
+    ).toBe('transparent');
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' }),
+    ).toBe('interactive.background.gray.faded');
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toEqual(
+      [],
+    );
+  });
+
+  it('should use ghost tokens for tertiary white button', () => {
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'default' }),
+    ).toBe('transparent');
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toBe(
+      'interactive.background.staticWhite.faded',
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toEqual([]);
   });
 
   it('should have accessibilityLabel', () => {

@@ -94,7 +94,7 @@ const _ButtonGroup = (
       >
         {React.Children.map(children, (child, index) => {
           const isLast = React.Children.count(children) - 1 === index;
-          // Only show dividers for primary variant (secondary/tertiary have borders via box-shadow)
+          // Primary uses dividers; secondary carries its own border; tertiary stays ghost-style.
           const showDivider = variant === 'primary' && !isLast;
 
           return (

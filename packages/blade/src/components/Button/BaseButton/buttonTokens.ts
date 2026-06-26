@@ -35,9 +35,9 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
         disabled: 'interactive.background.staticWhite.ghost',
       },
       tertiary: {
-        default: 'surface.background.gray.intense',
-        highlighted: 'surface.background.gray.intense',
-        disabled: 'interactive.background.staticWhite.ghost',
+        default: 'transparent',
+        highlighted: 'interactive.background.gray.faded',
+        disabled: 'transparent',
       },
       transparent: {
         default: 'transparent',
@@ -57,9 +57,9 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
         disabled: 'interactive.background.gray.disabled',
       },
       tertiary: {
-        default: 'interactive.background.staticWhite.faded',
-        highlighted: 'interactive.background.staticBlack.faded',
-        disabled: 'interactive.background.gray.disabled',
+        default: 'transparent',
+        highlighted: 'interactive.background.staticWhite.faded',
+        disabled: 'transparent',
       },
     },
   } as const;
@@ -121,17 +121,9 @@ const boxShadow = (
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
       },
       tertiary: {
-        default: [
-          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
-        ],
-        highlighted: [
-          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
-        ],
-        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
+        default: [],
+        highlighted: [],
+        disabled: [],
       },
       transparent: {
         default: [],
@@ -163,15 +155,9 @@ const boxShadow = (
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
       },
       tertiary: {
-        default: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
-        ],
-        highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
-        ],
-        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+        default: [],
+        highlighted: [],
+        disabled: [],
       },
     },
   };
