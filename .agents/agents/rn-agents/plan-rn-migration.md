@@ -82,6 +82,8 @@ For every file in the component directory:
 | `*.tsx` (no suffix) using `styled-components` or HTML | **Unsuffixed web-only** | Rename → `.web.tsx`, create `.native.tsx` |
 | `*.tsx` (no suffix) platform-agnostic logic | Shared | Skip — works on both platforms |
 | `*.ts` (types, tokens, style computation) | Shared | Skip — unless types need Platform.Select |
+| `*.stories.tsx` (non-KitchenSink) | Web story | List exported story names; check if `{Name}` appears in the exclusion glob in `.storybook/react-native/storybook.requires.ts` — if excluded, flag for removal in execute phase |
+| `_KitchenSink.*.stories.tsx` | Kitchen sink story | Note exists; always excluded from RN Storybook (by `_KitchenSink` prefix rule) — no action needed |
 
 ### 2b: Catalog Unsupported CSS
 

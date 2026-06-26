@@ -105,6 +105,13 @@
       └── <View> (trailing, conditional)
 ```
 
+## Storybook Stories
+
+| Story File | Exported Stories | RN Storybook Status |
+|-----------|-----------------|---------------------|
+| `{Name}.stories.tsx` | {Default, WithIcon, Disabled, ...} | {✅ INCLUDED / ❌ EXCLUDED — remove `{Name}` from exclusion glob} |
+| `_KitchenSink.{Name}.stories.tsx` | KitchenSink | always excluded (prefix rule) |
+
 ## Existing Test Reference
 
 <!-- What the web tests cover — native tests should mirror these -->
