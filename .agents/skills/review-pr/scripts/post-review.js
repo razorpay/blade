@@ -111,7 +111,7 @@ function formatOverviewComment(
     parts.push('**Status:** Approved ✅');
   }
 
-  if (isSelfReview) {
+  if (isSelfReview && reviewStatus === 'approved') {
     parts.push(
       '<img src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/__ci_artifacts/artifacts/review-assets/Obama-giving-Obama-award.png" alt="obama giving obama medal" width="300px" />',
     );
