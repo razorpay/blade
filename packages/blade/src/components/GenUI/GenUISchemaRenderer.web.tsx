@@ -376,15 +376,23 @@ const GenUISchemaRenderer = memo(
     const componentsToRender = duplicateMarkdownTableHandlingResult.components;
 
     useEffect(() => {
-      emittedDuplicateMarkdownTableEventKeysRef.current.clear();
-    }, [components]);
-
-    useEffect(() => {
       if (
         !duplicateMarkdownTableHandling?.isEnabled ||
         !duplicateMarkdownTableHandling.onDuplicateMarkdownTableRemoved
       ) {
         return;
+      }
+
+      const currentEventKeys = new Set(
+        duplicateMarkdownTableHandlingResult.events.map(
+          (event) => `${event.textComponentPath.join('.')}:${event.tableFingerprint}`,
+        ),
+      );
+
+      for (const key of emittedDuplicateMarkdownTableEventKeysRef.current) {
+        if (!currentEventKeys.has(key)) {
+          emittedDuplicateMarkdownTableEventKeysRef.current.delete(key);
+        }
       }
 
       duplicateMarkdownTableHandlingResult.events.forEach((event) => {
