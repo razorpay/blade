@@ -7,6 +7,7 @@ import type { ColorSchemeNames } from '~tokens/theme';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BaseTextSizes } from '~components/Typography/BaseText/types';
 
 type PopoverProps = {
   /**
@@ -108,4 +109,36 @@ type PopoverTriggerProps = {
   }>;
 };
 
-export type { PopoverProps, PopoverContentProps, PopoverContentWrapperProps, PopoverTriggerProps };
+type HintTriggerIntent = 'positive' | 'negative' | 'notice' | 'neutral' | 'information';
+
+type PopoverHintTriggerProps = {
+  /**
+   * The semantic intent of the hint — maps to Blade's feedback color tokens.
+   * Controls both the text color and dotted underline color.
+   *
+   * @default 'neutral'
+   */
+  intent?: HintTriggerIntent;
+  /**
+   * Size of the text, matching Blade's Text body sizes.
+   *
+   * @default 'medium'
+   */
+  size?: Extract<BaseTextSizes, 'xsmall' | 'small' | 'medium' | 'large'>;
+  /**
+   * Font weight of the text.
+   *
+   * @default 'regular'
+   */
+  weight?: 'regular' | 'medium' | 'semibold';
+  children: React.ReactNode;
+};
+
+export type {
+  PopoverProps,
+  PopoverContentProps,
+  PopoverContentWrapperProps,
+  PopoverTriggerProps,
+  HintTriggerIntent,
+  PopoverHintTriggerProps,
+};
