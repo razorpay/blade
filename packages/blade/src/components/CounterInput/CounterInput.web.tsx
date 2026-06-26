@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { CounterInputProps } from './types';
-import { StyledCounterInput } from './StyledCounterInput';
+import { StyledCounterInput, StyledNumberWrapper } from './StyledCounterInput';
 import {
   COUNTER_INPUT_TOKEN,
   COUNTER_INPUT_ICON_SIZE_MAP,
@@ -301,9 +301,12 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
-                <BaseBox
+                <StyledNumberWrapper
                   className={`__blade-counter-input-number-wrapper ${animationClass}`.trim()}
-                  style={{ width: counterInputFieldWidth, ...counterInputTextStyle }}
+                  $width={counterInputFieldWidth}
+                  $fontFamily={counterInputTextStyle.fontFamily}
+                  $fontSize={counterInputTextStyle.fontSize}
+                  $fontWeight={counterInputTextStyle.fontWeight}
                 >
                   <BaseInput
                     ref={ref}
@@ -327,7 +330,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     aria-valuemax={max}
                     aria-valuenow={internalValue ?? min}
                   />
-                </BaseBox>
+                </StyledNumberWrapper>
 
                 <StyledCounterButton
                   className="__blade-counter-input-increment-button"

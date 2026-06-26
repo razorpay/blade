@@ -26,6 +26,18 @@ const slideDown = keyframes`
   }
 `;
 
+const StyledNumberWrapper = styled(BaseBox)<{
+  $width: string;
+  $fontFamily: string;
+  $fontSize: string;
+  $fontWeight: string | number;
+}>`
+  width: ${({ $width }) => $width};
+  font-family: ${({ $fontFamily }) => $fontFamily};
+  font-size: ${({ $fontSize }) => $fontSize};
+  font-weight: ${({ $fontWeight }) => $fontWeight};
+`;
+
 const StyledCounterInput = styled(BaseBox)`
   /* Hide focus ring by default */
   &.__blade-counter-input .focus-ring-wrapper:focus-within {
@@ -69,4 +81,4 @@ const StyledCounterInput = styled(BaseBox)`
   }
 `;
 
-export { StyledCounterInput };
+export { StyledCounterInput, StyledNumberWrapper };
