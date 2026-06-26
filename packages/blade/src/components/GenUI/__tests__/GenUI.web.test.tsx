@@ -1155,19 +1155,22 @@ describe('<GenUI />', () => {
     });
 
     it('should emit duplicate markdown table removal events without merchant row data', () => {
-      const onEvent = jest.fn();
+      const onDuplicateMarkdownTableRemoved = jest.fn();
 
       renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer
             components={duplicatePaymentTableComponents}
-            duplicateMarkdownTableHandling={{ isEnabled: true, onEvent }}
+            duplicateMarkdownTableHandling={{
+              isEnabled: true,
+              onDuplicateMarkdownTableRemoved,
+            }}
           />
         </GenUIProvider>,
       );
 
-      expect(onEvent).toHaveBeenCalledTimes(1);
-      expect(onEvent).toHaveBeenCalledWith({
+      expect(onDuplicateMarkdownTableRemoved).toHaveBeenCalledTimes(1);
+      expect(onDuplicateMarkdownTableRemoved).toHaveBeenCalledWith({
         type: 'DUPLICATE_MARKDOWN_TABLE_REMOVED',
         textComponentPath: [0],
         tableComponentPath: [1],
@@ -1175,7 +1178,9 @@ describe('<GenUI />', () => {
         tableFingerprint: '1:paymentid|amount|status|contact|date',
         reason: 'MATCHED_STRUCTURED_TABLE',
       });
-      expect(JSON.stringify(onEvent.mock.calls[0][0])).not.toContain('pay_SOJ4XrMPRKtO4g');
+      expect(
+        JSON.stringify(onDuplicateMarkdownTableRemoved.mock.calls[0][0]),
+      ).not.toContain('pay_SOJ4XrMPRKtO4g');
     });
 
     it('should remove duplicate markdown table text even when TEXT appears after TABLE', () => {

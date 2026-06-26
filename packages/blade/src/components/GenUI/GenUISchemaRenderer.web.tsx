@@ -341,7 +341,7 @@ type GenUISchemaRendererProps = {
   /** Removes duplicate markdown pipe tables from TEXT when a matching structured TABLE exists */
   duplicateMarkdownTableHandling?: {
     isEnabled?: boolean;
-    onEvent?: (event: GenUIDuplicateMarkdownTableEvent) => void;
+    onDuplicateMarkdownTableRemoved?: (event: GenUIDuplicateMarkdownTableEvent) => void;
   };
 };
 
@@ -380,7 +380,10 @@ const GenUISchemaRenderer = memo(
     }, [components]);
 
     useEffect(() => {
-      if (!duplicateMarkdownTableHandling?.isEnabled || !duplicateMarkdownTableHandling.onEvent) {
+      if (
+        !duplicateMarkdownTableHandling?.isEnabled ||
+        !duplicateMarkdownTableHandling.onDuplicateMarkdownTableRemoved
+      ) {
         return;
       }
 
@@ -391,13 +394,12 @@ const GenUISchemaRenderer = memo(
         }
 
         emittedDuplicateMarkdownTableEventKeysRef.current.add(eventKey);
-        duplicateMarkdownTableHandling.onEvent?.(event);
+        duplicateMarkdownTableHandling.onDuplicateMarkdownTableRemoved?.(event);
       });
     }, [
-      duplicateMarkdownTableHandling,
       duplicateMarkdownTableHandlingResult.events,
       duplicateMarkdownTableHandling?.isEnabled,
-      duplicateMarkdownTableHandling?.onEvent,
+      duplicateMarkdownTableHandling?.onDuplicateMarkdownTableRemoved,
     ]);
 
     if (!componentsToRender || componentsToRender.length === 0) {
