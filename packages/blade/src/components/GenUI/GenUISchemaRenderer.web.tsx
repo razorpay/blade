@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
+import React, { memo, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import type { GenUIComponent } from './GenUIComponents';
 import { useGenUI, GenUIContext } from './GenUIContext';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
+import { applyDuplicateMarkdownTableHandling } from './duplicateMarkdownTableHandling';
+import type { GenUIDuplicateMarkdownTableEvent } from './duplicateMarkdownTableHandling';
 import { Box } from '~components/Box';
 import { useResize } from '~utils/useResize';
 
@@ -336,6 +338,11 @@ type GenUISchemaRendererProps = {
   isAnimating?: boolean;
   /** Animation options for text streaming */
   animateOptions?: AnimateOptions;
+  /** Removes duplicate markdown pipe tables from TEXT when a matching structured TABLE exists */
+  duplicateMarkdownTableHandling?: {
+    isEnabled?: boolean;
+    onEvent?: (event: GenUIDuplicateMarkdownTableEvent) => void;
+  };
 };
 
 /**
@@ -350,10 +357,50 @@ type GenUISchemaRendererProps = {
  * ```
  */
 const GenUISchemaRenderer = memo(
-  ({ components, isAnimating, animateOptions }: GenUISchemaRendererProps) => {
+  ({
+    components,
+    isAnimating,
+    animateOptions,
+    duplicateMarkdownTableHandling,
+  }: GenUISchemaRendererProps) => {
     const parentContext = useGenUI();
+    const emittedDuplicateMarkdownTableEventKeysRef = useRef(new Set<string>());
+    const duplicateMarkdownTableHandlingResult = useMemo(
+      () =>
+        applyDuplicateMarkdownTableHandling(
+          components,
+          duplicateMarkdownTableHandling?.isEnabled ?? false,
+        ),
+      [components, duplicateMarkdownTableHandling?.isEnabled],
+    );
+    const componentsToRender = duplicateMarkdownTableHandlingResult.components;
 
-    if (!components || components.length === 0) {
+    useEffect(() => {
+      emittedDuplicateMarkdownTableEventKeysRef.current.clear();
+    }, [components]);
+
+    useEffect(() => {
+      if (!duplicateMarkdownTableHandling?.isEnabled || !duplicateMarkdownTableHandling.onEvent) {
+        return;
+      }
+
+      duplicateMarkdownTableHandlingResult.events.forEach((event) => {
+        const eventKey = `${event.textComponentPath.join('.')}:${event.tableFingerprint}`;
+        if (emittedDuplicateMarkdownTableEventKeysRef.current.has(eventKey)) {
+          return;
+        }
+
+        emittedDuplicateMarkdownTableEventKeysRef.current.add(eventKey);
+        duplicateMarkdownTableHandling.onEvent?.(event);
+      });
+    }, [
+      duplicateMarkdownTableHandling,
+      duplicateMarkdownTableHandlingResult.events,
+      duplicateMarkdownTableHandling?.isEnabled,
+      duplicateMarkdownTableHandling?.onEvent,
+    ]);
+
+    if (!componentsToRender || componentsToRender.length === 0) {
       return null;
     }
 
@@ -367,8 +414,8 @@ const GenUISchemaRenderer = memo(
     return (
       <GenUIContext.Provider value={contextValue}>
         <>
-          {components.map((component, index) => {
-            const marginTop = getGenUIComponentTopSpacing(components[index - 1], component);
+          {componentsToRender.map((component, index) => {
+            const marginTop = getGenUIComponentTopSpacing(componentsToRender[index - 1], component);
 
             return (
               <Box key={getComponentKey(component, index)} marginTop={marginTop}>

@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
+import type { GenUIComponent } from './GenUIComponents';
 import { Box } from '~components/Box';
 import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { ChevronUpDownIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 
 export default {
@@ -601,6 +603,399 @@ TextString.argTypes = {
     control: 'text',
   },
 };
+
+const merchantDuplicateMarkdownTableScenarios: Array<{
+  title: string;
+  components: GenUIComponent[];
+}> = [
+  {
+    title: 'Failed Payments',
+    components: [
+      {
+        component: 'TEXT',
+        content:
+          'You have 4 failed payments in total. Here they are:\n\n' +
+          '| # | Payment ID | Amount | Status | Contact | Date |\n' +
+          '|---|---|---|---|---|---|\n' +
+          '| 1 | pay_SOJ4XrMPRKtO4g | INR 5.00 | Failed | +917636802936 | 07 Mar, 04:12 PM |\n' +
+          '| 2 | pay_SMeXeyPnHOZbpE | INR 10.00 | Failed | +918806922557 | 03 Mar, 11:54 AM |\n\n' +
+          'All failures occurred in early March 2026.',
+      },
+      {
+        component: 'TABLE',
+        headers: ['Payment ID', 'Amount', 'Status', 'Contact', 'Date'],
+        rows: [
+          [
+            { component: 'LINK', text: 'pay_SOJ4XrMPRKtO4g' },
+            { component: 'TEXT', value: 'INR 5.00' },
+            { component: 'BADGE', value: 'Failed', color: 'negative' },
+            { component: 'TEXT', value: '+917636802936' },
+            { component: 'TEXT', value: '07 Mar, 04:12 PM' },
+          ],
+          [
+            { component: 'LINK', text: 'pay_SMeXeyPnHOZbpE' },
+            { component: 'TEXT', value: 'INR 10.00' },
+            { component: 'BADGE', value: 'Failed', color: 'negative' },
+            { component: 'TEXT', value: '+918806922557' },
+            { component: 'TEXT', value: '03 Mar, 11:54 AM' },
+          ],
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Refund Fees',
+    components: [
+      {
+        component: 'TEXT',
+        content:
+          "Here's the fee breakdown for each of your last 10 refunds:\n\n" +
+          '| Refund ID | Payment ID | Refund Amount | Fee | Tax | Total Fee |\n' +
+          '|---|---|---|---|---|---|\n' +
+          '| rfnd_SpHOaENSuADPyV | pay_SpBSOTesHIlrPt | INR 1599.00 | INR 37.74 | INR 5.76 | INR 43.50 |\n' +
+          '| rfnd_So4XV4d9LYZoVB | pay_SnzmL9T5y8xc25 | INR 10.00 | INR 0.12 | INR 0.02 | INR 0.14 |\n\n' +
+          'Total fees across all 10 refunds: INR 46.95.',
+      },
+      {
+        component: 'TABLE',
+        headers: ['Refund ID', 'Payment ID', 'Refund Amount', 'Fee', 'Tax', 'Total Fee'],
+        rows: [
+          [
+            { component: 'LINK', text: 'rfnd_SpHOaENSuADPyV' },
+            { component: 'LINK', text: 'pay_SpBSOTesHIlrPt' },
+            { component: 'TEXT', value: 'INR 1599.00' },
+            { component: 'TEXT', value: 'INR 37.74' },
+            { component: 'TEXT', value: 'INR 5.76' },
+            { component: 'TEXT', value: 'INR 43.50' },
+          ],
+          [
+            { component: 'LINK', text: 'rfnd_So4XV4d9LYZoVB' },
+            { component: 'LINK', text: 'pay_SnzmL9T5y8xc25' },
+            { component: 'TEXT', value: 'INR 10.00' },
+            { component: 'TEXT', value: 'INR 0.12' },
+            { component: 'TEXT', value: 'INR 0.02' },
+            { component: 'TEXT', value: 'INR 0.14' },
+          ],
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Settlements by Year',
+    components: [
+      {
+        component: 'TEXT',
+        content:
+          'Settlements in 2026:\n\n' +
+          '| Settlement ID | Amount | Status | Date |\n' +
+          '|---|---|---|---|\n' +
+          '| setl_2026A1 | INR 12850.00 | Processed | 14 Mar 2026 |\n' +
+          '| setl_2026B2 | INR 9640.00 | Processed | 22 Apr 2026 |\n\n' +
+          'Settlements in 2025:\n\n' +
+          '| Settlement ID | Amount | Status | Date |\n' +
+          '|---|---|---|---|\n' +
+          '| setl_2025A1 | INR 11220.00 | Processed | 18 Mar 2025 |\n' +
+          '| setl_2025B2 | INR 8730.00 | Processed | 28 Apr 2025 |',
+      },
+      {
+        component: 'TABLE',
+        headers: ['Settlement ID', 'Amount', 'Status', 'Date'],
+        rows: [
+          [
+            { component: 'LINK', text: 'setl_2026A1' },
+            { component: 'TEXT', value: 'INR 12850.00' },
+            { component: 'BADGE', value: 'Processed', color: 'positive' },
+            { component: 'TEXT', value: '14 Mar 2026' },
+          ],
+          [
+            { component: 'LINK', text: 'setl_2026B2' },
+            { component: 'TEXT', value: 'INR 9640.00' },
+            { component: 'BADGE', value: 'Processed', color: 'positive' },
+            { component: 'TEXT', value: '22 Apr 2026' },
+          ],
+        ],
+      },
+      {
+        component: 'TABLE',
+        headers: ['Settlement ID', 'Amount', 'Status', 'Date'],
+        rows: [
+          [
+            { component: 'LINK', text: 'setl_2025A1' },
+            { component: 'TEXT', value: 'INR 11220.00' },
+            { component: 'BADGE', value: 'Processed', color: 'positive' },
+            { component: 'TEXT', value: '18 Mar 2025' },
+          ],
+          [
+            { component: 'LINK', text: 'setl_2025B2' },
+            { component: 'TEXT', value: 'INR 8730.00' },
+            { component: 'BADGE', value: 'Processed', color: 'positive' },
+            { component: 'TEXT', value: '28 Apr 2025' },
+          ],
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Payment Health',
+    components: [
+      {
+        component: 'TEXT',
+        content:
+          "Here's an analysis of your payment health:\n\n" +
+          '| Metric | Value |\n' +
+          '|---|---|\n' +
+          '| Total Successful Payments | 7 |\n' +
+          '| Total Volume Collected | INR 1835.00 |\n' +
+          '| Failed Payments | 4 |\n' +
+          '| Success Rate | 64% |\n\n' +
+          'Moderate concern: success rate is below the usual healthy range.',
+      },
+      {
+        component: 'TABLE',
+        headers: ['Metric', 'Value'],
+        rows: [
+          [
+            { component: 'TEXT', value: 'Total Successful Payments' },
+            { component: 'TEXT', value: '7' },
+          ],
+          [
+            { component: 'TEXT', value: 'Total Volume Collected' },
+            { component: 'TEXT', value: 'INR 1835.00' },
+          ],
+          [
+            { component: 'TEXT', value: 'Failed Payments' },
+            { component: 'TEXT', value: '4' },
+          ],
+          [
+            { component: 'TEXT', value: 'Success Rate' },
+            { component: 'TEXT', value: '64%' },
+          ],
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Standalone Markdown Table Preserved',
+    components: [
+      {
+        component: 'TEXT',
+        content:
+          'This reference table has no matching GenUI table and should remain visible:\n\n' +
+          '| Field | Meaning |\n' +
+          '|---|---|\n' +
+          '| id | Internal identifier |',
+      },
+    ],
+  },
+];
+
+const MerchantDuplicateMarkdownTableComparison = ({
+  title,
+  components,
+}: {
+  title: string;
+  components: GenUIComponent[];
+}): JSX.Element => {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isSliding, setIsSliding] = useState(false);
+  const [frameWidth, setFrameWidth] = useState<number | undefined>();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const comparisonTransition =
+    'left 140ms cubic-bezier(0.2, 0, 0, 1), width 140ms cubic-bezier(0.2, 0, 0, 1)';
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) {
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      setFrameWidth(entry.contentRect.width);
+    });
+    resizeObserver.observe(frame);
+
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4">
+      <Text size="large" weight="semibold">
+        {title}
+      </Text>
+      <div
+        ref={frameRef}
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '320px',
+          border: '1px solid #D7D9DD',
+          borderRadius: '8px',
+          backgroundColor: '#F9F9F7',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '12px',
+            zIndex: 3,
+            padding: '6px 12px',
+            borderRadius: '8px',
+            backgroundColor: '#FFFFFF',
+          }}
+        >
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            Before
+          </Text>
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            right: '12px',
+            bottom: '12px',
+            zIndex: 3,
+            padding: '6px 12px',
+            borderRadius: '8px',
+            backgroundColor: '#FFFFFF',
+          }}
+        >
+          <Text size="small" weight="semibold" color="surface.text.gray.subtle">
+            After
+          </Text>
+        </div>
+        <div style={{ padding: '20px', overflow: 'auto' }}>
+          <GenUIProvider>
+            <GenUISchemaRenderer
+              isAnimating={false}
+              components={components}
+              duplicateMarkdownTableHandling={{ isEnabled: true }}
+            />
+          </GenUIProvider>
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: `${sliderPosition}%`,
+            overflow: 'hidden',
+            backgroundColor: '#F9F9F7',
+            transition: comparisonTransition,
+          }}
+        >
+          <div
+            style={{
+              width: frameWidth ? `${frameWidth}px` : '100%',
+              padding: '20px',
+              overflow: 'auto',
+              boxSizing: 'border-box',
+            }}
+          >
+            <GenUIProvider>
+              <GenUISchemaRenderer isAnimating={false} components={components} />
+            </GenUIProvider>
+          </div>
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: `${sliderPosition}%`,
+            zIndex: 2,
+            width: '2px',
+            backgroundColor: '#0B72E7',
+            transform: 'translateX(-50%)',
+            transition: comparisonTransition,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: `${sliderPosition}%`,
+            zIndex: 3,
+            display: 'flex',
+            width: '40px',
+            height: '40px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '1px solid #D7D9DD',
+            borderRadius: '10px',
+            backgroundColor: '#FFFFFF',
+            boxShadow: isSliding
+              ? '0 8px 20px rgba(15, 23, 42, 0.18)'
+              : '0 2px 8px rgba(15, 23, 42, 0.14)',
+            transform: `translate(-50%, -50%) scale(${isSliding ? 1.06 : 1})`,
+            transition: `${comparisonTransition}, box-shadow 140ms cubic-bezier(0.2, 0, 0, 1), transform 140ms cubic-bezier(0.2, 0, 0, 1)`,
+          }}
+        >
+          <div style={{ display: 'flex', transform: 'rotate(90deg)' }}>
+            <ChevronUpDownIcon size="large" color="surface.icon.gray.subtle" />
+          </div>
+        </div>
+        <input
+          aria-label={`${title} comparison slider`}
+          min="0"
+          max="100"
+          type="range"
+          value={sliderPosition}
+          onChange={(event) => setSliderPosition(Number(event.target.value))}
+          onPointerDown={() => setIsSliding(true)}
+          onPointerUp={() => setIsSliding(false)}
+          onPointerCancel={() => setIsSliding(false)}
+          onBlur={() => setIsSliding(false)}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0,
+            zIndex: 4,
+            width: '100%',
+            height: '100%',
+            cursor: 'ew-resize',
+          }}
+        />
+      </div>
+    </Box>
+  );
+};
+
+const MerchantDuplicateMarkdownTableTemplate: StoryFn<typeof GenUISchemaRenderer> = () => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="spacing.9"
+      maxWidth="1200px"
+      padding="spacing.5"
+    >
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text size="xlarge" weight="semibold">
+          Duplicate Markdown Table Regression
+        </Text>
+        <Text size="medium" color="surface.text.gray.subtle">
+          Use this story to compare today&apos;s raw pipe-table leak with the opt-in renderer safety
+          net.
+        </Text>
+        <Text size="medium" color="surface.text.gray.subtle">
+          Drag each slider to reveal before and after.
+        </Text>
+      </Box>
+      {merchantDuplicateMarkdownTableScenarios.map((scenario) => (
+        <MerchantDuplicateMarkdownTableComparison
+          key={scenario.title}
+          title={scenario.title}
+          components={scenario.components}
+        />
+      ))}
+    </Box>
+  );
+};
+
+export const MerchantDuplicateMarkdownTableRegression = MerchantDuplicateMarkdownTableTemplate.bind(
+  {},
+);
 
 const defaultTableRowActions = [
   {
