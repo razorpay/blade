@@ -321,7 +321,7 @@ For each screenshot captured, classify issues:
 
 **Spawning Patch Mode:**
 
-Write `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md`, then spawn:
+Write `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md` using the template at `.claude/templates/rn-patch-request.md` (4 sections: Type Errors, Visual Issues, Test Failures, Missing Files — each as `item — detail — fix` lines), then spawn:
 
 ```
 Agent(subagent_type: "execute-rn-migration", run_in_background: false, prompt: "
