@@ -806,7 +806,7 @@ const MerchantDuplicateMarkdownTableComparison = ({
   useEffect(() => {
     const frame = frameRef.current;
     if (!frame) {
-      return;
+      return undefined;
     }
 
     const resizeObserver = new ResizeObserver(([entry]) => {
