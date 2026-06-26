@@ -32,6 +32,14 @@
 | `types.ts` | shared | modify (add Platform.Select) |
 | `*Tokens.ts` | shared | skip |
 
+## Sub-Components
+
+<!-- Compound components are mostly sub-component files. List every {SubName} that is NOT Styled*/Animated* and NOT the main {Name}. Native Status uses genuine-stub detection (not bare throwBladeError). -->
+
+| Sub-Component | Web File | Native Status | Action |
+|--------------|----------|--------------|--------|
+| `{SubName}` | `{SubName}.web.tsx` / `{SubName}.tsx` | missing / genuine stub / real | create / replace stub / **skip (real)** |
+
 ## Unsupported CSS Catalog
 
 <!-- Every CSS property that won't work on RN, with replacement strategy -->

@@ -180,9 +180,22 @@ const animatedStyle = useAnimatedStyle(() => ({
 }));
 ```
 
+#### Step 3b: Create/Replace Sub-Components (.native.tsx)
+
+Compound components are mostly sub-component files (e.g. BottomSheet → `BottomSheetHeader`/`Body`/`Footer`/`Backdrop`/`GrabHandle`; Menu → `MenuOverlay`; TimePicker → `SpinWheel`). For EACH sub-component in the migration plan's File Plan (rows marked `3b`):
+
+1. Check whether the native file already exists:
+   ```bash
+   cd {Worktree}/packages/blade && ls src/components/{Name}/{SubName}.native.tsx 2>/dev/null
+   ```
+2. **If it exists and is REAL → SKIP it. Do NOT overwrite.** Report `skipped {SubName}.native.tsx (already implemented)`. A file is REAL if its body is more than a `throwBladeError` call + trivial return — it has a real render tree, hooks, or other logic. (Bare `throwBladeError` presence is NOT enough to call it a stub — a sub-component like `AccordionButton.native.tsx` uses it for input validation yet is fully implemented.)
+3. **If it is missing, or a GENUINE stub** (body is essentially just `throwBladeError('... not yet implemented for native')` + trivial return) → write the real implementation, following the same patterns as the main component (strip unsupported CSS, `castNativeType` for events, `isDisabled` guards, `metaAttribute`, `makeAccessible`).
+
+Create sub-components BEFORE the main component — the main composes them. If you believe the plan misclassified a sub-component, flag it rather than clobbering working code.
+
 #### Step 4: Create/Replace Main Component (.native.tsx)
 
-If replacing a stub (file contains `throwBladeError`), overwrite the ENTIRE content:
+Apply the same guard as Step 3b: if `{Name}.native.tsx` already exists as a REAL implementation, SKIP and report — do not overwrite. If replacing a GENUINE stub (body is essentially just `throwBladeError` + trivial return, not a validation guard inside a real implementation), overwrite the ENTIRE content:
 
 ```typescript
 import React from 'react';

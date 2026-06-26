@@ -40,11 +40,13 @@ Write to absolute paths under `{Worktree}`:
    - If not found → stop: "Component {Name} not found"
 3. Check native status:
    a. Find ALL files in the directory (recursively)
-   b. Identify `.native.tsx` files
-   c. For each `.native.tsx`, check if it contains `throwBladeError` → mark as STUB
-   d. If real `.native.tsx` implementations exist (no throwBladeError) for ALL styled/animated files → stop: "Already has full native support"
-   e. If mix of stubs and real → continue (partial migration)
+   b. Identify `.native.tsx` files — the main `{Name}.native.tsx`, every sub-component (`{SubName}.native.tsx`), and `Styled*`/`Animated*` files
+   c. For each `.native.tsx`, classify as STUB or REAL using **genuine-stub detection** (below) — NOT bare `throwBladeError` string presence
+   d. If EVERY `.native.tsx` file (main + sub-components + styled/animated) is REAL → stop: "Already has full native support"
+   e. If a mix of stubs and real exists → continue (partial migration — only stub/missing files get created)
    f. If no `.native.tsx` at all → continue (full migration needed)
+
+   **Genuine-stub detection:** a file is a STUB only if its component body is essentially just a `throwBladeError(...)` call with a trivial return (no real JSX render tree, no hooks, no other logic) — the message typically reads `'{Name} is not yet implemented for native'`. A large file that merely calls `throwBladeError` for input validation (e.g. a missing required child) is REAL. Bare string presence misfires: `Tabs.native.tsx` (434 lines), `Avatar.native.tsx` (239 lines), and `AccordionButton.native.tsx` (131 lines) contain `throwBladeError` for validation but are fully implemented.
 
 ---
 
@@ -79,6 +81,9 @@ For every file in the component directory:
 | `Styled*.native.tsx` with `throwBladeError` | Stub | Replace with real implementation |
 | `Styled*.native.tsx` without `throwBladeError` | Already implemented | Skip |
 | `Animated*.web.tsx` | Web-only animation | Create `.native.tsx` with reanimated |
+| `{SubName}.web.tsx` (not Styled/Animated, ≠ main `{Name}`) | Web-only sub-component | Create `{SubName}.native.tsx` counterpart |
+| `{SubName}.native.tsx` — genuine stub | Sub-component stub | Replace with real implementation |
+| `{SubName}.native.tsx` — real (not a stub) | Sub-component already implemented | Skip — do NOT overwrite |
 | `*.tsx` (no suffix) using `styled-components` or HTML | **Unsuffixed web-only** | Rename → `.web.tsx`, create `.native.tsx` |
 | `*.tsx` (no suffix) platform-agnostic logic | Shared | Skip — works on both platforms |
 | `*.ts` (types, tokens, style computation) | Shared | Skip — unless types need Platform.Select |
@@ -176,7 +181,8 @@ For each file classified as needing a `.native.tsx`:
 | 1 | `types.ts` | modify (add Platform.Select) | — | — |
 | 2 | `Styled{X}.native.tsx` | create | `View` / `Pressable` | styled-components/native |
 | 3 | `Animated{X}.native.tsx` | create | `Animated.View` | react-native-reanimated |
-| 4 | `{Name}.native.tsx` | create / replace stub | — | — |
+| 3b | `{SubName}.native.tsx` (one row per sub-component) | create / replace stub / **skip if real** | `View` / `Pressable` | create before main; main composes them |
+| 4 | `{Name}.native.tsx` | create / replace stub / skip if real | — | — |
 | 5 | `__tests__/{Name}.native.test.tsx` | create | — | — |
 
 ### 9: Plan Style Translation

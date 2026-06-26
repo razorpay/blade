@@ -24,7 +24,8 @@
 | 1 | `types.ts` | modify | — | Add Platform.Select for {types} |
 | 2 | `Styled{X}.native.tsx` | create | `styled(View)` / `styled(Pressable)` | Replaces web styled-component |
 | 3 | `Animated{X}.native.tsx` | create | `Animated.View` | react-native-reanimated |
-| 4 | `{Name}.native.tsx` | replace stub | — | Remove throwBladeError, add real impl |
+| 3b | `{SubName}.native.tsx` (one row per sub-component) | create / replace stub / **skip if real** | `View` / `Pressable` | create before main; skip any that already exist as real impls |
+| 4 | `{Name}.native.tsx` | replace stub / skip if real | — | Remove throwBladeError, add real impl (skip if already real) |
 | 5 | `__tests__/{Name}.native.test.tsx` | create | — | Mirror web tests |
 
 ## Style Translation
