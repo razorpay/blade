@@ -64,7 +64,7 @@ const _Breadcrumb = (
                 {...metaAttribute({ name: MetaConstants.BreadcrumbItem })}
               >
                 {child}
-                <BaseBox>
+                <BaseBox {...makeAccessible({ hidden: true })}>
                   {index !== React.Children.count(children) - 1 && (
                     <Separator size={size} color={color} />
                   )}

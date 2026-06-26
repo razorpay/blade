@@ -161,7 +161,9 @@ exports[`<Breadcrumb /> should render 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -329,7 +331,9 @@ exports[`<Breadcrumb /> should render 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -497,7 +501,9 @@ exports[`<Breadcrumb /> should render 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -671,7 +677,9 @@ exports[`<Breadcrumb /> should render current page item as text (not a link) 1`]
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -786,7 +794,9 @@ exports[`<Breadcrumb /> should render current page item as text (not a link) 1`]
           </Text>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -960,7 +970,9 @@ exports[`<Breadcrumb /> should render with large size 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1128,7 +1140,9 @@ exports[`<Breadcrumb /> should render with large size 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1302,7 +1316,9 @@ exports[`<Breadcrumb /> should render with small size 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1470,7 +1486,9 @@ exports[`<Breadcrumb /> should render with small size 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1644,7 +1662,9 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1759,7 +1779,9 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
           </Text>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -1934,7 +1956,9 @@ exports[`<Breadcrumb /> should support data-analytics attributes 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -2102,7 +2126,9 @@ exports[`<Breadcrumb /> should support data-analytics attributes 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -2276,7 +2302,9 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
@@ -2444,7 +2472,9 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
           </View>
         </View>
         <View
+          accessibilityElementsHidden={true}
           data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
           style={
             [
               {},
