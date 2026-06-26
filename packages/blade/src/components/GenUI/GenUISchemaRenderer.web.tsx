@@ -339,10 +339,9 @@ type GenUISchemaRendererProps = {
   /** Animation options for text streaming */
   animateOptions?: AnimateOptions;
   /** Removes duplicate markdown pipe tables from TEXT when a matching structured TABLE exists */
-  duplicateMarkdownTableHandling?: {
-    isEnabled?: boolean;
-    onDuplicateMarkdownTableRemoved?: (event: GenUIDuplicateMarkdownTableEvent) => void;
-  };
+  isDuplicateMarkdownTableHandlingEnabled?: boolean;
+  /** Callback fired when a duplicate markdown table is removed */
+  onDuplicateMarkdownTableRemoved?: (event: GenUIDuplicateMarkdownTableEvent) => void;
 };
 
 /**
@@ -361,7 +360,8 @@ const GenUISchemaRenderer = memo(
     components,
     isAnimating,
     animateOptions,
-    duplicateMarkdownTableHandling,
+    isDuplicateMarkdownTableHandlingEnabled,
+    onDuplicateMarkdownTableRemoved,
   }: GenUISchemaRendererProps) => {
     const parentContext = useGenUI();
     const emittedDuplicateMarkdownTableEventKeysRef = useRef(new Set<string>());
@@ -369,17 +369,14 @@ const GenUISchemaRenderer = memo(
       () =>
         applyDuplicateMarkdownTableHandling(
           components,
-          duplicateMarkdownTableHandling?.isEnabled ?? false,
+          isDuplicateMarkdownTableHandlingEnabled ?? false,
         ),
-      [components, duplicateMarkdownTableHandling?.isEnabled],
+      [components, isDuplicateMarkdownTableHandlingEnabled],
     );
     const componentsToRender = duplicateMarkdownTableHandlingResult.components;
 
     useEffect(() => {
-      if (
-        !duplicateMarkdownTableHandling?.isEnabled ||
-        !duplicateMarkdownTableHandling.onDuplicateMarkdownTableRemoved
-      ) {
+      if (!isDuplicateMarkdownTableHandlingEnabled || !onDuplicateMarkdownTableRemoved) {
         return;
       }
 
@@ -402,12 +399,12 @@ const GenUISchemaRenderer = memo(
         }
 
         emittedDuplicateMarkdownTableEventKeysRef.current.add(eventKey);
-        duplicateMarkdownTableHandling.onDuplicateMarkdownTableRemoved?.(event);
+        onDuplicateMarkdownTableRemoved(event);
       });
     }, [
       duplicateMarkdownTableHandlingResult.events,
-      duplicateMarkdownTableHandling?.isEnabled,
-      duplicateMarkdownTableHandling?.onDuplicateMarkdownTableRemoved,
+      isDuplicateMarkdownTableHandlingEnabled,
+      onDuplicateMarkdownTableRemoved,
     ]);
 
     if (!componentsToRender || componentsToRender.length === 0) {

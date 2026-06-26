@@ -1138,7 +1138,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={duplicatePaymentTableComponents}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1161,10 +1161,8 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={duplicatePaymentTableComponents}
-            duplicateMarkdownTableHandling={{
-              isEnabled: true,
-              onDuplicateMarkdownTableRemoved,
-            }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+            onDuplicateMarkdownTableRemoved={onDuplicateMarkdownTableRemoved}
           />
         </GenUIProvider>,
       );
@@ -1193,7 +1191,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1218,7 +1216,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1244,7 +1242,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1269,7 +1267,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1296,7 +1294,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1327,7 +1325,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1370,7 +1368,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1432,7 +1430,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1500,7 +1498,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );
@@ -1531,7 +1529,7 @@ describe('<GenUI />', () => {
         <GenUIProvider>
           <GenUISchemaRenderer
             components={components}
-            duplicateMarkdownTableHandling={{ isEnabled: true }}
+            isDuplicateMarkdownTableHandlingEnabled={true}
           />
         </GenUIProvider>,
       );

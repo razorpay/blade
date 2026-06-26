@@ -868,7 +868,7 @@ const MerchantDuplicateMarkdownTableComparison = ({
             <GenUISchemaRenderer
               isAnimating={false}
               components={components}
-              duplicateMarkdownTableHandling={{ isEnabled: true }}
+              isDuplicateMarkdownTableHandlingEnabled={true}
             />
           </GenUIProvider>
         </div>
