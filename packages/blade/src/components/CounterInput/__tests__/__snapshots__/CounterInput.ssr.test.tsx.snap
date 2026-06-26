@@ -529,7 +529,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17:focus-visible {
+.c18.c18.c18.c18.c18:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
@@ -541,7 +541,7 @@ exports[`<CounterInput /> should render CounterInput with default properties 2`]
   z-index: 2;
 }
 
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
+.c18.c18.c18.c18.c18:hover:not(:disabled) {
   background-color: hsla(206,10%,29%,0.09) !important;
   color: hsla(0,0%,2%,1) !important;
 }

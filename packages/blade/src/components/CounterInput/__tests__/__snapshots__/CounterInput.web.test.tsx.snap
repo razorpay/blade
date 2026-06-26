@@ -527,7 +527,7 @@ exports[`<CounterInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17:focus-visible {
+.c18.c18.c18.c18.c18:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
@@ -539,7 +539,7 @@ exports[`<CounterInput /> should render 1`] = `
   z-index: 2;
 }
 
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
+.c18.c18.c18.c18.c18:hover:not(:disabled) {
   background-color: hsla(206,10%,29%,0.09) !important;
   color: hsla(0,0%,2%,1) !important;
 }
@@ -1262,7 +1262,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17:focus-visible {
+.c18.c18.c18.c18.c18:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
@@ -1274,7 +1274,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   z-index: 2;
 }
 
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
+.c18.c18.c18.c18.c18:hover:not(:disabled) {
   background-color: hsla(206,10%,29%,0.09) !important;
   color: hsla(0,0%,2%,1) !important;
 }
@@ -1997,7 +1997,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17:focus-visible {
+.c18.c18.c18.c18.c18:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: -4px;
   -webkit-transition-property: outline-width;
@@ -2009,7 +2009,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   z-index: 2;
 }
 
-.c17.c17.c17.c17.c17:hover:not(:disabled) {
+.c18.c18.c18.c18.c18:hover:not(:disabled) {
   background-color: hsla(218,89%,51%,0.18) !important;
   color: hsla(218,87%,43%,1) !important;
 }
