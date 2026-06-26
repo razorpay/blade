@@ -1178,9 +1178,9 @@ describe('<GenUI />', () => {
         tableFingerprint: '1:paymentid|amount|status|contact|date',
         reason: 'MATCHED_STRUCTURED_TABLE',
       });
-      expect(
-        JSON.stringify(onDuplicateMarkdownTableRemoved.mock.calls[0][0]),
-      ).not.toContain('pay_SOJ4XrMPRKtO4g');
+      expect(JSON.stringify(onDuplicateMarkdownTableRemoved.mock.calls[0][0])).not.toContain(
+        'pay_SOJ4XrMPRKtO4g',
+      );
     });
 
     it('should remove duplicate markdown table text even when TEXT appears after TABLE', () => {
