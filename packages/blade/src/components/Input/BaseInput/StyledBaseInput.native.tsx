@@ -386,6 +386,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      includeFontPadding={false}
       $size={$size}
       {...commonProps}
       {...props}

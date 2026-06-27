@@ -20,6 +20,7 @@ TASK_TYPE = "bugfix" | "feature" | "other"
   - [ ] Add storybook story for the bugfix (if applicable)
 - [ ] Add items from [Code Sanity Checklist](#code-sanity-checklist) to this checklist
 - [ ] Add changeset with relevant semver bump
+- [ ] PR is created in ready for review state and not in draft state
 
 ## Perform end-to-end 'feature' task
 
@@ -33,6 +34,7 @@ For large tasks, use subagents smartly and always follow this checklist
 - [ ] Add test for that feature (use write-unit-tests skill to write tests)
 - [ ] Add items from [Code Sanity Checklist](#code-sanity-checklist) to this checklist and verify them.
 - [ ] Add changeset with relevant semver bump
+- [ ] PR is created in ready for review state and not in draft state
 
 ## Code Sanity Checklist
 
