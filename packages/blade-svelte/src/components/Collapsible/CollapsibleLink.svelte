@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Link from '../Link/Link.svelte';
+  import BaseLink from '../Link/BaseLink/BaseLink.svelte';
   import { makeAnalyticsAttribute, getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { getCollapsibleContext } from './context';
   import CollapsibleChevronIcon from './CollapsibleChevronIcon.svelte';
@@ -49,7 +49,7 @@
 </script>
 
 <span class={wrapperClass} style={wrapperStyle}>
-  <Link
+  <BaseLink
     variant="button"
     {size}
     {color}
@@ -57,9 +57,11 @@
     iconPosition="right"
     {isDisabled}
     {testID}
-    {accessibilityLabel}
-    aria-controls={ctx.collapsibleBodyId}
-    aria-expanded={isExpanded}
+    accessibilityProps={{
+      label: accessibilityLabel,
+      controls: ctx.collapsibleBodyId,
+      expanded: isExpanded,
+    }}
     onClick={toggleIsExpanded}
     {...analyticsAttrs}
   >
@@ -68,5 +70,5 @@
     {:else if children}
       {@render children()}
     {/if}
-  </Link>
+  </BaseLink>
 </span>
