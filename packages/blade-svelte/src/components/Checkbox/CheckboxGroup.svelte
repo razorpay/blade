@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { untrack, useId } from 'svelte';
+  import { untrack } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -45,7 +45,7 @@
   }: CheckboxGroupProps = $props();
 
   // ── ids ──
-  const idBase = useId();
+  const idBase = `checkbox-group-${Math.random().toString(36).slice(2, 8)}`;
   const labelId = `${idBase}-label`;
   const fallbackName = $derived(name ?? idBase);
 

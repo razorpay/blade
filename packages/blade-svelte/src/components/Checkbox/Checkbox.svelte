@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import { untrack, useId, type Snippet } from 'svelte';
+  import { untrack, type Snippet } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -140,7 +140,7 @@
   const hasChildren = $derived(Boolean(children));
 
   // ── ids ──
-  const idBase = useId();
+  const idBase = `checkbox-${Math.random().toString(36).slice(2, 8)}`;
   const helpTextId = `${idBase}-help`;
   const errorTextId = `${idBase}-error`;
 
