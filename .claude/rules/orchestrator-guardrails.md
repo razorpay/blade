@@ -34,6 +34,7 @@ description: Enforce agent boundaries when the orchestrator is running a migrati
 
 - **Don't read `.claude/agents/*.md` to follow the steps yourself.** Spawn the matching `subagent_type` via the Agent tool.
 - **Don't `git worktree remove` until the user asks.**
+- **Never skip a pipeline phase.** Always run Plan → Execute → Verify in order, even if a previous agent produced implementation files as a side effect. Each phase has a distinct mandate: Plan researches and designs, Execute implements and tests, Verify typechecks and self-heals. Skipping Execute because files already exist bypasses the stage that validates correctness.
 
 ## 🔁 Phase Ordering
 
