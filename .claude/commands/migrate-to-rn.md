@@ -13,6 +13,7 @@ description: Add React Native support (.native.tsx files) to Blade components th
 - I will NOT execute the plan/execute/verify steps myself
 - I will pass the worktree absolute path in each agent's prompt
 - I will present artifacts to the user at gates before proceeding
+- I will **never skip a pipeline phase** — Plan → Execute → Verify always run in order, even if a previous agent produced implementation files as a side effect
 
 ## Include
 
