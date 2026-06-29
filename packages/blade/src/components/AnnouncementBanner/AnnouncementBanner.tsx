@@ -44,11 +44,7 @@ const _AnnouncementBanner = (
       {...makeAnalyticsAttribute(rest)}
     >
       {Icon ? (
-        <BaseBox
-          display="flex"
-          alignItems="center"
-          {...makeAccessible({ hidden: true })}
-        >
+        <BaseBox display="flex" alignItems="center" {...makeAccessible({ hidden: true })}>
           <Icon size="small" color={getBannerIconColor(isDark)} />
         </BaseBox>
       ) : null}
