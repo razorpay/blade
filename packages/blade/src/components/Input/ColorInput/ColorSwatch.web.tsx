@@ -1,7 +1,12 @@
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import { useTheme } from '~components/BladeProvider';
+import { makeSize } from '~utils/makeSize';
+import { size } from '~tokens/global';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { padHexForPicker } from './ColorInput.utils';
+import getIn from '~utils/lodashButBetter/get';
 
 type ColorSwatchProps = {
   color: string;
@@ -14,23 +19,18 @@ type ColorSwatchRef = {
   openPicker: () => void;
 };
 
-const swatchSize = {
-  xsmall: 20,
-  small: 24,
-  medium: 28,
-  large: 40,
-} as const;
-
-const swatchMarginRight = {
-  xsmall: 0,
-  small: 0,
-  medium: -2,
-  large: -4,
+const swatchSizeTokens = {
+  xsmall: size['20'],
+  small: size['24'],
+  medium: size['28'],
+  large: size['40'],
 } as const;
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
-  ({ color, size, isDisabled, onChange }, ref) => {
+  ({ color, size: inputSize, isDisabled, onChange }, ref) => {
     const colorInputRef = useRef<HTMLInputElement>(null);
+    const { theme } = useTheme();
+    const borderColor = getIn(theme.colors, 'interactive.border.gray.default');
 
     useImperativeHandle(ref, () => ({
       openPicker: () => {
@@ -51,7 +51,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
       onChange(hexValue);
     };
 
-    const dimension = swatchSize[size];
+    const dimension = swatchSizeTokens[inputSize];
 
     return (
       <BaseBox
@@ -61,25 +61,23 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         position="relative"
         onClick={handleClick}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
-        style={{ marginRight: `${swatchMarginRight[size]}px` }}
       >
         <BaseBox
           as="div"
+          width={makeSize(dimension)}
+          height={makeSize(dimension)}
+          borderRadius="xsmall"
+          flexShrink={0}
           style={{
-            width: `${dimension}px`,
-            height: `${dimension}px`,
-            backgroundColor: `#${color || 'FFFFFF'}`,
-            borderRadius: '6px',
-            border: '1px solid',
-            borderColor: 'hsla(0, 0%, 0%, 0.12)',
-            flexShrink: 0,
+            backgroundColor: padHexForPicker(color),
+            border: `1px solid ${borderColor}`,
             opacity: isDisabled ? 0.5 : 1,
           }}
         />
         <input
           ref={colorInputRef}
           type="color"
-          value={`#${color || 'FFFFFF'}`}
+          value={padHexForPicker(color).toLowerCase()}
           onChange={handleChange}
           disabled={isDisabled}
           tabIndex={-1}

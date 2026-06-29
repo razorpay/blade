@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.native';
+import { DEFAULT_COLOR_VALUE, isValidHex, isValidOpacity } from './ColorInput.utils';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
 import { FormLabel } from '~components/Form/FormLabel';
 import { FormHint } from '~components/Form/FormHint';
@@ -11,15 +12,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
-
-const DEFAULT_VALUE: ColorInputValue = { hex: 'FFFFFF', opacity: 100 };
-
-const HEX_REGEX = /^[0-9A-Fa-f]*$/;
-
-const isValidHex = (value: string): boolean => HEX_REGEX.test(value) && value.length <= 6;
-
-const isValidOpacity = (value: number): boolean =>
-  Number.isInteger(value) && value >= 0 && value <= 100;
 
 const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputProps> = (
   {
@@ -48,11 +40,15 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 ) => {
   const [colorValue, setColorValue] = useControllableState<ColorInputValue>({
     value,
-    defaultValue: defaultValue ?? DEFAULT_VALUE,
+    defaultValue: defaultValue ?? DEFAULT_COLOR_VALUE,
     onChange: (newValue) => {
-      onChange?.({ ...newValue, name });
+      onChange?.({ name, value: newValue });
     },
   });
+
+  const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(
+    String(colorValue.opacity),
+  );
 
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
   const idBase = useId('color-input');
@@ -62,30 +58,52 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     ({ value: inputValue }: { name?: string; value?: string }) => {
       const raw = (inputValue ?? '').toUpperCase();
       if (isValidHex(raw)) {
-        setColorValue(() => ({ ...colorValue, hex: raw }));
+        setColorValue((prev) => ({ ...prev, hex: raw }));
       }
     },
-    [colorValue, setColorValue],
+    [setColorValue],
   );
 
   const handleOpacityChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
-      const num = parseInt(inputValue ?? '0', 10);
+      const raw = inputValue ?? '';
+      setOpacityDisplayValue(raw);
+
+      if (raw === '') {
+        return;
+      }
+
+      const num = parseInt(raw, 10);
       if (!Number.isNaN(num) && isValidOpacity(num)) {
-        setColorValue(() => ({ ...colorValue, opacity: num }));
-      } else if (inputValue === '') {
-        setColorValue(() => ({ ...colorValue, opacity: 0 }));
+        setColorValue((prev) => ({ ...prev, opacity: num }));
       }
     },
-    [colorValue, setColorValue],
+    [setColorValue],
+  );
+
+  const handleOpacityBlur = useCallback(
+    ({ value: inputValue }: { name?: string; value?: string }) => {
+      const raw = inputValue ?? '';
+      const num = parseInt(raw, 10);
+      if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
+        setOpacityDisplayValue(String(colorValue.opacity));
+      }
+      onBlur?.({ name, value: inputValue });
+    },
+    [colorValue.opacity, name, onBlur],
   );
 
   const handleSwatchChange = useCallback(
     (hex: string) => {
-      setColorValue(() => ({ ...colorValue, hex }));
+      setColorValue((prev) => ({ ...prev, hex }));
     },
-    [colorValue, setColorValue],
+    [setColorValue],
   );
+
+  // Sync opacityDisplayValue when controlled value changes externally
+  React.useEffect(() => {
+    setOpacityDisplayValue(String(colorValue.opacity));
+  }, [colorValue.opacity]);
 
   const willRenderHintText =
     Boolean(helpText) ||
@@ -154,10 +172,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                 accessibilityLabel="Color opacity percentage"
                 size={size}
                 placeholder="100"
-                value={String(colorValue.opacity)}
+                value={opacityDisplayValue}
                 onChange={handleOpacityChange}
                 onFocus={onFocus}
-                onBlur={onBlur}
+                onBlur={handleOpacityBlur}
                 isDisabled={isDisabled}
                 validationState={validationState}
                 suffix="%"

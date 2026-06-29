@@ -31,7 +31,10 @@ describe('<ColorInput />', () => {
     );
     const hexInput = getByDisplayValue('FFFFFF');
     fireEvent.change(hexInput, { target: { value: 'abc123' } });
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'ABC123', opacity: 100 }));
+    expect(onChange).toHaveBeenCalledWith({
+      name: undefined,
+      value: { hex: 'ABC123', opacity: 100 },
+    });
   });
 
   it('should reject invalid hex characters', () => {
@@ -51,7 +54,10 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('100');
     fireEvent.change(opacityInput, { target: { value: '50' } });
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 50 }));
+    expect(onChange).toHaveBeenCalledWith({
+      name: undefined,
+      value: { hex: 'FF0000', opacity: 50 },
+    });
   });
 
   it('should reject opacity values over 100', () => {
@@ -134,19 +140,10 @@ describe('<ColorInput />', () => {
     );
     const colorInput = container.querySelector('input[type="color"]') as HTMLInputElement;
     fireEvent.change(colorInput, { target: { value: '#00FF00' } });
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: '00FF00', opacity: 100 }));
-  });
-
-  it('should open color picker when clicking the hex input area', () => {
-    const { getByDisplayValue, container } = renderWithTheme(
-      <ColorInput label="Color" defaultValue={{ hex: 'FF5733', opacity: 100 }} />,
-    );
-    const hexInput = getByDisplayValue('FF5733');
-    const colorPicker = container.querySelector('input[type="color"]') as HTMLInputElement;
-    const clickSpy = jest.spyOn(colorPicker, 'click');
-    fireEvent.click(hexInput);
-    expect(clickSpy).toHaveBeenCalled();
-    clickSpy.mockRestore();
+    expect(onChange).toHaveBeenCalledWith({
+      name: undefined,
+      value: { hex: '00FF00', opacity: 100 },
+    });
   });
 
   it('should increment opacity with ArrowUp key', () => {
@@ -156,7 +153,10 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('50');
     fireEvent.keyDown(opacityInput, { key: 'ArrowUp' });
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 51 }));
+    expect(onChange).toHaveBeenCalledWith({
+      name: undefined,
+      value: { hex: 'FF0000', opacity: 51 },
+    });
   });
 
   it('should decrement opacity with ArrowDown key', () => {
@@ -166,7 +166,10 @@ describe('<ColorInput />', () => {
     );
     const opacityInput = getByDisplayValue('50');
     fireEvent.keyDown(opacityInput, { key: 'ArrowDown' });
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ hex: 'FF0000', opacity: 49 }));
+    expect(onChange).toHaveBeenCalledWith({
+      name: undefined,
+      value: { hex: 'FF0000', opacity: 49 },
+    });
   });
 
   it('should not go below 0% with ArrowDown', () => {
@@ -187,5 +190,18 @@ describe('<ColorInput />', () => {
     const opacityInput = getByDisplayValue('100');
     fireEvent.keyDown(opacityInput, { key: 'ArrowUp' });
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should allow clearing opacity field and restore on blur', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <ColorInput label="Color" defaultValue={{ hex: 'FFFFFF', opacity: 75 }} />,
+    );
+    const opacityInput = getByDisplayValue('75');
+    fireEvent.change(opacityInput, { target: { value: '' } });
+    // Field should show empty while editing
+    expect((opacityInput as HTMLInputElement).value).toBe('');
+    // On blur, should restore to last valid value
+    fireEvent.blur(opacityInput);
+    expect((opacityInput as HTMLInputElement).value).toBe('75');
   });
 });

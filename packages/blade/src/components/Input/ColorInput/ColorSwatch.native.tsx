@@ -1,6 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import type { BaseInputProps } from '~components/Input/BaseInput';
+import { useTheme } from '~components/BladeProvider';
+import { size } from '~tokens/global';
+import getIn from '~utils/lodashButBetter/get';
+import { padHexForPicker } from './ColorInput.utils';
 
 type ColorSwatchProps = {
   color: string;
@@ -9,33 +13,44 @@ type ColorSwatchProps = {
   onChange: (hex: string) => void;
 };
 
-const swatchSize = {
-  xsmall: 20,
-  small: 24,
-  medium: 28,
-  large: 40,
+const swatchSizeTokens = {
+  xsmall: size['20'],
+  small: size['24'],
+  medium: size['28'],
+  large: size['40'],
 } as const;
 
 const ColorSwatch = ({
   color,
-  size,
+  size: inputSize,
   isDisabled,
-  onChange: _onChange,
 }: ColorSwatchProps): React.ReactElement => {
-  const dimension = swatchSize[size];
+  const dimension = swatchSizeTokens[inputSize];
+  const { theme } = useTheme();
+  const borderColor = getIn(theme.colors, 'interactive.border.gray.default');
+
+  const handlePress = (): void => {
+    if (__DEV__) {
+      console.warn(
+        '[Blade ColorInput]: Native color picker is not supported. The swatch is display-only on React Native.',
+      );
+    }
+  };
 
   return (
-    <View
-      style={{
-        width: dimension,
-        height: dimension,
-        backgroundColor: `#${color || 'FFFFFF'}`,
-        borderRadius: 6,
-        borderWidth: 1,
-        borderColor: 'rgba(0, 0, 0, 0.12)',
-        opacity: isDisabled ? 0.5 : 1,
-      }}
-    />
+    <Pressable onPress={handlePress} disabled={isDisabled}>
+      <View
+        style={{
+          width: dimension,
+          height: dimension,
+          backgroundColor: padHexForPicker(color),
+          borderRadius: theme.border.radius.xsmall,
+          borderWidth: theme.border.width.thin,
+          borderColor,
+          opacity: isDisabled ? 0.5 : 1,
+        }}
+      />
+    </Pressable>
   );
 };
 

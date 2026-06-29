@@ -5,11 +5,16 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ColorInputValue = {
   hex: string;
+  /** Integer percentage 0–100 */
   opacity: number;
 };
 
+type ColorInputOnChange = ({ name, value }: { name?: string; value: ColorInputValue }) => void;
+
 type ColorInputCommonProps = Pick<
   BaseInputProps,
+  | 'label'
+  | 'accessibilityLabel'
   | 'size'
   | 'labelPosition'
   | 'name'
@@ -23,31 +28,20 @@ type ColorInputCommonProps = Pick<
   | 'autoFocus'
   | 'testID'
   | keyof DataAnalyticsAttribute
-> & {
-  value?: ColorInputValue;
-  defaultValue?: ColorInputValue;
-  onChange?: (value: ColorInputValue & { name?: string }) => void;
-  onFocus?: FormInputOnEvent;
-  onBlur?: FormInputOnEvent;
-  /**
-   * Whether to show the opacity input
-   * @default true
-   */
-  showOpacity?: boolean;
-};
-
-type ColorInputPropsWithLabel = ColorInputCommonProps &
+> &
   StyledPropsBlade & {
-    label: string;
-    accessibilityLabel?: string;
+    value?: ColorInputValue;
+    defaultValue?: ColorInputValue;
+    onChange?: ColorInputOnChange;
+    onFocus?: FormInputOnEvent;
+    onBlur?: FormInputOnEvent;
+    /**
+     * Whether to show the opacity input
+     * @default true
+     */
+    showOpacity?: boolean;
   };
 
-type ColorInputPropsWithA11yLabel = ColorInputCommonProps &
-  StyledPropsBlade & {
-    label?: undefined;
-    accessibilityLabel: string;
-  };
+type ColorInputProps = ColorInputCommonProps;
 
-type ColorInputProps = ColorInputPropsWithLabel | ColorInputPropsWithA11yLabel;
-
-export type { ColorInputProps, ColorInputValue };
+export type { ColorInputProps, ColorInputValue, ColorInputOnChange };
