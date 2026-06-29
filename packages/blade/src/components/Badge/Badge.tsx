@@ -101,7 +101,7 @@ const _Badge = (
     children,
     emphasis = 'subtle',
     icon: Icon,
-    size = 'medium',
+    size = 'large',
     color = 'neutral',
     testID,
     ...props
