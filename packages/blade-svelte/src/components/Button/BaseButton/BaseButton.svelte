@@ -489,7 +489,7 @@
     {/if}
     <span class={buttonClasses.content + (isIndefiniteLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
       {#if Icon && iconPosition === 'left'}
-        <span class={buttonClasses.icon + (hasChildren ? ' ' + buttonClasses.iconLeft : '')}>
+        <span class={buttonClasses.icon}>
           <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
@@ -502,6 +502,7 @@
           fontFamily="text"
           fontWeight="medium"
           textAlign="center"
+          marginX="spacing.2"
           componentName={MetaConstants.Button}
         >
           {childrenString}
@@ -515,13 +516,14 @@
           fontFamily="text"
           fontWeight="medium"
           textAlign="center"
+          marginX="spacing.2"
           componentName={MetaConstants.Button}
         >
           {@render children()}
         </BaseText>
       {/if}
       {#if Icon && iconPosition === 'right'}
-        <span class={buttonClasses.icon + (hasChildren ? ' ' + buttonClasses.iconRight : '')}>
+        <span class={buttonClasses.icon}>
           <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}

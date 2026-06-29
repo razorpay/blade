@@ -88,6 +88,18 @@ export {
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
 
+// Checkbox
+export { default as Checkbox } from './Checkbox/Checkbox.svelte';
+export { default as CheckboxGroup } from './Checkbox/CheckboxGroup.svelte';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxOnChange,
+  CheckboxGroupOnChange,
+  CheckboxInstance,
+  CheckboxSize,
+} from './Checkbox/types';
+
 // Radio
 export { default as Radio } from './Radio/Radio.svelte';
 export { default as RadioGroup } from './Radio/RadioGroup.svelte';
@@ -98,6 +110,7 @@ export type {
   RadioInstance,
   RadioSize,
 } from './Radio/types';
+
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
 
