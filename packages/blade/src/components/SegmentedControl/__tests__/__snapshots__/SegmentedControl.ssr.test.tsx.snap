@@ -1,9 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ELJEo"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 cWHtZO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button><div pointer-events="none" style="transition-property:transform, width, height;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;box-shadow:0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);width:0px;height:0px;transform:translate(0px, 0px)" data-blade-component="segmented-control-indicator" class="BaseBox-bksIuc hbfKSe"></div></div></div>"`;
+exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc dOTRhp"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ELJEo"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 cWHtZO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button><div pointer-events="none" style="transition-property:transform, width, height;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;box-shadow:0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);width:0px;height:0px;transform:translate(0px, 0px)" data-blade-component="base-box" class="BaseBox-bksIuc hbfKSe"></div></div></div></div></div></div>"`;
 
 exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] = `
-.c5.c5.c5.c5.c5 {
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c8.c8.c8.c8.c8 {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -11,7 +45,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   pointer-events: none;
 }
 
-.c2.c2.c2.c2.c2 {
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -28,7 +62,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c7.c7.c7.c7.c7 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -45,7 +79,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   padding: 0;
 }
 
-.c0.c0.c0.c0.c0 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,7 +96,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   position: relative;
 }
 
-.c1.c1.c1.c1.c1 {
+.c4.c4.c4.c4.c4 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -100,29 +134,29 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   transition-duration: 480ms;
 }
 
-.c1.c1.c1.c1.c1:hover:not(:disabled) {
+.c4.c4.c4.c4.c4:hover:not(:disabled) {
   background-color: transparent;
 }
 
-.c1.c1.c1.c1.c1:focus:not(:focus-visible) {
+.c4.c4.c4.c4.c4:focus:not(:focus-visible) {
   outline: none;
 }
 
-.c1.c1.c1.c1.c1:focus-visible {
+.c4.c4.c4.c4.c4:focus-visible {
   outline: none;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1.c1.c1.c1.c1:disabled {
+.c4.c4.c4.c4.c4:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c1.c1.c1.c1.c1:disabled:hover {
+.c4.c4.c4.c4.c4:disabled:hover {
   background-color: transparent;
 }
 
-.c3.c3.c3.c3.c3 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -160,54 +194,54 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   transition-duration: 480ms;
 }
 
-.c3.c3.c3.c3.c3:hover:not(:disabled) {
+.c6.c6.c6.c6.c6:hover:not(:disabled) {
   background-color: hsla(206,10%,29%,0.06);
 }
 
-.c3.c3.c3.c3.c3:focus:not(:focus-visible) {
+.c6.c6.c6.c6.c6:focus:not(:focus-visible) {
   outline: none;
 }
 
-.c3.c3.c3.c3.c3:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   outline: none;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c3.c3.c3.c3.c3:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c3.c3.c3.c3.c3:disabled:hover {
+.c6.c6.c6.c6.c6:disabled:hover {
   background-color: transparent;
 }
 
 @media screen and (min-width:320px) {
-  .c5.c5.c5.c5.c5 {
+  .c8.c8.c8.c8.c8 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c5.c5.c5.c5.c5 {
+  .c8.c8.c8.c8.c8 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c5.c5.c5.c5.c5 {
+  .c8.c8.c8.c8.c8 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c5.c5.c5.c5.c5 {
+  .c8.c8.c8.c8.c8 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c5.c5.c5.c5.c5 {
+  .c8.c8.c8.c8.c8 {
     pointer-events: none;
   }
 }
@@ -216,75 +250,90 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   id="root"
 >
   <div
-    aria-label="Time period"
-    aria-required="false"
     class="c0"
-    data-blade-component="segmented-control"
-    role="radiogroup"
+    data-blade-component="base-box"
   >
-    <button
-      aria-checked="true"
-      aria-setsize="3"
-      class="c1"
-      data-blade-component="segmented-control-item"
-      data-value="daily"
-      id="segmented-control-1-daily-item"
-      role="radio"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="c2"
-        data-blade-component="text"
-        letter-spacing="50"
-      >
-        Daily
-      </span>
-    </button>
-    <button
-      aria-checked="false"
-      aria-setsize="3"
-      class="c3"
-      data-blade-component="segmented-control-item"
-      data-value="weekly"
-      id="segmented-control-1-weekly-item"
-      role="radio"
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="c4"
-        data-blade-component="text"
-        letter-spacing="50"
-      >
-        Weekly
-      </span>
-    </button>
-    <button
-      aria-checked="false"
-      aria-setsize="3"
-      class="c3"
-      data-blade-component="segmented-control-item"
-      data-value="monthly"
-      id="segmented-control-1-monthly-item"
-      role="radio"
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="c4"
-        data-blade-component="text"
-        letter-spacing="50"
-      >
-        Monthly
-      </span>
-    </button>
     <div
-      class="c5"
-      data-blade-component="segmented-control-indicator"
-      pointer-events="none"
-      style="transition-property:transform, width, height;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;box-shadow:0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);width:0px;height:0px;transform:translate(0px, 0px)"
-    />
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <div
+          aria-label="Time period"
+          aria-required="false"
+          class="c3"
+          data-blade-component="segmented-control"
+          role="radiogroup"
+        >
+          <button
+            aria-checked="true"
+            aria-setsize="3"
+            class="c4"
+            data-blade-component="segmented-control-item"
+            data-value="daily"
+            id="segmented-control-1-daily-item"
+            role="radio"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="c5"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Daily
+            </span>
+          </button>
+          <button
+            aria-checked="false"
+            aria-setsize="3"
+            class="c6"
+            data-blade-component="segmented-control-item"
+            data-value="weekly"
+            id="segmented-control-1-weekly-item"
+            role="radio"
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="c7"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Weekly
+            </span>
+          </button>
+          <button
+            aria-checked="false"
+            aria-setsize="3"
+            class="c6"
+            data-blade-component="segmented-control-item"
+            data-value="monthly"
+            id="segmented-control-1-monthly-item"
+            role="radio"
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="c7"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Monthly
+            </span>
+          </button>
+          <div
+            class="c8"
+            data-blade-component="base-box"
+            pointer-events="none"
+            style="transition-property:transform, width, height;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;box-shadow:0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);width:0px;height:0px;transform:translate(0px, 0px)"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

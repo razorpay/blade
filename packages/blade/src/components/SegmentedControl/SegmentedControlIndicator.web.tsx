@@ -6,7 +6,6 @@ import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useResize } from '~utils/useResize';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const SegmentedControlIndicator = ({
   containerRef,
@@ -85,7 +84,6 @@ const SegmentedControlIndicator = ({
         height: `${dimensions.height}px`,
         transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
       }}
-      {...metaAttribute({ name: MetaConstants.SegmentedControlIndicator })}
     />
   );
 };

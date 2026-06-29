@@ -10,11 +10,15 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeSpace } from '~utils';
+import { makeSpace, useBreakpoint } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import type { BladeElementRef } from '~utils/types';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
+import { makeSize } from '~utils/makeSize';
+import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
 const StyledSegmentedControlContainer = styled.div<{
   $size: NonNullable<SegmentedControlProps['size']>;
@@ -101,10 +105,16 @@ const _SegmentedControl = (
     ],
   );
 
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+
+  const willRenderHintText =
+    Boolean(helpText) || (validationState === 'error' && Boolean(errorText));
+
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
-  const hasFieldWrapper = Boolean(label || helpText || errorText);
   const ariaLabel = label ? undefined : accessibilityLabel || name;
 
   const segmentedControlElement = (
@@ -125,42 +135,46 @@ const _SegmentedControl = (
     </StyledSegmentedControlContainer>
   );
 
-  if (!hasFieldWrapper) {
-    return (
-      <SegmentedControlContext.Provider value={contextValue}>
-        {segmentedControlElement}
-      </SegmentedControlContext.Provider>
-    );
-  }
-
   return (
     <SegmentedControlContext.Provider value={contextValue}>
-      <BaseBox
-        display="flex"
-        flexDirection={labelPosition === 'left' ? 'row' : 'column'}
-        alignItems={labelPosition === 'left' ? 'center' : undefined}
-      >
-        {label ? (
-          <FormLabel
-            as="span"
-            necessityIndicator={necessityIndicator}
-            position={labelPosition}
-            id={labelId}
-            accessibilityText={accessibilityText && `,${accessibilityText}`}
-            size={size}
-          >
-            {label}
-          </FormLabel>
-        ) : null}
-        <BaseBox flex="1">
-          {segmentedControlElement}
-          <FormHint
-            size={size}
-            type={validationState === 'error' ? 'error' : 'help'}
-            errorText={errorText}
-            helpText={helpText}
-          />
+      <BaseBox display="flex" flexDirection="column" width="100%">
+        <BaseBox
+          display="flex"
+          flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+          alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        >
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={labelId}
+              accessibilityText={accessibilityText && `,${accessibilityText}`}
+              size={size}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
+
+          <BaseBox display="flex" flexDirection="column" flex="1">
+            {segmentedControlElement}
+          </BaseBox>
         </BaseBox>
+
+        {willRenderHintText && (
+          <BaseBox
+            marginLeft={makeSize(
+              label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
+            )}
+          >
+            <FormHint
+              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              helpText={helpText}
+              errorText={errorText}
+              size={size}
+            />
+          </BaseBox>
+        )}
       </BaseBox>
     </SegmentedControlContext.Provider>
   );

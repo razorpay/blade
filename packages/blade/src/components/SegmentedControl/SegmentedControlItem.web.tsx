@@ -94,7 +94,8 @@ const SegmentedControlItem = ({
   const isDisabled = isGroupDisabled || isItemDisabled;
 
   const shouldReceiveFocus =
-    isSelected || (selectedValue === undefined && !isDisabled && value === firstEnabledValue);
+    (!isDisabled && isSelected) ||
+    (selectedValue === undefined && !isDisabled && value === firstEnabledValue);
 
   React.useEffect(() => {
     if (!itemRefs) return undefined;

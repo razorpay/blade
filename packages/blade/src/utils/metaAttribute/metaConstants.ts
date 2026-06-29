@@ -165,5 +165,4 @@ export const MetaConstants = {
   TimePicker: 'time-picker',
   SegmentedControl: 'segmented-control',
   SegmentedControlItem: 'segmented-control-item',
-  SegmentedControlIndicator: 'segmented-control-indicator',
 } as const;
