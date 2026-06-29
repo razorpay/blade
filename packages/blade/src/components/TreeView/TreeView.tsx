@@ -40,6 +40,7 @@ const _TreeView = ({
   expandedIds: controlledExpandedIds,
   defaultExpandedIds,
   onExpandChange,
+  onExpandedIdsChange,
   testID,
   ...rest
 }: TreeViewProps): ReactElement => {
@@ -84,9 +85,10 @@ const _TreeView = ({
       if (controlledExpandedIds === undefined) {
         setUncontrolledExpandedIds(nextIds);
       }
-      onExpandChange?.({ expandedIds: nextIds, nodeId: id, isExpanded: !isExpanded });
+      onExpandChange?.({ nodeId: id, isExpanded: !isExpanded });
+      onExpandedIdsChange?.({ expandedIds: nextIds });
     },
-    [expandedIds, controlledExpandedIds, onExpandChange],
+    [expandedIds, controlledExpandedIds, onExpandChange, onExpandedIdsChange],
   );
 
   const contextValue = useMemo(

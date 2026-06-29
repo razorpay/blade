@@ -90,14 +90,12 @@ describe('<TreeView />', () => {
 
     await user.click(getByText('src'));
     expect(onExpandChange).toHaveBeenCalledWith({
-      expandedIds: ['src'],
       nodeId: 'src',
       isExpanded: true,
     });
 
     await user.click(getByText('src'));
     expect(onExpandChange).toHaveBeenCalledWith({
-      expandedIds: [],
       nodeId: 'src',
       isExpanded: false,
     });
@@ -162,7 +160,7 @@ describe('<TreeView />', () => {
       return (
         <TreeView
           expandedIds={expandedIds}
-          onExpandChange={({ expandedIds: ids }) => setExpandedIds(ids)}
+          onExpandedIdsChange={({ expandedIds: ids }) => setExpandedIds(ids)}
         >
           <TreeViewItem id="src" label="src" icon={FolderIcon}>
             <TreeViewItem id="btn" label="Button.tsx" icon={FileTextIcon} />
@@ -178,6 +176,31 @@ describe('<TreeView />', () => {
 
     await user.click(getByText('src'));
     expect(getByText('Button.tsx')).toBeInTheDocument();
+  });
+
+  it('should support keyboard navigation — ArrowDown/ArrowUp moves focus between visible treeitems', async () => {
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <TreeView>
+        <TreeViewItem id="readme" label="README.md" icon={FileTextIcon} />
+        <TreeViewItem id="package" label="package.json" icon={FileTextIcon} />
+        <TreeViewItem id="tsconfig" label="tsconfig.json" icon={FileTextIcon} />
+      </TreeView>,
+    );
+
+    const first = getByText('README.md').closest('[role="treeitem"]') as HTMLElement;
+    const second = getByText('package.json').closest('[role="treeitem"]') as HTMLElement;
+    const third = getByText('tsconfig.json').closest('[role="treeitem"]') as HTMLElement;
+
+    first.focus();
+    await user.keyboard('{ArrowDown}');
+    expect(document.activeElement).toBe(second);
+
+    await user.keyboard('{ArrowDown}');
+    expect(document.activeElement).toBe(third);
+
+    await user.keyboard('{ArrowUp}');
+    expect(document.activeElement).toBe(second);
   });
 
   it('should support keyboard navigation — Enter expands a node', async () => {

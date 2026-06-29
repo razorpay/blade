@@ -126,7 +126,7 @@ export const Controlled = (): ReactElement => {
           selectedIds={selectedIds}
           expandedIds={expandedIds}
           onSelectionChange={({ selectedIds: ids }) => setSelectedIds(ids)}
-          onExpandChange={({ expandedIds: ids }) => setExpandedIds(ids)}
+          onExpandedIdsChange={({ expandedIds: ids }) => setExpandedIds(ids)}
         >
           <TreeViewItem id="src" label="src" icon={FolderIcon}>
             <TreeViewItem id="components" label="components" icon={FolderIcon}>

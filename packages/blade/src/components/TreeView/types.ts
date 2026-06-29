@@ -46,7 +46,12 @@ type TreeViewProps = {
   /**
    * Callback when a node is expanded or collapsed
    */
-  onExpandChange?: (params: { expandedIds: string[]; nodeId: string; isExpanded: boolean }) => void;
+  onExpandChange?: (params: { nodeId: string; isExpanded: boolean }) => void;
+
+  /**
+   * Callback when the set of expanded node ids changes
+   */
+  onExpandedIdsChange?: (params: { expandedIds: string[] }) => void;
 } & TestID &
   StyledPropsBlade;
 

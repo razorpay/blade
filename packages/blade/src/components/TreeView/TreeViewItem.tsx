@@ -51,6 +51,20 @@ const _TreeViewItem = ({
     if (e.key === 'ArrowLeft' && hasChildren && isExpanded) {
       onNodeToggle(id);
     }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const tree = (e.currentTarget as HTMLElement).closest('[role="tree"]');
+      if (!tree) return;
+      const treeitems = Array.from(
+        tree.querySelectorAll<HTMLElement>('[role="treeitem"]:not([aria-disabled="true"])'),
+      );
+      const currentIndex = treeitems.indexOf(e.currentTarget as HTMLElement);
+      if (e.key === 'ArrowDown' && currentIndex < treeitems.length - 1) {
+        treeitems[currentIndex + 1].focus();
+      } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+        treeitems[currentIndex - 1].focus();
+      }
+    }
   };
 
   const indentLeftPx = depth * INDENT_SIZE_PX;
