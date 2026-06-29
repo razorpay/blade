@@ -121,6 +121,19 @@ export type {
   AccordionButtonBorderVariants,
 } from './Accordion';
 export {
+  getCollapsibleChevronClasses,
+  getCollapsibleBodyClasses,
+  getCollapsibleBodyInnerClasses,
+  getCollapsibleTextClasses,
+  getCollapsibleInnerClasses,
+  getCollapsibleTemplateClasses,
+} from './Collapsible';
+export type {
+  CollapsibleChevronVariants,
+  CollapsibleInnerVariants,
+  CollapsibleBodyInnerVariants,
+} from './Collapsible';
+export {
   skeletonStyles,
   skeletonClass,
   getSkeletonClasses,
@@ -171,6 +184,42 @@ export type {
   ChipSize,
   ChipColor,
 } from './Chip';
+export {
+  checkboxIconCva,
+  getCheckboxIconClasses,
+  getCheckboxIconVariant,
+  checkboxSvgCva,
+  getCheckboxSvgClasses,
+  checkboxTitleCva,
+  getCheckboxTitleClasses,
+  checkboxSupportCva,
+  getCheckboxSupportClasses,
+  checkboxSupportTextCva,
+  getCheckboxSupportTextClasses,
+  checkboxHintCva,
+  getCheckboxHintClasses,
+  checkboxHintWrapperCva,
+  getCheckboxHintWrapperClasses,
+  getCheckboxTemplateClasses,
+  checkboxGroupFieldCva,
+  getCheckboxGroupFieldClasses,
+  checkboxGroupOptionsCva,
+  getCheckboxGroupOptionsClasses,
+  getCheckboxGroupLabelSizeClass,
+  getCheckboxGroupTemplateClasses,
+} from './Checkbox';
+export type {
+  CheckboxSize,
+  CheckboxIconVariant,
+  CheckboxIconVariants,
+  CheckboxSvgVariants,
+  CheckboxTitleVariants,
+  CheckboxSupportVariants,
+  CheckboxHintVariants,
+  CheckboxHintWrapperVariants,
+  CheckboxGroupFieldVariants,
+  CheckboxGroupOptionsVariants,
+} from './Checkbox';
 export {
   alertStyles,
   getAlertClasses,

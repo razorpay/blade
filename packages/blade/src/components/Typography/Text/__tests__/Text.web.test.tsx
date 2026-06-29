@@ -80,6 +80,31 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Text with underline decoration', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(
+      <Text as="span" textDecorationLine="underline">
+        {displayText}
+      </Text>,
+    );
+    expect(getByText(displayText)).toHaveStyle({
+      textDecorationLine: 'underline',
+    });
+  });
+
+  it('should render Text with dotted underline decoration', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(
+      <Text as="span" textDecorationLine="dotted">
+        {displayText}
+      </Text>,
+    );
+    expect(getByText(displayText)).toHaveStyle({
+      textDecorationLine: 'underline',
+      textDecorationStyle: 'dotted',
+    });
+  });
+
   it('should throw error when variant is "caption" and size "large" is passed', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const displayText = 'Displaying some text';
