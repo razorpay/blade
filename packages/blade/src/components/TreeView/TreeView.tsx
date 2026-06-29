@@ -97,7 +97,7 @@ const _TreeView = ({
   return (
     <TreeViewContext.Provider value={contextValue}>
       <BaseBox
-        {...makeAccessible({ role: 'tree' })}
+        {...makeAccessible({ role: 'tree', multiSelectable: selectionType === 'multiple' })}
         {...metaAttribute({ name: MetaConstants.TreeView, testID })}
         {...getStyledProps(rest)}
       >

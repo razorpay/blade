@@ -61,6 +61,7 @@ const _TreeViewItem = ({
         role: 'treeitem',
         expanded: hasChildren ? isExpanded : undefined,
         selected: selectionType !== 'none' ? isSelected : undefined,
+        disabled: isDisabled,
       })}
       {...metaAttribute({ name: MetaConstants.TreeViewItem, testID })}
       {...makeAnalyticsAttribute(rest)}
