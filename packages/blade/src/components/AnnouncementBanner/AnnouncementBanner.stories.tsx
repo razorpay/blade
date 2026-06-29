@@ -4,7 +4,6 @@ import type { ReactElement } from 'react';
 import type { AnnouncementBannerProps } from './AnnouncementBanner';
 import { AnnouncementBanner as AnnouncementBannerComponent } from './AnnouncementBanner';
 import { AnnouncementIcon } from '~components/Icons';
-import { Link } from '~components/Link';
 import { Box } from '~components/Box';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
@@ -114,24 +113,6 @@ WithoutIcon.parameters = {
   docs: {
     description: {
       story: 'Omit the `icon` prop to render the banner without a leading icon.',
-    },
-  },
-};
-
-export const WithInlineLink: StoryFn<typeof AnnouncementBannerComponent> = ({ ...args }) => {
-  return (
-    <AnnouncementBannerComponent {...args}>
-      Your KYC is verified.&nbsp;
-      <Link href="https://razorpay.com" target="_blank" variant="anchor" size="small">
-        View details
-      </Link>
-    </AnnouncementBannerComponent>
-  );
-};
-WithInlineLink.parameters = {
-  docs: {
-    description: {
-      story: 'The message can contain an inline `Link` for in-context navigation.',
     },
   },
 };
