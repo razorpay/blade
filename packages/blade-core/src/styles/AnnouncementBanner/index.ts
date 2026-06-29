@@ -2,9 +2,9 @@ export {
   announcementBannerStyles,
   getAnnouncementBannerClasses,
   getAnnouncementBannerTemplateClasses,
-  getAnnouncementBannerTextColorToken,
-  getAnnouncementBannerIconColorToken,
   announcementBannerIconWrapperClass,
+  announcementBannerTextColorClass,
+  announcementBannerIconColorClass,
 } from './announcementBanner';
 export type {
   AnnouncementBannerVariants,

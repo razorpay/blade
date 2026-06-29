@@ -38,19 +38,9 @@ export function getAnnouncementBannerClasses(
 // Structural class for the leading icon wrapper
 export const announcementBannerIconWrapperClass = styles['icon-wrapper'];
 
-/**
- * Get text color token based on color scheme
- */
-export function getAnnouncementBannerTextColorToken(isDark: boolean): string {
-  return isDark ? 'surface.text.staticWhite.subtle' : 'surface.text.gray.subtle';
-}
-
-/**
- * Get icon color token based on color scheme
- */
-export function getAnnouncementBannerIconColorToken(isDark: boolean): string {
-  return isDark ? 'surface.icon.staticWhite.subtle' : 'surface.icon.gray.subtle';
-}
+// CSS-driven color classes (respond to body[data-theme='dark'], no JS required)
+export const announcementBannerTextColorClass = styles['text-color'];
+export const announcementBannerIconColorClass = styles['icon-color'];
 
 /**
  * Get all AnnouncementBanner template classes as an object.
@@ -63,5 +53,7 @@ export function getAnnouncementBannerTemplateClasses(): Record<string, string> {
     iconWrapper: announcementBannerIconWrapperClass,
     alignCenter: styles['align-center'],
     alignLeft: styles['align-left'],
+    textColor: announcementBannerTextColorClass,
+    iconColor: announcementBannerIconColorClass,
   } as const;
 }
