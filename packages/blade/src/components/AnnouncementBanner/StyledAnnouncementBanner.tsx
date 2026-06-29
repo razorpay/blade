@@ -7,5 +7,8 @@ import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 export const StyledAnnouncementBanner = styled(BaseBox)
   .withConfig({
     shouldForwardProp: (prop, defaultValidatorFn) =>
-      prop !== 'isDark' && prop !== 'alignment' && omitPropsFromHTML(prop, defaultValidatorFn),
+      (prop as string) !== 'isDark' &&
+      (prop as string) !== 'alignment' &&
+      omitPropsFromHTML(prop as never, defaultValidatorFn as never),
+    displayName: 'StyledAnnouncementBanner',
   })<StyledAnnouncementBannerProps>(getCommonStyles);
