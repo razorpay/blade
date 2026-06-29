@@ -113,6 +113,14 @@ type FileUploadCommonProps = {
    * Test ID for automation
    */
   testID?: string;
+  /**
+   * Configuration for the inline file category selector dropdown on each FileUploadItem.
+   * Only rendered in medium and large sizes when file status is not 'uploading'.
+   *
+   * Use this when the parent FileUpload should render the same inline category control for
+   * every selected file. For fully custom controls, compose FileUploadItem directly.
+   */
+  fileCategory?: FileCategoryConfig;
 } & StyledPropsBlade &
   MotionMetaProp;
 
@@ -178,11 +186,71 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
+type FileCategoryOption = {
+  /**
+   * Display label for the category option
+   */
+  title: string;
+  /**
+   * Unique value identifier for the category option
+   */
+  value: string;
+};
+
+type FileCategoryProps = {
+  /**
+   * List of category options to display in the dropdown
+   */
+  options: FileCategoryOption[];
+  /**
+   * Currently selected value (controlled)
+   */
+  value: string | undefined;
+  /**
+   * Callback fired when a category is selected
+   */
+  onChange: (args: { values: string[]; file: BladeFile }) => void;
+  /**
+   * Placeholder text shown when no value is selected
+   *
+   * @default 'Type'
+   */
+  placeholder?: string;
+};
+
+type FileCategoryValueMap = Record<string, string | undefined>;
+
+type FileCategoryConfig = {
+  /**
+   * List of category options to display in the dropdown
+   */
+  options: FileCategoryOption[];
+  /**
+   * Selected category values keyed by file id.
+   */
+  value?: FileCategoryValueMap;
+  /**
+   * Callback fired when a category is selected
+   */
+  onChange: (args: { values: string[]; file: BladeFile }) => void;
+  /**
+   * Placeholder text shown when no value is selected
+   *
+   * @default 'Type'
+   */
+  placeholder?: string;
+};
+
 type FileUploadItemProps = Pick<
   FileUploadProps,
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
 > & {
   file: BladeFile;
+  /**
+   * Configuration for the inline file category selector dropdown.
+   * Only rendered in medium and large sizes when file status is not 'uploading'.
+   */
+  fileCategory?: FileCategoryProps;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
@@ -222,6 +290,10 @@ type FileUploadItemBackgroundColors =
 export type {
   BladeFile,
   BladeFileList,
+  FileCategoryOption,
+  FileCategoryProps,
+  FileCategoryConfig,
+  FileCategoryValueMap,
   FileUploadProps,
   FileUploadItemProps,
   StyledFileUploadWrapperProps,
