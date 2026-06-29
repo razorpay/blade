@@ -40,6 +40,8 @@ description: Guidelines and patterns for adding React Native support (.native.ts
 - Use `getIn(theme, 'path.to.token')` for deep token lookups
 - Use `useStyledProps(props)` for handling styled prop overrides (margin, padding, etc.)
 - `flexDirection` defaults to `'column'` in RN (not `'row'` like web CSS)
+- Repeated inline items must stay inside the phone viewport. Use `flexWrap: 'wrap'` on row/group containers unless the component is explicitly designed for horizontal scrolling.
+- When labels can be long, combine `flexShrink: 1`, `numberOfLines`, or wrapping with explicit row constraints so trailing items do not get pushed off-screen.
 
 ## Unsupported CSS Properties (remove or replace)
 
@@ -195,6 +197,7 @@ describe('<ComponentName />', () => {
 |-------|----------|-----|
 | Text not vertically centered in small containers | iOS | Add `paddingBottom: 0.5` or adjust `lineHeight` |
 | Border-radius overflow (white bleed on selected state) | Android | Explicit `overflow: 'hidden'` on BOTH parent and child |
+| Inline chips/tags/buttons cut off at screen edge | Both | Add `flexWrap: 'wrap'` to every row/group layer, pass wrap props through nested selector groups, or use intentional horizontal scroll only when API/design requires it |
 | Switch slider stuck in middle | Both | Verify `interpolate` output range matches full track width |
 | Tabs indicator wrong position | Both | Ensure `onLayout` width measurements update state correctly |
 | Tooltip/Popover positioning off | Android | Check `@floating-ui/react-native` y-offset includes status bar height |

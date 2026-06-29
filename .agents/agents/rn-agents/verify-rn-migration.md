@@ -218,8 +218,32 @@ npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/nati
 Read the screenshot with LLM vision. Check:
 - Component renders (not blank, no error screen)
 - Layout looks reasonable (correct direction, alignment)
+- Content stays within the phone viewport; no chip, button, text, icon, or counter is cut off at the left/right edge
+- Repeated row layouts wrap, shrink, or intentionally scroll instead of overflowing horizontally
 - Colors match expected theme tokens
 - Text is readable and properly sized
+
+#### 4b.1: Viewport Containment Check
+
+This check is mandatory for components that render rows, groups, lists, tabs, chips, filters, segmented controls, tags, badges, counters, or any repeated inline items.
+
+Capture enough screenshots to inspect every visible layout section:
+
+```bash
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-top.png
+npx agent-device scroll down
+npx agent-device wait 500
+npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-scrolled.png
+```
+
+From each screenshot, verify:
+- No visible content is clipped by the screen edge.
+- The final item in each row is fully visible, including trailing counters/icons.
+- Selected and unselected states use the same containment behavior.
+- Long labels either wrap, truncate intentionally, or force the row to wrap; they must not push later items off-screen.
+- Horizontal scrolling is accepted only when the component's API/design explicitly defines horizontal scrolling. If so, record that exception in the report.
+
+If any visible row overflows or clips at the viewport edge, classify it as P1 and fix before passing visual verification.
 
 #### 4c: Test Interactions
 
@@ -288,6 +312,9 @@ For each screenshot captured, classify issues:
 **P1 — Visible issues (must fix):**
 - Text not vertically centered (common iOS issue)
 - Border-radius clipping failure (Android overflow)
+- Any visible content clipped at the phone viewport edge
+- Inline rows/groups overflowing horizontally when they should wrap or fit
+- Selected state grows wider than unselected state and causes clipping or row shift
 - Animation stuck (slider in wrong position, indicator not moving)
 - Wrong colors (theme token not resolving)
 - Spacing significantly off (> 4px from expected)
@@ -312,6 +339,7 @@ For each screenshot captured, classify issues:
 |---------|-------------|-----|
 | Text shifted vertically | Line height not matching container | Add explicit `lineHeight` or `paddingBottom: 0.5` |
 | White bleed on rounded corners | Android overflow | `overflow: 'hidden'` on parent AND child View |
+| Row content clipped at right/left edge | Non-wrapping row, fixed width, or child refusing to shrink | Add `flexWrap: 'wrap'` to the row/group container, pass wrap props through nested selector groups, remove fixed widths, or add `flexShrink: 1` + intentional truncation for long text |
 | Animation not moving | SharedValue not updating | Check `useEffect` deps + trigger condition |
 | Indicator in wrong place | Layout measurement stale | Verify `onLayout` handler updates width state |
 | Colors wrong | Theme token path wrong | Check `getIn(theme, 'path')` matches web path |
