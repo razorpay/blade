@@ -63,6 +63,7 @@
 
   setAccordionContext(() => ({
     expandedIndex: currentExpandedIndex,
+    defaultExpandedIndex,
     onExpandChange: handleExpandChange,
     showNumberPrefix,
     variant,

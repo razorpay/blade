@@ -41,13 +41,6 @@ export const NODE_DIMMED_OPACITY = 0.3;
 export const TOOLTIP_Z_INDEX = 100;
 
 // ── Responsive layout ─────────────────────────────────────────────────────────
-/**
- * Minimum SVG render width in px. Sized for a 4-level chart with label chips
- * (~4 columns × ~120px column gap + NODE_WIDTH + chip margin).
- * Below this the Sankey layout collapses; the scroll wrapper kicks in instead.
- */
-export const MIN_CHART_WIDTH = 560;
-
 // ── Label vertical alignment ──────────────────────────────────────────────────
 /**
  * Cap-height ratio for the Inter font family.

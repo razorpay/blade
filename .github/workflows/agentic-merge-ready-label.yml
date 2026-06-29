@@ -46,7 +46,7 @@ jobs:
           # Mirrors AGENT_REVIEWERS in fetch-metrics.mjs
           AGENT_USERS = {"rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"}
           # Mirrors BOT_COMMENTERS in fetch-metrics.mjs
-          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"}
+          BOT_COMMENTERS = {"changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "rzpcibot"}
 
           def gh_json(*args):
               r = subprocess.run(["gh", *args], capture_output=True, text=True)
@@ -58,6 +58,11 @@ jobs:
 
           def normalize_user(login):
               return login.replace("app/", "").replace("[bot]", "")
+
+          def is_status_approved(body):
+              """Check for 'Status: Approved' allowing markdown bold (**Status:**)."""
+              normalized = body.lower().replace("**", "")
+              return "status: approved" in normalized
 
           def is_human(login):
               return login not in BOT_COMMENTERS and normalize_user(login) not in AGENT_USERS
@@ -71,6 +76,18 @@ jobs:
               issue_comments = gh_json("api", f"repos/{repo}/issues/{pr_number}/comments", "--paginate") or []
               for c in [*review_comments, *issue_comments]:
                   if is_human(c["user"]["login"]):
+                      return True
+              return False
+
+          def has_human_commits(repo, pr_number):
+              """
+              Check whether any commits on the PR were authored by a human
+              (i.e. not a bot commenter and not an agent user).
+              """
+              commits = gh_json("api", f"repos/{repo}/pulls/{pr_number}/commits", "--paginate") or []
+              for c in commits:
+                  author_login = c.get("author", {}).get("login", "") if c.get("author") else ""
+                  if author_login and is_human(author_login):
                       return True
               return False
 
@@ -97,13 +114,13 @@ jobs:
 
               if normalize_user(author) in AGENT_USERS:
                   # Approved either via actual approval state or "Status: Approved" in review body
-                  is_approved = state == "approved" or "status: approved" in body.lower()
+                  is_approved = state == "approved" or is_status_approved(body)
                   if is_approved:
-                      print("Slash-reviewer approved — checking for human comments...")
-                      if not has_human_comments(repo, pr_number):
+                      print("Slash-reviewer approved — checking for human comments and commits...")
+                      if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
                           add_label(repo, pr_number)
                       else:
-                          print(f"PR #{pr_number} has human comments — skipping label")
+                          print(f"PR #{pr_number} has human comments or commits — skipping label")
                   else:
                       print(f"Slash-reviewer review is not an approval (state={state}), skipping")
               else:
@@ -130,13 +147,13 @@ jobs:
               body = os.environ.get("COMMENT_BODY", "")
               print(f"PR comment by '{author}' on PR #{pr_number}")
 
-              if normalize_user(author) in AGENT_USERS and "status: approved" in body.lower():
+              if normalize_user(author) in AGENT_USERS and is_status_approved(body):
                   # Slash-reviewer can also signal approval via an issue comment
-                  print("Slash-reviewer posted 'Status: Approved' — checking for human comments...")
-                  if not has_human_comments(repo, pr_number):
+                  print("Slash-reviewer posted 'Status: Approved' — checking for human comments and commits...")
+                  if not has_human_comments(repo, pr_number) and not has_human_commits(repo, pr_number):
                       add_label(repo, pr_number)
                   else:
-                      print(f"PR #{pr_number} has human comments — skipping label")
+                      print(f"PR #{pr_number} has human comments or commits — skipping label")
               elif is_human(author):
                   remove_label(repo, pr_number)
               else:
