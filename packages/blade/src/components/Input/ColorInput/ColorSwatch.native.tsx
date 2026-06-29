@@ -10,6 +10,7 @@ type ColorSwatchProps = {
   color: string;
   size: NonNullable<BaseInputProps['size']>;
   isDisabled?: boolean;
+  // eslint-disable-next-line react/no-unused-prop-types -- kept for API consistency with web; native picker not supported
   onChange: (hex: string) => void;
 };
 
@@ -24,6 +25,7 @@ const ColorSwatch = ({
   color,
   size: inputSize,
   isDisabled,
+  onChange: _onChange,
 }: ColorSwatchProps): React.ReactElement => {
   const dimension = swatchSizeTokens[inputSize];
   const { theme } = useTheme();
