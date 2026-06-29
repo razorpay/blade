@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import React, { Children } from 'react';
-import { useTreeView } from './TreeViewContext';
+import React from 'react';
+import { TreeViewContext, useTreeView } from './TreeViewContext';
 import type { TreeViewItemProps } from './types';
 import { componentIds } from './componentIds';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -12,11 +12,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { isReactNative } from '~utils';
 
-type TreeViewItemInternalProps = TreeViewItemProps & {
-  /** Internal: nesting depth used for indentation */
-  _depth?: number;
-};
-
 const INDENT_SIZE_PX = 24;
 
 const _TreeViewItem = ({
@@ -27,12 +22,11 @@ const _TreeViewItem = ({
   isDisabled = false,
   children,
   testID,
-  _depth = 0,
   ...rest
-}: TreeViewItemInternalProps): ReactElement => {
-  const { selectionType, selectedIds, expandedIds, onNodeSelect, onNodeToggle } = useTreeView();
+}: TreeViewItemProps): ReactElement => {
+  const { selectionType, selectedIds, expandedIds, depth, onNodeSelect, onNodeToggle } = useTreeView();
 
-  const hasChildren = Children.count(children) > 0;
+  const hasChildren = React.Children.count(children) > 0;
   const isExpanded = expandedIds.includes(id);
   const isSelected = selectionType !== 'none' && selectedIds.includes(id);
 
@@ -40,8 +34,7 @@ const _TreeViewItem = ({
     if (isDisabled) return;
     if (hasChildren) {
       onNodeToggle(id);
-    }
-    if (selectionType !== 'none') {
+    } else if (selectionType !== 'none') {
       onNodeSelect(id);
     }
   };
@@ -60,7 +53,7 @@ const _TreeViewItem = ({
     }
   };
 
-  const indentLeftPx = _depth * INDENT_SIZE_PX;
+  const indentLeftPx = depth * INDENT_SIZE_PX;
 
   return (
     <BaseBox
@@ -139,16 +132,17 @@ const _TreeViewItem = ({
         {trailing && <BaseBox marginLeft="spacing.2">{trailing}</BaseBox>}
       </BaseBox>
 
-      {/* Children group */}
+      {/* Children group — depth incremented via context so cloneElement is not needed */}
       {hasChildren && isExpanded && (
-        <BaseBox {...makeAccessible({ role: 'group' })}>
-          {Children.map(children, (child) => {
-            if (!React.isValidElement(child)) return child;
-            return React.cloneElement(child as React.ReactElement<TreeViewItemInternalProps>, {
-              _depth: _depth + 1,
-            });
-          })}
-        </BaseBox>
+        <TreeViewContext.Consumer>
+          {(ctx) => (
+            <TreeViewContext.Provider value={{ ...ctx!, depth: depth + 1 }}>
+              <BaseBox {...makeAccessible({ role: 'group' })}>
+                {children}
+              </BaseBox>
+            </TreeViewContext.Provider>
+          )}
+        </TreeViewContext.Consumer>
       )}
     </BaseBox>
   );

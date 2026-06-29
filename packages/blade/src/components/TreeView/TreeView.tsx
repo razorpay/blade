@@ -90,7 +90,7 @@ const _TreeView = ({
   );
 
   const contextValue = useMemo(
-    () => ({ selectionType, selectedIds, expandedIds, onNodeSelect, onNodeToggle }),
+    () => ({ selectionType, selectedIds, expandedIds, depth: 0, onNodeSelect, onNodeToggle }),
     [selectionType, selectedIds, expandedIds, onNodeSelect, onNodeToggle],
   );
 

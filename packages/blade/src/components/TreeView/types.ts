@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
@@ -69,7 +69,7 @@ type TreeViewItemProps = {
   /**
    * Optional trailing content (e.g. badge, count)
    */
-  trailing?: ReactElement;
+  trailing?: ReactNode;
 
   /**
    * Whether the item is disabled
@@ -89,6 +89,7 @@ type TreeViewContextType = {
   selectionType: TreeViewSelectionType;
   selectedIds: string[];
   expandedIds: string[];
+  depth: number;
   onNodeSelect: (id: string) => void;
   onNodeToggle: (id: string) => void;
 };
