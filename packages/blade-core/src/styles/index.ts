@@ -121,6 +121,19 @@ export type {
   AccordionButtonBorderVariants,
 } from './Accordion';
 export {
+  getCollapsibleChevronClasses,
+  getCollapsibleBodyClasses,
+  getCollapsibleBodyInnerClasses,
+  getCollapsibleTextClasses,
+  getCollapsibleInnerClasses,
+  getCollapsibleTemplateClasses,
+} from './Collapsible';
+export type {
+  CollapsibleChevronVariants,
+  CollapsibleInnerVariants,
+  CollapsibleBodyInnerVariants,
+} from './Collapsible';
+export {
   skeletonStyles,
   skeletonClass,
   getSkeletonClasses,
