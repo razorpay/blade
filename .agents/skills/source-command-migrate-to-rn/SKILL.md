@@ -25,8 +25,8 @@ Use this skill when the user asks to run the migrated source command `migrate-to
 ## Include
 
 Use the Read tool to load:
-1. `.Codex/rules/orchestrator-guardrails.md`
-2. `.Codex/rules/rn-migration.md`
+1. `.claude/rules/orchestrator-guardrails.md`
+2. `.claude/rules/rn-migration.md`
 
 ## Input
 
@@ -35,8 +35,8 @@ User provides one or more component names (e.g., "add native support to Drawer" 
 ## Output
 
 - One PR per component on branch `feat/blade-rn/{Name}`
-- Artifacts in `.Codex/worktrees/{Name}/.Codex/artifacts/{Name}/`
-- Batch status in `.Codex/artifacts/rn-batch-status.md` (main checkout)
+- Artifacts in `.claude/worktrees/{Name}/.claude/artifacts/{Name}/`
+- Batch status in `.claude/artifacts/rn-batch-status.md` (main checkout)
 
 ---
 
@@ -69,18 +69,18 @@ grep -rl "throwBladeError" packages/blade/src/components/{Name}/ --include="*.na
 
 For each component in the batch:
 ```bash
-git worktree add -B feat/blade-rn/{Name} .Codex/worktrees/{Name} origin/master
+git worktree add -B feat/blade-rn/{Name} .claude/worktrees/{Name} origin/master
 ```
 
 ### 0.5 Ensure Dependencies in Worktrees
 
 ```bash
-cd .Codex/worktrees/{Name} && yarn install --frozen-lockfile
+cd .claude/worktrees/{Name} && yarn install --frozen-lockfile
 ```
 
 Or if APFS clone available:
 ```bash
-cp -Rc node_modules .Codex/worktrees/{Name}/node_modules 2>/dev/null || (cd .Codex/worktrees/{Name} && yarn install --frozen-lockfile)
+cp -Rc node_modules .claude/worktrees/{Name}/node_modules 2>/dev/null || (cd .claude/worktrees/{Name} && yarn install --frozen-lockfile)
 ```
 
 ---
@@ -101,11 +101,11 @@ Agent(
     - Worktree (absolute base): {absolute_path_to_worktree}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .Codex/rules/rn-migration.md and .Codex/rules/agent-base-directory.md first.
+    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
     
     React source: {Worktree}/packages/blade/src/components/{Name}/
-    Output artifacts to: {Worktree}/.Codex/artifacts/{Name}/
-    Templates at: {Worktree}/.Codex/templates/
+    Output artifacts to: {Worktree}/.claude/artifacts/{Name}/
+    Templates at: {Worktree}/.claude/templates/
   "
 )
 ```
@@ -118,8 +118,8 @@ For multiple components: send all Agent calls in a single message for parallel e
 
 After all Plan agents return:
 
-1. Read each discovery report: `{Worktree}/.Codex/artifacts/{Name}/rn-discovery-report.md`
-2. Read each migration plan: `{Worktree}/.Codex/artifacts/{Name}/rn-migration-plan.md`
+1. Read each discovery report: `{Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md`
+2. Read each migration plan: `{Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md`
 3. Present to user with summary:
 
 ```
@@ -163,9 +163,9 @@ Agent(
     - Worktree (absolute base): {absolute_path_to_worktree}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .Codex/rules/rn-migration.md and .Codex/rules/agent-base-directory.md first.
+    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
     
-    Migration plan: {Worktree}/.Codex/artifacts/{Name}/rn-migration-plan.md
+    Migration plan: {Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md
     Web source: {Worktree}/packages/blade/src/components/{Name}/
   "
 )
@@ -189,11 +189,11 @@ Agent(
     - Worktree (absolute base): {absolute_path_to_worktree}
 
     ALWAYS use absolute paths prefixed with the worktree.
-    Read .Codex/rules/rn-migration.md and .Codex/rules/agent-base-directory.md first.
+    Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
     
-    Discovery report: {Worktree}/.Codex/artifacts/{Name}/rn-discovery-report.md
-    Screenshots dir: {Worktree}/.Codex/artifacts/{Name}/screenshots/
-    Verification report: {Worktree}/.Codex/artifacts/{Name}/rn-verification-report.md
+    Discovery report: {Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md
+    Screenshots dir: {Worktree}/.claude/artifacts/{Name}/screenshots/
+    Verification report: {Worktree}/.claude/artifacts/{Name}/rn-verification-report.md
   "
 )
 ```
@@ -206,8 +206,8 @@ The Verify agent self-heals by spawning Execute in Patch mode internally.
 
 After Verify completes:
 
-1. Read verification report: `{Worktree}/.Codex/artifacts/{Name}/rn-verification-report.md`
-2. Read screenshots (if available): `{Worktree}/.Codex/artifacts/{Name}/screenshots/`
+1. Read verification report: `{Worktree}/.claude/artifacts/{Name}/rn-verification-report.md`
+2. Read screenshots (if available): `{Worktree}/.claude/artifacts/{Name}/screenshots/`
 3. Present result:
 
 ```
@@ -247,7 +247,7 @@ Implements .native.tsx files for the {Name} component, replacing stub
 implementations with real native rendering using styled-components/native
 and react-native-reanimated.
 
-Co-Authored-By: Codex <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 
 cd {Worktree} && git push -u origin feat/blade-rn/{Name}
 
@@ -277,7 +277,7 @@ cd {Worktree} && gh pr create \
 
 {include key screenshot paths or inline if small}
 
-🤖 Generated with [Codex](https://Codex.com/Codex)
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
@@ -286,7 +286,7 @@ EOF
 
 ## Step 7: Update Batch Status
 
-Write/update `.Codex/artifacts/rn-batch-status.md` in the main checkout:
+Write/update `.claude/artifacts/rn-batch-status.md` in the main checkout:
 
 ```markdown
 # RN Migration Batch Status
