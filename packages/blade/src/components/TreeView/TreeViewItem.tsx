@@ -65,7 +65,7 @@ const _TreeViewItem = ({
       {...metaAttribute({ name: MetaConstants.TreeViewItem, testID })}
       {...makeAnalyticsAttribute(rest)}
       tabIndex={isDisabled ? -1 : 0}
-      onKeyDown={handleKeyDown as never}
+      onKeyDown={handleKeyDown}
     >
       {/* Row */}
       <BaseBox
@@ -75,7 +75,7 @@ const _TreeViewItem = ({
         paddingRight="spacing.4"
         paddingLeft="spacing.2"
         borderRadius="medium"
-        cursor={isReactNative() ? undefined : isDisabled ? 'not-allowed' : 'pointer'}
+        cursor={(isReactNative() ? undefined : isDisabled ? 'not-allowed' : 'pointer') as never}
         backgroundColor={isSelected ? 'interactive.background.primary.faded' : 'transparent'}
         onClick={handlePress as never}
         opacity={isDisabled ? 0.4 : 1}

@@ -30,6 +30,10 @@ type BladeCommonEvents = {
     native: undefined | ((event: any) => void);
     web: React.TouchEventHandler;
   }>;
+  onKeyDown?: Platform.Select<{
+    web: React.KeyboardEventHandler;
+    native: undefined | ((event: any) => void);
+  }>;
 };
 
 export type { BladeCommonEvents };
