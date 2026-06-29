@@ -1,9 +1,9 @@
 ---
-name: "source-command-migrate-to-rn"
+name: "migrate-to-rn"
 description: "Add React Native support (.native.tsx files) to Blade components that currently only have web implementations. Use when user says \"add native support to {Component}\", \"migrate {Component} to native\", or \"/migrate-to-rn\"."
 ---
 
-# source-command-migrate-to-rn
+# migrate-to-rn
 
 Use this skill when the user asks to run the migrated source command `migrate-to-rn`.
 
