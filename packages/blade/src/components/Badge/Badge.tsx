@@ -45,7 +45,7 @@ type BadgeProps = {
   /**
    * Sets the size of the badge.
    *
-   * @default 'medium'
+   * @default 'large'
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
@@ -101,7 +101,7 @@ const _Badge = (
     children,
     emphasis = 'subtle',
     icon: Icon,
-    size = 'medium',
+    size = 'large',
     color = 'neutral',
     testID,
     ...props
