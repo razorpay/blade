@@ -78,7 +78,7 @@ const _TreeViewItem = ({
         borderRadius="medium"
         cursor={(isReactNative() ? undefined : isDisabled ? 'not-allowed' : 'pointer') as never}
         backgroundColor={isSelected ? 'interactive.background.primary.faded' : 'transparent'}
-        onClick={handlePress as never}
+        onClick={(isReactNative() ? undefined : handlePress) as never}
         opacity={isDisabled ? 0.4 : 1}
       >
         {/* Indentation spacer */}

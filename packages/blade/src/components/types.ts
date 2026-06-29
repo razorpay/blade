@@ -34,6 +34,10 @@ type BladeCommonEvents = {
     web: React.KeyboardEventHandler;
     native: undefined | ((event: any) => void);
   }>;
+  onClick?: Platform.Select<{
+    web: React.MouseEventHandler;
+    native: undefined;
+  }>;
 };
 
 export type { BladeCommonEvents };
