@@ -63,7 +63,7 @@ const _TreeViewItem = ({
 
   return (
     <BaseBox
-      {...makeAccessible({ role: 'treeitem', expanded: hasChildren ? isExpanded : undefined, selected: isSelected })}
+      {...makeAccessible({ role: 'treeitem', expanded: hasChildren ? isExpanded : undefined, selected: selectionType !== 'none' ? isSelected : undefined })}
       {...metaAttribute({ name: MetaConstants.TreeViewItem, testID })}
       {...makeAnalyticsAttribute(rest)}
     >
