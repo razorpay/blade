@@ -24,8 +24,14 @@ const _TreeViewItem = ({
   testID,
   ...rest
 }: TreeViewItemProps): ReactElement => {
-  const { selectionType, selectedIds, expandedIds, depth, onNodeSelect, onNodeToggle } =
-    useTreeView();
+  const {
+    selectionType,
+    selectedIds,
+    expandedIds,
+    depth,
+    onNodeSelect,
+    onNodeToggle,
+  } = useTreeView();
 
   const hasChildren = React.Children.count(children) > 0;
   const isExpanded = expandedIds.includes(id);
@@ -135,8 +141,8 @@ const _TreeViewItem = ({
             isDisabled
               ? 'surface.text.gray.disabled'
               : isSelected
-                ? 'interactive.text.primary.normal'
-                : 'surface.text.gray.normal'
+              ? 'interactive.text.primary.normal'
+              : 'surface.text.gray.normal'
           }
           weight={isSelected ? 'semibold' : 'regular'}
           truncateAfterLines={1}
