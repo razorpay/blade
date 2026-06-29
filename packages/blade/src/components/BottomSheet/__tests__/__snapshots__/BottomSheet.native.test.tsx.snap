@@ -1035,13 +1035,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         <View
                           backgroundColor="feedback.background.positive.subtle"
                           data-blade-component="base-box"
-                          height="20px"
-                          size="medium"
+                          height="24px"
+                          size="large"
                           style={
                             [
                               {
                                 "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
-                                "height": 20,
+                                "height": 24,
                                 "textAlign": "left",
                               },
                               {
@@ -1072,8 +1072,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                   "flexDirection": "row",
                                   "justifyContent": "center",
                                   "overflow": "hidden",
-                                  "paddingLeft": 4,
-                                  "paddingRight": 4,
+                                  "paddingLeft": 8,
+                                  "paddingRight": 8,
                                 },
                               ]
                             }
