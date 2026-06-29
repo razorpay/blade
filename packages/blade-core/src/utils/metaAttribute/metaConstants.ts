@@ -128,6 +128,7 @@ export const MetaConstants = {
   CollapsibleBody: 'collapsible-body',
   CollapsibleButton: 'collapsible-button',
   CollapsibleLink: 'collapsible-link',
+  CollapsibleText: 'collapsible-text',
   Menu: 'menu',
   MenuHeader: 'menu-header',
   MenuFooter: 'menu-footer',
