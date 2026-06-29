@@ -159,4 +159,6 @@ export const MetaConstants = {
   PreviewFooter: 'preview-footer',
   Pagination: 'pagination',
   TimePicker: 'time-picker',
+  TreeView: 'tree-view',
+  TreeViewItem: 'tree-view-item',
 } as const;

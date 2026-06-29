@@ -80,3 +80,4 @@ export * from './ListView';
 export * from './Preview';
 export * from './GenUI';
 export * from './Spark';
+export * from './TreeView';
