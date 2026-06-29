@@ -94,7 +94,11 @@ const _SegmentedControl = (
 
   return (
     <SegmentedControlContext.Provider value={contextValue}>
-      <BaseBox display="flex" flexDirection="column">
+      <BaseBox
+        display="flex"
+        flexDirection={labelPosition === 'left' ? 'row' : 'column'}
+        alignItems={labelPosition === 'left' ? 'center' : undefined}
+      >
         {label ? (
           <FormLabel
             as="span"
@@ -107,7 +111,7 @@ const _SegmentedControl = (
             {label}
           </FormLabel>
         ) : null}
-        <BaseBox>
+        <BaseBox flex={1}>
           {segmentedControlElement}
           <FormHint
             size={size}
