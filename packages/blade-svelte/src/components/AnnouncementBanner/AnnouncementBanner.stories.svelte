@@ -25,8 +25,6 @@
 </script>
 
 <script lang="ts">
-  import Link from '../Link/Link.svelte';
-
   const alignments = ['center', 'left'] as const;
 </script>
 
@@ -49,15 +47,6 @@
     icon: undefined,
   }}
 />
-
-<!-- With inline link -->
-<Story name="WithInlineLink" asChild>
-  <AnnouncementBanner icon={InfoIcon}>
-    {#snippet children()}
-      Your KYC is verified. <Link href="/settings">View details</Link>
-    {/snippet}
-  </AnnouncementBanner>
-</Story>
 
 <!-- All alignments matrix -->
 <Story name="AllVariants" asChild>
