@@ -19,14 +19,14 @@ type TreeViewProps = {
   selectionType?: TreeViewSelectionType;
 
   /**
-   * Selected node id(s) (controlled). Use string for `single`, string[] for `multiple`.
+   * Selected node id(s) (controlled).
    */
-  selectedIds?: string | string[];
+  selectedIds?: string[];
 
   /**
-   * Default selected node id(s) (uncontrolled). Use string for `single`, string[] for `multiple`.
+   * Default selected node id(s) (uncontrolled).
    */
-  defaultSelectedIds?: string | string[];
+  defaultSelectedIds?: string[];
 
   /**
    * Callback when selection changes

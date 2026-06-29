@@ -9,10 +9,6 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentIds } from './componentIds';
 
-const normalizeIds = (ids?: string | string[]): string[] => {
-  if (!ids) return [];
-  return Array.isArray(ids) ? ids : [ids];
-};
 
 /**
  * # TreeView
@@ -48,16 +44,14 @@ const _TreeView = ({
   ...rest
 }: TreeViewProps): ReactElement => {
   const [uncontrolledSelectedIds, setUncontrolledSelectedIds] = useState<string[]>(
-    normalizeIds(defaultSelectedIds),
+    defaultSelectedIds ?? [],
   );
   const [uncontrolledExpandedIds, setUncontrolledExpandedIds] = useState<string[]>(
     defaultExpandedIds ?? [],
   );
 
   const selectedIds =
-    controlledSelectedIds !== undefined
-      ? normalizeIds(controlledSelectedIds)
-      : uncontrolledSelectedIds;
+    controlledSelectedIds !== undefined ? controlledSelectedIds : uncontrolledSelectedIds;
 
   const expandedIds = controlledExpandedIds !== undefined ? controlledExpandedIds : uncontrolledExpandedIds;
 
