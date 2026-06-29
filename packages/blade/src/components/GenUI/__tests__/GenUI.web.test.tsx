@@ -1086,6 +1086,459 @@ describe('<GenUI />', () => {
     });
   });
 
+  describe('duplicate markdown table handling', () => {
+    const duplicatePaymentTableComponents: GenUIComponent[] = [
+      {
+        component: 'TEXT',
+        content:
+          'You have 4 failed payments in total. Here they are:\n\n' +
+          '| # | Payment ID | Amount | Status | Contact | Date |\n' +
+          '|---|---|---|---|---|---|\n' +
+          '| 1 | pay_SOJ4XrMPRKtO4g | INR 5.00 | Failed | +917636802936 | 7 Mar 2026 |\n' +
+          '| 2 | pay_SMeXeyPnHOZbpE | INR 10.00 | Failed | +918806922557 | 3 Mar 2026 |\n\n' +
+          'All failures occurred in early March 2026.',
+      },
+      {
+        component: 'TABLE',
+        headers: ['Payment ID', 'Amount', 'Status', 'Contact', 'Date'],
+        rows: [
+          [
+            { component: 'LINK', text: 'pay_SOJ4XrMPRKtO4g' },
+            { component: 'TEXT', value: 'INR 5.00' },
+            { component: 'BADGE', value: 'Failed', color: 'negative' },
+            { component: 'TEXT', value: '+917636802936' },
+            { component: 'TEXT', value: '7 Mar 2026' },
+          ],
+          [
+            { component: 'LINK', text: 'pay_SMeXeyPnHOZbpE' },
+            { component: 'TEXT', value: 'INR 10.00' },
+            { component: 'BADGE', value: 'Failed', color: 'negative' },
+            { component: 'TEXT', value: '+918806922557' },
+            { component: 'TEXT', value: '3 Mar 2026' },
+          ],
+        ],
+      },
+    ];
+
+    it('should keep duplicate markdown table text by default', () => {
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={duplicatePaymentTableComponents} />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain(
+        '| # | Payment ID | Amount | Status | Contact | Date |',
+      );
+      expect(container.textContent).toContain('|---|---|---|---|---|---|');
+    });
+
+    it('should remove duplicate markdown table text when opt-in handling is enabled', () => {
+      const { container, getByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={duplicatePaymentTableComponents}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain(
+        'You have 4 failed payments in total. Here they are:',
+      );
+      expect(container.textContent).toContain('All failures occurred in early March 2026.');
+      expect(getByText('pay_SOJ4XrMPRKtO4g')).toBeInTheDocument();
+      expect(container.textContent).not.toContain(
+        '| # | Payment ID | Amount | Status | Contact | Date |',
+      );
+      expect(container.textContent).not.toContain('|---|---|---|---|---|---|');
+    });
+
+    it('should emit duplicate markdown table removal events without merchant row data', () => {
+      const onDuplicateMarkdownTableRemoved = jest.fn();
+
+      renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={duplicatePaymentTableComponents}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+            onDuplicateMarkdownTableRemoved={onDuplicateMarkdownTableRemoved}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(onDuplicateMarkdownTableRemoved).toHaveBeenCalledTimes(1);
+      expect(onDuplicateMarkdownTableRemoved).toHaveBeenCalledWith({
+        type: 'DUPLICATE_MARKDOWN_TABLE_REMOVED',
+        textComponentPath: [0],
+        tableComponentPath: [1],
+        removedBlockCount: 1,
+        tableFingerprint: '1:paymentid|amount|status|contact|date',
+        reason: 'MATCHED_STRUCTURED_TABLE',
+      });
+      expect(JSON.stringify(onDuplicateMarkdownTableRemoved.mock.calls[0][0])).not.toContain(
+        'pay_SOJ4XrMPRKtO4g',
+      );
+    });
+
+    it('should remove duplicate markdown table text even when TEXT appears after TABLE', () => {
+      const components = [
+        duplicatePaymentTableComponents[1],
+        duplicatePaymentTableComponents[0],
+      ] as GenUIComponent[];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).not.toContain('|---|---|---|---|---|---|');
+      expect(container.textContent).toContain('All failures occurred in early March 2026.');
+    });
+
+    it('should preserve standalone markdown tables when no structured table exists', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Reference table:\n\n' +
+            '| Field | Meaning |\n' +
+            '|---|---|\n' +
+            '| id | Internal identifier |',
+        },
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Field | Meaning |');
+      expect(container.textContent).toContain('| id | Internal identifier |');
+    });
+
+    it('should preserve markdown tables when headers do not match the structured table', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Reference table:\n\n' +
+            '| Field | Meaning |\n' +
+            '|---|---|\n' +
+            '| id | Internal identifier |',
+        },
+        duplicatePaymentTableComponents[1],
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Field | Meaning |');
+      expect(container.textContent).toContain('| id | Internal identifier |');
+    });
+
+    it('should preserve incomplete markdown table fragments during streaming', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            '| Payment ID | Amount | Status |\n' +
+            '|---|---|---|\n' +
+            '| pay_SOJ4XrMPRKtO4g | INR 5.00',
+        },
+        duplicatePaymentTableComponents[1],
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Payment ID | Amount | Status |');
+      expect(container.textContent).toContain('| pay_SOJ4XrMPRKtO4g | INR 5.00');
+    });
+
+    it('should preserve matching markdown tables inside fenced code blocks', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            '```md\n' +
+            '| Payment ID | Amount | Status |\n' +
+            '|---|---|---|\n' +
+            '| pay_SOJ4XrMPRKtO4g | INR 5.00 | Failed |\n' +
+            '```',
+        },
+        duplicatePaymentTableComponents[1],
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Payment ID | Amount | Status |');
+      expect(container.textContent).toContain('| pay_SOJ4XrMPRKtO4g | INR 5.00 | Failed |');
+    });
+
+    it('should remove only the matching markdown table when a TEXT component has multiple tables', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Reference table:\n\n' +
+            '| Field | Meaning |\n' +
+            '|---|---|\n' +
+            '| id | Internal identifier |\n\n' +
+            'Payment table:\n\n' +
+            '| Payment ID | Amount | Status |\n' +
+            '|---|---|---|\n' +
+            '| pay_SOJ4XrMPRKtO4g | INR 5.00 | Failed |\n' +
+            '| pay_SMeXeyPnHOZbpE | INR 10.00 | Failed |',
+        },
+        duplicatePaymentTableComponents[1],
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Field | Meaning |');
+      expect(container.textContent).not.toContain('| Payment ID | Amount | Status |');
+      expect(container.textContent).toContain('Payment table:');
+    });
+
+    it('should preserve same-header yearly markdown tables when row overlap is generic', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Payments from 2025:\n\n' +
+            '| Amount | Status | Date |\n' +
+            '|---|---|---|\n' +
+            '| INR 500.00 | Failed | 10 Jan 2025 |\n' +
+            '| INR 750.00 | Captured | 12 Feb 2025 |',
+        },
+        {
+          component: 'TABLE',
+          headers: ['Amount', 'Status', 'Date'],
+          rows: [
+            [
+              { component: 'TEXT', value: 'INR 500.00' },
+              { component: 'BADGE', value: 'Failed', color: 'negative' },
+              { component: 'TEXT', value: '10 Jan 2026' },
+            ],
+            [
+              { component: 'TEXT', value: 'INR 750.00' },
+              { component: 'BADGE', value: 'Captured', color: 'positive' },
+              { component: 'TEXT', value: '12 Feb 2026' },
+            ],
+          ],
+        },
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).toContain('| Amount | Status | Date |');
+      expect(container.textContent).toContain('| INR 500.00 | Failed | 10 Jan 2025 |');
+    });
+
+    it('should remove same-header yearly markdown tables when rows contain matching payment identifiers', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Payments from 2025:\n\n' +
+            '| Payment ID | Amount | Status | Date |\n' +
+            '|---|---|---|---|\n' +
+            '| pay_2025A1 | INR 500.00 | Failed | 10 Jan 2025 |\n' +
+            '| pay_2025B2 | INR 750.00 | Captured | 12 Feb 2025 |',
+        },
+        {
+          component: 'TABLE',
+          headers: ['Payment ID', 'Amount', 'Status', 'Date'],
+          rows: [
+            [
+              { component: 'LINK', text: 'pay_2026A1' },
+              { component: 'TEXT', value: 'INR 500.00' },
+              { component: 'BADGE', value: 'Failed', color: 'negative' },
+              { component: 'TEXT', value: '10 Jan 2026' },
+            ],
+            [
+              { component: 'LINK', text: 'pay_2026B2' },
+              { component: 'TEXT', value: 'INR 750.00' },
+              { component: 'BADGE', value: 'Captured', color: 'positive' },
+              { component: 'TEXT', value: '12 Feb 2026' },
+            ],
+          ],
+        },
+        {
+          component: 'TABLE',
+          headers: ['Payment ID', 'Amount', 'Status', 'Date'],
+          rows: [
+            [
+              { component: 'LINK', text: 'pay_2025A1' },
+              { component: 'TEXT', value: 'INR 500.00' },
+              { component: 'BADGE', value: 'Failed', color: 'negative' },
+              { component: 'TEXT', value: '10 Jan 2025' },
+            ],
+            [
+              { component: 'LINK', text: 'pay_2025B2' },
+              { component: 'TEXT', value: 'INR 750.00' },
+              { component: 'BADGE', value: 'Captured', color: 'positive' },
+              { component: 'TEXT', value: '12 Feb 2025' },
+            ],
+          ],
+        },
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).not.toContain('| Payment ID | Amount | Status | Date |');
+      expect(container.textContent).toContain('pay_2025A1');
+      expect(container.textContent).toContain('pay_2026A1');
+    });
+
+    it('should keep text labels next to each structured table when one text block has multiple duplicate tables', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'TEXT',
+          content:
+            'Settlements in 2026:\n\n' +
+            '| Settlement ID | Amount | Status | Date |\n' +
+            '|---|---|---|---|\n' +
+            '| setl_2026A1 | INR 12850.00 | Processed | 14 Mar 2026 |\n' +
+            '| setl_2026B2 | INR 9640.00 | Processed | 22 Apr 2026 |\n\n' +
+            'Settlements in 2025:\n\n' +
+            '| Settlement ID | Amount | Status | Date |\n' +
+            '|---|---|---|---|\n' +
+            '| setl_2025A1 | INR 11220.00 | Processed | 18 Mar 2025 |\n' +
+            '| setl_2025B2 | INR 8730.00 | Processed | 28 Apr 2025 |',
+        },
+        {
+          component: 'TABLE',
+          headers: ['Settlement ID', 'Amount', 'Status', 'Date'],
+          rows: [
+            [
+              { component: 'LINK', text: 'setl_2026A1' },
+              { component: 'TEXT', value: 'INR 12850.00' },
+              { component: 'BADGE', value: 'Processed', color: 'positive' },
+              { component: 'TEXT', value: '14 Mar 2026' },
+            ],
+            [
+              { component: 'LINK', text: 'setl_2026B2' },
+              { component: 'TEXT', value: 'INR 9640.00' },
+              { component: 'BADGE', value: 'Processed', color: 'positive' },
+              { component: 'TEXT', value: '22 Apr 2026' },
+            ],
+          ],
+        },
+        {
+          component: 'TABLE',
+          headers: ['Settlement ID', 'Amount', 'Status', 'Date'],
+          rows: [
+            [
+              { component: 'LINK', text: 'setl_2025A1' },
+              { component: 'TEXT', value: 'INR 11220.00' },
+              { component: 'BADGE', value: 'Processed', color: 'positive' },
+              { component: 'TEXT', value: '18 Mar 2025' },
+            ],
+            [
+              { component: 'LINK', text: 'setl_2025B2' },
+              { component: 'TEXT', value: 'INR 8730.00' },
+              { component: 'BADGE', value: 'Processed', color: 'positive' },
+              { component: 'TEXT', value: '28 Apr 2025' },
+            ],
+          ],
+        },
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      const renderedText = container.textContent ?? '';
+      expect(renderedText).not.toContain('| Settlement ID | Amount | Status | Date |');
+      expect(renderedText.indexOf('Settlements in 2026:')).toBeLessThan(
+        renderedText.indexOf('setl_2026A1'),
+      );
+      expect(renderedText.indexOf('setl_2026A1')).toBeLessThan(
+        renderedText.indexOf('Settlements in 2025:'),
+      );
+      expect(renderedText.indexOf('Settlements in 2025:')).toBeLessThan(
+        renderedText.indexOf('setl_2025A1'),
+      );
+    });
+
+    it('should match structured tables nested inside GenUI children', () => {
+      const components: GenUIComponent[] = [
+        duplicatePaymentTableComponents[0],
+        {
+          component: 'CARD',
+          children: [duplicatePaymentTableComponents[1]],
+        },
+      ];
+
+      const { container } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer
+            components={components}
+            isDuplicateMarkdownTableHandlingEnabled={true}
+          />
+        </GenUIProvider>,
+      );
+
+      expect(container.textContent).not.toContain('|---|---|---|---|---|---|');
+      expect(container.textContent).toContain('pay_SOJ4XrMPRKtO4g');
+    });
+  });
+
   describe('ALERT Component', () => {
     it('should render alert with title and description', () => {
       const components: GenUIComponent[] = [
