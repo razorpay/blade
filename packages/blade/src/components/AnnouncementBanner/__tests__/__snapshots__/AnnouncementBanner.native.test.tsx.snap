@@ -24,6 +24,7 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
           "boxSizing": "border-box",
           "display": "flex",
           "flexDirection": "row",
+          "gap": 4,
           "justifyContent": "center",
           "paddingBottom": 8,
           "paddingLeft": 16,
@@ -45,7 +46,6 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
           {
             "alignItems": "center",
             "display": "flex",
-            "marginRight": 4,
           },
         ]
       }
@@ -175,6 +175,7 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
           "boxSizing": "border-box",
           "display": "flex",
           "flexDirection": "row",
+          "gap": 4,
           "justifyContent": "flex-start",
           "paddingBottom": 8,
           "paddingLeft": 16,
@@ -196,7 +197,6 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
           {
             "alignItems": "center",
             "display": "flex",
-            "marginRight": 4,
           },
         ]
       }
@@ -333,6 +333,7 @@ exports[`<AnnouncementBanner /> should render the dark treatment when app colorS
             "boxSizing": "border-box",
             "display": "flex",
             "flexDirection": "row",
+            "gap": 4,
             "justifyContent": "center",
             "paddingBottom": 8,
             "paddingLeft": 16,

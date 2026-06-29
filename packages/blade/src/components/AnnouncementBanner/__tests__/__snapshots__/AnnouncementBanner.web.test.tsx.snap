@@ -10,7 +10,6 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-right: 4px;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -25,6 +24,7 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 4px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -112,7 +112,6 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-right: 4px;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -127,6 +126,7 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 4px;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
@@ -214,7 +214,6 @@ exports[`<AnnouncementBanner /> should render the dark treatment when app colorS
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-right: 4px;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -229,6 +228,7 @@ exports[`<AnnouncementBanner /> should render the dark treatment when app colorS
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 4px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;

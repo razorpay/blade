@@ -22,6 +22,7 @@ export const getCommonStyles = (props: StyledProps<StyledAnnouncementBannerProps
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    gap: makeSpace(theme.spacing[2]),
     justifyContent: alignment === 'center' ? 'center' : 'flex-start',
     width: '100%',
     background,
