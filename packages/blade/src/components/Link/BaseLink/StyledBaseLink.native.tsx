@@ -63,12 +63,6 @@ const _StyledLink: React.ForwardRefRenderFunction<
     }
 
     if (onClick) {
-      /*
-      React Native's Pressable's onClick returns a GestureResponderEvent but our types expect a SyntheticEvent.
-      Until we have a way to handle platform specific types, we will have to ignore this TS error.
-      */
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-expect-error
       onClick(event);
     }
   };
