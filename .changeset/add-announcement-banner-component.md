@@ -1,6 +1,7 @@
 ---
 "@razorpay/blade": minor
 "@razorpay/blade-core": minor
+"@razorpay/blade-mcp": minor
 "@razorpay/blade-svelte": minor
 ---
 
