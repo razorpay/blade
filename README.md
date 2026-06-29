@@ -16,7 +16,7 @@
 
 <br/>
 
-Blade is the Design System that powers test also test [Razorpay](https://razorpay.com/).
+Blade is the Design System that powers [Razorpay](https://razorpay.com/).
 
 ## 🔗 Links
 
