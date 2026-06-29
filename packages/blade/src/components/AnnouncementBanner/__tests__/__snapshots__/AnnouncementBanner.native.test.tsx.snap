@@ -12,9 +12,7 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
     accessibilityLabel="Announcement"
     accessibilityRole="summary"
     accessible={true}
-    alignment="center"
     data-blade-component="announcement-banner"
-    isDark={false}
     style={
       [
         {},
@@ -163,9 +161,7 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
     accessibilityLabel="Announcement"
     accessibilityRole="summary"
     accessible={true}
-    alignment="left"
     data-blade-component="announcement-banner"
-    isDark={false}
     style={
       [
         {},
@@ -321,9 +317,7 @@ exports[`<AnnouncementBanner /> should render the dark treatment when app colorS
       accessibilityLabel="Announcement"
       accessibilityRole="summary"
       accessible={true}
-      alignment="center"
       data-blade-component="announcement-banner"
-      isDark={true}
       style={
         [
           {},
