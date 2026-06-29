@@ -1070,7 +1070,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c22.c22.c22.c22.c22 {
   text-align: left;
-  height: 24px;
+  height: 20px;
   background-color: hsla(150,100%,28%,0.09);
 }
 
@@ -1091,8 +1091,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .c26.c26.c26.c26.c26 {
