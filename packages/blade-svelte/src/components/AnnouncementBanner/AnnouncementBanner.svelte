@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
   import {
     metaAttribute,
@@ -11,13 +10,11 @@
   import {
     getAnnouncementBannerClasses,
     getAnnouncementBannerTemplateClasses,
-    getAnnouncementBannerTextColorToken,
-    getAnnouncementBannerIconColorToken,
     announcementBannerIconWrapperClass,
+    announcementBannerTextColorClass,
+    announcementBannerIconColorClass,
   } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
-  import type { TextColors } from '../Typography/BaseText/types';
-  import type { IconColor } from '../Icons/types';
   import type { AnnouncementBannerProps } from './types';
 
   // Prevent tree-shaking of CSS classes used only in templates
@@ -32,31 +29,10 @@
     ...rest
   }: AnnouncementBannerProps = $props();
 
-  // Mirror React's useTheme() colorScheme — read from the data-theme body attribute
-  // set by BladeProvider (or ThemeSwitcher in dev). A MutationObserver keeps it reactive.
-  let isDark = $state(false);
-
-  onMount(() => {
-    isDark = document.body.getAttribute('data-theme') === 'dark';
-    const observer = new MutationObserver(() => {
-      isDark = document.body.getAttribute('data-theme') === 'dark';
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
-    return () => observer.disconnect();
-  });
-
   // Check if children is a string or a snippet
   const isStringChildren = $derived(typeof children === 'string');
   const snippetChildren = $derived(
     !isStringChildren ? (children as Snippet) : undefined,
-  );
-
-  // Text and icon color tokens based on color scheme
-  const textColorToken = $derived(
-    getAnnouncementBannerTextColorToken(isDark) as TextColors,
-  );
-  const iconColorToken = $derived(
-    getAnnouncementBannerIconColorToken(isDark) as IconColor,
   );
 
   // Container classes
@@ -87,13 +63,13 @@
   {...analyticsAttrs}
 >
   {#if Icon}
-    <div class={announcementBannerIconWrapperClass} aria-hidden="true">
-      <Icon size="small" color={iconColorToken} />
+    <div class="{announcementBannerIconWrapperClass} {announcementBannerIconColorClass}" aria-hidden="true">
+      <Icon size="small" color="currentColor" />
     </div>
   {/if}
   <BaseText
     as="span"
-    color={textColorToken}
+    className={announcementBannerTextColorClass}
     fontSize={75}
     lineHeight={75}
     fontFamily="text"

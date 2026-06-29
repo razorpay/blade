@@ -30,3 +30,21 @@
   align-items: center;
   flex-shrink: 0;
 }
+
+/* Text color — driven by data-theme on body, no JS required */
+.text-color {
+  color: var(--surface-text-gray-subtle);
+}
+
+:global(body[data-theme='dark']) .text-color {
+  color: var(--surface-text-static-white-subtle);
+}
+
+/* Icon color — driven by data-theme on body, no JS required */
+.icon-color {
+  color: var(--surface-icon-gray-subtle);
+}
+
+:global(body[data-theme='dark']) .icon-color {
+  color: var(--surface-icon-static-white-subtle);
+}

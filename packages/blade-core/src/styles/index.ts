@@ -254,9 +254,9 @@ export {
   announcementBannerStyles,
   getAnnouncementBannerClasses,
   getAnnouncementBannerTemplateClasses,
-  getAnnouncementBannerTextColorToken,
-  getAnnouncementBannerIconColorToken,
   announcementBannerIconWrapperClass,
+  announcementBannerTextColorClass,
+  announcementBannerIconColorClass,
 } from './AnnouncementBanner';
 export type {
   AnnouncementBannerVariants,

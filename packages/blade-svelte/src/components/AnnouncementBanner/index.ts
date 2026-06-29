@@ -9,14 +9,10 @@
  *   import { InfoIcon } from '@razorpay/blade-svelte';
  * </script>
  *
- * <AnnouncementBanner icon={InfoIcon} theme="dark" alignment="center">
+ * <AnnouncementBanner icon={InfoIcon} alignment="center">
  *   Enter promotional text here
  * </AnnouncementBanner>
  * ```
  */
 export { default as AnnouncementBanner } from './AnnouncementBanner.svelte';
-export type {
-  AnnouncementBannerProps,
-  AnnouncementBannerTheme,
-  AnnouncementBannerAlignment,
-} from './types';
+export type { AnnouncementBannerProps, AnnouncementBannerAlignment } from './types';
