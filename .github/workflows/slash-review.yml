@@ -57,7 +57,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
         run: |
-          # Search existing PR comments for a previous slash-task-id.
+          # Search existing PR comments for a previous slash-task-id
           # Capture both the task ID and the comment ID so we can later
           # strike through the old comment and mark it as superseded.
           COMMENT_JSON=$(gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
