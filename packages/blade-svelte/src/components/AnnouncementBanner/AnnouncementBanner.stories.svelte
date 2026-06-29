@@ -54,7 +54,7 @@
 <Story name="WithInlineLink" asChild>
   <AnnouncementBanner icon={InfoIcon}>
     {#snippet children()}
-      Your KYC is verified. <Link href="/settings" color="white">View details</Link>
+      Your KYC is verified. <Link href="/settings">View details</Link>
     {/snippet}
   </AnnouncementBanner>
 </Story>

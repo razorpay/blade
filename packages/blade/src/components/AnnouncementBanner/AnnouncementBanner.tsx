@@ -47,7 +47,6 @@ const _AnnouncementBanner = (
         <BaseBox
           display="flex"
           alignItems="center"
-          marginRight="spacing.2"
           {...makeAccessible({ hidden: true })}
         >
           <Icon size="small" color={getBannerIconColor(isDark)} />
