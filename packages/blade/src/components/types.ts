@@ -36,7 +36,7 @@ type BladeCommonEvents = {
   }>;
   onClick?: Platform.Select<{
     web: React.MouseEventHandler;
-    native: undefined;
+    native: undefined | ((event: any) => void);
   }>;
 };
 
