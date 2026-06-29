@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const localNodeModules = path.resolve(__dirname, '../node_modules');
+const localNodeModules = (() => { try { return fs.realpathSync(path.resolve(__dirname, '../node_modules')); } catch { return path.resolve(__dirname, '../node_modules'); } })();
 const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 
 const CASE_SPLIT_REPLACEMENT = 'var CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
@@ -49,7 +49,7 @@ for (const nodeModules of [localNodeModules, rootNodeModules]) {
   if (!fs.existsSync(nodeModules)) continue;
   try {
     const found = execSync(
-      `grep -rl "\\\\p{" "${nodeModules}" --include="*.js" --include="*.mjs" 2>/dev/null || true`,
+      `grep -Rl "\\\\p{" "${nodeModules}" --include="*.js" --include="*.mjs" 2>/dev/null || true`,
       { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 },
     )
       .trim()
