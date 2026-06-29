@@ -255,24 +255,58 @@ From the accessibility tree output, verify:
 - Disabled elements have `accessibilityState.disabled = true`
 - Labels are descriptive (not "button1", "text2")
 
-#### 4e: Web Comparison (if web Storybook running)
+#### 4e: Web Comparison via agent-browser (Mobile Viewport)
 
-Check if web Storybook is available:
+Use agent-browser to capture the web Storybook in a mobile viewport for side-by-side comparison
+with the native screenshot from agent-device. This uses the production Blade Storybook as reference.
+
+**Reference URL pattern:** `https://blade.razorpay.com/iframe.html?id=components-{name}--{story}&viewMode=story`
+
+Convert the component name to the story ID format:
+- Component name: `TextInput` → story prefix: `components-input-textinput`
+- Component name: `Button` → story prefix: `components-button`
+- Check the component's `.stories.tsx` for exact story export names
+- Default story is usually `--default` or the component name in lowercase
+
 ```bash
-curl -s http://localhost:9009 > /dev/null 2>&1 && echo "WEB_STORYBOOK_UP" || echo "WEB_STORYBOOK_DOWN"
+# 1. Close any existing browser session
+npx agent-browser close
+
+# 2. Open with mobile viewport (iPhone 14 Pro dimensions: 393x852)
+npx agent-browser open "https://blade.razorpay.com/iframe.html?id=components-{name}--default&viewMode=story"
+npx agent-browser set viewport 393 852
+
+# 3. Wait for component to render
+npx agent-browser wait 2000
+
+# 4. Take screenshot
+npx agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-default.png
+
+# 5. If component has interactive states, test them too
+npx agent-browser snapshot -i
+# Use refs from snapshot to interact:
+# npx agent-browser click @e1
+# npx agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-pressed.png
+
+# 6. Close browser
+npx agent-browser close
 ```
 
-If available:
+**Fallback — local Storybook (if production URL fails):**
 ```bash
-npx agent-browser open "http://localhost:9009/iframe.html?id=components-{name}--default"
-npx agent-browser screenshot .claude/artifacts/{Name}/screenshots/web-default.png
+curl -s "http://localhost:9009" > /dev/null 2>&1 && echo "LOCAL_STORYBOOK_UP" || echo "LOCAL_STORYBOOK_DOWN"
+# If local is up, use http://localhost:9009/iframe.html?id=... instead
 ```
 
-Compare native vs web screenshots with LLM vision:
+**Compare native (agent-device) vs web (agent-browser) screenshots with LLM vision:**
 - Same layout structure? (flex direction, alignment)
 - Same color scheme? (tokens should produce same colors)
 - Same relative sizing? (proportions match even if absolute px differ)
 - Same number of visible elements?
+- Interactive states behave equivalently? (press feedback, toggle states)
+
+Note: Minor platform differences are expected (P2) — shadows, font rendering, ripple vs opacity feedback.
+Focus on structural parity (P0/P1) — missing elements, wrong layout direction, broken interactions.
 
 ### Step 5: Visual Diff Classification
 
