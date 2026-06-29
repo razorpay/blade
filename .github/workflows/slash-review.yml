@@ -90,7 +90,7 @@ jobs:
                 # and append a superseded note.
                 NEW_BODY="~~${OLD_BODY}~~
 
-          _(superseded by a new run)_"
+          _(Review Cancelled - Superseded by a new run)_"
 
                 gh api "repos/$REPOSITORY/issues/comments/$PREV_COMMENT_ID" \
                   --method PATCH \
