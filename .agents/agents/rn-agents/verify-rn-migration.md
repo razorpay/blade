@@ -75,9 +75,14 @@ Blade Storybook is a dev build — it requires Metro bundler to serve the JS bun
 
 6. **If NOT installed** — build and install via:
    ```bash
-   cd {Worktree}/packages/blade && yarn react-native:storybook:ios
+   cd {Worktree}/packages/blade && yarn start:ios
    ```
-   This builds and launches the app on the simulator. If the build fails, skip visual verification (Steps 4-5), mark as INCOMPLETE in report. Log: "Blade Storybook build failed — visual verification skipped."
+   `yarn start:ios` includes the Hermes patch script and builds+launches the app on the simulator. If the build fails, diagnose and fix the build error (common causes: missing pods, Hermes regex issues, stale caches). Retry up to 3 times with different strategies:
+   - Retry 1: `cd ios && pod install && cd ..` then `yarn start:ios`
+   - Retry 2: Clean build: `cd ios && rm -rf build Pods Podfile.lock && pod install && cd .. && yarn start:ios`
+   - Retry 3: Reset Metro cache: `yarn start --reset-cache` then `yarn start:ios`
+   
+   **Do NOT skip visual verification.** If all retries fail, set Result = FAIL with the build error details.
 
 7. **Wait for app to be ready:**
    ```bash
@@ -170,7 +175,7 @@ done
 
 ### Step 4: Visual Verification via agent-device
 
-**Pre-check:** If Step 0 determined Blade Storybook is unavailable, skip to Step 6 and mark visual as INCOMPLETE.
+**Pre-check:** Blade Storybook MUST be running at this point. If Step 0 failed to get it running, this is already a FAIL — do not proceed to Step 6 with INCOMPLETE status.
 
 #### 4a: Navigate to Component
 
@@ -387,7 +392,8 @@ iteration += 1
 |-----------|--------|
 | All checks pass (types + tests + visual clean/P2) | **PASS** |
 | Types + tests pass, visual has P2 only | **PASS WITH WARNINGS** |
-| Types + tests pass, visual INCOMPLETE (no showcase) | **PASS (visual incomplete)** |
+| Types + tests pass, component not in Storybook stories | **PASS (no story)** — only valid if component genuinely has no story file |
+| Simulator/Metro/Storybook build failed despite retries | **FAIL** (infra) |
 | 3 consecutive failures in same step | **FAIL** |
 | `iteration > 6` | **FAIL** (safety cap) |
 
@@ -398,7 +404,7 @@ iteration += 1
 - Never delete files (use git stash for rollback if needed)
 - Always update verification report after each step
 - Screenshots saved to `{Worktree}/.claude/artifacts/{Name}/screenshots/`
-- If simulator unavailable, skip visual but still run static checks and tests
+- **NEVER skip visual verification.** If the simulator is not booted, boot it. If Metro is not running, start it. If Storybook is not installed, build and install it. Visual verification is MANDATORY — a run without it is considered incomplete and must not report PASS.
 - iOS is primary platform for visual verification; Android is bonus
 - Do NOT kill simulator/app when done — leave running for manual verification
 - Keep verification report under 100 lines per iteration (prune old error blocks, keep history)
