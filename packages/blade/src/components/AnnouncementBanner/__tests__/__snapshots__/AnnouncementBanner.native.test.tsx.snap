@@ -349,7 +349,6 @@ exports[`<AnnouncementBanner /> should render the dark treatment when app colorS
             {
               "alignItems": "center",
               "display": "flex",
-              "marginRight": 4,
             },
           ]
         }
