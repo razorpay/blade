@@ -9,12 +9,7 @@ import type { TreeViewProps } from './types';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import {
-  FolderIcon,
-  FileTextIcon,
-  CodeSnippetIcon,
-  ImageIcon,
-} from '~components/Icons';
+import { FolderIcon, FileTextIcon, CodeSnippetIcon, ImageIcon } from '~components/Icons';
 import { Badge } from '~components/Badge';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
@@ -160,11 +155,33 @@ export const WithTrailingBadge = (): ReactElement => {
           id="src"
           label="src"
           icon={FolderIcon}
-          trailing={<Badge size="small" color="positive">3 files</Badge>}
+          trailing={
+            <Badge size="small" color="positive">
+              3 files
+            </Badge>
+          }
         >
-          <TreeViewItem id="button" label="Button.tsx" icon={FileTextIcon} trailing={<Badge size="small" color="notice">Modified</Badge>} />
+          <TreeViewItem
+            id="button"
+            label="Button.tsx"
+            icon={FileTextIcon}
+            trailing={
+              <Badge size="small" color="notice">
+                Modified
+              </Badge>
+            }
+          />
           <TreeViewItem id="input" label="Input.tsx" icon={FileTextIcon} />
-          <TreeViewItem id="badge" label="Badge.tsx" icon={FileTextIcon} trailing={<Badge size="small" color="information">New</Badge>} />
+          <TreeViewItem
+            id="badge"
+            label="Badge.tsx"
+            icon={FileTextIcon}
+            trailing={
+              <Badge size="small" color="information">
+                New
+              </Badge>
+            }
+          />
         </TreeViewItem>
         <TreeViewItem id="readme" label="README.md" icon={FileTextIcon} />
       </TreeViewComponent>
@@ -190,10 +207,7 @@ export const WithDisabledItems = (): ReactElement => {
 export const DefaultExpanded = (): ReactElement => {
   return (
     <Box maxWidth="400px">
-      <TreeViewComponent
-        selectionType="none"
-        defaultExpandedIds={['src', 'components']}
-      >
+      <TreeViewComponent selectionType="none" defaultExpandedIds={['src', 'components']}>
         <TreeViewItem id="src" label="src" icon={FolderIcon}>
           <TreeViewItem id="components" label="components" icon={FolderIcon}>
             <TreeViewItem id="button" label="Button.tsx" icon={FileTextIcon} />

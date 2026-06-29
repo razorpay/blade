@@ -205,7 +205,7 @@ describe('<TreeView />', () => {
 
   it('should support keyboard navigation — Enter expands a node', async () => {
     const user = userEvent.setup();
-    const { getByText, queryByText } = renderWithTheme(<SimpleTree />);
+    const { getByText } = renderWithTheme(<SimpleTree />);
 
     const srcItem = getByText('src').closest('[role="treeitem"]') as HTMLElement;
     srcItem.focus();

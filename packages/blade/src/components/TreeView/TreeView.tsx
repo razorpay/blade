@@ -9,7 +9,6 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentIds } from './componentIds';
 
-
 /**
  * # TreeView
  *
@@ -54,7 +53,8 @@ const _TreeView = ({
   const selectedIds =
     controlledSelectedIds !== undefined ? controlledSelectedIds : uncontrolledSelectedIds;
 
-  const expandedIds = controlledExpandedIds !== undefined ? controlledExpandedIds : uncontrolledExpandedIds;
+  const expandedIds =
+    controlledExpandedIds !== undefined ? controlledExpandedIds : uncontrolledExpandedIds;
 
   const onNodeSelect = useCallback(
     (id: string) => {
