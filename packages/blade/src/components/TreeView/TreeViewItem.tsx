@@ -10,6 +10,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { isReactNative } from '~utils';
 
 type TreeViewItemInternalProps = TreeViewItemProps & {
   /** Internal: nesting depth used for indentation */
@@ -63,9 +64,15 @@ const _TreeViewItem = ({
 
   return (
     <BaseBox
-      {...makeAccessible({ role: 'treeitem', expanded: hasChildren ? isExpanded : undefined, selected: selectionType !== 'none' ? isSelected : undefined })}
+      {...makeAccessible({
+        role: 'treeitem',
+        expanded: hasChildren ? isExpanded : undefined,
+        selected: selectionType !== 'none' ? isSelected : undefined,
+      })}
       {...metaAttribute({ name: MetaConstants.TreeViewItem, testID })}
       {...makeAnalyticsAttribute(rest)}
+      tabIndex={isDisabled ? -1 : 0}
+      onKeyDown={handleKeyDown as never}
     >
       {/* Row */}
       <BaseBox
@@ -75,14 +82,8 @@ const _TreeViewItem = ({
         paddingRight="spacing.4"
         paddingLeft="spacing.2"
         borderRadius="medium"
-        cursor={isDisabled ? 'not-allowed' : 'pointer'}
-        backgroundColor={
-          isSelected
-            ? 'interactive.background.primary.faded'
-            : 'transparent'
-        }
-        tabIndex={isDisabled ? -1 : 0}
-        onKeyDown={handleKeyDown as never}
+        cursor={isReactNative() ? undefined : isDisabled ? 'not-allowed' : 'pointer'}
+        backgroundColor={isSelected ? 'interactive.background.primary.faded' : 'transparent'}
         onClick={handlePress as never}
         opacity={isDisabled ? 0.4 : 1}
       >
@@ -140,9 +141,7 @@ const _TreeViewItem = ({
 
       {/* Children group */}
       {hasChildren && isExpanded && (
-        <BaseBox
-          {...makeAccessible({ role: 'group' })}
-        >
+        <BaseBox {...makeAccessible({ role: 'group' })}>
           {Children.map(children, (child) => {
             if (!React.isValidElement(child)) return child;
             return React.cloneElement(child as React.ReactElement<TreeViewItemInternalProps>, {
