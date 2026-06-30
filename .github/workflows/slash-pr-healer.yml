@@ -132,7 +132,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_OUTPUT: ${{ github.output }}
         run: node .github/scripts/slash-pr-healer/find-merge-conflicts.js
 
       - name: Trigger Slash for each conflict PR
@@ -148,11 +147,7 @@ jobs:
           PR_COUNT=$(echo "$CONFLICT_PRS" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))")
           echo "Processing $PR_COUNT PR(s) with merge conflicts..."
 
-          for pr_obj in $(echo "$CONFLICT_PRS" | python3 -c "
-          import sys,json
-          for pr in json.load(sys.stdin):
-              print(json.dumps(pr))
-          "); do
+          while IFS= read -r pr_obj; do
             PR_NUMBER=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['number'])")
             PR_BRANCH=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['branch'])")
             PR_URL=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['url'])")
@@ -180,7 +175,11 @@ jobs:
             fi
 
             sleep 10
-          done
+          done < <(echo "$CONFLICT_PRS" | python3 -c "
+          import sys,json
+          for pr in json.load(sys.stdin):
+              print(json.dumps(pr))
+          ")
 
       - name: Post failure comment
         if: failure()
