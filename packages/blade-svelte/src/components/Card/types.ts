@@ -1,6 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
+import type { CardBackgroundColor, CardType } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -29,7 +29,7 @@ export type CardProps = {
    *
    * @default 'primary-card'
    */
-  type?: 'primary-card' | 'secondary-card' | 'theme-card';
+  type?: CardType;
   /**
    * Sets the background color of the Card.
    *
