@@ -5,7 +5,7 @@
  *
  * The max-count limit only applies to "slash comments" — i.e. auto-resolution
  * of high-confidence comments posted by rzp-slash-public[bot].  Reviews that
- * contain an explicit @rzp-slash-public mention (manual delegation) bypass
+ * contain an explicit @rzp-slash-public or @razorpay/slash-public mention (manual delegation) bypass
  * the limit so they are always processed.
  *
  * Outputs "allowed=true/false" to GITHUB_OUTPUT.
@@ -42,7 +42,7 @@ function addHumanHelpNeededLabel() {
 
 /**
  * Returns true when the current review contains at least one comment that
- * explicitly mentions @rzp-slash-public (manual delegation).  These comments
+ * explicitly mentions @rzp-slash-public or @razorpay/slash-public (manual delegation).  These comments
  * are outside the scope of the max-count limit.
  */
 function reviewHasManualDelegation() {
@@ -53,7 +53,7 @@ function reviewHasManualDelegation() {
         encoding: 'utf8',
       }),
     );
-    return comments.some((c) => c.body.includes('@rzp-slash-public'));
+    return comments.some((c) => c.body.includes('@rzp-slash-public') || c.body.includes('@razorpay/slash-public'));
   } catch (err) {
     console.log(`Could not fetch review comments to check for manual delegation: ${err.message}`);
     return false;
@@ -75,7 +75,7 @@ console.log(`Auto-resolve has run ${count} time(s) on this PR (max: ${MAX_RUNS})
 
 if (count >= MAX_RUNS) {
   if (reviewHasManualDelegation()) {
-    console.log('Limit reached, but review contains an explicit @rzp-slash-public mention — allowing.');
+    console.log('Limit reached, but review contains an explicit @rzp-slash-public or @razorpay/slash-public mention — allowing.');
     output('true');
   } else {
     console.log('Limit reached — skipping to prevent feedback loop.');
