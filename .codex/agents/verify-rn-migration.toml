@@ -21,8 +21,8 @@ You are a Senior QA/Platform Engineer. Your job is to ensure the native implemen
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/rn-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.codex/rules/rn-migration.md`
+2. `.codex/rules/agent-base-directory.md`
 
 ## Input
 
@@ -30,14 +30,14 @@ The orchestrator passes via your prompt:
 
 - Component name
 - **`Worktree`**: absolute path to the git worktree
-- Discovery report: `{Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md`
+- Discovery report: `{Worktree}/.codex/artifacts/{Name}/rn-discovery-report.md`
 
 ## Output
 
 Write to absolute paths under `{Worktree}`:
 
-- `{Worktree}/.claude/artifacts/{Name}/rn-verification-report.md` (template: `{Worktree}/.claude/templates/rn-verification-report.md`)
-- Screenshots: `{Worktree}/.claude/artifacts/{Name}/screenshots/`
+- `{Worktree}/.codex/artifacts/{Name}/rn-verification-report.md` (template: `{Worktree}/.codex/templates/rn-verification-report.md`)
+- Screenshots: `{Worktree}/.codex/artifacts/{Name}/screenshots/`
 
 ---
 
@@ -91,7 +91,7 @@ Blade Storybook is a dev build — it requires Metro bundler to serve the JS bun
 
 ## Verification Report State Protocol
 
-Report at `{Worktree}/.claude/artifacts/{Name}/rn-verification-report.md` is persistent state.
+Report at `{Worktree}/.codex/artifacts/{Name}/rn-verification-report.md` is persistent state.
 
 **At loop start:** Read existing report → extract iteration, previous issues.
 **After each step:** OVERWRITE current-state sections, APPEND to Iteration History.
@@ -142,7 +142,7 @@ Re-run to confirm clean pass, continue to Step 3.
 **On real test failures:**
 1. Parse which tests fail and why
 2. If implementation bug (component not rendering, event not firing):
-   - Write `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md`
+   - Write `{Worktree}/.codex/artifacts/{Name}/rn-patch-request.md`
    - Spawn Execute agent in Patch mode (see "Spawning Patch Mode" below)
    - After return → go back to Step 1
 3. If test setup bug (wrong import, missing mock):
@@ -185,7 +185,7 @@ The RN Storybook uses a bottom-sheet navigator. Navigation pattern:
 
 ```bash
 # 1. Screenshot current state
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/app-home.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/app-home.png
 
 # 2. Open navigator — tap the story path text in the bottom bar
 #    Use snapshot to find the current path text
@@ -200,7 +200,7 @@ npx agent-device click text="{Name}"
 
 # 4. Wait for component to render and screenshot
 npx agent-device wait 2000
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-default.png
 ```
 
 **If `click text="{Name}"` fails** (component not in visible list):
@@ -215,7 +215,7 @@ If the component isn't in Storybook stories:
 #### 4b: Screenshot Default State
 
 ```bash
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-default.png
 ```
 
 Read the screenshot with LLM vision. Check:
@@ -233,10 +233,10 @@ This check is mandatory for components that render rows, groups, lists, tabs, ch
 Capture enough screenshots to inspect every visible layout section:
 
 ```bash
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-top.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-viewport-top.png
 npx agent-device scroll down
 npx agent-device wait 500
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-scrolled.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-viewport-scrolled.png
 ```
 
 From each screenshot, verify:
@@ -255,20 +255,20 @@ For interactive components:
 ```bash
 # Tap a button/pressable
 npx agent-device click text="{ButtonLabel}"
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-pressed.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-pressed.png
 
 # Toggle a switch
 npx agent-device click text="{SwitchLabel}"
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-toggled.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-toggled.png
 
 # Type in an input
 npx agent-device click text="{Placeholder}"
 npx agent-device type "Hello World"
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-typed.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-typed.png
 
 # Scroll to see more
 npx agent-device scroll down
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-scrolled.png
+npx agent-device screenshot {Worktree}/.codex/artifacts/{Name}/screenshots/native-scrolled.png
 ```
 
 #### 4d: Accessibility Tree Check
@@ -293,7 +293,7 @@ curl -s http://localhost:9009 > /dev/null 2>&1 && echo "WEB_STORYBOOK_UP" || ech
 If available:
 ```bash
 npx agent-browser open "http://localhost:9009/iframe.html?id=components-{name}--default"
-npx agent-browser screenshot .claude/artifacts/{Name}/screenshots/web-default.png
+npx agent-browser screenshot .codex/artifacts/{Name}/screenshots/web-default.png
 ```
 
 Compare native vs web screenshots with LLM vision:
@@ -353,7 +353,7 @@ For each screenshot captured, classify issues:
 
 **Spawning Patch Mode:**
 
-Write `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md` using the template at `.claude/templates/rn-patch-request.md` (4 sections: Type Errors, Visual Issues, Test Failures, Missing Files — each as `item — detail — fix` lines), then spawn:
+Write `{Worktree}/.codex/artifacts/{Name}/rn-patch-request.md` using the template at `.codex/templates/rn-patch-request.md` (4 sections: Type Errors, Visual Issues, Test Failures, Missing Files — each as `item — detail — fix` lines), then spawn:
 
 ```
 Agent(subagent_type: "execute-rn-migration", run_in_background: false, prompt: "
@@ -364,7 +364,7 @@ Apply the patch request for {Name}.
 - Worktree (absolute base): {Worktree}
 
 ALWAYS use absolute paths prefixed with the worktree.
-- Patch request: {Worktree}/.claude/artifacts/{Name}/rn-patch-request.md
+- Patch request: {Worktree}/.codex/artifacts/{Name}/rn-patch-request.md
 
 Follow the Patch mode steps in your agent definition.
 ")
@@ -400,7 +400,7 @@ iteration += 1
 
 - Never delete files (use git stash for rollback if needed)
 - Always update verification report after each step
-- Screenshots saved to `{Worktree}/.claude/artifacts/{Name}/screenshots/`
+- Screenshots saved to `{Worktree}/.codex/artifacts/{Name}/screenshots/`
 - If simulator unavailable, skip visual but still run static checks and tests
 - iOS is primary platform for visual verification; Android is bonus
 - Do NOT kill simulator/app when done — leave running for manual verification

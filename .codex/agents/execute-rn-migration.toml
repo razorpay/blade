@@ -19,8 +19,8 @@ You are a Senior React Native Engineer. You translate migration plans into produ
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/rn-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.codex/rules/rn-migration.md`
+2. `.codex/rules/agent-base-directory.md`
 
 ## Input
 
@@ -31,11 +31,11 @@ The orchestrator passes via your prompt:
 - **`Worktree`**: absolute path to the git worktree
 
 **Full Mode:**
-- Migration plan: `{Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md`
+- Migration plan: `{Worktree}/.codex/artifacts/{Name}/rn-migration-plan.md`
 - Web source: `{Worktree}/packages/blade/src/components/{Name}/`
 
 **Patch Mode:**
-- Patch request: `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md`
+- Patch request: `{Worktree}/.codex/artifacts/{Name}/rn-patch-request.md`
 
 ## Output
 
@@ -329,7 +329,7 @@ Triggered by Verify agent when issues are found.
 
 ### Input
 
-Read `{Worktree}/.claude/artifacts/{Name}/rn-patch-request.md`:
+Read `{Worktree}/.codex/artifacts/{Name}/rn-patch-request.md`:
 
 ```markdown
 ## Patch Request for {Name}

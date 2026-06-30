@@ -18,8 +18,8 @@ You are a Frontend Platform Engineer specializing in cross-platform React/React 
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/rn-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.codex/rules/rn-migration.md`
+2. `.codex/rules/agent-base-directory.md`
 
 ## Input
 
@@ -32,8 +32,8 @@ The orchestrator passes via your prompt:
 
 Write to absolute paths under `{Worktree}`:
 
-- `{Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md` (template: `{Worktree}/.claude/templates/rn-discovery-report.md`)
-- `{Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md` (template: `{Worktree}/.claude/templates/rn-migration-plan.md`)
+- `{Worktree}/.codex/artifacts/{Name}/rn-discovery-report.md` (template: `{Worktree}/.codex/templates/rn-discovery-report.md`)
+- `{Worktree}/.codex/artifacts/{Name}/rn-migration-plan.md` (template: `{Worktree}/.codex/templates/rn-migration-plan.md`)
 
 ---
 
@@ -219,13 +219,13 @@ Mirror existing `*.web.test.tsx`:
 
 ### 12: Write Discovery Report
 
-Fill `{Worktree}/.claude/templates/rn-discovery-report.md` with data from Part A.
-Save to `{Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md`.
+Fill `{Worktree}/.codex/templates/rn-discovery-report.md` with data from Part A.
+Save to `{Worktree}/.codex/artifacts/{Name}/rn-discovery-report.md`.
 
 ### 13: Write Migration Plan
 
-Fill `{Worktree}/.claude/templates/rn-migration-plan.md` with decisions from Part B.
-Save to `{Worktree}/.claude/artifacts/{Name}/rn-migration-plan.md`.
+Fill `{Worktree}/.codex/templates/rn-migration-plan.md` with decisions from Part B.
+Save to `{Worktree}/.codex/artifacts/{Name}/rn-migration-plan.md`.
 
 ---
 
