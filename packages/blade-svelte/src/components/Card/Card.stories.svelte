@@ -7,6 +7,10 @@
     component: Card,
     tags: ['autodocs'],
     argTypes: {
+      children: {
+        control: false,
+        table: { disable: true },
+      },
       type: {
         control: 'radio',
         options: ['primary-card', 'secondary-card', 'theme-card'],
@@ -59,7 +63,70 @@
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
+  import type { CardProps } from './types';
+
+  type CardStoryArgs = Pick<
+    CardProps,
+    'type' | 'backgroundColor' | 'borderRadius' | 'padding'
+  >;
+
+  const getCardArgs = (args: CardStoryArgs): CardStoryArgs => ({
+    type: args.type,
+    backgroundColor: args.backgroundColor,
+    borderRadius: args.borderRadius,
+    padding: args.padding,
+  });
 </script>
+
+<!-- Playground — args-driven; Controls panel updates Card surface props -->
+<Story name="Playground">
+  {#snippet template(args)}
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card {...getCardArgs(args)}>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Payment Links"
+            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+          >
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CreditCardIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
+  {/snippet}
+</Story>
 
 <!-- Story 1: Card Example
      React renders a split light+dark layout via a scoped <BladeProvider colorScheme="dark">.
