@@ -9,35 +9,21 @@ CounterInput
 CounterInput is a specialized numerical input component that allows users to increment or decrement values using built-in plus/minus button controls alongside manual text input. It provides automatic value constraint enforcement with min/max limits, supports both controlled and uncontrolled usage patterns, and includes loading states with visual feedback. The component is designed for scenarios like quantity selection, subscription management, and any numerical value adjustment with clear boundaries.
 
 ## Usage Guidelines
-                                                                                                                                               
-  **Do**                                                                                                                                                      
-  
-  - Use `CounterInput` for small integer quantities under 100 (e.g., item counts, seats, retry attempts).                                                     
-  - Use `min` and `max` props to enforce sensible boundaries — buttons auto-disable at limits.                                                                
-  - Use `isLoading` to show a spinner during async updates (e.g., cart quantity changes).                                                                     
-  - Use `size="xsmall"` for compact inline controls and `size="large"` for prominent form fields.                                                             
-                                                                                                                                                              
-  **Don't**                                                                                                                                                   
-  
-  - Don't use `CounterInput` for large numbers (99+) — use `TextInput` with `type="number"` instead.                                                          
-  - Don't use `CounterInput` for decimal values — it only supports integers with step=1.                                                                      
-  - Don't use `CounterInput` for currency or complex numerical data — use `TextInput` or `Amount`.                                                            
-  - Don't use `CounterInput` without `min`/`max` boundaries — always define sensible limits.
 
-### When to Use CounterInput
+**Do**
 
-- **Small numerical values only** (typically 0-99)
-- Quantity selection (cart items, subscription seats, etc.)
-- Settings with clear boundaries (retry attempts, timeout values)
-- Any scenario where users need to adjust small numbers with clear min/max constraints
+- Use `CounterInput` for small integer quantities under 100 (e.g., item counts, subscription seats, retry attempts, timeout values).
+- Use `min` and `max` props to enforce sensible boundaries — buttons auto-disable at limits.
+- Use `isLoading` to show a spinner during async updates (e.g., cart quantity changes).
+- Use `size="xsmall"` for compact inline controls and `size="large"` for prominent form fields.
 
-### When NOT to Use CounterInput
+**Don't**
 
-- **Large numerical values (99+)** - Use a regular TextInput with `type="number"` instead
-- Complex numerical input (decimals, currency, percentages) - Use specialized input components
-- Values that don't benefit from increment/decrement buttons (IDs, phone numbers, etc.)
-
-**Important:** CounterInput is optimized for small numbers and provides the best user experience when used for values typically under 100. For larger values, the increment/decrement interaction becomes inefficient and a standard numerical text input should be used instead.
+- Don't use `CounterInput` for large numbers (99+) — use `TextInput` with `type="number"` instead. The increment/decrement interaction becomes inefficient for larger values.
+- Don't use `CounterInput` for decimal values — it only supports integers with step=1.
+- Don't use `CounterInput` for currency or complex numerical data — use `TextInput` or `Amount`.
+- Don't use `CounterInput` for values that don't benefit from increment/decrement buttons (IDs, phone numbers, etc.).
+- Don't use `CounterInput` without `min`/`max` boundaries — always define sensible limits.
 
 ## TypeScript Types
 
