@@ -6,6 +6,10 @@
     title: 'Components/Avatar/AvatarGroup',
     component: AvatarGroup,
     tags: ['autodocs'],
+    args: {
+      size: 'medium',
+      density: 'normal',
+    },
     argTypes: {
       size: {
         control: 'select',
@@ -68,6 +72,16 @@
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
   const densities = ['compact', 'normal', 'comfortable'] as const;
 </script>
+
+<Story name="Playground">
+  {#snippet template(args)}
+    <AvatarGroup {...args}>
+      {#each names as name, index}
+        <Avatar name={name} color={avatarColors[index]} />
+      {/each}
+    </AvatarGroup>
+  {/snippet}
+</Story>
 
 <!-- Story 1: Default -->
 <Story name="Default" asChild>

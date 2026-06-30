@@ -6,7 +6,11 @@
     title: 'Components/Accordion',
     component: Accordion,
     tags: ['autodocs'],
-    args: {},
+    args: {
+      variant: 'transparent',
+      size: 'large',
+      showNumberPrefix: false,
+    },
     argTypes: {
       variant: {
         control: 'select',
@@ -50,6 +54,37 @@
   let controlledExpandedIndex = $state(-1);
   let customHeaderVisible = $state(true);
 </script>
+
+<Story name="Playground">
+  {#snippet template({ children: _children, ...args })}
+    <Accordion {...args}>
+      {#snippet children()}
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="How can I setup Route?" />
+            <AccordionItemBody>
+              <Text>
+                You can create Routes, Rules, and Processors to emulate your 3DS flow on Razorpay
+                Payments to accept international card payments.
+              </Text>
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="How can I setup QR Code?" />
+            <AccordionItemBody>
+              <Text>
+                You can create Routes, Rules, and Processors to emulate your 3DS flow on Razorpay
+                Payments to accept international card payments.
+              </Text>
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+      {/snippet}
+    </Accordion>
+  {/snippet}
+</Story>
 
 <Story name="Basic Example" asChild>
   <Accordion>

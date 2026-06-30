@@ -50,6 +50,18 @@
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon } from '../Icons';
 </script>
 
+<Story name="Playground">
+  {#snippet template(args)}
+    <Card {...args} width="400px">
+      <CardBody>
+        <Text>
+          Card playground — tweak background, padding, and border radius via controls.
+        </Text>
+      </CardBody>
+    </Card>
+  {/snippet}
+</Story>
+
 <!-- Story 1: Card Example
      React renders a split light+dark layout via a scoped <BladeProvider colorScheme="dark">.
      Svelte's BladeProvider isn't migrated yet and dark tokens are body-scoped in theme.css,
