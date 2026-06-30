@@ -14,11 +14,24 @@ const prNumber = parseInt(process.env.PR_NUMBER, 10);
 const workflowRef = process.env.GITHUB_WORKFLOW_REF;
 const githubOutput = process.env.GITHUB_OUTPUT;
 const MAX_RUNS = 20;
+const HUMAN_HELP_NEEDED_LABEL = 'Human Help Needed 🧑🏻‍💻';
 
 function output(allowed) {
   const line = `allowed=${allowed}\n`;
   if (githubOutput) fs.appendFileSync(githubOutput, line);
   else process.stdout.write(line);
+}
+
+function addHumanHelpNeededLabel() {
+  try {
+    execSync(
+      `gh api "repos/${repo}/issues/${prNumber}/labels" --method POST --field "labels[]=${HUMAN_HELP_NEEDED_LABEL}"`,
+      { encoding: 'utf8', stdio: 'pipe' },
+    );
+    console.log(`Added '${HUMAN_HELP_NEEDED_LABEL}' label to PR #${prNumber}.`);
+  } catch (err) {
+    console.error(`Failed to add '${HUMAN_HELP_NEEDED_LABEL}' label:`, err.message);
+  }
 }
 
 // GITHUB_WORKFLOW_REF format: "org/repo/.github/workflows/filename.yml@refs/heads/branch"
@@ -36,6 +49,7 @@ console.log(`Auto-resolve has run ${count} time(s) on this PR (max: ${MAX_RUNS})
 
 if (count >= MAX_RUNS) {
   console.log('Limit reached — skipping to prevent feedback loop.');
+  addHumanHelpNeededLabel();
   output('false');
 } else {
   output('true');
