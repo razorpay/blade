@@ -31,6 +31,7 @@
     rel,
     accessibilityLabel,
     size = 'medium',
+    color = 'primary',
     testID,
     ...rest
   }: DropdownLinkProps = $props();
@@ -151,6 +152,7 @@
     data-testid={testID}
     data-blade-component="DropdownLink"
     data-size={size}
+    data-color={color}
     {...a11y}
     {...analyticsAttrs}
     onclick={handleClick}
@@ -182,6 +184,7 @@
     data-testid={testID}
     data-blade-component="DropdownLink"
     data-size={size}
+    data-color={color}
     {...a11y}
     {...analyticsAttrs}
     onclick={handleClick}

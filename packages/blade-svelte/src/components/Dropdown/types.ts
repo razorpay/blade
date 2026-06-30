@@ -62,7 +62,7 @@ export type DropdownOverlayProps = {
   /**
    * Reference element for positioning (overrides triggerer refs)
    */
-  referenceRef?: { current: HTMLElement | null };
+  referenceRef?: HTMLElement | null;
   /**
    * Sets the placement of the DropdownOverlay
    *
@@ -258,7 +258,13 @@ export type DropdownLinkProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /**
+   * Link color
+   *
+   * @default 'primary'
+   */
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   /**
    * Test ID
    */

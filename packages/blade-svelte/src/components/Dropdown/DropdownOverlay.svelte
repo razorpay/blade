@@ -119,7 +119,7 @@
     if (!float || !isMounted) return () => {};
 
     const referenceElement =
-      referenceRef?.current ??
+      referenceRef ??
       ctx.triggererWrapperRef.current ??
       ctx.triggererRef.current;
 
