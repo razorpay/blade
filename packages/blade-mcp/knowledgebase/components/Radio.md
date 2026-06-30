@@ -163,9 +163,16 @@ type RadioGroupContextType = Pick<
 
 ## Usage Guidelines
 
+**When to Use**
+
+Use `Radio` when the user must select **exactly 1 option** from a set of **2–5 choices** where the labels are **longer than 1-2 words or inconsistent in length**. Radio buttons work best in list-item layouts where each option needs descriptive text or help text.
+
+If the labels are short (1-2 words) and consistent, use `Chip` with `selectionType="single"` instead for a more compact segmented-control style.
+
 **Do**
 
 - Use `Radio` inside `RadioGroup` for selecting exactly one option from a set of mutually exclusive choices.
+- Use `Radio` when you have 2–5 options with longer or descriptive labels that benefit from a list layout.
 - Always wrap `Radio` components in `RadioGroup` — Radio cannot be used standalone.
 - Provide a unique `value` prop on each `Radio` within the group.
 - Use `helpText` on individual Radio items to provide context for each option.
@@ -176,6 +183,8 @@ type RadioGroupContextType = Pick<
 - Don't use `Radio` outside `RadioGroup` — it throws an error in development.
 - Don't use `Radio` when multiple selections are allowed — use `Checkbox`/`CheckboxGroup` instead.
 - Don't use `Radio` for immediate binary on/off actions — use `Switch` instead.
+- Don't use `Radio` when options are short (1-2 words) and consistent — use `Chip` with `selectionType="single"` for a compact segmented-control style.
+- Don't use `Radio` for more than 5 options — use `Dropdown` with `SelectInput` instead.
 - Don't use React Fragments as children in `RadioGroup` — only `Radio` components are accepted.
 - Don't mix controlled (`value`) and uncontrolled (`defaultValue`) on the same RadioGroup.
 

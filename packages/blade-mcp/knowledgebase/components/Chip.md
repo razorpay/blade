@@ -164,10 +164,19 @@ type IconComponent = React.ComponentType<IconProps>;
 
 ## Usage Guidelines
 
+**When to Use**
+
+Use `Chip` when options have **short (1-2 word), consistent labels**:
+- **Single select (`selectionType="single"`)** — acts as a segmented control. Use when you have 2–5 mutually exclusive options with short, uniform labels (e.g., "$0", "$1", "$2", "$5" or "Good", "Clean", "Fun").
+- **Multi-select (`selectionType="multiple"`)** — acts as toggle buttons. Use when users can select multiple options and labels are short and consistent.
+
+If labels are longer or inconsistent in length, use `Radio` (single select) or `Checkbox` in list items (multi-select) instead.
+
 **Do**
 
 - Use `Chip` inside `ChipGroup` for compact, inline selectable options (3–8 items typically).
-- Use `selectionType="single"` for radio-like behavior and `selectionType="multiple"` for checkbox-like behavior.
+- Use `selectionType="single"` when exactly one option must be selected (segmented control / radio-like behavior).
+- Use `selectionType="multiple"` when multiple options can be toggled on/off (toggle button / checkbox-like behavior).
 - Provide `accessibilityLabel` on `ChipGroup` to describe the filter/selection purpose.
 - Use `icon` prop on individual Chips for visual category indicators.
 - Use `color` prop to convey semantic meaning (`positive`, `negative`, `primary`).
@@ -175,6 +184,7 @@ type IconComponent = React.ComponentType<IconProps>;
 **Don't**
 
 - Don't use `Chip` outside `ChipGroup` — it must always be inside a group.
+- Don't use `Chip` when labels are long or inconsistent — use `Radio` (single select) or `Checkbox` in list items (multi-select) for better readability.
 - Don't use `Chip` for non-interactive display labels — use `Tag` (dismissible) or `Badge` (static) instead.
 - Don't use React Fragments as children in `ChipGroup` — only `Chip` components are accepted.
 - Don't use `Chip` for large option sets (10+) — use `AutoComplete` or `SelectInput` with a dropdown.

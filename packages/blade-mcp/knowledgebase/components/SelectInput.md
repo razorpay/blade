@@ -148,17 +148,24 @@ type SelectInputProps = {
 
 ## Usage Guidelines
 
+**When to Use**
+
+Use `SelectInput` (inside `Dropdown`) when you have a **fixed set of more than 5 predefined options** and the user needs to pick one (or multiple). It's the standard form-field dropdown pattern.
+
+For fewer options (2–5 choices), prefer visible selection controls: `Radio` for longer labels, `Chip` with `selectionType="single"` for short consistent labels. For 1 binary option, use `Switch` (immediate) or `Checkbox` (requires confirmation).
+
 **Do**
 
-- Use `SelectInput` for dropdown-based selection from a fixed set of predefined options.
+- Use `SelectInput` for dropdown-based selection from a fixed set of predefined options (typically >5 items).
 - Always wrap `SelectInput` inside a `Dropdown` component with `DropdownOverlay` and `ActionList`.
-- Use `SelectInput` for small lists where users don't need to search/filter options.
+- Use `SelectInput` for lists where users don't need to search/filter options.
 - Use `icon` prop for a leading visual icon that provides context about the field type.
 - Use `valueSuffix` for badges or indicators after the selected value display.
 
 **Don't**
 
 - Don't use `SelectInput` standalone without a `Dropdown` wrapper — it won't function.
+- Don't use `SelectInput` for 5 or fewer options — use `Radio` or `Chip` to show choices inline without extra interaction.
 - Don't use `SelectInput` for large lists (10+ items) where users need to search — use `AutoComplete` instead.
 - Don't use `SelectInput` for inline tag-based selection — use `Chip`/`ChipGroup` instead.
 - Don't use React Fragments as children in the `Dropdown` wrapper.

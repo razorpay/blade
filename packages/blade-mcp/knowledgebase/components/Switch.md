@@ -77,17 +77,22 @@ type SwitchProps = {
 
 ## Usage Guidelines
 
+**When to Use**
+
+Use `Switch` when you have a **single binary option** (on/off) where **selection is also execution** — the action takes effect immediately without a separate confirmation or submit step. Think: toggling a setting, enabling a feature, activating a preference.
+
 **Do**
 
 - Use `Switch` for immediate binary on/off actions that take effect instantly (settings, feature toggles, preferences).
+- Use `Switch` when there is only 1 option and no additional action (like a submit button) is needed to confirm the selection.
 - Always provide `accessibilityLabel` — Switch does NOT render a built-in label.
 - Create a custom visible label by wrapping `Switch` and `Text` in a `Box` with `as="label"`.
 - Use `size="small"` for settings lists and compact layouts; `size="medium"` for prominent toggles.
 
 **Don't**
 
-- Don't use `Switch` for form-based selections that require submission — use `Checkbox` instead.
-- Don't use `Switch` when selecting one from multiple options — use `Radio`/`RadioGroup` instead.
+- Don't use `Switch` for form-based selections that require a submit/confirm action — use `Checkbox` instead.
+- Don't use `Switch` when selecting one from multiple options — use `Radio`, `Chip`, or `Dropdown` instead.
 - Don't render `Switch` without an associated visible label element — it has no built-in label.
 - Don't use `Switch` in groups — it's designed for individual binary controls only.
 - Don't mix controlled (`isChecked`) and uncontrolled (`defaultChecked`).
