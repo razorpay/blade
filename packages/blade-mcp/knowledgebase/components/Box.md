@@ -257,6 +257,24 @@ type BoxProps = {
 type BoxRefType = HTMLElement;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Box` as the foundational layout primitive for creating flex/grid layouts, spacing, and positioning.
+- Use the `as` prop for semantic HTML rendering (`section`, `article`, `nav`, `main`, `header`, `footer`, `aside`).
+- Use responsive value objects (e.g., `flexDirection={{ base: 'column', m: 'row' }}`) for mobile-first responsive design.
+- Use `elevation` prop for visual depth (`lowRaised`, `midRaised`, `highRaised`).
+- Use `backgroundColor` only with approved tokens: `transparent`, `surface.background.*`, or `overlay.*`.
+
+**Don't**
+
+- Don't use `Box` as a visual card surface with elevation — use `Card` component instead, which provides built-in header/body/footer structure.
+- Don't pass arbitrary color tokens to `backgroundColor` — only `surface.background.*` and `overlay.*` tokens are accepted.
+- Don't use `as` prop on React Native — it's only supported on web.
+- Don't add custom CSS classes — use Box's prop-based API for all styling.
+- Don't nest deeply for simple spacing — prefer `gap`, `padding`, and `margin` props.
+
 ## Example
 
 Here are comprehensive examples demonstrating the versatility of the Box component:

@@ -43,6 +43,24 @@ type AnnouncementBannerProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `AnnouncementBanner` for brief, system-wide broadcast messages like feature announcements, promotions, or maintenance notices.
+- Keep the message to a single short line — text auto-truncates if it overflows.
+- Use a `Link` component inline for directing users to more details.
+- Place the banner at the top or bottom edge of the page for full-bleed positioning.
+- Provide a meaningful `accessibilityLabel` if the default "Announcement" doesn't describe the content well.
+
+**Don't**
+
+- Don't use `AnnouncementBanner` for contextual or section-specific messages — use `Alert` instead.
+- Don't use it for temporary feedback after user actions — use `Toast` instead.
+- Don't add multi-line content or complex JSX — the component only supports single-line text.
+- Don't try to control the color scheme via props — it automatically follows the app's `colorScheme` from `BladeProvider`.
+- Don't expect a dismiss button or action buttons — they are not supported; use `Alert` if you need dismissibility or actions.
+
 ## Examples
 
 ### Default AnnouncementBanner (centered, with icon)

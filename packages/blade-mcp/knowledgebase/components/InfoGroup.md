@@ -131,6 +131,24 @@ type TestID = {
 type StringChildrenType = React.ReactText | React.ReactText[];
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `InfoGroup` for displaying structured key-value pairs like transaction details, user information, or entity attributes.
+- Always include both `InfoItemKey` and `InfoItemValue` inside each `InfoItem`.
+- Use `leading` prop for icons or avatars on keys/values to add visual context.
+- Use `itemOrientation="vertical"` for compact layouts where key appears above value.
+- Insert `Divider` components between `InfoItem` groups to separate logical sections.
+
+**Don't**
+
+- Don't use `InfoGroup` for tabular data with many rows — use `Table` instead.
+- Don't omit `InfoItemKey` or `InfoItemValue` from an `InfoItem` — both must be present for proper layout.
+- Don't wrap icon components in additional elements when passing to `leading` — pass them directly (e.g., `leading={UserIcon}`).
+- Don't use `InfoGroup` for editable forms — it's for read-only data presentation.
+- Don't use excessively long key text in horizontal orientation — keys should be concise as they truncate first.
+
 ## Examples
 
 ### Basic InfoGroup with Horizontal Layout
