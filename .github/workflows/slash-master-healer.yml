@@ -47,7 +47,6 @@ jobs:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
           SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
-          SLASH_BRANCH: master
           RUN_ID: ${{ github.event.inputs.run_id || github.event.workflow_run.id }}
           REPOSITORY: ${{ github.repository }}
         run: |
