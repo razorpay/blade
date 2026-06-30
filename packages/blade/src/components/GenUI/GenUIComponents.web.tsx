@@ -758,6 +758,16 @@ const ChartSkeletonLoader = ({
   );
 };
 
+const MarkdownListItemRenderer = ({ children }: { children?: React.ReactNode }): JSX.Element => {
+  const { ordered } = React.useContext(MarkdownListContext);
+  return (
+    <MarkdownListItem $ordered={ordered}>
+      {ordered ? <MarkdownOrderedListMarker /> : <MarkdownUnorderedListMarker />}
+      <MarkdownListItemBody>{children}</MarkdownListItemBody>
+    </MarkdownListItem>
+  );
+};
+
 /**
  * Stable components object for ReactMarkdown to prevent re-renders during streaming.
  * Defined outside the component to maintain referential equality.
@@ -803,16 +813,7 @@ const markdownComponents = {
       {(children as unknown) as string}
     </Link>
   ),
-  li: ({ children }: { children?: React.ReactNode }) => {
-    const { ordered } = React.useContext(MarkdownListContext);
-
-    return (
-      <MarkdownListItem $ordered={ordered}>
-        {ordered ? <MarkdownOrderedListMarker /> : <MarkdownUnorderedListMarker />}
-        <MarkdownListItemBody>{children}</MarkdownListItemBody>
-      </MarkdownListItem>
-    );
-  },
+  li: MarkdownListItemRenderer,
   ol: ({ children }: { children?: React.ReactNode }) => (
     <MarkdownListContext.Provider value={{ ordered: true }}>
       <MarkdownOrderedList>{children}</MarkdownOrderedList>
