@@ -1,8 +1,8 @@
 name: Agentic Repo / Slash Master Healer
 
-# Heals failing checks on the master branch by asking Slash to create
-# a fix PR.  Most failures are flaky interaction tests — Slash is asked
-# to make them more robust.  Infra / downtime failures are skipped.
+# Heals failing checks on the master branch by asking Slash to investigate
+# and create a fix PR.  Slash fetches logs, classifies the failure, and
+# decides whether to act (e.g. skip infra/downtime issues automatically).
 #
 # Triggers:
 #   1. workflow_run — fires when a monitored workflow completes on master
@@ -35,235 +35,28 @@ jobs:
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
-      # ----------------------------------------------------------------
-      # Step 1 — Resolve the workflow run ID and fetch failed job info
-      # ----------------------------------------------------------------
-      - name: Resolve failed checks
-        id: checks
-        env:
-          GH_TOKEN: ${{ github.token }}
-          EVENT_NAME: ${{ github.event_name }}
-          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
-          RUN_ID_INPUT: ${{ github.event.inputs.run_id }}
-          REPOSITORY: ${{ github.repository }}
-        run: |
-          # Determine which workflow run to inspect
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            RUN_ID="$RUN_ID_INPUT"
-          else
-            RUN_ID="$WORKFLOW_RUN_ID"
-          fi
-
-          if [ -z "$RUN_ID" ]; then
-            echo "No workflow run ID — skipping."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "Inspecting workflow run: $RUN_ID"
-
-          # Fetch the workflow run metadata
-          RUN_JSON=$(gh api "repos/$REPOSITORY/actions/runs/$RUN_ID" 2>/dev/null || echo '{}')
-          WORKFLOW_NAME=$(echo "$RUN_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('name','') or d.get('workflow_id',''))" 2>/dev/null || echo "")
-          HEAD_SHA=$(echo "$RUN_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('head_sha',''))" 2>/dev/null || echo "")
-          HTML_URL=$(echo "$RUN_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('html_url',''))" 2>/dev/null || echo "")
-          RUN_CONCLUSION=$(echo "$RUN_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('conclusion',''))" 2>/dev/null || echo "")
-
-          echo "Workflow name: $WORKFLOW_NAME"
-          echo "Head SHA: $HEAD_SHA"
-          echo "Conclusion: $RUN_CONCLUSION"
-
-          # Fetch all jobs for this run
-          JOBS_JSON=$(gh api "repos/$REPOSITORY/actions/runs/$RUN_ID/jobs" --jq '.jobs' 2>/dev/null || echo '[]')
-
-          # Extract failed job names and their log URLs
-          FAILED_JOBS=$(echo "$JOBS_JSON" | python3 -c "
-          import sys, json
-          jobs = json.load(sys.stdin)
-          failed = [j for j in jobs if j.get('conclusion') == 'failure']
-          for j in failed:
-              print(f\"{j.get('name','')}\")
-          " 2>/dev/null || echo "")
-
-          FAILED_JOB_COUNT=$(echo "$FAILED_JOBS" | grep -c . || echo "0")
-          echo "Failed jobs ($FAILED_JOB_COUNT):"
-          echo "$FAILED_JOBS"
-
-          # Build a comma-separated list of failed job names for the prompt
-          FAILED_JOBS_CSV=$(echo "$FAILED_JOBS" | paste -sd ', ' -)
-
-          echo "workflow_name=$WORKFLOW_NAME" >> "$GITHUB_OUTPUT"
-          echo "head_sha=$HEAD_SHA" >> "$GITHUB_OUTPUT"
-          echo "html_url=$HTML_URL" >> "$GITHUB_OUTPUT"
-          echo "failed_jobs<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$FAILED_JOBS" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
-          echo "failed_jobs_csv=$FAILED_JOBS_CSV" >> "$GITHUB_OUTPUT"
-
-      # ----------------------------------------------------------------
-      # Step 2 — Classify the failure: flaky test vs infra/downtime
-      # ----------------------------------------------------------------
-      - name: Classify failure type
-        id: classify
-        if: steps.checks.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          WORKFLOW_NAME: ${{ steps.checks.outputs.workflow_name }}
-          FAILED_JOBS: ${{ steps.checks.outputs.failed_jobs }}
-          RUN_ID: ${{ github.event.workflow_run.id || github.event.inputs.run_id }}
-        run: |
-          # Fetch logs for each failed job and look for infra-issue patterns.
-          # If ALL failed jobs match infra patterns, we skip healing.
-          # Otherwise we proceed (the failure is likely a real test/code issue).
-
-          INFRA_PATTERNS='timeout|ETIMEDOUT|ENOTFOUND|ECONNREFUSED|ECONNRESET|EAI_AGAIN|connection refused|connection reset|socket hang up|getaddrinfo|network error|502 Bad Gateway|503 Service|504 Gateway|rate limit|RateLimitError|too many requests|service unavailable|temporarily unavailable|internal server error|chromatic.*quota|chromatic.*limit|out of memory|OOMKilled|Cannot allocate memory|disk full|no space left|runner terminated|runner cancelled|The runner has received a shutdown signal'
-
-          echo "Checking failed job logs for infra-issue patterns..."
-
-          ANY_INFRA=false
-          ALL_INFRA=true
-          INFRA_JOBS=""
-          TEST_JOBS=""
-
-          # Get the list of failed jobs
-          JOBS_JSON=$(gh api "repos/$REPOSITORY/actions/runs/$RUN_ID/jobs" --jq '.jobs[] | select(.conclusion == "failure")' 2>/dev/null || echo '[]')
-
-          # Process each failed job
-          echo "$JOBS_JSON" | python3 -c "
-          import sys, json, subprocess, re, os
-
-          infra_patterns = re.compile(r'($INFRA_PATTERNS)', re.IGNORECASE)
-
-          jobs = []
-          for line in sys.stdin:
-              line = line.strip()
-              if line:
-                  try:
-                      jobs.append(json.loads(line))
-                  except json.JSONDecodeError:
-                      pass
-
-          # If we couldn't parse jobs, treat as non-infra
-          if not jobs:
-              print('all_infra=false')
-              print('any_infra=false')
-              print('test_jobs=unknown')
-              print('infra_jobs=')
-              sys.exit(0)
-
-          infra_job_names = []
-          test_job_names = []
-
-          for job in jobs:
-              job_name = job.get('name', 'unknown')
-              job_id = job.get('id')
-
-              # Try to fetch logs for this job
-              is_infra = False
-              try:
-                  result = subprocess.run(
-                      ['gh', 'api', f'repos/{os.environ[\"REPOSITORY\"]}/actions/jobs/{job_id}/logs'],
-                      capture_output=True, text=True, timeout=30
-                  )
-                  logs = result.stdout + result.stderr
-                  if infra_patterns.search(logs):
-                      is_infra = True
-                      infra_job_names.append(job_name)
-                  else:
-                      test_job_names.append(job_name)
-              except Exception:
-                  # If we can't fetch logs, assume it's NOT infra (safer to heal)
-                  test_job_names.append(job_name)
-
-          all_infra = len(test_job_names) == 0 and len(infra_job_names) > 0
-          any_infra = len(infra_job_names) > 0
-
-          print(f'all_infra={str(all_infra).lower()}')
-          print(f'any_infra={str(any_infra).lower()}')
-          print(f'test_jobs={\", \".join(test_job_names)}')
-          print(f'infra_jobs={\", \".join(infra_job_names)}')
-          " > /tmp/classify_output.txt 2>&1 || true
-
-          cat /tmp/classify_output.txt
-
-          # Parse the output
-          ALL_INFRA=$(grep '^all_infra=' /tmp/classify_output.txt | cut -d= -f2 || echo "false")
-          ANY_INFRA=$(grep '^any_infra=' /tmp/classify_output.txt | cut -d= -f2 || echo "false")
-          TEST_JOBS=$(grep '^test_jobs=' /tmp/classify_output.txt | cut -d= -f2- || echo "")
-          INFRA_JOBS=$(grep '^infra_jobs=' /tmp/classify_output.txt | cut -d= -f2- || echo "")
-
-          echo "All infra: $ALL_INFRA"
-          echo "Any infra: $ANY_INFRA"
-          echo "Test jobs: $TEST_JOBS"
-          echo "Infra jobs: $INFRA_JOBS"
-
-          # Decision: if ALL failed jobs are infra issues, skip healing
-          if [ "$ALL_INFRA" = "true" ]; then
-            echo "failure_type=infra"
-            echo "should_heal=false"
-            echo "skip_reason=All failed jobs appear to be infra/downtime issues"
-            echo "failure_type=infra" >> "$GITHUB_OUTPUT"
-            echo "should_heal=false" >> "$GITHUB_OUTPUT"
-            echo "skip_reason=All failed jobs appear to be infra/downtime issues" >> "$GITHUB_OUTPUT"
-          else
-            echo "failure_type=test"
-            echo "should_heal=true"
-            echo "failure_type=test" >> "$GITHUB_OUTPUT"
-            echo "should_heal=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      # ----------------------------------------------------------------
-      # Step 3 — Skip if infra issue (post a summary comment on the commit)
-      # ----------------------------------------------------------------
-      - name: Log infra skip
-        if: |
-          steps.checks.outputs.skip != 'true' &&
-          steps.classify.outputs.should_heal == 'false'
-        env:
-          WORKFLOW_NAME: ${{ steps.checks.outputs.workflow_name }}
-          HTML_URL: ${{ steps.checks.outputs.html_url }}
-          SKIP_REASON: ${{ steps.classify.outputs.skip_reason }}
-        run: |
-          echo "⏭️  Skipping healing — $SKIP_REASON"
-          echo "Workflow: $WORKFLOW_NAME"
-          echo "Run URL: $HTML_URL"
-
-      # ----------------------------------------------------------------
-      # Step 4 — Trigger Slash to create a fix PR
-      # ----------------------------------------------------------------
       - name: Checkout repository
-        if: |
-          steps.checks.outputs.skip != 'true' &&
-          steps.classify.outputs.should_heal == 'true'
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
             .github/scripts
 
+      # ----------------------------------------------------------------
+      # Step 1 — Trigger Slash to investigate and fix failing checks
+      # ----------------------------------------------------------------
       - name: Trigger Slash Master Healer
         id: trigger-slash
-        if: |
-          steps.checks.outputs.skip != 'true' &&
-          steps.classify.outputs.should_heal == 'true'
         env:
           SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
           SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
           SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
           SLASH_BRANCH: master
-          WORKFLOW_NAME: ${{ steps.checks.outputs.workflow_name }}
-          HTML_URL: ${{ steps.checks.outputs.html_url }}
-          FAILED_JOBS_CSV: ${{ steps.checks.outputs.failed_jobs_csv }}
-          HEAD_SHA: ${{ steps.checks.outputs.head_sha }}
+          RUN_ID: ${{ github.event.workflow_run.id || github.event.inputs.run_id }}
+          REPOSITORY: ${{ github.repository }}
         run: |
-          PROMPT="The following CI checks are failing on the master branch of the blade repository:
+          WORKFLOW_RUN_URL="https://github.com/${REPOSITORY}/actions/runs/${RUN_ID}"
 
-          Workflow: ${WORKFLOW_NAME}
-          Failed jobs: ${FAILED_JOBS_CSV}
-          Workflow run URL: ${HTML_URL}
-          Commit SHA: ${HEAD_SHA}
-
-          Please investigate the failing checks and create a new PR (from a new branch off master) to fix the failures. Most failures are interaction test failures due to flaky tests — if so, make the flaky tests more robust by adding retries, waits, or improving test stability. Do NOT fix infra or downtime issues. Create a new branch, fix the failing tests, and open a PR."
+          PROMPT="There are failing CI checks on the master branch of the blade repository. Workflow run: ${WORKFLOW_RUN_URL}. Please investigate the failures — fetch the logs, check if they are infra/downtime issues (and skip if so), and if they are real test or code failures, create a new branch off master and open a PR to fix them."
 
           RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
           echo "$RESPONSE_OUTPUT"
@@ -279,45 +72,32 @@ jobs:
           fi
 
       # ----------------------------------------------------------------
-      # Step 5 — Post a commit comment with the Slash execution link
+      # Step 2 — Post a commit comment with the Slash execution link
       # ----------------------------------------------------------------
       - name: Post commit comment with execution link
-        if: |
-          steps.checks.outputs.skip != 'true' &&
-          steps.classify.outputs.should_heal == 'true' &&
-          steps.trigger-slash.outputs.execution_url != ''
+        if: steps.trigger-slash.outputs.execution_url != ''
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ steps.checks.outputs.head_sha }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
           EXECUTION_URL: ${{ steps.trigger-slash.outputs.execution_url }}
           TASK_ID: ${{ steps.trigger-slash.outputs.task_id }}
-          WORKFLOW_NAME: ${{ steps.checks.outputs.workflow_name }}
-          FAILED_JOBS_CSV: ${{ steps.checks.outputs.failed_jobs_csv }}
         run: |
-          COMMENT_BODY="🤖 **Slash Master Healer** has been triggered to fix failing master checks.
-
-          **Failing workflow:** ${WORKFLOW_NAME}
-          **Failed jobs:** ${FAILED_JOBS_CSV}
+          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
+            --method POST \
+            --field body="🤖 **Slash Master Healer** has been triggered to investigate and fix failing master checks.
 
           [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
 
-          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
-            --method POST \
-            --field body="$COMMENT_BODY"
-
       # ----------------------------------------------------------------
-      # Step 6 — Post failure comment if Slash trigger failed
+      # Step 3 — Post failure comment if Slash trigger failed
       # ----------------------------------------------------------------
       - name: Post failure comment
-        if: |
-          failure() &&
-          steps.checks.outputs.skip != 'true' &&
-          steps.classify.outputs.should_heal == 'true'
+        if: failure()
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          HEAD_SHA: ${{ steps.checks.outputs.head_sha }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
