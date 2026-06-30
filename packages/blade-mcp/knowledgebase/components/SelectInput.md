@@ -146,6 +146,24 @@ type SelectInputProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `SelectInput` for dropdown-based selection from a fixed set of predefined options.
+- Always wrap `SelectInput` inside a `Dropdown` component with `DropdownOverlay` and `ActionList`.
+- Use `SelectInput` for small lists where users don't need to search/filter options.
+- Use `icon` prop for a leading visual icon that provides context about the field type.
+- Use `valueSuffix` for badges or indicators after the selected value display.
+
+**Don't**
+
+- Don't use `SelectInput` standalone without a `Dropdown` wrapper — it won't function.
+- Don't use `SelectInput` for large lists (10+ items) where users need to search — use `AutoComplete` instead.
+- Don't use `SelectInput` for inline tag-based selection — use `Chip`/`ChipGroup` instead.
+- Don't use React Fragments as children in the `Dropdown` wrapper.
+- Don't confuse with `SearchInput` — SelectInput has no text input capability.
+
 ## Example
 
 ### Basic SelectInput with Single Selection

@@ -162,6 +162,24 @@ type ChipGroupProps = {
 type IconComponent = React.ComponentType<IconProps>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Chip` inside `ChipGroup` for compact, inline selectable options (3–8 items typically).
+- Use `selectionType="single"` for radio-like behavior and `selectionType="multiple"` for checkbox-like behavior.
+- Provide `accessibilityLabel` on `ChipGroup` to describe the filter/selection purpose.
+- Use `icon` prop on individual Chips for visual category indicators.
+- Use `color` prop to convey semantic meaning (`positive`, `negative`, `primary`).
+
+**Don't**
+
+- Don't use `Chip` outside `ChipGroup` — it must always be inside a group.
+- Don't use `Chip` for non-interactive display labels — use `Tag` (dismissible) or `Badge` (static) instead.
+- Don't use React Fragments as children in `ChipGroup` — only `Chip` components are accepted.
+- Don't use `Chip` for large option sets (10+) — use `AutoComplete` or `SelectInput` with a dropdown.
+- Don't add custom children inside individual `Chip` elements — use `children` for the label text only.
+
 ## Examples
 
 ### Independent Chips for Product Information

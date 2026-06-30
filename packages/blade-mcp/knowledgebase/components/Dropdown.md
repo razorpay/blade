@@ -258,6 +258,24 @@ type FilterChipGroupProps = {
 type IconComponent = React.ComponentType<any>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Dropdown` for selection-based interactions — selecting one or multiple items from a list.
+- Always pair with `DropdownOverlay` containing `ActionList` for the options display.
+- Use predefined triggers: `SelectInput`, `AutoComplete`, `DropdownButton`, `DropdownLink`, or `FilterChipSelectInput`.
+- Use `selectionType="multiple"` when users should select more than one option.
+- Use `DropdownHeader` and `DropdownFooter` for structuring complex selection overlays.
+
+**Don't**
+
+- Don't use `Dropdown` for action menus (click-to-perform) — use `Menu` instead.
+- Don't pass arbitrary trigger components — only predefined Blade triggers are accepted.
+- Don't use `ActionListItem` with `intent="negative"` when using `SelectInput` as the trigger.
+- Don't use `Dropdown` for nested submenus — use `Menu` which supports nested overlays.
+- Don't expect responsive behavior on mobile — manually switch to `BottomSheet` for mobile UX.
+
 ## Examples
 
 ### Basic Dropdown with Button Trigger

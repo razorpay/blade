@@ -174,6 +174,25 @@ type RazorSenseProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `RazorSense` for immersive, branded visual moments: success screens, hero sections, login pages, and loading states.
+- Use presets (`'default'`, `'zoomed'`, `'bottomWave'`, `'rippleWave'`, `'circleSlideUp'`) for quick setup; customize with individual props as needed.
+- Call `preloadRazorSenseAssets(preset)` before mounting to avoid visible frame skipping on first render.
+- Use `edgeFeather` for vignetting when overlaying text or UI on top of the animation.
+- Layer `RazorSenseGradient` on top as a foreground icon overlay for the full Spark Animation pattern.
+
+**Don't**
+
+- Don't use `RazorSense` on React Native — it requires WebGL and is web-only.
+- Don't provide both `videoSrc` and `imageSrc` simultaneously — they are mutually exclusive.
+- Don't rapidly change `gradientMapSrc`/`gradientMap2Src` — these re-initialize WebGL and cause flicker.
+- Don't set extremely high `numSegments` — it causes performance degradation.
+- Don't use `RazorSense` for simple transitions or button feedback — use standard CSS/framer-motion animations for lightweight effects.
+- Don't pass hex/CSS colors to `backgroundColor` — it expects normalized RGB `[0-1, 0-1, 0-1]`.
+
 ## Example
 
 Here are examples demonstrating various ways to use the RazorSense component:

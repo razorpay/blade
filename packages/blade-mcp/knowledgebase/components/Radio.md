@@ -161,6 +161,24 @@ type RadioGroupContextType = Pick<
 > & { state?: State };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Radio` inside `RadioGroup` for selecting exactly one option from a set of mutually exclusive choices.
+- Always wrap `Radio` components in `RadioGroup` — Radio cannot be used standalone.
+- Provide a unique `value` prop on each `Radio` within the group.
+- Use `helpText` on individual Radio items to provide context for each option.
+- Use `necessityIndicator` on RadioGroup to indicate whether selection is required or optional.
+
+**Don't**
+
+- Don't use `Radio` outside `RadioGroup` — it throws an error in development.
+- Don't use `Radio` when multiple selections are allowed — use `Checkbox`/`CheckboxGroup` instead.
+- Don't use `Radio` for immediate binary on/off actions — use `Switch` instead.
+- Don't use React Fragments as children in `RadioGroup` — only `Radio` components are accepted.
+- Don't mix controlled (`value`) and uncontrolled (`defaultValue`) on the same RadioGroup.
+
 ## Example
 
 ### Basic Usage

@@ -185,6 +185,24 @@ type AutoCompleteProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `AutoComplete` for searchable dropdown selection with large option lists (10+ items).
+- Always wrap inside a `Dropdown` component with `DropdownOverlay` and `ActionList`.
+- Use `onInputValueChange` to implement custom filtering logic (client-side or server-side).
+- Use `filteredValues` for server-side/async filtering to control which options appear.
+- Use `ActionListSection` to organize large option lists by category.
+
+**Don't**
+
+- Don't use `AutoComplete` standalone without a `Dropdown` wrapper — it won't function.
+- Don't use `AutoComplete` for small fixed lists under 10 items — use `SelectInput` for simplicity.
+- Don't use React Fragments as children in the `Dropdown` wrapper.
+- Don't confuse with `SearchInput` — AutoComplete is for selection from a list, SearchInput is for triggering search operations.
+- Don't show all 10+ options at once without filtering — use controlled `filteredValues` to prevent layout shifts.
+
 ## Example
 
 ### Basic AutoComplete with Client-Side Filtering

@@ -173,6 +173,24 @@ type CheckboxGroupProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Checkbox` for selecting multiple independent options from a set (multiple selections allowed).
+- Use `CheckboxGroup` when grouping related checkboxes with shared validation, label, and state.
+- Use `isIndeterminate` for "select all" patterns when some (but not all) items are selected.
+- Inside `CheckboxGroup`, provide a unique `value` prop on each `Checkbox` — this is required.
+- Use standalone `Checkbox` (outside group) when you need a single toggle with its own validation.
+
+**Don't**
+
+- Don't use `Checkbox` when only one option can be selected — use `Radio`/`RadioGroup` instead.
+- Don't use `Checkbox` for immediate on/off actions without form submission — use `Switch` instead.
+- Don't set `validationState`, `name`, `isChecked`, or `onChange` on individual Checkboxes inside a `CheckboxGroup` — use these on the group.
+- Don't use React Fragments as children in `CheckboxGroup` — only `Checkbox` components are accepted.
+- Don't mix controlled (`isChecked`) and uncontrolled (`defaultChecked`) on the same Checkbox.
+
 ## Examples
 
 ### Payment Setup Form with Checkboxes

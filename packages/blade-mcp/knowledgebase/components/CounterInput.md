@@ -9,6 +9,20 @@ CounterInput
 CounterInput is a specialized numerical input component that allows users to increment or decrement values using built-in plus/minus button controls alongside manual text input. It provides automatic value constraint enforcement with min/max limits, supports both controlled and uncontrolled usage patterns, and includes loading states with visual feedback. The component is designed for scenarios like quantity selection, subscription management, and any numerical value adjustment with clear boundaries.
 
 ## Usage Guidelines
+                                                                                                                                               
+  **Do**                                                                                                                                                      
+  
+  - Use `CounterInput` for small integer quantities under 100 (e.g., item counts, seats, retry attempts).                                                     
+  - Use `min` and `max` props to enforce sensible boundaries — buttons auto-disable at limits.                                                                
+  - Use `isLoading` to show a spinner during async updates (e.g., cart quantity changes).                                                                     
+  - Use `size="xsmall"` for compact inline controls and `size="large"` for prominent form fields.                                                             
+                                                                                                                                                              
+  **Don't**                                                                                                                                                   
+  
+  - Don't use `CounterInput` for large numbers (99+) — use `TextInput` with `type="number"` instead.                                                          
+  - Don't use `CounterInput` for decimal values — it only supports integers with step=1.                                                                      
+  - Don't use `CounterInput` for currency or complex numerical data — use `TextInput` or `Amount`.                                                            
+  - Don't use `CounterInput` without `min`/`max` boundaries — always define sensible limits.
 
 ### When to Use CounterInput
 
