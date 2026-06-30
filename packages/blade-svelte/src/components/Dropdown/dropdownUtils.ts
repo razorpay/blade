@@ -69,7 +69,7 @@ export function getActionFromKey(
   const { altKey, ctrlKey, metaKey } = e;
   let key = '';
   if ('key' in e) {
-    key = (e as KeyboardEvent).key;
+    key = e.key;
   }
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
   if (!key) return undefined;
