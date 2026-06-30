@@ -1085,12 +1085,12 @@ DatePickerPresetOnApplyCurrentValues.play = async () => {
   await expect(handleApply).toHaveBeenCalledTimes(2);
 
   // Check first call (7 days)
-  const firstAppliedValue = handleApply!.mock.calls[0][0] as [Date, Date];
+  const firstAppliedValue = handleApply.mock.calls[0][0] as [Date, Date];
   const firstDaysDiff = dayjs(firstAppliedValue[1]).diff(dayjs(firstAppliedValue[0]), 'days');
   await expect(firstDaysDiff).toBe(7);
 
   // Check second call (30 days) - this should NOT be stale
-  const secondAppliedValue = handleApply!.mock.calls[1][0] as [Date, Date];
+  const secondAppliedValue = handleApply.mock.calls[1][0] as [Date, Date];
   const secondDaysDiff = dayjs(secondAppliedValue[1]).diff(dayjs(secondAppliedValue[0]), 'days');
   await expect(secondDaysDiff).toBe(30);
 
@@ -1112,7 +1112,7 @@ export const DatePickerPresetFormSubmissionPrevention: StoryFn<
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        handleFormSubmit!(e);
+        handleFormSubmit(e);
       }}
     >
       <DatePickerComponent
@@ -1160,7 +1160,7 @@ DatePickerPresetFormSubmissionPrevention.play = async () => {
   await expect(handleApplyForm).toHaveBeenCalledTimes(1);
 
   // Verify the preset value was applied correctly
-  const appliedValue = handleApplyForm!.mock.calls[0][0] as [Date, Date];
+  const appliedValue = handleApplyForm.mock.calls[0][0] as [Date, Date];
   const daysDiff = dayjs(appliedValue[1]).diff(dayjs(appliedValue[0]), 'days');
   await expect(daysDiff).toBe(7);
 };

@@ -5,6 +5,7 @@
   const { Story } = defineMeta({
     title: 'Components/Counter',
     component: Counter,
+    tags: ['autodocs'],
     args: {
       value: 20,
       color: 'neutral',

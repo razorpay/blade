@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// Copy of SceneMap component with an additional check for null component,
-// So we don't get runtime error if a TabPanel doesn't exist, instead it throws an warning
-// https://github.com/react-navigation/react-navigation/blob/main/packages/react-native-tab-view/src/SceneMap.tsx
+// SafeSceneMap is no longer used since Tabs.native.tsx switched from
+// react-native-tab-view to react-native-pager-view. Kept for backwards
+// compatibility in case external code imports it directly.
 
 import React from 'react';
-import type { SceneRendererProps } from 'react-native-tab-view/src/types';
 import { logger } from '~utils/logger';
 
 type SafeSceneProps = {
-  route: any;
-} & Omit<SceneRendererProps, 'layout'>;
+  route: { key: string };
+  jumpTo?: (key: string) => void;
+};
 
 const SafeSceneComponent = React.memo(
   <T extends { component: React.ComponentType<any> } & SafeSceneProps>({
@@ -30,13 +30,13 @@ const SafeSceneComponent = React.memo(
 );
 
 const SafeSceneMap = <T,>(scenes: { [key: string]: React.ComponentType<T> }) => {
-  return ({ route, jumpTo, position }: SafeSceneProps) => (
+  return ({ route, jumpTo }: SafeSceneProps) => (
     <SafeSceneComponent
       key={route.key}
       component={scenes[route.key]}
       route={route}
-      jumpTo={jumpTo}
-      position={position}
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      jumpTo={jumpTo ?? (() => {})} // no-op fallback; jumpTo is unused in pager-view mode
     />
   );
 };

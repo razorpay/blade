@@ -135,27 +135,12 @@ exports[`TopNav explicit backgroundColor prop overrides variant 1`] = `
   justify-content: center;
 }
 
-.c2.c2.c2.c2.c2 {
-  display: none;
-  position: absolute;
-  height: 20px;
-  right: 16px;
-  bottom: 0px;
-  left: 16px;
-}
-
 @media screen and (min-width:768px) {
   .c0.c0.c0.c0.c0 {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-right: 8px;
     padding-left: 8px;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
-    display: block;
   }
 }
 
@@ -167,11 +152,6 @@ exports[`TopNav explicit backgroundColor prop overrides variant 1`] = `
     <div
       class="c1"
       data-blade-component="top-nav-content"
-    />
-    <div
-      class="c2"
-      data-blade-component="base-box"
-      style="filter: blur(8px); pointer-events: none;"
     />
   </div>
 </div>
@@ -1025,27 +1005,12 @@ exports[`TopNav renders with variant="primary" applying primary background color
   justify-content: center;
 }
 
-.c2.c2.c2.c2.c2 {
-  display: none;
-  position: absolute;
-  height: 20px;
-  right: 16px;
-  bottom: 0px;
-  left: 16px;
-}
-
 @media screen and (min-width:768px) {
   .c0.c0.c0.c0.c0 {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-right: 8px;
     padding-left: 8px;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c2.c2.c2.c2.c2 {
-    display: block;
   }
 }
 
@@ -1057,11 +1022,6 @@ exports[`TopNav renders with variant="primary" applying primary background color
     <div
       class="c1"
       data-blade-component="top-nav-content"
-    />
-    <div
-      class="c2"
-      data-blade-component="base-box"
-      style="filter: blur(8px); pointer-events: none;"
     />
   </div>
 </div>

@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import React from 'react';
 import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
+import { ButtonShadowOverlay } from './ButtonShadowOverlay';
 import type { StyledBaseButtonProps } from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
@@ -25,6 +26,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
     alignSelf: 'center',
     display: 'flex',
     flexDirection: 'row',
+    overflow: 'hidden',
     ...styledPropsCSSObject,
   };
 });
@@ -80,6 +82,13 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onPointerEnter,
     onPointerDown,
     onFocus,
+    shadowHighlightColor,
+    shadowHighlightHeight,
+    shadowBottomColor,
+    shadowBottomHeight,
+    shadowBorderColor,
+    shadowRingWidth,
+    isShadowGradientVisible,
     ...styledProps
   },
   ref,
@@ -158,7 +167,23 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       {/* @ts-ignore */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
-        return children;
+        return (
+          <>
+            {shadowBorderColor ? (
+              <ButtonShadowOverlay
+                borderRadius={Number(String(borderRadius).replace('px', '')) || 0}
+                highlightColor={shadowHighlightColor}
+                highlightHeight={shadowHighlightHeight}
+                shadowColor={shadowBottomColor}
+                shadowHeight={shadowBottomHeight}
+                borderColor={shadowBorderColor}
+                ringWidth={shadowRingWidth}
+                showGradient={isShadowGradientVisible}
+              />
+            ) : null}
+            {children}
+          </>
+        );
       }}
     </StyledPressable>
   );

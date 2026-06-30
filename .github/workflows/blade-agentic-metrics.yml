@@ -1,0 +1,64 @@
+name: Agentic Blade Metrics
+
+on:
+  schedule:
+    - cron: "30 0 * * *" # Daily at 6am IST (UTC+5:30)
+  workflow_dispatch:
+
+jobs:
+  collect-and-publish:
+    name: Collect and publish agentic metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch metrics (1 day)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/fetch-metrics.mjs 1 > /tmp/metrics-1d.md
+
+      - name: Fetch metrics (7 days)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/fetch-metrics.mjs 7 > /tmp/metrics-7d.md
+
+      - name: Fetch metrics (30 days)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/fetch-metrics.mjs 30 > /tmp/metrics-30d.md
+
+      - name: Combine reports
+        run: |
+          echo "# Agentic Blade Metrics" > /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "---" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "## Last 1 Day" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          cat /tmp/metrics-1d.md >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "---" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "## Last 7 Days" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          cat /tmp/metrics-7d.md >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "---" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          echo "## Last 30 Days" >> /tmp/metrics-combined.md
+          echo "" >> /tmp/metrics-combined.md
+          cat /tmp/metrics-30d.md >> /tmp/metrics-combined.md
+
+      - name: Push to wiki
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
+          node .github/scripts/push-agentic-metrics-wiki.mjs /tmp/metrics-combined.md

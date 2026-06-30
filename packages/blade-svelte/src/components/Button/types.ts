@@ -1,6 +1,8 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { BaseButtonProps } from './BaseButton/types';
+import type { BaseButtonProps, ButtonAvatar, ButtonLoadingType } from './BaseButton/types';
+
+export type { ButtonAvatar, ButtonLoadingType };
 
 export type ButtonProps = BaseButtonProps & {
   /**
@@ -44,10 +46,32 @@ export type ButtonProps = BaseButtonProps & {
    */
   isFullWidth?: boolean;
   /**
-   * Whether the button is in a loading state
+   * Whether the button is in a loading state.
+   * Only applicable when `loadingType` is `indefinite` (the default) and drives the 3-dot loader.
    * @default false
    */
   isLoading?: boolean;
+  /**
+   * Type of loading indicator to show.
+   * - `indefinite`: 3-dot loader controlled by `isLoading`
+   * - `definite`: left-to-right progress bar (button color) over a disabled-colored base
+   * @default 'indefinite'
+   */
+  loadingType?: ButtonLoadingType;
+  /**
+   * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
+   * Required when `loadingType` is `definite`.
+   */
+  loadingTimer?: number;
+  /**
+   * Called once when the `definite` progress bar reaches 100%.
+   */
+  onLoadingComplete?: () => void;
+  /**
+   * Avatars to render after the button text as an avatar group.
+   * Only rendered for `large` buttons; ignored for smaller sizes.
+   */
+  avatars?: ButtonAvatar[];
   /**
    * The accessible label for the button
    * Required for icon-only buttons
@@ -69,6 +93,10 @@ export type ButtonProps = BaseButtonProps & {
    * aria-expanded attribute
    */
   'aria-expanded'?: boolean;
+  /**
+   * aria-controls attribute
+   */
+  'aria-controls'?: string;
   /**
    * aria-haspopup attribute
    */

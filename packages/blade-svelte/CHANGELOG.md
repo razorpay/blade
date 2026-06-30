@@ -1,5 +1,56 @@
 # @razorpay/blade-svelte
 
+## 0.8.1
+
+### Patch Changes
+
+- 19e2b963e: feat(blade-svelte): Accordion enhancements — card surface filled variant, AvatarGroup in titleSuffix, full-width divider, gray body background prop
+- b05f5f919: feat(blade-svelte): add BottomSheet component
+- b50dad37b: feat(blade-svelte): add IconButton component
+- Updated dependencies [19e2b963e]
+- Updated dependencies [b05f5f919]
+- Updated dependencies [b50dad37b]
+  - @razorpay/blade-core@0.7.1
+
+## 0.8.0
+
+### Minor Changes
+
+- ea2d1d90b: feat(Badge): add checkout-scoped shape variants (intense=rectangle, subtle=pill)
+
+### Patch Changes
+
+- 884dfd7a4: feat(blade-svelte): add `density` prop to AvatarGroup and use typed Text/Heading for the +N overflow counter
+- 1fce4dca1: fix(blade-svelte): add definite loader and avatar group to Button
+
+  Adds a definite (left-to-right progress) loader and avatar group support to the
+  Svelte `Button`, reworks the indefinite loader to a pure-CSS 3-dot animation, and
+  removes the unused spinner styling/exports from `blade-core`.
+
+- Updated dependencies [884dfd7a4]
+- Updated dependencies [1fce4dca1]
+- Updated dependencies [ea2d1d90b]
+  - @razorpay/blade-core@0.7.0
+
+## 0.7.0
+
+### Minor Changes
+
+- 0d86166df: feat(blade-svelte): Accordion component
+
+### Patch Changes
+
+- 2a93ee201: feat(blade-svelte): add Skeleton component
+- b955db9c6: feat(blade-svelte): add Switch component
+- 684ad1fe5: feat(blade-svelte): add Toast component
+- 67150149c: feat(blade-svelte): add Tooltip component
+- Updated dependencies [2a93ee201]
+- Updated dependencies [b955db9c6]
+- Updated dependencies [684ad1fe5]
+- Updated dependencies [67150149c]
+- Updated dependencies [0d86166df]
+  - @razorpay/blade-core@0.6.0
+
 ## 0.6.0
 
 ### Minor Changes

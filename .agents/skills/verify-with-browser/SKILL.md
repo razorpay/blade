@@ -1,8 +1,8 @@
 ---
 name: verify-with-browser
 description: Visually verify component changes in Storybook using the agent-browser CLI tool
-disable-model-invocation: true
 ---
+
 # Verify with Browser
 
 Visually verify component changes in Storybook using the agent-browser CLI tool.
@@ -14,6 +14,7 @@ Visually verify component changes in Storybook using the agent-browser CLI tool.
 ```
 
 **Example:**
+
 ```
 /verify-with-browser Popover
 /verify-with-browser Button
@@ -23,7 +24,7 @@ Visually verify component changes in Storybook using the agent-browser CLI tool.
 
 ### Step 1: Prerequisites
 
-- Ensure Storybook is running (check terminals folder or start with `yarn react:storybook`)
+- Ensure Storybook is running (check terminals folder or start with `yarn start:web` in `packages/blade` or `packages/blade-svelte` depending on the package you are verifying)
 - Use `npx agent-browser` to run commands (no installation required)
 - Agent-browser will automatically start a daemon in the background on first use
 
@@ -31,6 +32,7 @@ Visually verify component changes in Storybook using the agent-browser CLI tool.
 
 Use Shell tool to run these commands with `npx`:
 
+- `npx agent-browser --help` - Show help for agent-browser commands
 - `npx agent-browser open <url>` - Navigate to a URL
 - `npx agent-browser snapshot` - Get current page structure with element refs
 - `npx agent-browser snapshot -i` - Interactive snapshot with clickable elements
@@ -40,6 +42,8 @@ Use Shell tool to run these commands with `npx`:
 - `npx agent-browser close` - Close browser session
 
 ### Step 3: Navigate to Storybook
+
+> Note: the localhost port number might vary. Find the right port where storybook is running.
 
 **Option 1: Full Storybook View**
 
@@ -54,6 +58,7 @@ npx agent-browser open "http://localhost:9011/iframe.html?id=components-<compone
 ```
 
 **Why use iframe view?**
+
 - Cleaner screenshots without Storybook UI
 - Shows only the component being tested
 - Better for visual comparison with Figma
@@ -103,6 +108,7 @@ npx agent-browser close
 ### Step 6: Verification Checklist
 
 Verify the following match the Figma design:
+
 - ✅ Padding and spacing match design tokens
 - ✅ Colors and borders are correct
 - ✅ Typography sizes are accurate
@@ -114,11 +120,13 @@ Verify the following match the Figma design:
 Storybook runs on `http://localhost:9011/` (port may vary, check terminals).
 
 **URL Formats:**
+
 - **Full Storybook**: `http://localhost:9011/?path=/story/components-<component>--<story-name>`
 - **Iframe (Clean View)**: `http://localhost:9011/iframe.html?id=components-<component>--<story-name>&viewMode=story`
 - **Docs Page**: `http://localhost:9011/?path=/docs/components-<component>--docs`
 
 **Story Name Conversion:**
+
 - Storybook story names use kebab-case
 - "Uncontrolled" → `uncontrolled`
 - "Product Usecase: Dark Mode" → `product-use-case-2`
