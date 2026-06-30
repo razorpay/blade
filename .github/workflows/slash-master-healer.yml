@@ -67,6 +67,10 @@ jobs:
             echo "Execution logs: ${EXECUTION_URL}"
             echo "execution_url=$EXECUTION_URL" >> "$GITHUB_OUTPUT"
             echo "task_id=$TASK_ID" >> "$GITHUB_OUTPUT"
+          elif [ -n "$RESPONSE_JSON" ]; then
+            echo "ERROR: Slash returned a response but task_id could not be extracted."
+            echo "Response: $RESPONSE_JSON"
+            exit 1
           fi
 
       # ----------------------------------------------------------------
