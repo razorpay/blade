@@ -1,5 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { RTBBadgeType } from '@razorpay/blade-core/styles';
 import type { TooltipPlacement } from '../Tooltip/types';
 
 /**
@@ -47,7 +48,8 @@ export type AppBarProps = {
 
   /**
    * Visual emphasis of the AppBar surface.
-   * - `'neutral'`: static-black surface, light (static-white) foreground.
+   * - `'neutral'`: transparent surface, light (static-white) foreground — the AppBar has
+   *   no background of its own and sits directly over the page (matches Figma).
    * - `'subtle'`: gray surface that adapts to an embedded/light page context.
    *
    * @default 'neutral'
@@ -99,49 +101,27 @@ export type AppBarProps = {
 
 export type AppBarLeadingProps = {
   /**
-   * Page/merchant title. Rendered as the leading text when no `logo` is passed.
-   * Maps to Figma `type=text` and `type=logo-text`.
+   * Page/merchant title. Pairs with `logo` for logo+title layout.
    *
    * @default undefined
    */
   title?: string;
 
   /**
-   * Secondary text rendered under the title.
-   *
-   * @default undefined
-   */
-  subtitle?: string;
-
-  /**
-   * Brand logo slot (image/SVG). Maps to Figma `type=logo`. Presence of `logo`
-   * (vs `title`) infers the visual type — there is no `type` prop.
+   * Brand mark — wordmark, icon logo, avatar, etc.
    *
    * @default undefined
    */
   logo?: Snippet;
 
   /**
-   * Leading thumbnail/icon shown before the title (Figma `type=text` icon-wrapper).
+   * Razorpay Trusted Business badge form.
+   * - `'full'`: shield + pill below the title/logo row
+   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  prefix?: Snippet;
-
-  /**
-   * When `true`, renders the "Razorpay Trusted Business" (RTB) badge next to the
-   * logo/title. Replaces Figma's `showRTB` boolean (WYSIWYG — derived from this flag).
-   *
-   * @default false
-   */
-  isTrustedBusiness?: boolean;
-
-  /**
-   * Slot rendered immediately after the title (e.g. a `Badge`, `Counter`).
-   *
-   * @default undefined
-   */
-  titleSuffix?: Snippet;
+  rtbBadge?: RTBBadgeType;
 
   /**
    * Test ID for the element.

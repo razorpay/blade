@@ -28,7 +28,8 @@ type AppBarProps = {
 
   /**
    * Visual emphasis of the AppBar surface.
-   * - `'neutral'` (default): static-black surface, light foreground (matches Figma dark header).
+   * - `'neutral'` (default): transparent surface, light foreground (matches Figma — the
+   *   AppBar has no background of its own and sits directly over the page).
    * - `'subtle'`: surface that adapts to the page background for embedded/light contexts.
    *
    * @default 'neutral'
@@ -58,49 +59,27 @@ type AppBarProps = {
 
 type AppBarLeadingProps = {
   /**
-   * Page/merchant title. Rendered as the leading text when no `logo` is passed.
-   * Maps to Figma `type=text` and `type=logo-text`.
+   * Page/merchant title. Pairs with `logo` for logo+title layout.
    *
    * @default undefined
    */
   title?: string;
 
   /**
-   * Secondary text rendered under the title.
-   *
-   * @default undefined
-   */
-  subtitle?: string;
-
-  /**
-   * Brand logo slot (image/SVG). Maps to Figma `type=logo`.
-   * Presence of `logo` (vs `title`) infers the visual type — there is no `type` prop.
+   * Brand mark — wordmark, icon logo, avatar, etc.
    *
    * @default undefined
    */
   logo?: React.ReactNode;
 
   /**
-   * Leading thumbnail/icon shown before the title (Figma `type=text` icon-wrapper / illustration).
+   * Razorpay Trusted Business badge form.
+   * - `'full'`: shield + pill below the title/logo row
+   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  prefix?: React.ReactNode;
-
-  /**
-   * When `true`, renders the "Razorpay Trusted Business" (RTB) badge next to the
-   * logo/title. Replaces Figma's `showRTB` boolean (WYSIWYG — derived from this flag).
-   *
-   * @default false
-   */
-  isTrustedBusiness?: boolean;
-
-  /**
-   * Slot rendered immediately after the title (e.g. a `Badge`, `Counter`).
-   *
-   * @default undefined
-   */
-  titleSuffix?: React.ReactNode;
+  rtbBadge?: 'full' | 'icon';
 } & TestID &
   DataAnalyticsAttribute;
 

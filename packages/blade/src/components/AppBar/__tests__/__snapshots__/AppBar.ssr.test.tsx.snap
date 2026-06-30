@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AppBar /> should render AppBar ssr 1`] = `"<div id="root"><div data-blade-component="app-bar" data-testid="appbar-demo" role="banner" aria-label="Mavenshop store header" data-analytics-appbar="demo" class="BaseBox-bksIuc pugGA"><div data-blade-component="base-box" class="BaseBox-bksIuc hlJngZ"><button type="button" aria-label="Go back" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M10.7071 6.70711C11.0976 6.31658 11.0976 5.68342 10.7071 5.29289C10.3166 4.90237 9.68342 4.90237 9.29289 5.29289L3.29289 11.2929C2.90237 11.6834 2.90237 12.3166 3.29289 12.7071L9.29289 18.7071C9.68342 19.0976 10.3166 19.0976 10.7071 18.7071C11.0976 18.3166 11.0976 17.6834 10.7071 17.2929L6.41421 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H6.41421L10.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button><div data-blade-component="app-bar-leading" class="BaseBox-bksIuc hWupGt"><div data-blade-component="base-box" class="BaseBox-bksIuc jVxAcE"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9.71749 12.3339L10.7149 8.66299L21 2L15.4844 22.5753L11.6926 22.5722L15.4262 8.64209L9.71749 12.3339ZM3 22.5756L4.57044 16.7193L13.9519 10.6624L10.7718 22.5756H3Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bksIuc hUHgKK"><div data-blade-component="base-box" class="BaseBox-bksIuc hlJngZ"><p letter-spacing="25" class="StyledBaseText-foUshD jGddiS" data-blade-component="text">Mavenshop</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cjptth"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M11.7575 1.02986C11.9167 0.990047 12.0833 0.990047 12.2425 1.02986L20.2425 3.02986C20.6877 3.14115 21 3.54113 21 4V12C21 15.4464 18.7183 18.2003 16.6585 20.0026C15.6076 20.9221 14.5615 21.6408 13.78 22.1292C13.3882 22.3741 13.0603 22.5627 12.8281 22.6913C12.7119 22.7556 12.6194 22.805 12.5547 22.839C12.5223 22.856 12.4968 22.8692 12.4788 22.8784L12.4573 22.8894L12.4508 22.8926L12.4486 22.8937C12.4486 22.8937 12.4472 22.8944 12 22C11.5528 22.8944 11.5522 22.8941 11.5522 22.8941L11.5492 22.8926L11.5427 22.8894L11.5212 22.8784C11.5032 22.8692 11.4777 22.856 11.4453 22.839C11.3806 22.805 11.2881 22.7556 11.1719 22.6913C10.9397 22.5627 10.6118 22.3741 10.22 22.1292C9.43854 21.6408 8.39238 20.9221 7.3415 20.0026C5.28175 18.2003 3 15.4464 3 12V4C3 3.54113 3.3123 3.14115 3.75746 3.02986L11.7575 1.02986ZM12 22L11.5522 22.8941C11.8337 23.0349 12.1657 23.0352 12.4472 22.8944L12 22ZM12 20.8628C12.1916 20.7541 12.4367 20.6103 12.72 20.4333C13.4385 19.9842 14.3924 19.3279 15.3415 18.4974C17.2817 16.7997 19 14.5536 19 12V4.78078L12 3.03078L5 4.78078V12C5 14.5536 6.71825 16.7997 8.6585 18.4974C9.60762 19.3279 10.5615 19.9842 11.28 20.4333C11.5633 20.6103 11.8084 20.7541 12 20.8628Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD eFeZqq" data-blade-component="text">Razorpay Trusted Business</p></div></div><div data-blade-component="app-bar-actions" class="BaseBox-bksIuc halUdx"><button type="button" aria-label="Profile" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path><path d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button><button type="button" aria-label="Notifications" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 3C8.68629 3 6 5.68629 6 9V14C6 14.7286 5.80521 15.4117 5.46487 16H18.5351C18.1948 15.4117 18 14.7286 18 14V9C18 5.68629 15.3137 3 12 3ZM22 16C20.8954 16 20 15.1046 20 14V9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9V14C4 15.1046 3.10457 16 2 16C1.44772 16 1 16.4477 1 17C1 17.5523 1.44772 18 2 18H22C22.5523 18 23 17.5523 23 17C23 16.4477 22.5523 16 22 16ZM9.76823 20.135C10.246 19.8579 10.8579 20.0205 11.135 20.4982C11.3139 20.8066 11.6435 20.9965 12 20.9965C12.3565 20.9965 12.6861 20.8066 12.865 20.4982C13.1421 20.0205 13.754 19.8579 14.2318 20.135C14.7095 20.4121 14.8721 21.024 14.595 21.5018C14.0583 22.427 13.0696 22.9965 12 22.9965C10.9304 22.9965 9.9417 22.427 9.405 21.5018C9.12788 21.024 9.2905 20.4121 9.76823 20.135Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div>"`;
+exports[`<AppBar /> should render AppBar ssr 1`] = `"<div id="root"><div data-blade-component="app-bar" data-testid="appbar-demo" role="banner" aria-label="Mavenshop store header" data-analytics-appbar="demo" class="BaseBox-bksIuc iSfCPy"><div data-blade-component="base-box" class="BaseBox-bksIuc hlJngZ"><button type="button" aria-label="Go back" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M10.7071 6.70711C11.0976 6.31658 11.0976 5.68342 10.7071 5.29289C10.3166 4.90237 9.68342 4.90237 9.29289 5.29289L3.29289 11.2929C2.90237 11.6834 2.90237 12.3166 3.29289 12.7071L9.29289 18.7071C9.68342 19.0976 10.3166 19.0976 10.7071 18.7071C11.0976 18.3166 11.0976 17.6834 10.7071 17.2929L6.41421 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H6.41421L10.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button><div data-blade-component="app-bar-leading" class="BaseBox-bksIuc hWupGt"><div data-blade-component="base-box" class="BaseBox-bksIuc jVxAcE"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9.71749 12.3339L10.7149 8.66299L21 2L15.4844 22.5753L11.6926 22.5722L15.4262 8.64209L9.71749 12.3339ZM3 22.5756L4.57044 16.7193L13.9519 10.6624L10.7718 22.5756H3Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bksIuc hUHgKK"><div data-blade-component="base-box" class="BaseBox-bksIuc hlJngZ"><p letter-spacing="25" class="StyledBaseText-foUshD jGddiS" data-blade-component="text">Mavenshop</p></div><div data-blade-component="base-box" class="BaseBox-bksIuc dcjHDx"><div data-blade-component="rtb-badge" class="BaseBox-bksIuc evlwHc"><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc escAoS"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z" fill="url(#rtbShieldFill-:Rd6:)" stroke="url(#rtbShieldStroke-:Rd6:)" stroke-width="0.666667"></path><g filter="url(#rtbShieldShadow-:Rd6:)"><path d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z" fill="white"></path><path d="M8.62275 12.9321L7.88147 15.9204H11.5517L13.0534 9.8411L8.62275 12.9321Z" fill="white"></path></g><defs><filter id="rtbShieldShadow-:Rd6:" x="5.65925" y="3.19819" width="12.9444" height="14.9444" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset></feOffset><feGaussianBlur stdDeviation="1.11111"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.294097 0 0 0 0 0.152931 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend></filter><linearGradient id="rtbShieldFill-:Rd6:" x1="4.13115" y1="5.0249" x2="18.2093" y2="18.4295" gradientUnits="userSpaceOnUse"><stop stop-color="#00FD0A"></stop><stop offset="0.972213" stop-color="#00AD8E"></stop></linearGradient><linearGradient id="rtbShieldStroke-:Rd6:" x1="6.35337" y1="4.55055" x2="17.5246" y2="17.4954" gradientUnits="userSpaceOnUse"><stop stop-color="#65FF4D"></stop><stop offset="0.302473" stop-color="white" stop-opacity="0.895"></stop><stop offset="0.452125" stop-color="#65FF4D" stop-opacity="0.805"></stop><stop offset="1" stop-color="#00C67F"></stop></linearGradient></defs></svg></div><div data-blade-component="base-box" class="BaseBox-bksIuc lePPWY"><p letter-spacing="50" class="StyledBaseText-foUshD eFeZqq" data-blade-component="text">Razorpay Trusted Business</p></div></div></div></div></div><div data-blade-component="app-bar-actions" class="BaseBox-bksIuc halUdx"><button type="button" aria-label="Profile" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path><path d="M8 14C5.23858 14 3 16.2386 3 19V21C3 21.5523 3.44772 22 4 22C4.55228 22 5 21.5523 5 21V19C5 17.3431 6.34315 16 8 16H16C17.6569 16 19 17.3431 19 19V21C19 21.5523 19.4477 22 20 22C20.5523 22 21 21.5523 21 21V19C21 16.2386 18.7614 14 16 14H8Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button><button type="button" aria-label="Notifications" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 eGmpvF"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 3C8.68629 3 6 5.68629 6 9V14C6 14.7286 5.80521 15.4117 5.46487 16H18.5351C18.1948 15.4117 18 14.7286 18 14V9C18 5.68629 15.3137 3 12 3ZM22 16C20.8954 16 20 15.1046 20 14V9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9V14C4 15.1046 3.10457 16 2 16C1.44772 16 1 16.4477 1 17C1 17.5523 1.44772 18 2 18H22C22.5523 18 23 17.5523 23 17C23 16.4477 22.5523 16 22 16ZM9.76823 20.135C10.246 19.8579 10.8579 20.0205 11.135 20.4982C11.3139 20.8066 11.6435 20.9965 12 20.9965C12.3565 20.9965 12.6861 20.8066 12.865 20.4982C13.1421 20.0205 13.754 19.8579 14.2318 20.135C14.7095 20.4121 14.8721 21.024 14.595 21.5018C14.0583 22.427 13.0696 22.9965 12 22.9965C10.9304 22.9965 9.9417 22.427 9.405 21.5018C9.12788 21.024 9.2905 20.4121 9.76823 20.135Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div>"`;
 
 exports[`<AppBar /> should render AppBar ssr 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -22,7 +22,7 @@ exports[`<AppBar /> should render AppBar ssr 2`] = `
   -webkit-column-gap: 8px;
   column-gap: 8px;
   top: 0px;
-  background-color: hsla(0,0%,0%,1);
+  background-color: hsla(210,6%,13%,0);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -86,6 +86,18 @@ exports[`<AppBar /> should render AppBar ssr 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -96,16 +108,55 @@ exports[`<AppBar /> should render AppBar ssr 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 8px;
-  padding-left: 8px;
-  gap: 4px;
-  background-color: hsla(0,0%,100%,0.18);
-  border-radius: 16px;
 }
 
 .c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin-right: -12px;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 10px;
+  padding-left: 16px;
+  background-color: hsla(0,0%,0%,0.32);
+  border-radius: 16px;
+}
+
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -197,7 +248,7 @@ exports[`<AppBar /> should render AppBar ssr 2`] = `
   overflow-wrap: break-word;
 }
 
-.c8.c8.c8.c8.c8 {
+.c11.c11.c11.c11.c11 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -300,39 +351,153 @@ exports[`<AppBar /> should render AppBar ssr 2`] = `
               Mavenshop
             </p>
           </div>
-        </div>
-        <div
-          class="c7"
-          data-blade-component="base-box"
-        >
-          <svg
-            aria-hidden="true"
-            class="Svgweb__StyledSvg-vcmjs8-0"
-            data-blade-component="icon"
-            fill="none"
-            height="12px"
-            viewBox="0 0 24 24"
-            width="12px"
+          <div
+            class="c7"
+            data-blade-component="base-box"
           >
-            <path
-              clip-rule="evenodd"
-              d="M11.7575 1.02986C11.9167 0.990047 12.0833 0.990047 12.2425 1.02986L20.2425 3.02986C20.6877 3.14115 21 3.54113 21 4V12C21 15.4464 18.7183 18.2003 16.6585 20.0026C15.6076 20.9221 14.5615 21.6408 13.78 22.1292C13.3882 22.3741 13.0603 22.5627 12.8281 22.6913C12.7119 22.7556 12.6194 22.805 12.5547 22.839C12.5223 22.856 12.4968 22.8692 12.4788 22.8784L12.4573 22.8894L12.4508 22.8926L12.4486 22.8937C12.4486 22.8937 12.4472 22.8944 12 22C11.5528 22.8944 11.5522 22.8941 11.5522 22.8941L11.5492 22.8926L11.5427 22.8894L11.5212 22.8784C11.5032 22.8692 11.4777 22.856 11.4453 22.839C11.3806 22.805 11.2881 22.7556 11.1719 22.6913C10.9397 22.5627 10.6118 22.3741 10.22 22.1292C9.43854 21.6408 8.39238 20.9221 7.3415 20.0026C5.28175 18.2003 3 15.4464 3 12V4C3 3.54113 3.3123 3.14115 3.75746 3.02986L11.7575 1.02986ZM12 22L11.5522 22.8941C11.8337 23.0349 12.1657 23.0352 12.4472 22.8944L12 22ZM12 20.8628C12.1916 20.7541 12.4367 20.6103 12.72 20.4333C13.4385 19.9842 14.3924 19.3279 15.3415 18.4974C17.2817 16.7997 19 14.5536 19 12V4.78078L12 3.03078L5 4.78078V12C5 14.5536 6.71825 16.7997 8.6585 18.4974C9.60762 19.3279 10.5615 19.9842 11.28 20.4333C11.5633 20.6103 11.8084 20.7541 12 20.8628Z"
-              data-blade-component="svg-path"
-              fill="hsla(0, 0%, 100%, 1)"
-              fill-rule="evenodd"
-            />
-          </svg>
-          <p
-            class="c8"
-            data-blade-component="text"
-            letter-spacing="50"
-          >
-            Razorpay Trusted Business
-          </p>
+            <div
+              class="c8"
+              data-blade-component="rtb-badge"
+            >
+              <div
+                aria-hidden="true"
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
+                    fill="url(#rtbShieldFill-:Rd6:)"
+                    stroke="url(#rtbShieldStroke-:Rd6:)"
+                    stroke-width="0.666667"
+                  />
+                  <g
+                    filter="url(#rtbShieldShadow-:Rd6:)"
+                  >
+                    <path
+                      d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M8.62275 12.9321L7.88147 15.9204H11.5517L13.0534 9.8411L8.62275 12.9321Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <filter
+                      color-interpolation-filters="sRGB"
+                      filterUnits="userSpaceOnUse"
+                      height="14.9444"
+                      id="rtbShieldShadow-:Rd6:"
+                      width="12.9444"
+                      x="5.65925"
+                      y="3.19819"
+                    >
+                      <feflood
+                        flood-opacity="0"
+                        result="BackgroundImageFix"
+                      />
+                      <fecolormatrix
+                        in="SourceAlpha"
+                        result="hardAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      />
+                      <feoffset />
+                      <fegaussianblur
+                        stdDeviation="1.11111"
+                      />
+                      <fecomposite
+                        in2="hardAlpha"
+                        operator="out"
+                      />
+                      <fecolormatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0.294097 0 0 0 0 0.152931 0 0 0 0.25 0"
+                      />
+                      <feblend
+                        in2="BackgroundImageFix"
+                        mode="normal"
+                        result="effect1_dropShadow"
+                      />
+                      <feblend
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow"
+                        mode="normal"
+                        result="shape"
+                      />
+                    </filter>
+                    <lineargradient
+                      gradientUnits="userSpaceOnUse"
+                      id="rtbShieldFill-:Rd6:"
+                      x1="4.13115"
+                      x2="18.2093"
+                      y1="5.0249"
+                      y2="18.4295"
+                    >
+                      <stop
+                        stop-color="#00FD0A"
+                      />
+                      <stop
+                        offset="0.972213"
+                        stop-color="#00AD8E"
+                      />
+                    </lineargradient>
+                    <lineargradient
+                      gradientUnits="userSpaceOnUse"
+                      id="rtbShieldStroke-:Rd6:"
+                      x1="6.35337"
+                      x2="17.5246"
+                      y1="4.55055"
+                      y2="17.4954"
+                    >
+                      <stop
+                        stop-color="#65FF4D"
+                      />
+                      <stop
+                        offset="0.302473"
+                        stop-color="white"
+                        stop-opacity="0.895"
+                      />
+                      <stop
+                        offset="0.452125"
+                        stop-color="#65FF4D"
+                        stop-opacity="0.805"
+                      />
+                      <stop
+                        offset="1"
+                        stop-color="#00C67F"
+                      />
+                    </lineargradient>
+                  </defs>
+                </svg>
+              </div>
+              <div
+                class="c10"
+                data-blade-component="base-box"
+              >
+                <p
+                  class="c11"
+                  data-blade-component="text"
+                  letter-spacing="50"
+                >
+                  Razorpay Trusted Business
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="c9"
+        class="c12"
         data-blade-component="app-bar-actions"
       >
         <button

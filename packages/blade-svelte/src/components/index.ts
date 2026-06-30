@@ -78,6 +78,10 @@ export type {
   AppBarBackButton,
 } from './AppBar';
 
+// RTBBadge
+export { RTBBadge } from './RTBBadge';
+export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';

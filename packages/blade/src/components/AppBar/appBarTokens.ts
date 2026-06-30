@@ -12,14 +12,16 @@ export const APP_BAR_HEIGHT = size[64];
 /**
  * Surface background color per AppBar variant.
  *
- * - `neutral`: static-black surface (matches Figma dark header). Same token TopNav uses.
+ * - `neutral`: transparent surface (matches Figma — the AppBar has no background
+ *   of its own and sits directly over the page). Foreground stays light via the
+ *   forced dark color scheme so it remains legible over a dark page.
  * - `subtle`: gray surface that adapts to an embedded/light page context.
  */
 export const APP_BAR_BACKGROUND_COLOR: Record<
   NonNullable<AppBarProps['variant']>,
   BaseBoxProps['backgroundColor']
 > = {
-  neutral: 'interactive.background.staticBlack.default',
+  neutral: 'transparent',
   subtle: 'surface.background.gray.intense',
 };
 
@@ -41,7 +43,14 @@ export const APP_BAR_PADDING_X: BaseBoxProps['paddingX'] = {
 export const APP_BAR_PADDING_Y: BaseBoxProps['paddingY'] = 'spacing.3';
 
 /**
- * Gap between leading items (back button, prefix, logo/title, badge).
+ * Gap between the back button and AppBarLeading content.
+ *
+ * Figma: 12px → `spacing.4`.
+ */
+export const APP_BAR_BACK_BUTTON_GAP: SpacingValueType = 'spacing.4';
+
+/**
+ * Gap between leading items (logo, title, badge).
  */
 export const APP_BAR_LEADING_GAP: SpacingValueType = 'spacing.3';
 

@@ -12,6 +12,7 @@ export const MetaConstants = {
   AppBar: 'app-bar',
   AppBarLeading: 'app-bar-leading',
   AppBarActions: 'app-bar-actions',
+  RTBBadge: 'rtb-badge',
   AutoComplete: 'autocomplete',
   Avatar: 'avatar',
   AvatarGroup: 'avatar-group',

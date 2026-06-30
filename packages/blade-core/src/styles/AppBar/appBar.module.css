@@ -13,7 +13,7 @@
   align-items: center;
   column-gap: var(--spacing-3);
   width: 100%;
-  height: 64px;
+  min-height: 64px;
   box-sizing: border-box;
   padding-top: var(--spacing-3);
   padding-bottom: var(--spacing-3);
@@ -40,13 +40,14 @@
   position: relative;
 }
 
-/* --- Variant: neutral (static-black surface, light foreground) ---
-   React forces a dark colorScheme so foreground tokens contrast against the
-   static-black surface. Svelte BladeProvider colorScheme scoping is limited, so
-   foreground colors are passed explicitly to Text/Icon (static-white) from the
-   components based on the variant; only the surface background lives here. */
+/* --- Variant: neutral (transparent surface, light foreground) ---
+   The AppBar has no background of its own (matches Figma) and sits directly over
+   the page. React forces a dark colorScheme so foreground tokens stay light;
+   Svelte BladeProvider colorScheme scoping is limited, so foreground colors are
+   passed explicitly to Text/Icon (static-white) from the components based on the
+   variant. Only the (transparent) surface background lives here. */
 .appBarNeutral {
-  background-color: var(--interactive-background-static-black-default);
+  background-color: var(--transparent);
 }
 
 /* --- Variant: subtle (adaptive gray surface) --- */
@@ -54,11 +55,22 @@
   background-color: var(--surface-background-gray-intense);
 }
 
-/* --- AppBar back button cell --- */
+/* --- AppBar leading row (back button + AppBarLeading + AppBarActions) --- */
+.appBarLeadingRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+}
+
+/* --- AppBar back button cell ---
+   Figma: 12px between back icon and leading content → spacing.4. */
 .appBarBackButton {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  margin-right: var(--spacing-4);
 }
 
 /* --- AppBarLeading ---
@@ -69,25 +81,44 @@
   align-items: center;
   gap: var(--spacing-3);
   min-width: 0;
-}
-
-.appBarLeadingPrefix {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  flex: 1 1 0;
+  overflow: hidden;
 }
 
 .appBarLeadingLogo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.appBarLeadingLogo :global(img),
+.appBarLeadingLogo :global(svg) {
+  display: block;
+  max-width: 100%;
+  max-height: 20px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Logo + full RTB when there is no title — badge stacks below the logo. */
+.appBarLeadingLogoStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .appBarLeadingTitleWrap {
   display: flex;
   flex-direction: column;
+  flex: 1 1 0;
   min-width: 0;
+  overflow: hidden;
 }
 
 .appBarLeadingTitleRow {
@@ -95,36 +126,35 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacing-3);
+  min-width: 0;
+  width: 100%;
 }
 
-.appBarLeadingTitleSuffix {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+/* Icon RTB stays adjacent to title (React: title + badge shrink-wrap in one row). */
+.appBarLeadingTitleRowWithIconRtb {
+  width: fit-content;
+  max-width: 100%;
 }
 
-/* --- RTB (Razorpay Trusted Business) pill ---
-   React RTBBadge: flex row, gap spacing.2, paddingX spacing.3, paddingY spacing.1,
-   borderRadius large, bg interactive.background.staticWhite.faded. */
-.appBarRtbPill {
+.appBarLeadingTitle {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: var(--spacing-2);
-  padding-left: var(--spacing-3);
-  padding-right: var(--spacing-3);
-  padding-top: var(--spacing-1);
-  padding-bottom: var(--spacing-1);
-  border-radius: var(--border-radius-large);
-  background-color: var(--interactive-background-static-white-faded);
-  flex-shrink: 0;
 }
 
-/* RTB shield icon is decorative (aria-hidden); the visible text is announced.
-   Foreground colors are passed explicitly to the icon/text components. */
-.appBarRtbShield {
+.appBarLeadingTitleRowWithIconRtb .appBarLeadingTitle {
+  flex: 0 1 auto;
+}
+
+/* RTB badge stacked below the title row when rtbBadge='full'. */
+.appBarLeadingBadge {
   display: flex;
   align-items: center;
+  margin-top: var(--spacing-1);
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* --- AppBarActions ---

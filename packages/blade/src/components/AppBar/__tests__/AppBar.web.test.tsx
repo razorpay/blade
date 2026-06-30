@@ -70,27 +70,37 @@ describe('<AppBar />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render AppBarLeading with logo', () => {
+  it('should render AppBarLeading with logo and full RTB badge', () => {
     const { container } = renderWithTheme(
       <AppBar>
         <AppBarLeading
           logo={<RazorpayIcon size="large" color="surface.icon.staticWhite.normal" />}
-          isTrustedBusiness
+          rtbBadge="full"
         />
       </AppBar>,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render AppBarLeading with title, subtitle and RTB badge', () => {
+  it('should render AppBarLeading with title and full RTB badge', () => {
     const { container, getByText } = renderWithTheme(
       <AppBar>
-        <AppBarLeading title="Mavenshop" subtitle="Online store" isTrustedBusiness />
+        <AppBarLeading title="Mavenshop" rtbBadge="full" />
       </AppBar>,
     );
     expect(getByText('Mavenshop')).toBeInTheDocument();
-    expect(getByText('Online store')).toBeInTheDocument();
     expect(getByText('Razorpay Trusted Business')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render AppBarLeading with title and icon RTB badge', () => {
+    const { container, getByText, getByLabelText } = renderWithTheme(
+      <AppBar>
+        <AppBarLeading title="Mavenshop" rtbBadge="icon" />
+      </AppBar>,
+    );
+    expect(getByText('Mavenshop')).toBeInTheDocument();
+    expect(getByLabelText('Razorpay Trusted Business')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 

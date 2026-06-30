@@ -12,7 +12,7 @@ export type AppBarVariants = {
  * Resolves the AppBar root classes.
  *
  * `variant` is the only style that depends on a single prop:
- * - `neutral` → static-black surface + static-white foreground (forced "dark" look)
+ * - `neutral` → transparent surface + static-white foreground (forced "dark" look)
  * - `subtle`  → gray surface that adapts to the page background
  *
  * Sticky/position is applied via a `data-sticky` attribute on the element (driven
@@ -42,15 +42,16 @@ export const getAppBarClasses = (props: AppBarVariants): string => {
 export function getAppBarTemplateClasses(): Record<string, string> {
   return {
     appBar: styles.appBar,
+    appBarLeadingRow: styles.appBarLeadingRow,
     appBarBackButton: styles.appBarBackButton,
     appBarLeading: styles.appBarLeading,
-    appBarLeadingPrefix: styles.appBarLeadingPrefix,
     appBarLeadingLogo: styles.appBarLeadingLogo,
+    appBarLeadingLogoStack: styles.appBarLeadingLogoStack,
     appBarLeadingTitleWrap: styles.appBarLeadingTitleWrap,
     appBarLeadingTitleRow: styles.appBarLeadingTitleRow,
-    appBarLeadingTitleSuffix: styles.appBarLeadingTitleSuffix,
-    appBarRtbPill: styles.appBarRtbPill,
-    appBarRtbShield: styles.appBarRtbShield,
+    appBarLeadingTitleRowWithIconRtb: styles.appBarLeadingTitleRowWithIconRtb,
+    appBarLeadingTitle: styles.appBarLeadingTitle,
+    appBarLeadingBadge: styles.appBarLeadingBadge,
     appBarActions: styles.appBarActions,
   };
 }

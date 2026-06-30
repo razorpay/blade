@@ -16,25 +16,23 @@ export function setAppBarContext(getContextValue: () => AppBarContextType): void
 }
 
 /**
- * Gets the AppBar context value.
- * Returns the context value or undefined if outside an AppBar.
+ * Gets the AppBar context getter for reactive reads in sub-components.
+ * Call the returned function inside `$derived` so prop updates (e.g. variant) propagate.
  */
-export function getAppBarContext(): AppBarContextType | undefined {
-  const getter = getContext<(() => AppBarContextType) | undefined>(APP_BAR_CONTEXT_KEY);
-  return getter?.();
+export function getAppBarContext(): () => AppBarContextType {
+  return getContext<() => AppBarContextType>(APP_BAR_CONTEXT_KEY);
 }
 
 /**
- * Gets the AppBar context value, warning (on localhost) if used outside an AppBar.
- * Use this in sub-components that must be inside an AppBar.
+ * Validates AppBar context presence, warning (on localhost) if used outside an AppBar.
+ * Use this in sub-components that must be inside an AppBar but do not read context values.
  */
-export function useAppBarContext(componentName: string): AppBarContextType {
-  const context = getAppBarContext();
-  if (!context) {
+export function useAppBarContext(componentName: string): void {
+  try {
+    getAppBarContext();
+  } catch {
     if (typeof window !== 'undefined' && window.location?.hostname === 'localhost') {
       console.error(`[Blade]: ${componentName} cannot be used outside of AppBar component`);
     }
-    return { variant: 'neutral' };
   }
-  return context;
 }

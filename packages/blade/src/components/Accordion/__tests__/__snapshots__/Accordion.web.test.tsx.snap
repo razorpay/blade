@@ -1167,7 +1167,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-46"
+                aria-controls="collapsible-body-43"
                 aria-expanded="false"
                 class="c3"
                 data-analytics-name="accordion-toggle-button"
@@ -1260,7 +1260,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-46"
+              id="collapsible-body-43"
               role="region"
             >
               <div
@@ -1318,7 +1318,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-47"
+                aria-controls="collapsible-body-44"
                 aria-expanded="false"
                 class="c3"
                 data-analytics-name="accordion-toggle-button"
@@ -1411,7 +1411,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-47"
+              id="collapsible-body-44"
               role="region"
             >
               <div
@@ -1469,7 +1469,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="heading"
             >
               <button
-                aria-controls="collapsible-body-48"
+                aria-controls="collapsible-body-45"
                 aria-expanded="false"
                 class="c3"
                 data-analytics-name="accordion-toggle-button"
@@ -1562,7 +1562,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               aria-hidden="true"
               class=""
               data-blade-component="collapsible-body"
-              id="collapsible-body-48"
+              id="collapsible-body-45"
               role="region"
             >
               <div

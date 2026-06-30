@@ -22,7 +22,7 @@ import { ArrowLeftIcon, UserIcon, CloseIcon } from '@razorpay/blade/components';
   <AppBarLeading
     title="Mavenshop"
     logo={<MerchantLogo />}
-    isTrustedBusiness
+    rtbBadge="full"
   />
   <AppBarActions>
     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
@@ -40,7 +40,7 @@ import { ArrowLeftIcon, UserIcon, CloseIcon } from '@razorpay/blade/components';
 <AppBar
   title="Mavenshop"
   logo={<MerchantLogo />}
-  isTrustedBusiness
+  rtbBadge="full"
   backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}
   actions={
     <>
@@ -106,7 +106,8 @@ type AppBarProps = {
 
   /**
    * Visual emphasis of the AppBar surface.
-   * - `'neutral'` (default): static-black surface, light foreground (matches Figma dark header).
+   * - `'neutral'` (default): transparent surface, light foreground (matches Figma — the
+   *   AppBar has no background of its own and sits directly over the page).
    * - `'subtle'`: surface that adapts to the page background for embedded/light contexts.
    *
    * @default 'neutral'
@@ -140,49 +141,27 @@ type AppBarProps = {
 ```typescript
 type AppBarLeadingProps = {
   /**
-   * Page/merchant title. Rendered as the leading text when no `logo` is passed,
-   * or below/beside the logo. Maps to Figma `type=text` and `type=logo-text`.
+   * Page/merchant title. Pairs with `logo` for logo+title layout.
    *
    * @default undefined
    */
   title?: string;
 
   /**
-   * Secondary text rendered under the title.
-   *
-   * @default undefined
-   */
-  subtitle?: string;
-
-  /**
-   * Brand logo slot (image/SVG). Maps to Figma `type=logo`.
-   * Presence of `logo` (vs `title`) infers the visual type — there is no `type` prop.
+   * Brand mark — wordmark, icon logo, avatar, etc.
    *
    * @default undefined
    */
   logo?: React.ReactNode;
 
   /**
-   * Leading thumbnail/icon shown before the title (Figma `type=text` icon-wrapper / illustration).
+   * Razorpay Trusted Business badge form.
+   * - `'full'`: shield + pill below the title/logo row
+   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  prefix?: React.ReactNode;
-
-  /**
-   * When `true`, renders the "Razorpay Trusted Business" (RTB) badge next to the
-   * logo/title. Replaces Figma's `showRTB` boolean (WYSIWYG — derived from this flag).
-   *
-   * @default false
-   */
-  isTrustedBusiness?: boolean;
-
-  /**
-   * Slot rendered immediately after the title (e.g. a `Badge`, `Counter`).
-   *
-   * @default undefined
-   */
-  titleSuffix?: React.ReactNode;
+  rtbBadge?: 'full' | 'icon';
 } & TestID &
   DataAnalyticsAttribute;
 ```
@@ -218,7 +197,7 @@ Merchant store header: brand logo, RTB badge, and two trailing icon actions.
 
 ```jsx
 <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
-  <AppBarLeading logo={<MerchantLogo />} isTrustedBusiness />
+  <AppBarLeading logo={<MerchantLogo />} rtbBadge="full" />
   <AppBarActions>
     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
     <IconButton icon={CloseIcon} accessibilityLabel="Close" onClick={onDismiss} />
@@ -226,13 +205,13 @@ Merchant store header: brand logo, RTB badge, and two trailing icon actions.
 </AppBar>
 ```
 
-### Text title with leading icon and trailing illustration
+### Logo, title, and RTB badge with trailing illustration
 
-Demonstrates the `prefix` thumbnail (`type=text`) and an illustration in the trailing slot (`trailing=illustration`).
+Demonstrates logo + title + full RTB badge (`rtbBadge="full"`) and an illustration in the trailing slot (`trailing=illustration`).
 
 ```jsx
 <AppBar>
-  <AppBarLeading prefix={<StoreThumbnail />} title="Body Text" isTrustedBusiness />
+  <AppBarLeading logo={<StoreLogo />} title="Body Text" rtbBadge="full" />
   <AppBarActions>
     <PromoIllustration />
   </AppBarActions>
@@ -244,15 +223,20 @@ Demonstrates the `prefix` thumbnail (`type=text`) and an illustration in the tra
 - The root renders a semantic `<header>` landmark (or `role="banner"` when appropriate) labelled by `accessibilityLabel`.
 - The back button is a Blade `IconButton` with a required `accessibilityLabel` ("Go back" by default in examples); it is keyboard focusable and activatable with Enter/Space.
 - All trailing `IconButton`s require an `accessibilityLabel`; they are reachable in DOM/tab order left → right after the leading region.
-- The RTB badge is decorative text; the visible "Razorpay Trusted Business" label is exposed to screen readers, the shield icon is `aria-hidden`.
-- `title`/`subtitle` are real text nodes (not background images) so they are announced.
-- Color contrast: foreground tokens are chosen against the dark `neutral` surface to meet WCAG AA.
+- The RTB badge is rendered via the standalone `RTBBadge` component. In its default `full` form the visible "Razorpay Trusted Business" text is exposed to screen readers and the brand shield is `aria-hidden`; in the `icon`-only form (no visible text) the shield wrapper carries a `role="img"` with the "Razorpay Trusted Business" label.
+- `title`/`logo` are real text nodes or accessible content (not background images) so they are announced.
+- Color contrast: the `neutral` surface is transparent and the AppBar sits over a dark page, so foreground tokens are forced light (static-white) to meet WCAG AA against that page.
 
 ## Open Questions
 
 - **Component name: `AppBar` vs `PageHeader` vs `MobileTopNav`** — Figma names the frame "Page Header", but `AppBar` is the established cross-DS term (MUI, Carbon) and reads clearly alongside `TopNav`/`SideNav`/`BottomNav`. Going with `AppBar`.
 - **`type` (logo / logo-text / text)** — NOT exposed as a prop. Inferred from whether `logo`, `title`, or both are passed on `AppBarLeading` (WYSIWYG). This avoids a redundant Figma-only prop.
-- **`showRTB`** — NOT exposed; replaced by `isTrustedBusiness` boolean on `AppBarLeading`. Considered a free-form `badge` slot but the design only ever shows the fixed RTB badge, so a boolean is more guided.
+- **`showRTB`** — NOT exposed; replaced by `rtbBadge?: 'full' | 'icon'` on `AppBarLeading`. Omit to hide the badge; set the form explicitly when shown.
+- **RTB badge placement** — `rtbBadge='full'` stacks the pill below the title/logo row; `rtbBadge='icon'` renders the shield inline with `title`, or beside `logo` when there is no title.
+- **RTB badge as a standalone component** — the "Razorpay Trusted Business" badge ships as its own exported `RTBBadge` component (top-level in both `blade` and `blade-svelte`) rather than living inline in `AppBarLeading`, so it can be reused outside the AppBar. `AppBarLeading` passes `rtbBadge` through as `<RTBBadge type={rtbBadge} variant={...} />`, deriving `variant` from the AppBar surface (`neutral` → white text, `subtle` → dark text). The badge exposes:
+  - `type?: 'full' | 'icon'` (default `'full'`) — `icon` drops the pill/text for compact surfaces.
+  - `variant?: 'neutral' | 'subtle'` (default `'neutral'`) — text/foreground treatment; the brand shield gradient is fixed regardless of variant.
+  The badge text is hardcoded ("Razorpay Trusted Business") and the shield comes from the branded `RTBShieldIcon`. The pill uses the `interactive.background.staticBlack.faded` token (Figma `rgba(0,0,0,0.1)`). It is web-only (native throws), matching the AppBar itself, because the shield's gradient/drop-shadow are web-only.
 - **`trailing` (icon / illustration)** — NOT a prop; the `AppBarActions` children slot accepts either icon buttons or an illustration (WYSIWYG).
 - **`state=scrolled`** — modeled as automatic scroll-driven elevation under `isSticky`, not a manual prop. Open: confirm with design whether the scrolled treatment is elevation, a bottom border, or a background change.
 - **`screenSize` (mobile / desktop)** — handled via responsive styled props (padding, logo width) rather than a prop, consistent with `TopNav`.

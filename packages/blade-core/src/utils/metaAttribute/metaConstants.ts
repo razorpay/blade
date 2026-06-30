@@ -80,6 +80,7 @@ export const MetaConstants = {
   AppBar: 'app-bar',
   AppBarLeading: 'app-bar-leading',
   AppBarActions: 'app-bar-actions',
+  RTBBadge: 'rtb-badge',
   TabNav: 'tab-nav',
   TabNavItems: 'tab-nav-items',
   TabNavItem: 'tab-nav-item',

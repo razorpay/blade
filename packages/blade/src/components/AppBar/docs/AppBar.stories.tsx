@@ -4,54 +4,36 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs/blocks';
 import { AppBar, AppBarActions, AppBarLeading } from '../AppBar';
 import type { AppBarProps } from '../types';
+import { Avatar } from '~components/Avatar';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import { Text } from '~components/Typography';
-import {
-  BellIcon,
-  CloseIcon,
-  RazorpayIcon,
-  SearchIcon,
-  StorefrontIcon,
-  UserIcon,
-} from '~components/Icons';
+import { BellIcon, CloseIcon, StorefrontIcon, UserIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
+const OPTIMIZER_LOGO_URL = 'https://cdn.razorpay.com/static/assets/optimizer_logo.svg';
+
 const MerchantLogo = (): React.ReactElement => (
-  <RazorpayIcon size="large" color="surface.icon.staticWhite.normal" />
+  <Avatar name="Mavenshop" variant="square" size="large" />
 );
 
-const StoreThumbnail = (): React.ReactElement => (
-  <Box
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    width="32px"
-    height="32px"
-    borderRadius="medium"
-    backgroundColor="surface.background.gray.intense"
-  >
-    <StorefrontIcon size="medium" color="surface.icon.staticWhite.normal" />
-  </Box>
+const OptimizerLogo = (): React.ReactElement => (
+  <img
+    src={OPTIMIZER_LOGO_URL}
+    alt="Razorpay Optimizer"
+    style={{ width: 'auto', height: 'auto', display: 'block' }}
+  />
 );
 
-const PromoIllustration = (): React.ReactElement => (
-  <Box
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    paddingX="spacing.4"
-    paddingY="spacing.2"
-    borderRadius="medium"
-    backgroundColor="surface.background.gray.intense"
-  >
-    <Text size="xsmall" weight="semibold" color="surface.text.staticWhite.normal">
-      ✨ 20% OFF
-    </Text>
-  </Box>
+const StoreLogo = (): React.ReactElement => (
+  <Avatar icon={StorefrontIcon} variant="square" size="large" />
+);
+
+const TitleInitialsLogo = (): React.ReactElement => (
+  <Avatar name="Maven Shop" variant="square" size="large" />
 );
 
 const DocsPage = (): React.ReactElement => {
@@ -108,7 +90,7 @@ Default.storyName = 'Default';
 const WithLogoTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<MerchantLogo />} isTrustedBusiness />
+      <AppBarLeading logo={<OptimizerLogo />} rtbBadge="full" />
     </AppBar>
   );
 };
@@ -119,11 +101,20 @@ WithLogo.storyName = 'With Logo';
 const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<MerchantLogo />} isTrustedBusiness />
+      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" rtbBadge="full" />
       <AppBarActions>
-        <IconButton icon={SearchIcon} accessibilityLabel="Search" onClick={noop} />
-        <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={noop} />
-        <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
+        <IconButton
+          icon={UserIcon}
+          emphasis="moderate"
+          accessibilityLabel="Profile"
+          onClick={noop}
+        />
+        <IconButton
+          icon={CloseIcon}
+          emphasis="moderate"
+          accessibilityLabel="Close"
+          onClick={noop}
+        />
       </AppBarActions>
     </AppBar>
   );
@@ -132,33 +123,35 @@ const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
 export const WithActions = WithActionsTemplate.bind({});
 WithActions.storyName = 'With Actions';
 
-const TextWithThumbnailTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
+const LogoAndTitleTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading prefix={<StoreThumbnail />} title="Body Text" subtitle="Online store" />
+      <AppBarLeading logo={<StoreLogo />} title="Maven Shop" />
       <AppBarActions>
-        <IconButton icon={CloseIcon} accessibilityLabel="Close" onClick={noop} />
+        <IconButton
+          icon={CloseIcon}
+          emphasis="moderate"
+          accessibilityLabel="Close"
+          onClick={noop}
+        />
       </AppBarActions>
     </AppBar>
   );
 };
 
-export const TextWithThumbnail = TextWithThumbnailTemplate.bind({});
-TextWithThumbnail.storyName = 'Text With Thumbnail';
+export const LogoAndTitle = LogoAndTitleTemplate.bind({});
+LogoAndTitle.storyName = 'Logo And Title';
 
-const TrailingIllustrationTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
+const TitleWithIconRtbTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<MerchantLogo />} isTrustedBusiness />
-      <AppBarActions>
-        <PromoIllustration />
-      </AppBarActions>
+      <AppBarLeading title="Maven Shop" rtbBadge="icon" />
     </AppBar>
   );
 };
 
-export const TrailingIllustration = TrailingIllustrationTemplate.bind({});
-TrailingIllustration.storyName = 'Trailing Illustration';
+export const TitleWithIconRtb = TitleWithIconRtbTemplate.bind({});
+TitleWithIconRtb.storyName = 'Title With Icon RTB';
 
 const SubtleVariantTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
@@ -187,7 +180,7 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <Box height="320px" overflowY="auto" backgroundColor="surface.background.gray.subtle">
       <AppBar {...args} isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-        <AppBarLeading logo={<MerchantLogo />} isTrustedBusiness />
+        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" rtbBadge="full" />
         <AppBarActions>
           <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
         </AppBarActions>
@@ -203,3 +196,26 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
 
 export const Sticky = StickyTemplate.bind({});
 Sticky.storyName = 'Sticky On Scroll';
+
+const MerchantCheckoutTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
+  return (
+    <AppBar
+      {...args}
+      backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}
+      accessibilityLabel="Mavenshop checkout"
+    >
+      <AppBarLeading title="Mavenshop" rtbBadge="full" />
+      <AppBarActions>
+        <IconButton
+          icon={UserIcon}
+          emphasis="moderate"
+          accessibilityLabel="Profile"
+          onClick={noop}
+        />
+      </AppBarActions>
+    </AppBar>
+  );
+};
+
+export const MerchantCheckout = MerchantCheckoutTemplate.bind({});
+MerchantCheckout.storyName = 'Merchant Checkout';

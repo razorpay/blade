@@ -4,6 +4,7 @@ import type { AppBarActionsProps, AppBarLeadingProps, AppBarProps } from './type
 import {
   APP_BAR_ACTIONS_GAP,
   APP_BAR_BACKGROUND_COLOR,
+  APP_BAR_BACK_BUTTON_GAP,
   APP_BAR_HEIGHT,
   APP_BAR_LEADING_GAP,
   APP_BAR_PADDING_X,
@@ -19,7 +20,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
-import { ArrowLeftIcon, ShieldIcon } from '~components/Icons';
+import { ArrowLeftIcon } from '~components/Icons';
+import { RTBBadge } from '~components/RTBBadge';
 import { Tooltip } from '~components/Tooltip';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -48,12 +50,19 @@ const _AppBar = (
   const resolvedColorScheme = variant === 'neutral' ? 'dark' : colorScheme;
 
   const backButtonElement = backButton ? (
-    <IconButton
-      icon={ArrowLeftIcon}
-      size="medium"
-      accessibilityLabel={backButton.accessibilityLabel}
-      onClick={backButton.onClick}
-    />
+    <BaseBox
+      display="flex"
+      alignItems="center"
+      flexShrink={0}
+      marginRight={APP_BAR_BACK_BUTTON_GAP}
+    >
+      <IconButton
+        icon={ArrowLeftIcon}
+        size="medium"
+        accessibilityLabel={backButton.accessibilityLabel}
+        onClick={backButton.onClick}
+      />
+    </BaseBox>
   ) : null;
 
   const appBar = (
@@ -76,7 +85,7 @@ const _AppBar = (
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      <BaseBox display="flex" flexDirection="row" alignItems="center" gap={APP_BAR_LEADING_GAP}>
+      <BaseBox display="flex" flexDirection="row" alignItems="center" minWidth="0px">
         {backButtonElement && backButton?.tooltip ? (
           <Tooltip content={backButton.tooltip.content} placement={backButton.tooltip.placement}>
             {backButtonElement}
@@ -111,7 +120,7 @@ const _AppBar = (
  *
  * ```jsx
  * <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
- *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} isTrustedBusiness />
+ *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} rtbBadge="full" />
  *   <AppBarActions>
  *     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
  *   </AppBarActions>
@@ -122,45 +131,21 @@ const AppBar = assignWithoutSideEffects(React.forwardRef(_AppBar), {
   componentId: MetaConstants.AppBar,
 });
 
-const RTBBadge = (): React.ReactElement => {
-  return (
-    <BaseBox
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
-      gap="spacing.2"
-      paddingX="spacing.3"
-      paddingY="spacing.1"
-      borderRadius="large"
-      backgroundColor="interactive.background.staticWhite.faded"
-      flexShrink={0}
-    >
-      {/* Blade icons are aria-hidden by default, so the shield is decorative and the visible
-       "Razorpay Trusted Business" text is what gets announced to screen readers. */}
-      <ShieldIcon size="small" color="surface.icon.staticWhite.normal" />
-      <Text size="xsmall" weight="regular" color="surface.text.staticWhite.normal">
-        Razorpay Trusted Business
-      </Text>
-    </BaseBox>
-  );
-};
-
 const _AppBarLeading = ({
   title,
-  subtitle,
   logo,
-  prefix,
-  isTrustedBusiness = false,
-  titleSuffix,
+  rtbBadge,
   testID,
   ...rest
 }: AppBarLeadingProps): React.ReactElement => {
   const appBarContext = useAppBarContext();
   const isNeutral = (appBarContext?.variant ?? 'neutral') === 'neutral';
-  // On the dark `neutral` surface the foreground is static-white; on the `subtle`
-  // surface it follows the regular theme text tokens so it stays legible.
   const titleColor = isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
-  const subtitleColor = isNeutral ? 'surface.text.staticWhite.muted' : 'surface.text.gray.muted';
+  const rtbVariant = isNeutral ? 'neutral' : 'subtle';
+  const showFullRtb = rtbBadge === 'full';
+  const showIconRtb = rtbBadge === 'icon';
+  const stackFullRtbBelowLogo = showFullRtb && Boolean(logo) && !title;
+  const hasTitleColumn = Boolean(title) || (showFullRtb && !logo);
 
   return (
     <BaseBox
@@ -168,42 +153,65 @@ const _AppBarLeading = ({
       flexDirection="row"
       alignItems="center"
       gap={APP_BAR_LEADING_GAP}
+      flex={1}
       minWidth="0px"
+      overflow="hidden"
       {...metaAttribute({ name: MetaConstants.AppBarLeading, testID })}
       {...makeAnalyticsAttribute(rest)}
     >
-      {prefix ? (
-        <BaseBox display="flex" alignItems="center" justifyContent="center" flexShrink={0}>
-          {prefix}
-        </BaseBox>
-      ) : null}
       {logo ? (
-        <BaseBox display="flex" alignItems="center" flexShrink={0}>
-          {logo}
-        </BaseBox>
+        stackFullRtbBelowLogo ? (
+          <BaseBox
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+            minWidth="0px"
+            maxWidth="100%"
+          >
+            <BaseBox display="flex" alignItems="center" minWidth="0px" maxWidth="100%">
+              {logo}
+            </BaseBox>
+            <BaseBox
+              display="flex"
+              alignItems="center"
+              marginTop="spacing.1"
+              minWidth="0px"
+              maxWidth="100%"
+            >
+              <RTBBadge type="full" variant={rtbVariant} />
+            </BaseBox>
+          </BaseBox>
+        ) : (
+          <BaseBox display="flex" alignItems="center" minWidth="0px" maxWidth="100%">
+            {logo}
+          </BaseBox>
+        )
       ) : null}
-      {title || subtitle ? (
+      {hasTitleColumn ? (
         <BaseBox display="flex" flexDirection="column" minWidth="0px">
           {title ? (
             <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {titleSuffix ? (
-                <BaseBox display="flex" alignItems="center" flexShrink={0}>
-                  {titleSuffix}
-                </BaseBox>
-              ) : null}
+              {showIconRtb ? <RTBBadge type="icon" variant={rtbVariant} /> : null}
             </BaseBox>
           ) : null}
-          {subtitle ? (
-            <Text size="small" weight="regular" color={subtitleColor}>
-              {subtitle}
-            </Text>
+          {showFullRtb && !stackFullRtbBelowLogo ? (
+            <BaseBox
+              display="flex"
+              alignItems="center"
+              marginTop="spacing.1"
+              minWidth="0px"
+              maxWidth="100%"
+            >
+              <RTBBadge type="full" variant={rtbVariant} />
+            </BaseBox>
           ) : null}
         </BaseBox>
+      ) : showIconRtb ? (
+        <RTBBadge type="icon" variant={rtbVariant} />
       ) : null}
-      {isTrustedBusiness ? <RTBBadge /> : null}
     </BaseBox>
   );
 };

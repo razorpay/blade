@@ -51,7 +51,6 @@ export {
   iconButtonStyles,
   getIconButtonClasses,
   getIconButtonTemplateClasses,
-  getIconButtonIconColorToken,
   highlightedButtonSizeMap,
 } from './IconButton';
 export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
@@ -147,6 +146,12 @@ export type {
 } from './Card';
 export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppBar';
 export type { AppBarVariants } from './AppBar';
+export {
+  getRTBBadgeTextColorToken,
+  getRTBBadgePillVariantClass,
+  getRTBBadgeTemplateClasses,
+} from './RTBBadge';
+export type { RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
 export {
   animatedChipCva,
   getAnimatedChipClasses,

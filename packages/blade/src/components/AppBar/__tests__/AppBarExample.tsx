@@ -17,7 +17,7 @@ const AppBarExample = (): React.ReactElement => {
       <AppBarLeading
         title="Mavenshop"
         logo={<RazorpayIcon size="large" color="surface.icon.staticWhite.normal" />}
-        isTrustedBusiness
+        rtbBadge="full"
       />
       <AppBarActions>
         <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={noop} />

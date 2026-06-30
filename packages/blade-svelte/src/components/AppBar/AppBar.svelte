@@ -8,9 +8,9 @@
   } from '@razorpay/blade-core/utils';
   import { getAppBarClasses, getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import { getUtilityClass } from '@razorpay/blade-core/styles';
-  import Button from '../Button/Button.svelte';
+  import IconButton from '../Button/IconButton/IconButton.svelte';
   import Tooltip from '../Tooltip/Tooltip.svelte';
-  import { ChevronLeftIcon } from '../Icons';
+  import { ArrowLeftIcon } from '../Icons';
   import { setAppBarContext } from './AppBarContext';
   import type { AppBarProps } from './types';
 
@@ -33,9 +33,10 @@
   // correct (static-white vs adaptive) foreground colors.
   setAppBarContext(() => ({ variant }));
 
-  // Icon-only Button is white on the dark `neutral` surface, primary otherwise.
-  const backButtonColor = $derived<'white' | 'primary'>(
-    variant === 'neutral' ? 'white' : 'primary',
+  // `subtle` emphasis renders a static-white icon for the dark `neutral` surface;
+  // `intense` renders the gray icon for the light `subtle` surface.
+  const backButtonEmphasis = $derived<'subtle' | 'intense'>(
+    variant === 'neutral' ? 'subtle' : 'intense',
   );
 
   // Convert a dot-notation background token (e.g. "surface.background.gray.intense")
@@ -69,25 +70,23 @@
   {...a11yAttrs}
   {...analyticsAttrs}
 >
-  <div class={templateClasses.appBarLeading}>
+  <div class={templateClasses.appBarLeadingRow}>
     {#if backButton}
       <div class={templateClasses.appBarBackButton}>
         {#if backButton.tooltip}
           <Tooltip content={backButton.tooltip.content} placement={backButton.tooltip.placement}>
-            <Button
-              icon={ChevronLeftIcon}
-              variant="tertiary"
-              color={backButtonColor}
+            <IconButton
+              icon={ArrowLeftIcon}
+              emphasis={backButtonEmphasis}
               size="medium"
               accessibilityLabel={backButton.accessibilityLabel}
               onClick={backButton.onClick}
             />
           </Tooltip>
         {:else}
-          <Button
-            icon={ChevronLeftIcon}
-            variant="tertiary"
-            color={backButtonColor}
+          <IconButton
+            icon={ArrowLeftIcon}
+            emphasis={backButtonEmphasis}
             size="medium"
             accessibilityLabel={backButton.accessibilityLabel}
             onClick={backButton.onClick}

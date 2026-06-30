@@ -2,83 +2,76 @@
   import { metaAttribute, MetaConstants, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
-  import { CheckCircleIcon } from '../Icons';
-  import { useAppBarContext } from './AppBarContext';
+  import { RTBBadge } from '../RTBBadge';
+  import { getAppBarContext } from './AppBarContext';
   import type { AppBarLeadingProps } from './types';
 
   // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
 
-  // Verify inside AppBar and read the variant for foreground color resolution.
-  const appBarContext = useAppBarContext('AppBarLeading');
+  const getAppBarCtx = getAppBarContext();
+  const appBarContext = $derived(getAppBarCtx());
 
-  let {
-    title,
-    subtitle,
-    logo,
-    prefix,
-    isTrustedBusiness = false,
-    titleSuffix,
-    testID,
-    ...rest
-  }: AppBarLeadingProps = $props();
+  let { title, logo, rtbBadge, testID, ...rest }: AppBarLeadingProps = $props();
 
   const isNeutral = $derived(appBarContext.variant === 'neutral');
 
   const titleColor = $derived(
     isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
   );
-  const subtitleColor = $derived(
-    isNeutral ? 'surface.text.staticWhite.muted' : 'surface.text.gray.subtle',
-  );
+
+  const showFullRtb = $derived(rtbBadge === 'full');
+  const showIconRtb = $derived(rtbBadge === 'icon');
+  const hasTitleColumn = $derived(Boolean(title) || (showFullRtb && !logo));
+  const stackFullRtbBelowLogo = $derived(showFullRtb && Boolean(logo) && !title);
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AppBarLeading, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
 <div class={templateClasses.appBarLeading} {...metaAttrs} {...analyticsAttrs}>
-  {#if prefix}
-    <div class={templateClasses.appBarLeadingPrefix}>
-      {@render prefix()}
-    </div>
-  {/if}
-
   {#if logo}
-    <div class={templateClasses.appBarLeadingLogo}>
-      {@render logo()}
-    </div>
+    {#if stackFullRtbBelowLogo}
+      <div class={templateClasses.appBarLeadingLogoStack}>
+        <div class={templateClasses.appBarLeadingLogo}>
+          {@render logo()}
+        </div>
+        <div class={templateClasses.appBarLeadingBadge}>
+          <RTBBadge type="full" variant={appBarContext.variant} />
+        </div>
+      </div>
+    {:else}
+      <div class={templateClasses.appBarLeadingLogo}>
+        {@render logo()}
+      </div>
+    {/if}
   {/if}
 
-  {#if title || subtitle}
+  {#if hasTitleColumn}
     <div class={templateClasses.appBarLeadingTitleWrap}>
       {#if title}
-        <div class={templateClasses.appBarLeadingTitleRow}>
-          <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
-            {title}
-          </Text>
-          {#if titleSuffix}
-            <div class={templateClasses.appBarLeadingTitleSuffix}>
-              {@render titleSuffix()}
-            </div>
+        <div
+          class="{templateClasses.appBarLeadingTitleRow}{showIconRtb
+            ? ` ${templateClasses.appBarLeadingTitleRowWithIconRtb}`
+            : ''}"
+        >
+          <div class={templateClasses.appBarLeadingTitle}>
+            <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
+              {title}
+            </Text>
+          </div>
+          {#if showIconRtb}
+            <RTBBadge type="icon" variant={appBarContext.variant} />
           {/if}
         </div>
       {/if}
-      {#if subtitle}
-        <Text size="small" weight="regular" color={subtitleColor}>
-          {subtitle}
-        </Text>
+      {#if showFullRtb && !stackFullRtbBelowLogo}
+        <div class={templateClasses.appBarLeadingBadge}>
+          <RTBBadge type="full" variant={appBarContext.variant} />
+        </div>
       {/if}
     </div>
-  {/if}
-
-  {#if isTrustedBusiness}
-    <div class={templateClasses.appBarRtbPill}>
-      <span class={templateClasses.appBarRtbShield} aria-hidden="true">
-        <CheckCircleIcon size="small" color="surface.icon.staticWhite.normal" />
-      </span>
-      <Text size="xsmall" weight="regular" color="surface.text.staticWhite.normal">
-        Razorpay Trusted Business
-      </Text>
-    </div>
+  {:else if showIconRtb}
+    <RTBBadge type="icon" variant={appBarContext.variant} />
   {/if}
 </div>
