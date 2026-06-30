@@ -1,6 +1,16 @@
 <script lang="ts">
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
-  import { dropdownHeaderClass, getDropdownTemplateClasses } from '@razorpay/blade-core/styles';
+  import {
+    dropdownHeaderClass,
+    dropdownHeaderContentClass,
+    dropdownHeaderLeadingClass,
+    dropdownHeaderMainClass,
+    dropdownHeaderTitleRowClass,
+    dropdownHeaderTitleClass,
+    dropdownHeaderSubtitleClass,
+    dropdownHeaderTrailingClass,
+    getDropdownTemplateClasses,
+  } from '@razorpay/blade-core/styles';
   import { getDropdownContext } from './dropdownContext';
   import type { DropdownHeaderProps } from './types';
 
@@ -41,29 +51,27 @@
   {...metaAttrs}
 >
   {#if leading || title || subtitle || titleSuffix || trailing}
-    <div class="blade-dropdown-header__content">
+    <div class={dropdownHeaderContentClass}>
       {#if leading}
-        <div class="blade-dropdown-header__leading">
+        <div class={dropdownHeaderLeadingClass}>
           {@render leading()}
         </div>
       {/if}
-      <div class="blade-dropdown-header__main">
+      <div class={dropdownHeaderMainClass}>
         {#if title}
-          <div class="blade-dropdown-header__title-row">
-            <span class="blade-dropdown-header__title">{title}</span>
+          <div class={dropdownHeaderTitleRowClass}>
+            <span class={dropdownHeaderTitleClass}>{title}</span>
             {#if titleSuffix}
-              <span class="blade-dropdown-header__title-suffix">
-                {@render titleSuffix()}
-              </span>
+              {@render titleSuffix()}
             {/if}
           </div>
         {/if}
         {#if subtitle}
-          <p class="blade-dropdown-header__subtitle">{subtitle}</p>
+          <p class={dropdownHeaderSubtitleClass}>{subtitle}</p>
         {/if}
       </div>
       {#if trailing}
-        <div class="blade-dropdown-header__trailing">
+        <div class={dropdownHeaderTrailingClass}>
           {@render trailing()}
         </div>
       {/if}

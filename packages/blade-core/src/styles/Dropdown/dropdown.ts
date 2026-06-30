@@ -10,6 +10,13 @@ export const getDropdownOverlayClasses = cva(styles.overlay);
 export const dropdownContainerClass: string = styles.container;
 export const dropdownOverlayPortalClass: string = styles['overlay-portal'];
 export const dropdownHeaderClass: string = styles.header;
+export const dropdownHeaderContentClass: string = styles.headerContent;
+export const dropdownHeaderLeadingClass: string = styles.headerLeading;
+export const dropdownHeaderMainClass: string = styles.headerMain;
+export const dropdownHeaderTitleRowClass: string = styles.headerTitleRow;
+export const dropdownHeaderTitleClass: string = styles.headerTitle;
+export const dropdownHeaderSubtitleClass: string = styles.headerSubtitle;
+export const dropdownHeaderTrailingClass: string = styles.headerTrailing;
 export const dropdownFooterClass: string = styles.footer;
 
 /**
@@ -23,6 +30,13 @@ export function getDropdownTemplateClasses(): Record<string, string> {
     portal: styles['overlay-portal'],
     overlay: styles.overlay,
     header: styles.header,
+    headerContent: styles.headerContent,
+    headerLeading: styles.headerLeading,
+    headerMain: styles.headerMain,
+    headerTitleRow: styles.headerTitleRow,
+    headerTitle: styles.headerTitle,
+    headerSubtitle: styles.headerSubtitle,
+    headerTrailing: styles.headerTrailing,
     footer: styles.footer,
   };
 }
