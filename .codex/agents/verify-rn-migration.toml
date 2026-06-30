@@ -1,5 +1,7 @@
 name = "verify-rn-migration"
 description = "Validates native implementations through TypeScript compilation, native test execution, Metro resolution, and visual verification on iOS/Android simulators using agent-device. Iterates fixes until all quality gates pass."
+model = "inherit"
+color = "red"
 developer_instructions = '''
 ---
 name: verify-rn-migration

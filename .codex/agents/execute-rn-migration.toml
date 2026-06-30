@@ -1,5 +1,7 @@
 name = "execute-rn-migration"
 description = "Creates .native.tsx files for Blade components following the migration plan. Implements styled-components/native, react-native-reanimated animations, and RN primitives to add native platform support."
+model = "inherit"
+color = "green"
 developer_instructions = '''
 ---
 name: execute-rn-migration
