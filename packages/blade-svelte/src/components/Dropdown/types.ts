@@ -1,6 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { Placement } from '@floating-ui/dom';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { IconButtonSize } from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../Icons/iconMap';
 
 export type DropdownProps = {
@@ -189,7 +190,7 @@ export type DropdownIconButtonProps = {
    *
    * @default 'medium'
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: IconButtonSize;
   /**
    * Accessible label (required for icon-only buttons)
    */
