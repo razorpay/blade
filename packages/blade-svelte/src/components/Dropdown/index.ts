@@ -47,6 +47,22 @@ export { default as DropdownFooter } from './DropdownFooter.svelte';
 export { getDropdownContext, setDropdownContext } from './dropdownContext';
 export type { DropdownContextState, DropdownTriggererType, OptionsType } from './dropdownContext';
 
+// Utility functions — re-exported for use by ActionList and other internal consumers
+export {
+  getActionListContainerRole,
+  getActionFromKey,
+  getUpdatedIndex,
+  filterOptions,
+  getIndexByLetter,
+  ensureScrollVisibility as ensureScrollVisiblity,
+  isScrollable,
+  isElementVisibleOnScreen,
+  makeInputValue,
+  makeInputDisplayValue,
+  performAction,
+} from './dropdownUtils';
+export type { SelectActionsType } from './dropdownUtils';
+
 // Types
 export type {
   DropdownProps,
