@@ -86,13 +86,12 @@
           }
           break;
         case 'First':
-          ctx.setIsOpen(true);
-          // fallthrough intentional
         case 'Next':
         case 'Previous':
         case 'PageUp':
         case 'PageDown':
         case 'Last': {
+          if (actionType === 'First') ctx.setIsOpen(true);
           e.preventDefault();
           const updated = getUpdatedIndex({
             currentIndex: activeIndex,

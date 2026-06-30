@@ -1,5 +1,8 @@
-import type { Snippet } from 'svelte';
+import type { Snippet, Component } from 'svelte';
 import type { Placement } from '@floating-ui/dom';
+import type { IconProps } from '../Icons/types';
+
+export type IconComponent = Component<IconProps>;
 
 export type DropdownProps = {
   /**
@@ -88,7 +91,7 @@ export type DropdownButtonProps = {
   /**
    * Icon component to render inside button
    */
-  icon?: unknown;
+  icon?: IconComponent;
   /**
    * Position of icon relative to label
    *
@@ -163,7 +166,7 @@ export type DropdownIconButtonProps = {
   /**
    * Icon component to render
    */
-  icon: unknown;
+  icon: IconComponent;
   /**
    * Disable the button
    *
@@ -212,7 +215,7 @@ export type DropdownLinkProps = {
   /**
    * Icon component
    */
-  icon?: unknown;
+  icon?: IconComponent;
   /**
    * Position of icon relative to label
    *
