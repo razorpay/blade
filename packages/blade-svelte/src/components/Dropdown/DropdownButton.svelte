@@ -4,10 +4,19 @@
     getActionListContainerRole,
     getActionFromKey,
     getUpdatedIndex,
-    ensureScrollVisiblity,
+    ensureScrollVisibility,
+    selectOption,
   } from './dropdownUtils';
   import { makeAccessible } from '@razorpay/blade-core/utils';
+  import {
+    getButtonClasses,
+    getButtonTemplateClasses,
+  } from '@razorpay/blade-core/styles';
   import type { DropdownButtonProps } from './types';
+
+  // Reference button template classes so the build doesn't tree-shake them.
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  void getButtonTemplateClasses();
 
   let {
     children,
@@ -49,6 +58,19 @@
     }),
   );
 
+  const isIconOnly = $derived(Boolean(Icon) && !children);
+
+  const buttonClass = $derived(
+    getButtonClasses({
+      variant,
+      color,
+      size,
+      isDisabled: isDisabled || isLoading,
+      isFullWidth,
+      isIconOnly,
+    }),
+  );
+
   function handleClick(e: MouseEvent): void {
     if (isDisabled || isLoading) return;
     if (ctx.isOpen) {
@@ -87,7 +109,7 @@
         case 'CloseSelect':
           e.preventDefault();
           if (activeIndex >= 0) {
-            selectOption(activeIndex);
+            selectOption(activeIndex, ctx);
             ctx.triggererRef.current?.focus();
           }
           break;
@@ -105,7 +127,7 @@
             actionType,
           });
           ctx.setActiveIndex(updated);
-          ensureScrollVisiblity(
+          ensureScrollVisibility(
             updated,
             ctx.actionListItemRef.current,
             options.map((o) => o.value),
@@ -120,34 +142,6 @@
 
     onKeyDown?.(e);
   }
-
-  function selectOption(index: number): void {
-    const { selectedIndices, selectionType, isControlled, changeCallbackTriggerer } = ctx;
-
-    if (selectionType === 'multiple') {
-      if (selectedIndices.includes(index)) {
-        const existingIdx = selectedIndices.indexOf(index);
-        const newIndices = [
-          ...selectedIndices.slice(0, existingIdx),
-          ...selectedIndices.slice(existingIdx + 1),
-        ];
-        if (isControlled) ctx.setControlledValueIndices(newIndices);
-        else ctx.setSelectedIndices(newIndices);
-      } else {
-        const newIndices = [...selectedIndices, index];
-        if (isControlled) ctx.setControlledValueIndices(newIndices);
-        else ctx.setSelectedIndices(newIndices);
-      }
-    } else {
-      if (isControlled) ctx.setControlledValueIndices([index]);
-      else ctx.setSelectedIndices([index]);
-      ctx.close();
-    }
-
-    ctx.setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
-    ctx.setActiveIndex(index);
-    ctx.options[index]?.onClickTrigger?.(true);
-  }
 </script>
 
 <button
@@ -161,7 +155,7 @@
   onblur={handleBlur}
   onkeydown={handleKeyDown}
   style={isFullWidth ? 'width:100%' : undefined}
-  class="blade-dropdown-button blade-dropdown-button--{variant} blade-dropdown-button--{size} blade-dropdown-button--{color}"
+  class={buttonClass}
 >
   {#if Icon}
     {#if iconPosition === 'left'}

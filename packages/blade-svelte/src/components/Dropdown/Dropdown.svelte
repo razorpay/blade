@@ -1,3 +1,11 @@
+<script module lang="ts">
+  // Module-level counter ensures each Dropdown instance across the page gets a unique base ID.
+  let idCounter = 0;
+  function generateId(prefix: string): string {
+    return `${prefix}-${++idCounter}`;
+  }
+</script>
+
 <script lang="ts">
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import {
@@ -11,12 +19,6 @@
   // Reference template classes so the build doesn't tree-shake them.
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   void getDropdownTemplateClasses();
-
-  // Simple ID counter — replaces React's useId
-  let idCounter = 0;
-  function generateId(prefix: string): string {
-    return `${prefix}-${++idCounter}`;
-  }
 
   let {
     children,
@@ -118,7 +120,7 @@
   };
 
   // --- Refs (mutable plain objects mirroring React refs) ---
-  const triggererRef: { current: HTMLButtonElement | null } = { current: null };
+  const triggererRef: { current: HTMLButtonElement | HTMLAnchorElement | null } = { current: null };
   const headerAutoCompleteRef: { current: HTMLButtonElement | null } = { current: null };
   const triggererWrapperRef: { current: HTMLElement | null } = { current: null };
   const actionListItemRef: { current: HTMLDivElement | null } = { current: null };

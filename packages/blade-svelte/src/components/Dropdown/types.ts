@@ -1,8 +1,7 @@
-import type { Snippet, Component } from 'svelte';
+import type { Snippet } from 'svelte';
 import type { Placement } from '@floating-ui/dom';
-import type { IconProps } from '../Icons/types';
-
-export type IconComponent = Component<IconProps>;
+import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { IconComponent } from '../Icons/iconMap';
 
 export type DropdownProps = {
   /**
@@ -35,7 +34,7 @@ export type DropdownProps = {
    * Use width prop on DropdownOverlay to change width of menu.
    */
   _width?: string;
-};
+} & StyledPropsBlade;
 
 export type DropdownOverlayProps = {
   /**
@@ -81,7 +80,7 @@ export type DropdownOverlayProps = {
    * Test ID for the overlay element
    */
   testID?: string;
-};
+} & DataAnalyticsAttribute;
 
 export type DropdownButtonProps = {
   /**
@@ -160,7 +159,7 @@ export type DropdownButtonProps = {
    * Test ID
    */
   testID?: string;
-};
+} & DataAnalyticsAttribute;
 
 export type DropdownIconButtonProps = {
   /**
@@ -264,7 +263,7 @@ export type DropdownLinkProps = {
    * Test ID
    */
   testID?: string;
-};
+} & DataAnalyticsAttribute;
 
 export type DropdownHeaderProps = {
   /**

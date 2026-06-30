@@ -44,7 +44,7 @@ export type DropdownContextState = {
   activeTagIndex: number;
   setActiveTagIndex: (value: number) => void;
   /** Ref for the triggerer element */
-  triggererRef: { current: HTMLButtonElement | null };
+  triggererRef: { current: HTMLButtonElement | HTMLAnchorElement | null };
   /** Ref for the header autocomplete element */
   headerAutoCompleteRef: { current: HTMLButtonElement | null };
   /** Ref for the triggerer wrapper element */
@@ -63,7 +63,7 @@ export type DropdownContextState = {
   dropdownTriggerer?: DropdownTriggererType;
   setDropdownTriggerer: (triggerer: DropdownTriggererType) => void;
   /** Single or multiple selection */
-  selectionType?: 'single' | 'multiple';
+  selectionType: 'single' | 'multiple';
   /** Whether footer contains an action */
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;

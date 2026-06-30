@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from 'svelte';
   import { computePosition, autoUpdate, offset, flip, size as sizeMiddleware } from '@floating-ui/dom';
   import { metaAttribute, MetaConstants, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import {
@@ -53,7 +54,10 @@
   let unmountTimeoutId: ReturnType<typeof setTimeout> | null = null;
   const UNMOUNT_FALLBACK_MS = 240;
 
-  // Track open state changes to drive mount/unmount and dataState
+  // Track open state changes to drive mount/unmount and dataState.
+  // Only ctx.isOpen is tracked as a reactive dependency. All other ctx reads
+  // are wrapped in untrack() so arrow-key navigation (which mutates activeIndex etc.)
+  // does not cancel and reschedule the open animation rAF.
   $effect(() => {
     const open = ctx.isOpen;
 
@@ -67,7 +71,9 @@
       if (isMounted) {
         unmountTimeoutId = setTimeout(() => {
           unmountTimeoutId = null;
-          if (!ctx.isOpen) isMounted = false;
+          untrack(() => {
+            if (!ctx.isOpen) isMounted = false;
+          });
         }, UNMOUNT_FALLBACK_MS);
       }
       return () => {
@@ -84,7 +90,9 @@
     });
 
     // Focus the triggerer on Safari (non-input focus fix)
-    ctx.triggererRef.current?.focus();
+    untrack(() => {
+      ctx.triggererRef.current?.focus();
+    });
 
     return () => cancelAnimationFrame(rafId);
   });
@@ -156,14 +164,14 @@
       ctx.triggererRef.current &&
       !ctx.triggererRef.current.contains(t)
     ) {
-      ctx.setIsOpen(false);
+      ctx.close();
     }
   }
 
   // Escape key dismiss
   function handleEscape(e: KeyboardEvent): void {
     if (e.key === 'Escape') {
-      ctx.setIsOpen(false);
+      ctx.close();
     }
   }
 

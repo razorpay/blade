@@ -280,7 +280,7 @@ export const performAction = (
  *
  * This function ensures the active option is always in the viewport
  */
-export const ensureScrollVisiblity = (
+export const ensureScrollVisibility = (
   newActiveIndex: number,
   containerElement: HTMLElement | null,
   options: string[],
@@ -337,6 +337,38 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
   // When more than one item is selected, we display the count of items
   return `${selectedIndices.length} items selected`;
 };
+
+/**
+ * Toggles the selection state for a given option index.
+ * Shared by DropdownButton, DropdownIconButton, and DropdownLink.
+ */
+export function selectOption(index: number, ctx: DropdownContextState): void {
+  const { selectedIndices, selectionType, isControlled, changeCallbackTriggerer } = ctx;
+
+  if (selectionType === 'multiple') {
+    if (selectedIndices.includes(index)) {
+      const existingIdx = selectedIndices.indexOf(index);
+      const newIndices = [
+        ...selectedIndices.slice(0, existingIdx),
+        ...selectedIndices.slice(existingIdx + 1),
+      ];
+      if (isControlled) ctx.setControlledValueIndices(newIndices);
+      else ctx.setSelectedIndices(newIndices);
+    } else {
+      const newIndices = [...selectedIndices, index];
+      if (isControlled) ctx.setControlledValueIndices(newIndices);
+      else ctx.setSelectedIndices(newIndices);
+    }
+  } else {
+    if (isControlled) ctx.setControlledValueIndices([index]);
+    else ctx.setSelectedIndices([index]);
+    ctx.close();
+  }
+
+  ctx.setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
+  ctx.setActiveIndex(index);
+  ctx.options[index]?.onClickTrigger?.(true);
+}
 
 /**
  * Get the ARIA role for the action list container based on context
