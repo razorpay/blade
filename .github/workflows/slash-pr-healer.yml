@@ -10,9 +10,12 @@ on:
   workflow_run:
     workflows: ['Blade Validate']
     types: [completed]
+  schedule:
+    # Check for PRs with merge conflicts every 30 minutes
+    - cron: '*/30 * * * *'
 
 concurrency:
-  group: ${{ github.repository }}-${{ github.event.inputs.pr_number || github.event.workflow_run.head_sha }}-slash-pr-healer
+  group: ${{ github.repository }}-${{ github.event.inputs.pr_number || github.event.workflow_run.head_sha || github.event_name }}-slash-pr-healer
   cancel-in-progress: false
 
 jobs:
@@ -112,3 +115,78 @@ jobs:
           gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
             --method POST \
             --field body="⚠️ **Slash PR Healer** failed to trigger. [View workflow run](${RUN_URL})"
+
+  heal-merge-conflicts:
+    name: Resolve merge conflicts via Slash
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number != '')
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+
+      - name: Find PRs with merge conflicts
+        id: find-conflicts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_OUTPUT: ${{ github.output }}
+        run: node .github/scripts/slash-pr-healer/find-merge-conflicts.js
+
+      - name: Trigger Slash for each conflict PR
+        if: steps.find-conflicts.outputs.conflict_prs != '[]' && steps.find-conflicts.outputs.conflict_prs != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          REPOSITORY: ${{ github.repository }}
+          CONFLICT_PRS: ${{ steps.find-conflicts.outputs.conflict_prs }}
+        run: |
+          PR_COUNT=$(echo "$CONFLICT_PRS" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))")
+          echo "Processing $PR_COUNT PR(s) with merge conflicts..."
+
+          for pr_obj in $(echo "$CONFLICT_PRS" | python3 -c "
+          import sys,json
+          for pr in json.load(sys.stdin):
+              print(json.dumps(pr))
+          "); do
+            PR_NUMBER=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['number'])")
+            PR_BRANCH=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['branch'])")
+            PR_URL=$(echo "$pr_obj" | python3 -c "import sys,json; print(json.load(sys.stdin)['url'])")
+
+            echo "---"
+            echo "Processing PR #${PR_NUMBER} (branch: ${PR_BRANCH})"
+
+            export SLASH_BRANCH="$PR_BRANCH"
+
+            PROMPT="Resolve the merge conflicts on PR ${PR_URL} (PR_NUMBER=${PR_NUMBER}, branch=${PR_BRANCH}). Clone the repo, checkout the PR branch, merge master into it, and resolve all merge conflicts. Try to understand the intent of both sides of each conflict and choose the correct resolution. After resolving, commit and push the changes. If you are unable to determine the intended resolution for any conflict, add the 'Human Help Needed 🧑🏻‍💻' label to the PR using: gh api repos/${REPOSITORY}/issues/${PR_NUMBER}/labels --method POST --field 'labels[]=Human Help Needed 🧑🏻‍💻'. Do NOT force-push or blindly overwrite either side without understanding the conflict."
+
+            RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+            echo "$RESPONSE_OUTPUT"
+
+            RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+            TASK_ID=$(echo "$RESPONSE_JSON" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('task_id',''))" 2>/dev/null || true)
+
+            if [ -n "$TASK_ID" ]; then
+              EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+              echo "Execution logs: ${EXECUTION_URL}"
+
+              gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+                --method POST \
+                --field body="🤖 **Slash PR Healer** detected merge conflicts and triggered auto-resolution. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
+            fi
+
+            sleep 10
+          done
+
+      - name: Post failure comment
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          echo "Merge conflict resolution job failed. [View workflow run](${RUN_URL})"
