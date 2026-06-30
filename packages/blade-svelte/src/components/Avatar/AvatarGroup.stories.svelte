@@ -75,7 +75,8 @@
 
 <Story name="Playground">
   {#snippet template(args)}
-    <AvatarGroup {...args}>
+    {@const { children: _, ...rest } = args}
+    <AvatarGroup {...rest}>
       {#each names as name, index}
         <Avatar name={name} color={avatarColors[index]} />
       {/each}

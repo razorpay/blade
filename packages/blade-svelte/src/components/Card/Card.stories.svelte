@@ -52,7 +52,8 @@
 
 <Story name="Playground">
   {#snippet template(args)}
-    <Card {...args} width="400px">
+    {@const { children: _, ...rest } = args}
+    <Card {...rest} width="400px">
       <CardBody>
         <Text>
           Card playground — tweak background, padding, and border radius via controls.

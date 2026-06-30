@@ -173,7 +173,8 @@
 
 <Story name="Playground">
   {#snippet template(args)}
-    <Card {...args} width="400px" onHover={() => console.log('Hovered')}>
+    {@const { children: _, ...rest } = args}
+    <Card {...rest} width="400px" onHover={() => console.log('Hovered')}>
       <CardHeader>
         <CardHeaderLeading title="Payment Pages" subtitle="Card Header Subtitle">
           {#snippet prefix()}
