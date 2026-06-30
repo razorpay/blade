@@ -3594,7 +3594,7 @@ describe('<GenUI />', () => {
         );
 
         expect(getByText('Figma Heading 1')).toHaveStyle({
-          fontSize: '28px',
+          fontSize: '32px',
           fontWeight: '600',
           lineHeight: '38px',
         });
@@ -3758,7 +3758,7 @@ describe('<GenUI />', () => {
           verticalAlign: '1.5px',
           fontSize: '11px',
           fontStyle: 'normal',
-          lineHeight: '15px',
+          lineHeight: '16px',
           background: 'rgb(255, 255, 255)',
           borderRadius: '4px',
           margin: '0 2px',

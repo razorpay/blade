@@ -132,8 +132,7 @@ const MarkdownHeading1 = styled.h1`
   margin: 0 0 ${({ theme }) => theme.spacing[6]}px;
   color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
   font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  /* Blade gap: no 28px heading font-size token. Nearest tokens are 24px and 32px. */
-  font-size: 28px;
+  font-size: ${({ theme }) => theme.typography.fonts.size[600]}px;
   font-weight: ${({ theme }) => theme.typography.fonts.weight.semibold};
   line-height: ${({ theme }) => theme.typography.lineHeights[600]}px;
 
@@ -278,8 +277,7 @@ const MarkdownInlineCode = styled.code`
   font-size: ${({ theme }) => theme.typography.fonts.size[50]}px;
   font-style: normal;
   font-weight: ${({ theme }) => theme.typography.fonts.weight.regular};
-  /* Blade gap: no 15px line-height token. Nearest tokens are 13px and 16px. */
-  line-height: 15px;
+  line-height: ${({ theme }) => theme.typography.lineHeights[50]}px;
   letter-spacing: 0;
   background: ${({ theme }) => theme.colors.surface.background.gray.intense};
   border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
