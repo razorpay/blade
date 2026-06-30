@@ -7,12 +7,22 @@
     component: Card,
     tags: ['autodocs'],
     argTypes: {
+      type: {
+        control: 'radio',
+        options: ['primary-card', 'secondary-card', 'theme-card'],
+      },
       backgroundColor: {
         control: 'select',
         options: [
           'surface.background.gray.intense',
           'surface.background.gray.moderate',
           'surface.background.gray.subtle',
+          'surface.background.primary.subtle',
+          'surface.background.primary.intense',
+          'surface.background.sea.subtle',
+          'surface.background.sea.intense',
+          'surface.background.cloud.subtle',
+          'surface.background.cloud.intense',
         ],
       },
       borderRadius: {
@@ -25,6 +35,7 @@
       },
     },
     args: {
+      type: 'primary-card',
       backgroundColor: 'surface.background.gray.intense',
       borderRadius: 'medium',
       padding: 'spacing.7',
@@ -47,7 +58,7 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
-  import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon } from '../Icons';
+  import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
 </script>
 
 <!-- Story 1: Card Example
@@ -484,6 +495,96 @@
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </Text>
+      </CardBody>
+    </Card>
+  </div>
+</Story>
+
+<!-- Story 8: Card Types — primary / secondary / theme treatments -->
+<Story name="Card Types" asChild>
+  <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+    <Card type="primary-card" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Primary Card"
+          subtitle="Elevated styling with surface.background.gray.intense background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>type="primary-card" uses gradients and drop shadow. backgroundColor is ignored.</Text>
+      </CardBody>
+    </Card>
+
+    <Card type="secondary-card" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Secondary Card"
+          subtitle="Flat styling with surface.background.gray.moderate background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>type="secondary-card" is flat with no elevation. backgroundColor is ignored.</Text>
+      </CardBody>
+    </Card>
+
+    <Card type="theme-card" backgroundColor="surface.background.cloud.subtle" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Theme Card"
+          subtitle="Elevated styling with surface.background.cloud.subtle background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>type="theme-card" matches primary-card elevation with a custom backgroundColor (cloud subtle here).</Text>
+      </CardBody>
+    </Card>
+  </div>
+</Story>
+
+<!-- Story 9: Order Summary — order item with SKU image, details, and pricing -->
+<Story name="Order Summary" asChild>
+  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+    <Card maxWidth="380px" size="medium">
+      <CardHeader>
+        <CardHeaderLeading title="Order summary" />
+        <CardHeaderTrailing>
+          {#snippet visual()}
+            <CardHeaderIconButton
+              icon={ChevronRightIcon}
+              accessibilityLabel="View order summary"
+              onClick={() => console.log('Order summary clicked')}
+            />
+          {/snippet}
+        </CardHeaderTrailing>
+      </CardHeader>
+      <CardBody>
+        <div style="display: flex; flex-direction: row; gap: var(--spacing-4); align-items: flex-start;">
+          <img
+            width="48"
+            height="48"
+            src="https://images.unsplash.com/photo-1545127398-14699f92334b?w=96&h=96&fit=crop"
+            alt="boAt XP345 Headphones"
+            style="flex-shrink: 0; border-radius: var(--border-radius-medium); object-fit: cover; background-color: var(--surface-background-gray-intense);"
+          />
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-1);">
+            <Text weight="semibold" size="medium" color="surface.text.gray.normal">
+              boAt XP345 Headphones
+            </Text>
+            <Text size="small" color="surface.text.gray.subtle">
+              Qty.1 • Black • XL
+            </Text>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: var(--spacing-1); flex-shrink: 0;">
+            <Amount value={1149} fractionDigits={0} weight="semibold" size="large" />
+            <Amount
+              value={4660}
+              fractionDigits={0}
+              isStrikethrough
+              color="surface.text.gray.subtle"
+              size="small"
+            />
+          </div>
+        </div>
       </CardBody>
     </Card>
   </div>

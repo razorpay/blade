@@ -148,6 +148,7 @@ export type {
 export {
   cardRootStyles,
   cardSurfaceStyles,
+  getCardBackgroundColor,
   getCardHeaderClasses,
   getCardFooterClasses,
   getCardTemplateClasses,
@@ -155,6 +156,10 @@ export {
 export type {
   CardRootVariants,
   CardSurfaceVariants,
+  CardBackgroundColor,
+  CardGrayBackgroundColor,
+  CardThemeBackgroundColor,
+  CardType,
   CardHeaderVariants,
   CardFooterVariants,
 } from './Card';

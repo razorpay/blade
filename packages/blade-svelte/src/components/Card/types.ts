@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -18,14 +19,27 @@ export type CardProps = {
    */
   children: Snippet;
   /**
-   * Sets the background color of the Card
+   * Sets the visual treatment of the Card.
+   *
+   * - `primary-card`: elevated styling (gradients, drop shadow) with
+   *   `surface.background.gray.intense` background.
+   * - `secondary-card`: flat styling with `surface.background.gray.moderate` background.
+   * - `theme-card`: elevated shadow and inset lip like `primary-card`, solid
+   *   configurable background (no white gradient overlays).
+   *
+   * @default 'primary-card'
+   */
+  type?: 'primary-card' | 'secondary-card' | 'theme-card';
+  /**
+   * Sets the background color of the Card.
+   *
+   * Only respected when `type` is `theme-card`. Supports gray and colored
+   * surface tokens (primary, sea, cloud). Ignored for `primary-card` and
+   * `secondary-card`.
    *
    * @default 'surface.background.gray.intense'
    */
-  backgroundColor?:
-    | 'surface.background.gray.subtle'
-    | 'surface.background.gray.moderate'
-    | 'surface.background.gray.intense';
+  backgroundColor?: CardBackgroundColor;
   /**
    * Sets the border radius of the Card
    *

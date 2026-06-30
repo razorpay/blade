@@ -3,6 +3,7 @@ import type { IconProps } from './types';
 import { CheckIcon } from './CheckIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { ChevronLeftIcon } from './ChevronLeftIcon';
+import { ChevronRightIcon } from './ChevronRightIcon';
 import { CloseIcon } from './CloseIcon';
 import { CreditCardIcon } from './CreditCardIcon';
 import { InfoIcon } from './InfoIcon';
@@ -26,6 +27,7 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
+  ChevronRightIcon,
   CloseIcon,
   CreditCardIcon,
   InfoIcon,
