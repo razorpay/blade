@@ -16,11 +16,21 @@ export type OTPInputOnEventWithIndex = (event: {
   inputIndex: number;
 }) => void;
 
-export interface OTPInputProps extends StyledPropsBlade, DataAnalyticsAttribute {
+type OTPInputPropsWithLabel = {
   /** Label shown above/beside the OTP fields. */
-  label?: string;
-  /** Accessibility label (required when `label` is absent). */
+  label: string;
+  /** Accessibility label (optional when `label` is provided). */
   accessibilityLabel?: string;
+};
+
+type OTPInputPropsWithA11yLabel = {
+  /** Label shown above/beside the OTP fields. */
+  label?: undefined;
+  /** Accessibility label (required when `label` is absent). */
+  accessibilityLabel: string;
+};
+
+interface OTPInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Label position. @default 'top' */
   labelPosition?: LabelPosition;
   /** Suffix element rendered after the label text. */
@@ -68,6 +78,9 @@ export interface OTPInputProps extends StyledPropsBlade, DataAnalyticsAttribute 
   /** Test ID for the outer wrapper. */
   testID?: string;
 }
+
+export type OTPInputProps = (OTPInputPropsWithLabel | OTPInputPropsWithA11yLabel) &
+  OTPInputCommonProps;
 
 /** Imperative handle exposed via `bind:this`. */
 export interface OTPInputInstance {

@@ -17,11 +17,21 @@ import type { NecessityIndicator } from '../_Form/types';
 /** Input type. `password` is intentionally excluded — use a PasswordInput instead. */
 export type TextInputType = 'text' | 'telephone' | 'email' | 'url' | 'number' | 'search';
 
-export interface TextInputProps extends StyledPropsBlade, DataAnalyticsAttribute {
+type TextInputPropsWithLabel = {
   /** Label shown for the input. */
-  label?: string;
-  /** Accessibility label (required when `label` is absent). */
+  label: string;
+  /** Accessibility label (optional when `label` is provided). */
   accessibilityLabel?: string;
+};
+
+type TextInputPropsWithA11yLabel = {
+  /** Label shown for the input. */
+  label?: undefined;
+  /** Accessibility label (required when `label` is absent). */
+  accessibilityLabel: string;
+};
+
+interface TextInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Label position. @default 'top' */
   labelPosition?: LabelPosition;
   /** Suffix element rendered after the label text. */
@@ -122,3 +132,6 @@ export interface TextInputProps extends StyledPropsBlade, DataAnalyticsAttribute
   /** Test ID for the element. */
   testID?: string;
 }
+
+export type TextInputProps = (TextInputPropsWithLabel | TextInputPropsWithA11yLabel) &
+  TextInputCommonProps;

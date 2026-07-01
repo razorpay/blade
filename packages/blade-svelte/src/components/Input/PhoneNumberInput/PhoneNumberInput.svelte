@@ -11,6 +11,7 @@
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import { CloseIcon } from '../../Icons';
   import CountrySelector from './CountrySelector.svelte';
+  import { useFormId } from '../BaseInput/useFormId';
   import type { PhoneNumberInputProps } from './types';
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -50,8 +51,11 @@
     autoCompleteSuggestionType,
     allowedCountries,
     placeholder,
+    id,
     ...rest
   }: PhoneNumberInputProps = $props();
+
+  const ids = useFormId('phone-number-input', id);
 
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
@@ -136,6 +140,7 @@
       el.focus();
     }
     onClearButtonClick?.();
+    emitChange({ changeName: el?.name, changeValue: '', changeCountry: selectedCountry });
     baseInput?.focus();
     shouldShowClearButton = false;
   };
@@ -177,7 +182,7 @@
 
 <BaseInput
   bind:this={baseInput}
-  id="phone-number-input"
+  id={ids.baseId}
   componentName="phone-number-input"
   label={label ?? ''}
   hideLabelText={!label}

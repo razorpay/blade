@@ -98,6 +98,8 @@ export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAt
   showCountrySelector?: boolean;
   /** Called when the clear button is clicked. */
   onClearButtonClick?: () => void;
+  /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */
+  id?: string;
 }
 
 /** Imperative handle exposed via `bind:this`. */

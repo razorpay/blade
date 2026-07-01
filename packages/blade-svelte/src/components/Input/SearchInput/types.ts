@@ -7,11 +7,21 @@ import type {
   AutoCapitalize,
 } from '../BaseInput/types';
 
-export interface SearchInputProps extends StyledPropsBlade, DataAnalyticsAttribute {
+type SearchInputPropsWithLabel = {
   /** Label shown for the input. */
-  label?: string;
-  /** Accessibility label (required when `label` is absent). */
+  label: string;
+  /** Accessibility label (optional when `label` is provided). */
   accessibilityLabel?: string;
+};
+
+type SearchInputPropsWithA11yLabel = {
+  /** Label shown for the input. */
+  label?: undefined;
+  /** Accessibility label (required when `label` is absent). */
+  accessibilityLabel: string;
+};
+
+interface SearchInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Label position. @default 'top' */
   labelPosition?: LabelPosition;
   /** Suffix element rendered after the label text. */
@@ -55,3 +65,6 @@ export interface SearchInputProps extends StyledPropsBlade, DataAnalyticsAttribu
   /** Test ID for the element. */
   testID?: string;
 }
+
+export type SearchInputProps = (SearchInputPropsWithLabel | SearchInputPropsWithA11yLabel) &
+  SearchInputCommonProps;
