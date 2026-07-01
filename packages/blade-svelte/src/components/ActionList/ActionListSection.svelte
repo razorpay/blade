@@ -15,7 +15,7 @@
 
   let { title, children, testID, ...rest }: ActionListSectionProps = $props();
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.ActionListSection, testID });
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.ActionListSection, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(makeAccessible({ role: getActionListSectionRole(), label: title }));
   // Inner listbox mirrors React so SRs announce the per-group item count.

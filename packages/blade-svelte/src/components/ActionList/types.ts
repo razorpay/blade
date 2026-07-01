@@ -20,29 +20,11 @@ export type ActionListItemClickPayload = {
   event: MouseEvent;
 };
 
-export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribute {
+interface ActionListBaseProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /**
    * Accepts `ActionListItem` / `ActionListSection` children.
    */
   children: Snippet;
-  /**
-   * Selection mode of the list.
-   *
-   * - `single` — one item selected at a time; `selectedValue` is a `string`.
-   * - `multiple` — many items selectable; `selectedValue` is a `string[]` and
-   *   each row renders a (visual, `aria-hidden`) checkbox indicator in place of
-   *   its `leading` content. `aria-multiselectable` is set on the container.
-   *
-   * @default 'single'
-   */
-  selectionType?: ActionListSelectionType;
-  /**
-   * Currently selected item value(s) (controlled). Drives `aria-selected` on rows.
-   *
-   * - `single` mode → pass a `string` (the selected item's `value`).
-   * - `multiple` mode → pass a `string[]` (all selected values).
-   */
-  selectedValue?: string | string[];
   /**
    * Fired when a row is activated, once per toggle, with the item's `value`.
    *
@@ -57,6 +39,37 @@ export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribut
    */
   testID?: string;
 }
+
+interface ActionListSingleProps extends ActionListBaseProps {
+  /**
+   * Selection mode: one item selected at a time.
+   *
+   * @default 'single'
+   */
+  selectionType?: 'single';
+  /**
+   * Currently selected item value (controlled). Pass the `value` of the
+   * selected `ActionListItem`. Drives `aria-selected` on rows.
+   */
+  selectedValue?: string;
+}
+
+interface ActionListMultipleProps extends ActionListBaseProps {
+  /**
+   * Selection mode: many items selectable. Each row renders a (visual,
+   * `aria-hidden`) checkbox indicator in place of its `leading` content.
+   * `aria-multiselectable` is set on the container.
+   */
+  selectionType: 'multiple';
+  /**
+   * Currently selected item values (controlled). Pass an array of `value`s
+   * for all selected `ActionListItem`s. Drives `aria-selected` on rows.
+   */
+  selectedValue?: string[];
+}
+
+/** Props for the `ActionList` container — `selectionType` discriminates `selectedValue`. */
+export type ActionListProps = ActionListSingleProps | ActionListMultipleProps;
 
 export interface ActionListItemProps extends DataAnalyticsAttribute {
   /**
@@ -137,7 +150,7 @@ export interface ActionListItemTextProps {
   /**
    * Caption text. Color follows the row's disabled state.
    */
-  children: Snippet | string;
+  children: Snippet;
 }
 
 /**
