@@ -202,25 +202,40 @@ const _InfoItemKey = (
       // Emulate CSS Grid `max-content` key column: once the shared width is known,
       // pin every key to it so values start at a uniform x (aligned two-column layout).
       width={isMeasuring && keyColumnWidth ? makeSize(keyColumnWidth) : undefined}
-      onLayout={isMeasuring && !keyColumnWidth ? handleLayout : undefined}
       paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
-      {itemOrientation === 'horizontal' && isHighlighted ? (
-        <Divider orientation="vertical" />
-      ) : null}
-      <TitleCollection
-        leading={leading}
-        trailing={trailing}
-        helpText={helpText}
-        titleWeight="medium"
-        titleColor="surface.text.gray.muted"
-        truncateAfterLines={truncateAfterLines}
-        paddingLeft={isHighlighted ? 'spacing.4' : 'spacing.0'}
-        paddingRight="spacing.0"
+      {/*
+       * Inner box measures the key's NATURAL width. It must stay unconstrained by the
+       * outer pinned width (above), otherwise a key mistakenly pinned narrow could never
+       * re-measure back to its true width. `onLayout` stays active for the whole measuring
+       * phase (not gated on `keyColumnWidth`) so every key reports even if another key lays
+       * out first — the group keeps the running max, so the column self-corrects.
+       */}
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        alignSelf="flex-start"
+        justifyContent="flex-start"
+        flexDirection="row"
+        onLayout={isMeasuring ? handleLayout : undefined}
       >
-        {children}
-      </TitleCollection>
+        {itemOrientation === 'horizontal' && isHighlighted ? (
+          <Divider orientation="vertical" />
+        ) : null}
+        <TitleCollection
+          leading={leading}
+          trailing={trailing}
+          helpText={helpText}
+          titleWeight="medium"
+          titleColor="surface.text.gray.muted"
+          truncateAfterLines={truncateAfterLines}
+          paddingLeft={isHighlighted ? 'spacing.4' : 'spacing.0'}
+          paddingRight="spacing.0"
+        >
+          {children}
+        </TitleCollection>
+      </BaseBox>
     </BaseBox>
   );
 };
