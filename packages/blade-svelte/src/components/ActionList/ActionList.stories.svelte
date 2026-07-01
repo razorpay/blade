@@ -79,44 +79,65 @@
   }
 </script>
 
-<!-- Playground — args drive the ActionList directly (standalone, no BottomSheet) so the
-     Controls panel can toggle props. Mirrors React, whose stories render ActionList standalone. -->
-<Story name="Playground">
+<!-- Mirrors React `Default`. Args drive Controls panel. -->
+<Story name="Default">
   {#snippet template(args: ActionListProps)}
     <ActionList {...args}>
       {#snippet children()}
-        <ActionListItem title="Home" value="home" />
-        <ActionListItem title="Pricing" value="pricing" />
-        <ActionListItem title="Settings" value="settings" />
+        <ActionListItem title="Item 1" value="item1" />
+        <ActionListItem title="Item 2" value="item2" />
       {/snippet}
     </ActionList>
   {/snippet}
 </Story>
 
-<!-- Standalone 1: Default — items with leading icons + one plain item. -->
-<Story name="Standalone">
+<!-- Mirrors React `Leading icons/images on Items`. -->
+<Story name="Leading icons/images on Items">
   {#snippet template()}
     <ActionList>
       {#snippet children()}
-        <ActionListItem title="Home" value="home">
+        <ActionListItem title="Settings" value="settings">
           {#snippet leading()}
-            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
+            <ActionListItemIcon icon={SearchIcon} />
           {/snippet}
         </ActionListItem>
-        <ActionListItem title="Payments" value="payments">
+        <ActionListItem title="Download" value="download">
           {#snippet leading()}
-            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
+            <ActionListItemIcon icon={HomeIcon} />
           {/snippet}
         </ActionListItem>
-        <ActionListItem title="Settings" value="settings" />
+        <ActionListItem title="Pricing" value="pricing">
+          {#snippet leading()}
+            <ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />
+          {/snippet}
+        </ActionListItem>
       {/snippet}
     </ActionList>
   {/snippet}
 </Story>
 
-<!-- Standalone 2: Interactive single-select — clicking a row updates `selectedValue`
-     via `onAction`, moving the selected highlight (aria-selected) live. -->
-<Story name="Standalone / Single Select (Interactive)">
+<!-- Mirrors React `Trailing icons/texts on Items`. -->
+<Story name="Trailing icons/texts on Items">
+  {#snippet template()}
+    <ActionList>
+      {#snippet children()}
+        <ActionListItem title="Bank Settings" value="bank_settings">
+          {#snippet trailing()}
+            <ActionListItemIcon icon={BuildingIcon} />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="FAQs, Live Chat" value="faqs">
+          {#snippet trailing()}
+            <ActionListItemText>⌘ + H</ActionListItemText>
+          {/snippet}
+        </ActionListItem>
+      {/snippet}
+    </ActionList>
+  {/snippet}
+</Story>
+
+<!-- Interactive single-select — clicking a row updates `selectedValue` via `onAction`. -->
+<Story name="Single Select (Interactive)">
   {#snippet template()}
     <ActionList
       selectedValue={selectedStandalone}
@@ -148,8 +169,8 @@
   {/snippet}
 </Story>
 
-<!-- Standalone 3: Item descriptions — secondary text rendered under the title. -->
-<Story name="Standalone / Item Descriptions">
+<!-- Item descriptions — secondary text rendered under the title. -->
+<Story name="Item Descriptions">
   {#snippet template()}
     <ActionList>
       {#snippet children()}
@@ -185,8 +206,8 @@
   {/snippet}
 </Story>
 
-<!-- Standalone 4: Link items — `href`/`target` render each row as an `<a>`. -->
-<Story name="Standalone / Link Items (href)">
+<!-- Link items — `href`/`target` render each row as an `<a>`. -->
+<Story name="Link Items (href)">
   {#snippet template()}
     <ActionList>
       {#snippet children()}
@@ -225,8 +246,8 @@
   {/snippet}
 </Story>
 
-<!-- Standalone 5: Sections + trailing content + disabled + negative intent (kitchen sink). -->
-<Story name="Standalone / Sections, Disabled & Negative">
+<!-- Mirrors React `With Sections`. -->
+<Story name="With Sections">
   {#snippet template()}
     <ActionList>
       {#snippet children()}
@@ -274,12 +295,8 @@
   {/snippet}
 </Story>
 
-<!-- Standalone 6: Custom Items — mirrors React's `Custom Items` story. Exercises the
-     new sub-components: ActionListItemAvatar + ActionListItemIcon leading, a description,
-     ActionListItemBadgeGroup/ActionListItemBadge in titleSuffix, href items, an onClick
-     item, and a negative logout. (Icon set differs from React — SettingsIcon/DownloadIcon/
-     LogOutIcon/ActivityIcon aren't migrated, so the nearest available icons are used.) -->
-<Story name="Standalone / Custom Items">
+<!-- Mirrors React `Custom Items`. Icon set differs from React — nearest available icons used. -->
+<Story name="Custom Items">
   {#snippet template()}
     <ActionList>
       {#snippet children()}
@@ -339,10 +356,8 @@
   {/snippet}
 </Story>
 
-<!-- Standalone 7: Multi Select (Interactive) — `selectionType="multiple"`, `selectedValue`
-     is a `string[]`. Each row renders the checkbox indicator (overriding `leading`);
-     clicking toggles membership via `onAction`. Consumer owns the array. -->
-<Story name="Standalone / Multi Select (Interactive)">
+<!-- Multi Select (Interactive) — `selectionType="multiple"`, consumer owns `selectedValue` array. -->
+<Story name="Multi Select (Interactive)">
   {#snippet template()}
     <ActionList
       selectionType="multiple"
