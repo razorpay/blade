@@ -17,7 +17,7 @@ export type ActionListItemClickPayload = {
   event: MouseEvent;
 };
 
-export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribute {
+export interface ActionListProps extends StyledPropsBlade {
   /**
    * Accepts `ActionListItem` / `ActionListSection` children.
    */
