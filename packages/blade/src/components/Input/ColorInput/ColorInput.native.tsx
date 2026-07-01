@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.native';
 import {
@@ -65,6 +65,41 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     setHexDisplayValue(colorValue.hex);
   }, [colorValue.hex]);
 
+  // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
+  const isFocusedRef = useRef(false);
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (blurTimeoutRef.current !== null) clearTimeout(blurTimeoutRef.current);
+    };
+  }, []);
+
+  const handleInputFocus = useCallback(
+    (args: { name?: string; value?: string }) => {
+      if (blurTimeoutRef.current !== null) {
+        clearTimeout(blurTimeoutRef.current);
+        blurTimeoutRef.current = null;
+      }
+      if (!isFocusedRef.current) {
+        isFocusedRef.current = true;
+        onFocus?.(args);
+      }
+    },
+    [onFocus],
+  );
+
+  const handleInputBlurBoundary = useCallback(
+    (args: { name?: string; value?: string }) => {
+      blurTimeoutRef.current = setTimeout(() => {
+        blurTimeoutRef.current = null;
+        isFocusedRef.current = false;
+        onBlur?.(args);
+      }, 0);
+    },
+    [onBlur],
+  );
+
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
   const idBase = useId('color-input');
   const labelId = `${idBase}-label`;
@@ -106,9 +141,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      onBlur?.({ name, value: inputValue });
+      handleInputBlurBoundary({ name, value: inputValue });
     },
-    [colorValue.opacity, name, onBlur],
+    [colorValue.opacity, handleInputBlurBoundary, name],
   );
 
   const handleSwatchChange = useCallback(
@@ -123,9 +158,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   const handleHexInputBlur = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
       setHexDisplayValue(colorValue.hex);
-      onBlur?.({ name, value: inputValue });
+      handleInputBlurBoundary({ name, value: inputValue });
     },
-    [colorValue.hex, name, onBlur],
+    [colorValue.hex, handleInputBlurBoundary, name],
   );
 
   // Sync opacityDisplayValue when controlled value changes externally
@@ -170,7 +205,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               placeholder="000000"
               value={hexDisplayValue}
               onChange={handleHexChange}
-              onFocus={onFocus}
+              onFocus={handleInputFocus}
               onBlur={handleHexInputBlur}
               isDisabled={isDisabled}
               isRequired={isRequired}
@@ -202,7 +237,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                 placeholder="100"
                 value={opacityDisplayValue}
                 onChange={handleOpacityChange}
-                onFocus={onFocus}
+                onFocus={handleInputFocus}
                 onBlur={handleOpacityBlur}
                 isDisabled={isDisabled}
                 validationState={validationState}
