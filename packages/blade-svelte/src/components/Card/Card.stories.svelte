@@ -40,7 +40,7 @@
     },
     args: {
       variant: 'theme',
-      backgroundColor: 'surface.background.gray.intense',
+      backgroundColor: 'surface.background.primary.subtle',
       borderRadius: 'medium',
       padding: 'spacing.7',
     },

@@ -62,7 +62,7 @@ export type CardType = 'primary' | 'secondary' | 'theme';
  *
  * `primary` and `secondary` own their background and ignore the
  * `backgroundColor` prop. `theme` defers to the configurable
- * `backgroundColor` (defaulting to intense when unset).
+ * `backgroundColor` (defaulting to primary subtle when unset).
  */
 export const getCardBackgroundColor = (
   type: CardType,
@@ -72,7 +72,7 @@ export const getCardBackgroundColor = (
     case 'secondary':
       return 'surface.background.gray.moderate';
     case 'theme':
-      return backgroundColor ?? 'surface.background.gray.intense';
+      return backgroundColor ?? 'surface.background.primary.subtle';
     case 'primary':
     default:
       return 'surface.background.gray.intense';

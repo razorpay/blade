@@ -179,7 +179,7 @@ export type CardProps =
        * Sets the background color. Only valid when `variant="theme"`.
        * Supports gray and colored surface tokens (primary, sea, cloud).
        *
-       * @default 'surface.background.gray.intense'
+       * @default 'surface.background.primary.subtle'
        */
       backgroundColor?: CardBackgroundColor;
     });
