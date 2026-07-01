@@ -21,8 +21,8 @@
     isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
   );
 
-  const showFullRtb = $derived(rtbBadge?.type === 'full');
-  const showIconRtb = $derived(rtbBadge?.type === 'icon');
+  const showFullRtb = $derived(rtbBadge === 'full');
+  const showIconRtb = $derived(rtbBadge === 'icon');
   const hasTitleColumn = $derived(Boolean(title) || (showFullRtb && !logo));
   const stackFullRtbBelowLogo = $derived(showFullRtb && Boolean(logo) && !title);
 

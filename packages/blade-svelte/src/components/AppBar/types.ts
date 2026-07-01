@@ -120,13 +120,13 @@ export type AppBarLeadingProps = {
   logo?: Snippet;
 
   /**
-   * Razorpay Trusted Business badge configuration.
-   * - `type: 'full'`: shield + pill below the title/logo row
-   * - `type: 'icon'`: shield only, inline with `title` (beside `logo` when no title)
+   * Razorpay Trusted Business badge form.
+   * - `'full'`: shield + pill below the title/logo row
+   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  rtbBadge?: { type: RTBBadgeType };
+  rtbBadge?: RTBBadgeType;
 
   /**
    * Test ID for the element.
