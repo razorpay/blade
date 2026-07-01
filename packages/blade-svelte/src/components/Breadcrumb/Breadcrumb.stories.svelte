@@ -63,6 +63,25 @@
   });
 </script>
 
+<Story name="Playground">
+  {#snippet template({ children: _children, ...args })}
+    <div
+      style:padding="var(--spacing-4)"
+      style:background-color={args.color === 'white' ? 'var(--surface-background-primary-intense)' : undefined}
+    >
+      <Breadcrumb {...args}>
+        {#snippet children()}
+          <BreadcrumbItem accessibilityLabel="Home" icon={HomeIcon} href="/home" />
+          <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage href="/settlements">
+            Settlements
+          </BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+  {/snippet}
+</Story>
+
 <!-- Story 1: Basic -->
 <Story name="Basic" asChild>
   <div style:padding="var(--spacing-4)">
