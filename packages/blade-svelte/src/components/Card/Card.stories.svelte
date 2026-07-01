@@ -39,7 +39,7 @@
       },
     },
     args: {
-      variant: 'primary',
+      variant: 'theme',
       backgroundColor: 'surface.background.gray.intense',
       borderRadius: 'medium',
       padding: 'spacing.7',
@@ -63,19 +63,26 @@
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
-  import type { CardProps } from './types';
+  import type { CardBackgroundColor, CardSpacingValueType } from '@razorpay/blade-core/styles';
 
-  type CardStoryArgs = Pick<
-    CardProps,
-    'variant' | 'backgroundColor' | 'borderRadius' | 'padding'
-  >;
+  type CardStoryArgs = {
+    variant?: 'primary' | 'secondary' | 'theme';
+    backgroundColor?: CardBackgroundColor;
+    borderRadius?: 'medium' | 'large' | 'xlarge';
+    padding?: CardSpacingValueType;
+  };
 
-  const getCardArgs = (args: CardStoryArgs): CardStoryArgs => ({
-    variant: args.variant,
-    backgroundColor: args.backgroundColor,
-    borderRadius: args.borderRadius,
-    padding: args.padding,
-  });
+  type CardSurfaceArgs =
+    | { variant?: 'primary' | 'secondary'; backgroundColor?: never; borderRadius?: 'medium' | 'large' | 'xlarge'; padding?: CardSpacingValueType }
+    | { variant: 'theme'; backgroundColor?: CardBackgroundColor; borderRadius?: 'medium' | 'large' | 'xlarge'; padding?: CardSpacingValueType };
+
+  function getCardSurfaceProps(args: CardStoryArgs): CardSurfaceArgs {
+    const common = { borderRadius: args.borderRadius, padding: args.padding };
+    if (args.variant === 'theme') {
+      return { ...common, variant: 'theme', backgroundColor: args.backgroundColor };
+    }
+    return { ...common, variant: (args.variant ?? 'primary') as 'primary' | 'secondary' };
+  }
 </script>
 
 <!-- Playground — args-driven; Controls panel updates Card surface props -->
@@ -84,7 +91,7 @@
     <div
       style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
     >
-      <Card {...getCardArgs(args)}>
+      <Card {...getCardSurfaceProps(args)}>
         <CardHeader>
           <CardHeaderLeading
             title="Payment Links"
@@ -462,7 +469,6 @@
 <!-- Story 6: Metric Card Variant -->
 <Story name="Metric Card Variant" asChild>
   <Card
-    backgroundColor="surface.background.gray.intense"
     maxWidth="500px"
     minWidth="300px"
     padding="spacing.5"
