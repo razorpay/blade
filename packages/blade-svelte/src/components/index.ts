@@ -91,7 +91,6 @@ export type {
   AppBarLeadingProps,
   AppBarActionsProps,
   AppBarVariant,
-  AppBarBackButton,
 } from './AppBar';
 
 // RTBBadge
