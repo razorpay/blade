@@ -83,6 +83,23 @@ type CollapsibleBodyProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Collapsible` for single expand/collapse toggles like "Read more" patterns or detail disclosure.
+- Compose with exactly one trigger (`CollapsibleButton` or `CollapsibleLink`) and one `CollapsibleBody`.
+- Use `direction="top"` when the trigger is at the bottom and content should expand upward.
+- Use `onExpandChange` to track state or perform actions on toggle.
+
+**Don't**
+
+- Don't use `Collapsible` for 3+ items that need expand/collapse — use `Accordion` instead.
+- Don't add custom `onClick` handlers on the trigger — use `onExpandChange` on the parent instead.
+- Don't make the trigger full-width — this is a design constraint.
+- Don't use `Collapsible` for content that needs gallery/zoom features — use `LightBox` or `Preview`.
+- Don't expect the trigger to support all Button/Link props — only a subset is available.
+
 ## Examples
 
 ### Basic Usage: Uncontrolled Collapsible with Button Trigger

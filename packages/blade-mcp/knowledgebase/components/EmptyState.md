@@ -52,6 +52,24 @@ export type EmptyStateProps = {
 export type EmptyStateSize = 'small' | 'medium' | 'large' | 'xlarge';
 ````
 
+## Usage Guidelines
+
+**Do**
+
+- Use `EmptyState` when a list, table, or section has no data to display — provide context and actionable next steps.
+- Include a clear `title` explaining why content is empty, and a `description` with guidance.
+- Use `children` to render action buttons (e.g., "Create New", "Retry") or links (e.g., "Contact Support").
+- Match `size` to context: `"small"` for inline empty states in cards, `"medium"` for lists/tables, `"xlarge"` for full-page states.
+- Provide `alt` text on custom image assets for accessibility.
+
+**Don't**
+
+- Don't use `EmptyState` as a loading placeholder — use `Skeleton` or `Spinner` while data is being fetched.
+- Don't wrap `EmptyState` around other components — use conditional rendering to show either the empty state or the actual content.
+- Don't omit both `title` and `description` — users need context to understand what to do next.
+- Don't use `EmptyState` for transient error feedback — use `Toast` or `Alert` for operation-level errors.
+- Don't use complex nested layouts in `children` without wrapping in `Box` for proper structure.
+
 ## Examples
 
 ### Complete EmptyState with Interactive Functionality

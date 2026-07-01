@@ -339,6 +339,11 @@ if (isPending) {
   console.log(`Review URL: ${created.html_url}`);
 }
 
+if (reviewStatus === 'approved') {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "rcore:eligible-for-auto-approval"`);
+  console.log('Added label: rcore:eligible-for-auto-approval');
+}
+
 const hasClarifications = allComments.some((c) => c.clarification);
 if (hasClarifications) {
   execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "Human Help Needed 🧑🏻‍💻"`);

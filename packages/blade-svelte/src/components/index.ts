@@ -114,6 +114,10 @@ export type {
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
 
+// AnnouncementBanner
+export { default as AnnouncementBanner } from './AnnouncementBanner/AnnouncementBanner.svelte';
+export type { AnnouncementBannerProps } from './AnnouncementBanner/types';
+
 // Avatar
 export { default as Avatar } from './Avatar/Avatar.svelte';
 export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
