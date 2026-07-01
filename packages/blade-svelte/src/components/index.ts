@@ -86,12 +86,7 @@ export {
 
 // AppBar
 export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
-export type {
-  AppBarProps,
-  AppBarLeadingProps,
-  AppBarActionsProps,
-  AppBarVariant,
-} from './AppBar';
+export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
 
 // RTBBadge
 export { RTBBadge } from './RTBBadge';
