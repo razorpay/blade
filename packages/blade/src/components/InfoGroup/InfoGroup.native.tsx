@@ -46,7 +46,7 @@ type KeyColumnMeasureContextType = {
   /** resolved shared key-column width (max of all measured keys), or undefined until measured */
   keyColumnWidth: number | undefined;
   /** each key reports its measured natural width here */
-  reportKeyWidth: (id: number, width: number) => void;
+  reportKeyWidth: (id: string, width: number) => void;
 };
 
 const KeyColumnMeasureContext = React.createContext<KeyColumnMeasureContextType>({
@@ -169,9 +169,6 @@ const TitleCollection = ({
   );
 };
 
-// Monotonic id generator so each key can report its width against a stable slot.
-let keyIdCounter = 0;
-
 const _InfoItemKey = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
@@ -181,7 +178,7 @@ const _InfoItemKey = (
   const { hasAvatar, isHighlighted } = useInfoItem();
   const { isMeasuring, keyColumnWidth, reportKeyWidth } = useKeyColumnMeasure();
 
-  const keyId = React.useRef<number>((keyIdCounter += 1)).current;
+  const keyId = React.useId();
 
   const handleLayout = React.useCallback(
     (event: LayoutChangeEvent) => {
@@ -491,10 +488,10 @@ const _InfoGroup = (
   const isHorizontal = itemOrientation === 'horizontal';
 
   // ── Horizontal: shared key-column width (emulates CSS Grid `max-content 1fr`) ──
-  const keyWidthsRef = React.useRef<Map<number, number>>(new Map());
+  const keyWidthsRef = React.useRef<Map<string, number>>(new Map());
   const [keyColumnWidth, setKeyColumnWidth] = React.useState<number | undefined>(undefined);
 
-  const reportKeyWidth = React.useCallback((id: number, measuredWidth: number) => {
+  const reportKeyWidth = React.useCallback((id: string, measuredWidth: number) => {
     const rounded = Math.ceil(measuredWidth);
     const previous = keyWidthsRef.current.get(id);
     if (previous === rounded) return;
