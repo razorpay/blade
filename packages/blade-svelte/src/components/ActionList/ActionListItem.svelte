@@ -94,7 +94,14 @@
         .join(' ')}
     >
       <span class={templateClasses.itemTitleRow}>
-        <Text as="span" size="medium" weight="regular" color={titleColor} truncateAfterLines={1}>
+        <Text
+          as="span"
+          size="medium"
+          weight="regular"
+          color={titleColor}
+          truncateAfterLines={1}
+          wordBreak="break-all"
+        >
           {title}
         </Text>
       </span>

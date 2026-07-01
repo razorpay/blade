@@ -15,7 +15,6 @@
     argTypes: {
       children: { table: { disable: true } },
       onAction: { table: { disable: true } },
-      isInBottomSheet: { table: { disable: true } },
       selectionType: { control: 'select', options: ['single'] },
       selectedValue: { control: 'text' },
     } as Record<string, unknown>,

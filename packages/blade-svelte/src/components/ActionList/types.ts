@@ -38,14 +38,6 @@ export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribut
    */
   onAction?: (payload: ActionListItemSelectPayload) => void;
   /**
-   * Whether the list is rendered inside a BottomSheet. When `true`, the outer
-   * box (border/shadow/padding) is dropped so BottomSheetBody owns scrolling.
-   *
-   * Resolved from `getBottomSheetContext()` when omitted, falling back to
-   * `false`.
-   */
-  isInBottomSheet?: boolean;
-  /**
    * Test ID for the container element.
    */
   testID?: string;

@@ -24,14 +24,14 @@
     selectionType = 'single',
     selectedValue,
     onAction,
-    isInBottomSheet: isInBottomSheetProp,
     testID,
     ...rest
   }: ActionListProps = $props();
 
-  // Prefer the migrated BottomSheet context, fall back to the explicit prop.
+  // Rendering-context flag, resolved only from the migrated BottomSheet context
+  // (not a public prop) — mirrors React's `useBottomSheetContext()`.
   const bs = getBottomSheetContext();
-  const isInBottomSheet = $derived(isInBottomSheetProp ?? bs?.isInBottomSheet ?? false);
+  const isInBottomSheet = $derived(bs?.isInBottomSheet ?? false);
 
   // Reactive context for child items (getters keep `selectedValue` live).
   const contextValue: ActionListContextValue = {
@@ -77,7 +77,13 @@
 {#if isInBottomSheet}
   <!-- In a BottomSheet: render ONLY the scroll wrapper so BottomSheetBody owns
        scroll + padding (mirrors React's isInBottomSheet branch). -->
-  <div class={wrapperClasses} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
+  <div
+    class={[wrapperClasses, styledClassString].filter(Boolean).join(' ') || undefined}
+    style={styledStyleString}
+    {...a11yAttrs}
+    {...metaAttrs}
+    {...analyticsAttrs}
+  >
     {@render children()}
   </div>
 {:else}
