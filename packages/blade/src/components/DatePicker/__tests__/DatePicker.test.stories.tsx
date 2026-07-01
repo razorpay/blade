@@ -535,8 +535,11 @@ export const DatePickerRangeSelectAutoFocus: StoryFn<
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
   const startInput = getByRole('combobox', { name: /Select a date range/i });
-  const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
-  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
+  // Use mid-month dates to avoid month-boundary ambiguity where the last day of a month
+  // can appear twice: once as a real day and once as an "outside" day in the next month's calendar
+  const prevMonth = dayjs().subtract(1, 'M');
+  const selectedStartDate = prevMonth.date(15).format('D MMMM YYYY');
+  const selectedEndDate = prevMonth.date(20).format('D MMMM YYYY');
   await userEvent.click(startInput);
   await sleep(400);
   const previousButton = getByRole('button', { name: /previous/i });
