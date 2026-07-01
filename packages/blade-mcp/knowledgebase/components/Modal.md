@@ -158,7 +158,7 @@ General-purpose modals with a named title (forms, detail views, guided flows, in
 └─────────────────────────────────┘
 ```
 
-```tsx
+```jsx
 <Modal isOpen={isOpen} onDismiss={onClose}>
   <ModalHeader title="Header Title" subtitle="Header Subtitle" />
   <ModalBody>{/* your content */}</ModalBody>
@@ -184,7 +184,7 @@ Irreversible or destructive actions (deleting data, discarding unsaved changes, 
 └─────────────────────────────────┘
 ```
 
-```tsx
+```jsx
 <Modal isOpen={isOpen} onDismiss={onClose}>
   <ModalBody>
     <Box backgroundColor="feedback.background.negative.subtle" borderRadius="medium"
