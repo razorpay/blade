@@ -116,6 +116,133 @@ type ModalFooterProps = {
 - Don't put arbitrary components in `ModalHeader` trailing — only Button, IconButton, Badge, Link, Text, and Amount are allowed.
 - Don't use `ModalBody` padding values other than `"spacing.0"` or `"spacing.6"`.
 
+## Anatomy
+
+Every modal is composed of three optional regions stacked vertically inside a floating card:
+
+```
+┌─────────────────────────────────┐  ← Modal Card (400px wide at size="small")
+│  _Modal Header                  │  (optional — title, subtitle, close ×)
+│  ─────────────────────────────  │  ← Divider
+│  modal-body / Slot              │  (always present)
+│  ─────────────────────────────  │  ← Divider (optional)
+│  _Modal Footer                  │  (optional — action buttons)
+└─────────────────────────────────┘
+```
+
+A **Dismiss Action** (`×` icon button) can be placed in two ways:
+
+| Placement | When to use | Behaviour |
+|---|---|---|
+| **In-header** | Modal has a `ModalHeader` with title | Rendered inside `ModalHeader` flex row, right-aligned |
+| **External / floating** | Headerless modals (no `ModalHeader`) | Absolutely positioned at `top: 16px, right: 16px`; circular `surface.background.gray.intense` background, 28px diameter |
+
+Use the external dismiss when there is no header — it avoids wasted vertical space while still providing an escape route.
+
+## Modal Templates
+
+Four established templates cover the most common modal use cases:
+
+### Template 1 — Standard Modal with Header
+
+General-purpose modals with a named title (forms, detail views, guided flows, information panels).
+
+```
+┌─────────────────────────────────┐
+│ Header Title              [✕]  │  ← ModalHeader (in-header dismiss)
+│ Header Subtitle                 │
+│ ─────────────────────────────── │
+│  [     Slot content area     ]  │  ← ModalBody
+│ ─────────────────────────────── │
+│       [Secondary]  [Primary]    │  ← ModalFooter (full-width buttons)
+└─────────────────────────────────┘
+```
+
+```tsx
+<Modal isOpen={isOpen} onDismiss={onClose}>
+  <ModalHeader title="Header Title" subtitle="Header Subtitle" />
+  <ModalBody>{/* your content */}</ModalBody>
+  <ModalFooter>
+    <Button variant="secondary" isFullWidth onClick={onSecondary}>Secondary</Button>
+    <Button isFullWidth onClick={onPrimary}>Primary</Button>
+  </ModalFooter>
+</Modal>
+```
+
+### Template 2 — Destructive Confirmation Modal
+
+Irreversible or destructive actions (deleting data, discarding unsaved changes, revoking access).
+
+```
+                           [✕]    ← External floating dismiss
+┌─────────────────────────────────┐
+│  [🗑️]                           │  ← Negative icon badge (48×48px)
+│  Action title?                  │
+│  Consequence description        │
+│ ─────────────────────────────── │
+│         [No, Go back]  [Discard]│  ← Right-aligned compact buttons
+└─────────────────────────────────┘
+```
+
+```tsx
+<Modal isOpen={isOpen} onDismiss={onClose}>
+  <ModalBody>
+    <Box backgroundColor="feedback.background.negative.subtle" borderRadius="medium"
+         padding="spacing.3" width="48px" height="48px">
+      <TrashIcon color="feedback.icon.negative.intense" size="large" />
+    </Box>
+    <Heading size="medium" weight="semibold">Discard import?</Heading>
+    <Text size="medium" color="surface.text.gray.subtle">
+      We do not save the progress, you'll need to upload the files again
+    </Text>
+  </ModalBody>
+  <ModalFooter>
+    <Button variant="tertiary" color="primary" onClick={onCancel}>No, Go back</Button>
+    <Button color="negative" onClick={onConfirm}>Discard</Button>
+  </ModalFooter>
+</Modal>
+```
+
+### Template 3 — Headerless Modal (Full-width buttons)
+
+Modals whose content is self-explanatory (embedded form, image, rich media) where a header label would be redundant.
+
+```
+                           [✕]    ← External floating dismiss
+┌─────────────────────────────────┐
+│  [     Slot content area     ]  │  ← ModalBody (bare slot)
+│ ─────────────────────────────── │
+│       [Secondary]  [Primary]    │  ← ModalFooter (full-width buttons)
+└─────────────────────────────────┘
+```
+
+### Template 4 — Headerless Modal (Compact / Right-aligned buttons)
+
+Compact confirmations where the action pair has a clear destructive semantic ("Cancel" / "Delete").
+
+```
+                           [✕]    ← External floating dismiss
+┌─────────────────────────────────┐
+│  [     Slot content area     ]  │  ← ModalBody (bare slot)
+│ ─────────────────────────────── │
+│              [Secondary][Primary]│  ← ModalFooter (right-aligned, content-sized)
+└─────────────────────────────────┘
+```
+
+## Footer Button Alignment Patterns
+
+| Layout | Templates | When to use |
+|---|---|---|
+| **Full-width equal** | 1, 3 | Both buttons `flex: 1`, filling the footer equally. Standard confirm/cancel where both actions carry equal weight. |
+| **Fixed-size right-aligned** | 2, 4 | Buttons size to their label, grouped at `justify-end`. Best for destructive confirmations where the primary label is short (e.g. "Discard", "Delete"). |
+
+## Button Color Semantics
+
+| Scenario | Secondary button | Primary button |
+|---|---|---|
+| Neutral action | `variant="secondary"` | `variant="primary" color="primary"` (blue) |
+| Destructive / negative | `variant="tertiary" color="primary"` | `variant="primary" color="negative"` (red) |
+
 ## Example
 
 Below is a comprehensive example showcasing the Modal component with various configurations:
