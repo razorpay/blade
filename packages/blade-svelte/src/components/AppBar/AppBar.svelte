@@ -19,7 +19,10 @@
 
   let {
     children,
-    backButton,
+    showBackButton = false,
+    onBackButtonClick,
+    backButtonAccessibilityLabel = 'Go back',
+    backButtonTooltip,
     variant = 'neutral',
     isSticky = true,
     accessibilityLabel,
@@ -71,16 +74,16 @@
   {...analyticsAttrs}
 >
   <div class={templateClasses.appBarLeadingRow}>
-    {#if backButton}
+    {#if showBackButton}
       <div class={templateClasses.appBarBackButton}>
-        {#if backButton.tooltip}
-          <Tooltip content={backButton.tooltip.content} placement={backButton.tooltip.placement}>
+        {#if backButtonTooltip}
+          <Tooltip content={backButtonTooltip.content} placement={backButtonTooltip.placement}>
             <IconButton
               icon={ArrowLeftIcon}
               emphasis={backButtonEmphasis}
               size="medium"
-              accessibilityLabel={backButton.accessibilityLabel}
-              onClick={backButton.onClick}
+              accessibilityLabel={backButtonAccessibilityLabel}
+              onClick={onBackButtonClick}
             />
           </Tooltip>
         {:else}
@@ -88,8 +91,8 @@
             icon={ArrowLeftIcon}
             emphasis={backButtonEmphasis}
             size="medium"
-            accessibilityLabel={backButton.accessibilityLabel}
-            onClick={backButton.onClick}
+            accessibilityLabel={backButtonAccessibilityLabel}
+            onClick={onBackButtonClick}
           />
         {/if}
       </div>

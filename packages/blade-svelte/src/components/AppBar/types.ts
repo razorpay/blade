@@ -8,29 +8,6 @@ import type { TooltipPlacement } from '../Tooltip/types';
  */
 export type AppBarVariant = 'neutral' | 'subtle';
 
-/**
- * Configuration for the back affordance rendered at the left edge of the AppBar.
- */
-export type AppBarBackButton = {
-  /**
-   * Click handler for the back button.
-   */
-  onClick: (event: MouseEvent) => void;
-  /**
-   * Accessibility label for the back button (required).
-   */
-  accessibilityLabel: string;
-  /**
-   * Forwards `content`/`placement` to a Tooltip wrapping the back button.
-   *
-   * @default undefined
-   */
-  tooltip?: {
-    content: string;
-    placement?: TooltipPlacement;
-  };
-};
-
 export type AppBarProps = {
   /**
    * The contents of the AppBar — typically `AppBarLeading` and `AppBarActions`.
@@ -38,13 +15,35 @@ export type AppBarProps = {
   children: Snippet;
 
   /**
-   * Renders a back button at the left-most edge of the AppBar. Pass an object
-   * with the click handler and accessibility label. When omitted, no back button
-   * is rendered (WYSIWYG — no separate `showBackButton` flag).
+   * When `true`, renders a back button at the left-most edge of the AppBar.
+   *
+   * @default false
+   */
+  showBackButton?: boolean;
+
+  /**
+   * Click handler for the back button. Required when `showBackButton` is `true`.
    *
    * @default undefined
    */
-  backButton?: AppBarBackButton;
+  onBackButtonClick?: (event: MouseEvent) => void;
+
+  /**
+   * Accessibility label for the back button.
+   *
+   * @default 'Go back'
+   */
+  backButtonAccessibilityLabel?: string;
+
+  /**
+   * Forwards `content`/`placement` to a Tooltip wrapping the back button.
+   *
+   * @default undefined
+   */
+  backButtonTooltip?: {
+    content: string;
+    placement?: TooltipPlacement;
+  };
 
   /**
    * Visual emphasis of the AppBar surface.
@@ -72,12 +71,21 @@ export type AppBarProps = {
   accessibilityLabel?: string;
 
   /**
-   * Overrides the surface background color. When set, takes precedence over the
-   * `variant` background.
+   * Overrides the surface background color using a Blade surface token.
+   * When set, takes precedence over the `variant` background.
+   * Use dot-notation token paths, e.g. `"surface.background.gray.intense"`.
    *
    * @default undefined
    */
-  backgroundColor?: string;
+  backgroundColor?:
+    | 'surface.background.gray.intense'
+    | 'surface.background.gray.moderate'
+    | 'surface.background.gray.mild'
+    | 'surface.background.gray.subtle'
+    | 'surface.background.primary.intense'
+    | 'surface.background.primary.moderate'
+    | 'surface.background.primary.mild'
+    | 'surface.background.primary.subtle';
 
   /**
    * Sets the `width` of the AppBar.
@@ -115,13 +123,13 @@ export type AppBarLeadingProps = {
   logo?: Snippet;
 
   /**
-   * Razorpay Trusted Business badge form.
-   * - `'full'`: shield + pill below the title/logo row
-   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
+   * Razorpay Trusted Business badge configuration.
+   * - `type: 'full'`: shield + pill below the title/logo row
+   * - `type: 'icon'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  rtbBadge?: RTBBadgeType;
+  rtbBadge?: { type: RTBBadgeType };
 
   /**
    * Test ID for the element.

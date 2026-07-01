@@ -61,7 +61,7 @@
  * For use on dark / intense surfaces.
  */
 .emphasis-subtle {
-  color: var(--interactive-icon-static-white-normal);
+  color: var(--interactive-icon-static-white-muted);
 
   &:hover:not([disabled]),
   &:focus-visible:not([disabled]),

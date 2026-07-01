@@ -47,6 +47,11 @@
           '[Blade: IconButton]: size "large" is not allowed with isHighlighted true or emphasis "moderate"',
         );
       }
+      if (emphasis === 'moderate' && isHighlighted) {
+        console.error(
+          '[Blade: IconButton]: emphasis "moderate" is not compatible with isHighlighted true — moderate already provides its own highlighted-background style',
+        );
+      }
     }
   });
 

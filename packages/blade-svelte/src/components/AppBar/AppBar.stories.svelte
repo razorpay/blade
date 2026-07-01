@@ -78,12 +78,10 @@
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = (): void => {};
 
-  type RtbBadgeVariant = 'full' | 'icon' | undefined;
-
-  const rtbBadgeRows: { label: string; rtbBadge: RtbBadgeVariant }[] = [
-    { label: 'Full RTB badge', rtbBadge: 'full' },
+  const rtbBadgeRows: { label: string; rtbBadge: { type: RTBBadgeType } | undefined }[] = [
+    { label: 'Full RTB badge', rtbBadge: { type: 'full' } },
     { label: 'No RTB badge', rtbBadge: undefined },
-    { label: 'Inline RTB icon', rtbBadge: 'icon' },
+    { label: 'Inline RTB icon', rtbBadge: { type: 'icon' } },
   ];
 
   const checkoutBackgroundStyle =
@@ -121,14 +119,19 @@
 <Story name="Playground">
   {#snippet template(args)}
     {@const playgroundArgs = args as AppBarPlaygroundArgs}
-    {@const rtbBadge = playgroundArgs.rtbBadge === 'none' ? undefined : playgroundArgs.rtbBadge}
-    {@const backButton = playgroundArgs.showBackButton
-      ? { onClick: noop, accessibilityLabel: 'Go back' }
-      : undefined}
+    {@const rtbBadge =
+      playgroundArgs.rtbBadge === 'none' || playgroundArgs.rtbBadge === undefined
+        ? undefined
+        : { type: playgroundArgs.rtbBadge }}
     {@const backgroundStyle =
       playgroundArgs.variant === 'neutral' ? playgroundNeutralStyle : playgroundSubtleStyle}
     <div style={backgroundStyle}>
-      <AppBar variant={playgroundArgs.variant} isSticky={playgroundArgs.isSticky} {backButton}>
+      <AppBar
+        variant={playgroundArgs.variant}
+        isSticky={playgroundArgs.isSticky}
+        showBackButton={playgroundArgs.showBackButton}
+        onBackButtonClick={noop}
+      >
         {#if playgroundArgs.leadingContent === 'logo-only'}
           <AppBarLeading {rtbBadge}>
             {#snippet logo()}
@@ -166,7 +169,7 @@
 <Story name="Variations" asChild parameters={{ docs: { disable: true } }}>
   <div style="{checkoutBackgroundStyle} {variationsStackStyle}">
     {#each rtbBadgeRows as row (row.label)}
-      <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+      <AppBar showBackButton onBackButtonClick={noop}>
         <AppBarLeading rtbBadge={row.rtbBadge}>
           {#snippet logo()}
             {@render optimizerLogo()}
@@ -177,7 +180,7 @@
         </AppBarActions>
       </AppBar>
 
-      <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+      <AppBar showBackButton onBackButtonClick={noop}>
         <AppBarLeading title="Maven Shop" rtbBadge={row.rtbBadge}>
           {#snippet logo()}
             {@render titleInitialsLogo()}
@@ -188,7 +191,7 @@
         </AppBarActions>
       </AppBar>
 
-      <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+      <AppBar showBackButton onBackButtonClick={noop}>
         <AppBarLeading title="Maven Shop" rtbBadge={row.rtbBadge} />
         <AppBarActions>
           {@render defaultAppBarActions()}
@@ -201,7 +204,7 @@
 <!-- Story 1: Default — back button + title -->
 <Story name="Default" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+    <AppBar showBackButton onBackButtonClick={noop}>
       <AppBarLeading title="Order details" />
     </AppBar>
   </div>
@@ -210,8 +213,8 @@
 <!-- Story 2: With Logo — logo + full RTB badge -->
 <Story name="With Logo" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading rtbBadge="full">
+    <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBarLeading rtbBadge={{ type: 'full' }}>
         {#snippet logo()}
           {@render optimizerLogo()}
         {/snippet}
@@ -223,8 +226,8 @@
 <!-- Story 3: With Actions — logo + title + full RTB badge + trailing icon buttons -->
 <Story name="With Actions" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" rtbBadge="full">
+    <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBarLeading title="Maven Shop" rtbBadge={{ type: 'full' }}>
         {#snippet logo()}
           {@render titleInitialsLogo()}
         {/snippet}
@@ -239,7 +242,7 @@
 <!-- Story 4: Logo And Title — logo + title, no RTB badge -->
 <Story name="Logo And Title" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+    <AppBar showBackButton onBackButtonClick={noop}>
       <AppBarLeading title="Maven Shop">
         {#snippet logo()}
           {@render storeLogo()}
@@ -255,8 +258,8 @@
 <!-- Story 5: Title With Icon RTB — inline shield beside title -->
 <Story name="Title With Icon RTB" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" rtbBadge="icon" />
+    <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBarLeading title="Maven Shop" rtbBadge={{ type: 'icon' }} />
     </AppBar>
   </div>
 </Story>
@@ -264,7 +267,7 @@
 <!-- Story 6: Subtle Variant — adaptive gray surface on a light background -->
 <Story name="Subtle Variant" asChild>
   <div style="background-color: var(--surface-background-gray-subtle); min-height: 200px;">
-    <AppBar variant="subtle" backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
+    <AppBar variant="subtle" showBackButton onBackButtonClick={noop}>
       <AppBarLeading title="Settings" />
       <AppBarActions>
         {@render defaultAppBarActions()}
@@ -279,8 +282,8 @@
 <!-- Story 7: Merchant Checkout — back button, merchant name, RTB badge, profile action -->
 <Story name="Merchant Checkout" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <AppBar backButton={{ onClick: noop, accessibilityLabel: 'Go back' }} accessibilityLabel="Mavenshop checkout">
-      <AppBarLeading title="Mavenshop" rtbBadge="full" />
+    <AppBar showBackButton onBackButtonClick={noop} accessibilityLabel="Mavenshop checkout">
+      <AppBarLeading title="Mavenshop" rtbBadge={{ type: 'full' }} />
       <AppBarActions>
         {@render defaultAppBarActions()}
       </AppBarActions>
@@ -291,8 +294,8 @@
 <!-- Story 8: Sticky On Scroll — sticky AppBar over a tall scroll container. -->
 <Story name="Sticky On Scroll" asChild>
   <div style="height: 320px; overflow-y: auto; background-color: #3669ff;">
-    <AppBar isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" rtbBadge="full">
+    <AppBar isSticky showBackButton onBackButtonClick={noop}>
+      <AppBarLeading title="Maven Shop" rtbBadge={{ type: 'full' }}>
         {#snippet logo()}
           {@render merchantLogo()}
         {/snippet}
