@@ -146,7 +146,7 @@
   border-top: 1px solid var(--surface-border-gray-subtle);
   background-image: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%),
     linear-gradient(to top, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%);
-  background-position: center top, center calc(100% - 2px);
+  background-position: center top, center calc(100% - 1px);
   background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
   background-repeat: no-repeat;
   box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),

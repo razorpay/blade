@@ -126,7 +126,6 @@ export const cardSurfaceStyles = cva(styles.cardSurface, {
   },
   defaultVariants: {
     type: 'primary-card',
-    backgroundColor: 'surface.background.gray.intense',
     padding: 'spacing.7',
     borderRadius: 'medium',
   },
