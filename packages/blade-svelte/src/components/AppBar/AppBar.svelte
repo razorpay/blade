@@ -83,7 +83,7 @@
               emphasis={backButtonEmphasis}
               size="medium"
               accessibilityLabel={backButtonAccessibilityLabel}
-              onClick={onBackButtonClick}
+              onClick={(e) => onBackButtonClick?.(e)}
             />
           </Tooltip>
         {:else}
@@ -92,7 +92,7 @@
             emphasis={backButtonEmphasis}
             size="medium"
             accessibilityLabel={backButtonAccessibilityLabel}
-            onClick={onBackButtonClick}
+            onClick={(e) => onBackButtonClick?.(e)}
           />
         {/if}
       </div>
