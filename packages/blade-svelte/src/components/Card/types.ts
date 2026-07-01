@@ -1,6 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { CardBackgroundColor, CardType } from '@razorpay/blade-core/styles';
+import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -13,33 +13,11 @@ export type CardSpacingValueType =
   | 'spacing.5'
   | 'spacing.7';
 
-export type CardProps = {
+type CardSharedProps = {
   /**
    * Card contents
    */
   children: Snippet;
-  /**
-   * Sets the visual treatment of the Card.
-   *
-   * - `primary`: elevated styling (gradients, drop shadow) with
-   *   `surface.background.gray.intense` background.
-   * - `secondary`: flat styling with `surface.background.gray.moderate` background.
-   * - `theme`: elevated shadow and inset lip like `primary`, solid
-   *   configurable background (no white gradient overlays).
-   *
-   * @default 'primary'
-   */
-  variant?: CardType;
-  /**
-   * Sets the background color of the Card.
-   *
-   * Only respected when `variant` is `theme`. Supports gray and colored
-   * surface tokens (primary, sea, cloud). Ignored for `primary` and
-   * `secondary`.
-   *
-   * @default 'surface.background.gray.intense'
-   */
-  backgroundColor?: CardBackgroundColor;
   /**
    * Sets the border radius of the Card
    *
@@ -156,6 +134,50 @@ export type CardProps = {
    */
   [key: `data-analytics-${string}`]: string;
 } & StyledPropsBlade;
+
+/**
+ * Discriminated union on `variant` enforces that `backgroundColor` is only
+ * valid when `variant="theme"`. Passing `backgroundColor` with `primary` or
+ * `secondary` is a compile-time TypeScript error.
+ *
+ * @example
+ * ```svelte
+ * <!-- valid -->
+ * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
+ *
+ * <!-- TS error: backgroundColor not allowed on primary/secondary -->
+ * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
+ * ```
+ */
+export type CardProps =
+  | (CardSharedProps & {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * - `primary`: elevated styling (gradients, drop shadow) with fixed
+       *   `surface.background.gray.intense` background.
+       * - `secondary`: flat styling with fixed `surface.background.gray.moderate` background.
+       *
+       * @default 'primary'
+       */
+      variant?: 'primary' | 'secondary';
+      backgroundColor?: never;
+    })
+  | (CardSharedProps & {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * `theme`: elevated shadow like `primary` with a configurable `backgroundColor`.
+       */
+      variant: 'theme';
+      /**
+       * Sets the background color. Only valid when `variant="theme"`.
+       * Supports gray and colored surface tokens (primary, sea, cloud).
+       *
+       * @default 'surface.background.gray.intense'
+       */
+      backgroundColor?: CardBackgroundColor;
+    });
 
 export type CardBodyProps = {
   /**
