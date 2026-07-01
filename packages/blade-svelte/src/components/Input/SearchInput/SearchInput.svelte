@@ -1,6 +1,7 @@
 <script lang="ts">
   import { untrack } from 'svelte';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
@@ -70,6 +71,7 @@
     return baseInput?.getInput() ?? null;
   }
 
+  const ids = useFormId('searchinput');
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
@@ -83,7 +85,7 @@
 
 <BaseInput
   bind:this={baseInput}
-  id="searchinput"
+  id={ids.inputId}
   componentName="searchinput"
   label={label ?? ''}
   hideLabelText={!label}

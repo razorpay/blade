@@ -17,13 +17,13 @@ export type PhoneNumberChangePayload = {
   /** Formatted phone number with dial code, e.g. `"+91 123456789"`. */
   phoneNumber?: string;
   /** Dial code of the selected country, e.g. `"+91"`. */
-  dialCode?: string;
+  dialCode: string;
   /** ISO country code of the selected country, e.g. `"IN"`. */
   country: CountryCodeType;
   /** Raw value typed by the user. */
-  value?: string;
+  value: string;
   /** Name of the input. */
-  name?: string;
+  name: string;
 };
 
 export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAttribute {

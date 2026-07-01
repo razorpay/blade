@@ -102,7 +102,7 @@
   ): void => {
     if (v === ' ') return;
 
-    if (isControlled && value && value.length > 0) {
+    if (isControlled) {
       const next = Array.from(value);
       next[currentOtpIndex] = v ?? '';
       otpValue = next;

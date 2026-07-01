@@ -7,11 +7,11 @@
   } from '@razorpay/i18nify-js';
   import type { CountryCodeType } from '@razorpay/i18nify-js';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import { CloseIcon } from '../../Icons';
   import CountrySelector from './CountrySelector.svelte';
-  import { useFormId } from '../BaseInput/useFormId';
   import type { PhoneNumberInputProps } from './types';
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -104,8 +104,8 @@
     changeCountry: CountryCodeType;
   }): void => {
     onChange?.({
-      name: changeName,
-      value: changeValue,
+      name: changeName ?? '',
+      value: changeValue ?? '',
       phoneNumber: changeValue ? formatPhoneNumber(changeValue, changeCountry) : undefined,
       dialCode: getDialCodeByCountryCode(changeCountry),
       country: changeCountry,
