@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { RTBBadgeProps } from './types';
 import { Text } from '~components/Typography';
 import { throwBladeError } from '~utils/logger';

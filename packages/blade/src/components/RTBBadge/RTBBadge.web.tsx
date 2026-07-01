@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import type { RTBBadgeProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { RTBShieldIcon } from '~components/Icons';
