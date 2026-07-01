@@ -7,7 +7,7 @@
 
   let {
     children,
-    type = 'primary-card',
+    type = 'primary',
     backgroundColor,
     padding = 'spacing.7',
     borderRadius = 'medium',

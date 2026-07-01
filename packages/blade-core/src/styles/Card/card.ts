@@ -35,7 +35,7 @@ export type CardGrayBackgroundColor =
   | 'surface.background.gray.moderate'
   | 'surface.background.gray.intense';
 
-/** Colored surface tokens available only on `theme-card`. */
+/** Colored surface tokens available only on `theme` variant. */
 export type CardThemeBackgroundColor =
   | 'surface.background.primary.subtle'
   | 'surface.background.primary.intense'
@@ -49,19 +49,19 @@ export type CardBackgroundColor = CardGrayBackgroundColor | CardThemeBackgroundC
 /**
  * Visual treatment of the Card surface.
  *
- * - `primary-card`: elevated styling (gradients, drop shadow) with
+ * - `primary`: elevated styling (gradients, drop shadow) with
  *   `surface.background.gray.intense` background.
- * - `secondary-card`: flat styling with `surface.background.gray.moderate` background.
- * - `theme-card`: primary-card elevation (white bottom inset lip, drop shadow)
+ * - `secondary`: flat styling with `surface.background.gray.moderate` background.
+ * - `theme`: primary elevation (white bottom inset lip, drop shadow)
  *   with black 2% top/bottom gradients and configurable backgroundColor.
  */
-export type CardType = 'primary-card' | 'secondary-card' | 'theme-card';
+export type CardType = 'primary' | 'secondary' | 'theme';
 
 /**
  * Resolves the effective surface background color for a given Card `type`.
  *
- * `primary-card` and `secondary-card` own their background and ignore the
- * `backgroundColor` prop. `theme-card` defers to the configurable
+ * `primary` and `secondary` own their background and ignore the
+ * `backgroundColor` prop. `theme` defers to the configurable
  * `backgroundColor` (defaulting to intense when unset).
  */
 export const getCardBackgroundColor = (
@@ -69,11 +69,11 @@ export const getCardBackgroundColor = (
   backgroundColor?: CardBackgroundColor,
 ): CardBackgroundColor => {
   switch (type) {
-    case 'secondary-card':
+    case 'secondary':
       return 'surface.background.gray.moderate';
-    case 'theme-card':
+    case 'theme':
       return backgroundColor ?? 'surface.background.gray.intense';
-    case 'primary-card':
+    case 'primary':
     default:
       return 'surface.background.gray.intense';
   }
@@ -86,15 +86,15 @@ export type CardSurfaceVariants = {
   borderRadius?: 'medium' | 'large' | 'xlarge';
 };
 
-// `type` selects elevated (primary-card, theme-card) vs flat (secondary-card)
+// `type` selects elevated (primary, theme) vs flat (secondary)
 // surface treatment in card.module.css. The deprecated `elevation` prop on
 // <Card> is a no-op for API parity with React's Card.
 export const cardSurfaceStyles = cva(styles.cardSurface, {
   variants: {
     type: {
-      'primary-card': styles.cardSurfaceElevated,
-      'secondary-card': styles.cardSurfaceFlat,
-      'theme-card': styles.cardSurfaceThemed,
+      primary: styles.cardSurfaceElevated,
+      secondary: styles.cardSurfaceFlat,
+      theme: styles.cardSurfaceThemed,
     },
     backgroundColor: {
       'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
@@ -125,7 +125,7 @@ export const cardSurfaceStyles = cva(styles.cardSurface, {
     },
   },
   defaultVariants: {
-    type: 'primary-card',
+    type: 'primary',
     padding: 'spacing.7',
     borderRadius: 'medium',
   },

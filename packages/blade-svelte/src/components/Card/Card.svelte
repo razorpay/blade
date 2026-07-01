@@ -8,7 +8,7 @@
 
   let {
     children: cardContent,
-    type = 'primary-card',
+    variant = 'primary',
     backgroundColor,
     borderRadius = 'medium',
     /* `elevation` is deprecated and a no-op (matches React). Kept in the
@@ -79,7 +79,7 @@
 >
   {#snippet children()}
     <CardSurface
-      {type}
+      type={variant}
       {height}
       {minHeight}
       {padding}

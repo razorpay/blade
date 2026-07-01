@@ -21,21 +21,21 @@ export type CardProps = {
   /**
    * Sets the visual treatment of the Card.
    *
-   * - `primary-card`: elevated styling (gradients, drop shadow) with
+   * - `primary`: elevated styling (gradients, drop shadow) with
    *   `surface.background.gray.intense` background.
-   * - `secondary-card`: flat styling with `surface.background.gray.moderate` background.
-   * - `theme-card`: elevated shadow and inset lip like `primary-card`, solid
+   * - `secondary`: flat styling with `surface.background.gray.moderate` background.
+   * - `theme`: elevated shadow and inset lip like `primary`, solid
    *   configurable background (no white gradient overlays).
    *
-   * @default 'primary-card'
+   * @default 'primary'
    */
-  type?: CardType;
+  variant?: CardType;
   /**
    * Sets the background color of the Card.
    *
-   * Only respected when `type` is `theme-card`. Supports gray and colored
-   * surface tokens (primary, sea, cloud). Ignored for `primary-card` and
-   * `secondary-card`.
+   * Only respected when `variant` is `theme`. Supports gray and colored
+   * surface tokens (primary, sea, cloud). Ignored for `primary` and
+   * `secondary`.
    *
    * @default 'surface.background.gray.intense'
    */

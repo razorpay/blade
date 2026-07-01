@@ -11,9 +11,9 @@
         control: false,
         table: { disable: true },
       },
-      type: {
+      variant: {
         control: 'radio',
-        options: ['primary-card', 'secondary-card', 'theme-card'],
+        options: ['primary', 'secondary', 'theme'],
       },
       backgroundColor: {
         control: 'select',
@@ -39,7 +39,7 @@
       },
     },
     args: {
-      type: 'primary-card',
+      variant: 'primary',
       backgroundColor: 'surface.background.gray.intense',
       borderRadius: 'medium',
       padding: 'spacing.7',
@@ -67,11 +67,11 @@
 
   type CardStoryArgs = Pick<
     CardProps,
-    'type' | 'backgroundColor' | 'borderRadius' | 'padding'
+    'variant' | 'backgroundColor' | 'borderRadius' | 'padding'
   >;
 
   const getCardArgs = (args: CardStoryArgs): CardStoryArgs => ({
-    type: args.type,
+    variant: args.variant,
     backgroundColor: args.backgroundColor,
     borderRadius: args.borderRadius,
     padding: args.padding,
@@ -570,7 +570,7 @@
 <!-- Story 8: Card Types — primary / secondary / theme treatments -->
 <Story name="Card Types" asChild>
   <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
-    <Card type="primary-card" maxWidth="500px">
+    <Card variant="primary" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title="Primary Card"
@@ -578,11 +578,11 @@
         />
       </CardHeader>
       <CardBody>
-        <Text>type="primary-card" uses gradients and drop shadow. backgroundColor is ignored.</Text>
+        <Text>variant="primary" uses gradients and drop shadow. backgroundColor is ignored.</Text>
       </CardBody>
     </Card>
 
-    <Card type="secondary-card" maxWidth="500px">
+    <Card variant="secondary" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title="Secondary Card"
@@ -590,11 +590,11 @@
         />
       </CardHeader>
       <CardBody>
-        <Text>type="secondary-card" is flat with no elevation. backgroundColor is ignored.</Text>
+        <Text>variant="secondary" is flat with no elevation. backgroundColor is ignored.</Text>
       </CardBody>
     </Card>
 
-    <Card type="theme-card" backgroundColor="surface.background.cloud.subtle" maxWidth="500px">
+    <Card variant="theme" backgroundColor="surface.background.cloud.subtle" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
           title="Theme Card"
@@ -602,7 +602,7 @@
         />
       </CardHeader>
       <CardBody>
-        <Text>type="theme-card" matches primary-card elevation with a custom backgroundColor (cloud subtle here).</Text>
+        <Text>variant="theme" matches primary elevation with a custom backgroundColor (cloud subtle here).</Text>
       </CardBody>
     </Card>
   </div>
