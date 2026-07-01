@@ -69,18 +69,16 @@
   <BottomSheetHeader title="Select A Country" />
   <BottomSheetBody hasActionList>
     <ActionList selectedValue={selectedCountry} onItemSelect={handleSelect}>
-      {#snippet children()}
-        {#each countryData as country (country.code)}
-          <ActionListItem title={country.name} value={country.code}>
-            {#snippet leading()}
-              <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
-            {/snippet}
-            {#snippet trailing()}
-              <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
-            {/snippet}
-          </ActionListItem>
-        {/each}
-      {/snippet}
+      {#each countryData as country (country.code)}
+        <ActionListItem title={country.name} value={country.code}>
+          {#snippet leading()}
+            <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
+          {/snippet}
+          {#snippet trailing()}
+            <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
+          {/snippet}
+        </ActionListItem>
+      {/each}
     </ActionList>
   </BottomSheetBody>
 </BottomSheet>
