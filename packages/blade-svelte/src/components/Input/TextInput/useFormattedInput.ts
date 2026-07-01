@@ -144,7 +144,7 @@ export const createFormattedInput = ({
 
     onChange?.({ name, value: formattedValue, rawValue });
     // Apply cursor on the next microtask so the DOM value is updated first.
-    Promise.resolve().then(() => applyCursor(inputEl));
+    void Promise.resolve().then(() => applyCursor(inputEl));
     return formattedValue;
   };
 

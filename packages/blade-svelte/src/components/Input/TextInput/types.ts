@@ -8,6 +8,9 @@ import type {
   ValidationTextPlacement,
   FormInputOnEvent,
   FormInputOnKeyDownEvent,
+  KeyboardReturnKeyType,
+  AutoCompleteSuggestionType,
+  AutoCapitalize,
 } from '../BaseInput/types';
 import type { NecessityIndicator } from '../_Form/types';
 
@@ -60,11 +63,11 @@ export interface TextInputProps extends StyledPropsBlade, DataAnalyticsAttribute
   /** Focus the input on mount. */
   autoFocus?: boolean;
   /** Return-key type on virtual keyboards. */
-  keyboardReturnKeyType?: import('../BaseInput/types').KeyboardReturnKeyType;
+  keyboardReturnKeyType?: KeyboardReturnKeyType;
   /** Autocomplete suggestion type. */
-  autoCompleteSuggestionType?: import('../BaseInput/types').AutoCompleteSuggestionType;
+  autoCompleteSuggestionType?: AutoCompleteSuggestionType;
   /** Autocapitalize behaviour. */
-  autoCapitalize?: import('../BaseInput/types').AutoCapitalize;
+  autoCapitalize?: AutoCapitalize;
   /** Validation state. @default 'none' */
   validationState?: BaseInputValidationState;
   /** Placement of the validation text. @default 'outside' */

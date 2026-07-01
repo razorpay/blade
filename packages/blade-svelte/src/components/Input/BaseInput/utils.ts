@@ -115,13 +115,14 @@ const autoCompleteSuggestionTypeMap: Record<AutoCompleteSuggestionType, string> 
 export const getAutoComplete = (
   autoCompleteSuggestionType?: AutoCompleteSuggestionType,
 ): string | undefined =>
-  autoCompleteSuggestionType ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType] : undefined;
+  autoCompleteSuggestionType
+    ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+    : undefined;
 
 /** Maps the return-key type to the DOM `enterkeyhint` attribute value. */
 export const getEnterKeyHint = (
   keyboardReturnKeyType?: KeyboardReturnKeyType,
-): string | undefined =>
-  keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType;
+): string | undefined => (keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType);
 
 /** Maps `keyboardType` to the DOM `inputmode` attribute value. */
 export const getInputMode = (keyboardType?: KeyboardType): string | undefined => {
@@ -138,7 +139,7 @@ export const getDomType = (type?: NonPasswordType): string => {
 /** Resolves the hint type shown below the input (mirrors React `getHintType`). */
 export const getHintType = ({
   validationState,
-  hasHelpText,
+  hasHelpText: _hasHelpText,
 }: {
   validationState?: 'success' | 'error' | 'none';
   hasHelpText: boolean;
