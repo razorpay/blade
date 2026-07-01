@@ -261,6 +261,28 @@
   {/snippet}
 </Story>
 
+<!-- Story 8: Standalone — no BottomSheet. Renders its own box (border/shadow/padding)
+     since `isInBottomSheet` is false. -->
+<Story name="Standalone (No BottomSheet)">
+  {#snippet template()}
+    <ActionList>
+      {#snippet children()}
+        <ActionListItem title="Home" value="home">
+          {#snippet leading()}
+            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Payments" value="payments">
+          {#snippet leading()}
+            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Settings" value="settings" />
+      {/snippet}
+    </ActionList>
+  {/snippet}
+</Story>
+
 <!-- Story 7: Disabled & Negative Items. -->
 <Story name="Disabled & Negative Items">
   {#snippet template()}
