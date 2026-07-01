@@ -63,7 +63,8 @@
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
-  import type { CardBackgroundColor, CardSpacingValueType } from '@razorpay/blade-core/styles';
+  import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
+  import type { CardSpacingValueType } from './types';
 
   type CardStoryArgs = {
     variant?: 'primary' | 'secondary' | 'theme';
