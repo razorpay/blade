@@ -103,7 +103,7 @@
     if (v === ' ') return;
 
     if (isControlled) {
-      const next = Array.from(value);
+      const next = Array.from(value ?? '');
       next[currentOtpIndex] = v ?? '';
       otpValue = next;
       onChange?.({ name, value: next.join('') });
