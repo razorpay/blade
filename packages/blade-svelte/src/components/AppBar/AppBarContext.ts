@@ -1,6 +1,8 @@
 import { setContext, getContext } from 'svelte';
 import type { AppBarVariant } from './types';
 
+declare const __DEV__: boolean;
+
 const APP_BAR_CONTEXT_KEY = 'blade-app-bar-context';
 
 type AppBarContextType = {
@@ -29,7 +31,7 @@ export function getAppBarContext(): () => AppBarContextType {
  */
 export function useAppBarContext(componentName: string): void {
   if (!getAppBarContext()) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (typeof __DEV__ !== 'undefined' && __DEV__) {
       console.error(`[Blade]: ${componentName} cannot be used outside of AppBar component`);
     }
   }
