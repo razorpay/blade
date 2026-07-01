@@ -51,6 +51,13 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
       onChange(hexValue);
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleClick();
+      }
+    };
+
     const dimension = swatchSizeTokens[inputSize];
 
     return (
@@ -59,7 +66,11 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         alignItems="center"
         justifyContent="center"
         position="relative"
+        role="button"
+        aria-label="Open color picker"
+        tabIndex={isDisabled ? -1 : 0}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
       >
         <BaseBox
