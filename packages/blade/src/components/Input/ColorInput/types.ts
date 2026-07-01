@@ -4,6 +4,7 @@ import type { FormInputOnEvent } from '~components/Form';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ColorInputValue = {
+  /** 6-character uppercase hex string without '#' prefix, e.g. 'FF5733' */
   hex: string;
   /** Integer percentage 0–100 */
   opacity: number;
@@ -44,4 +45,4 @@ type ColorInputCommonProps = Pick<
 
 type ColorInputProps = ColorInputCommonProps;
 
-export type { ColorInputProps, ColorInputValue, ColorInputOnChange };
+export type { ColorInputProps, ColorInputValue };

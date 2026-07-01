@@ -1,9 +1,14 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.web';
 import type { ColorSwatchRef } from './ColorSwatch.web';
 import { StyledColorInput, COLOR_INPUT_ROW_CLASSNAME } from './StyledColorInput';
-import { DEFAULT_COLOR_VALUE, isValidHex, isValidOpacity } from './ColorInput.utils';
+import {
+  DEFAULT_COLOR_VALUE,
+  isValidHex,
+  isPartialHex,
+  isValidOpacity,
+} from './ColorInput.utils';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
 import { FormLabel } from '~components/Form/FormLabel';
@@ -20,6 +25,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
+import type { FormInputOnKeyDownEvent, FormInputOnEvent } from '~components/Form';
 
 const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputProps> = (
   {
@@ -59,6 +65,53 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     String(colorValue.opacity),
   );
 
+  // Local display state for the hex input so partial typing (1–5 chars) stays local
+  // and doesn't corrupt the color model until exactly 6 valid chars are present.
+  const [hexDisplayValue, setHexDisplayValue] = useState<string>(
+    () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
+  );
+
+  // Sync display value when the color model changes from an external source.
+  useEffect(() => {
+    setHexDisplayValue(colorValue.hex);
+  }, [colorValue.hex]);
+
+  // Focus boundary tracking: fire onFocus/onBlur once when focus enters/leaves
+  // the composite widget, not on each internal input transition.
+  const isFocusedRef = useRef(false);
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (blurTimeoutRef.current !== null) clearTimeout(blurTimeoutRef.current);
+    };
+  }, []);
+
+  const handleInputFocus = useCallback<FormInputOnEvent>(
+    (args) => {
+      if (blurTimeoutRef.current !== null) {
+        clearTimeout(blurTimeoutRef.current);
+        blurTimeoutRef.current = null;
+      }
+      if (!isFocusedRef.current) {
+        isFocusedRef.current = true;
+        onFocus?.(args);
+      }
+    },
+    [onFocus],
+  );
+
+  const handleInputBlur = useCallback<FormInputOnEvent>(
+    (args) => {
+      blurTimeoutRef.current = setTimeout(() => {
+        blurTimeoutRef.current = null;
+        isFocusedRef.current = false;
+        onBlur?.(args);
+      }, 0);
+    },
+    [onBlur],
+  );
+
   const hexInputRef = useRef<BladeElementRef>(null);
   const swatchRef = useRef<ColorSwatchRef>(null);
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
@@ -71,6 +124,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   const handleHexChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
       const raw = (inputValue ?? '').toUpperCase();
+      if (isValidHex(raw) || isPartialHex(raw)) {
+        setHexDisplayValue(raw);
+      }
       if (isValidHex(raw)) {
         setColorValue((prev) => ({ ...prev, hex: raw }));
       }
@@ -95,22 +151,22 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     [setColorValue],
   );
 
-  const handleOpacityBlur = useCallback(
-    ({ value: inputValue }: { name?: string; value?: string }) => {
-      const raw = inputValue ?? '';
+  const handleOpacityBlur = useCallback<FormInputOnEvent>(
+    (args) => {
+      const raw = args.value ?? '';
       const num = parseInt(raw, 10);
       if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      onBlur?.({ name, value: inputValue });
+      handleInputBlur(args);
     },
-    [colorValue.opacity, name, onBlur],
+    [colorValue.opacity, handleInputBlur],
   );
 
   const handleOpacityKeyDown = useCallback(
-    ({ key, event }: { name?: string; key?: string; code?: string; event: unknown }) => {
+    ({ key, event }: FormInputOnKeyDownEvent) => {
       if (key === 'ArrowUp') {
-        (event as Event & { preventDefault: () => void }).preventDefault();
+        event.preventDefault();
         setColorValue((prev) => {
           const next = Math.min(prev.opacity + 1, 100);
           if (next !== prev.opacity) {
@@ -120,7 +176,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
           return prev;
         });
       } else if (key === 'ArrowDown') {
-        (event as Event & { preventDefault: () => void }).preventDefault();
+        event.preventDefault();
         setColorValue((prev) => {
           const next = Math.max(prev.opacity - 1, 0);
           if (next !== prev.opacity) {
@@ -136,9 +192,19 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleSwatchChange = useCallback(
     (hex: string) => {
+      setHexDisplayValue(hex);
       setColorValue((prev) => ({ ...prev, hex }));
     },
     [setColorValue],
+  );
+
+  // Hex-specific blur: reset partial display to last committed valid value.
+  const handleHexInputBlur = useCallback<FormInputOnEvent>(
+    (args) => {
+      setHexDisplayValue(colorValue.hex);
+      handleInputBlur(args);
+    },
+    [colorValue.hex, handleInputBlur],
   );
 
   // Sync opacityDisplayValue when controlled value changes externally
@@ -190,10 +256,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               labelId={labelId}
               size={size}
               placeholder="000000"
-              value={colorValue.hex}
+              value={hexDisplayValue}
               onChange={handleHexChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
+              onFocus={handleInputFocus}
+              onBlur={handleHexInputBlur}
               isDisabled={isDisabled}
               isRequired={isRequired}
               validationState={validationState}
@@ -226,7 +292,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                 value={opacityDisplayValue}
                 onChange={handleOpacityChange}
                 onKeyDown={handleOpacityKeyDown}
-                onFocus={onFocus}
+                onFocus={handleInputFocus}
                 onBlur={handleOpacityBlur}
                 isDisabled={isDisabled}
                 validationState={validationState}

@@ -1,7 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.native';
-import { DEFAULT_COLOR_VALUE, isValidHex, isValidOpacity } from './ColorInput.utils';
+import {
+  DEFAULT_COLOR_VALUE,
+  isValidHex,
+  isPartialHex,
+  isValidOpacity,
+} from './ColorInput.utils';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
 import { FormLabel } from '~components/Form/FormLabel';
 import { FormHint } from '~components/Form/FormHint';
@@ -50,6 +55,16 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     String(colorValue.opacity),
   );
 
+  // Local display state for the hex input so partial typing (1–5 chars) stays local
+  // and doesn't corrupt the color model until exactly 6 valid chars are present.
+  const [hexDisplayValue, setHexDisplayValue] = useState<string>(
+    () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
+  );
+
+  useEffect(() => {
+    setHexDisplayValue(colorValue.hex);
+  }, [colorValue.hex]);
+
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
   const idBase = useId('color-input');
   const labelId = `${idBase}-label`;
@@ -57,6 +72,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   const handleHexChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
       const raw = (inputValue ?? '').toUpperCase();
+      if (isValidHex(raw) || isPartialHex(raw)) {
+        setHexDisplayValue(raw);
+      }
       if (isValidHex(raw)) {
         setColorValue((prev) => ({ ...prev, hex: raw }));
       }
@@ -95,9 +113,19 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleSwatchChange = useCallback(
     (hex: string) => {
+      setHexDisplayValue(hex);
       setColorValue((prev) => ({ ...prev, hex }));
     },
     [setColorValue],
+  );
+
+  // Hex blur resets partial display to the last committed valid value.
+  const handleHexInputBlur = useCallback(
+    ({ value: inputValue }: { name?: string; value?: string }) => {
+      setHexDisplayValue(colorValue.hex);
+      onBlur?.({ name, value: inputValue });
+    },
+    [colorValue.hex, name, onBlur],
   );
 
   // Sync opacityDisplayValue when controlled value changes externally
@@ -140,10 +168,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
               labelId={labelId}
               size={size}
               placeholder="000000"
-              value={colorValue.hex}
+              value={hexDisplayValue}
               onChange={handleHexChange}
               onFocus={onFocus}
-              onBlur={onBlur}
+              onBlur={handleHexInputBlur}
               isDisabled={isDisabled}
               isRequired={isRequired}
               validationState={validationState}
