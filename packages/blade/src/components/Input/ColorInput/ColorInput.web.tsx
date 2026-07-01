@@ -3,12 +3,7 @@ import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.web';
 import type { ColorSwatchRef } from './ColorSwatch.web';
 import { StyledColorInput, COLOR_INPUT_ROW_CLASSNAME } from './StyledColorInput';
-import {
-  DEFAULT_COLOR_VALUE,
-  isValidHex,
-  isPartialHex,
-  isValidOpacity,
-} from './ColorInput.utils';
+import { DEFAULT_COLOR_VALUE, isValidHex, isPartialHex, isValidOpacity } from './ColorInput.utils';
 import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
 import { FormLabel } from '~components/Form/FormLabel';
@@ -201,14 +196,11 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   );
 
   // Hex-specific blur: reset partial display to last committed valid value.
-  const handleHexInputBlur = useCallback<FormInputOnEvent>(
-    () => {
-      setHexDisplayValue(colorValue.hex);
-      // Pass committed hex so consumers see the corrected state, not the partial display string.
-      handleInputBlur({ name, value: colorValue.hex });
-    },
-    [colorValue.hex, handleInputBlur, name],
-  );
+  const handleHexInputBlur = useCallback<FormInputOnEvent>(() => {
+    setHexDisplayValue(colorValue.hex);
+    // Pass committed hex so consumers see the corrected state, not the partial display string.
+    handleInputBlur({ name, value: colorValue.hex });
+  }, [colorValue.hex, handleInputBlur, name]);
 
   // Sync opacityDisplayValue when controlled value changes externally
   React.useEffect(() => {

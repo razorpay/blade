@@ -1,12 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.native';
-import {
-  DEFAULT_COLOR_VALUE,
-  isValidHex,
-  isPartialHex,
-  isValidOpacity,
-} from './ColorInput.utils';
+import { DEFAULT_COLOR_VALUE, isValidHex, isPartialHex, isValidOpacity } from './ColorInput.utils';
 import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
 import { FormLabel } from '~components/Form/FormLabel';
 import { FormHint } from '~components/Form/FormHint';
@@ -156,14 +151,11 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   );
 
   // Hex blur resets partial display to the last committed valid value.
-  const handleHexInputBlur = useCallback(
-    () => {
-      setHexDisplayValue(colorValue.hex);
-      // Pass committed hex so consumers see the corrected state, not the partial display string.
-      handleInputBlurBoundary({ name, value: colorValue.hex });
-    },
-    [colorValue.hex, handleInputBlurBoundary, name],
-  );
+  const handleHexInputBlur = useCallback(() => {
+    setHexDisplayValue(colorValue.hex);
+    // Pass committed hex so consumers see the corrected state, not the partial display string.
+    handleInputBlurBoundary({ name, value: colorValue.hex });
+  }, [colorValue.hex, handleInputBlurBoundary, name]);
 
   // Sync opacityDisplayValue when controlled value changes externally
   React.useEffect(() => {
