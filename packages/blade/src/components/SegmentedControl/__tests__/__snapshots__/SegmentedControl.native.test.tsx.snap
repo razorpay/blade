@@ -10,6 +10,7 @@ exports[`<SegmentedControl /> (native) should render with default props 1`] = `
 >
   <View
     accessibilityLabel="Time period"
+    accessibilityRequired={false}
     accessibilityRole="radiogroup"
     data-blade-component="segmented-control"
     style={
