@@ -1,6 +1,5 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { LayoutChangeEvent } from 'react-native';
 import type {
   InfoGroupProps,
   InfoItemProps,
@@ -29,36 +28,6 @@ import type { BoxProps } from '~components/Box';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
-
-/**
- * Native-only context to emulate CSS Grid's `max-content` shared key column.
- *
- * On web, `grid-template-columns: max-content 1fr` sizes the key column to the
- * WIDEST key across all rows, so every value starts at the same x-position.
- * React Native flexbox has no cross-row `max-content`, so each key would size to
- * its own content (ragged value column). We measure every key's natural width via
- * `onLayout`, keep the running max in this context, and apply that fixed width to
- * all keys — reproducing the aligned two-column layout.
- */
-type KeyColumnMeasureContextType = {
-  /** true only for horizontal orientation where the shared column applies */
-  isMeasuring: boolean;
-  /** resolved shared key-column width (max of all measured keys), or undefined until measured */
-  keyColumnWidth: number | undefined;
-  /** each key reports its measured natural width here */
-  reportKeyWidth: (id: number, width: number) => void;
-};
-
-const KeyColumnMeasureContext = React.createContext<KeyColumnMeasureContextType>({
-  isMeasuring: false,
-  keyColumnWidth: undefined,
-  reportKeyWidth: () => {
-    // no-op default implementation
-  },
-});
-
-const useKeyColumnMeasure = (): KeyColumnMeasureContextType =>
-  React.useContext(KeyColumnMeasureContext);
 
 const getCenterBoxProps = (
   size: NonNullable<InfoGroupProps['size']>,
@@ -169,9 +138,6 @@ const TitleCollection = ({
   );
 };
 
-// Monotonic id generator so each key can report its width against a stable slot.
-let keyIdCounter = 0;
-
 const _InfoItemKey = (
   { children, leading, trailing, helpText, truncateAfterLines, testID }: InfoItemKeyProps,
   ref: React.Ref<BladeElementRef>,
@@ -179,17 +145,6 @@ const _InfoItemKey = (
   const { itemOrientation, size } = useInfoGroup();
 
   const { hasAvatar, isHighlighted } = useInfoItem();
-  const { isMeasuring, keyColumnWidth, reportKeyWidth } = useKeyColumnMeasure();
-
-  const keyId = React.useRef<number>((keyIdCounter += 1)).current;
-
-  const handleLayout = React.useCallback(
-    (event: LayoutChangeEvent) => {
-      if (!isMeasuring) return;
-      reportKeyWidth(keyId, event.nativeEvent.layout.width);
-    },
-    [isMeasuring, keyId, reportKeyWidth],
-  );
 
   return (
     <BaseBox
@@ -199,43 +154,24 @@ const _InfoItemKey = (
       alignSelf="flex-start"
       justifyContent="flex-start"
       flexDirection="row"
-      // Emulate CSS Grid `max-content` key column: once the shared width is known,
-      // pin every key to it so values start at a uniform x (aligned two-column layout).
-      width={isMeasuring && keyColumnWidth ? makeSize(keyColumnWidth) : undefined}
       paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
-      {/*
-       * Inner box measures the key's NATURAL width. It must stay unconstrained by the
-       * outer pinned width (above), otherwise a key mistakenly pinned narrow could never
-       * re-measure back to its true width. `onLayout` stays active for the whole measuring
-       * phase (not gated on `keyColumnWidth`) so every key reports even if another key lays
-       * out first — the group keeps the running max, so the column self-corrects.
-       */}
-      <BaseBox
-        display="flex"
-        alignItems="center"
-        alignSelf="flex-start"
-        justifyContent="flex-start"
-        flexDirection="row"
-        onLayout={isMeasuring ? handleLayout : undefined}
+      {itemOrientation === 'horizontal' && isHighlighted ? (
+        <Divider orientation="vertical" />
+      ) : null}
+      <TitleCollection
+        leading={leading}
+        trailing={trailing}
+        helpText={helpText}
+        titleWeight="medium"
+        titleColor="surface.text.gray.muted"
+        truncateAfterLines={truncateAfterLines}
+        paddingLeft={isHighlighted ? 'spacing.4' : 'spacing.0'}
+        paddingRight="spacing.0"
       >
-        {itemOrientation === 'horizontal' && isHighlighted ? (
-          <Divider orientation="vertical" />
-        ) : null}
-        <TitleCollection
-          leading={leading}
-          trailing={trailing}
-          helpText={helpText}
-          titleWeight="medium"
-          titleColor="surface.text.gray.muted"
-          truncateAfterLines={truncateAfterLines}
-          paddingLeft={isHighlighted ? 'spacing.4' : 'spacing.0'}
-          paddingRight="spacing.0"
-        >
-          {children}
-        </TitleCollection>
-      </BaseBox>
+        {children}
+      </TitleCollection>
     </BaseBox>
   );
 };
@@ -503,37 +439,6 @@ const _InfoGroup = (
   const childCount = React.Children.count(children);
   const isHorizontal = itemOrientation === 'horizontal';
 
-  // ── Horizontal: shared key-column width (emulates CSS Grid `max-content 1fr`) ──
-  const keyWidthsRef = React.useRef<Map<number, number>>(new Map());
-  const [keyColumnWidth, setKeyColumnWidth] = React.useState<number | undefined>(undefined);
-
-  const reportKeyWidth = React.useCallback(
-    (id: number, measuredWidth: number) => {
-      const rounded = Math.ceil(measuredWidth);
-      const previous = keyWidthsRef.current.get(id);
-      if (previous === rounded) return;
-      keyWidthsRef.current.set(id, rounded);
-      const nextMax = Math.max(...keyWidthsRef.current.values());
-      setKeyColumnWidth((current) => (current === nextMax ? current : nextMax));
-    },
-    [],
-  );
-
-  // Reset measurement whenever the children set changes so stale widths don't leak.
-  React.useEffect(() => {
-    keyWidthsRef.current = new Map();
-    setKeyColumnWidth(undefined);
-  }, [childCount, isHorizontal]);
-
-  const keyColumnContextValue = React.useMemo<KeyColumnMeasureContextType>(
-    () => ({
-      isMeasuring: isHorizontal,
-      keyColumnWidth: isHorizontal ? keyColumnWidth : undefined,
-      reportKeyWidth,
-    }),
-    [isHorizontal, keyColumnWidth, reportKeyWidth],
-  );
-
   // ── Vertical: derive column count and equal flexBasis (emulates repeat(N, 1fr)) ──
   const verticalColumnCount = getVerticalColumnCount(gridTemplateColumns, childCount);
   const itemFlexBasis = !isHorizontal
@@ -542,38 +447,36 @@ const _InfoGroup = (
 
   return (
     <InfoGroupContext.Provider value={contextValue}>
-      <KeyColumnMeasureContext.Provider value={keyColumnContextValue}>
-        <BaseBox
-          ref={ref as never}
-          display="flex"
-          flexDirection={isHorizontal ? 'column' : 'row'}
-          flexWrap={isHorizontal ? undefined : 'wrap'}
-          gap="spacing.4"
-          width={width}
-          maxWidth={maxWidth}
-          minWidth={minWidth}
-          paddingLeft={paddingLeft}
-          paddingRight={paddingRight}
-          paddingTop={paddingTop}
-          paddingBottom={paddingBottom}
-          padding={padding}
-          paddingX={paddingX}
-          paddingY={paddingY}
-          {...metaAttribute({ name: MetaConstants.InfoGroup, testID })}
-          {...getStyledProps(rest)}
-        >
-          {!isHorizontal && itemFlexBasis
-            ? React.Children.map(children, (child) => {
-                if (!React.isValidElement(child)) return child;
-                return (
-                  <BaseBox flexBasis={itemFlexBasis} flexDirection="column">
-                    {child}
-                  </BaseBox>
-                );
-              })
-            : children}
-        </BaseBox>
-      </KeyColumnMeasureContext.Provider>
+      <BaseBox
+        ref={ref as never}
+        display="flex"
+        flexDirection={isHorizontal ? 'column' : 'row'}
+        flexWrap={isHorizontal ? undefined : 'wrap'}
+        gap="spacing.4"
+        width={width}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+        paddingLeft={paddingLeft}
+        paddingRight={paddingRight}
+        paddingTop={paddingTop}
+        paddingBottom={paddingBottom}
+        padding={padding}
+        paddingX={paddingX}
+        paddingY={paddingY}
+        {...metaAttribute({ name: MetaConstants.InfoGroup, testID })}
+        {...getStyledProps(rest)}
+      >
+        {!isHorizontal && itemFlexBasis
+          ? React.Children.map(children, (child) => {
+              if (!React.isValidElement(child)) return child;
+              return (
+                <BaseBox flexBasis={itemFlexBasis} flexDirection="column">
+                  {child}
+                </BaseBox>
+              );
+            })
+          : children}
+      </BaseBox>
     </InfoGroupContext.Provider>
   );
 };
