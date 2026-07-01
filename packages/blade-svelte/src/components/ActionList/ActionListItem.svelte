@@ -68,8 +68,8 @@
       event.stopPropagation();
       return;
     }
-    onClick?.({ name: value, value: isItemSelected, event });
-    ctx?.onItemSelect?.({ value });
+    onClick?.({ value, isSelected: isItemSelected, event });
+    ctx?.onAction?.({ value });
   }
 
   const metaAttrs = metaAttribute({ name: MetaConstants.ActionListItem, testID });

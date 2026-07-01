@@ -23,7 +23,7 @@
     children,
     selectionType = 'single',
     selectedValue,
-    onItemSelect,
+    onAction,
     isInBottomSheet: isInBottomSheetProp,
     testID,
     ...rest
@@ -44,8 +44,8 @@
     get isInBottomSheet() {
       return isInBottomSheet;
     },
-    get onItemSelect() {
-      return onItemSelect;
+    get onAction() {
+      return onAction;
     },
     registerItem: () => {},
   };

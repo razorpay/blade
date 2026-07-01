@@ -24,7 +24,7 @@
   <div class={templateClasses.sectionTitle}>
     <Text color="surface.text.gray.muted" size="small" weight="semibold">{title}</Text>
   </div>
-  <div class={templateClasses.sectionItems} role="listbox">
+  <div class={templateClasses.sectionItems}>
     {@render children()}
   </div>
   <Divider marginX="spacing.3" marginY="spacing.1" />

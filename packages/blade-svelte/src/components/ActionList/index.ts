@@ -4,7 +4,7 @@
  * React's ActionList: Dropdown/AutoComplete/multiselect/virtualization are all
  * out of scope.
  *
- * Selection is controlled via `selectedValue` + `onItemSelect` (keyed on each
+ * Selection is controlled via `selectedValue` + `onAction` (keyed on each
  * item's `value`). When rendered inside a `BottomSheet`, `isInBottomSheet` is
  * auto-detected from the BottomSheet context, so the outer box (border/shadow/
  * padding) is dropped and `BottomSheetBody` owns scrolling.
@@ -41,7 +41,7 @@
  *       {#snippet children()}
  *         <ActionList
  *           selectedValue={selected}
- *           onItemSelect={({ value }) => {
+ *           onAction={({ value }) => {
  *             selected = value;
  *             isOpen = false;
  *           }}

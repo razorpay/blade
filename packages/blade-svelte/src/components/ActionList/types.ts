@@ -4,15 +4,15 @@ import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-c
 /** Selection mode. Only single-select is supported in this scope. */
 export type ActionListSelectionType = 'single';
 
-/** Payload passed to `ActionList`'s `onItemSelect` when a row is activated. */
+/** Payload passed to `ActionList`'s `onAction` when a row is activated. */
 export type ActionListItemSelectPayload = { value: string };
 
 /** Payload passed to `ActionListItem`'s `onClick` (web-only). */
 export type ActionListItemClickPayload = {
   /** The item's `value`. */
-  name: string;
+  value: string;
   /** The item's selected state at click time. */
-  value?: boolean;
+  isSelected?: boolean;
   /** Native click event. */
   event: MouseEvent;
 };
@@ -36,7 +36,7 @@ export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribut
    * Fired when a row is activated. The consumer typically updates
    * `selectedValue` and closes the surrounding BottomSheet.
    */
-  onItemSelect?: (payload: ActionListItemSelectPayload) => void;
+  onAction?: (payload: ActionListItemSelectPayload) => void;
   /**
    * Whether the list is rendered inside a BottomSheet. When `true`, the outer
    * box (border/shadow/padding) is dropped so BottomSheetBody owns scrolling.
@@ -61,7 +61,7 @@ export interface ActionListItemProps extends DataAnalyticsAttribute {
    */
   description?: string;
   /**
-   * Identity of the item used for selection and returned via `onItemSelect` /
+   * Identity of the item used for selection and returned via `onAction` /
    * form submissions.
    */
   value: string;
@@ -82,8 +82,8 @@ export interface ActionListItemProps extends DataAnalyticsAttribute {
    */
   trailing?: Snippet;
   /**
-   * Click handler (web-only). `name` is the item `value`, `value` is the
-   * current selected state.
+   * Click handler (web-only). `value` is the item's string identifier,
+   * `isSelected` is the current selected state.
    */
   onClick?: (payload: ActionListItemClickPayload) => void;
   /**
@@ -147,7 +147,7 @@ export type ActionListContextValue = {
   selectionType: ActionListSelectionType;
   selectedValue?: string;
   isInBottomSheet: boolean;
-  onItemSelect?: (payload: ActionListItemSelectPayload) => void;
+  onAction?: (payload: ActionListItemSelectPayload) => void;
   /** No-op-safe hook reserved for future focus/index needs. */
   registerItem?: (value: string) => void;
 };

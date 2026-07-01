@@ -7,7 +7,7 @@ const ACTION_LIST_CONTEXT_KEY = Symbol('action-list-context');
  * Reactive context provided by `ActionList` and read by each `ActionListItem`.
  * Mirrors the slice of React's `useDropdown` that ActionList actually needs:
  * `selectionType` (single-select only in this scope), the controlled
- * `selectedValue`, the `onItemSelect` callback (consumer closes the sheet), and
+ * `selectedValue`, the `onAction` callback (consumer closes the sheet), and
  * `isInBottomSheet` (resolved from `getBottomSheetContext()` or the prop).
  *
  * Uses the getter pattern (`setContext(KEY, () => value)`) so `selectedValue`

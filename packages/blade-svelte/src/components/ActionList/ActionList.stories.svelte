@@ -14,7 +14,7 @@
     },
     argTypes: {
       children: { table: { disable: true } },
-      onItemSelect: { table: { disable: true } },
+      onAction: { table: { disable: true } },
       isInBottomSheet: { table: { disable: true } },
       selectionType: { control: 'select', options: ['single'] },
       selectedValue: { control: 'text' },
@@ -235,7 +235,7 @@
             {#snippet children()}
               <ActionList
                 selectedValue={selectedCountry}
-                onItemSelect={({ value }) => {
+                onAction={({ value }) => {
                   selectedCountry = value;
                   isCountryOpen = false;
                 }}
