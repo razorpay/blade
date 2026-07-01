@@ -3559,7 +3559,7 @@ describe('<GenUI />', () => {
         });
       });
 
-      it('should render h2 and above with semibold weight', () => {
+      it('should render h1 and h2 with medium weight', () => {
         const H1Component = markdownComponents.h1;
         const H2Component = markdownComponents.h2;
 
@@ -3570,8 +3570,8 @@ describe('<GenUI />', () => {
           </>,
         );
 
-        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '600' });
-        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '500' });
       });
 
       it('should render markdown headings with Figma typography mapping', () => {
@@ -3594,25 +3594,26 @@ describe('<GenUI />', () => {
         );
 
         expect(getByText('Figma Heading 1')).toHaveStyle({
-          fontSize: '32px',
-          fontWeight: '600',
+          color: 'rgb(5, 5, 5)',
+          fontSize: '28px',
+          fontWeight: '500',
           lineHeight: '38px',
         });
         expect(getByText('Figma Heading 2').tagName).toBe('H2');
         expect(getByText('Figma Heading 2')).toHaveStyle({
           fontSize: '24px',
-          fontWeight: '600',
+          fontWeight: '500',
           lineHeight: '32px',
         });
         expect(getByText('Figma Heading 3')).toHaveStyle({
           fontSize: '20px',
-          fontWeight: '600',
+          fontWeight: '500',
           lineHeight: '26px',
         });
         expect(getByText('Figma Heading 4')).toHaveStyle({
-          fontSize: '20px',
+          fontSize: '18px',
           fontWeight: '500',
-          lineHeight: '26px',
+          lineHeight: '24px',
         });
         expect(getByText('Figma Heading 5')).toHaveStyle({ fontWeight: '500' });
         expect(getByText('Figma Heading 6')).toHaveStyle({
@@ -3638,7 +3639,7 @@ describe('<GenUI />', () => {
         expect(getByText('Stacked Heading 3')).toHaveStyle({ marginTop: '0px' });
       });
 
-      it('should render h3 with semibold and h4 and below with medium weight', () => {
+      it('should render h3 and below with medium weight', () => {
         const H3Component = markdownComponents.h3;
         const H4Component = markdownComponents.h4;
         const H5Component = markdownComponents.h5;
@@ -3653,7 +3654,7 @@ describe('<GenUI />', () => {
           </>,
         );
 
-        expect(getByText('Heading 3')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Heading 3')).toHaveStyle({ fontWeight: '500' });
         expect(getByText('Heading 4')).toHaveStyle({ fontWeight: '500' });
         expect(getByText('Heading 5')).toHaveStyle({ fontWeight: '500' });
         expect(getByText('Heading 6')).toHaveStyle({ fontWeight: '500' });
