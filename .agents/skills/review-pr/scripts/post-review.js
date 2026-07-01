@@ -111,34 +111,17 @@ function formatOverviewComment(
     parts.push('**Status:** Approved ✅');
   }
 
-  if (isSelfReview) {
+  if (isSelfReview && reviewStatus === 'approved') {
     parts.push(
       '<img src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/__ci_artifacts/artifacts/review-assets/Obama-giving-Obama-award.png" alt="obama giving obama medal" width="300px" />',
     );
   }
 
-  const sanity = overview['sanity-review'];
   const ui = overview['ui-review'];
 
   if (ui) {
-    const storybookStatus = sanity?.statuses?.find((s) =>
-      s.name.toLowerCase().includes('storybook'),
-    );
-    const storybookLine = storybookStatus?.link
-      ? `🔗 Storybook: [Preview](${storybookStatus.link})`
-      : null;
-
     parts.push('### UI Review');
-    if (storybookLine) parts.push(storybookLine);
     parts.push(buildStatusSection(ui.statuses, screenshotCdnMap));
-  }
-
-  if (sanity) {
-    parts.push('### CI / Sanity');
-    parts.push(buildStatusSection(sanity.statuses));
-    if (sanity.issues?.length) {
-      parts.push(sanity.issues.map((i) => `> ⚠️ ${i.problem}`).join('\n'));
-    }
   }
 
   if (usage) {
@@ -179,7 +162,9 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   const screenshots = uiStatuses.filter((s) => s.screenshot_path);
   if (screenshots.length === 0) return {};
 
-  const destDir = `artifacts/review/PR-${prNum}/ui-critique`;
+  const now = new Date();
+  const ts = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
+  const destDir = `artifacts/review/PR-${prNum}/ui-critique/${ts}`;
 
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
   const cdnMap = {};
@@ -202,13 +187,6 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
     } catch (_) {
       execSync('git checkout --orphan __ci_artifacts', { stdio: 'pipe' });
       execSync('git rm -rf . --quiet', { stdio: 'pipe' });
-    }
-
-    // Remove previous artifacts for this PR before writing new ones
-    try {
-      execSync(`git rm -rf ${destDir} --quiet`, { stdio: 'pipe' });
-    } catch (_) {
-      // destDir may not exist yet on first review — that's fine
     }
 
     execSync(`mkdir -p ${destDir}`);
@@ -249,15 +227,27 @@ let currentUser;
 try {
   currentUser = execSync("gh api user --jq '.login'").toString().trim();
 } catch (_) {
-  currentUser = null;
+  // gh api user returns 403 for GitHub App tokens; fall back to gh auth status
+  try {
+    const statusOutput = execSync('gh auth status 2>&1').toString();
+    const match = statusOutput.match(/account\s+(\S+)/i);
+    currentUser = match ? match[1].replace(/\[bot\]$/i, '') : null;
+  } catch (_2) {
+    currentUser = null;
+  }
 }
-const isSelfReview = currentUser !== null && prAuthor === currentUser;
+const normalize = (login) => login?.replace(/\[bot\]$/i, '').toLowerCase();
+const SLASH_ACCOUNTS = ['rzp-slash-public', 'rzp-slash'];
+const isSelfReview =
+  currentUser !== null &&
+  (normalize(prAuthor) === normalize(currentUser) ||
+    (normalize(currentUser) === 'slash' && SLASH_ACCOUNTS.includes(normalize(prAuthor))));
 
 // "Generate PR Report" runs long and is always in-progress — exclude it from review gates
 const IGNORED_CHECKS = ['generate pr report'];
 function filterIgnoredChecks(overview) {
   const filtered = { ...overview };
-  for (const key of ['sanity-review', 'ui-review']) {
+  for (const key of ['ui-review']) {
     if (filtered[key]?.statuses) {
       filtered[key] = {
         ...filtered[key],
@@ -347,6 +337,11 @@ if (isPending) {
 } else {
   console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
+}
+
+if (reviewStatus === 'approved') {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "rcore:eligible-for-auto-approval"`);
+  console.log('Added label: rcore:eligible-for-auto-approval');
 }
 
 const hasClarifications = allComments.some((c) => c.clarification);

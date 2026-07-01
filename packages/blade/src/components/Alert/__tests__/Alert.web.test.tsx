@@ -142,4 +142,12 @@ describe('<Alert />', () => {
 
     expect(getByTestId('alert-test')).toHaveAttribute('data-analytics-action', 'click');
   });
+
+  it('should accept custom maxWidth', () => {
+    const { container } = renderWithTheme(
+      <Alert description="Test alert with custom max width" maxWidth="800px" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -468,6 +468,7 @@ exports[`<SearchInput /> should render 1`] = `
                         hasLeadingDropdown={false}
                         hasTags={false}
                         id="searchinput-1-input-2"
+                        includeFontPadding={false}
                         isDropdownTrigger={true}
                         isFocused={false}
                         isInsideCounterInput={false}

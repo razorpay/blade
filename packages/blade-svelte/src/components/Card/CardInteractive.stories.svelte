@@ -171,6 +171,44 @@
   ];
 </script>
 
+<Story name="Playground">
+  {#snippet template(args)}
+    {@const { children: _, ...rest } = args}
+    <Card {...rest} width="400px" onHover={() => console.log('Hovered')}>
+      <CardHeader>
+        <CardHeaderLeading title="Payment Pages" subtitle="Card Header Subtitle">
+          {#snippet prefix()}
+            <CardHeaderIcon icon={CreditCardIcon} />
+          {/snippet}
+          {#snippet suffix()}
+            <CardHeaderCounter value={12} />
+          {/snippet}
+        </CardHeaderLeading>
+        <CardHeaderTrailing>
+          {#snippet visual()}
+            <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+          {/snippet}
+        </CardHeaderTrailing>
+      </CardHeader>
+      <CardBody>
+        <Text>
+          Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
+          Accepting payments from customers is now just a link away.
+        </Text>
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading title="Footer" subtitle="Footer Subtitle" />
+        <CardFooterTrailing
+          actions={{
+            primary: { text: 'Primary', onClick: () => console.log('Primary') },
+            secondary: { text: 'Secondary', onClick: () => console.log('Secondary') },
+          }}
+        />
+      </CardFooter>
+    </Card>
+  {/snippet}
+</Story>
+
 <!-- Story 1: Default -->
 <Story name="Default" asChild>
   <Card
