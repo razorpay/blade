@@ -185,11 +185,9 @@
 
 <!-- 16 -->
 <Story name="TextInputWithLeadingElement" asChild>
-  <TextInput label="Phone" placeholder="Enter number">
+  <TextInput label="Enter your upi id" placeholder="98000xxxxx">
     {#snippet leading()}
-      <div style="padding-left: var(--spacing-4); display: flex; align-items: center;">
-        <Badge color="neutral">+91</Badge>
-      </div>
+      <Badge color="neutral">+91</Badge>
     {/snippet}
   </TextInput>
 </Story>
