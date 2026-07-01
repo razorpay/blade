@@ -439,12 +439,14 @@ const getVerticalColumnCount = (
 
   if (typeof gridTemplateColumns !== 'string') return fallback;
 
-  const template = gridTemplateColumns as string;
+  const template = gridTemplateColumns;
 
   const repeatMatch = template.match(/repeat\(\s*(?:min\(\s*)?(\d+)/i);
   if (repeatMatch) {
     const parsed = parseInt(repeatMatch[1], 10);
-    return Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, childCount || parsed) : fallback;
+    return Number.isFinite(parsed) && parsed > 0
+      ? Math.min(parsed, childCount || parsed)
+      : fallback;
   }
 
   const tracks = template.trim().split(/\s+/).filter(Boolean).length;
@@ -492,17 +494,14 @@ const _InfoGroup = (
   const keyWidthsRef = React.useRef<Map<number, number>>(new Map());
   const [keyColumnWidth, setKeyColumnWidth] = React.useState<number | undefined>(undefined);
 
-  const reportKeyWidth = React.useCallback(
-    (id: number, measuredWidth: number) => {
-      const rounded = Math.ceil(measuredWidth);
-      const previous = keyWidthsRef.current.get(id);
-      if (previous === rounded) return;
-      keyWidthsRef.current.set(id, rounded);
-      const nextMax = Math.max(...keyWidthsRef.current.values());
-      setKeyColumnWidth((current) => (current === nextMax ? current : nextMax));
-    },
-    [],
-  );
+  const reportKeyWidth = React.useCallback((id: number, measuredWidth: number) => {
+    const rounded = Math.ceil(measuredWidth);
+    const previous = keyWidthsRef.current.get(id);
+    if (previous === rounded) return;
+    keyWidthsRef.current.set(id, rounded);
+    const nextMax = Math.max(...keyWidthsRef.current.values());
+    setKeyColumnWidth((current) => (current === nextMax ? current : nextMax));
+  }, []);
 
   // Reset measurement whenever the children set changes so stale widths don't leak.
   React.useEffect(() => {
