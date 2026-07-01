@@ -25,7 +25,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
-import type { FormInputOnKeyDownEvent, FormInputOnEvent } from '~components/Form';
+import type { FormInputOnEvent } from '~components/Form';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputProps> = (
   {
