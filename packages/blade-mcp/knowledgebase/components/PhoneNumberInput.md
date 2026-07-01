@@ -113,6 +113,22 @@ type PhoneNumberInputProps = {
   StyledPropsBlade;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `PhoneNumberInput` for collecting international phone numbers with country code selection.
+- Use `allowedCountries` to restrict the country selector to relevant countries for your use case.
+- Use `showCountrySelector={false}` for single-country applications where only domestic numbers are accepted.
+- Use `onCountryChange` to react to country selection and adjust validation accordingly.
+
+**Don't**
+
+- Don't use `PhoneNumberInput` for non-phone numeric input — use `TextInput` with `type="number"` or `CounterInput`.
+- Don't assume the component validates phone numbers — validation is the consumer's responsibility.
+- Don't use `TextInput` with `format` for international phone numbers — `PhoneNumberInput` handles dial codes and country selection.
+- Don't rely on the placeholder format for auto-formatting during typing — formatting is shown as a hint only.
+
 ## Example
 
 ### Basic Phone Number Input

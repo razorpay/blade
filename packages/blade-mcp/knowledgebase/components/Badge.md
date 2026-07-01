@@ -55,6 +55,26 @@ type BadgeProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Badge` for non-interactive, color-coded metadata such as status labels, or category indicators.
+- Use semantic `color` values (`positive`, `negative`, `notice`, `information`, `neutral`) to convey meaning — e.g. `positive` for success states, `negative` for errors.
+- Use `emphasis="intense"` when the badge needs to stand out prominently (e.g. critical status); use `emphasis="subtle"` for secondary or supportive metadata.
+- Keep badge labels short (1–2 words) — the text auto-truncates with a tooltip on overflow.
+- Pair an `icon` with the label to reinforce meaning at a glance (e.g. `CheckCircleIcon` with a "Success" badge).
+- Use `size="small"` or `size="xsmall"` when embedding badges inside dense UI like table rows or list items; use `size="medium"` or `size="large"` for standalone callouts.
+
+**Don't**
+
+- Don't use `Badge` for interactive elements — use `Tag` (removable/selectable metadata) or `Chip` (user-driven filter/action) instead.
+- Don't use `Badge` as a clickable button or link — it is purely informational.
+- Don't use icon-only badges without text — `children` (text) is always required.
+- Don't use long sentences as badge labels — keep text concise and use title case or sentence case consistently.
+- Don't rely solely on `color` to convey meaning — always include a text label (and optionally an icon) for accessibility.
+- Don't mix `emphasis="intense"` badges alongside `emphasis="subtle"` for items of equal importance — keep emphasis consistent within the same visual group.
+
 ## Examples
 
 ### Badge Usage

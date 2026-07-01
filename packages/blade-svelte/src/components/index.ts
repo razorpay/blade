@@ -45,6 +45,22 @@ export type { SkeletonProps } from './Skeleton/types';
 // Accordion
 export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
 
+// Collapsible
+export {
+  Collapsible,
+  CollapsibleButton,
+  CollapsibleLink,
+  CollapsibleText,
+  CollapsibleBody,
+} from './Collapsible';
+export type {
+  CollapsibleProps,
+  CollapsibleButtonProps,
+  CollapsibleLinkProps,
+  CollapsibleTextProps,
+  CollapsibleBodyProps,
+} from './Collapsible';
+
 // Switch
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
@@ -86,6 +102,18 @@ export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
 
+// Checkbox
+export { default as Checkbox } from './Checkbox/Checkbox.svelte';
+export { default as CheckboxGroup } from './Checkbox/CheckboxGroup.svelte';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxOnChange,
+  CheckboxGroupOnChange,
+  CheckboxInstance,
+  CheckboxSize,
+} from './Checkbox/types';
+
 // Radio
 export { default as Radio } from './Radio/Radio.svelte';
 export { default as RadioGroup } from './Radio/RadioGroup.svelte';
@@ -96,8 +124,13 @@ export type {
   RadioInstance,
   RadioSize,
 } from './Radio/types';
+
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
+
+// AnnouncementBanner
+export { default as AnnouncementBanner } from './AnnouncementBanner/AnnouncementBanner.svelte';
+export type { AnnouncementBannerProps } from './AnnouncementBanner/types';
 
 // Avatar
 export { default as Avatar } from './Avatar/Avatar.svelte';
