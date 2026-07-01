@@ -72,7 +72,7 @@ DatePickerMinMaxDate.play = async () => {
   // expect date to be disabled
   // if date is greater then 15 days then we should check add 6 days from it
   // if date is less then 15 days then we should check subtract 6 days from  it
-  const isGreaterThen15Days = dayjs().diff(dayjs(), 'day') > 15;
+  const isGreaterThen15Days = dayjs().date() > 15;
   const disabledDate = getByRole('button', {
     name: isGreaterThen15Days
       ? dayjs().subtract(6, 'day').format('D MMMM YYYY')
