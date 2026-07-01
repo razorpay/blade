@@ -1,0 +1,76 @@
+/*
+ * FormLabel styles — ported from React `Form/FormLabel.tsx` + `formTokens.ts`
+ * (web subset). The label text color/size and the `left`-position width are
+ * driven by size classes; the label text itself is rendered via the migrated
+ * `Text` component in the Svelte layer.
+ */
+
+.label {
+  flex-shrink: 0;
+  width: 100%;
+  margin-right: 0;
+}
+
+/* Left-positioned label: fixed width + right margin per size (desktop only). */
+.label-left {
+  width: 120px;
+}
+.label-left.size-large {
+  width: 176px;
+}
+
+.label-left.size-xsmall,
+.label-left.size-small {
+  margin-right: var(--spacing-3);
+}
+.label-left.size-medium {
+  margin-right: var(--spacing-4);
+}
+.label-left.size-large {
+  margin-right: var(--spacing-5);
+}
+
+/* Inner wrapper: row (top) / column (left). */
+.label-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.label-inner.label-left {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Bottom margin below the label (top-position only). */
+.label-inner.size-xsmall,
+.label-inner.size-small,
+.label-inner.size-medium {
+  margin-bottom: var(--spacing-2);
+}
+.label-inner.size-large {
+  margin-bottom: var(--spacing-3);
+}
+.label-inner.label-left {
+  margin-bottom: 0;
+}
+
+/* Text + suffix grouping. */
+.label-text-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.label-suffix {
+  display: flex;
+}
+
+.label-trailing {
+  margin-left: auto;
+}
+.label-trailing.label-left {
+  margin-left: 0;
+}

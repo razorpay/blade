@@ -179,5 +179,19 @@ export type {
   SnapPoints,
 } from './BottomSheet';
 
+// Input
+export { TextInput } from './Input/TextInput';
+export type { TextInputProps, TextInputType } from './Input/TextInput';
+export { SearchInput } from './Input/SearchInput';
+export type { SearchInputProps } from './Input/SearchInput';
+export { OTPInput } from './Input/OTPInput';
+export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
+export { PhoneNumberInput } from './Input/PhoneNumberInput';
+export type {
+  PhoneNumberInputProps,
+  PhoneNumberInputInstance,
+  PhoneNumberChangePayload,
+} from './Input/PhoneNumberInput';
+
 // BladeProvider
 export * from './BladeProvider';
