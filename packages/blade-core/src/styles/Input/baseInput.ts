@@ -31,7 +31,9 @@ export const baseInputWrapperCva = cva(styles['input-wrapper'], {
     validationState: {
       none: null,
       error: styles['validation-error'],
-      success: styles['validation-success'],
+      // success keeps the default gray thin border (matches React — success only
+      // changes the hint text + trailing success icon, not the wrapper border).
+      success: null,
     },
     borderRadius: {
       small: null,

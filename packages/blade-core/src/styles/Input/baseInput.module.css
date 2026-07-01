@@ -8,9 +8,14 @@
  * shift layout when width changes between thin/thick.
  */
 
-/* ── Outer container (styled-props host) ── */
+/* ── Outer container (styled-props host) ──
+ * Mirrors React's outermost BaseBox, which sets NO width. As a block element it
+ * fills its container in block/column contexts, but shrinks to the input's
+ * intrinsic width inside a flex row (e.g. input + button). The inner `.field`
+ * carries `width: 100%`. Forcing `width: 100%` here would make the input stretch
+ * to fill flex rows, diverging from React. */
 .outer {
-  width: 100%;
+  width: auto;
 }
 
 /* ── Label + input column ── */

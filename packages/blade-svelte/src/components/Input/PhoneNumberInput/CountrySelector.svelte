@@ -8,6 +8,34 @@
     medium: 20,
     large: 24,
   };
+
+  // Trigger "chip" height = React InputDropdownButton height:
+  // baseInputHeight[size] - 2 × spacing[inputDropdownButtonPadding[size]].
+  // xsmall 28-4=24, small 32-4=28, medium 36-8=28, large 48-8=40.
+  const chipHeight: Record<BaseInputSize, number> = {
+    xsmall: 24,
+    small: 28,
+    medium: 28,
+    large: 40,
+  };
+
+  // Chip border-radius, mirrors React's `inputDropdownButtonBorderRadius` (6/6/6/8px).
+  const chipRadius: Record<BaseInputSize, number> = {
+    xsmall: 6,
+    small: 6,
+    medium: 6,
+    large: 8,
+  };
+
+  // Horizontal inset per side = React outer button padding (spacing.2 = 4px) +
+  // inner Box padding (inputDropdownButtonPadding[size]: xsmall/small spacing.1 = 2px,
+  // medium/large spacing.2 = 4px). => 6/6/8/8px.
+  const chipPadX: Record<BaseInputSize, number> = {
+    xsmall: 6,
+    small: 6,
+    medium: 8,
+    large: 8,
+  };
 </script>
 
 <script lang="ts">
@@ -19,7 +47,7 @@
     ActionListItemText,
   } from '../../ActionList';
   import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '../../BottomSheet';
-  import { ChevronDownIcon } from '../../Icons';
+  import { ChevronUpDownIcon } from '../../Icons';
   import type { CountrySelectorProps } from './types';
 
   let {
@@ -47,6 +75,7 @@
 <button
   type="button"
   class="country-selector-trigger"
+  style={`height: ${chipHeight[size]}px; border-radius: ${chipRadius[size]}px; padding: 0 ${chipPadX[size]}px;`}
   disabled={isDisabled || undefined}
   aria-label={triggerLabel}
   aria-haspopup="dialog"
@@ -61,7 +90,7 @@
     alt=""
   />
   <span class="country-selector-chevron">
-    <ChevronDownIcon size="small" color="surface.icon.gray.muted" />
+    <ChevronUpDownIcon size="medium" color="interactive.icon.gray.muted" />
   </span>
 </button>
 
@@ -84,16 +113,23 @@
 </BottomSheet>
 
 <style>
+  /* Mirrors React's InputDropdownButton chip: transparent at rest, gray-faded on
+     hover/focus, compact centered box with 4px + 4px inset (8px total) and 4px gap. */
   .country-selector-trigger {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-2);
-    padding: 0 var(--spacing-3);
-    height: 100%;
     border: none;
-    background: transparent;
+    background-color: transparent;
     cursor: pointer;
     outline: none;
+    transition: background-color 70ms ease;
+  }
+
+  .country-selector-trigger:hover:not([disabled]),
+  .country-selector-trigger:focus-visible {
+    background-color: var(--interactive-background-gray-faded);
   }
 
   .country-selector-trigger[disabled] {
@@ -103,7 +139,6 @@
 
   .country-selector-trigger:focus-visible {
     box-shadow: 0 0 0 var(--border-width-thick) var(--surface-border-primary-muted);
-    border-radius: var(--border-radius-small);
   }
 
   .country-selector-chevron {

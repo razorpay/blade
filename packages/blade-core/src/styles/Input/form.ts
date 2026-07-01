@@ -131,6 +131,7 @@ export function getFormHintClasses(props: { size?: FormSize }): string {
  */
 export function getFormTemplateClasses(): {
   labelTextGroup: string;
+  labelTextGroupTight: string;
   labelSuffix: string;
   labelTrailing: string;
   labelLeft: string;
@@ -140,6 +141,7 @@ export function getFormTemplateClasses(): {
 } {
   return {
     labelTextGroup: labelStyles['label-text-group'],
+    labelTextGroupTight: labelStyles['necessity-tight'],
     labelSuffix: labelStyles['label-suffix'],
     labelTrailing: labelStyles['label-trailing'],
     labelLeft: labelStyles['label-left'],

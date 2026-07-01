@@ -64,6 +64,14 @@
   gap: var(--spacing-2);
 }
 
+/*
+ * Text ↔ necessity-indicator gap: React uses spacing.0 for the `required` "*"
+ * and only spacing.2 for the `(optional)` label. Applied to the inner text group.
+ */
+.label-text-group.necessity-tight {
+  gap: 0;
+}
+
 .label-suffix {
   display: flex;
 }

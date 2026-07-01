@@ -57,7 +57,7 @@
 
   type OTPInputInstance = { focus: (index?: number) => void };
 
-  let controlledValue = $state('');
+  let controlledValue = $state('123456');
   let refInput: OTPInputInstance | undefined = $state();
   let focusOn = $state(0);
 </script>
@@ -144,21 +144,25 @@
 
 <!-- 9 -->
 <Story name="OTPInputUncontrolled" asChild>
-  <OTPInput
-    label="Enter OTP"
-    name="otp"
-    onChange={({ name, value }) => console.log({ name, value })}
-  />
+  <div style="max-width: 568px;">
+    <OTPInput
+      label="Enter OTP"
+      name="otp"
+      onChange={({ name, value }) => console.log({ name, value })}
+    />
+  </div>
 </Story>
 
 <!-- 10 -->
 <Story name="OTPInputControlled" asChild>
-  <OTPInput
-    label="Enter OTP"
-    name="otp"
-    value={controlledValue}
-    onChange={({ value }) => (controlledValue = value ?? '')}
-  />
+  <div style="max-width: 568px;">
+    <OTPInput
+      label="Enter OTP"
+      name="otp"
+      value={controlledValue}
+      onChange={({ value }) => (controlledValue = value ?? '')}
+    />
+  </div>
 </Story>
 
 <!-- 11 -->
@@ -258,6 +262,23 @@
     <div>
       <Text size="large" weight="semibold" marginBottom="spacing.4" color="feedback.text.information.intense">Auto Focus</Text>
       <div style="max-width: 568px;"><OTPInput label="Auto Focus Enabled" autoFocus name="autoFocus" /></div>
+    </div>
+    <div>
+      <Text size="large" weight="semibold" marginBottom="spacing.4" color="surface.text.gray.subtle">With Label Suffix & Trailing</Text>
+      <div style="max-width: 568px;">
+        <OTPInput label="Enter OTP" name="labelSuffixTrailing">
+          {#snippet labelSuffix()}
+            <Tooltip content="Your OTP is sent to your registered mobile number" placement="right">
+              <div style="display: flex; align-items: center;">
+                <InfoIcon size="small" color="surface.icon.gray.muted" />
+              </div>
+            </Tooltip>
+          {/snippet}
+          {#snippet labelTrailing()}
+            <Link size="small" onClick={() => {}}>Learn more</Link>
+          {/snippet}
+        </OTPInput>
+      </div>
     </div>
   </div>
 </Story>

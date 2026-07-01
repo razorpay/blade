@@ -52,7 +52,14 @@
 </script>
 
 {#snippet textBlock()}
-  <span class={templateClasses.labelTextGroup}>
+  <span
+    class={[
+      templateClasses.labelTextGroup,
+      necessityIndicator === 'optional' ? '' : templateClasses.labelTextGroupTight,
+    ]
+      .filter(Boolean)
+      .join(' ')}
+  >
     <Text
       as="span"
       variant="body"

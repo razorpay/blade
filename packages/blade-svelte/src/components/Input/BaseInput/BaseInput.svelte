@@ -12,6 +12,7 @@
     getBaseInputClasses,
     getBaseInputTemplateClasses,
     baseInputBorderRadius,
+    formHintLeftLabelMarginLeft,
   } from '@razorpay/blade-core/styles';
   import FormLabel from '../_Form/FormLabel.svelte';
   import FormHint from '../_Form/FormHint.svelte';
@@ -173,6 +174,13 @@
   const hintType = $derived(getHintType({ validationState, hasHelpText: Boolean(helpText) }));
   const showFormHintOutside = $derived(
     !hideFormHint && validationTextPlacement === 'outside',
+  );
+
+  // When the label is left-positioned the hint row sits below as a sibling of the
+  // label|input row and is indented by the label column width so it aligns under
+  // the input (mirrors React's `formHintLeftLabelMarginLeft`).
+  const hintMarginLeft = $derived(
+    isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
   );
 
   const inputIds = $derived({
@@ -370,34 +378,35 @@
         </div>
       </div>
     </div>
-
-    {#if showFormHintOutside || trailingFooterSlot}
-      <div
-        class={[
-          templateClasses.hintRow,
-          showFormHintOutside && (helpText || errorText || successText)
-            ? templateClasses.hasHint
-            : templateClasses.noHint,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {#if showFormHintOutside}
-          <FormHint
-            type={hintType}
-            size={size === 'xsmall' ? 'small' : size}
-            {helpText}
-            {errorText}
-            {successText}
-            helpTextId={inputIds.helpTextId}
-            errorTextId={inputIds.errorTextId}
-            successTextId={inputIds.successTextId}
-          />
-        {/if}
-        {#if trailingFooterSlot}
-          {@render trailingFooterSlot(currentValue)}
-        {/if}
-      </div>
-    {/if}
   </div>
+
+  {#if showFormHintOutside || trailingFooterSlot}
+    <div
+      class={[
+        templateClasses.hintRow,
+        showFormHintOutside && (helpText || errorText || successText)
+          ? templateClasses.hasHint
+          : templateClasses.noHint,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      style={hintMarginLeft ? `margin-left: ${hintMarginLeft}px` : undefined}
+    >
+      {#if showFormHintOutside}
+        <FormHint
+          type={hintType}
+          size={size === 'xsmall' ? 'small' : size}
+          {helpText}
+          {errorText}
+          {successText}
+          helpTextId={inputIds.helpTextId}
+          errorTextId={inputIds.errorTextId}
+          successTextId={inputIds.successTextId}
+        />
+      {/if}
+      {#if trailingFooterSlot}
+        {@render trailingFooterSlot(currentValue)}
+      {/if}
+    </div>
+  {/if}
 </div>

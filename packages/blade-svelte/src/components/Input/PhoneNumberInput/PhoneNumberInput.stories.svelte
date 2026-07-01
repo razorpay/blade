@@ -7,7 +7,6 @@
     component: PhoneNumberInput,
     tags: ['autodocs'],
     args: {
-      label: 'Enter phone number',
       defaultCountry: 'IN',
       size: 'medium',
       showDialCode: true,
@@ -52,7 +51,7 @@
   import Text from '../../Typography/Text/Text.svelte';
   import Code from '../../Typography/Code/Code.svelte';
   import Button from '../../Button/Button.svelte';
-  import { InfoIcon, UserIcon } from '../../Icons';
+  import { InfoIcon, PhoneIcon } from '../../Icons';
   import type { PhoneNumberChangePayload } from './types';
 
   let controlledCountry = $state<CountryCodeType>('IN');
@@ -129,7 +128,7 @@
 
 <!-- 9 -->
 <Story name="WithLeadingIcon" asChild>
-  <PhoneNumberInput label="Enter phone number" showCountrySelector={false} leadingIcon={UserIcon} />
+  <PhoneNumberInput showCountrySelector={false} leadingIcon={PhoneIcon} />
 </Story>
 
 <!-- 10 -->
@@ -155,13 +154,13 @@
       By setting the <Code size="medium">{`allowedCountries={['IN', 'MY']}`}</Code> prop, We can only
       show two countries in the Country Selector
     </Text>
-    <PhoneNumberInput label="Enter phone number" allowedCountries={['IN', 'MY']} />
+    <PhoneNumberInput allowedCountries={['IN', 'MY']} />
   </div>
 </Story>
 
 <!-- 12 -->
 <Story name="DefaultCountry" asChild>
-  <PhoneNumberInput label="Enter phone number" defaultCountry="MY" />
+  <PhoneNumberInput defaultCountry="MY" />
 </Story>
 
 <!-- 13 -->

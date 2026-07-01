@@ -8,15 +8,19 @@ export { CheckCircleIcon } from './CheckCircleIcon';
 export { CheckIcon } from './CheckIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
+export { ChevronUpDownIcon } from './ChevronUpDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
 export { InfoIcon } from './InfoIcon';
+export { PhoneIcon } from './PhoneIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';
 
 export { UserIcon } from './UserIcon';
 export { BuildingIcon } from './BuildingIcon';
+export { BankIcon } from './BankIcon';
+export { LockIcon } from './LockIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';

@@ -3,15 +3,19 @@ import type { IconProps } from './types';
 import { CheckIcon } from './CheckIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { ChevronLeftIcon } from './ChevronLeftIcon';
+import { ChevronUpDownIcon } from './ChevronUpDownIcon';
 import { CloseIcon } from './CloseIcon';
 import { CreditCardIcon } from './CreditCardIcon';
 import { InfoIcon } from './InfoIcon';
 import { MoreFilledIcon } from './MoreFilledIcon';
+import { PhoneIcon } from './PhoneIcon';
 import { PlusIcon } from './PlusIcon';
 import { SearchIcon } from './SearchIcon';
 import { UserIcon } from './UserIcon';
 import { BuildingIcon } from './BuildingIcon';
+import { BankIcon } from './BankIcon';
 import { HomeIcon } from './HomeIcon';
+import { LockIcon } from './LockIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -21,15 +25,19 @@ export type IconComponent = Component<IconProps>;
  */
 export const iconMap: Record<string, IconComponent | undefined> = {
   None: undefined,
+  BankIcon,
   BuildingIcon,
   HomeIcon,
+  LockIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
+  ChevronUpDownIcon,
   CloseIcon,
   CreditCardIcon,
   InfoIcon,
   MoreFilledIcon,
+  PhoneIcon,
   PlusIcon,
   SearchIcon,
   UserIcon,
