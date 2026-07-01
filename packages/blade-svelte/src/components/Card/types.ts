@@ -140,6 +140,11 @@ type CardSharedProps = {
  * valid when `variant="theme"`. Passing `backgroundColor` with `primary` or
  * `secondary` is a compile-time TypeScript error.
  *
+ * **Note on cross-framework parity:** The React Card currently supports
+ * `variant?: 'primary' | 'secondary'`. The `theme` variant is introduced here
+ * as a Svelte-first extension; it will be backported to the React Card in a
+ * follow-up PR to keep both frameworks in sync.
+ *
  * @example
  * ```svelte
  * <!-- valid -->
