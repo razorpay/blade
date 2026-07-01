@@ -158,9 +158,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      handleInputBlur(args);
+      // Pass committed opacity value so consumers see the corrected state, not the partial display string.
+      handleInputBlur({ name, value: String(colorValue.opacity) });
     },
-    [colorValue.opacity, handleInputBlur],
+    [colorValue.opacity, handleInputBlur, name],
   );
 
   const handleOpacityKeyDown = useCallback(
@@ -200,11 +201,12 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   // Hex-specific blur: reset partial display to last committed valid value.
   const handleHexInputBlur = useCallback<FormInputOnEvent>(
-    (args) => {
+    () => {
       setHexDisplayValue(colorValue.hex);
-      handleInputBlur(args);
+      // Pass committed hex so consumers see the corrected state, not the partial display string.
+      handleInputBlur({ name, value: colorValue.hex });
     },
-    [colorValue.hex, handleInputBlur],
+    [colorValue.hex, handleInputBlur, name],
   );
 
   // Sync opacityDisplayValue when controlled value changes externally

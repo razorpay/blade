@@ -141,7 +141,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      handleInputBlurBoundary({ name, value: inputValue });
+      // Pass committed opacity so consumers see the corrected state, not the partial display string.
+      handleInputBlurBoundary({ name, value: String(colorValue.opacity) });
     },
     [colorValue.opacity, handleInputBlurBoundary, name],
   );
@@ -156,9 +157,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   // Hex blur resets partial display to the last committed valid value.
   const handleHexInputBlur = useCallback(
-    ({ value: inputValue }: { name?: string; value?: string }) => {
+    () => {
       setHexDisplayValue(colorValue.hex);
-      handleInputBlurBoundary({ name, value: inputValue });
+      // Pass committed hex so consumers see the corrected state, not the partial display string.
+      handleInputBlurBoundary({ name, value: colorValue.hex });
     },
     [colorValue.hex, handleInputBlurBoundary, name],
   );
