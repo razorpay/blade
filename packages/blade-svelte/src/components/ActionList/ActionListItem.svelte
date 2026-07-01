@@ -135,7 +135,6 @@
     class={rowClasses}
     type="button"
     data-value={value}
-    disabled={isDisabled || undefined}
     onclick={handleClick}
     {...a11yAttrs}
     {...metaAttrs}
