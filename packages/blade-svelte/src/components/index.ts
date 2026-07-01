@@ -106,6 +106,10 @@ export {
   ActionListItem,
   ActionListItemAsset,
   ActionListItemText,
+  ActionListItemIcon,
+  ActionListItemAvatar,
+  ActionListItemBadge,
+  ActionListItemBadgeGroup,
   ActionListSection,
 } from './ActionList';
 export type {
@@ -113,6 +117,10 @@ export type {
   ActionListItemProps,
   ActionListItemAssetProps,
   ActionListItemTextProps,
+  ActionListItemIconProps,
+  ActionListItemAvatarProps,
+  ActionListItemBadgeProps,
+  ActionListItemBadgeGroupProps,
   ActionListSectionProps,
   ActionListSelectionType,
   ActionListItemClickPayload,

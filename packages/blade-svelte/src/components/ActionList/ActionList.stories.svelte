@@ -15,7 +15,7 @@
     argTypes: {
       children: { table: { disable: true } },
       onAction: { table: { disable: true } },
-      selectionType: { control: 'select', options: ['single'] },
+      selectionType: { control: 'select', options: ['single', 'multiple'] },
       selectedValue: { control: 'text' },
     } as Record<string, unknown>,
   } as Parameters<typeof defineMeta>[0] & { argTypes: Record<string, unknown> });
@@ -25,23 +25,41 @@
   import ActionListItem from './ActionListItem.svelte';
   import ActionListItemAsset from './ActionListItemAsset.svelte';
   import ActionListItemText from './ActionListItemText.svelte';
+  import ActionListItemIcon from './ActionListItemIcon.svelte';
+  import ActionListItemAvatar from './ActionListItemAvatar.svelte';
+  import ActionListItemBadge from './ActionListItemBadge.svelte';
+  import ActionListItemBadgeGroup from './ActionListItemBadgeGroup.svelte';
   import ActionListSection from './ActionListSection.svelte';
   import BottomSheet from '../BottomSheet/BottomSheet.svelte';
   import BottomSheetHeader from '../BottomSheet/BottomSheetHeader.svelte';
   import BottomSheetBody from '../BottomSheet/BottomSheetBody.svelte';
   import Button from '../Button/Button.svelte';
-  import { HomeIcon, CreditCardIcon, UserIcon, BuildingIcon, SearchIcon } from '../Icons';
+  import {
+    HomeIcon,
+    CreditCardIcon,
+    UserIcon,
+    BuildingIcon,
+    SearchIcon,
+    InfoIcon,
+    CloseIcon,
+  } from '../Icons';
 
-  /* One open-state bucket per story so they stay independent. */
-  let isPlaygroundOpen = $state(false);
-  let isDefaultOpen = $state(false);
-  let isLeadingOpen = $state(false);
-  let isTrailingOpen = $state(false);
-  let isSectionsOpen = $state(false);
+  // Country List is the only BottomSheet story, so it owns the single open-state bucket.
   let isCountryOpen = $state(false);
-  let isDisabledNegativeOpen = $state(false);
-
   let selectedCountry = $state<string | undefined>('in');
+
+  // Drives the interactive standalone single-select story.
+  let selectedStandalone = $state<string | undefined>('transactions');
+
+  // Drives the interactive standalone multi-select story — the consumer owns the
+  // array; `onAction` toggles membership.
+  let selectedMulti = $state<string[]>(['payments', 'analytics']);
+
+  function toggleMulti(value: string): void {
+    selectedMulti = selectedMulti.includes(value)
+      ? selectedMulti.filter((v) => v !== value)
+      : [...selectedMulti, value];
+  }
 
   const countries = [
     { value: 'in', name: 'India', code: 'in', dialCode: '+91' },
@@ -61,167 +79,290 @@
   }
 </script>
 
-<!-- Story 1: Playground — args drive the ActionList; a trigger toggles the sheet. -->
+<!-- Playground — args drive the ActionList directly (standalone, no BottomSheet) so the
+     Controls panel can toggle props. Mirrors React, whose stories render ActionList standalone. -->
 <Story name="Playground">
   {#snippet template(args: ActionListProps)}
-    <div>
-      <Button onClick={() => (isPlaygroundOpen = true)}>Open ActionList</Button>
-      <BottomSheet isOpen={isPlaygroundOpen} onDismiss={() => (isPlaygroundOpen = false)}>
-        {#snippet children()}
-          <BottomSheetHeader title="Actions" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList {...args}>
-                {#snippet children()}
-                  <ActionListItem title="Home" value="home" />
-                  <ActionListItem title="Pricing" value="pricing" />
-                  <ActionListItem title="Settings" value="settings" />
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
+    <ActionList {...args}>
+      {#snippet children()}
+        <ActionListItem title="Home" value="home" />
+        <ActionListItem title="Pricing" value="pricing" />
+        <ActionListItem title="Settings" value="settings" />
+      {/snippet}
+    </ActionList>
   {/snippet}
 </Story>
 
-<!-- Story 2: Default — items only. -->
-<Story name="Default">
+<!-- Standalone 1: Default — items with leading icons + one plain item. -->
+<Story name="Standalone">
   {#snippet template()}
-    <div>
-      <Button onClick={() => (isDefaultOpen = true)}>Open</Button>
-      <BottomSheet isOpen={isDefaultOpen} onDismiss={() => (isDefaultOpen = false)}>
-        {#snippet children()}
-          <BottomSheetHeader title="Actions" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Item 1" value="item-1" />
-                  <ActionListItem title="Item 2" value="item-2" />
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
+    <ActionList>
+      {#snippet children()}
+        <ActionListItem title="Home" value="home">
+          {#snippet leading()}
+            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Payments" value="payments">
+          {#snippet leading()}
+            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Settings" value="settings" />
+      {/snippet}
+    </ActionList>
   {/snippet}
 </Story>
 
-<!-- Story 3: Leading Icons/Images on Items. -->
-<Story name="Leading Icons/Images on Items">
+<!-- Standalone 2: Interactive single-select — clicking a row updates `selectedValue`
+     via `onAction`, moving the selected highlight (aria-selected) live. -->
+<Story name="Standalone / Single Select (Interactive)">
   {#snippet template()}
-    <div>
-      <Button onClick={() => (isLeadingOpen = true)}>Open</Button>
-      <BottomSheet isOpen={isLeadingOpen} onDismiss={() => (isLeadingOpen = false)}>
-        {#snippet children()}
-          <BottomSheetHeader title="Quick Actions" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Settings" value="settings">
-                    {#snippet leading()}
-                      <HomeIcon size="medium" color="interactive.icon.gray.normal" />
-                    {/snippet}
-                  </ActionListItem>
-                  <ActionListItem title="Payments" value="payments">
-                    {#snippet leading()}
-                      <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
-                    {/snippet}
-                  </ActionListItem>
-                  <ActionListItem title="Pricing" value="pricing">
-                    {#snippet leading()}
-                      <ActionListItemAsset src={flagSrc('in')} alt="India flag" />
-                    {/snippet}
-                  </ActionListItem>
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
+    <ActionList
+      selectedValue={selectedStandalone}
+      onAction={({ value }) => (selectedStandalone = value)}
+    >
+      {#snippet children()}
+        <ActionListItem title="Overview" value="overview">
+          {#snippet leading()}
+            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Transactions" value="transactions">
+          {#snippet leading()}
+            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Team" value="team">
+          {#snippet leading()}
+            <UserIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Organization" value="organization">
+          {#snippet leading()}
+            <BuildingIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+      {/snippet}
+    </ActionList>
   {/snippet}
 </Story>
 
-<!-- Story 4: Trailing Icons/Texts on Items. -->
-<Story name="Trailing Icons/Texts on Items">
+<!-- Standalone 3: Item descriptions — secondary text rendered under the title. -->
+<Story name="Standalone / Item Descriptions">
   {#snippet template()}
-    <div>
-      <Button onClick={() => (isTrailingOpen = true)}>Open</Button>
-      <BottomSheet isOpen={isTrailingOpen} onDismiss={() => (isTrailingOpen = false)}>
-        {#snippet children()}
-          <BottomSheetHeader title="Help" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Bank Settings" value="bank-settings">
-                    {#snippet trailing()}
-                      <ActionListItemText>⌘ + B</ActionListItemText>
-                    {/snippet}
-                  </ActionListItem>
-                  <ActionListItem title="FAQs" value="faqs">
-                    {#snippet trailing()}
-                      <SearchIcon size="medium" color="interactive.icon.gray.normal" />
-                    {/snippet}
-                  </ActionListItem>
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
+    <ActionList>
+      {#snippet children()}
+        <ActionListItem
+          title="My Profile"
+          description="Manage your personal information"
+          value="profile"
+        >
+          {#snippet leading()}
+            <UserIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem
+          title="Billing"
+          description="View invoices and payment methods"
+          value="billing"
+        >
+          {#snippet leading()}
+            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem
+          title="Security"
+          description="Password, 2FA, and active sessions"
+          value="security"
+        >
+          {#snippet leading()}
+            <InfoIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+      {/snippet}
+    </ActionList>
   {/snippet}
 </Story>
 
-<!-- Story 5: With Sections. -->
-<Story name="With Sections">
+<!-- Standalone 4: Link items — `href`/`target` render each row as an `<a>`. -->
+<Story name="Standalone / Link Items (href)">
   {#snippet template()}
-    <div>
-      <Button onClick={() => (isSectionsOpen = true)}>Open</Button>
-      <BottomSheet isOpen={isSectionsOpen} onDismiss={() => (isSectionsOpen = false)}>
-        {#snippet children()}
-          <BottomSheetHeader title="Account" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListSection title="Profile">
-                    {#snippet children()}
-                      <ActionListItem title="My Account" value="account">
-                        {#snippet leading()}
-                          <UserIcon size="medium" color="interactive.icon.gray.normal" />
-                        {/snippet}
-                      </ActionListItem>
-                      <ActionListItem title="Organization" value="organization">
-                        {#snippet leading()}
-                          <BuildingIcon size="medium" color="interactive.icon.gray.normal" />
-                        {/snippet}
-                      </ActionListItem>
-                    {/snippet}
-                  </ActionListSection>
-                  <ActionListSection title="Danger">
-                    {#snippet children()}
-                      <ActionListItem title="Logout" value="logout" intent="negative" />
-                    {/snippet}
-                  </ActionListSection>
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
+    <ActionList>
+      {#snippet children()}
+        <ActionListItem
+          title="Documentation"
+          value="docs"
+          href="https://razorpay.com/docs"
+          target="_blank"
+        >
+          {#snippet leading()}
+            <InfoIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem
+          title="Dashboard"
+          value="dashboard"
+          href="https://dashboard.razorpay.com"
+          target="_blank"
+        >
+          {#snippet leading()}
+            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem
+          title="API Reference"
+          value="api"
+          href="https://razorpay.com/docs/api"
+          target="_blank"
+        >
+          {#snippet leading()}
+            <SearchIcon size="medium" color="interactive.icon.gray.normal" />
+          {/snippet}
+        </ActionListItem>
+      {/snippet}
+    </ActionList>
   {/snippet}
 </Story>
 
-<!-- Story 6: Single Select Country List — the PhoneNumberInput CountrySelector parity target. -->
-<Story name="Single Select Country List">
+<!-- Standalone 5: Sections + trailing content + disabled + negative intent (kitchen sink). -->
+<Story name="Standalone / Sections, Disabled & Negative">
+  {#snippet template()}
+    <ActionList>
+      {#snippet children()}
+        <ActionListSection title="Account">
+          {#snippet children()}
+            <ActionListItem title="My Profile" value="profile">
+              {#snippet leading()}
+                <UserIcon size="medium" color="interactive.icon.gray.normal" />
+              {/snippet}
+              {#snippet trailing()}
+                <ActionListItemText>⌘ + P</ActionListItemText>
+              {/snippet}
+            </ActionListItem>
+            <ActionListItem title="Organization" value="organization">
+              {#snippet leading()}
+                <BuildingIcon size="medium" color="interactive.icon.gray.normal" />
+              {/snippet}
+            </ActionListItem>
+          {/snippet}
+        </ActionListSection>
+        <ActionListSection title="Preferences">
+          {#snippet children()}
+            <ActionListItem title="Search settings" value="search">
+              {#snippet leading()}
+                <SearchIcon size="medium" color="interactive.icon.gray.normal" />
+              {/snippet}
+              {#snippet trailing()}
+                <InfoIcon size="medium" color="interactive.icon.gray.normal" />
+              {/snippet}
+            </ActionListItem>
+            <ActionListItem title="Offline sync (unavailable)" value="sync" isDisabled />
+          {/snippet}
+        </ActionListSection>
+        <ActionListSection title="Danger">
+          {#snippet children()}
+            <ActionListItem title="Delete account" value="delete" intent="negative">
+              {#snippet leading()}
+                <CloseIcon size="medium" color="interactive.icon.gray.normal" />
+              {/snippet}
+            </ActionListItem>
+          {/snippet}
+        </ActionListSection>
+      {/snippet}
+    </ActionList>
+  {/snippet}
+</Story>
+
+<!-- Standalone 6: Custom Items — mirrors React's `Custom Items` story. Exercises the
+     new sub-components: ActionListItemAvatar + ActionListItemIcon leading, a description,
+     ActionListItemBadgeGroup/ActionListItemBadge in titleSuffix, href items, an onClick
+     item, and a negative logout. (Icon set differs from React — SettingsIcon/DownloadIcon/
+     LogOutIcon/ActivityIcon aren't migrated, so the nearest available icons are used.) -->
+<Story name="Standalone / Custom Items">
+  {#snippet template()}
+    <ActionList>
+      {#snippet children()}
+        <ActionListSection title="Account">
+          {#snippet children()}
+            <ActionListItem title="Profile" value="profile">
+              {#snippet leading()}
+                <ActionListItemAvatar icon={UserIcon} color="primary" name="Saurabh Daware" />
+              {/snippet}
+            </ActionListItem>
+            <ActionListItem title="Credit" value="credit" description="check your credit here!">
+              {#snippet leading()}
+                <ActionListItemIcon icon={CreditCardIcon} />
+              {/snippet}
+            </ActionListItem>
+            <ActionListItem title="Disabled" value="disabled" isDisabled />
+          {/snippet}
+        </ActionListSection>
+        <ActionListItem
+          title="Go to Home"
+          value="home"
+          href="https://razorpay.com"
+          target="_blank"
+        />
+        <ActionListItem
+          title="Alert user"
+          value="alert_user"
+          onClick={() => window.alert('Alert user is clicked!')}
+        />
+        <ActionListItem
+          title="Systems"
+          value="systems"
+          href="https://razorpay.com/careers"
+          target="_blank"
+        >
+          {#snippet titleSuffix()}
+            <ActionListItemBadgeGroup>
+              {#snippet children()}
+                <ActionListItemBadge icon={InfoIcon} color="information">unstable</ActionListItemBadge>
+                <ActionListItemBadge>last updated: 2hr ago</ActionListItemBadge>
+              {/snippet}
+            </ActionListItemBadgeGroup>
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="saurabhdaware.razorpay@gmail.com" value="email">
+          {#snippet leading()}
+            <ActionListItemIcon icon={UserIcon} />
+          {/snippet}
+        </ActionListItem>
+        <ActionListItem title="Log Out" value="logout" intent="negative">
+          {#snippet leading()}
+            <ActionListItemIcon icon={CloseIcon} />
+          {/snippet}
+        </ActionListItem>
+      {/snippet}
+    </ActionList>
+  {/snippet}
+</Story>
+
+<!-- Standalone 7: Multi Select (Interactive) — `selectionType="multiple"`, `selectedValue`
+     is a `string[]`. Each row renders the checkbox indicator (overriding `leading`);
+     clicking toggles membership via `onAction`. Consumer owns the array. -->
+<Story name="Standalone / Multi Select (Interactive)">
+  {#snippet template()}
+    <ActionList
+      selectionType="multiple"
+      selectedValue={selectedMulti}
+      onAction={({ value }) => toggleMulti(value)}
+    >
+      {#snippet children()}
+        <ActionListItem title="Payments" value="payments" description="Accept online payments" />
+        <ActionListItem title="Analytics" value="analytics" description="Track your revenue" />
+        <ActionListItem title="Settlements" value="settlements" description="Manage payouts" />
+        <ActionListItem title="Disputes" value="disputes" description="Handle chargebacks" />
+        <ActionListItem title="Archived (unavailable)" value="archived" isDisabled />
+      {/snippet}
+    </ActionList>
+  {/snippet}
+</Story>
+
+<!-- Single Select Country List — the PhoneNumberInput CountrySelector parity target and the
+     only in-BottomSheet story: exercises the `isInBottomSheet` render branch + close-on-select. -->
+<Story name="Single Select Country List (in BottomSheet)">
   {#snippet template()}
     <div>
       <Button onClick={() => (isCountryOpen = true)}>
@@ -250,56 +391,6 @@
                       {/snippet}
                     </ActionListItem>
                   {/each}
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </BottomSheetBody>
-        {/snippet}
-      </BottomSheet>
-    </div>
-  {/snippet}
-</Story>
-
-<!-- Story 8: Standalone — no BottomSheet. Renders its own box (border/shadow/padding)
-     since `isInBottomSheet` is false. -->
-<Story name="Standalone (No BottomSheet)">
-  {#snippet template()}
-    <ActionList>
-      {#snippet children()}
-        <ActionListItem title="Home" value="home">
-          {#snippet leading()}
-            <HomeIcon size="medium" color="interactive.icon.gray.normal" />
-          {/snippet}
-        </ActionListItem>
-        <ActionListItem title="Payments" value="payments">
-          {#snippet leading()}
-            <CreditCardIcon size="medium" color="interactive.icon.gray.normal" />
-          {/snippet}
-        </ActionListItem>
-        <ActionListItem title="Settings" value="settings" />
-      {/snippet}
-    </ActionList>
-  {/snippet}
-</Story>
-
-<!-- Story 7: Disabled & Negative Items. -->
-<Story name="Disabled & Negative Items">
-  {#snippet template()}
-    <div>
-      <Button onClick={() => (isDisabledNegativeOpen = true)}>Open</Button>
-      <BottomSheet
-        isOpen={isDisabledNegativeOpen}
-        onDismiss={() => (isDisabledNegativeOpen = false)}
-      >
-        {#snippet children()}
-          <BottomSheetHeader title="Actions" />
-          <BottomSheetBody hasActionList>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Available action" value="available" />
-                  <ActionListItem title="Disabled action" value="disabled" isDisabled />
-                  <ActionListItem title="Logout" value="logout" intent="negative" />
                 {/snippet}
               </ActionList>
             {/snippet}

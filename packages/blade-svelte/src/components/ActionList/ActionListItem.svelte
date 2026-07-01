@@ -7,6 +7,7 @@
   } from '@razorpay/blade-core/utils';
   import { getActionListItemClasses, getActionListTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
+  import Checkbox from '../Checkbox/Checkbox.svelte';
   import { getActionListContext, setActionListItemContext } from './actionListContext';
   import { getActionListItemRole } from './getA11yRoles';
   import type { ActionListItemContextValue, ActionListItemProps } from './types';
@@ -22,6 +23,7 @@
     target,
     leading,
     trailing,
+    titleSuffix,
     onClick,
     isDisabled = false,
     isSelected,
@@ -32,8 +34,17 @@
 
   const ctx = getActionListContext();
 
+  const isMultiSelect = $derived(ctx?.selectionType === 'multiple');
+
   // Selection: explicit prop wins, else derive from ActionList `selectedValue`.
-  const isItemSelected = $derived(isSelected ?? ctx?.selectedValue === value);
+  // In multiple mode `selectedValue` is an array → membership check; in single
+  // mode it's a scalar → equality (mirrors React's array vs scalar handling).
+  const isItemSelected = $derived(
+    isSelected ??
+      (Array.isArray(ctx?.selectedValue)
+        ? ctx.selectedValue.includes(value)
+        : ctx?.selectedValue === value),
+  );
 
   // Provide row-local disabled/intent to ActionListItemText (React `useBaseMenuItem`).
   const itemContext: ActionListItemContextValue = {
@@ -72,7 +83,7 @@
     ctx?.onAction?.({ value });
   }
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.ActionListItem, testID });
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.ActionListItem, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
     makeAccessible({
@@ -84,12 +95,21 @@
 </script>
 
 {#snippet rowInner()}
+  {@const hasLeading = isMultiSelect || Boolean(leading)}
   <span class={templateClasses.itemInner}>
-    {#if leading}
+    {#if isMultiSelect}
+      <!-- Multi-select indicator overrides `leading` (mirrors React
+           `BaseMenuLeadingItem`): checkbox is visual only, so it's aria-hidden,
+           non-interactive (`tabindex=-1`, pointer-events none via .itemSelector)
+           and the row itself carries `aria-selected`. -->
+      <span class={templateClasses.itemSelector} aria-hidden="true">
+        <Checkbox isChecked={isItemSelected} isDisabled={isDisabled} tabIndex={-1} />
+      </span>
+    {:else if leading}
       <span class={templateClasses.itemLeading}>{@render leading()}</span>
     {/if}
     <span
-      class={[templateClasses.itemContent, leading ? templateClasses.itemContentWithLeading : '']
+      class={[templateClasses.itemContent, hasLeading ? templateClasses.itemContentWithLeading : '']
         .filter(Boolean)
         .join(' ')}
     >
@@ -104,6 +124,9 @@
         >
           {title}
         </Text>
+        {#if titleSuffix}
+          {@render titleSuffix()}
+        {/if}
       </span>
       {#if description}
         <span>

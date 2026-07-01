@@ -64,12 +64,14 @@
 
   const outerClasses = $derived([boxClasses, styledClassString].filter(Boolean).join(' ') || undefined);
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.ActionList, testID });
+  const isMultiSelectable = $derived(selectionType === 'multiple');
+
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.ActionList, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
     makeAccessible({
       role: getActionListContainerRole(),
-      multiSelectable: false,
+      multiSelectable: isMultiSelectable,
     }),
   );
 </script>

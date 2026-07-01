@@ -1,8 +1,11 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { IconComponent } from '../Icons';
+import type { AvatarProps } from '../Avatar/types';
+import type { BadgeProps } from '../Badge/types';
 
-/** Selection mode. Only single-select is supported in this scope. */
-export type ActionListSelectionType = 'single';
+/** Selection mode of the list — `single` (default) or `multiple`. */
+export type ActionListSelectionType = 'single' | 'multiple';
 
 /** Payload passed to `ActionList`'s `onAction` when a row is activated. */
 export type ActionListItemSelectPayload = { value: string };
@@ -23,18 +26,30 @@ export interface ActionListProps extends StyledPropsBlade, DataAnalyticsAttribut
    */
   children: Snippet;
   /**
-   * Selection mode of the list. Only `single` is supported.
+   * Selection mode of the list.
+   *
+   * - `single` — one item selected at a time; `selectedValue` is a `string`.
+   * - `multiple` — many items selectable; `selectedValue` is a `string[]` and
+   *   each row renders a (visual, `aria-hidden`) checkbox indicator in place of
+   *   its `leading` content. `aria-multiselectable` is set on the container.
    *
    * @default 'single'
    */
   selectionType?: ActionListSelectionType;
   /**
-   * Currently selected item `value` (controlled). Drives `aria-selected` on rows.
+   * Currently selected item value(s) (controlled). Drives `aria-selected` on rows.
+   *
+   * - `single` mode → pass a `string` (the selected item's `value`).
+   * - `multiple` mode → pass a `string[]` (all selected values).
    */
-  selectedValue?: string;
+  selectedValue?: string | string[];
   /**
-   * Fired when a row is activated. The consumer typically updates
-   * `selectedValue` and closes the surrounding BottomSheet.
+   * Fired when a row is activated, once per toggle, with the item's `value`.
+   *
+   * The consumer owns selection state: in `single` mode update `selectedValue`
+   * (and typically close the surrounding BottomSheet); in `multiple` mode
+   * toggle the `value` in/out of your `string[]`. This callback does not
+   * auto-manage the array.
    */
   onAction?: (payload: ActionListItemSelectPayload) => void;
   /**
@@ -66,13 +81,21 @@ export interface ActionListItemProps extends DataAnalyticsAttribute {
    */
   target?: string;
   /**
-   * Content on the left of the item. Holds `ActionListItemAsset` or an icon.
+   * Content on the left of the item. Holds `ActionListItemIcon`,
+   * `ActionListItemAsset`, or `ActionListItemAvatar`.
+   *
+   * Overridden by the checkbox indicator when the list is `selectionType="multiple"`.
    */
   leading?: Snippet;
   /**
    * Content on the right of the item. Holds `ActionListItemText` or an icon.
    */
   trailing?: Snippet;
+  /**
+   * Content rendered immediately next to the title (same row). Holds
+   * `ActionListItemBadge` or `ActionListItemBadgeGroup`.
+   */
+  titleSuffix?: Snippet;
   /**
    * Click handler (web-only). `value` is the item's string identifier,
    * `isSelected` is the current selected state.
@@ -117,6 +140,41 @@ export interface ActionListItemTextProps {
   children: Snippet | string;
 }
 
+/**
+ * Props for `ActionListItemIcon` — a leading/trailing icon whose color follows
+ * the row's disabled/negative state (mirrors React `useBaseMenuItem`).
+ */
+export interface ActionListItemIconProps {
+  /**
+   * Icon component to render (e.g. `HomeIcon`). Rendered at `size="medium"`;
+   * color is derived from the row context.
+   */
+  icon: IconComponent;
+}
+
+/**
+ * Props for `ActionListItemAvatar` — a leading avatar. Wraps `Avatar` and forces
+ * `size="xsmall"`; every other `Avatar` prop except `size` is accepted.
+ */
+export type ActionListItemAvatarProps = Omit<AvatarProps, 'size'>;
+
+/**
+ * Props for `ActionListItemBadge` — wraps `Badge` (forced `size="medium"` with a
+ * `spacing.3` left margin). Accepts all `Badge` props except `size`.
+ */
+export type ActionListItemBadgeProps = Omit<BadgeProps, 'size'>;
+
+/**
+ * Props for `ActionListItemBadgeGroup` — a flex-row container for one or more
+ * `ActionListItemBadge`, intended for the `titleSuffix` slot.
+ */
+export interface ActionListItemBadgeGroupProps {
+  /**
+   * `ActionListItemBadge` children laid out in a row.
+   */
+  children: Snippet;
+}
+
 export interface ActionListSectionProps extends DataAnalyticsAttribute {
   /**
    * Section title, announced as the group label.
@@ -137,7 +195,7 @@ export interface ActionListSectionProps extends DataAnalyticsAttribute {
  */
 export type ActionListContextValue = {
   selectionType: ActionListSelectionType;
-  selectedValue?: string;
+  selectedValue?: string | string[];
   isInBottomSheet: boolean;
   onAction?: (payload: ActionListItemSelectPayload) => void;
   /** No-op-safe hook reserved for future focus/index needs. */
