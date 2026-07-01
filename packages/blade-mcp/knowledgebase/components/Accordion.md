@@ -120,6 +120,24 @@ type AccordionItemBodyProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Accordion` for 3+ items that need expand/collapse behavior where only one is open at a time (FAQs, settings, documentation).
+- Compose with `AccordionItem` → `AccordionItemHeader` + `AccordionItemBody` (modern API).
+- Use `showNumberPrefix` for sequential/ordered items.
+- Use `leading` on `AccordionItemHeader` for category icons and `titleSuffix` for badges.
+- Use controlled mode (`expandedIndex` + `onExpandChange`) when you need programmatic control.
+
+**Don't**
+
+- Don't use `Accordion` when all items should be expandable simultaneously — use multiple `Collapsible` components instead.
+- Don't use the deprecated props API (`title`/`description` on AccordionItem) — use `AccordionItemHeader` + `AccordionItemBody`.
+- Don't nest Accordions — only single-level is supported.
+- Don't use `Accordion` when items are equal-weight and need quick access — use `Tabs` instead.
+- Don't combine `showNumberPrefix` with `leading` icon on the same item.
+
 ## Examples
 
 ### Basic Accordion

@@ -8,6 +8,7 @@ export const MetaConstants = {
   ActionListItem: 'action-list-item',
   ActionListSection: 'action-list-section',
   Alert: 'alert',
+  AnnouncementBanner: 'announcement-banner',
   Amount: 'amount',
   AutoComplete: 'autocomplete',
   Avatar: 'avatar',

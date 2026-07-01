@@ -9,6 +9,8 @@
     tags: ['autodocs'],
     args: {
       isDisabled: false,
+      value: 'Automated Payment Links',
+      color: 'primary',
     },
     argTypes: {
       isDisabled: {
@@ -38,6 +40,17 @@
     },
   });
 </script>
+
+<Story name="Playground">
+  {#snippet template(args)}
+    <ChipGroup
+      selectionType="multiple"
+      accessibilityLabel="Select other capabilities you are looking for from the options below"
+    >
+      <Chip {...args}>Automated Payment Links</Chip>
+    </ChipGroup>
+  {/snippet}
+</Story>
 
 <Story name="Default" asChild>
   <div>

@@ -13,7 +13,7 @@ import { execSync } from "child_process";
 const REPO = "razorpay/blade";
 const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
 const AGENT_REVIEWERS = new Set(["rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"]);
-const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"]);
+const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "cursor[bot]", "rzpcibot"]);
 const AUTO_APPROVE_LABEL = "✨ Agentic Merge Ready ✨";
 const IGNORE_LABEL = "Ignore - Test PR";
 
@@ -61,7 +61,7 @@ for (const pr of prs) {
 
   for (const c of [...reviewComments, ...issueComments]) {
     const user = c.user.login;
-    if (BOT_COMMENTERS.has(user)) continue;
+    if (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/")) continue;
     totalComments++;
     if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", "").replace("[bot]", ""))) {
       agentComments++;
