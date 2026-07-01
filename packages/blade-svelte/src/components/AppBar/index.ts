@@ -25,10 +25,4 @@
 export { default as AppBar } from './AppBar.svelte';
 export { default as AppBarLeading } from './AppBarLeading.svelte';
 export { default as AppBarActions } from './AppBarActions.svelte';
-export type {
-  AppBarProps,
-  AppBarLeadingProps,
-  AppBarActionsProps,
-  AppBarVariant,
-  AppBarBackButton,
-} from './types';
+export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './types';
