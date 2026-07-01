@@ -3,13 +3,14 @@
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
   import { RTBBadge } from '../RTBBadge';
-  import { getAppBarContext } from './AppBarContext';
-  import type { AppBarLeadingProps } from './types';
+  import { getAppBarContext, useAppBarContext } from './AppBarContext';
+  import type { AppBarLeadingProps, AppBarVariant } from './types';
 
   // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
 
-  const getAppBarCtx = getAppBarContext();
+  useAppBarContext('AppBarLeading');
+  const getAppBarCtx = getAppBarContext() ?? (() => ({ variant: 'neutral' as AppBarVariant }));
   const appBarContext = $derived(getAppBarCtx());
 
   let { title, logo, rtbBadge, testID, ...rest }: AppBarLeadingProps = $props();

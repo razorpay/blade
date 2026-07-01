@@ -80,11 +80,8 @@ export type AppBarProps = {
   backgroundColor?:
     | 'surface.background.gray.intense'
     | 'surface.background.gray.moderate'
-    | 'surface.background.gray.mild'
     | 'surface.background.gray.subtle'
     | 'surface.background.primary.intense'
-    | 'surface.background.primary.moderate'
-    | 'surface.background.primary.mild'
     | 'surface.background.primary.subtle';
 
   /**
@@ -146,9 +143,14 @@ export type AppBarLeadingProps = {
 
 export type AppBarActionsProps = {
   /**
-   * Trailing action content. Accepts a group of icon-only `Button`s
+   * Trailing action content. Accepts a group of `IconButton`s
    * (Figma `trailing=icon`) or a custom illustration/visual element
    * (Figma `trailing=illustration`).
+   *
+   * **Note:** Unlike the React version which wraps children in a dark `BladeProvider`,
+   * the Svelte version uses ambient theme colors. When `AppBar` variant is `'neutral'`
+   * (dark surface), use `emphasis="moderate"` on `IconButton` so icons resolve to the
+   * correct static-white color.
    */
   children: Snippet;
 

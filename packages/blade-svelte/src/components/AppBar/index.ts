@@ -5,19 +5,19 @@
  * @example
  * ```svelte
  * <script>
- *   import { AppBar, AppBarLeading, AppBarActions, Button } from '@razorpay/blade-svelte/components';
+ *   import { AppBar, AppBarLeading, AppBarActions, IconButton } from '@razorpay/blade-svelte/components';
  *   import { UserIcon, CloseIcon } from '@razorpay/blade-svelte/components';
  *
  *   const goBack = () => history.back();
  * </script>
  *
- * <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
- *   <AppBarLeading title="Mavenshop" rtbBadge="full">
+ * <AppBar showBackButton={true} onBackButtonClick={goBack} backButtonAccessibilityLabel="Go back">
+ *   <AppBarLeading title="Mavenshop" rtbBadge={{ type: 'full' }}>
  *     {#snippet logo()}<MerchantLogo />{/snippet}
  *   </AppBarLeading>
  *   <AppBarActions>
- *     <Button icon={UserIcon} accessibilityLabel="Profile" variant="tertiary" color="white" />
- *     <Button icon={CloseIcon} accessibilityLabel="Close" variant="tertiary" color="white" />
+ *     <IconButton icon={UserIcon} emphasis="moderate" accessibilityLabel="Profile" onClick={() => {}} />
+ *     <IconButton icon={CloseIcon} emphasis="moderate" accessibilityLabel="Close" onClick={() => {}} />
  *   </AppBarActions>
  * </AppBar>
  * ```

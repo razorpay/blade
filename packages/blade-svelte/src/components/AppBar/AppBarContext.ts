@@ -24,14 +24,12 @@ export function getAppBarContext(): () => AppBarContextType {
 }
 
 /**
- * Validates AppBar context presence, warning (on localhost) if used outside an AppBar.
+ * Validates AppBar context presence, warning in non-production if used outside an AppBar.
  * Use this in sub-components that must be inside an AppBar but do not read context values.
  */
 export function useAppBarContext(componentName: string): void {
-  try {
-    getAppBarContext();
-  } catch {
-    if (typeof window !== 'undefined' && window.location?.hostname === 'localhost') {
+  if (!getAppBarContext()) {
+    if (process.env.NODE_ENV !== 'production') {
       console.error(`[Blade]: ${componentName} cannot be used outside of AppBar component`);
     }
   }
