@@ -1,0 +1,158 @@
+/* ───────────────────────── ActionList ───────────────────────── */
+
+/*
+ * Outer StyledActionList box — rendered ONLY when the list is NOT inside a
+ * BottomSheet. Mirrors React `getBaseActionListStyles`: thin gray border,
+ * medium radius, mid-raised elevation. Inside a BottomSheet these are dropped
+ * (ActionList renders the wrapper directly) so BottomSheetBody owns the scroll.
+ */
+.box {
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  border-color: var(--surface-border-gray-normal);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--elevation-mid-raised);
+}
+
+/*
+ * ListBox scroll wrapper — standalone (not-in-sheet) branch.
+ * React `getBaseListBoxWrapperStyles`: max-height size[300]=300px, spacing.3
+ * padding, overflow-y auto.
+ */
+.wrapper {
+  max-height: var(--size-300, 300px);
+  padding: var(--spacing-3);
+  overflow-y: auto;
+}
+
+/*
+ * ListBox scroll wrapper — in-BottomSheet branch. BottomSheetBody owns padding
+ * and scroll bounds, so only overflow-y is set here.
+ */
+.wrapperInSheet {
+  overflow-y: auto;
+}
+
+/*
+ * Hide the trailing Divider of the last section so section lists don't render
+ * a dangling separator. React drops it via `_hideDivider`/AutoComplete logic;
+ * here a descendant selector targets the final section's separator.
+ */
+.wrapper [role='group']:last-child > [role='separator']:last-child,
+.wrapperInSheet [role='group']:last-child > [role='separator']:last-child {
+  display: none;
+}
+
+/* ── Row (inlined BaseMenuItem container) ── */
+/*
+ * Mirrors `getBaseMenuItemStyles` + `StyledMenuItemContainer`: transparent
+ * button/link, left-aligned text, small radius, full width, spacing.1 vertical
+ * margin, spacing.2 padding on mobile → spacing.3 on desktop (@media m).
+ */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  margin-top: var(--spacing-1);
+  margin-bottom: var(--spacing-1);
+  padding: var(--spacing-2);
+  border-width: 0;
+  border-radius: var(--border-radius-small);
+  background-color: transparent;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+
+  &:hover:not([disabled]):not([aria-disabled='true']) {
+    background-color: var(--interactive-background-gray-default);
+  }
+
+  &:focus-visible {
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
+  }
+
+  &[aria-selected='true'],
+  &[aria-selected='true']:hover {
+    background-color: var(--interactive-background-gray-faded-highlighted);
+  }
+
+  &[disabled],
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
+
+@media (min-width: 768px) {
+  .item {
+    padding: var(--spacing-3);
+  }
+}
+
+/* Negative intent row — negative faded hover (mirrors React `color==='negative'`). */
+.itemNegative {
+  &:hover:not([disabled]):not([aria-disabled='true']) {
+    background-color: var(--interactive-background-negative-faded);
+  }
+}
+
+/* Inner row layout — flex row, top-aligned, full width. */
+.itemInner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Leading slot — centers asset/icon within the first-row height (size[20]=20px). */
+.itemLeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--size-20, 20px);
+}
+
+/* Title/description column. */
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: var(--spacing-3);
+}
+
+/* When a leading slot is present, offset the content column by spacing.3. */
+.itemContentWithLeading {
+  padding-left: var(--spacing-3);
+}
+
+/* Title row — centers the title text within the first-row height. */
+.itemTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--size-20, 20px);
+}
+
+/* Trailing slot — pushed to the far right. */
+.itemTrailing {
+  margin-left: auto;
+}
+
+/* ── Section ── */
+.section {
+  display: block;
+}
+
+/* Section title block — spacing.3 padding (mirrors StyledActionListSectionTitle). */
+.sectionTitle {
+  padding: var(--spacing-3);
+}
+
+/* Inner listbox that wraps a section's items (announces item count per group). */
+.sectionItems {
+  display: block;
+}
