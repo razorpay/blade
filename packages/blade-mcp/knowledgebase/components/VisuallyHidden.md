@@ -19,6 +19,21 @@ type VisuallyHiddenProps = {
 } & TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `VisuallyHidden` to provide accessible labels for screen readers when the visual label is absent or redundant (e.g., icon-only buttons, checkboxes without visible labels).
+- Wrap text content that adds context for assistive technology users but would be redundant for sighted users.
+- Use inside interactive components like `Checkbox`, `IconButton`, or custom controls that lack visible labels.
+
+**Don't**
+
+- Don't use `VisuallyHidden` to conditionally hide content for sighted users — it's an accessibility utility, not a display toggle.
+- Don't use it as a replacement for `aria-label` on components that already support the `accessibilityLabel` prop — prefer the prop-based approach.
+- Don't wrap complex interactive components inside `VisuallyHidden` — only use it for supplementary text content.
+- Don't use `display: none` or `visibility: hidden` instead — those remove content from the accessibility tree entirely.
+
 ## Example
 
 ### Basic Usage

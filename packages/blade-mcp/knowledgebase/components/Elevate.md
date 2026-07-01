@@ -40,6 +40,22 @@ type ElevateProps = {
 type MotionTrigger = 'hover' | 'focus' | 'press' | 'on-animate-interactions';
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Elevate` for interactive box-shadow feedback on block-level elements (cards, containers) on hover or focus.
+- Use default `motionTriggers={['hover']}` for standard hover elevation on clickable cards.
+- Use `isHighlighted` prop for programmatic elevation control (e.g., highlighting selected items).
+- Combine with `AnimateInteractions` using `motionTriggers={['on-animate-interactions']}` for coordinated effects.
+
+**Don't**
+
+- Don't use `Elevate` on text components or inline elements — it only works with block-level elements that support box-shadow.
+- Don't use `Elevate` for entry/exit animations — use `Fade`, `Move`, or `Slide` instead.
+- Don't expect customizable elevation levels — the animated shadow is fixed at `lowRaised`.
+- Don't use `Elevate` when `Scale` would be more appropriate — Elevate adds shadow depth, Scale changes size.
+
 ## Examples
 
 ### Multiple Triggers for Accessibility
