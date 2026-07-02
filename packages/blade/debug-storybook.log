@@ -1,0 +1,29 @@
+[15:22:33.344] [INFO] storybook v10.2.16
+[15:22:35.198] [INFO] Loading main config failed as the file does not seem to be valid ESM. Trying a temporary fix, please ensure the main config is valid ESM.
+[15:22:35.209] [ERROR] [38;2;241;97;97mError: Cannot find module 'tsconfig-paths-webpack-plugin'
+Require stack:
+- ./.storybook/react/main.tmp..ts[39m
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at file://./.storybook/react/main.tmp..ts:7:29
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async importModule (file://./node_modules/storybook/dist/_node-chunks/chunk-EBZ4DOUR.js:737:11)
+    at async loadMainConfig (file://./node_modules/storybook/dist/_node-chunks/chunk-UXMBIWPQ.js:11702:17)
+    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:7647:16)
+[15:22:35.211] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[15:22:35.217] [WARN]   Failed to load preset: "/Users/saurav.rastogi/Downloads/saurav/RZP/development/blade/packages/blade/.storybook/react/main.ts"
+[15:22:35.219] [ERROR] [38;2;241;97;97mReferenceError: require is not defined in ES module scope, you can use import instead[39m
+    at file://./.storybook/react/main.ts:1:29
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async importModule (file://./node_modules/storybook/dist/_node-chunks/chunk-EBZ4DOUR.js:737:11)
+    at async loadMainConfig (file://./node_modules/storybook/dist/_node-chunks/chunk-UXMBIWPQ.js:11678:12)
+    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:7647:16)
+    at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-CSGMAQQ4.js:218:12)
+    at async dev (file://./node_modules/storybook/dist/bin/core.js:2734:3)
+    at async _Command.<anonymous> (file://./node_modules/storybook/dist/bin/core.js:2804:92)
+[15:22:35.228] [INFO] Loading main config failed as the file does not seem to be valid ESM. Trying a temporary fix, please ensure the main config is valid ESM.
