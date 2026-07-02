@@ -1,5 +1,6 @@
 import type { Component } from 'svelte';
 import type { IconProps } from './types';
+import { ArrowLeftIcon } from './ArrowLeftIcon';
 import { CheckIcon } from './CheckIcon';
 import { ChevronDownIcon } from './ChevronDownIcon';
 import { ChevronLeftIcon } from './ChevronLeftIcon';
@@ -13,6 +14,7 @@ import { SearchIcon } from './SearchIcon';
 import { UserIcon } from './UserIcon';
 import { BuildingIcon } from './BuildingIcon';
 import { HomeIcon } from './HomeIcon';
+import { RTBShieldIcon } from './RTBShieldIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -22,6 +24,7 @@ export type IconComponent = Component<IconProps>;
  */
 export const iconMap: Record<string, IconComponent | undefined> = {
   None: undefined,
+  ArrowLeftIcon,
   BuildingIcon,
   HomeIcon,
   CheckIcon,
@@ -35,4 +38,5 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   PlusIcon,
   SearchIcon,
   UserIcon,
+  RTBShieldIcon,
 };

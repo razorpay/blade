@@ -3,6 +3,7 @@ export * from './types';
 
 // Stroked Icons
 export { AlertOctagonIcon } from './AlertOctagonIcon';
+export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { AlertTriangleIcon } from './AlertTriangleIcon';
 export { CheckCircleIcon } from './CheckCircleIcon';
 export { CheckIcon } from './CheckIcon';
@@ -18,6 +19,9 @@ export { SearchIcon } from './SearchIcon';
 
 export { UserIcon } from './UserIcon';
 export { BuildingIcon } from './BuildingIcon';
+
+// Branded Icons
+export { RTBShieldIcon } from './RTBShieldIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';
