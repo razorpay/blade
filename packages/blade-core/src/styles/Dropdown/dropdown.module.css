@@ -1,0 +1,100 @@
+.container {
+  position: relative;
+  text-align: left;
+  height: 100%;
+}
+
+.overlay-portal {
+  display: flex;
+  position: fixed;
+}
+
+.overlay {
+  background-color: var(--colors-popup-background-gray-moderate, #fff);
+  border-radius: var(--border-radius-medium, 4px);
+  box-shadow: var(--shadow-offsetX-0, 0px) var(--shadow-offsetY-4, 4px)
+    var(--shadow-blurRadius-16, 16px) var(--shadow-spreadRadius-0, 0px)
+    var(--colors-overlay-background-moderate, rgba(0, 0, 0, 0.1));
+  width: 100%;
+  overflow: hidden;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.overlay[data-state='closed'] {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+
+.overlay[data-state='open'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  padding: var(--spacing-4, 16px);
+  border-bottom: 1px solid var(--colors-surface-border-gray-muted, #e5e5e5);
+  flex-shrink: 0;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-3, 12px);
+}
+
+.headerLeading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.headerMain {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1, 4px);
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+}
+
+.headerTitle {
+  font-size: var(--typography-texts-fonts-size-100, 14px);
+  font-weight: var(--typography-texts-fonts-weight-semibold, 600);
+  line-height: var(--typography-texts-fonts-lineHeight-130, 130%);
+  color: var(--colors-surface-text-gray-normal, #1a1a1a);
+  margin: 0;
+}
+
+.headerSubtitle {
+  font-size: var(--typography-texts-fonts-size-75, 12px);
+  font-weight: var(--typography-texts-fonts-weight-regular, 400);
+  line-height: var(--typography-texts-fonts-lineHeight-130, 130%);
+  color: var(--colors-surface-text-gray-muted, #666666);
+  margin: 0;
+}
+
+.headerTrailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.footer {
+  padding: var(--spacing-4, 16px);
+  border-top: 1px solid var(--colors-surface-border-gray-muted, #e5e5e5);
+  flex-shrink: 0;
+}

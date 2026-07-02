@@ -374,6 +374,22 @@ export type {
   ToastType as ToastTypeVariant,
 } from './Toast';
 export {
+  getDropdownOverlayClasses,
+  getDropdownTemplateClasses,
+  dropdownContainerClass,
+  dropdownOverlayPortalClass,
+  dropdownHeaderClass,
+  dropdownHeaderContentClass,
+  dropdownHeaderLeadingClass,
+  dropdownHeaderMainClass,
+  dropdownHeaderTitleRowClass,
+  dropdownHeaderTitleClass,
+  dropdownHeaderSubtitleClass,
+  dropdownHeaderTrailingClass,
+  dropdownFooterClass,
+} from './Dropdown';
+
+export {
   radioIconWrapperStyles,
   getRadioIconWrapperClasses,
   getRadioIconVariant,

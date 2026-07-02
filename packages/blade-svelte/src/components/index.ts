@@ -197,3 +197,40 @@ export type {
 
 // BladeProvider
 export * from './BladeProvider';
+
+// Dropdown
+export {
+  Dropdown,
+  DropdownOverlay,
+  DropdownButton,
+  DropdownIconButton,
+  DropdownLink,
+  DropdownHeader,
+  DropdownFooter,
+  getDropdownContext,
+  setDropdownContext,
+  getActionListContainerRole,
+  getActionFromKey,
+  getUpdatedIndex,
+  filterOptions,
+  getIndexByLetter,
+  ensureScrollVisiblity,
+  isScrollable,
+  isElementVisibleOnScreen,
+  makeInputValue,
+  makeInputDisplayValue,
+  performAction,
+} from './Dropdown';
+export type {
+  DropdownProps,
+  DropdownOverlayProps,
+  DropdownButtonProps,
+  DropdownIconButtonProps,
+  DropdownLinkProps,
+  DropdownHeaderProps,
+  DropdownFooterProps,
+  DropdownContextState,
+  DropdownTriggererType,
+  OptionsType,
+  SelectActionsType,
+} from './Dropdown';
