@@ -207,7 +207,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      * when the user has typed an invalid date. Neither `onChange` nor `onApply` fires
      * when the input is in an error state, so this callback is the only way to detect it.
      *
-     * @param validationState - `'error'` when there is a validation error, `'success'` or `'none'` otherwise
+     * @param validationState - `'error'` when there is a validation error, `'none'` otherwise
      *
      * @example
      * <DatePicker
@@ -217,7 +217,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
     onValidationStateChange?: ({
       validationState,
     }: {
-      validationState: 'success' | 'error' | 'none';
+      validationState: 'error' | 'none';
     }) => void;
   };
 
@@ -288,7 +288,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
     onValidationStateChange?: ({
       validationState,
     }: {
-      validationState: 'success' | 'error' | 'none';
+      validationState: 'error' | 'none';
     }) => void;
   };
 
@@ -333,12 +333,12 @@ type DateInputProps = BaseInputProps & {
   selectedPresetLabel?: string | null;
   /**
    * Callback fired when the validation state of the date input changes.
-   * Called with `{ validationState: 'error' }` when there is a validation error, or `{ validationState: 'success' | 'none' }` otherwise.
+   * Called with `{ validationState: 'error' }` when there is a validation error, or `{ validationState: 'none' }` otherwise.
    */
   onValidationStateChange?: ({
     validationState,
   }: {
-    validationState: 'success' | 'error' | 'none';
+    validationState: 'error' | 'none';
   }) => void;
 };
 
