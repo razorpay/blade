@@ -9,6 +9,8 @@ import { useFormId } from '~components/Form/useFormId';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
@@ -35,6 +37,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     isDisabled = false,
     autoFocus,
     testID,
+    ...rest
   },
   _ref,
 ) => {
@@ -185,6 +188,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       flexDirection="column"
       width="100%"
       {...metaAttribute({ name: MetaConstants.ColorInput, testID })}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
     >
       <BaseBox display="flex" flexDirection="column">
         {label && (
@@ -227,6 +232,12 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                   size={size}
                   isDisabled={isDisabled}
                   onChange={handleSwatchChange}
+                  onPress={() => {
+                    if (blurTimeoutRef.current !== null) {
+                      clearTimeout(blurTimeoutRef.current);
+                      blurTimeoutRef.current = null;
+                    }
+                  }}
                 />
               }
             />

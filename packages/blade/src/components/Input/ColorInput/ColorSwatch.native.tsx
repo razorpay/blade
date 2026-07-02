@@ -12,6 +12,7 @@ type ColorSwatchProps = {
   isDisabled?: boolean;
   // eslint-disable-next-line react/no-unused-prop-types -- kept for API consistency with web; native picker not supported
   onChange: (hex: string) => void;
+  onPress?: () => void;
 };
 
 const swatchSizeTokens = {
@@ -26,12 +27,14 @@ const ColorSwatch = ({
   size: inputSize,
   isDisabled,
   onChange: _onChange,
+  onPress,
 }: ColorSwatchProps): React.ReactElement => {
   const dimension = swatchSizeTokens[inputSize];
   const { theme } = useTheme();
   const borderColor = getIn(theme.colors, 'interactive.border.gray.default');
 
   const handlePress = (): void => {
+    onPress?.();
     if (__DEV__) {
       console.warn(
         '[Blade ColorInput]: Native color picker is not supported. The swatch is display-only on React Native.',
