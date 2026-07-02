@@ -56,8 +56,11 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
   );
 
+  // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
   useEffect(() => {
-    setHexDisplayValue(colorValue.hex);
+    if (!isFocusedRef.current) {
+      setHexDisplayValue(colorValue.hex);
+    }
   }, [colorValue.hex]);
 
   // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
@@ -101,7 +104,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleHexChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
-      const raw = (inputValue ?? '').toUpperCase();
+      // Strip a leading '#' so pasting '#FF5733' or typing '#' works naturally.
+      const raw = (inputValue ?? '').replace(/^#/, '').toUpperCase();
       if (isValidHex(raw) || isPartialHex(raw)) {
         setHexDisplayValue(raw);
       }
@@ -121,6 +125,11 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
         return;
       }
 
+      // Reject strings with non-digit characters (e.g. '5a', '100x').
+      if (!/^\d+$/.test(raw)) {
+        return;
+      }
+
       const num = parseInt(raw, 10);
       if (!Number.isNaN(num) && isValidOpacity(num)) {
         setColorValue((prev) => ({ ...prev, opacity: num }));
@@ -133,7 +142,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     ({ value: inputValue }: { name?: string; value?: string }) => {
       const raw = inputValue ?? '';
       const num = parseInt(raw, 10);
-      if (raw === '' || Number.isNaN(num) || !isValidOpacity(num)) {
+      if (raw === '' || !/^\d+$/.test(raw) || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
       // Pass committed opacity so consumers see the corrected state, not the partial display string.
@@ -157,9 +166,12 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     handleInputBlurBoundary({ name, value: colorValue.hex });
   }, [colorValue.hex, handleInputBlurBoundary, name]);
 
-  // Sync opacityDisplayValue when controlled value changes externally
+  // Sync opacityDisplayValue when controlled value changes externally.
+  // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
   React.useEffect(() => {
-    setOpacityDisplayValue(String(colorValue.opacity));
+    if (!isFocusedRef.current) {
+      setOpacityDisplayValue(String(colorValue.opacity));
+    }
   }, [colorValue.opacity]);
 
   const willRenderHintText =
