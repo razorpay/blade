@@ -232,12 +232,6 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                   size={size}
                   isDisabled={isDisabled}
                   onChange={handleSwatchChange}
-                  onPress={() => {
-                    if (blurTimeoutRef.current !== null) {
-                      clearTimeout(blurTimeoutRef.current);
-                      blurTimeoutRef.current = null;
-                    }
-                  }}
                 />
               }
             />
