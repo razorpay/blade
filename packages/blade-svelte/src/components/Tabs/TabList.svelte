@@ -75,7 +75,9 @@
       event.preventDefault();
       tabs[nextIndex].focus();
       const tabId = tabs[nextIndex].id;
-      const focusedTabValue = tabId.replace(`${ctx.baseId}-`, '').replace('-tabitem', '');
+      const prefix = `${ctx.baseId}-`;
+      const suffix = '-tabitem';
+      const focusedTabValue = tabId.slice(prefix.length, tabId.length - suffix.length);
       ctx.setFocusedValue(focusedTabValue);
     }
   };

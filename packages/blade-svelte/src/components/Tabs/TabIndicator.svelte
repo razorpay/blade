@@ -43,7 +43,8 @@
 
   $effect(() => {
     if (ctx.selectedValue && tabListContainerEl) {
-      void tick().then(updateDimensions);
+      // Re-measure when selection, variant, or orientation changes — all affect the y formula.
+      void (ctx.variant, ctx.isVertical, tick().then(updateDimensions));
     }
   });
 
