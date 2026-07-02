@@ -20,7 +20,7 @@
   const updateDimensions = () => {
     if (!tabListContainerEl) return;
     const activeTabItem = tabListContainerEl.querySelector<HTMLElement>(
-      `#${ctx.baseId}-${ctx.selectedValue}-tabitem`,
+      `#${CSS.escape(`${ctx.baseId}-${ctx.selectedValue}-tabitem`)}`,
     );
     if (!activeTabItem || activeTabItem.offsetWidth === 0) return;
 
