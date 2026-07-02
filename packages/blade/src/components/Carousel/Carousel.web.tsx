@@ -365,9 +365,12 @@ const _Carousel = (
     if (programmaticScrollTimerRef.current !== null) {
       clearTimeout(programmaticScrollTimerRef.current);
     }
-    programmaticScrollTimerRef.current = setTimeout(() => {
-      isProgrammaticScrollRef.current = false;
-    }, shouldAnimate ? 800 : 100);
+    programmaticScrollTimerRef.current = setTimeout(
+      () => {
+        isProgrammaticScrollRef.current = false;
+      },
+      shouldAnimate ? 800 : 100,
+    );
 
     const carouselItemId = getCarouselItemId(carouselId, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
