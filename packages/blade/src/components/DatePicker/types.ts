@@ -214,11 +214,7 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      *   onValidationStateChange={({ validationState }) => setSubmitDisabled(validationState === 'error')}
      * />
      */
-    onValidationStateChange?: ({
-      validationState,
-    }: {
-      validationState: 'error' | 'none';
-    }) => void;
+    onValidationStateChange?: ({ validationState }: { validationState: 'error' | 'none' }) => void;
   };
 
 type DatePickerRangeInputProps = {
@@ -285,11 +281,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
      * Callback fired when the validation state of the date input changes.
      * Threaded through from DatePicker's `onValidationStateChange` prop.
      */
-    onValidationStateChange?: ({
-      validationState,
-    }: {
-      validationState: 'error' | 'none';
-    }) => void;
+    onValidationStateChange?: ({ validationState }: { validationState: 'error' | 'none' }) => void;
   };
 
 type DatePickerFilterChipProps = DatePickerInputProps;
@@ -335,11 +327,7 @@ type DateInputProps = BaseInputProps & {
    * Callback fired when the validation state of the date input changes.
    * Called with `{ validationState: 'error' }` when there is a validation error, or `{ validationState: 'none' }` otherwise.
    */
-  onValidationStateChange?: ({
-    validationState,
-  }: {
-    validationState: 'error' | 'none';
-  }) => void;
+  onValidationStateChange?: ({ validationState }: { validationState: 'error' | 'none' }) => void;
 };
 
 export type {
