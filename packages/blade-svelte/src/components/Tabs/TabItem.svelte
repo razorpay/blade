@@ -4,12 +4,12 @@
     MetaConstants,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
   import type { TabItemProps } from './types';
   import type { IconSize } from '../Icons/types';
 
-  const classes = getTabsClasses();
+  const classes = getTabsTemplateClasses();
 
   const iconSizeMap: Record<string, IconSize> = {
     small: 'medium',
@@ -46,6 +46,7 @@
   getCtx().registerTabItem(value);
 
   const isSelected = $derived(ctx.selectedValue === value);
+  const isFocused = $derived(ctx.focusedValue === value);
   const isFilled = $derived(ctx.variant === 'filled');
   const isBordered = $derived(ctx.variant === 'bordered' || ctx.variant === 'borderless');
   const normalizedVariant = $derived(ctx.variant === 'borderless' ? 'bordered' : ctx.variant);
@@ -175,7 +176,7 @@
     role="tab"
     aria-selected={isSelected}
     aria-controls={panelId}
-    tabindex={isSelected ? 0 : -1}
+    tabindex={isSelected || isFocused ? 0 : -1}
     aria-disabled={isDisabled}
     onclick={handleClick}
     {...metaAttrs}
@@ -191,7 +192,7 @@
     role="tab"
     aria-selected={isSelected}
     aria-controls={panelId}
-    tabindex={isSelected ? 0 : -1}
+    tabindex={isSelected || isFocused ? 0 : -1}
     disabled={isDisabled}
     onclick={handleClick}
     {...metaAttrs}

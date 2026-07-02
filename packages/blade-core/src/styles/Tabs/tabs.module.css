@@ -85,10 +85,6 @@
   gap: var(--spacing-8);
 }
 
-.tabListBorderedMobile {
-  gap: var(--spacing-7);
-}
-
 .tabListBorderedVertical {
   gap: var(--spacing-0);
 }

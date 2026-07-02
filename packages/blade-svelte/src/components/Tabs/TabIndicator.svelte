@@ -4,10 +4,10 @@
     metaAttribute,
     MetaConstants,
   } from '@razorpay/blade-core/utils';
-  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
 
-  const classes = getTabsClasses();
+  const classes = getTabsTemplateClasses();
 
   let { tabListContainerEl }: { tabListContainerEl: HTMLDivElement | undefined } = $props();
 
@@ -19,8 +19,8 @@
 
   const updateDimensions = () => {
     if (!tabListContainerEl) return;
-    const activeTabItem = document.getElementById(
-      `${ctx.baseId}-${ctx.selectedValue}-tabitem`,
+    const activeTabItem = tabListContainerEl.querySelector<HTMLElement>(
+      `#${ctx.baseId}-${ctx.selectedValue}-tabitem`,
     );
     if (!activeTabItem || activeTabItem.offsetWidth === 0) return;
 
@@ -55,13 +55,10 @@
   });
 
   $effect(() => {
-    if ('fonts' in document) {
-      try {
-        void document.fonts.ready.then(updateDimensions);
-      } catch {
-        /* empty */
-      }
-    }
+    if (!('fonts' in document)) return;
+    const handler = () => updateDimensions();
+    document.fonts.addEventListener('loadingdone', handler);
+    return () => document.fonts.removeEventListener('loadingdone', handler);
   });
 
   const isFilled = $derived(ctx.variant === 'filled');

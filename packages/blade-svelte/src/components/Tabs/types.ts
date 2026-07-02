@@ -1,8 +1,6 @@
-import type { Snippet, Component } from 'svelte';
-import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { IconProps } from '../Icons/types';
-
-export type IconComponent = Component<IconProps>;
+import type { Snippet } from 'svelte';
+import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { IconComponent } from '../Icons';
 
 export type TabsProps = {
   /**
@@ -59,31 +57,16 @@ export type TabsProps = {
    * Test ID for the element.
    */
   testID?: string;
+} & DataAnalyticsAttribute;
 
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
-};
-
-export type TabItemProps = {
-  /**
-   * The content (label) of the tab item.
-   */
-  children?: Snippet;
-
+type TabItemBaseProps = {
   /**
    * The value of the tab item.
    */
   value: string;
 
   /**
-   * Leading icon component for the tab item.
-   * Accepts a Blade Icon component reference (e.g., HomeIcon).
-   * Color is managed internally based on selection/interaction state.
-   */
-  leading?: IconComponent;
-
-  /**
-   * Trailing element snippet (Badge/Counter).
+   * Trailing element snippet — only accepts `Badge` or `Counter` components.
    */
   trailing?: Snippet;
 
@@ -107,10 +90,28 @@ export type TabItemProps = {
    * Test ID for the element.
    */
   testID?: string;
+} & DataAnalyticsAttribute;
 
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
+type TabItemWithChildrenProps = TabItemBaseProps & {
+  /**
+   * The text label of the tab item.
+   */
+  children: Snippet;
+  /**
+   * Leading icon component (e.g., HomeIcon). Color is managed internally.
+   */
+  leading?: IconComponent;
 };
+
+type TabItemWithLeadingProps = TabItemBaseProps & {
+  /**
+   * Leading icon component (e.g., HomeIcon). Color is managed internally.
+   */
+  leading: IconComponent;
+  children?: Snippet;
+};
+
+export type TabItemProps = TabItemWithChildrenProps | TabItemWithLeadingProps;
 
 export type TabListProps = {
   /**
@@ -122,10 +123,8 @@ export type TabListProps = {
    * Test ID for the element.
    */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 
 export type TabPanelProps = {
   /**
@@ -142,7 +141,4 @@ export type TabPanelProps = {
    * Test ID for the element.
    */
   testID?: string;
-
-  /** Analytics data attributes. */
-  [key: `data-analytics-${string}`]: string;
-};
+} & DataAnalyticsAttribute;

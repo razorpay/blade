@@ -7,6 +7,8 @@ export type TabsContextState = {
   selectedValue: string;
   setSelectedValue: (value: string, skipOnChange?: boolean) => void;
   registerTabItem: (value: string) => void;
+  focusedValue: string | null;
+  setFocusedValue: (value: string | null) => void;
   isVertical: boolean;
   size: 'small' | 'medium' | 'large';
   variant: 'bordered' | 'borderless' | 'filled';

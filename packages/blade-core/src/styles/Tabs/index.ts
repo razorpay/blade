@@ -1,1 +1,1 @@
-export { getTabsClasses } from './tabs';
+export { getTabsTemplateClasses } from './tabs';

@@ -8,11 +8,11 @@
     MetaConstants,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { setTabsContext } from './context';
   import type { TabsProps } from './types';
 
-  const classes = getTabsClasses();
+  const classes = getTabsTemplateClasses();
 
   let {
     children,
@@ -32,12 +32,17 @@
   const baseId = `tabs-${nextTabsUid}`;
 
   let internalValue = $state<string>(defaultValue ?? '');
+  let focusedValue = $state<string | null>(null);
 
   const selectedValue = $derived(
     controlledValue !== undefined ? controlledValue : internalValue,
   );
 
   const isVertical = $derived(orientation === 'vertical');
+
+  const setFocusedValue = (value: string | null) => {
+    focusedValue = value;
+  };
 
   const setSelectedValue = (newValue: string, skipOnChange?: boolean) => {
     if (controlledValue === undefined) {
@@ -46,6 +51,7 @@
     if (!skipOnChange) {
       onChange?.(newValue);
     }
+    focusedValue = null;
   };
 
   const registerTabItem = (value: string) => {
@@ -59,6 +65,8 @@
     selectedValue,
     setSelectedValue,
     registerTabItem,
+    focusedValue,
+    setFocusedValue,
     isVertical,
     size,
     variant,

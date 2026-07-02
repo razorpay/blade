@@ -4,11 +4,11 @@
     MetaConstants,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
   import type { TabPanelProps } from './types';
 
-  const classes = getTabsClasses();
+  const classes = getTabsTemplateClasses();
 
   let {
     children,
@@ -35,6 +35,9 @@
 </script>
 
 {#if ctx.isLazy}
+  <!-- When isLazy=true, inactive panels are destroyed and recreated on re-selection.
+       Any internal state (scroll position, form values, focus) is lost each time the
+       user switches away and back. This matches React's isLazy behavior. -->
   {#if isSelected}
     <div
       id={panelId}

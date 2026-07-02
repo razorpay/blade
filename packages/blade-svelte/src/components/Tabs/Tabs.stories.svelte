@@ -448,22 +448,13 @@
     {#snippet children()}
       <TabList>
         {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet leading()}
-              <HomeIcon size="medium" />
-            {/snippet}
+          <TabItem value="subscriptions" leading={HomeIcon}>
             {#snippet children()}Subscription{/snippet}
           </TabItem>
-          <TabItem value="plans">
-            {#snippet leading()}
-              <CreditCardIcon size="medium" />
-            {/snippet}
+          <TabItem value="plans" leading={CreditCardIcon}>
             {#snippet children()}Plans{/snippet}
           </TabItem>
-          <TabItem value="settings">
-            {#snippet leading()}
-              <SearchIcon size="medium" />
-            {/snippet}
+          <TabItem value="settings" leading={SearchIcon}>
             {#snippet children()}Settings{/snippet}
           </TabItem>
         {/snippet}
@@ -675,21 +666,9 @@
     {#snippet children()}
       <TabList>
         {#snippet children()}
-          <TabItem value="clipboard">
-            {#snippet leading()}
-              <HomeIcon size="medium" />
-            {/snippet}
-          </TabItem>
-          <TabItem value="card">
-            {#snippet leading()}
-              <CreditCardIcon size="medium" />
-            {/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet leading()}
-              <SearchIcon size="medium" />
-            {/snippet}
-          </TabItem>
+          <TabItem value="clipboard" leading={HomeIcon} />
+          <TabItem value="card" leading={CreditCardIcon} />
+          <TabItem value="settings" leading={SearchIcon} />
         {/snippet}
       </TabList>
       <TabPanel value="clipboard">

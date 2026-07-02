@@ -5,12 +5,12 @@
     getStyledPropsClasses,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { getTabsClasses } from '@razorpay/blade-core/styles';
+  import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
   import TabIndicator from './TabIndicator.svelte';
   import type { TabListProps } from './types';
 
-  const classes = getTabsClasses();
+  const classes = getTabsTemplateClasses();
 
   let {
     children,
@@ -23,7 +23,6 @@
 
   let tabListContainerEl: HTMLDivElement | undefined = $state();
 
-  const isBordered = $derived(ctx.variant === 'bordered' || ctx.variant === 'borderless');
   const isFilled = $derived(ctx.variant === 'filled');
   const isCompact = $derived(ctx.size === 'small' && !ctx.isVertical);
 
@@ -75,6 +74,9 @@
     if (nextIndex !== null) {
       event.preventDefault();
       tabs[nextIndex].focus();
+      const tabId = tabs[nextIndex].id;
+      const focusedTabValue = tabId.replace(`${ctx.baseId}-`, '').replace('-tabitem', '');
+      ctx.setFocusedValue(focusedTabValue);
     }
   };
 
@@ -94,7 +96,7 @@
 >
   <div class={classes.scrollableArea}>
     <div class={classes.tabListScrollRow}>
-      {#if ctx.isVertical && isBordered}
+      {#if ctx.isVertical && ctx.variant === 'bordered'}
         <div class={classes.verticalTrack}></div>
       {/if}
       <!-- svelte-ignore a11y_interactive_supports_focus -->
@@ -112,7 +114,7 @@
       <TabIndicator {tabListContainerEl} />
     {/if}
   </div>
-  {#if !ctx.isVertical && isBordered}
+  {#if !ctx.isVertical && ctx.variant === 'bordered'}
     <div class={classes.horizontalTrack}></div>
   {/if}
 </div>
