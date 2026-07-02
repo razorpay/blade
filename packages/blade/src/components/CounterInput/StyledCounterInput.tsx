@@ -26,6 +26,18 @@ const slideDown = keyframes`
   }
 `;
 
+const StyledNumberWrapper = styled(BaseBox)<{
+  $width: string;
+  $fontFamily: string;
+  $fontSize: string;
+  $fontWeight: string | number;
+}>`
+  width: ${({ $width }) => $width};
+  font-family: ${({ $fontFamily }) => $fontFamily};
+  font-size: ${({ $fontSize }) => $fontSize};
+  font-weight: ${({ $fontWeight }) => $fontWeight};
+`;
+
 const StyledCounterInput = styled(BaseBox)`
   /* Hide focus ring by default */
   &.__blade-counter-input .focus-ring-wrapper:focus-within {
@@ -60,6 +72,7 @@ const StyledCounterInput = styled(BaseBox)`
 
   &.__blade-counter-input input[type='number'] {
     -moz-appearance: textfield; /* Firefox */
+    font-variant-numeric: tabular-nums;
   }
 
   /* Remove ProgressBar background */
@@ -68,4 +81,4 @@ const StyledCounterInput = styled(BaseBox)`
   }
 `;
 
-export { StyledCounterInput };
+export { StyledCounterInput, StyledNumberWrapper };

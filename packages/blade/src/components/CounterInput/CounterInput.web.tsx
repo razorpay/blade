@@ -1,10 +1,15 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { CounterInputProps } from './types';
-import { StyledCounterInput } from './StyledCounterInput';
-import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
+import { StyledCounterInput, StyledNumberWrapper } from './StyledCounterInput';
+import {
+  COUNTER_INPUT_TOKEN,
+  COUNTER_INPUT_ICON_SIZE_MAP,
+  COUNTER_INPUT_SIZE_TO_TEXT_SIZE,
+} from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
+import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -17,12 +22,20 @@ import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint, makeSpace, castWebType, makeMotionTime, makeBorderSize } from '~utils';
+import {
+  useBreakpoint,
+  makeSpace,
+  castWebType,
+  makeMotionTime,
+  makeBorderSize,
+  makeTypographySize,
+} from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { getTextProps } from '~components/Typography/Text/Text';
 
 const StyledCounterButton = styled.button<{
   disabled?: boolean;
@@ -111,6 +124,23 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
     const containerRef = useRef<HTMLDivElement>(null);
+    const rawCounterValue = internalValue ?? min;
+    const counterValueDigitCount =
+      Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
+    const { fontSize: counterInputFontSizeToken = 100 } = getTextProps({
+      variant: 'body',
+      size: COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size],
+      weight: 'semibold',
+    });
+    const counterInputHorizontalPadding =
+      theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
+      theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+    const counterInputFieldWidth = `calc(${counterValueDigitCount}ch + ${counterInputHorizontalPadding}px)` as `calc(${string})`;
+    const counterInputTextStyle = {
+      fontFamily: theme.typography.fonts.family.text,
+      fontSize: makeTypographySize(theme.typography.fonts.size[counterInputFontSizeToken]),
+      fontWeight: theme.typography.fonts.weight.semibold,
+    };
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
     // Note: :focus-visible doesn't work for text inputs - shows ring on both Tab and click
@@ -218,6 +248,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
             alignItems={isLabelLeftPositioned ? 'center' : undefined}
+            width="fit-content"
           >
             {label && (
               <FormLabel
@@ -241,7 +272,8 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   ? emphasisTokens.loadingOrDisabledBgColor
                   : emphasisTokens.backgroundColor
               }
-              width={`${COUNTER_INPUT_TOKEN.width[size]}px`}
+              width="fit-content"
+              minWidth={`${COUNTER_INPUT_TOKEN.width[size]}px`}
               height={`${COUNTER_INPUT_TOKEN.height[size]}px`}
               borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
@@ -269,7 +301,13 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
-                <BaseBox className={animationClass}>
+                <StyledNumberWrapper
+                  className={`__blade-counter-input-number-wrapper ${animationClass}`.trim()}
+                  $width={counterInputFieldWidth}
+                  $fontFamily={counterInputTextStyle.fontFamily}
+                  $fontSize={counterInputTextStyle.fontSize}
+                  $fontWeight={counterInputTextStyle.fontWeight}
+                >
                   <BaseInput
                     ref={ref}
                     id={inputId}
@@ -292,7 +330,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     aria-valuemax={max}
                     aria-valuenow={internalValue ?? min}
                   />
-                </BaseBox>
+                </StyledNumberWrapper>
 
                 <StyledCounterButton
                   className="__blade-counter-input-increment-button"
