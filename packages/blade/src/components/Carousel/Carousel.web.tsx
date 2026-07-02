@@ -287,6 +287,8 @@ const _Carousel = (
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const isProgrammaticScrollRef = React.useRef(false);
+  const programmaticScrollTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
   const isMobile = platform === 'onMobile';
   const id = useId();
   const carouselId = `carousel-${id}`;
@@ -362,6 +364,16 @@ const _Carousel = (
       (containerRef.current.getBoundingClientRect().left ?? 0);
     const left = containerRef.current.scrollLeft + carouselItemLeft;
 
+    if (shouldAnimate) {
+      // Suppress the scroll event handler while the programmatic smooth scroll is animating
+      // to prevent intermediate slide positions from incorrectly updating activeSlide/onChange
+      isProgrammaticScrollRef.current = true;
+      clearTimeout(programmaticScrollTimerRef.current);
+      programmaticScrollTimerRef.current = setTimeout(() => {
+        isProgrammaticScrollRef.current = false;
+      }, 1000);
+    }
+
     containerRef.current.scroll({
       left: left - startEndMargin,
       behavior: shouldAnimate ? 'smooth' : 'auto',
@@ -433,6 +445,8 @@ const _Carousel = (
     if (!carouselContainer) return;
 
     const handleScroll = debounce(() => {
+      // Skip during programmatic smooth scroll to avoid intermediate positions triggering onChange
+      if (isProgrammaticScrollRef.current) return;
       // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
