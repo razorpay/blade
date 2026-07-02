@@ -1,5 +1,20 @@
 # @razorpay/blade
 
+## 12.109.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- fce89c19c: feat(AppBar, RTBBadge): add AppBar and RTBBadge components
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- 4c5c93823: fix(blade): update default chart color to blue
+
 ## 12.108.5
 
 ### Patch Changes
