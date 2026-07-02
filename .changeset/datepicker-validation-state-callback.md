@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-fix(DatePicker): change onValidationStateChange callback to pass `{ validationState }` object instead of boolean, enabling consumers to distinguish between 'success', 'error', and 'none' states
+fix(DatePicker): add `onValidationStateChange` callback prop to detect validation state changes, enabling consumers to react programmatically when users type invalid dates

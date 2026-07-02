@@ -75,6 +75,51 @@ describe('<DatePicker/> ', () => {
       // Should not have fired with error
       expect(onValidationStateChange).not.toHaveBeenCalledWith({ validationState: 'error' });
     });
+
+    it('fires callback and syncs display when validationState is controlled externally', async () => {
+      const onValidationStateChange = jest.fn();
+      const user = userEvent.setup();
+
+      const ControlledDatePicker = (): React.ReactElement => {
+        const [externalValidationState, setExternalValidationState] = React.useState<
+          'error' | 'success' | 'none'
+        >('none');
+
+        return (
+          <DatePickerComponent
+            accessibilityLabel="Select Date"
+            validationState={externalValidationState}
+            onValidationStateChange={({ validationState }) => {
+              setExternalValidationState(validationState);
+              onValidationStateChange({ validationState });
+            }}
+          />
+        );
+      };
+
+      const { getByRole } = renderWithTheme(<ControlledDatePicker />);
+      const input = getByRole('combobox', { name: /Select Date/i });
+
+      // Type invalid date — callback fires, consumer updates external validationState to 'error'
+      await user.type(input, '99999999');
+      expect(onValidationStateChange).toHaveBeenCalledWith({ validationState: 'error' });
+
+      // Clear input — callback fires, consumer updates external validationState to 'none'
+      await user.clear(input);
+      expect(onValidationStateChange).toHaveBeenCalledWith({ validationState: 'none' });
+    });
+
+    it('preserves existing validationState prop behavior without onValidationStateChange', () => {
+      const { queryByText } = renderWithTheme(
+        <DatePickerComponent
+          accessibilityLabel="Select Date"
+          validationState="error"
+          errorText="Invalid date format"
+        />,
+      );
+
+      expect(queryByText('Invalid date format')).toBeInTheDocument();
+    });
   });
 
   it('should fire native events like input and change', async () => {
