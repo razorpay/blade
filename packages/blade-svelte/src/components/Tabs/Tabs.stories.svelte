@@ -491,14 +491,14 @@
         {#snippet children()}
           <TabItem value="subscriptions">
             {#snippet children()}Subscription{/snippet}
-            {#snippet trailing()}
-              <Badge color="positive">NEW</Badge>
+            {#snippet trailing(size)}
+              <Badge {size} color="positive">NEW</Badge>
             {/snippet}
           </TabItem>
           <TabItem value="plans">
             {#snippet children()}Plans{/snippet}
-            {#snippet trailing()}
-              <Counter color="positive" value={2} />
+            {#snippet trailing(size)}
+              <Counter size="small" color="positive" value={2} />
             {/snippet}
           </TabItem>
           <TabItem value="settings">

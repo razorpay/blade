@@ -291,12 +291,12 @@
 
 .tabItemTextMedium {
   font-size: var(--font-size-100);
-  line-height: var(--line-height-m);
+  line-height: var(--line-height-100);
 }
 
 .tabItemTextLarge {
-  font-size: var(--font-size-175);
-  line-height: var(--line-height-l);
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
 }
 
 .tabItemIcon {

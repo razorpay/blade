@@ -79,6 +79,8 @@
   );
 
   const iconSize = $derived(iconSizeMap[ctx.size]);
+  // Matches React's badgeSizeMap: small/medium → 'small', large → 'medium'
+  const trailingSize = $derived<'small' | 'medium'>(ctx.size === 'large' ? 'medium' : 'small');
 
   const buttonClasses = $derived.by(() => {
     const result: string[] = [classes.tabButton];
@@ -163,7 +165,7 @@
     </span>
   {/if}
   {#if trailing}
-    {@render trailing()}
+    {@render trailing(trailingSize)}
   {/if}
 {/snippet}
 

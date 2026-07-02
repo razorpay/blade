@@ -67,8 +67,10 @@ type TabItemBaseProps = {
 
   /**
    * Trailing element snippet — only accepts `Badge` or `Counter` components.
+   * Receives a computed `size` prop (`'small' | 'medium'`) that matches the tab size.
+   * Pass it to the Badge/Counter: `{#snippet trailing(size)}<Badge {size}>3</Badge>{/snippet}`
    */
-  trailing?: Snippet;
+  trailing?: Snippet<[size: 'small' | 'medium']>;
 
   /**
    * If `true`, the tab item will be disabled.
