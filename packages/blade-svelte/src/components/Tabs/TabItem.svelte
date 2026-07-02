@@ -43,7 +43,7 @@
   const getCtx = getTabsContext();
   const ctx = $derived(getCtx());
 
-  $effect(() => {
+  $effect.pre(() => {
     getCtx().registerTabItem(value);
   });
 
