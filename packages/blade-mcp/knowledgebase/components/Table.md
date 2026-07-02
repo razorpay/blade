@@ -387,6 +387,26 @@ type TablePaginationProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Table` for displaying structured, multi-column data that users need to scan, sort, compare, or act on.
+- Use the function-as-children pattern: `<Table>{(tableData) => (<>...</>)}</Table>`.
+- Ensure every row object in `data.nodes` has a unique `id` field.
+- Use `sortFunctions` with matching `headerKey` props on `TableHeaderCell` for sortable columns.
+- Use `isHeaderSticky` and `isFirstColumnSticky` for large datasets that need scroll anchoring.
+- Wrap in `ListView` when you need search and filter capabilities alongside the table.
+
+**Don't**
+
+- Don't use static JSX children — `Table` requires the function-as-children pattern.
+- Don't expect column reordering, resizing, or row expansion — these are out of scope.
+- Don't put arbitrary elements in the `toolbar` prop — only `TableToolbar` is accepted.
+- Don't use `Table` for key-value pair display — use `InfoGroup` instead.
+- Don't sort multiple columns simultaneously — only single-column sorting is supported.
+- Don't use `Table` on mobile for complex data — consider a list-based layout instead.
+
 ## Example
 
 ### Comprehensive Table with Advanced Features

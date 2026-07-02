@@ -100,6 +100,23 @@ type OTPInputPropsWithLabel = {
 type OTPInputProps = OTPInputPropsWithA11yLabel | OTPInputPropsWithLabel;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `OTPInput` for verification codes, 2FA tokens, and PIN entry flows.
+- Use `onOTPFilled` callback to trigger auto-verification when all fields are complete.
+- Use `isMasked` for secure PIN entry where characters should be hidden.
+- Use `otpLength={4}` for short PINs and `otpLength={6}` (default) for verification codes.
+- Always provide `accessibilityLabel` when `label` is not shown.
+
+**Don't**
+
+- Don't use `OTPInput` for general text, phone numbers, or other sequential data — use `TextInput` with `format` instead.
+- Don't use `OTPInput` for password entry — use `PasswordInput`.
+- Don't forget to handle paste behavior — pasted strings auto-distribute across fields.
+- Don't manually create multiple `TextInput` fields to replicate OTP behavior — use this purpose-built component.
+
 ## Example
 
 ### Basic OTP Input with Validation
