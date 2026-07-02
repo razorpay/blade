@@ -275,6 +275,8 @@
 /* State marker classes */
 .tabSelected {}
 
+.tabFilledUnselected {}
+
 .tabDisabledLink {
   text-decoration: none;
 }
