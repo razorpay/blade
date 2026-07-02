@@ -197,3 +197,10 @@ export type {
 
 // BladeProvider
 export * from './BladeProvider';
+
+// Tabs
+export { default as Tabs } from './Tabs/Tabs.svelte';
+export { default as TabList } from './Tabs/TabList.svelte';
+export { default as TabItem } from './Tabs/TabItem.svelte';
+export { default as TabPanel } from './Tabs/TabPanel.svelte';
+export type { TabsProps, TabItemProps, TabListProps, TabPanelProps } from './Tabs/types';
