@@ -56,16 +56,16 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
   );
 
+  // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
+  const isFocusedRef = useRef(false);
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
   useEffect(() => {
     if (!isFocusedRef.current) {
       setHexDisplayValue(colorValue.hex);
     }
   }, [colorValue.hex]);
-
-  // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
-  const isFocusedRef = useRef(false);
-  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
