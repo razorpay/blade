@@ -63,7 +63,7 @@ const _DateInput = (
   // - Controlled: consumer passes validationState prop (external control)
   // - Uncontrolled: DateInput manages it internally based on typing errors
   // useControllableState's useCallbackRef internals ensure onValidationStateChange is always fresh
-  const [effectiveValidationState, setEffectiveValidationState] = useControllableState<
+  const [, setEffectiveValidationState] = useControllableState<
     'error' | 'success' | 'none'
   >({
     value: textInputProps.validationState as 'error' | 'success' | 'none' | undefined,
@@ -277,7 +277,7 @@ const _DateInput = (
       leadingIcon: showLeadingIcon,
       ...(showLeadingDropdown ? { leading: showLeadingDropdown } : {}),
       format: dateInputFormat,
-      validationState: validationError ? 'error' : effectiveValidationState,
+      validationState: validationError ? 'error' : textInputProps.validationState,
       errorText: textInputProps.errorText ?? validationError,
       onChange: handleInputChange,
       onBlur: handleBlurWithFocusState,
