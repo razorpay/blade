@@ -302,6 +302,12 @@ const _Carousel = (
     isMobile ? true : !shouldAddStartEndSpacing,
   );
   const [isScrollAtEnd, setScrollEnd] = React.useState(isMobile);
+  // Tracks when a programmatic scroll is in progress so the scroll-sync handler
+  // doesn't override the active slide. Firefox fires scroll events before any
+  // visual movement during smooth scrolls, causing elementFromPoint to return
+  // the wrong slide and triggering spurious onChange(0) calls.
+  const isProgrammaticScrollRef = React.useRef(false);
+  const programmaticScrollTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isResponsive = visibleItems === 'autofit';
   let _visibleItems = visibleItems as 1 | 2 | 3;
@@ -352,6 +358,16 @@ const _Carousel = (
 
   const scrollToSlide = (slideIndex: number, shouldAnimate = true) => {
     if (!containerRef.current) return;
+
+    // Block scroll-sync handler from overriding the active slide while the
+    // programmatic scroll animation runs (fixes Firefox spurious onChange(0)).
+    isProgrammaticScrollRef.current = true;
+    if (programmaticScrollTimerRef.current !== null) {
+      clearTimeout(programmaticScrollTimerRef.current);
+    }
+    programmaticScrollTimerRef.current = setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, shouldAnimate ? 800 : 100);
 
     const carouselItemId = getCarouselItemId(carouselId, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
@@ -433,6 +449,8 @@ const _Carousel = (
     if (!carouselContainer) return;
 
     const handleScroll = debounce(() => {
+      if (isProgrammaticScrollRef.current) return;
+
       // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
