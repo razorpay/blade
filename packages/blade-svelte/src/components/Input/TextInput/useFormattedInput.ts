@@ -27,10 +27,10 @@ export const format = (value: string, pattern: string): string => {
 };
 
 /** Removes delimiters, keeps only user input. `stripPatternCharacters("12/34") → "1234"`. */
-export const stripPatternCharacters = (value: string): string => value.replace(/[^\dA-z]/g, '');
+export const stripPatternCharacters = (value: string): string => value.replace(/[^\dA-Za-z]/g, '');
 
 /** Checks if a character is user input vs a delimiter. */
-export const isUserCharacter = (character: string): boolean => /[\dA-z]/.test(character);
+export const isUserCharacter = (character: string): boolean => /[\dA-Za-z]/.test(character);
 
 type FormatterCursorInfo = { cursorPosition?: number; endOfSection?: boolean };
 

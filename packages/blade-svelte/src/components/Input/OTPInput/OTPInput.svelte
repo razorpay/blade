@@ -161,7 +161,7 @@
   ): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
-      if (otpValue[currentOtpIndex]) {
+      if (isControlled ? value?.[currentOtpIndex] : otpValue[currentOtpIndex]) {
         handleChange({ value: '' }, currentOtpIndex);
       } else {
         focusOnOtpByIndex(currentOtpIndex - 1);
