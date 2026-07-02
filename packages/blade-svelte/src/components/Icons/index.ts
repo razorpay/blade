@@ -10,6 +10,7 @@ export { CheckIcon } from './CheckIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
+export { ChevronUpDownIcon } from './ChevronUpDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';

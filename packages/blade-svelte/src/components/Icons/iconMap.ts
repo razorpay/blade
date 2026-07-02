@@ -14,8 +14,8 @@ import { PlusIcon } from './PlusIcon';
 import { SearchIcon } from './SearchIcon';
 import { UserIcon } from './UserIcon';
 import { BuildingIcon } from './BuildingIcon';
-import { BankIcon } from './BankIcon';
 import { HomeIcon } from './HomeIcon';
+import { LockIcon } from './LockIcon';
 import { RTBShieldIcon } from './RTBShieldIcon';
 
 export type IconComponent = Component<IconProps>;
