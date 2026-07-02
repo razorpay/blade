@@ -29,6 +29,7 @@ Use the provided `DIFF`, `PR_TITLE`, and `PR_BODY` directly and try to understan
 
 Judging Criteria:
 
+- **Missing appropriate changeset**: Changeset is applicable for all user-facing code changes (change in code logic, new prop, bug fix, blade mcp knowledgebase update, etc). Not applicable for changes in tests, stories, etc.
 - **Importance of the file / part of the code**: Some files are more important than others. There is no need for flagging code-quality issues in code snippets of markdown files or not-so-important files. Only flag issues in core code logic files and ignore other files.
 - **Reusability**: Some existing util already exists for the same functionality that can be extended
 - **Unrelated file changes**: If there are some unrelated files changes in the PR, flag them for either problem / suggestion or clarification depending on confidence (only flag extremely unrelated changes that are not related to the rest of the PR changes at all).
@@ -41,6 +42,15 @@ Judging Criteria:
 
 - Do one level of validation of the issues before returning them
 - Our goal is to flag least amount of issues possible to take PR to mergeable state. Do not flag nitpicks, unnecessary issues. Try to keep issues count minimal
+
+### 3. Determine confidence
+
+Confidence is an average of two questions:
+
+1. How confident are you that the issue is valid (after understanding the intent of the change, PR info, diff, rest of the relevant codebase in that branch, etc) (1 if you are not sure or require more information that doesn't exist in the PR, 10 if you are confident that the issue is valid)?
+2. How confident are you that the issue is not a nitpick, an issue we can live with, or an issue that already exists in the codebase independent of this PR (score 1 if its a nitpick / small issue that we can live with, 10 if its a genuine issue that needs to be addressed).
+
+Confidence should be between 1 and 10 based on average of the two questions above.
 
 ## Output
 
@@ -72,6 +82,6 @@ Judging Criteria:
 
 Each issue has either `problem` + `suggestion` (a definite issue) **or** `clarification` (a question for the PR author — use this when you cannot confidently determine if something is a real issue without more context). Do not use `clarification` for issues that you can go and figure out yourself from the code or are obvious and not worth asking the PR author.
 
-`confidence`: a number from 1–10 indicating how confident you are this is a valid review comment (1 = not confident at all, 10 = completely confident). Use `clarification` instead of `problem`/`suggestion` when confidence is below 5.
+`confidence`: Set to 1 if you are not confident at all, 10 if you are completely confident based on average of the two questions above.
 
 `file` and `line` must point to the specific location in the diff where the issue exists. If there is no specific line, set `line` to `null`. `side`: `"RIGHT"` for added/modified lines, `"LEFT"` for deleted lines.

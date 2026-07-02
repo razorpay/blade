@@ -98,6 +98,24 @@ type ModalFooterProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Modal` for critical information or decisions that require focused user attention on desktop.
+- Compose with `ModalHeader`, `ModalBody`, and `ModalFooter` sub-components for proper structure.
+- Use `size` to match content needs: `"small"` (400px) for confirmations, `"medium"` (760px) for forms, `"large"` (1024px) for complex content.
+- Use `initialFocusRef` to direct focus to the most relevant element on open.
+- Use `isDismissible={false}` only for flows that require explicit user action (e.g., forced confirmations).
+
+**Don't**
+
+- Don't use `Modal` on mobile/mWeb — use `BottomSheet` instead (Modal is desktop-first by design).
+- Don't use `Modal` for supplementary information that doesn't need to block interaction — use `Drawer` or `Popover`.
+- Don't expect auto-conversion to BottomSheet on small screens — consumers must implement responsive logic manually.
+- Don't put arbitrary components in `ModalHeader` trailing — only Button, IconButton, Badge, Link, Text, and Amount are allowed.
+- Don't use `ModalBody` padding values other than `"spacing.0"` or `"spacing.6"`.
+
 ## Example
 
 Below is a comprehensive example showcasing the Modal component with various configurations:

@@ -11,9 +11,10 @@
     getAccordionButtonBorderClasses,
     getAccordionTemplateClasses,
   } from '@razorpay/blade-core/styles';
-  import { ChevronDownIcon } from '../Icons/ChevronDownIcon';
   import Divider from '../Divider/Divider.svelte';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
+  import CollapsibleChevronIcon from '../Collapsible/CollapsibleChevronIcon.svelte';
+  import { getCollapsibleContext } from '../Collapsible/context';
   import { getAccordionContext, getAccordionItemContext } from './context';
   import type { AccordionItemHeaderProps } from './types';
 
@@ -31,14 +32,24 @@
 
   const getAccCtx = getAccordionContext();
   const getItemCtx = getAccordionItemContext();
+  const getCollapsibleCtx = getCollapsibleContext();
+
+  if (!getCollapsibleCtx) {
+    throw new Error(
+      '[blade-svelte] AccordionItemHeader must be used inside an <AccordionItem> component.',
+    );
+  }
 
   const accordionCtx = $derived(getAccCtx());
   const itemCtx = $derived(getItemCtx());
+  const collapsibleCtx = $derived(getCollapsibleCtx());
 
-  const isExpanded = $derived(itemCtx.isExpanded);
+  // index + disabled come from the item; expanded state + toggle + body id come
+  // from the Collapsible that AccordionItem wraps its content in.
+  const isExpanded = $derived(collapsibleCtx.isExpanded);
   const isDisabled = $derived(itemCtx.isDisabled);
   const index = $derived(itemCtx.index);
-  const collapsibleBodyId = $derived(itemCtx.collapsibleBodyId);
+  const collapsibleBodyId = $derived(collapsibleCtx.collapsibleBodyId);
 
   const variant = $derived(accordionCtx.variant);
   const numberOfItems = $derived(accordionCtx.numberOfItems);
@@ -86,15 +97,6 @@
     return 'interactive.icon.gray.muted' as const;
   });
 
-  const chevronClass = $derived(
-    [
-      templateClasses.headerChevron,
-      isExpanded ? templateClasses.chevronExpanded : '',
-    ]
-      .filter(Boolean)
-      .join(' '),
-  );
-
   // Button classes
   const buttonClass = $derived(
     getAccordionButtonClasses({ isExpanded, isDisabled }),
@@ -108,7 +110,7 @@
 
   const onClick = () => {
     if (!isDisabled) {
-      itemCtx.toggle();
+      collapsibleCtx.onExpandChange(!isExpanded);
     }
   };
 
@@ -204,8 +206,8 @@
           </div>
         {/if}
 
-        <div class={chevronClass}>
-          <ChevronDownIcon size="large" color={chevronColor} />
+        <div class={templateClasses.headerChevron}>
+          <CollapsibleChevronIcon size="large" color={chevronColor} />
         </div>
       </div>
 

@@ -332,6 +332,7 @@ export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseI
 export { default as RouteFilledIcon } from './RouteFilledIcon';
 export { default as RouteIcon } from './RouteIcon';
 export { default as RoutesIcon } from './RoutesIcon';
+export { default as RTBShieldIcon } from './RTBShieldIcon';
 export { default as RupeeIcon } from './RupeeIcon';
 export { default as RupeesIcon } from './RupeesIcon';
 export { default as SaasFilledIcon } from './SaasFilledIcon';
