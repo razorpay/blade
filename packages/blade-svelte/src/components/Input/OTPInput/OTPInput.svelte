@@ -126,6 +126,35 @@
     }
   };
 
+  const handlePaste = (event: ClipboardEvent, currentOtpIndex: number): void => {
+    event.preventDefault();
+    const pastedText = (event.clipboardData?.getData('text') ?? '').trim().slice(0, otpLength);
+    if (!pastedText) return;
+
+    if (isControlled) {
+      const next = Array.from(value ?? '');
+      for (let i = 0; i < pastedText.length; i++) {
+        if (currentOtpIndex + i < otpLength) {
+          next[currentOtpIndex + i] = pastedText[i];
+        }
+      }
+      otpValue = next;
+      onChange?.({ name, value: next.join('') });
+    } else {
+      const next = Array.from(otpValue);
+      for (let i = 0; i < pastedText.length; i++) {
+        if (currentOtpIndex + i < otpLength) {
+          next[currentOtpIndex + i] = pastedText[i];
+        }
+      }
+      otpValue = next;
+      onChange?.({ name, value: next.join('') });
+    }
+
+    const nextFocusIndex = Math.min(currentOtpIndex + pastedText.length, otpLength - 1);
+    focusOnOtpByIndex(nextFocusIndex);
+  };
+
   const handleKeyDown = (
     { key, code, event }: Parameters<FormInputOnKeyDownEvent>[0],
     currentOtpIndex: number,
@@ -193,12 +222,13 @@
             textAlign="center"
             {name}
             value={fieldValues[index] ?? ''}
-            maxCharacters={(otpValue[index]?.length ?? 0) > 0 ? 1 : undefined}
+            maxCharacters={1}
             onChange={(e) => handleChange(e, index)}
             onFocus={(e) => onFocus?.({ ...e, inputIndex: index })}
             onBlur={(e) => onBlur?.({ ...e, inputIndex: index })}
             onInput={(e) => handleInput(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
+            onPaste={(e) => handlePaste(e, index)}
             {isDisabled}
             placeholder={Array.from(placeholder ?? '')[index] ?? ''}
             isRequired={true}
