@@ -180,6 +180,7 @@
     aria-controls={panelId}
     tabindex={isSelected || isFocused ? 0 : -1}
     aria-disabled={isDisabled}
+    data-blade-tab-value={value}
     onclick={handleClick}
     {...metaAttrs}
     {...analyticsAttrs}
@@ -196,6 +197,7 @@
     aria-controls={panelId}
     tabindex={isSelected || isFocused ? 0 : -1}
     disabled={isDisabled}
+    data-blade-tab-value={value}
     onclick={handleClick}
     {...metaAttrs}
     {...analyticsAttrs}

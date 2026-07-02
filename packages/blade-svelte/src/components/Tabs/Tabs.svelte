@@ -31,6 +31,7 @@
   nextTabsUid += 1;
   const baseId = `tabs-${nextTabsUid}`;
 
+  const hasExplicitDefault = defaultValue !== undefined;
   let internalValue = $state<string>(defaultValue ?? '');
   let focusedValue = $state<string | null>(null);
 
@@ -55,7 +56,7 @@
   };
 
   const registerTabItem = (value: string) => {
-    if (!selectedValue) {
+    if (!hasExplicitDefault && !selectedValue) {
       setSelectedValue(value, true);
     }
   };

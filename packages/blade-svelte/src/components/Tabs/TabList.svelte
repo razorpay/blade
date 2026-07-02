@@ -74,10 +74,7 @@
     if (nextIndex !== null) {
       event.preventDefault();
       tabs[nextIndex].focus();
-      const tabId = tabs[nextIndex].id;
-      const prefix = `${ctx.baseId}-`;
-      const suffix = '-tabitem';
-      const focusedTabValue = tabId.slice(prefix.length, tabId.length - suffix.length);
+      const focusedTabValue = tabs[nextIndex].dataset.bladeTabValue ?? null;
       ctx.setFocusedValue(focusedTabValue);
     }
   };
