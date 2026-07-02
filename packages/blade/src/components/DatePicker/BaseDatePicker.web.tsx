@@ -89,6 +89,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   showFooterActions = true,
   footer,
   displayFormat = 'default',
+  onValidationStateChange,
   ...props
 }: DatePickerProps<Type> &
   StyledPropsBlade &
@@ -509,6 +510,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 maxDate={props.maxDate}
                 showClearButton={showClearButton}
                 onClearButtonClick={handleClear}
+                onValidationStateChange={onValidationStateChange}
                 // Effective Selection type should only be use for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
                 // Pass through preset state for showing label instead of date

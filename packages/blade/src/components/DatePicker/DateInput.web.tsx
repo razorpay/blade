@@ -4,6 +4,7 @@
 import React from 'react';
 import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps, DateInputProps } from './types';
+import { useControllableState } from '~utils/useControllable';
 import {
   getFormattedDate,
   rangeFormattedValue,
@@ -44,6 +45,7 @@ const _DateInput = (
     selectedPresetLabel,
     showClearButton,
     onClearButtonClick,
+    onValidationStateChange,
     ...textInputProps
   } = props;
 
@@ -56,6 +58,18 @@ const _DateInput = (
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const [isFocused, setIsFocused] = React.useState(false);
+
+  // Controllable validation state handles the controlled/uncontrolled pattern:
+  // - Controlled: consumer passes validationState prop (external control)
+  // - Uncontrolled: DateInput manages it internally based on typing errors
+  // useControllableState's useCallbackRef internals ensure onValidationStateChange is always fresh
+  const [, setEffectiveValidationState] = useControllableState<'error' | 'success' | 'none'>({
+    value: textInputProps.validationState as 'error' | 'success' | 'none' | undefined,
+    defaultValue: 'none',
+    onChange: (state) => {
+      onValidationStateChange?.({ validationState: state });
+    },
+  });
   const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // Determine selection type: prefer preset context calculation over props
@@ -84,6 +98,8 @@ const _DateInput = (
   // clearing errors during typing/blur unless the value truly updated.
   React.useEffect(() => {
     setValidationError(undefined);
+    setEffectiveValidationState(() => 'none');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
   const applyDateValue = React.useCallback(
@@ -135,6 +151,7 @@ const _DateInput = (
   const handleInputChange = ({ value }: { value?: string }): void => {
     const inputValue = value ?? '';
     setValidationError(undefined);
+    setEffectiveValidationState(() => 'none');
 
     if (inputValue?.trim()) {
       const validation = validateAndParseDateInput(inputValue, isRange, format, {
@@ -145,6 +162,7 @@ const _DateInput = (
 
       if (validation.shouldBlock && validation.error) {
         setValidationError(validation.error);
+        setEffectiveValidationState(() => 'error');
       }
     }
 
@@ -156,6 +174,7 @@ const _DateInput = (
     (params: { name?: string; value?: string; event?: React.FocusEvent<HTMLInputElement> }) => {
       const currentInputValue = params.event?.target.value ?? params.value ?? '';
       setValidationError(undefined);
+      setEffectiveValidationState(() => 'none');
 
       if (currentInputValue?.trim()) {
         // Validate complete input and show errors to user on blur (includes all constraints)
@@ -167,6 +186,7 @@ const _DateInput = (
 
         if (validation.shouldBlock && validation.error) {
           setValidationError(validation.error);
+          setEffectiveValidationState(() => 'error');
           return; // Don't apply invalid values
         }
       }
@@ -342,6 +362,7 @@ const _DatePickerInput = (
     showClearButton,
     onClearButtonClick,
     selectedPresetLabel,
+    onValidationStateChange,
     ...props
   }: DatePickerInputProps,
   ref: React.ForwardedRef<any>,
@@ -395,6 +416,7 @@ const _DatePickerInput = (
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
           selectedPresetLabel={selectedPresetLabel}
+          onValidationStateChange={onValidationStateChange}
           {...props}
           {...referenceProps}
         />
@@ -474,6 +496,7 @@ const _DatePickerInput = (
           showClearButton={showClearButton}
           onClearButtonClick={onClearButtonClick}
           selectedPresetLabel={selectedPresetLabel}
+          onValidationStateChange={onValidationStateChange}
           {...props}
           {...referenceProps}
         />
