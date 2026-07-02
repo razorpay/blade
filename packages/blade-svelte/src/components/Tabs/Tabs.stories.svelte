@@ -156,6 +156,47 @@
   </div>
 </Story>
 
+<Story name="Size: Medium" asChild>
+  <Tabs variant="bordered" size="medium">
+    {#snippet children()}
+      <TabList>
+        {#snippet children()}
+          <TabItem value="subscriptions">
+            {#snippet children()}Subscription{/snippet}
+          </TabItem>
+          <TabItem value="plans">
+            {#snippet children()}Plans{/snippet}
+          </TabItem>
+          <TabItem value="settings">
+            {#snippet children()}Settings{/snippet}
+          </TabItem>
+        {/snippet}
+      </TabList>
+      <TabPanel value="subscriptions">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text>Subscriptions Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+      <TabPanel value="plans">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text>Plans Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+      <TabPanel value="settings">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text>Settings Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+    {/snippet}
+  </Tabs>
+</Story>
+
 <Story name="Size: Small" asChild>
   <Tabs variant="bordered" size="small">
     {#snippet children()}
