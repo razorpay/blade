@@ -23,15 +23,15 @@
     children,
     selectionType = 'single',
     selectedValue,
-    onItemSelect,
-    isInBottomSheet: isInBottomSheetProp,
+    onAction,
     testID,
     ...rest
   }: ActionListProps = $props();
 
-  // Prefer the migrated BottomSheet context, fall back to the explicit prop.
+  // Rendering-context flag, resolved only from the migrated BottomSheet context
+  // (not a public prop) — mirrors React's `useBottomSheetContext()`.
   const bs = getBottomSheetContext();
-  const isInBottomSheet = $derived(isInBottomSheetProp ?? bs?.isInBottomSheet ?? false);
+  const isInBottomSheet = $derived(bs?.isInBottomSheet ?? false);
 
   // Reactive context for child items (getters keep `selectedValue` live).
   const contextValue: ActionListContextValue = {
@@ -44,8 +44,8 @@
     get isInBottomSheet() {
       return isInBottomSheet;
     },
-    get onItemSelect() {
-      return onItemSelect;
+    get onAction() {
+      return onAction;
     },
     registerItem: () => {},
   };
@@ -64,12 +64,14 @@
 
   const outerClasses = $derived([boxClasses, styledClassString].filter(Boolean).join(' ') || undefined);
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.ActionList, testID });
+  const isMultiSelectable = $derived(selectionType === 'multiple');
+
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.ActionList, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
     makeAccessible({
       role: getActionListContainerRole(),
-      multiSelectable: false,
+      multiSelectable: isMultiSelectable,
     }),
   );
 </script>
@@ -77,7 +79,13 @@
 {#if isInBottomSheet}
   <!-- In a BottomSheet: render ONLY the scroll wrapper so BottomSheetBody owns
        scroll + padding (mirrors React's isInBottomSheet branch). -->
-  <div class={wrapperClasses} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
+  <div
+    class={[wrapperClasses, styledClassString].filter(Boolean).join(' ') || undefined}
+    style={styledStyleString}
+    {...a11yAttrs}
+    {...metaAttrs}
+    {...analyticsAttrs}
+  >
     {@render children()}
   </div>
 {:else}

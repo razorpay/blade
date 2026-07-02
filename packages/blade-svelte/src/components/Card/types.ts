@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -12,20 +13,11 @@ export type CardSpacingValueType =
   | 'spacing.5'
   | 'spacing.7';
 
-export type CardProps = {
+type CardSharedProps = {
   /**
    * Card contents
    */
   children: Snippet;
-  /**
-   * Sets the background color of the Card
-   *
-   * @default 'surface.background.gray.intense'
-   */
-  backgroundColor?:
-    | 'surface.background.gray.subtle'
-    | 'surface.background.gray.moderate'
-    | 'surface.background.gray.intense';
   /**
    * Sets the border radius of the Card
    *
@@ -142,6 +134,55 @@ export type CardProps = {
    */
   [key: `data-analytics-${string}`]: string;
 } & StyledPropsBlade;
+
+/**
+ * Discriminated union on `variant` enforces that `backgroundColor` is only
+ * valid when `variant="theme"`. Passing `backgroundColor` with `primary` or
+ * `secondary` is a compile-time TypeScript error.
+ *
+ * **Note on cross-framework parity:** The React Card currently supports
+ * `variant?: 'primary' | 'secondary'`. The `theme` variant is introduced here
+ * as a Svelte-first extension; it will be backported to the React Card in a
+ * follow-up PR to keep both frameworks in sync.
+ *
+ * @example
+ * ```svelte
+ * <!-- valid -->
+ * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
+ *
+ * <!-- TS error: backgroundColor not allowed on primary/secondary -->
+ * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
+ * ```
+ */
+export type CardProps =
+  | (CardSharedProps & {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * - `primary`: elevated styling (gradients, drop shadow) with fixed
+       *   `surface.background.gray.intense` background.
+       * - `secondary`: flat styling with fixed `surface.background.gray.moderate` background.
+       *
+       * @default 'primary'
+       */
+      variant?: 'primary' | 'secondary';
+      backgroundColor?: never;
+    })
+  | (CardSharedProps & {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * `theme`: elevated shadow like `primary` with a configurable `backgroundColor`.
+       */
+      variant: 'theme';
+      /**
+       * Sets the background color. Only valid when `variant="theme"`.
+       * Supports gray and colored surface tokens (primary, sea, cloud).
+       *
+       * @default 'surface.background.primary.subtle'
+       */
+      backgroundColor?: CardBackgroundColor;
+    });
 
 export type CardBodyProps = {
   /**

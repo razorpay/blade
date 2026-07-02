@@ -19,3 +19,14 @@ export function getActionListItemRole(href?: string): 'link' | 'option' {
 export function getActionListSectionRole(): 'group' {
   return 'group';
 }
+
+/**
+ * Section items wrapper role — `listbox` on web. Mirrors React's deliberate
+ * inner listbox (ActionListItem.tsx `role: isReactNative() ? undefined : 'listbox'`)
+ * so screen readers announce the per-group item count. Yields
+ * `listbox > group > listbox > option`; the intervening `group` keeps the outer
+ * listbox's owned children valid.
+ */
+export function getActionListSectionItemsRole(): 'listbox' {
+  return 'listbox';
+}

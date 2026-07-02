@@ -66,7 +66,7 @@
   color: inherit;
   font-family: inherit;
 
-  &:hover:not([disabled]):not([aria-disabled='true']) {
+  &:hover:not([disabled]):not([aria-disabled='true']):not([aria-selected='true']) {
     background-color: var(--interactive-background-gray-default);
   }
 
@@ -94,7 +94,7 @@
 
 /* Negative intent row — negative faded hover (mirrors React `color==='negative'`). */
 .itemNegative {
-  &:hover:not([disabled]):not([aria-disabled='true']) {
+  &:hover:not([disabled]):not([aria-disabled='true']):not([aria-selected='true']) {
     background-color: var(--interactive-background-negative-faded);
   }
 }
@@ -140,6 +140,31 @@
 /* Trailing slot — pushed to the far right. */
 .itemTrailing {
   margin-left: auto;
+}
+
+/*
+ * Multi-select leading indicator wrapper. Mirrors React `BaseMenuLeadingItem`:
+ * the Checkbox is purely a visual affordance (row `aria-selected` +
+ * container `aria-multiselectable` carry the semantics), so pointer events are
+ * disabled and the subtree is hidden from the a11y tree via `aria-hidden`.
+ */
+.itemSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--size-20, 20px);
+  pointer-events: none;
+}
+
+/*
+ * Badge group (ActionListItemBadgeGroup) — flex row, vertically centered.
+ * Mirrors React `_ActionListItemBadgeGroup` (`display:flex; align-items:center;
+ * flex-direction:row`).
+ */
+.itemBadgeGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* ── Section ── */

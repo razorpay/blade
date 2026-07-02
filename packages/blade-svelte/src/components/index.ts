@@ -84,6 +84,14 @@ export {
   CardFooterTrailing,
 } from './Card';
 
+// AppBar
+export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
+export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
+
+// RTBBadge
+export { RTBBadge } from './RTBBadge';
+export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
@@ -106,6 +114,10 @@ export {
   ActionListItem,
   ActionListItemAsset,
   ActionListItemText,
+  ActionListItemIcon,
+  ActionListItemAvatar,
+  ActionListItemBadge,
+  ActionListItemBadgeGroup,
   ActionListSection,
 } from './ActionList';
 export type {
@@ -113,6 +125,10 @@ export type {
   ActionListItemProps,
   ActionListItemAssetProps,
   ActionListItemTextProps,
+  ActionListItemIconProps,
+  ActionListItemAvatarProps,
+  ActionListItemBadgeProps,
+  ActionListItemBadgeGroupProps,
   ActionListSectionProps,
   ActionListSelectionType,
   ActionListItemClickPayload,

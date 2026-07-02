@@ -89,10 +89,12 @@ export function getActionListTemplateClasses(): {
   itemNegative: string;
   itemInner: string;
   itemLeading: string;
+  itemSelector: string;
   itemContent: string;
   itemContentWithLeading: string;
   itemTitleRow: string;
   itemTrailing: string;
+  itemBadgeGroup: string;
   section: string;
   sectionTitle: string;
   sectionItems: string;
@@ -105,10 +107,12 @@ export function getActionListTemplateClasses(): {
     itemNegative: styles.itemNegative,
     itemInner: styles.itemInner,
     itemLeading: styles.itemLeading,
+    itemSelector: styles.itemSelector,
     itemContent: styles.itemContent,
     itemContentWithLeading: styles.itemContentWithLeading,
     itemTitleRow: styles.itemTitleRow,
     itemTrailing: styles.itemTrailing,
+    itemBadgeGroup: styles.itemBadgeGroup,
     section: styles.section,
     sectionTitle: styles.sectionTitle,
     sectionItems: styles.sectionItems,
