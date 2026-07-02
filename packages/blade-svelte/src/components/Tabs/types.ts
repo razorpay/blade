@@ -69,6 +69,13 @@ type TabItemBaseProps = {
    * Trailing element snippet — only accepts `Badge` or `Counter` components.
    * Receives a computed `size` prop (`'small' | 'medium'`) that matches the tab size.
    * Pass it to the Badge/Counter: `{#snippet trailing(size)}<Badge {size}>3</Badge>{/snippet}`
+   *
+   * > **Svelte-specific API difference:** In the React Blade API, `trailing` accepts a plain `ReactNode`
+   * > and the Tab component injects the correct `size` internally via `React.cloneElement`.
+   * > Svelte lacks an equivalent of `cloneElement`, so `size` is passed as a snippet parameter instead.
+   * > The end result is the same — Badge/Counter renders at the correct size — but consumers must
+   * > destructure the parameter: `{#snippet trailing(size)}<Badge {size}>3</Badge>{/snippet}`.
+   * > If you don't need size injection, you can ignore the parameter: `{#snippet trailing()}<Badge size="small">3</Badge>{/snippet}`.
    */
   trailing?: Snippet<[size: 'small' | 'medium']>;
 
