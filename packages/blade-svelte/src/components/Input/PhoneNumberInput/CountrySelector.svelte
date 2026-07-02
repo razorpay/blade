@@ -97,7 +97,7 @@
 <BottomSheet {isOpen} onDismiss={() => (isOpen = false)}>
   <BottomSheetHeader title="Select A Country" />
   <BottomSheetBody hasActionList>
-    <ActionList selectedValue={selectedCountry} onItemSelect={handleSelect}>
+    <ActionList selectedValue={[selectedCountry]} onItemSelect={handleSelect}>
       {#each countryData as country (country.code)}
         <ActionListItem title={country.name} value={country.code}>
           {#snippet leading()}
