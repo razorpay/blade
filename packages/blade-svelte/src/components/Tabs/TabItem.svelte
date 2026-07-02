@@ -43,7 +43,9 @@
   const getCtx = getTabsContext();
   const ctx = $derived(getCtx());
 
-  getCtx().registerTabItem(value);
+  $effect(() => {
+    getCtx().registerTabItem(value);
+  });
 
   const isSelected = $derived(ctx.selectedValue === value);
   const isFocused = $derived(ctx.focusedValue === value);
@@ -79,8 +81,6 @@
   );
 
   const iconSize = $derived(iconSizeMap[ctx.size]);
-  // Matches React's badgeSizeMap: small/medium → 'small', large → 'medium'
-  const trailingSize = $derived<'small' | 'medium'>(ctx.size === 'large' ? 'medium' : 'small');
 
   const buttonClasses = $derived.by(() => {
     const result: string[] = [classes.tabButton];
@@ -165,7 +165,7 @@
     </span>
   {/if}
   {#if trailing}
-    {@render trailing(trailingSize)}
+    {@render trailing()}
   {/if}
 {/snippet}
 

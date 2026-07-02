@@ -76,6 +76,12 @@
       tabs[nextIndex].focus();
       const focusedTabValue = tabs[nextIndex].dataset.bladeTabValue ?? null;
       ctx.setFocusedValue(focusedTabValue);
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      const focusedTabValue = tabs[currentIndex].dataset.bladeTabValue ?? null;
+      if (focusedTabValue) {
+        event.preventDefault();
+        ctx.setSelectedValue(focusedTabValue);
+      }
     }
   };
 

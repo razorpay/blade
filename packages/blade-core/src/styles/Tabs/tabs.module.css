@@ -403,7 +403,6 @@
 .tabIndicator {
   position: absolute;
   pointer-events: none;
-  cursor: pointer;
 }
 
 .tabIndicator:hover {
