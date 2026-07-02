@@ -283,6 +283,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                   size={size}
                   isDisabled={isDisabled}
                   onChange={handleSwatchChange}
+                  onFocus={() => handleInputFocus({ name })}
+                  onBlur={() => handleInputBlur({ name })}
                 />
               }
             />

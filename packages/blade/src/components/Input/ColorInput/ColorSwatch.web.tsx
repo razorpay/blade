@@ -13,6 +13,8 @@ type ColorSwatchProps = {
   size: NonNullable<BaseInputProps['size']>;
   isDisabled?: boolean;
   onChange: (hex: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 };
 
 type ColorSwatchRef = {
@@ -27,7 +29,7 @@ const swatchSizeTokens = {
 } as const;
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
-  ({ color, size: inputSize, isDisabled, onChange }, ref) => {
+  ({ color, size: inputSize, isDisabled, onChange, onFocus, onBlur }, ref) => {
     const colorInputRef = useRef<HTMLInputElement>(null);
     const { theme } = useTheme();
     const borderColor = getIn(theme.colors, 'interactive.border.gray.default');
@@ -71,6 +73,8 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         tabIndex={isDisabled ? -1 : 0}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        onFocus={onFocus}
+        onBlur={onBlur}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
       >
         <BaseBox
