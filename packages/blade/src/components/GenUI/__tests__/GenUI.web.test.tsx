@@ -1365,12 +1365,15 @@ describe('<GenUI />', () => {
         },
       ];
 
-      renderWithTheme(
+      const { container } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
-      // Chart renders successfully without errors
+      expect(container.firstElementChild?.firstElementChild).toHaveStyle({
+        paddingTop: '24px',
+        paddingBottom: '24px',
+      });
     });
 
     it('should render vertical divider', () => {
@@ -1381,12 +1384,15 @@ describe('<GenUI />', () => {
         },
       ];
 
-      renderWithTheme(
+      const { container } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
-      // Chart renders successfully without errors
+      expect(container.firstElementChild?.firstElementChild).toHaveStyle({
+        paddingTop: '24px',
+        paddingBottom: '24px',
+      });
     });
   });
 
@@ -3511,25 +3517,49 @@ describe('<GenUI />', () => {
       it('should render markdown block spacing from the contract', () => {
         const H2Component = markdownComponents.h2;
         const H3Component = markdownComponents.h3;
+        const H4Component = markdownComponents.h4;
+        const H5Component = markdownComponents.h5;
+        const H6Component = markdownComponents.h6;
         const ParagraphComponent = markdownComponents.p;
 
         const { getByText } = renderWithTheme(
           <>
             <H2Component>Heading 2 spacing</H2Component>
-            <ParagraphComponent>Paragraph spacing</ParagraphComponent>
+            <ParagraphComponent>Paragraph before H3</ParagraphComponent>
             <H3Component>Heading 3 spacing</H3Component>
+            <ParagraphComponent>Paragraph before H4</ParagraphComponent>
+            <H4Component>Heading 4 spacing</H4Component>
+            <ParagraphComponent>Paragraph before H5</ParagraphComponent>
+            <H5Component>Heading 5 spacing</H5Component>
+            <ParagraphComponent>Paragraph before H6</ParagraphComponent>
+            <H6Component>Heading 6 spacing</H6Component>
           </>,
         );
 
-        expect(getByText('Heading 2 spacing')).toHaveStyle({ marginBottom: '8px' });
-        expect(getByText('Paragraph spacing')).toHaveStyle({ marginBottom: '8px' });
-        expect(getByText('Heading 3 spacing')).toHaveStyle({
-          marginTop: '24px',
+        expect(getByText('Heading 2 spacing')).toHaveStyle({
+          marginTop: '40px',
           marginBottom: '8px',
+        });
+        expect(getByText('Paragraph before H3')).toHaveStyle({ marginBottom: '8px' });
+        expect(getByText('Heading 3 spacing')).toHaveStyle({
+          marginTop: '32px',
+          marginBottom: '8px',
+        });
+        expect(getByText('Heading 4 spacing')).toHaveStyle({
+          marginTop: '24px',
+          marginBottom: '4px',
+        });
+        expect(getByText('Heading 5 spacing')).toHaveStyle({
+          marginTop: '16px',
+          marginBottom: '4px',
+        });
+        expect(getByText('Heading 6 spacing')).toHaveStyle({
+          marginTop: '16px',
+          marginBottom: '4px',
         });
       });
 
-      it('should render h2 and above with semibold weight', () => {
+      it('should render h1 and h2 with medium weight', () => {
         const H1Component = markdownComponents.h1;
         const H2Component = markdownComponents.h2;
 
@@ -3540,8 +3570,73 @@ describe('<GenUI />', () => {
           </>,
         );
 
-        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '600' });
-        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '500' });
+      });
+
+      it('should render markdown headings with Figma typography mapping', () => {
+        const H1Component = markdownComponents.h1;
+        const H2Component = markdownComponents.h2;
+        const H3Component = markdownComponents.h3;
+        const H4Component = markdownComponents.h4;
+        const H5Component = markdownComponents.h5;
+        const H6Component = markdownComponents.h6;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H1Component>Figma Heading 1</H1Component>
+            <H2Component>Figma Heading 2</H2Component>
+            <H3Component>Figma Heading 3</H3Component>
+            <H4Component>Figma Heading 4</H4Component>
+            <H5Component>Figma Heading 5</H5Component>
+            <H6Component>Figma Heading 6</H6Component>
+          </>,
+        );
+
+        expect(getByText('Figma Heading 1')).toHaveStyle({
+          color: 'rgb(5, 5, 5)',
+          fontSize: '24px',
+          fontWeight: '500',
+          lineHeight: '32px',
+        });
+        expect(getByText('Figma Heading 2').tagName).toBe('H2');
+        expect(getByText('Figma Heading 2')).toHaveStyle({
+          fontSize: '24px',
+          fontWeight: '500',
+          lineHeight: '32px',
+        });
+        expect(getByText('Figma Heading 3')).toHaveStyle({
+          fontSize: '20px',
+          fontWeight: '500',
+          lineHeight: '26px',
+        });
+        expect(getByText('Figma Heading 4')).toHaveStyle({
+          fontSize: '18px',
+          fontWeight: '500',
+          lineHeight: '24px',
+        });
+        expect(getByText('Figma Heading 5')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Figma Heading 6')).toHaveStyle({
+          fontSize: '14px',
+          fontWeight: '500',
+          lineHeight: '24px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.03em',
+        });
+      });
+
+      it('should collapse top margin for stacked markdown headings', () => {
+        const H2Component = markdownComponents.h2;
+        const H3Component = markdownComponents.h3;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H2Component>Stacked Heading 2</H2Component>
+            <H3Component>Stacked Heading 3</H3Component>
+          </>,
+        );
+
+        expect(getByText('Stacked Heading 3')).toHaveStyle({ marginTop: '0px' });
       });
 
       it('should render h3 and below with medium weight', () => {
@@ -3570,8 +3665,44 @@ describe('<GenUI />', () => {
 
         const { getByText } = renderWithTheme(<StrongComponent>Strong text</StrongComponent>);
 
-        expect(getByText('Strong text')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Strong text')).toHaveStyle({
+          color: 'rgb(41, 41, 41)',
+          fontWeight: '600',
+        });
         expect(getByText('Strong text').tagName).toBe('SPAN');
+      });
+
+      it('should render body emphasis text with gray subtle color', () => {
+        const BoldComponent = markdownComponents.b;
+        const StrongComponent = markdownComponents.strong;
+        const EmphasisComponent = markdownComponents.em;
+        const ItalicComponent = markdownComponents.i;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <BoldComponent>Bold text</BoldComponent>
+            <StrongComponent>
+              <EmphasisComponent>Bold italic text</EmphasisComponent>
+            </StrongComponent>
+            <ItalicComponent>Italic text</ItalicComponent>
+          </>,
+        );
+
+        expect(getByText('Bold text')).toHaveStyle({
+          color: 'rgb(41, 41, 41)',
+          fontWeight: '600',
+        });
+        expect(getByText('Bold text').tagName).toBe('SPAN');
+        expect(getByText('Bold italic text')).toHaveStyle({
+          color: 'rgb(41, 41, 41)',
+          fontStyle: 'italic',
+        });
+        expect(getByText('Bold italic text').tagName).toBe('SPAN');
+        expect(getByText('Italic text')).toHaveStyle({
+          color: 'rgb(41, 41, 41)',
+          fontStyle: 'italic',
+        });
+        expect(getByText('Italic text').tagName).toBe('SPAN');
       });
 
       it('should render text with bold markdown', () => {
@@ -3612,10 +3743,213 @@ describe('<GenUI />', () => {
         expect(container.textContent).toContain('Link text');
       });
 
+      it('should render inline code with markdown code treatment', () => {
+        const CodeComponent = markdownComponents.code;
+
+        const { getByText } = renderWithTheme(
+          <CodeComponent inline={true}>inline code</CodeComponent>,
+        );
+
+        const inlineCode = getByText('inline code');
+
+        expect(inlineCode).toHaveStyle({
+          display: 'inline-flex',
+          alignItems: 'center',
+          boxSizing: 'border-box',
+          verticalAlign: '1.5px',
+          fontSize: '11px',
+          fontStyle: 'normal',
+          lineHeight: '16px',
+          background: 'rgb(255, 255, 255)',
+          borderRadius: '4px',
+          margin: '0 2px',
+          padding: '2px 4px',
+        });
+        expect(window.getComputedStyle(inlineCode).boxShadow).toContain('inset 0 0 0 1px');
+      });
+
+      it('should render blockquote with reset margin and left border', () => {
+        const BlockquoteComponent = markdownComponents.blockquote;
+        const ParagraphComponent = markdownComponents.p;
+
+        const { getByText } = renderWithTheme(
+          <BlockquoteComponent>
+            <ParagraphComponent>Quoted text</ParagraphComponent>
+          </BlockquoteComponent>,
+        );
+
+        const blockquote = getByText('Quoted text').closest('blockquote');
+        expect(blockquote).toHaveStyle({
+          margin: '0 0 16px 0',
+          padding: '0 0 0 16px',
+        });
+        expect(getByText('Quoted text')).toHaveStyle({
+          margin: '0px',
+          fontStyle: 'italic',
+        });
+      });
+
+      it('should render fenced code blocks with Blade tokenized code block treatment', () => {
+        const PreComponent = markdownComponents.pre;
+
+        const { container, getByText } = renderWithTheme(
+          <PreComponent>
+            <code className="language-js">{'const greeting = "Hello";'}</code>
+          </PreComponent>,
+        );
+
+        expect(getByText('js')).toBeInTheDocument();
+        expect(container.querySelector('svg')).toBeInTheDocument();
+        expect(container.querySelector('[aria-label="Copy code block"]')).toBeInTheDocument();
+        expect(getByText('js').parentElement).toHaveStyle({
+          borderBottomStyle: 'solid',
+          borderBottomWidth: '1px',
+        });
+        expect(getByText('const greeting = "Hello";')).toHaveStyle({
+          display: 'block',
+          color: 'rgb(5, 5, 5)',
+          fontSize: '12px',
+          lineHeight: '20px',
+          padding: '12px',
+          whiteSpace: 'pre',
+        });
+        expect(container.querySelector('pre')).toHaveStyle({
+          display: 'inline-block',
+          maxWidth: '660px',
+          margin: '2px 0 0px',
+          overflow: 'hidden',
+          padding: '0px',
+          borderRadius: '12px',
+        });
+      });
+
+      it('should render fenced code block header icon without a language label', () => {
+        const PreComponent = markdownComponents.pre;
+
+        const { container, queryByText } = renderWithTheme(
+          <PreComponent>
+            <code>{'const greeting = "Hello";'}</code>
+          </PreComponent>,
+        );
+
+        expect(container.querySelector('[aria-label="Copy code block"]')).toBeInTheDocument();
+        expect(queryByText('js')).not.toBeInTheDocument();
+      });
+
+      it('should copy fenced code block content from the trailing copy button', async () => {
+        const user = userEvent.setup();
+        const writeTextMock = jest.fn().mockResolvedValue(undefined);
+        Object.defineProperty(navigator, 'clipboard', {
+          value: {
+            writeText: writeTextMock,
+          },
+          writable: true,
+        });
+        const PreComponent = markdownComponents.pre;
+
+        const { getByLabelText, findByText } = renderWithTheme(
+          <PreComponent>
+            <code className="language-js">{'const greeting = "Hello";'}</code>
+          </PreComponent>,
+        );
+
+        await user.click(getByLabelText('Copy code block'));
+
+        expect(writeTextMock).toHaveBeenCalledWith('const greeting = "Hello";');
+        expect(await findByText('Copied!')).toBeInTheDocument();
+      });
+
+      it('should render ordered markdown lists with ordered semantics', () => {
+        const OrderedListComponent = markdownComponents.ol;
+        const ListItemComponent = markdownComponents.li;
+
+        const { container, getByText } = renderWithTheme(
+          <OrderedListComponent>
+            <ListItemComponent>First step</ListItemComponent>
+            <ListItemComponent>Second step</ListItemComponent>
+          </OrderedListComponent>,
+        );
+
+        expect(container.querySelector('ol')).toBeInTheDocument();
+        expect(container.querySelectorAll('li')).toHaveLength(2);
+        expect(getByText('First step')).toBeInTheDocument();
+        expect(getByText('Second step')).toBeInTheDocument();
+      });
+
+      it('should render markdown lists with marker gaps by list type', () => {
+        const UnorderedListComponent = markdownComponents.ul;
+        const OrderedListComponent = markdownComponents.ol;
+        const ListItemComponent = markdownComponents.li;
+
+        const unordered = renderWithTheme(
+          <UnorderedListComponent>
+            <ListItemComponent>Bullet item</ListItemComponent>
+          </UnorderedListComponent>,
+        );
+        const ordered = renderWithTheme(
+          <OrderedListComponent>
+            <ListItemComponent>Number item</ListItemComponent>
+          </OrderedListComponent>,
+        );
+
+        expect(unordered.getByText('Bullet item').closest('li')).toHaveStyle({ gap: '12px' });
+        expect(ordered.getByText('Number item').closest('li')).toHaveStyle({ gap: '8px' });
+        expect(unordered.container.querySelector('ul')).toHaveStyle({
+          marginLeft: '0px',
+          rowGap: '10px',
+        });
+        expect(ordered.container.querySelector('ol')).toHaveStyle({
+          marginLeft: '0px',
+          rowGap: '10px',
+        });
+        expect(unordered.getByText('Bullet item').closest('li')?.firstElementChild).toHaveStyle({
+          minWidth: '12px',
+        });
+        expect(ordered.getByText('Number item').closest('li')?.firstElementChild).toHaveStyle({
+          minWidth: '16px',
+        });
+      });
+
+      it('should render nested markdown lists with compact parent to child spacing', () => {
+        const UnorderedListComponent = markdownComponents.ul;
+        const OrderedListComponent = markdownComponents.ol;
+        const ListItemComponent = markdownComponents.li;
+
+        const { container } = renderWithTheme(
+          <UnorderedListComponent>
+            <ListItemComponent>
+              Parent item
+              <OrderedListComponent>
+                <ListItemComponent>Nested step</ListItemComponent>
+              </OrderedListComponent>
+              <UnorderedListComponent>
+                <ListItemComponent>Nested bullet</ListItemComponent>
+              </UnorderedListComponent>
+            </ListItemComponent>
+          </UnorderedListComponent>,
+        );
+
+        expect(container.querySelector('li ol')).toHaveStyle({
+          marginTop: '4px',
+          marginBottom: '0px',
+          rowGap: '4px',
+        });
+        expect(container.querySelector('li ul')).toHaveStyle({
+          marginLeft: '0px',
+          rowGap: '4px',
+        });
+        expect(container.querySelector('li ol li')).toHaveStyle({
+          marginBottom: '0px',
+        });
+      });
+
       it('should render text with horizontal rule', () => {
+        const HrComponent = markdownComponents.hr;
         const components: GenUIComponent[] = [
           { component: 'TEXT', content: 'Text\n\n---\n\nMore text' },
         ];
+
+        const markdownHr = renderWithTheme(<HrComponent />);
 
         const { container } = renderWithTheme(
           <GenUIProvider>
@@ -3623,6 +3957,10 @@ describe('<GenUI />', () => {
           </GenUIProvider>,
         );
 
+        expect(markdownHr.container.firstElementChild).toHaveStyle({
+          marginTop: '24px',
+          marginBottom: '24px',
+        });
         expect(container).toBeTruthy();
       });
     });

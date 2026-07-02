@@ -8,14 +8,14 @@ import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
 import ReactMarkdown from 'react-markdown';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import type { GenUIAction, GenUIBaseComponent, GenUIComponentRegistry } from './types';
 import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
 import { Box } from '~components/Box';
-import { Text, Heading } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
 import {
   Card,
@@ -53,7 +53,6 @@ import {
 } from '~components/Table';
 import { Link } from '~components/Link';
 import {
-  DotIcon,
   InfoIcon,
   CheckCircleIcon,
   AlertTriangleIcon,
@@ -98,6 +97,341 @@ const TextAnimationStyles = createGlobalStyle`
       var(--animate-easing, ease) both;
   }
 `;
+
+const MarkdownUnorderedList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${({ theme }) => theme.spacing[3] + theme.spacing[1]}px;
+  list-style: none;
+  margin: 0 0 ${({ theme }) => theme.spacing[2]}px 0;
+  padding: 0;
+`;
+
+const MarkdownOrderedList = styled.ol`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${({ theme }) => theme.spacing[3] + theme.spacing[1]}px;
+  counter-reset: markdown-ordered-list;
+  list-style: none;
+  margin: 0 0 ${({ theme }) => theme.spacing[2]}px 0;
+  padding: 0;
+`;
+
+const MarkdownHeadingStackSpacing = `
+  h1 + &,
+  h2 + &,
+  h3 + &,
+  h4 + &,
+  h5 + &,
+  h6 + & {
+    margin-top: 0;
+  }
+`;
+
+const MarkdownHeading1 = styled.h1`
+  margin: 0 0 ${({ theme }) => theme.spacing[6]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.normal};
+  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
+  font-size: ${({ theme }) => theme.typography.fonts.size[500]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[500]}px;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownHeading2 = styled.h2`
+  margin: ${({ theme }) => theme.spacing[9]}px 0 ${({ theme }) => theme.spacing[3]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
+  font-size: ${({ theme }) => theme.typography.fonts.size[500]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[500]}px;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownHeading3 = styled.h3`
+  margin: ${({ theme }) => theme.spacing[8]}px 0 ${({ theme }) => theme.spacing[3]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
+  font-size: ${({ theme }) => theme.typography.fonts.size[400]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[400]}px;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownHeading4 = styled.h4`
+  margin: ${({ theme }) => theme.spacing[7]}px 0 ${({ theme }) => theme.spacing[2]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
+  font-size: ${({ theme }) => theme.typography.fonts.size[300]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownHeading5 = styled.h5`
+  margin: ${({ theme }) => theme.spacing[5]}px 0 ${({ theme }) => theme.spacing[2]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
+  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
+  font-size: ${({ theme }) => theme.typography.fonts.size[300]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownHeading6 = styled.h6`
+  margin: ${({ theme }) => theme.spacing[5]}px 0 ${({ theme }) => theme.spacing[2]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
+  font-family: ${({ theme }) => theme.typography.fonts.family.text};
+  font-size: ${({ theme }) => theme.typography.fonts.size[100]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  ${MarkdownHeadingStackSpacing}
+`;
+
+const MarkdownListItem = styled.li<{ $ordered: boolean }>`
+  display: flex;
+  align-items: flex-start;
+  gap: ${({ theme, $ordered }) => theme.spacing[$ordered ? 3 : 4]}px;
+  margin-bottom: 0;
+  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  font-family: ${({ theme }) => theme.typography.fonts.family.text};
+  font-size: ${({ theme }) => theme.typography.fonts.size[100]}px;
+  line-height: ${({ theme }) => theme.typography.lineHeights[100]}px;
+  list-style: none;
+
+  ${({ $ordered }) => ($ordered ? 'counter-increment: markdown-ordered-list;' : '')}
+
+  > ul,
+  > ol {
+    margin-top: ${({ theme }) => theme.spacing[2]}px;
+    margin-bottom: 0;
+    row-gap: ${({ theme }) => theme.spacing[2]}px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const MarkdownListMarker = styled.span`
+  flex-shrink: 0;
+  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
+  height: ${({ theme }) => theme.typography.lineHeights[100]}px;
+`;
+
+const MarkdownUnorderedListMarker = styled(MarkdownListMarker)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: ${({ theme }) => theme.spacing[4]}px;
+  min-width: ${({ theme }) => theme.spacing[4]}px;
+
+  &::before {
+    content: '';
+    width: ${({ theme }) => theme.spacing[2]}px;
+    height: ${({ theme }) => theme.spacing[2]}px;
+    border-radius: ${({ theme }) => theme.border.radius.max}px;
+    background: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  }
+`;
+
+const MarkdownOrderedListMarker = styled(MarkdownListMarker)`
+  display: inline-block;
+  min-width: ${({ theme }) => theme.spacing[5]}px;
+  text-align: right;
+
+  &::before {
+    content: counter(markdown-ordered-list) '.';
+  }
+`;
+
+const MarkdownListItemBody = styled.span`
+  flex: 1;
+  min-width: 0;
+
+  > ul,
+  > ol {
+    margin-top: ${({ theme }) => theme.spacing[2]}px;
+    margin-bottom: 0;
+    row-gap: ${({ theme }) => theme.spacing[2]}px;
+  }
+`;
+
+const MarkdownListContext = React.createContext({ ordered: false });
+
+const MarkdownInlineCode = styled.code`
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  vertical-align: 1.5px;
+  color: ${({ theme }) => theme.colors.interactive.text.information.normal};
+  font-family: ${({ theme }) => theme.typography.fonts.family.code};
+  font-size: ${({ theme }) => theme.typography.fonts.size[50]}px;
+  font-style: normal;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.regular};
+  line-height: ${({ theme }) => theme.typography.lineHeights[50]}px;
+  letter-spacing: 0;
+  background: ${({ theme }) => theme.colors.surface.background.gray.intense};
+  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
+  box-shadow: inset 0 0 0 ${({ theme }) => theme.border.width.thin}px
+    ${({ theme }) => theme.colors.surface.border.gray.subtle};
+  margin: 0 ${({ theme }) => theme.spacing[1]}px;
+  padding: ${({ theme }) => theme.spacing[1]}px ${({ theme }) => theme.spacing[2]}px;
+`;
+
+const MarkdownItalic = styled.span`
+  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
+  font-family: ${({ theme }) => theme.typography.fonts.family.text};
+  font-size: ${({ theme }) => theme.typography.fonts.size[100]}px;
+  font-style: italic;
+  font-weight: inherit;
+  line-height: ${({ theme }) => theme.typography.lineHeights[100]}px;
+`;
+
+const MarkdownBlockquote = styled.blockquote`
+  border-left: ${({ theme }) => theme.border.width.thicker}px solid
+    ${({ theme }) => theme.colors.surface.border.gray.normal};
+  margin: 0 0 ${({ theme }) => theme.spacing[5]}px 0;
+  padding: 0 0 0 ${({ theme }) => theme.spacing[5]}px;
+
+  p {
+    margin: 0;
+    color: ${({ theme }) => theme.colors.surface.text.gray.muted};
+    font-style: italic;
+  }
+`;
+
+const MarkdownCodeBlock = styled.pre`
+  display: inline-block;
+  max-width: 660px;
+  width: fit-content;
+  margin: ${({ theme }) => theme.spacing[1]}px 0 ${({ theme }) => theme.spacing[0]}px;
+  overflow: hidden;
+  padding: 0;
+  background: ${({ theme }) => theme.colors.interactive.background.gray.faded};
+  border: ${({ theme }) => theme.border.width.thin}px solid
+    ${({ theme }) => theme.colors.feedback.border.neutral.subtle};
+  border-radius: ${({ theme }) => theme.border.radius.medium}px;
+`;
+
+const MarkdownCodeBlockHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing[2]}px;
+  padding: ${({ theme }) => theme.spacing[3]}px ${({ theme }) => theme.spacing[4]}px;
+  border-bottom: ${({ theme }) => theme.border.width.thin}px solid
+    ${({ theme }) => theme.colors.surface.border.gray.muted};
+`;
+
+const MarkdownCodeBlockActions = styled.span`
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+`;
+
+const MarkdownCodeBlockCopyAnimation = styled.span<{ $copied: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  animation: ${({ $copied }) =>
+      $copied ? 'markdown-code-copy-success' : 'markdown-code-copy-reset'}
+    180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  @keyframes markdown-code-copy-success {
+    0% {
+      opacity: 0;
+      transform: scale(0.72) rotate(-12deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes markdown-code-copy-reset {
+    0% {
+      opacity: 0;
+      transform: scale(0.88);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+`;
+
+const MarkdownCodeBlockLanguage = styled.span`
+  display: inline-flex;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
+  font-family: ${({ theme }) => theme.typography.fonts.family.code};
+  font-size: ${({ theme }) => theme.typography.fonts.size[50]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.regular};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacings[100]}px;
+  line-height: ${({ theme }) => theme.typography.lineHeights[50]}px;
+`;
+
+const MarkdownCodeBlockCode = styled.code`
+  display: block;
+  overflow-x: auto;
+  padding: ${({ theme }) => theme.spacing[4]}px;
+  color: ${({ theme }) => theme.colors.surface.text.gray.normal};
+  font-family: ${({ theme }) => theme.typography.fonts.family.code};
+  font-size: ${({ theme }) => theme.typography.fonts.size[75]}px;
+  font-weight: ${({ theme }) => theme.typography.fonts.weight.regular};
+  line-height: ${({ theme }) => theme.typography.lineHeights[100]}px;
+  white-space: pre;
+  background: none;
+  border: none;
+`;
+
+const MarkdownCodeBlockCopyButton = ({ code }: { code: React.ReactNode }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    void navigator.clipboard.writeText(String(code ?? ''));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <MarkdownCodeBlockActions>
+      <Tooltip content={copied ? 'Copied!' : 'Copy'} placement="top">
+        <TooltipInteractiveWrapper>
+          <MarkdownCodeBlockCopyAnimation key={copied ? 'copied' : 'copy'} $copied={copied}>
+            <IconButton
+              icon={copied ? CheckIcon : CopyIcon}
+              size="small"
+              emphasis="intense"
+              accessibilityLabel="Copy code block"
+              onClick={handleCopy}
+            />
+          </MarkdownCodeBlockCopyAnimation>
+        </TooltipInteractiveWrapper>
+      </Tooltip>
+    </MarkdownCodeBlockActions>
+  );
+};
+
+const getMarkdownCodeBlockDetails = (
+  children?: React.ReactNode,
+): { code: React.ReactNode; language?: string } => {
+  const child = React.Children.toArray(children)[0];
+
+  if (React.isValidElement<{ className?: string; children?: React.ReactNode }>(child)) {
+    const language = child.props.className?.replace(/^language-/, '');
+    return { code: child.props.children, language };
+  }
+
+  return { code: children };
+};
 
 /**
  * Built-in component types supported by GenUI
@@ -422,63 +756,41 @@ const ChartSkeletonLoader = ({
   );
 };
 
+const MarkdownListItemRenderer = ({ children }: { children?: React.ReactNode }): JSX.Element => {
+  const { ordered } = React.useContext(MarkdownListContext);
+  return (
+    <MarkdownListItem $ordered={ordered}>
+      {ordered ? <MarkdownOrderedListMarker /> : <MarkdownUnorderedListMarker />}
+      <MarkdownListItemBody>{children}</MarkdownListItemBody>
+    </MarkdownListItem>
+  );
+};
+
 /**
  * Stable components object for ReactMarkdown to prevent re-renders during streaming.
  * Defined outside the component to maintain referential equality.
  */
 const markdownComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom={genUISpacingContract.headingToText} size="large" weight="semibold">
-      {children}
-    </Heading>
+    <MarkdownHeading1>{children}</MarkdownHeading1>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
-    <Heading marginBottom={genUISpacingContract.headingToText} size="medium" weight="semibold">
-      {children}
-    </Heading>
+    <MarkdownHeading2>{children}</MarkdownHeading2>
   ),
   h3: ({ children }: { children?: React.ReactNode }) => (
-    <Heading
-      marginTop={genUISpacingContract.textToH3}
-      marginBottom={genUISpacingContract.h3ToCardTable}
-      size="small"
-      weight="medium"
-    >
-      {children}
-    </Heading>
+    <MarkdownHeading3>{children}</MarkdownHeading3>
   ),
   h4: ({ children }: { children?: React.ReactNode }) => (
-    <Heading
-      marginTop={genUISpacingContract.textToH3}
-      marginBottom={genUISpacingContract.h3ToCardTable}
-      size="small"
-      weight="medium"
-    >
-      {children}
-    </Heading>
+    <MarkdownHeading4>{children}</MarkdownHeading4>
   ),
   h5: ({ children }: { children?: React.ReactNode }) => (
-    <Heading
-      marginTop={genUISpacingContract.textToH3}
-      marginBottom={genUISpacingContract.h3ToCardTable}
-      size="small"
-      weight="medium"
-    >
-      {children}
-    </Heading>
+    <MarkdownHeading5>{children}</MarkdownHeading5>
   ),
   h6: ({ children }: { children?: React.ReactNode }) => (
-    <Heading
-      marginTop={genUISpacingContract.textToH3}
-      marginBottom={genUISpacingContract.h3ToCardTable}
-      size="small"
-      weight="medium"
-    >
-      {children}
-    </Heading>
+    <MarkdownHeading6>{children}</MarkdownHeading6>
   ),
   b: ({ children }: { children?: React.ReactNode }) => (
-    <Text size="medium" weight="regular" color="surface.text.gray.subtle">
+    <Text as="span" size="medium" weight="semibold" color="surface.text.gray.subtle">
       {children}
     </Text>
   ),
@@ -499,27 +811,50 @@ const markdownComponents = {
       {(children as unknown) as string}
     </Link>
   ),
-  li: ({ children }: { children?: React.ReactNode }) => (
-    <Text marginBottom={genUISpacingContract.textParagraphGap} size="medium">
-      <DotIcon marginBottom="1px" size="xsmall" /> {children}
-    </Text>
-  ),
+  li: MarkdownListItemRenderer,
   ol: ({ children }: { children?: React.ReactNode }) => (
-    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-      {children}
-    </Box>
+    <MarkdownListContext.Provider value={{ ordered: true }}>
+      <MarkdownOrderedList>{children}</MarkdownOrderedList>
+    </MarkdownListContext.Provider>
   ),
   ul: ({ children }: { children?: React.ReactNode }) => (
-    <Box display="flex" flexDirection="column" marginLeft="spacing.4">
-      {children}
-    </Box>
+    <MarkdownListContext.Provider value={{ ordered: false }}>
+      <MarkdownUnorderedList>{children}</MarkdownUnorderedList>
+    </MarkdownListContext.Provider>
   ),
-  hr: () => <Divider marginY="spacing.4" />,
-  i: ({ children }: { children?: React.ReactNode }) => (
-    <Text size="medium" variant="caption" color="surface.text.gray.subtle">
-      {children}
-    </Text>
+  hr: () => <Divider marginY="spacing.7" />,
+  code: ({
+    inline,
+    className,
+    children,
+  }: {
+    inline?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+  }) =>
+    inline || !className ? (
+      <MarkdownInlineCode>{children}</MarkdownInlineCode>
+    ) : (
+      <code className={className}>{children}</code>
+    ),
+  pre: ({ children }: { children?: React.ReactNode }) => {
+    const { code, language } = getMarkdownCodeBlockDetails(children);
+
+    return (
+      <MarkdownCodeBlock>
+        <MarkdownCodeBlockHeader>
+          {language ? <MarkdownCodeBlockLanguage>{language}</MarkdownCodeBlockLanguage> : null}
+          <MarkdownCodeBlockCopyButton code={code} />
+        </MarkdownCodeBlockHeader>
+        <MarkdownCodeBlockCode>{code}</MarkdownCodeBlockCode>
+      </MarkdownCodeBlock>
+    );
+  },
+  blockquote: ({ children }: { children?: React.ReactNode }) => (
+    <MarkdownBlockquote>{children}</MarkdownBlockquote>
   ),
+  em: ({ children }: { children?: React.ReactNode }) => <MarkdownItalic>{children}</MarkdownItalic>,
+  i: ({ children }: { children?: React.ReactNode }) => <MarkdownItalic>{children}</MarkdownItalic>,
   p: ({ children }: { children?: React.ReactNode }) => (
     <Text
       marginBottom={genUISpacingContract.textParagraphGap}
@@ -1150,7 +1485,7 @@ const RenderSpacerComponent = memo(({ size }: SpacerComponent) => {
 
 const RenderDividerComponent = memo(({ orientation = 'horizontal' }: DividerComponent) => {
   return (
-    <Box display="flex" paddingY="spacing.4">
+    <Box display="flex" paddingY="spacing.7">
       <Divider
         orientation={orientation}
         {...(orientation === 'vertical' ? { height: '24px' } : {})}
