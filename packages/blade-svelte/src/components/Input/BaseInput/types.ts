@@ -200,8 +200,6 @@ export type BaseInputCommonProps = FormInputLabelProps &
     componentName?: string;
     /** Input size. @default 'medium' */
     size?: BaseInputSize;
-    /** Override padding of the input (CSS value). */
-    padding?: string;
     /** Override the wrapper border radius token. */
     borderRadius?: 'small' | 'medium';
     /** Trailing `Link`-style button (rendered via snippet). */

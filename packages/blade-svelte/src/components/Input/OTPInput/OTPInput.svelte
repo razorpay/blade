@@ -151,7 +151,7 @@
 
   const getFieldType = (index: number): 'password' | 'text' => {
     if (!isMasked) return 'text';
-    if (isControlled) return value ? 'password' : 'text';
+    if (isControlled) return (value?.[index] ?? '') ? 'password' : 'text';
     return otpValue[index] ? 'password' : 'text';
   };
 

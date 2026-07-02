@@ -180,7 +180,7 @@
 
   const showValidationTooltip = $derived(
     (showHintsAsTooltip && validationState === 'error' && Boolean(errorText)) ||
-      (validationState === 'success' && Boolean(successText)),
+      (showHintsAsTooltip && validationState === 'success' && Boolean(successText)),
   );
   const tooltipContent = $derived(
     validationState === 'error'
