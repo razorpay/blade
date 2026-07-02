@@ -57,6 +57,8 @@
 
   $effect(() => {
     if (!('fonts' in document)) return;
+    // Measure immediately in case fonts are already loaded at mount.
+    void document.fonts.ready.then(updateDimensions);
     const handler = () => updateDimensions();
     document.fonts.addEventListener('loadingdone', handler);
     return () => document.fonts.removeEventListener('loadingdone', handler);

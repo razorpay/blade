@@ -108,6 +108,11 @@
         role="tablist"
         class={tabListInnerClasses}
         onkeydown={handleKeyDown}
+        onfocusout={(e) => {
+          if (!tabListContainerEl?.contains(e.relatedTarget as Node)) {
+            ctx.setFocusedValue(null);
+          }
+        }}
       >
         {@render children()}
       </div>
