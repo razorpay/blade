@@ -43,6 +43,7 @@ export * from './Input/TextArea';
 export * from './Input/TextInput';
 export * from './Input/SearchInput';
 export * from './Input/PhoneNumberInput';
+export * from './Input/ColorInput';
 export * from './InputGroup';
 export * from './Link';
 export * from './List';

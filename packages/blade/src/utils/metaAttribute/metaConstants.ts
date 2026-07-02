@@ -40,6 +40,7 @@ export const MetaConstants = {
   ChipGroup: 'chip-group',
   ChipLabel: 'chip-label',
   Code: 'code',
+  ColorInput: 'color-input',
   Component: 'blade-component',
   Counter: 'counter',
   CounterInput: 'counter-input',

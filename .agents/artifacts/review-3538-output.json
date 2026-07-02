@@ -1,0 +1,37 @@
+{
+  "reviewStatus": "approved",
+  "reviewStatusReason": "All UI checks passed. Major issues (onChange value shape inconsistency, internal class name coupling) are already covered by existing review comments. No new unaddressed critical or major issues found.",
+  "overview-comment": {
+    "ui-review": {
+      "critique": "ui-critique",
+      "statuses": [
+        {
+          "name": "Default",
+          "description": "ColorInput with default props showing white color swatch (FFFFFF), hex input field, and opacity field showing 100%",
+          "state": "SUCCESS",
+          "link": "https://61c19ee8d3d282003ac1d81c-cbizpvense.chromatic.com/?path=/story/components-input-colorinput--default"
+        },
+        {
+          "name": "With Opacity",
+          "description": "ColorInput with showOpacity enabled, showing orange swatch (FF5733), hex input, and opacity field showing 80%",
+          "state": "SUCCESS",
+          "link": "https://61c19ee8d3d282003ac1d81c-cbizpvense.chromatic.com/?path=/story/components-input-colorinput--with-opacity"
+        },
+        {
+          "name": "Without Opacity",
+          "description": "ColorInput with showOpacity disabled, showing black swatch (000000) and hex input only — no opacity field rendered",
+          "state": "SUCCESS",
+          "link": "https://61c19ee8d3d282003ac1d81c-cbizpvense.chromatic.com/?path=/story/components-input-colorinput--without-opacity"
+        },
+        {
+          "name": "Disabled",
+          "description": "ColorInput in disabled state showing muted gray swatch (CCCCCC), grayed-out hex input, and opacity field showing 50% — all with proper disabled visual treatment",
+          "state": "SUCCESS",
+          "link": "https://61c19ee8d3d282003ac1d81c-cbizpvense.chromatic.com/?path=/story/components-input-colorinput--disabled"
+        }
+      ]
+    },
+    "usage": "import { ColorInput } from '@razorpay/blade/components';\n\n// Controlled usage with opacity\n<ColorInput\n  label=\"Background Color\"\n  value={{ hex: 'FF5733', opacity: 80 }}\n  onChange={({ name, value }) => {\n    console.log(value.hex);     // 'FF5733'\n    console.log(value.opacity); // 80\n  }}\n  showOpacity={true}\n  size=\"medium\"\n  validationState=\"none\"\n/>\n\n// Uncontrolled usage without opacity\n<ColorInput\n  label=\"Border Color\"\n  defaultValue={{ hex: '000000', opacity: 100 }}\n  showOpacity={false}\n  onChange={({ name, value }) => console.log(value.hex)}\n/>"
+  },
+  "inlined-comments": []
+}
