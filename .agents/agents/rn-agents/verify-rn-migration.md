@@ -16,37 +16,20 @@ You are a Senior QA/Platform Engineer. Your job is to ensure the native implemen
 
 ## Status Reporting Protocol
 
-Before every significant action, output a single human-readable status line so the operator knows what is happening without reading raw commands. Use this format:
+Before **every** tool call (Bash, Read, Write, Edit, Agent), output exactly one plain-English sentence describing what that call does. No exceptions — including long pipelines.
 
-```
-▶ [Step N] <plain-English description of what you are about to do>
-```
+Format: `▶ [Step N] <sentence>`
 
-Examples:
-- `▶ [Step 0] Booting iOS simulator…`
-- `▶ [Step 0] Metro is not running — starting bundler with Hermes patch…`
-- `▶ [Step 0] Waiting for Metro to become ready…`
-- `▶ [Step 0] Blade Storybook is not installed — building and installing (this may take a few minutes)…`
-- `▶ [Step 1] Running TypeScript compilation check for {Name}…`
-- `▶ [Step 1] Type error found — applying fix and retrying…`
-- `▶ [Step 2] Running native test suite for {Name}…`
-- `▶ [Step 2] Snapshot mismatch — updating snapshots…`
-- `▶ [Step 3] Checking Metro bundle resolution for {Name}…`
-- `▶ [Step 4a] Taking initial screenshot to see current simulator state…`
-- `▶ [Step 4a] Opening the Storybook navigator (tapping bottom bar)…`
-- `▶ [Step 4a] Tapping "{Name}" in the story list…`
-- `▶ [Step 4a] Waiting for component to render…`
-- `▶ [Step 4b] Capturing default state screenshot…`
-- `▶ [Step 4b.1] Scrolling down to check viewport containment…`
-- `▶ [Step 4c] Tapping interactive element to test press feedback…`
-- `▶ [Step 4d] Capturing accessibility tree snapshot…`
-- `▶ [Step 4e] Opening web Storybook in mobile viewport (393×852) for comparison…`
-- `▶ [Step 4e] Taking web reference screenshot for side-by-side comparison…`
-- `▶ [Step 5] Classifying visual diffs from screenshots…`
-- `▶ [Step 6] P1 issue found — applying fix: <one-line description>…`
-- `▶ [Step 6] Spawning Execute agent in patch mode…`
+Summarise the *intent* of the whole command, not the syntax. For example:
 
-Emit the status line **as plain text in your response** before the bash tool call. Do not bury it inside code blocks.
+- A pipeline that grabs the element ref for "Toggle Drawer" from the accessibility tree and taps it → `▶ [Step 4c] Finding the Toggle Drawer button on screen and tapping it`
+- A `grep` over `.native.tsx` files checking for unresolved imports → `▶ [Step 3] Scanning native files for any imports that can't be resolved`
+- `npx agent-device snapshot` after a tap → `▶ [Step 4c] Reading the screen to check if the drawer content appeared`
+- `curl …/status` → `▶ [Step 0] Checking if Metro bundler is already running`
+- `yarn test:react-native {Name} -u` → `▶ [Step 2] Updating snapshots to match the new output`
+- Edit a file → `▶ [Step 6] Fixing <filename>: <one-line description of the change>`
+
+Emit the line as **plain text** immediately before the tool call — never inside a code block.
 
 ---
 
