@@ -769,5 +769,3 @@ The Settings Detail pattern consists of these reusable components:
    - `CardRowValueContainer`: Interactive field display with edit functionality
 
 These components are designed to be reusable and customizable while maintaining consistency with Blade's design system principles. They can be used independently in other contexts where similar patterns are needed.
-
-
