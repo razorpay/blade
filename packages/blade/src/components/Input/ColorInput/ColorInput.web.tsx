@@ -284,7 +284,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                   isDisabled={isDisabled}
                   onChange={handleSwatchChange}
                   onFocus={() => handleInputFocus({ name })}
-                  onBlur={() => handleInputBlur({ name })}
+                  onBlur={() => handleInputBlur({ name, value: colorValue.hex })}
                 />
               }
             />
