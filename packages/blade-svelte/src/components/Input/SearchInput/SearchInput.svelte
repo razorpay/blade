@@ -85,7 +85,7 @@
 
 <BaseInput
   bind:this={baseInput}
-  id={ids.inputId}
+  id={ids.baseId}
   componentName="searchinput"
   label={label ?? ''}
   hideLabelText={!label}
