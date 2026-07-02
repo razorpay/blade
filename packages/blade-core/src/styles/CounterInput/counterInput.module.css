@@ -1,0 +1,350 @@
+/* ===== Root wrapper (mirrors React StyledCounterInput `.__blade-counter-input`) ===== */
+.counter-input {
+  display: inline-block;
+}
+
+/* ===== Layout (label + counter) ===== */
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+/* `left` label only becomes a row on desktop; below 768px it stays stacked. */
+@media (min-width: 768px) {
+  .layout-left {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ===== Label (mirrors FormLabel) ===== */
+.label {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  cursor: default;
+}
+
+/* Base (stacked / `top`) label sizing + color. */
+.label-size-xsmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-muted);
+  margin-bottom: var(--spacing-2);
+}
+
+.label-size-medium {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+  color: var(--surface-text-gray-subtle);
+  margin-bottom: var(--spacing-2);
+}
+
+.label-size-large {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  color: var(--surface-text-gray-subtle);
+  margin-bottom: var(--spacing-3);
+}
+
+/* Desktop `left` overrides: fixed width, right margin, larger type per size. */
+@media (min-width: 768px) {
+  .label-left {
+    flex-shrink: 0;
+    margin-bottom: var(--spacing-0);
+  }
+
+  .label-left.label-size-xsmall {
+    width: 120px;
+    margin-right: var(--spacing-3);
+  }
+
+  .label-left.label-size-medium {
+    width: 120px;
+    margin-right: var(--spacing-4);
+    font-size: var(--font-size-100);
+    line-height: var(--line-height-100);
+  }
+
+  .label-left.label-size-large {
+    width: 176px;
+    margin-right: var(--spacing-5);
+    font-size: var(--font-size-200);
+    line-height: var(--line-height-200);
+  }
+}
+
+/* ===== Container (border + background + size) ===== */
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-style: solid;
+  border-width: var(--border-width-thin);
+  background-color: var(--surface-background-gray-intense);
+}
+
+.container[data-disabled] {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Container sizes — hardcoded px mirror React `size` global tokens (78/94/122 × 30/38/50). */
+.container-xsmall {
+  width: 78px;
+  height: 30px;
+  border-radius: var(--border-radius-small);
+}
+
+.container-medium {
+  width: 94px;
+  height: 38px;
+  border-radius: var(--border-radius-small);
+}
+
+.container-large {
+  width: 122px;
+  height: 50px;
+  border-radius: var(--border-radius-medium);
+}
+
+/* Container border color by emphasis (idle + disabled). */
+.container-subtle {
+  border-color: var(--interactive-border-gray-default);
+}
+
+.container-intense {
+  border-color: var(--interactive-border-primary-highlighted);
+}
+
+.container-intense[data-disabled] {
+  border-color: var(--interactive-border-primary-disabled);
+}
+
+/* ===== Controls row ===== */
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Buttons ===== */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: -4px;
+}
+
+/* Button sizes — padding + radius. */
+.button-xsmall {
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-xsmall);
+}
+
+.button-medium {
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-xsmall);
+}
+
+.button-large {
+  padding: var(--spacing-3);
+  border-radius: var(--border-radius-small);
+}
+
+/* Button margins — decrement hugs the left edge, increment hugs the right. */
+.button-decrement {
+  margin: var(--spacing-2) var(--spacing-0) var(--spacing-2) var(--spacing-2);
+}
+
+.button-increment {
+  margin: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-0);
+}
+
+/* Idle icon color by emphasis (icons use currentColor). */
+.button-subtle {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.button-subtle:disabled {
+  color: var(--interactive-icon-gray-disabled);
+}
+
+.button-intense {
+  color: var(--interactive-icon-primary-subtle);
+}
+
+.button-intense:disabled {
+  color: var(--interactive-icon-primary-disabled);
+}
+
+/* Hover — emphasis-based background + icon color. */
+.button-subtle:hover:not(:disabled) {
+  background-color: var(--interactive-background-gray-faded-highlighted);
+  color: var(--interactive-icon-gray-normal);
+}
+
+.button-intense:hover:not(:disabled) {
+  background-color: var(--interactive-background-primary-faded-highlighted);
+  color: var(--interactive-icon-primary-normal);
+}
+
+/* ===== Input wrapper (also hosts the slide animation) ===== */
+.input-wrapper {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Hide the input focus ring by default; only reveal it during keyboard (Tab) nav.
+   `:focus-visible` alone misfires on text inputs (rings on click too). */
+.counter-input .input-wrapper:focus-within {
+  outline: none;
+}
+
+.counter-input[data-keyboard-focus] .input-wrapper:focus-within {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: -4px;
+}
+
+.animate-slide-up {
+  animation: counter-input-slide-up var(--duration-quick) var(--easing-standard);
+}
+
+.animate-slide-down {
+  animation: counter-input-slide-down var(--duration-quick) var(--easing-standard);
+}
+
+@keyframes counter-input-slide-up {
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes counter-input-slide-down {
+  0% {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== Native number input (strips its own chrome, mirrors BaseInput inside counter) ===== */
+.input {
+  width: 100%;
+  min-width: 0;
+  padding: var(--spacing-2);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-xsmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.input-medium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.input-large {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.input-subtle {
+  color: var(--surface-text-gray-subtle);
+}
+
+.input-subtle:disabled {
+  color: var(--surface-text-gray-disabled);
+}
+
+.input-intense {
+  color: var(--interactive-text-primary-subtle);
+}
+
+.input-intense:disabled {
+  color: var(--interactive-text-primary-disabled);
+}
+
+/* ===== Loading affordance — CSS indeterminate bar (ProgressBar workaround) ===== */
+.progress-bar-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: var(--border-radius-max);
+  animation: counter-input-progress-indeterminate 1.5s var(--easing-standard) infinite;
+}
+
+.progress-bar-subtle {
+  background-color: var(--interactive-icon-gray-muted);
+}
+
+.progress-bar-intense {
+  background-color: var(--interactive-background-primary-default);
+}
+
+@keyframes counter-input-progress-indeterminate {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}

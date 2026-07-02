@@ -36,6 +36,14 @@ export { default as Badge } from './Badge/Badge.svelte';
 
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
+// CounterInput
+export { default as CounterInput } from './CounterInput/CounterInput.svelte';
+export type {
+  CounterInputProps,
+  CounterInputEmphasis,
+  CounterInputSize,
+  CounterInputOnChange,
+} from './CounterInput/types';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 // Skeleton

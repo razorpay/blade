@@ -106,6 +106,26 @@ export {
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export {
+  counterInputContainerStyles,
+  getCounterInputContainerClasses,
+  counterInputButtonStyles,
+  getCounterInputButtonClasses,
+  counterInputInputStyles,
+  getCounterInputInputClasses,
+  counterInputLabelStyles,
+  getCounterInputLabelClasses,
+  getCounterInputTemplateClasses,
+} from './CounterInput';
+export type {
+  CounterInputSize,
+  CounterInputEmphasis,
+  CounterInputButtonDirection,
+  CounterInputContainerVariants,
+  CounterInputButtonVariants,
+  CounterInputInputVariants,
+  CounterInputLabelVariants,
+} from './CounterInput';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
