@@ -405,10 +405,6 @@
   pointer-events: none;
 }
 
-.tabIndicator:hover {
-  background-color: var(--interactive-background-primary-fadedHighlighted);
-}
-
 /* Horizontal bordered indicator (bottom line) */
 .indicatorHorizontalBordered {
   left: 0%;
