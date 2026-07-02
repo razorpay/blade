@@ -3595,9 +3595,9 @@ describe('<GenUI />', () => {
 
         expect(getByText('Figma Heading 1')).toHaveStyle({
           color: 'rgb(5, 5, 5)',
-          fontSize: '28px',
+          fontSize: '24px',
           fontWeight: '500',
-          lineHeight: '38px',
+          lineHeight: '32px',
         });
         expect(getByText('Figma Heading 2').tagName).toBe('H2');
         expect(getByText('Figma Heading 2')).toHaveStyle({

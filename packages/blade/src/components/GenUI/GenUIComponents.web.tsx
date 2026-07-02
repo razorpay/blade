@@ -132,10 +132,9 @@ const MarkdownHeading1 = styled.h1`
   margin: 0 0 ${({ theme }) => theme.spacing[6]}px;
   color: ${({ theme }) => theme.colors.surface.text.gray.normal};
   font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) =>
-    (theme.typography.fonts.size[500] + theme.typography.fonts.size[600]) / 2}px;
+  font-size: ${({ theme }) => theme.typography.fonts.size[500]}px;
   font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[600]}px;
+  line-height: ${({ theme }) => theme.typography.lineHeights[500]}px;
 
   ${MarkdownHeadingStackSpacing}
 `;
