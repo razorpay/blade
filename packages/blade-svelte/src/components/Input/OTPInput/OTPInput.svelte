@@ -130,33 +130,16 @@
     }
   };
 
-  const handlePaste = (event: ClipboardEvent, currentOtpIndex: number): void => {
+  const handlePaste = (event: ClipboardEvent): void => {
     event.preventDefault();
     const pastedText = (event.clipboardData?.getData('text') ?? '').trim().slice(0, otpLength);
     if (!pastedText) return;
 
-    if (isControlled) {
-      const next = Array.from(value ?? '');
-      for (let i = 0; i < pastedText.length; i++) {
-        if (currentOtpIndex + i < otpLength) {
-          next[currentOtpIndex + i] = pastedText[i];
-        }
-      }
-      otpValue = next;
-      onChange?.({ name, value: next.join('') });
-    } else {
-      const next = Array.from(otpValue);
-      for (let i = 0; i < pastedText.length; i++) {
-        if (currentOtpIndex + i < otpLength) {
-          next[currentOtpIndex + i] = pastedText[i];
-        }
-      }
-      otpValue = next;
-      onChange?.({ name, value: next.join('') });
-    }
-
-    const nextFocusIndex = Math.min(currentOtpIndex + pastedText.length, otpLength - 1);
-    focusOnOtpByIndex(nextFocusIndex);
+    // Match React: a paste replaces the OTP from the first field regardless of which
+    // field is focused (standard OTP paste UX), rather than inserting at the cursor.
+    otpValue = Array.from(pastedText);
+    onChange?.({ name, value: pastedText });
+    focusOnOtpByIndex(Math.min(pastedText.length, otpLength - 1));
   };
 
   const handleKeyDown = (
@@ -231,7 +214,7 @@
             onBlur={(e) => onBlur?.({ ...e, inputIndex: index })}
             onInput={(e) => handleInput(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
-            onPaste={(e) => handlePaste(e, index)}
+            onPaste={(e) => handlePaste(e)}
             {isDisabled}
             placeholder={Array.from(placeholder ?? '')[index] ?? ''}
             isRequired={true}
