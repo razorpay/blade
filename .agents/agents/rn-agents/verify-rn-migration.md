@@ -336,6 +336,8 @@ From the accessibility tree output, verify:
 
 #### 4e: Web Comparison via agent-browser (Mobile Viewport)
 
+**This step is MANDATORY. Never skip it — even if the native screenshot from agent-device looks perfectly fine on its own.** A native render can look "fine" in isolation while still diverging from the web reference (wrong token color, missing element, different spacing scale). Parity can only be judged against the web screenshot. The only valid skip is when the component has no story at all (visual already marked INCOMPLETE in 4a).
+
 Use agent-browser to capture the web Storybook in a mobile viewport for side-by-side comparison
 with the native screenshot from agent-device. This uses the production Blade Storybook as reference.
 
@@ -377,15 +379,22 @@ curl -s "http://localhost:9009" > /dev/null 2>&1 && echo "LOCAL_STORYBOOK_UP" ||
 # If local is up, use http://localhost:9009/iframe.html?id=... instead
 ```
 
-**Compare native (agent-device) vs web (agent-browser) screenshots with LLM vision:**
-- Same layout structure? (flex direction, alignment)
+**Compare native (agent-device) vs web (agent-browser) screenshots with LLM vision.**
+
+**The web component is the source of truth.** The native render must respect the web component as-is — same structure, same visual hierarchy, same alignment. Do not rationalize a major UI divergence as a "platform difference"; if the native render would surprise someone who knows the web component, it is a defect.
+
+Check each of these explicitly:
+- Same layout structure? (flex direction, nesting, element order)
+- Alignment parity? (horizontal/vertical alignment of text, icons, and controls relative to each other and to the container — a label centered on web must be centered on native, edge-aligned items must stay edge-aligned)
 - Same color scheme? (tokens should produce same colors)
-- Same relative sizing? (proportions match even if absolute px differ)
-- Same number of visible elements?
+- Same relative sizing and spacing? (proportions and gaps match even if absolute px differ)
+- Same number of visible elements? (nothing missing, nothing extra)
+- Same states rendered the same way? (selected, disabled, error, focus equivalents)
 - Interactive states behave equivalently? (press feedback, toggle states)
 
-Note: Minor platform differences are expected (P2) — shadows, font rendering, ripple vs opacity feedback.
-Focus on structural parity (P0/P1) — missing elements, wrong layout direction, broken interactions.
+**Major UI issues must NOT survive this step.** Any of the following found in the comparison is P0/P1 and must be fixed before the visual check can pass: missing or extra elements, wrong layout direction, misaligned content (label/icon/control visibly off versus the web reference), wrong colors, spacing that changes the component's visual hierarchy, or broken interaction states.
+
+Note: Only genuinely minor platform differences are P2 — shadows, font rendering/anti-aliasing, ripple vs opacity feedback, sub-pixel offsets. When unsure whether a difference is minor, classify it as P1 and fix it.
 
 ### Step 5: Visual Diff Classification
 
@@ -398,6 +407,8 @@ For each screenshot captured, classify issues:
 - Missing entirely from view tree
 
 **P1 — Visible issues (must fix):**
+- Alignment mismatch vs the web reference (text/icon/control alignment differs from web in the 4e comparison)
+- Any major UI divergence from the web component — the web render is the source of truth
 - Text not vertically centered (common iOS issue)
 - Border-radius clipping failure (Android overflow)
 - Any visible content clipped at the phone viewport edge
@@ -488,6 +499,9 @@ iteration += 1
 - Always update verification report after each step
 - Screenshots saved to `{Worktree}/.claude/artifacts/{Name}/screenshots/`
 - **NEVER skip visual verification.** If the simulator is not booted, boot it. If Metro is not running, start it. If Storybook is not installed, build and install it. Visual verification is MANDATORY — a run without it is considered incomplete and must not report PASS.
+- **NEVER skip the agent-browser web comparison (Step 4e)** — even when the agent-device screenshot looks fine. A PASS requires the native-vs-web comparison to have actually run; if agent-browser fails (production and local Storybook both unreachable), record it in the report and cap the result at PASS WITH WARNINGS, never a clean PASS.
+- **The web component is the source of truth for UI.** The native implementation must respect the web render as-is — no major UI issues (misalignment, missing/extra elements, wrong hierarchy, wrong colors) may survive verification. Ambiguous differences are classified P1 (fix), not P2 (accept).
+- **NEVER `git push`, create a PR, or run any other remote-writing git/gh command.** Your job ends at the verification report — publishing is the orchestrator's job and requires explicit human approval at the Final Gate.
 - iOS is primary platform for visual verification; Android is bonus
 - Do NOT kill simulator/app when done — leave running for manual verification
 - Keep verification report under 100 lines per iteration (prune old error blocks, keep history)

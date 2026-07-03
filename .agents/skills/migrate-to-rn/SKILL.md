@@ -21,6 +21,7 @@ Use this skill when the user asks to run the migrated source command `migrate-to
 - I will pass the worktree absolute path in each agent's prompt
 - I will present artifacts to the user at gates before proceeding
 - I will **never skip a pipeline phase** — Plan → Execute → Verify always run in order, even if a previous agent produced implementation files as a side effect
+- I will **never commit, push, or create a PR without explicit human approval** at the Final Gate — verification passing is NOT approval; only the user's confirmation is
 
 ## Include
 
@@ -236,6 +237,8 @@ Ready to create PR?
 ---
 
 ## Step 6: Create PR
+
+> ⛔ **Human approval required.** Do NOT run any command in this step (`git add`, `git commit`, `git push`, `gh pr create`) unless the user explicitly approved at the Final Gate in Step 5. If approval was not given in this conversation, stop and ask. This applies per component — approval for one component does not cover another.
 
 For each component that passed:
 
