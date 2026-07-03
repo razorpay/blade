@@ -121,6 +121,10 @@
     { value: v }: { name?: string; value?: string },
     currentOtpIndex: number,
   ): void => {
+    // Commit on input (per keystroke), not on BaseInput's `onChange` (native `change`,
+    // fires on blur). The last field can't advance focus, so it never blurs on typing —
+    // committing here keeps it in sync and mirrors React's onChange-on-input semantics.
+    handleChange({ value: v }, currentOtpIndex);
     if (v && v.trim().length === 1) {
       focusOnOtpByIndex(currentOtpIndex + 1);
     }
@@ -222,8 +226,7 @@
             textAlign="center"
             {name}
             value={fieldValues[index] ?? ''}
-            maxCharacters={1}
-            onChange={(e) => handleChange(e, index)}
+            maxCharacters={(fieldValues[index] ?? '').length > 0 ? 1 : undefined}
             onFocus={(e) => onFocus?.({ ...e, inputIndex: index })}
             onBlur={(e) => onBlur?.({ ...e, inputIndex: index })}
             onInput={(e) => handleInput(e, index)}
