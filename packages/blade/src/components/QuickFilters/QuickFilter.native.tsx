@@ -18,7 +18,7 @@ const QuickFilterContent = ({
   trailing,
   selectionType = 'single',
   isSelected = false,
-  ...rest
+  ..._rest
 }: QuickFilterContentProps): React.ReactElement => {
   const isSingleSelection = selectionType === 'single';
 
@@ -46,11 +46,7 @@ const QuickFilterContent = ({
           justifyContent="center"
           alignItems="center"
         >
-          {isSingleSelection ? (
-            <Radio value={value} _hideRadioIcon />
-          ) : (
-            <Checkbox value={value} />
-          )}
+          {isSingleSelection ? <Radio value={value} _hideRadioIcon /> : <Checkbox value={value} />}
           {/*
            * On native, CSS Grid is not available.
            * The web uses an invisible bold clone to pre-reserve space so the container
