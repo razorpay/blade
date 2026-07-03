@@ -6,7 +6,7 @@ import Animated, {
   withTiming,
   runOnJS,
 } from 'react-native-reanimated';
-import { Dimensions, Pressable } from 'react-native';
+import { Pressable, useWindowDimensions } from 'react-native';
 import type { ElevationStyles } from '~tokens/global/elevation';
 import BaseBox from '~components/Box/BaseBox';
 import { getElevationValue } from '~components/Box/BaseBox/baseBoxStyles';
@@ -95,7 +95,7 @@ const AnimatedDrawerContainer = ({
   children,
 }: AnimatedDrawerContainerProps): React.ReactElement => {
   const { theme } = useTheme();
-  const screenWidth = Dimensions.get('window').width;
+  const { width: screenWidth } = useWindowDimensions();
   // Initialize the shared values from the CURRENT visibility so an open drawer is
   // already at its resting OPEN state (translateX = 0, opacity = 1) on the very first
   // committed frame — even before/without the `withTiming` callback firing. Starting
