@@ -100,11 +100,13 @@ type DrawerHeaderProps = {
   /**
    * Color of the header gradient background. When provided, a radial gradient using this color
    * spans the full drawer from the top, creating a seamless surface between header and body.
+   *
+   * @default 'information'
    */
   color?: FeedbackColors;
   /**
    * Whether to show the divider below the header.
-   * @default false
+   * Defaults to `false` when `color` is set, `true` when `color` is not set.
    */
   showDivider?: boolean;
 } & DataAnalyticsAttribute;

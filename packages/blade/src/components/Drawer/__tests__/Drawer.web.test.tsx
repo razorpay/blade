@@ -231,7 +231,7 @@ describe('Drawer', () => {
           </DrawerBody>
         </Drawer>,
       );
-      expect(getByRole('dialog')).toBeInTheDocument();
+      expect(getByRole('separator')).toBeInTheDocument();
     });
 
     it('renders no gradient when color is not provided', () => {

@@ -16,14 +16,15 @@ const _DrawerHeader = ({
   trailing,
   titleSuffix,
   children,
-  color,
-  showDivider = false,
+  color = 'information',
+  showDivider,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef, stackingLevel, isExiting, setHeaderConfig } = React.useContext(
     DrawerContext,
   );
   const { drawerStack } = useDrawerStack();
+  const effectiveShowDivider = showDivider !== undefined ? showDivider : !color;
 
   React.useEffect(() => {
     setHeaderConfig?.({ color });
@@ -59,7 +60,7 @@ const _DrawerHeader = ({
       subtitle={subtitle}
       leading={leading}
       trailing={trailing}
-      showDivider={showDivider}
+      showDivider={effectiveShowDivider}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
