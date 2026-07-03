@@ -44,8 +44,8 @@
 </script>
 
 <script lang="ts">
-  import type { CountryCodeType } from '@razorpay/i18nify-js';
-  import { isValidPhoneNumber } from '@razorpay/i18nify-js';
+  import type { CountryCodeType } from '@razorpay/i18nify-js/types';
+  import { isValidPhoneNumber } from '@razorpay/i18nify-js/phoneNumber';
   import Link from '../../Link/Link.svelte';
   import Tooltip from '../../Tooltip/Tooltip.svelte';
   import Text from '../../Typography/Text/Text.svelte';

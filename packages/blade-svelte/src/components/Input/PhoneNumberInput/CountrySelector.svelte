@@ -39,7 +39,8 @@
 </script>
 
 <script lang="ts">
-  import { getDialCodeByCountryCode, getFlagOfCountry } from '@razorpay/i18nify-js';
+  import { getDialCodeByCountryCode } from '@razorpay/i18nify-js/phoneNumber';
+  import { getFlagOfCountry } from '@razorpay/i18nify-js/geo';
   import {
     ActionList,
     ActionListItem,
