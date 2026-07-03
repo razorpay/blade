@@ -195,5 +195,13 @@ export type {
   SnapPoints,
 } from './BottomSheet';
 
+// SegmentedControl
+export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';
+export type {
+  SegmentedControlProps,
+  SegmentedControlItemProps,
+  SegmentedControlSize,
+} from './SegmentedControl';
+
 // BladeProvider
 export * from './BladeProvider';

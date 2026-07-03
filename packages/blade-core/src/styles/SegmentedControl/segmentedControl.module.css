@@ -1,0 +1,214 @@
+/* SegmentedControl container */
+.container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  background-color: var(--interactive-background-gray-faded);
+}
+
+/* Size variants for container */
+.containerSizeSmall {
+  gap: var(--spacing-1);
+  padding: var(--spacing-1);
+  border-radius: var(--border-radius-small);
+}
+
+.containerSizeMedium {
+  gap: var(--spacing-1);
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-medium);
+}
+
+.containerSizeLarge {
+  gap: var(--spacing-1);
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-medium);
+}
+
+/* SegmentedControl field wrapper (with label/hint) */
+.fieldWrapperTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldWrapperLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fieldContent {
+  flex: 1;
+}
+
+/* Label */
+.labelTop {
+  margin-bottom: var(--spacing-2);
+}
+
+.labelLeft {
+  margin-right: var(--spacing-3);
+  white-space: nowrap;
+}
+
+/* Hint / error text */
+.hintText {
+  margin-top: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.hintTextSmall {
+  font-size: var(--typography-fonts-size-75);
+  line-height: var(--typography-lineheights-s);
+}
+
+.hintTextMedium {
+  font-size: var(--typography-fonts-size-75);
+  line-height: var(--typography-lineheights-s);
+}
+
+.hintTextLarge {
+  font-size: var(--typography-fonts-size-100);
+  line-height: var(--typography-lineheights-m);
+}
+
+.helpText {
+  color: var(--surface-text-gray-muted);
+}
+
+.errorText {
+  color: var(--feedback-text-negative-intense);
+}
+
+/* SegmentedControlItem button */
+.item {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  flex: 1;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  transition-property: background-color;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-gentle);
+}
+
+.item:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.item:focus-visible {
+  outline: none;
+  box-shadow: inset 0px 0px 0px 4px var(--surface-border-primary-muted);
+}
+
+.item:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.item:hover:not(:disabled) {
+  background-color: var(--interactive-background-gray-default);
+}
+
+/* When item is selected, hover should be transparent (indicator handles the bg) */
+.itemSelected:hover:not(:disabled) {
+  background-color: transparent;
+}
+
+/* Item size variants */
+.itemSizeSmall {
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  border-radius: 6px;
+}
+
+.itemSizeMedium {
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  border-radius: var(--border-radius-small);
+}
+
+.itemSizeLarge {
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  border-radius: var(--border-radius-small);
+}
+
+/* Item text */
+.itemText {
+  font-weight: 500;
+  font-family: var(--typography-fonts-family-text);
+}
+
+.itemTextSizeSmall,
+.itemTextSizeMedium {
+  font-size: var(--typography-fonts-size-100);
+  line-height: var(--typography-lineheights-m);
+}
+
+.itemTextSizeLarge {
+  font-size: var(--typography-fonts-size-200);
+  line-height: var(--typography-lineheights-l);
+}
+
+.itemTextNormal {
+  color: var(--interactive-text-gray-normal);
+}
+
+.itemTextMuted {
+  color: var(--interactive-text-gray-muted);
+}
+
+.itemTextDisabled {
+  color: var(--interactive-text-gray-disabled);
+}
+
+/* SegmentedControlIndicator (the sliding selection background) */
+.indicator {
+  pointer-events: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: var(--surface-background-gray-intense);
+  /* React parity: theme.elevation.lowRaised (onLight). */
+  /* TODO: replace with var(--elevation-low-raised) once exposed in blade-core tokens */
+  box-shadow: 0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);
+  transition-property: transform, width, height;
+  transition-timing-function: var(--easing-standard);
+}
+
+.indicatorDisabled {
+  box-shadow: none;
+}
+
+.indicatorAnimating {
+  transition-duration: var(--duration-moderate);
+}
+
+.indicatorInstant {
+  transition-duration: 0ms;
+}
+
+.indicatorRadiusSmall {
+  /* 6px for small — deliberate: between xsmall(4px) and small(8px) for visual proportion */
+  border-radius: 6px;
+}
+
+.indicatorRadiusMediumToken {
+  border-radius: var(--border-radius-small);
+}
