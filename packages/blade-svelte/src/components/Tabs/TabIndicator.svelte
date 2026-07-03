@@ -43,12 +43,11 @@
   };
 
   $effect(() => {
-    // Read reactive deps explicitly so Svelte tracks them cleanly.
-    // Re-measures when selection, variant, or orientation changes (all affect the y formula).
-    const _selected = ctx.selectedValue;
-    const _variant = ctx.variant;
-    const _isVertical = ctx.isVertical;
-    if (_selected && tabListContainerEl) {
+    // Read ctx.variant and ctx.isVertical so Svelte re-runs this effect when they change
+    // (both affect the y-position formula inside updateDimensions).
+    void ctx.variant;
+    void ctx.isVertical;
+    if (ctx.selectedValue && tabListContainerEl) {
       // Generation counter prevents stale tick().then callbacks from overwriting newer measurements.
       measureGeneration += 1;
       const gen = measureGeneration;
