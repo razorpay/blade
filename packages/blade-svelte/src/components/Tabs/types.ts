@@ -67,9 +67,14 @@ type TabItemBaseProps = {
 
   /**
    * Trailing element snippet — only accepts `Badge` or `Counter` components.
-   * Pass a pre-sized component: `{#snippet trailing()}<Badge size="small">3</Badge>{/snippet}`
    */
   trailing?: Snippet;
+
+  /**
+   * Accessible label for the tab item. Required when only a leading icon is provided
+   * and no children text is present (icon-only tabs).
+   */
+  accessibilityLabel?: string;
 
   /**
    * If `true`, the tab item will be disabled.

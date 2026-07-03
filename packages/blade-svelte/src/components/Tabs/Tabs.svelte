@@ -1,4 +1,6 @@
 <script module lang="ts">
+  // blade-svelte targets client-only rendering. This counter is SSR-unsafe
+  // (persists across requests in a shared module); add useId() if SSR is needed.
   let nextTabsUid = 0;
 </script>
 
@@ -48,7 +50,7 @@
     if (controlledValue === undefined) {
       internalValue = newValue;
     }
-    if (!skipOnChange) {
+    if (!skipOnChange && newValue !== selectedValue) {
       onChange?.(newValue);
     }
     focusedValue = null;

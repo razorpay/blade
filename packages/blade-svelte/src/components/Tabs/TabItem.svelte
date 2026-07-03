@@ -33,6 +33,7 @@
     value,
     leading,
     trailing,
+    accessibilityLabel,
     isDisabled = false,
     href,
     onClick,
@@ -180,6 +181,7 @@
     aria-controls={panelId}
     tabindex={isSelected || isFocused ? 0 : -1}
     aria-disabled={isDisabled}
+    aria-label={accessibilityLabel}
     data-blade-tab-value={value}
     onclick={handleClick}
     {...metaAttrs}
@@ -197,6 +199,7 @@
     aria-controls={panelId}
     tabindex={isSelected || isFocused ? 0 : -1}
     disabled={isDisabled}
+    aria-label={accessibilityLabel}
     data-blade-tab-value={value}
     onclick={handleClick}
     {...metaAttrs}

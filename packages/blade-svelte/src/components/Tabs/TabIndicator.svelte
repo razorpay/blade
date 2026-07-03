@@ -16,6 +16,7 @@
 
   let shouldAnimate = $state(false);
   let dimensions = $state({ width: 0, height: 0, x: 0, y: 0 });
+  let measureGeneration = 0;
 
   const updateDimensions = () => {
     if (!tabListContainerEl) return;
@@ -44,7 +45,12 @@
   $effect(() => {
     if (ctx.selectedValue && tabListContainerEl) {
       // Re-measure when selection, variant, or orientation changes — all affect the y formula.
-      void (ctx.variant, ctx.isVertical, tick().then(updateDimensions));
+      // Use a generation counter so a slow prior measurement cannot overwrite a newer one.
+      measureGeneration += 1;
+      const gen = measureGeneration;
+      void (ctx.variant, ctx.isVertical, tick().then(() => {
+        if (gen === measureGeneration) updateDimensions();
+      }));
     }
   });
 
