@@ -6,6 +6,7 @@ import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -111,6 +112,29 @@ describe('<Radio />', () => {
       </RadioGroup>,
     );
     expect(getByTestId('radio-test')).toBeTruthy();
+  });
+
+  it('should render badge alongside label in vertical orientation', () => {
+    const { getByText, container } = renderWithTheme(
+      <RadioGroup label="Select plan" orientation="vertical">
+        <Radio value="pro" badge={<Badge color="primary">Recommended</Badge>}>
+          Pro
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(getByText('Recommended')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not render badge in horizontal orientation', () => {
+    const { queryByText } = renderWithTheme(
+      <RadioGroup label="Select plan" orientation="horizontal">
+        <Radio value="pro" badge={<Badge color="primary">Recommended</Badge>}>
+          Pro
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(queryByText('Recommended')).not.toBeInTheDocument();
   });
 
   it('should accepnt data-analytics attribute', () => {

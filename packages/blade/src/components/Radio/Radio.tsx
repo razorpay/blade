@@ -27,6 +27,7 @@ import { throwBladeError } from '~utils/logger';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BadgeProps } from '~components/Badge/Badge';
 
 type RadioProps = {
   /**
@@ -55,6 +56,12 @@ type RadioProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /**
+   * Badge to display alongside the radio label.
+   * Accepts a `<Badge>` element.
+   * Only rendered when the parent `RadioGroup` has `orientation="vertical"`.
+   */
+  badge?: React.ReactElement<BadgeProps>;
+  /**
    * @private
    * Internal prop to hide the radio icon
    * @default false
@@ -72,6 +79,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     helpText,
     isDisabled,
     size = 'medium',
+    badge,
     _hideRadioIcon = false,
     testID,
     _motionMeta,
@@ -90,6 +98,13 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
         message: 'Cannot use <Radio /> outside of <RadioGroup />',
       });
     }
+    if (badge && groupProps?.orientation === 'horizontal') {
+      throwBladeError({
+        moduleName: 'Radio',
+        message:
+          'The `badge` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `badge` prop or switch to `orientation="vertical"`.',
+      });
+    }
   }
 
   const isChecked = groupProps?.state?.isChecked(value);
@@ -103,6 +118,8 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const showHelpText = helpText;
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
+  const orientation = groupProps?.orientation ?? 'vertical';
+  const showBadge = badge && orientation === 'vertical';
 
   const handleChange: OnChange = ({ isChecked, value, event }) => {
     if (isChecked) {
@@ -156,6 +173,11 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               <SelectorTitle size={_size} isDisabled={_isDisabled}>
                 {children}
               </SelectorTitle>
+            ) : null}
+            {showBadge ? (
+              <BaseBox marginLeft="spacing.2" display="flex" alignItems="center">
+                {badge}
+              </BaseBox>
             ) : null}
           </BaseBox>
           {showHelpText && (
