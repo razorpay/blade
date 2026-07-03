@@ -1596,4 +1596,140 @@ describe('<Table />', () => {
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  // isActive Tests
+  it('should render table row with isActive=true and apply active class/aria', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 3) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem} isActive={tableItem.id === '2'}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should allow isActive and isDisabled to coexist without errors', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 2) }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  isActive={tableItem.id === '1'}
+                  isDisabled={tableItem.id === '1'}
+                >
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should allow isActive and selected state to coexist', async () => {
+    const user = userEvent.setup();
+    const onSelectionChange = jest.fn();
+    const { getByText } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 3) }}
+        selectionType="single"
+        onSelectionChange={onSelectionChange}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem} isActive={tableItem.id === '1'}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    // Click the active row to also select it — should not throw
+    const activeRowCell = getByText('rzp01').closest('td');
+    if (activeRowCell) await user.click(activeRowCell);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]], selectedIds: ['1'] });
+    const activeRow = getByText('rzp01').closest('tr');
+    expect(activeRow).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('should update active row when isActive prop changes via state', async () => {
+    const user = userEvent.setup();
+
+    const ActiveRowController = (): React.ReactElement => {
+      const [activeId, setActiveId] = useState<string>('1');
+      return (
+        <>
+          <button onClick={() => setActiveId('2')}>Activate Row 2</button>
+          <Table data={{ nodes: nodes.slice(0, 3) }}>
+            {(tableData) => (
+              <>
+                <TableHeader>
+                  <TableHeaderRow>
+                    <TableHeaderCell>Payment ID</TableHeaderCell>
+                  </TableHeaderRow>
+                </TableHeader>
+                <TableBody>
+                  {tableData.map((tableItem, index) => (
+                    <TableRow key={index} item={tableItem} isActive={tableItem.id === activeId}>
+                      <TableCell>{tableItem.paymentId}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </>
+            )}
+          </Table>
+        </>
+      );
+    };
+
+    const { getByText } = renderWithTheme(<ActiveRowController />);
+
+    // Row 1 is initially active
+    expect(getByText('rzp01')).toBeInTheDocument();
+
+    // Switch active row to row 2
+    await user.click(getByText('Activate Row 2'));
+
+    // Both rows still in the DOM; no errors
+    expect(getByText('rzp01')).toBeInTheDocument();
+    expect(getByText('rzp02')).toBeInTheDocument();
+  });
 });

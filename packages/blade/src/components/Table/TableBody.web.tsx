@@ -234,117 +234,152 @@ const StyledRow = styled(Row)<{
   $showBorderedCells: boolean;
   $isGrouped: boolean;
   $isGroupHeader: boolean;
-}>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
-  const { hasHoverActions, checkboxDisplay, selectionType } = useTableContext();
+  $isActive?: boolean;
+}>(
+  ({
+    theme,
+    $isSelectable,
+    $isHoverable,
+    $showBorderedCells,
+    $isGrouped,
+    $isGroupHeader,
+    $isActive,
+  }) => {
+    const { hasHoverActions, checkboxDisplay, selectionType } = useTableContext();
 
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+    const rowBackgroundTransition = `background-color ${makeMotionTime(
+      getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+    )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
-  return {
-    '&&&': {
-      backgroundColor: 'transparent',
-      '& .cell-wrapper': $showBorderedCells
-        ? {
-            borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
-            borderRightStyle: 'solid',
-            borderRightColor: getIn(theme.colors, tableRow.borderColor),
-          }
-        : undefined,
-      '& td:last-child .cell-wrapper': {
-        borderRight: 'none',
-      },
-      ...(hasHoverActions
-        ? {
-            [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
-              '& td:last-child': {
-                opacity: 0,
-                position: 'sticky',
-                zIndex: 2,
-                right: 0,
-                width: '0px',
-                '& > div:first-child': {
-                  overflow: 'visible',
+    return {
+      '&&&': {
+        backgroundColor: 'transparent',
+        '& .cell-wrapper': $showBorderedCells
+          ? {
+              borderRightWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+              borderRightStyle: 'solid',
+              borderRightColor: getIn(theme.colors, tableRow.borderColor),
+            }
+          : undefined,
+        '& td:last-child .cell-wrapper': {
+          borderRight: 'none',
+        },
+        ...(hasHoverActions
+          ? {
+              [`@media ${getMediaQuery({ min: theme.breakpoints.m })}`]: {
+                '& td:last-child': {
+                  opacity: 0,
+                  position: 'sticky',
+                  zIndex: 2,
+                  right: 0,
+                  width: '0px',
+                  '& > div:first-child': {
+                    overflow: 'visible',
+                  },
+                },
+                '& td:last-child:focus-within': {
+                  opacity: 1,
+                  ...getTableActionsHoverStyles({
+                    theme,
+                    hoverColor: tableRow.nonStripe.backgroundColor,
+                  }),
+                },
+                '&:hover td:last-child': {
+                  opacity: 1,
                 },
               },
-              '& td:last-child:focus-within': {
-                opacity: 1,
-                ...getTableActionsHoverStyles({
-                  theme,
-                  hoverColor: tableRow.nonStripe.backgroundColor,
-                }),
-              },
-              '&:hover td:last-child': {
-                opacity: 1,
-              },
-            },
-          }
-        : {}),
-      ...(($isHoverable || $isSelectable) && {
-        '&:hover:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          cursor: 'pointer',
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
-          ...getTableActionsHoverStyles({
-            hoverColor: tableRow.nonStripe.backgroundColorHover,
-            theme,
-          }),
-        },
-      }),
-      ...($isSelectable && {
-        '&:focus:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
-          cursor: 'pointer',
-          ...getTableActionsHoverStyles({
-            hoverColor: tableRow.nonStripe.backgroundColorFocus,
-            backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
-            theme,
-          }),
-        },
-        '&:active:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
-          cursor: 'pointer',
-        },
-      }),
-      '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
-      ...($isGroupHeader && {
-        '& td': {
-          backgroundColor: getIn(theme.colors, tableRow.groupHeaderBackgroundColor),
-        },
-      }),
-      ...($isGrouped && {
-        '& .cell-wrapper': {
-          border: 'none',
-        },
-      }),
-      // When checkboxDisplay="on-hover", hide only the checkbox content inside the
-      // first td. We target .cell-wrapper > * (the BaseBox wrapping the Checkbox)
-      // rather than the td itself so that the cell-wrapper's border-bottom — which
-      // draws the row separator line — stays fully visible.
-      // Reveal on row hover, keyboard focus, or when the row is already selected
-      // (.row-select-selected class is added by @table-library/react-table-library).
-      ...(checkboxDisplay === 'on-hover' &&
-        selectionType === 'multiple' && {
-          '& td:first-child .cell-wrapper > *': {
-            opacity: 0,
-            transition: `opacity ${makeMotionTime(
-              getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-            )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+            }
+          : {}),
+        ...(($isHoverable || $isSelectable) && {
+          '&:hover:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            cursor: 'pointer',
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.nonStripe.backgroundColorHover,
+              theme,
+            }),
           },
-          '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
-          '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
-          '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
         }),
-    },
-  };
-});
+        ...($isSelectable && {
+          '&:focus:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
+            cursor: 'pointer',
+            ...getTableActionsHoverStyles({
+              hoverColor: tableRow.nonStripe.backgroundColorFocus,
+              backgroundGradientColor: tableRow.nonStripe.backgroundColorHover,
+              theme,
+            }),
+          },
+          '&:active:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
+            cursor: 'pointer',
+          },
+        }),
+        '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
+        ...($isGroupHeader && {
+          '& td': {
+            backgroundColor: getIn(theme.colors, tableRow.groupHeaderBackgroundColor),
+          },
+        }),
+        ...($isGrouped && {
+          '& .cell-wrapper': {
+            border: 'none',
+          },
+        }),
+        // When checkboxDisplay="on-hover", hide only the checkbox content inside the
+        // first td. We target .cell-wrapper > * (the BaseBox wrapping the Checkbox)
+        // rather than the td itself so that the cell-wrapper's border-bottom — which
+        // draws the row separator line — stays fully visible.
+        // Reveal on row hover, keyboard focus, or when the row is already selected
+        // (.row-select-selected class is added by @table-library/react-table-library).
+        ...(checkboxDisplay === 'on-hover' &&
+          selectionType === 'multiple' && {
+            '& td:first-child .cell-wrapper > *': {
+              opacity: 0,
+              transition: `opacity ${makeMotionTime(
+                getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+              )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+            },
+            '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
+            '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
+            '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
+          }),
+        ...($isActive && {
+          '& .cell-wrapper-base': {
+            backgroundColor: `${getIn(
+              theme.colors,
+              tableRow.activeRow.backgroundColor,
+            )} !important`,
+          },
+          '&:hover:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: `${getIn(
+              theme.colors,
+              tableRow.activeRow.backgroundColorHover,
+            )} !important`,
+          },
+          '&:focus:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: `${getIn(
+              theme.colors,
+              tableRow.activeRow.backgroundColorFocus,
+            )} !important`,
+          },
+          '& td:first-child .cell-wrapper-base': {
+            boxShadow: `inset 2px 0 0 ${getIn(theme.colors, tableRow.activeRow.borderColor)}`,
+          },
+        }),
+      },
+    };
+  },
+);
 
 const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
+  isActive,
   onHover,
   onClick,
   hoverActions,
@@ -411,6 +446,7 @@ const _TableRow = <Item,>({
       $isSelectable={isDisabled ? false : isSelectable}
       $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
       $showBorderedCells={showBorderedCells}
+      $isActive={isActive}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}

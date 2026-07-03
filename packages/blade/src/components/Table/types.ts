@@ -315,6 +315,19 @@ type TableRowProps<Item> = {
    **/
   isDisabled?: boolean;
   /**
+   * Marks this row as the currently active row — i.e., the row whose detail panel or
+   * side drawer is currently open. Renders a distinct visual highlight (brand-tinted
+   * background + left border accent) that is separate from the selection state.
+   * A row can be both selected and active simultaneously.
+   * State management is consumer-controlled — pass `isActive={activeItemId === item.id}`.
+   * @default false
+   * @example
+   * <TableRow item={item} isActive={activeItemId === item.id}>
+   *   <TableCell>...</TableCell>
+   * </TableRow>
+   **/
+  isActive?: boolean;
+  /**
    * Callback triggered when the row is hovered. It is called with the current row item prop.
    */
   onHover?: ({ item }: { item: TableNode<Item> }) => void;

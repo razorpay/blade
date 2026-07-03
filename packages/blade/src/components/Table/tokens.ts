@@ -91,6 +91,12 @@ const tableRow = {
   backgroundColorMotionEasing: 'easing.standard',
   backgroundColorMotionDuration: 'duration.xquick',
   groupHeaderBackgroundColor: 'surface.background.gray.moderate',
+  activeRow: {
+    backgroundColor: 'interactive.background.primary.faded',
+    backgroundColorHover: 'interactive.background.primary.faded',
+    backgroundColorFocus: 'interactive.background.primary.faded',
+    borderColor: 'interactive.border.primary.default',
+  },
 } as const;
 
 const tableToolbar = {
