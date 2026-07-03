@@ -23,7 +23,6 @@ const QuickFilterWrapper = ({
           setSelectedQuickFilters(() => [value]);
         }}
         size="small"
-        flexWrap="wrap"
         {...rest}
       >
         {children}
@@ -37,7 +36,6 @@ const QuickFilterWrapper = ({
         setSelectedQuickFilters(() => values);
       }}
       size="small"
-      flexWrap="wrap"
       {...rest}
     >
       {children}
