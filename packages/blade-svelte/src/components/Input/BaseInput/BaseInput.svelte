@@ -323,8 +323,6 @@
         {/if}
       </div>
     {/if}
-
-    <div class={templateClasses.field}>
       <div class={focusRingClasses}>
         <div
           class={inputWrapperClasses}
@@ -409,7 +407,6 @@
             errorTextId={inputIds.errorTextId}
             successTextId={inputIds.successTextId}
           />
-        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,8 @@
 <script lang="ts">
   import { untrack } from 'svelte';
-  import {
-    formatPhoneNumber,
-    getDialCodeByCountryCode,
-    getFlagsForAllCountries,
-  } from '@razorpay/i18nify-js';
-  import type { CountryCodeType } from '@razorpay/i18nify-js';
+  import { formatPhoneNumber, getDialCodeByCountryCode } from '@razorpay/i18nify-js/phoneNumber';
+  import { getFlagsForAllCountries } from '@razorpay/i18nify-js/geo';
+  import type { CountryCodeType } from '@razorpay/i18nify-js/types';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
