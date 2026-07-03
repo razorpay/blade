@@ -5,10 +5,9 @@ import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
 import { TableBody, TableRow, TableCell } from '../../TableBody';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Text, Code } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Badge } from '~components/Badge';
-import { Code } from '~components/Typography';
 
 export default {
   title: 'Components/Table/API',
