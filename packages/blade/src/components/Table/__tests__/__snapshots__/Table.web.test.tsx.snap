@@ -1609,6 +1609,7 @@ exports[`<Table /> should allow isActive and isDisabled to coexist without error
           data-table-library_body=""
         >
           <tr
+            aria-current="true"
             aria-selected="false"
             class="tr tr-body c10 disabled-row disabled clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"
@@ -3891,6 +3892,7 @@ exports[`<Table /> should render table row with isActive=true and apply active c
             </td>
           </tr>
           <tr
+            aria-current="true"
             aria-selected="false"
             class="tr tr-body c16 clickable css-ix64pr-getRowContainerStyle-Row"
             data-blade-component="table-row"

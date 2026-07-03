@@ -1599,7 +1599,7 @@ describe('<Table />', () => {
 
   // isActive Tests
   it('should render table row with isActive=true and apply active class/aria', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 3) }}>
         {(tableData) => (
           <>
@@ -1621,6 +1621,10 @@ describe('<Table />', () => {
         )}
       </Table>,
     );
+    const activeRow = getByText('rzp02').closest('tr');
+    expect(activeRow).toHaveAttribute('aria-current', 'true');
+    const inactiveRow = getByText('rzp01').closest('tr');
+    expect(inactiveRow).not.toHaveAttribute('aria-current');
     expect(container).toMatchSnapshot();
   });
 

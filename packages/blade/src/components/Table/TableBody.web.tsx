@@ -456,7 +456,7 @@ const _TableRow = <Item,>({
           toggleRowSelectionById(item.id);
         }
       }}
-      {...makeAccessible({ selected: isSelected })}
+      {...makeAccessible({ selected: isSelected, current: isActive ? true : undefined })}
       {...metaAttribute({ name: MetaConstants.TableRow, testID })}
       {...makeAnalyticsAttribute(rest)}
       $isVirtualized={isVirtualized}
