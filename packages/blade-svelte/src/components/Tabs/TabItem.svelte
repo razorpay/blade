@@ -184,6 +184,7 @@
     aria-label={accessibilityLabel}
     data-blade-tab-value={value}
     onclick={handleClick}
+    onkeydown={(e) => { if (isDisabled && (e.key === 'Enter' || e.key === ' ')) e.preventDefault(); }}
     {...metaAttrs}
     {...analyticsAttrs}
   >

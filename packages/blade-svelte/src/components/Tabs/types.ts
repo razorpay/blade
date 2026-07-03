@@ -10,6 +10,8 @@ export type TabsProps = {
 
   /**
    * The value of the tab to select by default (uncontrolled).
+   * When TabItems are rendered conditionally, set this explicitly to avoid
+   * dependence on mount order.
    */
   defaultValue?: string;
 
@@ -103,10 +105,7 @@ type TabItemWithChildrenProps = TabItemBaseProps & {
    * The text label of the tab item.
    */
   children: Snippet;
-  /**
-   * Leading icon component (e.g., HomeIcon). Color is managed internally.
-   */
-  leading?: IconComponent;
+  leading?: undefined;
 };
 
 type TabItemWithLeadingProps = TabItemBaseProps & {

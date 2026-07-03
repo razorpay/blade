@@ -43,14 +43,18 @@
   };
 
   $effect(() => {
-    if (ctx.selectedValue && tabListContainerEl) {
-      // Re-measure when selection, variant, or orientation changes — all affect the y formula.
-      // Use a generation counter so a slow prior measurement cannot overwrite a newer one.
+    // Read reactive deps explicitly so Svelte tracks them cleanly.
+    // Re-measures when selection, variant, or orientation changes (all affect the y formula).
+    const _selected = ctx.selectedValue;
+    const _variant = ctx.variant;
+    const _isVertical = ctx.isVertical;
+    if (_selected && tabListContainerEl) {
+      // Generation counter prevents stale tick().then callbacks from overwriting newer measurements.
       measureGeneration += 1;
       const gen = measureGeneration;
-      void (ctx.variant, ctx.isVertical, tick().then(() => {
+      void tick().then(() => {
         if (gen === measureGeneration) updateDimensions();
-      }));
+      });
     }
   });
 

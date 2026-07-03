@@ -1,9 +1,3 @@
-<script module lang="ts">
-  // blade-svelte targets client-only rendering. This counter is SSR-unsafe
-  // (persists across requests in a shared module); add useId() if SSR is needed.
-  let nextTabsUid = 0;
-</script>
-
 <script lang="ts">
   import {
     metaAttribute,
@@ -30,8 +24,7 @@
     ...rest
   }: TabsProps = $props();
 
-  nextTabsUid += 1;
-  const baseId = `tabs-${nextTabsUid}`;
+  const baseId = `tabs-${crypto.randomUUID().slice(0, 8)}`;
 
   let internalValue = $state<string>(defaultValue ?? '');
   let focusedValue = $state<string | null>(null);
