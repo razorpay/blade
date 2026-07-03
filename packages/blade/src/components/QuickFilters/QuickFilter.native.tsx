@@ -10,6 +10,7 @@ import { Checkbox } from '~components/Checkbox';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const QuickFilterContent = ({
   value,
@@ -73,7 +74,7 @@ const QuickFilterContent = ({
   );
 };
 
-const QuickFilter = React.forwardRef<BladeElementRef, QuickFilterProps>(
+const _QuickFilter = React.forwardRef<BladeElementRef, QuickFilterProps>(
   ({ title, value, trailing, testID, ...rest }, _ref): React.ReactElement => {
     const { selectedQuickFilters, selectionType, onSelect } = useQuickFilterGroupContext();
 
@@ -100,6 +101,8 @@ const QuickFilter = React.forwardRef<BladeElementRef, QuickFilterProps>(
   },
 );
 
-QuickFilter.displayName = 'QuickFilter';
+const QuickFilter = assignWithoutSideEffects(_QuickFilter, {
+  displayName: 'QuickFilter',
+});
 
 export { QuickFilter };

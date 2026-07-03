@@ -14,7 +14,13 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const localNodeModules = (() => { try { return fs.realpathSync(path.resolve(__dirname, '../node_modules')); } catch { return path.resolve(__dirname, '../node_modules'); } })();
+const localNodeModules = (() => {
+  try {
+    return fs.realpathSync(path.resolve(__dirname, '../node_modules'));
+  } catch {
+    return path.resolve(__dirname, '../node_modules');
+  }
+})();
 const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 
 const CASE_SPLIT_REPLACEMENT = 'var CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
