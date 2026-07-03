@@ -20,7 +20,9 @@ import type { PopoverProps } from './types';
 import { PopoverContent } from './PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
+import { componentIds } from './componentIds';
 import { useTheme } from '~components/BladeProvider';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
@@ -33,8 +35,10 @@ import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { OverlayContextReset } from '~components/OverlayContextReset';
 
-const Popover = ({
+const _Popover = ({
   content,
   title,
   titleLeading,
@@ -143,48 +147,58 @@ const Popover = ({
       })}
       {isMounted && (
         <FloatingPortal>
-          <FloatingFocusManager
-            initialFocus={
-              initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
-            }
-            context={context}
-            modal={true}
-            guards={true}
-          >
-            <BaseBox
-              ref={refs.setFloating}
-              style={floatingStyles}
-              // TODO: Tokenize zIndex values
-              zIndex={zIndex}
-              {...getFloatingProps()}
-              {...metaAttribute({ name: MetaConstants.Popover })}
-              {...makeAccessible({ labelledBy: titleId })}
-              {...makeAnalyticsAttribute(rest)}
+          <OverlayContextReset>
+            <FloatingFocusManager
+              initialFocus={
+                initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
+              }
+              context={context}
+              modal={true}
+              guards={true}
             >
-              <PopoverContent
-                title={title}
-                titleLeading={titleLeading}
-                footer={footer}
-                style={styles}
-                arrow={
-                  <PopupArrow
-                    ref={arrowRef}
-                    context={context}
-                    width={ARROW_WIDTH}
-                    height={ARROW_HEIGHT}
-                    fillColor={theme.colors.popup.background.subtle}
-                    strokeColor={theme.colors.popup.border.subtle}
-                  />
-                }
-              >
-                {content}
-              </PopoverContent>
-            </BaseBox>
-          </FloatingFocusManager>
+              <TopNavOverlayThemeOverride>
+                <BaseBox
+                  ref={refs.setFloating}
+                  style={floatingStyles}
+                  // TODO: Tokenize zIndex values
+                  zIndex={zIndex}
+                  {...getFloatingProps()}
+                  {...metaAttribute({ name: MetaConstants.Popover })}
+                  {...makeAccessible({ labelledBy: titleId })}
+                  {...makeAnalyticsAttribute(rest)}
+                >
+                  <PopoverContent
+                    title={title}
+                    titleLeading={titleLeading}
+                    footer={footer}
+                    style={styles}
+                    arrow={
+                      <PopupArrow
+                        ref={arrowRef}
+                        context={context}
+                        width={ARROW_WIDTH}
+                        height={ARROW_HEIGHT}
+                        fillColor={theme.colors.popup.background.gray.moderate}
+                        strokeColor={theme.colors.popup.border.gray.moderate}
+                        strokeWidth={theme.border.width.thin}
+                        style={{ transform: 'translateY(-1px)' }}
+                      />
+                    }
+                  >
+                    {content}
+                  </PopoverContent>
+                </BaseBox>
+              </TopNavOverlayThemeOverride>
+            </FloatingFocusManager>
+          </OverlayContextReset>
         </FloatingPortal>
       )}
     </PopoverContext.Provider>
   );
 };
+
+const Popover = assignWithoutSideEffects(_Popover, {
+  componentId: componentIds.Popover,
+});
 
 export { Popover };

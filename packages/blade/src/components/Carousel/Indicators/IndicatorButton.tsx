@@ -1,7 +1,7 @@
 import type { IndicatorButtonProps } from './types';
 import { StyledIndicatorButton } from './StyledIndicatorButton';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { metaAttribute } from '~utils/metaAttribute';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 const IndicatorButton = ({
   onClick,

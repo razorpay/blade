@@ -12,6 +12,15 @@ The following types represent the props that the ChatMessage component accepts. 
 
 ```typescript
 /**
+ * Thumbnail item structure for image previews
+ */
+type ThumbnailItem = {
+  id?: string;
+  url: string;
+  alt?: string;
+};
+
+/**
  * Props for the ChatMessage component
  */
 type ChatMessageProps = {
@@ -32,6 +41,8 @@ type ChatMessageProps = {
    * 'default': Standard message in a sequence
    * 'last': Last message in a sequence (has different styling)
    * @default 'default'
+   *
+   * @deprecated This prop is no longer used by `ChatMessage` and will be removed in a future release.
    */
   messageType?: 'default' | 'last';
 
@@ -49,8 +60,10 @@ type ChatMessageProps = {
 
   /**
    * Text to display when the message is in loading state
+   * When an array of strings is provided, the texts will animate as a rolling marquee,
+   * cycling through each string with a vertical slide transition.
    */
-  loadingText?: string;
+  loadingText?: string | string[];
 
   /**
    * Validation state of the message
@@ -77,10 +90,40 @@ type ChatMessageProps = {
    * @default 'normal'
    */
   wordBreak?: 'normal' | 'break-all' | 'break-word' | 'keep-all';
+
+  /**
+   * thumbnails prop is used to show image previews in chat message.
+   * Accepts an array of thumbnail objects.
+   */
+  thumbnails?: ThumbnailItem[];
+
+  /**
+   * onThumbnailClick is called when the image preview is clicked.
+   */
+  onThumbnailClick?: () => void;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;
 ```
+
+## Usage Guidelines
+
+**Do**
+
+- Use `ChatMessage` for building conversational interfaces with distinct sender/receiver messages.
+- Use `senderType="self"` for user messages (right-aligned) and `senderType="other"` for agent/system messages (left-aligned).
+- Use `leading` prop with an icon or avatar for agent messages to provide visual sender identification.
+- Use `isLoading` with `loadingText` (string array for rolling animation) during async AI responses.
+- Use `footerActions` for feedback controls (thumbs up/down, copy, share) on agent messages.
+- Pass complex JSX (Card, Table, RadioGroup) directly as children for rich message content.
+
+**Don't**
+
+- Don't use the deprecated `messageType` prop — it's non-functional.
+- Don't use `ChatMessage` for notification-style alerts — use `Toast` or `Alert` instead.
+- Don't pass more than 5 thumbnails — excess images show a "+n" badge.
+- Don't put `footerActions` on self-messages — they're designed for agent/other messages only.
+- Don't manually wrap string children in `Text` — ChatMessage auto-wraps string content.
 
 ## Examples
 

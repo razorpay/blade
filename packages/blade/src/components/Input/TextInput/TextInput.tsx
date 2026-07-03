@@ -29,6 +29,7 @@ import { hintMarginTop } from '~components/Form/formTokens';
 import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { DropdownOverlay } from '~components/Dropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
 import { isIconComponent } from '~utils/isIconComponent';
 import { useDatePickerContext } from '~components/DatePicker/DatePickerContext';
@@ -45,6 +46,7 @@ type TextInputCommonProps = Pick<
   | 'labelTrailing'
   | 'necessityIndicator'
   | 'validationState'
+  | 'validationTextPlacement'
   | 'helpText'
   | 'errorText'
   | 'successText'
@@ -210,6 +212,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -346,6 +349,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     return React.cloneElement(dropdown, {
       selectionType: 'single',
       isOpen,
+      height: '100%',
       onOpenChange: (isOpen: boolean) => {
         setIsOpen(isOpen);
       },
@@ -355,6 +359,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
             referenceRef: textInputWrapperRef,
             _isNestedDropdown: true,
             defaultPlacement,
+          });
+        }
+        // Pass size to InputDropdownButton
+        if (getComponentId(child) === dropdownComponentIds.triggers.InputDropdownButton) {
+          return React.cloneElement(child, {
+            size,
           });
         }
         return child;
@@ -415,7 +425,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (shouldShowClearButton && hasTrailingDropDown) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" />
         </BaseBox>
       );
@@ -423,7 +433,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
     if (showClearButton && hasTrailingInteractionElement) {
       return (
-        <BaseBox display="flex" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
           {renderClearButton()} <Divider orientation="vertical" /> {trailing as React.ReactElement}
         </BaseBox>
       );
@@ -526,6 +536,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       trailingIcon={_trailingIcon ?? trailingIcon}
       suffix={suffix}
       validationState={validationState}
+      validationTextPlacement={validationTextPlacement}
       errorText={errorText}
       helpText={helpText}
       successText={successText}

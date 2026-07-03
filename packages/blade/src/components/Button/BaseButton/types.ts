@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { ButtonMinHeight } from './buttonTokens';
 import type { BaseButtonProps } from './BaseButton';
 import type { DurationString, EasingString } from '~tokens/global';
-import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import type { BorderRadiusValues, SpacingValues } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeCommonEvents } from '~components/types';
 import type { IconProps, IconSize } from '~components/Icons';
@@ -32,26 +32,31 @@ export type BaseButtonStyleProps = {
   buttonPaddingRight: SpacingValues;
   text?: string;
   defaultBackgroundColor: string;
-  defaultBorderColor: string;
+  defaultBoxShadow?: string;
   hoverBackgroundColor: string;
-  hoverBorderColor: string;
+  hoverBoxShadow?: string;
   hoverIconColor: string;
   focusBackgroundColor: string;
-  focusBorderColor: string;
+  focusBoxShadow?: string;
   focusRingColor: string;
   motionDuration: DurationString;
   motionEasing: EasingString;
-  borderWidth: BorderWidthValues;
-  borderRadius: BorderRadiusValues;
+  borderRadius: BorderRadiusValues | number;
   height?: string;
   width?: string;
+  shadowHighlightColor?: string;
+  shadowHighlightHeight?: number;
+  shadowBottomColor?: string;
+  shadowBottomHeight?: number;
+  shadowBorderColor?: string;
+  shadowRingWidth?: number;
+  isShadowGradientVisible?: boolean;
 };
 
 export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
   'icon' | 'children' | 'accessibilityLabel' | keyof DataAnalyticsAttribute
 > & {
-  defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;
   height?: BaseButtonStyleProps['height'];
   width?: BaseButtonStyleProps['width'];
@@ -61,18 +66,29 @@ export type StyledBaseButtonProps = Omit<
   buttonPaddingRight: SpacingValues;
   children: ReactNode;
   defaultBackgroundColor: string;
+  defaultBorderColor?: string;
+  defaultBoxShadow?: string;
   disabled: boolean;
-  focusBorderColor: string;
+  focusBoxShadow?: string;
   focusBackgroundColor: string;
+  focusBorderColor?: string;
   focusRingColor: string;
-  hoverBorderColor: string;
+  hoverBoxShadow?: string;
   hoverBackgroundColor: string;
+  hoverBorderColor?: string;
   hoverIconColor: DotNotationToken<Theme['colors']>;
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;
-  borderWidth: BorderWidthValues;
-  borderRadius: BorderRadiusValues;
+  borderRadius: BorderRadiusValues | number;
+  borderWidth?: string;
+  shadowHighlightColor?: string;
+  shadowHighlightHeight?: number;
+  shadowBottomColor?: string;
+  shadowBottomHeight?: number;
+  shadowBorderColor?: string;
+  shadowRingWidth?: number;
+  isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;
   isPressed: boolean;
 } & StyledPropsBlade &

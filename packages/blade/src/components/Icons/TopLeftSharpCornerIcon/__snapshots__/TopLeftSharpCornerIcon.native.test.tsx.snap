@@ -54,7 +54,7 @@ exports[`<TopLeftSharpCornerIcon /> should render TopLeftSharpCornerIcon 1`] = `
         d="M4 4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H6V20C6 20.5523 5.55228 21 5 21C4.44772 21 4 20.5523 4 20V4"
         fill={
           {
-            "payload": 4280563015,
+            "payload": 4280889138,
             "type": 0,
           }
         }

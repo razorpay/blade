@@ -7,7 +7,11 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
-import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
+import {
+  baseInputBorderBackgroundMotion,
+  baseInputBorderRadius,
+  formHintLeftLabelMarginLeft,
+} from './baseInputTokens';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -47,7 +51,7 @@ import type {
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
@@ -57,6 +61,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { Elevation } from '~tokens/global';
 import { useInputGroupContext } from '~components/InputGroup/InputGroupContext';
 import { useCounterInputContext } from '~components/CounterInput/CounterInputContext';
 
@@ -130,6 +135,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * The callback function to be invoked whenever there is a keyDown event
      */
     onKeyDown?: FormInputHandleOnKeyDownEvent;
+    /**
+     * The callback function to be invoked when content is pasted into the input
+     */
+    onPaste?: React.ClipboardEventHandler<HTMLInputElement>;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
@@ -331,6 +340,20 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     size?: 'xsmall' | 'small' | 'medium' | 'large';
     /**
+     * Overrides the padding of the input independently of the `size` prop.
+     * Accepts CSS values like `"16px"`.
+     */
+    padding?: string;
+    /**
+     * Overrides the border radius of the input independently of the `size` prop.
+     * Accepts border radius tokens like `"large"`.
+     */
+    borderRadius?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+    /**
+     * Sets the elevation (box-shadow) on the input wrapper.
+     */
+    elevation?: keyof Elevation;
+    /**
      * Link button to be rendered at the end of the input field.
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
@@ -367,6 +390,25 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     valueSuffix?: React.ReactNode;
     children?: ReactNode;
+    /**
+     * Overrides the caret (text cursor) color of the input.
+     */
+    caretColor?: 'surface.icon.onSea.onSubtle';
+    /**
+     * Content rendered inside the input wrapper, above the input row.
+     * Used by ChatInput for file previews.
+     */
+    topContent?: React.ReactNode;
+    /**
+     * Content rendered inside the input wrapper, below the input row.
+     * Used by ChatInput for the action bar.
+     */
+    bottomContent?: React.ReactNode;
+    /**
+     * Overlay content rendered inside the input row wrapper with position relative.
+     * Used by ChatInput for ghost suggestions.
+     */
+    inputRowOverlay?: React.ReactNode;
   } & TestID &
   Platform.Select<{
     native: {
@@ -768,35 +810,48 @@ const FocusRingWrapper = styled(BaseBox)<{
   isTableInputCell: NonNullable<BaseInputProps['isTableInputCell']>;
   className: string;
   shouldAddLimitedFocus: boolean;
-}>(({ theme, currentInteraction, isTableInputCell, shouldAddLimitedFocus }) => ({
-  borderRadius: makeBorderSize(
-    isTableInputCell ? theme.border.radius.none : theme.border.radius.medium,
-  ),
-  width: '100%',
-  '&:focus-within':
-    !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
-      ? {
-          ...getFocusRingStyles({
-            theme,
-          }),
-          transitionDuration: castWebType(
-            makeMotionTime(
-              getIn(
-                theme.motion.duration,
-                baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                  .duration,
+  $size: NonNullable<BaseInputProps['size']>;
+  $borderRadius?: BaseInputProps['borderRadius'];
+}>(
+  ({
+    theme,
+    currentInteraction,
+    isTableInputCell,
+    shouldAddLimitedFocus,
+    $size,
+    $borderRadius,
+  }) => ({
+    borderRadius: makeBorderSize(
+      isTableInputCell
+        ? theme.border.radius.none
+        : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
+    ),
+    width: '100%',
+    '&:focus-within':
+      !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
+        ? {
+            ...getFocusRingStyles({
+              theme,
+            }),
+            transitionDuration: castWebType(
+              makeMotionTime(
+                getIn(
+                  theme.motion.duration,
+                  baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                    .duration,
+                ),
               ),
             ),
-          ),
-          transitionTimingFunction: castWebType(
-            theme.motion.easing[
-              baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                .easing
-            ],
-          ),
-        }
-      : {},
-}));
+            transitionTimingFunction: castWebType(
+              theme.motion.easing[
+                baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+                  .easing
+              ],
+            ),
+          }
+        : {},
+  }),
+);
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
@@ -819,9 +874,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     onSubmit,
     onClick,
     onKeyDown,
+    onPaste,
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -861,6 +918,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
+    padding,
+    borderRadius,
+    elevation,
     trailingButton,
     valueComponentType = 'text',
     isTableInputCell = false,
@@ -874,6 +934,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     labelTrailing,
     valueSuffix,
     children,
+    topContent,
+    bottomContent,
+    inputRowOverlay,
+    caretColor,
     ...rest
   },
   ref,
@@ -961,10 +1025,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
+  const isValidationTextInside = validationTextPlacement === 'inside';
   const willRenderHintText =
     Boolean(helpText) ||
-    (validationState === 'success' && Boolean(successText)) ||
-    (validationState === 'error' && Boolean(errorText));
+    (!isValidationTextInside &&
+      ((validationState === 'success' && Boolean(successText)) ||
+        (validationState === 'error' && Boolean(errorText))));
 
   if (__DEV__) {
     if (
@@ -978,6 +1044,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
         moduleName: 'Input',
       });
     }
+
+    if (showHintsAsTooltip && isValidationTextInside) {
+      logger({
+        message:
+          'showHintsAsTooltip and validationTextPlacement="inside" should not be used together. validationTextPlacement="inside" will take precedence.',
+        moduleName: 'Input',
+        type: 'warn',
+      });
+    }
   }
 
   const isTextArea = as === 'textarea';
@@ -985,6 +1060,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const hasTrailingDropdown = Boolean(trailingDropDown);
 
   const shouldAddLimitedFocus = hasLeadingDropdown || hasTrailingDropdown;
+
   return (
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
@@ -1028,6 +1104,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
+          $size={_size}
+          $borderRadius={borderRadius}
+          elevation={elevation}
         >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
@@ -1046,13 +1125,24 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             maxTagRows={maxTagRows}
             size={_size}
+            borderRadius={borderRadius}
             numberOfLines={numberOfLines}
-            onClick={() => {
+            onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
+                // If click didn't originate from the input itself (e.g., clicked on
+                // leading icon like DatePicker's calendar icon), dispatch a click on
+                // the input to trigger its onClick handlers (e.g., floating-ui toggle)
+                const inputEl = inputRef.current as HTMLElement | null;
+                if (!inputEl?.contains(e.target as Node) && !_isDisabled) {
+                  inputEl?.click();
+                }
               }
             }}
             isTableInputCell={isTableInputCell}
+            topContent={topContent}
+            bottomContent={bottomContent}
+            inputRowOverlay={inputRowOverlay}
           >
             <BaseInputVisuals
               size={_size}
@@ -1104,6 +1194,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 handleOnSubmit={handleOnSubmit}
                 handleOnInput={handleOnInput}
                 handleOnKeyDown={handleOnKeyDown}
+                onPaste={onPaste}
                 handleOnClick={handleOnClick}
                 leadingIcon={leadingIcon}
                 prefix={prefix}
@@ -1130,6 +1221,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 autoCapitalize={autoCapitalize}
                 isDropdownTrigger={isDropdownTrigger}
                 $size={_size}
+                $padding={padding}
                 valueComponentType={valueComponentType}
                 isTableInputCell={isTableInputCell}
                 tabIndex={tabIndex}
@@ -1138,6 +1230,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 color={color}
                 disabledColor={disabledColor}
                 isInsideCounterInput={isInsideCounterInput}
+                $caretColor={caretColor}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
                 {...makeAnalyticsAttribute(rest)}
               />
@@ -1149,12 +1242,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingIcon={trailingIcon}
               isDisabled={_isDisabled}
               validationState={validationState}
+              validationTextPlacement={validationTextPlacement}
               trailingButton={trailingButton}
               size={_size}
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
               trailingDropDown={trailingDropDown}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
@@ -1172,10 +1268,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
             <FormHint
-              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              type={getHintType({
+                validationState: isValidationTextInside ? 'none' : validationState,
+                hasHelpText: Boolean(helpText),
+              })}
               helpText={helpText}
-              errorText={errorText}
-              successText={successText}
+              errorText={isValidationTextInside ? undefined : errorText}
+              successText={isValidationTextInside ? undefined : successText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}

@@ -45,7 +45,13 @@ const avatarColorTokens = {
 
 const avatarBorderRadiusTokens = {
   circle: 'max',
-  square: 'medium',
+  square: {
+    xsmall: 'xsmall',
+    small: 'xsmall',
+    medium: 'small',
+    large: 'small',
+    xlarge: 'medium',
+  },
 } as const;
 
 const avatarToBottomAddonSize = {
@@ -101,13 +107,37 @@ const avatarTopAddonOffsets = {
       top: '-2px',
     },
     large: {
-      right: '-3px',
-      top: '-3px',
+      right: '-2px',
+      top: '-2px',
     },
     xlarge: {
-      right: '-4px',
-      top: '-4px',
+      right: '-2px',
+      top: '-2px',
     },
+  },
+} as const;
+
+const avatarGroupDensityOverlapTokens = {
+  compact: {
+    xsmall: size[20] / 2,
+    small: size[28] / 2,
+    medium: size[36] / 2,
+    large: size[48] / 2,
+    xlarge: size[56] / 2,
+  },
+  normal: {
+    xsmall: 14,
+    small: 16,
+    medium: 16,
+    large: 16,
+    xlarge: 16,
+  },
+  comfortable: {
+    xsmall: 8,
+    small: 8,
+    medium: 8,
+    large: 8,
+    xlarge: 8,
   },
 } as const;
 
@@ -120,4 +150,5 @@ export {
   avatarToBottomAddonSize,
   avatarToIndicatorSize,
   avatarTopAddonOffsets,
+  avatarGroupDensityOverlapTokens,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import { Modal, ModalFooter, ModalHeader, ModalBody } from '../Modal';
 import type { ModalProps } from '../index';
@@ -58,7 +58,7 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
         </ModalBody>
         <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="tertiary">Remove address</Button>
+            <Button variant="secondary">Remove address</Button>
             <Button>Add address</Button>
           </Box>
         </ModalFooter>

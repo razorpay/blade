@@ -1,6 +1,7 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   // Stroked Icons
+  import { ArrowLeftIcon } from './ArrowLeftIcon';
   import { CheckIcon } from './CheckIcon';
   import { CloseIcon } from './CloseIcon';
   import { CreditCardIcon } from './CreditCardIcon';
@@ -9,10 +10,13 @@
   import { SearchIcon } from './SearchIcon';
   // Filled Icons
   import { MoreFilledIcon } from './MoreFilledIcon';
+  // Branded Icons
+  import { RTBShieldIcon } from './RTBShieldIcon';
   import Text from '../Typography/Text/Text.svelte';
 
   // Icon maps for dynamic rendering
   const strokedIcons = {
+    ArrowLeftIcon,
     CheckIcon,
     CloseIcon,
     CreditCardIcon,
@@ -25,9 +29,15 @@
     MoreFilledIcon,
   };
 
+  // Branded icons keep their own colors/gradients and ignore the `color` prop.
+  const brandedIcons = {
+    RTBShieldIcon,
+  };
+
   const allIcons = {
     ...strokedIcons,
     ...filledIcons,
+    ...brandedIcons,
   };
 
   const { Story } = defineMeta({
@@ -108,6 +118,27 @@
         style="height: 95px; width: 125px;"
       >
         <svelte:component this={IconComponent} size="large" color="surface.icon.gray.normal" />
+        <Text
+          size="xsmall"
+          color="surface.text.gray.muted"
+          truncateAfterLines={1}
+        >
+          {name}
+        </Text>
+      </div>
+    {/each}
+  </div>
+</Story>
+
+<!-- Branded Icons -->
+<Story name="BrandedIcons" asChild>
+  <div class="display-flex flex-wrap">
+    {#each Object.entries(brandedIcons) as [name, IconComponent]}
+      <div
+        class="display-flex flex-col items-center gap-y-spacing-6"
+        style="height: 95px; width: 125px;"
+      >
+        <svelte:component this={IconComponent} size="large" />
         <Text
           size="xsmall"
           color="surface.text.gray.muted"

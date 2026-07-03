@@ -10,18 +10,25 @@ import {
 import * as React from 'react';
 import { MenuContext, useFloatingMenuSetup, useMenu } from './useMenu';
 import type { MenuProps } from './types';
+import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 
 const MenuTree = ({
   children,
   openInteraction = 'click',
   onOpenChange,
   isOpen: isOpenControlled,
+  defaultPlacement,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
   const elementsRef = React.useRef<(HTMLButtonElement | null)[]>([]);
   const labelsRef = React.useRef<(string | null)[]>([]);
   const parent = useMenu();
+  const [menuTriggerChild, menuOverlayChild] = React.Children.toArray(children) as [
+    React.ReactElement,
+    React.ReactElement,
+  ];
+  const overlayOffset = menuOverlayChild?.props?.offset;
 
   const {
     getReferenceProps,
@@ -41,6 +48,8 @@ const MenuTree = ({
     openInteraction,
     onOpenChange,
     isOpen: isOpenControlled,
+    overlayOffset,
+    defaultPlacement,
   });
 
   const referenceProps = {
@@ -60,13 +69,9 @@ const MenuTree = ({
     ref: refs.setFloating as any,
     style: floatingStyles,
     _transitionStyle: floatingTransitionStyles,
+    'data-placement': context.placement,
     ...getFloatingProps(),
   };
-
-  const [menuTriggerChild, menuOverlayChild] = React.Children.toArray(children) as [
-    React.ReactElement,
-    React.ReactElement,
-  ];
 
   const triggerWithReferenceProps = React.cloneElement(menuTriggerChild, {
     ...menuTriggerChild.props,
@@ -99,7 +104,7 @@ const MenuTree = ({
                 initialFocus={-1}
                 returnFocus={!isNested}
               >
-                {overlayWithFloatingProps}
+                <TopNavOverlayThemeOverride>{overlayWithFloatingProps}</TopNavOverlayThemeOverride>
               </FloatingFocusManager>
             </FloatingPortal>
           )}

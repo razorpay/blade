@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
-import { COUNTER_INPUT_TOKEN } from './token';
+import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -17,7 +17,7 @@ import { FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
-import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
+import { useBreakpoint, makeSpace, castWebType, makeMotionTime, makeBorderSize } from '~utils';
 import { MinusIcon, PlusIcon } from '~components/Icons';
 import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
@@ -29,6 +29,7 @@ const StyledCounterButton = styled.button<{
   $padding: number;
   $margin: readonly number[];
   $emphasis: 'subtle' | 'intense';
+  $borderRadius: number;
 }>`
   background-color: transparent;
   border: none;
@@ -36,7 +37,7 @@ const StyledCounterButton = styled.button<{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${({ theme }) => theme.border.radius.small}px;
+  border-radius: ${({ $borderRadius }) => makeBorderSize($borderRadius)};
   padding: ${({ $padding }) => makeSpace($padding)};
   margin: ${({ $margin }) => $margin.map((m) => makeSpace(m)).join(' ')};
 
@@ -67,14 +68,6 @@ const StyledCounterButton = styled.button<{
     }}
   }
 `;
-
-// Icon size mapping for counter input
-const ICON_SIZE_MAP = {
-  xsmall: 'small',
-  small: 'small',
-  medium: 'large',
-  large: 'xlarge',
-} as const;
 
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
@@ -250,7 +243,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
               }
               width={`${COUNTER_INPUT_TOKEN.width[size]}px`}
               height={`${COUNTER_INPUT_TOKEN.height[size]}px`}
-              borderRadius="medium"
+              borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
               borderColor={
                 _isDisabled ? emphasisTokens.disabledBorderColor : emphasisTokens.borderColor
@@ -263,6 +256,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
                   $margin={COUNTER_INPUT_TOKEN.decrementIconMargin}
                   $emphasis={emphasis}
+                  $borderRadius={COUNTER_INPUT_TOKEN.buttonBorderRadius[size]}
                   aria-label="Decrement value"
                   disabled={isDecrementDisabled}
                   style={{
@@ -272,7 +266,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   }}
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
-                  <MinusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
+                  <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
                 <BaseBox className={animationClass}>
@@ -306,6 +300,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   $padding={COUNTER_INPUT_TOKEN.iconPadding[size]}
                   $margin={COUNTER_INPUT_TOKEN.incrementIconMargin}
                   $emphasis={emphasis}
+                  $borderRadius={COUNTER_INPUT_TOKEN.buttonBorderRadius[size]}
                   aria-label="Increment value"
                   disabled={isIncrementDisabled}
                   style={{
@@ -315,7 +310,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   }}
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
-                  <PlusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
+                  <PlusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
               </BaseBox>
               {isLoading && (

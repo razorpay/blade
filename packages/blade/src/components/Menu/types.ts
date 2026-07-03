@@ -1,13 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { UseFloatingReturn, UseInteractionsReturn, useListItem } from '@floating-ui/react';
+import type {
+  OffsetOptions,
+  Placement,
+  UseFloatingReturn,
+  UseInteractionsReturn,
+  useListItem,
+} from '@floating-ui/react';
 import type React from 'react';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseMenuItemProps } from '~components/BaseMenu/types';
 import type { BoxProps } from '~components/Box';
-import type { FeedbackColors } from '~tokens/theme/theme';
-import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 // EXPOSED TYPES
 type MenuProps = {
@@ -32,6 +38,17 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+
+  /**
+   * Placement of the menu overlay relative to the trigger.
+   *
+   * Accepts any Floating UI placement value (e.g. `'bottom-start'`, `'top-end'`, `'left'`, `'right-start'`).
+   * The `flip` middleware will still automatically flip the placement if there isn't enough space.
+   * Only applies to root-level menus; nested submenus always open to `'right-start'`.
+   *
+   * @default 'bottom-start'
+   */
+  defaultPlacement?: Placement;
 };
 
 type MenuItemProps = {
@@ -139,6 +156,13 @@ type MenuOverlayProps = {
   maxWidth?: BoxProps['maxWidth'];
 
   /**
+   * Offset for overlay positioning relative to trigger.
+   *
+   * Supports Floating UI offset options (`mainAxis`, `crossAxis`, `alignmentAxis`).
+   */
+  offset?: OffsetOptions;
+
+  /**
    * @private Internal Prop. Do not override or you'll be fired
    */
   _transitionStyle?: React.CSSProperties;
@@ -165,8 +189,12 @@ type MenuContextType = {
   isOpen: boolean;
 };
 
-type UseFloatingMenuProps = Pick<MenuProps, 'openInteraction' | 'onOpenChange' | 'isOpen'> & {
+type UseFloatingMenuProps = Pick<
+  MenuProps,
+  'openInteraction' | 'onOpenChange' | 'isOpen' | 'defaultPlacement'
+> & {
   elementsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
+  overlayOffset?: OffsetOptions;
 };
 
 type UseFloatingMenuReturnType = Pick<

@@ -2,13 +2,14 @@
 
 exports[`<Heading /> should render Heading with color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -30,13 +31,14 @@ exports[`<Heading /> should render Heading with color 1`] = `
 
 exports[`<Heading /> should render Heading with default properties 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -58,13 +60,14 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 
 exports[`<Heading /> should render Heading with mixed color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -75,13 +78,14 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  color: hsla(200,84%,44%,1);
+  color: hsla(200,100%,41%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -110,13 +114,14 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 
 exports[`<Heading /> should render Heading with size "large" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -138,13 +143,14 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 
 exports[`<Heading /> should render Heading with size "medium" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -166,13 +172,14 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 
 exports[`<Heading /> should render Heading with size "small" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -194,13 +201,14 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 
 exports[`<Heading /> should render Heading with size "small" and contrast "high" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;

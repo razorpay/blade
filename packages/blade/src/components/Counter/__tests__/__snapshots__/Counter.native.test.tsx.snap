@@ -9,12 +9,16 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -23,20 +27,24 @@ exports[`<Counter /> should render Counter with default props 1`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -71,18 +79,19 @@ exports[`<Counter /> should render Counter with default props 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -115,12 +124,16 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -129,20 +142,24 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
       backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -177,6 +194,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -187,8 +205,8 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -221,12 +239,16 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -235,20 +257,24 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
       backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "backgroundColor": "hsla(200, 100%, 41%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -283,6 +309,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -293,8 +320,8 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -327,12 +354,16 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -341,20 +372,24 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
       backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -389,6 +424,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -399,8 +435,8 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -433,12 +469,16 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -447,20 +487,24 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
       backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "backgroundColor": "hsla(4, 85%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -495,6 +539,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -505,8 +550,8 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -539,12 +584,16 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -553,20 +602,24 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
       backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -601,6 +654,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -611,8 +665,8 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -645,12 +699,16 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -659,20 +717,24 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
       backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "backgroundColor": "hsla(200, 10%, 18%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -707,6 +769,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -717,8 +780,8 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -751,12 +814,16 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -765,20 +832,24 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
       backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -813,6 +884,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -823,8 +895,8 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -857,12 +929,16 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -871,20 +947,24 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
       backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "backgroundColor": "hsla(25, 100%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -919,6 +999,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -929,8 +1010,8 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -963,12 +1044,16 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -977,20 +1062,24 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
       backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1025,6 +1114,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1035,8 +1125,8 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1069,12 +1159,16 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1083,20 +1177,24 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
       backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "backgroundColor": "hsla(150, 100%, 28%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1131,6 +1229,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1141,8 +1240,8 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1175,12 +1274,16 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1189,20 +1292,24 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
       backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1237,6 +1344,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1247,8 +1355,8 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1281,12 +1389,16 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1295,20 +1407,24 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
       backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1343,6 +1459,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
@@ -1353,8 +1470,8 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1387,12 +1504,16 @@ exports[`<Counter /> should render large size Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1401,20 +1522,24 @@ exports[`<Counter /> should render large size Counter 1`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="24px"
+      minWidth="24px"
       platform="onMobile"
       size="large"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 24,
+            "minWidth": 24,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1449,17 +1574,18 @@ exports[`<Counter /> should render large size Counter 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1493,12 +1619,16 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1507,20 +1637,24 @@ exports[`<Counter /> should render medium size Counter 1`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1555,18 +1689,19 @@ exports[`<Counter /> should render medium size Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1599,12 +1734,16 @@ exports[`<Counter /> should render small size Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1613,20 +1752,24 @@ exports[`<Counter /> should render small size Counter 1`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="16px"
+      minWidth="16px"
       platform="onMobile"
       size="small"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 16,
+            "minWidth": 16,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1661,18 +1804,19 @@ exports[`<Counter /> should render small size Counter 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={25}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 14,
+                "letterSpacing": -0.13,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1705,12 +1849,16 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1719,20 +1867,24 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
       backgroundColor="feedback.background.information.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1767,18 +1919,19 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(200, 84%, 37%, 1)",
+                "color": "hsla(200, 100%, 33%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1811,12 +1964,16 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1825,20 +1982,24 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
       backgroundColor="feedback.background.information.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "backgroundColor": "hsla(200, 100%, 41%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1873,18 +2034,19 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(200, 84%, 37%, 1)",
+                "color": "hsla(200, 100%, 33%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1917,12 +2079,16 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -1931,20 +2097,24 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
       backgroundColor="feedback.background.negative.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -1979,18 +2149,19 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 1)",
+                "color": "hsla(4, 85%, 44%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2023,12 +2194,16 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2037,20 +2212,24 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
       backgroundColor="feedback.background.negative.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2085,18 +2264,19 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(4, 74%, 49%, 1)",
+                "color": "hsla(4, 85%, 44%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2129,12 +2309,16 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2143,20 +2327,24 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2191,18 +2379,19 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2235,12 +2424,16 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2249,20 +2442,24 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
       backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2297,18 +2494,19 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(211, 33%, 21%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2341,12 +2539,16 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2355,20 +2557,24 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
       backgroundColor="feedback.background.notice.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2403,18 +2609,19 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(25, 85%, 42%, 1)",
+                "color": "hsla(25, 100%, 39%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2447,12 +2654,16 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2461,20 +2672,24 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
       backgroundColor="feedback.background.notice.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "backgroundColor": "hsla(25, 100%, 44%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2509,18 +2724,19 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(25, 85%, 42%, 1)",
+                "color": "hsla(25, 100%, 39%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2553,12 +2769,16 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2567,20 +2787,24 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
       backgroundColor="feedback.background.positive.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2615,18 +2839,19 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2659,12 +2884,16 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2673,20 +2902,24 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
       backgroundColor="feedback.background.positive.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "backgroundColor": "hsla(150, 100%, 28%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2721,18 +2954,19 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2765,12 +2999,16 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2779,20 +3017,24 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
       backgroundColor="surface.background.primary.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2827,18 +3069,19 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 1)",
+                "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2871,12 +3114,16 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
   }
 >
   <View
+    alignSelf="center"
     data-blade-component="counter"
     display="flex"
+    justifyContent="center"
     style={
       [
         {
+          "alignSelf": "center",
           "display": "flex",
+          "justifyContent": "center",
         },
       ]
     }
@@ -2885,20 +3132,24 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
       backgroundColor="surface.background.primary.subtle"
       data-blade-component="base-box"
       minHeight="20px"
+      minWidth="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "minHeight": 20,
+            "minWidth": 20,
           },
           {
+            "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
             "maxWidth": 100,
           },
         ]
@@ -2933,18 +3184,19 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(227, 100%, 59%, 1)",
+                "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,

@@ -75,11 +75,11 @@ const ListItemContentChildren = ({
     As a workaround, we wrap individual strings in their own <Text /> and handle alignment with a parent <View> (BaseBox).
    */
   return getPlatformType() === 'react-native' ? (
-    <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap" flex={1}>
       {children.map((child, index) => {
         if (typeof child === 'string') {
           return (
-            <Text key={index} variant="body" size={size}>
+            <Text key={index} variant="body" size={size} color="surface.text.gray.subtle">
               {child}
             </Text>
           );
@@ -88,7 +88,7 @@ const ListItemContentChildren = ({
       })}
     </BaseBox>
   ) : (
-    <Text variant="body" size={size}>
+    <Text variant="body" size={size} color="surface.text.gray.subtle">
       {children}
     </Text>
   );

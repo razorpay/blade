@@ -48,7 +48,7 @@ const FilterChipGroup = ({
         {children}
         {showClearButton &&
         (filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0) ? (
-          <Link size="xsmall" color="neutral" onClick={handleClearButtonClick}>{`Clear Filter${
+          <Link size="small" color="neutral" onClick={handleClearButtonClick}>{`Clear Filter${
             filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1 ? 's' : ''
           }`}</Link>
         ) : null}

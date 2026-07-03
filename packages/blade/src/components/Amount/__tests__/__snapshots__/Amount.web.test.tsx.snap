@@ -27,7 +27,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -46,7 +46,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -63,7 +63,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -142,7 +142,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -161,7 +161,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -178,7 +178,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -257,7 +257,7 @@ exports[`<Amount /> should render Amount with negative value 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -276,7 +276,7 @@ exports[`<Amount /> should render Amount with negative value 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -295,7 +295,7 @@ exports[`<Amount /> should render Amount with negative value 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -312,7 +312,7 @@ exports[`<Amount /> should render Amount with negative value 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -397,7 +397,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -416,7 +416,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -433,7 +433,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -512,7 +512,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -531,7 +531,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -548,7 +548,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -627,7 +627,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
@@ -646,13 +646,14 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 3.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 4rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -717,7 +718,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -736,7 +737,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -753,7 +754,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -832,7 +833,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -851,7 +852,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -868,7 +869,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -886,7 +887,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -905,7 +906,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -922,7 +923,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -940,14 +941,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -957,14 +958,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -974,7 +975,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
@@ -993,13 +994,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1010,13 +1012,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1028,7 +1031,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -1047,13 +1050,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1064,13 +1068,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1082,7 +1087,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
@@ -1101,13 +1106,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1118,13 +1124,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c18.c18.c18.c18.c18 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1136,7 +1143,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c19.c19.c19.c19.c19 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1155,13 +1162,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.5rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1172,13 +1180,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1190,7 +1199,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
@@ -1209,13 +1218,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 3.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 4rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1226,13 +1236,14 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c24.c24.c24.c24.c24 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.25rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1553,7 +1564,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1572,14 +1583,14 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1589,7 +1600,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1668,7 +1679,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -1687,14 +1698,14 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1.0625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -1704,7 +1715,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
@@ -1783,7 +1794,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1802,7 +1813,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1819,7 +1830,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1898,7 +1909,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1917,7 +1928,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1934,7 +1945,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -2017,12 +2028,12 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   width: 100%;
   top: 50%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(212,39%,16%,1);
+  border-bottom-color: hsla(0,0%,2%,1);
   border-bottom-style: solid;
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -2041,7 +2052,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2058,7 +2069,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -2141,7 +2152,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2160,7 +2171,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(4,74%,49%,1);
+  color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2232,7 +2243,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -2251,7 +2262,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2268,7 +2279,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;

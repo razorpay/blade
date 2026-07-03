@@ -54,30 +54,30 @@ type ChipHorizontalPaddingTokens = {
 const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
   withoutIcon: {
     left: {
-      xsmall: 'spacing.4',
-      small: 'spacing.4',
-      medium: 'spacing.6',
-      large: 'spacing.7',
+      xsmall: 'spacing.3',
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.5',
     },
     right: {
-      xsmall: 'spacing.4',
-      small: 'spacing.4',
-      medium: 'spacing.6',
-      large: 'spacing.7',
+      xsmall: 'spacing.3',
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.5',
     },
   },
   withIcon: {
     left: {
-      xsmall: 'spacing.4',
-      small: 'spacing.4',
-      medium: 'spacing.5',
-      large: 'spacing.6',
+      xsmall: 'spacing.3',
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.5',
     },
     right: {
-      xsmall: 'spacing.4',
-      small: 'spacing.4',
-      medium: 'spacing.6',
-      large: 'spacing.7',
+      xsmall: 'spacing.3',
+      small: 'spacing.3',
+      medium: 'spacing.4',
+      large: 'spacing.5',
     },
   },
 };
@@ -198,6 +198,13 @@ const chipMotionTokens: Record<'duration' | 'easing', DurationString | EasingStr
   easing: 'easing.standard',
 };
 
+const chipBorderRadiusTokens: Record<NonNullable<ChipGroupProps['size']>, 'small' | 'medium'> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'small',
+  large: 'medium',
+};
+
 export {
   chipColorTokens,
   chipHeightTokens,
@@ -208,4 +215,5 @@ export {
   chipIconSizes,
   chipMotionTokens,
   chipGroupLabelSizeTokens,
+  chipBorderRadiusTokens,
 };

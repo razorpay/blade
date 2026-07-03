@@ -16,6 +16,7 @@ import {
   baseInputBackgroundColor,
   baseInputBorderBackgroundMotion,
   baseInputBorderColor,
+  baseInputBorderRadius,
   baseInputHeight,
   baseInputWrapperMaxHeight,
 } from './baseInputTokens';
@@ -23,6 +24,7 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import type { EasingFactoryFn } from '~tokens/global';
+import { FocusRingWrapper } from '~utils/getFocusRingStyles';
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -33,6 +35,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
+    size: props.size,
   }),
 }));
 
@@ -104,9 +107,9 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   if (rest.validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor.error);
-  } else if (rest.validationState === 'success') {
-    borderColor = getIn(theme.colors, baseInputBorderColor.success);
   }
+
+  const isFocused = rest.currentInteraction === 'focus';
 
   const motionConfig: {
     duration: number;
@@ -116,51 +119,72 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       makeMotionTime(
         getIn(
           theme.motion.duration,
-          baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-            .duration,
+          baseInputBorderBackgroundMotion[isFocused ? 'enter' : 'exit'].duration,
         ),
       ),
     ),
     easing: castNativeType(
-      theme.motion.easing[
-        baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
-          .easing
-      ],
+      theme.motion.easing[baseInputBorderBackgroundMotion[isFocused ? 'enter' : 'exit'].easing],
     ),
   };
 
+  const targetBorderWidth = rest.isTableInputCell
+    ? theme.border.width.none
+    : isFocused
+    ? theme.border.width.thick
+    : theme.border.width.thin;
+
+  const inputBorderRadius = rest.isTableInputCell
+    ? theme.border.radius.none
+    : theme.border.radius[baseInputBorderRadius[rest.size]];
+
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({
-      borderWidth: rest.isTableInputCell ? theme.border.width.none : theme.border.width.thin,
-      borderRadius: theme.border.radius.medium,
+      borderWidth: withTiming(targetBorderWidth, motionConfig),
+      borderRadius: inputBorderRadius,
       borderStyle: 'solid',
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-    [borderColor, backgroundColor, motionConfig],
+    [
+      borderColor,
+      backgroundColor,
+      motionConfig,
+      rest.isTableInputCell,
+      rest.size,
+      targetBorderWidth,
+      inputBorderRadius,
+    ],
   );
 
   return (
-    <StyledBaseInputWrapper
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      style={[
-        // We only want to define height in tagged inputs except height for TextArea is set on TextArea based on numberOfLines prop
-        isDropdownTrigger && !isTextArea
-          ? {
-              ...maxHeightStyleObject,
-              ...animatedStyleObject,
-            }
-          : {},
-        animatedBorderAndBackgroundStyle,
-      ]}
-      isDropdownTrigger={isDropdownTrigger}
-      numberOfLines={numberOfLines}
-      setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-      {...rest}
+    <FocusRingWrapper
+      isFocused={isFocused}
+      borderRadius={inputBorderRadius}
+      disabled={rest.isTableInputCell}
     >
-      {children}
-    </StyledBaseInputWrapper>
+      <StyledBaseInputWrapper
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        style={[
+          isDropdownTrigger && !isTextArea
+            ? {
+                ...maxHeightStyleObject,
+                ...animatedStyleObject,
+              }
+            : !isTextArea
+            ? { height: baseInputHeight[rest.size] }
+            : {},
+          animatedBorderAndBackgroundStyle,
+        ]}
+        isDropdownTrigger={isDropdownTrigger}
+        numberOfLines={numberOfLines}
+        setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
+        {...rest}
+      >
+        {children}
+      </StyledBaseInputWrapper>
+    </FocusRingWrapper>
   );
 };
 

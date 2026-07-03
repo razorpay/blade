@@ -81,12 +81,12 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 
 export const StyledCell = styled(Cell)<{
   $backgroundColor: TableBackgroundColors;
-  gridRow?: string;
-}>(({ theme, $backgroundColor, gridRow }) => ({
+  $gridRow?: string;
+}>(({ theme, $backgroundColor, $gridRow }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, $backgroundColor),
-    gridRow,
+    gridRow: $gridRow,
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -150,7 +150,7 @@ const _TableCell = ({
       $backgroundColor={backgroundColor}
       gridColumnStart={gridColumnStart}
       gridColumnEnd={gridColumnEnd}
-      gridRow={gridRowValue}
+      $gridRow={gridRowValue}
       {...metaAttribute({ name: MetaConstants.TableCell })}
       {...makeAnalyticsAttribute(rest)}
     >
@@ -173,7 +173,7 @@ const _TableCell = ({
           {...metaAttribute({ name: MetaConstants.TableCellWrapper })}
         >
           {isChildrenString ? (
-            <Text color="surface.text.gray.subtle" size="small" truncateAfterLines={1}>
+            <Text color="surface.text.gray.subtle" size="medium" truncateAfterLines={1}>
               {children}
             </Text>
           ) : (
@@ -235,7 +235,7 @@ const StyledRow = styled(Row)<{
   $isGrouped: boolean;
   $isGroupHeader: boolean;
 }>(({ theme, $isSelectable, $isHoverable, $showBorderedCells, $isGrouped, $isGroupHeader }) => {
-  const { hasHoverActions } = useTableContext();
+  const { hasHoverActions, checkboxDisplay, selectionType } = useTableContext();
 
   const rowBackgroundTransition = `background-color ${makeMotionTime(
     getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -319,6 +319,24 @@ const StyledRow = styled(Row)<{
           border: 'none',
         },
       }),
+      // When checkboxDisplay="on-hover", hide only the checkbox content inside the
+      // first td. We target .cell-wrapper > * (the BaseBox wrapping the Checkbox)
+      // rather than the td itself so that the cell-wrapper's border-bottom — which
+      // draws the row separator line — stays fully visible.
+      // Reveal on row hover, keyboard focus, or when the row is already selected
+      // (.row-select-selected class is added by @table-library/react-table-library).
+      ...(checkboxDisplay === 'on-hover' &&
+        selectionType === 'multiple' && {
+          '& td:first-child .cell-wrapper > *': {
+            opacity: 0,
+            transition: `opacity ${makeMotionTime(
+              getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+            )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+          },
+          '&:hover td:first-child .cell-wrapper > *': { opacity: 1 },
+          '&:focus td:first-child .cell-wrapper > *': { opacity: 1 },
+          '&.row-select-selected td:first-child .cell-wrapper > *': { opacity: 1 },
+        }),
     },
   };
 });
@@ -342,6 +360,7 @@ const _TableRow = <Item,>({
     setHasHoverActions,
     isVirtualized,
     isGrouped,
+    multiSelectTrigger,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
@@ -397,7 +416,7 @@ const _TableRow = <Item,>({
       onMouseEnter={() => onHover?.({ item })}
       onClick={() => {
         onClick?.({ item });
-        if (selectionType !== 'none' && !isDisabled) {
+        if (selectionType !== 'none' && !isDisabled && multiSelectTrigger !== 'checkbox') {
           toggleRowSelectionById(item.id);
         }
       }}

@@ -10,6 +10,10 @@
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
+    loadingTimer,
+    onLoadingComplete,
+    avatars,
     href,
     target,
     rel,
@@ -40,6 +44,7 @@
   const accessibilityProps = $derived({
     label: accessibilityLabel,
     describedBy: rest['aria-describedby'],
+    controls: rest['aria-controls'],
     expanded: rest['aria-expanded'],
     hasPopup: rest['aria-haspopup'],
     role,
@@ -63,6 +68,10 @@
   {type}
   {variant}
   {isLoading}
+  {loadingType}
+  {loadingTimer}
+  {onLoadingComplete}
+  {avatars}
   {testID}
   {onBlur}
   {onFocus}

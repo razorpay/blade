@@ -337,7 +337,10 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
         tabIndex?: number;
       } & ElementTiming
   > &
-  BladeCommonEvents;
+  BladeCommonEvents & {
+    // TODO: add comment
+    $isCard?: boolean;
+  };
 
 // ref prop type
 type BoxRefType = Platform.Select<{

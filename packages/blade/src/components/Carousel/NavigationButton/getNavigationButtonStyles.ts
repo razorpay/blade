@@ -34,7 +34,7 @@ const getNavigationButtonStyles = (props: {
   };
 
   const borderColors = {
-    filled: theme.colors.transparent,
+    filled: theme.colors.interactive.border.gray.faded,
     stroked: theme.colors.interactive.border.gray.faded,
   } as const;
 
@@ -67,8 +67,7 @@ const getNavigationButtonStyles = (props: {
           transitionProperty: 'color, box-shadow',
           transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
           transitionTimingFunction: castWebType(motionToken.easing.standard),
-          boxShadow: variant === 'filled' ? castWebType(theme.elevation.midRaised) : undefined,
-
+          boxShadow: variant === 'filled' ? castWebType(theme.elevation.lowRaised) : undefined,
           '&:hover': {
             color: iconColor[variant].highlighted,
             backgroundColor: backgroundColor[variant].highlighted,

@@ -23,6 +23,13 @@ The SideNav component provides a responsive side navigation layout positioned al
 The following types represent the props that the SideNav component and its subcomponents accept. These types help configure the navigation structure properly.
 
 ````typescript
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { Theme } from '~components/BladeProvider';
+
+type SideNavBackgroundColor = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
+>}`;
+
 /**
  * Props for the SideNav component
  */
@@ -54,11 +61,37 @@ type SideNavProps = {
    */
   onVisibleLevelChange?: ({ visibleLevel }: { visibleLevel: number }) => void;
   /**
+   * Callback that gets triggered when controlled full expand state changes.
+   *
+   * **Only applicable in desktop**
+   */
+  onExpandChange?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  /**
+   * Callback that gets triggered when controlled full expand/collapse transition ends.
+   *
+   * **Only applicable in desktop**
+   */
+  onExpandTransitionEnd?: ({ isExpanded }: { isExpanded: boolean }) => void;
+  /**
+   * **Only applicable in desktop**
+   *
+   * Controls whether SideNav should remain fully expanded.
+   * - `true` (default): existing behavior with hover-based temporary expansion.
+   * - `false`: keeps SideNav collapsed and disables hover/focus-based expansion.
+   */
+  isExpanded?: boolean;
+  /**
    * Banner slot for usecases like adding Activation Panel
    *
    * IMPORTANT: Avoid adding promotional items in this
    */
   banner?: React.ReactElement;
+  /**
+   * Sets background color of the SideNav surface.
+   *
+   * @default `surface.background.gray.moderate`
+   */
+  backgroundColor?: SideNavBackgroundColor;
   /**
    * Position of the SideNav.
    *
@@ -261,6 +294,26 @@ type SideNavLevelProps = {
   children: React.ReactElement | React.ReactElement[];
 };
 ````
+
+## Usage Guidelines
+
+**Do**
+
+- Use `SideNav` for complex, hierarchical navigation with 5+ items and multi-level nesting (L1, L2, L3).
+- Pass the `as` prop on `SideNavLink` with your router's link component (e.g., React Router `Link`) — it's required.
+- Manage active state externally using `isActive` prop with `useLocation()` and `matchPath()`.
+- Use `SideNavSection` to group related links under collapsible headings.
+- Use `SideNavFooter` for utility items like Settings or Test Mode toggles.
+- Use the `banner` slot only for critical activation or onboarding UI, not promotions.
+- Pair with `SkipNav` for keyboard accessibility to let users skip past the navigation.
+
+**Don't**
+
+- Don't use `SideNav` for simple mobile-only navigation with 2–5 items — use `BottomNav` instead.
+- Don't use `SideNav` without a routing library integration — the `as` prop requires a router component.
+- Don't put promotional content in the `banner` slot — it's reserved for critical UI like activation cards.
+- Don't expect automatic active state detection — Blade is routing-library agnostic, so consumers manage it.
+- Don't use `SideNavItem` for navigable links — it's for static items with trailing interactions like switches.
 
 ## Example
 

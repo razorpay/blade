@@ -234,14 +234,17 @@ type ChipBorderColors =
 
 type AnimatedChipProps = {
   borderColor: ChipBorderColors;
+  backgroundColor?: ChipBackgroundColors;
   isPressed?: boolean;
   isDisabled?: boolean;
   isDesktop?: boolean;
+  isChecked?: boolean;
   theme: Theme;
   children: React.ReactNode;
   width?: BoxProps['width'];
   maxWidth?: BoxProps['maxWidth'];
   minWidth?: BoxProps['minWidth'];
+  size?: ChipGroupProps['size'];
 };
 
 type StyledChipWrapperProps = {
@@ -251,6 +254,7 @@ type StyledChipWrapperProps = {
   isDisabled?: boolean;
   theme: Theme;
   children: React.ReactNode;
+  size?: ChipGroupProps['size'];
 };
 
 export type {

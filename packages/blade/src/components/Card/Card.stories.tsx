@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
 import type { CardSpacingValueType } from './types';
 import type { CardFooterAction, CardProps } from './';
@@ -20,6 +20,10 @@ import {
   CardHeaderAmount,
   CardHeaderText,
 } from './';
+import type { Elevation } from '~tokens/global';
+import { Amount } from '~components/Amount';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
@@ -32,15 +36,15 @@ import {
   ArrowRightIcon,
 } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
+import { isReactNative } from '~utils';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import type { Elevation } from '~tokens/global';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
-import { Amount } from '~components/Amount';
+import { StoryScrollView } from '~utils/storybook/StoryScrollView';
 
 const Page = (): React.ReactElement => {
   return (
@@ -309,34 +313,76 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card
-      borderRadius={args.borderRadius}
-      backgroundColor={args.backgroundColor}
-      elevation={args.elevation}
-      padding={args.padding}
-    >
-      <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
-        <CardHeaderLeading
-          title={args.headerTitle}
-          subtitle={args.headerSubtitle}
-          prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
-          suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
-        />
-        <CardHeaderTrailing visual={args.visual} />
-      </CardHeader>
-      <CardBody>
-        <Text>{args.body}</Text>
-      </CardBody>
-      <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
-        <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
-        <CardFooterTrailing
-          actions={{
-            primary: args.footerPrimaryAction,
-            secondary: args.footerSecondaryAction,
-          }}
-        />
-      </CardFooter>
-    </Card>
+    <Box display="flex">
+      <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
+        <Card
+          borderRadius={args.borderRadius}
+          backgroundColor={args.backgroundColor}
+          elevation="none"
+          padding={args.padding}
+        >
+          <CardHeader
+            paddingBottom={args.headerPaddingBottom}
+            marginBottom={args.headerMarginBottom}
+          >
+            <CardHeaderLeading
+              title={args.headerTitle}
+              subtitle={args.headerSubtitle}
+              prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+              suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
+            />
+            <CardHeaderTrailing visual={args.visual} />
+          </CardHeader>
+          <CardBody>
+            <Text>{args.body}</Text>
+          </CardBody>
+          <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
+            <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
+            <CardFooterTrailing
+              actions={{
+                primary: args.footerPrimaryAction,
+                secondary: args.footerSecondaryAction,
+              }}
+            />
+          </CardFooter>
+        </Card>
+      </Box>
+      <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+        <Box backgroundColor="surface.background.gray.moderate" padding="spacing.8">
+          <Card
+            borderRadius={args.borderRadius}
+            backgroundColor={args.backgroundColor}
+            elevation="highRaised"
+            padding={args.padding}
+          >
+            <CardHeader
+              paddingBottom={args.headerPaddingBottom}
+              marginBottom={args.headerMarginBottom}
+            >
+              <CardHeaderLeading
+                title={args.headerTitle}
+                subtitle={args.headerSubtitle}
+                prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+                suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
+              />
+              <CardHeaderTrailing visual={args.visual} />
+            </CardHeader>
+            <CardBody>
+              <Text>{args.body}</Text>
+            </CardBody>
+            <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
+              <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
+              <CardFooterTrailing
+                actions={{
+                  primary: args.footerPrimaryAction,
+                  secondary: args.footerSecondaryAction,
+                }}
+              />
+            </CardFooter>
+          </Card>
+        </Box>
+      </BladeProvider>
+    </Box>
   );
 };
 
@@ -447,7 +493,7 @@ const CardWithoutPaddingExample: StoryFn<typeof Card> = (args): React.ReactEleme
             height="auto"
             src="https://d6xcmfyh68wv8.cloudfront.net/assets/case-studies/common-card/pg_breathingroom.png"
             alt="Breathing Room"
-            style={{ borderTopLeftRadius: '4px', borderBottomLeftRadius: '4px' }}
+            style={{ borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px' }}
           />
           <Box padding="spacing.7" display="flex" flexDirection="column">
             <Heading size="large">Breathing Room</Heading>
@@ -589,3 +635,169 @@ const MetricCardVariantExample = (): React.ReactElement => {
 };
 
 export const MetricCardVariant = MetricCardVariantExample.bind({});
+
+const CardWithOverflowExample = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Heading>Card with overflow="auto"</Heading>
+      <Card height="200px" overflow="auto" maxWidth="400px">
+        <CardHeader>
+          <CardHeaderLeading title="Scrollable Content" />
+        </CardHeader>
+        <CardBody>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
+            <StoryScrollView>
+              <Text>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem
+                Ipsum.
+              </Text>
+              <Text marginTop="spacing.5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s.
+              </Text>
+            </StoryScrollView>
+          </Box>
+        </CardBody>
+      </Card>
+
+      <Heading>Card with overflow="hidden"</Heading>
+      <Card height="200px" overflow="hidden" maxWidth="400px">
+        <CardHeader>
+          <CardHeaderLeading title="Hidden Overflow" />
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </Text>
+        </CardBody>
+      </Card>
+
+      <Heading>Card with overflowY="scroll"</Heading>
+      <Card height="200px" overflowY="scroll" maxWidth="400px">
+        <CardHeader>
+          <CardHeaderLeading title="Vertical Scroll Only" />
+        </CardHeader>
+        <CardBody>
+          <Box
+            height={isReactNative() ? '120px' : undefined}
+            overflow={isReactNative() ? 'hidden' : undefined}
+          >
+            <StoryScrollView>
+              <Text>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including versions of Lorem
+                Ipsum.
+              </Text>
+            </StoryScrollView>
+          </Box>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export const CardWithOverflow = CardWithOverflowExample.bind({});
+
+const SecondaryCardExample = (): React.ReactElement => {
+  return (
+    <Card variant="secondary" padding="spacing.7">
+      <CardBody>
+        <Text weight="semibold" size="medium">
+          Secondary Card
+        </Text>
+        <Text marginTop="spacing.3">
+          This is a secondary card variant. It has no border, elevation, or gradient — just a flat
+          surface with a gray moderate background. It only accepts CardBody as children.
+        </Text>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const SecondaryCard = SecondaryCardExample.bind({});
+
+const NestedCardExample = (): React.ReactElement => {
+  return (
+    <Card>
+      <CardHeader>
+        <CardHeaderLeading
+          title="Payment Summary"
+          subtitle="Overview of recent transactions"
+          prefix={<CardHeaderIcon icon={CheckCircleIcon} />}
+        />
+        <CardHeaderTrailing visual={<CardHeaderBadge color="positive">Active</CardHeaderBadge>} />
+      </CardHeader>
+      <CardBody>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Text>Below are the details of your recent transactions grouped by category.</Text>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">UPI Payments</Text>
+                <Amount value={45000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                12 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">Card Payments</Text>
+                <Amount value={120000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                8 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">Net Banking</Text>
+                <Amount value={78000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                5 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+        </Box>
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading title="Total Volume" subtitle="This week" />
+        <CardFooterTrailing
+          actions={{
+            primary: {
+              text: 'View All',
+              onClick: () => console.log('View All clicked'),
+            },
+          }}
+        />
+      </CardFooter>
+    </Card>
+  );
+};
+
+export const NestedSecondaryInsidePrimary = NestedCardExample.bind({});

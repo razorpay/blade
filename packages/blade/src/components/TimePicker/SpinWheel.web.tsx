@@ -137,6 +137,7 @@ const SpinWheel = ({
       alignItems="center"
       width={isMobile ? makeSize(size[82]) : makeSize(size[66])}
       height={makeSize(size[172])}
+      borderRadius="small"
     >
       <BaseBox position="relative" width="100%" overflow="hidden">
         {/* Scrollable container */}

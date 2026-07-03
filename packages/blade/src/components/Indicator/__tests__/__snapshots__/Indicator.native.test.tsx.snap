@@ -82,7 +82,7 @@ exports[`<Indicator /> should render 1`] = `
             cy="5"
             fill={
               {
-                "payload": 4280563015,
+                "payload": 4280889138,
                 "type": 0,
               }
             }
@@ -113,16 +113,17 @@ exports[`<Indicator /> should render 1`] = `
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -227,7 +228,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
             cy="5"
             fill={
               {
-                "payload": 4291189776,
+                "payload": 4291252992,
                 "type": 0,
               }
             }
@@ -258,17 +259,18 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -361,7 +363,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
             cy="5"
             fill={
               {
-                "payload": 4278225477,
+                "payload": 4278220091,
                 "type": 0,
               }
             }
@@ -392,16 +394,17 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -495,7 +498,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
             cy="5"
             fill={
               {
-                "payload": 4292422944,
+                "payload": 4291829265,
                 "type": 0,
               }
             }
@@ -526,16 +529,17 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -629,7 +633,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
             cy="5"
             fill={
               {
-                "payload": 4279204270,
+                "payload": 4278218920,
                 "type": 0,
               }
             }
@@ -660,16 +664,17 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           fontSize={100}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
+                "letterSpacing": -0.18200000000000002,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -774,7 +779,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
             cy="5"
             fill={
               {
-                "payload": 385917778,
+                "payload": 385912647,
                 "type": 0,
               }
             }
@@ -790,7 +795,7 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
             cy="5"
             fill={
               {
-                "payload": 4278225477,
+                "payload": 4278220091,
                 "type": 0,
               }
             }
@@ -821,17 +826,18 @@ exports[`<Indicator /> should render with intense emphasis 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="medium"
+          letterSpacing={50}
           lineHeight={75}
           style={
             [
               {
-                "color": "hsla(211, 26%, 34%, 1)",
+                "color": "hsla(200, 10%, 18%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "500",
-                "letterSpacing": 0,
-                "lineHeight": 18,
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,

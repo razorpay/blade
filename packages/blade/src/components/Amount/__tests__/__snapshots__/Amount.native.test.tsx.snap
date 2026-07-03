@@ -45,12 +45,13 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -68,39 +69,23 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -116,7 +101,7 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -133,6 +118,9 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -145,17 +133,18 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -167,13 +156,16 @@ exports[`<Amount /> should allow customizing number of fraction digits 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           4568
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -223,12 +215,13 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -246,39 +239,23 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         AED
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -294,7 +271,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -311,6 +288,9 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -323,17 +303,18 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -345,13 +326,16 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -401,12 +385,13 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -424,39 +409,23 @@ exports[`<Amount /> should render Amount with default props 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -472,7 +441,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -489,6 +458,9 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -501,17 +473,18 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -523,13 +496,16 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -584,7 +560,7 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -601,6 +577,9 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
@@ -612,12 +591,13 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -635,39 +615,23 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -683,7 +647,7 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -700,6 +664,9 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -712,17 +679,18 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -734,13 +702,16 @@ exports[`<Amount /> should render Amount with negative sign 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -790,12 +761,13 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -813,39 +785,23 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         MYR
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -861,7 +817,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -878,6 +834,9 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -890,17 +849,18 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -912,13 +872,16 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -968,12 +931,13 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -991,39 +955,23 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         $
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1039,7 +987,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1056,6 +1004,9 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -1068,17 +1019,18 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1090,13 +1042,16 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1146,12 +1101,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -1169,39 +1125,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1217,7 +1157,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1234,6 +1174,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -1246,17 +1189,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1268,13 +1212,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -1313,12 +1260,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="semibold"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -1336,39 +1284,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1384,7 +1316,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -1401,6 +1333,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -1413,17 +1348,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1435,13 +1371,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -1480,18 +1419,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={75}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 17,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1503,39 +1443,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1551,13 +1475,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1567,6 +1491,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textDecorationLine": "none",
+              },
+              {
+                "includeFontPadding": false,
               },
             ]
           }
@@ -1580,17 +1507,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1602,13 +1530,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -1647,18 +1578,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="semibold"
+        lineHeight={75}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 17,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1670,39 +1602,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1718,13 +1634,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "letterSpacing": 0,
-                "lineHeight": 18,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1734,6 +1650,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textDecorationLine": "none",
+              },
+              {
+                "includeFontPadding": false,
               },
             ]
           }
@@ -1747,17 +1666,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1769,13 +1689,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -1814,18 +1737,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="regular"
+        lineHeight={500}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 26,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -1837,39 +1761,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -1885,7 +1793,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 20,
                 "fontStyle": "normal",
@@ -1902,6 +1810,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -1914,17 +1825,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="regular"
+          lineHeight={200}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 24,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1936,13 +1848,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -1981,18 +1896,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="semibold"
+        lineHeight={500}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 26,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2004,39 +1920,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -2052,7 +1952,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 20,
                 "fontStyle": "normal",
@@ -2069,6 +1969,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -2081,17 +1984,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="semibold"
+          lineHeight={200}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 24,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2103,13 +2007,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -2148,18 +2055,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2171,39 +2079,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -2219,7 +2111,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
@@ -2236,6 +2128,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -2248,17 +2143,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
+          lineHeight={75}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2270,13 +2166,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -2315,18 +2214,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="semibold"
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "600",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2338,39 +2238,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -2386,7 +2270,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
@@ -2403,6 +2287,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -2415,17 +2302,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="semibold"
+          lineHeight={75}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "600",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2437,13 +2325,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
   <View
@@ -2482,18 +2373,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         data-blade-component="base-text"
         fontSize={700}
         fontWeight="regular"
+        lineHeight={900}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 32,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 42,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2505,39 +2397,23 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -2553,7 +2429,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 36,
                 "fontStyle": "normal",
@@ -2570,6 +2446,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -2582,17 +2461,18 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={700}
           fontWeight="regular"
+          lineHeight={700}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 32,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 38,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2604,13 +2484,16 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2660,18 +2543,19 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2683,39 +2567,23 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -2731,7 +2599,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
@@ -2748,6 +2616,9 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -2760,17 +2631,18 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
+          lineHeight={75}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 17,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2782,13 +2654,16 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           22
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2838,18 +2713,19 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="regular"
+        lineHeight={300}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
-              "lineHeight": 20,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 2,
@@ -2860,6 +2736,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textDecorationLine": "none",
+            },
+            {
+              "includeFontPadding": false,
             },
           ]
         }
@@ -2877,7 +2756,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "TASA Orbiter Display",
               "fontSize": 16,
               "fontStyle": "normal",
@@ -2893,6 +2772,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textDecorationLine": "none",
+            },
+            {
+              "includeFontPadding": false,
             },
           ]
         }
@@ -2949,12 +2831,13 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -2972,39 +2855,23 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         INR
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -3020,7 +2887,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3037,6 +2904,9 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -3049,17 +2919,18 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3071,13 +2942,16 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3127,12 +3001,13 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -3150,39 +3025,23 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -3198,7 +3057,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3215,6 +3074,9 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -3227,17 +3089,18 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3249,13 +3112,16 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3305,12 +3171,13 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={1}
         style={
           [
             {
-              "color": "hsla(200, 84%, 37%, 1)",
+              "color": "hsla(200, 100%, 33%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3328,6 +3195,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
@@ -3344,7 +3214,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         style={
           [
             {
-              "color": "hsla(200, 84%, 37%, 1)",
+              "color": "hsla(200, 100%, 33%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3360,6 +3230,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textDecorationLine": "none",
+            },
+            {
+              "includeFontPadding": false,
             },
           ]
         }
@@ -3417,12 +3290,13 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(0, 0%, 2%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -3440,39 +3314,23 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -3488,7 +3346,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3505,6 +3363,9 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -3517,17 +3378,18 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(212, 39%, 16%, 1)",
+                "color": "hsla(0, 0%, 2%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3539,13 +3401,16 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
       <View
         borderBottomColor="surface.text.gray.normal"
         borderBottomStyle="solid"
@@ -3555,7 +3420,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
         style={
           [
             {
-              "borderBottomColor": "hsla(212, 39%, 16%, 1)",
+              "borderBottomColor": "hsla(0, 0%, 2%, 1)",
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "position": "absolute",
@@ -3616,12 +3481,13 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         data-blade-component="base-text"
         fontSize={25}
         fontWeight="regular"
+        lineHeight={100}
         marginRight="spacing.1"
         opacity={0.64}
         style={
           [
             {
-              "color": "hsla(150, 100%, 27%, 1)",
+              "color": "hsla(150, 100%, 23%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -3639,39 +3505,23 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
               "paddingTop": 0,
               "textDecorationLine": "none",
             },
+            {
+              "includeFontPadding": false,
+            },
           ]
         }
       >
         ₹
       </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+      <View
+        alignItems="baseline"
+        data-blade-component="base-box"
+        flexDirection="row"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "alignItems": "baseline",
+              "flexDirection": "row",
             },
           ]
         }
@@ -3687,7 +3537,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -3704,6 +3554,9 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
@@ -3716,17 +3569,18 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
+          lineHeight={25}
           opacity={0.64}
           style={
             [
               {
-                "color": "hsla(150, 100%, 27%, 1)",
+                "color": "hsla(150, 100%, 23%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 13,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3738,13 +3592,16 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
+              {
+                "includeFontPadding": false,
+              },
             ]
           }
         >
           .
           00
         </Text>
-      </Text>
+      </View>
     </View>
   </View>
 </View>

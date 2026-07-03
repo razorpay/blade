@@ -10,16 +10,21 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType, makeSize } from '~utils';
+import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BoxProps } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
+import type { AlertColors } from './types';
+import { getAlertIconColor } from './styles';
 import { useTheme } from '~components/BladeProvider';
 import type {
   DataAnalyticsAttribute,
@@ -90,16 +95,23 @@ type AlertProps = {
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`.
-   * This also makes the alert borderless, useful for creating full bleed layouts.
    *
    * @default false
    */
   isFullWidth?: boolean;
 
   /**
+   * Sets a custom max-width for the Alert.
+   * Has no effect when `isFullWidth` is true.
+   *
+   * @default '584px' (derived from global size token `size[584]`)
+   */
+  maxWidth?: BoxProps['maxWidth'];
+
+  /**
    * Sets the color tone
    */
-  color?: FeedbackColors;
+  color?: AlertColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -118,6 +130,8 @@ type AlertProps = {
   StyledPropsBlade &
   DataAnalyticsAttribute;
 
+const DEFAULT_MAX_WIDTH = makeSize(size[584]);
+
 const isReactNative = getPlatformType() === 'react-native';
 
 // Need extra wrappers on React Native only for alignment
@@ -129,6 +143,7 @@ const intentIconMap = {
   information: InfoIcon,
   neutral: InfoIcon,
   notice: AlertTriangleIcon,
+  primary: InfoIcon,
 };
 
 const _Alert = (
@@ -139,6 +154,7 @@ const _Alert = (
     onDismiss,
     emphasis = 'subtle',
     isFullWidth = false,
+    maxWidth,
     color = 'neutral',
     actions,
     testID,
@@ -154,8 +170,10 @@ const _Alert = (
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
+  const isDescriptionOnly = !title && !actions?.primary && !actions?.secondary;
+
   const Icon = icon ?? intentIconMap[color];
-  let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
+  let iconOffset: DotNotationSpacingStringToken | SpacingValueType = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
   if (isReactNative) {
@@ -181,21 +199,19 @@ const _Alert = (
   if (!isFullWidth) alignment = 'flex-start';
   if (shouldCenterAlign) alignment = 'center';
 
+  if (isDescriptionOnly) {
+    alignment = 'center';
+    iconOffset = makeSize(1);
+  }
+
   const leadingIcon = (
     <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
-      <Icon
-        color={
-          emphasis === 'intense'
-            ? 'surface.icon.staticWhite.normal'
-            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
-        }
-        size="medium"
-      />
+      <Icon color={getAlertIconColor(color, emphasis)} size="medium" />
     </BaseBox>
   );
 
   const textColor =
-    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.subtle';
+    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
       <Text color={textColor} size="medium" weight="semibold">
@@ -204,9 +220,12 @@ const _Alert = (
     </BaseBox>
   ) : null;
 
+  const descriptionTextColor =
+    emphasis === 'intense' ? 'surface.text.staticWhite.subtle' : 'surface.text.gray.subtle';
+
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text color={textColor} size="small">
+      <Text color={descriptionTextColor} size="small">
         {description}
       </Text>
     </BaseBox>
@@ -220,8 +239,8 @@ const _Alert = (
       <BaseButton
         size="small"
         onClick={actions.primary.onClick}
-        color={emphasis === 'intense' ? 'white' : color}
-        variant="secondary"
+        color={emphasis === 'subtle' ? 'primary' : 'white'}
+        variant={emphasis === 'subtle' ? 'secondary' : 'primary'}
         data-analytics-name={MAKE_ANALYTICS_CONSTANTS.ALERT.PRIMARY_ACTION_BUTTON}
       >
         {actions.primary.text}
@@ -254,7 +273,7 @@ const _Alert = (
     >
       <BaseLink
         size="small"
-        color={emphasis === 'intense' ? 'white' : color}
+        color={emphasis === 'intense' ? 'white' : 'neutral'}
         {...secondaryActionParams}
       >
         {actions.secondary.text}
@@ -293,8 +312,9 @@ const _Alert = (
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
         emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
-        size="large"
+        size="medium"
         icon={CloseIcon}
+        marginTop={isDescriptionOnly ? makeSize(2) : 'spacing.0'}
       />
     </CloseButtonWrapper>
   ) : null;
@@ -323,12 +343,13 @@ const _Alert = (
         emphasis={emphasis}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
+        maxWidth={isFullWidth ? 'auto' : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
         {leadingIcon}
         <BaseBox
           flex={1}
-          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingLeft="spacing.3"
           paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
         >
           {_title}
@@ -344,5 +365,5 @@ const _Alert = (
 
 const Alert = forwardRef(_Alert);
 
-export type { AlertProps };
+export type { AlertProps, AlertColors };
 export { Alert };

@@ -142,14 +142,26 @@ const getRNInputStyles = (
       android: makeSize(props.theme.typography.lineHeights[100]),
       ios: undefined,
     }),
-    textAlignVertical: 'top',
-    height: getInputHeight({
-      isTextArea: props.isTextArea,
-      hasTags: props.hasTags,
-      numberOfLines: props.numberOfLines,
-      isDropdownTrigger: props.isDropdownTrigger,
-      size: props.$size,
-    }),
+    textAlignVertical: props.isTextArea ? 'top' : 'center',
+    ...(props.isTextArea
+      ? {}
+      : {
+          paddingTop: 0,
+          paddingBottom: 0,
+          height: undefined,
+          minHeight: undefined,
+        }),
+    ...(props.isTextArea || props.hasTags
+      ? {
+          height: getInputHeight({
+            isTextArea: props.isTextArea,
+            hasTags: props.hasTags,
+            numberOfLines: props.numberOfLines,
+            isDropdownTrigger: props.isDropdownTrigger,
+            size: props.$size,
+          }),
+        }
+      : {}),
   };
 };
 const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
@@ -307,7 +319,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       <BaseBox display="flex" alignItems="center" gap="spacing.3">
         <Text
           color={
-            props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+            props.value && !isDisabled
+              ? 'interactive.text.gray.normal'
+              : 'surface.text.gray.disabled'
           }
           truncateAfterLines={1}
           textAlign={props.textAlign}
@@ -372,6 +386,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      includeFontPadding={false}
       $size={$size}
       {...commonProps}
       {...props}

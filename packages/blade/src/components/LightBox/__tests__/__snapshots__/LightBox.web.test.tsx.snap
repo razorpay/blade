@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LightBox /> should render image gallery snapshot 1`] = `
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div
+  aria-hidden="true"
+  data-floating-ui-inert=""
+/>
+`;
+
+exports[`<LightBox /> should render mixed content gallery snapshot 1`] = `
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+<div
+  aria-hidden="true"
+  data-floating-ui-inert=""
+/>
+`;

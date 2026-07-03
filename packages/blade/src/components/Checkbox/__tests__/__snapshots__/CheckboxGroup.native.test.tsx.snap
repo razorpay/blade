@@ -63,24 +63,25 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "fontWeight": "500",
+                  "letterSpacing": -0.15600000000000003,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -133,16 +134,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -285,8 +287,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -297,6 +299,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -321,16 +324,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -450,8 +454,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -462,6 +466,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -486,16 +491,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -615,8 +621,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -627,6 +633,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -651,16 +658,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -752,24 +760,25 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.gray.muted"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="semibold"
+            fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(211, 22%, 56%, 1)",
+                  "color": "hsla(200, 10%, 18%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "fontWeight": "500",
+                  "letterSpacing": -0.15600000000000003,
+                  "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -822,16 +831,17 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
                   {
-                    "color": "hsla(212, 39%, 16%, 1)",
+                    "color": "hsla(0, 0%, 2%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -974,8 +984,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -986,6 +996,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -1010,16 +1021,17 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1139,8 +1151,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -1151,6 +1163,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -1175,16 +1188,17 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1304,8 +1318,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                            "borderColor": "hsla(214, 40%, 92%, 1)",
-                            "borderRadius": 2,
+                            "borderColor": "hsla(205, 8%, 71%, 1)",
+                            "borderRadius": 4,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
                             "display": "flex",
@@ -1316,6 +1330,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "marginLeft": 2,
                             "marginRight": 2,
                             "marginTop": 2,
+                            "paddingTop": 0,
                             "position": "relative",
                             "width": 16,
                           },
@@ -1340,16 +1355,17 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(211, 26%, 34%, 1)",
+                            "color": "hsla(200, 10%, 18%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1387,12 +1403,14 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
+            gap="spacing.2"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
+                  "gap": 4,
                 },
               ]
             }
@@ -1405,16 +1423,18 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               fontSize={50}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={50}
+              marginTop="spacing.0"
               style={
                 [
                   {
-                    "color": "hsla(211, 22%, 56%, 1)",
+                    "color": "hsla(204, 9%, 42%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 11,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.14300000000000002,
                     "lineHeight": 16,
                     "marginBottom": 0,
                     "marginLeft": 0,

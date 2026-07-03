@@ -28,23 +28,22 @@ exports[`<Tooltip /> should render 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
-    borderWidth="0px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -68,14 +67,15 @@ exports[`<Tooltip /> should render 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -85,8 +85,8 @@ exports[`<Tooltip /> should render 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -94,13 +94,296 @@ exports[`<Tooltip /> should render 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -145,6 +428,7 @@ exports[`<Tooltip /> should render 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -156,8 +440,8 @@ exports[`<Tooltip /> should render 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -175,240 +459,240 @@ exports[`<Tooltip /> should render 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 1100,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 1100,
           }
         }
       >
-        <View
-          collapse={false}
-          data-blade-component="base-box"
-          elevation={20}
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
           style={
             [
               {
-                "maxWidth": 200,
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(211, 29%, 26%, 1)",
-                "borderColor": "hsla(211, 26%, 34%, 1)",
-                "borderRadius": 4,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 1100,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 1100,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
                 },
               ]
             }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
           >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
-              }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -440,23 +724,22 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
-    borderWidth="0px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -480,14 +763,15 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -497,8 +781,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -506,13 +790,296 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -557,6 +1124,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -568,8 +1136,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -587,240 +1155,240 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 9999,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 9999,
           }
         }
       >
-        <View
-          collapse={false}
-          data-blade-component="base-box"
-          elevation={20}
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
           style={
             [
               {
-                "maxWidth": 200,
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(211, 29%, 26%, 1)",
-                "borderColor": "hsla(211, 26%, 34%, 1)",
-                "borderRadius": 4,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 9999,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 9999,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
                 },
               ]
             }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
           >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
-              }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -852,23 +1420,22 @@ exports[`<Tooltip /> should render with title 1`] = `
       }
     }
     accessible={true}
-    borderRadius="4px"
-    borderWidth="0px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     color="primary"
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
-    defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
-    focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+    focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
-    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+    hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -892,14 +1459,15 @@ exports[`<Tooltip /> should render with title 1`] = `
     onTouchEnd={[Function]}
     onTouchStart={[Function]}
     role="button"
+    size="medium"
     style={
       [
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
-          "borderRadius": 4,
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "black",
+          "borderRadius": 8,
           "borderStyle": "solid",
           "borderWidth": 0,
           "cursor": "pointer",
@@ -909,8 +1477,8 @@ exports[`<Tooltip /> should render with title 1`] = `
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -918,13 +1486,296 @@ exports[`<Tooltip /> should render with title 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 1)",
-          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
         },
       ]
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -969,6 +1820,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           fontSize={100}
           fontWeight="medium"
           lineHeight={100}
+          marginX="spacing.2"
           style={
             [
               {
@@ -980,8 +1832,8 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
+                "marginLeft": 4,
+                "marginRight": 4,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -999,273 +1851,274 @@ exports[`<Tooltip /> should render with title 1`] = `
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabel="Hello world"
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="tooltip-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "flex": 1,
-          "flexShrink": 0,
-          "opacity": 1,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 4,
+            },
+          ],
         }
       }
-      testID="tooltip-modal-backdrop"
     >
       <View
+        collapse={false}
+        colorScheme="light"
+        data-blade-component="base-box"
+        display="flex"
+        elevation={20}
+        flexDirection="column"
+        gap="spacing.2"
+        maxWidth="200px"
+        onLayout={[Function]}
+        position="absolute"
         style={
-          {
-            "opacity": 0,
-            "transform": [
-              {
-                "translateX": 4,
+          [
+            {
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 4,
+              "maxWidth": 200,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+              "position": "absolute",
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 0%, 0.72)",
+              "borderRadius": 12,
+              "left": -200,
+              "position": "absolute",
+              "top": -210,
+              "zIndex": 1100,
+            },
+            {
+              "elevation": 8,
+              "shadowColor": "hsla(200, 10%, 18%, 1)",
+              "shadowOffset": {
+                "height": 2,
+                "width": 0,
               },
-            ],
+              "shadowOpacity": 0.06,
+              "shadowRadius": 2,
+            },
+          ]
+        }
+        styles={
+          {
+            "left": -200,
+            "position": "absolute",
+            "top": -210,
+            "zIndex": 1100,
           }
         }
       >
-        <View
-          collapse={false}
-          data-blade-component="base-box"
-          elevation={20}
-          maxWidth="200px"
-          position="absolute"
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="semibold"
+          letterSpacing={50}
+          lineHeight={100}
           style={
             [
               {
-                "maxWidth": 200,
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "position": "absolute",
-              },
-              {
-                "backgroundColor": "hsla(211, 29%, 26%, 1)",
-                "borderColor": "hsla(211, 26%, 34%, 1)",
-                "borderRadius": 4,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "left": -200,
-                "position": "absolute",
-                "top": -200,
-                "zIndex": 1100,
-              },
-              {
-                "elevation": 8,
-                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
-                "shadowOffset": {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
-          styles={
+        >
+          Tooltip title
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.staticWhite.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 0.88)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Hello world
+        </Text>
+        <View
+          collapsable={false}
+          pointerEvents="none"
+          style={
             {
-              "left": -200,
+              "bottom": 0,
+              "left": 0,
               "position": "absolute",
-              "top": -200,
-              "zIndex": 1100,
+              "right": 0,
+              "top": 0,
             }
           }
         >
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={100}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={100}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="14px"
+            bbWidth="14px"
+            data-blade-component="icon"
+            focusable={false}
+            height="14px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 14,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
                 },
-              ]
-            }
-          >
-            Tooltip title
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.staticWhite.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            style={
-              [
-                {
-                  "color": "hsla(0, 0%, 100%, 0.88)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            Hello world
-          </Text>
-          <View
-            collapsable={false}
-            pointerEvents="none"
-            style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
-            }
-          >
-            <RNSVGSvgView
-              accessibilityElementsHidden={true}
-              align="xMidYMid"
-              bbHeight="14px"
-              bbWidth="14px"
-              data-blade-component="icon"
-              focusable={false}
-              height="14px"
-              importantForAccessibility="no-hide-descendants"
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
                 [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  [
-                    {},
-                    {},
-                  ],
-                  {
-                    "flex": 0,
-                    "height": 14,
-                    "width": 14,
-                  },
-                ]
+                  {},
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 14,
+                  "width": 14,
+                },
+              ]
+            }
+            styles={{}}
+            vbHeight={14}
+            vbWidth={14}
+            width="14px"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-              styles={{}}
-              vbHeight={14}
-              vbWidth={14}
-              width="14px"
             >
-              <RNSVGGroup
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
                 fill={
                   {
-                    "payload": 4278190080,
+                    "payload": 4294967295,
                     "type": 0,
                   }
                 }
-              >
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={null}
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                      "strokeWidth",
-                    ]
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+              <RNSVGPath
+                d="M0,0 H14 L7,8 Q7,8 7,8 Z"
+                fill={
+                  {
+                    "payload": 3087007744,
+                    "type": 0,
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
-                  strokeWidth="2px"
-                />
-                <RNSVGPath
-                  d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "fill",
-                      "stroke",
-                    ]
-                  }
-                  stroke={null}
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;

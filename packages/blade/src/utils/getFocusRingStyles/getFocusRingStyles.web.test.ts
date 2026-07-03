@@ -12,7 +12,7 @@ describe('getFocusRingStyles', () => {
       },
     });
     expect(result).toMatchObject({
-      outline: '4px solid hsla(227, 100%, 59%, 0.18)',
+      outline: '4px solid hsla(218, 89%, 51%, 0.18)',
       outlineOffset: '1px',
       transitionDuration: '80ms',
       transitionProperty: 'outline-width',

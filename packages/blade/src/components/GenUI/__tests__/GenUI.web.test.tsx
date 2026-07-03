@@ -7,6 +7,11 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
 import { GenUIProvider } from '../GenUIProvider';
 import { GenUISchemaRenderer } from '../GenUISchemaRenderer';
+import {
+  getGenUIComponentTopSpacing,
+  genUISpacingContract,
+  markdownComponents,
+} from '../GenUIComponents';
 import type { GenUIComponent } from '../GenUIComponents';
 import { useGenUI } from '../GenUIContext.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -1435,6 +1440,119 @@ describe('<GenUI />', () => {
       // Should filter out incomplete items
       expect(container.textContent).toBe('');
     });
+
+    it('should filter out items with null children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Valid' },
+              value: { children: 'Valid Value' },
+            },
+            {
+              key: { children: 'Invalid' },
+              value: { children: null } as any,
+            },
+          ],
+        },
+      ];
+
+      const { getByText, queryByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Valid')).toBeInTheDocument();
+      expect(getByText('Valid Value')).toBeInTheDocument();
+      expect(queryByText('Invalid')).not.toBeInTheDocument();
+    });
+
+    it('should filter out items with undefined children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Valid' },
+              value: { children: 'Valid Value' },
+            },
+            {
+              key: { children: 'Invalid' },
+              value: { children: undefined } as any,
+            },
+          ],
+        },
+      ];
+
+      const { getByText, queryByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Valid')).toBeInTheDocument();
+      expect(getByText('Valid Value')).toBeInTheDocument();
+      expect(queryByText('Invalid')).not.toBeInTheDocument();
+    });
+
+    it('should render items with component as children value', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Amount' },
+              value: { children: { component: 'AMOUNT', value: 100, currency: 'INR' } },
+            },
+            {
+              key: { children: 'Status' },
+              value: { children: { component: 'BADGE', text: 'Active', color: 'positive' } },
+            },
+          ],
+        },
+      ];
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Amount')).toBeInTheDocument();
+      expect(getByText('Status')).toBeInTheDocument();
+      expect(getByText('Active')).toBeInTheDocument();
+    });
+
+    it('should handle mixed string and component children values', () => {
+      const components: GenUIComponent[] = [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Link ID' },
+              value: { children: 'plink_SP2rJtPRhJ5gZu' },
+            },
+            {
+              key: { children: 'Status' },
+              value: { children: { component: 'BADGE', text: 'Created', color: 'positive' } },
+            },
+          ],
+        },
+      ];
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={components} />
+        </GenUIProvider>,
+      );
+
+      expect(getByText('Link ID')).toBeInTheDocument();
+      expect(getByText('plink_SP2rJtPRhJ5gZu')).toBeInTheDocument();
+      expect(getByText('Status')).toBeInTheDocument();
+      expect(getByText('Created')).toBeInTheDocument();
+    });
   });
 
   describe('STACK Component', () => {
@@ -1685,20 +1803,23 @@ describe('<GenUI />', () => {
       expect(container.textContent).toBe('');
     });
 
-    it('should show unsupported component message for invalid types', () => {
+    it('should warn and render nothing for invalid component types', () => {
+      const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
       const components: GenUIComponent[] = [
         {
           component: 'INVALID_COMPONENT' as any,
         },
       ];
 
-      const { getByText } = renderWithTheme(
+      const { container } = renderWithTheme(
         <GenUIProvider>
           <GenUISchemaRenderer components={components} />
         </GenUIProvider>,
       );
 
-      expect(getByText(/Unsupported component/)).toBeInTheDocument();
+      expect(warnSpy).toHaveBeenCalledWith('[GenUI]: Unsupported component: INVALID_COMPONENT');
+      expect(container.textContent).toBe('');
+      warnSpy.mockRestore();
     });
 
     it('should handle mixed valid and partial components', () => {
@@ -3360,6 +3481,99 @@ describe('<GenUI />', () => {
     });
 
     describe('TEXT component markdown variations', () => {
+      it('should resolve GenUI component spacing relationships from the contract', () => {
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TEXT', content: 'Summary text' },
+            { component: 'TABLE' },
+          ),
+        ).toBe(genUISpacingContract.textToCardTable);
+
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TEXT', content: '### Metrics' },
+            { component: 'CARD' },
+          ),
+        ).toBe(genUISpacingContract.h3ToCardTable);
+
+        expect(
+          getGenUIComponentTopSpacing(
+            { component: 'TABLE' },
+            { component: 'TEXT', content: '### Next section' },
+          ),
+        ).toBe(genUISpacingContract.cardTableToNextH3);
+
+        expect(
+          getGenUIComponentTopSpacing({ component: 'CARD' }, { component: 'BUTTON', text: 'Act' }),
+        ).toBe(genUISpacingContract.cardTableToFooterAction);
+      });
+
+      it('should render markdown block spacing from the contract', () => {
+        const H2Component = markdownComponents.h2;
+        const H3Component = markdownComponents.h3;
+        const ParagraphComponent = markdownComponents.p;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H2Component>Heading 2 spacing</H2Component>
+            <ParagraphComponent>Paragraph spacing</ParagraphComponent>
+            <H3Component>Heading 3 spacing</H3Component>
+          </>,
+        );
+
+        expect(getByText('Heading 2 spacing')).toHaveStyle({ marginBottom: '8px' });
+        expect(getByText('Paragraph spacing')).toHaveStyle({ marginBottom: '8px' });
+        expect(getByText('Heading 3 spacing')).toHaveStyle({
+          marginTop: '24px',
+          marginBottom: '8px',
+        });
+      });
+
+      it('should render h2 and above with semibold weight', () => {
+        const H1Component = markdownComponents.h1;
+        const H2Component = markdownComponents.h2;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H1Component>Heading 1</H1Component>
+            <H2Component>Heading 2</H2Component>
+          </>,
+        );
+
+        expect(getByText('Heading 1')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Heading 2')).toHaveStyle({ fontWeight: '600' });
+      });
+
+      it('should render h3 and below with medium weight', () => {
+        const H3Component = markdownComponents.h3;
+        const H4Component = markdownComponents.h4;
+        const H5Component = markdownComponents.h5;
+        const H6Component = markdownComponents.h6;
+
+        const { getByText } = renderWithTheme(
+          <>
+            <H3Component>Heading 3</H3Component>
+            <H4Component>Heading 4</H4Component>
+            <H5Component>Heading 5</H5Component>
+            <H6Component>Heading 6</H6Component>
+          </>,
+        );
+
+        expect(getByText('Heading 3')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 4')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 5')).toHaveStyle({ fontWeight: '500' });
+        expect(getByText('Heading 6')).toHaveStyle({ fontWeight: '500' });
+      });
+
+      it('should render strong markdown with semibold weight', () => {
+        const StrongComponent = markdownComponents.strong;
+
+        const { getByText } = renderWithTheme(<StrongComponent>Strong text</StrongComponent>);
+
+        expect(getByText('Strong text')).toHaveStyle({ fontWeight: '600' });
+        expect(getByText('Strong text').tagName).toBe('SPAN');
+      });
+
       it('should render text with bold markdown', () => {
         const components: GenUIComponent[] = [{ component: 'TEXT', content: '**Bold text**' }];
 
@@ -3456,7 +3670,7 @@ describe('<GenUI />', () => {
           </GenUIProvider>,
         );
 
-        expect(getByText('Chart Title')).toBeInTheDocument();
+        expect(getByText('Chart Title')).toHaveStyle({ fontWeight: '400' });
       });
     });
   });

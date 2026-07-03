@@ -74,7 +74,7 @@ const getBorderRadiusValue = (
   borderRadius: BaseBoxProps['borderRadius'],
   theme: Theme,
   breakpoint?: keyof Breakpoints,
-): string | undefined => {
+): string | number | undefined => {
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
@@ -86,7 +86,7 @@ const getBorderWidthValue = (
   borderWidth: BaseBoxProps['borderWidth'],
   theme: Theme,
   breakpoint?: keyof Breakpoints,
-): string | undefined => {
+): string | number | undefined => {
   const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
   return isEmpty(responsiveBorderWidthValue)
     ? undefined

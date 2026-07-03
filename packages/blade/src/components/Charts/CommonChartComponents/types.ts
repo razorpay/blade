@@ -102,11 +102,11 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
 
 type Layout = 'horizontal' | 'vertical';
 type Align = 'left' | 'right';
-type ChartName = 'bar' | 'donut' | 'line' | 'area';
+type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey';
 type DataColorMapping = Record<
   string,
   {
-    colorToken: ChartsCategoricalColorToken;
+    colorToken: ChartsCategoricalColorToken | ChartSequentialColorToken;
     isCustomColor: boolean;
   }
 >;

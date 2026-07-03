@@ -251,7 +251,7 @@ const _Dropdown = (
           {...makeAnalyticsAttribute(rest)}
           width={_width}
         >
-          <BaseBox position="relative" textAlign={'left' as never}>
+          <BaseBox position="relative" textAlign={'left' as never} height="100%">
             {children}
           </BaseBox>
         </BaseBox>

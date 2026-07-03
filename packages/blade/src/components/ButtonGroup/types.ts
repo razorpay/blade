@@ -44,7 +44,7 @@ type ButtonGroupProps = {
 
 type StyledButtonGroupProps = Pick<
   ButtonGroupProps,
-  'isDisabled' | 'color' | 'variant' | 'isFullWidth'
+  'isDisabled' | 'color' | 'variant' | 'isFullWidth' | 'size'
 >;
 
 type ButtonGroupContextType = Pick<

@@ -34,6 +34,17 @@ type MenuProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+
+  /**
+   * Placement of the menu overlay relative to the trigger.
+   *
+   * Accepts any Floating UI placement value (e.g. 'bottom-start', 'top-end', 'left', 'right-start').
+   * The flip middleware will still automatically flip the placement if there isn't enough space.
+   * Only applies to root-level menus; nested submenus always open to 'right-start'.
+   *
+   * @default 'bottom-start'
+   */
+  defaultPlacement?: Placement;
 };
 
 // MenuItem props
@@ -140,6 +151,19 @@ type MenuOverlayProps = {
    * maxWidth override
    */
   maxWidth?: string | number;
+
+  /**
+   * Offset for overlay positioning relative to trigger.
+   *
+   * Supports Floating UI offset options (`mainAxis`, `crossAxis`, `alignmentAxis`).
+   */
+  offset?:
+    | number
+    | {
+        mainAxis?: number;
+        crossAxis?: number;
+        alignmentAxis?: number;
+      };
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -202,6 +226,24 @@ type MenuFooterProps = {
 // MenuDivider props
 type MenuDividerProps = TestID & DataAnalyticsAttribute;
 ```
+
+## Usage Guidelines
+
+**Do**
+
+- Use `Menu` for action-based overlays — clickable items that perform operations (not selections).
+- Use any interactive component as a trigger (Button, Avatar, IconButton) — it must forward refs and expose proper event handlers.
+- Use `MenuItem` for action items and `MenuDivider` for visual separation.
+- Use nested `Menu` inside `MenuItem` for submenu patterns.
+- Use `openInteraction="hover"` for hover-triggered menus on desktop.
+
+**Don't**
+
+- Don't use `Menu` for selectable items where state tracking is needed — use `Dropdown` with `ActionList` instead.
+- Don't use custom triggers that don't forward refs and expose required event handlers.
+- Don't expect `Menu` to be responsive by default — switch to `BottomSheet` or `Drawer` on mobile.
+- Don't use `Menu` for multi-select checkbox patterns — use `Dropdown` with `selectionType="multiple"`.
+- Don't confuse `MenuItem` with `ActionListItem` — they serve different overlay patterns.
 
 ## Example
 

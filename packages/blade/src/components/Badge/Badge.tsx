@@ -2,7 +2,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
-import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
+import { textHorizontalMargin, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
@@ -22,6 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 
 type BadgeProps = {
   /**
@@ -122,6 +123,10 @@ const _Badge = (
     emphasis,
   });
 
+  const { containerRef, textRef } = useTruncationTitle({
+    content: childrenString,
+  });
+
   const badgeTextSizes = {
     xsmall: {
       variant: 'body',
@@ -156,6 +161,7 @@ const _Badge = (
         textAlign={'left' as never}
       >
         <BaseBox
+          ref={containerRef as never}
           paddingX={horizontalPadding[size]}
           display="flex"
           flexDirection="row"
@@ -164,11 +170,18 @@ const _Badge = (
           overflow="hidden"
         >
           {Icon ? (
-            <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+            <BaseBox display="flex">
               <Icon color={iconColor} size={iconSize[size]} />
             </BaseBox>
           ) : null}
-          <Text {...badgeTextSizes[size]} weight="medium" truncateAfterLines={1} color={textColor}>
+          <Text
+            ref={textRef as never}
+            {...badgeTextSizes[size]}
+            weight={emphasis === 'intense' ? 'regular' : 'medium'}
+            truncateAfterLines={1}
+            color={textColor}
+            marginX={textHorizontalMargin[size]}
+          >
             {children}
           </Text>
         </BaseBox>

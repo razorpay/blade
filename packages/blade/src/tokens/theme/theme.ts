@@ -1,6 +1,7 @@
 import type { StringWithAutocomplete } from '~utils/types';
 import type {
   Border,
+  BackdropBlur,
   Breakpoints,
   Motion,
   Spacing,
@@ -31,7 +32,7 @@ export type DataCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'in
 };
 export type DataSequentialEmphasis = Omit<
   ColorChromaticScale,
-  'a50' | 'a150' | 'a100' | 'a200' | 'a400'
+  'a50' | 'a150' | 'a100' | 'a200' | 'a400' | 'a500' | 'a600' | 'a700'
 >;
 
 export type DataColorCategories =
@@ -55,6 +56,17 @@ type InteractiveStates = {
   faded: string;
 };
 
+type InteractiveStatesWithFadedHighlighted = InteractiveStates & {
+  fadedHighlighted: string;
+};
+
+type InteractiveBackgroundStatesWithGhost = InteractiveStatesWithFadedHighlighted & {
+  ghost: string;
+};
+
+type InteractiveBackgroundColorsWithGhost = 'gray' | 'staticBlack' | 'staticWhite';
+type InteractiveBorderColorsWithFadedHighlighted = 'staticBlack' | 'staticWhite';
+
 type OnEmphasis = {
   onSubtle: string;
   onIntense: string;
@@ -71,10 +83,36 @@ type ColorCategories = {
 
 type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
+/**
+ * @deprecated
+ * Use popup.[background|border].[color] instead
+ */
+type PopupDeprecatedTokens = {
+  /**
+   * @deprecated
+   *
+   * Use popup.[background|border].[color].subtle instead
+   */
+  subtle: string;
+  /**
+   * @deprecated
+   * Use popup.[background|border].[color].intense instead
+   */
+  intense: string;
+};
+
 export type Colors = {
   interactive: {
-    background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
-    border: Record<InteractiveColorKeys, InteractiveStates>;
+    background: Record<
+      Exclude<InteractiveColorKeys, InteractiveBackgroundColorsWithGhost>,
+      InteractiveStatesWithFadedHighlighted
+    > &
+      Record<InteractiveBackgroundColorsWithGhost, InteractiveBackgroundStatesWithGhost>;
+    border: Record<
+      Exclude<InteractiveColorKeys, InteractiveBorderColorsWithFadedHighlighted>,
+      InteractiveStates
+    > &
+      Record<InteractiveBorderColorsWithFadedHighlighted, InteractiveStatesWithFadedHighlighted>;
     text: Record<
       InteractiveColorKeys | 'onPrimary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
@@ -108,8 +146,12 @@ export type Colors = {
     background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
   popup: {
-    background: SubtleOrIntenseEmphasis;
-    border: SubtleOrIntenseEmphasis;
+    background: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
+    } & PopupDeprecatedTokens;
+    border: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
+    } & PopupDeprecatedTokens;
   };
   transparent: string;
   data: {
@@ -125,6 +167,7 @@ export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 export type ThemeTokens = {
   name: 'bladeTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
+  backdropBlur: BackdropBlur;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
   motion: Motion;

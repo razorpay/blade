@@ -3,31 +3,33 @@
 import type { CSSProperties } from 'react';
 import styled from 'styled-components/native';
 import type { EasingFn } from 'react-native-reanimated';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withDelay,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import React from 'react';
 import type { View } from 'react-native';
 import { getPopoverContentWrapperStyles } from './getPopoverContentWrapperStyles';
 import type { PopoverContentWrapperProps } from './types';
-import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
-import { castNativeType } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
+import BaseBox from '~components/Box/BaseBox';
 
-const StyledPopoverContentWrapper = styled(BaseBox)<{
+// Animated.createAnimatedComponent(BaseBox) so BaseBox handles elevation prop resolution
+// (getElevationValue → shadow styles) while Animated handles opacity on the same View.
+// On Android, elevation shadow renders independently of a parent View's opacity —
+// co-locating opacity and elevation on the same View fixes the flash.
+const AnimatedBaseBox = Animated.createAnimatedComponent(BaseBox as React.FunctionComponent<any>);
+
+const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
   collapse?: boolean;
   styles: CSSProperties;
   isMobile: boolean;
-}>(({ theme, isMobile, styles }) => {
-  return getPopoverContentWrapperStyles({ theme, styles, isMobile });
+  colorScheme: ColorSchemeNames;
+}>(({ theme, isMobile, styles, colorScheme }) => {
+  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme });
 });
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
-  ({ children, styles, side, isVisible, ...props }, ref) => {
+  ({ children, styles, side, isVisible, colorScheme, ...props }, ref) => {
     const { theme, platform } = useTheme();
     const isMobile = platform === 'onMobile';
 
@@ -43,31 +45,37 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
 
     React.useEffect(() => {
       const timings = { easing, duration };
-      opacity.value = withDelay(duration, withTiming(isVisible ? 1 : 0, timings));
-      translate.value = withDelay(duration, withTiming(isVisible ? 0 : offset, timings));
+      opacity.value = withTiming(isVisible ? 1 : 0, timings);
+      translate.value = withTiming(isVisible ? 0 : offset, timings);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible]);
 
-    // @ts-expect-error types aren't liking the dynamic object prop `[transform]`
-    const animatedStyles = useAnimatedStyle(() => {
-      const transform = isHorizontal ? 'translateX' : 'translateY';
+    // Avoid computed property keys inside useAnimatedStyle — Babel compiles them to
+    // _defineProperty() which is not a worklet and crashes Reanimated v4 on the UI thread.
+    const translateAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        transform: isHorizontal
+          ? [{ translateX: translate.value }]
+          : [{ translateY: translate.value }],
+      };
+    }, [isVisible, isHorizontal]);
+
+    const opacityAnimatedStyle = useAnimatedStyle(() => {
       return {
         opacity: opacity.value,
-        transform: [{ [transform]: translate.value }],
       };
     }, [isVisible]);
 
     return (
-      <Animated.View style={animatedStyles}>
+      <Animated.View style={translateAnimatedStyle}>
         <StyledPopoverContentWrapper
           styles={styles}
-          // Shadow styles need to be passed directly through native style prop
-          // Cannot be done via styled components
-          style={castNativeType(theme.elevation.lowRaised)}
-          elevation={20}
+          style={opacityAnimatedStyle}
+          elevation="lowRaised"
           ref={ref as never}
           collapse={false}
           isMobile={isMobile}
+          colorScheme={colorScheme}
           // if I don't assert this TS throws error
           // I think because of the intersection type in PopoverContentWrapperProps
           {...(props as any)}

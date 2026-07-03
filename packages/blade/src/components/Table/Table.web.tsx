@@ -31,13 +31,15 @@ import type {
   TableHeaderRowProps,
 } from './types';
 import { getTableBodyStyles } from './commonStyles';
-import { makeBorderSize, makeMotionTime } from '~utils';
+import { TableSurface } from './TableSurface.web';
+import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
+import { Skeleton } from '~components/Skeleton';
 import { getStyledProps } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -47,6 +49,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useListViewContext } from '~components/ListView/ListViewContext';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -145,6 +148,31 @@ const RefreshWrapper = styled(BaseBox)<{
   };
 });
 
+const SKELETON_ROW_COUNT = 7;
+const SKELETON_CELL_WIDTHS = {
+  first: '70%',
+  last: '50%',
+  middle: '75%',
+  headerFirst: '80%',
+  headerRest: '60%',
+} as const;
+
+const StyledSkeletonRow = styled(BaseBox)<{ $columns: number; $isHeader?: boolean }>(
+  ({ theme, $columns, $isHeader }) => ({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${$columns}, minmax(100px, 1fr))`,
+    paddingLeft: makeSpace(theme.spacing[4]),
+    paddingRight: makeSpace(theme.spacing[4]),
+    paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+    paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
+    borderBottomWidth: makeSpace(theme.border.width.thin),
+    borderBottomColor: theme.colors.surface.border.gray.muted,
+    borderBottomStyle: 'solid',
+    gap: makeSpace(theme.spacing[4]),
+    alignItems: 'center',
+  }),
+);
+
 const _Table = <Item,>({
   children,
   data,
@@ -168,9 +196,11 @@ const _Table = <Item,>({
   defaultSelectedIds = [],
   backgroundColor = tableBackgroundColor,
   isGrouped = false,
+  checkboxDisplay = 'always',
   ...rest
 }: TableProps<Item>): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
+  const { isInsideListView } = useListViewContext();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>(
     selectionType !== 'none' ? defaultSelectedIds : [],
   );
@@ -269,9 +299,20 @@ const _Table = <Item,>({
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
-    border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.gray.muted
-    };
+    ${
+      toolbar && !isInsideListView
+        ? `border-top: ${makeBorderSize(theme.border.width.thin)} solid ${
+            theme.colors.surface.border.gray.muted
+          };`
+        : ''
+    }
+    ${
+      pagination
+        ? `border-bottom: ${makeBorderSize(theme.border.width.thin)} solid ${
+            theme.colors.surface.border.gray.muted
+          };`
+        : ''
+    }
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns
         ? `${gridTemplateColumns} ${hasHoverActions ? lastHoverActionsColWidth : ''}`
@@ -507,12 +548,14 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      multiSelectTrigger,
       columnCount,
       gridTemplateColumns,
       isVirtualized,
       tableData: data.nodes,
       isGrouped,
       tableToolbarPlacement: toolbar?.props?.placement ?? 'inline',
+      checkboxDisplay,
     }),
     [
       selectionType,
@@ -540,82 +583,119 @@ const _Table = <Item,>({
       showBorderedCells,
       hasHoverActions,
       setHasHoverActions,
+      multiSelectTrigger,
       isVirtualized,
       data,
       isGrouped,
+      checkboxDisplay,
     ],
   );
 
   return (
     <TableContext.Provider value={tableContext}>
-      {isLoading ? (
-        <BaseBox
-          display="flex"
-          flex={1}
-          alignItems="center"
-          justifyContent="center"
-          height={height}
-          {...getStyledProps(rest)}
-          {...metaAttribute({ name: MetaConstants.Table })}
-          {...makeAnalyticsAttribute(rest)}
-        >
-          <Spinner accessibilityLabel="Loading Table" size="large" testID="table-spinner" />
-        </BaseBox>
-      ) : (
-        <BaseBox
-          // ref={ref as never}
-          flex={1}
-          position="relative"
-          {...getStyledProps(rest)}
-          {...metaAttribute({ name: MetaConstants.Table })}
-          width={isVirtualized ? `100%` : undefined}
-          {...makeAnalyticsAttribute(rest)}
-        >
-          {isRefreshSpinnerMounted && (
-            <RefreshWrapper
-              position="absolute"
-              width="100%"
-              height="100%"
-              zIndex={refreshWrapperZIndex}
-              backgroundColor="overlay.background.subtle"
-              justifyContent="center"
-              alignItems="center"
-              display="flex"
-              isRefreshSpinnerEntering={isRefreshSpinnerEntering}
-              isRefreshSpinnerExiting={isRefreshSpinnerExiting}
-              isRefreshSpinnerVisible={isRefreshSpinnerVisible}
-            >
-              <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
-            </RefreshWrapper>
-          )}
-          {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
-          <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
-          <StyledReactTable
-            role="table"
-            layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
-            data={data}
-            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-            theme={tableTheme}
-            select={selectionType !== 'none' ? rowSelectConfig : null}
-            sort={sortFunctions ? sort : null}
-            tree={isGrouped ? tree : null}
-            $styledProps={{
-              height,
-              width: isVirtualized ? `100%` : undefined,
-              isVirtualized,
-              isSelectable: selectionType !== 'none',
-              showStripedRows,
-            }}
-            pagination={hasPagination ? paginationConfig : null}
-            {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+      <TableSurface
+        colorScheme={colorScheme}
+        borderRadius={isInsideListView ? 'none' : 'medium'}
+        overflow="hidden"
+        isInsideListView={isInsideListView ?? false}
+        // Transparent when inside ListView so the gradient pseudo-elements
+        // on ListViewSurface remain visible through the TableSurface.
+        backgroundColor={isInsideListView ? 'transparent' : 'surface.background.gray.intense'}
+      >
+        {isLoading ? (
+          <BaseBox
+            flex={1}
+            {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
+            testID="table-skeleton"
           >
-            {children}
-          </StyledReactTable>
-          {pagination}
-        </BaseBox>
-      )}
+            {/* Header skeleton row */}
+            <StyledSkeletonRow $columns={columnCount || 5} $isHeader>
+              {Array.from({ length: columnCount || 5 }).map((_, i) => (
+                <Skeleton
+                  key={i}
+                  width={
+                    i === 0 ? SKELETON_CELL_WIDTHS.headerFirst : SKELETON_CELL_WIDTHS.headerRest
+                  }
+                  height="16px"
+                  borderRadius="medium"
+                />
+              ))}
+            </StyledSkeletonRow>
+            {/* Body skeleton rows */}
+            {Array.from({ length: SKELETON_ROW_COUNT }).map((_, rowIdx) => (
+              <StyledSkeletonRow key={rowIdx} $columns={columnCount || 5}>
+                {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
+                  const cols = columnCount || 5;
+                  const width =
+                    colIdx === 0
+                      ? SKELETON_CELL_WIDTHS.first
+                      : colIdx === cols - 1
+                      ? SKELETON_CELL_WIDTHS.last
+                      : SKELETON_CELL_WIDTHS.middle;
+                  return (
+                    <Skeleton key={colIdx} width={width} height="14px" borderRadius="medium" />
+                  );
+                })}
+              </StyledSkeletonRow>
+            ))}
+          </BaseBox>
+        ) : (
+          <BaseBox
+            flex={1}
+            position="relative"
+            {...getStyledProps(rest)}
+            {...metaAttribute({ name: MetaConstants.Table })}
+            width={isVirtualized ? `100%` : undefined}
+            {...makeAnalyticsAttribute(rest)}
+          >
+            {isRefreshSpinnerMounted && (
+              <RefreshWrapper
+                position="absolute"
+                width="100%"
+                height="100%"
+                zIndex={refreshWrapperZIndex}
+                backgroundColor="overlay.background.subtle"
+                justifyContent="center"
+                alignItems="center"
+                display="flex"
+                isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+                isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+                isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+              >
+                <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
+              </RefreshWrapper>
+            )}
+            {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
+            <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
+            <StyledReactTable
+              role="table"
+              layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
+              data={data}
+              // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+              theme={tableTheme}
+              select={selectionType !== 'none' ? rowSelectConfig : null}
+              sort={sortFunctions ? sort : null}
+              tree={isGrouped ? tree : null}
+              $styledProps={{
+                height,
+                width: isVirtualized ? `100%` : undefined,
+                isVirtualized,
+                isSelectable: selectionType !== 'none',
+                showStripedRows,
+              }}
+              pagination={hasPagination ? paginationConfig : null}
+              {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+              {...metaAttribute({ name: MetaConstants.Table })}
+              {...makeAnalyticsAttribute(rest)}
+            >
+              {children}
+            </StyledReactTable>
+            {pagination}
+          </BaseBox>
+        )}
+      </TableSurface>
     </TableContext.Provider>
   );
 };

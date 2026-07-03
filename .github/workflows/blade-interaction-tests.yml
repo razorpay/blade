@@ -26,10 +26,10 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
-      - name: Use Node v20
+      - name: Use Node v22
         uses: actions/setup-node@v3
         with:
-          node-version: 20.19.5
+          node-version: 22
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Install Playwright Dependencies Manually
@@ -38,6 +38,6 @@ jobs:
           sudo apt-get install -y libasound2t64 libffi8 libx264-dev
       - name: Run Interaction Tests
         run: |
-          npx playwright install chromium firefox --with-deps
+          node node_modules/@storybook/test-runner/node_modules/.bin/playwright install chromium chromium-headless-shell firefox --with-deps
           yarn test:react:interaction:ci
         working-directory: packages/blade

@@ -32,7 +32,7 @@ const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
     // TODO: we do not have 16px radius token
     borderTopLeftRadius: makeSpace(theme.spacing[5]),
     borderTopRightRadius: makeSpace(theme.spacing[5]),
-    backgroundColor: theme.colors.popup.background.subtle,
+    backgroundColor: theme.colors.popup.background.gray.subtle,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',

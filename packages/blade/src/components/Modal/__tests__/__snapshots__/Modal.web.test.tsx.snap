@@ -22,7 +22,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -111,11 +111,19 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c13.c13.c13.c13.c13 {
   min-height: 20px;
-  background-color: hsla(150,100%,32%,0.09);
+  min-width: 20px;
+  background-color: hsla(150,100%,28%,0.09);
 }
 
 .c15.c15.c15.c15.c15 {
@@ -135,11 +143,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
-  padding-left: 8px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c25.c25.c25.c25.c25 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -158,26 +164,26 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: 100%;
 }
 
-.c24.c24.c24.c24.c24 {
+.c26.c26.c26.c26.c26 {
   width: 100%;
 }
 
-.c25.c25.c25.c25.c25 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
+.c27.c27.c27.c27.c27 {
+  border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
 }
 
-.c27.c27.c27.c27.c27 {
+.c29.c29.c29.c29.c29 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c29.c29.c29.c29.c29 {
+.c31.c31.c31.c31.c31 {
   padding: 16px;
 }
 
-.c32.c32.c32.c32.c32 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -204,12 +210,40 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c19.c19.c19.c19.c19 {
-  text-align: left;
-  height: 20px;
-  background-color: hsla(25,90%,48%,0.09);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
-.c26.c26.c26.c26.c26 {
+.c20.c20.c20.c20.c20 {
+  text-align: left;
+  height: 20px;
+  background-color: hsla(25,100%,44%,0.09);
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c28.c28.c28.c28.c28 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -220,7 +254,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -228,10 +262,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.528px;
+  -moz-letter-spacing: -0.528px;
+  -ms-letter-spacing: -0.528px;
+  letter-spacing: -0.528px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -239,18 +273,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(150,100%,27%,1);
+  color: hsla(150,100%,23%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -263,24 +297,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
 }
 
-.c28.c28.c28.c28.c28 {
-  color: hsla(212,39%,16%,1);
+.c30.c30.c30.c30.c30 {
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -288,15 +322,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
-.c34.c34.c34.c34.c34 {
+.c36.c36.c36.c36.c36 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -312,21 +346,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c21.c21.c21.c21.c21 {
-  color: hsla(25,85%,42%,1);
+.c23.c23.c23.c23.c23 {
+  color: hsla(25,100%,39%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -335,9 +371,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c24.c24.c24.c24.c24 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -355,7 +393,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;
@@ -364,13 +402,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c22.c22.c22.c22.c22:hover:not([disabled]) {
-  color: hsla(211,26%,34%,1);
+.c24.c24.c24.c24.c24:hover:not([disabled]) {
+  color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c22.c22.c22.c22.c22:focus-visible {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+.c24.c24.c24.c24.c24:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -379,11 +417,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
 }
 
-.c22.c22.c22.c22.c22:active {
-  color: hsla(211,26%,34%,1);
+.c24.c24.c24.c24.c24:active {
+  color: hsla(200,10%,18%,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -398,7 +437,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -413,8 +452,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.17,0,1,1);
 }
 
-.c20.c20.c20.c20.c20 {
-  background-color: hsla(25,90%,48%,0.09);
+.c21.c21.c21.c21.c21 {
+  background-color: hsla(25,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -429,13 +468,21 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  background-color: hsla(150,100%,32%,0.09);
+  background-color: hsla(150,100%,28%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -444,19 +491,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c30.c30.c30.c30.c30 {
+.c32.c32.c32.c32.c32 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: hsla(218,89%,51%,1);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,89%,51%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -472,8 +518,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
+  background-image: radial-gradient(64px 64px at var(--mouse-x,0%) var(--mouse-y,0%),hsla(0,0%,100%,0.18) 0%,transparent 100%);
+  -webkit-transition-property: background-color,background-image,box-shadow;
+  transition-property: background-color,background-image,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 160ms;
@@ -481,24 +528,26 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c30.c30.c30.c30.c30:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+.c32.c32.c32.c32.c32:hover {
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
-.c30.c30.c30.c30.c30:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
+.c32.c32.c32.c32.c32:active {
+  background-color: hsla(218,87%,43%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
+  background-image: none;
 }
 
-.c30.c30.c30.c30.c30:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+.c32.c32.c32.c32.c32:focus-visible {
+  background-color: hsla(218,87%,43%,1);
+  outline: 1px solid hsla(218,89%,51%,0.09);
+  background-image: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(218,87%,43%,1),inset 0 0px 0px 0.5px hsla(218,87%,43%,1),inset 0 1.5px 0px 0px hsla(0,0%,100%,0.18),inset 0 -2px 0px 0px hsla(0,0%,100%,0.18);
 }
 
-.c30.c30.c30.c30.c30 * {
+.c32.c32.c32.c32.c32 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -507,7 +556,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c31.c31.c31.c31.c31 {
+.c33.c33.c33.c33.c33 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -517,7 +566,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: 160px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c35.c35.c35.c35.c35 {
   opacity: 1;
 }
 
@@ -531,37 +580,37 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c25.c25.c25.c25.c25 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25.c25.c25.c25.c25 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25.c25.c25.c25.c25 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25.c25.c25.c25.c25 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25.c25.c25.c25.c25 {
+  .c27.c27.c27.c27.c27 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c29.c29.c29.c29.c29 {
+  .c31.c31.c31.c31.c31 {
     padding: 20px;
   }
 }
@@ -614,6 +663,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                 <p
                   class="c9"
                   data-blade-component="text"
+                  letter-spacing="25"
                 >
                   Address Details
                 </p>
@@ -640,6 +690,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                           <p
                             class="c16"
                             data-blade-component="text"
+                            letter-spacing="50"
                           >
                             2
                           </p>
@@ -652,6 +703,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
               <p
                 class="c17"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Saving addresses will improve your checkout experience
               </p>
@@ -666,20 +718,21 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
               data-blade-component="box"
             >
               <div
-                class="c12"
+                class="c19"
                 data-blade-component="badge"
               >
                 <div
-                  class="c19 c20"
+                  class="c20 c21"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c15"
+                    class="c22"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c21"
+                      class="c23"
                       data-blade-component="text"
+                      letter-spacing="50"
                     >
                       Action Needed
                     </p>
@@ -694,7 +747,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           >
             <button
               aria-label="Close"
-              class="c22"
+              class="c24"
               data-blade-component="icon-button"
               type="button"
             >
@@ -717,28 +770,29 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           </div>
         </div>
         <div
-          class="c23"
+          class="c25"
           data-blade-component="base-box"
         >
           <div
-            class="c24"
+            class="c26"
             data-blade-component="box"
           />
         </div>
       </div>
       <div
-        class="c25 c26"
+        class="c27 c28"
         data-blade-component="divider"
         role="separator"
       />
     </div>
     <div
-      class="c27"
+      class="c29"
       data-blade-component="modal-body"
     >
       <p
-        class="c28"
+        class="c30"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Test Content
       </p>
@@ -748,30 +802,30 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c25 c26"
+        class="c27 c28"
         data-blade-component="divider"
         role="separator"
       />
       <div
-        class="c29"
+        class="c31"
         data-blade-component="modal-footer"
       >
         <button
-          class="c30"
+          class="c32"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c31"
+            class=" c33"
             data-blade-component="base-box"
           >
             <div
-              class="c32 c33"
+              class="c34 c35"
               data-blade-component="base-box"
             >
               <div
-                class="c34"
+                class="c36"
                 data-blade-component="base-text"
               >
                 Save
@@ -807,7 +861,7 @@ exports[`Modal renders a basic Modal 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -817,7 +871,7 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -825,10 +879,10 @@ exports[`Modal renders a basic Modal 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -845,7 +899,7 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -888,6 +942,7 @@ exports[`Modal renders a basic Modal 1`] = `
       <p
         class="c5"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Test Content
       </p>
@@ -918,7 +973,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -928,7 +983,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -936,10 +991,10 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -956,7 +1011,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -999,6 +1054,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
       <p
         class="c5"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Test Content
       </p>
@@ -1029,7 +1085,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   top: 50%;
   left: 50%;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1039,7 +1095,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1047,10 +1103,10 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
@@ -1067,7 +1123,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 8px 24px -4px hsla(200,10%,18%,0.06);
   opacity: 0;
   position: fixed;
   -webkit-transform: translate(-50%,-50%) scale(0.9);
@@ -1110,6 +1166,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
       <p
         class="c5"
         data-blade-component="text"
+        letter-spacing="50"
       >
         Test Content
       </p>

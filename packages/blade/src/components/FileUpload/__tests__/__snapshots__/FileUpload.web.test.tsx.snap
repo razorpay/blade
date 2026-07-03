@@ -89,7 +89,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
   border-style: solid;
 }
@@ -130,7 +130,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -146,7 +146,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(227,100%,59%,0.18);
+  border-bottom-color: hsla(218,89%,51%,0.18);
   border-bottom-style: solid;
 }
 
@@ -197,22 +197,22 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -224,7 +224,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -232,16 +232,16 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -249,16 +249,16 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -266,16 +266,16 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -283,13 +283,14 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -336,7 +337,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -456,6 +457,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Upload GST certificate
                 </p>
@@ -466,6 +468,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     , Upload .jpg, .jpeg, or .png file only
                   </p>
@@ -496,6 +499,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
               <p
                 class="c12"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Drag files here or
                  
@@ -524,6 +528,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
                   <p
                     class="c16"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Upload
                   </p>
@@ -554,6 +559,7 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
             <span
               class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Upload .jpg, .jpeg, or .png file only
             </span>
@@ -654,7 +660,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
   border-style: solid;
 }
@@ -695,7 +701,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -711,7 +717,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(227,100%,59%,1);
+  border-bottom-color: hsla(218,89%,51%,1);
   border-bottom-style: solid;
 }
 
@@ -762,26 +768,26 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -793,7 +799,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -801,16 +807,16 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -818,16 +824,16 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -835,16 +841,16 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -852,13 +858,14 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -905,7 +912,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -917,7 +924,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1034,6 +1041,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Upload GST certificate
                 </p>
@@ -1044,6 +1052,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     , Upload .jpg, .jpeg, or .png file only
                   </p>
@@ -1074,6 +1083,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
               <p
                 class="c12"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Drag files here or
                  
@@ -1100,6 +1110,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                   <p
                     class="c16"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Upload
                   </p>
@@ -1130,6 +1141,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
             <span
               class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Upload .jpg, .jpeg, or .png file only
             </span>
@@ -1230,7 +1242,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   justify-content: center;
   height: 64px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
   border-style: solid;
 }
@@ -1271,7 +1283,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -1287,7 +1299,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(227,100%,59%,1);
+  border-bottom-color: hsla(218,89%,51%,1);
   border-bottom-style: solid;
 }
 
@@ -1338,26 +1350,26 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(206,10%,29%,0.06);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1369,7 +1381,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1377,16 +1389,16 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1394,16 +1406,16 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(227,100%,59%,1);
+  color: hsla(218,89%,51%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1411,16 +1423,16 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1428,13 +1440,14 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1481,7 +1494,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -1493,7 +1506,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover + div {
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
   background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1610,6 +1623,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Upload GST certificate
                 </p>
@@ -1620,6 +1634,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     , Upload .jpg, .jpeg, or .png file only
                   </p>
@@ -1650,6 +1665,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
               <p
                 class="c12"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Drag files here or
                  
@@ -1676,6 +1692,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
                   <p
                     class="c16"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Upload
                   </p>
@@ -1706,6 +1723,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
             <span
               class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Upload .jpg, .jpeg, or .png file only
             </span>
@@ -1806,7 +1824,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   height: 56px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 12px;
   border-width: 1px;
   border-style: solid;
 }
@@ -1847,7 +1865,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -1863,7 +1881,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -ms-flex-align: center;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(227,100%,59%,0.18);
+  border-bottom-color: hsla(218,89%,51%,0.18);
   border-bottom-style: solid;
 }
 
@@ -1914,22 +1932,22 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  border-color: hsla(214,40%,92%,1);
+  border-color: hsla(204,8%,88%,1);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1941,7 +1959,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1949,16 +1967,16 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(211,20%,52%,0.32);
+  color: hsla(206,10%,29%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1966,16 +1984,16 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(227,100%,59%,0.32);
+  color: hsla(218,89%,51%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1983,16 +2001,16 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
   margin: 0;
   padding: 0;
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(211,22%,56%,1);
+  color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -2000,13 +2018,14 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: -0.14300000000000002px;
+  -moz-letter-spacing: -0.14300000000000002px;
+  -ms-letter-spacing: -0.14300000000000002px;
+  letter-spacing: -0.14300000000000002px;
   margin: 0;
   padding: 0;
   word-break: break-word;
+  margin-top: 0px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -2053,7 +2072,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible + div {
-  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
@@ -2173,6 +2192,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                 <p
                   class="c5"
                   data-blade-component="text"
+                  letter-spacing="50"
                 >
                   Upload GST certificate
                 </p>
@@ -2183,6 +2203,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                   <p
                     class="c7"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     , Upload .jpg, .jpeg, or .png file only
                   </p>
@@ -2213,6 +2234,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
               <p
                 class="c12"
                 data-blade-component="text"
+                letter-spacing="50"
               >
                 Drag files here or
                  
@@ -2240,6 +2262,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                   <p
                     class="c16"
                     data-blade-component="text"
+                    letter-spacing="50"
                   >
                     Upload
                   </p>
@@ -2270,6 +2293,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
             <span
               class="c21"
               data-blade-component="text"
+              letter-spacing="50"
             >
               Upload .jpg, .jpeg, or .png file only
             </span>

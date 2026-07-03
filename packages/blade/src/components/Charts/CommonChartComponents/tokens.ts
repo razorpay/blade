@@ -28,11 +28,15 @@ const LEGEND_MARGIN_TOP = 8;
 const MIN_WIDTH = RECT_WIDTH;
 const MAX_WIDTH = 200;
 
-const DEFAULT_COLOR = 'data.background.categorical.gray.moderate';
+const DEFAULT_COLOR = 'data.background.categorical.blue.moderate';
 
 const componentId = {
   chartLegend: 'chart-legend',
   chartXAxis: 'chart-x-axis',
+  chartYAxis: 'chart-y-axis',
+  chartCartesianGrid: 'chart-cartesian-grid',
+  chartTooltip: 'chart-tooltip',
+  chartReferenceLine: 'chart-reference-line',
 };
 
 export {
