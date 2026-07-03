@@ -83,6 +83,18 @@
   color: var(--feedback-text-negative-intense);
 }
 
+/* Necessity indicator */
+.necessityRequired::after {
+  content: ' *';
+  color: var(--feedback-text-negative-intense);
+}
+
+.necessityOptional::after {
+  content: ' (optional)';
+  color: var(--surface-text-gray-muted);
+  font-weight: var(--font-weight-regular);
+}
+
 /* SegmentedControlItem button */
 .item {
   appearance: none;

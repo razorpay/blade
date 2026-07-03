@@ -96,7 +96,7 @@
         : 'interactive.icon.gray.muted',
   );
 
-  const itemSizeClass = $derived(() => {
+  const itemSizeClass = $derived.by(() => {
     if (ctx.size === 'small') return classes.itemSizeSmall;
     if (ctx.size === 'large') return classes.itemSizeLarge;
     return classes.itemSizeMedium;
@@ -106,7 +106,7 @@
     [
       classes.item,
       isSelected ? classes.itemSelected : '',
-      itemSizeClass(),
+      itemSizeClass,
     ]
       .filter(Boolean)
       .join(' '),

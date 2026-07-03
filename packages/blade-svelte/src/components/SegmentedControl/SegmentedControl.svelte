@@ -135,9 +135,9 @@
         class={[
           labelPosition === 'left' ? classes.labelLeft : classes.labelTop,
           necessityIndicator === 'required'
-            ? 'necessity-required'
+            ? classes.necessityRequired
             : necessityIndicator === 'optional'
-              ? 'necessity-optional'
+              ? classes.necessityOptional
               : '',
         ]
           .filter(Boolean)

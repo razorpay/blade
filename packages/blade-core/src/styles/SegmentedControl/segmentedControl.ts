@@ -11,6 +11,8 @@ export const getSegmentedControlTemplateClasses = (): Record<string, string> => 
   fieldContent: styles.fieldContent,
   labelTop: styles.labelTop,
   labelLeft: styles.labelLeft,
+  necessityRequired: styles.necessityRequired,
+  necessityOptional: styles.necessityOptional,
   hintText: styles.hintText,
   hintTextSmall: styles.hintTextSmall,
   hintTextMedium: styles.hintTextMedium,
