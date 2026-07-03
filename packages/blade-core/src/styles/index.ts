@@ -462,3 +462,10 @@ export type {
   FormLabelPosition,
   FormHintType,
 } from './Input';
+export {
+  inputGroupFieldCva,
+  getInputGroupFieldClasses,
+  getInputGroupHintIndentClass,
+  getInputGroupTemplateClasses,
+} from './InputGroup';
+export type { InputGroupLabelPosition, InputGroupFieldVariants } from './InputGroup';

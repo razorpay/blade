@@ -27,6 +27,7 @@
     getDescribedByElementId,
   } from './utils';
   import type { BaseInputProps } from './types';
+  import { getInputGroupContext } from '../../InputGroup/inputGroupContext';
 
   const templateClasses = getBaseInputTemplateClasses();
 
@@ -88,6 +89,13 @@
     ...rest
   }: BaseInputProps = $props();
 
+  // When rendered inside an InputGroup, the group overrides size/isDisabled and
+  // suppresses this input's own label + hint (mirrors React BaseInput.tsx).
+  const inputGroupCtx = getInputGroupContext();
+  const isInsideInputGroup = Boolean(inputGroupCtx);
+  const effectiveSize = $derived(inputGroupCtx?.size ?? size);
+  const effectiveDisabled = $derived(inputGroupCtx?.isDisabled ?? isDisabled);
+
   let inputEl: HTMLInputElement | HTMLTextAreaElement | null = $state(null);
 
   // Controlled vs uncontrolled: seed internal state from defaultValue once. When
@@ -119,11 +127,15 @@
     getEnterKeyHint(keyboardProps.keyboardReturnKeyType) as HTMLInputAttributes['enterkeyhint'],
   );
 
-  const wrapperRadius = $derived(borderRadius ?? baseInputBorderRadius[size]);
+  const wrapperRadius = $derived(borderRadius ?? baseInputBorderRadius[effectiveSize]);
 
   const wrapperClasses = $derived(
     getBaseInputWrapperClasses({ validationState, borderRadius: wrapperRadius }),
   );
+
+  // `__blade-base-input-wrapper` is the stable global hook the InputGroup
+  // corner-rounding rules target. Harmless (unstyled) on standalone inputs.
+  const inputWrapperClasses = $derived(`${wrapperClasses} __blade-base-input-wrapper`);
 
   const hasLeadingVisuals = $derived(
     Boolean(leadingInteractionElement) || Boolean(leadingIcon) || Boolean(prefix),
@@ -141,7 +153,7 @@
 
   const inputClasses = $derived(
     getBaseInputClasses({
-      size,
+      size: effectiveSize,
       valueComponentType,
       hasLeadingVisual: hasLeadingVisuals,
       hasTrailingVisual: hasTrailingVisuals,
@@ -166,7 +178,11 @@
   );
 
   const focusRingClasses = $derived(
-    [templateClasses.focusRingWrapper, wrapperRadius === 'medium' ? templateClasses.radiusMedium : '']
+    [
+      templateClasses.focusRingWrapper,
+      wrapperRadius === 'medium' ? templateClasses.radiusMedium : '',
+      '__blade-focus-ring-wrapper',
+    ]
       .filter(Boolean)
       .join(' '),
   );
@@ -180,7 +196,7 @@
   // label|input row and is indented by the label column width so it aligns under
   // the input (mirrors React's `formHintLeftLabelMarginLeft`).
   const hintMarginLeft = $derived(
-    isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
+    isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[effectiveSize] : 0,
   );
 
   const inputIds = $derived({
@@ -206,7 +222,7 @@
   const a11yAttrs = $derived(
     makeAccessible({
       required: Boolean(isRequired),
-      disabled: Boolean(isDisabled),
+      disabled: Boolean(effectiveDisabled),
       invalid: validationState === 'error',
       describedBy,
       label: !hasLabel ? accessibilityLabel : undefined,
@@ -266,7 +282,7 @@
 
 <div class={outerClasses} style={outerStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={fieldClasses}>
-    {#if hasLabel && !hideLabelText}
+    {#if hasLabel && !hideLabelText && !isInsideInputGroup}
       <div
         class={[templateClasses.labelRow, isLabelLeftPositioned ? templateClasses.labelLeft : '']
           .filter(Boolean)
@@ -275,7 +291,7 @@
         <FormLabel
           as="label"
           position={labelPosition}
-          size={size === 'xsmall' ? 'small' : size}
+          size={effectiveSize === 'xsmall' ? 'small' : effectiveSize}
           {necessityIndicator}
           id={inputIds.labelId}
           htmlFor={inputIds.inputId}
@@ -293,13 +309,13 @@
     <div class={templateClasses.field}>
       <div class={focusRingClasses}>
         <div
-          class={wrapperClasses}
-          data-disabled={isDisabled ? '' : undefined}
+          class={inputWrapperClasses}
+          data-disabled={effectiveDisabled ? '' : undefined}
         >
           <BaseInputVisuals
             visualType="leading"
-            {size}
-            {isDisabled}
+            size={effectiveSize}
+            isDisabled={effectiveDisabled}
             {leadingIcon}
             {prefix}
             {leadingInteractionElement}
@@ -313,7 +329,7 @@
               {name}
               {placeholder}
               value={currentValue}
-              disabled={isDisabled || undefined}
+              disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
               maxlength={maxCharacters}
               tabindex={tabIndex}
@@ -339,7 +355,7 @@
               {name}
               {placeholder}
               value={currentValue}
-              disabled={isDisabled || undefined}
+              disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
               maxlength={maxCharacters}
               tabindex={tabIndex}
@@ -360,8 +376,8 @@
 
           <BaseInputVisuals
             visualType="trailing"
-            {size}
-            {isDisabled}
+            size={effectiveSize}
+            isDisabled={effectiveDisabled}
             {validationState}
             {trailingInteractionElement}
             {onTrailingInteractionElementClick}
@@ -380,7 +396,7 @@
     </div>
   </div>
 
-  {#if showFormHintOutside || trailingFooterSlot}
+  {#if !isInsideInputGroup && (showFormHintOutside || trailingFooterSlot)}
     <div
       class={[
         templateClasses.hintRow,
@@ -395,7 +411,7 @@
       {#if showFormHintOutside}
         <FormHint
           type={hintType}
-          size={size === 'xsmall' ? 'small' : size}
+          size={effectiveSize === 'xsmall' ? 'small' : effectiveSize}
           {helpText}
           {errorText}
           {successText}
