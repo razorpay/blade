@@ -349,22 +349,22 @@ const StyledRow = styled(Row)<{
           }),
         ...($isActive && {
           '& .cell-wrapper-base': {
-            backgroundColor: `${getIn(
-              theme.colors,
-              tableRow.activeRow.backgroundColor,
-            )} !important`,
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColor),
+          },
+          '&.row-select-selected .cell-wrapper-base, &.row-select-single-selected .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColor),
           },
           '&:hover:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: `${getIn(
-              theme.colors,
-              tableRow.activeRow.backgroundColorHover,
-            )} !important`,
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColorHover),
+          },
+          '&.row-select-selected:hover:not(.disabled-row) .cell-wrapper-base, &.row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColorHover),
           },
           '&:focus:not(.disabled-row) .cell-wrapper-base': {
-            backgroundColor: `${getIn(
-              theme.colors,
-              tableRow.activeRow.backgroundColorFocus,
-            )} !important`,
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColorFocus),
+          },
+          '&.row-select-selected:focus:not(.disabled-row) .cell-wrapper-base, &.row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base': {
+            backgroundColor: getIn(theme.colors, tableRow.activeRow.backgroundColorFocus),
           },
           '& td:first-child .cell-wrapper-base': {
             boxShadow: `inset 2px 0 0 ${getIn(theme.colors, tableRow.activeRow.borderColor)}`,

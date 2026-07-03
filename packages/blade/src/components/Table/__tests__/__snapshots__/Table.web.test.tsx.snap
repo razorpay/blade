@@ -1408,15 +1408,27 @@ exports[`<Table /> should allow isActive and isDisabled to coexist without error
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-selected .cell-wrapper-base,.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-single-selected .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-selected:hover:not(.disabled-row) .cell-wrapper-base,.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-selected:focus:not(.disabled-row) .cell-wrapper-base,.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 td:first-child .cell-wrapper-base {
@@ -3616,15 +3628,27 @@ exports[`<Table /> should render table row with isActive=true and apply active c
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-selected .cell-wrapper-base,.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-single-selected .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-selected:hover:not(.disabled-row) .cell-wrapper-base,.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09) !important;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-selected:focus:not(.disabled-row) .cell-wrapper-base,.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 td:first-child .cell-wrapper-base {
