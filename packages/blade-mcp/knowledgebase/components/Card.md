@@ -219,6 +219,25 @@ type CardFooterTrailingProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Card` to group related content and actions on a single topic with a consistent elevated surface.
+- Compose using the prescribed structure: `CardHeader` + `CardBody` + `CardFooter` for the primary variant.
+- Use `CardHeaderIcon`, `CardHeaderCounter`, `CardHeaderBadge` for header visual elements — not raw components.
+- Use `onClick` or `href` to make cards interactive; provide `accessibilityLabel` for interactive cards.
+- Use `variant="secondary"` when you only need a body section without header/footer.
+
+**Don't**
+
+- Don't pass arbitrary children directly — only `CardHeader`, `CardBody`, and `CardFooter` are accepted (primary variant).
+- Don't use React Fragments as Card children — they are not allowed.
+- Don't use deprecated props (`backgroundColor`, `borderRadius`, `elevation`) — they are no-ops.
+- Don't use `Box` with elevation for card-like surfaces — use `Card` for content grouping with structure.
+- Don't put more than 2 actions (primary + secondary) in CardFooter.
+- Don't use raw `IconButton` in header trailing — only tertiary variant IconButton via `CardHeaderIconButton` is allowed.
+
 ## Example
 
 ### Basic Card with Header, Body, and Footer

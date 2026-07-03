@@ -67,6 +67,22 @@ type TextAreaPropsWithLabel = {
 type TextAreaProps = TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `TextArea` for multi-line text input: comments, descriptions, feedback, and longer-form content.
+- Use `numberOfLines` (2–5) to set the visible height appropriate for the expected content length.
+- Use `maxCharacters` to enforce character limits with a visible counter below the field.
+- Use `onKeyDown` for custom keyboard handling (e.g., Shift+Enter to submit).
+
+**Don't**
+
+- Don't use `TextArea` for single-line input — use `TextInput` instead.
+- Don't expect `numberOfLines` to auto-grow — it sets a fixed height.
+- Don't use `TextArea` with leading/trailing icons, dropdowns, or prefix/suffix — these are only supported in `TextInput`.
+- Don't use `TextArea` for chat input — use `ChatInput` which has file upload, suggestions, and submit/stop behavior.
+
 ## Example
 
 ### Basic TextArea with Validation

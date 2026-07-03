@@ -62,6 +62,24 @@ type SkeletonProps = {
   Partial<FlexboxProps>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Skeleton` when the layout structure of loading content is known — mimic the final content's dimensions.
+- Manually specify `width`, `height`, and `borderRadius` to match the target content (e.g., circle for avatars, full-width rectangles for text lines).
+- Compose multiple `Skeleton` elements in a `Box` with flex layout to build realistic loading placeholders.
+- Add `aria-busy="true"` on the parent container to announce the loading state to screen readers.
+- Use `borderRadius="max"` for circular skeletons (avatars) and `borderRadius="medium"` for text or card placeholders.
+
+**Don't**
+
+- Don't use `Skeleton` when the content structure is unknown — use `Spinner` for generic loading.
+- Don't wrap `Skeleton` around actual components (e.g., `<Skeleton><Card /></Skeleton>`) — compose skeletons separately and conditionally render them vs. real content.
+- Don't mix `Skeleton` and `Spinner` in the same view for the same loading state — choose one approach.
+- Don't forget to set dimensions — Skeleton doesn't auto-infer size from parent content.
+- Don't use `Skeleton` for empty states where no data exists — use `EmptyState` instead.
+
 ## Example
 
 ### Basic Usage

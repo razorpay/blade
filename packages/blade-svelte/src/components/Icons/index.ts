@@ -3,11 +3,13 @@ export * from './types';
 
 // Stroked Icons
 export { AlertOctagonIcon } from './AlertOctagonIcon';
+export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { AlertTriangleIcon } from './AlertTriangleIcon';
 export { CheckCircleIcon } from './CheckCircleIcon';
 export { CheckIcon } from './CheckIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
+export { ChevronRightIcon } from './ChevronRightIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
@@ -17,6 +19,9 @@ export { SearchIcon } from './SearchIcon';
 
 export { UserIcon } from './UserIcon';
 export { BuildingIcon } from './BuildingIcon';
+
+// Branded Icons
+export { RTBShieldIcon } from './RTBShieldIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';

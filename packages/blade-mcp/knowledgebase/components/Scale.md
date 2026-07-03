@@ -59,6 +59,22 @@ type ScaleProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Scale` for interactive hover/focus feedback — cards, images, and buttons that need subtle size change on interaction.
+- Use uncontrolled mode (default `motionTriggers={['hover']}`) for standard hover affordances.
+- Use controlled mode (`isHighlighted` prop) for programmatic scale control.
+- Use `variant="scale-down"` (0.98x) for press feedback and `"scale-up"` (1.05x, default) for hover enlargement.
+
+**Don't**
+
+- Don't use `Scale` for entry/exit animations — use `Fade`, `Move`, or `Slide` instead.
+- Don't expect custom scale values — only 1.05x (up) and 0.98x (down) are available.
+- Don't mix controlled (`isHighlighted`) and uncontrolled (`motionTriggers`) modes on the same instance.
+- Don't use `Scale` on text-only elements — it's designed for block-level interactive components.
+
 ## Example
 
 ### Basic Usage
