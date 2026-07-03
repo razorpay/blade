@@ -13,8 +13,6 @@ import { getElevationValue } from '~components/Box/BaseBox/baseBoxStyles';
 import { useTheme } from '~components/BladeProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 
-const noop = (): void => {};
-
 const fillStyle = {
   position: 'absolute' as const,
   top: 0,
@@ -124,8 +122,8 @@ const AnimatedDrawerContainer = ({
     translateX.value = withTiming(isVisible ? 0 : screenWidth, config);
     surfaceOpacity.value = withTiming(isVisible ? 1 : 0, config);
     overlayOpacity.value = withTiming(isVisible ? 1 : 0, config, (finished) => {
-      if (finished && !isVisible) {
-        runOnJS(onExitComplete ?? noop)();
+      if (finished && !isVisible && onExitComplete) {
+        runOnJS(onExitComplete)();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
