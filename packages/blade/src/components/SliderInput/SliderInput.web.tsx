@@ -44,10 +44,10 @@ const StyledNumericInput = styled.input<{
   border: 1px solid;
   border-color: ${({ theme, $validationState }) => {
     if ($validationState === 'error')
-      return get(theme.colors, 'feedback.border.negative.intense', '#d73131');
+      return get(theme.colors, 'feedback.border.negative.intense', '');
     if ($validationState === 'success')
-      return get(theme.colors, 'feedback.border.positive.intense', '#1DA462');
-    return get(theme.colors, 'interactive.border.gray.default', '#DEE1E3');
+      return get(theme.colors, 'feedback.border.positive.intense', '');
+    return get(theme.colors, 'interactive.border.gray.default', '');
   }};
   border-radius: ${({ theme }) => theme.border.radius.medium}px;
   font-size: ${({ $size }) => ($size === 'large' ? 14 : 12)}px;
@@ -60,7 +60,7 @@ const StyledNumericInput = styled.input<{
   flex-shrink: 0;
   ${({ theme }) => css`
     &:focus {
-      border-color: ${get(theme.colors, 'interactive.border.primary.default', '#528FF0')};
+      border-color: ${get(theme.colors, 'interactive.border.primary.default', '')};
     }
     &:disabled {
       cursor: not-allowed;
@@ -117,7 +117,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
-    const visualPctRef = useRef(((currentValue - min) / (max - min)) * 100);
+    const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
     const targetPctRef = useRef(visualPctRef.current);
     const lerpRafRef = useRef(0);
     const { helpTextId, errorTextId, successTextId } = useFormId('slider-input');
@@ -127,9 +127,14 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
+    const getRatio = useCallback(
+      (val: number) => (max === min ? 0 : (val - min) / (max - min)),
+      [min, max],
+    );
+
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
     const snap = useCallback((v: number) => Math.round(v / step) * step, [step]);
-    const pct = ((currentValue - min) / (max - min)) * 100;
+    const pct = getRatio(currentValue) * 100;
 
     useEffect(() => {
       if (!isDragging) {
@@ -161,6 +166,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       if (fillRef.current) fillRef.current.style.width = `${p}%`;
     }, []);
 
+    useEffect(() => {
+      return () => cancelAnimationFrame(lerpRafRef.current);
+    }, []);
+
     const animateToTarget = useCallback(() => {
       cancelAnimationFrame(lerpRafRef.current);
       const tick = (): void => {
@@ -179,7 +188,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
     const positionDomElements = useCallback(
       (val: number) => {
-        const p = ((val - min) / (max - min)) * 100;
+        const p = getRatio(val) * 100;
         targetPctRef.current = p;
         if (step > 1) {
           animateToTarget();
@@ -188,7 +197,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
           applyPosition(p);
         }
       },
-      [min, max, step, applyPosition, animateToTarget],
+      [getRatio, step, applyPosition, animateToTarget],
     );
 
     const setDragTransitions = useCallback((enable: boolean) => {
@@ -253,7 +262,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         cancelAnimationFrame(lerpRafRef.current);
         setDragTransitions(false);
         const val = clamp(snap(getValueFromPosition(clientX)));
-        const p = ((val - min) / (max - min)) * 100;
+        const p = getRatio(val) * 100;
         visualPctRef.current = p;
         targetPctRef.current = p;
         applyPosition(p);
@@ -268,6 +277,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         onMove(e.touches[0].clientX);
       };
       const handleTouchEnd = (e: TouchEvent): void => {
+        if (!e.changedTouches.length) return;
         const touch = e.changedTouches[0];
         onEnd(touch.clientX);
       };
@@ -286,6 +296,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     }, [
       isDragging,
       getValueFromPosition,
+      getRatio,
       updateValue,
       onChangeEnd,
       name,
@@ -294,6 +305,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       positionDomElements,
       setDragTransitions,
     ]);
+
+    const isKeyActiveRef = useRef(false);
 
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent) => {
@@ -324,9 +337,32 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
             return;
         }
         e.preventDefault();
+        if (!isKeyActiveRef.current) {
+          isKeyActiveRef.current = true;
+          onChangeStart?.({ name, value: currentValue });
+        }
         updateValue(newVal);
       },
-      [isDisabled, currentValue, step, min, max, updateValue],
+      [isDisabled, currentValue, step, min, max, updateValue, onChangeStart, name],
+    );
+
+    const handleKeyUp = useCallback(
+      (e: React.KeyboardEvent) => {
+        const isSliderKey = [
+          'ArrowRight',
+          'ArrowUp',
+          'ArrowLeft',
+          'ArrowDown',
+          'Home',
+          'End',
+          'PageUp',
+          'PageDown',
+        ].includes(e.key);
+        if (!isSliderKey || !isKeyActiveRef.current) return;
+        isKeyActiveRef.current = false;
+        onChangeEnd?.({ name, value: currentValueRef.current });
+      },
+      [onChangeEnd, name],
     );
 
     const [inputStringValue, setInputStringValue] = useState(String(currentValue));
@@ -464,6 +500,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                   aria-disabled={isDisabled}
                   onKeyDown={handleKeyDown}
+                  onKeyUp={handleKeyUp}
                   onFocus={() => setIsThumbFocused(true)}
                   onBlur={() => {
                     setIsThumbFocused(false);
@@ -537,7 +574,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 aria-label={
                   suffix
                     ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
-                    : undefined
+                    : label ?? accessibilityLabel ?? 'Slider value'
                 }
                 onChange={handleInputChange}
                 onFocus={() => setIsInputFocused(true)}

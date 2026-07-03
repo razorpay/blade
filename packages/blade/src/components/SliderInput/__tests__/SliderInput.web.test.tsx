@@ -43,7 +43,9 @@ describe('<SliderInput />', () => {
   });
 
   it('should render in disabled state', () => {
-    const { getByRole } = renderWithTheme(<SliderInput label="Test" value={50} isDisabled />);
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" value={50} onChange={jest.fn()} isDisabled />,
+    );
     expect(getByRole('slider')).toHaveAttribute('aria-disabled', 'true');
   });
 
@@ -52,6 +54,7 @@ describe('<SliderInput />', () => {
       <SliderInput
         label="Test"
         value={50}
+        onChange={jest.fn()}
         validationState="error"
         errorText="Something went wrong"
       />,
@@ -61,14 +64,14 @@ describe('<SliderInput />', () => {
 
   it('should render help text', () => {
     const { getByText } = renderWithTheme(
-      <SliderInput label="Test" value={50} helpText="Some guidance" />,
+      <SliderInput label="Test" value={50} onChange={jest.fn()} helpText="Some guidance" />,
     );
     expect(getByText('Some guidance')).toBeTruthy();
   });
 
   it('should set correct ARIA attributes', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Radius" value={12} min={0} max={24} suffix="px" />,
+      <SliderInput label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
     );
     const slider = getByRole('slider');
     expect(slider).toHaveAttribute('aria-valuemin', '0');
