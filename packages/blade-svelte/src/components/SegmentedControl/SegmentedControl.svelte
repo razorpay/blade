@@ -61,10 +61,10 @@
     baseId,
     get totalItems() { return totalItems; },
     get firstEnabledValue() { return firstEnabledValue; },
-    registerItem(value: string, el: HTMLButtonElement) {
+    registerItem(value: string, el: HTMLButtonElement, isItemDisabled: boolean) {
       itemElMap.set(value, el);
       totalItems += 1;
-      if (!isDisabled && firstEnabledValue === undefined) {
+      if (!isDisabled && !isItemDisabled && firstEnabledValue === undefined) {
         firstEnabledValue = value;
       }
       return () => {

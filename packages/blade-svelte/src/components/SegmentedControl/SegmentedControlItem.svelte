@@ -36,7 +36,7 @@
 
   $effect(() => {
     if (!buttonEl) return;
-    const cleanup = ctx.registerItem(value, buttonEl);
+    const cleanup = ctx.registerItem(value, buttonEl, isItemDisabled);
     return cleanup;
   });
 

@@ -125,6 +125,6 @@ export type SegmentedControlContextType = {
   baseId: string;
   totalItems: number;
   firstEnabledValue: string | undefined;
-  registerItem: (value: string, el: HTMLButtonElement) => () => void;
+  registerItem: (value: string, el: HTMLButtonElement, isItemDisabled: boolean) => () => void;
   getItemEl: (value: string) => HTMLButtonElement | undefined;
 };
