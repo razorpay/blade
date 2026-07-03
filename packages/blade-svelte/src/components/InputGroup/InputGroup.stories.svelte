@@ -265,22 +265,6 @@
           <TextInput placeholder="IFSC Code" label="IFSC Code" />
         </InputRow>
       {/if}
-      <!-- Dropdown/SelectInput not migrated → native <select> substitute. -->
-      <InputRow gridTemplateColumns="1fr">
-        <select
-          name="businessCategory"
-          aria-label="Business Category"
-          style="width: 100%; height: 36px; padding: 0 var(--spacing-4); border-radius: var(--border-radius-small); border: 1px solid var(--interactive-border-gray-default); background-color: var(--surface-background-gray-intense); color: var(--interactive-text-gray-normal); font-family: var(--font-family-text);"
-        >
-          <option value="">Select Business Category</option>
-          <option value="ecommerce">E-commerce</option>
-          <option value="education">Education</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="food_beverage">Food &amp; Beverage</option>
-          <option value="financial">Financial Services</option>
-          <option value="others">Others</option>
-        </select>
-      </InputRow>
     </InputGroup>
     <div style="display: flex; justify-content: flex-end; width: 100%;">
       <Button variant="primary" marginTop="spacing.3">Start Onboarding</Button>

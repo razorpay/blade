@@ -106,6 +106,7 @@
 
   const hasLabel = $derived(Boolean(label));
   const isLabelLeftPositioned = $derived(labelPosition === 'left' && Boolean(label));
+  const shouldRenderLabel = $derived(hasLabel && !hideLabelText && !isInsideInputGroup);
 
   const keyboardProps = $derived(
     getKeyboardAndAutocompleteProps({
@@ -225,8 +226,8 @@
       disabled: Boolean(effectiveDisabled),
       invalid: validationState === 'error',
       describedBy,
-      label: !hasLabel ? accessibilityLabel : undefined,
-      labelledBy: hasLabel ? inputIds.labelId : undefined,
+      label: shouldRenderLabel ? undefined : accessibilityLabel,
+      labelledBy: shouldRenderLabel ? inputIds.labelId : undefined,
     }),
   );
 
@@ -239,6 +240,7 @@
   });
 
   const handleInput = (event: Event) => {
+    if (effectiveDisabled) return;
     const target = event.currentTarget as HTMLInputElement | HTMLTextAreaElement;
     if (!isControlled) {
       internalValue = target.value;
@@ -247,26 +249,42 @@
   };
 
   const handleChange = (event: Event) => {
+    if (effectiveDisabled) return;
     onChange?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleFocus = (event: FocusEvent) => {
+    if (effectiveDisabled) return;
     onFocus?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleBlur = (event: FocusEvent) => {
+    if (effectiveDisabled) return;
     onBlur?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleClick = (event: MouseEvent) => {
+    if (effectiveDisabled) return;
     onClick?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (effectiveDisabled) return;
     onKeyDown?.({ name, key: event.key, code: event.code, event });
   };
 
+  const handlePaste = (event: ClipboardEvent) => {
+    if (effectiveDisabled) return;
+    onPaste?.(event);
+  };
+
+  const handleTrailingInteractionElementClick = () => {
+    if (effectiveDisabled) return;
+    onTrailingInteractionElementClick?.();
+  };
+
   export function focus(): void {
+    if (effectiveDisabled) return;
     inputEl?.focus();
   }
   export function getInput(): HTMLInputElement | null {
@@ -282,7 +300,7 @@
 
 <div class={outerClasses} style={outerStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={fieldClasses}>
-    {#if hasLabel && !hideLabelText && !isInsideInputGroup}
+    {#if shouldRenderLabel}
       <div
         class={[templateClasses.labelRow, isLabelLeftPositioned ? templateClasses.labelLeft : '']
           .filter(Boolean)
@@ -343,7 +361,7 @@
               onblur={handleBlur}
               onclick={handleClick}
               onkeydown={handleKeyDown}
-              onpaste={onPaste}
+              onpaste={handlePaste}
               {...a11yAttrs}
             ></textarea>
           {:else}
@@ -369,7 +387,7 @@
               onblur={handleBlur}
               onclick={handleClick}
               onkeydown={handleKeyDown}
-              onpaste={onPaste}
+              onpaste={handlePaste}
               {...a11yAttrs}
             />
           {/if}
@@ -380,7 +398,7 @@
             isDisabled={effectiveDisabled}
             {validationState}
             {trailingInteractionElement}
-            {onTrailingInteractionElementClick}
+            onTrailingInteractionElementClick={handleTrailingInteractionElementClick}
             {suffix}
             {trailingIcon}
             {trailingButton}
