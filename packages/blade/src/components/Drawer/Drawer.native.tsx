@@ -32,7 +32,7 @@ const _Drawer = ({
   accessibilityLabel,
   showOverlay = true,
   initialFocusRef,
-  isLazy: ignoredIsLazy = true,
+  isLazy: _isLazy = true,
   testID,
   ...rest
 }: DrawerProps): React.ReactElement | null => {
