@@ -290,92 +290,90 @@
       </div>
     {/if}
 
-    <div class={templateClasses.field}>
-      <div class={focusRingClasses}>
-        <div
-          class={wrapperClasses}
-          data-disabled={isDisabled ? '' : undefined}
-        >
-          <BaseInputVisuals
-            visualType="leading"
-            {size}
-            {isDisabled}
-            {leadingIcon}
-            {prefix}
-            {leadingInteractionElement}
-          />
+    <div class={focusRingClasses}>
+      <div
+        class={wrapperClasses}
+        data-disabled={isDisabled ? '' : undefined}
+      >
+        <BaseInputVisuals
+          visualType="leading"
+          {size}
+          {isDisabled}
+          {leadingIcon}
+          {prefix}
+          {leadingInteractionElement}
+        />
 
-          {#if as === 'textarea'}
-            <textarea
-              bind:this={inputEl}
-              class={inputClasses}
-              id={inputIds.inputId}
-              {name}
-              {placeholder}
-              value={currentValue}
-              disabled={isDisabled || undefined}
-              required={isRequired || undefined}
-              maxlength={maxCharacters}
-              tabindex={tabIndex}
-              autocomplete={domAutoComplete}
-              autocapitalize={keyboardProps.autoCapitalize}
-              enterkeyhint={domEnterKeyHint}
-              inputmode={resolvedInputMode}
-              oninput={handleInput}
-              onchange={handleChange}
-              onfocus={handleFocus}
-              onblur={handleBlur}
-              onclick={handleClick}
-              onkeydown={handleKeyDown}
-              onpaste={onPaste}
-              {...a11yAttrs}
-            ></textarea>
-          {:else}
-            <input
-              bind:this={inputEl}
-              class={inputClasses}
-              id={inputIds.inputId}
-              type={getDomType(keyboardProps.type)}
-              {name}
-              {placeholder}
-              value={currentValue}
-              disabled={isDisabled || undefined}
-              required={isRequired || undefined}
-              maxlength={maxCharacters}
-              tabindex={tabIndex}
-              autocomplete={domAutoComplete}
-              autocapitalize={keyboardProps.autoCapitalize}
-              enterkeyhint={domEnterKeyHint}
-              inputmode={resolvedInputMode}
-              oninput={handleInput}
-              onchange={handleChange}
-              onfocus={handleFocus}
-              onblur={handleBlur}
-              onclick={handleClick}
-              onkeydown={handleKeyDown}
-              onpaste={onPaste}
-              {...a11yAttrs}
-            />
-          {/if}
-
-          <BaseInputVisuals
-            visualType="trailing"
-            {size}
-            {isDisabled}
-            {validationState}
-            {trailingInteractionElement}
-            {onTrailingInteractionElementClick}
-            {suffix}
-            {trailingIcon}
-            {trailingButton}
-            {showHintsAsTooltip}
-            {errorText}
-            {successText}
-            {validationTextPlacement}
-            errorTextId={inputIds.errorTextId}
-            successTextId={inputIds.successTextId}
+        {#if as === 'textarea'}
+          <textarea
+            bind:this={inputEl}
+            class={inputClasses}
+            id={inputIds.inputId}
+            {name}
+            {placeholder}
+            value={currentValue}
+            disabled={isDisabled || undefined}
+            required={isRequired || undefined}
+            maxlength={maxCharacters}
+            tabindex={tabIndex}
+            autocomplete={domAutoComplete}
+            autocapitalize={keyboardProps.autoCapitalize}
+            enterkeyhint={domEnterKeyHint}
+            inputmode={resolvedInputMode}
+            oninput={handleInput}
+            onchange={handleChange}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onclick={handleClick}
+            onkeydown={handleKeyDown}
+            onpaste={onPaste}
+            {...a11yAttrs}
+          ></textarea>
+        {:else}
+          <input
+            bind:this={inputEl}
+            class={inputClasses}
+            id={inputIds.inputId}
+            type={getDomType(keyboardProps.type)}
+            {name}
+            {placeholder}
+            value={currentValue}
+            disabled={isDisabled || undefined}
+            required={isRequired || undefined}
+            maxlength={maxCharacters}
+            tabindex={tabIndex}
+            autocomplete={domAutoComplete}
+            autocapitalize={keyboardProps.autoCapitalize}
+            enterkeyhint={domEnterKeyHint}
+            inputmode={resolvedInputMode}
+            oninput={handleInput}
+            onchange={handleChange}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onclick={handleClick}
+            onkeydown={handleKeyDown}
+            onpaste={onPaste}
+            {...a11yAttrs}
           />
-        </div>
+        {/if}
+
+        <BaseInputVisuals
+          visualType="trailing"
+          {size}
+          {isDisabled}
+          {validationState}
+          {trailingInteractionElement}
+          {onTrailingInteractionElementClick}
+          {suffix}
+          {trailingIcon}
+          {trailingButton}
+          {showHintsAsTooltip}
+          {errorText}
+          {successText}
+          {validationTextPlacement}
+          errorTextId={inputIds.errorTextId}
+          successTextId={inputIds.successTextId}
+        />
       </div>
     </div>
   </div>
