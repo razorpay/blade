@@ -44,8 +44,10 @@ const StyledNumericInput = styled.input<{
   padding: 0 8px;
   border: 1px solid;
   border-color: ${({ theme, $validationState }) => {
-    if ($validationState === 'error') return get(theme.colors, 'feedback.border.negative.intense', '#d73131');
-    if ($validationState === 'success') return get(theme.colors, 'feedback.border.positive.intense', '#1DA462');
+    if ($validationState === 'error')
+      return get(theme.colors, 'feedback.border.negative.intense', '#d73131');
+    if ($validationState === 'success')
+      return get(theme.colors, 'feedback.border.positive.intense', '#1DA462');
     return get(theme.colors, 'interactive.border.gray.default', '#DEE1E3');
   }};
   border-radius: ${({ theme }) => theme.border.radius.medium}px;
@@ -406,122 +408,122 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
             {/* Track + numeric input row */}
             <BaseBox display="flex" alignItems="center" flex="1" gap="spacing.3">
-            {/* Track area */}
-            <BaseBox
-              ref={trackRef}
-              position="relative"
-              flex="1"
-              height={makeSpace(44)}
-              display="flex"
-              alignItems="center"
-              cursor={isDisabled ? 'not-allowed' : 'pointer'}
-              onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
-              onTouchStart={(handleTouchStart as unknown) as React.TouchEventHandler}
-              style={{ touchAction: 'none' }}
-            >
-              {/* Track background */}
+              {/* Track area */}
               <BaseBox
-                position="absolute"
-                left="spacing.0"
-                right="spacing.0"
-                height={`${T.track.height}px`}
-                borderRadius="max"
-                backgroundColor={T.color.track.bg}
-              />
-
-              {/* Fill track */}
-              <div
-                ref={fillRef}
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  width: `${pct}%`,
-                  height: T.track.height,
-                  borderRadius: theme.border.radius.max,
-                  backgroundColor: trackFillColor,
-                  transition: isDragging
-                    ? 'none'
-                    : `width ${castWebType(
-                        makeMotionTime(theme.motion.duration.quick),
-                      )} ${castWebType(theme.motion.easing.standard)}`,
-                }}
-              />
-
-              {/* Thumb wrapper — halo + visual thumb nested inside */}
-              <StyledThumb
-                ref={thumbRef}
-                $isFocused={isThumbFocused}
-                $isDragging={isDragging}
-                $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
-                tabIndex={isDisabled ? -1 : 0}
-                role="slider"
-                aria-valuemin={min}
-                aria-valuemax={max}
-                aria-valuenow={currentValue}
-                aria-valuetext={suffix ? `${currentValue} ${suffix}` : String(currentValue)}
-                aria-labelledby={label ? labelId : undefined}
-                aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
-                aria-disabled={isDisabled}
-                onKeyDown={handleKeyDown}
-                onFocus={() => setIsThumbFocused(true)}
-                onBlur={() => {
-                  setIsThumbFocused(false);
-                  isPointerFocusRef.current = false;
-                }}
-                onPointerDown={() => {
-                  isPointerFocusRef.current = true;
-                }}
-                onMouseEnter={() => !isDisabled && setIsThumbHovered(true)}
-                onMouseLeave={() => setIsThumbHovered(false)}
-                style={{
-                  position: 'absolute',
-                  left: `${pct}%`,
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: 44,
-                  height: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
-                  zIndex: 2,
-                  touchAction: 'none',
-                }}
+                ref={trackRef}
+                position="relative"
+                flex="1"
+                height={makeSpace(44)}
+                display="flex"
+                alignItems="center"
+                cursor={isDisabled ? 'not-allowed' : 'pointer'}
+                onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
+                onTouchStart={(handleTouchStart as unknown) as React.TouchEventHandler}
+                style={{ touchAction: 'none' }}
               >
-                {/* Halo */}
+                {/* Track background */}
+                <BaseBox
+                  position="absolute"
+                  left="spacing.0"
+                  right="spacing.0"
+                  height={`${T.track.height}px`}
+                  borderRadius="max"
+                  backgroundColor={T.color.track.bg}
+                />
+
+                {/* Fill track */}
                 <div
+                  ref={fillRef}
                   style={{
                     position: 'absolute',
-                    width: showHalo ? haloSize : 0,
-                    height: showHalo ? haloSize : 0,
-                    borderRadius: '50%',
-                    backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
-                    opacity: showHalo ? 1 : 0,
+                    left: 0,
+                    width: `${pct}%`,
+                    height: T.track.height,
+                    borderRadius: theme.border.radius.max,
+                    backgroundColor: trackFillColor,
                     transition: isDragging
                       ? 'none'
-                      : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
-                    pointerEvents: 'none',
-                  }}
-                />
-                {/* Visual thumb */}
-                <div
-                  style={{
-                    width: thumbSize,
-                    height: thumbSize,
-                    borderRadius: '50%',
-                    backgroundColor: thumbColor,
-                    transition: isDragging
-                      ? 'none'
-                      : `all ${castWebType(
-                          makeMotionTime(theme.motion.duration.xquick),
+                      : `width ${castWebType(
+                          makeMotionTime(theme.motion.duration.quick),
                         )} ${castWebType(theme.motion.easing.standard)}`,
-                    pointerEvents: 'none',
                   }}
                 />
-              </StyledThumb>
-            </BaseBox>
+
+                {/* Thumb wrapper — halo + visual thumb nested inside */}
+                <StyledThumb
+                  ref={thumbRef}
+                  $isFocused={isThumbFocused}
+                  $isDragging={isDragging}
+                  $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
+                  tabIndex={isDisabled ? -1 : 0}
+                  role="slider"
+                  aria-valuemin={min}
+                  aria-valuemax={max}
+                  aria-valuenow={currentValue}
+                  aria-valuetext={suffix ? `${currentValue} ${suffix}` : String(currentValue)}
+                  aria-labelledby={label ? labelId : undefined}
+                  aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
+                  aria-disabled={isDisabled}
+                  onKeyDown={handleKeyDown}
+                  onFocus={() => setIsThumbFocused(true)}
+                  onBlur={() => {
+                    setIsThumbFocused(false);
+                    isPointerFocusRef.current = false;
+                  }}
+                  onPointerDown={() => {
+                    isPointerFocusRef.current = true;
+                  }}
+                  onMouseEnter={() => !isDisabled && setIsThumbHovered(true)}
+                  onMouseLeave={() => setIsThumbHovered(false)}
+                  style={{
+                    position: 'absolute',
+                    left: `${pct}%`,
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: 44,
+                    height: 44,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
+                    zIndex: 2,
+                    touchAction: 'none',
+                  }}
+                >
+                  {/* Halo */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      width: showHalo ? haloSize : 0,
+                      height: showHalo ? haloSize : 0,
+                      borderRadius: '50%',
+                      backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
+                      opacity: showHalo ? 1 : 0,
+                      transition: isDragging
+                        ? 'none'
+                        : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
+                      pointerEvents: 'none',
+                    }}
+                  />
+                  {/* Visual thumb */}
+                  <div
+                    style={{
+                      width: thumbSize,
+                      height: thumbSize,
+                      borderRadius: '50%',
+                      backgroundColor: thumbColor,
+                      transition: isDragging
+                        ? 'none'
+                        : `all ${castWebType(
+                            makeMotionTime(theme.motion.duration.xquick),
+                          )} ${castWebType(theme.motion.easing.standard)}`,
+                      pointerEvents: 'none',
+                    }}
+                  />
+                </StyledThumb>
+              </BaseBox>
 
               {/* Numeric input */}
               <StyledNumericInput
@@ -533,7 +535,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 max={max}
                 step={step}
                 disabled={isDisabled}
-                aria-label={suffix ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}` : undefined}
+                aria-label={
+                  suffix
+                    ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
+                    : undefined
+                }
                 onChange={handleInputChange}
                 onFocus={() => setIsInputFocused(true)}
                 onBlur={handleInputBlur}
