@@ -127,14 +127,17 @@ describe('<Radio />', () => {
   });
 
   it('should not render trailing element in horizontal orientation', () => {
-    const { queryByText } = renderWithTheme(
-      <RadioGroup label="Select plan" orientation="horizontal">
-        <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
-          Pro
-        </Radio>
-      </RadioGroup>,
+    expect(() =>
+      renderWithTheme(
+        <RadioGroup label="Select plan" orientation="horizontal">
+          <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
+            Pro
+          </Radio>
+        </RadioGroup>,
+      ),
+    ).toThrow(
+      '[Blade: Radio]: The `trailing` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `trailing` prop or switch to `orientation="vertical"`.',
     );
-    expect(queryByText('Recommended')).not.toBeInTheDocument();
   });
 
   it('should accepnt data-analytics attribute', () => {
