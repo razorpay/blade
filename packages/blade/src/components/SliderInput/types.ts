@@ -4,7 +4,13 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type SliderInputBaseProps = Pick<
   BaseInputProps,
-  'labelPosition' | 'name' | 'isDisabled' | 'testID' | keyof DataAnalyticsAttribute
+  | 'labelPosition'
+  | 'name'
+  | 'onFocus'
+  | 'onBlur'
+  | 'isDisabled'
+  | 'testID'
+  | keyof DataAnalyticsAttribute
 > & {
   accessibilityLabel?: string;
   label?: string;
@@ -32,18 +38,29 @@ type SliderInputBaseProps = Pick<
   onChangeEnd?: (args: { name?: string; value: number }) => void;
 } & StyledPropsBlade;
 
-/** Controlled: value + onChange are required together; defaultValue must not be provided. */
-type ControlledSliderInputProps = SliderInputBaseProps & {
-  value: number;
+/**
+ * onChange fires on every value change, including continuously during drag.
+ *
+ * Note: Unlike most Blade inputs where `onChange` fires only on committed values,
+ * this `onChange` fires in real-time as the slider moves. Use `onChangeEnd` for
+ * performance-critical scenarios where you only need the final committed value.
+ */
+type OnChangeProp = {
   onChange: (args: { name?: string; value: number }) => void;
-  defaultValue?: never;
 };
+
+/** Controlled: value + onChange are required together; defaultValue must not be provided. */
+type ControlledSliderInputProps = SliderInputBaseProps &
+  OnChangeProp & {
+    value: number;
+    defaultValue?: never;
+  };
 
 /** Uncontrolled: defaultValue is optional; value and onChange must not be provided. */
 type UncontrolledSliderInputProps = SliderInputBaseProps & {
   defaultValue?: number;
   value?: never;
-  onChange?: (args: { name?: string; value: number }) => void;
+  onChange?: OnChangeProp['onChange'];
 };
 
 export type SliderInputProps = ControlledSliderInputProps | UncontrolledSliderInputProps;

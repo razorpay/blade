@@ -23,6 +23,10 @@ export const SLIDER_INPUT_TOKENS = {
       fill: 'surface.icon.staticBlack.normal',
       disabledHardcoded: '#AFB6BB',
     },
+    halo: {
+      default: 'overlay.background.subtle',
+      dragging: 'overlay.background.moderate',
+    },
     label: {
       text: 'surface.text.gray.muted',
       disabled: 'surface.text.gray.disabled',

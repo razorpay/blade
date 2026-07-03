@@ -92,6 +92,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       onChange,
       onChangeStart,
       onChangeEnd,
+      onFocus,
+      onBlur,
       testID,
       ...rest
     },
@@ -393,7 +395,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       } else {
         updateValue(raw);
       }
-    }, [inputStringValue, updateValue]);
+      onBlur?.({ name, value: inputStringValue });
+    }, [inputStringValue, updateValue, onBlur, name]);
+
+    const handleInputFocus = useCallback(() => {
+      setIsInputFocused(true);
+      onFocus?.({ name, value: inputStringValue });
+    }, [inputStringValue, onFocus, name]);
 
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? T.thumb.pressedSize[size] : T.thumb.size[size];
@@ -535,7 +543,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       width: showHalo ? haloSize : 0,
                       height: showHalo ? haloSize : 0,
                       borderRadius: '50%',
-                      backgroundColor: isDragging ? 'rgba(0, 0, 0, 0.12)' : 'rgba(0, 0, 0, 0.08)',
+                      backgroundColor: isDragging
+                        ? get(theme.colors, T.color.halo.dragging, '')
+                        : get(theme.colors, T.color.halo.default, ''),
                       opacity: showHalo ? 1 : 0,
                       transition: isDragging
                         ? 'none'
@@ -577,7 +587,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     : label ?? accessibilityLabel ?? 'Slider value'
                 }
                 onChange={handleInputChange}
-                onFocus={() => setIsInputFocused(true)}
+                onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
               />
               {suffix && (
