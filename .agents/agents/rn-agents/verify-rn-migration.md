@@ -202,7 +202,13 @@ The RN Storybook uses a bottom-sheet navigator. Navigation pattern:
 1. Take initial screenshot to see current state
 2. Open the navigator by tapping the story path in the bottom bar
 3. Find and tap the target component story in the list
-4. Wait for the component to render
+4. **Dismiss the navigator bottom sheet** so it doesn't overlay the component
+5. Wait for the component to render, then screenshot
+
+> ⚠️ **The navigator bottom sheet does NOT reliably auto-close after you select a story.**
+> If you screenshot immediately after tapping the story, the capture shows the navigator
+> sheet (story tree) overlaying the component — not the component itself. You MUST
+> explicitly dismiss the sheet and confirm it is gone BEFORE every screenshot.
 
 ```bash
 # 1. Screenshot current state
@@ -219,10 +225,34 @@ npx agent-device click text="Components/"
 #    Note: scrolling on MAIN content area dismisses the sheet — scroll within the sheet only.
 npx agent-device click text="{Name}"
 
-# 4. Wait for component to render and screenshot
+# 4. DISMISS the navigator bottom sheet before screenshotting.
+#    The sheet often stays open on top of the component after selection.
+#    NOTE: `click <x> <y>` is how you tap a point (there is no `tap` command).
+npx agent-device wait 500
+#    Preferred: navigate back / dismiss the RN overlay.
+npx agent-device back
+npx agent-device wait 500
+#    Fallback A: tap the dimmed backdrop ABOVE the sheet (device points; top-center).
+npx agent-device click 200 60
+npx agent-device wait 500
+#    Fallback B: swipe the sheet down by its handle to dismiss it.
+npx agent-device swipe 200 400 200 850 300
+npx agent-device wait 500
+#    VERIFY the navigator is closed: the story-tree entries must NOT appear in the snapshot.
+#    If the story list / other component names are still present, the sheet is still open —
+#    repeat back / backdrop-tap / swipe-down until it is dismissed.
+npx agent-device snapshot
+
+# 5. Now the component is unobstructed — wait for it to settle and screenshot
 npx agent-device wait 2000
 npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png
 ```
+
+> **Rule for ALL subsequent screenshots (4b–4e):** before capturing, confirm no navigator
+> bottom sheet (or other transient overlay you opened for navigation) is covering the
+> component. If one is, dismiss it first (backdrop tap / swipe-down) and re-verify via
+> `snapshot`. Do not confuse this with an intentional component overlay you are testing
+> (e.g. the Drawer/BottomSheet/Modal under test).
 
 **If `click text="{Name}"` fails** (component not in visible list):
 - Try scrolling within the bottom sheet first
