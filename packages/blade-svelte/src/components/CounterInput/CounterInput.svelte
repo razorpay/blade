@@ -261,7 +261,13 @@
 
       {#if isLoading}
         <div class={templateClasses.progressBarWrapper}>
-          <div class={progressBarClasses}></div>
+          <div
+            class={progressBarClasses}
+            role="progressbar"
+            aria-label="Loading"
+            aria-valuemin={0}
+            aria-valuemax={100}
+          ></div>
         </div>
       {/if}
     </div>
