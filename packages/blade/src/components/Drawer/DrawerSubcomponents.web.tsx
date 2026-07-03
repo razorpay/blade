@@ -87,7 +87,6 @@ const drawerPadding = 'spacing.6';
 const StyledDrawerBody = styled(BaseBox)(({ theme }) => {
   return {
     overflowY: 'auto',
-    overflowX: 'hidden',
     // Reserve space for scrollbar gutter — prevents content from shifting when scrollbar appears
     scrollbarGutter: 'stable',
     // Firefox
@@ -102,7 +101,7 @@ const StyledDrawerBody = styled(BaseBox)(({ theme }) => {
     },
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: theme.colors.surface.border.gray.muted,
-      borderRadius: '10px',
+      borderRadius: `${theme.border.radius.max}px`,
     },
     '&::-webkit-scrollbar-thumb:hover': {
       backgroundColor: theme.colors.surface.border.gray.subtle,
