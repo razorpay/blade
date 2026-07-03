@@ -43,14 +43,14 @@ exports[`<QuickFilters /> should render correctly with multiple selectionType 1`
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          flexWrap="wrap"
+          flexWrap="nowrap"
           gap="spacing.2"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "flexWrap": "wrap",
+                "flexWrap": "nowrap",
                 "gap": 4,
               },
             ]
@@ -622,14 +622,14 @@ exports[`<QuickFilters /> should render values correctly 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="column"
-          flexWrap="wrap"
+          flexWrap="nowrap"
           gap="spacing.2"
           style={
             [
               {
                 "display": "flex",
                 "flexDirection": "column",
-                "flexWrap": "wrap",
+                "flexWrap": "nowrap",
                 "gap": 4,
               },
             ]
