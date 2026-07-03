@@ -24,6 +24,11 @@
   const getCtx = getSegmentedControlContext();
   const ctx = $derived(getCtx());
 
+  // Register synchronously during component initialization (Accordion pattern).
+  // This avoids $effect-based registration which causes effect_update_depth_exceeded
+  // because mutating $state inside $effect creates a read→write reactive cycle.
+  getCtx().registerItem(value, isItemDisabled);
+
   let buttonEl = $state<HTMLButtonElement | undefined>(undefined);
 
   const isSelected = $derived(ctx.selectedValue === value);
@@ -34,40 +39,30 @@
       (ctx.selectedValue === undefined && !isDisabled && value === ctx.firstEnabledValue),
   );
 
-  $effect(() => {
-    if (!buttonEl) return;
-    const cleanup = ctx.registerItem(value, buttonEl, isItemDisabled);
-    return cleanup;
-  });
-
   const handleClick = () => {
     if (isDisabled) return;
     ctx.setSelectedValue(value);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowUp') return;
+    e.preventDefault();
 
-      // Build ordered list of enabled items by traversing container children
-      const container = buttonEl?.closest('[role="radiogroup"]');
-      if (!container) return;
-      const allButtons = Array.from(
-        container.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'),
-      );
-      const currentIndex = allButtons.findIndex((el) => el === buttonEl);
-      if (currentIndex === -1) return;
+    const container = buttonEl?.closest('[role="radiogroup"]');
+    if (!container) return;
+    const allButtons = Array.from(
+      container.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'),
+    );
+    const currentIndex = allButtons.findIndex((el) => el === buttonEl);
+    if (currentIndex === -1) return;
 
-      let nextIndex: number;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        nextIndex = (currentIndex + 1) % allButtons.length;
-      } else {
-        nextIndex = (currentIndex - 1 + allButtons.length) % allButtons.length;
-      }
+    const nextIndex =
+      e.key === 'ArrowRight' || e.key === 'ArrowDown'
+        ? (currentIndex + 1) % allButtons.length
+        : (currentIndex - 1 + allButtons.length) % allButtons.length;
 
-      allButtons[nextIndex].focus();
-      allButtons[nextIndex].click();
-    }
+    allButtons[nextIndex].focus();
+    allButtons[nextIndex].click();
   };
 
   const iconSizeMap: Record<string, string> = {
@@ -103,11 +98,7 @@
   });
 
   const buttonClasses = $derived(
-    [
-      classes.item,
-      isSelected ? classes.itemSelected : '',
-      itemSizeClass,
-    ]
+    [classes.item, isSelected ? classes.itemSelected : '', itemSizeClass]
       .filter(Boolean)
       .join(' '),
   );

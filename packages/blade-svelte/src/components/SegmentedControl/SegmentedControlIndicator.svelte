@@ -5,7 +5,10 @@
 
   const classes = getSegmentedControlTemplateClasses();
 
-  let { containerEl }: { containerEl: HTMLElement | undefined } = $props();
+  let {
+    containerEl,
+    baseId,
+  }: { containerEl: HTMLElement | undefined; baseId: string } = $props();
 
   const getCtx = getSegmentedControlContext();
   const ctx = $derived(getCtx());
@@ -16,7 +19,9 @@
 
   const updateDimensions = () => {
     if (!containerEl) return;
-    const activeEl = ctx.getItemEl(ctx.selectedValue ?? '');
+    const activeEl = containerEl.querySelector<HTMLElement>(
+      `#${CSS.escape(`${baseId}-${ctx.selectedValue}-item`)}`,
+    );
     if (!activeEl || activeEl.offsetWidth === 0) return;
 
     dimensions = {
