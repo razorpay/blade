@@ -231,7 +231,6 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
 
 .c13.c13.c13.c13.c13 {
   overflow-y: auto;
-  overflow-x: hidden;
   -webkit-scrollbar-gutter: stable;
   -moz-scrollbar-gutter: stable;
   -ms-scrollbar-gutter: stable;
@@ -256,7 +255,7 @@ exports[`Drawer DrawerFooter renders a Drawer with footer 1`] = `
 
 .c13.c13.c13.c13.c13::-webkit-scrollbar-thumb {
   background-color: hsla(206,10%,29%,0.12);
-  border-radius: 10px;
+  border-radius: 9999px;
 }
 
 .c13.c13.c13.c13.c13::-webkit-scrollbar-thumb:hover {
@@ -921,7 +920,6 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c30.c30.c30.c30.c30 {
   overflow-y: auto;
-  overflow-x: hidden;
   -webkit-scrollbar-gutter: stable;
   -moz-scrollbar-gutter: stable;
   -ms-scrollbar-gutter: stable;
@@ -946,7 +944,7 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c30.c30.c30.c30.c30::-webkit-scrollbar-thumb {
   background-color: hsla(206,10%,29%,0.12);
-  border-radius: 10px;
+  border-radius: 9999px;
 }
 
 .c30.c30.c30.c30.c30::-webkit-scrollbar-thumb:hover {
@@ -1504,7 +1502,6 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
 
 .c13.c13.c13.c13.c13 {
   overflow-y: auto;
-  overflow-x: hidden;
   -webkit-scrollbar-gutter: stable;
   -moz-scrollbar-gutter: stable;
   -ms-scrollbar-gutter: stable;
@@ -1529,7 +1526,7 @@ exports[`Drawer should render a Drawer with a custom header 1`] = `
 
 .c13.c13.c13.c13.c13::-webkit-scrollbar-thumb {
   background-color: hsla(206,10%,29%,0.12);
-  border-radius: 10px;
+  border-radius: 9999px;
 }
 
 .c13.c13.c13.c13.c13::-webkit-scrollbar-thumb:hover {
