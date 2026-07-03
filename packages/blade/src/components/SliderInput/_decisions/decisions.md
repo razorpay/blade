@@ -178,7 +178,12 @@ type SliderInputCommonProps = {
    * State indicating validation status
    * @default 'none'
    */
-  validationState?: 'none' | 'error';
+  validationState?: 'none' | 'error' | 'success';
+
+  /**
+   * Text shown below the component when validationState is 'success'
+   */
+  successText?: string;
 
   /**
    * Text shown below the component providing guidance
@@ -229,7 +234,7 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | **Component name** | `SliderInput` | Communicates the compound nature (slider + input). A standalone `Slider` can be added later. |
 | **`onChange` signature** | `({ name?, value }) => void` | Consistent with Blade form components. `name` included for form integration (same as BaseInput). |
 | **`onChangeStart` / `onChangeEnd`** | Same `({ name?, value }) => void` shape | All three callbacks use identical arg shape for consistency. |
-| **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. |
+| **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. |
 | **`labelPosition` default** | `'top'` | Matches all other Blade input components. Consumers opt into `'left'` explicitly. |
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |
 | **React Native** | Web-only for v1 | RN requires `react-native-gesture-handler` for drag; scope separately. |

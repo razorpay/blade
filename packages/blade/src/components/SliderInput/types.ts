@@ -21,9 +21,10 @@ type SliderInputCommonProps = Pick<
   size?: 'medium' | 'large';
   necessityIndicator?: 'required' | 'optional' | 'none';
   /** @default 'none' */
-  validationState?: 'none' | 'error';
+  validationState?: 'none' | 'error' | 'success';
   helpText?: string;
   errorText?: string;
+  successText?: string;
   onChange?: (args: { name?: string; value: number }) => void;
   onChangeStart?: (args: { name?: string; value: number }) => void;
   onChangeEnd?: (args: { name?: string; value: number }) => void;

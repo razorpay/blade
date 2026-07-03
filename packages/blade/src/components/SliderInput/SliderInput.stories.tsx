@@ -26,7 +26,7 @@ export default {
     },
     validationState: {
       control: { type: 'select' },
-      options: ['none', 'error'],
+      options: ['none', 'error', 'success'],
     },
     labelPosition: {
       control: { type: 'select' },
