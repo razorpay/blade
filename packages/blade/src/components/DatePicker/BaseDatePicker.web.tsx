@@ -266,6 +266,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
 
       if (isComplete) {
         setOldValue(controlledValue);
+        fireNativeEvent(referenceRef, ['change']);
         onApply?.(controlledValue as never);
         setFilterChipGroupSelectedFilters((prev: string[]) =>
           prev.includes(label as string) ? prev : [...prev, label as string],
