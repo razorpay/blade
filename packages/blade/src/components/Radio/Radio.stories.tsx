@@ -433,10 +433,10 @@ export const WithBadge: StoryFn<typeof RadioGroupComponent> = () => {
   return (
     <RadioGroupComponent label="Select your plan" defaultValue="pro">
       <RadioComponent value="basic">Basic</RadioComponent>
-      <RadioComponent value="pro" badge={<Badge color="primary">Recommended</Badge>}>
+      <RadioComponent value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
         Pro
       </RadioComponent>
-      <RadioComponent value="enterprise" badge={<Badge color="positive">New</Badge>}>
+      <RadioComponent value="enterprise" trailing={<Badge color="positive">New</Badge>}>
         Enterprise
       </RadioComponent>
     </RadioGroupComponent>
@@ -447,7 +447,7 @@ WithBadge.parameters = {
   docs: {
     description: {
       story:
-        'Use the `badge` prop to display a `<Badge>` alongside a radio label. Only works in vertical `orientation` (the default).',
+        'Use the `trailing` prop to display a `<Badge>` alongside a radio label. Only works in vertical `orientation` (the default).',
     },
   },
 };

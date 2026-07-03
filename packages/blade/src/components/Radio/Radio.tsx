@@ -27,7 +27,6 @@ import { throwBladeError } from '~utils/logger';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { BadgeProps } from '~components/Badge/Badge';
 
 type RadioProps = {
   /**
@@ -56,11 +55,10 @@ type RadioProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Badge to display alongside the radio label.
-   * Accepts a `<Badge>` element.
+   * Trailing element to display alongside the radio label (e.g. a `<Badge>`).
    * Only rendered when the parent `RadioGroup` has `orientation="vertical"`.
    */
-  badge?: React.ReactElement<BadgeProps>;
+  trailing?: React.ReactElement;
   /**
    * @private
    * Internal prop to hide the radio icon
@@ -79,7 +77,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     helpText,
     isDisabled,
     size = 'medium',
-    badge,
+    trailing,
     _hideRadioIcon = false,
     testID,
     _motionMeta,
@@ -98,11 +96,11 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
         message: 'Cannot use <Radio /> outside of <RadioGroup />',
       });
     }
-    if (badge && groupProps?.orientation === 'horizontal') {
+    if (trailing && groupProps?.orientation === 'horizontal') {
       throwBladeError({
         moduleName: 'Radio',
         message:
-          'The `badge` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `badge` prop or switch to `orientation="vertical"`.',
+          'The `trailing` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `trailing` prop or switch to `orientation="vertical"`.',
       });
     }
   }
@@ -119,7 +117,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
   const orientation = groupProps?.orientation ?? 'vertical';
-  const showBadge = badge && orientation === 'vertical';
+  const showTrailing = trailing && orientation === 'vertical';
 
   const handleChange: OnChange = ({ isChecked, value, event }) => {
     if (isChecked) {
@@ -174,9 +172,9 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
                 {children}
               </SelectorTitle>
             ) : null}
-            {showBadge ? (
+            {showTrailing ? (
               <BaseBox marginLeft="spacing.2" display="flex" alignItems="center">
-                {badge}
+                {trailing}
               </BaseBox>
             ) : null}
           </BaseBox>

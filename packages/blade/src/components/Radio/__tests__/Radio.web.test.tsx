@@ -114,10 +114,10 @@ describe('<Radio />', () => {
     expect(getByTestId('radio-test')).toBeTruthy();
   });
 
-  it('should render badge alongside label in vertical orientation', () => {
+  it('should render trailing element alongside label in vertical orientation', () => {
     const { getByText, container } = renderWithTheme(
       <RadioGroup label="Select plan" orientation="vertical">
-        <Radio value="pro" badge={<Badge color="primary">Recommended</Badge>}>
+        <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
           Pro
         </Radio>
       </RadioGroup>,
@@ -126,10 +126,10 @@ describe('<Radio />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should not render badge in horizontal orientation', () => {
+  it('should not render trailing element in horizontal orientation', () => {
     const { queryByText } = renderWithTheme(
       <RadioGroup label="Select plan" orientation="horizontal">
-        <Radio value="pro" badge={<Badge color="primary">Recommended</Badge>}>
+        <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
           Pro
         </Radio>
       </RadioGroup>,
