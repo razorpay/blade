@@ -129,10 +129,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
-    const getRatio = useCallback(
-      (val: number) => (max === min ? 0 : (val - min) / (max - min)),
-      [min, max],
-    );
+    const getRatio = useCallback((val: number) => (max === min ? 0 : (val - min) / (max - min)), [
+      min,
+      max,
+    ]);
 
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
     const snap = useCallback((v: number) => Math.round(v / step) * step, [step]);
