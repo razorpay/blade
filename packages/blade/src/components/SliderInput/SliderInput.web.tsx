@@ -32,11 +32,10 @@ const StyledNumericInput = styled.input<{
   $size: 'medium' | 'large';
   $validationState: 'none' | 'error' | 'success';
 }>`
-  -moz-appearance: textfield;
-  appearance: none;
+  appearance: textfield;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
   height: ${({ $size }) => ($size === 'large' ? 48 : 36)}px;
