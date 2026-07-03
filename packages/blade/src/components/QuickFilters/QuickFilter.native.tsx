@@ -47,9 +47,9 @@ const QuickFilterContent = ({
           alignItems="center"
         >
           {isSingleSelection ? (
-            <Radio value={value} _hideRadioIcon {...makeAnalyticsAttribute(rest)} />
+            <Radio value={value} _hideRadioIcon />
           ) : (
-            <Checkbox value={value} {...makeAnalyticsAttribute(rest)} />
+            <Checkbox value={value} />
           )}
           {/*
            * On native, CSS Grid is not available.
