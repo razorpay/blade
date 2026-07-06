@@ -81,7 +81,7 @@ type AppBarLeadingProps = {
    * @default undefined
    */
   trustBadge?: {
-    variant?: 'full' | 'icon-only';
+    variant: 'full' | 'icon-only';
     label?: string;
   };
 } & TestID &

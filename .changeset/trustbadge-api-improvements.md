@@ -1,7 +1,7 @@
 ---
-"@razorpay/blade": minor
-"@razorpay/blade-core": minor
-"@razorpay/blade-svelte": minor
+"@razorpay/blade": major
+"@razorpay/blade-core": major
+"@razorpay/blade-svelte": major
 ---
 
 fix(TrustBadge, AppBar): improve TrustBadge API — rename variant `'default'` to `'full'` and group AppBarLeading trust-badge props into a single `trustBadge` object
