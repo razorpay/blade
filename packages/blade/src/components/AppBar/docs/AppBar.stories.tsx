@@ -101,7 +101,11 @@ WithLogo.storyName = 'With Logo';
 const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" trustBadge={{ variant: 'full' }} />
+      <AppBarLeading
+        logo={<TitleInitialsLogo />}
+        title="Maven Shop"
+        trustBadge={{ variant: 'full' }}
+      />
       <AppBarActions>
         <IconButton
           icon={UserIcon}
@@ -180,7 +184,11 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <Box height="320px" overflowY="auto" backgroundColor="surface.background.gray.subtle">
       <AppBar {...args} isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" trustBadge={{ variant: 'full' }} />
+        <AppBarLeading
+          logo={<MerchantLogo />}
+          title="Maven Shop"
+          trustBadge={{ variant: 'full' }}
+        />
         <AppBarActions>
           <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
         </AppBarActions>
