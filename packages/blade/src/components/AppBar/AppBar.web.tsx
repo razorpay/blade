@@ -135,6 +135,7 @@ const _AppBarLeading = ({
   title,
   logo,
   rtbBadge,
+  rtbBadgeLabel,
   testID,
   ...rest
 }: AppBarLeadingProps): React.ReactElement => {
@@ -178,7 +179,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustedMarker type="full" variant={rtbVariant} />
+              <TrustedMarker type="full" variant={rtbVariant} label={rtbBadgeLabel} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -194,7 +195,9 @@ const _AppBarLeading = ({
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {showIconRtb ? <TrustedMarker type="icon" variant={rtbVariant} /> : null}
+              {showIconRtb ? (
+                <TrustedMarker type="icon" variant={rtbVariant} label={rtbBadgeLabel} />
+              ) : null}
             </BaseBox>
           ) : null}
           {showFullRtb && !stackFullRtbBelowLogo ? (
@@ -205,12 +208,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustedMarker type="full" variant={rtbVariant} />
+              <TrustedMarker type="full" variant={rtbVariant} label={rtbBadgeLabel} />
             </BaseBox>
           ) : null}
         </BaseBox>
       ) : showIconRtb ? (
-        <TrustedMarker type="icon" variant={rtbVariant} />
+        <TrustedMarker type="icon" variant={rtbVariant} label={rtbBadgeLabel} />
       ) : null}
     </BaseBox>
   );

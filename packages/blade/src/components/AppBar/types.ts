@@ -80,6 +80,15 @@ type AppBarLeadingProps = {
    * @default undefined
    */
   rtbBadge?: 'full' | 'icon';
+
+  /**
+   * Custom trust label forwarded to `TrustedMarker`.
+   * Overrides the default "Razorpay Trusted Business" text shown in the pill
+   * and used as the accessible label for the icon-only form.
+   *
+   * @default undefined
+   */
+  rtbBadgeLabel?: string;
 } & TestID &
   DataAnalyticsAttribute;
 

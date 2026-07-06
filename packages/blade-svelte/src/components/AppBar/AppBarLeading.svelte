@@ -13,7 +13,7 @@
   const getAppBarCtx = getAppBarContext() ?? (() => ({ variant: 'neutral' as AppBarVariant }));
   const appBarContext = $derived(getAppBarCtx());
 
-  let { title, logo, rtbBadge, testID, ...rest }: AppBarLeadingProps = $props();
+  let { title, logo, rtbBadge, rtbBadgeLabel, testID, ...rest }: AppBarLeadingProps = $props();
 
   const isNeutral = $derived(appBarContext.variant === 'neutral');
 
@@ -38,7 +38,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustedMarker type="full" variant={appBarContext.variant} />
+          <TrustedMarker type="full" variant={appBarContext.variant} label={rtbBadgeLabel} />
         </div>
       </div>
     {:else}
@@ -62,17 +62,17 @@
             </Text>
           </div>
           {#if showIconRtb}
-            <TrustedMarker type="icon" variant={appBarContext.variant} />
+            <TrustedMarker type="icon" variant={appBarContext.variant} label={rtbBadgeLabel} />
           {/if}
         </div>
       {/if}
       {#if showFullRtb && !stackFullRtbBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustedMarker type="full" variant={appBarContext.variant} />
+          <TrustedMarker type="full" variant={appBarContext.variant} label={rtbBadgeLabel} />
         </div>
       {/if}
     </div>
   {:else if showIconRtb}
-    <TrustedMarker type="icon" variant={appBarContext.variant} />
+    <TrustedMarker type="icon" variant={appBarContext.variant} label={rtbBadgeLabel} />
   {/if}
 </div>
