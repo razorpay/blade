@@ -10,6 +10,7 @@
     bottomSection,
     children,
     isSelected = false,
+    isDisabled = false,
   }: {
     /** Content of the emphasized (white) header section. */
     topSection: Snippet;
@@ -18,10 +19,15 @@
     /** Interactive overlay (link/button) that spans the whole card. */
     children?: Snippet;
     isSelected?: boolean;
+    isDisabled?: boolean;
   } = $props();
 </script>
 
-<div class={tc.cardInfoWrapper} data-selected={isSelected ? 'true' : undefined}>
+<div
+  class={tc.cardInfoWrapper}
+  data-selected={isSelected ? 'true' : undefined}
+  data-disabled={isDisabled ? 'true' : undefined}
+>
   {#if children}
     {@render children()}
   {/if}

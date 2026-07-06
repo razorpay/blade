@@ -133,6 +133,7 @@
           {topSection}
           {bottomSection}
           isSelected={isCardSelected}
+          {isDisabled}
           children={linkOverlay}
         />
       {/if}
