@@ -13,11 +13,26 @@ export type CardSpacingValueType =
   | 'spacing.5'
   | 'spacing.7';
 
-type CardSharedProps = {
+type CardBaseProps = {
   /**
-   * Card contents
+   * Card contents. Used by the single-region variants (`primary`, `secondary`, `theme`).
    */
-  children: Snippet;
+  children?: Snippet;
+  /**
+   * Top section content for the two-region variants (`ticket`, `info`). For `ticket` this is the
+   * region above the tear line; for `info` this is the emphasized (white) header section.
+   *
+   * Named `topSection` (not `top`) to avoid colliding with the `top` position styled-prop from
+   * `StyledPropsBlade` — the collision makes svelte2tsx infer the snippet type as `Snippet & string`.
+   */
+  topSection?: Snippet;
+  /**
+   * Bottom section content for the two-region variants (`ticket`, `info`). For `ticket` this is the
+   * region below the tear line; for `info` this is the subtle (gray) body section.
+   *
+   * Named `bottomSection` (not `bottom`) to avoid colliding with the `bottom` position styled-prop.
+   */
+  bottomSection?: Snippet;
   /**
    * Sets the border radius of the Card
    *
@@ -66,6 +81,16 @@ type CardSharedProps = {
    * @default false
    */
   isSelected?: boolean;
+  /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
+   * and is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`. For the `ticket` variant it also renders a
+   * dashed border.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
    */
@@ -136,26 +161,13 @@ type CardSharedProps = {
 } & StyledPropsBlade;
 
 /**
- * Discriminated union on `variant` enforces that `backgroundColor` is only
- * valid when `variant="theme"`. Passing `backgroundColor` with `primary` or
- * `secondary` is a compile-time TypeScript error.
- *
- * **Note on cross-framework parity:** The React Card currently supports
- * `variant?: 'primary' | 'secondary'`. The `theme` variant is introduced here
- * as a Svelte-first extension; it will be backported to the React Card in a
- * follow-up PR to keep both frameworks in sync.
- *
- * @example
- * ```svelte
- * <!-- valid -->
- * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
- *
- * <!-- TS error: backgroundColor not allowed on primary/secondary -->
- * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
- * ```
+ * Variant-specific props. `variant` selects the visual treatment and gates `backgroundColor`
+ * (only valid on `theme`). Kept as a standalone discriminated union that is intersected onto
+ * `CardBaseProps` — this keeps the content snippets (`children`/`top`/`bottom`) on a single flat
+ * type, which svelte2tsx types correctly when passing named snippets.
  */
-export type CardProps =
-  | (CardSharedProps & {
+type CardVariantProps =
+  | {
       /**
        * Sets the visual treatment of the Card.
        *
@@ -167,8 +179,8 @@ export type CardProps =
        */
       variant?: 'primary' | 'secondary';
       backgroundColor?: never;
-    })
-  | (CardSharedProps & {
+    }
+  | {
       /**
        * Sets the visual treatment of the Card.
        *
@@ -182,7 +194,37 @@ export type CardProps =
        * @default 'surface.background.primary.subtle'
        */
       backgroundColor?: CardBackgroundColor;
-    });
+    }
+  | {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * - `ticket`: ticket/coupon style card split into two sections by a perforated tear line
+       *   with notched edges. Sections are supplied via the `top` and `bottom` snippets.
+       * - `info`: two-tone card with an emphasized header section and a subtle body section
+       *   wrapped by a single rounded border. Sections are supplied via `top` and `bottom`.
+       */
+      variant: 'ticket' | 'info';
+      backgroundColor?: never;
+    };
+
+/**
+ * Props for the `Card` component.
+ *
+ * (In the React Card the `ticket`/`info` sections are authored as two `CardBody` children — for
+ * `ticket` separated by a `CardTearLine`. Svelte snippets can't be introspected/split at runtime,
+ * so the sections are passed explicitly via the `top` and `bottom` snippets here.)
+ *
+ * @example
+ * ```svelte
+ * <!-- valid -->
+ * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
+ *
+ * <!-- TS error: backgroundColor not allowed on primary/secondary -->
+ * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
+ * ```
+ */
+export type CardProps = CardBaseProps & CardVariantProps;
 
 export type CardBodyProps = {
   /**

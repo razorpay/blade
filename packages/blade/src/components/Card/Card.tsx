@@ -6,8 +6,12 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
+import { CardTicketSurface } from './CardTicketSurface';
+import { CardInfoSurface } from './CardInfoSurface';
 import type { CardSpacingValueType, CardVariant, LinkOverlayProps } from './types';
 import { CARD_LINK_OVERLAY_ID } from './constants';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -43,6 +47,7 @@ export const ComponentIds = {
   CardHeaderText: 'CardHeaderText',
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',
+  CardTearLine: 'CardTearLine',
 };
 
 type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
@@ -115,6 +120,16 @@ export type CardProps = {
    */
   isSelected?: boolean;
   /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored) and
+   * is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`. For the `ticket` variant it also renders a
+   * dashed border.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+  /**
    * Makes the Card linkable by setting the `href` prop
    *
    * @default undefined
@@ -167,6 +182,10 @@ export type CardProps = {
    *
    * - `primary`: Standard card with full composition (CardHeader, CardBody, CardFooter)
    * - `secondary`: Simplified card that only accepts CardBody as children
+   * - `ticket`: Ticket/coupon style card split into two sections by a perforated tear line with
+   *   notched edges. Accepts two `CardBody` sections separated by a `CardTearLine`.
+   * - `info`: Two-tone card with an emphasized header section and a subtle body section wrapped by
+   *   a single rounded border. Accepts two `CardBody` sections (first = header, second = body).
    *
    * @default 'primary'
    */
@@ -234,6 +253,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     maxWidth,
     onClick,
     isSelected = false,
+    isDisabled = false,
     accessibilityLabel,
     shouldScaleOnHover = false,
     onHover,
@@ -261,22 +281,13 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     children,
     componentName: 'Card',
     allowedComponents:
-      variant === 'secondary'
+      // eslint-disable-next-line no-nested-ternary
+      variant === 'secondary' || variant === 'info'
         ? [ComponentIds.CardBody]
+        : variant === 'ticket'
+        ? [ComponentIds.CardBody, ComponentIds.CardTearLine]
         : [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
   });
-
-  const linkOverlayProps: LinkOverlayProps = {
-    ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
-    ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isSelected }),
-    onFocus: () => {
-      setIsFocused(true);
-    },
-    onBlur: () => {
-      setIsFocused(false);
-    },
-  };
-  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
   const checkboxGroupProps = useCheckboxGroupContext();
   const radioGroupProps = useRadioGroupContext();
@@ -288,8 +299,157 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   };
 
   const groupProps = getGroupProps();
-
   const _validationState = groupProps?.validationState;
+
+  // `isDisabled` takes precedence over `isSelected`. A Card used as a selection control inside a
+  // disabled Checkbox/Radio group is disabled too.
+  const isCardDisabled = isDisabled || Boolean(groupProps?.isDisabled);
+  const isCardSelected = isSelected && !isCardDisabled;
+
+  const linkOverlayProps: LinkOverlayProps = {
+    ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
+    ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isCardSelected }),
+    onFocus: () => {
+      setIsFocused(true);
+    },
+    onBlur: () => {
+      setIsFocused(false);
+    },
+  };
+  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
+
+  if (variant === 'ticket') {
+    const childrenArray = React.Children.toArray(children);
+    const tearLineIndex = childrenArray.findIndex(
+      (child) =>
+        React.isValidElement(child) && getComponentId(child) === ComponentIds.CardTearLine,
+    );
+
+    if (__DEV__ && tearLineIndex === -1) {
+      throwBladeError({
+        message:
+          'A `ticket` variant Card must contain a `CardTearLine` between its two `CardBody` sections.',
+        moduleName: 'Card',
+      });
+    }
+
+    const splitIndex = tearLineIndex === -1 ? childrenArray.length : tearLineIndex;
+    const topContent = childrenArray.slice(0, splitIndex);
+    const tearLineNode = tearLineIndex === -1 ? null : childrenArray[tearLineIndex];
+    const bottomContent = tearLineIndex === -1 ? [] : childrenArray.slice(tearLineIndex + 1);
+
+    return (
+      <CardProvider size={size} variant={variant}>
+        <CardRoot
+          as={as}
+          ref={ref as never}
+          display={'block' as never}
+          onMouseEnter={onHover as never}
+          isSelected={false}
+          isFocused={isFocused}
+          onClick={isReactNative() && !isCardDisabled ? onClick : undefined}
+          width={width}
+          height={height}
+          minHeight={minHeight}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
+          href={isCardDisabled ? undefined : href}
+          accessibilityLabel={accessibilityLabel}
+          cursor={
+            isReactNative()
+              ? undefined
+              : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+          }
+          opacity={opacity}
+          transition={transition}
+          flexShrink={flexShrink}
+          {...makeAccessible({ disabled: isCardDisabled })}
+          {...metaAttribute({ name: MetaConstants.Card, testID })}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <CardTicketSurface
+            top={topContent}
+            bottom={bottomContent}
+            tearLine={tearLineNode}
+            isSelected={isCardSelected}
+            isDisabled={isCardDisabled}
+          >
+            {!isCardDisabled && href ? (
+              <LinkOverlay
+                onClick={onClick}
+                href={href}
+                target={target}
+                rel={rel ?? defaultRel}
+                {...linkOverlayProps}
+              />
+            ) : null}
+            {!isCardDisabled && !href && onClick ? (
+              <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />
+            ) : null}
+          </CardTicketSurface>
+        </CardRoot>
+      </CardProvider>
+    );
+  }
+
+  if (variant === 'info') {
+    const childrenArray = React.Children.toArray(children);
+    const [topContent, ...bottomContent] = childrenArray;
+
+    return (
+      <CardProvider size={size} variant={variant}>
+        <CardRoot
+          as={as}
+          ref={ref as never}
+          display={'block' as never}
+          onMouseEnter={onHover as never}
+          isSelected={false}
+          isFocused={isFocused}
+          onClick={isReactNative() && !isCardDisabled ? onClick : undefined}
+          width={width}
+          height={height}
+          minHeight={minHeight}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
+          href={isCardDisabled ? undefined : href}
+          accessibilityLabel={accessibilityLabel}
+          cursor={
+            isReactNative()
+              ? undefined
+              : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+          }
+          opacity={opacity}
+          transition={transition}
+          flexShrink={flexShrink}
+          {...makeAccessible({ disabled: isCardDisabled })}
+          {...metaAttribute({ name: MetaConstants.Card, testID })}
+          {...getStyledProps(rest)}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <CardInfoSurface
+            top={topContent}
+            bottom={bottomContent}
+            isSelected={isCardSelected}
+            isDisabled={isCardDisabled}
+          >
+            {!isCardDisabled && href ? (
+              <LinkOverlay
+                onClick={onClick}
+                href={href}
+                target={target}
+                rel={rel ?? defaultRel}
+                {...linkOverlayProps}
+              />
+            ) : null}
+            {!isCardDisabled && !href && onClick ? (
+              <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />
+            ) : null}
+          </CardInfoSurface>
+        </CardRoot>
+      </CardProvider>
+    );
+  }
 
   return (
     <CardProvider size={size} variant={variant}>
@@ -300,22 +460,27 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
-        isSelected={isSelected}
+        isSelected={isCardSelected}
         isFocused={isFocused}
         // on react native we need to pass onClick to root, because we don't need the LinkOverlay in RN
-        onClick={isReactNative() ? onClick : undefined}
+        onClick={isReactNative() && !isCardDisabled ? onClick : undefined}
         width={width}
         height={height}
         minHeight={minHeight}
         minWidth={minWidth}
         maxWidth={maxWidth}
-        href={href}
+        href={isCardDisabled ? undefined : href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
-        cursor={isReactNative() ? undefined : cursor}
+        cursor={
+          isReactNative()
+            ? undefined
+            : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+        }
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
+        {...makeAccessible({ disabled: isCardDisabled })}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -328,7 +493,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           textAlign={'left' as never}
           backgroundColor="surface.background.gray.intense"
           colorScheme={colorScheme}
-          isSelected={isSelected}
+          isSelected={isCardSelected}
           elevation={elevation}
           overflow={overflow}
           overflowX={overflowX}
@@ -336,7 +501,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           variant={variant}
           $isCard={true}
         >
-          {href ? (
+          {!isCardDisabled && href ? (
             <LinkOverlay
               onClick={onClick}
               href={href}
@@ -345,7 +510,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
               {...linkOverlayProps}
             />
           ) : null}
-          {!href && onClick ? (
+          {!isCardDisabled && !href && onClick ? (
             <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />
           ) : null}
           {children}
@@ -375,7 +540,29 @@ const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.
   );
 };
 
+type CardTearLineProps = TestID & DataAnalyticsAttribute;
+
+/**
+ * Marks the split between the two `CardBody` sections of a `ticket` variant Card. Render it
+ * between the two `CardBody` sections. It renders no visual of its own — the scalloped perforation
+ * and edge notches are drawn by the ticket surface — so the two sections stay flush at the seam.
+ */
+const _CardTearLine = ({ testID, ...rest }: CardTearLineProps): React.ReactElement => {
+  useVerifyInsideCard('CardTearLine');
+
+  return (
+    <BaseBox
+      height="0px"
+      {...metaAttribute({ name: MetaConstants.CardTearLine, testID })}
+      {...makeAnalyticsAttribute(rest)}
+    />
+  );
+};
+
 const Card = React.forwardRef(_Card);
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
+const CardTearLine = assignWithoutSideEffects(_CardTearLine, {
+  componentId: ComponentIds.CardTearLine,
+});
 
-export { Card, CardBody };
+export { Card, CardBody, CardTearLine };

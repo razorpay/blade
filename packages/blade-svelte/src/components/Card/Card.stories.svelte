@@ -67,7 +67,7 @@
   import type { CardSpacingValueType } from './types';
 
   type CardStoryArgs = {
-    variant?: 'primary' | 'secondary' | 'theme';
+    variant?: 'primary' | 'secondary' | 'theme' | 'ticket' | 'info';
     backgroundColor?: CardBackgroundColor;
     borderRadius?: 'medium' | 'large' | 'xlarge';
     padding?: CardSpacingValueType;
@@ -82,7 +82,10 @@
     if (args.variant === 'theme') {
       return { ...common, variant: 'theme', backgroundColor: args.backgroundColor };
     }
-    return { ...common, variant: (args.variant ?? 'primary') as 'primary' | 'secondary' };
+    // The Playground only exercises the standard surface treatments; ticket/info have their own
+    // sectioned surfaces and aren't offered as controls.
+    const standardVariant = args.variant === 'secondary' ? 'secondary' : 'primary';
+    return { ...common, variant: standardVariant };
   }
 </script>
 
@@ -661,5 +664,77 @@
         </div>
       </CardBody>
     </Card>
+  </div>
+</Story>
+
+<!-- Reusable renderers for the sectioned-variant showcase stories below. Defined at component
+     top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
+{#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
+  <Card variant="ticket" width="280px" {isSelected} {isDisabled}>
+    {#snippet topSection()}
+      <CardBody>
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+        </div>
+      </CardBody>
+    {/snippet}
+    {#snippet bottomSection()}
+      <CardBody>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+          <div style="display: flex; flex-direction: column;">
+            <Text size="small" color="surface.text.gray.subtle">Seat</Text>
+            <Text weight="semibold">A-24</Text>
+          </div>
+          <Amount value={4999} type="body" weight="semibold" />
+        </div>
+      </CardBody>
+    {/snippet}
+  </Card>
+{/snippet}
+
+{#snippet infoCard(label: string, isSelected: boolean)}
+  <Card variant="info" width="280px" {isSelected}>
+    {#snippet topSection()}
+      <CardBody>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+        </div>
+      </CardBody>
+    {/snippet}
+    {#snippet bottomSection()}
+      <CardBody>
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+          <Text size="small" color="surface.text.gray.subtle">Venue</Text>
+          <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+        </div>
+      </CardBody>
+    {/snippet}
+  </Card>
+{/snippet}
+
+<!-- Story 10: Ticket Card Variant — two sections split by a scalloped, notched tear line.
+     Sections are supplied via the `topSection` and `bottomSection` snippets. Shown in default,
+     selected and disabled states. -->
+<Story name="Ticket Card" asChild>
+  <div
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+  >
+    {@render ticketCard('Default', false, false)}
+    {@render ticketCard('Selected', true, false)}
+    {@render ticketCard('Disabled', false, true)}
+  </div>
+</Story>
+
+<!-- Story 11: Info Card Variant — emphasized header section over a subtle body section wrapped
+     by a single rounded border. Sections are supplied via the `topSection` and `bottomSection`
+     snippets. -->
+<Story name="Info Card" asChild>
+  <div
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+  >
+    {@render infoCard('Default', false)}
+    {@render infoCard('Selected', true)}
   </div>
 </Story>

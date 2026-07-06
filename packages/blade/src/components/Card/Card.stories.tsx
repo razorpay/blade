@@ -6,6 +6,7 @@ import type { CardFooterAction, CardProps } from './';
 import {
   CardBody,
   Card,
+  CardTearLine,
   CardFooter,
   CardFooterLeading,
   CardFooterTrailing,
@@ -735,6 +736,91 @@ const SecondaryCardExample = (): React.ReactElement => {
 };
 
 export const SecondaryCard = SecondaryCardExample.bind({});
+
+const TicketCardExample = (): React.ReactElement => {
+  const renderTicket = (
+    label: string,
+    stateProps: { isSelected?: boolean; isDisabled?: boolean },
+  ): React.ReactElement => (
+    <Card variant="ticket" width="280px" {...stateProps}>
+      <CardBody>
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+        </Box>
+      </CardBody>
+      <CardTearLine />
+      <CardBody>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Box display="flex" flexDirection="column">
+            <Text size="small" color="surface.text.gray.subtle">
+              Seat
+            </Text>
+            <Text weight="semibold">A-24</Text>
+          </Box>
+          <Amount value={4999} type="body" weight="semibold" />
+        </Box>
+      </CardBody>
+    </Card>
+  );
+
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap">
+      {renderTicket('Default', {})}
+      {renderTicket('Selected', { isSelected: true })}
+      {renderTicket('Disabled', { isDisabled: true })}
+    </Box>
+  );
+};
+
+export const TicketCard = TicketCardExample.bind({});
+TicketCard.parameters = {
+  controls: {
+    disable: true,
+  },
+};
+
+const InfoCardExample = (): React.ReactElement => {
+  const renderInfoCard = (
+    label: string,
+    stateProps: { isSelected?: boolean },
+  ): React.ReactElement => (
+    <Card variant="info" width="280px" {...stateProps}>
+      <CardBody>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+        </Box>
+      </CardBody>
+      <CardBody>
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="small" color="surface.text.gray.subtle">
+            Venue
+          </Text>
+          <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap">
+      {renderInfoCard('Default', {})}
+      {renderInfoCard('Selected', { isSelected: true })}
+    </Box>
+  );
+};
+
+export const InfoCard = InfoCardExample.bind({});
+InfoCard.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
 const NestedCardExample = (): React.ReactElement => {
   return (

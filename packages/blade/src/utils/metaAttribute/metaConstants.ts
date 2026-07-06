@@ -134,6 +134,7 @@ export const MetaConstants = {
   CardBody: 'card-body',
   CardHeader: 'card-header',
   CardFooter: 'card-footer',
+  CardTearLine: 'card-tear-line',
   Collapsible: 'collapsible',
   CollapsibleBody: 'collapsible-body',
   CollapsibleButton: 'collapsible-button',
