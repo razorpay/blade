@@ -4,15 +4,16 @@
 import GorhomBottomSheet, {
   BottomSheetFooter as GorhomBottomSheetFooter,
 } from '@gorhom/bottom-sheet';
+import type { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
-import styled from 'styled-components/native';
 import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
 import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { BottomSheetBody } from './BottomSheetBody';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import type { BottomSheetProps } from './types';
+import { computeMaxContent } from './utils';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
@@ -20,6 +21,7 @@ import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import { useBottomSheetStack } from './BottomSheetStack';
 import { DropdownContext, useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
 import { useId } from '~utils/useId';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -27,17 +29,25 @@ import { makeSpace } from '~utils/makeSpace';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { componentZIndices } from '~utils/componentZIndices';
 
-const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
-  return {
-    // TODO: we do not have 16px radius token
-    borderTopLeftRadius: makeSpace(theme.spacing[5]),
-    borderTopRightRadius: makeSpace(theme.spacing[5]),
-    backgroundColor: theme.colors.popup.background.gray.subtle,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  };
-});
+const BottomSheetBackground = ({
+  style,
+}: BottomSheetBackgroundProps): React.ReactElement => {
+  const { theme } = useTheme();
+
+  return (
+    <View
+      pointerEvents="none"
+      style={[
+        style,
+        {
+          borderTopLeftRadius: makeSpace(theme.spacing[5]),
+          borderTopRightRadius: makeSpace(theme.spacing[5]),
+          backgroundColor: theme.colors.popup.background.gray.subtle,
+        },
+      ]}
+    />
+  );
+};
 
 const focusOnElement = (element: React.Component<any, any>): void => {
   const reactTag = findNodeHandle(element);
@@ -52,6 +62,7 @@ const _BottomSheet = ({
   isOpen,
   onDismiss,
   isDismissible = true,
+  enableContentPanningGesture = true,
   initialFocusRef,
   zIndex = componentZIndices.bottomSheet,
 }: BottomSheetProps): React.ReactElement => {
@@ -68,6 +79,33 @@ const _BottomSheet = ({
   const [hasBodyPadding, setHasBodyPadding] = React.useState(true);
   const [isHeaderEmpty, setIsHeaderEmpty] = React.useState(false);
   const initialSnapPoint = React.useRef<number>(0);
+  const lastSnappedIndexRef = React.useRef<number | null>(null);
+  const isOpenRef = React.useRef(Boolean(_isOpen));
+  isOpenRef.current = Boolean(_isOpen);
+  // Gorhom emits `onClose` for programmatic snap/close as well as user dismiss.
+  // Suppress parent `onDismiss` during our own sheet animations.
+  const suppressDismissRef = React.useRef(false);
+  const suppressDismissTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const suppressDismiss = React.useCallback((duration = 600): void => {
+    if (suppressDismissTimeoutRef.current) {
+      clearTimeout(suppressDismissTimeoutRef.current);
+    }
+    suppressDismissRef.current = true;
+    suppressDismissTimeoutRef.current = setTimeout(() => {
+      suppressDismissRef.current = false;
+      suppressDismissTimeoutRef.current = null;
+    }, duration);
+  }, []);
+
+  React.useEffect(() => {
+    return () => {
+      if (suppressDismissTimeoutRef.current) {
+        clearTimeout(suppressDismissTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const totalHeight = React.useMemo(() => {
     return headerHeight + footerHeight + contentHeight;
   }, [contentHeight, footerHeight, headerHeight]);
@@ -87,36 +125,70 @@ const _BottomSheet = ({
     if (bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader) {
       // In AutoComplete, we want to open BottomSheet with max height so we set this to last index
       initialSnapPoint.current = 2;
+    } else if (totalHeight > 0) {
+      // Content-fitted snap at index 0 once heights are measured
+      initialSnapPoint.current = 0;
     } else {
       const height = Dimensions.get('window').height;
       const middleSnapPoint = snapPoints[1] * height;
       if (totalHeight > middleSnapPoint) {
         initialSnapPoint.current = 1;
+      } else {
+        initialSnapPoint.current = 0;
       }
     }
-  }, [snapPoints, totalHeight]);
+  }, [snapPoints, totalHeight, bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader]);
 
-  const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
-    snapPoints,
-  ]);
-
-  const close = React.useCallback(() => {
-    if (isDismissible) {
-      onDismiss?.();
-      bottomSheetAndDropdownGlue?.onBottomSheetDismiss?.();
+  const windowHeight = Dimensions.get('window').height;
+  const _snapPoints = React.useMemo(() => {
+    if (totalHeight > 0) {
+      const fittedHeight = computeMaxContent({
+        maxHeight: windowHeight * snapPoints[2],
+        headerHeight,
+        footerHeight,
+        contentHeight,
+      });
+      const fittedSnap = Math.min(
+        Math.max(fittedHeight / windowHeight, snapPoints[0]),
+        snapPoints[2],
+      );
+      return [
+        `${fittedSnap * 100}%`,
+        `${snapPoints[1] * 100}%`,
+        `${snapPoints[2] * 100}%`,
+      ];
     }
+    return snapPoints.map((point) => `${point * 100}%`);
+  }, [snapPoints, totalHeight, headerHeight, footerHeight, contentHeight, windowHeight]);
+
+  const dismissSheet = React.useCallback(() => {
+    if (!isDismissible) return;
+    onDismiss?.();
+    bottomSheetAndDropdownGlue?.onBottomSheetDismiss?.();
   }, [isDismissible, onDismiss, bottomSheetAndDropdownGlue]);
 
+  const handleSheetClosed = React.useCallback(() => {
+    if (!isDismissible) return;
+    if (suppressDismissRef.current) return;
+    // Ignore stale close events once React state is already closed.
+    if (!isOpenRef.current) return;
+    dismissSheet();
+  }, [dismissSheet, isDismissible]);
+
   const handleOnOpen = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(initialSnapPoint.current);
-  }, []);
+    suppressDismiss();
+    const targetIndex = initialSnapPoint.current;
+    lastSnappedIndexRef.current = targetIndex;
+    sheetRef.current?.snapToIndex(targetIndex);
+  }, [suppressDismiss]);
 
   const handleOnClose = React.useCallback(() => {
+    suppressDismiss();
     sheetRef.current?.close();
     // We need this because if inside the BottomSheet there is a input which is focused
     // and user dragged down to close the sheet, even after closing the sheet the input will remain focused
     Keyboard.dismiss();
-  }, [sheetRef]);
+  }, [suppressDismiss]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -130,9 +202,19 @@ const _BottomSheet = ({
         focusOnElement(initialFocusRef.current);
       }
     } else {
+      lastSnappedIndexRef.current = null;
       handleOnClose();
     }
   }, [_isOpen, handleOnClose, handleOnOpen, initialFocusRef]);
+
+  React.useEffect(() => {
+    if (!_isOpen || totalHeight === 0) return;
+    const targetIndex = initialSnapPoint.current;
+    if (lastSnappedIndexRef.current === targetIndex) return;
+    lastSnappedIndexRef.current = targetIndex;
+    suppressDismiss();
+    sheetRef.current?.snapToIndex(targetIndex);
+  }, [_isOpen, totalHeight, suppressDismiss]);
 
   // let the Dropdown component know that it's rendering a bottomsheet
   React.useEffect(() => {
@@ -175,9 +257,11 @@ const _BottomSheet = ({
 
   const renderBackdrop = React.useCallback(
     (props: any): React.ReactElement => {
-      return <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} />;
+      return (
+        <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} isDismissible={isDismissible} />
+      );
     },
-    [bottomSheetZIndex],
+    [bottomSheetZIndex, isDismissible],
   );
 
   const renderHandle = React.useCallback((): React.ReactElement => {
@@ -204,7 +288,7 @@ const _BottomSheet = ({
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(_isOpen),
-      close: handleOnClose,
+      close: dismissSheet,
       positionY: 0,
       headerHeight,
       contentHeight,
@@ -224,7 +308,7 @@ const _BottomSheet = ({
       _isOpen,
       contentHeight,
       footerHeight,
-      handleOnClose,
+      dismissSheet,
       headerHeight,
       isHeaderFloating,
       isDismissible,
@@ -272,7 +356,7 @@ const _BottomSheet = ({
             style={
               // only render shadow when the sheet is open,
               // otherwise there is visible shadow leak from the bottom edge of the screen
-              isOpen
+              _isOpen
                 ? {
                     // this is reverse top elevation of highRaised elevation token
                     shadowColor: 'hsla(217,56%,17%,0.64)',
@@ -289,18 +373,18 @@ const _BottomSheet = ({
             }
             enablePanDownToClose={isDismissible}
             enableOverDrag
-            enableContentPanningGesture
+            enableContentPanningGesture={enableContentPanningGesture}
             ref={sheetRef}
             // on initial render if _isOpen is true we want to render the sheet at initialSnapPoint
             // otherwise we want to render it at -1 so that it is not visible
             index={_isOpen ? initialSnapPoint.current : -1}
-            containerStyle={{ zIndex: bottomSheetZIndex }}
+            containerStyle={{ zIndex: bottomSheetZIndex, elevation: bottomSheetZIndex }}
             animateOnMount={true}
             handleComponent={renderHandle}
-            backgroundComponent={BottomSheetSurface}
+            backgroundComponent={BottomSheetBackground}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
-            onClose={close}
+            onClose={handleSheetClosed}
             snapPoints={_snapPoints}
           >
             {body}
