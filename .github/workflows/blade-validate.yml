@@ -55,6 +55,9 @@ jobs:
       - name: Run Svelte Checks (Blade Svelte)
         run: yarn svelte-check
         working-directory: packages/blade-svelte
+      - name: Run Svelte Tests (Blade Svelte)
+        run: yarn test
+        working-directory: packages/blade-svelte
 
   test:
     name: Run Tests (${{ matrix.shard }})
