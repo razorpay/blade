@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, type RenderResult } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
 import { RollingText } from '../RollingText.web';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
