@@ -1474,7 +1474,7 @@ const RenderSpacerComponent = memo(({ size }: SpacerComponent) => {
 
 const RenderDividerComponent = memo(({ orientation = 'horizontal' }: DividerComponent) => {
   return (
-    <Box display="flex" paddingY="spacing.7">
+    <Box display="flex" paddingY="spacing.4">
       <Divider
         orientation={orientation}
         {...(orientation === 'vertical' ? { height: '24px' } : {})}
