@@ -51,9 +51,6 @@ describe('<TrustBadge />', () => {
     const { getByTestId } = renderWithTheme(
       <TrustBadge testID="trust-badge-test" data-analytics-section="checkout" />,
     );
-    expect(getByTestId('trust-badge-test')).toHaveAttribute(
-      'data-analytics-section',
-      'checkout',
-    );
+    expect(getByTestId('trust-badge-test')).toHaveAttribute('data-analytics-section', 'checkout');
   });
 });

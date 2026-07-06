@@ -64,7 +64,7 @@
 
 <!-- Custom label — demonstrates generic trust badge usage -->
 <Story name="CustomLabel" asChild>
-  <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
+  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
     <TrustBadge label="Razorpay Verified" />
   </div>
 </Story>
