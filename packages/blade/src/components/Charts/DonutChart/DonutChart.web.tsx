@@ -23,7 +23,6 @@ import type {
   ChartDonutCellProps,
   ChartDonutProps,
   ChartRadius,
-  Content,
 } from './types';
 import {
   RADIUS_MAPPING,
@@ -102,44 +101,6 @@ const getItemName = (
   return item[nameKey];
 };
 
-const getItemValue = (
-  item: Record<string, unknown> | undefined,
-  dataKey: ChartDonutProps['dataKey'],
-): unknown => {
-  if (!item) return undefined;
-  if (!dataKey) return item.value;
-  if (typeof dataKey === 'function') return dataKey(item);
-  return item[dataKey];
-};
-
-const isTotalContent = (content: ChartDonutWrapperProps['content']): content is Content => {
-  return Boolean(
-    content &&
-      typeof content === 'object' &&
-      !isValidElement(content) &&
-      'label' in content &&
-      String((content as Content).label).toLowerCase() === 'total',
-  );
-};
-
-const formatVisibleTotal = (originalValue: string | undefined, visibleTotal: number): string => {
-  if (!originalValue) return String(visibleTotal);
-
-  const numericMatch = originalValue.match(/^([^0-9-]*)(-?[\d,]+(?:\.\d+)?)(.*)$/);
-  if (!numericMatch) return originalValue;
-
-  const [, prefix, numericValue, suffix] = numericMatch;
-  const hasDecimals = numericValue.includes('.');
-  const hasCommas = numericValue.includes(',');
-  const formattedTotal = hasCommas
-    ? visibleTotal.toLocaleString('en-IN', {
-        maximumFractionDigits: hasDecimals ? 2 : 0,
-      })
-    : String(visibleTotal);
-
-  return `${prefix}${formattedTotal}${suffix}`;
-};
-
 const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalyticsAttribute> = ({
   children,
   content,
@@ -171,32 +132,6 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
   const chartRef = useRef<HTMLDivElement>(null);
   const isValuePresentInContent = content && typeof content === 'object' && 'value' in content;
   const isLabelPresentInContent = content && typeof content === 'object' && 'label' in content;
-
-  const visibleTotalContentValue = useMemo(() => {
-    if (!isTotalContent(content) || !Array.isArray(children)) {
-      return undefined;
-    }
-
-    const donutChild = children.find((child) => getComponentId(child) === componentId.chartDonut);
-    if (!donutChild || !isValidElement<ChartDonutProps>(donutChild)) {
-      return undefined;
-    }
-
-    const { data, dataKey, nameKey } = donutChild.props;
-    const visibleTotal = data.reduce((total, item) => {
-      const itemName = getItemName(item, nameKey);
-      const isSelected =
-        !selectedDataKeys || selectedDataKeys.includes(sanitizeString(itemName as string));
-      if (!isSelected) return total;
-
-      const value = Number(getItemValue(item, dataKey));
-      return Number.isFinite(value) ? total + value : total;
-    }, 0);
-
-    return formatVisibleTotal(String(content?.value ?? ''), visibleTotal);
-  }, [children, content, selectedDataKeys]);
-
-  const contentValue = visibleTotalContentValue ?? (content as Content)?.value;
 
   useEffect(() => {
     const mutationObserver = new MutationObserver((mutations) => {
@@ -376,7 +311,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
                       : LABEL_DISTANCE_FROM_CENTER[pieChartRadius].normal
                   }
                 >
-                  {contentValue}
+                  {content?.value}
                 </Label>
               )}
             </RechartsPieChart>

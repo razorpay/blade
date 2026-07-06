@@ -206,35 +206,6 @@ describe('<DonutChart />', () => {
     expect(getByText('BAD_REQUEST_ERROR')).toHaveStyle({ textDecoration: 'line-through' });
   });
 
-  it('should update total content value based on selected donut slices', async () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <Box width="500px" height="500px">
-        <ChartDonutWrapper content={{ label: 'Total', value: '1300' }}>
-          <ChartDonut
-            data={[
-              { name: 'Group A', value: 400 },
-              { name: 'Group B', value: 300 },
-              { name: 'Group C', value: 300 },
-              { name: 'Group D', value: 200 },
-              { name: 'Group E', value: 100 },
-            ]}
-            dataKey="value"
-            nameKey="name"
-          />
-          <ChartLegend />
-        </ChartDonutWrapper>
-      </Box>,
-    );
-
-    expect(getByText('1300')).toBeInTheDocument();
-
-    fireEvent.click(getByText('Group A'));
-    fireEvent.click(getByText('Group B'));
-    fireEvent.click(getByText('Group C'));
-
-    await waitFor(() => expect(getByText('300')).toBeInTheDocument());
-    expect(queryByText('1300')).not.toBeInTheDocument();
-  });
 });
 
 describe('<ChartDonut />', () => {
