@@ -25,7 +25,7 @@ export { BankIcon } from './BankIcon';
 export { LockIcon } from './LockIcon';
 
 // Branded Icons
-export { RTBShieldIcon } from './RTBShieldIcon';
+export { RazorpayTrustIcon } from './RazorpayTrustIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';
