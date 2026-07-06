@@ -1,16 +1,16 @@
 /* ============================================
-   RTBBadge Component Styles
-   "Razorpay Trusted Business" badge.
+   TrustedMarker Component Styles
+   A generic trust marker — a brand shield paired with a faded pill.
    Mirrors Figma: shield icon (brand gradient) overlapping a faded pill that
-   reads "Razorpay Trusted Business". Two text treatments (neutral=white text on
-   dark/colored surfaces, subtle=dark text on light surfaces) and an icon-only
-   form that drops the pill entirely.
+   reads a configurable trust label (default: "Razorpay Trusted Business").
+   Two text treatments (neutral=white text on dark/colored surfaces, subtle=dark
+   text on light surfaces) and an icon-only form that drops the pill entirely.
    ============================================ */
 
 /* --- Root ---
    Isolation creates a new stacking context so the shield's z-index sits above the
-   pill regardless of surrounding content. Inline-flex keeps the badge shrink-wrapped. */
-.rtbBadge {
+   pill regardless of surrounding content. Inline-flex keeps the marker shrink-wrapped. */
+.trustedMarker {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -22,7 +22,7 @@
    The 16px shield overlaps the pill's left edge by 12px (Figma `mr-[-12px]`) and is
    raised above it. In `full` form the shield is decorative (aria-hidden) because the
    visible pill text is announced; in `icon` form the wrapper carries the label. */
-.rtbBadgeShield {
+.trustedMarkerShield {
   position: relative;
   z-index: 2;
   display: flex;
@@ -31,7 +31,7 @@
 }
 
 /* The overlap only applies when the pill is present (full form). */
-.rtbBadgeShieldOverlap {
+.trustedMarkerShieldOverlap {
   margin-right: -12px;
 }
 
@@ -39,7 +39,7 @@
    Shared pill layout. Background is variant-specific:
    - neutral → 32% black (`surface.icon.staticBlack.disabled`) + white text on dark surfaces
    - subtle  → 10% black (Checkout DS Figma) + black text on light surfaces */
-.rtbBadgePill {
+.trustedMarkerPill {
   position: relative;
   z-index: 1;
   display: flex;
@@ -54,10 +54,10 @@
   flex-shrink: 0;
 }
 
-.rtbBadgePillNeutral {
+.trustedMarkerPillNeutral {
   background-color: var(--surface-icon-static-black-disabled);
 }
 
-.rtbBadgePillSubtle {
+.trustedMarkerPillSubtle {
   background-color: hsla(0, 0%, 0%, 0.1);
 }

@@ -1,17 +1,17 @@
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { RTBBadgeVariant, RTBBadgeType } from '@razorpay/blade-core/styles';
+import type { TrustedMarkerVariant, TrustedMarkerType } from '@razorpay/blade-core/styles';
 
-export type { RTBBadgeVariant, RTBBadgeType };
+export type { TrustedMarkerVariant, TrustedMarkerType };
 
-export type RTBBadgeProps = {
+export type TrustedMarkerProps = {
   /**
-   * Visual form of the badge.
-   * - `'full'`: brand shield + the "Razorpay Trusted Business" pill.
+   * Visual form of the marker.
+   * - `'full'`: brand shield + the trust label pill.
    * - `'icon'`: shield only — no pill/text. For compact/dense surfaces.
    *
    * @default 'full'
    */
-  type?: RTBBadgeType;
+  type?: TrustedMarkerType;
 
   /**
    * Text/foreground treatment. Only affects `type='full'` — the shield keeps its
@@ -21,7 +21,15 @@ export type RTBBadgeProps = {
    *
    * @default 'neutral'
    */
-  variant?: RTBBadgeVariant;
+  variant?: TrustedMarkerVariant;
+
+  /**
+   * Trust label displayed in the pill (only visible when `type='full'`).
+   * Also used as the accessible label for the icon-only form.
+   *
+   * @default 'Razorpay Trusted Business'
+   */
+  label?: string;
 
   /**
    * Test ID for the element.

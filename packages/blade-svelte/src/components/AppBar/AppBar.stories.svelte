@@ -62,13 +62,13 @@
   import Text from '../Typography/Text/Text.svelte';
   import { Avatar } from '../Avatar';
   import { BuildingIcon, UserIcon } from '../Icons';
-  import type { RTBBadgeType } from '@razorpay/blade-core/styles';
+  import type { TrustedMarkerType } from '@razorpay/blade-core/styles';
 
   type AppBarPlaygroundArgs = {
     variant?: 'neutral' | 'subtle';
     isSticky?: boolean;
     title?: string;
-    rtbBadge?: RTBBadgeType | 'none';
+    rtbBadge?: TrustedMarkerType | 'none';
     leadingContent?: 'logo-only' | 'logo-and-title' | 'title-only';
     logoType?: 'optimizer' | 'initials';
     showBackButton?: boolean;
@@ -78,7 +78,7 @@
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = (): void => {};
 
-  const rtbBadgeRows: { label: string; rtbBadge: RTBBadgeType | undefined }[] = [
+  const rtbBadgeRows: { label: string; rtbBadge: TrustedMarkerType | undefined }[] = [
     { label: 'Full RTB badge', rtbBadge: 'full' },
     { label: 'No RTB badge', rtbBadge: undefined },
     { label: 'Inline RTB icon', rtbBadge: 'icon' },

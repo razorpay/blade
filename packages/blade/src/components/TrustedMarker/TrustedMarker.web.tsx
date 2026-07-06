@@ -1,5 +1,5 @@
 import React from 'react';
-import type { RTBBadgeProps } from './types';
+import type { TrustedMarkerProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { RTBShieldIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
@@ -9,29 +9,35 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const RTB_LABEL = 'Razorpay Trusted Business';
+const DEFAULT_LABEL = 'Razorpay Trusted Business';
 
 /**
- * ### RTBBadge
+ * ### TrustedMarker
  *
- * The "Razorpay Trusted Business" badge — a brand shield paired with a faded pill.
+ * A generic trust marker — a brand shield paired with a faded pill that displays
+ * a configurable trust label (default: "Razorpay Trusted Business").
+ *
+ * The component is intentionally generic so the label and semantics can evolve
+ * (e.g. "Razorpay Verified") without a breaking API change.
  *
  * ---
  *
  * #### Usage
  *
  * ```jsx
- * <RTBBadge variant="neutral" />      // white text, for dark/colored surfaces
- * <RTBBadge variant="subtle" />       // dark text, for light surfaces
- * <RTBBadge type="icon" />            // shield only, no pill/text
+ * <TrustedMarker variant="neutral" />      // white text, for dark/colored surfaces
+ * <TrustedMarker variant="subtle" />       // dark text, for light surfaces
+ * <TrustedMarker type="icon" />            // shield only, no pill/text
+ * <TrustedMarker label="Razorpay Verified" />  // custom trust label
  * ```
  */
-const _RTBBadge = ({
+const _TrustedMarker = ({
   type = 'full',
   variant = 'neutral',
+  label = DEFAULT_LABEL,
   testID,
   ...rest
-}: RTBBadgeProps): React.ReactElement => {
+}: TrustedMarkerProps): React.ReactElement => {
   const isIconOnly = type === 'icon';
   const textColor =
     variant === 'subtle' ? 'surface.text.staticBlack.normal' : 'surface.text.staticWhite.normal';
@@ -45,12 +51,12 @@ const _RTBBadge = ({
       flexDirection="row"
       alignItems="center"
       flexShrink={0}
-      {...metaAttribute({ name: MetaConstants.RTBBadge, testID })}
+      {...metaAttribute({ name: MetaConstants.TrustedMarker, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      {/* In the full form the pill text announces the badge, so the shield is decorative.
-       In the icon-only form there is no visible text, so the shield wrapper carries the label. */}
+      {/* In the full form the pill text announces the marker, so the shield is decorative.
+        In the icon-only form there is no visible text, so the shield wrapper carries the label. */}
       <BaseBox
         display="flex"
         alignItems="center"
@@ -59,7 +65,7 @@ const _RTBBadge = ({
         zIndex={2}
         marginRight={isIconOnly ? undefined : '-12px'}
         {...(isIconOnly
-          ? makeAccessible({ role: 'img', label: RTB_LABEL })
+          ? makeAccessible({ role: 'img', label })
           : { 'aria-hidden': true })}
       >
         <RTBShieldIcon size="medium" />
@@ -81,7 +87,7 @@ const _RTBBadge = ({
           backgroundColor={pillBackgroundColor}
         >
           <Text size="xsmall" weight="regular" color={textColor}>
-            {RTB_LABEL}
+            {label}
           </Text>
         </BaseBox>
       )}
@@ -89,8 +95,8 @@ const _RTBBadge = ({
   );
 };
 
-const RTBBadge = assignWithoutSideEffects(_RTBBadge, {
-  componentId: MetaConstants.RTBBadge,
+const TrustedMarker = assignWithoutSideEffects(_TrustedMarker, {
+  componentId: MetaConstants.TrustedMarker,
 });
 
-export { RTBBadge };
+export { TrustedMarker };

@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
-import type { RTBBadgeProps } from './types';
-import { RTBBadge as RTBBadgeComponent } from './RTBBadge';
+import type { TrustedMarkerProps } from './types';
+import { TrustedMarker as TrustedMarkerComponent } from './TrustedMarker';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -9,8 +9,8 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="RTBBadge"
-      componentDescription="The Razorpay Trusted Business (RTB) badge — a brand shield paired with a faded pill that reassures users the business is verified by Razorpay."
+      componentName="TrustedMarker"
+      componentDescription="A generic trust marker — a brand shield paired with a faded pill that displays a configurable trust label (default: 'Razorpay Trusted Business'). The component is designed to be generic so the label can evolve without a breaking API change."
       figmaURL="https://www.figma.com/design/fc7NbN38dG7olgm9mzpVx4/Checkout-DS?node-id=340-10923&m=dev"
     >
       <Title>Usage</Title>
@@ -19,15 +19,15 @@ const Page = (): React.ReactElement => {
         padding="spacing.5"
         borderRadius="medium"
       >
-        <RTBBadgeComponent variant="neutral" />
+        <TrustedMarkerComponent variant="neutral" />
       </BaseBox>
     </StoryPageWrapper>
   );
 };
 
 export default {
-  title: 'Components/RTBBadge',
-  component: RTBBadgeComponent,
+  title: 'Components/TrustedMarker',
+  component: TrustedMarkerComponent,
   tags: ['autodocs'],
   argTypes: {
     type: {
@@ -38,20 +38,24 @@ export default {
       control: { type: 'select' },
       options: ['neutral', 'subtle'],
     },
+    label: {
+      control: { type: 'text' },
+    },
     ...getStyledPropsArgTypes(),
   },
   args: {
     type: 'full',
     variant: 'neutral',
+    label: 'Razorpay Trusted Business',
   },
   parameters: {
     docs: {
       page: Page,
     },
   },
-} as Meta<RTBBadgeProps>;
+} as Meta<TrustedMarkerProps>;
 
-const RTBBadgeTemplate: StoryFn<typeof RTBBadgeComponent> = (args) => {
+const TrustedMarkerTemplate: StoryFn<typeof TrustedMarkerComponent> = (args) => {
   // The neutral variant uses static-white text, so render it over a dark surface for contrast.
   return (
     <BaseBox
@@ -60,19 +64,19 @@ const RTBBadgeTemplate: StoryFn<typeof RTBBadgeComponent> = (args) => {
       borderRadius="medium"
       display="inline-flex"
     >
-      <RTBBadgeComponent {...args} />
+      <TrustedMarkerComponent {...args} />
     </BaseBox>
   );
 };
 
-export const Default = RTBBadgeTemplate.bind({});
+export const Default = TrustedMarkerTemplate.bind({});
 
-export const Neutral = RTBBadgeTemplate.bind({});
+export const Neutral = TrustedMarkerTemplate.bind({});
 Neutral.args = {
   variant: 'neutral',
 };
 
-export const Subtle: StoryFn<typeof RTBBadgeComponent> = (args) => {
+export const Subtle: StoryFn<typeof TrustedMarkerComponent> = (args) => {
   // The subtle variant uses static-black text, so render it over a light surface for contrast.
   return (
     <BaseBox
@@ -81,7 +85,7 @@ export const Subtle: StoryFn<typeof RTBBadgeComponent> = (args) => {
       borderRadius="medium"
       display="inline-flex"
     >
-      <RTBBadgeComponent {...args} />
+      <TrustedMarkerComponent {...args} />
     </BaseBox>
   );
 };
@@ -89,7 +93,12 @@ Subtle.args = {
   variant: 'subtle',
 };
 
-export const IconOnly = RTBBadgeTemplate.bind({});
+export const IconOnly = TrustedMarkerTemplate.bind({});
 IconOnly.args = {
   type: 'icon',
+};
+
+export const CustomLabel = TrustedMarkerTemplate.bind({});
+CustomLabel.args = {
+  label: 'Razorpay Verified',
 };

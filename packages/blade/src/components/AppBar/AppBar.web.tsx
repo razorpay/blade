@@ -21,7 +21,7 @@ import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { ArrowLeftIcon } from '~components/Icons';
-import { RTBBadge } from '~components/RTBBadge';
+import { TrustedMarker } from '~components/TrustedMarker';
 import { Tooltip } from '~components/Tooltip';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -178,7 +178,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <RTBBadge type="full" variant={rtbVariant} />
+              <TrustedMarker type="full" variant={rtbVariant} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -194,7 +194,7 @@ const _AppBarLeading = ({
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {showIconRtb ? <RTBBadge type="icon" variant={rtbVariant} /> : null}
+              {showIconRtb ? <TrustedMarker type="icon" variant={rtbVariant} /> : null}
             </BaseBox>
           ) : null}
           {showFullRtb && !stackFullRtbBelowLogo ? (
@@ -205,12 +205,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <RTBBadge type="full" variant={rtbVariant} />
+              <TrustedMarker type="full" variant={rtbVariant} />
             </BaseBox>
           ) : null}
         </BaseBox>
       ) : showIconRtb ? (
-        <RTBBadge type="icon" variant={rtbVariant} />
+        <TrustedMarker type="icon" variant={rtbVariant} />
       ) : null}
     </BaseBox>
   );

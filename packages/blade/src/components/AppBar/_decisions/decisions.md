@@ -223,7 +223,7 @@ Demonstrates logo + title + full RTB badge (`rtbBadge="full"`) and an illustrati
 - The root renders a semantic `<header>` landmark (or `role="banner"` when appropriate) labelled by `accessibilityLabel`.
 - The back button is a Blade `IconButton` with a required `accessibilityLabel` ("Go back" by default in examples); it is keyboard focusable and activatable with Enter/Space.
 - All trailing `IconButton`s require an `accessibilityLabel`; they are reachable in DOM/tab order left → right after the leading region.
-- The RTB badge is rendered via the standalone `RTBBadge` component. In its default `full` form the visible "Razorpay Trusted Business" text is exposed to screen readers and the brand shield is `aria-hidden`; in the `icon`-only form (no visible text) the shield wrapper carries a `role="img"` with the "Razorpay Trusted Business" label.
+- The trust marker is rendered via the standalone `TrustedMarker` component. In its default `full` form the visible "Razorpay Trusted Business" text is exposed to screen readers and the brand shield is `aria-hidden`; in the `icon`-only form (no visible text) the shield wrapper carries a `role="img"` with the label.
 - `title`/`logo` are real text nodes or accessible content (not background images) so they are announced.
 - Color contrast: the `neutral` surface is transparent and the AppBar sits over a dark page, so foreground tokens are forced light (static-white) to meet WCAG AA against that page.
 
@@ -233,10 +233,11 @@ Demonstrates logo + title + full RTB badge (`rtbBadge="full"`) and an illustrati
 - **`type` (logo / logo-text / text)** — NOT exposed as a prop. Inferred from whether `logo`, `title`, or both are passed on `AppBarLeading` (WYSIWYG). This avoids a redundant Figma-only prop.
 - **`showRTB`** — NOT exposed; replaced by `rtbBadge?: 'full' | 'icon'` on `AppBarLeading`. Omit to hide the badge; set the form explicitly when shown.
 - **RTB badge placement** — `rtbBadge='full'` stacks the pill below the title/logo row; `rtbBadge='icon'` renders the shield inline with `title`, or beside `logo` when there is no title.
-- **RTB badge as a standalone component** — the "Razorpay Trusted Business" badge ships as its own exported `RTBBadge` component (top-level in both `blade` and `blade-svelte`) rather than living inline in `AppBarLeading`, so it can be reused outside the AppBar. `AppBarLeading` passes `rtbBadge` through as `<RTBBadge type={rtbBadge} variant={...} />`, deriving `variant` from the AppBar surface (`neutral` → white text, `subtle` → dark text). The badge exposes:
+- **Trust marker as a standalone component** — the trust marker ships as its own exported `TrustedMarker` component (top-level in both `blade` and `blade-svelte`) rather than living inline in `AppBarLeading`, so it can be reused outside the AppBar. `AppBarLeading` passes `rtbBadge` through as `<TrustedMarker type={rtbBadge} variant={...} />`, deriving `variant` from the AppBar surface (`neutral` → white text, `subtle` → dark text). The marker exposes:
   - `type?: 'full' | 'icon'` (default `'full'`) — `icon` drops the pill/text for compact surfaces.
   - `variant?: 'neutral' | 'subtle'` (default `'neutral'`) — text/foreground treatment; the brand shield gradient is fixed regardless of variant.
-  The badge text is hardcoded ("Razorpay Trusted Business") and the shield comes from the branded `RTBShieldIcon`. The pill uses the `interactive.background.staticBlack.faded` token (Figma `rgba(0,0,0,0.1)`). It is web-only (native throws), matching the AppBar itself, because the shield's gradient/drop-shadow are web-only.
+  - `label?: string` (default `'Razorpay Trusted Business'`) — configurable trust label so the component can evolve (e.g. "Razorpay Verified") without a breaking API change.
+  The shield comes from the branded `RTBShieldIcon`. The pill uses the `interactive.background.staticBlack.faded` token (Figma `rgba(0,0,0,0.1)`). It is web-only (native throws), matching the AppBar itself, because the shield's gradient/drop-shadow are web-only.
 - **`trailing` (icon / illustration)** — NOT a prop; the `AppBarActions` children slot accepts either icon buttons or an illustration (WYSIWYG).
 - **`state=scrolled`** — modeled as automatic scroll-driven elevation under `isSticky`, not a manual prop. Open: confirm with design whether the scrolled treatment is elevation, a bottom border, or a background change.
 - **`screenSize` (mobile / desktop)** — handled via responsive styled props (padding, logo width) rather than a prop, consistent with `TopNav`.

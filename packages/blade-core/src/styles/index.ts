@@ -165,11 +165,11 @@ export type {
 export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppBar';
 export type { AppBarVariants } from './AppBar';
 export {
-  getRTBBadgeTextColorToken,
-  getRTBBadgePillVariantClass,
-  getRTBBadgeTemplateClasses,
-} from './RTBBadge';
-export type { RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+  getTrustedMarkerTextColorToken,
+  getTrustedMarkerPillVariantClass,
+  getTrustedMarkerTemplateClasses,
+} from './TrustedMarker';
+export type { TrustedMarkerVariant, TrustedMarkerType } from './TrustedMarker';
 export {
   animatedChipCva,
   getAnimatedChipClasses,

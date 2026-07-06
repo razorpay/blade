@@ -2,7 +2,7 @@
   import { metaAttribute, MetaConstants, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
-  import { RTBBadge } from '../RTBBadge';
+  import { TrustedMarker } from '../TrustedMarker';
   import { getAppBarContext, useAppBarContext } from './AppBarContext';
   import type { AppBarLeadingProps, AppBarVariant } from './types';
 
@@ -38,7 +38,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <RTBBadge type="full" variant={appBarContext.variant} />
+          <TrustedMarker type="full" variant={appBarContext.variant} />
         </div>
       </div>
     {:else}
@@ -62,17 +62,17 @@
             </Text>
           </div>
           {#if showIconRtb}
-            <RTBBadge type="icon" variant={appBarContext.variant} />
+            <TrustedMarker type="icon" variant={appBarContext.variant} />
           {/if}
         </div>
       {/if}
       {#if showFullRtb && !stackFullRtbBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <RTBBadge type="full" variant={appBarContext.variant} />
+          <TrustedMarker type="full" variant={appBarContext.variant} />
         </div>
       {/if}
     </div>
   {:else if showIconRtb}
-    <RTBBadge type="icon" variant={appBarContext.variant} />
+    <TrustedMarker type="icon" variant={appBarContext.variant} />
   {/if}
 </div>

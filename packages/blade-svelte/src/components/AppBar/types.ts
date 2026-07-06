@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { RTBBadgeType } from '@razorpay/blade-core/styles';
+import type { TrustedMarkerType } from '@razorpay/blade-core/styles';
 import type { TooltipPlacement } from '../Tooltip/types';
 
 /**
@@ -126,7 +126,7 @@ export type AppBarLeadingProps = {
    *
    * @default undefined
    */
-  rtbBadge?: RTBBadgeType;
+  rtbBadge?: TrustedMarkerType;
 
   /**
    * Test ID for the element.

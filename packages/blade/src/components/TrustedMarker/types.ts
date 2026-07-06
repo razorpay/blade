@@ -1,10 +1,10 @@
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
-type RTBBadgeProps = {
+type TrustedMarkerProps = {
   /**
-   * Visual form of the badge.
-   * - `'full'` (default): brand shield + the "Razorpay Trusted Business" pill.
+   * Visual form of the marker.
+   * - `'full'` (default): brand shield + the trust label pill.
    * - `'icon'`: shield only — no pill/text. For compact/dense surfaces.
    *
    * @default 'full'
@@ -20,8 +20,16 @@ type RTBBadgeProps = {
    * @default 'neutral'
    */
   variant?: 'neutral' | 'subtle';
+
+  /**
+   * Trust label displayed in the pill (only visible when `type='full'`).
+   * Also used as the accessible label for the icon-only form.
+   *
+   * @default 'Razorpay Trusted Business'
+   */
+  label?: string;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
-export type { RTBBadgeProps };
+export type { TrustedMarkerProps };

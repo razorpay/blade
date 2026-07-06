@@ -56,7 +56,7 @@ export * from './Popover';
 export * from './ProgressBar';
 export * from './QuickFilters';
 export * from './Radio';
-export * from './RTBBadge';
+export * from './TrustedMarker';
 export * from './Scale';
 export * from './SideNav';
 export * from './Skeleton';
