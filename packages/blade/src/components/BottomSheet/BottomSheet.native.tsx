@@ -25,7 +25,6 @@ import { useTheme } from '~components/BladeProvider';
 import { useId } from '~utils/useId';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSpace } from '~utils/makeSpace';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { componentZIndices } from '~utils/componentZIndices';
 
@@ -40,8 +39,8 @@ const BottomSheetBackground = ({
       style={[
         style,
         {
-          borderTopLeftRadius: makeSpace(theme.spacing[5]),
-          borderTopRightRadius: makeSpace(theme.spacing[5]),
+          borderTopLeftRadius: theme.spacing[5],
+          borderTopRightRadius: theme.spacing[5],
           backgroundColor: theme.colors.popup.background.gray.subtle,
         },
       ]}
