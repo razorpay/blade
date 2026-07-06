@@ -33,6 +33,7 @@ function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
     style: _style,
     onLoad: _onLoad,
     onError: _onError,
+    onTimeUpdate: _onTimeUpdate,
     preset: _preset,
     assetsPath: _assetsPath,
     gradientMapSrc: _gradientMapSrc,

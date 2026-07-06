@@ -269,6 +269,13 @@ type RzpGlassProps = RzpGlassConfig & {
   onLoad?: () => void;
   /** Callback on error */
   onError?: (error: Error) => void;
+  /**
+   * Callback invoked on every rendered frame with the current playback time in
+   * seconds. For video mode this is the video's absolute `currentTime`; for
+   * static-image mode it is the elapsed render time. Useful for time-driven
+   * effects such as swapping the gradient map within a specific time window.
+   */
+  onTimeUpdate?: (timeSeconds: number) => void;
   className?: string;
   style?: React.CSSProperties;
 };

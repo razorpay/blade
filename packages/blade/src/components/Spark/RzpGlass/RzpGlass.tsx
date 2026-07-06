@@ -24,6 +24,7 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
     style,
     onLoad,
     onError,
+    onTimeUpdate,
     assetsPath: assetsPathProp,
     gradientMapCanvas,
     gradientMapSrc: gradientMapSrcProp,
@@ -53,6 +54,11 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
   const divRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<RzpGlassMount | null>(null);
 
+  // Keep the latest onTimeUpdate in a ref so the mount always calls the current
+  // callback without needing to be re-created when the prop identity changes.
+  const onTimeUpdateRef = useRef(onTimeUpdate);
+  onTimeUpdateRef.current = onTimeUpdate;
+
   // Initialize on mount
   useEffect(() => {
     const init = async () => {
@@ -72,6 +78,8 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
           },
           config,
         );
+
+        mountRef.current.onTimeUpdate = (timeSeconds) => onTimeUpdateRef.current?.(timeSeconds);
 
         await mountRef.current.loadAssets();
 

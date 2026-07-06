@@ -10,6 +10,7 @@ import {
   RazorSenseGradient,
   preloadRazorSenseAssets,
 } from '../';
+import { DEFAULT_CDN_PATH, getDefaultAssets } from '../RzpGlass/utils';
 import { GradientEditor } from './GradientEditor';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -27,6 +28,13 @@ const LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP = new URL(
   '../../../../assets/spark/new/n-colorama-gm-primary.png',
   import.meta.url,
 ).href;
+const LOCAL_RAZORSENSE_PRIMARY_ALT_GRADIENT_MAP = new URL(
+  '../../../../assets/spark/new/n-colorama-gm-primary-alt.png',
+  import.meta.url,
+).href;
+// Video time window (in seconds) during which the refreshed panel shows the
+// alternate primary gradient map. Outside this window it shows the base map.
+const REFRESHED_ALT_GRADIENT_WINDOW = { start: 1, end: 4 } as const;
 const LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP = new URL(
   '../../../../assets/spark/new/n-colorama-gm-secondary.png',
   import.meta.url,
@@ -35,6 +43,23 @@ const LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP = new URL(
   '../../../../assets/spark/new/n-colorama-gm-center.png',
   import.meta.url,
 ).href;
+
+const DEFAULT_GRADIENT_ASSETS = getDefaultAssets(DEFAULT_CDN_PATH);
+
+const GRADIENT_MAP_SRC_OPTIONS = {
+  'Default (green)': DEFAULT_GRADIENT_ASSETS.gradientMapSrc,
+  'Refreshed (primary)': LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
+} as const;
+
+const GRADIENT_MAP_2_SRC_OPTIONS = {
+  'Default (blue)': DEFAULT_GRADIENT_ASSETS.gradientMap2Src,
+  'Refreshed (secondary)': LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
+} as const;
+
+const CENTER_GRADIENT_MAP_SRC_OPTIONS = {
+  'Default (center)': DEFAULT_GRADIENT_ASSETS.centerGradientMapSrc,
+  'Refreshed (center)': LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
+} as const;
 
 const Page = (): ReactElement => {
   return (
@@ -1913,52 +1938,220 @@ const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
 export const LoginPage = LoginPageTemplate.bind({});
 LoginPage.storyName = 'Login Page';
 
-export const RefreshedRazorSense = RazorSenseTemplate.bind({});
+const ComparisonLabel = ({ children }: { children: React.ReactNode }): ReactElement => (
+  <Box
+    position="absolute"
+    top="spacing.4"
+    left="spacing.4"
+    zIndex={1}
+    paddingX="spacing.3"
+    paddingY="spacing.2"
+    backgroundColor="surface.background.gray.subtle"
+    borderRadius="medium"
+  >
+    <Text weight="semibold" size="small">
+      {children}
+    </Text>
+  </Box>
+);
+
+/**
+ * Loads an image URL and draws it onto a canvas so it can be hot-swapped as the
+ * colorama gradient map via the `gradientMapCanvas` prop (no WebGL reinit).
+ */
+const useImageCanvas = (url: string): HTMLCanvasElement | null => {
+  const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    let isCancelled = false;
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = () => {
+      if (isCancelled) return;
+      const element = document.createElement('canvas');
+      element.width = image.naturalWidth;
+      element.height = image.naturalHeight;
+      element.getContext('2d')?.drawImage(image, 0, 0);
+      setCanvas(element);
+    };
+    image.src = url;
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [url]);
+
+  return canvas;
+};
+
+const RefreshedRazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = ({
+  paused,
+  startTime,
+  endTime,
+  playbackRate,
+  animateLightIndependently,
+  preset,
+  gradientMapSrc,
+  gradientMap2Src,
+  centerGradientMapSrc,
+  edgeFeatherTop = 0,
+  edgeFeatherRight = 0,
+  edgeFeatherBottom = 0,
+  edgeFeatherLeft = 0,
+  ...refreshedArgs
+}) => {
+  const playbackProps = {
+    paused,
+    startTime,
+    endTime,
+    playbackRate,
+    animateLightIndependently,
+  };
+  const edgeFeather: [number, number, number, number] = [
+    edgeFeatherTop,
+    edgeFeatherRight,
+    edgeFeatherBottom,
+    edgeFeatherLeft,
+  ];
+
+  // Time-driven gradient map swap for the refreshed panel:
+  // - video time within [start, end): show the alternate primary map
+  // - otherwise: show the selected base primary map (from the gradientMapSrc control)
+  const baseGradientCanvas = useImageCanvas(gradientMapSrc as string);
+  const altGradientCanvas = useImageCanvas(LOCAL_RAZORSENSE_PRIMARY_ALT_GRADIENT_MAP);
+  const [isWithinAltWindow, setIsWithinAltWindow] = useState(false);
+
+  const handleRefreshedTimeUpdate = useCallback((timeSeconds: number) => {
+    // setState bails out when the value is unchanged, so calling this every
+    // frame is cheap and only triggers a swap when the window is crossed.
+    setIsWithinAltWindow(
+      timeSeconds >= REFRESHED_ALT_GRADIENT_WINDOW.start &&
+        timeSeconds < REFRESHED_ALT_GRADIENT_WINDOW.end,
+    );
+  }, []);
+
+  const activeGradientCanvas = isWithinAltWindow ? altGradientCanvas : baseGradientCanvas;
+
+  return (
+    <Box display="flex" width="100%" height="100vh">
+      <Box flex={1} position="relative" minWidth={0} overflow="hidden">
+        <ComparisonLabel>Default</ComparisonLabel>
+        <RazorSenseComponent width="100%" height="100%" {...playbackProps} />
+      </Box>
+      <Divider orientation="vertical" height="100%" />
+      <Box flex={1} position="relative" minWidth={0} overflow="hidden">
+        <ComparisonLabel>Refreshed</ComparisonLabel>
+        <RazorSenseComponent
+          preset={preset}
+          width="100%"
+          height="100%"
+          {...playbackProps}
+          {...refreshedArgs}
+          gradientMapSrc={gradientMapSrc}
+          gradientMap2Src={gradientMap2Src}
+          centerGradientMapSrc={centerGradientMapSrc}
+          gradientMapCanvas={activeGradientCanvas}
+          onTimeUpdate={handleRefreshedTimeUpdate}
+          edgeFeather={edgeFeather}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+export const RefreshedRazorSense = RefreshedRazorSenseTemplate.bind({});
 RefreshedRazorSense.storyName = 'Refreshed RazorSense';
 RefreshedRazorSense.args = {
-  gradientMapSrc: LOCAL_RAZORSENSE_PRIMARY_GRADIENT_MAP,
-  gradientMap2Src: LOCAL_RAZORSENSE_SECONDARY_GRADIENT_MAP,
-  centerGradientMapSrc: LOCAL_RAZORSENSE_CENTER_GRADIENT_MAP,
-  paused: false,
-  displacementX: -3,
-  displacementY: -5,
-  edgeFeather: [0, 1, 0, 0],
-  panX: 0,
-  panY: 0,
-  numSegments: 28,
-  slitAngle: 0.08,
+  paused: true,
+  startTime: 0,
+  gradientMapSrc: 'Refreshed (primary)',
+  gradientMap2Src: 'Refreshed (secondary)',
+  centerGradientMapSrc: 'Refreshed (center)',
+  edgeFeatherTop: 0,
+  edgeFeatherRight: 0,
+  edgeFeatherBottom: 0,
+  edgeFeatherLeft: 0,
 };
 RefreshedRazorSense.argTypes = {
+  gradientMapSrc: {
+    control: { type: 'select' },
+    options: Object.keys(GRADIENT_MAP_SRC_OPTIONS),
+    mapping: GRADIENT_MAP_SRC_OPTIONS,
+    description:
+      'Base primary gradient map for the refreshed panel, shown outside the 1s–4s video window. During 1s–4s the alternate primary map (n-colorama-gm-primary-alt) is hot-swapped in.',
+  },
+  gradientMap2Src: {
+    control: { type: 'select' },
+    options: Object.keys(GRADIENT_MAP_2_SRC_OPTIONS),
+    mapping: GRADIENT_MAP_2_SRC_OPTIONS,
+    description: 'Secondary gradient map for the refreshed panel.',
+  },
+  centerGradientMapSrc: {
+    control: { type: 'select' },
+    options: Object.keys(CENTER_GRADIENT_MAP_SRC_OPTIONS),
+    mapping: CENTER_GRADIENT_MAP_SRC_OPTIONS,
+    description: 'Center element gradient map for the refreshed panel.',
+  },
   paused: {
     control: 'boolean',
-    description: 'Pause or play the RazorSense video animation.',
+    description: 'Pause or play the RazorSense video animation on both panels.',
+  },
+  startTime: {
+    control: { type: 'number', min: 0, max: 14, step: 0.1 },
+    description: 'Video start time in seconds, applied to both panels.',
+  },
+  endTime: {
+    control: { type: 'number', min: 0, max: 14, step: 0.1 },
+    description: 'Video end time in seconds, applied to both panels.',
+  },
+  playbackRate: {
+    control: { type: 'number', min: 0.1, max: 3, step: 0.1 },
+    description: 'Video playback speed, applied to both panels.',
+  },
+  animateLightIndependently: {
+    control: 'boolean',
+    description: 'Animate light sweep independently of video time, applied to both panels.',
   },
   displacementX: {
     control: { type: 'number', min: -30, max: 30, step: 1 },
-    description: 'Horizontal displacement strength. Lower magnitude reduces edge bending.',
+    description:
+      'Horizontal displacement strength on the refreshed panel. Lower magnitude reduces edge bending.',
   },
   displacementY: {
     control: { type: 'number', min: -30, max: 30, step: 1 },
-    description: 'Vertical displacement strength. Lower magnitude reduces edge stretching.',
+    description:
+      'Vertical displacement strength on the refreshed panel. Lower magnitude reduces edge stretching.',
   },
-  edgeFeather: {
-    control: 'object',
-    description: 'Per-side edge feathering as [top, right, bottom, left].',
+  edgeFeatherTop: {
+    control: { type: 'number', min: 0, max: 5, step: 0.1 },
+    description: 'Top edge feathering for the refreshed panel (0 = sharp, higher = softer).',
+  },
+  edgeFeatherRight: {
+    control: { type: 'number', min: 0, max: 5, step: 0.1 },
+    description: 'Right edge feathering for the refreshed panel (0 = sharp, higher = softer).',
+  },
+  edgeFeatherBottom: {
+    control: { type: 'number', min: 0, max: 5, step: 0.1 },
+    description: 'Bottom edge feathering for the refreshed panel (0 = sharp, higher = softer).',
+  },
+  edgeFeatherLeft: {
+    control: { type: 'number', min: 0, max: 5, step: 0.1 },
+    description: 'Left edge feathering for the refreshed panel (0 = sharp, higher = softer).',
   },
   panX: {
     control: { type: 'number', min: -1, max: 1, step: 0.01 },
-    description: 'Horizontal pan offset for positioning the animation inside the canvas.',
+    description: 'Horizontal pan offset for the refreshed panel.',
   },
   panY: {
     control: { type: 'number', min: -1, max: 1, step: 0.01 },
-    description: 'Vertical pan offset for positioning the animation inside the canvas.',
+    description: 'Vertical pan offset for the refreshed panel.',
   },
   numSegments: {
     control: { type: 'number', min: 5, max: 80, step: 1 },
-    description: 'Number of glass/refraction segments.',
+    description: 'Number of glass/refraction segments on the refreshed panel.',
   },
   slitAngle: {
     control: { type: 'number', min: -1, max: 1, step: 0.01 },
-    description: 'Angle of the glass/refraction slits in radians.',
+    description: 'Angle of the glass/refraction slits in radians on the refreshed panel.',
   },
 };

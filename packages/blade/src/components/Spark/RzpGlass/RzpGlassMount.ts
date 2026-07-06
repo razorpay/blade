@@ -86,6 +86,13 @@ export class RzpGlassMount {
   public parentElement: HTMLElement;
   public canvasElement: HTMLCanvasElement;
 
+  /**
+   * Optional callback invoked every rendered frame with the current playback
+   * time in seconds. For video mode this is the video's `currentTime`; for
+   * static-image mode it is the elapsed render time.
+   */
+  public onTimeUpdate: ((timeSeconds: number) => void) | null = null;
+
   private gl: WebGLRenderingContext;
   private program: WebGLProgram | null = null;
   private uniformLocations: Record<string, WebGLUniformLocation | null> = {};
@@ -762,6 +769,10 @@ export class RzpGlassMount {
     const videoAnimTime = usingStaticImage
       ? currentTimeSeconds
       : video!.currentTime - this.config.startTime;
+
+    // Notify consumers of the current playback time (absolute video currentTime
+    // for video mode, elapsed render time for static image).
+    this.onTimeUpdate?.(usingStaticImage ? currentTimeSeconds : video!.currentTime);
 
     // Update center animation time (always accumulate real time for smooth animation)
     if (this.config.animateLightIndependently || usingStaticImage) {
