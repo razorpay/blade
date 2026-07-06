@@ -301,6 +301,14 @@ If any visible row overflows or clips at the viewport edge, classify it as P1 an
 
 #### 4c: Test Interactions
 
+> **🚦 Primary Interaction Gate (MANDATORY):** Positively observe the component's core
+> interaction (picker/menu/sheet opens, toggle flips, panel expands) in **snapshot AND
+> screenshot** — a tap with no confirmed state change is not a pass. If it doesn't fire, try
+> every method (text, a11y ref, device coords, `wait`) and log each attempt. If still
+> unconfirmed → **P0**: FAIL or `BLOCKER — primary interaction unconfirmed`. NEVER lower it to
+> P2 by blaming automation or citing correct-looking wiring — severity = impact if the symptom
+> is real, not your confidence it isn't.
+
 For interactive components:
 
 ```bash
@@ -405,6 +413,7 @@ For each screenshot captured, classify issues:
 - Red error screen / crash
 - Completely wrong layout (vertical when should be horizontal)
 - Missing entirely from view tree
+- **Primary interaction not confirmed working** (Step 4c gate) — the component's core behavior can't be observed happening on-device. P0 even if it renders and the wiring looks correct; never reclassify as P2.
 
 **P1 — Visible issues (must fix):**
 - Alignment mismatch vs the web reference (text/icon/control alignment differs from web in the 4e comparison)
@@ -426,6 +435,8 @@ For each screenshot captured, classify issues:
 - Sub-pixel alignment (1-2px)
 - Ripple vs opacity press feedback
 - Scroll bounce behavior
+
+> P2 is **only** for cosmetic platform-rendering diffs on a component confirmed rendering AND functioning. Any functional failure or unverified primary interaction is P0 (Step 4c gate), never P2.
 
 ### Step 6: Fix & Iterate
 
@@ -484,8 +495,9 @@ iteration += 1
 
 | Condition | Result |
 |-----------|--------|
-| All checks pass (types + tests + visual clean/P2) | **PASS** |
-| Types + tests pass, visual has P2 only | **PASS WITH WARNINGS** |
+| All checks pass (types + tests + visual clean/P2) **and primary interaction observed working** | **PASS** |
+| Types + tests pass, visual has P2 only, **and primary interaction observed working** | **PASS WITH WARNINGS** |
+| Primary interaction could not be observed working (Step 4c gate) | **FAIL** (or `BLOCKER — manual confirmation`) — never PASS |
 | Types + tests pass, component not in Storybook stories | **PASS (no story)** — only valid if component genuinely has no story file |
 | Simulator/Metro/Storybook build failed despite retries | **FAIL** (infra) |
 | 3 consecutive failures in same step | **FAIL** |
@@ -501,6 +513,7 @@ iteration += 1
 - **NEVER skip visual verification.** If the simulator is not booted, boot it. If Metro is not running, start it. If Storybook is not installed, build and install it. Visual verification is MANDATORY — a run without it is considered incomplete and must not report PASS.
 - **NEVER skip the agent-browser web comparison (Step 4e)** — even when the agent-device screenshot looks fine. A PASS requires the native-vs-web comparison to have actually run; if agent-browser fails (production and local Storybook both unreachable), record it in the report and cap the result at PASS WITH WARNINGS, never a clean PASS.
 - **The web component is the source of truth for UI.** The native implementation must respect the web render as-is — no major UI issues (misalignment, missing/extra elements, wrong hierarchy, wrong colors) may survive verification. Ambiguous differences are classified P1 (fix), not P2 (accept).
+- **Never PASS a component whose primary interaction wasn't positively observed on-device** (Step 4c gate). Don't lower a functional failure's severity by blaming automation or citing wiring — severity = impact if real. Unconfirmed core interaction = P0.
 - **NEVER `git push`, create a PR, or run any other remote-writing git/gh command.** Your job ends at the verification report — publishing is the orchestrator's job and requires explicit human approval at the Final Gate.
 - iOS is primary platform for visual verification; Android is bonus
 - Do NOT kill simulator/app when done — leave running for manual verification
