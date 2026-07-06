@@ -544,7 +544,7 @@ exports[`<AppBar /> should render 1`] = `
           >
             <div
               class="c10"
-              data-blade-component="trusted-marker"
+              data-blade-component="trust-badge"
             >
               <div
                 aria-hidden="true"
@@ -562,12 +562,12 @@ exports[`<AppBar /> should render 1`] = `
                 >
                   <path
                     d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
-                    fill="url(#rtbShieldFill-:r0:)"
-                    stroke="url(#rtbShieldStroke-:r0:)"
+                    fill="url(#razorpayTrustFill-:r0:)"
+                    stroke="url(#razorpayTrustStroke-:r0:)"
                     stroke-width="0.666667"
                   />
                   <g
-                    filter="url(#rtbShieldShadow-:r0:)"
+                    filter="url(#razorpayTrustShadow-:r0:)"
                   >
                     <path
                       d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
@@ -583,7 +583,7 @@ exports[`<AppBar /> should render 1`] = `
                       color-interpolation-filters="sRGB"
                       filterUnits="userSpaceOnUse"
                       height="14.9444"
-                      id="rtbShieldShadow-:r0:"
+                      id="razorpayTrustShadow-:r0:"
                       width="12.9444"
                       x="5.65925"
                       y="3.19819"
@@ -624,7 +624,7 @@ exports[`<AppBar /> should render 1`] = `
                     </filter>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldFill-:r0:"
+                      id="razorpayTrustFill-:r0:"
                       x1="4.13115"
                       x2="18.2093"
                       y1="5.0249"
@@ -640,7 +640,7 @@ exports[`<AppBar /> should render 1`] = `
                     </lineargradient>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldStroke-:r0:"
+                      id="razorpayTrustStroke-:r0:"
                       x1="6.35337"
                       x2="17.5246"
                       y1="4.55055"
@@ -746,7 +746,7 @@ exports[`<AppBar /> should render 1`] = `
 </div>
 `;
 
-exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`] = `
+exports[`<AppBar /> should render AppBarLeading with logo and full trust badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
   -webkit-align-items: center;
@@ -980,7 +980,7 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
           >
             <div
               class="c6"
-              data-blade-component="trusted-marker"
+              data-blade-component="trust-badge"
             >
               <div
                 aria-hidden="true"
@@ -998,12 +998,12 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
                 >
                   <path
                     d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
-                    fill="url(#rtbShieldFill-:r4:)"
-                    stroke="url(#rtbShieldStroke-:r4:)"
+                    fill="url(#razorpayTrustFill-:r4:)"
+                    stroke="url(#razorpayTrustStroke-:r4:)"
                     stroke-width="0.666667"
                   />
                   <g
-                    filter="url(#rtbShieldShadow-:r4:)"
+                    filter="url(#razorpayTrustShadow-:r4:)"
                   >
                     <path
                       d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
@@ -1019,7 +1019,7 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
                       color-interpolation-filters="sRGB"
                       filterUnits="userSpaceOnUse"
                       height="14.9444"
-                      id="rtbShieldShadow-:r4:"
+                      id="razorpayTrustShadow-:r4:"
                       width="12.9444"
                       x="5.65925"
                       y="3.19819"
@@ -1060,7 +1060,7 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
                     </filter>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldFill-:r4:"
+                      id="razorpayTrustFill-:r4:"
                       x1="4.13115"
                       x2="18.2093"
                       y1="5.0249"
@@ -1076,7 +1076,7 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
                     </lineargradient>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldStroke-:r4:"
+                      id="razorpayTrustStroke-:r4:"
                       x1="6.35337"
                       x2="17.5246"
                       y1="4.55055"
@@ -1124,7 +1124,7 @@ exports[`<AppBar /> should render AppBarLeading with logo and full RTB badge 1`]
 </div>
 `;
 
-exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`] = `
+exports[`<AppBar /> should render AppBarLeading with title and full trust badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
   -webkit-align-items: center;
@@ -1368,7 +1368,7 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
           >
             <div
               class="c7"
-              data-blade-component="trusted-marker"
+              data-blade-component="trust-badge"
             >
               <div
                 aria-hidden="true"
@@ -1386,12 +1386,12 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
                 >
                   <path
                     d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
-                    fill="url(#rtbShieldFill-:r5:)"
-                    stroke="url(#rtbShieldStroke-:r5:)"
+                    fill="url(#razorpayTrustFill-:r5:)"
+                    stroke="url(#razorpayTrustStroke-:r5:)"
                     stroke-width="0.666667"
                   />
                   <g
-                    filter="url(#rtbShieldShadow-:r5:)"
+                    filter="url(#razorpayTrustShadow-:r5:)"
                   >
                     <path
                       d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
@@ -1407,7 +1407,7 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
                       color-interpolation-filters="sRGB"
                       filterUnits="userSpaceOnUse"
                       height="14.9444"
-                      id="rtbShieldShadow-:r5:"
+                      id="razorpayTrustShadow-:r5:"
                       width="12.9444"
                       x="5.65925"
                       y="3.19819"
@@ -1448,7 +1448,7 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
                     </filter>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldFill-:r5:"
+                      id="razorpayTrustFill-:r5:"
                       x1="4.13115"
                       x2="18.2093"
                       y1="5.0249"
@@ -1464,7 +1464,7 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
                     </lineargradient>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldStroke-:r5:"
+                      id="razorpayTrustStroke-:r5:"
                       x1="6.35337"
                       x2="17.5246"
                       y1="4.55055"
@@ -1512,7 +1512,7 @@ exports[`<AppBar /> should render AppBarLeading with title and full RTB badge 1`
 </div>
 `;
 
-exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`] = `
+exports[`<AppBar /> should render AppBarLeading with title and icon-only trust badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: grid;
   -webkit-align-items: center;
@@ -1690,7 +1690,7 @@ exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`
             </p>
             <div
               class="c6"
-              data-blade-component="trusted-marker"
+              data-blade-component="trust-badge"
             >
               <div
                 aria-label="Razorpay Trusted Business"
@@ -1709,12 +1709,12 @@ exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`
                 >
                   <path
                     d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
-                    fill="url(#rtbShieldFill-:r6:)"
-                    stroke="url(#rtbShieldStroke-:r6:)"
+                    fill="url(#razorpayTrustFill-:r6:)"
+                    stroke="url(#razorpayTrustStroke-:r6:)"
                     stroke-width="0.666667"
                   />
                   <g
-                    filter="url(#rtbShieldShadow-:r6:)"
+                    filter="url(#razorpayTrustShadow-:r6:)"
                   >
                     <path
                       d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
@@ -1730,7 +1730,7 @@ exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`
                       color-interpolation-filters="sRGB"
                       filterUnits="userSpaceOnUse"
                       height="14.9444"
-                      id="rtbShieldShadow-:r6:"
+                      id="razorpayTrustShadow-:r6:"
                       width="12.9444"
                       x="5.65925"
                       y="3.19819"
@@ -1771,7 +1771,7 @@ exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`
                     </filter>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldFill-:r6:"
+                      id="razorpayTrustFill-:r6:"
                       x1="4.13115"
                       x2="18.2093"
                       y1="5.0249"
@@ -1787,7 +1787,7 @@ exports[`<AppBar /> should render AppBarLeading with title and icon RTB badge 1`
                     </lineargradient>
                     <lineargradient
                       gradientUnits="userSpaceOnUse"
-                      id="rtbShieldStroke-:r6:"
+                      id="razorpayTrustStroke-:r6:"
                       x1="6.35337"
                       x2="17.5246"
                       y1="4.55055"

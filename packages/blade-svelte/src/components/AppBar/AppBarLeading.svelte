@@ -2,7 +2,7 @@
   import { metaAttribute, MetaConstants, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
-  import { TrustedMarker } from '../TrustedMarker';
+  import { TrustBadge } from '../TrustBadge';
   import { getAppBarContext, useAppBarContext } from './AppBarContext';
   import type { AppBarLeadingProps, AppBarVariant } from './types';
 
@@ -13,18 +13,26 @@
   const getAppBarCtx = getAppBarContext() ?? (() => ({ variant: 'neutral' as AppBarVariant }));
   const appBarContext = $derived(getAppBarCtx());
 
-  let { title, logo, rtbBadge, rtbBadgeLabel, testID, ...rest }: AppBarLeadingProps = $props();
+  let {
+    title,
+    logo,
+    trustBadgeVariant,
+    trustBadgeLabel,
+    testID,
+    ...rest
+  }: AppBarLeadingProps = $props();
 
   const isNeutral = $derived(appBarContext.variant === 'neutral');
+  const trustBadgeEmphasis = $derived(isNeutral ? 'intense' : 'subtle');
 
   const titleColor = $derived(
     isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
   );
 
-  const showFullRtb = $derived(rtbBadge === 'full');
-  const showIconRtb = $derived(rtbBadge === 'icon');
-  const hasTitleColumn = $derived(Boolean(title) || (showFullRtb && !logo));
-  const stackFullRtbBelowLogo = $derived(showFullRtb && Boolean(logo) && !title);
+  const showFullBadge = $derived(trustBadgeVariant === 'default');
+  const showIconBadge = $derived(trustBadgeVariant === 'icon-only');
+  const hasTitleColumn = $derived(Boolean(title) || (showFullBadge && !logo));
+  const stackFullBadgeBelowLogo = $derived(showFullBadge && Boolean(logo) && !title);
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AppBarLeading, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -32,13 +40,13 @@
 
 <div class={templateClasses.appBarLeading} {...metaAttrs} {...analyticsAttrs}>
   {#if logo}
-    {#if stackFullRtbBelowLogo}
+    {#if stackFullBadgeBelowLogo}
       <div class={templateClasses.appBarLeadingLogoStack}>
         <div class={templateClasses.appBarLeadingLogo}>
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustedMarker type="full" variant={appBarContext.variant} label={rtbBadgeLabel} />
+          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
         </div>
       </div>
     {:else}
@@ -52,8 +60,8 @@
     <div class={templateClasses.appBarLeadingTitleWrap}>
       {#if title}
         <div
-          class="{templateClasses.appBarLeadingTitleRow}{showIconRtb
-            ? ` ${templateClasses.appBarLeadingTitleRowWithIconRtb}`
+          class="{templateClasses.appBarLeadingTitleRow}{showIconBadge
+            ? ` ${templateClasses.appBarLeadingTitleRowWithIconBadge}`
             : ''}"
         >
           <div class={templateClasses.appBarLeadingTitle}>
@@ -61,18 +69,18 @@
               {title}
             </Text>
           </div>
-          {#if showIconRtb}
-            <TrustedMarker type="icon" variant={appBarContext.variant} label={rtbBadgeLabel} />
+          {#if showIconBadge}
+            <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
           {/if}
         </div>
       {/if}
-      {#if showFullRtb && !stackFullRtbBelowLogo}
+      {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustedMarker type="full" variant={appBarContext.variant} label={rtbBadgeLabel} />
+          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
         </div>
       {/if}
     </div>
-  {:else if showIconRtb}
-    <TrustedMarker type="icon" variant={appBarContext.variant} label={rtbBadgeLabel} />
+  {:else if showIconBadge}
+    <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
   {/if}
 </div>

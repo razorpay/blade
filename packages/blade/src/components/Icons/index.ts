@@ -318,6 +318,7 @@ export { default as QRCodeIcon } from './QRCodeIcon';
 export { default as RadioIcon } from './RadioIcon';
 export { default as RayIcon } from './RayIcon';
 export { default as RazorpayIcon } from './RazorpayIcon';
+export { default as RazorpayTrustIcon } from './RazorpayTrustIcon';
 export { default as RazorpayXIcon } from './RazorpayXIcon';
 export { default as RazorpayxPayrollFilledIcon } from './RazorpayxPayrollFilledIcon';
 export { default as RazorpayxPayrollIcon } from './RazorpayxPayrollIcon';
@@ -332,7 +333,6 @@ export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseI
 export { default as RouteFilledIcon } from './RouteFilledIcon';
 export { default as RouteIcon } from './RouteIcon';
 export { default as RoutesIcon } from './RoutesIcon';
-export { default as RTBShieldIcon } from './RTBShieldIcon';
 export { default as RupeeIcon } from './RupeeIcon';
 export { default as RupeesIcon } from './RupeesIcon';
 export { default as SaasFilledIcon } from './SaasFilledIcon';

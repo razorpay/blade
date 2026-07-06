@@ -1,6 +1,5 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { TrustedMarkerType } from '@razorpay/blade-core/styles';
 import type { TooltipPlacement } from '../Tooltip/types';
 
 /**
@@ -120,22 +119,22 @@ export type AppBarLeadingProps = {
   logo?: Snippet;
 
   /**
-   * Razorpay Trusted Business badge form.
-   * - `'full'`: shield + pill below the title/logo row
-   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
+   * Trust badge form, forwarded to `TrustBadge`.
+   * - `'default'`: shield + pill below the title/logo row
+   * - `'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  rtbBadge?: TrustedMarkerType;
+  trustBadgeVariant?: 'default' | 'icon-only';
 
   /**
-   * Custom trust label forwarded to `TrustedMarker`.
+   * Custom trust label forwarded to `TrustBadge`.
    * Overrides the default "Razorpay Trusted Business" text shown in the pill
    * and used as the accessible label for the icon-only form.
    *
    * @default undefined
    */
-  rtbBadgeLabel?: string;
+  trustBadgeLabel?: string;
 
   /**
    * Test ID for the element.

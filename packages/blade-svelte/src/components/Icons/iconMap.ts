@@ -16,7 +16,7 @@ import { UserIcon } from './UserIcon';
 import { BuildingIcon } from './BuildingIcon';
 import { HomeIcon } from './HomeIcon';
 import { LockIcon } from './LockIcon';
-import { RTBShieldIcon } from './RTBShieldIcon';
+import { RazorpayTrustIcon } from './RazorpayTrustIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -42,5 +42,5 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   PlusIcon,
   SearchIcon,
   UserIcon,
-  RTBShieldIcon,
+  RazorpayTrustIcon,
 };
