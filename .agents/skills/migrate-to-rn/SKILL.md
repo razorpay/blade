@@ -66,14 +66,30 @@ grep -rl "throwBladeError" packages/blade/src/components/{Name}/ --include="*.na
 - If no `.native.tsx` files at all → component needs migration (proceed)
 - If real implementations found (no throwBladeError) → skip: "Already has native support"
 
-### 0.4 Create Worktrees
+### 0.4 Allocate Slots — Ports, Devices, Sessions
+
+Number the surviving components `1..N` (in input order). Assign per slot:
+
+| Slot `i` | Metro Port | iOS Simulator Device | Session Name |
+|----------|-----------|---------------------|-------------|
+| 1 | `8081` | iPhone 17 | `rn-{Name1}` |
+| 2 | `8082` | iPhone 17 Pro | `rn-{Name2}` |
+| 3 | `8083` | iPhone 17 Pro Max | `rn-{Name3}` |
+| 4 | `8084` | iPhone 17e | `rn-{Name4}` |
+| 5 | `8085` | iPhone Air | `rn-{Name5}` |
+
+Cap at **5 parallel slots** (machine RAM/CPU limit — each booted simulator uses ~2-3 GB). If batch > 5, queue remaining components and process them after the first batch's verify phase completes.
+
+This works because `agent-device` natively supports multi-worktree RN development: each simulator gets its own Metro port written to per-simulator debug server settings on `open`, so bundles don't conflict. See `agent-device help react-native` for details.
+
+### 0.5 Create Worktrees
 
 For each component in the batch:
 ```bash
 git worktree add -B feat/blade-rn/{Name} .claude/worktrees/{Name} origin/master
 ```
 
-### 0.5 Ensure Dependencies in Worktrees
+### 0.6 Ensure Dependencies in Worktrees
 
 ```bash
 cd .claude/worktrees/{Name} && yarn install --frozen-lockfile
@@ -83,6 +99,44 @@ Or if APFS clone available:
 ```bash
 cp -Rc node_modules .claude/worktrees/{Name}/node_modules 2>/dev/null || (cd .claude/worktrees/{Name} && yarn install --frozen-lockfile)
 ```
+
+### 0.7 Shared App Build
+
+The Storybook `.app` binary only needs to be built **once** — all worktrees share the same native code; only JS differs (served by each worktree's own Metro). Build from the first slot's worktree:
+
+```bash
+cd .claude/worktrees/{Name1}/packages/blade && yarn start:ios
+```
+
+This builds, installs, and launches the app on the first simulator (slot 1's device). Run via Bash tool with `run_in_background: true`.
+
+Wait for the build to complete and the app to appear:
+```bash
+npx agent-device wait text "COMPONENTS" 60000 --session rn-{Name1}
+```
+
+For slots 2..N, the app is already installed on the first simulator. To get it on additional simulators, install the built `.app` artifact:
+
+```bash
+# Find the built .app from the Xcode derived data
+APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "blade.app" -path "*/Build/Products/Debug-iphonesimulator/*" -maxdepth 5 2>/dev/null | head -1)
+
+# For each additional slot i (2..N):
+npx agent-device open org.reactjs.native.example.blade \
+  --platform ios --device "{iOSDevice_i}" \
+  --session rn-{Name_i} --metro-port {MetroPort_i} --relaunch
+```
+
+If the app isn't found on a secondary simulator, install it explicitly:
+```bash
+npx agent-device install org.reactjs.native.example.blade "$APP_PATH" \
+  --platform ios --device "{iOSDevice_i}"
+npx agent-device open org.reactjs.native.example.blade \
+  --platform ios --device "{iOSDevice_i}" \
+  --session rn-{Name_i} --metro-port {MetroPort_i} --relaunch
+```
+
+**Note:** Metro is NOT started by the orchestrator — each Verify agent starts its own Metro on the assigned port inside its worktree.
 
 ---
 
@@ -176,7 +230,7 @@ Agent(
 
 ## Step 4: Verify Phase (Parallel)
 
-After Execute completes, spawn Verify agents:
+After Execute completes, spawn Verify agents. Each agent gets its own Metro port, simulator device, and session name from the slot allocation (Step 0.4). This allows all verify agents to run truly in parallel without resource conflicts.
 
 ```
 Agent(
@@ -188,6 +242,9 @@ Agent(
 
     - Component name: {Name}
     - Worktree (absolute base): {absolute_path_to_worktree}
+    - Metro port: {MetroPort}
+    - iOS device: {iOSDevice}
+    - Session name: {SessionName}
 
     ALWAYS use absolute paths prefixed with the worktree.
     Read .claude/rules/rn-migration.md and .claude/rules/agent-base-directory.md first.
@@ -195,9 +252,18 @@ Agent(
     Discovery report: {Worktree}/.claude/artifacts/{Name}/rn-discovery-report.md
     Screenshots dir: {Worktree}/.claude/artifacts/{Name}/screenshots/
     Verification report: {Worktree}/.claude/artifacts/{Name}/rn-verification-report.md
+
+    PARALLEL VERIFICATION: You have a dedicated simulator and Metro port.
+    - Start Metro on port {MetroPort} (not 8081 unless that is your assigned port).
+    - Use --session {SessionName} on ALL agent-device commands.
+    - The app is already installed on your simulator by the orchestrator.
+    - Use: npx agent-device open org.reactjs.native.example.blade --platform ios --device \"{iOSDevice}\" --session {SessionName} --metro-port {MetroPort} --relaunch
+    - Do NOT run 'npx agent-device boot' — the open command boots the simulator.
   "
 )
 ```
+
+For multiple components: send all Agent calls in **a single message** for true parallel execution. Each agent operates on an isolated simulator + Metro + session combination.
 
 The Verify agent self-heals by spawning Execute in Patch mode internally.
 
@@ -294,10 +360,10 @@ Write/update `.claude/artifacts/rn-batch-status.md` in the main checkout:
 ```markdown
 # RN Migration Batch Status
 
-| Component | Plan | Execute | Verify | PR | Status |
-|-----------|------|---------|--------|-----|--------|
-| {Name} | ✅ | ✅ | ✅ | #{number} | Done |
-| {Name2} | ✅ | ✅ | ❌ FAIL | — | Needs fix |
+| # | Component | Metro Port | iOS Device | Session | Plan | Execute | Verify | PR | Status |
+|---|-----------|-----------|------------|---------|------|---------|--------|-----|--------|
+| 1 | {Name1} | 8081 | iPhone 17 | rn-{Name1} | ✅ | ✅ | ✅ | #{number} | Done |
+| 2 | {Name2} | 8082 | iPhone 17 Pro | rn-{Name2} | ✅ | ✅ | ❌ FAIL | — | Needs fix |
 ```
 
 ---
@@ -320,4 +386,6 @@ If component A imports from component B, and both are in the same batch:
 | Execute fails (type errors) | Verify will catch and patch |
 | Verify fails after 6 iterations | Present FAIL report, ask user for manual fix or abort |
 | Worktree conflicts | `cd {Worktree} && git reset --hard origin/master` and re-run |
-| Simulator unavailable | Continue without visual verification (types + tests still run) |
+| Simulator fails to boot for a slot | Try next available device from the pool; if none left, that component's verify runs sequentially after another slot finishes |
+| Metro port conflict | Kill the conflicting process (`lsof -ti:{port} | xargs kill`) and retry |
+| Shared app build fails | Retry with clean build (Step 0.7); all verify agents are blocked until build succeeds |
