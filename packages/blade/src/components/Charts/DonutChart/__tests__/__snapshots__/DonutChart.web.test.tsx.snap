@@ -47,7 +47,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 1`] = `
           />
           <defs>
             <clippath
-              id="recharts87-clip"
+              id="recharts190-clip"
             >
               <rect
                 height="390"
@@ -192,7 +192,7 @@ exports[`<ChartDonut /> should render ChartDonut with all chart types 2`] = `
           />
           <defs>
             <clippath
-              id="recharts92-clip"
+              id="recharts195-clip"
             >
               <rect
                 height="390"
@@ -337,7 +337,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 1`] = `
           />
           <defs>
             <clippath
-              id="recharts72-clip"
+              id="recharts175-clip"
             >
               <rect
                 height="390"
@@ -482,7 +482,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 2`] = `
           />
           <defs>
             <clippath
-              id="recharts77-clip"
+              id="recharts180-clip"
             >
               <rect
                 height="390"
@@ -627,7 +627,7 @@ exports[`<ChartDonut /> should render ChartDonut with all radius sizes 3`] = `
           />
           <defs>
             <clippath
-              id="recharts82-clip"
+              id="recharts185-clip"
             >
               <rect
                 height="390"
@@ -772,7 +772,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom center coordinates 
           />
           <defs>
             <clippath
-              id="recharts97-clip"
+              id="recharts200-clip"
             >
               <rect
                 height="390"
@@ -917,7 +917,7 @@ exports[`<ChartDonut /> should render ChartDonut with custom dataKey and nameKey
           />
           <defs>
             <clippath
-              id="recharts67-clip"
+              id="recharts170-clip"
             >
               <rect
                 height="390"
@@ -1054,7 +1054,7 @@ exports[`<ChartDonut /> should render ChartDonut with default props 1`] = `
           />
           <defs>
             <clippath
-              id="recharts62-clip"
+              id="recharts165-clip"
             >
               <rect
                 height="390"

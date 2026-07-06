@@ -1,7 +1,9 @@
 import React from 'react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { ChartDonutWrapper, ChartDonut, ChartDonutCell } from '../DonutChart';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import assertAccessible from '~utils/testing/assertAccessible.web';
+import { ChartLegend } from '../../CommonChartComponents';
+import renderWithTheme from '~utils/testing/renderWithTheme';
+import assertAccessible from '~utils/testing/assertAccessible';
 import { Box } from '~components/Box/Box';
 
 const mockData = [
@@ -16,6 +18,11 @@ const mockDataWithNulls = [
   { name: 'Mobile', value: null },
   { name: 'Tablet', value: 300 },
   { name: 'Desktop', value: 200 },
+];
+
+const errorCodeData = [
+  { name: 'GATEWAY_ERROR', value: 80 },
+  { name: 'BAD_REQUEST_ERROR', value: 20 },
 ];
 
 // Mock recharts ResponsiveContainer to have fixed dimensions for testing
@@ -156,6 +163,77 @@ describe('<DonutChart />', () => {
       </Box>,
     );
     await assertAccessible(container);
+  });
+
+  it('should select dynamically added donut legend items by default before user interaction', async () => {
+    const DynamicDonutChart = (): React.ReactElement => {
+      const [data, setData] = React.useState([errorCodeData[0]]);
+
+      React.useEffect(() => {
+        setData(errorCodeData);
+      }, []);
+
+      return (
+        <Box width="500px" height="500px">
+          <ChartDonutWrapper>
+            <ChartDonut data={data} dataKey="value" nameKey="name" />
+            <ChartLegend />
+          </ChartDonutWrapper>
+        </Box>
+      );
+    };
+
+    const { getByText } = renderWithTheme(<DynamicDonutChart />);
+
+    await waitFor(() => expect(getByText('BAD_REQUEST_ERROR')).toBeInTheDocument());
+
+    expect(getByText('GATEWAY_ERROR')).toHaveStyle({ textDecoration: 'none' });
+    expect(getByText('BAD_REQUEST_ERROR')).toHaveStyle({ textDecoration: 'none' });
+  });
+
+  it('should strike through donut legend items when they are not selected', () => {
+    const { getByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartDonutWrapper>
+          <ChartDonut data={errorCodeData} dataKey="value" nameKey="name" />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+
+    fireEvent.click(getByText('BAD_REQUEST_ERROR'));
+
+    expect(getByText('BAD_REQUEST_ERROR')).toHaveStyle({ textDecoration: 'line-through' });
+  });
+
+  it('should update total content value based on selected donut slices', async () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartDonutWrapper content={{ label: 'Total', value: '1300' }}>
+          <ChartDonut
+            data={[
+              { name: 'Group A', value: 400 },
+              { name: 'Group B', value: 300 },
+              { name: 'Group C', value: 300 },
+              { name: 'Group D', value: 200 },
+              { name: 'Group E', value: 100 },
+            ]}
+            dataKey="value"
+            nameKey="name"
+          />
+          <ChartLegend />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+
+    expect(getByText('1300')).toBeInTheDocument();
+
+    fireEvent.click(getByText('Group A'));
+    fireEvent.click(getByText('Group B'));
+    fireEvent.click(getByText('Group C'));
+
+    await waitFor(() => expect(getByText('300')).toBeInTheDocument());
+    expect(queryByText('1300')).not.toBeInTheDocument();
   });
 });
 
