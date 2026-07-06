@@ -56,8 +56,7 @@
 
   const hintType = $derived(getHintType({ validationState, hasHelpText: Boolean(helpText) }));
 
-  // FormLabel/FormHint only accept small|medium|large — map xsmall down (mirrors BaseInput).
-  const formSize = $derived(size === 'xsmall' ? 'small' : size);
+  const formSize = $derived(size);
 
   // Hint is indented under the input only when the label sits to the left.
   const applyHintIndent = $derived(labelPosition === 'left' && Boolean(label));
