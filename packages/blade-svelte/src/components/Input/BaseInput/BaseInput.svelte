@@ -91,8 +91,9 @@
 
   // When rendered inside an InputGroup, the group overrides size/isDisabled and
   // suppresses this input's own label + hint (mirrors React BaseInput.tsx).
-  const inputGroupCtx = getInputGroupContext();
-  const isInsideInputGroup = Boolean(inputGroupCtx);
+  const getInputGroupCtx = getInputGroupContext();
+  const inputGroupCtx = $derived(getInputGroupCtx?.());
+  const isInsideInputGroup = $derived(Boolean(inputGroupCtx));
   const effectiveSize = $derived(inputGroupCtx?.size ?? size);
   const effectiveDisabled = $derived(inputGroupCtx?.isDisabled ?? isDisabled);
 

@@ -12,10 +12,10 @@ export function setInputGroupContext(getter: () => InputGroupContextType): void 
 }
 
 /**
- * Read the InputGroup context. Returns `undefined` for standalone inputs (not
- * inside an `InputGroup`), so callers fall back to their own props.
+ * Read the InputGroup context getter. Returns `undefined` for standalone inputs
+ * (not inside an `InputGroup`). Use the returned getter inside `$derived` to
+ * stay reactive to group prop changes (mirrors `getAccordionContext`).
  */
-export function getInputGroupContext(): InputGroupContextType | undefined {
-  const getter = getContext<(() => InputGroupContextType) | undefined>(INPUT_GROUP_CONTEXT_KEY);
-  return getter?.();
+export function getInputGroupContext(): (() => InputGroupContextType) | undefined {
+  return getContext<(() => InputGroupContextType) | undefined>(INPUT_GROUP_CONTEXT_KEY);
 }
