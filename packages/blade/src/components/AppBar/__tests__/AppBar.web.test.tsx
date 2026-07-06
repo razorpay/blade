@@ -75,7 +75,7 @@ describe('<AppBar />', () => {
       <AppBar>
         <AppBarLeading
           logo={<RazorpayIcon size="large" color="surface.icon.staticWhite.normal" />}
-          trustBadgeVariant="default"
+          trustBadge={{ variant: 'full' }}
         />
       </AppBar>,
     );
@@ -85,7 +85,7 @@ describe('<AppBar />', () => {
   it('should render AppBarLeading with title and full trust badge', () => {
     const { container, getByText } = renderWithTheme(
       <AppBar>
-        <AppBarLeading title="Mavenshop" trustBadgeVariant="default" />
+        <AppBarLeading title="Mavenshop" trustBadge={{ variant: 'full' }} />
       </AppBar>,
     );
     expect(getByText('Mavenshop')).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe('<AppBar />', () => {
   it('should render AppBarLeading with title and icon-only trust badge', () => {
     const { container, getByText, getByLabelText } = renderWithTheme(
       <AppBar>
-        <AppBarLeading title="Mavenshop" trustBadgeVariant="icon-only" />
+        <AppBarLeading title="Mavenshop" trustBadge={{ variant: 'icon-only' }} />
       </AppBar>,
     );
     expect(getByText('Mavenshop')).toBeInTheDocument();

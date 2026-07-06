@@ -9,7 +9,7 @@
     argTypes: {
       variant: {
         control: { type: 'select' },
-        options: ['default', 'icon-only'],
+        options: ['full', 'icon-only'],
       },
       emphasis: {
         control: { type: 'select' },
@@ -20,7 +20,7 @@
       },
     },
     args: {
-      variant: 'default',
+      variant: 'full',
       emphasis: 'subtle',
       label: 'Razorpay Trusted Business',
     },

@@ -12,7 +12,7 @@
  * </script>
  *
  * <AppBar showBackButton={true} onBackButtonClick={goBack} backButtonAccessibilityLabel="Go back">
- *   <AppBarLeading title="Mavenshop" trustBadgeVariant="default">
+ *   <AppBarLeading title="Mavenshop" trustBadge={{ variant: 'full' }}>
  *     {#snippet logo()}<MerchantLogo />{/snippet}
  *   </AppBarLeading>
  *   <AppBarActions>

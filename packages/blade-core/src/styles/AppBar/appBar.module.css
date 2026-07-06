@@ -148,7 +148,7 @@
   flex: 0 1 auto;
 }
 
-/* Trust badge stacked below the title row when trustBadgeVariant='default'. */
+/* Trust badge stacked below the title row when trustBadge.variant='full'. */
 .appBarLeadingBadge {
   display: flex;
   align-items: center;

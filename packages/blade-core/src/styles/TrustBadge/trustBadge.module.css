@@ -20,7 +20,7 @@
 
 /* --- Shield icon wrapper ---
    The 16px shield overlaps the pill's left edge by 12px (Figma `mr-[-12px]`) and is
-   raised above it. In default variant the shield is decorative (aria-hidden) because the
+   raised above it. In full variant the shield is decorative (aria-hidden) because the
    visible pill text is announced; in `icon-only` variant the wrapper carries the label. */
 .trustBadgeShield {
   position: relative;

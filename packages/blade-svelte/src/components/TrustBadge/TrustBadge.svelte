@@ -21,7 +21,7 @@
   const templateClasses = getTrustBadgeTemplateClasses();
 
   let {
-    variant = 'default',
+    variant = 'full',
     emphasis = 'subtle',
     label = DEFAULT_LABEL,
     testID,
@@ -42,7 +42,7 @@
     [templateClasses.trustBadge, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
   );
 
-  // In the default variant the pill text announces the badge, so the shield is decorative.
+  // In the full variant the pill text announces the badge, so the shield is decorative.
   // In the icon-only variant there is no visible text, so the shield wrapper carries the label.
   const shieldClasses = $derived(
     [

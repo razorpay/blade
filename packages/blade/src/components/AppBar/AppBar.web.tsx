@@ -120,7 +120,7 @@ const _AppBar = (
  *
  * ```jsx
  * <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
- *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} trustBadgeVariant="default" />
+ *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} trustBadge={{ variant: 'full' }} />
  *   <AppBarActions>
  *     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
  *   </AppBarActions>
@@ -134,8 +134,7 @@ const AppBar = assignWithoutSideEffects(React.forwardRef(_AppBar), {
 const _AppBarLeading = ({
   title,
   logo,
-  trustBadgeVariant,
-  trustBadgeLabel,
+  trustBadge,
   testID,
   ...rest
 }: AppBarLeadingProps): React.ReactElement => {
@@ -143,8 +142,8 @@ const _AppBarLeading = ({
   const isNeutral = (appBarContext?.variant ?? 'neutral') === 'neutral';
   const titleColor = isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
   const trustBadgeEmphasis = isNeutral ? 'intense' : 'subtle';
-  const showFullBadge = trustBadgeVariant === 'default';
-  const showIconBadge = trustBadgeVariant === 'icon-only';
+  const showFullBadge = trustBadge?.variant === 'full';
+  const showIconBadge = trustBadge?.variant === 'icon-only';
   const stackFullBadgeBelowLogo = showFullBadge && Boolean(logo) && !title;
   const hasTitleColumn = Boolean(title) || (showFullBadge && !logo);
 
@@ -179,7 +178,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+              <TrustBadge variant="full" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -199,7 +198,7 @@ const _AppBarLeading = ({
                 <TrustBadge
                   variant="icon-only"
                   emphasis={trustBadgeEmphasis}
-                  label={trustBadgeLabel}
+                  label={trustBadge?.label}
                 />
               ) : null}
             </BaseBox>
@@ -212,12 +211,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+              <TrustBadge variant="full" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
             </BaseBox>
           ) : null}
         </BaseBox>
       ) : showIconBadge ? (
-        <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+        <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
       ) : null}
     </BaseBox>
   );

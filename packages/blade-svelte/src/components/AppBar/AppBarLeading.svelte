@@ -16,8 +16,7 @@
   let {
     title,
     logo,
-    trustBadgeVariant,
-    trustBadgeLabel,
+    trustBadge,
     testID,
     ...rest
   }: AppBarLeadingProps = $props();
@@ -29,8 +28,8 @@
     isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
   );
 
-  const showFullBadge = $derived(trustBadgeVariant === 'default');
-  const showIconBadge = $derived(trustBadgeVariant === 'icon-only');
+  const showFullBadge = $derived(trustBadge?.variant === 'full');
+  const showIconBadge = $derived(trustBadge?.variant === 'icon-only');
   const hasTitleColumn = $derived(Boolean(title) || (showFullBadge && !logo));
   const stackFullBadgeBelowLogo = $derived(showFullBadge && Boolean(logo) && !title);
 
@@ -46,7 +45,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="full" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
         </div>
       </div>
     {:else}
@@ -70,17 +69,17 @@
             </Text>
           </div>
           {#if showIconBadge}
-            <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+            <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
           {/if}
         </div>
       {/if}
       {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="full" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
         </div>
       {/if}
     </div>
   {:else if showIconBadge}
-    <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+    <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadge?.label} />
   {/if}
 </div>

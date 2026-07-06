@@ -90,7 +90,7 @@ Default.storyName = 'Default';
 const WithLogoTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<OptimizerLogo />} trustBadgeVariant="default" />
+      <AppBarLeading logo={<OptimizerLogo />} trustBadge={{ variant: 'full' }} />
     </AppBar>
   );
 };
@@ -101,7 +101,7 @@ WithLogo.storyName = 'With Logo';
 const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" trustBadgeVariant="default" />
+      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" trustBadge={{ variant: 'full' }} />
       <AppBarActions>
         <IconButton
           icon={UserIcon}
@@ -145,7 +145,7 @@ LogoAndTitle.storyName = 'Logo And Title';
 const TitleWithIconBadgeTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" trustBadgeVariant="icon-only" />
+      <AppBarLeading title="Maven Shop" trustBadge={{ variant: 'icon-only' }} />
     </AppBar>
   );
 };
@@ -180,7 +180,7 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <Box height="320px" overflowY="auto" backgroundColor="surface.background.gray.subtle">
       <AppBar {...args} isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" trustBadgeVariant="default" />
+        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" trustBadge={{ variant: 'full' }} />
         <AppBarActions>
           <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
         </AppBarActions>
@@ -204,7 +204,7 @@ const MerchantCheckoutTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => 
       backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}
       accessibilityLabel="Mavenshop checkout"
     >
-      <AppBarLeading title="Mavenshop" trustBadgeVariant="default" />
+      <AppBarLeading title="Mavenshop" trustBadge={{ variant: 'full' }} />
       <AppBarActions>
         <IconButton
           icon={UserIcon}

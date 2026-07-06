@@ -22,7 +22,7 @@ import { ArrowLeftIcon, UserIcon, CloseIcon } from '@razorpay/blade/components';
   <AppBarLeading
     title="Mavenshop"
     logo={<MerchantLogo />}
-    trustBadgeVariant="default"
+    trustBadge={{ variant: 'full' }}
   />
   <AppBarActions>
     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
@@ -40,7 +40,7 @@ import { ArrowLeftIcon, UserIcon, CloseIcon } from '@razorpay/blade/components';
 <AppBar
   title="Mavenshop"
   logo={<MerchantLogo />}
-  trustBadgeVariant="default"
+  trustBadge={{ variant: 'full' }}
   backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}
   actions={
     <>
@@ -155,13 +155,17 @@ type AppBarLeadingProps = {
   logo?: React.ReactNode;
 
   /**
-   * Trust badge form, forwarded to `TrustBadge`.
-   * - `'default'`: shield + pill below the title/logo row
-   * - `'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
+   * Trust badge configuration, forwarded to `TrustBadge`.
+   * - `variant: 'full'`: shield + pill below the title/logo row
+   * - `variant: 'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
+   * - `label`: overrides the default "Razorpay Trusted Business" pill text
    *
    * @default undefined
    */
-  trustBadgeVariant?: 'default' | 'icon-only';
+  trustBadge?: {
+    variant?: 'full' | 'icon-only';
+    label?: string;
+  };
 } & TestID &
   DataAnalyticsAttribute;
 ```
@@ -197,7 +201,7 @@ Merchant store header: brand logo, trust badge, and two trailing icon actions.
 
 ```jsx
 <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
-  <AppBarLeading logo={<MerchantLogo />} trustBadgeVariant="default" />
+  <AppBarLeading logo={<MerchantLogo />} trustBadge={{ variant: 'full' }} />
   <AppBarActions>
     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
     <IconButton icon={CloseIcon} accessibilityLabel="Close" onClick={onDismiss} />
@@ -207,11 +211,11 @@ Merchant store header: brand logo, trust badge, and two trailing icon actions.
 
 ### Logo, title, and trust badge with trailing illustration
 
-Demonstrates logo + title + full trust badge (`trustBadgeVariant="default"`) and an illustration in the trailing slot (`trailing=illustration`).
+Demonstrates logo + title + full trust badge (`trustBadge={{ variant: 'full' }}`) and an illustration in the trailing slot (`trailing=illustration`).
 
 ```jsx
 <AppBar>
-  <AppBarLeading logo={<StoreLogo />} title="Body Text" trustBadgeVariant="default" />
+  <AppBarLeading logo={<StoreLogo />} title="Body Text" trustBadge={{ variant: 'full' }} />
   <AppBarActions>
     <PromoIllustration />
   </AppBarActions>
@@ -231,10 +235,10 @@ Demonstrates logo + title + full trust badge (`trustBadgeVariant="default"`) and
 
 - **Component name: `AppBar` vs `PageHeader` vs `MobileTopNav`** — Figma names the frame "Page Header", but `AppBar` is the established cross-DS term (MUI, Carbon) and reads clearly alongside `TopNav`/`SideNav`/`BottomNav`. Going with `AppBar`.
 - **`type` (logo / logo-text / text)** — NOT exposed as a prop. Inferred from whether `logo`, `title`, or both are passed on `AppBarLeading` (WYSIWYG). This avoids a redundant Figma-only prop.
-- **`showTrustBadge`** — NOT exposed; replaced by `trustBadgeVariant?: 'default' | 'icon-only'` on `AppBarLeading`. Omit to hide the badge; set the form explicitly when shown.
-- **Trust badge placement** — `trustBadgeVariant='default'` stacks the pill below the title/logo row; `trustBadgeVariant='icon-only'` renders the shield inline with `title`, or beside `logo` when there is no title.
-- **Trust badge as a standalone component** — the trust badge ships as its own exported `TrustBadge` component (top-level in both `blade` and `blade-svelte`) rather than living inline in `AppBarLeading`, so it can be reused outside the AppBar. `AppBarLeading` maps `trustBadgeVariant` to `<TrustBadge variant="default" | "icon-only" emphasis={...} />`, deriving `emphasis` from the AppBar surface (`neutral` → intense/white text, `subtle` → subtle/dark text). The badge exposes:
-  - `variant?: 'default' | 'icon-only'` (default `'default'`) — `icon-only` drops the pill/text for compact surfaces.
+- **`showTrustBadge`** — NOT exposed; replaced by `trustBadge?: { variant?, label? }` on `AppBarLeading`. Omit to hide the badge; pass the object to show it.
+- **Trust badge placement** — `trustBadge={{ variant: 'full' }}` stacks the pill below the title/logo row; `trustBadge={{ variant: 'icon-only' }}` renders the shield inline with `title`, or beside `logo` when there is no title.
+- **Trust badge as a standalone component** — the trust badge ships as its own exported `TrustBadge` component (top-level in both `blade` and `blade-svelte`) rather than living inline in `AppBarLeading`, so it can be reused outside the AppBar. `AppBarLeading` maps `trustBadge.variant` to `<TrustBadge variant="full" | "icon-only" emphasis={...} />`, deriving `emphasis` from the AppBar surface (`neutral` → intense/white text, `subtle` → subtle/dark text). The badge exposes:
+  - `variant?: 'full' | 'icon-only'` (default `'full'`) — `icon-only` drops the pill/text for compact surfaces.
   - `emphasis?: 'intense' | 'subtle'` (default `'subtle'`) — text/foreground treatment; the brand shield gradient is fixed regardless of emphasis.
   - `label?: string` (default `'Razorpay Trusted Business'`) — configurable trust label so the component can evolve (e.g. "Razorpay Verified") without a breaking API change.
   The shield comes from the branded `RazorpayTrustIcon`. The pill uses the `interactive.background.staticBlack.faded` token (Figma `rgba(0,0,0,0.1)`). It is web-only (native throws), matching the AppBar itself, because the shield's gradient/drop-shadow are web-only.

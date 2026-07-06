@@ -73,22 +73,17 @@ type AppBarLeadingProps = {
   logo?: React.ReactNode;
 
   /**
-   * Trust badge form, forwarded to `TrustBadge`.
-   * - `'default'`: shield + pill below the title/logo row
-   * - `'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
+   * Trust badge configuration, forwarded to `TrustBadge`.
+   * - `variant: 'full'`: shield + pill below the title/logo row
+   * - `variant: 'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
+   * - `label`: overrides the default "Razorpay Trusted Business" pill text
    *
    * @default undefined
    */
-  trustBadgeVariant?: 'default' | 'icon-only';
-
-  /**
-   * Custom trust label forwarded to `TrustBadge`.
-   * Overrides the default "Razorpay Trusted Business" text shown in the pill
-   * and used as the accessible label for the icon-only form.
-   *
-   * @default undefined
-   */
-  trustBadgeLabel?: string;
+  trustBadge?: {
+    variant?: 'full' | 'icon-only';
+    label?: string;
+  };
 } & TestID &
   DataAnalyticsAttribute;
 

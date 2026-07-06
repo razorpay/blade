@@ -32,7 +32,7 @@ const DEFAULT_LABEL = 'Razorpay Trusted Business';
  * ```
  */
 const _TrustBadge = ({
-  variant = 'default',
+  variant = 'full',
   emphasis = 'subtle',
   label = DEFAULT_LABEL,
   testID,
@@ -55,7 +55,7 @@ const _TrustBadge = ({
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      {/* In the default variant the pill text announces the badge, so the shield is decorative.
+      {/* In the full variant the pill text announces the badge, so the shield is decorative.
         In the icon-only variant there is no visible text, so the shield wrapper carries the label. */}
       <BaseBox
         display="flex"

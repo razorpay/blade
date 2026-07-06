@@ -1,7 +1,7 @@
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './trustBadge.module.css';
 
-export type TrustBadgeVariant = 'default' | 'icon-only';
+export type TrustBadgeVariant = 'full' | 'icon-only';
 export type TrustBadgeEmphasis = 'subtle' | 'intense';
 
 /**
