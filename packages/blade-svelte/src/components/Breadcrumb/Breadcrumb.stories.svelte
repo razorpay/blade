@@ -54,6 +54,18 @@
     };
   }
 
+  // Stepper demo: consumer owns navigation. Calling event.preventDefault()
+  // stops the default <a href> navigation, so the URL never changes and the
+  // consumer decides what to do (e.g. update local state / call a router).
+  let stepperCurrent = $state('/contact');
+
+  function goToStep(path: string) {
+    return (event: MouseEvent) => {
+      event.preventDefault();
+      stepperCurrent = path;
+    };
+  }
+
   // Build breadcrumb items based on current path
   const pathSegments = $derived.by(() => {
     const segments = [
@@ -189,24 +201,63 @@
   </div>
 </Story>
 
-<!-- Story: Stepper variant -->
+<!-- Story: Stepper variant.
+     Each item still has an `href` (for accessibility + open-in-new-tab), but
+     `onClick` calls event.preventDefault() so the browser does NOT navigate —
+     the consumer owns navigation and just updates local state here. -->
 <Story name="Stepper" asChild>
   <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
     <div style:padding="var(--spacing-4)">
       <Breadcrumb variant="stepper" color="primary">
         {#snippet children()}
-          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
-          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
-          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
         {/snippet}
       </Breadcrumb>
     </div>
     <div style:padding="var(--spacing-4)">
       <Breadcrumb variant="stepper" color="neutral">
         {#snippet children()}
-          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
-          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
-          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
         {/snippet}
       </Breadcrumb>
     </div>
@@ -216,9 +267,27 @@
     >
       <Breadcrumb variant="stepper" color="white">
         {#snippet children()}
-          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
-          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
-          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
         {/snippet}
       </Breadcrumb>
     </div>
