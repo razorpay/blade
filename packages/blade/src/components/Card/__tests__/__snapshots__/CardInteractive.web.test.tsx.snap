@@ -82,6 +82,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >
@@ -188,6 +189,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
     href="https://google.com"
@@ -295,6 +297,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
     href="https://google.com"
@@ -415,6 +418,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >

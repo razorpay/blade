@@ -414,6 +414,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >
@@ -944,6 +945,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >
@@ -1163,6 +1165,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >
@@ -1241,6 +1244,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >
@@ -1319,6 +1323,7 @@ exports[`<Card /> should render a plain Card 1`] = `
 
 <div>
   <div
+    aria-disabled="false"
     class="c0 c1"
     data-blade-component="card"
   >

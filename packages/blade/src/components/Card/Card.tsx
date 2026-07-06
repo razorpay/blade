@@ -321,8 +321,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   if (variant === 'ticket') {
     const childrenArray = React.Children.toArray(children);
     const tearLineIndex = childrenArray.findIndex(
-      (child) =>
-        React.isValidElement(child) && getComponentId(child) === ComponentIds.CardTearLine,
+      (child) => React.isValidElement(child) && getComponentId(child) === ComponentIds.CardTearLine,
     );
 
     if (__DEV__ && tearLineIndex === -1) {
@@ -358,7 +357,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           cursor={
             isReactNative()
               ? undefined
-              : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+              : (isCardDisabled ? 'not-allowed' : cursor)
           }
           opacity={opacity}
           transition={transition}
@@ -417,7 +416,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           cursor={
             isReactNative()
               ? undefined
-              : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+              : (isCardDisabled ? 'not-allowed' : cursor)
           }
           opacity={opacity}
           transition={transition}
@@ -475,7 +474,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         cursor={
           isReactNative()
             ? undefined
-            : ((isCardDisabled ? 'not-allowed' : cursor) as CardProps['cursor'])
+            : (isCardDisabled ? 'not-allowed' : cursor)
         }
         opacity={opacity}
         transition={transition}
