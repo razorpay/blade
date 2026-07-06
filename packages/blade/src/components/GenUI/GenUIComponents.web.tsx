@@ -779,12 +779,12 @@ const markdownComponents = {
     <MarkdownHeadingRenderer tag="h6">{children}</MarkdownHeadingRenderer>
   ),
   b: ({ children }: { children?: React.ReactNode }) => (
-    <Text as="span" size="medium" weight="semibold" color="surface.text.gray.subtle">
+    <Text as="span" size="medium" weight="medium" color="surface.text.gray.subtle">
       {children}
     </Text>
   ),
   strong: ({ children }: { children?: React.ReactNode }) => (
-    <Text as="span" size="medium" weight="semibold" color="surface.text.gray.subtle">
+    <Text as="span" size="medium" weight="medium" color="surface.text.gray.subtle">
       {children}
     </Text>
   ),

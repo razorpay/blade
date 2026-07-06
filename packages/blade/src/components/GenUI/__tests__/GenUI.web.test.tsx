@@ -3665,14 +3665,14 @@ describe('<GenUI />', () => {
         expect(getByText('Heading 6')).toHaveStyle({ fontWeight: '500' });
       });
 
-      it('should render strong markdown with semibold weight', () => {
+      it('should render strong markdown with medium weight', () => {
         const StrongComponent = markdownComponents.strong;
 
         const { getByText } = renderWithTheme(<StrongComponent>Strong text</StrongComponent>);
 
         expect(getByText('Strong text')).toHaveStyle({
           color: 'rgb(41, 41, 41)',
-          fontWeight: '600',
+          fontWeight: '500',
         });
         expect(getByText('Strong text').tagName).toBe('SPAN');
       });
@@ -3695,7 +3695,7 @@ describe('<GenUI />', () => {
 
         expect(getByText('Bold text')).toHaveStyle({
           color: 'rgb(41, 41, 41)',
-          fontWeight: '600',
+          fontWeight: '500',
         });
         expect(getByText('Bold text').tagName).toBe('SPAN');
         expect(getByText('Bold italic text')).toHaveStyle({
