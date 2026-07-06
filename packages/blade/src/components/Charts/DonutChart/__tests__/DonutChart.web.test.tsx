@@ -205,7 +205,6 @@ describe('<DonutChart />', () => {
 
     expect(getByText('BAD_REQUEST_ERROR')).toHaveStyle({ textDecoration: 'line-through' });
   });
-
 });
 
 describe('<ChartDonut />', () => {
