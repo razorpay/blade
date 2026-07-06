@@ -23,6 +23,7 @@ import type {
   ChartDonutCellProps,
   ChartDonutProps,
   ChartRadius,
+  Content,
 } from './types';
 import {
   RADIUS_MAPPING,
@@ -111,13 +112,13 @@ const getItemValue = (
   return item[dataKey];
 };
 
-const isTotalContent = (content: ChartDonutWrapperProps['content']): boolean => {
+const isTotalContent = (content: ChartDonutWrapperProps['content']): content is Content => {
   return Boolean(
     content &&
       typeof content === 'object' &&
       !isValidElement(content) &&
       'label' in content &&
-      String(content.label).toLowerCase() === 'total',
+      String((content as Content).label).toLowerCase() === 'total',
   );
 };
 
@@ -195,7 +196,7 @@ const ChartDonutWrapper: React.FC<ChartDonutWrapperProps & TestID & DataAnalytic
     return formatVisibleTotal(String(content?.value ?? ''), visibleTotal);
   }, [children, content, selectedDataKeys]);
 
-  const contentValue = visibleTotalContentValue ?? content?.value;
+  const contentValue = visibleTotalContentValue ?? (content as Content)?.value;
 
   useEffect(() => {
     const mutationObserver = new MutationObserver((mutations) => {
