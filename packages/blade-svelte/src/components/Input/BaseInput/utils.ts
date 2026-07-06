@@ -80,7 +80,7 @@ export const getKeyboardAndAutocompleteProps = ({
     keyboardType: config.keyboardType,
     keyboardReturnKeyType: keyboardReturnKeyType ?? config.keyboardReturnKeyType,
     autoCompleteSuggestionType: autoCompleteSuggestionType ?? config.autoCompleteSuggestionType,
-    autoCapitalize: config.autoCapitalize ?? autoCapitalize,
+    autoCapitalize: autoCapitalize ?? config.autoCapitalize,
   };
 
   // number: keyboardType:decimal shows number pad reliably across platforms.

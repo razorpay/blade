@@ -46,7 +46,7 @@
   };
   setInputGroupContext(() => contextValue);
 
-  const { inputId, labelId, helpTextId, errorTextId, successTextId } = useFormId('input-group');
+  const { labelId, helpTextId, errorTextId, successTextId } = useFormId('input-group');
 
   const willRenderHintText = $derived(
     Boolean(helpText) ||
@@ -80,7 +80,7 @@
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.InputGroup, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
-  const groupA11yAttrs = makeAccessible({ role: 'group' });
+  const groupA11yAttrs = $derived(makeAccessible({ role: 'group', labelledBy: label ? labelId : undefined }));
 </script>
 
 <div class={rootClasses} style={rootStyles} {...metaAttrs} {...analyticsAttrs}>
@@ -92,7 +92,6 @@
           position={labelPosition}
           size={formSize}
           id={labelId}
-          htmlFor={inputId}
         >
           {label}
         </FormLabel>
