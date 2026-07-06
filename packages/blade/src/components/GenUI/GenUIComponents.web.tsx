@@ -15,7 +15,7 @@ import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
 import {
   Card,
@@ -117,83 +117,37 @@ const MarkdownOrderedList = styled.ol`
   padding: 0;
 `;
 
-const MarkdownHeadingStackSpacing = `
-  h1 + &,
-  h2 + &,
-  h3 + &,
-  h4 + &,
-  h5 + &,
-  h6 + & {
+const MarkdownHeadingContainer = styled.div<{ $level: 1 | 2 | 3 | 4 | 5 | 6 }>`
+  ${({ theme, $level }) => {
+    const spacing = {
+      1: { marginTop: 0, marginBottom: theme.spacing[6] },
+      2: { marginTop: theme.spacing[9], marginBottom: theme.spacing[3] },
+      3: { marginTop: theme.spacing[8], marginBottom: theme.spacing[3] },
+      4: { marginTop: theme.spacing[7], marginBottom: theme.spacing[2] },
+      5: { marginTop: theme.spacing[5], marginBottom: theme.spacing[2] },
+      6: { marginTop: theme.spacing[5], marginBottom: theme.spacing[2] },
+    }[$level];
+
+    return `
+      margin: ${spacing.marginTop}px 0 ${spacing.marginBottom}px;
+    `;
+  }}
+
+  & + & {
     margin-top: 0;
   }
-`;
 
-const MarkdownHeading1 = styled.h1`
-  margin: 0 0 ${({ theme }) => theme.spacing[6]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.normal};
-  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) => theme.typography.fonts.size[500]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[500]}px;
-
-  ${MarkdownHeadingStackSpacing}
-`;
-
-const MarkdownHeading2 = styled.h2`
-  margin: ${({ theme }) => theme.spacing[9]}px 0 ${({ theme }) => theme.spacing[3]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
-  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) => theme.typography.fonts.size[500]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[500]}px;
-
-  ${MarkdownHeadingStackSpacing}
-`;
-
-const MarkdownHeading3 = styled.h3`
-  margin: ${({ theme }) => theme.spacing[8]}px 0 ${({ theme }) => theme.spacing[3]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
-  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) => theme.typography.fonts.size[400]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[400]}px;
-
-  ${MarkdownHeadingStackSpacing}
-`;
-
-const MarkdownHeading4 = styled.h4`
-  margin: ${({ theme }) => theme.spacing[7]}px 0 ${({ theme }) => theme.spacing[2]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.subtle};
-  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) => theme.typography.fonts.size[300]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
-
-  ${MarkdownHeadingStackSpacing}
-`;
-
-const MarkdownHeading5 = styled.h5`
-  margin: ${({ theme }) => theme.spacing[5]}px 0 ${({ theme }) => theme.spacing[2]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
-  font-family: ${({ theme }) => theme.typography.fonts.family.heading};
-  font-size: ${({ theme }) => theme.typography.fonts.size[300]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
-
-  ${MarkdownHeadingStackSpacing}
-`;
-
-const MarkdownHeading6 = styled.h6`
-  margin: ${({ theme }) => theme.spacing[5]}px 0 ${({ theme }) => theme.spacing[2]}px;
-  color: ${({ theme }) => theme.colors.surface.text.gray.muted};
-  font-family: ${({ theme }) => theme.typography.fonts.family.text};
-  font-size: ${({ theme }) => theme.typography.fonts.size[100]}px;
-  font-weight: ${({ theme }) => theme.typography.fonts.weight.medium};
-  line-height: ${({ theme }) => theme.typography.lineHeights[300]}px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-
-  ${MarkdownHeadingStackSpacing}
+  ${({ theme, $level }) =>
+    $level === 6
+      ? `
+        > h6 {
+          font-family: ${theme.typography.fonts.family.text};
+          font-size: ${theme.typography.fonts.size[100]}px;
+          line-height: ${theme.typography.lineHeights[300]}px;
+          letter-spacing: 0.03em;
+        }
+      `
+      : ''}
 `;
 
 const MarkdownListItem = styled.li<{ $ordered: boolean }>`
@@ -766,28 +720,63 @@ const MarkdownListItemRenderer = ({ children }: { children?: React.ReactNode }):
   );
 };
 
+const markdownHeadingStyles = {
+  h1: { level: 1, size: 'large', color: 'surface.text.gray.normal', as: 'h1' },
+  h2: { level: 2, size: 'large', color: 'surface.text.gray.subtle', as: 'h2' },
+  h3: { level: 3, size: 'medium', color: 'surface.text.gray.subtle', as: 'h3' },
+  h4: { level: 4, size: 'small', color: 'surface.text.gray.subtle', as: 'h4' },
+  h5: { level: 5, size: 'small', color: 'surface.text.gray.muted', as: 'h5' },
+  h6: { level: 6, size: 'small', color: 'surface.text.gray.muted', as: 'h6' },
+} as const;
+
+type MarkdownHeadingTag = keyof typeof markdownHeadingStyles;
+
+const MarkdownHeadingRenderer = ({
+  tag,
+  children,
+}: {
+  tag: MarkdownHeadingTag;
+  children?: React.ReactNode;
+}): JSX.Element => {
+  const { level, size, color, as } = markdownHeadingStyles[tag];
+
+  return (
+    <MarkdownHeadingContainer $level={level}>
+      <Heading
+        as={as}
+        size={size}
+        weight="medium"
+        color={color}
+        textTransform={level === 6 ? 'uppercase' : undefined}
+      >
+        {children}
+      </Heading>
+    </MarkdownHeadingContainer>
+  );
+};
+
 /**
  * Stable components object for ReactMarkdown to prevent re-renders during streaming.
  * Defined outside the component to maintain referential equality.
  */
 const markdownComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading1>{children}</MarkdownHeading1>
+    <MarkdownHeadingRenderer tag="h1">{children}</MarkdownHeadingRenderer>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading2>{children}</MarkdownHeading2>
+    <MarkdownHeadingRenderer tag="h2">{children}</MarkdownHeadingRenderer>
   ),
   h3: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading3>{children}</MarkdownHeading3>
+    <MarkdownHeadingRenderer tag="h3">{children}</MarkdownHeadingRenderer>
   ),
   h4: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading4>{children}</MarkdownHeading4>
+    <MarkdownHeadingRenderer tag="h4">{children}</MarkdownHeadingRenderer>
   ),
   h5: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading5>{children}</MarkdownHeading5>
+    <MarkdownHeadingRenderer tag="h5">{children}</MarkdownHeadingRenderer>
   ),
   h6: ({ children }: { children?: React.ReactNode }) => (
-    <MarkdownHeading6>{children}</MarkdownHeading6>
+    <MarkdownHeadingRenderer tag="h6">{children}</MarkdownHeadingRenderer>
   ),
   b: ({ children }: { children?: React.ReactNode }) => (
     <Text as="span" size="medium" weight="semibold" color="surface.text.gray.subtle">

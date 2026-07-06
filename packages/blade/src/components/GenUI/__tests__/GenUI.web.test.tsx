@@ -3536,24 +3536,24 @@ describe('<GenUI />', () => {
           </>,
         );
 
-        expect(getByText('Heading 2 spacing')).toHaveStyle({
+        expect(getByText('Heading 2 spacing').parentElement).toHaveStyle({
           marginTop: '40px',
           marginBottom: '8px',
         });
         expect(getByText('Paragraph before H3')).toHaveStyle({ marginBottom: '8px' });
-        expect(getByText('Heading 3 spacing')).toHaveStyle({
+        expect(getByText('Heading 3 spacing').parentElement).toHaveStyle({
           marginTop: '32px',
           marginBottom: '8px',
         });
-        expect(getByText('Heading 4 spacing')).toHaveStyle({
+        expect(getByText('Heading 4 spacing').parentElement).toHaveStyle({
           marginTop: '24px',
           marginBottom: '4px',
         });
-        expect(getByText('Heading 5 spacing')).toHaveStyle({
+        expect(getByText('Heading 5 spacing').parentElement).toHaveStyle({
           marginTop: '16px',
           marginBottom: '4px',
         });
-        expect(getByText('Heading 6 spacing')).toHaveStyle({
+        expect(getByText('Heading 6 spacing').parentElement).toHaveStyle({
           marginTop: '16px',
           marginBottom: '4px',
         });
@@ -3595,25 +3595,25 @@ describe('<GenUI />', () => {
 
         expect(getByText('Figma Heading 1')).toHaveStyle({
           color: 'rgb(5, 5, 5)',
-          fontSize: '24px',
+          fontSize: '1.5rem',
           fontWeight: '500',
-          lineHeight: '32px',
+          lineHeight: '2rem',
         });
         expect(getByText('Figma Heading 2').tagName).toBe('H2');
         expect(getByText('Figma Heading 2')).toHaveStyle({
-          fontSize: '24px',
+          fontSize: '1.5rem',
           fontWeight: '500',
-          lineHeight: '32px',
+          lineHeight: '2rem',
         });
         expect(getByText('Figma Heading 3')).toHaveStyle({
-          fontSize: '20px',
+          fontSize: '1.25rem',
           fontWeight: '500',
-          lineHeight: '26px',
+          lineHeight: '1.625rem',
         });
         expect(getByText('Figma Heading 4')).toHaveStyle({
-          fontSize: '18px',
+          fontSize: '1.125rem',
           fontWeight: '500',
-          lineHeight: '24px',
+          lineHeight: '1.5rem',
         });
         expect(getByText('Figma Heading 5')).toHaveStyle({ fontWeight: '500' });
         expect(getByText('Figma Heading 6')).toHaveStyle({
@@ -3636,7 +3636,12 @@ describe('<GenUI />', () => {
           </>,
         );
 
-        expect(getByText('Stacked Heading 3')).toHaveStyle({ marginTop: '0px' });
+        const stackedHeadingContainer = getByText('Stacked Heading 3').parentElement;
+
+        expect(stackedHeadingContainer?.previousElementSibling).toBe(
+          getByText('Stacked Heading 2').parentElement,
+        );
+        expect(document.head.textContent).toContain('margin-top:0;');
       });
 
       it('should render h3 and below with medium weight', () => {
