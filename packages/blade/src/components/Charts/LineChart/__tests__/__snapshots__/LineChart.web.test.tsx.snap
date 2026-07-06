@@ -3578,6 +3578,8 @@ exports[`<LineChart /> should render complete chart with all components 1`] = `
 
 .c4.c4.c4.c4.c4 p {
   color: hsla(204,9%,42%,1);
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: color 160ms cubic-bezier(0,0,0,0);
   transition: color 160ms cubic-bezier(0,0,0,0);
 }
