@@ -175,15 +175,15 @@ const TimePicker = ({
     | 'surface.text.gray.muted' = isError
     ? 'feedback.text.negative.intense'
     : isSuccess
-      ? 'feedback.text.positive.intense'
-      : 'surface.text.gray.muted';
+    ? 'feedback.text.positive.intense'
+    : 'surface.text.gray.muted';
 
   const necessitySuffix =
     isRequired && necessityIndicator === 'required'
       ? ' *'
       : isRequired && necessityIndicator === 'optional'
-        ? ' (optional)'
-        : '';
+      ? ' (optional)'
+      : '';
 
   const displayValue = formatTriggerValue(timeValue, timeFormat);
   const triggerText = displayValue ?? placeholder ?? 'Select time';

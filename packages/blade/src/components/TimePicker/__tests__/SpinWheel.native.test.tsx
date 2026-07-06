@@ -53,12 +53,7 @@ describe('<SpinWheel /> (native)', () => {
   it('should visually position using displayValue when provided', () => {
     const minuteValues = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
     const { toJSON } = renderWithTheme(
-      <SpinWheel
-        values={minuteValues}
-        selectedValue="03"
-        displayValue="05"
-        onChange={jest.fn()}
-      />,
+      <SpinWheel values={minuteValues} selectedValue="03" displayValue="05" onChange={jest.fn()} />,
     );
     expect(toJSON()).toMatchSnapshot();
   });
