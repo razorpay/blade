@@ -49,6 +49,9 @@ describe('<TrustedMarker />', () => {
     const { getByTestId } = renderWithTheme(
       <TrustedMarker testID="trusted-marker-test" data-analytics-section="checkout" />,
     );
-    expect(getByTestId('trusted-marker-test')).toHaveAttribute('data-analytics-section', 'checkout');
+    expect(getByTestId('trusted-marker-test')).toHaveAttribute(
+      'data-analytics-section',
+      'checkout',
+    );
   });
 });

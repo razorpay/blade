@@ -64,9 +64,7 @@ const _TrustedMarker = ({
         position="relative"
         zIndex={2}
         marginRight={isIconOnly ? undefined : '-12px'}
-        {...(isIconOnly
-          ? makeAccessible({ role: 'img', label })
-          : { 'aria-hidden': true })}
+        {...(isIconOnly ? makeAccessible({ role: 'img', label }) : { 'aria-hidden': true })}
       >
         <RTBShieldIcon size="medium" />
       </BaseBox>
