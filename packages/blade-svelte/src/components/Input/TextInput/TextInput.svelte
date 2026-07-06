@@ -6,6 +6,7 @@
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon } from '../../Icons';
+  import { useFormId } from '../BaseInput/useFormId';
   import { createFormattedInput } from './useFormattedInput';
   import type { TextInputProps } from './types';
 
@@ -59,6 +60,7 @@
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
   );
+  const ids = useFormId('textinput');
 
   const formatter = untrack(() =>
     format ? createFormattedInput({ pattern: format, onChange }) : null,
@@ -147,7 +149,7 @@
 
 <BaseInput
   bind:this={baseInput}
-  id="textinput"
+  id={ids.baseId}
   {componentName}
   label={label ?? ''}
   hideLabelText={!label}
