@@ -273,7 +273,7 @@ const TimePicker = ({
         <BottomSheet
           isOpen={isDropdownOpen}
           onDismiss={showFooterActions ? handleCancel : handleApply}
-          enableContentPanningGesture={false}
+          isContentPanningGestureEnabled={false}
         >
           <BottomSheetHeader title="Select Time" />
           <BottomSheetBody padding="spacing.0">
