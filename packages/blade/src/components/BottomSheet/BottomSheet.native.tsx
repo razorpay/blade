@@ -28,9 +28,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { componentZIndices } from '~utils/componentZIndices';
 
-const BottomSheetBackground = ({
-  style,
-}: BottomSheetBackgroundProps): React.ReactElement => {
+const BottomSheetBackground = ({ style }: BottomSheetBackgroundProps): React.ReactElement => {
   const { theme } = useTheme();
 
   return (
@@ -151,11 +149,7 @@ const _BottomSheet = ({
         Math.max(fittedHeight / windowHeight, snapPoints[0]),
         snapPoints[2],
       );
-      return [
-        `${fittedSnap * 100}%`,
-        `${snapPoints[1] * 100}%`,
-        `${snapPoints[2] * 100}%`,
-      ];
+      return [`${fittedSnap * 100}%`, `${snapPoints[1] * 100}%`, `${snapPoints[2] * 100}%`];
     }
     return snapPoints.map((point) => `${point * 100}%`);
   }, [snapPoints, totalHeight, headerHeight, footerHeight, contentHeight, windowHeight]);

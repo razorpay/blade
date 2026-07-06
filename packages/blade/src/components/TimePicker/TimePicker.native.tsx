@@ -2,11 +2,7 @@ import React from 'react';
 import { Pressable, View } from 'react-native';
 import { SpinWheel, ITEM_HEIGHT, SPACER } from './SpinWheel.native';
 import { useTimePickerState } from './useTimePickerState';
-import {
-  createDateFromSelection,
-  getNearestStepValue,
-  getTimeComponents,
-} from './utils';
+import { createDateFromSelection, getNearestStepValue, getTimeComponents } from './utils';
 import type { TimePickerProps, TimeFormat } from './types';
 import {
   BottomSheet,
@@ -179,15 +175,15 @@ const TimePicker = ({
     | 'surface.text.gray.muted' = isError
     ? 'feedback.text.negative.intense'
     : isSuccess
-    ? 'feedback.text.positive.intense'
-    : 'surface.text.gray.muted';
+      ? 'feedback.text.positive.intense'
+      : 'surface.text.gray.muted';
 
   const necessitySuffix =
     isRequired && necessityIndicator === 'required'
       ? ' *'
       : isRequired && necessityIndicator === 'optional'
-      ? ' (optional)'
-      : '';
+        ? ' (optional)'
+        : '';
 
   const displayValue = formatTriggerValue(timeValue, timeFormat);
   const triggerText = displayValue ?? placeholder ?? 'Select time';
@@ -307,30 +303,30 @@ const TimePicker = ({
                 />
 
                 <SpinWheel
-                label="Hour"
-                values={hourValues}
-                selectedValue={String(selectedHour).padStart(2, '0')}
-                onChange={handleHourChange}
-              />
-              <Divider orientation="vertical" />
-              <SpinWheel
-                label="Minute"
-                values={minuteValues}
-                selectedValue={String(selectedMinute).padStart(2, '0')}
-                displayValue={displayMinute}
-                onChange={handleMinuteChange}
-              />
-              {is12HourFormat && (
-                <>
-                  <Divider orientation="vertical" />
-                  <SpinWheel
-                    label="Period"
-                    values={periodValues}
-                    selectedValue={selectedPeriod}
-                    onChange={handlePeriodChange}
-                  />
-                </>
-              )}
+                  label="Hour"
+                  values={hourValues}
+                  selectedValue={String(selectedHour).padStart(2, '0')}
+                  onChange={handleHourChange}
+                />
+                <Divider orientation="vertical" />
+                <SpinWheel
+                  label="Minute"
+                  values={minuteValues}
+                  selectedValue={String(selectedMinute).padStart(2, '0')}
+                  displayValue={displayMinute}
+                  onChange={handleMinuteChange}
+                />
+                {is12HourFormat && (
+                  <>
+                    <Divider orientation="vertical" />
+                    <SpinWheel
+                      label="Period"
+                      values={periodValues}
+                      selectedValue={selectedPeriod}
+                      onChange={handlePeriodChange}
+                    />
+                  </>
+                )}
               </Box>
             </Box>
           </BottomSheetBody>
