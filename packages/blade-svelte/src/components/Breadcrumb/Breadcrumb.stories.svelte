@@ -15,6 +15,10 @@
         control: 'select',
         options: ['neutral', 'primary', 'white'],
       },
+      variant: {
+        control: 'select',
+        options: ['default', 'stepper'],
+      },
       showLastSeparator: {
         control: 'boolean',
       },
@@ -22,6 +26,7 @@
     args: {
       size: 'medium',
       color: 'primary',
+      variant: 'default',
       showLastSeparator: false,
     },
   });
@@ -178,6 +183,42 @@
           <BreadcrumbItem href="/item5">Item 5</BreadcrumbItem>
           <BreadcrumbItem href="/item6">Item 6</BreadcrumbItem>
           <BreadcrumbItem href="/item7">Item 7</BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+  </div>
+</Story>
+
+<!-- Story: Stepper variant -->
+<Story name="Stepper" asChild>
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+    <div style:padding="var(--spacing-4)">
+      <Breadcrumb variant="stepper" color="primary">
+        {#snippet children()}
+          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
+          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
+          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+    <div style:padding="var(--spacing-4)">
+      <Breadcrumb variant="stepper" color="neutral">
+        {#snippet children()}
+          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
+          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
+          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+    <div
+      style:padding="var(--spacing-4)"
+      style:background-color="var(--surface-background-cloud-intense)"
+    >
+      <Breadcrumb variant="stepper" color="white">
+        {#snippet children()}
+          <BreadcrumbItem isCurrentPage href="/contact">Contact</BreadcrumbItem>
+          <BreadcrumbItem href="/address">Address</BreadcrumbItem>
+          <BreadcrumbItem href="/payment">Payment</BreadcrumbItem>
         {/snippet}
       </Breadcrumb>
     </div>
