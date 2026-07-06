@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
-import type { BaseInputSize, BaseInputValidationState } from '@razorpay/blade-core/styles';
+import type { BaseInputValidationState } from '@razorpay/blade-core/styles';
 import type { LabelPosition } from '../Input/BaseInput/types';
 
 /**
@@ -11,7 +11,7 @@ export type InputGroupContextType = {
   /** `true` for any input rendered inside an `InputGroup`. */
   isInsideInputGroup: boolean;
   /** Size propagated to every child input (overrides the input's own `size`). */
-  size?: BaseInputSize;
+  size?: 'medium' | 'large';
   /** Disabled state propagated to every child input. */
   isDisabled?: boolean;
 };
@@ -32,7 +32,7 @@ export type InputGroupProps = {
    * Controls the size of the input group and its child inputs.
    * @default 'medium'
    */
-  size?: BaseInputSize;
+  size?: 'medium' | 'large';
   /** Help text displayed at the bottom of the group. */
   helpText?: string;
   /** Error message that appears when `validationState` is `'error'`. */

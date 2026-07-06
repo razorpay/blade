@@ -231,14 +231,12 @@
 {#if visualType === 'trailing' && hasTrailingVisuals}
   <div class={templateClasses.visuals}>
     {#if hasTrailingInteractionElement}
-      <div class={templateClasses.visuals}>
-        <div
-          class={trailingInteractionClasses}
-          role="presentation"
-          onclick={() => onTrailingInteractionElementClick?.()}
-        >
-          {@render trailingInteractionElement?.()}
-        </div>
+      <div
+        class={trailingInteractionClasses}
+        role="presentation"
+        onclick={() => onTrailingInteractionElementClick?.()}
+      >
+        {@render trailingInteractionElement?.()}
       </div>
     {/if}
     {#if hasSuffix}
