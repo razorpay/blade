@@ -1,0 +1,63 @@
+/* ============================================
+   RTBBadge Component Styles
+   "Razorpay Trusted Business" badge.
+   Mirrors Figma: shield icon (brand gradient) overlapping a faded pill that
+   reads "Razorpay Trusted Business". Two text treatments (neutral=white text on
+   dark/colored surfaces, subtle=dark text on light surfaces) and an icon-only
+   form that drops the pill entirely.
+   ============================================ */
+
+/* --- Root ---
+   Isolation creates a new stacking context so the shield's z-index sits above the
+   pill regardless of surrounding content. Inline-flex keeps the badge shrink-wrapped. */
+.rtbBadge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  isolation: isolate;
+  flex-shrink: 0;
+}
+
+/* --- Shield icon wrapper ---
+   The 16px shield overlaps the pill's left edge by 12px (Figma `mr-[-12px]`) and is
+   raised above it. In `full` form the shield is decorative (aria-hidden) because the
+   visible pill text is announced; in `icon` form the wrapper carries the label. */
+.rtbBadgeShield {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* The overlap only applies when the pill is present (full form). */
+.rtbBadgeShieldOverlap {
+  margin-right: -12px;
+}
+
+/* --- Pill ---
+   Shared pill layout. Background is variant-specific:
+   - neutral → 32% black (`surface.icon.staticBlack.disabled`) + white text on dark surfaces
+   - subtle  → 10% black (Checkout DS Figma) + black text on light surfaces */
+.rtbBadgePill {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-4);
+  border-radius: var(--border-radius-large);
+  flex-shrink: 0;
+}
+
+.rtbBadgePillNeutral {
+  background-color: var(--surface-icon-static-black-disabled);
+}
+
+.rtbBadgePillSubtle {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}

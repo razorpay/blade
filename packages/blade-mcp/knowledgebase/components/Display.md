@@ -28,6 +28,22 @@ type DisplayProps = {
   StyledPropsBlade;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Display` for high-impact, eye-catching typography in hero sections, landing pages, and banners.
+- Use sparingly — typically once per page or section for maximum visual impact.
+- Use `as="span"` for inline color/weight variations within a Display heading.
+- Default renders as `h1` — override with `as` prop if the page already has an h1.
+
+**Don't**
+
+- Don't use `Display` for regular section headings — use `Heading` for page structure.
+- Don't use `Display` for body content or dense information — it's designed for attention-grabbing moments.
+- Don't use multiple `Display` components on the same page without overriding `as` — multiple h1 tags harm SEO and accessibility.
+- Don't use `Display` at small sizes when `Heading` with size `"2xlarge"` would suffice.
+
 ## Example
 
 Here's a comprehensive example showcasing the Display component's various features and props:
