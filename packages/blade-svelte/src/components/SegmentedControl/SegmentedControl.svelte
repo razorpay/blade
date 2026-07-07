@@ -34,7 +34,11 @@
     ...rest
   }: SegmentedControlProps = $props();
 
-  const baseId = `segmented-control-${crypto.randomUUID().slice(0, 8)}`;
+  const baseId = `segmented-control-${
+    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID().slice(0, 8)
+      : Math.random().toString(36).slice(2, 10)
+  }`;
   const labelId = `${baseId}-label`;
   const helpTextId = `${baseId}-helptext`;
   const errorTextId = `${baseId}-errortext`;
