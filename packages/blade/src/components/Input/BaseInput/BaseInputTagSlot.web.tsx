@@ -211,13 +211,14 @@ const BaseInputTagSlot = ({
   }
 
   // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
+  // Only apply vertical padding when tags are present to avoid height mismatch with non-dropdown inputs (e.g. DatePicker)
   const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
 
   return (
     <TagSlotContainer
       ref={slotRef}
       className="tags-slot"
-      paddingY={paddingYWithTags}
+      paddingY={hasTags ? paddingYWithTags : undefined}
       paddingLeft="spacing.4"
       display="flex"
       flex="1"
