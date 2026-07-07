@@ -14,6 +14,8 @@ export { ChevronUpDownIcon } from './ChevronUpDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
+export { EyeIcon } from './EyeIcon';
+export { EyeOffIcon } from './EyeOffIcon';
 export { InfoIcon } from './InfoIcon';
 export { PhoneIcon } from './PhoneIcon';
 export { PlusIcon } from './PlusIcon';

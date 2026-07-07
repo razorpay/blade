@@ -129,6 +129,13 @@
     getEnterKeyHint(keyboardProps.keyboardReturnKeyType) as HTMLInputAttributes['enterkeyhint'],
   );
 
+  // `password` renders on the DOM `type` (mask), but keyboardProps stays coerced
+  // to `text` so inputmode/autocomplete/enterkeyhint are unaffected. Only
+  // PasswordInput passes `password`, so other inputs keep their existing path.
+  const domType = $derived(
+    type === 'password' ? 'password' : getDomType(keyboardProps.type),
+  );
+
   const wrapperRadius = $derived(borderRadius ?? baseInputBorderRadius[effectiveSize]);
 
   const wrapperClasses = $derived(
@@ -369,7 +376,7 @@
               bind:this={inputEl}
               class={inputClasses}
               id={inputIds.inputId}
-              type={getDomType(keyboardProps.type)}
+              type={domType}
               {name}
               {placeholder}
               value={currentValue}
