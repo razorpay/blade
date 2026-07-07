@@ -99,8 +99,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> it should accept d
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -1031,8 +1029,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -2606,8 +2602,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 48px;
 }
@@ -3364,8 +3358,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
