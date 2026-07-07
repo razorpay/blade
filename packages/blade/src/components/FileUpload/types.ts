@@ -5,7 +5,19 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
-interface BladeFile extends File {
+interface BladeFile {
+  /**
+   * The file name.
+   */
+  name: string;
+  /**
+   * The file size in bytes.
+   */
+  size: number;
+  /**
+   * The MIME type of the file (e.g. "image/png").
+   */
+  type: string;
   /**
    * The unique identifier of the file.
    */
@@ -91,19 +103,19 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: ({ file }: { file: File }) => void;
+  onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ file }: { file: File }) => void;
+  onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is retried
    */
-  onReupload?: ({ file }: { file: File }) => void;
+  onReupload?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is dismissed
    */
-  onDismiss?: ({ file }: { file: File }) => void;
+  onDismiss?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */

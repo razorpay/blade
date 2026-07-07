@@ -52,6 +52,8 @@ const StyledFileUploadWrapper = ({
     <Animated.View
       style={[
         {
+          // Note: borderStyle 'dashed' is not supported on Android in RN <= 0.72 and silently falls back to 'solid'.
+          // iOS renders a dashed border correctly; Android will show a solid border.
           borderStyle: 'dashed' as const,
           borderColor,
           borderWidth: 1,

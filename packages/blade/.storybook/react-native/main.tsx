@@ -45,4 +45,5 @@ module.exports = {
     '@storybook/addon-ondevice-backgrounds',
     '@storybook/addon-ondevice-actions',
   ],
+  previewAnnotations: ['@storybook/react-native/preview'],
 };
