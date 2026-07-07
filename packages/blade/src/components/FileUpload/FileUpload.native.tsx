@@ -117,6 +117,15 @@ const _FileUpload = ({
           'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
       });
     }
+
+    if (fileList === undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message:
+          'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it inside the onChange callback (e.g. after resolving files from react-native-document-picker). Uncontrolled usage will not reflect picked files in the UI.',
+      });
+    }
   }
 
   const [selectedFiles, setSelectedFiles] = useControllableState({

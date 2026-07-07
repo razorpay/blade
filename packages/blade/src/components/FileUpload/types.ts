@@ -19,6 +19,11 @@ interface BladeFile {
    */
   type: string;
   /**
+   * The last modified time of the file as a Unix timestamp (milliseconds since epoch).
+   * Present on web File objects; may be omitted on React Native.
+   */
+  lastModified?: number;
+  /**
    * The unique identifier of the file.
    */
   id?: string;
