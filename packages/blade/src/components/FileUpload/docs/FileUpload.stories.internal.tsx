@@ -35,7 +35,7 @@ const formatFileSize = (bytes: number): string => {
 };
 
 const createBladeFile = (
-  mock: (typeof MOCK_FILES)[number],
+  mock: typeof MOCK_FILES[number],
   initialStatus: BladeFile['status'] = 'uploading',
 ): BladeFile => {
   return {
@@ -87,7 +87,7 @@ const simulateUpload = (
 type MockFilePickerProps = {
   isOpen: boolean;
   onDismiss: () => void;
-  onFilesSelected: (files: Array<(typeof MOCK_FILES)[number]>) => void;
+  onFilesSelected: (files: Array<typeof MOCK_FILES[number]>) => void;
   selectionMode: 'single' | 'multiple';
 };
 
@@ -204,7 +204,7 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
     const newFile = createBladeFile(selected[0]);
     setFiles([newFile]);
     simulateUpload(newFile.id!, setFiles);
@@ -258,7 +258,7 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
     const newFiles = selected.map((s) => createBladeFile(s));
     setFiles((prev) => [...prev, ...newFiles]);
     newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
@@ -313,7 +313,7 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
     const newFiles = selected.map((s) => {
       fileCountRef.current++;
       return createBladeFile(s);

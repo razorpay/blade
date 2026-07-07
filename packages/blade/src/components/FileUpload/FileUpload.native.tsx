@@ -73,8 +73,8 @@ const _FileUpload = ({
         actionButtonText && dropAreaText
           ? 'actionButtonText and dropAreaText'
           : dropAreaText
-            ? 'dropAreaText'
-            : 'actionButtonText';
+          ? 'dropAreaText'
+          : 'actionButtonText';
 
       throwBladeError({
         message: `${propName} can only be used when size is "variable"`,
@@ -123,10 +123,8 @@ const _FileUpload = ({
     onChange?.({ name, fileList: selectedFiles });
   };
 
-  const computedHeight = isSizeVariable
-    ? (height ?? '100%')
-    : makeSize(fileUploadHeightTokens[size]);
-  const computedWidth = isSizeVariable ? (width ?? '100%') : '100%';
+  const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
+  const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
 
   const accessibilityProps = makeAccessible({
     required: Boolean(isRequired),
@@ -197,7 +195,7 @@ const _FileUpload = ({
                       : fileUploadColorTokens.text.default
                   }
                 >
-                  {isSizeVariable ? (dropAreaText ?? 'Tap to upload your files') : 'Tap to'}{' '}
+                  {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
                 </Text>
 
                 <Box

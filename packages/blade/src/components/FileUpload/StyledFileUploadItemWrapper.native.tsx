@@ -7,8 +7,6 @@ import { useTheme } from '~components/BladeProvider';
 import { colors as globalColors } from '~tokens/global';
 
 type NativeProps = Omit<StyledFileUploadItemWrapperProps, 'theme'> & {
-  borderRadius?: string;
-  borderWidth?: string;
   children: React.ReactNode;
   [key: string]: unknown;
 };

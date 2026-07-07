@@ -953,7 +953,6 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
                 display="block"
                 isFocused={false}
                 isSelected={false}
-                variant="primary"
                 style={
                   [
                     {
@@ -1007,6 +1006,7 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
                     ]
                   }
                   textAlign="left"
+                  variant="primary"
                 >
                   <View
                     data-blade-component="card-body"
