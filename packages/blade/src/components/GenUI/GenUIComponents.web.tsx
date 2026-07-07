@@ -121,8 +121,8 @@ const MarkdownHeadingContainer = styled.div<{ $level: 1 | 2 | 3 | 4 | 5 | 6 }>`
   ${({ theme, $level }) => {
     const spacing = {
       1: { marginTop: 0, marginBottom: theme.spacing[6] },
-      2: { marginTop: theme.spacing[9], marginBottom: theme.spacing[3] },
-      3: { marginTop: theme.spacing[8], marginBottom: theme.spacing[3] },
+      2: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
+      3: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
       4: { marginTop: theme.spacing[7], marginBottom: theme.spacing[2] },
       5: { marginTop: theme.spacing[5], marginBottom: theme.spacing[2] },
       6: { marginTop: theme.spacing[5], marginBottom: theme.spacing[2] },

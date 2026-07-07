@@ -3537,12 +3537,12 @@ describe('<GenUI />', () => {
         );
 
         expect(getByText('Heading 2 spacing').parentElement).toHaveStyle({
-          marginTop: '40px',
+          marginTop: '24px',
           marginBottom: '8px',
         });
         expect(getByText('Paragraph before H3')).toHaveStyle({ marginBottom: '8px' });
         expect(getByText('Heading 3 spacing').parentElement).toHaveStyle({
-          marginTop: '32px',
+          marginTop: '24px',
           marginBottom: '8px',
         });
         expect(getByText('Heading 4 spacing').parentElement).toHaveStyle({
