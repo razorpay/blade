@@ -95,7 +95,8 @@ const _FileUpload = ({
       logger({
         type: 'warn',
         moduleName: 'FileUpload',
-        message: 'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
+        message:
+          'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
       });
     }
 
@@ -103,7 +104,8 @@ const _FileUpload = ({
       logger({
         type: 'warn',
         moduleName: 'FileUpload',
-        message: 'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
+        message:
+          'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
       });
     }
 
@@ -111,7 +113,8 @@ const _FileUpload = ({
       logger({
         type: 'warn',
         moduleName: 'FileUpload',
-        message: 'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
+        message:
+          'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
       });
     }
   }
