@@ -39,18 +39,18 @@
 
   $effect(() => {
     void ctx.selectedValue;
-    if (ctx.selectedValue && containerEl) {
-      // Per-invocation cancelled flag: the cleanup function sets it to true when
-      // the effect re-runs (new selection) or the component unmounts, ensuring a
-      // stale tick() callback never overwrites a newer measurement.
-      let cancelled = false;
-      void tick().then(() => {
-        if (!cancelled) updateDimensions();
-      });
-      return () => {
-        cancelled = true;
-      };
-    }
+    if (!ctx.selectedValue || !containerEl) return;
+
+    // Per-invocation cancelled flag: the cleanup function sets it to true when
+    // the effect re-runs (new selection) or the component unmounts, ensuring a
+    // stale tick() callback never overwrites a newer measurement.
+    let cancelled = false;
+    void tick().then(() => {
+      if (!cancelled) updateDimensions();
+    });
+    return () => {
+      cancelled = true;
+    };
   });
 
   $effect(() => {
