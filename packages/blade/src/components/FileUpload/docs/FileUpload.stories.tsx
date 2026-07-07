@@ -4,6 +4,7 @@ import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
 import { SingleFileUploadStory } from './stories';
 import { Heading } from '~components/Typography/Heading';
+import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -11,7 +12,11 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
-import { Modal, ModalHeader, ModalBody } from '~components/Modal';
+import {
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+} from '~components/BottomSheet';
 
 const Page = (): React.ReactElement => {
   return (
@@ -168,7 +173,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
             {responseData.map((res, index) => {
               return (
                 <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
-                  <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
+                  <Text>Image {index + 1}: {res?.url ?? 'uploaded'}</Text>
                   <Divider thickness="thicker" variant="normal" />
                 </Box>
               );
@@ -176,14 +181,14 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
           </Box>
         )}
       </Box>
-      <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
-        <ModalHeader title="Image Preview" />
-        <ModalBody>
+      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+        <BottomSheetHeader title="Image Preview" />
+        <BottomSheetBody>
           <Box width="100%">
-            <img src={imageFileSource} alt="Preview" width="50%" height="50%" />
+            <Text>Preview: {imageFileSource}</Text>
           </Box>
-        </ModalBody>
-      </Modal>
+        </BottomSheetBody>
+      </BottomSheet>
     </Box>
   );
 };
