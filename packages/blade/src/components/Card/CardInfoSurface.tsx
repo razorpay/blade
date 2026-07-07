@@ -33,6 +33,7 @@ const CardInfoSurface = ({
 }: CardInfoSurfaceProps): React.ReactElement => {
   const borderColor =
     isSelected && !isDisabled ? 'surface.border.primary.normal' : 'surface.border.gray.subtle';
+  const borderStyle = isDisabled ? 'dashed' : 'solid';
 
   return (
     <BaseBox
@@ -43,6 +44,7 @@ const CardInfoSurface = ({
       overflow="hidden"
       borderWidth="thin"
       borderColor={borderColor}
+      borderStyle={borderStyle}
       borderRadius="medium"
     >
       {children}
