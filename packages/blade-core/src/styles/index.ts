@@ -428,6 +428,7 @@ export {
   bottomSheetBodyClass,
 } from './BottomSheet';
 export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';
+export { getSegmentedControlTemplateClasses } from './SegmentedControl';
 export {
   baseInputHeight,
   baseInputBorderRadius,
