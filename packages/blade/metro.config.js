@@ -12,6 +12,7 @@ const { withStorybook } = require('@storybook/react-native/metro/withStorybook')
 
 const mocksDir = path.resolve(__dirname, '.storybook/react-native/mocks');
 const nodeModulesDir = path.resolve(__dirname, 'node_modules');
+const realNodeModulesDir = fs.realpathSync(nodeModulesDir);
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
 // Manually resolve subpath exports for storybook packages.
@@ -48,7 +49,10 @@ function resolveSubpathExport(moduleName) {
   return { type: 'sourceFile', filePath };
 }
 
+const isWorktreeSymlink = realNodeModulesDir !== nodeModulesDir;
+
 const config = {
+  watchFolders: isWorktreeSymlink ? [realNodeModulesDir] : [],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -59,6 +63,7 @@ const config = {
     }),
   },
   resolver: {
+    unstable_enableSymlinks: true,
     resolverMainFields: ['react-native', 'browser', 'main'],
     resolveRequest: (context, moduleName, platform) => {
       if (moduleName.endsWith('.css')) {
