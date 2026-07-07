@@ -70,7 +70,9 @@ type CardTicketSurfaceProps = {
 const CardTicketSurface = ({
   top,
   bottom,
-  tearLine,
+  // tearLine is intentionally unused on native — NativeTearLine draws the tear line unconditionally
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  tearLine: _tearLine,
   children,
   isSelected,
   isDisabled,
@@ -89,7 +91,6 @@ const CardTicketSurface = ({
       >
         {top}
       </TicketSection>
-      {tearLine}
       <NativeTearLine marginX="spacing.4" />
       <TicketSection
         position="bottom"

@@ -56,7 +56,14 @@ type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
 
 export type CardProps = {
   /**
-   * Card contents
+   * Card contents.
+   *
+   * The expected structure depends on `variant`:
+   * - `primary` / `secondary`: standard `CardHeader`, `CardBody`, `CardFooter` composition.
+   * - `ticket`: exactly `<CardBody> … <CardTearLine /> <CardBody> …`. The `CardTearLine` marks the
+   *   split point; the scalloped perforation and notched edges are drawn by the ticket surface.
+   * - `info`: exactly two `CardBody` elements — the first becomes the emphasized header section, the
+   *   second becomes the subtle body section.
    */
   children: React.ReactNode;
   /**
