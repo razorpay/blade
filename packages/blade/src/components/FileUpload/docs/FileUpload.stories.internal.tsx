@@ -3,7 +3,12 @@ import { Pressable } from 'react-native';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
-import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '~components/BottomSheet';
+import {
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+} from '~components/BottomSheet';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Heading } from '~components/Typography/Heading';
@@ -30,7 +35,7 @@ const formatFileSize = (bytes: number): string => {
 };
 
 const createBladeFile = (
-  mock: (typeof MOCK_FILES)[number],
+  mock: typeof MOCK_FILES[number],
   initialStatus: BladeFile['status'] = 'uploading',
 ): BladeFile => {
   return {
@@ -71,14 +76,10 @@ const simulateUpload = (
     } else if (percent >= 100) {
       clearInterval(interval);
       setFiles((prev) =>
-        prev.map((f) =>
-          f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f,
-        ),
+        prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
       );
     } else {
-      setFiles((prev) =>
-        prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)),
-      );
+      setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
     }
   }, 300);
 };
@@ -86,7 +87,7 @@ const simulateUpload = (
 type MockFilePickerProps = {
   isOpen: boolean;
   onDismiss: () => void;
-  onFilesSelected: (files: Array<(typeof MOCK_FILES)[number]>) => void;
+  onFilesSelected: (files: Array<typeof MOCK_FILES[number]>) => void;
   selectionMode: 'single' | 'multiple';
 };
 
@@ -203,14 +204,11 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFile = createBladeFile(selected[0]);
-      setFiles([newFile]);
-      simulateUpload(newFile.id!, setFiles);
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
+    const newFile = createBladeFile(selected[0]);
+    setFiles([newFile]);
+    simulateUpload(newFile.id!, setFiles);
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -260,14 +258,11 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFiles = selected.map((s) => createBladeFile(s));
-      setFiles((prev) => [...prev, ...newFiles]);
-      newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
+    const newFiles = selected.map((s) => createBladeFile(s));
+    setFiles((prev) => [...prev, ...newFiles]);
+    newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -318,20 +313,17 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFiles = selected.map((s) => {
-        fileCountRef.current++;
-        return createBladeFile(s);
-      });
-      setFiles((prev) => [...prev, ...newFiles]);
-      newFiles.forEach((f, i) => {
-        const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
-        simulateUpload(f.id!, setFiles, shouldFail);
-      });
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
+    const newFiles = selected.map((s) => {
+      fileCountRef.current++;
+      return createBladeFile(s);
+    });
+    setFiles((prev) => [...prev, ...newFiles]);
+    newFiles.forEach((f, i) => {
+      const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
+      simulateUpload(f.id!, setFiles, shouldFail);
+    });
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">

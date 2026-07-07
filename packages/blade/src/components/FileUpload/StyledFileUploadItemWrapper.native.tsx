@@ -17,7 +17,6 @@ const StyledFileUploadItemWrapper = ({
   status,
   size,
   children,
-  ...rest
 }: NativeProps): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
 

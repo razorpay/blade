@@ -117,14 +117,11 @@ const _FileUpload = ({
   }, [selectedFiles]);
 
   const handlePress = (): void => {
-    if (isDisabled) return;
     // On native, pressing the upload area signals the consumer to open
     // their file picker. The consumer then calls onChange after files are picked.
   };
 
-  const computedHeight = isSizeVariable
-    ? height ?? '100%'
-    : makeSize(fileUploadHeightTokens[size]);
+  const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
 
   const accessibilityProps = makeAccessible({
@@ -143,12 +140,7 @@ const _FileUpload = ({
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
       {...getStyledProps(rest)}
     >
-      <BaseBox
-        display="flex"
-        flexDirection="column"
-        position="relative"
-        width="100%"
-      >
+      <BaseBox display="flex" flexDirection="column" position="relative" width="100%">
         {label ? (
           <FormLabel
             size={isSizeVariable ? 'large' : size}
@@ -201,9 +193,7 @@ const _FileUpload = ({
                       : fileUploadColorTokens.text.default
                   }
                 >
-                  {isSizeVariable
-                    ? dropAreaText ?? 'Tap to upload your files'
-                    : 'Tap to'}{' '}
+                  {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
                 </Text>
 
                 <Box

@@ -118,7 +118,7 @@ describe('<FileUploadItem /> (native)', () => {
 
   it('should render FileUploadItem with success status', () => {
     const { toJSON, getByText } = renderWithTheme(
-      <FileUploadItem file={successFile} onRemove={() => {}} />,
+      <FileUploadItem file={successFile} onRemove={jest.fn()} />,
     );
     expect(toJSON()).toMatchSnapshot();
     expect(getByText('report.pdf')).toBeTruthy();
@@ -126,16 +126,14 @@ describe('<FileUploadItem /> (native)', () => {
 
   it('should render FileUploadItem with error status', () => {
     const { toJSON, getByText } = renderWithTheme(
-      <FileUploadItem file={errorFile} onRemove={() => {}} />,
+      <FileUploadItem file={errorFile} onRemove={jest.fn()} />,
     );
     expect(toJSON()).toMatchSnapshot();
     expect(getByText('Upload failed')).toBeTruthy();
   });
 
   it('should render FileUploadItem with uploading status', () => {
-    const { toJSON, getByText } = renderWithTheme(
-      <FileUploadItem file={uploadingFile} />,
-    );
+    const { toJSON, getByText } = renderWithTheme(<FileUploadItem file={uploadingFile} />);
     expect(toJSON()).toMatchSnapshot();
     expect(getByText('video.mp4')).toBeTruthy();
   });
@@ -165,7 +163,7 @@ describe('<FileUploadItem /> (native)', () => {
     const { toJSON } = renderWithTheme(
       <>
         {files.map((file) => (
-          <FileUploadItem key={file.id} file={file} onRemove={() => {}} />
+          <FileUploadItem key={file.id} file={file} onRemove={jest.fn()} />
         ))}
       </>,
     );
