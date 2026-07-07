@@ -362,9 +362,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           href={isCardDisabled ? undefined : href}
           accessibilityLabel={accessibilityLabel}
           cursor={
-            (isReactNative()
-              ? undefined
-              : (isCardDisabled ? 'not-allowed' : cursor)) as never
+            (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
           }
           opacity={opacity}
           transition={transition}
@@ -435,9 +433,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           href={isCardDisabled ? undefined : href}
           accessibilityLabel={accessibilityLabel}
           cursor={
-            (isReactNative()
-              ? undefined
-              : (isCardDisabled ? 'not-allowed' : cursor)) as never
+            (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
           }
           opacity={opacity}
           transition={transition}
@@ -493,9 +489,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
         cursor={
-          (isReactNative()
-            ? undefined
-            : (isCardDisabled ? 'not-allowed' : cursor)) as never
+          (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
         }
         opacity={opacity}
         transition={transition}
