@@ -1,5 +1,10 @@
 import React from 'react';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  interpolateColor,
+} from 'react-native-reanimated';
 import type { StyledFileUploadWrapperProps } from './types';
 import { fileUploadColorTokens, fileUploadMotionTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
@@ -38,7 +43,7 @@ const StyledFileUploadWrapper = ({
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: progress.value > 0.5 ? activeBgColor : 'transparent',
+      backgroundColor: interpolateColor(progress.value, [0, 1], ['transparent', activeBgColor]),
       opacity: 1,
     };
   });
