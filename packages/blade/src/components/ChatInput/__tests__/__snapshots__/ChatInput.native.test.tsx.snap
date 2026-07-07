@@ -268,13 +268,181 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": true,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          {},
+                          {
+                            "alignSelf": "flex-start",
+                            "backgroundColor": "transparent",
+                            "borderColor": "black",
+                            "borderStyle": "solid",
+                            "borderWidth": 0,
+                            "outline": "none",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationColor": "black",
+                            "textDecorationLine": "none",
+                            "textDecorationStyle": "solid",
+                          },
                         ]
                       }
-                    />
+                    >
+                      <View
+                        alignItems="center"
+                        className="content-container"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "paddingRight": 4,
+                              },
+                            ]
+                          }
+                        >
+                          <RNSVGSvgView
+                            accessibilityElementsHidden={true}
+                            align="xMidYMid"
+                            bbHeight="12px"
+                            bbWidth="12px"
+                            data-blade-component="icon"
+                            fill="none"
+                            focusable={false}
+                            height="12px"
+                            importantForAccessibility="no-hide-descendants"
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                [
+                                  {},
+                                ],
+                                {
+                                  "flex": 0,
+                                  "height": 12,
+                                  "width": 12,
+                                },
+                              ]
+                            }
+                            vbHeight={24}
+                            vbWidth={24}
+                            width="12px"
+                          >
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGPath
+                                d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                                fill={
+                                  {
+                                    "payload": 1380141905,
+                                    "type": 0,
+                                  }
+                                }
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.neutral.disabled"
+                          data-blade-component="base-text"
+                          fontSize={75}
+                          fontWeight="medium"
+                          lineHeight={75}
+                          style={
+                            [
+                              {
+                                "color": "hsla(206, 10%, 29%, 0.32)",
+                                "fontFamily": "Inter",
+                                "fontSize": 12,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": 0,
+                                "lineHeight": 17,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "center",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textDecorationLine="none"
+                        >
+                          Upload file
+                        </Text>
+                      </View>
+                    </View>
                     <View
                       data-blade-component="base-box"
                       style={
@@ -770,13 +938,181 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         [
-                          {},
+                          {
+                            "alignSelf": "flex-start",
+                            "backgroundColor": "transparent",
+                            "borderColor": "black",
+                            "borderStyle": "solid",
+                            "borderWidth": 0,
+                            "outline": "none",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationColor": "black",
+                            "textDecorationLine": "none",
+                            "textDecorationStyle": "solid",
+                          },
                         ]
                       }
-                    />
+                    >
+                      <View
+                        alignItems="center"
+                        className="content-container"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "paddingRight": 4,
+                              },
+                            ]
+                          }
+                        >
+                          <RNSVGSvgView
+                            accessibilityElementsHidden={true}
+                            align="xMidYMid"
+                            bbHeight="12px"
+                            bbWidth="12px"
+                            data-blade-component="icon"
+                            fill="none"
+                            focusable={false}
+                            height="12px"
+                            importantForAccessibility="no-hide-descendants"
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                [
+                                  {},
+                                ],
+                                {
+                                  "flex": 0,
+                                  "height": 12,
+                                  "width": 12,
+                                },
+                              ]
+                            }
+                            vbHeight={24}
+                            vbWidth={24}
+                            width="12px"
+                          >
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGPath
+                                d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                                fill={
+                                  {
+                                    "payload": 4278519045,
+                                    "type": 0,
+                                  }
+                                }
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.neutral.normal"
+                          data-blade-component="base-text"
+                          fontSize={75}
+                          fontWeight="medium"
+                          lineHeight={75}
+                          style={
+                            [
+                              {
+                                "color": "hsla(0, 0%, 2%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 12,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": 0,
+                                "lineHeight": 17,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "center",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textDecorationLine="none"
+                        >
+                          Upload file
+                        </Text>
+                      </View>
+                    </View>
                     <View
                       data-blade-component="base-box"
                       style={

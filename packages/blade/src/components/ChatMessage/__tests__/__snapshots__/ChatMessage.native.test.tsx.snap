@@ -360,14 +360,22 @@ exports[`<ChatMessage /> (native) should render other message with leading icon 
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
+            display="flex"
+            height="20px"
+            justifyContent="center"
             style={
               [
                 {
-                  "paddingBottom": 2,
+                  "alignItems": "center",
+                  "display": "flex",
+                  "height": 20,
+                  "justifyContent": "center",
+                  "paddingBottom": 4,
                   "paddingLeft": 2,
                   "paddingRight": 2,
-                  "paddingTop": 2,
+                  "paddingTop": 8,
                 },
               ]
             }
@@ -834,14 +842,22 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
+            display="flex"
+            height="20px"
+            justifyContent="center"
             style={
               [
                 {
-                  "paddingBottom": 2,
+                  "alignItems": "center",
+                  "display": "flex",
+                  "height": 20,
+                  "justifyContent": "center",
+                  "paddingBottom": 4,
                   "paddingLeft": 2,
                   "paddingRight": 2,
-                  "paddingTop": 2,
+                  "paddingTop": 8,
                 },
               ]
             }
