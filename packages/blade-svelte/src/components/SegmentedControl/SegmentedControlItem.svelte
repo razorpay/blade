@@ -8,6 +8,7 @@
   import { getSegmentedControlTemplateClasses } from '@razorpay/blade-core/styles';
   import { getSegmentedControlContext } from './context';
   import type { SegmentedControlItemProps } from './types';
+  import type { IconSize } from '../Icons/types';
 
   const classes = getSegmentedControlTemplateClasses();
 
@@ -65,7 +66,7 @@
     allButtons[nextIndex].click();
   };
 
-  const iconSizeMap: Record<string, string> = {
+  const iconSizeMap: Record<string, IconSize> = {
     small: 'medium',
     medium: 'medium',
     large: 'large',
