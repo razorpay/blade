@@ -41,6 +41,9 @@ type FileUploadCommonProps = {
    * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
    *
    * Usage: accept=".jpg, .png, .pdf", accept="image/*", accept="image/png, image/jpeg, application/pdf"
+   *
+   * **React Native:** This prop does not filter files on native. Configure accepted file types
+   * directly in your file picker (e.g. `react-native-document-picker`).
    */
   accept?: string;
   /**
@@ -66,15 +69,23 @@ type FileUploadCommonProps = {
    */
   fileList?: BladeFileList;
   /**
-   * Limit the number of files that can be uploaded
+   * Limit the number of files that can be uploaded.
+   *
+   * **React Native:** This prop has no effect on native. Enforce file count limits in the `onChange` callback.
    */
   maxCount?: number;
   /**
-   * Limit the size of the uploaded files (in bytes)
+   * Limit the size of the uploaded files (in bytes).
+   *
+   * **React Native:** This prop has no effect on native. Enforce file size limits in the `onChange` callback.
    */
   maxSize?: number;
   /**
-   * Callback function triggered when files are selected
+   * Callback function triggered when files are selected.
+   *
+   * **React Native:** This callback fires when the user taps the upload area as a tap signal.
+   * `fileList` will always be empty at tap time — open your own file picker
+   * (e.g. `react-native-document-picker`) inside this callback and manage the file list yourself.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -26,7 +26,7 @@ import { Text } from '~components/Typography';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useControllableState } from '~utils/useControllable';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 
 const getFileIconExtension = (acceptValue?: string): string => {
   if (!acceptValue) return 'example.xyz';
@@ -58,8 +58,8 @@ const _FileUpload = ({
   validationState,
   helpText,
   errorText,
-  maxCount: _maxCount,
-  maxSize: _maxSize,
+  maxCount,
+  maxSize,
   size = 'medium',
   ...rest
 }: FileUploadProps): React.ReactElement => {
@@ -90,6 +90,30 @@ const _FileUpload = ({
         moduleName: 'FileUpload',
       });
     }
+
+    if (maxCount !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message: 'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
+      });
+    }
+
+    if (maxSize !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message: 'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
+      });
+    }
+
+    if (accept !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message: 'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
+      });
+    }
   }
 
   const [selectedFiles, setSelectedFiles] = useControllableState({
@@ -108,7 +132,7 @@ const _FileUpload = ({
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
-  useMemo(() => {
+  useEffect(() => {
     for (const file of selectedFiles) {
       if (!file.id) {
         file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
@@ -117,8 +141,10 @@ const _FileUpload = ({
   }, [selectedFiles]);
 
   const handlePress = (): void => {
-    // On native, pressing the upload area signals the consumer to open
-    // their file picker. The consumer then calls onChange after files are picked.
+    // On native, pressing the upload area fires onChange as a tap signal.
+    // fileList is always empty at tap time — the consumer must open their own
+    // file picker (e.g. react-native-document-picker) in this callback.
+    onChange?.({ name, fileList: [] });
   };
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
