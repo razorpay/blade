@@ -6,20 +6,19 @@ const ACCORDION_ITEM_CONTEXT_KEY = 'blade-accordion-item-context';
 
 export type AccordionContextState = {
   expandedIndex: number | undefined;
+  defaultExpandedIndex: number | undefined;
   onExpandChange: (index: number) => void;
   showNumberPrefix: boolean;
   variant: AccordionVariantType;
   numberOfItems: number;
   size: 'large' | 'medium';
   registerItem: () => number;
+  hasGrayBody: boolean;
 };
 
 export type AccordionItemContextState = {
   index: number | undefined;
   isDisabled: boolean;
-  isExpanded: boolean;
-  toggle: () => void;
-  collapsibleBodyId: string;
 };
 
 export function setAccordionContext(getCtx: () => AccordionContextState): void {

@@ -3,4 +3,5 @@ export type { CollapsibleProps } from './Collapsible';
 
 export * from './CollapsibleLink';
 export * from './CollapsibleButton';
+export * from './CollapsibleText';
 export * from './CollapsibleBody';

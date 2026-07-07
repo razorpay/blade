@@ -70,6 +70,23 @@ type PreviewFooterProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Preview` for inline content viewing with zoom, pan, and pinch interactions (images, PDFs).
+- Compose with `PreviewHeader`, `PreviewBody`, and `PreviewFooter` for structured layout with controls.
+- Use `onZoomChange` and `onDragChange` callbacks for tracking user interactions.
+- Use `isDragAndZoomDisabled` for static preview mode without interactions.
+- Use inside `LightBox` (custom mode) for gallery items that need zoom/pan.
+
+**Don't**
+
+- Don't use `Preview` for multi-item gallery navigation — use `LightBox` instead.
+- Don't expect built-in zoom controls — compose custom buttons in `PreviewFooter` trailing slot.
+- Don't use `Preview` as a PDF renderer — it's a wrapper only; use libraries like `react-pdf` for rendering.
+- Don't use `Preview` for simple image display without interaction — a plain `<img>` suffices.
+
 ## Example
 
 Here are comprehensive examples showing different use cases of the Preview component:

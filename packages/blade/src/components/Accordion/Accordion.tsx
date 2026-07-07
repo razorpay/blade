@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import React, { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
+import { AccordionSurface } from './AccordionSurface';
 import { MAX_WIDTH } from './styles';
 import type { AccordionProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -12,24 +13,12 @@ import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
 
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(sizeTokens[200]),
   m: makeSize(sizeTokens[360]),
   l: makeSize(sizeTokens[360]),
-};
-
-const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
-  if (variant === 'transparent') {
-    return {};
-  }
-
-  return {
-    backgroundColor: 'surface.background.gray.intense',
-    borderRadius: 'medium',
-    borderWidth: 'thinner',
-    borderColor: 'surface.border.gray.subtle',
-  };
 };
 
 /**
@@ -79,6 +68,7 @@ const _Accordion = (
   }: AccordionProps,
   ref: React.Ref<BladeElementRef>,
 ): ReactElement => {
+  const { colorScheme } = useTheme();
   const [expandedAccordionItemIndex, setExpandedAccordionItemIndex] = useState<number | undefined>(
     defaultExpandedIndex,
   );
@@ -131,11 +121,23 @@ const _Accordion = (
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
       >
-        <BaseBox {...getVariantStyles(variant)} width="100%">
-          {Children.map(children, (child, index) =>
-            cloneElement(child, { _index: index, key: index }),
-          )}
-        </BaseBox>
+        {variant === 'filled' ? (
+          <AccordionSurface
+            colorScheme={colorScheme}
+            borderRadius="medium"
+            backgroundColor="surface.background.gray.intense"
+          >
+            {Children.map(children, (child, index) =>
+              cloneElement(child, { _index: index, key: index }),
+            )}
+          </AccordionSurface>
+        ) : (
+          <BaseBox width="100%">
+            {Children.map(children, (child, index) =>
+              cloneElement(child, { _index: index, key: index }),
+            )}
+          </BaseBox>
+        )}
       </BaseBox>
     </AccordionContext.Provider>
   );

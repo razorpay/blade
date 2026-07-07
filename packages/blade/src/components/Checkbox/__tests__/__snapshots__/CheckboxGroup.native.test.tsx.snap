@@ -69,6 +69,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -79,7 +80,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -133,6 +134,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -142,7 +144,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -322,6 +324,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -331,7 +334,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -488,6 +491,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -497,7 +501,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -654,6 +658,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -663,7 +668,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -761,6 +766,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="medium"
+            letterSpacing={50}
             lineHeight={75}
             numberOfLines={2}
             style={
@@ -771,7 +777,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "500",
-                  "letterSpacing": 0,
+                  "letterSpacing": -0.15600000000000003,
                   "lineHeight": 17,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -825,6 +831,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -834,7 +841,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1014,6 +1021,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -1023,7 +1031,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1180,6 +1188,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -1189,7 +1198,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1346,6 +1355,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       fontSize={100}
                       fontStyle="normal"
                       fontWeight="regular"
+                      letterSpacing={50}
                       lineHeight={100}
                       style={
                         [
@@ -1355,7 +1365,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
-                            "letterSpacing": 0,
+                            "letterSpacing": -0.18200000000000002,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1413,6 +1423,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               fontSize={50}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={50}
               marginTop="spacing.0"
               style={
@@ -1423,7 +1434,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "fontSize": 11,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.14300000000000002,
                     "lineHeight": 16,
                     "marginBottom": 0,
                     "marginLeft": 0,

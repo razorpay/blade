@@ -13,9 +13,13 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
+import { isReactNative } from '~utils';
+
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+
+const equalWidthFlexProps = isReactNative() ? ({ flex: 1 } as const) : ({ flexGrow: 1 } as const);
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -133,6 +137,7 @@ type CardFooterTrailingProps = {
     secondary?: CardFooterAction;
   };
 } & DataAnalyticsAttribute;
+
 const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooterTrailing');
@@ -141,37 +146,43 @@ const _CardFooterTrailing = ({ actions, ...rest }: CardFooterTrailingProps): Rea
     <BaseBox
       display="flex"
       flexDirection="row"
+      gap={isReactNative() ? 'spacing.5' : undefined}
       alignSelf={isMobile ? 'auto' : 'center'}
       marginTop={isMobile ? 'spacing.5' : 'spacing.0'}
       marginLeft={isMobile ? 'spacing.0' : 'spacing.5'}
+      width={isReactNative() ? '100%' : undefined}
       {...makeAnalyticsAttribute(rest)}
     >
-      <BaseBox flexGrow={1}>
-        {actions?.secondary ? (
-          <Button
-            isFullWidth
-            size="medium"
-            variant="secondary"
-            {...actions.secondary}
-            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_SECONDARY_ACTION_BUTTON}
-          >
-            {actions.secondary.text!}
-          </Button>
-        ) : null}
-      </BaseBox>
-      <BaseBox marginLeft="spacing.5" />
-      <BaseBox flexGrow={1}>
-        {actions?.primary ? (
-          <Button
-            isFullWidth
-            size="medium"
-            {...actions.primary}
-            data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_PRIMARY_ACTION_BUTTON}
-          >
-            {actions.primary.text!}
-          </Button>
-        ) : null}
-      </BaseBox>
+      {!isReactNative() || actions?.secondary ? (
+        <BaseBox {...equalWidthFlexProps}>
+          {actions?.secondary ? (
+            <Button
+              isFullWidth
+              size="medium"
+              variant="secondary"
+              {...actions.secondary}
+              data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_SECONDARY_ACTION_BUTTON}
+            >
+              {actions.secondary.text!}
+            </Button>
+          ) : null}
+        </BaseBox>
+      ) : null}
+      {!isReactNative() && <BaseBox marginLeft="spacing.5" />}
+      {!isReactNative() || actions?.primary ? (
+        <BaseBox {...equalWidthFlexProps}>
+          {actions?.primary ? (
+            <Button
+              isFullWidth
+              size="medium"
+              {...actions.primary}
+              data-analytics-name={MAKE_ANALYTICS_CONSTANTS.CARD.FOOTER_PRIMARY_ACTION_BUTTON}
+            >
+              {actions.primary.text!}
+            </Button>
+          ) : null}
+        </BaseBox>
+      ) : null}
     </BaseBox>
   );
 };

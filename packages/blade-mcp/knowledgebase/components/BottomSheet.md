@@ -129,6 +129,24 @@ type BottomSheetFooterProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `BottomSheet` as the mobile alternative to `Modal` — it slides from the bottom and supports snap points.
+- Use `snapPoints` array (values 0–1 representing viewport height %) to define multiple height states.
+- Compose with `BottomSheetHeader`, `BottomSheetBody`, and `BottomSheetFooter` for proper structure.
+- Use `showBackButton` on header for multi-step stacked flows with back navigation.
+- Ensure all stacked BottomSheets use the same `zIndex` value.
+
+**Don't**
+
+- Don't use `BottomSheet` on desktop when `Modal` would be more appropriate — BottomSheet is mobile-first.
+- Don't use snap point values outside 0–1 range — they represent percentages of viewport height.
+- Don't use `BottomSheetBody` padding values other than `"spacing.0"` or `"spacing.5"`.
+- Don't expect header/footer to scroll — only the body content scrolls.
+- Don't forget to set `isDismissible={false}` for mandatory flows where swiping down should be prevented.
+
 ## Example
 
 Here are several examples demonstrating different uses of the BottomSheet component:

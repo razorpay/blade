@@ -15,6 +15,11 @@ export { default as Code } from './Typography/Code/Code.svelte';
 // Button
 export { default as Button } from './Button/Button.svelte';
 
+// IconButton
+export { default as IconButton } from './Button/IconButton/IconButton.svelte';
+export type { IconButtonProps } from './Button/IconButton/types';
+export { BaseIconButton } from './Button/IconButton/BaseIconButton';
+
 // Link
 export { default as Link } from './Link/Link.svelte';
 
@@ -40,6 +45,22 @@ export type { SkeletonProps } from './Skeleton/types';
 // Accordion
 export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
 
+// Collapsible
+export {
+  Collapsible,
+  CollapsibleButton,
+  CollapsibleLink,
+  CollapsibleText,
+  CollapsibleBody,
+} from './Collapsible';
+export type {
+  CollapsibleProps,
+  CollapsibleButtonProps,
+  CollapsibleLinkProps,
+  CollapsibleTextProps,
+  CollapsibleBodyProps,
+} from './Collapsible';
+
 // Switch
 export { default as Switch } from './Switch/Switch.svelte';
 export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types';
@@ -63,11 +84,74 @@ export {
   CardFooterTrailing,
 } from './Card';
 
+// AppBar
+export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
+export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
+
+// TrustBadge
+export { TrustBadge } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
+
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+
+// Checkbox
+export { default as Checkbox } from './Checkbox/Checkbox.svelte';
+export { default as CheckboxGroup } from './Checkbox/CheckboxGroup.svelte';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxOnChange,
+  CheckboxGroupOnChange,
+  CheckboxInstance,
+  CheckboxSize,
+} from './Checkbox/types';
+
+// ActionList
+export {
+  ActionList,
+  ActionListItem,
+  ActionListItemAsset,
+  ActionListItemText,
+  ActionListItemIcon,
+  ActionListItemAvatar,
+  ActionListItemBadge,
+  ActionListItemBadgeGroup,
+  ActionListSection,
+} from './ActionList';
+export type {
+  ActionListProps,
+  ActionListItemProps,
+  ActionListItemAssetProps,
+  ActionListItemTextProps,
+  ActionListItemIconProps,
+  ActionListItemAvatarProps,
+  ActionListItemBadgeProps,
+  ActionListItemBadgeGroupProps,
+  ActionListSectionProps,
+  ActionListSelectionType,
+  ActionListItemClickPayload,
+  ActionListItemSelectPayload,
+} from './ActionList';
+
+// Radio
+export { default as Radio } from './Radio/Radio.svelte';
+export { default as RadioGroup } from './Radio/RadioGroup.svelte';
+export type {
+  RadioProps,
+  RadioGroupProps,
+  RadioGroupOnChange,
+  RadioInstance,
+  RadioSize,
+} from './Radio/types';
+
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
+
+// AnnouncementBanner
+export { default as AnnouncementBanner } from './AnnouncementBanner/AnnouncementBanner.svelte';
+export type { AnnouncementBannerProps } from './AnnouncementBanner/types';
 
 // Avatar
 export { default as Avatar } from './Avatar/Avatar.svelte';
@@ -100,6 +184,34 @@ export type {
   BladeToast,
   UseToastReturn,
 } from './Toast/types';
+
+// BottomSheet
+export { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from './BottomSheet';
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetBodyProps,
+  BottomSheetFooterProps,
+  SnapPoints,
+} from './BottomSheet';
+
+// Input
+export { TextInput } from './Input/TextInput';
+export type { TextInputProps, TextInputType } from './Input/TextInput';
+export { SearchInput } from './Input/SearchInput';
+export type { SearchInputProps } from './Input/SearchInput';
+export { OTPInput } from './Input/OTPInput';
+export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
+export { PhoneNumberInput } from './Input/PhoneNumberInput';
+export type {
+  PhoneNumberInputProps,
+  PhoneNumberInputInstance,
+  PhoneNumberChangePayload,
+} from './Input/PhoneNumberInput';
+
+// InputGroup
+export { InputGroup, InputRow } from './InputGroup';
+export type { InputGroupProps, InputRowProps } from './InputGroup';
 
 // BladeProvider
 export * from './BladeProvider';

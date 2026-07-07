@@ -1,5 +1,81 @@
 # @razorpay/blade-svelte
 
+## 0.9.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- 75288e989: feat(AppBar, TrustBadge): add AppBar and TrustBadge components
+
+  TrustBadge renders the "Razorpay Trusted Business" trust marker; its label is configurable
+  via a `label` prop (default: "Razorpay Trusted Business") so it can evolve (e.g. "Razorpay
+  Verified") without a breaking API change. AppBar surfaces it through the `trustBadgeVariant`
+  prop on `AppBarLeading`.
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- ec73575f0: feat(blade-svelte): add Card variant prop with primary, secondary, and theme treatments
+- 7fe2a5a65: feat(blade-svelte): add Checkbox and CheckboxGroup components
+- db72ca068: feat(blade-svelte): add Input family (BaseInput, TextInput, SearchInput, OTPInput, PhoneNumberInput)
+- ee333ee75: feat(blade-svelte): add InputGroup component
+- 5715dc29c: fix(blade-svelte): add Playground stories so Storybook Controls work
+- 3b9d0466c: fix(blade-svelte): close gap between Tooltip arrow and bubble on left/right placements
+
+  The arrow SVG was rendered non-square (14×8). Left/right placements rotate the arrow ±90° about its center, which shifted the flat base off the bubble edge by `(width - height) / 2` (3px), leaving a visible gap. The SVG box is now square (14×14), mirroring `@floating-ui/react`'s `FloatingArrow`, so the base stays flush on every side.
+
+- 39f33f521: feat(blade-svelte): compose Accordion on Collapsible primitive and add CollapsibleText
+
+  - `AccordionItem` now wraps its content in `<Collapsible>` so expand/collapse animation, body `id`, and `role="region"` accessibility are owned by `CollapsibleBody` instead of duplicated in the Accordion.
+  - `AccordionItemHeader` reads the Collapsible context for toggle + `aria-controls`/`aria-expanded` and renders `<CollapsibleChevronIcon>` (chevron rotation now lives in `collapsible.module.css`).
+  - `AccordionItemBody` delegates animation to `<CollapsibleBody>` and only renders the body content + gray-body styling.
+  - Add `CollapsibleText` (text + chevron trigger, keyboard accessible) and accept `_dangerouslyDisableValidations` on `Collapsible` for API parity with React.
+
+- Updated dependencies [adff0f113]
+- Updated dependencies [75288e989]
+- Updated dependencies [0724d3d38]
+- Updated dependencies [ec73575f0]
+- Updated dependencies [7fe2a5a65]
+- Updated dependencies [db72ca068]
+- Updated dependencies [ee333ee75]
+- Updated dependencies [39f33f521]
+  - @razorpay/blade-core@0.8.0
+
+## 0.8.1
+
+### Patch Changes
+
+- 19e2b963e: feat(blade-svelte): Accordion enhancements — card surface filled variant, AvatarGroup in titleSuffix, full-width divider, gray body background prop
+- b05f5f919: feat(blade-svelte): add BottomSheet component
+- b50dad37b: feat(blade-svelte): add IconButton component
+- Updated dependencies [19e2b963e]
+- Updated dependencies [b05f5f919]
+- Updated dependencies [b50dad37b]
+  - @razorpay/blade-core@0.7.1
+
+## 0.8.0
+
+### Minor Changes
+
+- ea2d1d90b: feat(Badge): add checkout-scoped shape variants (intense=rectangle, subtle=pill)
+
+### Patch Changes
+
+- 884dfd7a4: feat(blade-svelte): add `density` prop to AvatarGroup and use typed Text/Heading for the +N overflow counter
+- 1fce4dca1: fix(blade-svelte): add definite loader and avatar group to Button
+
+  Adds a definite (left-to-right progress) loader and avatar group support to the
+  Svelte `Button`, reworks the indefinite loader to a pure-CSS 3-dot animation, and
+  removes the unused spinner styling/exports from `blade-core`.
+
+- Updated dependencies [884dfd7a4]
+- Updated dependencies [1fce4dca1]
+- Updated dependencies [ea2d1d90b]
+  - @razorpay/blade-core@0.7.0
+
 ## 0.7.0
 
 ### Minor Changes

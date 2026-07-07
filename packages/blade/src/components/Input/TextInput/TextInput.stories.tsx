@@ -57,6 +57,7 @@ export default {
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
+    validationTextPlacement: 'outside',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
@@ -214,6 +215,11 @@ export default {
       },
     },
     successText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    validationTextPlacement: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },
@@ -376,6 +382,118 @@ TextInputSuccess.args = {
   validationState: 'success',
   successText: 'Name validated',
 };
+
+const TextInputValidationInsideTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInputComponent
+        label="Card Number"
+        defaultValue="4111 1111 1111 1111"
+        validationState="success"
+        successText="Verified"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        label="Card Number"
+        defaultValue="4111 1111 1111"
+        validationState="error"
+        errorText="Invalid"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+    </Box>
+  );
+};
+export const TextInputValidationInside = TextInputValidationInsideTemplate.bind({});
+TextInputValidationInside.storyName = 'TextInput with validation text inside';
+
+const TextInputValidationPlacementTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <Text size="large" weight="semibold" marginBottom="spacing.2">
+          Inside
+        </Text>
+        <TextInputComponent
+          label="Amount"
+          defaultValue="1000"
+          validationState="success"
+          successText="Verified"
+          validationTextPlacement="inside"
+          showClearButton={false}
+        />
+        <TextInputComponent
+          label="Amount"
+          defaultValue="10"
+          validationState="error"
+          errorText="Too low"
+          validationTextPlacement="inside"
+          showClearButton={false}
+        />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <Text size="large" weight="semibold" marginBottom="spacing.2">
+          Outside
+        </Text>
+        <TextInputComponent
+          label="Amount"
+          defaultValue="1000"
+          validationState="success"
+          successText="Verified"
+          validationTextPlacement="outside"
+          showClearButton={false}
+        />
+        <TextInputComponent
+          label="Amount"
+          defaultValue="10"
+          validationState="error"
+          errorText="Too low"
+          validationTextPlacement="outside"
+          showClearButton={false}
+        />
+      </Box>
+    </Box>
+  );
+};
+export const TextInputValidationPlacement = TextInputValidationPlacementTemplate.bind({});
+TextInputValidationPlacement.storyName = 'TextInput validation placement (inside vs outside)';
+
+const TextInputValidationInsideSizesTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInputComponent
+        size="small"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        size="medium"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        size="large"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+    </Box>
+  );
+};
+export const TextInputValidationInsideSizes = TextInputValidationInsideSizesTemplate.bind({});
+TextInputValidationInsideSizes.storyName = 'TextInput validation inside - sizes';
 
 export const TextInputWithoutLabel = TextInputTemplate.bind({});
 TextInputWithoutLabel.storyName = 'TextInput without label';
