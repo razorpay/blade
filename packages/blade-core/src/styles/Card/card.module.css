@@ -273,6 +273,11 @@
   border-color: var(--surface-border-primary-normal);
 }
 
+/* Disabled: dashed border, matching the disabled treatment on the ticket card. */
+.cardInfoWrapper[data-disabled='true'] {
+  border-style: dashed;
+}
+
 .cardInfoSectionTop {
   background-color: var(--surface-background-gray-intense);
   padding: var(--spacing-4);

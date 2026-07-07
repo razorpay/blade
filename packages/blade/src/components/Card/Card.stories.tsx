@@ -796,6 +796,7 @@ const InfoCardExample = (): React.ReactElement => {
           </Text>
         </Box>
       </CardBody>
+      <CardTearLine />
       <CardBody>
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text size="small" color="surface.text.gray.subtle">

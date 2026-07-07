@@ -62,8 +62,8 @@ export type CardProps = {
    * - `primary` / `secondary`: standard `CardHeader`, `CardBody`, `CardFooter` composition.
    * - `ticket`: exactly `<CardBody> … <CardTearLine /> <CardBody> …`. The `CardTearLine` marks the
    *   split point; the scalloped perforation and notched edges are drawn by the ticket surface.
-   * - `info`: exactly two `CardBody` elements — the first becomes the emphasized header section, the
-   *   second becomes the subtle body section.
+   * - `info`: exactly `<CardBody> … <CardTearLine /> <CardBody> …`. The `CardTearLine` marks the
+   *   split point; the first section becomes the emphasized header and the second becomes the subtle body.
    */
   children: React.ReactNode;
   /**
@@ -130,8 +130,8 @@ export type CardProps = {
    * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored) and
    * is announced as disabled to assistive tech.
    *
-   * `isDisabled` takes precedence over `isSelected`. For the `ticket` variant it also renders a
-   * dashed border.
+   * `isDisabled` takes precedence over `isSelected`. For the `ticket` and `info` variants it also
+   * renders a dashed border.
    *
    * @default false
    */
@@ -289,9 +289,9 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     componentName: 'Card',
     allowedComponents:
       // eslint-disable-next-line no-nested-ternary
-      variant === 'secondary' || variant === 'info'
+      variant === 'secondary'
         ? [ComponentIds.CardBody]
-        : variant === 'ticket'
+        : variant === 'ticket' || variant === 'info'
         ? [ComponentIds.CardBody, ComponentIds.CardTearLine]
         : [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
   });
@@ -401,7 +401,21 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
 
   if (variant === 'info') {
     const childrenArray = React.Children.toArray(children);
-    const [topContent, ...bottomContent] = childrenArray;
+    const tearLineIndex = childrenArray.findIndex(
+      (child) => React.isValidElement(child) && getComponentId(child) === ComponentIds.CardTearLine,
+    );
+
+    if (__DEV__ && tearLineIndex === -1) {
+      throwBladeError({
+        message:
+          'An `info` variant Card must contain a `CardTearLine` between its two `CardBody` sections.',
+        moduleName: 'Card',
+      });
+    }
+
+    const splitIndex = tearLineIndex === -1 ? childrenArray.length : tearLineIndex;
+    const topContent = childrenArray.slice(0, splitIndex);
+    const bottomContent = tearLineIndex === -1 ? [] : childrenArray.slice(tearLineIndex + 1);
 
     return (
       <CardProvider size={size} variant={variant}>
