@@ -181,8 +181,8 @@ const FileUploadItem = memo(
                 thumbnail
                   ? 'spacing.2'
                   : containerSize === 'large'
-                    ? 'spacing.4'
-                    : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
+                  ? 'spacing.4'
+                  : ['spacing.3', 'spacing.4', 'spacing.3', 'spacing.3']
               }
               alignItems={thumbnail ? 'center' : undefined}
             >
