@@ -691,8 +691,6 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -2835,8 +2833,6 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }

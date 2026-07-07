@@ -118,8 +118,6 @@ exports[`<SearchInput /> should accept data-analytics attribute 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -667,8 +665,6 @@ exports[`<SearchInput /> should hide search icon 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -1213,8 +1209,6 @@ exports[`<SearchInput /> should render 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -1793,8 +1787,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -2405,8 +2397,6 @@ exports[`<SearchInput /> should render large size 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 48px;
 }
