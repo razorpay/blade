@@ -138,6 +138,35 @@ npx agent-device open org.reactjs.native.example.blade \
 
 **Note:** Metro is NOT started by the orchestrator — each Verify agent starts its own Metro on the assigned port inside its worktree.
 
+### 0.8 Set Per-Simulator Metro Port (Port Isolation)
+
+> **CRITICAL:** Without this step, reloads on any simulator will fetch the JS bundle from port 8081 (the default), causing cross-contamination between worktrees during parallel visual verification.
+
+After the app is installed on all simulators, write the correct Metro port into each simulator's app preferences using `xcrun simctl spawn`:
+
+```bash
+# Slot 1 (port 8081) — default, no override needed
+
+# For slots 2..N:
+xcrun simctl spawn "{iOSDevice_2}" defaults write org.reactjs.native.example.blade RCT_jsLocation "localhost:{MetroPort_2}"
+xcrun simctl spawn "{iOSDevice_3}" defaults write org.reactjs.native.example.blade RCT_jsLocation "localhost:{MetroPort_3}"
+# ... repeat for each additional slot
+```
+
+This writes into `NSUserDefaults` for that simulator's app container, so even when the app reloads (shake gesture, error recovery, Fast Refresh reconnect), it fetches from the correct Metro port — not 8081.
+
+**Verify this worked:** Each Verify agent should see its own worktree's component in the Storybook list, not another slot's component.
+
+---
+
+> **⛔ HARD GATE: Steps 0.7 and 0.8 are MANDATORY before spawning Verify agents.**
+> Do NOT proceed to Step 4 (Verify Phase) without completing the shared app build and port isolation.
+> The app binary (native shell) can be built as early as Step 0 since RN migrations only add `.native.tsx` (JS) files — Metro serves the latest JS dynamically at runtime. Building early lets the ~5min build run in parallel with Plan/Execute, saving wall-clock time.
+> Only rebuild after Execute if a new native dependency was added (new pod/native module) — rare for RN migrations.
+> TS checks and unit tests can run without the app, but visual verification requires it.
+> If the app build is skipped, Verify agents MUST be told `--skip-visual` or visual results are invalid.
+> Alternatively, the first Verify agent can build the app if the orchestrator hasn't — but only one agent should build, not all of them.
+
 ---
 
 ## Step 1: Plan Phase (Parallel)
@@ -229,6 +258,11 @@ Agent(
 ---
 
 ## Step 4: Verify Phase (Parallel)
+
+> **Pre-flight check:** Before spawning Verify agents, confirm:
+> 1. ✅ Step 0.7 completed (shared app built and installed on all simulators)
+> 2. ✅ Step 0.8 completed (`RCT_jsLocation` set per simulator for port isolation)
+> If either is missing, complete them NOW before proceeding. Do NOT spawn Verify agents without the app build.
 
 After Execute completes, spawn Verify agents. Each agent gets its own Metro port, simulator device, and session name from the slot allocation (Step 0.4). This allows all verify agents to run truly in parallel without resource conflicts.
 
