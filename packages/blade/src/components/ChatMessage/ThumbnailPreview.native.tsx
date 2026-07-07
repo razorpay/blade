@@ -96,6 +96,7 @@ const ThumbnailPreview = ({
               }}
               resizeMode="cover"
               accessibilityLabel={alt}
+              accessibilityIgnoresInvertColors={true}
             />
           </BaseBox>
         );

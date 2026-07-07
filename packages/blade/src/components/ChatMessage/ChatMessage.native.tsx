@@ -46,11 +46,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     isLoading;
 
   const loadingContent =
-    isLoading && Array.isArray(loadingText) ? (
-      <RollingText texts={loadingText} />
-    ) : (
-      loadingText
-    );
+    isLoading && Array.isArray(loadingText) ? <RollingText texts={loadingText} /> : loadingText;
 
   const finalChildren = shouldWrapInText ? (
     <Text

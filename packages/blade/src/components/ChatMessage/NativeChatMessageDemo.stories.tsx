@@ -3,11 +3,10 @@ import React from 'react';
 import { ChatMessage } from './ChatMessage';
 import type { ChatMessageProps } from './types';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
 import { RayIcon } from '~components/Icons';
 
 export default {
-  title: 'Components/ChatMessage',
+  title: 'Components/ChatMessage/NativeDemo',
   component: ChatMessage,
   parameters: {
     docs: { disable: true },

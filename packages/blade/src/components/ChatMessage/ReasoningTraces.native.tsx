@@ -75,9 +75,7 @@ const ShimmerOverlay = ({
   isActive: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const shimmerDuration = castNativeType(
-    makeMotionTime(getIn(theme.motion, 'duration.2xgentle')),
-  );
+  const shimmerDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.2xgentle')));
   const opacity = useSharedValue(0);
 
   useEffect(() => {
@@ -328,12 +326,7 @@ const ReasoningTraces = ({
 
                 {traces.length > 0 && (
                   <AnimatedRow key="active-row">
-                    <BaseBox
-                      display="flex"
-                      flexDirection="row"
-                      alignItems="center"
-                      gap="spacing.3"
-                    >
+                    <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                       <BaseBox
                         display="flex"
                         alignItems="center"

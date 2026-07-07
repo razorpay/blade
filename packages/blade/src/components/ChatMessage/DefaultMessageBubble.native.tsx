@@ -31,12 +31,7 @@ const DefaultMessageBubble = ({
 
   return (
     <BaseBox>
-      <BaseBox
-        display="flex"
-        flexDirection="row"
-        alignItems="flex-start"
-        gap="spacing.4"
-      >
+      <BaseBox display="flex" flexDirection="row" alignItems="flex-start" gap="spacing.4">
         <BaseBox
           paddingX="spacing.1"
           paddingTop="spacing.3"
