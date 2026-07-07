@@ -14,6 +14,7 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -108,12 +109,19 @@ WithGhostSuggestions.storyName = 'With Ghost Suggestions';
 export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
 
+  const handleFileChange = useCallback(
+    ({ fileList }: { fileList: BladeFileList }) => {
+      setFiles(fileList);
+    },
+    [],
+  );
+
   return (
     <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handleFileChange}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         accept=".jpg,.png,.pdf,.xlsx"
         onSubmit={({ value, fileList }) => {
@@ -254,16 +262,18 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
           setFiles([]);
         }}
       />
-      <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Text size="small" color="surface.text.gray.muted">
-          Right-click the image below and copy it, then paste (Ctrl/Cmd+V) into the input above.
-        </Text>
-        <img
-          src="https://picsum.photos/300/200"
-          alt="Sample"
-          style={{ width: 300, borderRadius: 8 }}
-        />
-      </Box>
+      {!isReactNative() && (
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" color="surface.text.gray.muted">
+            Right-click the image below and copy it, then paste (Ctrl/Cmd+V) into the input above.
+          </Text>
+          <img
+            src="https://picsum.photos/300/200"
+            alt="Sample"
+            style={{ width: 300, borderRadius: 8 }}
+          />
+        </Box>
+      )}
     </Box>
   );
 };
@@ -485,7 +495,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [inputErrorText, setInputErrorText] = useState<string | undefined>(undefined);
   const abortRef = useRef<AbortController | null>(null);
-  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const scrollAnchorRef = useRef<any>(null);
 
   const suggestions = [
     'Set up webhooks',
@@ -496,7 +506,9 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   ];
 
   useEffect(() => {
-    scrollAnchorRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (!isReactNative()) {
+      scrollAnchorRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   const handleRetry = useCallback((failedMsgId: string, originalContent: string) => {
@@ -673,7 +685,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
             </Box>
           </Move>
         ))}
-        <div ref={scrollAnchorRef} />
+        <Box ref={scrollAnchorRef} />
       </Box>
 
       {/* Input area */}
