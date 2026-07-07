@@ -743,7 +743,9 @@ const TicketCardExample = (): React.ReactElement => {
     label: string,
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <TicketCardComponent width="280px" {...stateProps}
+    <TicketCardComponent
+      width="280px"
+      {...stateProps}
       topSection={
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text weight="semibold">Razorpay Summit 2026</Text>
@@ -787,7 +789,9 @@ const InfoCardExample = (): React.ReactElement => {
     label: string,
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <InfoCardComponent width="280px" {...stateProps}
+    <InfoCardComponent
+      width="280px"
+      {...stateProps}
       topSection={
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Text weight="semibold">Razorpay Summit 2026</Text>
