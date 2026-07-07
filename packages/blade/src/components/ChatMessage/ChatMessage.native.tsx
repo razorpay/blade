@@ -37,6 +37,8 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
   useEffect(() => {
     if (texts.length <= 1) return undefined;
 
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
     const interval = setInterval(() => {
       opacity.value = withTiming(0, {
         duration: duration / 2,
@@ -47,7 +49,7 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
         easing: Easing.out(Easing.ease),
       });
 
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % texts.length);
         translateY.value = 12;
         opacity.value = 0;
@@ -62,7 +64,10 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
       }, duration / 2);
     }, 2500);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, [texts.length, duration, opacity, translateY]);
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -166,7 +171,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   const imagePreviewAlignment = senderType === 'self' ? 'flex-end' : 'flex-start';
 
   const messageContent = (
-    <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+    <BaseBox ref={ref as never} display="flex" flexDirection="column" gap="spacing.3">
       {thumbnails && thumbnails.length > 0 ? (
         <BaseBox alignSelf={imagePreviewAlignment}>
           <ThumbnailPreview thumbnails={thumbnails} onThumbnailClick={onThumbnailClick} />
@@ -184,11 +189,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   );
 
   if (onClick) {
-    return (
-      <Pressable ref={ref as never} onPress={onClick}>
-        {messageContent}
-      </Pressable>
-    );
+    return <Pressable onPress={onClick}>{messageContent}</Pressable>;
   }
 
   return messageContent;
