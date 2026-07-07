@@ -369,7 +369,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           opacity={opacity}
           transition={transition}
           flexShrink={flexShrink}
-          {...makeAccessible({ disabled: isCardDisabled })}
+          {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
           {...metaAttribute({ name: MetaConstants.Card, testID })}
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}
@@ -428,7 +428,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           opacity={opacity}
           transition={transition}
           flexShrink={flexShrink}
-          {...makeAccessible({ disabled: isCardDisabled })}
+          {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
           {...metaAttribute({ name: MetaConstants.Card, testID })}
           {...getStyledProps(rest)}
           {...makeAnalyticsAttribute(rest)}
@@ -486,7 +486,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
-        {...makeAccessible({ disabled: isCardDisabled })}
+        {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
