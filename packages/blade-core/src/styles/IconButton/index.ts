@@ -5,7 +5,6 @@ export {
   iconButtonStyles,
   getIconButtonClasses,
   getIconButtonTemplateClasses,
-  getIconButtonIconColorToken,
   highlightedButtonSizeMap,
 } from './iconButton';
 export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './iconButton';
