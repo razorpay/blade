@@ -120,7 +120,7 @@ const MarkdownOrderedList = styled.ol`
 const MarkdownHeadingContainer = styled.div<{ $level: 1 | 2 | 3 | 4 | 5 | 6 }>`
   ${({ theme, $level }) => {
     const spacing = {
-      1: { marginTop: 0, marginBottom: theme.spacing[6] },
+      1: { marginTop: 0, marginBottom: theme.spacing[5] },
       2: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
       3: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
       4: { marginTop: theme.spacing[7], marginBottom: theme.spacing[2] },
@@ -722,8 +722,8 @@ const MarkdownListItemRenderer = ({ children }: { children?: React.ReactNode }):
 
 const markdownHeadingStyles = {
   h1: { level: 1, size: 'large', color: 'surface.text.gray.normal', as: 'h1' },
-  h2: { level: 2, size: 'large', color: 'surface.text.gray.subtle', as: 'h2' },
-  h3: { level: 3, size: 'medium', color: 'surface.text.gray.subtle', as: 'h3' },
+  h2: { level: 2, size: 'medium', color: 'surface.text.gray.subtle', as: 'h2' },
+  h3: { level: 3, size: 'large', color: 'surface.text.gray.muted', as: 'h3' },
   h4: { level: 4, size: 'small', color: 'surface.text.gray.subtle', as: 'h4' },
   h5: { level: 5, size: 'small', color: 'surface.text.gray.muted', as: 'h5' },
   h6: { level: 6, size: 'small', color: 'surface.text.gray.muted', as: 'h6' },

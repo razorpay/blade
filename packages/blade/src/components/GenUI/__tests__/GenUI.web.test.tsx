@@ -3515,6 +3515,7 @@ describe('<GenUI />', () => {
       });
 
       it('should render markdown block spacing from the contract', () => {
+        const H1Component = markdownComponents.h1;
         const H2Component = markdownComponents.h2;
         const H3Component = markdownComponents.h3;
         const H4Component = markdownComponents.h4;
@@ -3524,6 +3525,7 @@ describe('<GenUI />', () => {
 
         const { getByText } = renderWithTheme(
           <>
+            <H1Component>Heading 1 spacing</H1Component>
             <H2Component>Heading 2 spacing</H2Component>
             <ParagraphComponent>Paragraph before H3</ParagraphComponent>
             <H3Component>Heading 3 spacing</H3Component>
@@ -3536,6 +3538,10 @@ describe('<GenUI />', () => {
           </>,
         );
 
+        expect(getByText('Heading 1 spacing').parentElement).toHaveStyle({
+          marginTop: '0px',
+          marginBottom: '16px',
+        });
         expect(getByText('Heading 2 spacing').parentElement).toHaveStyle({
           marginTop: '24px',
           marginBottom: '8px',
@@ -3601,14 +3607,15 @@ describe('<GenUI />', () => {
         });
         expect(getByText('Figma Heading 2').tagName).toBe('H2');
         expect(getByText('Figma Heading 2')).toHaveStyle({
-          fontSize: '1.5rem',
-          fontWeight: '500',
-          lineHeight: '2rem',
-        });
-        expect(getByText('Figma Heading 3')).toHaveStyle({
           fontSize: '1.25rem',
           fontWeight: '500',
           lineHeight: '1.625rem',
+        });
+        expect(getByText('Figma Heading 3')).toHaveStyle({
+          color: 'rgb(97, 97, 97)',
+          fontSize: '1.5rem',
+          fontWeight: '500',
+          lineHeight: '2rem',
         });
         expect(getByText('Figma Heading 4')).toHaveStyle({
           fontSize: '1.125rem',
