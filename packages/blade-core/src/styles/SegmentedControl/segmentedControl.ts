@@ -9,6 +9,7 @@ export const getSegmentedControlTemplateClasses = (): Record<string, string> => 
   field: styles.field,
   fieldTop: styles.fieldTop,
   fieldLeft: styles.fieldLeft,
+  fieldBody: styles.fieldBody,
   item: styles.item,
   itemSelected: styles.itemSelected,
   itemSizeSmall: styles.itemSizeSmall,

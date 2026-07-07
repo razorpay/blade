@@ -152,7 +152,7 @@
 </Story>
 
 <!-- 8. Label Left -->
-<Story name="Label Left" args={{ labelPosition: 'left', label: 'View' }}>
+<Story name="Label Left" args={{ labelPosition: 'left', label: 'View', defaultValue: 'list' }}>
   {#snippet template({ children, ...args })}
     <SegmentedControl {...args}>
       {#snippet children()}

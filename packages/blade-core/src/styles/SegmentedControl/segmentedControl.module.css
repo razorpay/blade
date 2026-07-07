@@ -41,6 +41,10 @@
   gap: var(--spacing-4);
 }
 
+.fieldBody {
+  flex: 1;
+}
+
 /* SegmentedControlItem button */
 .item {
   appearance: none;

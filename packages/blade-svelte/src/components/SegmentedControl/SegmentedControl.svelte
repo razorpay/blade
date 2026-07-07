@@ -135,7 +135,7 @@
       {label}
     </FormLabel>
   {/if}
-  <div>
+  <div class={classes.fieldBody}>
     <!-- svelte-ignore a11y_interactive_supports_focus -->
     <div
       bind:this={containerEl}
