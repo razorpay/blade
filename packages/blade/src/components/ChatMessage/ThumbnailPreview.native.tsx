@@ -23,7 +23,7 @@ const resolveThumbnailItem = (
 const getCardStyle = (
   stackIndex: number,
   isSingleThumbnail: boolean,
-): (typeof imagePreviewToken)['singleCardStyle'] => {
+): typeof imagePreviewToken['singleCardStyle'] => {
   if (isSingleThumbnail) {
     return imagePreviewToken.singleCardStyle;
   }
