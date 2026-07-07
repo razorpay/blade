@@ -59,13 +59,14 @@
     _firstEnabledValue = undefined;
   });
 
-  const registerItem = (value: string, isItemDisabled: boolean): void => {
+  const registerItem = (value: string, isItemDisabled: boolean): number => {
     _itemCounter += 1;
     totalItems = _itemCounter;
     if (!isDisabled && !isItemDisabled && _firstEnabledValue === undefined) {
       _firstEnabledValue = value;
       firstEnabledValue = value;
     }
+    return _itemCounter;
   };
 
   setSegmentedControlContext(() => ({

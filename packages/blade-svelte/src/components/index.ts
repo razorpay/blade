@@ -88,9 +88,9 @@ export {
 export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
 export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
 
-// RTBBadge
-export { RTBBadge } from './RTBBadge';
-export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+// TrustBadge
+export { TrustBadge } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';

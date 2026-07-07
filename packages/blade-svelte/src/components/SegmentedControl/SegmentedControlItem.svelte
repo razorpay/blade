@@ -27,7 +27,7 @@
   // Register synchronously during component initialization (Accordion pattern).
   // This avoids $effect-based registration which causes effect_update_depth_exceeded
   // because mutating $state inside $effect creates a read→write reactive cycle.
-  getCtx().registerItem(value, isItemDisabled);
+  const itemPosition = getCtx().registerItem(value, isItemDisabled);
 
   let buttonEl = $state<HTMLButtonElement | undefined>(undefined);
 
@@ -111,6 +111,7 @@
       checked: isSelected,
       label: accessibilityLabel,
       setSize: ctx.totalItems,
+      posInSet: itemPosition,
     }),
   );
 </script>

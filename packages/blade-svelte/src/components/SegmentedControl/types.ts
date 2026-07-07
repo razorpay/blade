@@ -1,8 +1,9 @@
 import type { Snippet } from 'svelte';
+import type { DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
 
 export type SegmentedControlSize = 'small' | 'medium' | 'large';
 
-type SegmentedControlCommonProps = {
+type SegmentedControlCommonProps = DataAnalyticsAttribute & {
   /**
    * The content of the SegmentedControl, accepts `SegmentedControlItem` snippets.
    */
@@ -88,7 +89,7 @@ export type SegmentedControlProps =
   | SegmentedControlPropsWithLabel
   | SegmentedControlPropsWithA11yLabel;
 
-export type SegmentedControlItemProps = {
+export type SegmentedControlItemProps = DataAnalyticsAttribute & {
   /**
    * The unique value for this item.
    */
@@ -125,6 +126,6 @@ export type SegmentedControlContextType = {
   baseId: string;
   totalItems: number;
   firstEnabledValue: string | undefined;
-  /** Called synchronously during item init — no HTMLElement needed. */
-  registerItem: (value: string, isItemDisabled: boolean) => void;
+  /** Called synchronously during item init. Returns the 1-indexed position of the registered item. */
+  registerItem: (value: string, isItemDisabled: boolean) => number;
 };
