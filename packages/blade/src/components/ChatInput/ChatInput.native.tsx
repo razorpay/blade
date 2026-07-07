@@ -100,6 +100,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     transform: [{ translateY: (1 - errorProgress.value) * 20 }],
   }));
 
+  const [inputContainerHeight, setInputContainerHeight] = React.useState(0);
+
   const prevHasFiles = React.useRef(hasFiles);
   React.useEffect(() => {
     if (hasFiles !== prevHasFiles.current) {
@@ -178,7 +180,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           style={[
             {
               position: 'absolute',
-              bottom: '100%',
+              bottom: inputContainerHeight,
               left: 0,
               right: 0,
               zIndex: 0,
@@ -217,7 +219,11 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         </Animated.View>
       ) : null}
 
-      <BaseBox position="relative" zIndex={1}>
+      <BaseBox
+        position="relative"
+        zIndex={1}
+        onLayout={(e) => setInputContainerHeight(e.nativeEvent.layout.height)}
+      >
         <BaseInput
           ref={mergedRef}
           as="textarea"

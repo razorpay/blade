@@ -67,6 +67,14 @@ type ChatInputProps = {
 
   /**
    * Callback fired when files are selected via the upload button.
+   *
+   * **Note (Web):** Called after files are picked, with `fileList` containing the merged list of
+   * previously attached files plus the newly selected files.
+   *
+   * **Note (React Native):** Called when the upload button is tapped (before any file is picked).
+   * `fileList` contains the current list of already-attached files, not newly picked ones.
+   * Wire your own file picker (e.g. `react-native-document-picker`) and update the `fileList` prop
+   * after the user selects files.
    */
   onFileChange?: ({ fileList }: { fileList: BladeFileList }) => void;
 

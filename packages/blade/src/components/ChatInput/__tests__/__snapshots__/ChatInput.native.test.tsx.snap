@@ -21,6 +21,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
   >
     <View
       data-blade-component="base-box"
+      onLayout={[Function]}
       position="relative"
       style={
         [
@@ -692,6 +693,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
   >
     <View
       data-blade-component="base-box"
+      onLayout={[Function]}
       position="relative"
       style={
         [
