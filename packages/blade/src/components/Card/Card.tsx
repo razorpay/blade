@@ -361,9 +361,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           maxWidth={maxWidth}
           href={isCardDisabled ? undefined : href}
           accessibilityLabel={accessibilityLabel}
-          cursor={
-            (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
-          }
+          cursor={(isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never}
           opacity={opacity}
           transition={transition}
           flexShrink={flexShrink}
@@ -432,9 +430,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           maxWidth={maxWidth}
           href={isCardDisabled ? undefined : href}
           accessibilityLabel={accessibilityLabel}
-          cursor={
-            (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
-          }
+          cursor={(isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never}
           opacity={opacity}
           transition={transition}
           flexShrink={flexShrink}
@@ -488,9 +484,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         href={isCardDisabled ? undefined : href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
-        cursor={
-          (isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never
-        }
+        cursor={(isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never}
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
