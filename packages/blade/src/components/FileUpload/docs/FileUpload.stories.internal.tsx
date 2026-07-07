@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, View as RNView } from 'react-native';
+import { Pressable } from 'react-native';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
@@ -10,6 +10,12 @@ import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
 import { Divider } from '~components/Divider';
 import { Badge } from '~components/Badge';
+import {
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+} from '~components/BottomSheet';
 
 const MOCK_FILES: Array<{ name: string; size: number; type: string }> = [
   { name: 'invoice-2024.pdf', size: 245_760, type: 'application/pdf' },
@@ -70,14 +76,10 @@ const simulateUpload = (
     } else if (percent >= 100) {
       clearInterval(interval);
       setFiles((prev) =>
-        prev.map((f) =>
-          f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f,
-        ),
+        prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
       );
     } else {
-      setFiles((prev) =>
-        prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)),
-      );
+      setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
     }
   }, 300);
 };
@@ -202,14 +204,11 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFile = createBladeFile(selected[0]);
-      setFiles([newFile]);
-      simulateUpload(newFile.id!, setFiles);
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+    const newFile = createBladeFile(selected[0]);
+    setFiles([newFile]);
+    simulateUpload(newFile.id!, setFiles);
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -259,14 +258,11 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFiles = selected.map((s) => createBladeFile(s));
-      setFiles((prev) => [...prev, ...newFiles]);
-      newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+    const newFiles = selected.map((s) => createBladeFile(s));
+    setFiles((prev) => [...prev, ...newFiles]);
+    newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -317,20 +313,17 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback(
-    (selected: Array<(typeof MOCK_FILES)[number]>) => {
-      const newFiles = selected.map((s) => {
-        fileCountRef.current++;
-        return createBladeFile(s);
-      });
-      setFiles((prev) => [...prev, ...newFiles]);
-      newFiles.forEach((f, i) => {
-        const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
-        simulateUpload(f.id!, setFiles, shouldFail);
-      });
-    },
-    [],
-  );
+  const handleFilesSelected = useCallback((selected: Array<(typeof MOCK_FILES)[number]>) => {
+    const newFiles = selected.map((s) => {
+      fileCountRef.current++;
+      return createBladeFile(s);
+    });
+    setFiles((prev) => [...prev, ...newFiles]);
+    newFiles.forEach((f, i) => {
+      const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
+      simulateUpload(f.id!, setFiles, shouldFail);
+    });
+  }, []);
 
   return (
     <Box padding="spacing.5" maxWidth="400px">

@@ -91,12 +91,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
     errorProgress.value = withTiming(isError ? 1 : 0, {
       duration,
-      easing: Easing.bezier(
-        easingValues[0],
-        easingValues[1],
-        easingValues[2],
-        easingValues[3],
-      ),
+      easing: Easing.bezier(easingValues[0], easingValues[1], easingValues[2], easingValues[3]),
     });
   }, [isError]);
 
@@ -240,6 +235,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           isDisabled={isDisabled}
           numberOfLines={2}
           size="medium"
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           padding={makeSpace(theme.spacing[5])}
           borderRadius="large"

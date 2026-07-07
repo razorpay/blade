@@ -109,12 +109,9 @@ WithGhostSuggestions.storyName = 'With Ghost Suggestions';
 export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
 
-  const handleFileChange = useCallback(
-    ({ fileList }: { fileList: BladeFileList }) => {
-      setFiles(fileList);
-    },
-    [],
-  );
+  const handleFileChange = useCallback(({ fileList }: { fileList: BladeFileList }) => {
+    setFiles(fileList);
+  }, []);
 
   return (
     <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
@@ -294,9 +291,7 @@ type ChatMsg = {
 };
 
 type MockResponseResult =
-  | { type: 'text'; text: string }
-  | { type: 'rich'; content: React.ReactNode }
-  | { type: 'error' };
+  { type: 'text'; text: string } | { type: 'rich'; content: React.ReactNode } | { type: 'error' };
 
 const simulateStream = (
   text: string,
@@ -408,15 +403,13 @@ const getMockResponse = (userMessage: string): MockResponseResult => {
   if (/integrate|integration|sdk|api key/i.test(lower)) {
     return {
       type: 'text',
-      text:
-        'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
+      text: 'To integrate Razorpay, start by signing up and grabbing your API keys from the Dashboard. Then install the SDK by running npm install razorpay in your project. Next, initialize the SDK with your key_id and key_secret. After that, create an Order using the Orders API, and finally open the Razorpay Checkout on your frontend to accept payments. Would you like a code snippet for a specific language or framework?',
     };
   }
 
   return {
     type: 'text',
-    text:
-      "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
+    text: "That's a great question! Razorpay provides comprehensive APIs, SDKs, and a developer dashboard to help you build and manage payments seamlessly. Is there a specific area you'd like to dive deeper into — like subscriptions, refunds, or settlements?",
   };
 };
 
@@ -495,7 +488,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [inputErrorText, setInputErrorText] = useState<string | undefined>(undefined);
   const abortRef = useRef<AbortController | null>(null);
-  const scrollAnchorRef = useRef<any>(null);
+  const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
 
   const suggestions = [
     'Set up webhooks',

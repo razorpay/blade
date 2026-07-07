@@ -12,11 +12,7 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
-import {
-  BottomSheet,
-  BottomSheetHeader,
-  BottomSheetBody,
-} from '~components/BottomSheet';
+import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '~components/BottomSheet';
 
 const Page = (): React.ReactElement => {
   return (
@@ -173,7 +169,9 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
             {responseData.map((res, index) => {
               return (
                 <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
-                  <Text>Image {index + 1}: {res?.url ?? 'uploaded'}</Text>
+                  <Text>
+                    Image {index + 1}: {res?.url ?? 'uploaded'}
+                  </Text>
                   <Divider thickness="thicker" variant="normal" />
                 </Box>
               );

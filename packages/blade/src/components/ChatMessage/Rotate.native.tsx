@@ -30,10 +30,7 @@ const Rotate = ({
 
   React.useEffect(() => {
     if (animate) {
-      rotation.value = withRepeat(
-        withTiming(90, { duration, easing }),
-        -1,
-      );
+      rotation.value = withRepeat(withTiming(90, { duration, easing }), -1);
     } else {
       cancelAnimation(rotation);
       rotation.value = 0;

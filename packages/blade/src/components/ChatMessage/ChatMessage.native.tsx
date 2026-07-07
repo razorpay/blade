@@ -72,12 +72,7 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
 
   return (
     <Animated.View style={animatedStyle}>
-      <Text
-        color="feedback.text.positive.intense"
-        weight="regular"
-        variant="body"
-        size="medium"
-      >
+      <Text color="feedback.text.positive.intense" weight="regular" variant="body" size="medium">
         {texts[currentIndex]}
       </Text>
     </Animated.View>
@@ -96,7 +91,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     children,
     leading,
     loadingText,
-    wordBreak = 'break-word',
+    wordBreak: ignoredWordBreak,
     maxWidth,
     thumbnails,
     onThumbnailClick,

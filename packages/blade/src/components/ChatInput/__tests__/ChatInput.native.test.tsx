@@ -33,9 +33,7 @@ describe('<ChatInput /> (native)', () => {
   });
 
   it('should keep submit button disabled when input is empty', () => {
-    const { getByRole } = renderWithTheme(
-      <ChatInput accessibilityLabel={accessibilityLabel} />,
-    );
+    const { getByRole } = renderWithTheme(<ChatInput accessibilityLabel={accessibilityLabel} />);
 
     const submitButton = getByRole('button', { name: 'Submit' });
     expect(submitButton.props.accessibilityState?.disabled).toBe(true);
@@ -91,15 +89,10 @@ describe('<ChatInput /> (native)', () => {
   });
 
   it('should render file list when fileList is provided', () => {
-    const files = [
-      { id: 'file-1', name: 'document.pdf', status: 'success' as const, size: 1024 },
-    ];
+    const files = [{ id: 'file-1', name: 'document.pdf', status: 'success' as const, size: 1024 }];
 
     const { getByText } = renderWithTheme(
-      <ChatInput
-        accessibilityLabel={accessibilityLabel}
-        fileList={files as never}
-      />,
+      <ChatInput accessibilityLabel={accessibilityLabel} fileList={files as never} />,
     );
 
     expect(getByText('document.pdf')).toBeTruthy();
@@ -107,9 +100,7 @@ describe('<ChatInput /> (native)', () => {
 
   it('should call onFileRemove when file remove button is pressed', () => {
     const onFileRemove = jest.fn();
-    const files = [
-      { id: 'file-1', name: 'document.pdf', status: 'success' as const, size: 1024 },
-    ];
+    const files = [{ id: 'file-1', name: 'document.pdf', status: 'success' as const, size: 1024 }];
 
     const { getByRole } = renderWithTheme(
       <ChatInput

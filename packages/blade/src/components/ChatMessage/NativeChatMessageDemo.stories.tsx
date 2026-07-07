@@ -3,7 +3,6 @@ import React from 'react';
 import { ChatMessage } from './ChatMessage';
 import type { ChatMessageProps } from './types';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
 import { RayIcon } from '~components/Icons';
 
 export default {
@@ -53,7 +52,7 @@ const LoadingTemplate: StoryFn<ChatMessageProps> = (args) => {
   );
 };
 
-export const Loading = LoadingTemplate.bind({});
+export const NativeLoading = LoadingTemplate.bind({});
 
 const ErrorTemplate: StoryFn<ChatMessageProps> = (args) => {
   return (
