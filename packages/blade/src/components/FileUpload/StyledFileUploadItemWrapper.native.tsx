@@ -20,7 +20,7 @@ const StyledFileUploadItemWrapper = ({
 
   const shadowColor =
     colorScheme === 'light'
-      ? globalColors.neutral.blueGrayLight[900]
+      ? globalColors.neutral.blueGrayLight.a906
       : globalColors.neutral.black[50];
 
   return (
