@@ -8,6 +8,7 @@ import type { StyledFileUploadWrapperProps } from './types';
 import { fileUploadColorTokens, fileUploadMotionTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+import { castNativeType } from '~utils';
 
 type StyledFileUploadWrapperNativeProps = Omit<StyledFileUploadWrapperProps, 'theme'> & {
   style?: Record<string, unknown>;
@@ -28,7 +29,7 @@ const StyledFileUploadWrapper = ({
   React.useEffect(() => {
     progress.value = withTiming(isActive ? 1 : 0, {
       duration,
-      easing: easingFn,
+      easing: castNativeType(easingFn),
     });
   }, [isActive, duration]);
 

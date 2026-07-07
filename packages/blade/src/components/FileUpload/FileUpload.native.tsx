@@ -119,8 +119,7 @@ const _FileUpload = ({
   const handlePress = (): void => {
     if (isDisabled) return;
     // On native, pressing the upload area signals the consumer to open
-    // their file picker. The consumer then calls back with onChange.
-    onChange?.({ name, fileList: selectedFiles });
+    // their file picker. The consumer then calls onChange after files are picked.
   };
 
   const computedHeight = isSizeVariable

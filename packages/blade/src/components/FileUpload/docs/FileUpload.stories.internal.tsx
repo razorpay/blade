@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, View as RNView } from 'react-native';
+import { Pressable } from 'react-native';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
+import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '~components/BottomSheet';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Heading } from '~components/Typography/Heading';
