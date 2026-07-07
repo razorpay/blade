@@ -55,7 +55,7 @@
   <div
     id={panelId}
     class={panelClasses}
-    tabindex={isSelected ? 0 : -1}
+    tabindex={0}
     role="tabpanel"
     aria-labelledby={tabItemId}
     aria-hidden={!isSelected}
