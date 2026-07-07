@@ -8,6 +8,8 @@
   import { getSegmentedControlTemplateClasses } from '@razorpay/blade-core/styles';
   import { setSegmentedControlContext } from './context';
   import SegmentedControlIndicator from './SegmentedControlIndicator.svelte';
+  import FormLabel from '../Input/_Form/FormLabel.svelte';
+  import FormHint from '../Input/_Form/FormHint.svelte';
   import type { SegmentedControlProps } from './types';
 
   const classes = getSegmentedControlTemplateClasses();
@@ -34,6 +36,8 @@
 
   const baseId = `segmented-control-${crypto.randomUUID().slice(0, 8)}`;
   const labelId = `${baseId}-label`;
+  const helpTextId = `${baseId}-helptext`;
+  const errorTextId = `${baseId}-errortext`;
 
   let internalValue = $state<string | undefined>(defaultValue);
   const selectedValue = $derived(
@@ -83,10 +87,16 @@
 
   let containerEl = $state<HTMLElement | undefined>(undefined);
 
-  const showError = $derived(validationState === 'error' && Boolean(errorText));
-  const showHelpText = $derived(!showError && Boolean(helpText));
-  const hasFieldWrapper = $derived(Boolean(label || helpText || errorText));
+  const hintType = $derived<'error' | 'help'>(
+    validationState === 'error' ? 'error' : 'help',
+  );
+
   const ariaLabel = $derived(label ? undefined : accessibilityLabel || name);
+  const describedBy = $derived.by(() => {
+    if (validationState === 'error' && errorText) return errorTextId;
+    if (helpText) return helpTextId;
+    return undefined;
+  });
 
   const containerSizeClass = $derived.by(() => {
     if (size === 'small') return classes.containerSizeSmall;
@@ -94,11 +104,11 @@
     return classes.containerSizeMedium;
   });
 
-  const hintSizeClass = $derived.by(() => {
-    if (size === 'small') return classes.hintTextSmall;
-    if (size === 'large') return classes.hintTextLarge;
-    return classes.hintTextMedium;
-  });
+  const fieldClasses = $derived(
+    [classes.field, labelPosition === 'left' ? classes.fieldLeft : classes.fieldTop]
+      .filter(Boolean)
+      .join(' '),
+  );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.SegmentedControl, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -108,60 +118,40 @@
       labelledBy: label ? labelId : undefined,
       label: ariaLabel,
       required: isRequired,
+      describedBy,
     }),
   );
 </script>
 
-{#snippet segmentedControlEl()}
-  <!-- svelte-ignore a11y_interactive_supports_focus -->
-  <div
-    bind:this={containerEl}
-    class={[classes.container, containerSizeClass].filter(Boolean).join(' ')}
-    {...a11yAttrs}
-  >
-    {@render children()}
-    <SegmentedControlIndicator {containerEl} {baseId} />
-  </div>
-{/snippet}
-
-{#if hasFieldWrapper}
-  <div
-    class={labelPosition === 'left' ? classes.fieldWrapperLeft : classes.fieldWrapperTop}
-    {...metaAttrs}
-    {...analyticsAttrs}
-  >
-    {#if label}
-      <span
-        id={labelId}
-        class={[
-          labelPosition === 'left' ? classes.labelLeft : classes.labelTop,
-          necessityIndicator === 'required'
-            ? classes.necessityRequired
-            : necessityIndicator === 'optional'
-              ? classes.necessityOptional
-              : '',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        {label}
-      </span>
-    {/if}
-    <div class={classes.fieldContent}>
-      {@render segmentedControlEl()}
-      {#if showError}
-        <span class={[classes.hintText, classes.errorText, hintSizeClass].filter(Boolean).join(' ')}>
-          {errorText}
-        </span>
-      {:else if showHelpText}
-        <span class={[classes.hintText, classes.helpText, hintSizeClass].filter(Boolean).join(' ')}>
-          {helpText}
-        </span>
-      {/if}
+<div class={fieldClasses} {...metaAttrs} {...analyticsAttrs}>
+  {#if label}
+    <FormLabel
+      as="span"
+      id={labelId}
+      position={labelPosition}
+      size={size === 'small' ? 'small' : size === 'large' ? 'large' : 'medium'}
+      {necessityIndicator}
+    >
+      {label}
+    </FormLabel>
+  {/if}
+  <div>
+    <!-- svelte-ignore a11y_interactive_supports_focus -->
+    <div
+      bind:this={containerEl}
+      class={[classes.container, containerSizeClass].filter(Boolean).join(' ')}
+      {...a11yAttrs}
+    >
+      {@render children()}
+      <SegmentedControlIndicator {containerEl} {baseId} />
     </div>
+    <FormHint
+      type={hintType}
+      size={size === 'small' ? 'small' : size === 'large' ? 'large' : 'medium'}
+      {helpText}
+      {errorText}
+      {helpTextId}
+      {errorTextId}
+    />
   </div>
-{:else}
-  <div {...metaAttrs} {...analyticsAttrs}>
-    {@render segmentedControlEl()}
-  </div>
-{/if}
+</div>

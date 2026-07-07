@@ -27,72 +27,18 @@
 }
 
 /* SegmentedControl field wrapper (with label/hint) */
-.fieldWrapperTop {
+.field {
   display: flex;
+}
+
+.fieldTop {
   flex-direction: column;
 }
 
-.fieldWrapperLeft {
-  display: flex;
+.fieldLeft {
   flex-direction: row;
-  align-items: center;
-}
-
-.fieldContent {
-  flex: 1;
-}
-
-/* Label */
-.labelTop {
-  margin-bottom: var(--spacing-2);
-}
-
-.labelLeft {
-  margin-right: var(--spacing-3);
-  white-space: nowrap;
-}
-
-/* Hint / error text */
-.hintText {
-  margin-top: var(--spacing-1);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-1);
-}
-
-.hintTextSmall {
-  font-size: var(--typography-fonts-size-75);
-  line-height: var(--typography-lineheights-s);
-}
-
-.hintTextMedium {
-  font-size: var(--typography-fonts-size-75);
-  line-height: var(--typography-lineheights-s);
-}
-
-.hintTextLarge {
-  font-size: var(--typography-fonts-size-100);
-  line-height: var(--typography-lineheights-m);
-}
-
-.helpText {
-  color: var(--surface-text-gray-muted);
-}
-
-.errorText {
-  color: var(--feedback-text-negative-intense);
-}
-
-/* Necessity indicator */
-.necessityRequired::after {
-  content: ' *';
-  color: var(--feedback-text-negative-intense);
-}
-
-.necessityOptional::after {
-  content: ' (optional)';
-  color: var(--surface-text-gray-muted);
-  font-weight: var(--font-weight-regular);
+  align-items: flex-start;
+  gap: var(--spacing-4);
 }
 
 /* SegmentedControlItem button */
