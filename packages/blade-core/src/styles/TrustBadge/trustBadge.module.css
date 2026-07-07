@@ -1,0 +1,63 @@
+/* ============================================
+   TrustBadge Component Styles
+   A generic trust badge — a brand shield paired with a faded pill.
+   Mirrors Figma: shield icon (brand gradient) overlapping a faded pill that
+   reads a configurable trust label (default: "Razorpay Trusted Business").
+   Two emphasis treatments (intense=white text on dark/colored surfaces, subtle=dark
+   text on light surfaces) and an icon-only variant that drops the pill entirely.
+   ============================================ */
+
+/* --- Root ---
+   Isolation creates a new stacking context so the shield's z-index sits above the
+   pill regardless of surrounding content. Inline-flex keeps the badge shrink-wrapped. */
+.trustBadge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  isolation: isolate;
+  flex-shrink: 0;
+}
+
+/* --- Shield icon wrapper ---
+   The 16px shield overlaps the pill's left edge by 12px (Figma `mr-[-12px]`) and is
+   raised above it. In default variant the shield is decorative (aria-hidden) because the
+   visible pill text is announced; in `icon-only` variant the wrapper carries the label. */
+.trustBadgeShield {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* The overlap only applies when the pill is present. */
+.trustBadgeShieldOverlap {
+  margin-right: -12px;
+}
+
+/* --- Pill ---
+   Shared pill layout. Background is emphasis-specific:
+   - intense → 32% black (`surface.icon.staticBlack.disabled`) + white text on dark surfaces
+   - subtle  → 10% black (Checkout DS Figma) + black text on light surfaces */
+.trustBadgePill {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-4);
+  border-radius: var(--border-radius-large);
+  flex-shrink: 0;
+}
+
+.trustBadgePillIntense {
+  background-color: var(--surface-icon-static-black-disabled);
+}
+
+.trustBadgePillSubtle {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
