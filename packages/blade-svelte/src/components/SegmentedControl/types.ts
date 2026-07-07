@@ -1,5 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { IconComponent } from '../Icons/iconMap';
 
 export type SegmentedControlSize = 'small' | 'medium' | 'large';
 
@@ -101,7 +102,7 @@ export type SegmentedControlItemProps = DataAnalyticsAttribute & {
   /**
    * A leading icon component.
    */
-  leading?: unknown;
+  leading?: IconComponent;
   /**
    * If `true`, this item is disabled.
    * @default false

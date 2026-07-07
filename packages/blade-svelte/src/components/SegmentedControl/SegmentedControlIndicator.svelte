@@ -70,11 +70,10 @@
     return () => observer.disconnect();
   });
 
-  const transitionDuration = $derived(shouldAnimate ? 'var(--duration-moderate)' : '0ms');
-
   const indicatorClasses = $derived(
     [
       classes.indicator,
+      shouldAnimate ? classes.indicatorAnimating : classes.indicatorInstant,
       ctx.size === 'small' ? classes.indicatorRadiusSmall : classes.indicatorRadiusMediumToken,
     ]
       .filter(Boolean)
@@ -82,7 +81,7 @@
   );
 
   const indicatorStyle = $derived(
-    `transition-property: transform, width, height; transition-duration: ${transitionDuration}; transition-timing-function: var(--easing-standard); width: ${dimensions.width}px; height: ${dimensions.height}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`,
+    `width: ${dimensions.width}px; height: ${dimensions.height}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`,
   );
 </script>
 

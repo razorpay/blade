@@ -131,8 +131,7 @@
   {...analyticsAttrs}
 >
   {#if Leading}
-    {@const LeadingIcon = Leading as any}
-    <LeadingIcon size={iconSizeMap[ctx.size]} color={iconColor} />
+    <Leading size={iconSizeMap[ctx.size]} color={iconColor} />
   {/if}
   {#if children}
     <span class={[classes.itemText, textSizeClass, textColorClass].filter(Boolean).join(' ')}>
