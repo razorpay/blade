@@ -111,7 +111,11 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   );
 
   if (onClick) {
-    return <Pressable onPress={onClick}>{messageContent}</Pressable>;
+    return (
+      <Pressable accessibilityRole="button" onPress={onClick}>
+        {messageContent}
+      </Pressable>
+    );
   }
 
   return messageContent;
