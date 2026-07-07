@@ -2507,6 +2507,398 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 </div>
 `;
 
+exports[`<Dropdown /> with <AutoComplete /> should default maxRows to "single" so AutoComplete height matches other inputs (e.g. DatePicker) 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c4.c4.c4.c4.c4 {
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: none;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c5.c5.c5.c5.c5::-webkit-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5::-moz-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5:-ms-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5::placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5:focus {
+  outline: none;
+}
+
+.c0.c0.c0.c0.c0 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c0.c0.c0.c0.c0:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 36px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
+  display: none;
+}
+
+<div
+  class=" c0 c1 __blade-base-input-wrapper"
+  data-blade-component="base-box"
+>
+  <div
+    class="c2 c3 tags-slot"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-controls="dropdown-123-actionlist"
+        aria-describedby=""
+        aria-disabled="false"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-invalid="false"
+        aria-required="false"
+        autocomplete="off"
+        class="c5"
+        data-blade-component="styled-base-input"
+        id="dropdown-123"
+        placeholder="Select Option"
+        role="combobox"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    class="c6"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c6"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="c9"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+              data-blade-component="svg-path"
+              fill="hsla(204, 9%, 42%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="c10"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+              data-blade-component="svg-path"
+              fill="hsla(204, 9%, 42%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with large size 1`] = `
 .c0.c0.c0.c0.c0 {
   text-align: left;
@@ -3879,6 +4271,397 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               data-blade-component="base-box"
             />
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> with <AutoComplete /> should respect maxRows="multiple" when explicitly set 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c4.c4.c4.c4.c4 {
+  width: 100%;
+  min-width: min(20%,60px);
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: none;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: hsla(0,0%,100%,0);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c5.c5.c5.c5.c5::-webkit-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5::-moz-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5:-ms-input-placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5::placeholder {
+  color: hsla(206,10%,29%,0.32);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5:focus {
+  outline: none;
+}
+
+.c0.c0.c0.c0.c0 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(205,8%,71%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c0.c0.c0.c0.c0:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 8px;
+  overflow: hidden;
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: auto;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(204,8%,88%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 640ms;
+  transition-duration: 640ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
+}
+
+.c1.c1.c1.c1.c1 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 144px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -ms-overflow-style: none;
+  -webkit-scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -ms-scrollbar-width: none;
+  scrollbar-width: none;
+}
+
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
+  display: none;
+}
+
+<div
+  class=" c0 c1 __blade-base-input-wrapper"
+  data-blade-component="base-box"
+>
+  <div
+    class="c2 c3 tags-slot"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c4"
+      data-blade-component="base-box"
+    >
+      <input
+        aria-controls="dropdown-123-actionlist"
+        aria-describedby=""
+        aria-disabled="false"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-invalid="false"
+        aria-required="false"
+        autocomplete="off"
+        class="c5"
+        data-blade-component="styled-base-input"
+        id="dropdown-123"
+        placeholder="Select Option"
+        role="combobox"
+        rows="1"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    class="c6"
+    data-blade-component="base-box"
+  >
+    <div
+      class="c6"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <svg
+            aria-hidden="true"
+            class="c9"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+              data-blade-component="svg-path"
+              fill="hsla(204, 9%, 42%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="c10"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+              data-blade-component="svg-path"
+              fill="hsla(204, 9%, 42%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
     </div>
