@@ -29,3 +29,22 @@ fi
 ```
 
 When intent is `perform-task-end-to-end`, load `perform-task-end-to-end` skill in your context and do the task end-to-end as guided by the skill.
+
+## Verify Before Fixing
+
+Before raising a fix PR, **always** verify that a fix is actually needed. Do not blindly jump to a code change based on a screenshot or a user report.
+
+### Required Steps
+
+1. **Reproduce the issue** — Use storybook, unit tests, or a minimal example to confirm the bug exists. A screenshot alone is not reproduction.
+2. **Check consumer usage first** — Many "bugs" are actually consumer misconfiguration (e.g. wrong prop like `maxRows="multiple"` instead of default `maxRows="single"`). Check if the issue reproduces with default/correct props before assuming a Blade code defect.
+3. **Check existing stories and tests** — Look at the component's stories and test files. If the "buggy" behaviour is already demonstrated as expected behaviour there, it's not a bug.
+4. **Confirm root cause with evidence** — Point to the specific line(s) of code causing the issue. Don't guess — read the code path end-to-end.
+5. **If no fix is needed** — Tell the user the correct usage (e.g. "remove `maxRows='multiple'`") instead of raising a PR.
+
+### Anti-patterns to Avoid
+
+- ❌ Seeing a screenshot → finding something plausible in code → raising a PR
+- ❌ Fixing a symptom without understanding the root cause
+- ❌ Raising a docs-only change when the real issue was a consumer prop misuse
+- ✅ Reproducing → checking usage → confirming root cause → then fixing
