@@ -48,6 +48,8 @@
 </script>
 
 <script lang="ts">
+  import TicketCard from './TicketCard.svelte';
+  import InfoCard from './InfoCard.svelte';
   import CardBody from './CardBody.svelte';
   import CardHeader from './CardHeader.svelte';
   import CardHeaderLeading from './CardHeaderLeading.svelte';
@@ -670,48 +672,40 @@
 <!-- Reusable renderers for the sectioned-variant showcase stories below. Defined at component
      top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
 {#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
-  <Card variant="ticket" width="280px" {isSelected} {isDisabled}>
+  <TicketCard width="280px" {isSelected} {isDisabled}>
     {#snippet topSection()}
-      <CardBody>
-        <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
-          <Text weight="semibold">Razorpay Summit 2026</Text>
-          <Text size="small" color="surface.text.gray.subtle">{label}</Text>
-        </div>
-      </CardBody>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+      </div>
     {/snippet}
     {#snippet bottomSection()}
-      <CardBody>
-        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-          <div style="display: flex; flex-direction: column;">
-            <Text size="small" color="surface.text.gray.subtle">Seat</Text>
-            <Text weight="semibold">A-24</Text>
-          </div>
-          <Amount value={4999} type="body" weight="semibold" />
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <div style="display: flex; flex-direction: column;">
+          <Text size="small" color="surface.text.gray.subtle">Seat</Text>
+          <Text weight="semibold">A-24</Text>
         </div>
-      </CardBody>
+        <Amount value={4999} type="body" weight="semibold" />
+      </div>
     {/snippet}
-  </Card>
+  </TicketCard>
 {/snippet}
 
-{#snippet infoCard(label: string, isSelected: boolean)}
-  <Card variant="info" width="280px" {isSelected}>
+{#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
+  <InfoCard width="280px" {isSelected} {isDisabled}>
     {#snippet topSection()}
-      <CardBody>
-        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-          <Text weight="semibold">Razorpay Summit 2026</Text>
-          <Text size="small" color="surface.text.gray.subtle">{label}</Text>
-        </div>
-      </CardBody>
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+      </div>
     {/snippet}
     {#snippet bottomSection()}
-      <CardBody>
-        <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
-          <Text size="small" color="surface.text.gray.subtle">Venue</Text>
-          <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
-        </div>
-      </CardBody>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <Text size="small" color="surface.text.gray.subtle">Venue</Text>
+        <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+      </div>
     {/snippet}
-  </Card>
+  </InfoCard>
 {/snippet}
 
 <!-- Story 10: Ticket Card Variant — two sections split by a scalloped, notched tear line.
@@ -729,12 +723,13 @@
 
 <!-- Story 11: Info Card Variant — emphasized header section over a subtle body section wrapped
      by a single rounded border. Sections are supplied via the `topSection` and `bottomSection`
-     snippets. -->
+     snippets. Shown in default, selected and disabled states. -->
 <Story name="Info Card" asChild>
   <div
     style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
   >
-    {@render infoCard('Default', false)}
-    {@render infoCard('Selected', true)}
+    {@render infoCard('Default', false, false)}
+    {@render infoCard('Selected', true, false)}
+    {@render infoCard('Disabled', false, true)}
   </div>
 </Story>

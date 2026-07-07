@@ -200,9 +200,9 @@ type CardVariantProps =
        * Sets the visual treatment of the Card.
        *
        * - `ticket`: ticket/coupon style card split into two sections by a perforated tear line
-       *   with notched edges. Sections are supplied via the `top` and `bottom` snippets.
+       *   with notched edges. Sections are supplied via the `topSection` and `bottomSection` snippets.
        * - `info`: two-tone card with an emphasized header section and a subtle body section
-       *   wrapped by a single rounded border. Sections are supplied via `top` and `bottom`.
+       *   wrapped by a single rounded border. Sections are supplied via `topSection` and `bottomSection`.
        */
       variant: 'ticket' | 'info';
       backgroundColor?: never;
@@ -211,9 +211,9 @@ type CardVariantProps =
 /**
  * Props for the `Card` component.
  *
- * (In the React Card the `ticket`/`info` sections are authored as two `CardBody` children — for
- * `ticket` separated by a `CardTearLine`. Svelte snippets can't be introspected/split at runtime,
- * so the sections are passed explicitly via the `top` and `bottom` snippets here.)
+ * (In the React Card the `ticket`/`info` sections are authored as two `CardBody` children separated
+ * by a `CardTearLine`. Svelte snippets can't be introspected/split at runtime, so the sections are
+ * passed explicitly via the `topSection` and `bottomSection` snippets here.)
  *
  * @example
  * ```svelte
@@ -225,6 +225,23 @@ type CardVariantProps =
  * ```
  */
 export type CardProps = CardBaseProps & CardVariantProps;
+
+export type SectionedCardProps = Omit<CardBaseProps, 'children' | 'variant'> & {
+  /**
+   * Content for the top section. Wrapped in `CardBody` by the component.
+   */
+  topSection: Snippet;
+  /**
+   * Content for the bottom section. Wrapped in `CardBody` by the component.
+   */
+  bottomSection: Snippet;
+};
+
+/** Props for the `TicketCard` wrapper around `Card variant="ticket"`. */
+export type TicketCardProps = SectionedCardProps;
+
+/** Props for the `InfoCard` wrapper around `Card variant="info"`. */
+export type InfoCardProps = SectionedCardProps;
 
 export type CardBodyProps = {
   /**

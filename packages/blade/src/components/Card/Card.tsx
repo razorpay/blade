@@ -192,7 +192,7 @@ export type CardProps = {
    * - `ticket`: Ticket/coupon style card split into two sections by a perforated tear line with
    *   notched edges. Accepts two `CardBody` sections separated by a `CardTearLine`.
    * - `info`: Two-tone card with an emphasized header section and a subtle body section wrapped by
-   *   a single rounded border. Accepts two `CardBody` sections (first = header, second = body).
+   *   a single rounded border. Accepts two `CardBody` sections separated by a `CardTearLine`.
    *
    * @default 'primary'
    */
@@ -551,9 +551,10 @@ const _CardBody = ({ height, children, testID, ...rest }: CardBodyProps): React.
 type CardTearLineProps = TestID & DataAnalyticsAttribute;
 
 /**
- * Marks the split between the two `CardBody` sections of a `ticket` variant Card. Render it
- * between the two `CardBody` sections. It renders no visual of its own — the scalloped perforation
- * and edge notches are drawn by the ticket surface — so the two sections stay flush at the seam.
+ * Marks the split between the two `CardBody` sections of a `ticket` or `info` variant Card.
+ * Render it between the two `CardBody` sections. It renders no visual of its own — for `ticket`
+ * the scalloped perforation and edge notches are drawn by the ticket surface; for `info` the
+ * two sections stay flush inside a single rounded border — so the split marker is structural only.
  */
 const _CardTearLine = ({ testID, ...rest }: CardTearLineProps): React.ReactElement => {
   useVerifyInsideCard('CardTearLine');

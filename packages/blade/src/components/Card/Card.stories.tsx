@@ -6,7 +6,6 @@ import type { CardFooterAction, CardProps } from './';
 import {
   CardBody,
   Card,
-  CardTearLine,
   CardFooter,
   CardFooterLeading,
   CardFooterTrailing,
@@ -20,6 +19,8 @@ import {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderText,
+  TicketCard as TicketCardComponent,
+  InfoCard as InfoCardComponent,
 } from './';
 import type { Elevation } from '~tokens/global';
 import { Amount } from '~components/Amount';
@@ -742,17 +743,16 @@ const TicketCardExample = (): React.ReactElement => {
     label: string,
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <Card variant="ticket" width="280px" {...stateProps}>
-      <CardBody>
+    <TicketCardComponent width="280px" {...stateProps}
+      topSection={
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text weight="semibold">Razorpay Summit 2026</Text>
           <Text size="small" color="surface.text.gray.subtle">
             {label}
           </Text>
         </Box>
-      </CardBody>
-      <CardTearLine />
-      <CardBody>
+      }
+      bottomSection={
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Box display="flex" flexDirection="column">
             <Text size="small" color="surface.text.gray.subtle">
@@ -762,8 +762,8 @@ const TicketCardExample = (): React.ReactElement => {
           </Box>
           <Amount value={4999} type="body" weight="semibold" />
         </Box>
-      </CardBody>
-    </Card>
+      }
+    />
   );
 
   return (
@@ -785,33 +785,33 @@ TicketCard.parameters = {
 const InfoCardExample = (): React.ReactElement => {
   const renderInfoCard = (
     label: string,
-    stateProps: { isSelected?: boolean },
+    stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <Card variant="info" width="280px" {...stateProps}>
-      <CardBody>
+    <InfoCardComponent width="280px" {...stateProps}
+      topSection={
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Text weight="semibold">Razorpay Summit 2026</Text>
           <Text size="small" color="surface.text.gray.subtle">
             {label}
           </Text>
         </Box>
-      </CardBody>
-      <CardTearLine />
-      <CardBody>
+      }
+      bottomSection={
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text size="small" color="surface.text.gray.subtle">
             Venue
           </Text>
           <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
         </Box>
-      </CardBody>
-    </Card>
+      }
+    />
   );
 
   return (
     <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap">
       {renderInfoCard('Default', {})}
       {renderInfoCard('Selected', { isSelected: true })}
+      {renderInfoCard('Disabled', { isDisabled: true })}
     </Box>
   );
 };

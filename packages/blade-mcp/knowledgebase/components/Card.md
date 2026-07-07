@@ -8,9 +8,13 @@ Cards are containers that group related content and actions on a single topic. T
 
 ## Important Constraints
 
-- `Card` component only accepts `CardHeader`, `CardBody`, `CardFooter` components as children
+- Allowed `Card` children depend on `variant`:
+  - `primary` (default): `CardHeader`, `CardBody`, `CardFooter`
+  - `secondary`: `CardBody` only
+  - `ticket` / `info`: exactly `<CardBody> … <CardTearLine /> <CardBody> …`
 - `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
 - `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
+- `CardTearLine` is a structural split marker for `ticket` and `info` variants — it renders no visual of its own
 
 Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
@@ -21,9 +25,22 @@ The following types define the props that the Card component and its subcomponen
 ```typescript
 export type CardProps = {
   /**
-   * Card contents
+   * Card contents. Structure depends on `variant` — see Important Constraints.
    */
   children: React.ReactNode;
+  /**
+   * Sets the visual variant of the Card
+   *
+   * - `primary`: Standard card with full composition (CardHeader, CardBody, CardFooter)
+   * - `secondary`: Simplified card that only accepts CardBody as children
+   * - `ticket`: Ticket/coupon style card split into two sections by a perforated tear line with
+   *   notched edges. Accepts two `CardBody` sections separated by a `CardTearLine`.
+   * - `info`: Two-tone card with an emphasized header section and a subtle body section wrapped by
+   *   a single rounded border. Accepts two `CardBody` sections separated by a `CardTearLine`.
+   *
+   * @default 'primary'
+   */
+  variant?: 'primary' | 'secondary' | 'ticket' | 'info';
   /**
    * Sets the background color of the Card
    *
@@ -79,6 +96,16 @@ export type CardProps = {
    * @default false
    */
   isSelected?: boolean;
+  /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
+   * and is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`. For the `ticket` and `info` variants it also
+   * renders a dashed border.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
    *
@@ -138,6 +165,23 @@ type CardBodyProps = {
   height?: BoxProps['height'];
 } & TestID &
   DataAnalyticsAttribute;
+
+/** Structural split marker for `ticket` and `info` variants. Renders no visual. */
+type CardTearLineProps = TestID & DataAnalyticsAttribute;
+
+type TicketCardProps = Omit<CardProps, 'variant' | 'children'> & {
+  /** Content for the section above the tear line. */
+  topSection: React.ReactNode;
+  /** Content for the section below the tear line. */
+  bottomSection: React.ReactNode;
+};
+
+type InfoCardProps = Omit<CardProps, 'variant' | 'children'> & {
+  /** Content for the emphasized header section. */
+  topSection: React.ReactNode;
+  /** Content for the subtle body section. */
+  bottomSection: React.ReactNode;
+};
 
 type CardHeaderProps = {
   children?: React.ReactNode;
@@ -228,10 +272,15 @@ type CardFooterTrailingProps = {
 - Use `CardHeaderIcon`, `CardHeaderCounter`, `CardHeaderBadge` for header visual elements — not raw components.
 - Use `onClick` or `href` to make cards interactive; provide `accessibilityLabel` for interactive cards.
 - Use `variant="secondary"` when you only need a body section without header/footer.
+- Use `variant="ticket"` for coupon/ticket layouts with a perforated tear line and side notches.
+- Prefer `TicketCard` for ticket layouts — it wraps `Card variant="ticket"` with `topSection` and `bottomSection`.
+- Use `variant="info"` for two-tone header/body layouts inside a single rounded border.
+- Prefer `InfoCard` for info layouts — it wraps `Card variant="info"` with `topSection` and `bottomSection`.
+- For `ticket` and `info`, always place `<CardTearLine />` between the two `CardBody` sections when using `Card` directly.
 
 **Don't**
 
-- Don't pass arbitrary children directly — only `CardHeader`, `CardBody`, and `CardFooter` are accepted (primary variant).
+- Don't pass arbitrary children directly — allowed children depend on `variant` (see Important Constraints).
 - Don't use React Fragments as Card children — they are not allowed.
 - Don't use deprecated props (`backgroundColor`, `borderRadius`, `elevation`) — they are no-ops.
 - Don't use `Box` with elevation for card-like surfaces — use `Card` for content grouping with structure.
@@ -299,6 +348,79 @@ const BasicCardExample = () => {
   );
 };
 ```
+
+### Ticket Card
+
+Two stacked content regions split by a perforated tear line with side notches. Prefer the `TicketCard` wrapper — it composes `Card`, `CardBody`, and `CardTearLine` for you. Use `isSelected` for a primary border and `isDisabled` for a dashed, non-interactive state.
+
+```tsx
+import {
+  TicketCard,
+  Box,
+  Text,
+  Amount,
+} from '@razorpay/blade/components';
+
+const TicketCardExample = () => (
+  <TicketCard
+    width="280px"
+    topSection={
+      <Box display="flex" flexDirection="column" gap="spacing.2">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          General Admission
+        </Text>
+      </Box>
+    }
+    bottomSection={
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+        <Box display="flex" flexDirection="column">
+          <Text size="small" color="surface.text.gray.subtle">
+            Seat
+          </Text>
+          <Text weight="semibold">A-24</Text>
+        </Box>
+        <Amount value={4999} type="body" weight="semibold" />
+      </Box>
+    }
+  />
+);
+```
+
+For lower-level control, use `<Card variant="ticket">` with two `CardBody` sections separated by `<CardTearLine />`.
+
+### Info Card
+
+Two-tone card with an emphasized header section over a subtle body section, wrapped by a single rounded border. Prefer the `InfoCard` wrapper — it composes `Card`, `CardBody`, and `CardTearLine` for you. No perforation or notches.
+
+```tsx
+import { InfoCard, Box, Text } from '@razorpay/blade/components';
+
+const InfoCardExample = () => (
+  <InfoCard
+    width="280px"
+    isSelected
+    topSection={
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          Selected
+        </Text>
+      </Box>
+    }
+    bottomSection={
+      <Box display="flex" flexDirection="column" gap="spacing.2">
+        <Text size="small" color="surface.text.gray.subtle">
+          Venue
+        </Text>
+        <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+      </Box>
+    }
+  />
+);
+```
+
+For lower-level control, use `<Card variant="info">` with two `CardBody` sections separated by `<CardTearLine />`.
 
 ### Metric Card
 
