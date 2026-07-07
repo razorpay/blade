@@ -208,6 +208,8 @@ export { TextInput } from './Input/TextInput';
 export type { TextInputProps, TextInputType } from './Input/TextInput';
 export { SearchInput } from './Input/SearchInput';
 export type { SearchInputProps } from './Input/SearchInput';
+export { PasswordInput } from './Input/PasswordInput';
+export type { PasswordInputProps } from './Input/PasswordInput';
 export { OTPInput } from './Input/OTPInput';
 export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
 export { PhoneNumberInput } from './Input/PhoneNumberInput';
