@@ -143,16 +143,10 @@
   left: 0px;
   top: 0px;
   background-color: var(--surface-background-gray-intense);
-  /* React parity: theme.elevation.lowRaised (onLight). */
-  /* TODO: replace with var(--elevation-low-raised) once exposed in blade-core tokens */
-  box-shadow: 0px 2px 4px 0px hsla(200, 10%, 18%, 0.06);
   transition-property: transform, width, height;
   transition-timing-function: var(--easing-standard);
 }
 
-.indicatorDisabled {
-  box-shadow: none;
-}
 
 .indicatorAnimating {
   transition-duration: var(--duration-moderate);

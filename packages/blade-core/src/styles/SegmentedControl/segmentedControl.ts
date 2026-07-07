@@ -22,7 +22,6 @@ export const getSegmentedControlTemplateClasses = (): Record<string, string> => 
   itemTextMuted: styles.itemTextMuted,
   itemTextDisabled: styles.itemTextDisabled,
   indicator: styles.indicator,
-  indicatorDisabled: styles.indicatorDisabled,
   indicatorAnimating: styles.indicatorAnimating,
   indicatorInstant: styles.indicatorInstant,
   indicatorRadiusSmall: styles.indicatorRadiusSmall,

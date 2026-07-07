@@ -75,7 +75,6 @@
   const indicatorClasses = $derived(
     [
       classes.indicator,
-      ctx.isDisabled ? classes.indicatorDisabled : '',
       ctx.size === 'small' ? classes.indicatorRadiusSmall : classes.indicatorRadiusMediumToken,
     ]
       .filter(Boolean)
