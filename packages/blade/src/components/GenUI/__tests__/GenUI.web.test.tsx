@@ -3540,7 +3540,7 @@ describe('<GenUI />', () => {
 
         expect(getByText('Heading 1 spacing').parentElement).toHaveStyle({
           marginTop: '0px',
-          marginBottom: '16px',
+          marginBottom: '12px',
         });
         expect(getByText('Heading 2 spacing').parentElement).toHaveStyle({
           marginTop: '24px',

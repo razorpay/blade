@@ -120,7 +120,7 @@ const MarkdownOrderedList = styled.ol`
 const MarkdownHeadingContainer = styled.div<{ $level: 1 | 2 | 3 | 4 | 5 | 6 }>`
   ${({ theme, $level }) => {
     const spacing = {
-      1: { marginTop: 0, marginBottom: theme.spacing[5] },
+      1: { marginTop: 0, marginBottom: theme.spacing[4] },
       2: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
       3: { marginTop: theme.spacing[7], marginBottom: theme.spacing[3] },
       4: { marginTop: theme.spacing[7], marginBottom: theme.spacing[2] },
