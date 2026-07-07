@@ -1417,7 +1417,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
         "minHeight": 56,
         "overflow": "hidden",
         "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 1)",
+        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
         "shadowOffset": {
           "height": 0.5,
           "width": 0,
@@ -2036,7 +2036,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
         "minHeight": 56,
         "overflow": "hidden",
         "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 1)",
+        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
         "shadowOffset": {
           "height": 0.5,
           "width": 0,
@@ -2619,7 +2619,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
         "minHeight": 56,
         "overflow": "hidden",
         "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 1)",
+        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
         "shadowOffset": {
           "height": 0.5,
           "width": 0,
@@ -3227,7 +3227,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         "minHeight": 56,
         "overflow": "hidden",
         "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 1)",
+        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
         "shadowOffset": {
           "height": 0.5,
           "width": 0,
@@ -3799,7 +3799,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         "minHeight": 56,
         "overflow": "hidden",
         "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 1)",
+        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
         "shadowOffset": {
           "height": 0.5,
           "width": 0,
