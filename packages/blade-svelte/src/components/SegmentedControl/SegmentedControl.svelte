@@ -56,11 +56,14 @@
   };
 
   // --- Item registration (Accordion-style: sync during init, not in $effect) ---
-  // Plain counters — reset each render cycle via $effect.pre so re-renders re-count correctly.
+  // Plain counters accumulate during render; committed atomically to a single $state object
+  // so totalItems and firstEnabledValue always update together (no tearing between them).
   let _itemCounter = 0;
   let _firstEnabledValue: string | undefined = undefined;
-  let totalItems = $state(0);
-  let firstEnabledValue = $state<string | undefined>(undefined);
+  let registrationState = $state<{ totalItems: number; firstEnabledValue: string | undefined }>({
+    totalItems: 0,
+    firstEnabledValue: undefined,
+  });
 
   $effect.pre(() => {
     _itemCounter = 0;
@@ -69,11 +72,11 @@
 
   const registerItem = (value: string, isItemDisabled: boolean): number => {
     _itemCounter += 1;
-    totalItems = _itemCounter;
     if (!isDisabled && !isItemDisabled && _firstEnabledValue === undefined) {
       _firstEnabledValue = value;
-      firstEnabledValue = value;
     }
+    // Single object assignment — both fields update atomically, no tearing on re-renders.
+    registrationState = { totalItems: _itemCounter, firstEnabledValue: _firstEnabledValue };
     return _itemCounter;
   };
 
@@ -84,8 +87,8 @@
     get isDisabled() { return isDisabled; },
     get name() { return name; },
     baseId,
-    get totalItems() { return totalItems; },
-    get firstEnabledValue() { return firstEnabledValue; },
+    get totalItems() { return registrationState.totalItems; },
+    get firstEnabledValue() { return registrationState.firstEnabledValue; },
     registerItem,
   }));
 
