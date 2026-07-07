@@ -33,6 +33,7 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
   const duration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.moderate')));
   const opacity = useSharedValue(1);
   const translateY = useSharedValue(0);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
     if (texts.length <= 1) return undefined;
@@ -47,7 +48,7 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
         easing: Easing.out(Easing.ease),
       });
 
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % texts.length);
         translateY.value = 12;
         opacity.value = 0;
@@ -62,7 +63,10 @@ const NativeRollingText = ({ texts }: { texts: string[] }): React.ReactElement =
       }, duration / 2);
     }, 2500);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeoutRef.current);
+    };
   }, [texts.length, duration, opacity, translateY]);
 
   const animatedStyle = useAnimatedStyle(() => ({

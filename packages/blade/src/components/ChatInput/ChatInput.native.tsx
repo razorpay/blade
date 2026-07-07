@@ -53,6 +53,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const inputId = React.useId();
 
   const {
     mergedRef,
@@ -227,7 +228,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         <BaseInput
           ref={mergedRef}
           as="textarea"
-          id="chat-input"
+          id={inputId}
           elevation="highRaised"
           label={undefined}
           accessibilityLabel={accessibilityLabel}

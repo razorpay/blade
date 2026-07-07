@@ -24,12 +24,12 @@ import { castNativeType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
 const SparkleIcon: IconComponent = ({ size, color, ...styledProps }) => {
-  const { height, width } = useIconProps({ size, color });
+  const { height, width, iconColor } = useIconProps({ size, color });
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 9 9" fill="none">
       <Path
         d="M4.7169 8.67519C4.62025 8.93638 4.25084 8.93638 4.15419 8.67519L3.13296 5.91537C3.10258 5.83326 3.03784 5.76851 2.95572 5.73813L0.195898 4.7169C-0.0652872 4.62025 -0.0652871 4.25084 0.195899 4.15419L2.95572 3.13296C3.03784 3.10258 3.10258 3.03784 3.13297 2.95572L4.15419 0.1959C4.25084 -0.0652861 4.62026 -0.0652861 4.7169 0.195899L5.73813 2.95572C5.76851 3.03784 5.83326 3.10258 5.91537 3.13297L8.6752 4.15419C8.93638 4.25084 8.93638 4.62026 8.6752 4.7169L5.91537 5.73813C5.83326 5.76851 5.76851 5.83326 5.73813 5.91537L4.7169 8.67519Z"
-        fill="#009E5C"
+        fill={iconColor}
       />
     </Svg>
   );
