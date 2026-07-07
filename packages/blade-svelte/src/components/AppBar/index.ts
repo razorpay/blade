@@ -1,6 +1,6 @@
 /**
  * AppBar — top application/page header with a leading cluster (back button, logo,
- * title, RTB badge) and a trailing actions slot.
+ * title, trust badge) and a trailing actions slot.
  *
  * @example
  * ```svelte
@@ -12,7 +12,7 @@
  * </script>
  *
  * <AppBar showBackButton={true} onBackButtonClick={goBack} backButtonAccessibilityLabel="Go back">
- *   <AppBarLeading title="Mavenshop" rtbBadge={{ type: 'full' }}>
+ *   <AppBarLeading title="Mavenshop" trustBadgeVariant="default">
  *     {#snippet logo()}<MerchantLogo />{/snippet}
  *   </AppBarLeading>
  *   <AppBarActions>

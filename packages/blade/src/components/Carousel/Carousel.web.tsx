@@ -287,6 +287,8 @@ const _Carousel = (
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const isProgrammaticScrollRef = React.useRef(false);
+  const programmaticScrollTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
   const isMobile = platform === 'onMobile';
   const id = useId();
   const carouselId = `carousel-${id}`;
@@ -362,11 +364,27 @@ const _Carousel = (
       (containerRef.current.getBoundingClientRect().left ?? 0);
     const left = containerRef.current.scrollLeft + carouselItemLeft;
 
+    // Prevent the scroll event listener from calling onChange during this programmatic scroll.
+    // Without this, browsers like Firefox may fire scroll events before the animation completes,
+    // causing the debounced handler to detect the old (pre-scroll) slide and call onChange with
+    // a stale index — which breaks controlled Carousel behavior.
+    isProgrammaticScrollRef.current = true;
+    clearTimeout(programmaticScrollTimerRef.current);
+    programmaticScrollTimerRef.current = setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 600);
+
     containerRef.current.scroll({
       left: left - startEndMargin,
       behavior: shouldAnimate ? 'smooth' : 'auto',
     });
   };
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(programmaticScrollTimerRef.current);
+    };
+  }, []);
 
   const goToSlideIndex = (slideIndex: number) => {
     setActiveSlide(() => slideIndex);
@@ -453,7 +471,7 @@ const _Carousel = (
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
-      setActiveSlide(() => goTo);
+      setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
       setActiveIndicator(goTo);
     }, 50);
 

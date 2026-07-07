@@ -61,9 +61,11 @@ for (const pr of prs) {
 
   for (const c of [...reviewComments, ...issueComments]) {
     const user = c.user.login;
-    if (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/")) continue;
+    const normalizedUser = user.replace("app/", "").replace("[bot]", "");
+    const isAgentCommenter = AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(normalizedUser);
+    if (!isAgentCommenter && (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/"))) continue;
     totalComments++;
-    if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", "").replace("[bot]", ""))) {
+    if (isAgentCommenter) {
       agentComments++;
     }
     if (c.body.toLowerCase().includes("resolved by agent")) {
