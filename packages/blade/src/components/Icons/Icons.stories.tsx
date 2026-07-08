@@ -3,6 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Description } from '@storybook/addon-docs/blocks';
 import iconMap from './iconMap';
 import PlusIcon from './PlusIcon';
+import RazorpayTrustIcon from './RazorpayTrustIcon';
 import type { IconProps } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -176,6 +177,45 @@ export const StrokedIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => 
               }}
             >
               {icon}
+            </BaseBox>
+          </BaseBox>
+        );
+      })}
+    </BaseBox>
+  );
+};
+
+/**
+ * Branded icons keep their own colors/gradients and intentionally ignore the `color` prop.
+ * They are not part of the generic `iconMap` icon picker.
+ */
+export const BrandedIcons: StoryFn<ComponentType<IconProps>> = ({ color, ...args }) => {
+  const brandedIcons = { RazorpayTrustIcon };
+
+  return (
+    <BaseBox>
+      {Object.entries(brandedIcons).map(([name, IconComponent]) => {
+        return (
+          <BaseBox
+            height="95px"
+            width="125px"
+            display="inline-flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.6"
+            key={name}
+          >
+            <IconComponent {...args} />
+            <BaseBox
+              style={{
+                fontSize: 12,
+                width: '90%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                textAlign: 'center',
+              }}
+            >
+              {name}
             </BaseBox>
           </BaseBox>
         );
