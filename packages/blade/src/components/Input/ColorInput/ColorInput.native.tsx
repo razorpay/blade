@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import type { View } from 'react-native';
 import type { ColorInputProps, ColorInputValue } from './types';
 import { ColorSwatch } from './ColorSwatch.native';
 import { DEFAULT_COLOR_VALUE, isValidHex, isPartialHex, isValidOpacity } from './ColorInput.utils';
@@ -40,7 +41,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     testID,
     ...rest
   },
-  _ref,
+  ref,
 ) => {
   if (__DEV__) {
     const initialOpacity = value?.opacity ?? defaultValue?.opacity;
@@ -213,6 +214,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   return (
     <BaseBox
+      ref={ref as React.Ref<View>}
       display="flex"
       flexDirection="column"
       width="100%"
