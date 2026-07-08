@@ -942,6 +942,12 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
               }
             >
               <View
+                accessibilityState={
+                  {
+                    "disabled": undefined,
+                  }
+                }
+                accessible={true}
                 borderRadius="medium"
                 data-blade-component="card"
                 display="block"
@@ -1000,6 +1006,7 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
                     ]
                   }
                   textAlign="left"
+                  variant="primary"
                 >
                   <View
                     data-blade-component="card-body"
