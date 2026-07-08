@@ -199,6 +199,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                       hasLeadingDropdown={false}
                       hasTags={false}
                       id=":r9:-115-input-116"
+                      includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
                       isTableInputCell={false}
@@ -884,6 +885,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                       hasLeadingDropdown={false}
                       hasTags={false}
                       id=":r0:-1-input-2"
+                      includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
                       isTableInputCell={false}

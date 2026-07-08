@@ -1,10 +1,6 @@
 import React from 'react';
 import { ScrollView, LayoutAnimation, View } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
