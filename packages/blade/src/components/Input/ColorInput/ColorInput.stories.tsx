@@ -9,7 +9,7 @@ export default {
   component: ColorInput,
   args: {
     label: 'Color',
-    defaultValue: { hex: 'FFFFFF', opacity: 100 },
+    defaultValue: { hex: '#FFFFFF', opacity: 100 },
     size: 'medium',
     showOpacity: true,
     isDisabled: false,
@@ -42,7 +42,7 @@ export const WithOpacity = ColorInputTemplate.bind({});
 WithOpacity.storyName = 'With Opacity';
 WithOpacity.args = {
   label: 'Background Color',
-  defaultValue: { hex: 'FF5733', opacity: 80 },
+  defaultValue: { hex: '#FF5733', opacity: 80 },
   showOpacity: true,
 };
 
@@ -50,16 +50,16 @@ export const WithoutOpacity = ColorInputTemplate.bind({});
 WithoutOpacity.storyName = 'Without Opacity';
 WithoutOpacity.args = {
   label: 'Text Color',
-  defaultValue: { hex: '000000', opacity: 100 },
+  defaultValue: { hex: '#000000', opacity: 100 },
   showOpacity: false,
 };
 
 export const Sizes: StoryFn<typeof ColorInput> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
-      <ColorInput label="Small" size="small" defaultValue={{ hex: 'FF5733', opacity: 100 }} />
-      <ColorInput label="Medium" size="medium" defaultValue={{ hex: '33FF57', opacity: 75 }} />
-      <ColorInput label="Large" size="large" defaultValue={{ hex: '3357FF', opacity: 50 }} />
+      <ColorInput label="Small" size="small" defaultValue={{ hex: '#FF5733', opacity: 100 }} />
+      <ColorInput label="Medium" size="medium" defaultValue={{ hex: '#33FF57', opacity: 75 }} />
+      <ColorInput label="Large" size="large" defaultValue={{ hex: '#3357FF', opacity: 50 }} />
     </Box>
   );
 };
@@ -70,12 +70,12 @@ export const LabelPositionLeft: StoryFn<typeof ColorInput> = () => {
       <ColorInput
         label="Label"
         labelPosition="left"
-        defaultValue={{ hex: 'FFFFFF', opacity: 100 }}
+        defaultValue={{ hex: '#FFFFFF', opacity: 100 }}
       />
       <ColorInput
         label="Label"
         labelPosition="left"
-        defaultValue={{ hex: 'FFFFFF', opacity: 100 }}
+        defaultValue={{ hex: '#FFFFFF', opacity: 100 }}
         showOpacity={false}
       />
     </Box>
@@ -87,18 +87,18 @@ export const ValidationStates: StoryFn<typeof ColorInput> = () => {
     <Box display="flex" flexDirection="column" gap="spacing.6">
       <ColorInput
         label="Help Text"
-        defaultValue={{ hex: 'FFFFFF', opacity: 100 }}
+        defaultValue={{ hex: '#FFFFFF', opacity: 100 }}
         helpText="Enter a 6-digit hex code"
       />
       <ColorInput
         label="Error State"
-        defaultValue={{ hex: 'ZZZ', opacity: 100 }}
+        defaultValue={{ hex: '#ZZZ', opacity: 100 }}
         validationState="error"
         errorText="Invalid hex color"
       />
       <ColorInput
         label="Success State"
-        defaultValue={{ hex: '00FF00', opacity: 100 }}
+        defaultValue={{ hex: '#00FF00', opacity: 100 }}
         validationState="success"
         successText="Color saved successfully"
       />
@@ -110,6 +110,6 @@ export const Disabled = ColorInputTemplate.bind({});
 Disabled.storyName = 'Disabled';
 Disabled.args = {
   label: 'Disabled Color',
-  defaultValue: { hex: 'CCCCCC', opacity: 50 },
+  defaultValue: { hex: '#CCCCCC', opacity: 50 },
   isDisabled: true,
 };

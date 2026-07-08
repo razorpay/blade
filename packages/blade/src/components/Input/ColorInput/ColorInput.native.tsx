@@ -50,13 +50,13 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   });
 
   const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(
-    String(colorValue.opacity),
+    () => String(value?.opacity ?? defaultValue?.opacity ?? DEFAULT_COLOR_VALUE.opacity),
   );
 
   // Local display state for the hex input so partial typing (1–5 chars) stays local
   // and doesn't corrupt the color model until exactly 6 valid chars are present.
   const [hexDisplayValue, setHexDisplayValue] = useState<string>(
-    () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
+    () => (value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex).replace(/^#/, ''),
   );
 
   // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
@@ -66,7 +66,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
   useEffect(() => {
     if (!isFocusedRef.current) {
-      setHexDisplayValue(colorValue.hex);
+      setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
     }
   }, [colorValue.hex]);
 
@@ -107,13 +107,17 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleHexChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
-      // Strip a leading '#' so pasting '#FF5733' or typing '#' works naturally.
-      const raw = (inputValue ?? '').replace(/^#/, '').toUpperCase();
+      // Strip a leading '#' and trim whitespace so pasting '#FF5733 ' or typing '#' works naturally.
+      const raw = (inputValue ?? '').replace(/^#/, '').trim().toUpperCase();
+      if (raw === '') {
+        setHexDisplayValue('');
+        return;
+      }
       if (isValidHex(raw) || isPartialHex(raw)) {
         setHexDisplayValue(raw);
       }
       if (isValidHex(raw)) {
-        setColorValue((prev) => ({ ...prev, hex: raw }));
+        setColorValue((prev) => ({ ...prev, hex: '#' + raw }));
       }
     },
     [setColorValue],
@@ -156,7 +160,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleSwatchChange = useCallback(
     (hex: string) => {
-      setHexDisplayValue(hex);
+      setHexDisplayValue(hex.replace(/^#/, ''));
       setColorValue((prev) => ({ ...prev, hex }));
     },
     [setColorValue],
@@ -164,7 +168,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   // Hex blur resets partial display to the last committed valid value.
   const handleHexInputBlur = useCallback(() => {
-    setHexDisplayValue(colorValue.hex);
+    setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
     // Pass committed hex so consumers see the corrected state, not the partial display string.
     handleInputBlurBoundary({ name, value: colorValue.hex });
   }, [colorValue.hex, handleInputBlurBoundary, name]);

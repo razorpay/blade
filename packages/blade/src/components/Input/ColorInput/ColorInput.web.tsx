@@ -58,13 +58,13 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   });
 
   const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(
-    String(colorValue.opacity),
+    () => String(value?.opacity ?? defaultValue?.opacity ?? DEFAULT_COLOR_VALUE.opacity),
   );
 
   // Local display state for the hex input so partial typing (1–5 chars) stays local
   // and doesn't corrupt the color model until exactly 6 valid chars are present.
   const [hexDisplayValue, setHexDisplayValue] = useState<string>(
-    () => value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex,
+    () => (value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex).replace(/^#/, ''),
   );
 
   // Focus boundary tracking: fire onFocus/onBlur once when focus enters/leaves
@@ -72,11 +72,18 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   const isFocusedRef = useRef(false);
   const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Store onBlur in a ref so handleInputBlur is referentially stable and does not
+  // need to be a dependency of downstream blur handlers (avoiding stale closures).
+  const onBlurRef = useRef(onBlur);
+  useEffect(() => {
+    onBlurRef.current = onBlur;
+  }, [onBlur]);
+
   // Sync display value when the color model changes from an external source.
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
   useEffect(() => {
     if (!isFocusedRef.current) {
-      setHexDisplayValue(colorValue.hex);
+      setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
     }
   }, [colorValue.hex]);
 
@@ -100,16 +107,14 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     [onFocus],
   );
 
-  const handleInputBlur = useCallback<FormInputOnEvent>(
-    (args) => {
-      blurTimeoutRef.current = setTimeout(() => {
-        blurTimeoutRef.current = null;
-        isFocusedRef.current = false;
-        onBlur?.(args);
-      }, 0);
-    },
-    [onBlur],
-  );
+  // Stable blur handler — uses onBlurRef so it never becomes a stale dep in callers.
+  const handleInputBlur = useCallback<FormInputOnEvent>((args) => {
+    blurTimeoutRef.current = setTimeout(() => {
+      blurTimeoutRef.current = null;
+      isFocusedRef.current = false;
+      onBlurRef.current?.(args);
+    }, 0);
+  }, []);
 
   const hexInputRef = useRef<BladeElementRef>(null);
   const swatchRef = useRef<ColorSwatchRef>(null);
@@ -122,13 +127,17 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleHexChange = useCallback(
     ({ value: inputValue }: { name?: string; value?: string }) => {
-      // Strip a leading '#' so pasting '#FF5733' or typing '#' works naturally.
-      const raw = (inputValue ?? '').replace(/^#/, '').toUpperCase();
+      // Strip a leading '#' and trim whitespace so pasting '#FF5733 ' or typing '#' works naturally.
+      const raw = (inputValue ?? '').replace(/^#/, '').trim().toUpperCase();
+      if (raw === '') {
+        setHexDisplayValue('');
+        return;
+      }
       if (isValidHex(raw) || isPartialHex(raw)) {
         setHexDisplayValue(raw);
       }
       if (isValidHex(raw)) {
-        setColorValue((prev) => ({ ...prev, hex: raw }));
+        setColorValue((prev) => ({ ...prev, hex: '#' + raw }));
       }
     },
     [setColorValue],
@@ -164,10 +173,15 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || !/^\d+$/.test(raw) || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      // Pass committed opacity value so consumers see the corrected state, not the partial display string.
-      handleInputBlur({ name, value: String(colorValue.opacity) });
+      // Use blurTimeoutRef directly so the composite-widget focus-boundary guard can coalesce
+      // this blur with other internal blurs (e.g. tabbing opacity → hex stays within widget).
+      blurTimeoutRef.current = setTimeout(() => {
+        blurTimeoutRef.current = null;
+        isFocusedRef.current = false;
+        onBlurRef.current?.({ name, value: String(colorValue.opacity) });
+      }, 0);
     },
-    [colorValue.opacity, handleInputBlur, name],
+    [colorValue.opacity, name],
   );
 
   const handleOpacityKeyDown = useCallback(
@@ -199,7 +213,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   const handleSwatchChange = useCallback(
     (hex: string) => {
-      setHexDisplayValue(hex);
+      // hex arrives with '#' prefix from ColorSwatch; strip for display, keep for model.
+      setHexDisplayValue(hex.replace(/^#/, ''));
       setColorValue((prev) => ({ ...prev, hex }));
     },
     [setColorValue],
@@ -207,14 +222,14 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
 
   // Hex-specific blur: reset partial display to last committed valid value.
   const handleHexInputBlur = useCallback<FormInputOnEvent>(() => {
-    setHexDisplayValue(colorValue.hex);
+    setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
     // Pass committed hex so consumers see the corrected state, not the partial display string.
     handleInputBlur({ name, value: colorValue.hex });
   }, [colorValue.hex, handleInputBlur, name]);
 
   // Sync opacityDisplayValue when controlled value changes externally.
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isFocusedRef.current) {
       setOpacityDisplayValue(String(colorValue.opacity));
     }

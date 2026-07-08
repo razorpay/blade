@@ -42,21 +42,16 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
       },
     }));
 
-    const handleClick = (): void => {
-      if (!isDisabled) {
-        colorInputRef.current?.click();
-      }
-    };
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-      const hexValue = e.target.value.replace('#', '').toUpperCase();
+      // Keep '#' prefix so the value matches ColorInputValue.hex format (e.g. '#FF5733').
+      const hexValue = e.target.value.toUpperCase();
       onChange(hexValue);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        handleClick();
+        colorInputRef.current?.click();
       }
     };
 
@@ -71,7 +66,6 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         role="button"
         aria-label="Open color picker"
         tabIndex={isDisabled ? -1 : 0}
-        onClick={handleClick}
         onKeyDown={handleKeyDown}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -89,6 +83,8 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
             opacity: isDisabled ? 0.5 : 1,
           }}
         />
+        {/* Positioned over the swatch so clicks go directly to the input — avoids
+            programmatic .click() which does not open the picker on Firefox/Safari iOS. */}
         <input
           ref={colorInputRef}
           type="color"
@@ -99,13 +95,11 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
           aria-hidden="true"
           style={{
             position: 'absolute',
-            top: '100%',
-            left: 0,
-            width: 0,
-            height: 0,
+            inset: 0,
+            width: '100%',
+            height: '100%',
             opacity: 0,
-            overflow: 'hidden',
-            pointerEvents: 'none',
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
           }}
         />
       </BaseBox>

@@ -5,8 +5,8 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ColorInputValue = {
   /**
-   * 6-character uppercase hex string without '#' prefix.
-   * @example 'FF5733'
+   * 6-character uppercase hex string with '#' prefix.
+   * @example '#FF5733'
    */
   hex: string;
   /** Integer percentage 0–100 */
