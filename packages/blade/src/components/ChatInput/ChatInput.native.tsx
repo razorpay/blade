@@ -1,6 +1,11 @@
 import React from 'react';
 import { ScrollView, LayoutAnimation, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
@@ -81,14 +86,28 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const isError = validationState === 'error';
 
   const errorProgress = useSharedValue(isError ? 1 : 0);
+  const [isErrorBannerVisible, setIsErrorBannerVisible] = React.useState(isError);
 
   React.useEffect(() => {
     const duration = getIn(theme.motion, 'duration.xmoderate') as number;
 
-    errorProgress.value = withTiming(isError ? 1 : 0, {
-      duration,
-      easing: castNativeType(theme.motion.easing.emphasized),
-    });
+    if (isError) {
+      setIsErrorBannerVisible(true);
+      errorProgress.value = withTiming(1, {
+        duration,
+        easing: castNativeType(theme.motion.easing.emphasized),
+      });
+    } else {
+      errorProgress.value = withTiming(
+        0,
+        { duration, easing: castNativeType(theme.motion.easing.emphasized) },
+        (finished) => {
+          if (finished) {
+            runOnJS(setIsErrorBannerVisible)(false);
+          }
+        },
+      );
+    }
   }, [isError]);
 
   // Mirror web's `bottom: calc(100% - 12px)` — overlap the input card by spacing.4 (12px)
@@ -152,7 +171,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       {...getStyledProps(rest)}
     >
       {/* Error popup — animated above the input */}
-      {isError ? (
+      {isErrorBannerVisible ? (
         <Animated.View
           style={[
             {
