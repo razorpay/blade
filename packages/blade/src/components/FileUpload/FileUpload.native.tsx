@@ -1,5 +1,12 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import type { FileUploadProps } from './types';
+import type {
+  FileUploadProps,
+  BladeFile,
+  BladeFileList,
+  InlineSelectorOption,
+  InlineSelectorProps,
+  InlineSelectorValueMap,
+} from './types';
 import { throwBladeError } from '~utils/logger';
 
 const FileUpload = (_props: FileUploadProps): React.ReactElement => {
@@ -12,3 +19,11 @@ const FileUpload = (_props: FileUploadProps): React.ReactElement => {
 };
 
 export { FileUpload };
+export type {
+  BladeFile,
+  BladeFileList,
+  InlineSelectorOption,
+  InlineSelectorProps,
+  InlineSelectorValueMap,
+  FileUploadProps,
+};
