@@ -213,7 +213,7 @@ exports[`<FileUpload /> (native) should render FileUpload with default props 1`]
               {
                 "alignItems": "center",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 8,
+                "borderRadius": 12,
                 "borderStyle": "dashed",
                 "borderWidth": 1,
                 "display": "flex",
@@ -678,7 +678,7 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
               {
                 "alignItems": "center",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 8,
+                "borderRadius": 12,
                 "borderStyle": "dashed",
                 "borderWidth": 1,
                 "display": "flex",
@@ -1143,7 +1143,7 @@ exports[`<FileUpload /> (native) should set disabled state with isDisabled 1`] =
               {
                 "alignItems": "center",
                 "borderColor": "hsla(204, 8%, 88%, 1)",
-                "borderRadius": 8,
+                "borderRadius": 12,
                 "borderStyle": "dashed",
                 "borderWidth": 1,
                 "display": "flex",
@@ -1408,7 +1408,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
       {
         "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
         "borderColor": "hsla(4, 85%, 44%, 0.18)",
-        "borderRadius": 8,
+        "borderRadius": 12,
         "borderStyle": "solid",
         "borderWidth": 1,
         "display": "flex",
@@ -2047,7 +2047,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
       {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 8,
+        "borderRadius": 12,
         "borderStyle": "solid",
         "borderWidth": 1,
         "display": "flex",
@@ -2642,7 +2642,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
       {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 8,
+        "borderRadius": 12,
         "borderStyle": "solid",
         "borderWidth": 1,
         "display": "flex",
@@ -3262,7 +3262,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
       {
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 8,
+        "borderRadius": 12,
         "borderStyle": "solid",
         "borderWidth": 1,
         "display": "flex",
@@ -3846,7 +3846,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
       {
         "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
         "borderColor": "hsla(4, 85%, 44%, 0.18)",
-        "borderRadius": 8,
+        "borderRadius": 12,
         "borderStyle": "solid",
         "borderWidth": 1,
         "display": "flex",

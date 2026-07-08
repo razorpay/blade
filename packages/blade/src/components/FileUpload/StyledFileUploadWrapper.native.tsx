@@ -57,7 +57,7 @@ const StyledFileUploadWrapper = ({
           borderStyle: 'dashed' as const,
           borderColor,
           borderWidth: 1,
-          borderRadius: 8,
+          borderRadius: theme.border.radius.medium,
           display: 'flex' as const,
           flexDirection: 'row' as const,
           justifyContent: 'center' as const,

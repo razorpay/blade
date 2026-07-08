@@ -32,7 +32,7 @@ const StyledFileUploadItemWrapper = ({
         justifyContent: 'space-between',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderRadius: 8,
+        borderRadius: theme.border.radius.medium,
         minHeight: fileUploadHeightTokens[size === 'variable' ? 'large' : size],
         width: '100%',
         backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].default),
