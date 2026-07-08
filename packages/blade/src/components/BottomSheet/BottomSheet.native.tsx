@@ -254,9 +254,7 @@ const _BottomSheet = ({
 
   const renderBackdrop = React.useCallback(
     (props: any): React.ReactElement => {
-      return (
-        <BottomSheetBackdrop {...props} isDismissible={isDismissible} />
-      );
+      return <BottomSheetBackdrop {...props} isDismissible={isDismissible} />;
     },
     [isDismissible],
   );
