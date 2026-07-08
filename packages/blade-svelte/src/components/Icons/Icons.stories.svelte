@@ -11,7 +11,7 @@
   // Filled Icons
   import { MoreFilledIcon } from './MoreFilledIcon';
   // Branded Icons
-  import { RTBShieldIcon } from './RTBShieldIcon';
+  import { RazorpayTrustIcon } from './RazorpayTrustIcon';
   import Text from '../Typography/Text/Text.svelte';
 
   // Icon maps for dynamic rendering
@@ -31,7 +31,7 @@
 
   // Branded icons keep their own colors/gradients and ignore the `color` prop.
   const brandedIcons = {
-    RTBShieldIcon,
+    RazorpayTrustIcon,
   };
 
   const allIcons = {
