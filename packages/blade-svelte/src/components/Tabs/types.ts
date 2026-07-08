@@ -73,12 +73,6 @@ type TabItemBaseProps = {
   trailing?: Snippet;
 
   /**
-   * Accessible label for the tab item. Required when only a leading icon is provided
-   * and no children text is present (icon-only tabs).
-   */
-  accessibilityLabel?: string;
-
-  /**
    * If `true`, the tab item will be disabled.
    * @default false
    */
@@ -106,17 +100,37 @@ type TabItemWithChildrenProps = TabItemBaseProps & {
    */
   children: Snippet;
   leading?: undefined;
+  accessibilityLabel?: string;
 };
 
-type TabItemWithLeadingProps = TabItemBaseProps & {
+/**
+ * Icon-only tab: no children text, so accessibilityLabel is required for screen readers.
+ */
+type TabItemIconOnlyProps = TabItemBaseProps & {
   /**
    * Leading icon component (e.g., HomeIcon). Color is managed internally.
    */
   leading: IconComponent;
-  children?: Snippet;
+  children?: undefined;
+  /**
+   * Accessible label required when no children text is present.
+   */
+  accessibilityLabel: string;
 };
 
-export type TabItemProps = TabItemWithChildrenProps | TabItemWithLeadingProps;
+/**
+ * Icon + label tab: children text is present, so accessibilityLabel is optional.
+ */
+type TabItemIconWithLabelProps = TabItemBaseProps & {
+  /**
+   * Leading icon component (e.g., HomeIcon). Color is managed internally.
+   */
+  leading: IconComponent;
+  children: Snippet;
+  accessibilityLabel?: string;
+};
+
+export type TabItemProps = TabItemWithChildrenProps | TabItemIconOnlyProps | TabItemIconWithLabelProps;
 
 export type TabListProps = {
   /**
