@@ -1,6 +1,8 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import type { LayoutChangeEvent } from 'react-native';
 import styled from 'styled-components/native';
+import Svg, { Rect } from 'react-native-svg';
 import type { BaseFilterChipProps } from './types';
 import { size } from '~tokens/global';
 import { makeBorderSize } from '~utils';
@@ -13,9 +15,73 @@ import { Divider } from '~components/Divider';
 import { ChevronDownIcon, CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useTheme } from '~components/BladeProvider';
 import type { Theme } from '~components/BladeProvider';
 
 const FILTER_CHIP_HEIGHT_NATIVE = size['28'];
+
+/**
+ * React Native's `borderStyle: 'dashed'` combined with `borderRadius` is buggy on iOS —
+ * dashes render inconsistently and produce a broken/overlapping artifact near the corners
+ * and the right edge. To match web's clean dashed pill, we draw the dashed border ourselves
+ * with `react-native-svg` as a rounded `Rect` whose dash pattern divides evenly around the
+ * perimeter (so there's no visible seam where the stroke path closes).
+ */
+const DashedBorder = ({
+  width,
+  height,
+  borderRadius,
+  strokeWidth,
+  color,
+}: {
+  width: number;
+  height: number;
+  borderRadius: number;
+  strokeWidth: number;
+  color: string;
+}): React.ReactElement | null => {
+  if (width <= 0 || height <= 0) {
+    return null;
+  }
+
+  // Inset the stroke by half its width so it sits fully inside the bounds and the
+  // right/bottom edges aren't clipped.
+  const inset = strokeWidth / 2;
+  const rectWidth = width - strokeWidth;
+  const rectHeight = height - strokeWidth;
+  const radius = Math.max(borderRadius - inset, 0);
+
+  // Perimeter of a rounded rectangle = straight edges + the four quarter-circle corners.
+  const straightWidth = Math.max(rectWidth - 2 * radius, 0);
+  const straightHeight = Math.max(rectHeight - 2 * radius, 0);
+  const perimeter = 2 * straightWidth + 2 * straightHeight + 2 * Math.PI * radius;
+
+  // Target a small dot-like dash+gap (~4pt) and round to an integer number of segments so
+  // the pattern lands exactly on the path's start/end point (no broken dash on the right edge).
+  const targetSegment = 4;
+  const segmentCount = Math.max(1, Math.round(perimeter / targetSegment));
+  const segmentLength = perimeter / segmentCount;
+  const dashLength = segmentLength / 2;
+
+  return (
+    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+      <Svg width={width} height={height}>
+        <Rect
+          x={inset}
+          y={inset}
+          width={rectWidth}
+          height={rectHeight}
+          rx={radius}
+          ry={radius}
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeDasharray={[dashLength, segmentLength - dashLength]}
+        />
+      </Svg>
+    </View>
+  );
+};
 
 const StyledFilterChip = styled(View)<{
   theme: Theme;
@@ -23,15 +89,22 @@ const StyledFilterChip = styled(View)<{
   $isDisabled?: boolean;
 }>(({ theme, $isDisabled, $isSelected }) => {
   return {
-    borderWidth: (makeBorderSize(theme.border.width.thin) as unknown) as number,
-    borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
+    // When unselected the dashed border is drawn via an SVG overlay (see DashedBorder) so we
+    // rely on it entirely: the native border has zero width, keeping the overlay's coordinate
+    // space aligned with the border-box and avoiding iOS's buggy dashed+radius render.
+    borderWidth: $isSelected ? ((makeBorderSize(theme.border.width.thin) as unknown) as number) : 0,
+    borderColor: $isSelected
+      ? theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded']
+      : 'transparent',
     height: FILTER_CHIP_HEIGHT_NATIVE,
     borderRadius: theme.border.radius.small,
-    borderStyle: $isSelected ? 'solid' : 'dashed',
+    borderStyle: 'solid',
     backgroundColor: theme.colors.surface.background.gray.intense,
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    overflow: 'hidden',
+    // The SVG dashed border must not be clipped when unselected; the selected state clips its
+    // divider/close button to the rounded corners.
+    overflow: $isSelected ? 'hidden' : 'visible',
     opacity: $isDisabled ? 0.5 : 1,
   };
 });
@@ -106,11 +179,25 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
   }: BaseFilterChipProps,
   ref: React.Ref<View>,
 ): React.ReactElement => {
+  const { theme } = useTheme();
   const isSelected =
     selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
 
+  const [chipSize, setChipSize] = React.useState({ width: 0, height: 0 });
+  const handleLayout = (event: LayoutChangeEvent): void => {
+    const { width, height } = event.nativeEvent.layout;
+    setChipSize((prev) =>
+      prev.width === width && prev.height === height ? prev : { width, height },
+    );
+  };
+
   return (
-    <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected} ref={ref}>
+    <StyledFilterChip
+      $isDisabled={isDisabled}
+      $isSelected={isSelected}
+      ref={ref}
+      onLayout={isSelected ? undefined : handleLayout}
+    >
       <StyledFilterTrigger
         $isSelected={isSelected}
         disabled={isDisabled}
@@ -158,6 +245,15 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           </StyledFilterCloseButton>
         </>
       ) : null}
+      {isSelected ? null : (
+        <DashedBorder
+          width={chipSize.width}
+          height={chipSize.height}
+          borderRadius={theme.border.radius.small}
+          strokeWidth={makeBorderSize(theme.border.width.thin)}
+          color={theme.colors.interactive.border.gray[isDisabled ? 'disabled' : 'faded']}
+        />
+      )}
     </StyledFilterChip>
   );
 };
