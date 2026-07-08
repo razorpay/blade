@@ -10,6 +10,7 @@ import {
   itemTopMargin,
   markerLineDotSpacing,
   markerLineDotWidth,
+  markerLineHorizontalLength,
   markerLineWidth,
 } from './tokens';
 import { Box } from '~components/Box';
@@ -30,8 +31,14 @@ const dotPeriod = markerLineDotWidth + markerLineDotSpacing;
  * React Native (iOS) does not render `borderStyle: 'dashed'` on single-side borders,
  * so the dotted connector lines are drawn as evenly spaced round dots instead — matching
  * the web implementation which repeats a 2px dot every `dotPeriod`. When the line length is
- * not known ahead of time (flex-grown segment) it is measured via `onLayout`; extra dots are
- * clipped by the container's `overflow: hidden`.
+ * not known ahead of time (flex-grown vertical segment) it is measured via `onLayout`; extra
+ * dots are clipped by the container's `overflow: hidden`.
+ *
+ * Horizontal connectors always pass a definite `length` so no `onLayout` measurement happens.
+ * This is required on native: the horizontal connector lives inside a horizontal `ScrollView`
+ * whose main axis is unbounded, so a self-measured `flex` segment would grow its own width
+ * (more dots -> wider content -> larger measured width -> more dots ...) in an infinite
+ * layout/setState loop that freezes the app.
  */
 const StepDottedLine = ({
   orientation,
@@ -83,13 +90,13 @@ const StepDottedLine = ({
       opacity={opacity}
       marginLeft={marginLeft}
       height={isVertical ? (length ? makeSize(length) : undefined) : makeSize(markerLineWidth)}
-      width={isVertical ? makeSize(markerLineWidth) : undefined}
-      flex={isVertical ? (length ? undefined : '1') : '1'}
+      width={isVertical ? makeSize(markerLineWidth) : length ? makeSize(length) : undefined}
+      flex={length ? undefined : '1'}
       overflow="hidden"
     >
       <View
         style={{ flex: 1, flexDirection: isVertical ? 'column' : 'row', alignItems: 'center' }}
-        onLayout={handleLayout}
+        onLayout={length === undefined ? handleLayout : undefined}
       >
         {dots}
       </View>
@@ -102,13 +109,19 @@ const StepStraightLineHorizontal = ({
   opacity = 1,
 }: StepLineSvgProps): React.ReactElement => {
   if (isDotted) {
-    return <StepDottedLine orientation="horizontal" opacity={opacity} />;
+    return (
+      <StepDottedLine
+        orientation="horizontal"
+        length={markerLineHorizontalLength}
+        opacity={opacity}
+      />
+    );
   }
 
   return (
     <BaseBox
       height={makeSize(markerLineWidth)}
-      flex="1"
+      width={makeSize(markerLineHorizontalLength)}
       opacity={opacity}
       borderTopWidth="thicker"
       borderTopColor="surface.border.gray.subtle"

@@ -16,19 +16,15 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
       <View
         data-blade-component="step-group"
         flexDirection="row"
-        maxWidth="100%"
         style={
           [
             {
               "flexDirection": "row",
-              "maxWidth": "100%",
               "paddingBottom": 12,
               "paddingTop": 12,
-              "width": "100%",
             },
           ]
         }
-        width="100%"
       >
         <View
           alignItems="center"
@@ -42,17 +38,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               {
                 "alignItems": "center",
                 "display": "flex",
-                "flexBasis": 0,
                 "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "gap": 4,
                 "marginLeft": 0,
                 "marginRight": 0,
                 "minWidth": 120,
+                "width": 160,
               },
             ]
           }
+          width="160px"
         >
           <View
             alignItems="center"
@@ -87,14 +82,13 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "borderTopColor": "hsla(204, 8%, 88%, 1)",
                     "borderTopStyle": "solid",
                     "borderTopWidth": 2,
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 0,
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             />
             <View
               data-blade-component="box"
@@ -282,14 +276,13 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "borderTopColor": "hsla(204, 8%, 88%, 1)",
                     "borderTopStyle": "solid",
                     "borderTopWidth": 2,
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             />
           </View>
           <View
@@ -297,12 +290,11 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
             style={
               [
                 {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="box"
@@ -397,17 +389,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               {
                 "alignItems": "center",
                 "display": "flex",
-                "flexBasis": 0,
                 "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "gap": 4,
                 "marginLeft": 0,
                 "marginRight": 0,
                 "minWidth": 120,
+                "width": 160,
               },
             ]
           }
+          width="160px"
         >
           <View
             alignItems="center"
@@ -442,14 +433,13 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "borderTopColor": "hsla(204, 8%, 88%, 1)",
                     "borderTopStyle": "solid",
                     "borderTopWidth": 2,
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             />
             <View
               data-blade-component="box"
@@ -633,18 +623,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               style={
                 [
                   {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
                     "overflow": "hidden",
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             >
               <View
-                onLayout={[Function]}
                 style={
                   {
                     "alignItems": "center",
@@ -652,7 +640,140 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "flexDirection": "row",
                   }
                 }
-              />
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+              </View>
             </View>
           </View>
           <View
@@ -660,12 +781,11 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
             style={
               [
                 {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="box"
@@ -760,17 +880,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               {
                 "alignItems": "center",
                 "display": "flex",
-                "flexBasis": 0,
                 "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "gap": 4,
                 "marginLeft": 0,
                 "marginRight": 0,
                 "minWidth": 120,
+                "width": 160,
               },
             ]
           }
+          width="160px"
         >
           <View
             alignItems="center"
@@ -801,18 +920,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               style={
                 [
                   {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
                     "overflow": "hidden",
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             >
               <View
-                onLayout={[Function]}
                 style={
                   {
                     "alignItems": "center",
@@ -820,7 +937,140 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "flexDirection": "row",
                   }
                 }
-              />
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+              </View>
             </View>
             <View
               data-blade-component="box"
@@ -1004,18 +1254,16 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               style={
                 [
                   {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "height": 2,
                     "opacity": 0,
                     "overflow": "hidden",
+                    "width": 72,
                   },
                 ]
               }
+              width="72px"
             >
               <View
-                onLayout={[Function]}
                 style={
                   {
                     "alignItems": "center",
@@ -1023,7 +1271,140 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
                     "flexDirection": "row",
                   }
                 }
-              />
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                      "borderRadius": 1,
+                      "height": 2,
+                      "marginRight": 4,
+                      "width": 2,
+                    }
+                  }
+                />
+              </View>
             </View>
           </View>
           <View
@@ -1031,12 +1412,11 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
             style={
               [
                 {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="box"
@@ -1616,7 +1996,6 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
           width="2px"
         >
           <View
-            onLayout={[Function]}
             style={
               {
                 "alignItems": "center",
@@ -3310,7 +3689,6 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
             width="2px"
           >
             <View
-              onLayout={[Function]}
               style={
                 {
                   "alignItems": "center",
@@ -3906,7 +4284,6 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
           width="2px"
         >
           <View
-            onLayout={[Function]}
             style={
               {
                 "alignItems": "center",
@@ -4279,7 +4656,6 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
           width="2px"
         >
           <View
-            onLayout={[Function]}
             style={
               {
                 "alignItems": "center",
@@ -5130,7 +5506,6 @@ exports[`<StepGroup /> (native) should render with trailing badge 1`] = `
           width="2px"
         >
           <View
-            onLayout={[Function]}
             style={
               {
                 "alignItems": "center",
@@ -5532,7 +5907,6 @@ exports[`<StepGroup /> (native) should support data-analytics attributes 1`] = `
           width="2px"
         >
           <View
-            onLayout={[Function]}
             style={
               {
                 "alignItems": "center",
