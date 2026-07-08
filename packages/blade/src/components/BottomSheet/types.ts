@@ -27,6 +27,16 @@ type BottomSheetProps = {
    */
   isDismissible?: boolean;
   /**
+   * Whether dragging on the sheet's content pans/dismisses the sheet (native only).
+   *
+   * Disable this when the sheet contains its own interactive vertical scrollables
+   * (e.g. a picker wheel) so content drags scroll that content instead of fighting
+   * the sheet's pan-to-close gesture. The grab handle and backdrop still dismiss.
+   *
+   * @default true
+   */
+  enableContentPanningGesture?: boolean;
+  /**
    * Toggles bottom sheet state
    *
    * @default false
