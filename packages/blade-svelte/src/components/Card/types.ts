@@ -7,17 +7,13 @@ import type { IconProps } from '../Icons/types';
 export type IconComponent = Component<IconProps>;
 
 export type CardSpacingValueType =
-  | 'spacing.0'
-  | 'spacing.3'
-  | 'spacing.4'
-  | 'spacing.5'
-  | 'spacing.7';
+  'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
 
 type CardBaseProps = {
   /**
    * Card contents.
    */
-  children?: Snippet;
+  children: Snippet;
   /**
    * Sets the border radius of the Card
    *
@@ -194,30 +190,26 @@ type CardVariantProps =
  */
 export type CardProps = CardBaseProps & CardVariantProps;
 
-export type TicketCardProps = CardBaseProps & {
+export type TicketCardProps = Omit<CardBaseProps, 'children' | 'padding'> & {
   /**
-   * Must contain exactly one `TicketCardBody` and one `TicketCardFooter`.
+   * Content for the top section (above the tear line).
    */
-  children: Snippet;
-};
-
-export type InfoCardProps = CardBaseProps & {
+  topSection: Snippet;
   /**
-   * Must contain exactly one `InfoCardBody` and one `InfoCardFooter`.
+   * Content for the bottom section (below the tear line).
    */
-  children: Snippet;
+  bottomSection: Snippet;
 };
 
-export type SectionedCardBodyProps = {
-  children: Snippet;
-  testID?: string;
-  [key: `data-analytics-${string}`]: string;
-};
-
-export type SectionedCardFooterProps = {
-  children: Snippet;
-  testID?: string;
-  [key: `data-analytics-${string}`]: string;
+export type InfoCardProps = Omit<CardBaseProps, 'children' | 'padding'> & {
+  /**
+   * Content for the emphasized header section.
+   */
+  topSection: Snippet;
+  /**
+   * Content for the subtle body section.
+   */
+  bottomSection: Snippet;
 };
 
 export type CardBodyProps = {

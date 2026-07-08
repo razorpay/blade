@@ -334,7 +334,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
-        {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
+        {...(isCardDisabled ? makeAccessible({ disabled: true }) : {})}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

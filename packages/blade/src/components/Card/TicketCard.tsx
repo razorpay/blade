@@ -17,7 +17,7 @@ import type { BladeElementRef } from '~utils/types';
 import { isReactNative } from '~utils';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
-export type TicketCardProps = Omit<CardProps, 'variant'>;
+export type TicketCardProps = Omit<CardProps, 'variant' | 'padding'>;
 
 const TicketCardBody = createSectionedCardSlot(
   SectionedCardComponentIds.TicketCardBody,
@@ -72,20 +72,15 @@ const _TicketCard: React.ForwardRefRenderFunction<BladeElementRef, TicketCardPro
     componentName: 'TicketCard',
   });
 
-  const {
-    isFocused,
-    isCardDisabled,
-    isCardSelected,
-    linkOverlayProps,
-    defaultRel,
-  } = useSectionedCardState({
-    isSelected,
-    isDisabled,
-    accessibilityLabel,
-    href,
-    target,
-    onClick,
-  });
+  const { isFocused, isCardDisabled, isCardSelected, linkOverlayProps, defaultRel } =
+    useSectionedCardState({
+      isSelected,
+      isDisabled,
+      accessibilityLabel,
+      href,
+      target,
+      onClick,
+    });
 
   return (
     <CardProvider size={size}>
@@ -108,7 +103,7 @@ const _TicketCard: React.ForwardRefRenderFunction<BladeElementRef, TicketCardPro
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
-        {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
+        {...(isCardDisabled ? makeAccessible({ disabled: true }) : {})}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -116,7 +111,6 @@ const _TicketCard: React.ForwardRefRenderFunction<BladeElementRef, TicketCardPro
         <CardTicketSurface
           top={<CardBody>{body}</CardBody>}
           bottom={<CardBody>{footer}</CardBody>}
-          tearLine={null}
           isSelected={isCardSelected}
           isDisabled={isCardDisabled}
         >

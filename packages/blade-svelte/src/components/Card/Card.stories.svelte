@@ -49,11 +49,7 @@
 
 <script lang="ts">
   import TicketCard from './TicketCard.svelte';
-  import TicketCardBody from './TicketCardBody.svelte';
-  import TicketCardFooter from './TicketCardFooter.svelte';
   import InfoCard from './InfoCard.svelte';
-  import InfoCardBody from './InfoCardBody.svelte';
-  import InfoCardFooter from './InfoCardFooter.svelte';
   import CardBody from './CardBody.svelte';
   import CardHeader from './CardHeader.svelte';
   import CardHeaderLeading from './CardHeaderLeading.svelte';
@@ -677,13 +673,13 @@
      top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
 {#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
   <TicketCard width="280px" {isSelected} {isDisabled}>
-    <TicketCardBody>
+    {#snippet topSection()}
       <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
         <Text weight="semibold">Razorpay Summit 2026</Text>
         <Text size="small" color="surface.text.gray.subtle">{label}</Text>
       </div>
-    </TicketCardBody>
-    <TicketCardFooter>
+    {/snippet}
+    {#snippet bottomSection()}
       <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column;">
           <Text size="small" color="surface.text.gray.subtle">Seat</Text>
@@ -691,29 +687,29 @@
         </div>
         <Amount value={4999} type="body" weight="semibold" />
       </div>
-    </TicketCardFooter>
+    {/snippet}
   </TicketCard>
 {/snippet}
 
 {#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
   <InfoCard width="280px" {isSelected} {isDisabled}>
-    <InfoCardBody>
+    {#snippet topSection()}
       <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
         <Text weight="semibold">Razorpay Summit 2026</Text>
         <Text size="small" color="surface.text.gray.subtle">{label}</Text>
       </div>
-    </InfoCardBody>
-    <InfoCardFooter>
+    {/snippet}
+    {#snippet bottomSection()}
       <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
         <Text size="small" color="surface.text.gray.subtle">Venue</Text>
         <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
       </div>
-    </InfoCardFooter>
+    {/snippet}
   </InfoCard>
 {/snippet}
 
 <!-- Story 10: Ticket Card — two sections split by a scalloped, notched tear line.
-     Compose with `TicketCardBody` and `TicketCardFooter`. -->
+     Pass content via `topSection` and `bottomSection` snippet props. -->
 <Story name="Ticket Card" asChild>
   <div
     style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
@@ -725,7 +721,7 @@
 </Story>
 
 <!-- Story 11: Info Card — emphasized header over subtle body inside single rounded border.
-     Compose with `InfoCardBody` and `InfoCardFooter`. -->
+     Pass content via `topSection` and `bottomSection` snippet props. -->
 <Story name="Info Card" asChild>
   <div
     style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"

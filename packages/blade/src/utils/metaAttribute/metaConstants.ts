@@ -134,7 +134,6 @@ export const MetaConstants = {
   CardBody: 'card-body',
   CardHeader: 'card-header',
   CardFooter: 'card-footer',
-  CardTearLine: 'card-tear-line',
   TicketCardBody: 'ticket-card-body',
   TicketCardFooter: 'ticket-card-footer',
   InfoCardBody: 'info-card-body',

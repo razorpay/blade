@@ -1,19 +1,15 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import CardRoot from './CardRoot.svelte';
   import CardInfoSurface from './CardInfoSurface.svelte';
   import CardBody from './CardBody.svelte';
   import LinkOverlay from './LinkOverlay.svelte';
   import { setCardContext } from './CardContext';
-  import {
-    INFO_CARD_CONTEXT_KEY,
-    setSectionedCardContext,
-  } from './sectionedCardContext';
   import type { InfoCardProps } from './types';
 
   let {
-    children,
+    topSection,
+    bottomSection,
     borderRadius = 'medium',
     elevation: _deprecatedElevation,
     width,
@@ -36,18 +32,7 @@
     ...rest
   }: InfoCardProps = $props();
 
-  let bodySnippet = $state<Snippet | undefined>();
-  let footerSnippet = $state<Snippet | undefined>();
-
   setCardContext(() => ({ size }));
-  setSectionedCardContext(INFO_CARD_CONTEXT_KEY, {
-    setBody: (content) => {
-      bodySnippet = content;
-    },
-    setFooter: (content) => {
-      footerSnippet = content;
-    },
-  });
 
   let isFocused = $state(false);
 
@@ -92,6 +77,14 @@
   {/if}
 {/snippet}
 
+{#snippet topSectionWithBody()}
+  <CardBody>{@render topSection()}</CardBody>
+{/snippet}
+
+{#snippet bottomSectionWithBody()}
+  <CardBody>{@render bottomSection()}</CardBody>
+{/snippet}
+
 <CardRoot
   {as}
   {borderRadius}
@@ -110,31 +103,11 @@
   {...rest}
   {...analyticsAttrs}
 >
-  {@render children()}
-
-  {#if bodySnippet && footerSnippet}
-    <CardInfoSurface
-      topSection={bodyRegion}
-      bottomSection={footerRegion}
-      isSelected={isCardSelected}
-      {isDisabled}
-      children={linkOverlay}
-    />
-  {/if}
+  <CardInfoSurface
+    topSection={topSectionWithBody}
+    bottomSection={bottomSectionWithBody}
+    isSelected={isCardSelected}
+    {isDisabled}
+    children={linkOverlay}
+  />
 </CardRoot>
-
-{#snippet bodyRegion()}
-  <CardBody>
-    {#if bodySnippet}
-      {@render bodySnippet()}
-    {/if}
-  </CardBody>
-{/snippet}
-
-{#snippet footerRegion()}
-  <CardBody>
-    {#if footerSnippet}
-      {@render footerSnippet()}
-    {/if}
-  </CardBody>
-{/snippet}

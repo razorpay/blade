@@ -49,11 +49,6 @@ exports[`<Card /> should render a clickable Card 1`] = `
     }
   >
     <View
-      accessibilityState={
-        {
-          "disabled": undefined,
-        }
-      }
       accessible={true}
       borderRadius="medium"
       data-blade-component="card"
@@ -180,11 +175,6 @@ exports[`<Card /> should render a interactive Card 1`] = `
     }
   >
     <View
-      accessibilityState={
-        {
-          "disabled": undefined,
-        }
-      }
       accessible={true}
       borderRadius="medium"
       data-blade-component="card"
@@ -312,11 +302,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
     }
   >
     <View
-      accessibilityState={
-        {
-          "disabled": undefined,
-        }
-      }
       accessible={true}
       borderRadius="medium"
       data-blade-component="card"
@@ -444,11 +429,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
     }
   >
     <View
-      accessibilityState={
-        {
-          "disabled": undefined,
-        }
-      }
       accessible={true}
       borderRadius="medium"
       data-blade-component="card"

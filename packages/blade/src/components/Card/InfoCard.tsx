@@ -17,7 +17,7 @@ import type { BladeElementRef } from '~utils/types';
 import { isReactNative } from '~utils';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
-export type InfoCardProps = Omit<CardProps, 'variant'>;
+export type InfoCardProps = Omit<CardProps, 'variant' | 'padding'>;
 
 const InfoCardBody = createSectionedCardSlot(
   SectionedCardComponentIds.InfoCardBody,
@@ -72,20 +72,15 @@ const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> 
     componentName: 'InfoCard',
   });
 
-  const {
-    isFocused,
-    isCardDisabled,
-    isCardSelected,
-    linkOverlayProps,
-    defaultRel,
-  } = useSectionedCardState({
-    isSelected,
-    isDisabled,
-    accessibilityLabel,
-    href,
-    target,
-    onClick,
-  });
+  const { isFocused, isCardDisabled, isCardSelected, linkOverlayProps, defaultRel } =
+    useSectionedCardState({
+      isSelected,
+      isDisabled,
+      accessibilityLabel,
+      href,
+      target,
+      onClick,
+    });
 
   return (
     <CardProvider size={size}>
@@ -108,7 +103,7 @@ const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> 
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
-        {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
+        {...(isCardDisabled ? makeAccessible({ disabled: true }) : {})}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}

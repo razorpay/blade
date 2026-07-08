@@ -49,86 +49,85 @@ const scallopBackground = (theme: Theme): CSSObject => {
   };
 };
 
-const TicketWrapper = styled(BaseBox)(
-  (): CSSObject => ({
+const TicketWrapper = styled(BaseBox)((): CSSObject => ({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  // Clips the half-circle notches (which are positioned half outside each edge) to the inner
+  // half, mirroring Figma's `overflow: clip` cut-circle technique.
+  overflow: 'hidden',
+}));
+
+const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bottom' }>(({
+  theme,
+  isSelected,
+  isDisabled,
+  position,
+}): CSSObject => {
+  const borderColor = getTicketBorderColor(theme, { isSelected, isDisabled });
+  const borderStyle = getTicketBorderStyle({ isDisabled });
+  const borderWidth = makeBorderSize(theme.border.width.thin);
+  const radius = makeBorderSize(theme.border.radius.medium);
+  const isTop = position === 'top';
+
+  return {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    // Clips the half-circle notches (which are positioned half outside each edge) to the inner
-    // half, mirroring Figma's `overflow: clip` cut-circle technique.
-    overflow: 'hidden',
-  }),
-);
-
-const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bottom' }>(
-  ({ theme, isSelected, isDisabled, position }): CSSObject => {
-    const borderColor = getTicketBorderColor(theme, { isSelected, isDisabled });
-    const borderStyle = getTicketBorderStyle({ isDisabled });
-    const borderWidth = makeBorderSize(theme.border.width.thin);
-    const radius = makeBorderSize(theme.border.radius.medium);
-    const isTop = position === 'top';
-
-    return {
-      position: 'relative',
-      boxSizing: 'border-box',
-      borderColor,
-      borderStyle,
-      borderLeftWidth: borderWidth,
-      borderRightWidth: borderWidth,
-      // The two sections meet flush at the tear line, so the adjoining edges carry no border.
-      ...(isTop
-        ? {
-            backgroundColor: theme.colors.surface.background.gray.intense,
-            borderTopLeftRadius: radius,
-            borderTopRightRadius: radius,
-            borderTopWidth: borderWidth,
-            borderBottomWidth: '0px',
-          }
-        : {
-            backgroundColor: theme.colors.surface.background.gray.moderate,
-            borderBottomLeftRadius: radius,
-            borderBottomRightRadius: radius,
-            borderBottomWidth: borderWidth,
-            borderTopWidth: '0px',
-            ...scallopBackground(theme),
-          }),
-    };
-  },
-);
+    boxSizing: 'border-box',
+    borderColor,
+    borderStyle,
+    borderLeftWidth: borderWidth,
+    borderRightWidth: borderWidth,
+    // The two sections meet flush at the tear line, so the adjoining edges carry no border.
+    ...(isTop
+      ? {
+          backgroundColor: theme.colors.surface.background.gray.intense,
+          borderTopLeftRadius: radius,
+          borderTopRightRadius: radius,
+          borderTopWidth: borderWidth,
+          borderBottomWidth: '0px',
+        }
+      : {
+          backgroundColor: theme.colors.surface.background.gray.moderate,
+          borderBottomLeftRadius: radius,
+          borderBottomRightRadius: radius,
+          borderBottomWidth: borderWidth,
+          borderTopWidth: '0px',
+          ...scallopBackground(theme),
+        }),
+  };
+});
 
 /**
  * A white-filled, state-outlined circle centred on the tear line and pushed half outside an edge.
  * The wrapper's `overflow: hidden` clips it to the inner half, producing an outlined semicircular
  * notch. Rendered inside the (later-painted) bottom section so it sits above both sections.
  */
-const NotchCircle = styled(BaseBox)<TicketStateProps & { side: 'left' | 'right' }>(
-  ({ theme, isSelected, isDisabled, side }): CSSObject => {
-    const radius = CARD_TICKET_NOTCH_RADIUS;
-    return {
-      position: 'absolute',
-      top: `-${radius}px`,
-      [side]: `-${radius}px`,
-      width: `${radius * 2}px`,
-      height: `${radius * 2}px`,
-      borderRadius: '50%',
-      boxSizing: 'border-box',
-      backgroundColor: theme.colors.surface.background.gray.intense,
-      borderStyle: getTicketBorderStyle({ isDisabled }),
-      borderColor: getTicketBorderColor(theme, { isSelected, isDisabled }),
-      borderWidth: makeBorderSize(theme.border.width.thin),
-    };
-  },
-);
+const NotchCircle = styled(BaseBox)<TicketStateProps & { side: 'left' | 'right' }>(({
+  theme,
+  isSelected,
+  isDisabled,
+  side,
+}): CSSObject => {
+  const radius = CARD_TICKET_NOTCH_RADIUS;
+  return {
+    position: 'absolute',
+    top: `-${radius}px`,
+    [side]: `-${radius}px`,
+    width: `${radius * 2}px`,
+    height: `${radius * 2}px`,
+    borderRadius: '50%',
+    boxSizing: 'border-box',
+    backgroundColor: theme.colors.surface.background.gray.intense,
+    borderStyle: getTicketBorderStyle({ isDisabled }),
+    borderColor: getTicketBorderColor(theme, { isSelected, isDisabled }),
+    borderWidth: makeBorderSize(theme.border.width.thin),
+  };
+});
 
 type CardTicketSurfaceProps = {
   top: React.ReactNode;
   bottom: React.ReactNode;
-  /**
-   * The tear line marker (`CardTearLine`) used only to split the content; the perforation itself
-   * is drawn by this surface.
-   */
-  tearLine: React.ReactNode;
   /**
    * Interactive overlay (link/button) that spans the whole ticket.
    */
@@ -142,7 +141,6 @@ type CardTicketSurfaceProps = {
 const CardTicketSurface = ({
   top,
   bottom,
-  tearLine,
   children,
   isSelected,
   isDisabled,
@@ -160,7 +158,6 @@ const CardTicketSurface = ({
       >
         {top}
       </TicketSection>
-      {tearLine}
       <TicketSection
         position="bottom"
         isSelected={isSelected}

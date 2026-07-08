@@ -30,49 +30,48 @@ const NativeTearLine = styled(BaseBox)(({ theme }) => ({
   borderTopColor: theme.colors.surface.border.gray.subtle,
 }));
 
-const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bottom' }>(
-  ({ theme, isSelected, isDisabled, position }) => {
-    const borderColor = getTicketBorderColor(theme, { isSelected, isDisabled });
-    const borderStyle = getTicketBorderStyle({ isDisabled });
-    const borderWidth = makeBorderSize(theme.border.width.thin);
-    const radius = makeBorderSize(theme.border.radius.medium);
-    const isTop = position === 'top';
+const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bottom' }>(({
+  theme,
+  isSelected,
+  isDisabled,
+  position,
+}) => {
+  const borderColor = getTicketBorderColor(theme, { isSelected, isDisabled });
+  const borderStyle = getTicketBorderStyle({ isDisabled });
+  const borderWidth = makeBorderSize(theme.border.width.thin);
+  const radius = makeBorderSize(theme.border.radius.medium);
+  const isTop = position === 'top';
 
-    return {
-      borderStyle,
-      borderColor,
-      borderLeftWidth: borderWidth,
-      borderRightWidth: borderWidth,
-      ...(isTop
-        ? {
-            backgroundColor: theme.colors.surface.background.gray.intense,
-            borderTopLeftRadius: radius,
-            borderTopRightRadius: radius,
-            borderTopWidth: borderWidth,
-          }
-        : {
-            backgroundColor: theme.colors.surface.background.gray.moderate,
-            borderBottomLeftRadius: radius,
-            borderBottomRightRadius: radius,
-            borderBottomWidth: borderWidth,
-          }),
-    };
-  },
-);
+  return {
+    borderStyle,
+    borderColor,
+    borderLeftWidth: borderWidth,
+    borderRightWidth: borderWidth,
+    ...(isTop
+      ? {
+          backgroundColor: theme.colors.surface.background.gray.intense,
+          borderTopLeftRadius: radius,
+          borderTopRightRadius: radius,
+          borderTopWidth: borderWidth,
+        }
+      : {
+          backgroundColor: theme.colors.surface.background.gray.moderate,
+          borderBottomLeftRadius: radius,
+          borderBottomRightRadius: radius,
+          borderBottomWidth: borderWidth,
+        }),
+  };
+});
 
 type CardTicketSurfaceProps = {
   top: React.ReactNode;
   bottom: React.ReactNode;
-  tearLine: React.ReactNode;
   children?: React.ReactNode;
 } & TicketStateProps;
 
 const CardTicketSurface = ({
   top,
   bottom,
-  // tearLine is intentionally unused on native — NativeTearLine draws the tear line unconditionally
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  tearLine: _tearLine,
   children,
   isSelected,
   isDisabled,
