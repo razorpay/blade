@@ -200,6 +200,23 @@ type ChartReferenceLineProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `BarChart` for comparing discrete categorical values across groups.
+- Wrap in `ChartBarWrapper` and compose with `ChartBar`, `ChartXAxis`, `ChartYAxis`, `ChartTooltip`, `ChartLegend`.
+- Use `stackId` on multiple `ChartBar` components to create stacked bars showing composition.
+- Use `layout="vertical"` for horizontal bars — remember to set `ChartXAxis type="number"` and `ChartYAxis type="category"`.
+- Use both categorical and sequential color tokens — BarChart supports both palettes unlike other charts.
+
+**Don't**
+
+- Don't use `BarChart` for time-series trends — use `LineChart` or `AreaChart` instead.
+- Don't use `BarChart` for proportional/percentage composition — use `DonutChart` instead.
+- Don't add `<Defs/>` elements — color and gradient handling is managed internally.
+- Don't forget to swap axis types when using `layout="vertical"`.
+
 ## Example
 
 ### Basic BarChart with Multiple Series

@@ -1,25 +1,12 @@
-<script module lang="ts">
-  /* Module-level monotonically-increasing counter for AccordionItem ids.
-   *
-   * Using `Math.random()` here would (a) produce different ids on the server
-   * and the client (SSR hydration mismatch on the `id` / `aria-controls`
-   * pair) and (b) collide with non-zero probability. A module-level counter
-   * is deterministic in component-tree order, so SSR and CSR agree, and
-   * collisions are impossible inside a single module load. */
-  let nextAccordionItemUid = 0;
-</script>
-
 <script lang="ts">
   import {
     metaAttribute,
     MetaConstants,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
+  import Collapsible from '../Collapsible/Collapsible.svelte';
   import Divider from '../Divider/Divider.svelte';
-  import {
-    getAccordionContext,
-    setAccordionItemContext,
-  } from './context';
+  import { getAccordionContext, setAccordionItemContext } from './context';
   import type { AccordionItemProps } from './types';
 
   let {
@@ -36,6 +23,7 @@
   const itemIndex = getAccCtx().registerItem();
 
   const isExpanded = $derived(accordionCtx.expandedIndex === itemIndex);
+  const isDefaultExpanded = $derived(accordionCtx.defaultExpandedIndex === itemIndex);
   const variant = $derived(accordionCtx.variant);
   const numberOfItems = $derived(accordionCtx.numberOfItems);
   const isLastItem = $derived(
@@ -43,32 +31,33 @@
   );
   const showDivider = $derived(!isLastItem || variant === 'transparent');
 
-  nextAccordionItemUid += 1;
-  const collapsibleBodyId = `accordion-body-${nextAccordionItemUid}`;
-
-  const toggle = () => {
+  // Bridge Collapsible's boolean expand state onto the Accordion's index
+  // protocol: expanding an item sets the accordion to this item's index,
+  // collapsing resets it to -1 (no item expanded).
+  const handleExpandChange = ({ isExpanded: nextIsExpanded }: { isExpanded: boolean }) => {
     if (isDisabled) return;
-    if (isExpanded) {
-      accordionCtx.onExpandChange(-1);
-    } else {
-      accordionCtx.onExpandChange(itemIndex);
-    }
+    accordionCtx.onExpandChange(nextIsExpanded ? itemIndex : -1);
   };
 
   setAccordionItemContext(() => ({
     index: itemIndex,
     isDisabled,
-    isExpanded,
-    toggle,
-    collapsibleBodyId,
   }));
 
-  const metaAttrs = metaAttribute({ name: MetaConstants.AccordionItem, testID });
+  const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AccordionItem, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
 <div {...metaAttrs} {...analyticsAttrs}>
-  {@render children()}
+  <Collapsible
+    {isExpanded}
+    defaultIsExpanded={isDefaultExpanded}
+    onExpandChange={handleExpandChange}
+    _shouldApplyWidthRestrictions={false}
+    _dangerouslyDisableValidations={true}
+  >
+    {@render children()}
+  </Collapsible>
   {#if showDivider}
     <Divider />
   {/if}

@@ -5,7 +5,8 @@ import styled from 'styled-components/native';
 
 import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
-import type { Emphasis, SubtleOrIntense } from '~tokens/theme/theme';
+import type { IconButtonEmphasis } from './IconButton';
+import type { Emphasis } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 import { castNativeType } from '~utils';
@@ -15,7 +16,7 @@ type EmphasisIconColorsType = 'staticWhite' | 'gray';
 type IconColorToken = `interactive.icon.${EmphasisIconColorsType}.${IconColorStates}`;
 
 type StyledPressableProps = {
-  emphasis: SubtleOrIntense;
+  emphasis: IconButtonEmphasis;
 } & BladeCommonEvents;
 
 const StyledPressable = styled.Pressable<StyledPressableProps>({

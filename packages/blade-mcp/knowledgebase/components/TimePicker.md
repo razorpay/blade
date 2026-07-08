@@ -245,6 +245,24 @@ type TimeSegmentProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `TimePicker` for time selection with scrollable spin wheels (hours, minutes, AM/PM).
+- Use `timeFormat="24h"` for business/technical contexts and `"12h"` (default) for consumer-facing UIs.
+- Use `minuteStep` (1, 5, 15, or 30) to control granularity based on your use case.
+- Use two separate `TimePicker` components for time range selection with custom validation between them.
+- The component auto-converts to BottomSheet on mobile — no manual handling needed.
+
+**Don't**
+
+- Don't use `TimePicker` for date selection — use `DatePicker` for dates.
+- Don't expect built-in time range support — use two TimePickers with validation logic.
+- Don't use arbitrary `minuteStep` values — only 1, 5, 15, and 30 are accepted.
+- Don't use generic `TextInput` for time entry — `TimePicker` provides a proper time selection UI.
+- Don't rely on `onApply` when `showFooterActions={false}` — in that mode, time applies immediately on blur/Enter.
+
 ## Example
 
 ### TimePicker Usage

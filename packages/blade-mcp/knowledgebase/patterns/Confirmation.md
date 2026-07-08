@@ -11,6 +11,55 @@ The Confirmation pattern provides a standardized way to seek user confirmation b
 - Icons
 - Typography (Text)
 
+## When to Use
+
+Use the Confirmation pattern for any **irreversible or high-consequence action** that requires explicit acknowledgment:
+- Deleting data (records, accounts, files)
+- Discarding unsaved changes
+- Revoking access or permissions
+- Switching platforms or environments
+- Any action where the user may not fully understand the consequences
+
+**Do not use** for informational alerts, minor form errors, or any action that is easily reversible.
+
+## Anatomy
+
+The confirmation dialog is a **headerless modal** — content lives entirely in the body, with the dismiss `×` button floating outside the card.
+
+```
+                           [✕]    ← Dismiss Action (external, floating at top-right)
+┌─────────────────────────────────┐
+│  [🗑️]                           │  ← Icon badge (48×48px)
+│                                 │
+│  Action title?                  │  ← Body/LargeSemibold
+│  Consequence description text   │  ← Body/MediumRegular
+│  spanning multiple lines        │
+│                                 │
+│ ─────────────────────────────── │  ← Divider
+│              [Cancel]  [Confirm]│  ← Footer (right-aligned, compact buttons)
+└─────────────────────────────────┘
+```
+
+**Key structural rules:**
+- No `ModalHeader` — the title/description live inside `ModalBody`
+- Dismiss `×` is **external** — absolutely positioned at `top: 16px, right: 16px` with a circular `surface.background.gray.intense` background (28px diameter, housing a 20px `IconButton`)
+- Footer buttons are **not** full-width — they size to their label and are right-aligned
+
+## Icon Badge
+
+Use a 48×48px `Box` with `borderRadius="medium"` and a semantic feedback background color to communicate severity:
+- **Destructive**: `feedback.background.negative.subtle` background, `feedback.icon.negative.intense` icon color
+- **Neutral**: `feedback.background.neutral.subtle` background, `surface.icon.gray.subtle` icon color
+
+Use a relevant icon (e.g. `TrashIcon` for delete, `AlertIcon` for warnings).
+
+## Button Color Semantics
+
+| Scenario | Secondary button | Primary button |
+|---|---|---|
+| Neutral action (e.g. switch platform, start tour) | `variant="secondary" color="primary"` | `variant="primary" color="primary"` (blue) |
+| Destructive / negative (e.g. delete, discard, revoke) | `variant="tertiary" color="primary"` | `variant="primary" color="negative"` (red) |
+
 ## Example
 
 ### Confirmation Dialog with Multiple States
