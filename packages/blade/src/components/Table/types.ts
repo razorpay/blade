@@ -315,6 +315,17 @@ type TableRowProps<Item> = {
    **/
   isDisabled?: boolean;
   /**
+   * The isActive prop is used to mark a TableRow as the currently active row.
+   * Use this in ListView+DetailView patterns to keep the selected row visually highlighted
+   * while a detail panel is open.
+   * @default false
+   * @example
+   * <TableRow isActive item={item}>
+   *   <TableCell>...</TableCell>
+   * </TableRow>
+   **/
+  isActive?: boolean;
+  /**
    * Callback triggered when the row is hovered. It is called with the current row item prop.
    */
   onHover?: ({ item }: { item: TableNode<Item> }) => void;

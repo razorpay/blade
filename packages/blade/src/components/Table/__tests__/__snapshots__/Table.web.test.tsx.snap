@@ -131,6 +131,54 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -1313,6 +1361,54 @@ exports[`<Table /> should render table 1`] = `
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .row-select-single-selected .cell-wrapper-base,
@@ -3017,6 +3113,54 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
   border-bottom: none;
 }
 
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .row-select-single-selected .cell-wrapper-base,
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -4446,6 +4590,54 @@ exports[`<Table /> should render table with column spanning 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -5248,6 +5440,54 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -6325,6 +6565,54 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -7400,6 +7688,54 @@ exports[`<Table /> should render table with footer spanning 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -8252,6 +8588,54 @@ exports[`<Table /> should render table with grouping 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -9206,6 +9590,54 @@ exports[`<Table /> should render table with grouping and selection 1`] = `
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 .row-select-single-selected .cell-wrapper-base,
@@ -10729,6 +11161,54 @@ exports[`<Table /> should render table with header spanning 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -11943,6 +12423,54 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 .row-select-single-selected .cell-wrapper-base,
@@ -13429,6 +13957,54 @@ exports[`<Table /> should render table with multi select 1`] = `
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .row-select-single-selected .cell-wrapper-base,
@@ -16176,6 +16752,54 @@ exports[`<Table /> should render table with multi select 2`] = `
   border-bottom: none;
 }
 
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .row-select-single-selected .cell-wrapper-base,
 .c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27.c27 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -18826,6 +19450,54 @@ exports[`<Table /> should render table with multi select 3`] = `
   border-bottom: none;
 }
 
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .row-select-single-selected .cell-wrapper-base,
 .c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20.c20 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -21086,6 +21758,54 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
   border-bottom: none;
 }
 
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
   background-color: hsla(206,10%,29%,0.09);
@@ -21778,6 +22498,54 @@ exports[`<Table /> should render table with row spanning 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -22540,6 +23308,54 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -23620,6 +24436,54 @@ exports[`<Table /> should render table with single select 1`] = `
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -25130,6 +25994,54 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
@@ -27490,6 +28402,54 @@ exports[`<Table /> should render virtualized table 1`] = `
 
 .c3.c3.c3.c3.c3 tbody div td {
   padding: 0;
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:hover:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,1) 10.08%,hsla(0,0%,100%,1) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-2 {
+  background: linear-gradient(90deg,transparent 0%,hsla(0,0%,100%,0) 10.08%,hsla(0,0%,100%,0) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 tbody div .active-row:focus:not(.disabled-row) .cell-wrapper-base .hover-actions-layer-3 {
+  background: linear-gradient(90deg,transparent 0%,hsla(206,10%,29%,0.09) 10.08%,hsla(206,10%,29%,0.09) 100%);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c3.c3.c3.c3.c3 tbody div .row-select-single-selected .cell-wrapper-base,
