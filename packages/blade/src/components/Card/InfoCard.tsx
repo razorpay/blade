@@ -72,15 +72,20 @@ const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> 
     componentName: 'InfoCard',
   });
 
-  const { isFocused, isCardDisabled, isCardSelected, linkOverlayProps, defaultRel } =
-    useSectionedCardState({
-      isSelected,
-      isDisabled,
-      accessibilityLabel,
-      href,
-      target,
-      onClick,
-    });
+  const {
+    isFocused,
+    isCardDisabled,
+    isCardSelected,
+    linkOverlayProps,
+    defaultRel,
+  } = useSectionedCardState({
+    isSelected,
+    isDisabled,
+    accessibilityLabel,
+    href,
+    target,
+    onClick,
+  });
 
   return (
     <CardProvider size={size}>

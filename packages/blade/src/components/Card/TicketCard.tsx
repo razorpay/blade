@@ -72,15 +72,20 @@ const _TicketCard: React.ForwardRefRenderFunction<BladeElementRef, TicketCardPro
     componentName: 'TicketCard',
   });
 
-  const { isFocused, isCardDisabled, isCardSelected, linkOverlayProps, defaultRel } =
-    useSectionedCardState({
-      isSelected,
-      isDisabled,
-      accessibilityLabel,
-      href,
-      target,
-      onClick,
-    });
+  const {
+    isFocused,
+    isCardDisabled,
+    isCardSelected,
+    linkOverlayProps,
+    defaultRel,
+  } = useSectionedCardState({
+    isSelected,
+    isDisabled,
+    accessibilityLabel,
+    href,
+    target,
+    onClick,
+  });
 
   return (
     <CardProvider size={size}>
