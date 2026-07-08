@@ -14,6 +14,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const getDividerColorToken = ({
   color,
@@ -83,8 +84,7 @@ const _ButtonGroup = ({
         {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
         {...makeAnalyticsAttribute(rest)}
         {...getStyledProps(rest)}
-        accessible={true}
-        accessibilityRole="group"
+        {...makeAccessible({ role: 'group' })}
       >
         {React.Children.map(children, (child, index) => {
           const isLast = React.Children.count(children) - 1 === index;
