@@ -1,3 +1,4 @@
+import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { TableData } from '../../types';
 import { Table as TableComponent } from '../../Table';
@@ -163,3 +164,54 @@ const TableTemplate: StoryFn<typeof TableRow> = ({ ...args }) => {
 export const TableRowStory = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 TableRowStory.storyName = 'TableRow';
+
+const TableRowActiveTemplate: StoryFn<typeof TableRow> = () => {
+  const [activeId, setActiveId] = React.useState<string>('1');
+  return (
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <TableComponent data={data}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Action</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  isActive={activeId === tableItem.id}
+                  onClick={() => setActiveId(tableItem.id)}
+                >
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    <Link onClick={() => console.log('copy')} variant="button" icon={CopyIcon}>
+                      Copy
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+
+export const TableRowActiveStory = TableRowActiveTemplate.bind({});
+TableRowActiveStory.storyName = 'TableRow Active';
