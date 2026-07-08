@@ -9,7 +9,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -1415,7 +1415,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={true}
@@ -2821,7 +2821,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -4227,7 +4227,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -5633,7 +5633,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -7039,7 +7039,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -8445,7 +8445,7 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -8990,7 +8990,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -10396,7 +10396,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -11520,7 +11520,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -12926,7 +12926,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -14050,7 +14050,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -15456,7 +15456,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -16580,7 +16580,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -17704,7 +17704,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -18966,7 +18966,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -20090,7 +20090,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="group"
     accessible={true}
     data-blade-component="button-group"
     isFullWidth={false}

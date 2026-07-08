@@ -84,7 +84,7 @@ const _ButtonGroup = ({
         {...makeAnalyticsAttribute(rest)}
         {...getStyledProps(rest)}
         accessible={true}
-        accessibilityRole="toolbar"
+        accessibilityRole="group"
       >
         {React.Children.map(children, (child, index) => {
           const isLast = React.Children.count(children) - 1 === index;
