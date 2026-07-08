@@ -277,6 +277,62 @@ describe('<InfoGroup /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render vertical InfoGroup with gridTemplateColumns="1fr" as a single stacked column', () => {
+    const { toJSON } = renderWithTheme(
+      // gridTemplateColumns is a web CSS type; cast for the native emulation path.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <InfoGroup itemOrientation="vertical" isHighlighted gridTemplateColumns={'1fr' as any}>
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render vertical InfoGroup with gridTemplateColumns="1fr 1fr" as two equal columns', () => {
+    const { toJSON } = renderWithTheme(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'1fr 1fr' as any}>
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Status</InfoItemKey>
+          <InfoItemValue>Completed</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render vertical InfoGroup with gridTemplateColumns="repeat(2, 1fr)" as two equal columns', () => {
+    const { toJSON } = renderWithTheme(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'repeat(2, 1fr)' as any}>
+        <InfoItem>
+          <InfoItemKey>Account Holder</InfoItemKey>
+          <InfoItemValue>Saurabh Daware</InfoItemValue>
+        </InfoItem>
+        <InfoItem>
+          <InfoItemKey>Payment Method</InfoItemKey>
+          <InfoItemValue>Credit Card</InfoItemValue>
+        </InfoItem>
+      </InfoGroup>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render vertical InfoGroup with more than 4 items (wraps to next row)', () => {
     const { toJSON } = renderWithTheme(
       <InfoGroup itemOrientation="vertical">
