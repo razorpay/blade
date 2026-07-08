@@ -255,10 +255,10 @@ const _BottomSheet = ({
   const renderBackdrop = React.useCallback(
     (props: any): React.ReactElement => {
       return (
-        <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} isDismissible={isDismissible} />
+        <BottomSheetBackdrop {...props} isDismissible={isDismissible} />
       );
     },
-    [bottomSheetZIndex, isDismissible],
+    [isDismissible],
   );
 
   const renderHandle = React.useCallback((): React.ReactElement => {
