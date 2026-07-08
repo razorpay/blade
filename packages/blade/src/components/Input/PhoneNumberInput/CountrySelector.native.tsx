@@ -85,6 +85,7 @@ const CountrySelector = ({
           alignItems: 'center',
           alignSelf: 'stretch',
           justifyContent: 'center',
+          paddingLeft: 8,
         }}
       >
         <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">

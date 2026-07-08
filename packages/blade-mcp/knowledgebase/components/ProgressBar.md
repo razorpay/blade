@@ -101,6 +101,25 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ProgressBar` with `type="progress"` for real-time progress tracking (uploads, downloads, processing).
+- Use `type="meter"` for static value displays like account balance, storage capacity, or quota usage.
+- Use `isIndeterminate` when the total duration is unknown but you want to show activity.
+- Provide a descriptive `label` and `accessibilityLabel` so users understand what is progressing.
+- Use `variant="circular"` for compact spaces where a linear bar won't fit.
+- Match `color` to semantic meaning: `positive` for healthy progress, `negative` for critical thresholds.
+
+**Don't**
+
+- Don't use `isIndeterminate` with `type="meter"` — meters always represent a known value.
+- Don't use `size="large"` with the linear variant — large is only supported for circular.
+- Don't use `ProgressBar` as a generic loading indicator when progress percentage is unknown — use `Spinner` instead.
+- Don't combine `isIndeterminate` with `variant="circular"` — this combination is not supported.
+- Don't omit `accessibilityLabel` when `label` is not provided — screen readers need context.
+
 ## Example
 
 ### Basic Usage

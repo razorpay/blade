@@ -171,6 +171,25 @@ type BladeFile = File & {
 type BladeFileList = BladeFile[];
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `FileUpload` for file selection with drag-and-drop, progress tracking, and status display.
+- Use `accept` prop to restrict allowed file types (e.g., `".jpg,.png,.pdf"` or `"image/*"`).
+- Use `maxSize` and `maxCount` to enforce upload limits with clear validation feedback.
+- Use controlled mode (`fileList` prop) when you need to manage upload progress and status externally.
+- Use `uploadType="multiple"` when users need to attach several files at once.
+- Manage the actual file upload to your server — the component only handles selection and validation.
+
+**Don't**
+
+- Don't expect automatic server uploads — the component manages selection and UI, not network requests.
+- Don't use `actionButtonText`, `dropAreaText`, or custom `height`/`width` unless `size="variable"` — they only work with that size.
+- Don't use React Fragments as children.
+- Don't use `FileUpload` for simple single-file inputs in chat — use `ChatInput` which has integrated file handling.
+- Don't forget to handle `onRemove` and `onReupload` callbacks for proper file lifecycle management.
+
 ## Examples
 
 ### Single File Upload with Form

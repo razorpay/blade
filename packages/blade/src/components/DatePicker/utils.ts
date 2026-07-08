@@ -734,10 +734,51 @@ function validatePartialDateSimple(input: string): { isValid: boolean; error?: s
  */
 const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
 
+/**
+ * Formats a date / date-range into a humanised, easy-to-read format used by the
+ * `displayFormat="compact"` mode (e.g. "7 Jun 2026" or "7 Jun - 12 Jun 2026").
+ *
+ * The year is only repeated on the start date when the range spans multiple years.
+ * This intentionally uses a fixed `D MMM YYYY` format (locale-aware) since it is only
+ * used for the read-only compact display and not for editable input parsing.
+ */
+const getHumanizedDate = ({
+  date,
+  locale,
+  selectionType,
+}: {
+  date: Date | [Date | null, Date | null] | null;
+  locale: string;
+  selectionType: 'single' | 'range';
+}): string => {
+  if (!date) return '';
+
+  const withYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM YYYY');
+  const withoutYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM');
+
+  if (selectionType === 'single' && date instanceof Date) {
+    return withYear(date);
+  }
+
+  if (Array.isArray(date)) {
+    const [startDate, endDate] = date;
+    if (startDate && endDate) {
+      const isSameYear = dayjs(startDate).year() === dayjs(endDate).year();
+      return `${isSameYear ? withoutYear(startDate) : withYear(startDate)} - ${withYear(endDate)}`;
+    }
+    if (startDate) {
+      return withYear(startDate);
+    }
+  }
+
+  return '';
+};
+
 export {
   convertIntlToDayjsLocale,
   loadScript,
   getFormattedDate,
+  getHumanizedDate,
   rangeFormattedValue,
   rangeInputPlaceHolder,
   finalInputFormat,

@@ -1,0 +1,127 @@
+name: Agentic Repo / Slash PR Healer
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to heal'
+        required: true
+        type: string
+  workflow_run:
+    workflows: ['Blade Validate']
+    types: [completed]
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.inputs.pr_number || github.event.workflow_run.head_sha }}-slash-pr-healer
+  cancel-in-progress: false
+
+jobs:
+  heal-pr:
+    name: Heal PR via Slash
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Resolve PR metadata
+        id: pr-meta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_NUMBER_INPUT: ${{ github.event.inputs.pr_number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            PR_JSON=$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER_INPUT" --jq '{url: .html_url, number: .number, branch: .head.ref}')
+            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p['url'])")
+            PR_NUMBER="$PR_NUMBER_INPUT"
+            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p['branch'])")
+          else
+            PR_JSON=$(gh api "repos/$REPOSITORY/commits/$HEAD_SHA/pulls" \
+              --header "Accept: application/vnd.github+json")
+            PR_URL=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['html_url'] if p else '')")
+            PR_NUMBER=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['number'] if p else '')")
+            PR_BRANCH=$(echo "$PR_JSON" | python3 -c "import sys,json; p=json.load(sys.stdin); print(p[0]['head']['ref'] if p else '')")
+          fi
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found for this commit — skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Checkout repository
+        if: steps.pr-meta.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+
+      - name: Trigger Slash PR Healer
+        id: trigger-slash
+        if: steps.pr-meta.outputs.skip != 'true'
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          SLASH_BRANCH: ${{ steps.pr-meta.outputs.pr_branch }}
+          PR_URL: ${{ steps.pr-meta.outputs.pr_url }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+        run: |
+          PROMPT="Heal the pull request at ${PR_URL} using the /heal-pr skill from the blade repo. PR_NUMBER=${PR_NUMBER}. Strictly use the heal-pr skill from the blade repo only. Do not use any other skill."
+
+          # Temporarily disable set -e so the script doesn't die
+          # before we can print the API response when node exits 1.
+          set +e
+          RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          NODE_EXIT_CODE=$?
+          set -e
+
+          # Always print the full output so Status:/Response: are
+          # visible in the GitHub Actions logs — even on failure.
+          echo "$RESPONSE_OUTPUT"
+
+          if [ "$NODE_EXIT_CODE" -ne 0 ]; then
+            echo "::error::Slash API call failed (exit code $NODE_EXIT_CODE). See Status: and Response: above for details."
+            exit 1
+          fi
+
+          RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+          TASK_ID=$(echo "$RESPONSE_JSON" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('task_id',''))" 2>/dev/null || true)
+
+          if [ -n "$TASK_ID" ]; then
+            EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+            echo "Execution logs: ${EXECUTION_URL}"
+            echo "execution_url=$EXECUTION_URL" >> $GITHUB_OUTPUT
+            echo "task_id=$TASK_ID" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post PR comment with execution log link
+        if: steps.pr-meta.outputs.skip != 'true' && steps.trigger-slash.outputs.execution_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          EXECUTION_URL: ${{ steps.trigger-slash.outputs.execution_url }}
+          TASK_ID: ${{ steps.trigger-slash.outputs.task_id }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="🤖 **Slash PR Healer** has been triggered. [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
+
+      - name: Post PR comment on failure
+        if: failure() && steps.pr-meta.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr-meta.outputs.pr_number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api "repos/$REPOSITORY/issues/$PR_NUMBER/comments" \
+            --method POST \
+            --field body="⚠️ **Slash PR Healer** failed to trigger. [View workflow run](${RUN_URL})"

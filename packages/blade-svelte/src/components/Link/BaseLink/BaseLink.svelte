@@ -30,6 +30,8 @@
     accessibilityProps?: {
       label?: string;
       describedBy?: string;
+      controls?: string;
+      expanded?: boolean;
     };
     testID?: string;
     htmlTitle?: string;

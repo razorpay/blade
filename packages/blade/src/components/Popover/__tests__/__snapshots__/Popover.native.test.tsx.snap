@@ -503,7 +503,6 @@ exports[`<Popover /> should render 1`] = `
     <View
       style={
         {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -516,25 +515,11 @@ exports[`<Popover /> should render 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": -200,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": -210,
-              "width": "100%",
-              "zIndex": 1100,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -545,6 +530,25 @@ exports[`<Popover /> should render 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 1100,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={
@@ -1376,7 +1380,6 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     <View
       style={
         {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -1389,25 +1392,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": -200,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": -210,
-              "width": "100%",
-              "zIndex": 9999,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -1418,6 +1407,25 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 9999,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={
@@ -2249,7 +2257,6 @@ exports[`<Popover /> should render with title,footer 1`] = `
     <View
       style={
         {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -2262,25 +2269,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": -200,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": -210,
-              "width": "100%",
-              "zIndex": 1100,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -2291,6 +2284,25 @@ exports[`<Popover /> should render with title,footer 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 1100,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={

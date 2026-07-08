@@ -44,6 +44,23 @@ type SkipNavContentProps = {
 } & TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Place `SkipNavLink` as the first interactive element in the document — before any navigation.
+- Place `SkipNavContent` at the start of the main content area (inside `<main>`).
+- Ensure the `id` prop on `SkipNavLink` matches the `id` on `SkipNavContent` — they default to `"blade-skip-nav"`.
+- Use multiple skip nav pairs with unique custom IDs if your page has distinct content sections.
+- Pair `SkipNav` with `SideNav` for apps with complex navigation hierarchies.
+
+**Don't**
+
+- Don't use `SkipNav` on React Native — it's web-only and throws an error on native.
+- Don't nest `SkipNavLink` inside `SkipNavContent` or vice versa — they are independent components placed at separate DOM locations.
+- Don't use mismatched IDs between the link and content target — navigation won't work.
+- Don't style or position `SkipNavLink` manually — it's visually hidden by default and only appears on keyboard focus.
+
 ## Example
 
 ### Basic Usage
