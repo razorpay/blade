@@ -471,7 +471,12 @@ const _Carousel = (
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
-      setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
+      // During programmatic scroll, skip updating activeSlide entirely to prevent
+      // navigation buttons from flickering due to intermediate scroll positions in Firefox.
+      // The activeSlide is already set correctly by goToSlideIndex before scrolling begins.
+      if (!isProgrammaticScrollRef.current) {
+        setActiveSlide(() => goTo);
+      }
       setActiveIndicator(goTo);
     }, 50);
 
