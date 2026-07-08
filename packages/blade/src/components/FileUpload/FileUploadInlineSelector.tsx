@@ -68,7 +68,7 @@ const _InlineSelectorTrigger = ({
   useControlledDropdownInput({
     value: value ?? '',
     onChange: ({ values }) => onChange({ values, file }),
-    name: file.id,
+    name: file.id ?? file.name,
     triggererRef,
     isSelectInput: true,
   });
@@ -85,7 +85,7 @@ const _InlineSelectorTrigger = ({
     <StyledInlineSelectorTrigger
       ref={triggererRef as React.Ref<HTMLButtonElement>}
       type="button"
-      aria-label={`Select inline selector for ${file.name}`}
+      aria-label={`Select category for ${file.name}`}
       aria-haspopup={getActionListContainerRole(hasFooterAction, 'DropdownButton')}
       aria-expanded={isOpen}
       aria-controls={`${dropdownBaseId}-actionlist`}
