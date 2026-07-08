@@ -121,7 +121,17 @@ function formatOverviewComment(
 
   if (ui) {
     parts.push('### UI Review');
-    parts.push(buildStatusSection(ui.statuses, screenshotCdnMap));
+    const statuses = ui.statuses ?? [];
+    if (statuses.length === 0) {
+      parts.push('_No UI files changed in this PR — UI review skipped._');
+    } else if (statuses.every((s) => s.state === 'SKIPPED')) {
+      parts.push('_No UI files changed in this PR — UI review skipped._');
+    } else {
+      parts.push(buildStatusSection(statuses, screenshotCdnMap));
+    }
+  } else {
+    parts.push('### UI Review');
+    parts.push('_UI review was not requested for this PR._');
   }
 
   if (usage) {
