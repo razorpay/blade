@@ -48,4 +48,4 @@ type ColorInputCommonProps = Pick<
 
 type ColorInputProps = ColorInputCommonProps;
 
-export type { ColorInputProps, ColorInputValue, ColorInputOnFocusBlur };
+export type { ColorInputProps, ColorInputValue, ColorInputOnChange, ColorInputOnFocusBlur };
