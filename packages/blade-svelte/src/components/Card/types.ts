@@ -13,11 +13,11 @@ export type CardSpacingValueType =
   | 'spacing.5'
   | 'spacing.7';
 
-type CardSharedProps = {
+type CardBaseProps = {
   /**
-   * Card contents
+   * Card contents.
    */
-  children: Snippet;
+  children?: Snippet;
   /**
    * Sets the border radius of the Card
    *
@@ -66,6 +66,15 @@ type CardSharedProps = {
    * @default false
    */
   isSelected?: boolean;
+  /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
+   * and is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
    */
@@ -136,26 +145,13 @@ type CardSharedProps = {
 } & StyledPropsBlade;
 
 /**
- * Discriminated union on `variant` enforces that `backgroundColor` is only
- * valid when `variant="theme"`. Passing `backgroundColor` with `primary` or
- * `secondary` is a compile-time TypeScript error.
- *
- * **Note on cross-framework parity:** The React Card currently supports
- * `variant?: 'primary' | 'secondary'`. The `theme` variant is introduced here
- * as a Svelte-first extension; it will be backported to the React Card in a
- * follow-up PR to keep both frameworks in sync.
- *
- * @example
- * ```svelte
- * <!-- valid -->
- * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
- *
- * <!-- TS error: backgroundColor not allowed on primary/secondary -->
- * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
- * ```
+ * Variant-specific props. `variant` selects the visual treatment and gates `backgroundColor`
+ * (only valid on `theme`). Kept as a standalone discriminated union that is intersected onto
+ * `CardBaseProps` — this keeps the content snippets (`children`/`top`/`bottom`) on a single flat
+ * type, which svelte2tsx types correctly when passing named snippets.
  */
-export type CardProps =
-  | (CardSharedProps & {
+type CardVariantProps =
+  | {
       /**
        * Sets the visual treatment of the Card.
        *
@@ -167,8 +163,8 @@ export type CardProps =
        */
       variant?: 'primary' | 'secondary';
       backgroundColor?: never;
-    })
-  | (CardSharedProps & {
+    }
+  | {
       /**
        * Sets the visual treatment of the Card.
        *
@@ -182,7 +178,47 @@ export type CardProps =
        * @default 'surface.background.primary.subtle'
        */
       backgroundColor?: CardBackgroundColor;
-    });
+    };
+
+/**
+ * Props for the `Card` component.
+ *
+ * @example
+ * ```svelte
+ * <!-- valid -->
+ * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
+ *
+ * <!-- TS error: backgroundColor not allowed on primary/secondary -->
+ * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
+ * ```
+ */
+export type CardProps = CardBaseProps & CardVariantProps;
+
+export type TicketCardProps = CardBaseProps & {
+  /**
+   * Must contain exactly one `TicketCardBody` and one `TicketCardFooter`.
+   */
+  children: Snippet;
+};
+
+export type InfoCardProps = CardBaseProps & {
+  /**
+   * Must contain exactly one `InfoCardBody` and one `InfoCardFooter`.
+   */
+  children: Snippet;
+};
+
+export type SectionedCardBodyProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
+
+export type SectionedCardFooterProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
 
 export type CardBodyProps = {
   /**
