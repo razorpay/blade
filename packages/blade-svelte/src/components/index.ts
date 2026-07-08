@@ -90,7 +90,7 @@ export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant
 
 // TrustBadge
 export { TrustBadge } from './TrustBadge';
-export type { TrustBadgeProps, TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant } from './TrustBadge';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';

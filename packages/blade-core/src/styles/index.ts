@@ -166,10 +166,10 @@ export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppB
 export type { AppBarVariants } from './AppBar';
 export {
   getTrustBadgeTextColorToken,
-  getTrustBadgePillEmphasisClass,
+  getTrustBadgeVariantClass,
   getTrustBadgeTemplateClasses,
 } from './TrustBadge';
-export type { TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
+export type { TrustBadgeVariant } from './TrustBadge';
 export {
   animatedChipCva,
   getAnimatedChipClasses,
