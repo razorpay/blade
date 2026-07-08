@@ -549,4 +549,10 @@ const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
 });
 
 export { FileUpload };
-export type { BladeFile, BladeFileList, InlineSelectorConfig, InlineSelectorOption, FileUploadProps };
+export type {
+  BladeFile,
+  BladeFileList,
+  InlineSelectorConfig,
+  InlineSelectorOption,
+  FileUploadProps,
+};
