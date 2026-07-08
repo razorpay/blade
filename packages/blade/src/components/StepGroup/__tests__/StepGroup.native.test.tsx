@@ -146,11 +146,7 @@ describe('<StepGroup /> (native)', () => {
   it('should render with trailing badge', () => {
     const { toJSON } = renderWithTheme(
       <StepGroup>
-        <StepItem
-          title="Step 1"
-          trailing={<Badge>New</Badge>}
-          stepProgress="full"
-        />
+        <StepItem title="Step 1" trailing={<Badge>New</Badge>} stepProgress="full" />
         <StepItem title="Step 2" />
       </StepGroup>,
     );

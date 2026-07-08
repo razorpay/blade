@@ -21,8 +21,6 @@ import { makeSize, useTheme } from '~utils';
 type StepLineSvgProps = {
   isDotted?: boolean;
   opacity?: number;
-  marginLeft?: BaseBoxProps['marginLeft'];
-  marginTop?: BaseBoxProps['marginTop'];
 };
 
 // Distance between the start of one dot and the start of the next (dot + gap).
@@ -102,9 +100,7 @@ const StepDottedLine = ({
 const StepStraightLineHorizontal = ({
   isDotted,
   opacity = 1,
-}: Omit<StepLineSvgProps, 'marginLeft' | 'marginTop'> & {
-  width?: number;
-}): React.ReactElement => {
+}: StepLineSvgProps): React.ReactElement => {
   if (isDotted) {
     return <StepDottedLine orientation="horizontal" opacity={opacity} />;
   }
@@ -127,6 +123,7 @@ const StepStraightLineVertical = ({
   marginLeft,
 }: StepLineSvgProps & {
   height?: number;
+  marginLeft?: BaseBoxProps['marginLeft'];
 }): React.ReactElement => {
   if (isDotted) {
     return (
@@ -152,10 +149,7 @@ const StepStraightLineVertical = ({
   );
 };
 
-const StepTopCurveVertical = ({
-  isDotted,
-  opacity = 1,
-}: StepLineSvgProps): React.ReactElement => {
+const StepTopCurveVertical = ({ isDotted, opacity = 1 }: StepLineSvgProps): React.ReactElement => {
   const { theme } = useTheme();
 
   return isDotted ? (
@@ -228,12 +222,7 @@ const StepBottomCurveVertical = ({
 
   return isDotted ? (
     <BaseBox opacity={opacity}>
-      <Svg
-        width="46"
-        height="5"
-        viewBox="0 0 46 5"
-        fill={theme.colors.surface.border.gray.subtle}
-      >
+      <Svg width="46" height="5" viewBox="0 0 46 5" fill={theme.colors.surface.border.gray.subtle}>
         <Path d="M35 1C35 1.55228 34.5523 2 34 2C33.4477 2 33 1.55228 33 1C33 0.447715 33.4477 0 34 0C34.5523 0 35 0.447715 35 1Z" />
         <Path d="M2 4C2 4.55228 1.55228 5 1 5C0.447715 5 0 4.55228 0 4C0 3.44772 0.447715 3 1 3C1.55228 3 2 3.44772 2 4Z" />
         <Path d="M31.5 3.5C32.0523 3.5 32.5 3.05228 32.5 2.5C32.5 1.94772 32.0523 1.5 31.5 1.5C30.9477 1.5 30.5 1.94772 30.5 2.5C30.5 3.05228 30.9477 3.5 31.5 3.5Z" />
