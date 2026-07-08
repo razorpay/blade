@@ -23,9 +23,8 @@ const StyledFilterChip = styled(View)<{
   $isDisabled?: boolean;
 }>(({ theme, $isDisabled, $isSelected }) => {
   return {
-    borderWidth: makeBorderSize(theme.border.width.thin) as unknown as number,
-    borderColor:
-      theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
+    borderWidth: (makeBorderSize(theme.border.width.thin) as unknown) as number,
+    borderColor: theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded'],
     height: FILTER_CHIP_HEIGHT_NATIVE,
     borderRadius: theme.border.radius.small,
     borderStyle: $isSelected ? 'solid' : 'dashed',
@@ -111,11 +110,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
     selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
 
   return (
-    <StyledFilterChip
-      $isDisabled={isDisabled}
-      $isSelected={isSelected}
-      ref={ref}
-    >
+    <StyledFilterChip $isDisabled={isDisabled} $isSelected={isSelected} ref={ref}>
       <StyledFilterTrigger
         $isSelected={isSelected}
         disabled={isDisabled}
@@ -155,11 +150,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton
             accessibilityLabel={`Clear ${label} value`}
-            onPress={
-              isDisabled
-                ? undefined
-                : () => onClearButtonClick?.({ value: value ?? '' })
-            }
+            onPress={isDisabled ? undefined : () => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
             {...metaAttribute({ name: 'filter-chip-close-button' })}
           >
