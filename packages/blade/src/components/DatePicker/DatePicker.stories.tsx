@@ -286,6 +286,10 @@ export const DatePickerPresetsWithDisplayFormatCompact: StoryFn<typeof DatePicke
               return [dayjs(`${year - 1}-04-01`).toDate(), dayjs(`${year}-03-31`).toDate()];
             },
           },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
+          },
         ]}
       />
     </Box>
@@ -553,17 +557,39 @@ export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
 
 FilterChipDatePickerStoryMultiSelectionStory.storyName = 'FilterChipDatePicker (Multi Selection)';
 
-export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDatePicker> = () => {
+export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDatePicker> = ({
+  displayFormat,
+}) => {
   return (
     <Box>
+      <Text marginBottom="spacing.5">
+        Use the <Code size="medium">displayFormat</Code> control below to switch between{' '}
+        <Code size="medium">compact</Code> and <Code size="medium">default</Code>. In{' '}
+        <Code size="medium">compact</Code> mode, selecting a named preset (e.g.{' '}
+        <Code size="medium">Past 7 days</Code>) shows the preset label, while a{' '}
+        <Code size="medium">Custom</Code> range shows a humanised date range (e.g. 7 Jun - 12 Jun
+        2026). In <Code size="medium">default</Code> mode, the chip always shows the raw date range.
+      </Text>
       <FilterChipDatePicker
         label="Date"
         selectionType="range"
+        displayFormat={displayFormat}
         presets={[
-          { label: 'In 7 days', value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date] },
           {
-            label: 'In a month',
+            label: 'Past 7 days',
+            value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+          },
+          {
+            label: 'Past 15 days',
             value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+          },
+          {
+            label: 'Past month',
+            value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+          },
+          {
+            label: 'Custom',
+            value: () => [null, null] as DatesRangeValue,
           },
         ]}
         onChange={(date) => {
@@ -576,6 +602,18 @@ export const FilterChipDatePickerStoryWithPreset: StoryFn<typeof FilterChipDateP
 
 FilterChipDatePickerStoryWithPreset.storyName =
   'FilterChipDatePicker (Range Selection) with Presets';
+FilterChipDatePickerStoryWithPreset.args = {
+  displayFormat: 'compact',
+};
+FilterChipDatePickerStoryWithPreset.argTypes = {
+  displayFormat: {
+    name: 'displayFormat',
+    control: { type: 'inline-radio' },
+    options: ['compact', 'default'],
+    description: 'Controls what is shown inside the selected state of the chip.',
+    ...baseProp,
+  },
+};
 
 export const ControlledFilterChipDatePickerSingle: StoryFn<typeof FilterChipDatePicker> = () => {
   const [isOpen, setIsOpen] = React.useState(false);

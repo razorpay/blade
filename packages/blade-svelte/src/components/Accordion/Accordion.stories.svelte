@@ -10,6 +10,7 @@
       variant: 'transparent',
       size: 'large',
       showNumberPrefix: false,
+      hasGrayBody: false,
     },
     argTypes: {
       variant: {
@@ -27,6 +28,12 @@
       showNumberPrefix: {
         control: 'boolean',
         description: 'Adds numeric index at the beginning of items',
+        table: { defaultValue: { summary: 'false' } },
+      },
+      hasGrayBody: {
+        control: 'boolean',
+        description:
+          'Renders expanded body on a recessed gray surface. Recommended with variant="filled" for checkout-style accordions.',
         table: { defaultValue: { summary: 'false' } },
       },
     },

@@ -49,7 +49,7 @@ export function getAppBarTemplateClasses(): Record<string, string> {
     appBarLeadingLogoStack: styles.appBarLeadingLogoStack,
     appBarLeadingTitleWrap: styles.appBarLeadingTitleWrap,
     appBarLeadingTitleRow: styles.appBarLeadingTitleRow,
-    appBarLeadingTitleRowWithIconRtb: styles.appBarLeadingTitleRowWithIconRtb,
+    appBarLeadingTitleRowWithIconBadge: styles.appBarLeadingTitleRowWithIconBadge,
     appBarLeadingTitle: styles.appBarLeadingTitle,
     appBarLeadingBadge: styles.appBarLeadingBadge,
     appBarActions: styles.appBarActions,

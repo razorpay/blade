@@ -103,7 +103,7 @@
   object-fit: contain;
 }
 
-/* Logo + full RTB when there is no title — badge stacks below the logo. */
+/* Logo + full badge when there is no title — badge stacks below the logo. */
 .appBarLeadingLogoStack {
   display: flex;
   flex-direction: column;
@@ -130,8 +130,8 @@
   width: 100%;
 }
 
-/* Icon RTB stays adjacent to title (React: title + badge shrink-wrap in one row). */
-.appBarLeadingTitleRowWithIconRtb {
+/* Icon badge stays adjacent to title (React: title + badge shrink-wrap in one row). */
+.appBarLeadingTitleRowWithIconBadge {
   width: fit-content;
   max-width: 100%;
 }
@@ -144,11 +144,11 @@
   align-items: center;
 }
 
-.appBarLeadingTitleRowWithIconRtb .appBarLeadingTitle {
+.appBarLeadingTitleRowWithIconBadge .appBarLeadingTitle {
   flex: 0 1 auto;
 }
 
-/* RTB badge stacked below the title row when rtbBadge='full'. */
+/* Trust badge stacked below the title row when trustBadgeVariant='default'. */
 .appBarLeadingBadge {
   display: flex;
   align-items: center;
