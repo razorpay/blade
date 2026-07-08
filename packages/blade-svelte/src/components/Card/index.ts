@@ -52,7 +52,11 @@
 export { default as Card } from './Card.svelte';
 export { default as CardBody } from './CardBody.svelte';
 export { default as TicketCard } from './TicketCard.svelte';
+export { default as TicketCardBody } from './TicketCardBody.svelte';
+export { default as TicketCardFooter } from './TicketCardFooter.svelte';
 export { default as InfoCard } from './InfoCard.svelte';
+export { default as InfoCardBody } from './InfoCardBody.svelte';
+export { default as InfoCardFooter } from './InfoCardFooter.svelte';
 
 // Header
 export { default as CardHeader } from './CardHeader.svelte';
@@ -86,4 +90,6 @@ export type {
   CardSpacingValueType,
   TicketCardProps,
   InfoCardProps,
+  SectionedCardBodyProps,
+  SectionedCardFooterProps,
 } from './types';

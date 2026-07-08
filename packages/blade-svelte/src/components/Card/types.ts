@@ -15,24 +15,9 @@ export type CardSpacingValueType =
 
 type CardBaseProps = {
   /**
-   * Card contents. Used by the single-region variants (`primary`, `secondary`, `theme`).
+   * Card contents.
    */
   children?: Snippet;
-  /**
-   * Top section content for the two-region variants (`ticket`, `info`). For `ticket` this is the
-   * region above the tear line; for `info` this is the emphasized (white) header section.
-   *
-   * Named `topSection` (not `top`) to avoid colliding with the `top` position styled-prop from
-   * `StyledPropsBlade` — the collision makes svelte2tsx infer the snippet type as `Snippet & string`.
-   */
-  topSection?: Snippet;
-  /**
-   * Bottom section content for the two-region variants (`ticket`, `info`). For `ticket` this is the
-   * region below the tear line; for `info` this is the subtle (gray) body section.
-   *
-   * Named `bottomSection` (not `bottom`) to avoid colliding with the `bottom` position styled-prop.
-   */
-  bottomSection?: Snippet;
   /**
    * Sets the border radius of the Card
    *
@@ -85,8 +70,7 @@ type CardBaseProps = {
    * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
    * and is announced as disabled to assistive tech.
    *
-   * `isDisabled` takes precedence over `isSelected`. For the `ticket` variant it also renders a
-   * dashed border.
+   * `isDisabled` takes precedence over `isSelected`.
    *
    * @default false
    */
@@ -194,26 +178,10 @@ type CardVariantProps =
        * @default 'surface.background.primary.subtle'
        */
       backgroundColor?: CardBackgroundColor;
-    }
-  | {
-      /**
-       * Sets the visual treatment of the Card.
-       *
-       * - `ticket`: ticket/coupon style card split into two sections by a perforated tear line
-       *   with notched edges. Sections are supplied via the `topSection` and `bottomSection` snippets.
-       * - `info`: two-tone card with an emphasized header section and a subtle body section
-       *   wrapped by a single rounded border. Sections are supplied via `topSection` and `bottomSection`.
-       */
-      variant: 'ticket' | 'info';
-      backgroundColor?: never;
     };
 
 /**
  * Props for the `Card` component.
- *
- * (In the React Card the `ticket`/`info` sections are authored as two `CardBody` children separated
- * by a `CardTearLine`. Svelte snippets can't be introspected/split at runtime, so the sections are
- * passed explicitly via the `topSection` and `bottomSection` snippets here.)
  *
  * @example
  * ```svelte
@@ -226,22 +194,31 @@ type CardVariantProps =
  */
 export type CardProps = CardBaseProps & CardVariantProps;
 
-export type SectionedCardProps = Omit<CardBaseProps, 'children' | 'variant'> & {
+export type TicketCardProps = CardBaseProps & {
   /**
-   * Content for the top section. Wrapped in `CardBody` by the component.
+   * Must contain exactly one `TicketCardBody` and one `TicketCardFooter`.
    */
-  topSection: Snippet;
-  /**
-   * Content for the bottom section. Wrapped in `CardBody` by the component.
-   */
-  bottomSection: Snippet;
+  children: Snippet;
 };
 
-/** Props for the `TicketCard` wrapper around `Card variant="ticket"`. */
-export type TicketCardProps = SectionedCardProps;
+export type InfoCardProps = CardBaseProps & {
+  /**
+   * Must contain exactly one `InfoCardBody` and one `InfoCardFooter`.
+   */
+  children: Snippet;
+};
 
-/** Props for the `InfoCard` wrapper around `Card variant="info"`. */
-export type InfoCardProps = SectionedCardProps;
+export type SectionedCardBodyProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
+
+export type SectionedCardFooterProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
 
 export type CardBodyProps = {
   /**

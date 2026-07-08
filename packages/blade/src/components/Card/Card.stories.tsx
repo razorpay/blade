@@ -20,7 +20,11 @@ import {
   CardHeaderAmount,
   CardHeaderText,
   TicketCard as TicketCardComponent,
+  TicketCardBody,
+  TicketCardFooter,
   InfoCard as InfoCardComponent,
+  InfoCardBody,
+  InfoCardFooter,
 } from './';
 import type { Elevation } from '~tokens/global';
 import { Amount } from '~components/Amount';
@@ -743,18 +747,16 @@ const TicketCardExample = (): React.ReactElement => {
     label: string,
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <TicketCardComponent
-      width="280px"
-      {...stateProps}
-      topSection={
+    <TicketCardComponent width="280px" {...stateProps}>
+      <TicketCardBody>
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text weight="semibold">Razorpay Summit 2026</Text>
           <Text size="small" color="surface.text.gray.subtle">
             {label}
           </Text>
         </Box>
-      }
-      bottomSection={
+      </TicketCardBody>
+      <TicketCardFooter>
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Box display="flex" flexDirection="column">
             <Text size="small" color="surface.text.gray.subtle">
@@ -764,8 +766,8 @@ const TicketCardExample = (): React.ReactElement => {
           </Box>
           <Amount value={4999} type="body" weight="semibold" />
         </Box>
-      }
-    />
+      </TicketCardFooter>
+    </TicketCardComponent>
   );
 
   return (
@@ -789,26 +791,24 @@ const InfoCardExample = (): React.ReactElement => {
     label: string,
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
-    <InfoCardComponent
-      width="280px"
-      {...stateProps}
-      topSection={
+    <InfoCardComponent width="280px" {...stateProps}>
+      <InfoCardBody>
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Text weight="semibold">Razorpay Summit 2026</Text>
           <Text size="small" color="surface.text.gray.subtle">
             {label}
           </Text>
         </Box>
-      }
-      bottomSection={
+      </InfoCardBody>
+      <InfoCardFooter>
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text size="small" color="surface.text.gray.subtle">
             Venue
           </Text>
           <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
         </Box>
-      }
-    />
+      </InfoCardFooter>
+    </InfoCardComponent>
   );
 
   return (

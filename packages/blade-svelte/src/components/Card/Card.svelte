@@ -2,16 +2,12 @@
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import CardRoot from './CardRoot.svelte';
   import CardSurface from './CardSurface.svelte';
-  import CardTicketSurface from './CardTicketSurface.svelte';
-  import CardInfoSurface from './CardInfoSurface.svelte';
   import LinkOverlay from './LinkOverlay.svelte';
   import { setCardContext } from './CardContext';
   import type { CardProps } from './types';
 
   let {
     children: cardContent,
-    topSection,
-    bottomSection,
     variant = 'primary',
     backgroundColor,
     borderRadius = 'medium',
@@ -44,16 +40,12 @@
     ...rest
   }: CardProps = $props();
 
-  // Set context with getter for reactivity
   setCardContext(() => ({ size }));
 
   let isFocused = $state(false);
 
-  // `isDisabled` takes precedence over `isSelected`: a disabled card never renders as selected.
   const isCardSelected = $derived(isSelected && !isDisabled);
 
-  // `variant` also covers `ticket`/`info`, which have their own surfaces; narrow to the
-  // treatments CardSurface understands for the standard branch.
   const surfaceType = $derived(
     variant === 'secondary' || variant === 'theme' ? variant : 'primary'
   );
@@ -73,7 +65,6 @@
   }
 </script>
 
-<!-- Interactive overlay shared across all variants. Rendered only when the card is not disabled. -->
 {#snippet linkOverlay()}
   {#if href && !isDisabled}
     <LinkOverlay
@@ -98,82 +89,39 @@
   {/if}
 {/snippet}
 
-{#if variant === 'ticket' || variant === 'info'}
-  <!-- Sectioned variants: the selected/disabled border is drawn by the surface, so the root
-       itself is never marked selected (isSelected={false}). -->
-  <CardRoot
-    {as}
-    {borderRadius}
-    isSelected={false}
-    {isFocused}
-    {isDisabled}
-    {accessibilityLabel}
-    {onHover}
-    {width}
+<CardRoot
+  {as}
+  {borderRadius}
+  isSelected={isCardSelected}
+  {isFocused}
+  {isDisabled}
+  {validationState}
+  {accessibilityLabel}
+  {onHover}
+  {width}
+  {height}
+  {minHeight}
+  {minWidth}
+  {maxWidth}
+  {cursor}
+  {testID}
+  {...rest}
+  {...analyticsAttrs}
+>
+  <CardSurface
+    type={surfaceType}
     {height}
     {minHeight}
-    {minWidth}
-    {maxWidth}
-    {cursor}
-    {testID}
-    {...rest}
-    {...analyticsAttrs}
+    {padding}
+    {borderRadius}
+    {backgroundColor}
+    {overflow}
+    {overflowX}
+    {overflowY}
   >
-    {#if topSection && bottomSection}
-      {#if variant === 'ticket'}
-        <CardTicketSurface
-          {topSection}
-          {bottomSection}
-          isSelected={isCardSelected}
-          {isDisabled}
-          children={linkOverlay}
-        />
-      {:else}
-        <CardInfoSurface
-          {topSection}
-          {bottomSection}
-          isSelected={isCardSelected}
-          {isDisabled}
-          children={linkOverlay}
-        />
-      {/if}
+    {@render linkOverlay()}
+    {#if cardContent}
+      {@render cardContent()}
     {/if}
-  </CardRoot>
-{:else}
-  <CardRoot
-    {as}
-    {borderRadius}
-    isSelected={isCardSelected}
-    {isFocused}
-    {isDisabled}
-    {validationState}
-    {accessibilityLabel}
-    {onHover}
-    {width}
-    {height}
-    {minHeight}
-    {minWidth}
-    {maxWidth}
-    {cursor}
-    {testID}
-    {...rest}
-    {...analyticsAttrs}
-  >
-    <CardSurface
-      type={surfaceType}
-      {height}
-      {minHeight}
-      {padding}
-      {borderRadius}
-      {backgroundColor}
-      {overflow}
-      {overflowX}
-      {overflowY}
-    >
-      {@render linkOverlay()}
-      {#if cardContent}
-        {@render cardContent()}
-      {/if}
-    </CardSurface>
-  </CardRoot>
-{/if}
+  </CardSurface>
+</CardRoot>

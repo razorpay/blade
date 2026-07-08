@@ -49,7 +49,11 @@
 
 <script lang="ts">
   import TicketCard from './TicketCard.svelte';
+  import TicketCardBody from './TicketCardBody.svelte';
+  import TicketCardFooter from './TicketCardFooter.svelte';
   import InfoCard from './InfoCard.svelte';
+  import InfoCardBody from './InfoCardBody.svelte';
+  import InfoCardFooter from './InfoCardFooter.svelte';
   import CardBody from './CardBody.svelte';
   import CardHeader from './CardHeader.svelte';
   import CardHeaderLeading from './CardHeaderLeading.svelte';
@@ -69,7 +73,7 @@
   import type { CardSpacingValueType } from './types';
 
   type CardStoryArgs = {
-    variant?: 'primary' | 'secondary' | 'theme' | 'ticket' | 'info';
+    variant?: 'primary' | 'secondary' | 'theme';
     backgroundColor?: CardBackgroundColor;
     borderRadius?: 'medium' | 'large' | 'xlarge';
     padding?: CardSpacingValueType;
@@ -84,8 +88,8 @@
     if (args.variant === 'theme') {
       return { ...common, variant: 'theme', backgroundColor: args.backgroundColor };
     }
-    // The Playground only exercises the standard surface treatments; ticket/info have their own
-    // sectioned surfaces and aren't offered as controls.
+    // The Playground only exercises the standard surface treatments; TicketCard and InfoCard have
+    // their own dedicated stories.
     const standardVariant = args.variant === 'secondary' ? 'secondary' : 'primary';
     return { ...common, variant: standardVariant };
   }
@@ -673,13 +677,13 @@
      top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
 {#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
   <TicketCard width="280px" {isSelected} {isDisabled}>
-    {#snippet topSection()}
+    <TicketCardBody>
       <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
         <Text weight="semibold">Razorpay Summit 2026</Text>
         <Text size="small" color="surface.text.gray.subtle">{label}</Text>
       </div>
-    {/snippet}
-    {#snippet bottomSection()}
+    </TicketCardBody>
+    <TicketCardFooter>
       <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
         <div style="display: flex; flex-direction: column;">
           <Text size="small" color="surface.text.gray.subtle">Seat</Text>
@@ -687,30 +691,29 @@
         </div>
         <Amount value={4999} type="body" weight="semibold" />
       </div>
-    {/snippet}
+    </TicketCardFooter>
   </TicketCard>
 {/snippet}
 
 {#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
   <InfoCard width="280px" {isSelected} {isDisabled}>
-    {#snippet topSection()}
+    <InfoCardBody>
       <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
         <Text weight="semibold">Razorpay Summit 2026</Text>
         <Text size="small" color="surface.text.gray.subtle">{label}</Text>
       </div>
-    {/snippet}
-    {#snippet bottomSection()}
+    </InfoCardBody>
+    <InfoCardFooter>
       <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
         <Text size="small" color="surface.text.gray.subtle">Venue</Text>
         <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
       </div>
-    {/snippet}
+    </InfoCardFooter>
   </InfoCard>
 {/snippet}
 
-<!-- Story 10: Ticket Card Variant — two sections split by a scalloped, notched tear line.
-     Sections are supplied via the `topSection` and `bottomSection` snippets. Shown in default,
-     selected and disabled states. -->
+<!-- Story 10: Ticket Card — two sections split by a scalloped, notched tear line.
+     Compose with `TicketCardBody` and `TicketCardFooter`. -->
 <Story name="Ticket Card" asChild>
   <div
     style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
@@ -721,9 +724,8 @@
   </div>
 </Story>
 
-<!-- Story 11: Info Card Variant — emphasized header section over a subtle body section wrapped
-     by a single rounded border. Sections are supplied via the `topSection` and `bottomSection`
-     snippets. Shown in default, selected and disabled states. -->
+<!-- Story 11: Info Card — emphasized header over subtle body inside single rounded border.
+     Compose with `InfoCardBody` and `InfoCardFooter`. -->
 <Story name="Info Card" asChild>
   <div
     style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
