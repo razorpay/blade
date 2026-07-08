@@ -35,7 +35,7 @@ type BottomSheetProps = {
    *
    * @default true
    */
-  enableContentPanningGesture?: boolean;
+  isContentPanningGestureEnabled?: boolean;
   /**
    * Toggles bottom sheet state
    *

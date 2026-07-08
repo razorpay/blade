@@ -63,7 +63,7 @@ const _BottomSheet = ({
   isOpen,
   onDismiss,
   isDismissible = true,
-  enableContentPanningGesture = true,
+  isContentPanningGestureEnabled = true,
   initialFocusRef,
   zIndex = componentZIndices.bottomSheet,
 }: BottomSheetProps): React.ReactElement => {
@@ -368,7 +368,7 @@ const _BottomSheet = ({
             }
             enablePanDownToClose={isDismissible}
             enableOverDrag
-            enableContentPanningGesture={enableContentPanningGesture}
+            enableContentPanningGesture={isContentPanningGestureEnabled}
             ref={sheetRef}
             // on initial render if _isOpen is true we want to render the sheet at initialSnapPoint
             // otherwise we want to render it at -1 so that it is not visible
