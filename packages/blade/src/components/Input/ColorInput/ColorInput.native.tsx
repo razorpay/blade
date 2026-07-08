@@ -47,6 +47,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     onChange: (newValue) => {
       onChange?.({ name, value: newValue });
     },
+    shouldUpdate: (prev, next) => prev.hex !== next.hex || prev.opacity !== next.opacity,
   });
 
   const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(() =>
