@@ -173,11 +173,11 @@ type TicketCardFooterProps = TestID & DataAnalyticsAttribute & {
 
 type InfoCardProps = Omit<CardProps, 'variant'>;
 
-type InfoCardBodyProps = TestID & DataAnalyticsAttribute & {
+type InfoCardHeaderProps = TestID & DataAnalyticsAttribute & {
   children: React.ReactNode;
 };
 
-type InfoCardFooterProps = TestID & DataAnalyticsAttribute & {
+type InfoCardBodyProps = TestID & DataAnalyticsAttribute & {
   children: React.ReactNode;
 };
 
@@ -271,7 +271,7 @@ type CardFooterTrailingProps = {
 - Use `onClick` or `href` to make cards interactive; provide `accessibilityLabel` for interactive cards.
 - Use `variant="secondary"` when you only need a body section without header/footer.
 - Use `TicketCard` with `TicketCardBody` and `TicketCardFooter` for coupon/ticket layouts.
-- Use `InfoCard` with `InfoCardBody` and `InfoCardFooter` for two-tone body/footer layouts.
+- Use `InfoCard` with `InfoCardHeader` and `InfoCardBody` for two-tone header/body layouts.
 
 **Don't**
 
@@ -389,26 +389,26 @@ const TicketCardExample = () => (
 Two-tone card with an emphasized header section over a subtle body section, wrapped by a single rounded border. No perforation or notches.
 
 ```tsx
-import { InfoCard, InfoCardBody, InfoCardFooter, Box, Text } from '@razorpay/blade/components';
+import { InfoCard, InfoCardHeader, InfoCardBody, Box, Text } from '@razorpay/blade/components';
 
 const InfoCardExample = () => (
   <InfoCard width="280px" isSelected>
-    <InfoCardBody>
+    <InfoCardHeader>
       <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
         <Text weight="semibold">Razorpay Summit 2026</Text>
         <Text size="small" color="surface.text.gray.subtle">
           Selected
         </Text>
       </Box>
-    </InfoCardBody>
-    <InfoCardFooter>
+    </InfoCardHeader>
+    <InfoCardBody>
       <Box display="flex" flexDirection="column" gap="spacing.2">
         <Text size="small" color="surface.text.gray.subtle">
           Venue
         </Text>
         <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
       </Box>
-    </InfoCardFooter>
+    </InfoCardBody>
   </InfoCard>
 );
 ```

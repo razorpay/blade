@@ -23,8 +23,8 @@ import {
   TicketCardBody,
   TicketCardFooter,
   InfoCard as InfoCardComponent,
+  InfoCardHeader,
   InfoCardBody,
-  InfoCardFooter,
 } from './';
 import type { Elevation } from '~tokens/global';
 import { Amount } from '~components/Amount';
@@ -792,22 +792,22 @@ const InfoCardExample = (): React.ReactElement => {
     stateProps: { isSelected?: boolean; isDisabled?: boolean },
   ): React.ReactElement => (
     <InfoCardComponent width="280px" {...stateProps}>
-      <InfoCardBody>
+      <InfoCardHeader>
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Text weight="semibold">Razorpay Summit 2026</Text>
           <Text size="small" color="surface.text.gray.subtle">
             {label}
           </Text>
         </Box>
-      </InfoCardBody>
-      <InfoCardFooter>
+      </InfoCardHeader>
+      <InfoCardBody>
         <Box display="flex" flexDirection="column" gap="spacing.2">
           <Text size="small" color="surface.text.gray.subtle">
             Venue
           </Text>
           <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
         </Box>
-      </InfoCardFooter>
+      </InfoCardBody>
     </InfoCardComponent>
   );
 

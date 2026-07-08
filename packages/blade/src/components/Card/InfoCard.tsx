@@ -19,14 +19,14 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 
 export type InfoCardProps = Omit<CardProps, 'variant' | 'padding'>;
 
+const InfoCardHeader = createSectionedCardSlot(
+  SectionedCardComponentIds.InfoCardHeader,
+  MetaConstants.InfoCardHeader,
+);
+
 const InfoCardBody = createSectionedCardSlot(
   SectionedCardComponentIds.InfoCardBody,
   MetaConstants.InfoCardBody,
-);
-
-const InfoCardFooter = createSectionedCardSlot(
-  SectionedCardComponentIds.InfoCardFooter,
-  MetaConstants.InfoCardFooter,
 );
 
 const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> = (
@@ -60,15 +60,15 @@ const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> 
     children,
     componentName: 'InfoCard',
     allowedComponents: [
+      SectionedCardComponentIds.InfoCardHeader,
       SectionedCardComponentIds.InfoCardBody,
-      SectionedCardComponentIds.InfoCardFooter,
     ],
   });
 
   const { body, footer } = splitSectionedCardChildren({
     children,
-    bodyComponentId: SectionedCardComponentIds.InfoCardBody,
-    footerComponentId: SectionedCardComponentIds.InfoCardFooter,
+    bodyComponentId: SectionedCardComponentIds.InfoCardHeader,
+    footerComponentId: SectionedCardComponentIds.InfoCardBody,
     componentName: 'InfoCard',
   });
 
@@ -134,4 +134,4 @@ const _InfoCard: React.ForwardRefRenderFunction<BladeElementRef, InfoCardProps> 
 
 const InfoCard = React.forwardRef(_InfoCard);
 
-export { InfoCard, InfoCardBody, InfoCardFooter };
+export { InfoCard, InfoCardHeader, InfoCardBody };

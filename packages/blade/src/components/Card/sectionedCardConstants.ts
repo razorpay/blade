@@ -1,8 +1,8 @@
 const SectionedCardComponentIds = {
   TicketCardBody: 'TicketCardBody',
   TicketCardFooter: 'TicketCardFooter',
+  InfoCardHeader: 'InfoCardHeader',
   InfoCardBody: 'InfoCardBody',
-  InfoCardFooter: 'InfoCardFooter',
 } as const;
 
 export { SectionedCardComponentIds };
