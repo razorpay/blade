@@ -114,13 +114,24 @@ type FileUploadCommonProps = {
    */
   testID?: string;
   /**
-   * Configuration for the inline selector dropdown on each FileUploadItem.
+   * List of options for the inline file category dropdown on each FileUploadItem.
    * Only rendered in medium and large sizes when file status is not 'uploading'.
-   *
-   * Use this when the parent FileUpload should render the same inline selector control for
-   * every selected file. For fully custom controls, compose FileUploadItem directly.
    */
-  inlineSelector?: InlineSelectorConfig;
+  fileCategoryOptions?: InlineSelectorOption[];
+  /**
+   * Selected category values keyed by file id (controlled).
+   */
+  fileCategoryValue?: InlineSelectorValueMap;
+  /**
+   * Callback fired when a file category option is selected.
+   */
+  onFileCategoryChange?: (args: { values: string[]; file: BladeFile }) => void;
+  /**
+   * Placeholder text shown in the category dropdown when no value is selected.
+   *
+   * @default 'Type'
+   */
+  fileCategoryPlaceholder?: string;
 } & StyledPropsBlade &
   MotionMetaProp;
 
@@ -220,26 +231,6 @@ type InlineSelectorProps = {
 
 type InlineSelectorValueMap = Record<string, string | undefined>;
 
-type InlineSelectorConfig = {
-  /**
-   * List of options to display in the dropdown
-   */
-  options: InlineSelectorOption[];
-  /**
-   * Selected values keyed by file id.
-   */
-  value?: InlineSelectorValueMap;
-  /**
-   * Callback fired when an option is selected
-   */
-  onChange: (args: { values: string[]; file: BladeFile }) => void;
-  /**
-   * Placeholder text shown when no value is selected
-   *
-   * @default 'Type'
-   */
-  placeholder?: string;
-};
 
 type FileUploadItemProps = Pick<
   FileUploadProps,
@@ -247,10 +238,24 @@ type FileUploadItemProps = Pick<
 > & {
   file: BladeFile;
   /**
-   * Configuration for the inline selector dropdown.
+   * List of options for the inline file category dropdown.
    * Only rendered in medium and large sizes when file status is not 'uploading'.
    */
-  inlineSelector?: InlineSelectorProps;
+  fileCategoryOptions?: InlineSelectorOption[];
+  /**
+   * Currently selected file category value (controlled).
+   */
+  fileCategoryValue?: string;
+  /**
+   * Callback fired when a file category option is selected.
+   */
+  onFileCategoryChange?: (args: { values: string[]; file: BladeFile }) => void;
+  /**
+   * Placeholder text shown in the category dropdown when no value is selected.
+   *
+   * @default 'Type'
+   */
+  fileCategoryPlaceholder?: string;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
@@ -292,7 +297,6 @@ export type {
   BladeFileList,
   InlineSelectorOption,
   InlineSelectorProps,
-  InlineSelectorConfig,
   InlineSelectorValueMap,
   FileUploadProps,
   FileUploadItemProps,

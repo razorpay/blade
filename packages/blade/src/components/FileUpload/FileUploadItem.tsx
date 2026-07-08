@@ -27,7 +27,10 @@ const FileUploadItem = memo(
     onRemove,
     onReupload,
     onDismiss,
-    inlineSelector,
+    fileCategoryOptions,
+    fileCategoryValue,
+    onFileCategoryChange,
+    fileCategoryPlaceholder,
     size: containerSize,
     width,
     minWidth,
@@ -138,12 +141,12 @@ const FileUploadItem = memo(
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-                {inlineSelector && containerSize !== 'variable' ? (
+                {fileCategoryOptions && containerSize !== 'variable' ? (
                   <FileUploadInlineSelector
-                    options={inlineSelector.options}
-                    value={inlineSelector.value}
-                    onChange={inlineSelector.onChange}
-                    placeholder={inlineSelector.placeholder}
+                    options={fileCategoryOptions}
+                    value={fileCategoryValue}
+                    onChange={onFileCategoryChange!}
+                    placeholder={fileCategoryPlaceholder}
                     file={file}
                   />
                 ) : null}

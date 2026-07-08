@@ -219,12 +219,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="medium"
-            inlineSelector={{
-              options: categoryOptions,
-              value: selectedCategory,
-              onChange: ({ values }) => setSelectedCategory(values[0]),
-              placeholder: 'Type',
-            }}
+            fileCategoryOptions={categoryOptions}
+            fileCategoryValue={selectedCategory}
+            onFileCategoryChange={({ values }) => setSelectedCategory(values[0])}
+            fileCategoryPlaceholder="Type"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>
@@ -236,12 +234,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="large"
-            inlineSelector={{
-              options: categoryOptions,
-              value: selectedCategory,
-              onChange: ({ values }) => setSelectedCategory(values[0]),
-              placeholder: 'Type',
-            }}
+            fileCategoryOptions={categoryOptions}
+            fileCategoryValue={selectedCategory}
+            onFileCategoryChange={({ values }) => setSelectedCategory(values[0])}
+            fileCategoryPlaceholder="Type"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>
@@ -253,12 +249,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="medium"
-            inlineSelector={{
-              options: categoryOptions,
-              value: undefined,
-              onChange: ({ values }) => action('onChange')(values),
-              placeholder: 'Type',
-            }}
+            fileCategoryOptions={categoryOptions}
+            fileCategoryValue={undefined}
+            onFileCategoryChange={({ values }) => action('onChange')(values)}
+            fileCategoryPlaceholder="Type"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>
