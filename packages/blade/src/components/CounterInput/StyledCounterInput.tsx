@@ -36,6 +36,7 @@ const StyledNumberWrapper = styled(BaseBox)<{
   font-family: ${({ $fontFamily }) => $fontFamily};
   font-size: ${({ $fontSize }) => $fontSize};
   font-weight: ${({ $fontWeight }) => $fontWeight};
+  font-variant-numeric: tabular-nums;
 `;
 
 const StyledCounterInput = styled(BaseBox)`

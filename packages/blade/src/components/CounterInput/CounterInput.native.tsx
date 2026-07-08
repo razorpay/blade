@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Pressable, TextInput, StyleSheet } from 'react-native';
+import { Pressable, TextInput } from 'react-native';
 import type { TextStyle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -172,27 +172,23 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       counterValueDigitCount * fontSize * COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO +
       counterInputHorizontalPadding;
 
-    const containerStyle = StyleSheet.create({
-      box: {
-        minWidth: COUNTER_INPUT_TOKEN.width[size],
-        height: COUNTER_INPUT_TOKEN.height[size],
-      },
-    });
+    const containerStyle = {
+      minWidth: COUNTER_INPUT_TOKEN.width[size],
+      height: COUNTER_INPUT_TOKEN.height[size],
+    };
 
-    const textInputStyle = StyleSheet.create({
-      input: {
-        width: '100%',
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        includeFontPadding: false,
-        padding: 0,
-        color: valueColor,
-        fontSize,
-        fontFamily: theme.typography.fonts.family.text,
-        fontWeight: '600',
-        fontVariant: ['tabular-nums'] as TextStyle['fontVariant'],
-      },
-    });
+    const textInputStyle: TextStyle = {
+      width: '100%',
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      includeFontPadding: false,
+      padding: 0,
+      color: valueColor,
+      fontSize,
+      fontFamily: theme.typography.fonts.family.text,
+      fontWeight: '600',
+      fontVariant: ['tabular-nums'],
+    };
 
     const inputWrapperStyle = { width: counterInputFieldWidth };
 
@@ -230,7 +226,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   ? emphasisTokens.loadingOrDisabledBgColor
                   : emphasisTokens.backgroundColor
               }
-              style={containerStyle.box}
+              style={containerStyle}
               borderRadius={COUNTER_INPUT_TOKEN.containerBorderRadius[size]}
               borderWidth="thin"
               borderColor={
@@ -263,7 +259,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                     onBlur={() => onBlur?.({ name, value: internalValue?.toString() })}
                     editable={!_isDisabled}
                     keyboardType="numeric"
-                    style={textInputStyle.input}
+                    style={textInputStyle}
                     accessibilityLabel={accessibilityLabel ?? label}
                     accessibilityRole="spinbutton"
                   />

@@ -9,7 +9,6 @@ export const COUNTER_INPUT_ICON_SIZE_MAP = {
 
 export const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
   xsmall: 'small',
-  small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
