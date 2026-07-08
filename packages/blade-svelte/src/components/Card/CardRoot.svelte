@@ -11,6 +11,7 @@
     borderRadius = 'medium',
     isSelected = false,
     isFocused = false,
+    isDisabled = false,
     validationState = 'none',
     accessibilityLabel,
     onHover,
@@ -28,6 +29,7 @@
     borderRadius?: 'medium' | 'large' | 'xlarge';
     isSelected?: boolean;
     isFocused?: boolean;
+    isDisabled?: boolean;
     validationState?: 'none' | 'error' | 'success';
     accessibilityLabel?: string;
     onHover?: () => void;
@@ -61,6 +63,7 @@
   const a11yAttrs = $derived(
     makeAccessible({
       label: as === 'label' ? accessibilityLabel : undefined,
+      disabled: isDisabled ? true : undefined,
     })
   );
 
@@ -73,9 +76,9 @@
     validationState && validationState !== 'none' ? validationState : undefined
   );
 
-  // Compute cursor style
+  // Compute cursor style. A disabled card always shows not-allowed, overriding any provided cursor.
   const cursorValue = $derived(
-    cursor ? cursor : as === 'label' ? 'pointer' : 'initial'
+    isDisabled ? 'not-allowed' : cursor ? cursor : as === 'label' ? 'pointer' : 'initial'
   );
 
   function handleMouseEnter(): void {
