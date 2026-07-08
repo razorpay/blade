@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { BladeFile, FileCategoryProps } from './types';
+import type { BladeFile, InlineSelectorProps } from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -14,7 +14,7 @@ import { makeSize } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 
-const StyledCategoryTrigger = styled.button(({ theme }) => ({
+const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   maxWidth: '120px',
@@ -40,19 +40,19 @@ const StyledCategoryTrigger = styled.button(({ theme }) => ({
   },
 }));
 
-type CategoryTriggerProps = {
+type InlineSelectorTriggerProps = {
   displayLabel: string;
   file: BladeFile;
-  value: FileCategoryProps['value'];
-  onChange: FileCategoryProps['onChange'];
+  value: InlineSelectorProps['value'];
+  onChange: InlineSelectorProps['onChange'];
 };
 
-const _CategoryTrigger = ({
+const _InlineSelectorTrigger = ({
   displayLabel,
   file,
   value,
   onChange,
-}: CategoryTriggerProps): React.ReactElement => {
+}: InlineSelectorTriggerProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -82,10 +82,10 @@ const _CategoryTrigger = ({
   }, [isOpen, options, setActiveIndex, value]);
 
   return (
-    <StyledCategoryTrigger
+    <StyledInlineSelectorTrigger
       ref={triggererRef as React.Ref<HTMLButtonElement>}
       type="button"
-      aria-label={`Select file category for ${file.name}`}
+      aria-label={`Select inline selector for ${file.name}`}
       aria-haspopup={getActionListContainerRole(hasFooterAction, 'DropdownButton')}
       aria-expanded={isOpen}
       aria-controls={`${dropdownBaseId}-actionlist`}
@@ -106,31 +106,36 @@ const _CategoryTrigger = ({
         </Text>
       </BaseBox>
       <ChevronDownIcon size="medium" color="interactive.icon.gray.subtle" />
-    </StyledCategoryTrigger>
+    </StyledInlineSelectorTrigger>
   );
 };
 
-const CategoryTrigger = assignWithoutSideEffects(_CategoryTrigger, {
+const InlineSelectorTrigger = assignWithoutSideEffects(_InlineSelectorTrigger, {
   componentId: dropdownComponentIds.triggers.DropdownButton,
 });
 
-type FileUploadCategorySelectorProps = FileCategoryProps & {
+type FileUploadInlineSelectorProps = InlineSelectorProps & {
   file: BladeFile;
 };
 
-const FileUploadCategorySelector = ({
+const FileUploadInlineSelector = ({
   options,
   value,
   onChange,
   placeholder = 'Type',
   file,
-}: FileUploadCategorySelectorProps): React.ReactElement => {
+}: FileUploadInlineSelectorProps): React.ReactElement => {
   const selectedOption = options.find((opt) => opt.value === value);
   const displayLabel = selectedOption?.title ?? placeholder;
 
   return (
     <Dropdown selectionType="single">
-      <CategoryTrigger displayLabel={displayLabel} file={file} value={value} onChange={onChange} />
+      <InlineSelectorTrigger
+        displayLabel={displayLabel}
+        file={file}
+        value={value}
+        onChange={onChange}
+      />
       <DropdownOverlay>
         <ActionList>
           {options.map((option) => (
@@ -147,4 +152,4 @@ const FileUploadCategorySelector = ({
   );
 };
 
-export { FileUploadCategorySelector };
+export { FileUploadInlineSelector };

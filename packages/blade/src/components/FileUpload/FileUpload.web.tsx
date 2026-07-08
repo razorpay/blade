@@ -4,8 +4,8 @@ import type {
   BladeFile,
   BladeFileList,
   FileUploadVariableSizeProps,
-  FileCategoryConfig,
-  FileCategoryOption,
+  InlineSelectorConfig,
+  InlineSelectorOption,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -54,7 +54,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     isRequired,
     necessityIndicator,
     fileList,
-    fileCategory,
+    inlineSelector,
     testID,
     label,
     labelPosition = 'top',
@@ -232,8 +232,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
-  const getFileCategoryValue = (file: BladeFile): string | undefined => {
-    return file.id ? fileCategory?.value?.[file.id] : undefined;
+  const getInlineSelectorValue = (file: BladeFile): string | undefined => {
+    return file.id ? inlineSelector?.value?.[file.id] : undefined;
   };
 
   return (
@@ -376,13 +376,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={selectedFiles[0]}
             size={size}
-            fileCategory={
-              fileCategory
+            inlineSelector={
+              inlineSelector
                 ? {
-                    options: fileCategory.options,
-                    value: getFileCategoryValue(selectedFiles[0]),
-                    onChange: fileCategory.onChange,
-                    placeholder: fileCategory.placeholder,
+                    options: inlineSelector.options,
+                    value: getInlineSelectorValue(selectedFiles[0]),
+                    onChange: inlineSelector.onChange,
+                    placeholder: inlineSelector.placeholder,
                   }
                 : undefined
             }
@@ -452,13 +452,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
-              fileCategory={
-                fileCategory
+              inlineSelector={
+                inlineSelector
                   ? {
-                      options: fileCategory.options,
-                      value: getFileCategoryValue(file),
-                      onChange: fileCategory.onChange,
-                      placeholder: fileCategory.placeholder,
+                      options: inlineSelector.options,
+                      value: getInlineSelectorValue(file),
+                      onChange: inlineSelector.onChange,
+                      placeholder: inlineSelector.placeholder,
                     }
                   : undefined
               }
@@ -549,4 +549,4 @@ const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
 });
 
 export { FileUpload };
-export type { BladeFile, BladeFileList, FileCategoryConfig, FileCategoryOption, FileUploadProps };
+export type { BladeFile, BladeFileList, InlineSelectorConfig, InlineSelectorOption, FileUploadProps };

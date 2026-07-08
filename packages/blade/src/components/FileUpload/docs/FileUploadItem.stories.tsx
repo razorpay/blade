@@ -195,8 +195,8 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 export const AllStates = AllStatesTemplate.bind({});
 AllStates.storyName = 'All States';
 
-// With File Category Selector
-const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
+// With Inline Selector
+const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>('delivery_proof');
 
   const categoryOptions = [
@@ -214,12 +214,12 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
       <Box>
-        <Heading size="small">Medium Size with Category Selector</Heading>
+        <Heading size="small">Medium Size with Inline Selector</Heading>
         <Box maxWidth="400px" marginTop="spacing.3">
           <FileUploadItem
             file={successFile}
             size="medium"
-            fileCategory={{
+            inlineSelector={{
               options: categoryOptions,
               value: selectedCategory,
               onChange: ({ values }) => setSelectedCategory(values[0]),
@@ -231,12 +231,12 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
       </Box>
 
       <Box>
-        <Heading size="small">Large Size with Category Selector</Heading>
+        <Heading size="small">Large Size with Inline Selector</Heading>
         <Box maxWidth="500px" marginTop="spacing.3">
           <FileUploadItem
             file={successFile}
             size="large"
-            fileCategory={{
+            inlineSelector={{
               options: categoryOptions,
               value: selectedCategory,
               onChange: ({ values }) => setSelectedCategory(values[0]),
@@ -253,7 +253,7 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="medium"
-            fileCategory={{
+            inlineSelector={{
               options: categoryOptions,
               value: undefined,
               onChange: ({ values }) => action('onChange')(values),
@@ -267,5 +267,5 @@ const WithFileCategoryTemplate: StoryFn<typeof FileUploadItem> = () => {
   );
 };
 
-export const WithFileCategory = WithFileCategoryTemplate.bind({});
-WithFileCategory.storyName = 'With File Category Selector';
+export const WithInlineSelector = WithInlineSelectorTemplate.bind({});
+WithInlineSelector.storyName = 'With Inline Selector';
