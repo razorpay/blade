@@ -4,42 +4,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
-
-interface BladeFile {
-  /**
-   * The file name.
-   */
-  name: string;
-  /**
-   * The file size in bytes.
-   */
-  size: number;
-  /**
-   * The MIME type of the file (e.g. "image/png").
-   */
-  type: string;
-  /**
-   * The last modified time of the file as a Unix timestamp (milliseconds since epoch).
-   * Present on web File objects; may be omitted on React Native.
-   */
-  lastModified?: number;
-  /**
-   * The unique identifier of the file.
-   */
-  id?: string;
-  /**
-   * The file's upload status.
-   */
-  status?: 'uploading' | 'success' | 'error';
-  /**
-   * The percentage of file upload completion.
-   */
-  uploadPercent?: number;
-  /**
-   * Text indicating an error state
-   */
-  errorText?: string;
-}
+import type { BladeFile } from './bladeFile';
 
 type BladeFileList = BladeFile[];
 

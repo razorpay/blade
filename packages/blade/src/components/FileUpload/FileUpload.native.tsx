@@ -39,6 +39,20 @@ const getFileIconExtension = (acceptValue?: string): string => {
   return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
 };
 
+// React Native's DimensionValue only accepts numbers or `${number}%` strings.
+// `makeSize()`/BoxProps height & width values (e.g. "56px") need to be converted before
+// being assigned to a raw style object instead of going through BaseBox's own resolution.
+const toNativeDimension = (
+  value: string | number | undefined,
+): number | `${number}%` | undefined => {
+  if (value === undefined) return undefined;
+  if (typeof value === 'number') return value;
+  if (value.endsWith('%')) return value as `${number}%`;
+
+  const numericValue = Number.parseFloat(value);
+  return Number.isNaN(numericValue) ? undefined : numericValue;
+};
+
 const _FileUpload = ({
   name,
   accept,
@@ -205,8 +219,8 @@ const _FileUpload = ({
               isDisabled={isDisabled}
               isActive={isActive}
               style={{
-                height: typeof computedHeight === 'number' ? computedHeight : undefined,
-                width: typeof computedWidth === 'number' ? computedWidth : undefined,
+                height: toNativeDimension(computedHeight),
+                width: toNativeDimension(computedWidth),
               }}
             >
               <Box
