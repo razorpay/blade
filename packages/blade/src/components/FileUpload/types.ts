@@ -231,7 +231,6 @@ type InlineSelectorProps = {
 
 type InlineSelectorValueMap = Record<string, string | undefined>;
 
-
 type FileUploadItemProps = Pick<
   FileUploadProps,
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
