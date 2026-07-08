@@ -21,6 +21,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
+import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
 import { makeSize } from '~utils';
 import { Text } from '~components/Typography';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
@@ -173,8 +174,10 @@ const _FileUpload = ({
     onChange?.({ name, fileList: [] });
   };
 
-  const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
-  const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
+  const computedHeight = isSizeVariable
+    ? getResponsiveValue(height) ?? '100%'
+    : makeSize(fileUploadHeightTokens[size]);
+  const computedWidth = isSizeVariable ? getResponsiveValue(width) ?? '100%' : '100%';
 
   const accessibilityProps = makeAccessible({
     required: Boolean(isRequired),
