@@ -44,9 +44,7 @@
   const getCtx = getTabsContext();
   const ctx = $derived(getCtx());
 
-  $effect(() => {
-    getCtx().registerTabItem(value);
-  });
+  getCtx().registerTabItem(value);
 
   const isSelected = $derived(ctx.selectedValue === value);
   const isFocused = $derived(ctx.focusedValue === value);
