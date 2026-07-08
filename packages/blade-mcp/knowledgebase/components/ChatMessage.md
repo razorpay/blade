@@ -106,6 +106,25 @@ type ChatMessageProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ChatMessage` for building conversational interfaces with distinct sender/receiver messages.
+- Use `senderType="self"` for user messages (right-aligned) and `senderType="other"` for agent/system messages (left-aligned).
+- Use `leading` prop with an icon or avatar for agent messages to provide visual sender identification.
+- Use `isLoading` with `loadingText` (string array for rolling animation) during async AI responses.
+- Use `footerActions` for feedback controls (thumbs up/down, copy, share) on agent messages.
+- Pass complex JSX (Card, Table, RadioGroup) directly as children for rich message content.
+
+**Don't**
+
+- Don't use the deprecated `messageType` prop — it's non-functional.
+- Don't use `ChatMessage` for notification-style alerts — use `Toast` or `Alert` instead.
+- Don't pass more than 5 thumbnails — excess images show a "+n" badge.
+- Don't put `footerActions` on self-messages — they're designed for agent/other messages only.
+- Don't manually wrap string children in `Text` — ChatMessage auto-wraps string content.
+
 ## Examples
 
 ### Comprehensive Chat Interface

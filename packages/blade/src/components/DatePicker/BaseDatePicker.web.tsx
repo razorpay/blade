@@ -506,6 +506,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 format={finalFormat}
                 placeholder={finalInputPlaceHolder}
                 onClearButtonChange={handleClear}
+                // Effective Selection type should only be used for selectionType 'range'
+                effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
+                // Pass through preset state for showing label instead of date when displayFormat is 'compact'
+                selectedPresetLabel={selectedPresetLabel}
                 {...makeAnalyticsAttribute(props)}
               />
             ) : (

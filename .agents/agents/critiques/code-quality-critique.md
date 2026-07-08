@@ -29,6 +29,7 @@ Use the provided `DIFF`, `PR_TITLE`, and `PR_BODY` directly and try to understan
 
 Judging Criteria:
 
+- **Missing appropriate changeset**: Changeset is applicable for all user-facing code changes (change in code logic, new prop, bug fix, blade mcp knowledgebase update, etc). Not applicable for changes in tests, stories, etc.
 - **Importance of the file / part of the code**: Some files are more important than others. There is no need for flagging code-quality issues in code snippets of markdown files or not-so-important files. Only flag issues in core code logic files and ignore other files.
 - **Reusability**: Some existing util already exists for the same functionality that can be extended
 - **Unrelated file changes**: If there are some unrelated files changes in the PR, flag them for either problem / suggestion or clarification depending on confidence (only flag extremely unrelated changes that are not related to the rest of the PR changes at all).

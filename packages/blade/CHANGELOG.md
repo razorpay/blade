@@ -1,5 +1,45 @@
 # @razorpay/blade
 
+## 12.109.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- 75288e989: feat(AppBar, TrustBadge): add AppBar and TrustBadge components
+
+  TrustBadge renders the "Razorpay Trusted Business" trust marker; its label is configurable
+  via a `label` prop (default: "Razorpay Trusted Business") so it can evolve (e.g. "Razorpay
+  Verified") without a breaking API change. AppBar surfaces it through the `trustBadgeVariant`
+  prop on `AppBarLeading`.
+
+- 39f4f843f: feat(Radio): add `trailing` prop to display an element (e.g. a Badge) alongside a radio label in vertical orientation
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- 4c5c93823: fix(blade): update default chart color to blue
+
+## 12.108.5
+
+### Patch Changes
+
+- bc7c86651: fix(SankeyChart): remove horizontal scroll wrapper so card wraps chart naturally
+
+## 12.108.4
+
+### Patch Changes
+
+- d4a77ab80: fix(rn): disable includeFontPadding on TextInput to fix placeholder vertical alignment
+
+## 12.108.3
+
+### Patch Changes
+
+- d95ebf0b4: fix: resolve TypeScript errors in DatePicker calendar icon click handler by casting BladeElementRef to HTMLElement
+
 ## 12.108.2
 
 ### Patch Changes
