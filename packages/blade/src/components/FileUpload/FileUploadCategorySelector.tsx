@@ -11,6 +11,7 @@ import { Text } from '~components/Typography';
 import { BaseBox } from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 
 const StyledCategoryTrigger = styled.button(({ theme }) => ({
@@ -29,6 +30,13 @@ const StyledCategoryTrigger = styled.button(({ theme }) => ({
   transition: 'background-color 0.15s ease',
   '&:hover': {
     backgroundColor: theme.colors.interactive.background.gray.fadedHighlighted,
+  },
+  '&:focus': {
+    ...getFocusRingStyles({ theme }),
+    backgroundColor: theme.colors.interactive.background.gray.faded,
+  },
+  '&:focus-visible': {
+    outlineOffset: makeSize(theme.spacing[0]),
   },
 }));
 
