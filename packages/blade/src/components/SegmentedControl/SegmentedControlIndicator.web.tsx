@@ -13,7 +13,7 @@ const SegmentedControlIndicator = ({
   containerRef: React.RefObject<HTMLElement | null>;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const { selectedValue, size, isDisabled, itemRefs } = useSegmentedControlContext();
+  const { selectedValue, size, itemRefs } = useSegmentedControlContext();
   const [shouldAnimate, setShouldAnimate] = React.useState(false);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
   const hasInitializedRef = React.useRef(false);
@@ -56,7 +56,7 @@ const SegmentedControlIndicator = ({
   useResize(containerRef, updateDimensions);
 
   const transitionProps = {
-    transitionProperty: 'transform, width, height',
+    transitionProperty: 'transform',
     transitionDuration: shouldAnimate
       ? castWebType(makeMotionTime(theme.motion.duration.moderate))
       : '0ms',
@@ -79,7 +79,6 @@ const SegmentedControlIndicator = ({
       style={{
         ...transitionProps,
         borderRadius: borderRadiusValue,
-        boxShadow: isDisabled ? 'none' : castWebType(theme.elevation.lowRaised),
         width: `${dimensions.width}px`,
         height: `${dimensions.height}px`,
         transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,

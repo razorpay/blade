@@ -325,7 +325,7 @@ exports[`<SegmentedControl /> should render with default props 1`] = `
             class="c8"
             data-blade-component="base-box"
             pointer-events="none"
-            style="transition-property: transform, width, height; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); border-radius: 8px; box-shadow: 0px 2px 4px 0px hsla(200, 10%, 18%, 0.06); width: 0px; height: 0px; transform: translate(0px, 0px);"
+            style="transition-property: transform; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); border-radius: 8px; width: 0px; height: 0px; transform: translate(0px, 0px);"
           />
         </div>
       </div>
