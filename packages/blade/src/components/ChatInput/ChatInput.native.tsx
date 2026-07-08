@@ -4,7 +4,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-  Easing,
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidthNative } from './chatInputTokens';
@@ -14,10 +13,11 @@ import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
+import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { CloseIcon, InfoIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { Text } from '~components/Typography';
-import { makeSpace } from '~utils';
+import { castNativeType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -88,17 +88,20 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   React.useEffect(() => {
     const duration = getIn(theme.motion, 'duration.xmoderate') as number;
-    const easingValues = getIn(theme.motion, 'easing.emphasized') as number[];
 
     errorProgress.value = withTiming(isError ? 1 : 0, {
       duration,
-      easing: Easing.bezier(easingValues[0], easingValues[1], easingValues[2], easingValues[3]),
+      easing: castNativeType(theme.motion.easing.emphasized),
     });
   }, [isError]);
 
+  // Mirror web's `bottom: calc(100% - 12px)` — overlap the input card by spacing.4 (12px)
+  // so the banner's square bottom edge tucks behind the input and the shapes read as one.
+  const errorOverlap = getIn(theme, 'spacing.4') as number;
+
   const errorAnimatedStyle = useAnimatedStyle(() => ({
     opacity: errorProgress.value,
-    transform: [{ translateY: (1 - errorProgress.value) * 20 }],
+    transform: [{ translateY: errorOverlap + (1 - errorProgress.value) * 20 }],
   }));
 
   const [inputContainerHeight, setInputContainerHeight] = React.useState(0);
@@ -122,35 +125,12 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       }}
     >
       {files.map((file) => (
-        <View
-          key={file.id ?? file.name}
-          style={{
-            width: chatInputFilePreviewItemWidthNative,
-            flexDirection: 'row',
-            alignItems: 'center',
-            padding: getIn(theme, 'spacing.2') as number,
-            backgroundColor: getIn(theme, 'colors.surface.background.gray.moderate') as string,
-            borderRadius: getIn(theme, 'border.radius.medium') as number,
-            gap: getIn(theme, 'spacing.2') as number,
-          }}
-        >
-          <BaseBox flexShrink={1}>
-            <Text size="small" truncateAfterLines={1}>
-              {file.name}
-            </Text>
-          </BaseBox>
-          <IconButton
-            icon={CloseIcon}
-            size="small"
-            emphasis="intense"
-            accessibilityLabel={`Remove ${file.name}`}
-            onClick={() => {
-              if (file.status === 'uploading') {
-                handleFileDismiss(file);
-              } else {
-                handleFileRemove(file);
-              }
-            }}
+        <View key={file.id ?? file.name} style={{ width: chatInputFilePreviewItemWidthNative }}>
+          <FileUploadItem
+            file={file}
+            onRemove={() => handleFileRemove(file)}
+            onDismiss={() => handleFileDismiss(file)}
+            onReupload={onFileReupload ? () => onFileReupload({ file }) : undefined}
           />
         </View>
       ))}
