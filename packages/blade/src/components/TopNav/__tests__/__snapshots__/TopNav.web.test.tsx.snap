@@ -519,10 +519,9 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(210,6%,13%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(216,4%,24%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -553,22 +552,20 @@ exports[`TopNav it shpuld support adding test Id 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(207,4%,52%,0.09);
   outline: 1px solid hsla(218,89%,51%,0.32);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -1389,10 +1386,9 @@ exports[`TopNav should render 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(210,6%,13%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(216,4%,24%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1423,22 +1419,20 @@ exports[`TopNav should render 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(207,4%,52%,0.09);
   outline: 1px solid hsla(218,89%,51%,0.32);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32);
 }
 
 .c14.c14.c14.c14.c14 * {
@@ -2135,10 +2129,9 @@ exports[`TopNav should support data analytics attributes 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(210,6%,13%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(216,4%,24%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -2169,22 +2162,20 @@ exports[`TopNav should support data analytics attributes 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:active {
-  background-color: hsla(210,6%,13%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  background-color: hsla(207,4%,52%,0.09);
   background-image: none;
 }
 
 .c14.c14.c14.c14.c14:focus-visible {
-  background-color: hsla(210,6%,13%,1);
+  background-color: hsla(207,4%,52%,0.09);
   outline: 1px solid hsla(218,89%,51%,0.32);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(206,4%,36%,1),inset 0 -1.5px 0px 0px hsla(216,4%,24%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.32);
 }
 
 .c14.c14.c14.c14.c14 * {

@@ -208,9 +208,9 @@ describe('<BaseButton />', () => {
     expect(
       getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'default' }),
     ).toBe('transparent');
-    expect(
-      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' }),
-    ).toBe('interactive.background.gray.faded');
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toBe(
+      'interactive.background.gray.faded',
+    );
     expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'default' })).toEqual(
       [],
     );
@@ -220,9 +220,9 @@ describe('<BaseButton />', () => {
   });
 
   it('should use ghost tokens for tertiary white button', () => {
-    expect(
-      getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'default' }),
-    ).toBe('transparent');
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'default' })).toBe(
+      'transparent',
+    );
     expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toBe(
       'interactive.background.staticWhite.faded',
     );
