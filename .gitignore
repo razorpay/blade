@@ -105,3 +105,7 @@ knowledgebase-ts-errors.json
 .agents/artifacts/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
+
+.cursor
+.claude
+.agents

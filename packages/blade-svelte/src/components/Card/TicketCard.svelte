@@ -1,21 +1,21 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import CardRoot from './CardRoot.svelte';
-  import CardSurface from './CardSurface.svelte';
+  import CardTicketSurface from './CardTicketSurface.svelte';
+  import CardBody from './CardBody.svelte';
   import LinkOverlay from './LinkOverlay.svelte';
   import { setCardContext } from './CardContext';
-  import type { CardProps } from './types';
+  import {
+    TICKET_CARD_CONTEXT_KEY,
+    setSectionedCardContext,
+  } from './sectionedCardContext';
+  import type { TicketCardProps } from './types';
 
   let {
-    children: cardContent,
-    variant = 'primary',
-    backgroundColor,
+    children,
     borderRadius = 'medium',
-    /* `elevation` is deprecated and a no-op (matches React). Kept in the
-       destructure so it's swallowed rather than forwarded onto the DOM
-       via {...rest} — the surface elevation is baked into .cardSurface. */
     elevation: _deprecatedElevation,
-    padding = 'spacing.7',
     width,
     height,
     minHeight,
@@ -32,23 +32,26 @@
     onClick,
     as,
     cursor,
-    overflow,
-    overflowX,
-    overflowY,
-    validationState = 'none',
     testID,
     ...rest
-  }: CardProps = $props();
+  }: TicketCardProps = $props();
+
+  let bodySnippet = $state<Snippet | undefined>();
+  let footerSnippet = $state<Snippet | undefined>();
 
   setCardContext(() => ({ size }));
+  setSectionedCardContext(TICKET_CARD_CONTEXT_KEY, {
+    setBody: (content) => {
+      bodySnippet = content;
+    },
+    setFooter: (content) => {
+      footerSnippet = content;
+    },
+  });
 
   let isFocused = $state(false);
 
   const isCardSelected = $derived(isSelected && !isDisabled);
-
-  const surfaceType = $derived(
-    variant === 'secondary' || variant === 'theme' ? variant : 'primary'
-  );
 
   const defaultRel = $derived(
     target && target === '_blank' ? 'noreferrer noopener' : undefined
@@ -92,10 +95,9 @@
 <CardRoot
   {as}
   {borderRadius}
-  isSelected={isCardSelected}
+  isSelected={false}
   {isFocused}
   {isDisabled}
-  {validationState}
   {accessibilityLabel}
   {onHover}
   {width}
@@ -108,20 +110,31 @@
   {...rest}
   {...analyticsAttrs}
 >
-  <CardSurface
-    type={surfaceType}
-    {height}
-    {minHeight}
-    {padding}
-    {borderRadius}
-    {backgroundColor}
-    {overflow}
-    {overflowX}
-    {overflowY}
-  >
-    {@render linkOverlay()}
-    {#if cardContent}
-      {@render cardContent()}
-    {/if}
-  </CardSurface>
+  {@render children()}
+
+  {#if bodySnippet && footerSnippet}
+    <CardTicketSurface
+      topSection={bodyRegion}
+      bottomSection={footerRegion}
+      isSelected={isCardSelected}
+      {isDisabled}
+      children={linkOverlay}
+    />
+  {/if}
 </CardRoot>
+
+{#snippet bodyRegion()}
+  <CardBody>
+    {#if bodySnippet}
+      {@render bodySnippet()}
+    {/if}
+  </CardBody>
+{/snippet}
+
+{#snippet footerRegion()}
+  <CardBody>
+    {#if footerSnippet}
+      {@render footerSnippet()}
+    {/if}
+  </CardBody>
+{/snippet}
