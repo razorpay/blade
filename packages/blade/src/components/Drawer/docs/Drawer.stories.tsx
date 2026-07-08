@@ -87,7 +87,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
             />
           </Box>
           <Box>
-            <Button>Payout</Button>{' '}
+            <Button>Payout</Button>
             <Button marginLeft="spacing.2" variant="secondary">
               Invite Vendor
             </Button>
@@ -216,7 +216,7 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
             />
           </Box>
           <Box>
-            <Button ref={drawerInitialFocusRef}>Payout</Button>{' '}
+            <Button ref={drawerInitialFocusRef}>Payout</Button>
             <Button marginLeft="spacing.2" variant="secondary">
               Invite Vendor
             </Button>

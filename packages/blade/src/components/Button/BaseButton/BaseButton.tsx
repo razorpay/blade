@@ -535,6 +535,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
 
+  // On web, ButtonGroup flattens the child buttons' border radius via CSS child
+  // selectors and rounds only the outer edges using the group container's
+  // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
+  // flatten each button's border radius to 0 here and let the group container do
+  // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
+  const buttonBorderRadiusValue =
+    isReactNative() && buttonGroupProps.isInsideButtonGroup ? makeBorderSize(0) : borderRadius;
+
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
     setIsPressed(true);
@@ -621,7 +629,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onTouchEnd?.(event);
       }}
       type={type}
-      borderRadius={borderRadius}
+      borderRadius={buttonBorderRadiusValue}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}

@@ -4,6 +4,7 @@ import type { QuickFilterGroupContextType } from '../types';
 const QuickFilterGroupContext = React.createContext<QuickFilterGroupContextType>({
   selectionType: 'single',
   selectedQuickFilters: [],
+  onSelect: () => {},
 });
 const QuickFilterGroupProvider = QuickFilterGroupContext.Provider;
 

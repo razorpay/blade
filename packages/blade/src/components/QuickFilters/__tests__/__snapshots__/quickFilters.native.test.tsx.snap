@@ -1,0 +1,1312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QuickFilters /> should render correctly with multiple selectionType 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="checkbox-group-124-label-129"
+      accessible={true}
+      data-blade-component="checkbox-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          flexWrap="wrap"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "flexWrap": "wrap",
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              gap="spacing.3"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <View
+                  data-blade-component="base-box"
+                  isSelected={false}
+                  style={
+                    [
+                      {},
+                      {
+                        "backgroundColor": "transparent",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.3"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 8,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      pointerEvents="none"
+                    >
+                      <View
+                        alignItems="center"
+                        data-blade-component="box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.2"
+                        justifyContent="center"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 4,
+                              "justifyContent": "center",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="checkbox"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityInvalid={false}
+                            accessibilityRequired={false}
+                            accessibilityRole="checkbox"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "marginBottom": 2,
+                                  "marginTop": 2,
+                                },
+                              ]
+                            }
+                            value="a"
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="column"
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                data-blade-component="base-box"
+                                display="flex"
+                                flexDirection="row"
+                                style={
+                                  [
+                                    {
+                                      "display": "flex",
+                                      "flexDirection": "row",
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  data-blade-component="checkbox-icon-wrapper"
+                                  isChecked={false}
+                                  isDisabled={false}
+                                  isNegative={false}
+                                  size="small"
+                                  style={
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                        "borderColor": "hsla(205, 8%, 71%, 1)",
+                                        "borderRadius": 4,
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1.5,
+                                        "display": "flex",
+                                        "flexShrink": 0,
+                                        "height": 12,
+                                        "justifyContent": "center",
+                                        "marginBottom": 2,
+                                        "marginLeft": 2,
+                                        "marginRight": 2,
+                                        "marginTop": 2,
+                                        "paddingTop": 1,
+                                        "position": "relative",
+                                        "width": 12,
+                                      },
+                                    ]
+                                  }
+                                />
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Option A
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <View
+                  data-blade-component="base-box"
+                  isSelected={false}
+                  style={
+                    [
+                      {},
+                      {
+                        "backgroundColor": "transparent",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.3"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 8,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      pointerEvents="none"
+                    >
+                      <View
+                        alignItems="center"
+                        data-blade-component="box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.2"
+                        justifyContent="center"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 4,
+                              "justifyContent": "center",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="checkbox"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityInvalid={false}
+                            accessibilityRequired={false}
+                            accessibilityRole="checkbox"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "marginBottom": 2,
+                                  "marginTop": 2,
+                                },
+                              ]
+                            }
+                            value="b"
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="column"
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                data-blade-component="base-box"
+                                display="flex"
+                                flexDirection="row"
+                                style={
+                                  [
+                                    {
+                                      "display": "flex",
+                                      "flexDirection": "row",
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  data-blade-component="checkbox-icon-wrapper"
+                                  isChecked={false}
+                                  isDisabled={false}
+                                  isNegative={false}
+                                  size="small"
+                                  style={
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                        "borderColor": "hsla(205, 8%, 71%, 1)",
+                                        "borderRadius": 4,
+                                        "borderStyle": "solid",
+                                        "borderWidth": 1.5,
+                                        "display": "flex",
+                                        "flexShrink": 0,
+                                        "height": 12,
+                                        "justifyContent": "center",
+                                        "marginBottom": 2,
+                                        "marginLeft": 2,
+                                        "marginRight": 2,
+                                        "marginTop": 2,
+                                        "paddingTop": 1,
+                                        "position": "relative",
+                                        "width": 12,
+                                      },
+                                    ]
+                                  }
+                                />
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Option B
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<QuickFilters /> should render values correctly 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="radio-group-5-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="radio-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          flexWrap="wrap"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "flexWrap": "wrap",
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              gap="spacing.3"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <View
+                  data-blade-component="base-box"
+                  isSelected={false}
+                  style={
+                    [
+                      {},
+                      {
+                        "backgroundColor": "transparent",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.3"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      pointerEvents="none"
+                    >
+                      <View
+                        alignItems="center"
+                        data-blade-component="box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.0"
+                        justifyContent="center"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 0,
+                              "justifyContent": "center",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityDescribedBy="radio-1-helptext-2"
+                            accessibilityInvalid={false}
+                            accessibilityRequired={false}
+                            accessibilityRole="radio"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            name="radio-group-5"
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "marginBottom": 2,
+                                  "marginTop": 2,
+                                },
+                              ]
+                            }
+                            value="value1"
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="column"
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                alignItems="center"
+                                data-blade-component="base-box"
+                                display="flex"
+                                flexDirection="row"
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "display": "flex",
+                                      "flexDirection": "row",
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Title1
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      alignSelf="center"
+                      data-blade-component="counter"
+                      display="flex"
+                      justifyContent="center"
+                      style={
+                        [
+                          {
+                            "alignSelf": "center",
+                            "display": "flex",
+                            "justifyContent": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        backgroundColor="feedback.background.neutral.subtle"
+                        data-blade-component="base-box"
+                        minHeight="20px"
+                        minWidth="20px"
+                        platform="onMobile"
+                        size="medium"
+                        style={
+                          [
+                            {
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                              "minHeight": 20,
+                              "minWidth": 20,
+                            },
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                              "borderRadius": 9999,
+                              "display": "flex",
+                              "flexWrap": "nowrap",
+                              "justifyContent": "center",
+                              "maxWidth": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="center"
+                          overflow="hidden"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "overflow": "hidden",
+                                "paddingLeft": 8,
+                                "paddingRight": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="feedback.text.neutral.intense"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={75}
+                            fontStyle="normal"
+                            fontWeight="medium"
+                            letterSpacing={50}
+                            lineHeight={75}
+                            numberOfLines={1}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(200, 10%, 18%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "500",
+                                  "letterSpacing": -0.15600000000000003,
+                                  "lineHeight": 17,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textAlign": "center",
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                            textAlign="center"
+                          >
+                            234
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <View
+                  data-blade-component="base-box"
+                  isSelected={false}
+                  style={
+                    [
+                      {},
+                      {
+                        "backgroundColor": "transparent",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.3"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      pointerEvents="none"
+                    >
+                      <View
+                        alignItems="center"
+                        data-blade-component="box"
+                        display="flex"
+                        flexDirection="row"
+                        gap="spacing.0"
+                        justifyContent="center"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "gap": 0,
+                              "justifyContent": "center",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityDescribedBy="radio-3-helptext-4"
+                            accessibilityInvalid={false}
+                            accessibilityRequired={false}
+                            accessibilityRole="radio"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": false,
+                                "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            name="radio-group-5"
+                            onBlur={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "display": "flex",
+                                  "flexDirection": "row",
+                                  "marginBottom": 2,
+                                  "marginTop": 2,
+                                },
+                              ]
+                            }
+                            value="value2"
+                          >
+                            <View
+                              data-blade-component="base-box"
+                              display="flex"
+                              flexDirection="column"
+                              style={
+                                [
+                                  {
+                                    "display": "flex",
+                                    "flexDirection": "column",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                alignItems="center"
+                                data-blade-component="base-box"
+                                display="flex"
+                                flexDirection="row"
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "display": "flex",
+                                      "flexDirection": "row",
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Title2
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      alignSelf="center"
+                      data-blade-component="counter"
+                      display="flex"
+                      justifyContent="center"
+                      style={
+                        [
+                          {
+                            "alignSelf": "center",
+                            "display": "flex",
+                            "justifyContent": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        backgroundColor="feedback.background.neutral.subtle"
+                        data-blade-component="base-box"
+                        minHeight="20px"
+                        minWidth="20px"
+                        platform="onMobile"
+                        size="medium"
+                        style={
+                          [
+                            {
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                              "minHeight": 20,
+                              "minWidth": 20,
+                            },
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                              "borderRadius": 9999,
+                              "display": "flex",
+                              "flexWrap": "nowrap",
+                              "justifyContent": "center",
+                              "maxWidth": 100,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="center"
+                          overflow="hidden"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "overflow": "hidden",
+                                "paddingLeft": 8,
+                                "paddingRight": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="feedback.text.neutral.intense"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={75}
+                            fontStyle="normal"
+                            fontWeight="medium"
+                            letterSpacing={50}
+                            lineHeight={75}
+                            numberOfLines={1}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(200, 10%, 18%, 1)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "500",
+                                  "letterSpacing": -0.15600000000000003,
+                                  "lineHeight": 17,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textAlign": "center",
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                            textAlign="center"
+                          >
+                            234
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

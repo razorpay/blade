@@ -50,6 +50,16 @@ type StyledButtonGroupProps = Pick<
 type ButtonGroupContextType = Pick<
   ButtonGroupProps,
   'isDisabled' | 'isFullWidth' | 'size' | 'color' | 'variant'
->;
+> & {
+  /**
+   * Indicates that the Button is rendered inside a ButtonGroup.
+   *
+   * On React Native there is no CSS cascade to flatten the border radius of the
+   * buttons inside the group, so each Button flattens its own border radius to 0
+   * and relies on the group container's `overflow: hidden` + `borderRadius` to
+   * round only the outer edges.
+   */
+  isInsideButtonGroup?: boolean;
+};
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };
