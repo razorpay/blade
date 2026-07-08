@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc dOTRhp"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ELJEo"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 cWHtZO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button><div pointer-events="none" style="transition-property:transform;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;width:0px;height:0px;transform:translate(0px, 0px)" data-blade-component="base-box" class="BaseBox-bksIuc hbfKSe"></div></div></div></div></div></div>"`;
+exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc dOTRhp"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ELJEo"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 cWHtZO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button></div></div></div></div></div>"`;
 
 exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -35,14 +35,6 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c8.c8.c8.c8.c8 {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: hsla(0,0%,100%,1);
-  pointer-events: none;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -216,36 +208,6 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   background-color: transparent;
 }
 
-@media screen and (min-width:320px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: none;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: none;
-  }
-}
-
 <div
   id="root"
 >
@@ -325,12 +287,6 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
               Monthly
             </span>
           </button>
-          <div
-            class="c8"
-            data-blade-component="base-box"
-            pointer-events="none"
-            style="transition-property:transform;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);border-radius:8px;width:0px;height:0px;transform:translate(0px, 0px)"
-          />
         </div>
       </div>
     </div>

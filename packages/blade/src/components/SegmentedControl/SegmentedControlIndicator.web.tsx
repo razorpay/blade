@@ -11,12 +11,11 @@ const SegmentedControlIndicator = ({
   containerRef,
 }: {
   containerRef: React.RefObject<HTMLElement | null>;
-}): React.ReactElement => {
+}): React.ReactElement | null => {
   const { theme } = useTheme();
   const { selectedValue, size, itemRefs } = useSegmentedControlContext();
   const [shouldAnimate, setShouldAnimate] = React.useState(false);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0, x: 0, y: 0 });
-  const hasInitializedRef = React.useRef(false);
 
   const updateDimensions = React.useCallback(() => {
     if (!selectedValue || !itemRefs) return;
@@ -29,11 +28,6 @@ const SegmentedControlIndicator = ({
       x: activeItem.offsetLeft,
       y: activeItem.offsetTop,
     });
-
-    if (!hasInitializedRef.current) {
-      hasInitializedRef.current = true;
-      requestAnimationFrame(() => setShouldAnimate(true));
-    }
   }, [selectedValue, itemRefs]);
 
   useIsomorphicLayoutEffect(() => {
@@ -54,6 +48,18 @@ const SegmentedControlIndicator = ({
   }, [updateDimensions]);
 
   useResize(containerRef, updateDimensions);
+
+  // Enable animation only after the first paint with real dimensions.
+  // useEffect fires after the browser paints, guaranteeing the initial
+  // position is committed before transitions are turned on.
+  React.useEffect(() => {
+    if (dimensions.width > 0) {
+      setShouldAnimate(true);
+    }
+  }, [dimensions.width]);
+
+  // Nothing to show until dimensions are measured — avoids a 0×0 flash.
+  if (!dimensions.width) return null;
 
   const transitionProps = {
     transitionProperty: 'transform',
