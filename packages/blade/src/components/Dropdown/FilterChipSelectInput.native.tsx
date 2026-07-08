@@ -61,10 +61,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const {
-    clearFilterCallbackTriggerer,
-    setFilterChipGroupSelectedFilters,
-  } = useFilterChipGroupContext();
+  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
+    useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -97,7 +95,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+        const savedIndices = listViewSelectedFilters[label] as unknown as number[];
         setSelectedIndices(savedIndices);
         const inputValue = savedIndices.map((selectionIndex) => options[selectionIndex].value);
         setUncontrolledInputValue(inputValue);
@@ -108,7 +106,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
-      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+      const savedIndices = listViewSelectedFilters[label] as unknown as number[];
       setSelectedIndices(savedIndices);
     } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
       const newSelectedIndices =
@@ -149,7 +147,21 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     });
     setUncontrolledInputValue([]);
     setSelectedIndices([]);
-  }, [onClearButtonClick, onChange, name, idBase, label, isControlled, controlledValueIndices, selectedIndices, options, setFilterChipGroupSelectedFilters, setListViewSelectedFilters, setUncontrolledInputValue, setSelectedIndices]);
+  }, [
+    onClearButtonClick,
+    onChange,
+    name,
+    idBase,
+    label,
+    isControlled,
+    controlledValueIndices,
+    selectedIndices,
+    options,
+    setFilterChipGroupSelectedFilters,
+    setListViewSelectedFilters,
+    setUncontrolledInputValue,
+    setSelectedIndices,
+  ]);
 
   useEffect(() => {
     if (clearFilterCallbackTriggerer) {
