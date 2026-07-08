@@ -91,11 +91,7 @@ describe('<ColorInput />', () => {
   it('should call onFocus with full ColorInputValue when hex input is focused', () => {
     const onFocus = jest.fn();
     const { getByPlaceholderText } = renderWithTheme(
-      <ColorInput
-        label="Color"
-        defaultValue={{ hex: '#FF5733', opacity: 80 }}
-        onFocus={onFocus}
-      />,
+      <ColorInput label="Color" defaultValue={{ hex: '#FF5733', opacity: 80 }} onFocus={onFocus} />,
     );
     const hexInput = getByPlaceholderText('000000');
     fireEvent(hexInput, 'focus', { nativeEvent: { text: 'FF5733' } });
@@ -110,16 +106,12 @@ describe('<ColorInput />', () => {
     jest.useFakeTimers();
     const onBlur = jest.fn();
     const { getByPlaceholderText } = renderWithTheme(
-      <ColorInput
-        label="Color"
-        defaultValue={{ hex: '#FF5733', opacity: 80 }}
-        onBlur={onBlur}
-      />,
+      <ColorInput label="Color" defaultValue={{ hex: '#FF5733', opacity: 80 }} onBlur={onBlur} />,
     );
     const hexInput = getByPlaceholderText('000000');
     fireEvent(hexInput, 'focus', { nativeEvent: { text: 'FF5733' } });
     fireEvent(hexInput, 'onEndEditing', { nativeEvent: { text: 'FF5733' } });
-    act(() => {
+    void act(() => {
       jest.runAllTimers();
     });
     expect(onBlur).toHaveBeenCalledTimes(1);
@@ -150,7 +142,7 @@ describe('<ColorInput />', () => {
     // Blur hex, then focus opacity — the blur timeout is cleared before firing
     fireEvent(hexInput, 'onEndEditing', { nativeEvent: { text: 'FFFFFF' } });
     fireEvent(opacityInput, 'focus', { nativeEvent: { text: '100' } });
-    act(() => {
+    void act(() => {
       jest.runAllTimers();
     });
 
@@ -163,11 +155,7 @@ describe('<ColorInput />', () => {
     jest.useFakeTimers();
     const onBlur = jest.fn();
     const { getByPlaceholderText } = renderWithTheme(
-      <ColorInput
-        label="Color"
-        defaultValue={{ hex: '#FFFFFF', opacity: 100 }}
-        onBlur={onBlur}
-      />,
+      <ColorInput label="Color" defaultValue={{ hex: '#FFFFFF', opacity: 100 }} onBlur={onBlur} />,
     );
     const hexInput = getByPlaceholderText('000000');
     const opacityInput = getByPlaceholderText('100');
@@ -176,14 +164,14 @@ describe('<ColorInput />', () => {
     fireEvent(hexInput, 'focus', { nativeEvent: { text: 'FFFFFF' } });
     fireEvent(hexInput, 'onEndEditing', { nativeEvent: { text: 'FFFFFF' } });
     fireEvent(opacityInput, 'focus', { nativeEvent: { text: '100' } });
-    act(() => {
+    void act(() => {
       jest.runAllTimers();
     });
     expect(onBlur).toHaveBeenCalledTimes(0);
 
     // Now blur opacity (leave composite entirely)
     fireEvent(opacityInput, 'onEndEditing', { nativeEvent: { text: '100' } });
-    act(() => {
+    void act(() => {
       jest.runAllTimers();
     });
     expect(onBlur).toHaveBeenCalledTimes(1);
