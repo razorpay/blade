@@ -19,7 +19,6 @@ const _SegmentedControl = (
     onChange,
     size = 'medium',
     isDisabled = false,
-    isRequired = false,
     name,
     label,
     accessibilityLabel,
