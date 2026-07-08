@@ -49,14 +49,14 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     },
   });
 
-  const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(
-    () => String(value?.opacity ?? defaultValue?.opacity ?? DEFAULT_COLOR_VALUE.opacity),
+  const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(() =>
+    String(value?.opacity ?? defaultValue?.opacity ?? DEFAULT_COLOR_VALUE.opacity),
   );
 
   // Local display state for the hex input so partial typing (1–5 chars) stays local
   // and doesn't corrupt the color model until exactly 6 valid chars are present.
-  const [hexDisplayValue, setHexDisplayValue] = useState<string>(
-    () => (value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex).replace(/^#/, ''),
+  const [hexDisplayValue, setHexDisplayValue] = useState<string>(() =>
+    (value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex).replace(/^#/, ''),
   );
 
   // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
@@ -117,7 +117,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
         setHexDisplayValue(raw);
       }
       if (isValidHex(raw)) {
-        setColorValue((prev) => ({ ...prev, hex: '#' + raw }));
+        setColorValue((prev) => ({ ...prev, hex: `#${raw}` }));
       }
     },
     [setColorValue],
