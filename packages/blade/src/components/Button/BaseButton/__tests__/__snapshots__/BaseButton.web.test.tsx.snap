@@ -6061,7 +6061,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
@@ -6654,7 +6654,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.18);
+  background-color: hsla(0,0%,100%,0.32);
   background-image: none;
 }
 

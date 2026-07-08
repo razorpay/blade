@@ -50,7 +50,7 @@ const StyledBaseButton = styled.button
         }),
     },
     '&:active': {
-      backgroundColor: props.focusBackgroundColor,
+      backgroundColor: props.activeBackgroundColor,
       boxShadow: props.focusBoxShadow,
       backgroundImage: 'none',
       ...(props.variant === 'tertiary' &&

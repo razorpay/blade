@@ -27,21 +27,25 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
       primary: {
         default: `interactive.background.${color}.default`,
         highlighted: `interactive.background.${color}.highlighted`,
+        active: `interactive.background.${color}.highlighted`,
         disabled: `interactive.background.${color}.disabled`,
       },
       secondary: {
         default: 'surface.background.gray.intense',
         highlighted: 'surface.background.gray.intense',
+        active: 'surface.background.gray.intense',
         disabled: 'interactive.background.staticWhite.ghost',
       },
       tertiary: {
         default: 'transparent',
         highlighted: 'interactive.background.gray.faded',
+        active: 'interactive.background.gray.fadedHighlighted',
         disabled: 'transparent',
       },
       transparent: {
         default: 'transparent',
         highlighted: 'interactive.background.gray.faded',
+        active: 'interactive.background.gray.fadedHighlighted',
         disabled: 'interactive.background.gray.disabled',
       },
     },
@@ -49,16 +53,19 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
       primary: {
         default: 'interactive.background.staticWhite.default',
         highlighted: 'interactive.background.staticWhite.highlighted',
+        active: 'interactive.background.staticWhite.highlighted',
         disabled: 'interactive.background.staticWhite.disabled',
       },
       secondary: {
         default: 'interactive.background.staticWhite.faded',
         highlighted: 'interactive.background.staticBlack.faded',
+        active: 'interactive.background.staticBlack.faded',
         disabled: 'interactive.background.gray.disabled',
       },
       tertiary: {
         default: 'transparent',
         highlighted: 'interactive.background.staticWhite.faded',
+        active: 'interactive.background.staticWhite.fadedHighlighted',
         disabled: 'transparent',
       },
     },

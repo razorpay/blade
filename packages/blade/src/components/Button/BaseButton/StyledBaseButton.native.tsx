@@ -67,6 +67,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     defaultBorderColor,
     hoverBackgroundColor,
     focusBackgroundColor,
+    activeBackgroundColor,
     focusRingColor,
     hoverBorderColor,
     focusBorderColor,
@@ -103,10 +104,13 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       backgroundColor: string;
       borderColor?: string;
     } = {
-      backgroundColor: withTiming(isPressed.value ? focusBackgroundColor : defaultBackgroundColor, {
-        duration,
-        easing,
-      }) as string,
+      backgroundColor: withTiming(
+        isPressed.value ? activeBackgroundColor : defaultBackgroundColor,
+        {
+          duration,
+          easing,
+        },
+      ) as string,
     };
 
     if (variant !== 'tertiary' && defaultBorderColor && focusBorderColor) {

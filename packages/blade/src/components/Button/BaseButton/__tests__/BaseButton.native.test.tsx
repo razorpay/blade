@@ -205,6 +205,9 @@ describe('<BaseButton />', () => {
     expect(getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toBe(
       'interactive.background.gray.faded',
     );
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'active' }),
+    ).toBe('interactive.background.gray.fadedHighlighted');
     expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'default' })).toEqual(
       [],
     );
@@ -219,6 +222,9 @@ describe('<BaseButton />', () => {
     );
     expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toBe(
       'interactive.background.staticWhite.faded',
+    );
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'active' })).toBe(
+      'interactive.background.staticWhite.fadedHighlighted',
     );
     expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'default' })).toEqual(
       [],
