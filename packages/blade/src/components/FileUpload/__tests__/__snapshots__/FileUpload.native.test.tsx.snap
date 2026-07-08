@@ -1546,11 +1546,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
+            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
@@ -1559,12 +1561,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
+                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -1664,177 +1668,193 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
           }
         >
           <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            justifyContent="center"
             style={
               [
                 {
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "transparent",
-                  "borderColor": "black",
-                  "borderStyle": "solid",
-                  "borderWidth": 0,
-                  "outline": "none",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationColor": "black",
-                  "textDecorationLine": "none",
-                  "textDecorationStyle": "solid",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "justifyContent": "center",
                 },
               ]
             }
           >
             <View
-              alignItems="center"
-              className="content-container"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
+                    "alignSelf": "flex-start",
+                    "backgroundColor": "transparent",
+                    "borderColor": "black",
+                    "borderStyle": "solid",
+                    "borderWidth": 0,
+                    "outline": "none",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                   },
                 ]
               }
             >
               <View
                 alignItems="center"
+                className="content-container"
                 data-blade-component="base-box"
                 display="flex"
+                flexDirection="row"
                 style={
                   [
                     {
                       "alignItems": "center",
                       "display": "flex",
-                      "paddingRight": 0,
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      [
-                        {},
-                      ],
-                      {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
+                        "alignItems": "center",
+                        "display": "flex",
+                        "paddingRight": 0,
                       },
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="16px"
+                    bbWidth="16px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="16px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       [
-                        "fill",
+                        {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        [
+                          {},
+                        ],
+                        {
+                          "flex": 0,
+                          "height": 16,
+                          "width": 16,
+                        },
                       ]
                     }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="16px"
                   >
-                    <RNSVGPath
-                      d="M7.14125 4.99635C10.2617 3.27579 14.1439 3.82644 16.6627 6.34689C16.6699 6.35405 16.6771 6.36109 16.6845 6.36802L19.528 9H16C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11H22C22.5523 11 23 10.5523 23 10V4C23 3.44772 22.5523 3 22 3C21.4477 3 21 3.44772 21 4V7.63742L18.0664 4.92215C14.9175 1.78097 10.0715 1.09674 6.17554 3.24495C2.27503 5.39565 0.267187 9.86684 1.25111 14.211C2.23504 18.5551 5.97351 21.7248 10.4201 21.9849C14.8666 22.245 18.9492 19.5329 20.4329 15.3331C20.6169 14.8124 20.3439 14.2411 19.8232 14.0571C19.3024 13.8731 18.7311 14.1462 18.5472 14.6669C17.3602 18.0267 14.0941 20.1964 10.5369 19.9883C6.97962 19.7802 3.98884 17.2445 3.2017 13.7692C2.41456 10.2939 4.02084 6.71691 7.14125 4.99635Z"
-                      fill={
-                        {
-                          "payload": 4291829265,
-                          "type": 0,
-                        }
-                      }
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         [
                           "fill",
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGPath
+                        d="M7.14125 4.99635C10.2617 3.27579 14.1439 3.82644 16.6627 6.34689C16.6699 6.35405 16.6771 6.36109 16.6845 6.36802L19.528 9H16C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11H22C22.5523 11 23 10.5523 23 10V4C23 3.44772 22.5523 3 22 3C21.4477 3 21 3.44772 21 4V7.63742L18.0664 4.92215C14.9175 1.78097 10.0715 1.09674 6.17554 3.24495C2.27503 5.39565 0.267187 9.86684 1.25111 14.211C2.23504 18.5551 5.97351 21.7248 10.4201 21.9849C14.8666 22.245 18.9492 19.5329 20.4329 15.3331C20.6169 14.8124 20.3439 14.2411 19.8232 14.0571C19.3024 13.8731 18.7311 14.1462 18.5472 14.6669C17.3602 18.0267 14.0941 20.1964 10.5369 19.9883C6.97962 19.7802 3.98884 17.2445 3.2017 13.7692C2.41456 10.2939 4.02084 6.71691 7.14125 4.99635Z"
+                        fill={
+                          {
+                            "payload": 4291829265,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <Text
+                  accessible={true}
+                  color="interactive.text.negative.normal"
+                  data-blade-component="base-text"
+                  fontSize={100}
+                  fontWeight="medium"
+                  lineHeight={100}
+                  style={
+                    [
+                      {
+                        "color": "hsla(4, 85%, 44%, 1)",
+                        "fontFamily": "Inter",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "500",
+                        "letterSpacing": 0,
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "center",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  textAlign="center"
+                  textDecorationLine="none"
+                />
               </View>
-              <Text
-                accessible={true}
-                color="interactive.text.negative.normal"
-                data-blade-component="base-text"
-                fontSize={100}
-                fontWeight="medium"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(4, 85%, 44%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "500",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "center",
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textDecorationLine="none"
-              />
             </View>
           </View>
           <View
@@ -2090,6 +2110,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
             display="flex"
             justifyContent="center"
@@ -2097,6 +2118,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
             style={
               [
                 {
+                  "alignItems": "center",
                   "display": "flex",
                   "justifyContent": "center",
                   "position": "relative",
@@ -2223,9 +2245,11 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              left="spacing.0"
               letterSpacing={50}
               lineHeight={25}
               position="absolute"
+              right="spacing.0"
               style={
                 [
                   {
@@ -2234,6 +2258,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "left": 0,
                     "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
@@ -2245,11 +2270,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
                     "paddingRight": 0,
                     "paddingTop": 0,
                     "position": "absolute",
+                    "right": 0,
+                    "textAlign": "center",
                     "textDecorationLine": "none",
                     "top": "46%",
                   },
                 ]
               }
+              textAlign="center"
               top="46%"
             >
               .pdf
@@ -2271,11 +2299,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
+            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
@@ -2284,12 +2314,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
+                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -2673,6 +2705,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
             display="flex"
             justifyContent="center"
@@ -2680,6 +2713,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
             style={
               [
                 {
+                  "alignItems": "center",
                   "display": "flex",
                   "justifyContent": "center",
                   "position": "relative",
@@ -2806,9 +2840,11 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              left="spacing.0"
               letterSpacing={50}
               lineHeight={25}
               position="absolute"
+              right="spacing.0"
               style={
                 [
                   {
@@ -2817,6 +2853,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "left": 0,
                     "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
@@ -2828,11 +2865,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
                     "paddingRight": 0,
                     "paddingTop": 0,
                     "position": "absolute",
+                    "right": 0,
+                    "textAlign": "center",
                     "textDecorationLine": "none",
                     "top": "46%",
                   },
                 ]
               }
+              textAlign="center"
               top="46%"
             >
               .mp4
@@ -2854,11 +2894,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
+            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
@@ -2867,12 +2909,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
+                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -3281,6 +3325,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
             display="flex"
             justifyContent="center"
@@ -3288,6 +3333,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "display": "flex",
                   "justifyContent": "center",
                   "position": "relative",
@@ -3414,9 +3460,11 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
+              left="spacing.0"
               letterSpacing={50}
               lineHeight={25}
               position="absolute"
+              right="spacing.0"
               style={
                 [
                   {
@@ -3425,6 +3473,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "left": 0,
                     "letterSpacing": -0.13,
                     "lineHeight": 13,
                     "marginBottom": 0,
@@ -3436,11 +3485,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
                     "paddingRight": 0,
                     "paddingTop": 0,
                     "position": "absolute",
+                    "right": 0,
+                    "textAlign": "center",
                     "textDecorationLine": "none",
                     "top": "46%",
                   },
                 ]
               }
+              textAlign="center"
               top="46%"
             >
               .pdf
@@ -3462,11 +3514,13 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
+            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
@@ -3475,12 +3529,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
+                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -3928,11 +3984,13 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
+            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
@@ -3941,12 +3999,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
+              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
+                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -4046,177 +4106,193 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
           }
         >
           <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            justifyContent="center"
             style={
               [
                 {
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "transparent",
-                  "borderColor": "black",
-                  "borderStyle": "solid",
-                  "borderWidth": 0,
-                  "outline": "none",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationColor": "black",
-                  "textDecorationLine": "none",
-                  "textDecorationStyle": "solid",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "justifyContent": "center",
                 },
               ]
             }
           >
             <View
-              alignItems="center"
-              className="content-container"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
+                    "alignSelf": "flex-start",
+                    "backgroundColor": "transparent",
+                    "borderColor": "black",
+                    "borderStyle": "solid",
+                    "borderWidth": 0,
+                    "outline": "none",
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationColor": "black",
+                    "textDecorationLine": "none",
+                    "textDecorationStyle": "solid",
                   },
                 ]
               }
             >
               <View
                 alignItems="center"
+                className="content-container"
                 data-blade-component="base-box"
                 display="flex"
+                flexDirection="row"
                 style={
                   [
                     {
                       "alignItems": "center",
                       "display": "flex",
-                      "paddingRight": 0,
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="16px"
-                  bbWidth="16px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="16px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      [
-                        {},
-                      ],
-                      {
-                        "flex": 0,
-                        "height": 16,
-                        "width": 16,
+                        "alignItems": "center",
+                        "display": "flex",
+                        "paddingRight": 0,
                       },
                     ]
                   }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="16px"
                 >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="16px"
+                    bbWidth="16px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="16px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
                       [
-                        "fill",
+                        {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        [
+                          {},
+                        ],
+                        {
+                          "flex": 0,
+                          "height": 16,
+                          "width": 16,
+                        },
                       ]
                     }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="16px"
                   >
-                    <RNSVGPath
-                      d="M7.14125 4.99635C10.2617 3.27579 14.1439 3.82644 16.6627 6.34689C16.6699 6.35405 16.6771 6.36109 16.6845 6.36802L19.528 9H16C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11H22C22.5523 11 23 10.5523 23 10V4C23 3.44772 22.5523 3 22 3C21.4477 3 21 3.44772 21 4V7.63742L18.0664 4.92215C14.9175 1.78097 10.0715 1.09674 6.17554 3.24495C2.27503 5.39565 0.267187 9.86684 1.25111 14.211C2.23504 18.5551 5.97351 21.7248 10.4201 21.9849C14.8666 22.245 18.9492 19.5329 20.4329 15.3331C20.6169 14.8124 20.3439 14.2411 19.8232 14.0571C19.3024 13.8731 18.7311 14.1462 18.5472 14.6669C17.3602 18.0267 14.0941 20.1964 10.5369 19.9883C6.97962 19.7802 3.98884 17.2445 3.2017 13.7692C2.41456 10.2939 4.02084 6.71691 7.14125 4.99635Z"
-                      fill={
-                        {
-                          "payload": 4291829265,
-                          "type": 0,
-                        }
-                      }
+                    <RNSVGGroup
+                      fill={null}
                       propList={
                         [
                           "fill",
                         ]
                       }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                    >
+                      <RNSVGPath
+                        d="M7.14125 4.99635C10.2617 3.27579 14.1439 3.82644 16.6627 6.34689C16.6699 6.35405 16.6771 6.36109 16.6845 6.36802L19.528 9H16C15.4477 9 15 9.44772 15 10C15 10.5523 15.4477 11 16 11H22C22.5523 11 23 10.5523 23 10V4C23 3.44772 22.5523 3 22 3C21.4477 3 21 3.44772 21 4V7.63742L18.0664 4.92215C14.9175 1.78097 10.0715 1.09674 6.17554 3.24495C2.27503 5.39565 0.267187 9.86684 1.25111 14.211C2.23504 18.5551 5.97351 21.7248 10.4201 21.9849C14.8666 22.245 18.9492 19.5329 20.4329 15.3331C20.6169 14.8124 20.3439 14.2411 19.8232 14.0571C19.3024 13.8731 18.7311 14.1462 18.5472 14.6669C17.3602 18.0267 14.0941 20.1964 10.5369 19.9883C6.97962 19.7802 3.98884 17.2445 3.2017 13.7692C2.41456 10.2939 4.02084 6.71691 7.14125 4.99635Z"
+                        fill={
+                          {
+                            "payload": 4291829265,
+                            "type": 0,
+                          }
+                        }
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <Text
+                  accessible={true}
+                  color="interactive.text.negative.normal"
+                  data-blade-component="base-text"
+                  fontSize={100}
+                  fontWeight="medium"
+                  lineHeight={100}
+                  style={
+                    [
+                      {
+                        "color": "hsla(4, 85%, 44%, 1)",
+                        "fontFamily": "Inter",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "500",
+                        "letterSpacing": 0,
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "center",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  textAlign="center"
+                  textDecorationLine="none"
+                />
               </View>
-              <Text
-                accessible={true}
-                color="interactive.text.negative.normal"
-                data-blade-component="base-text"
-                fontSize={100}
-                fontWeight="medium"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(4, 85%, 44%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "500",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textAlign": "center",
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textDecorationLine="none"
-              />
             </View>
           </View>
           <View
