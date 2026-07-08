@@ -84,17 +84,17 @@ const _ButtonGroup = ({
         {...makeAnalyticsAttribute(rest)}
         {...getStyledProps(rest)}
         accessible={true}
-        accessibilityRole="summary"
+        accessibilityRole="toolbar"
       >
         {React.Children.map(children, (child, index) => {
           const isLast = React.Children.count(children) - 1 === index;
           const showDivider = variant === 'primary' && !isLast;
 
           return (
-            <>
+            <React.Fragment key={index}>
               {child}
               {showDivider && <StyledDivider dividerColor={dividerColor} />}
-            </>
+            </React.Fragment>
           );
         })}
       </StyledButtonGroup>
