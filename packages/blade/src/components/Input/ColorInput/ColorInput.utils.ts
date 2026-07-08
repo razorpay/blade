@@ -11,12 +11,12 @@ const isPartialHex = (value: string): boolean => /^[0-9A-Fa-f]{1,5}$/.test(value
 const isValidOpacity = (value: number): boolean =>
   Number.isInteger(value) && value >= 0 && value <= 100;
 
-/** Pads a short hex string to 6 chars using padStart so partial values trend toward black (#000001)
- *  rather than producing unexpected hues (padEnd would give #100000 for '1').
+/** Pads a short hex string to 6 chars using padEnd so partial values extend right-to-left
+ *  (e.g. 'F' → '#F00000' dark red), reflecting the user's left-to-right input direction.
  *  Accepts hex with or without '#' prefix. */
 const padHexForPicker = (hex: string): string => {
   const stripped = hex.startsWith('#') ? hex.slice(1) : hex;
-  return `#${(stripped || 'FFFFFF').padStart(6, '0')}`;
+  return `#${(stripped || 'FFFFFF').padEnd(6, '0')}`;
 };
 
 export { DEFAULT_COLOR_VALUE, isValidHex, isPartialHex, isValidOpacity, padHexForPicker };

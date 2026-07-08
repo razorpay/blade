@@ -73,12 +73,24 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   const isFocusedRef = useRef(false);
   const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Store onBlur in a ref so handleInputBlur is referentially stable and does not
-  // need to be a dependency of downstream blur handlers (avoiding stale closures).
+  // Store callbacks and current values in refs so handlers stay referentially stable
+  // and never capture stale closures across async timeouts.
+  const onFocusRef = useRef(onFocus);
+  useEffect(() => {
+    onFocusRef.current = onFocus;
+  }, [onFocus]);
   const onBlurRef = useRef(onBlur);
   useEffect(() => {
     onBlurRef.current = onBlur;
   }, [onBlur]);
+  const colorValueRef = useRef(colorValue);
+  useEffect(() => {
+    colorValueRef.current = colorValue;
+  }, [colorValue]);
+  const nameRef = useRef(name);
+  useEffect(() => {
+    nameRef.current = name;
+  }, [name]);
 
   // Sync display value when the color model changes from an external source.
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
@@ -94,26 +106,24 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
     };
   }, []);
 
-  const handleInputFocus = useCallback<FormInputOnEvent>(
-    (args) => {
-      if (blurTimeoutRef.current !== null) {
-        clearTimeout(blurTimeoutRef.current);
-        blurTimeoutRef.current = null;
-      }
-      if (!isFocusedRef.current) {
-        isFocusedRef.current = true;
-        onFocus?.(args);
-      }
-    },
-    [onFocus],
-  );
+  // Stable focus handler — reads from refs so it delivers the current colorValue to onFocus.
+  const handleInputFocus = useCallback(() => {
+    if (blurTimeoutRef.current !== null) {
+      clearTimeout(blurTimeoutRef.current);
+      blurTimeoutRef.current = null;
+    }
+    if (!isFocusedRef.current) {
+      isFocusedRef.current = true;
+      onFocusRef.current?.({ name: nameRef.current, value: colorValueRef.current });
+    }
+  }, []);
 
-  // Stable blur handler — uses onBlurRef so it never becomes a stale dep in callers.
-  const handleInputBlur = useCallback<FormInputOnEvent>((args) => {
+  // Stable blur handler — accepts the committed ColorInputValue to pass to onBlur.
+  const handleInputBlur = useCallback((blurValue: ColorInputValue) => {
     blurTimeoutRef.current = setTimeout(() => {
       blurTimeoutRef.current = null;
       isFocusedRef.current = false;
-      onBlurRef.current?.(args);
+      onBlurRef.current?.({ name: nameRef.current, value: blurValue });
     }, 0);
   }, []);
 
@@ -174,9 +184,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || !/^\d+$/.test(raw) || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      handleInputBlur({ name, value: String(colorValue.opacity) });
+      handleInputBlur(colorValue);
     },
-    [colorValue.opacity, handleInputBlur, name],
+    [colorValue, handleInputBlur],
   );
 
   const handleOpacityKeyDown = useCallback(
@@ -216,11 +226,10 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   );
 
   // Hex-specific blur: reset partial display to last committed valid value.
-  const handleHexInputBlur = useCallback<FormInputOnEvent>(() => {
+  const handleHexInputBlur = useCallback(() => {
     setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
-    // Pass committed hex so consumers see the corrected state, not the partial display string.
-    handleInputBlur({ name, value: colorValue.hex });
-  }, [colorValue.hex, handleInputBlur, name]);
+    handleInputBlur(colorValue);
+  }, [colorValue, handleInputBlur]);
 
   // Sync opacityDisplayValue when controlled value changes externally.
   // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
@@ -293,8 +302,8 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
                   size={size}
                   isDisabled={isDisabled}
                   onChange={handleSwatchChange}
-                  onFocus={() => handleInputFocus({ name })}
-                  onBlur={() => handleInputBlur({ name, value: colorValue.hex })}
+                  onFocus={handleInputFocus}
+                  onBlur={() => handleInputBlur(colorValue)}
                 />
               }
             />

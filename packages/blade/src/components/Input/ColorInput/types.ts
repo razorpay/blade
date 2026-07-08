@@ -1,6 +1,5 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BaseInputProps } from '~components/Input/BaseInput';
-import type { FormInputOnEvent } from '~components/Form';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
 type ColorInputValue = {
@@ -14,6 +13,8 @@ type ColorInputValue = {
 };
 
 type ColorInputOnChange = ({ name, value }: { name?: string; value: ColorInputValue }) => void;
+
+type ColorInputOnFocusBlur = ({ name, value }: { name?: string; value: ColorInputValue }) => void;
 
 type ColorInputCommonProps = Pick<
   BaseInputProps,
@@ -37,8 +38,8 @@ type ColorInputCommonProps = Pick<
     value?: ColorInputValue;
     defaultValue?: ColorInputValue;
     onChange?: ColorInputOnChange;
-    onFocus?: FormInputOnEvent;
-    onBlur?: FormInputOnEvent;
+    onFocus?: ColorInputOnFocusBlur;
+    onBlur?: ColorInputOnFocusBlur;
     /**
      * Whether to show the opacity input
      * @default true
@@ -48,4 +49,4 @@ type ColorInputCommonProps = Pick<
 
 type ColorInputProps = ColorInputCommonProps;
 
-export type { ColorInputProps, ColorInputValue };
+export type { ColorInputProps, ColorInputValue, ColorInputOnFocusBlur };
