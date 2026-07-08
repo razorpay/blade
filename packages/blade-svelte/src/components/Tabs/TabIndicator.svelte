@@ -66,11 +66,17 @@
 
   $effect(() => {
     if (!('fonts' in document)) return;
+    let destroyed = false;
     // Measure immediately in case fonts are already loaded at mount.
-    void document.fonts.ready.then(updateDimensions);
+    // Guard with destroyed flag so the callback is a no-op if the component
+    // is unmounted before fonts finish loading.
+    void document.fonts.ready.then(() => { if (!destroyed) updateDimensions(); });
     const handler = () => updateDimensions();
     document.fonts.addEventListener('loadingdone', handler);
-    return () => document.fonts.removeEventListener('loadingdone', handler);
+    return () => {
+      destroyed = true;
+      document.fonts.removeEventListener('loadingdone', handler);
+    };
   });
 
   const isFilled = $derived(ctx.variant === 'filled');
