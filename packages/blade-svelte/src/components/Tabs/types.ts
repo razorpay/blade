@@ -130,7 +130,10 @@ type TabItemIconWithLabelProps = TabItemBaseProps & {
   accessibilityLabel?: string;
 };
 
-export type TabItemProps = TabItemWithChildrenProps | TabItemIconOnlyProps | TabItemIconWithLabelProps;
+export type TabItemProps =
+  | TabItemWithChildrenProps
+  | TabItemIconOnlyProps
+  | TabItemIconWithLabelProps;
 
 export type TabListProps = {
   /**
