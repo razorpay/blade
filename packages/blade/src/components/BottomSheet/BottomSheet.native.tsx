@@ -153,7 +153,9 @@ const _BottomSheet = ({
         Math.max(fittedHeight / windowHeight, snapPoints[0]),
         snapPoints[2],
       );
-      return [`${fittedSnap * 100}%`, `${snapPoints[1] * 100}%`, `${snapPoints[2] * 100}%`];
+      return [fittedSnap, Math.max(fittedSnap, snapPoints[1]), snapPoints[2]].map(
+        (p) => `${p * 100}%`,
+      );
     }
     return snapPoints.map((point) => `${point * 100}%`);
   }, [snapPoints, totalHeight, headerHeight, footerHeight, contentHeight, windowHeight]);
