@@ -7,6 +7,8 @@ import { ChevronLeftIcon } from './ChevronLeftIcon';
 import { ChevronRightIcon } from './ChevronRightIcon';
 import { CloseIcon } from './CloseIcon';
 import { CreditCardIcon } from './CreditCardIcon';
+import { EyeIcon } from './EyeIcon';
+import { EyeOffIcon } from './EyeOffIcon';
 import { InfoIcon } from './InfoIcon';
 import { MoreFilledIcon } from './MoreFilledIcon';
 import { PhoneIcon } from './PhoneIcon';
@@ -36,6 +38,8 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   ChevronRightIcon,
   CloseIcon,
   CreditCardIcon,
+  EyeIcon,
+  EyeOffIcon,
   InfoIcon,
   MoreFilledIcon,
   PhoneIcon,

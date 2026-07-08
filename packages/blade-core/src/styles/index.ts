@@ -321,6 +321,16 @@ export {
   separatorWrapperClass,
   currentPageWrapperClass,
   showLastSeparatorClass,
+  breadcrumbListStepperClass,
+  stepperItemClass,
+  stepperItemSelectedPrimaryClass,
+  stepperItemSelectedNeutralClass,
+  stepperItemSelectedWhiteClass,
+  stepperItemLinkClass,
+  stepperItemLinkOnLightClass,
+  stepperItemLinkOnDarkClass,
+  getStepperItemSelectedClasses,
+  getStepperItemLinkClasses,
   getBreadcrumbTemplateClasses,
   getBreadcrumbTextSizes,
 } from './Breadcrumb';
@@ -428,6 +438,8 @@ export {
   bottomSheetBodyClass,
 } from './BottomSheet';
 export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';
+export { getTabsTemplateClasses } from './Tabs';
+export { getSegmentedControlTemplateClasses } from './SegmentedControl';
 export {
   baseInputHeight,
   baseInputBorderRadius,
