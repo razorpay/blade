@@ -266,7 +266,10 @@ type DatePickerInputProps = DatePickerCommonInputProps &
 
 type DatePickerFilterChipProps = DatePickerInputProps;
 
-type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
+type FilterChipDatePickerProps = Omit<
+  DatePickerProps<'single' | 'range'>,
+  'label' | 'showFooterActions'
+> & {
   /**
    * Sets the label for the input element.
    */
