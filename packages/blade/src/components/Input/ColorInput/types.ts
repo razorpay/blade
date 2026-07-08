@@ -13,7 +13,6 @@ type ColorInputValue = {
 };
 
 type ColorInputOnChange = ({ name, value }: { name?: string; value: ColorInputValue }) => void;
-
 type ColorInputOnFocusBlur = ({ name, value }: { name?: string; value: ColorInputValue }) => void;
 
 type ColorInputCommonProps = Pick<

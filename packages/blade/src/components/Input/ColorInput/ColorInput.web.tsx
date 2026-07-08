@@ -22,6 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 import type { FormInputOnEvent } from '~components/Form';
 import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
+import { throwBladeError } from '~utils/logger';
 
 const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputProps> = (
   {
@@ -49,6 +50,19 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
   },
   ref,
 ) => {
+  if (__DEV__) {
+    const initialOpacity = value?.opacity ?? defaultValue?.opacity;
+    if (
+      initialOpacity !== undefined &&
+      (!Number.isInteger(initialOpacity) || initialOpacity < 0 || initialOpacity > 100)
+    ) {
+      throwBladeError({
+        message: `ColorInput: opacity must be an integer between 0 and 100, received ${initialOpacity}`,
+        moduleName: 'ColorInput',
+      });
+    }
+  }
+
   const [colorValue, setColorValue] = useControllableState<ColorInputValue>({
     value,
     defaultValue: defaultValue ?? DEFAULT_COLOR_VALUE,
