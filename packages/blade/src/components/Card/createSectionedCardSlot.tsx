@@ -16,10 +16,7 @@ const createSectionedCardSlot = (
 ): React.FC<SectionedCardSlotProps> => {
   const Slot = ({ children, testID, ...rest }: SectionedCardSlotProps): React.ReactElement => {
     return (
-      <BaseBox
-        {...metaAttribute({ name: metaName, testID })}
-        {...makeAnalyticsAttribute(rest)}
-      >
+      <BaseBox {...metaAttribute({ name: metaName, testID })} {...makeAnalyticsAttribute(rest)}>
         {children}
       </BaseBox>
     );
