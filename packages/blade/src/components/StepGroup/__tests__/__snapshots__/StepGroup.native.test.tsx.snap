@@ -626,28 +626,34 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               </View>
             </View>
             <View
-              borderStyle="dashed"
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
               data-blade-component="base-box"
               height="2px"
               opacity={1}
+              overflow="hidden"
               style={
                 [
                   {
-                    "borderStyle": "dashed",
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
+                    "overflow": "hidden",
                   },
                 ]
               }
-            />
+            >
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "flexDirection": "row",
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             data-blade-component="box"
@@ -788,28 +794,34 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
             width="100%"
           >
             <View
-              borderStyle="dashed"
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
               data-blade-component="base-box"
               height="2px"
               opacity={1}
+              overflow="hidden"
               style={
                 [
                   {
-                    "borderStyle": "dashed",
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
                     "height": 2,
                     "opacity": 1,
+                    "overflow": "hidden",
                   },
                 ]
               }
-            />
+            >
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "flexDirection": "row",
+                  }
+                }
+              />
+            </View>
             <View
               data-blade-component="box"
               style={
@@ -985,28 +997,34 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
               </View>
             </View>
             <View
-              borderStyle="dashed"
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
               data-blade-component="base-box"
               height="2px"
               opacity={0}
+              overflow="hidden"
               style={
                 [
                   {
-                    "borderStyle": "dashed",
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
                     "height": 2,
                     "opacity": 0,
+                    "overflow": "hidden",
                   },
                 ]
               }
-            />
+            >
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "flexDirection": "row",
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             data-blade-component="box"
@@ -1581,27 +1599,45 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
         }
       >
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           height="6px"
           opacity={1}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "height": 6,
                 "opacity": 1,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                  "borderRadius": 1,
+                  "height": 2,
+                  "marginBottom": 4,
+                  "width": 2,
+                }
+              }
+            />
+          </View>
+        </View>
         <View
           data-blade-component="box"
           style={
@@ -1779,28 +1815,34 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
           </View>
         </View>
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          />
+        </View>
       </View>
       <View
         data-blade-component="box"
@@ -3056,29 +3098,35 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
             </View>
           </View>
           <View
-            borderLeftColor="surface.border.gray.subtle"
-            borderLeftWidth="thicker"
-            borderStyle="dashed"
             data-blade-component="base-box"
             opacity={1}
+            overflow="hidden"
             style={
               [
                 {
-                  "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": 2,
-                  "borderStyle": "dashed",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "marginLeft": 31,
                   "opacity": 1,
+                  "overflow": "hidden",
                   "width": 2,
                 },
               ]
             }
             width="2px"
-          />
+          >
+            <View
+              onLayout={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "column",
+                }
+              }
+            />
+          </View>
         </View>
         <View
           data-blade-component="box"
@@ -3244,28 +3292,46 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
           }
         >
           <View
-            borderLeftColor="surface.border.gray.subtle"
-            borderLeftWidth="thicker"
-            borderStyle="dashed"
             data-blade-component="base-box"
             height="6px"
             opacity={1}
+            overflow="hidden"
             style={
               [
                 {
-                  "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": 2,
-                  "borderStyle": "dashed",
                   "height": 6,
                   "marginLeft": 31,
                   "opacity": 1,
+                  "overflow": "hidden",
                   "width": 2,
                 },
               ]
             }
             width="2px"
-          />
+          >
+            <View
+              onLayout={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "column",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                    "borderRadius": 1,
+                    "height": 2,
+                    "marginBottom": 4,
+                    "width": 2,
+                  }
+                }
+              />
+            </View>
+          </View>
           <View
             data-blade-component="box"
             style={
@@ -3443,29 +3509,35 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
             </View>
           </View>
           <View
-            borderLeftColor="surface.border.gray.subtle"
-            borderLeftWidth="thicker"
-            borderStyle="dashed"
             data-blade-component="base-box"
             opacity={0}
+            overflow="hidden"
             style={
               [
                 {
-                  "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": 2,
-                  "borderStyle": "dashed",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "marginLeft": 31,
                   "opacity": 0,
+                  "overflow": "hidden",
                   "width": 2,
                 },
               ]
             }
             width="2px"
-          />
+          >
+            <View
+              onLayout={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "column",
+                }
+              }
+            />
+          </View>
           <View
             data-blade-component="base-box"
             opacity={0}
@@ -3817,27 +3889,45 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
         }
       >
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           height="6px"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "height": 6,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                  "borderRadius": 1,
+                  "height": 2,
+                  "marginBottom": 4,
+                  "width": 2,
+                }
+              }
+            />
+          </View>
+        </View>
         <View
           data-blade-component="box"
           style={
@@ -4015,28 +4105,34 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
           </View>
         </View>
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           opacity={1}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 1,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          />
+        </View>
       </View>
       <View
         data-blade-component="box"
@@ -4166,27 +4262,45 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
         }
       >
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           height="6px"
           opacity={1}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "height": 6,
                 "opacity": 1,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                  "borderRadius": 1,
+                  "height": 2,
+                  "marginBottom": 4,
+                  "width": 2,
+                }
+              }
+            />
+          </View>
+        </View>
         <View
           data-blade-component="box"
           style={
@@ -4364,28 +4478,34 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
           </View>
         </View>
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          />
+        </View>
       </View>
       <View
         data-blade-component="box"
@@ -4993,27 +5113,45 @@ exports[`<StepGroup /> (native) should render with trailing badge 1`] = `
         }
       >
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           height="6px"
           opacity={1}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "height": 6,
                 "opacity": 1,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                  "borderRadius": 1,
+                  "height": 2,
+                  "marginBottom": 4,
+                  "width": 2,
+                }
+              }
+            />
+          </View>
+        </View>
         <View
           data-blade-component="box"
           style={
@@ -5191,28 +5329,34 @@ exports[`<StepGroup /> (native) should render with trailing badge 1`] = `
           </View>
         </View>
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          />
+        </View>
       </View>
       <View
         data-blade-component="box"
@@ -5371,27 +5515,45 @@ exports[`<StepGroup /> (native) should support data-analytics attributes 1`] = `
         }
       >
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           height="6px"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "height": 6,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                  "borderRadius": 1,
+                  "height": 2,
+                  "marginBottom": 4,
+                  "width": 2,
+                }
+              }
+            />
+          </View>
+        </View>
         <View
           data-blade-component="box"
           style={
@@ -5569,28 +5731,34 @@ exports[`<StepGroup /> (native) should support data-analytics attributes 1`] = `
           </View>
         </View>
         <View
-          borderLeftColor="surface.border.gray.subtle"
-          borderLeftWidth="thicker"
-          borderStyle="dashed"
           data-blade-component="base-box"
           opacity={0}
+          overflow="hidden"
           style={
             [
               {
-                "borderLeftColor": "hsla(204, 8%, 88%, 1)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": 2,
-                "borderStyle": "dashed",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 0,
+                "overflow": "hidden",
                 "width": 2,
               },
             ]
           }
           width="2px"
-        />
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "column",
+              }
+            }
+          />
+        </View>
       </View>
       <View
         data-blade-component="box"

@@ -1,8 +1,17 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import { useState } from 'react';
+import { View } from 'react-native';
+import type { LayoutChangeEvent } from 'react-native';
 import type { StepItemProps } from './types';
 import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
-import { getMarkerLineSpacings, itemTopMargin, markerLineWidth } from './tokens';
+import {
+  getMarkerLineSpacings,
+  itemTopMargin,
+  markerLineDotSpacing,
+  markerLineDotWidth,
+  markerLineWidth,
+} from './tokens';
 import { Box } from '~components/Box';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
@@ -16,12 +25,90 @@ type StepLineSvgProps = {
   marginTop?: BaseBoxProps['marginTop'];
 };
 
+// Distance between the start of one dot and the start of the next (dot + gap).
+const dotPeriod = markerLineDotWidth + markerLineDotSpacing;
+
+/**
+ * React Native (iOS) does not render `borderStyle: 'dashed'` on single-side borders,
+ * so the dotted connector lines are drawn as evenly spaced round dots instead — matching
+ * the web implementation which repeats a 2px dot every `dotPeriod`. When the line length is
+ * not known ahead of time (flex-grown segment) it is measured via `onLayout`; extra dots are
+ * clipped by the container's `overflow: hidden`.
+ */
+const StepDottedLine = ({
+  orientation,
+  length,
+  opacity = 1,
+  marginLeft,
+}: {
+  orientation: 'vertical' | 'horizontal';
+  length?: number;
+  opacity?: number;
+  marginLeft?: BaseBoxProps['marginLeft'];
+}): React.ReactElement => {
+  const { theme } = useTheme();
+  const isVertical = orientation === 'vertical';
+  const [measuredLength, setMeasuredLength] = useState<number | undefined>(length);
+  const resolvedLength = length ?? measuredLength;
+  const dotColor = theme.colors.surface.border.gray.subtle;
+
+  const handleLayout = (event: LayoutChangeEvent): void => {
+    if (length !== undefined) return;
+    const nextLength = isVertical
+      ? event.nativeEvent.layout.height
+      : event.nativeEvent.layout.width;
+    setMeasuredLength((prev) => (prev !== nextLength ? nextLength : prev));
+  };
+
+  const dotCount =
+    resolvedLength && resolvedLength > 0
+      ? Math.max(1, Math.floor((resolvedLength + markerLineDotSpacing) / dotPeriod))
+      : 0;
+
+  const dots = Array.from({ length: dotCount }, (_, index) => (
+    <View
+      key={index}
+      style={{
+        width: markerLineDotWidth,
+        height: markerLineDotWidth,
+        borderRadius: markerLineDotWidth / 2,
+        backgroundColor: dotColor,
+        ...(isVertical
+          ? { marginBottom: markerLineDotSpacing }
+          : { marginRight: markerLineDotSpacing }),
+      }}
+    />
+  ));
+
+  return (
+    <BaseBox
+      opacity={opacity}
+      marginLeft={marginLeft}
+      height={isVertical ? (length ? makeSize(length) : undefined) : makeSize(markerLineWidth)}
+      width={isVertical ? makeSize(markerLineWidth) : undefined}
+      flex={isVertical ? (length ? undefined : '1') : '1'}
+      overflow="hidden"
+    >
+      <View
+        style={{ flex: 1, flexDirection: isVertical ? 'column' : 'row', alignItems: 'center' }}
+        onLayout={handleLayout}
+      >
+        {dots}
+      </View>
+    </BaseBox>
+  );
+};
+
 const StepStraightLineHorizontal = ({
   isDotted,
   opacity = 1,
 }: Omit<StepLineSvgProps, 'marginLeft' | 'marginTop'> & {
   width?: number;
 }): React.ReactElement => {
+  if (isDotted) {
+    return <StepDottedLine orientation="horizontal" opacity={opacity} />;
+  }
+
   return (
     <BaseBox
       height={makeSize(markerLineWidth)}
@@ -29,7 +116,6 @@ const StepStraightLineHorizontal = ({
       opacity={opacity}
       borderTopWidth="thicker"
       borderTopColor="surface.border.gray.subtle"
-      {...(isDotted ? { borderStyle: 'dashed' as const } : {})}
     />
   );
 };
@@ -42,6 +128,17 @@ const StepStraightLineVertical = ({
 }: StepLineSvgProps & {
   height?: number;
 }): React.ReactElement => {
+  if (isDotted) {
+    return (
+      <StepDottedLine
+        orientation="vertical"
+        length={height}
+        opacity={opacity}
+        marginLeft={marginLeft}
+      />
+    );
+  }
+
   return (
     <BaseBox
       height={height ? makeSize(height) : undefined}
@@ -50,8 +147,7 @@ const StepStraightLineVertical = ({
       opacity={opacity}
       marginLeft={marginLeft}
       borderLeftWidth="thicker"
-      borderLeftColor={isDotted ? 'surface.border.gray.subtle' : 'surface.border.gray.muted'}
-      {...(isDotted ? { borderStyle: 'dashed' as const } : {})}
+      borderLeftColor="surface.border.gray.muted"
     />
   );
 };
