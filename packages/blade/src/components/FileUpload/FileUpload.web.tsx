@@ -6,6 +6,8 @@ import type {
   FileUploadVariableSizeProps,
   InlineSelectorConfig,
   InlineSelectorOption,
+  InlineSelectorProps,
+  InlineSelectorValueMap,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -554,5 +556,7 @@ export type {
   BladeFileList,
   InlineSelectorConfig,
   InlineSelectorOption,
+  InlineSelectorProps,
+  InlineSelectorValueMap,
   FileUploadProps,
 };
