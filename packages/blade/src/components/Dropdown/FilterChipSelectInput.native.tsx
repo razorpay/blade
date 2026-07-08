@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { useFilterChipGroupContext } from './FilterChipGroupContext';
@@ -137,9 +137,11 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     return uncontrolledInputValue;
   };
 
-  const handleClearButtonClick = (): void => {
-    props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
-    props.onChange?.({ name: name ?? idBase, values: [] });
+  const handleClearButtonClick = useCallback((): void => {
+    const indices = isControlled ? controlledValueIndices : selectedIndices;
+    const currentValues = indices.map((selectionIndex) => options[selectionIndex].value);
+    onClearButtonClick?.({ name: name ?? idBase, values: currentValues });
+    onChange?.({ name: name ?? idBase, values: [] });
     setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
     setListViewSelectedFilters((prev) => {
       const { [label]: _, ...updatedFilters } = prev;
@@ -147,14 +149,13 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     });
     setUncontrolledInputValue([]);
     setSelectedIndices([]);
-  };
+  }, [onClearButtonClick, onChange, name, idBase, label, isControlled, controlledValueIndices, selectedIndices, options, setFilterChipGroupSelectedFilters, setListViewSelectedFilters, setUncontrolledInputValue, setSelectedIndices]);
 
   useEffect(() => {
     if (clearFilterCallbackTriggerer) {
       handleClearButtonClick();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clearFilterCallbackTriggerer]);
+  }, [clearFilterCallbackTriggerer, handleClearButtonClick]);
 
   useEffect(() => {
     if (!isFirstRender) {
@@ -165,24 +166,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       if (isUnControlled) {
         setUncontrolledInputValue(getValuesArrayFromIndices());
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeCallbackTriggerer]);
-
-  useEffect(() => {
-    const isValueEmpty = selectedIndices.length === 0;
-    if (!isFirstRender && !isValueEmpty) {
-      setFilterChipGroupSelectedFilters((prev) => (prev.includes(label) ? prev : [...prev, label]));
-      setListViewSelectedFilters((prev) => ({
-        ...prev,
-        [label]: selectedIndices as number[],
-      }));
-    } else if (!isFirstRender && isValueEmpty) {
-      setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
-      setListViewSelectedFilters((prev) => {
-        const { [label]: _, ...updatedFilters } = prev;
-        return updatedFilters;
-      });
+      const isValueEmpty = selectedIndices.length === 0;
+      if (!isValueEmpty) {
+        setFilterChipGroupSelectedFilters((prev) =>
+          prev.includes(label) ? prev : [...prev, label],
+        );
+        setListViewSelectedFilters((prev) => ({
+          ...prev,
+          [label]: selectedIndices as number[],
+        }));
+      } else {
+        setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
+        setListViewSelectedFilters((prev) => {
+          const { [label]: _, ...updatedFilters } = prev;
+          return updatedFilters;
+        });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
