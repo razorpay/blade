@@ -557,9 +557,6 @@ export type {
   InlineSelectorConfig,
   InlineSelectorOption,
   InlineSelectorProps,
-<<<<<<< HEAD
   InlineSelectorValueMap,
-=======
->>>>>>> 40a3775dc (fix(FileUpload): export InlineSelectorProps from public API)
   FileUploadProps,
 };
