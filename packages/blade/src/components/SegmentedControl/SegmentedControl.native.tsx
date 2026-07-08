@@ -76,7 +76,7 @@ const _SegmentedControl = (
         gap: getIn(theme, gap[size]),
       }}
       accessibilityRole="radiogroup"
-      accessibilityLabel={label || accessibilityLabel || name}
+      accessibilityLabel={label ? undefined : accessibilityLabel || name}
       {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
     >
       {children}

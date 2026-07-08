@@ -10,6 +10,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
 import { makeSpace, useBreakpoint } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import type { BladeElementRef } from '~utils/types';
@@ -137,7 +138,7 @@ const _SegmentedControl = (
 
   return (
     <SegmentedControlContext.Provider value={contextValue}>
-      <BaseBox display="flex" flexDirection="column" width="100%">
+      <BaseBox display="flex" flexDirection="column" width="100%" {...getStyledProps(rest)}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

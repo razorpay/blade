@@ -1,6 +1,7 @@
 import type React from 'react';
 import type { IconComponent } from '~components/Icons';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 type SegmentedControlSize = 'small' | 'medium' | 'large';
 
@@ -72,7 +73,8 @@ type SegmentedControlCommonProps = {
    */
   isRequired?: boolean;
 } & TestID &
-  DataAnalyticsAttribute;
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type SegmentedControlPropsWithLabel = {
   /**

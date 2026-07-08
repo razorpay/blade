@@ -109,28 +109,29 @@ const SegmentedControlItem = ({
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (!itemRefs) return;
+      const container = buttonRef.current?.closest('[role="radiogroup"]');
+      if (!container) return;
 
-      const entries = Array.from(itemRefs.current.entries()).filter(
-        ([, el]) => !(el as HTMLButtonElement).disabled,
+      const buttons = Array.from(
+        container.querySelectorAll<HTMLButtonElement>('[role="radio"]:not(:disabled)'),
       );
-      const currentIndex = entries.findIndex(([v]) => v === value);
+      const currentIndex = buttons.indexOf(buttonRef.current!);
       let nextIndex = -1;
 
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        nextIndex = (currentIndex + 1) % entries.length;
+        nextIndex = (currentIndex + 1) % buttons.length;
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        nextIndex = (currentIndex - 1 + entries.length) % entries.length;
+        nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
       }
 
       if (nextIndex >= 0) {
         e.preventDefault();
-        const [nextValue, nextEl] = entries[nextIndex];
-        (nextEl as HTMLButtonElement).focus();
-        setSelectedValue(() => nextValue);
+        const nextEl = buttons[nextIndex];
+        nextEl.focus();
+        setSelectedValue(() => nextEl.dataset.value ?? '');
       }
     },
-    [setSelectedValue, itemRefs, value],
+    [setSelectedValue],
   );
 
   const textColor = isDisabled
