@@ -7,14 +7,18 @@ import { ChevronLeftIcon } from './ChevronLeftIcon';
 import { ChevronRightIcon } from './ChevronRightIcon';
 import { CloseIcon } from './CloseIcon';
 import { CreditCardIcon } from './CreditCardIcon';
+import { EyeIcon } from './EyeIcon';
+import { EyeOffIcon } from './EyeOffIcon';
 import { InfoIcon } from './InfoIcon';
 import { MoreFilledIcon } from './MoreFilledIcon';
+import { PhoneIcon } from './PhoneIcon';
 import { PlusIcon } from './PlusIcon';
 import { SearchIcon } from './SearchIcon';
 import { UserIcon } from './UserIcon';
 import { BuildingIcon } from './BuildingIcon';
 import { HomeIcon } from './HomeIcon';
-import { RTBShieldIcon } from './RTBShieldIcon';
+import { LockIcon } from './LockIcon';
+import { RazorpayTrustIcon } from './RazorpayTrustIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -27,16 +31,20 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   ArrowLeftIcon,
   BuildingIcon,
   HomeIcon,
+  LockIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CloseIcon,
   CreditCardIcon,
+  EyeIcon,
+  EyeOffIcon,
   InfoIcon,
   MoreFilledIcon,
+  PhoneIcon,
   PlusIcon,
   SearchIcon,
   UserIcon,
-  RTBShieldIcon,
+  RazorpayTrustIcon,
 };

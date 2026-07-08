@@ -21,7 +21,7 @@ import { BladeProvider, useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { ArrowLeftIcon } from '~components/Icons';
-import { RTBBadge } from '~components/RTBBadge';
+import { TrustBadge } from '~components/TrustBadge';
 import { Tooltip } from '~components/Tooltip';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -120,7 +120,7 @@ const _AppBar = (
  *
  * ```jsx
  * <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
- *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} rtbBadge="full" />
+ *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} trustBadgeVariant="default" />
  *   <AppBarActions>
  *     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
  *   </AppBarActions>
@@ -134,18 +134,19 @@ const AppBar = assignWithoutSideEffects(React.forwardRef(_AppBar), {
 const _AppBarLeading = ({
   title,
   logo,
-  rtbBadge,
+  trustBadgeVariant,
+  trustBadgeLabel,
   testID,
   ...rest
 }: AppBarLeadingProps): React.ReactElement => {
   const appBarContext = useAppBarContext();
   const isNeutral = (appBarContext?.variant ?? 'neutral') === 'neutral';
   const titleColor = isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
-  const rtbVariant = isNeutral ? 'neutral' : 'subtle';
-  const showFullRtb = rtbBadge === 'full';
-  const showIconRtb = rtbBadge === 'icon';
-  const stackFullRtbBelowLogo = showFullRtb && Boolean(logo) && !title;
-  const hasTitleColumn = Boolean(title) || (showFullRtb && !logo);
+  const trustBadgeEmphasis = isNeutral ? 'intense' : 'subtle';
+  const showFullBadge = trustBadgeVariant === 'default';
+  const showIconBadge = trustBadgeVariant === 'icon-only';
+  const stackFullBadgeBelowLogo = showFullBadge && Boolean(logo) && !title;
+  const hasTitleColumn = Boolean(title) || (showFullBadge && !logo);
 
   return (
     <BaseBox
@@ -160,7 +161,7 @@ const _AppBarLeading = ({
       {...makeAnalyticsAttribute(rest)}
     >
       {logo ? (
-        stackFullRtbBelowLogo ? (
+        stackFullBadgeBelowLogo ? (
           <BaseBox
             display="flex"
             flexDirection="column"
@@ -178,7 +179,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <RTBBadge type="full" variant={rtbVariant} />
+              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -194,10 +195,16 @@ const _AppBarLeading = ({
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {showIconRtb ? <RTBBadge type="icon" variant={rtbVariant} /> : null}
+              {showIconBadge ? (
+                <TrustBadge
+                  variant="icon-only"
+                  emphasis={trustBadgeEmphasis}
+                  label={trustBadgeLabel}
+                />
+              ) : null}
             </BaseBox>
           ) : null}
-          {showFullRtb && !stackFullRtbBelowLogo ? (
+          {showFullBadge && !stackFullBadgeBelowLogo ? (
             <BaseBox
               display="flex"
               alignItems="center"
@@ -205,12 +212,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <RTBBadge type="full" variant={rtbVariant} />
+              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
             </BaseBox>
           ) : null}
         </BaseBox>
-      ) : showIconRtb ? (
-        <RTBBadge type="icon" variant={rtbVariant} />
+      ) : showIconBadge ? (
+        <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
       ) : null}
     </BaseBox>
   );
