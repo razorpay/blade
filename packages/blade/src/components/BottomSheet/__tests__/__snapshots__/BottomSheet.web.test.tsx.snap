@@ -416,7 +416,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 

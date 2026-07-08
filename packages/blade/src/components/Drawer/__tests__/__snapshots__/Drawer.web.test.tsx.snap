@@ -945,7 +945,7 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c19.c19.c19.c19.c19:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 

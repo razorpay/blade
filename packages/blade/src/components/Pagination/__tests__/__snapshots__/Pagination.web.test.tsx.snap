@@ -190,7 +190,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 }
 
 .c8.c8.c8.c8.c8:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
@@ -941,7 +941,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c36.c36.c36.c36.c36:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
@@ -2010,7 +2010,7 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c9.c9.c9.c9.c9:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
@@ -2311,7 +2311,7 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
@@ -3074,7 +3074,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c31.c31.c31.c31.c31:active {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
