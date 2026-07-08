@@ -173,15 +173,9 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
       if (raw === '' || !/^\d+$/.test(raw) || Number.isNaN(num) || !isValidOpacity(num)) {
         setOpacityDisplayValue(String(colorValue.opacity));
       }
-      // Use blurTimeoutRef directly so the composite-widget focus-boundary guard can coalesce
-      // this blur with other internal blurs (e.g. tabbing opacity → hex stays within widget).
-      blurTimeoutRef.current = setTimeout(() => {
-        blurTimeoutRef.current = null;
-        isFocusedRef.current = false;
-        onBlurRef.current?.({ name, value: String(colorValue.opacity) });
-      }, 0);
+      handleInputBlur({ name, value: String(colorValue.opacity) });
     },
-    [colorValue.opacity, name],
+    [colorValue.opacity, handleInputBlur, name],
   );
 
   const handleOpacityKeyDown = useCallback(
