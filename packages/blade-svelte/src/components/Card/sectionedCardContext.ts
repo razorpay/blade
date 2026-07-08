@@ -16,8 +16,6 @@ export function setSectionedCardContext(
   setContext(key, contextValue);
 }
 
-export function getSectionedCardContext(
-  key: string,
-): SectionedCardRegistrarContext | undefined {
+export function getSectionedCardContext(key: string): SectionedCardRegistrarContext | undefined {
   return getContext<SectionedCardRegistrarContext | undefined>(key);
 }
