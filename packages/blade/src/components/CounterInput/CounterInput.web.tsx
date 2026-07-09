@@ -110,6 +110,9 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const [animationClass, setAnimationClass] = useState('');
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
+    const latestValueRef = useRef<number | undefined>(internalValue);
+    const animationTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+    const animationFrameRef = useRef<number>();
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Track Tab navigation to show focus ring only on keyboard navigation (not mouse clicks)
@@ -138,6 +141,17 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       };
     }, []);
 
+    const clearAnimationTimers = useCallback((): void => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = undefined;
+      }
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+        animationTimeoutRef.current = undefined;
+      }
+    }, []);
+
     // Animation effect - triggers only when value actually changes
     useEffect(() => {
       // Only animate if:
@@ -145,17 +159,25 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       // 2. Value actually changed from previous value
       // 3. Not currently loading
       if (lastActionRef.current && !isLoading && internalValue !== previousValueRef.current) {
-        const animationClass =
+        const nextAnimationClass =
           lastActionRef.current === 'increment'
             ? '__blade-counter-input-animate-slide-up'
             : '__blade-counter-input-animate-slide-down';
-        setAnimationClass(animationClass);
-        setTimeout(() => setAnimationClass(''), 300);
         lastActionRef.current = null;
+
+        clearAnimationTimers();
+        setAnimationClass('');
+        animationFrameRef.current = requestAnimationFrame(() => {
+          setAnimationClass(nextAnimationClass);
+          animationTimeoutRef.current = setTimeout(() => setAnimationClass(''), 300);
+        });
       }
 
       previousValueRef.current = internalValue;
-    }, [internalValue, isLoading]);
+      latestValueRef.current = internalValue;
+    }, [internalValue, isLoading, clearAnimationTimers]);
+
+    useEffect(() => clearAnimationTimers, [clearAnimationTimers]);
 
     const handleInputChange = useCallback(
       ({ value: inputValue }: { value?: string }) => {
@@ -173,22 +195,26 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const handleIncrement = useCallback(() => {
       if (_isDisabled) return;
 
-      const newValue = (internalValue ?? min) + 1;
+      const current = latestValueRef.current ?? min;
+      const newValue = current + 1;
       const constrainedValue = max !== undefined ? Math.min(newValue, max) : newValue;
 
       lastActionRef.current = 'increment';
+      latestValueRef.current = constrainedValue;
       setInternalValue(() => constrainedValue);
-    }, [internalValue, min, max, _isDisabled, setInternalValue]);
+    }, [min, max, _isDisabled, setInternalValue]);
 
     const handleDecrement = useCallback(() => {
       if (_isDisabled) return;
 
-      const newValue = (internalValue ?? min) - 1;
+      const current = latestValueRef.current ?? min;
+      const newValue = current - 1;
       const constrainedValue = Math.max(newValue, min);
 
       lastActionRef.current = 'decrement';
+      latestValueRef.current = constrainedValue;
       setInternalValue(() => constrainedValue);
-    }, [internalValue, min, _isDisabled, setInternalValue]);
+    }, [min, _isDisabled, setInternalValue]);
 
     const isDecrementDisabled = _isDisabled || (internalValue ?? min) <= min;
     const isIncrementDisabled = _isDisabled || (max !== undefined && (internalValue ?? min) >= max);

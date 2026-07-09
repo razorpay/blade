@@ -70,8 +70,21 @@
   // Slide animation bookkeeping (non-reactive refs, like React `useRef`).
   let lastAction: 'increment' | 'decrement' | null = null;
   let previousValue = untrack(() => (value !== undefined ? value : defaultValue ?? min));
+  let latestValue = untrack(() => (value !== undefined ? value : defaultValue ?? min));
   let animationTimeout: ReturnType<typeof setTimeout> | undefined;
+  let animationFrame: number | undefined;
   let animationClass = $state('');
+
+  function clearAnimationTimers(): void {
+    if (animationFrame !== undefined) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = undefined;
+    }
+    if (animationTimeout) {
+      clearTimeout(animationTimeout);
+      animationTimeout = undefined;
+    }
+  }
 
   // Focus-ring gating: show the input ring only on keyboard (Tab) navigation.
   let isKeyboardFocus = $state(false);
@@ -85,17 +98,19 @@
 
   function handleIncrement(): void {
     if (isEffectivelyDisabled) return;
-    const newValue = currentValue + 1;
+    const newValue = latestValue + 1;
     const constrained = max !== undefined ? Math.min(newValue, max) : newValue;
     lastAction = 'increment';
+    latestValue = constrained;
     commitValue(constrained);
   }
 
   function handleDecrement(): void {
     if (isEffectivelyDisabled) return;
-    const newValue = currentValue - 1;
+    const newValue = latestValue - 1;
     const constrained = Math.max(newValue, min);
     lastAction = 'decrement';
+    latestValue = constrained;
     commitValue(constrained);
   }
 
@@ -114,17 +129,23 @@
     const nextValue = currentValue;
     const loading = isLoading;
     if (lastAction !== null && !loading && nextValue !== previousValue) {
-      animationClass =
-        lastAction === 'increment'
-          ? templateClasses.animateSlideUp
-          : templateClasses.animateSlideDown;
-      if (animationTimeout) clearTimeout(animationTimeout);
-      animationTimeout = setTimeout(() => {
-        animationClass = '';
-      }, 300);
+      const action = lastAction;
       lastAction = null;
+
+      clearAnimationTimers();
+      animationClass = '';
+      animationFrame = requestAnimationFrame(() => {
+        animationClass =
+          action === 'increment'
+            ? templateClasses.animateSlideUp
+            : templateClasses.animateSlideDown;
+        animationTimeout = setTimeout(() => {
+          animationClass = '';
+        }, 300);
+      });
     }
     previousValue = nextValue;
+    latestValue = nextValue;
   });
 
   // `:focus-visible` misfires on text inputs (rings on click too), so gate the ring
@@ -147,7 +168,7 @@
   });
 
   onDestroy(() => {
-    if (animationTimeout) clearTimeout(animationTimeout);
+    clearAnimationTimers();
   });
 
   const containerClasses = $derived(getCounterInputContainerClasses({ size, emphasis }));
