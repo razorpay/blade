@@ -20,6 +20,9 @@ const testRunnerConfig = getTestRunnerConfig();
  *   BROWSERSTACK_OS_VERSION    – e.g. "10"     (default: "10")
  *   BROWSERSTACK_BROWSER       – e.g. "chrome"  (default: "chrome")
  *   BROWSERSTACK_BROWSER_VERSION – e.g. "83"    (default: "latest")
+ *   BROWSERSTACK_LOCAL_IDENTIFIER – unique Local tunnel identifier (set by CI
+ *                                   setup-local action; required when running
+ *                                   parallel matrix jobs under one account)
  *   GITHUB_RUN_ID              – used for build name
  *
  * BrowserStack Local must be started separately (see CI workflow) so that the
@@ -38,6 +41,7 @@ if (isBrowserStack) {
   const BS_OS_VERSION = process.env.BROWSERSTACK_OS_VERSION || '10';
   const BS_BROWSER = (process.env.BROWSERSTACK_BROWSER || 'chrome').toLowerCase();
   const BS_BROWSER_VERSION = process.env.BROWSERSTACK_BROWSER_VERSION || 'latest';
+  const BS_LOCAL_IDENTIFIER = process.env.BROWSERSTACK_LOCAL_IDENTIFIER;
   const BUILD_NAME = process.env.GITHUB_RUN_ID
     ? `blade-interaction-${process.env.GITHUB_RUN_ID}`
     : `blade-interaction-local-${Date.now()}`;
@@ -54,6 +58,9 @@ if (isBrowserStack) {
       'browserstack.username': BS_USERNAME,
       'browserstack.accessKey': BS_ACCESS_KEY,
       'browserstack.local': 'true',
+      ...(BS_LOCAL_IDENTIFIER
+        ? { 'browserstack.localIdentifier': BS_LOCAL_IDENTIFIER }
+        : {}),
       'browserstack.project': 'Blade',
       'browserstack.buildName': BUILD_NAME,
       'browserstack.sessionName': `blade-interaction-${SESSION_NAME}`,

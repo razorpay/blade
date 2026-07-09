@@ -87,6 +87,7 @@ All existing local/CI interaction test scripts remain unchanged.
 | `BROWSERSTACK_OS_VERSION` | No | `10` | Target OS version |
 | `BROWSERSTACK_BROWSER` | No | `chrome` | Browser: `chrome`, `edge`, `firefox` |
 | `BROWSERSTACK_BROWSER_VERSION` | No | `latest` | Browser version |
+| `BROWSERSTACK_LOCAL_IDENTIFIER` | No | — | Unique Local tunnel identifier (set by CI; required for parallel matrix jobs) |
 | `GITHUB_RUN_ID` | No | — | Used for BrowserStack build name |
 
 ## Limitations & Future Work

@@ -129,6 +129,7 @@ jobs:
           BROWSERSTACK_BROWSER_VERSION: ${{ steps.target.outputs.browser_version }}
           BROWSERSTACK_OS: ${{ steps.target.outputs.os }}
           BROWSERSTACK_OS_VERSION: ${{ steps.target.outputs.os_version }}
+          BROWSERSTACK_LOCAL_IDENTIFIER: ${{ github.run_id }}-${{ steps.target.outputs.browser }}
         working-directory: packages/blade
         run: |
           echo "Running BrowserStack interaction tests on ${{ steps.target.outputs.os }} ${{ steps.target.outputs.os_version }} / ${{ steps.target.outputs.browser }} ${{ steps.target.outputs.browser_version }}"
