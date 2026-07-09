@@ -6,9 +6,10 @@ CDP, without rewriting any interaction test code.
 
 ## How It Works
 
-1. A BrowserStack-specific Jest config (`test-runner-jest.browserstack.config.js`)
-   replaces the local Playwright browser launch with a **remote CDP connection** to
-   a BrowserStack browser session.
+1. The existing Jest config (`test-runner-jest.config.js`) detects
+   `BROWSERSTACK_USERNAME` / `BROWSERSTACK_ACCESS_KEY` and, when present, replaces
+   the local Playwright browser launch with a **remote CDP connection** to a
+   BrowserStack browser session.
 2. **BrowserStack Local** creates a tunnel so the remote browser can reach the local
    Storybook static server at `127.0.0.1:9009`.
 3. The existing `test-storybook` runner + Jest + `.test.stories.{ts,tsx}` files run
@@ -114,7 +115,7 @@ older Chromium targets.
 
 | File | Change |
 |------|--------|
-| `packages/blade/test-runner-jest.browserstack.config.js` | New — BrowserStack Jest config |
+| `packages/blade/test-runner-jest.config.js` | Modified — adds BrowserStack CDP mode, gated on `BROWSERSTACK_USERNAME`/`BROWSERSTACK_ACCESS_KEY` |
 | `packages/blade/package.json` | Added 3 new scripts (existing scripts untouched) |
 | `.github/workflows/blade-browserstack-interaction-tests.yml` | New — opt-in CI workflow |
 | `packages/blade/docs/browserstack-interaction-tests.md` | This document |
