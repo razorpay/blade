@@ -90,6 +90,38 @@ describe('<FileUpload /> (native)', () => {
     );
     expect(getByText('Something went wrong')).toBeTruthy();
   });
+
+  it('should call onUploadPress when upload area is pressed', () => {
+    const onUploadPress = jest.fn();
+    const onChange = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        accept="image/*"
+        onUploadPress={onUploadPress}
+        onChange={onChange}
+      />,
+    );
+    fireEvent.press(getByText('Upload'));
+    expect(onUploadPress).toHaveBeenCalledTimes(1);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should not call onUploadPress when isDisabled', () => {
+    const onUploadPress = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        accept="image/*"
+        isDisabled
+        onUploadPress={onUploadPress}
+      />,
+    );
+    fireEvent.press(getByText('Upload'));
+    expect(onUploadPress).not.toHaveBeenCalled();
+  });
 });
 
 describe('<FileUploadItem /> (native)', () => {

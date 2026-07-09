@@ -74,9 +74,16 @@ type FileUploadCommonProps = {
    */
   maxSize?: number;
   /**
-   * Callback function triggered when files are selected
+   * Callback function triggered when files are selected.
+   * On web, this fires after the user picks files from the file input.
+   * On React Native, file selection happens outside the component — update `fileList` after your picker returns.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
+  /**
+   * Callback fired when the upload area is pressed.
+   * On React Native, use this to open your document picker since there is no built-in file input.
+   */
+  onUploadPress?: () => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */

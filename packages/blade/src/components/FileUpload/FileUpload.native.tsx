@@ -40,10 +40,10 @@ const getFileIconExtension = (acceptValue?: string): string => {
 };
 
 const _FileUpload = ({
-  name,
+  name: _name,
   accept,
   uploadType = 'single',
-  onChange,
+  onUploadPress,
   onPreview,
   onRemove,
   onReupload,
@@ -118,9 +118,7 @@ const _FileUpload = ({
 
   const handlePress = (): void => {
     if (isDisabled) return;
-    // On native, pressing the upload area signals the consumer to open
-    // their file picker. The consumer then calls back with onChange.
-    onChange?.({ name, fileList: selectedFiles });
+    onUploadPress?.();
   };
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
