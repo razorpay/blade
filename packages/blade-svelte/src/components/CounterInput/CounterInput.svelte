@@ -121,7 +121,16 @@
     let next = Number.isNaN(numeric) ? min : numeric;
     if (next < min) next = min;
     if (max !== undefined && next > max) next = max;
+    latestValue = next;
     commitValue(next);
+  }
+
+  function handleFocus(): void {
+    onFocus?.({ name, value: currentValue?.toString() ?? '' });
+  }
+
+  function handleBlur(): void {
+    onBlur?.({ name, value: currentValue?.toString() ?? '' });
   }
 
   // Trigger the slide animation only when the value actually changed via a button.
@@ -263,8 +272,8 @@
             value={currentValue}
             disabled={isDisabled}
             oninput={handleInput}
-            onfocus={onFocus}
-            onblur={onBlur}
+            onfocus={handleFocus}
+            onblur={handleBlur}
             {...inputA11yAttrs}
           />
         </div>

@@ -85,12 +85,14 @@ export interface CounterInputProps extends StyledPropsBlade {
   onChange?: CounterInputOnChange;
   /**
    * Called when the input receives focus.
+   * Receives `{ name, value }` matching the React `FormInputOnEvent` signature.
    */
-  onFocus?: (event: FocusEvent) => void;
+  onFocus?: (args: { name?: string; value?: string; rawValue?: string }) => void;
   /**
    * Called when the input loses focus.
+   * Receives `{ name, value }` matching the React `FormInputOnEvent` signature.
    */
-  onBlur?: (event: FocusEvent) => void;
+  onBlur?: (args: { name?: string; value?: string; rawValue?: string }) => void;
   /**
    * Test ID for the outer wrapper element.
    */

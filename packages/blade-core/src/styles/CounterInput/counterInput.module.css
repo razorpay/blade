@@ -231,11 +231,11 @@
 }
 
 .animate-slide-up {
-  animation: counter-input-slide-up var(--duration-quick) var(--easing-standard);
+  animation: counter-input-slide-up var(--duration-quick) ease-out;
 }
 
 .animate-slide-down {
-  animation: counter-input-slide-down var(--duration-quick) var(--easing-standard);
+  animation: counter-input-slide-down var(--duration-quick) ease-out;
 }
 
 @keyframes counter-input-slide-up {
@@ -329,7 +329,7 @@
   height: 100%;
   width: 40%;
   border-radius: var(--border-radius-max);
-  animation: counter-input-progress-indeterminate 1.5s var(--easing-standard) infinite;
+  animation: counter-input-progress-oscillate var(--duration-2xgentle) var(--easing-linear) infinite;
 }
 
 .progress-bar-subtle {
@@ -340,11 +340,22 @@
   background-color: var(--interactive-background-primary-default);
 }
 
-@keyframes counter-input-progress-indeterminate {
+/* Oscillation keyframes — mirrors React ProgressBar `_oscillation={true}`:
+   back-and-forth pattern with 5 stops (0→25→50→75→100). */
+@keyframes counter-input-progress-oscillate {
   0% {
     left: -40%;
   }
-  100% {
+  25% {
+    left: 50%;
+  }
+  50% {
     left: 100%;
+  }
+  75% {
+    left: 50%;
+  }
+  100% {
+    left: -40%;
   }
 }
