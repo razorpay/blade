@@ -69,8 +69,14 @@ const FileUploadItem = memo(
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
             <BaseBox flexGrow={1}>
-              <BaseBox alignItems="center" display="flex">
-                <BaseBox alignItems="center" maxWidth="70%" display="flex" marginRight="spacing.3">
+              <BaseBox alignItems="center" display="flex" flexDirection="row">
+                <BaseBox
+                  alignItems="center"
+                  maxWidth="70%"
+                  display="flex"
+                  flexDirection="row"
+                  marginRight="spacing.3"
+                >
                   <Text
                     size="medium"
                     weight="medium"
@@ -112,17 +118,19 @@ const FileUploadItem = memo(
               </BaseBox>
             ) : status === 'error' ? (
               <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-                <BaseLink
-                  marginX="spacing.1"
-                  variant="button"
-                  icon={RotateClockWiseIcon}
-                  color="negative"
-                  size="medium"
-                  onClick={() => {
-                    onReupload?.({ file });
-                  }}
-                  data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-                />
+                <BaseBox display="flex" alignItems="center" justifyContent="center">
+                  <BaseLink
+                    marginX="spacing.1"
+                    variant="button"
+                    icon={RotateClockWiseIcon}
+                    color="negative"
+                    size="medium"
+                    onClick={() => {
+                      onReupload?.({ file });
+                    }}
+                    data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
+                  />
+                </BaseBox>
                 {onRemove ? (
                   <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                     <Divider orientation="vertical" thickness="thin" variant="normal" />

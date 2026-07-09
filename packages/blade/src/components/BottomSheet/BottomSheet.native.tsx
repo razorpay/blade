@@ -25,7 +25,6 @@ import { useTheme } from '~components/BladeProvider';
 import { useId } from '~utils/useId';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSpace } from '~utils/makeSpace';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { componentZIndices } from '~utils/componentZIndices';
 
@@ -38,8 +37,12 @@ const BottomSheetBackground = ({ style }: BottomSheetBackgroundProps): React.Rea
       style={[
         style,
         {
-          borderTopLeftRadius: makeSpace(theme.spacing[5]),
-          borderTopRightRadius: makeSpace(theme.spacing[5]),
+          // React Native's borderRadius accepts a number, not a px string.
+          // Using makeSpace here (which returns "16px") is silently ignored by RN,
+          // which squares off the top corners; pass the raw token value instead.
+          borderTopLeftRadius: theme.spacing[5],
+          borderTopRightRadius: theme.spacing[5],
+          overflow: 'hidden',
           backgroundColor: theme.colors.popup.background.gray.subtle,
         },
       ]}

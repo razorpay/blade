@@ -179,8 +179,10 @@ const _StepItem = ({
       gap={itemLineGap[size]}
       alignItems={isVertical ? undefined : 'center'}
       minWidth={isVertical ? undefined : minWidth ?? makeSize(sizeTokens['120'])}
-      width={isVertical ? '100%' : undefined}
-      flex={isVertical ? undefined : '1'}
+      // Horizontal items need a definite width (not flex:'1') because the horizontal
+      // ScrollView gives an unbounded main axis; without it the header text never wraps,
+      // the item collapses vertically and grows arbitrarily wide.
+      width={isVertical ? '100%' : makeSize(sizeTokens['160'])}
       marginX={isVertical ? 'spacing.4' : 'spacing.0'}
       {...metaAttribute({ name: MetaConstants.StepItem })}
       {...makeAnalyticsAttribute(rest)}
@@ -192,7 +194,13 @@ const _StepItem = ({
         marker={enhancedMarker}
         stepProgress={stepProgress}
       />
-      <Box flex="1">
+      {/*
+        Vertical items are a row, so the header uses flex:'1' to fill the remaining width.
+        Horizontal items are a column with auto height; flex:'1' there would set flex-basis:0
+        on the vertical axis and collapse the header (and its text) to height 0, so it instead
+        takes a definite full-item width and content-driven height.
+      */}
+      <Box flex={isVertical ? '1' : undefined} width={isVertical ? undefined : '100%'}>
         {headerContent}
         {children ? (
           <Box

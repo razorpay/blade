@@ -2,32 +2,281 @@
 import { start, updateView, View } from '@storybook/react-native';
 
 import '@storybook/addon-ondevice-notes/register';
-import '@storybook/addon-ondevice-controls/register';
 import '@storybook/addon-ondevice-backgrounds/register';
 import '@storybook/addon-ondevice-actions/register';
 
 const normalizedStories = [
   {
     titlePrefix: '',
-    directory: './src',
+    directory: './src/components/Breadcrumb',
     files:
-      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
-    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     // @ts-ignore
     req: require.context(
-      '../../src',
+      '../../src/components/Breadcrumb',
       true,
-      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     ),
   },
   {
     titlePrefix: '',
-    directory: './src',
+    directory: './src/components/ButtonGroup',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ButtonGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/StepGroup',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/StepGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/InfoGroup',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/InfoGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/QuickFilters',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/QuickFilters',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/FileUpload',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/FileUpload',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/ChatInput',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ChatInput',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/ChatMessage',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ChatMessage',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/Drawer',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/Drawer',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/Dropdown',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/Dropdown',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/TimePicker',
+    files:
+      '**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/TimePicker',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|Scale|Elevate|AnimateInteractions|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/Breadcrumb',
     files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
     importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
     // @ts-ignore
     req: require.context(
-      '../../src',
+      '../../src/components/Breadcrumb',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/ButtonGroup',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ButtonGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/StepGroup',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/StepGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/InfoGroup',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/InfoGroup',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/QuickFilters',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/QuickFilters',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/FileUpload',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/FileUpload',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/ChatInput',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ChatInput',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/ChatMessage',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/ChatMessage',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/Drawer',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/Drawer',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/Dropdown',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/Dropdown',
+      true,
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    ),
+  },
+  {
+    titlePrefix: '',
+    directory: './src/components/TimePicker',
+    files: '**/*.stories.internal.?(ts|tsx|js|jsx)',
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
+    // @ts-ignore
+    req: require.context(
+      '../../src/components/TimePicker',
       true,
       /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?!\.)(?=.)[^/]*?\.stories\.internal\.(?:ts|tsx|js|jsx)?)$/,
     ),
@@ -40,7 +289,7 @@ declare global {
   var STORYBOOK_WEBSOCKET: { host: string; port: number } | undefined;
 }
 
-const annotations = [require('./preview'), require('@storybook/react-native/preview')];
+const annotations = [require('./preview')];
 
 globalThis.STORIES = normalizedStories;
 

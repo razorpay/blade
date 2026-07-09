@@ -124,15 +124,14 @@ const _StepGroup = (
   );
 
   const isHorizontal = orientation === 'horizontal';
-  const defaultWidth = isHorizontal ? '100%' : undefined;
 
   const content = (
     <BaseBox
       ref={ref as never}
       {...getStyledProps(rest)}
-      maxWidth={maxWidth ?? '100%'}
+      maxWidth={maxWidth ?? (isHorizontal ? undefined : '100%')}
       minWidth={minWidth}
-      width={width ?? defaultWidth}
+      width={width}
       paddingY={_nestingLevel === 0 ? 'spacing.4' : undefined}
       flexDirection={isHorizontal ? 'row' : 'column'}
       {...metaAttribute({ name: MetaConstants.StepGroup, testID })}

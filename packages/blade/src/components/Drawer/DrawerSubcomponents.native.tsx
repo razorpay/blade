@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerHeaderProps, DrawerFooterProps } from './types';
@@ -9,6 +10,46 @@ import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~utils';
+
+/**
+ * Replicates the web DrawerHeader's radial-gradient background on native.
+ *
+ * Web uses a CSS `radial-gradient(150% 100% at 50% 100%, transparent 0%, subtle 100%)`
+ * driven by the `color` prop. React Native has no CSS radial-gradient, so we draw an
+ * equivalent gradient with react-native-svg using the same status-driven feedback token.
+ */
+const DrawerHeaderGradient = ({
+  color,
+}: {
+  color: NonNullable<DrawerHeaderProps['color']>;
+}): React.ReactElement => {
+  const { theme } = useTheme();
+  // Web's `feedback.background[color].subtle` token is a low-opacity hsla() (e.g. 0.18 alpha).
+  // Web applies it as the far stop of a radial-gradient that fades from `transparent`, so the
+  // visible tint never exceeds that alpha (hence it looks very light). react-native-svg's <Stop>
+  // does not honor the alpha channel embedded in a color string, so we split the token into its
+  // opaque hue + explicit `stopOpacity` to reproduce web's light tint exactly (no magic values).
+  const subtleColor = theme.colors.feedback.background[color].subtle;
+  const alphaMatch = subtleColor.match(/hsla?\([^)]*,\s*([\d.]+)\s*\)$/);
+  const subtleAlpha = alphaMatch ? Number(alphaMatch[1]) : 1;
+  const opaqueColor = subtleColor.replace(/^hsla/, 'hsl').replace(/,\s*[\d.]+\s*\)$/, ')');
+  const gradientId = `drawer-header-gradient-${color}`;
+
+  return (
+    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+      <Svg width="100%" height="100%">
+        <Defs>
+          <RadialGradient id={gradientId} cx="50%" cy="100%" rx="150%" ry="100%">
+            <Stop offset="0" stopColor={opaqueColor} stopOpacity={0} />
+            <Stop offset="1" stopColor={opaqueColor} stopOpacity={subtleAlpha} />
+          </RadialGradient>
+        </Defs>
+        <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${gradientId})`} />
+      </Svg>
+    </View>
+  );
+};
 
 const _DrawerHeader = ({
   title,
@@ -17,9 +58,10 @@ const _DrawerHeader = ({
   trailing,
   titleSuffix,
   children,
-  // `color` drives the radial-gradient backgroundImage on web. Native has no CSS
-  // radial-gradient, so we intentionally omit the gradient and keep the surface solid.
-  color: _color = 'information',
+  // `color` drives the radial-gradient background on web. Native has no CSS
+  // radial-gradient, so we replicate it with an equivalent react-native-svg gradient
+  // (see DrawerHeaderGradient) using the same status-driven feedback token.
+  color = 'information',
   showDivider = true,
   ...rest
 }: DrawerHeaderProps): React.ReactElement => {
@@ -40,24 +82,27 @@ const _DrawerHeader = ({
   const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
   return (
-    <BaseHeader
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-      showBackButton={isStackedDrawer || isDrawerExiting}
-      showCloseButton={true}
-      closeButtonRef={closeButtonRef}
-      onCloseButtonClick={() => closeAllDrawers()}
-      onBackButtonClick={() => close()}
-      title={title}
-      size="xlarge"
-      titleSuffix={titleSuffix}
-      subtitle={subtitle}
-      leading={leading}
-      trailing={trailing}
-      showDivider={showDivider}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {children}
-    </BaseHeader>
+    <Box position="relative">
+      <DrawerHeaderGradient color={color} />
+      <BaseHeader
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        showBackButton={isStackedDrawer || isDrawerExiting}
+        showCloseButton={true}
+        closeButtonRef={closeButtonRef}
+        onCloseButtonClick={() => closeAllDrawers()}
+        onBackButtonClick={() => close()}
+        title={title}
+        size="xlarge"
+        titleSuffix={titleSuffix}
+        subtitle={subtitle}
+        leading={leading}
+        trailing={trailing}
+        showDivider={showDivider}
+        {...makeAnalyticsAttribute(rest)}
+      >
+        {children}
+      </BaseHeader>
+    </Box>
   );
 };
 

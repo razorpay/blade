@@ -137,8 +137,8 @@ const _Drawer = ({
   // it always mounted and flip a visibility prop. Mounting fresh on open guarantees:
   // - the add-portal effect fires so the subtree actually teleports and renders, and
   // - `AnimatedDrawerContainer` re-mounts with `isVisible = true`, so its shared values
-  //   initialize at the OPEN resting state (translateX 0, opacity 1) and it is visible
-  //   on the very first committed frame.
+  //   initialize at the CLOSED / off-screen state (translateX = screenWidth, opacity 0)
+  //   and its mount effect animates them to the open state — producing the slide-in.
   // Presence is driven by `isMounted`: set true on open, flipped false by
   // `handleExitComplete` after the exit animation so the slide-out still plays before
   // the Portal unmounts. `children` render whenever the drawer is mounted.

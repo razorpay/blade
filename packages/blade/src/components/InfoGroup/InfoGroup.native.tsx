@@ -13,6 +13,7 @@ import {
   helpTextSize,
   iconSize,
   itemTitleHeight,
+  titleColumnWidth,
   avatarAdjustmentPaddingY,
 } from './infoGroupTokens';
 import { InfoGroupContext, useInfoGroup, InfoItemContext, useInfoItem } from './InfoGroupContext';
@@ -98,6 +99,9 @@ const TitleCollection = ({
       gap={elementGap[size]}
       paddingLeft={paddingLeft}
       paddingRight={paddingRight}
+      // Allow this row to shrink to its parent (the fixed-width label column in horizontal,
+      // or the grid cell in vertical) so the inner text column can wrap instead of overflow.
+      flexShrink={1}
     >
       {leading && (
         <BaseBox {...getCenterBoxProps(size, true)}>{renderElement(leading, size)}</BaseBox>
@@ -146,14 +150,23 @@ const _InfoItemKey = (
 
   const { hasAvatar, isHighlighted } = useInfoItem();
 
+  const isHorizontal = itemOrientation === 'horizontal';
+
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       alignItems="center"
-      alignSelf="flex-start"
+      // Horizontal: hug content in a fixed-width label column. Vertical: stretch to the full
+      // grid-cell width so the label anchors to the left edge (directly above the value) and
+      // can wrap to multiple lines instead of sitting content-width/staggered.
+      alignSelf={isHorizontal ? 'flex-start' : 'stretch'}
       justifyContent="flex-start"
       flexDirection="row"
+      // Fixed label-column width (horizontal only) so every value column lines up across rows,
+      // matching web's grid key column. Deterministic — no onLayout/measurement, so it cannot
+      // oscillate. Vertical orientation stacks key above value and needs no shared width.
+      width={isHorizontal ? makeSize(titleColumnWidth[size]) : undefined}
       paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemKey, testID })}
     >
@@ -206,15 +219,21 @@ const _InfoItemValue = (
 
   const { hasAvatar, isHighlighted } = useInfoItem();
 
+  const isHorizontal = itemOrientation === 'horizontal';
+
   return (
     <BaseBox
       ref={ref as never}
       display="flex"
       flexDirection="row"
       alignItems="flex-start"
-      alignSelf="flex-start"
+      // Horizontal: `flex={1}` grows the value to fill the row beside the fixed label column.
+      // Vertical: the value sits BELOW the label inside a flex COLUMN, where `flex={1}` would
+      // (wrongly) grow it along the vertical axis; instead stretch it to the full cell width so
+      // it aligns left directly under the label and wraps within the cell.
+      alignSelf={isHorizontal ? 'flex-start' : 'stretch'}
       justifyContent={valueAlign === 'right' ? 'flex-end' : 'flex-start'}
-      flex={1}
+      flex={isHorizontal ? 1 : undefined}
       paddingY={hasAvatar ? avatarAdjustmentPaddingY[size] : undefined}
       {...metaAttribute({ name: MetaConstants.InfoItemValue, testID })}
     >
@@ -302,7 +321,10 @@ const VerticalItemBox = React.forwardRef<
         {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
       >
         {isHighlighted && <Divider orientation="vertical" />}
-        <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+        {/* `flex={1}` bounds this column to the grid cell's width so the key/value text
+            wraps to multiple lines instead of overflowing on a single line (RN defaults
+            flexShrink to 0, which otherwise lets the content stay one long line). */}
+        <BaseBox display="flex" flexDirection="column" gap="spacing.2" flex={1}>
           {children}
         </BaseBox>
       </BaseBox>
@@ -373,35 +395,56 @@ const InfoItem = assignWithoutSideEffects(React.forwardRef(_InfoItem), {
 });
 
 /**
- * Derive the number of columns for vertical orientation.
- *
- * On web the default is `repeat(min(4, count), 1fr)` and callers can override with
- * `gridTemplateColumns` (e.g. the vertical story passes `repeat(3, 1fr)`). RN cannot
- * consume a CSS grid string, so we parse the intended column count from it:
- *   - `repeat(N, 1fr)`      -> N
- *   - `1fr 1fr 1fr`         -> 3 (count of space-separated tracks)
- * Falling back to `min(4, count)` to match the web default.
+ * Derive the number of grid columns for vertical orientation from a CSS
+ * `gridTemplateColumns` value. RN/Yoga has no CSS grid, so we emulate the intended
+ * column count with an equal-width wrapping flex layout. The same downstream layout
+ * (width `100 / N %`, per-cell `paddingRight` column gap when N > 1, per-cell
+ * `paddingBottom` row gap, and text wrapping) is applied for whatever N this returns,
+ * so any future `gridTemplateColumns` value is handled automatically. Supported forms:
+ *   - `repeat(N, ...)` / `repeat(min(N, ...), ...)`  -> N   (multiple repeats are summed,
+ *                                                            explicit tracks around them added)
+ *   - a bare integer, e.g. `2`                        -> 2
+ *   - an explicit track list, e.g. `1fr 1fr` / `100px 1fr` -> number of tracks (2)
+ *   - `1fr`                                           -> 1
+ *   - anything unrecognized / undefined              -> `min(4, childCount)` (web default)
  */
 const getVerticalColumnCount = (
   gridTemplateColumns: InfoGroupProps['gridTemplateColumns'],
   childCount: number,
 ): number => {
-  const fallback = Math.min(4, Math.max(1, childCount));
+  const fallback = Math.min(4, Math.max(1, childCount || 1));
 
-  if (typeof gridTemplateColumns !== 'string') return fallback;
+  if (gridTemplateColumns == null) return fallback;
 
-  const template = gridTemplateColumns as string;
+  const template = String(gridTemplateColumns).trim();
+  if (!template) return fallback;
 
-  const repeatMatch = template.match(/repeat\(\s*(?:min\(\s*)?(\d+)/i);
-  if (repeatMatch) {
-    const parsed = parseInt(repeatMatch[1], 10);
-    return Number.isFinite(parsed) && parsed > 0
-      ? Math.min(parsed, childCount || parsed)
-      : fallback;
+  // Bare integer, e.g. "2" -> that many columns.
+  if (/^\d+$/.test(template)) {
+    const parsed = parseInt(template, 10);
+    return parsed > 0 ? parsed : fallback;
   }
 
-  const tracks = template.trim().split(/\s+/).filter(Boolean).length;
-  return tracks > 0 ? Math.min(tracks, childCount || tracks) : fallback;
+  // Sum every `repeat(N, ...)` / `repeat(min(N, ...), ...)` occurrence (the leading
+  // integer is the repeat count), then add any explicit tracks sitting outside them.
+  const repeatRegex = /repeat\(\s*(?:min|max|minmax)?\(?\s*(\d+)/gi;
+  let repeatMatch: RegExpExecArray | null;
+  let repeatColumns = 0;
+  while ((repeatMatch = repeatRegex.exec(template)) !== null) {
+    const parsed = parseInt(repeatMatch[1], 10);
+    if (Number.isFinite(parsed) && parsed > 0) repeatColumns += parsed;
+  }
+  if (repeatColumns > 0) {
+    // Strip the whole `repeat(...)` chunk(s) (allowing one level of nested parens) and
+    // count whatever explicit tracks remain, e.g. `1fr repeat(2, 1fr)` -> 1 + 2 = 3.
+    const remaining = template.replace(/repeat\((?:[^()]|\([^()]*\))*\)/gi, ' ').trim();
+    const extraTracks = remaining ? remaining.split(/\s+/).filter(Boolean).length : 0;
+    return repeatColumns + extraTracks;
+  }
+
+  // Explicit track list -> number of whitespace-separated tracks.
+  const tracks = template.split(/\s+/).filter(Boolean).length;
+  return tracks > 0 ? tracks : fallback;
 };
 
 // InfoGroup Component
@@ -441,11 +484,21 @@ const _InfoGroup = (
   const childCount = React.Children.count(children);
   const isHorizontal = itemOrientation === 'horizontal';
 
-  // ── Vertical: derive column count and equal flexBasis (emulates repeat(N, 1fr)) ──
+  // ── Vertical: emulate CSS grid `repeat(N, 1fr)` with a wrapping flex row ──
+  // RN/Yoga has no CSS grid, so we parse the intended column count from
+  // `gridTemplateColumns` and give every cell an equal `width` of `100 / N %`.
+  // Cells tile left-to-right and wrap to the next row after N items (row-major flow),
+  // matching the web grid. Both gaps are applied as border-box padding INSIDE each cell
+  // (RN is border-box by default) so they do NOT eat into the width math the way a
+  // container `columnGap`/`rowGap` would — that overflow is what previously pushed cells
+  // onto the wrong row and made them collide, and a container `rowGap` on a wrapping row
+  // produced no visible separation between the wrapped rows on this RN version. Instead
+  // each cell reserves its own `paddingRight` (column gap) and `paddingBottom` (row gap).
+  // Gap tokens mirror the web grid (columnGap base = spacing.6, rowGap = spacing.4).
   const verticalColumnCount = getVerticalColumnCount(gridTemplateColumns, childCount);
-  const itemFlexBasis = !isHorizontal
-    ? (`${100 / verticalColumnCount}%` as BoxProps['flexBasis'])
-    : undefined;
+  const itemWidth = `${100 / verticalColumnCount}%` as BoxProps['width'];
+  const columnGapToken: BoxProps['paddingRight'] = 'spacing.6';
+  const rowGapToken: BoxProps['paddingBottom'] = 'spacing.4';
 
   return (
     <InfoGroupContext.Provider value={contextValue}>
@@ -454,7 +507,7 @@ const _InfoGroup = (
         display="flex"
         flexDirection={isHorizontal ? 'column' : 'row'}
         flexWrap={isHorizontal ? undefined : 'wrap'}
-        gap="spacing.4"
+        gap={isHorizontal ? 'spacing.4' : undefined}
         width={width}
         maxWidth={maxWidth}
         minWidth={minWidth}
@@ -468,11 +521,16 @@ const _InfoGroup = (
         {...metaAttribute({ name: MetaConstants.InfoGroup, testID })}
         {...getStyledProps(rest)}
       >
-        {!isHorizontal && itemFlexBasis
+        {!isHorizontal
           ? React.Children.map(children, (child) => {
               if (!React.isValidElement(child)) return child;
               return (
-                <BaseBox flexBasis={itemFlexBasis} flexDirection="column">
+                <BaseBox
+                  width={itemWidth}
+                  flexDirection="column"
+                  paddingRight={verticalColumnCount > 1 ? columnGapToken : undefined}
+                  paddingBottom={rowGapToken}
+                >
                   {child}
                 </BaseBox>
               );

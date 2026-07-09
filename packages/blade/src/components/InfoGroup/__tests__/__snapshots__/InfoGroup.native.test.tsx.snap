@@ -57,16 +57,19 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
               "justifyContent": "flex-start",
               "paddingBottom": 4,
               "paddingTop": 4,
+              "width": 176,
             },
           ]
         }
         testID="info-item-key-with-avatar-1"
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -74,6 +77,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -306,6 +310,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -313,6 +318,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -502,16 +508,19 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
         testID="info-item-key-with-non-avatar"
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -519,6 +528,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -731,6 +741,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -738,6 +749,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -876,15 +888,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 120,
             },
           ]
         }
+        width="120px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.1"
           style={
             [
@@ -892,6 +907,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 2,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -997,6 +1013,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.1"
           style={
             [
@@ -1004,6 +1021,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 2,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1131,15 +1149,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 140,
             },
           ]
         }
+        width="140px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -1147,6 +1168,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1252,6 +1274,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -1259,6 +1282,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1386,15 +1410,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -1402,6 +1429,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1507,6 +1535,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -1514,6 +1543,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1641,15 +1671,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 200,
             },
           ]
         }
+        width="200px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.3"
           style={
             [
@@ -1657,6 +1690,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 8,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1762,6 +1796,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.3"
           style={
             [
@@ -1769,6 +1804,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 8,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1907,15 +1943,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -1923,6 +1962,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2028,6 +2068,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2035,6 +2076,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2146,15 +2188,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2162,6 +2207,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2267,6 +2313,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2274,6 +2321,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2412,9 +2460,11 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -2443,6 +2493,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2450,6 +2501,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -2555,6 +2607,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2562,6 +2615,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -2673,9 +2727,11 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -2704,6 +2760,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2711,6 +2768,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -2816,6 +2874,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -2823,6 +2882,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -2919,30 +2979,30 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
     display="flex"
     flexDirection="row"
     flexWrap="wrap"
-    gap="spacing.4"
     style={
       [
         {
           "display": "flex",
           "flexDirection": "row",
           "flexWrap": "wrap",
-          "gap": 12,
         },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      flexBasis="50%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "50%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
           },
         ]
       }
+      width="50%"
     >
       <View
         alignItems="flex-start"
@@ -2990,7 +3050,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -2998,7 +3061,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -3007,7 +3070,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -3020,6 +3083,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3027,6 +3091,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 12,
                     "paddingRight": 0,
@@ -3107,7 +3172,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -3116,12 +3181,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -3132,6 +3194,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3139,6 +3202,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 12,
                     "paddingRight": 12,
@@ -3222,16 +3286,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="50%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "50%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
           },
         ]
       }
+      width="50%"
     >
       <View
         alignItems="flex-start"
@@ -3279,7 +3345,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -3287,7 +3356,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -3296,7 +3365,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -3309,6 +3378,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3316,6 +3386,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 12,
                     "paddingRight": 0,
@@ -3396,7 +3467,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -3405,12 +3476,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -3421,6 +3489,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3428,6 +3497,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 12,
                     "paddingRight": 12,
@@ -3526,30 +3596,30 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
     display="flex"
     flexDirection="row"
     flexWrap="wrap"
-    gap="spacing.4"
     style={
       [
         {
           "display": "flex",
           "flexDirection": "row",
           "flexWrap": "wrap",
-          "gap": 12,
         },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -3575,7 +3645,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -3583,7 +3656,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -3592,7 +3665,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -3605,6 +3678,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3612,6 +3686,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -3692,7 +3767,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -3701,12 +3776,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -3717,6 +3789,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3724,6 +3797,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -3807,16 +3881,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -3842,7 +3918,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -3850,7 +3929,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -3859,7 +3938,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -3872,6 +3951,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3879,6 +3959,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -3959,7 +4040,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -3968,12 +4049,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -3984,6 +4062,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -3991,6 +4070,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -4074,16 +4154,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -4109,7 +4191,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -4117,7 +4202,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -4126,7 +4211,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -4139,6 +4224,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -4146,6 +4232,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -4226,7 +4313,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -4235,12 +4322,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -4251,6 +4335,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -4258,6 +4343,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -4341,16 +4427,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -4376,7 +4464,10 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -4384,7 +4475,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -4393,7 +4484,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -4406,6 +4497,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -4413,6 +4505,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -4493,7 +4586,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -4502,12 +4595,9 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -4518,6 +4608,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -4525,6 +4616,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -4665,9 +4757,11 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -4696,6 +4790,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -4703,6 +4798,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -4808,6 +4904,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -4815,6 +4912,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -4926,15 +5024,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -4942,6 +5043,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5047,6 +5149,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5054,6 +5157,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5192,15 +5296,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5208,6 +5315,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5313,6 +5421,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5320,6 +5429,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5447,15 +5557,18 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5463,6 +5576,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5568,6 +5682,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5575,6 +5690,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -5719,9 +5835,11 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
               "justifyContent": "flex-start",
               "paddingBottom": 4,
               "paddingTop": 4,
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -5750,6 +5868,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5757,6 +5876,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -5991,6 +6111,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -5998,6 +6119,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -6198,9 +6320,11 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -6229,6 +6353,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -6236,6 +6361,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -6451,6 +6577,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -6458,6 +6585,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -6684,9 +6812,11 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -6715,6 +6845,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -6722,6 +6853,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -6968,6 +7100,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -6975,6 +7108,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -7210,9 +7344,11 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           borderLeftColor="surface.border.gray.muted"
@@ -7241,6 +7377,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -7248,6 +7385,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 12,
                 "paddingRight": 0,
@@ -7466,6 +7604,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -7473,6 +7612,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 12,
@@ -7726,15 +7866,18 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -7742,6 +7885,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -7847,6 +7991,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -7854,6 +7999,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -7965,15 +8111,18 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -7981,6 +8130,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -8086,6 +8236,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -8093,6 +8244,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -8204,15 +8356,18 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-start",
+              "width": 176,
             },
           ]
         }
+        width="176px"
       >
         <View
           alignItems="flex-start"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -8220,6 +8375,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -8325,6 +8481,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
+          flexShrink={1}
           gap="spacing.2"
           style={
             [
@@ -8332,6 +8489,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "gap": 4,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -8415,7 +8573,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
 </View>
 `;
 
-exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 4 items (wraps to next row) 1`] = `
+exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTemplateColumns="1fr 1fr" as two equal columns 1`] = `
 <View
   style={
     {
@@ -8428,30 +8586,30 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
     display="flex"
     flexDirection="row"
     flexWrap="wrap"
-    gap="spacing.4"
     style={
       [
         {
           "display": "flex",
           "flexDirection": "row",
           "flexWrap": "wrap",
-          "gap": 12,
         },
       ]
     }
   >
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
           },
         ]
       }
+      width="50%"
     >
       <View
         alignItems="flex-start"
@@ -8477,7 +8635,10 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -8485,7 +8646,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -8494,7 +8655,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -8507,6 +8668,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -8514,6 +8676,2041 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Account Holder
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Saurabh Daware
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
+          },
+        ]
+      }
+      width="50%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Payment Method
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Credit Card
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
+          },
+        ]
+      }
+      width="50%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Status
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Completed
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTemplateColumns="1fr" as a single stacked column 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="info-group"
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    style={
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+        },
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          borderLeftColor="surface.border.gray.muted"
+          borderPosition="borderLeft"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={false}
+          style={
+            [
+              {
+                "borderLeftColor": "hsla(206, 10%, 29%, 0.12)",
+                "borderLeftStyle": "solid",
+              },
+              {
+                "alignSelf": "stretch",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderWidth": 0,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 12,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Account Holder
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Saurabh Daware
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          borderLeftColor="surface.border.gray.muted"
+          borderPosition="borderLeft"
+          data-blade-component="divider"
+          dividerStyle="solid"
+          isDividerHorizontal={false}
+          style={
+            [
+              {
+                "borderLeftColor": "hsla(206, 10%, 29%, 0.12)",
+                "borderLeftStyle": "solid",
+              },
+              {
+                "alignSelf": "stretch",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderWidth": 0,
+              },
+            ]
+          }
+          thickness="thin"
+        />
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 12,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Payment Method
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Credit Card
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTemplateColumns="repeat(2, 1fr)" as two equal columns 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="info-group"
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    style={
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+        },
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
+          },
+        ]
+      }
+      width="50%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Account Holder
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Saurabh Daware
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "50%",
+          },
+        ]
+      }
+      width="50%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.muted"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(204, 9%, 42%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Payment Method
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="flex-start"
+            alignSelf="stretch"
+            data-blade-component="info-item-value"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
+                    "gap": 4,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                flexShrink={1}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  justifyContent="flex-start"
+                  minHeight="20px"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "flex-start",
+                        "minHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.gray.subtle"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={100}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={50}
+                    lineHeight={100}
+                    style={
+                      [
+                        {
+                          "color": "hsla(200, 10%, 18%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.18200000000000002,
+                          "lineHeight": 20,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Credit Card
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 4 items (wraps to next row) 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="info-group"
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    style={
+      [
+        {
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+        },
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      flexDirection="column"
+      style={
+        [
+          {
+            "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
+          },
+        ]
+      }
+      width="25%"
+    >
+      <View
+        alignItems="flex-start"
+        data-blade-component="info-item"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="stretch"
+            data-blade-component="info-item-key"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="flex-start"
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="row"
+              flexShrink={1}
+              gap="spacing.2"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -8594,7 +10791,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -8603,12 +10800,9 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -8619,6 +10813,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -8626,6 +10821,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -8709,16 +10905,18 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -8744,7 +10942,10 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -8752,7 +10953,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -8761,7 +10962,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -8774,6 +10975,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -8781,6 +10983,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -8861,7 +11064,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -8870,12 +11073,9 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -8886,6 +11086,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -8893,6 +11094,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -8976,16 +11178,18 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -9011,7 +11215,10 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -9019,7 +11226,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -9028,7 +11235,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -9041,6 +11248,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9048,6 +11256,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -9128,7 +11337,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -9137,12 +11346,9 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -9153,6 +11359,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9160,6 +11367,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -9243,16 +11451,18 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -9278,7 +11488,10 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -9286,7 +11499,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -9295,7 +11508,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -9308,6 +11521,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9315,6 +11529,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -9395,7 +11610,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -9404,12 +11619,9 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -9420,6 +11632,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9427,6 +11640,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -9510,16 +11724,18 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
     </View>
     <View
       data-blade-component="base-box"
-      flexBasis="25%"
       flexDirection="column"
       style={
         [
           {
-            "flexBasis": "25%",
             "flexDirection": "column",
+            "paddingBottom": 12,
+            "paddingRight": 20,
+            "width": "25%",
           },
         ]
       }
+      width="25%"
     >
       <View
         alignItems="flex-start"
@@ -9545,7 +11761,10 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             [
               {
                 "display": "flex",
+                "flexBasis": 0,
                 "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "gap": 4,
               },
             ]
@@ -9553,7 +11772,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         >
           <View
             alignItems="center"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-key"
             display="flex"
             flexDirection="row"
@@ -9562,7 +11781,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "center",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
@@ -9575,6 +11794,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9582,6 +11802,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
@@ -9662,7 +11883,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           </View>
           <View
             alignItems="flex-start"
-            alignSelf="flex-start"
+            alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
             flexDirection="row"
@@ -9671,12 +11892,9 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               [
                 {
                   "alignItems": "flex-start",
-                  "alignSelf": "flex-start",
+                  "alignSelf": "stretch",
                   "display": "flex",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "justifyContent": "flex-start",
                 },
               ]
@@ -9687,6 +11905,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
               data-blade-component="base-box"
               display="flex"
               flexDirection="row"
+              flexShrink={1}
               gap="spacing.2"
               style={
                 [
@@ -9694,6 +11913,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexShrink": 1,
                     "gap": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,

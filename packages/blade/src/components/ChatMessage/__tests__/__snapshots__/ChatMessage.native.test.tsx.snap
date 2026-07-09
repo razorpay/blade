@@ -51,7 +51,6 @@ exports[`<ChatMessage /> (native) should render error state correctly 1`] = `
           borderRadius="large"
           borderWidth="thin"
           data-blade-component="base-box"
-          elevation="lowRaised"
           style={
             [
               {
@@ -67,16 +66,15 @@ exports[`<ChatMessage /> (native) should render error state correctly 1`] = `
                 "paddingTop": 12,
               },
               {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
+                "elevation": 1,
+                "shadowColor": "hsla(206, 10%, 29%, 1)",
                 "shadowOffset": {
-                  "height": 2,
+                  "height": 0.5,
                   "width": 0,
                 },
                 "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "shadowRadius": 4,
               },
-              undefined,
             ]
           }
         >
@@ -360,14 +358,21 @@ exports[`<ChatMessage /> (native) should render other message with leading icon 
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
+            display="flex"
+            height={20}
+            justifyContent="center"
             style={
               [
                 {
-                  "paddingBottom": 2,
+                  "alignItems": "center",
+                  "display": "flex",
+                  "justifyContent": "center",
+                  "paddingBottom": 4,
                   "paddingLeft": 2,
                   "paddingRight": 2,
-                  "paddingTop": 2,
+                  "paddingTop": 8,
                 },
               ]
             }
@@ -562,7 +567,6 @@ exports[`<ChatMessage /> (native) should render self message (default type) corr
           borderRadius="large"
           borderWidth="thin"
           data-blade-component="base-box"
-          elevation="lowRaised"
           style={
             [
               {
@@ -578,16 +582,15 @@ exports[`<ChatMessage /> (native) should render self message (default type) corr
                 "paddingTop": 12,
               },
               {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
+                "elevation": 1,
+                "shadowColor": "hsla(206, 10%, 29%, 1)",
                 "shadowOffset": {
-                  "height": 2,
+                  "height": 0.5,
                   "width": 0,
                 },
                 "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "shadowRadius": 4,
               },
-              undefined,
             ]
           }
         >
@@ -695,7 +698,6 @@ exports[`<ChatMessage /> (native) should render self message (last type) correct
           borderRadius="large"
           borderWidth="thin"
           data-blade-component="base-box"
-          elevation="lowRaised"
           style={
             [
               {
@@ -711,16 +713,15 @@ exports[`<ChatMessage /> (native) should render self message (last type) correct
                 "paddingTop": 12,
               },
               {
-                "elevation": 8,
-                "shadowColor": "hsla(200, 10%, 18%, 1)",
+                "elevation": 1,
+                "shadowColor": "hsla(206, 10%, 29%, 1)",
                 "shadowOffset": {
-                  "height": 2,
+                  "height": 0.5,
                   "width": 0,
                 },
                 "shadowOpacity": 0.06,
-                "shadowRadius": 2,
+                "shadowRadius": 4,
               },
-              undefined,
             ]
           }
         >
@@ -834,14 +835,21 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
           }
         >
           <View
+            alignItems="center"
             data-blade-component="base-box"
+            display="flex"
+            height={20}
+            justifyContent="center"
             style={
               [
                 {
-                  "paddingBottom": 2,
+                  "alignItems": "center",
+                  "display": "flex",
+                  "justifyContent": "center",
+                  "paddingBottom": 4,
                   "paddingLeft": 2,
                   "paddingRight": 2,
-                  "paddingTop": 2,
+                  "paddingTop": 8,
                 },
               ]
             }
@@ -990,6 +998,7 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
                     ]
                   }
                   textAlign="left"
+                  variant="primary"
                 >
                   <View
                     data-blade-component="card-body"

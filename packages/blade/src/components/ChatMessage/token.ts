@@ -59,6 +59,27 @@ const chatMessageToken = {
       light: globalColors.neutral.blueGrayLight.a906,
       dark: globalColors.neutral.black[50],
     },
+    // React Native shadow props hand-tuned to visually match the bespoke web `boxShadow` above.
+    // Web intentionally uses this subtle shadow (offset y 0.5px, 4px blur) instead of the
+    // `lowRaised` elevation token, which renders a heavier/darker shadow on native
+    // (offset y 2, radius 2, Android elevation 8). These values mirror the web shadow's
+    // color/opacity/blur/offset so the bubble looks equally subtle on both platforms.
+    nativeShadow: {
+      light: {
+        shadowColor: 'hsla(206, 10%, 29%, 1)',
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 0.5 },
+        elevation: 1,
+      },
+      dark: {
+        shadowColor: 'hsla(0, 0%, 0%, 1)',
+        shadowOpacity: 0.18,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 0.5 },
+        elevation: 1,
+      },
+    },
   },
 } as const;
 

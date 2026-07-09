@@ -110,8 +110,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             },
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderTopLeftRadius": "16px",
-              "borderTopRightRadius": "16px",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
+              "overflow": "hidden",
             },
           ]
         }
@@ -1403,8 +1404,9 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             },
             {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderTopLeftRadius": "16px",
-              "borderTopRightRadius": "16px",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
+              "overflow": "hidden",
             },
           ]
         }

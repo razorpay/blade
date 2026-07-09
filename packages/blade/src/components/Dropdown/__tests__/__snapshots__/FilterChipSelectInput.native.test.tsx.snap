@@ -32,19 +32,20 @@ exports[`<FilterChipSelectInput /> (native) should render with default props 1`]
       textAlign="left"
     >
       <View
+        onLayout={[Function]}
         style={
           [
             {
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderColor": "hsla(206, 10%, 29%, 0.18)",
+              "borderColor": "transparent",
               "borderRadius": 8,
-              "borderStyle": "dashed",
-              "borderWidth": 1,
+              "borderStyle": "solid",
+              "borderWidth": 0,
               "flexDirection": "row",
               "height": 28,
               "opacity": 1,
-              "overflow": "hidden",
+              "overflow": "visible",
             },
           ]
         }
@@ -311,12 +312,25 @@ exports[`<FilterChipSelectInput /> (native) should render with default props 1`]
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                    "borderColor": "hsla(203, 8%, 80%, 1)",
                     "borderRadius": 12,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                     "transform": [
                       {
                         "translateY": 8,
                       },
                     ],
+                  },
+                  {
+                    "elevation": 16,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 4,
                   },
                 ],
               ]

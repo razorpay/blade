@@ -41,7 +41,7 @@ const StyledDrawerSurface = styled(BaseBox)(({ theme }) => {
   return {
     flex: 1,
     backgroundColor: theme.colors.popup.background.gray.subtle,
-    // base breakpoint renders the drawer edge-to-edge with no radius
+    // base breakpoint renders the drawer edge-to-edge with no radius (matches web's phone view)
     borderRadius: 0,
     overflow: 'hidden' as const,
     flexDirection: 'column' as const,
@@ -98,25 +98,33 @@ const AnimatedDrawerContainer = ({
 }: AnimatedDrawerContainerProps): React.ReactElement => {
   const { theme } = useTheme();
   const screenWidth = Dimensions.get('window').width;
-  // Initialize the shared values from the CURRENT visibility so an open drawer is
-  // already at its resting OPEN state (translateX = 0, opacity = 1) on the very first
-  // committed frame — even before/without the `withTiming` callback firing. Starting
-  // them unconditionally at the closed values meant that if the enter animation did not
-  // run (e.g. it was scheduled after the commit, or the shared values were reset), the
-  // surface stayed off-screen-right at opacity 0 and never became visible.
-  const translateX = useSharedValue(isVisible ? 0 : screenWidth);
-  const surfaceOpacity = useSharedValue(isVisible ? 1 : 0);
-  const overlayOpacity = useSharedValue(isVisible ? 1 : 0);
+  // Always initialize the shared values at the CLOSED / off-screen state
+  // (translateX = screenWidth, opacity = 0) so there is a "from" frame to animate FROM
+  // when the drawer mounts open. The Portal mounts fresh on open, so this container
+  // mounts with `isVisible = true`; the mount effect below then drives `withTiming` to
+  // the open state, producing the slide-in.
+  //
+  // Initializing from the current visibility instead (open → translateX 0) meant that on
+  // open the surface was already at its resting position, so the enter `withTiming(0)`
+  // had nothing to animate and the panel snapped into place instantly. The exit still
+  // animated (0 → screenWidth) which is why only the enter transition looked broken.
+  const translateX = useSharedValue(screenWidth);
+  const surfaceOpacity = useSharedValue(0);
+  const overlayOpacity = useSharedValue(0);
 
   const shadow = (getElevationValue('highRaised', theme) as unknown) as ElevationStyles;
 
   React.useEffect(() => {
+    // Mirror web's Drawer surface transition (Drawer.web.tsx): enter uses
+    // `duration.xmoderate` + `easing.entrance`, exit uses `duration.moderate` +
+    // `easing.exit`. Previously enter used the slower `gentle` (480ms), which made the
+    // native open feel sluggish compared to web's 360ms slide-in.
     const enterConfig = {
-      duration: theme.motion.duration.gentle,
+      duration: theme.motion.duration.xmoderate,
       easing: theme.motion.easing.entrance,
     };
     const exitConfig = {
-      duration: theme.motion.duration.xmoderate,
+      duration: theme.motion.duration.moderate,
       easing: theme.motion.easing.exit,
     };
     const config = isVisible ? enterConfig : exitConfig;
