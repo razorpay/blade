@@ -1,4 +1,5 @@
 import React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import { Linking, Pressable } from 'react-native';
 import { StepLine } from './StepLine';
 import type { StepLineProps } from './StepLine';
@@ -98,18 +99,25 @@ const _StepItem = ({
     }
   }
 
-  const handlePress = React.useCallback((): void => {
-    if (isDisabled) return;
+  const handlePress = React.useCallback(
+    (event: GestureResponderEvent): void => {
+      if (isDisabled) return;
 
-    if (href) {
-      void Linking.openURL(href);
-    }
+      if (href) {
+        void Linking.openURL(href);
+      }
 
-    if (onClick) {
-      // @ts-expect-error native doesn't have MouseEvent, calling with undefined
-      onClick(undefined);
-    }
-  }, [isDisabled, href, onClick]);
+      if (onClick) {
+        /*
+      React Native's Pressable returns a GestureResponderEvent but our types expect a SyntheticEvent.
+      Until we have a way to handle platform specific types, we will have to ignore this TS error.
+      */
+        // @ts-expect-error GestureResponderEvent is not assignable to React.MouseEvent
+        onClick(event);
+      }
+    },
+    [isDisabled, href, onClick],
+  );
 
   const stepItemHeaderJSX = (
     <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.4">
