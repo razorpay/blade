@@ -57,6 +57,7 @@
       el.value = '';
       el.focus();
     }
+    handleChange({ name, value: '' });
     onClearButtonClick?.();
     baseInput?.focus();
     shouldShowClearButton = false;
@@ -98,7 +99,7 @@
   {value}
   {name}
   type="search"
-  onChange={handleChange}
+  onInput={handleChange}
   {onFocus}
   {onBlur}
   {onClick}

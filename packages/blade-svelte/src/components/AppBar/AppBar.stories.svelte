@@ -169,7 +169,7 @@
 <Story name="Variations" asChild parameters={{ docs: { disable: true } }}>
   <div style="{checkoutBackgroundStyle} {variationsStackStyle}">
     {#each trustBadgeRows as row (row.label)}
-      <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
         <AppBarLeading trustBadgeVariant={row.trustBadgeVariant}>
           {#snippet logo()}
             {@render optimizerLogo()}
@@ -180,7 +180,7 @@
         </AppBarActions>
       </AppBar>
 
-      <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
         <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant}>
           {#snippet logo()}
             {@render titleInitialsLogo()}
@@ -191,7 +191,7 @@
         </AppBarActions>
       </AppBar>
 
-      <AppBar showBackButton onBackButtonClick={noop}>
+      <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
         <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant} />
         <AppBarActions>
           {@render defaultAppBarActions()}
