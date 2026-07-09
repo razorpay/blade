@@ -90,8 +90,6 @@ describe('<QuickFilters />', () => {
       </QuickFilterGroup>,
     );
     expect(getByRole('button', { name: 'Title2' }).props.accessibilityState?.selected).toBe(true);
-    expect(getByRole('button', { name: 'Title1' }).props.accessibilityState?.selected).toBe(
-      false,
-    );
+    expect(getByRole('button', { name: 'Title1' }).props.accessibilityState?.selected).toBe(false);
   });
 });
