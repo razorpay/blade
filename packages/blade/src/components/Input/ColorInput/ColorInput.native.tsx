@@ -1,0 +1,316 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import type { View } from 'react-native';
+import type { ColorInputProps, ColorInputValue } from './types';
+import { ColorSwatch } from './ColorSwatch.native';
+import { DEFAULT_COLOR_VALUE, isValidHex, isPartialHex, isValidOpacity } from './ColorInput.utils';
+import { BaseInput, getHintType } from '~components/Input/BaseInput/BaseInput';
+import { FormLabel } from '~components/Form/FormLabel';
+import { FormHint } from '~components/Form/FormHint';
+import { useFormId } from '~components/Form/useFormId';
+import { useControllableState } from '~utils/useControllable';
+import { useId } from '~utils/useId';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/types';
+import { throwBladeError } from '~utils/logger';
+
+const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputProps> = (
+  {
+    label,
+    accessibilityLabel,
+    labelPosition = 'top',
+    size = 'medium',
+    name,
+    value,
+    defaultValue,
+    onChange,
+    onFocus,
+    onBlur,
+    showOpacity = true,
+    validationState = 'none',
+    helpText,
+    errorText,
+    successText,
+    necessityIndicator,
+    isRequired,
+    isDisabled = false,
+    autoFocus,
+    testID,
+    ...rest
+  },
+  ref,
+) => {
+  if (__DEV__) {
+    const initialOpacity = value?.opacity ?? defaultValue?.opacity;
+    if (
+      initialOpacity !== undefined &&
+      (!Number.isInteger(initialOpacity) || initialOpacity < 0 || initialOpacity > 100)
+    ) {
+      throwBladeError({
+        message: `ColorInput: opacity must be an integer between 0 and 100, received ${initialOpacity}`,
+        moduleName: 'ColorInput',
+      });
+    }
+  }
+
+  const [colorValue, setColorValue] = useControllableState<ColorInputValue>({
+    value,
+    defaultValue: defaultValue ?? DEFAULT_COLOR_VALUE,
+    onChange: (newValue) => {
+      onChange?.({ name, value: newValue });
+    },
+    shouldUpdate: (prev, next) => prev.hex !== next.hex || prev.opacity !== next.opacity,
+  });
+
+  const [opacityDisplayValue, setOpacityDisplayValue] = useState<string>(() =>
+    String(value?.opacity ?? defaultValue?.opacity ?? DEFAULT_COLOR_VALUE.opacity),
+  );
+
+  // Local display state for the hex input so partial typing (1–5 chars) stays local
+  // and doesn't corrupt the color model until exactly 6 valid chars are present.
+  const [hexDisplayValue, setHexDisplayValue] = useState<string>(() =>
+    (value?.hex ?? defaultValue?.hex ?? DEFAULT_COLOR_VALUE.hex).replace(/^#/, ''),
+  );
+
+  // Focus boundary tracking (mirrors web): fire onFocus/onBlur once on composite enter/leave.
+  const isFocusedRef = useRef(false);
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Store callbacks and current values in refs so handlers stay referentially stable.
+  const onFocusRef = useRef(onFocus);
+  useEffect(() => {
+    onFocusRef.current = onFocus;
+  }, [onFocus]);
+  const onBlurRef = useRef(onBlur);
+  useEffect(() => {
+    onBlurRef.current = onBlur;
+  }, [onBlur]);
+  const colorValueRef = useRef(colorValue);
+  useEffect(() => {
+    colorValueRef.current = colorValue;
+  }, [colorValue]);
+  const nameRef = useRef(name);
+  useEffect(() => {
+    nameRef.current = name;
+  }, [name]);
+
+  // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
+  useEffect(() => {
+    if (!isFocusedRef.current) {
+      setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
+    }
+  }, [colorValue.hex]);
+
+  useEffect(() => {
+    return () => {
+      if (blurTimeoutRef.current !== null) clearTimeout(blurTimeoutRef.current);
+    };
+  }, []);
+
+  const handleInputFocus = useCallback(() => {
+    if (blurTimeoutRef.current !== null) {
+      clearTimeout(blurTimeoutRef.current);
+      blurTimeoutRef.current = null;
+    }
+    if (!isFocusedRef.current) {
+      isFocusedRef.current = true;
+      onFocusRef.current?.({ name: nameRef.current, value: colorValueRef.current });
+    }
+  }, []);
+
+  const handleInputBlurBoundary = useCallback((blurValue: ColorInputValue) => {
+    blurTimeoutRef.current = setTimeout(() => {
+      blurTimeoutRef.current = null;
+      isFocusedRef.current = false;
+      onBlurRef.current?.({ name: nameRef.current, value: blurValue });
+    }, 0);
+  }, []);
+
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('color-input');
+  const idBase = useId('color-input');
+  const labelId = `${idBase}-label`;
+
+  const handleHexChange = useCallback(
+    ({ value: inputValue }: { name?: string; value?: string }) => {
+      // Strip a leading '#' and trim whitespace so pasting '#FF5733 ' or typing '#' works naturally.
+      const raw = (inputValue ?? '').replace(/^#/, '').trim().toUpperCase();
+      if (raw === '') {
+        setHexDisplayValue('');
+        return;
+      }
+      if (isValidHex(raw) || isPartialHex(raw)) {
+        setHexDisplayValue(raw);
+      }
+      if (isValidHex(raw)) {
+        setColorValue((prev) => ({ ...prev, hex: `#${raw}` }));
+      }
+    },
+    [setColorValue],
+  );
+
+  const handleOpacityChange = useCallback(
+    ({ value: inputValue }: { name?: string; value?: string }) => {
+      const raw = inputValue ?? '';
+      setOpacityDisplayValue(raw);
+
+      if (raw === '') {
+        return;
+      }
+
+      // Reject strings with non-digit characters (e.g. '5a', '100x').
+      if (!/^\d+$/.test(raw)) {
+        return;
+      }
+
+      const num = parseInt(raw, 10);
+      if (!Number.isNaN(num) && isValidOpacity(num)) {
+        setColorValue((prev) => ({ ...prev, opacity: num }));
+      }
+    },
+    [setColorValue],
+  );
+
+  const handleOpacityBlur = useCallback(
+    ({ value: inputValue }: { name?: string; value?: string }) => {
+      const raw = inputValue ?? '';
+      const num = parseInt(raw, 10);
+      if (raw === '' || !/^\d+$/.test(raw) || Number.isNaN(num) || !isValidOpacity(num)) {
+        setOpacityDisplayValue(String(colorValue.opacity));
+      }
+      handleInputBlurBoundary(colorValue);
+    },
+    [colorValue, handleInputBlurBoundary],
+  );
+
+  const handleSwatchChange = useCallback(
+    (hex: string) => {
+      setHexDisplayValue(hex.replace(/^#/, ''));
+      setColorValue((prev) => ({ ...prev, hex }));
+    },
+    [setColorValue],
+  );
+
+  // Hex blur resets partial display to the last committed valid value.
+  const handleHexInputBlur = useCallback(() => {
+    setHexDisplayValue(colorValue.hex.replace(/^#/, ''));
+    handleInputBlurBoundary(colorValue);
+  }, [colorValue, handleInputBlurBoundary]);
+
+  // Sync opacityDisplayValue when controlled value changes externally.
+  // Skip while focused so a controlled parent updating value mid-edit doesn't clobber partial input.
+  React.useEffect(() => {
+    if (!isFocusedRef.current) {
+      setOpacityDisplayValue(String(colorValue.opacity));
+    }
+  }, [colorValue.opacity]);
+
+  const willRenderHintText =
+    Boolean(helpText) ||
+    (validationState === 'success' && Boolean(successText)) ||
+    (validationState === 'error' && Boolean(errorText));
+
+  return (
+    <BaseBox
+      ref={ref as React.Ref<View>}
+      display="flex"
+      flexDirection="column"
+      width="100%"
+      {...metaAttribute({ name: MetaConstants.ColorInput, testID })}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
+    >
+      <BaseBox display="flex" flexDirection="column">
+        {label && (
+          <FormLabel
+            as="span"
+            position={labelPosition}
+            id={labelId}
+            size={size}
+            necessityIndicator={necessityIndicator}
+          >
+            {label}
+          </FormLabel>
+        )}
+
+        <BaseBox display="flex" flexDirection="row">
+          <BaseBox flex="1">
+            <BaseInput
+              id={inputId}
+              label={label}
+              hideLabelText
+              accessibilityLabel={accessibilityLabel ?? label ?? 'Color hex code'}
+              labelId={labelId}
+              size={size}
+              placeholder="000000"
+              value={hexDisplayValue}
+              onChange={handleHexChange}
+              onFocus={handleInputFocus}
+              onBlur={handleHexInputBlur}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              validationState={validationState}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              maxCharacters={6}
+              hideFormHint
+              textAlign="left"
+              leadingInteractionElement={
+                <ColorSwatch
+                  color={colorValue.hex}
+                  size={size}
+                  isDisabled={isDisabled}
+                  onChange={handleSwatchChange}
+                />
+              }
+            />
+          </BaseBox>
+
+          {showOpacity && (
+            <BaseBox width="80px" flexShrink={0}>
+              <BaseInput
+                id={`${inputId}-opacity`}
+                label="Opacity"
+                hideLabelText
+                accessibilityLabel="Color opacity percentage"
+                size={size}
+                placeholder="100"
+                value={opacityDisplayValue}
+                onChange={handleOpacityChange}
+                onFocus={handleInputFocus}
+                onBlur={handleOpacityBlur}
+                isDisabled={isDisabled}
+                validationState={validationState}
+                suffix="%"
+                textAlign="right"
+                hideFormHint
+              />
+            </BaseBox>
+          )}
+        </BaseBox>
+      </BaseBox>
+
+      {willRenderHintText && (
+        <FormHint
+          type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+          helpText={helpText}
+          errorText={errorText}
+          successText={successText}
+          helpTextId={helpTextId}
+          errorTextId={errorTextId}
+          successTextId={successTextId}
+          size={size}
+        />
+      )}
+    </BaseBox>
+  );
+};
+
+const ColorInput = assignWithoutSideEffects(React.forwardRef(_ColorInput), {
+  displayName: 'ColorInput',
+  componentId: 'ColorInput',
+});
+
+export { ColorInput };

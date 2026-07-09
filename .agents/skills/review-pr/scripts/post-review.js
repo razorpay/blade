@@ -141,7 +141,11 @@ const SEVERITY_EMOJI = { critical: '🔴', major: '🟠', minor: '🔵' };
 function formatInlineComment(c) {
   const confidenceStr = c.confidence != null ? ` · confidence: ${c.confidence}/10` : '';
   if (c.clarification) {
-    return [`🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`, '', c.clarification].join('\n');
+    return [
+      `🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`,
+      '',
+      c.clarification,
+    ].join('\n');
   }
   const emoji = SEVERITY_EMOJI[c.severity] || '⚪';
   const lines = [
@@ -163,7 +167,10 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   if (screenshots.length === 0) return {};
 
   const now = new Date();
-  const ts = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
+  const ts = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(
+    2,
+    '0',
+  )}-${String(now.getSeconds()).padStart(2, '0')}`;
   const destDir = `artifacts/review/PR-${prNum}/ui-critique/${ts}`;
 
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();

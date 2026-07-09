@@ -90,7 +90,7 @@ Default.storyName = 'Default';
 const WithLogoTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<OptimizerLogo />} rtbBadge="full" />
+      <AppBarLeading logo={<OptimizerLogo />} trustBadgeVariant="default" />
     </AppBar>
   );
 };
@@ -101,7 +101,7 @@ WithLogo.storyName = 'With Logo';
 const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" rtbBadge="full" />
+      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" trustBadgeVariant="default" />
       <AppBarActions>
         <IconButton
           icon={UserIcon}
@@ -142,16 +142,16 @@ const LogoAndTitleTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
 export const LogoAndTitle = LogoAndTitleTemplate.bind({});
 LogoAndTitle.storyName = 'Logo And Title';
 
-const TitleWithIconRtbTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
+const TitleWithIconBadgeTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" rtbBadge="icon" />
+      <AppBarLeading title="Maven Shop" trustBadgeVariant="icon-only" />
     </AppBar>
   );
 };
 
-export const TitleWithIconRtb = TitleWithIconRtbTemplate.bind({});
-TitleWithIconRtb.storyName = 'Title With Icon RTB';
+export const TitleWithIconBadge = TitleWithIconBadgeTemplate.bind({});
+TitleWithIconBadge.storyName = 'Title With Icon Badge';
 
 const SubtleVariantTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
@@ -180,7 +180,7 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <Box height="320px" overflowY="auto" backgroundColor="surface.background.gray.subtle">
       <AppBar {...args} isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" rtbBadge="full" />
+        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" trustBadgeVariant="default" />
         <AppBarActions>
           <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
         </AppBarActions>
@@ -204,7 +204,7 @@ const MerchantCheckoutTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => 
       backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}
       accessibilityLabel="Mavenshop checkout"
     >
-      <AppBarLeading title="Mavenshop" rtbBadge="full" />
+      <AppBarLeading title="Mavenshop" trustBadgeVariant="default" />
       <AppBarActions>
         <IconButton
           icon={UserIcon}

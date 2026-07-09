@@ -96,9 +96,9 @@ export {
 export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
 export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
 
-// RTBBadge
-export { RTBBadge } from './RTBBadge';
-export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+// TrustBadge
+export { TrustBadge } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
@@ -203,5 +203,40 @@ export type {
   SnapPoints,
 } from './BottomSheet';
 
+// SegmentedControl
+export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';
+export type {
+  SegmentedControlProps,
+  SegmentedControlItemProps,
+  SegmentedControlSize,
+} from './SegmentedControl';
+
+// Input
+export { TextInput } from './Input/TextInput';
+export type { TextInputProps, TextInputType } from './Input/TextInput';
+export { SearchInput } from './Input/SearchInput';
+export type { SearchInputProps } from './Input/SearchInput';
+export { PasswordInput } from './Input/PasswordInput';
+export type { PasswordInputProps } from './Input/PasswordInput';
+export { OTPInput } from './Input/OTPInput';
+export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
+export { PhoneNumberInput } from './Input/PhoneNumberInput';
+export type {
+  PhoneNumberInputProps,
+  PhoneNumberInputInstance,
+  PhoneNumberChangePayload,
+} from './Input/PhoneNumberInput';
+
+// InputGroup
+export { InputGroup, InputRow } from './InputGroup';
+export type { InputGroupProps, InputRowProps } from './InputGroup';
+
 // BladeProvider
 export * from './BladeProvider';
+
+// Tabs
+export { default as Tabs } from './Tabs/Tabs.svelte';
+export { default as TabList } from './Tabs/TabList.svelte';
+export { default as TabItem } from './Tabs/TabItem.svelte';
+export { default as TabPanel } from './Tabs/TabPanel.svelte';
+export type { TabsProps, TabItemProps, TabListProps, TabPanelProps } from './Tabs/types';
