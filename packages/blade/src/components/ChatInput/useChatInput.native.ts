@@ -7,17 +7,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'onSubmit'
-  | 'isDisabled'
-  | 'isGenerating'
-  | 'onStop'
-  | 'fileList'
-  | 'onFileChange'
-  | 'onFileRemove'
-  | 'onFileDismiss'
+  'value' | 'defaultValue' | 'onChange' | 'onSubmit' | 'fileList' | 'onFileRemove' | 'onFileDismiss'
 >;
 
 const useChatInput = (
