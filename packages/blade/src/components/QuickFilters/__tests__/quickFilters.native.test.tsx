@@ -20,15 +20,13 @@ describe('<QuickFilters />', () => {
 
   it('should fire onChange correctly for single selection', () => {
     const onChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <QuickFilterGroup selectionType="single" onChange={onChange}>
         <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
         <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
-    // On native, radios don't get their accessible name from adjacent Text nodes;
-    // select by index within the rendered list.
-    fireEvent.press(getAllByRole('radio')[0]);
+    fireEvent.press(getByRole('button', { name: 'Title1' }));
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
         name: expect.stringMatching(/^quick-filter-group-\d+$/),
@@ -39,20 +37,20 @@ describe('<QuickFilters />', () => {
 
   it('should fire onChange correctly for multiple selection', () => {
     const onChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <QuickFilterGroup selectionType="multiple" onChange={onChange}>
         <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
         <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
-    fireEvent.press(getAllByRole('checkbox')[0]);
+    fireEvent.press(getByRole('button', { name: 'Title1' }));
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
         name: expect.stringMatching(/^quick-filter-group-\d+$/),
         values: expect.arrayContaining(['value1']),
       }),
     );
-    fireEvent.press(getAllByRole('checkbox')[1]);
+    fireEvent.press(getByRole('button', { name: 'Title2' }));
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
         name: expect.stringMatching(/^quick-filter-group-\d+$/),
@@ -63,14 +61,14 @@ describe('<QuickFilters />', () => {
 
   it('should not fire onChange if the same radio is pressed again', () => {
     const onChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <QuickFilterGroup selectionType="single" onChange={onChange}>
         <QuickFilter title="Title1" value="value1" trailing={<Counter value={234} />} />
         <QuickFilter title="Title2" value="value2" trailing={<Counter value={234} />} />
       </QuickFilterGroup>,
     );
-    fireEvent.press(getAllByRole('radio')[0]);
-    fireEvent.press(getAllByRole('radio')[0]);
+    fireEvent.press(getByRole('button', { name: 'Title1' }));
+    fireEvent.press(getByRole('button', { name: 'Title1' }));
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -85,16 +83,15 @@ describe('<QuickFilters />', () => {
   });
 
   it('should reflect controlled value via accessibilityState', () => {
-    const { getAllByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <QuickFilterGroup selectionType="single" value="value2">
         <QuickFilter title="Title1" value="value1" />
         <QuickFilter title="Title2" value="value2" />
       </QuickFilterGroup>,
     );
-    const radios = getAllByRole('radio');
-    // value2 is the second radio (index 1); it should be checked
-    expect(radios[1].props.accessibilityState?.checked).toBe(true);
-    // value1 is the first radio (index 0); it should not be checked
-    expect(radios[0].props.accessibilityState?.checked).toBe(false);
+    expect(getByRole('button', { name: 'Title2' }).props.accessibilityState?.selected).toBe(true);
+    expect(getByRole('button', { name: 'Title1' }).props.accessibilityState?.selected).toBe(
+      false,
+    );
   });
 });
