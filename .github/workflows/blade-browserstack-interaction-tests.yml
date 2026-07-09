@@ -1,0 +1,121 @@
+name: Blade BrowserStack Interaction Tests
+
+# Runs Blade's Storybook interaction tests on real older browsers via BrowserStack.
+#
+# This workflow is OPT-IN — it does NOT run on every PR.
+# Trigger it by either:
+#   1. Adding the label "Run BrowserStack Interaction Tests" to a PR
+#   2. Manually dispatching from the Actions tab
+#
+# Required GitHub secrets:
+#   BROWSERSTACK_USERNAME    – BrowserStack account username
+#   BROWSERSTACK_ACCESS_KEY  – BrowserStack access key
+#
+# See packages/blade/docs/browserstack-interaction-tests.md for full documentation.
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser (chrome, edge, firefox)'
+        required: false
+        default: 'chrome'
+      browser_version:
+        description: 'Browser version (e.g. 83, latest)'
+        required: false
+        default: '83'
+      os:
+        description: 'OS (Windows, macOS)'
+        required: false
+        default: 'Windows'
+      os_version:
+        description: 'OS version (e.g. 10, 11)'
+        required: false
+        default: '10'
+  pull_request:
+    types: [labeled]
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  browserstack-interaction-tests:
+    name: BrowserStack Interaction Tests
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run BrowserStack Interaction Tests' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - browser: chrome
+            browser_version: '83'
+            os: Windows
+            os_version: '10'
+          - browser: edge
+            browser_version: '83'
+            os: Windows
+            os_version: '10'
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+
+      - name: Use Node v22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Check BrowserStack credentials
+        id: bs_creds
+        run: |
+          if [ -z "${{ secrets.BROWSERSTACK_USERNAME }}" ] || [ -z "${{ secrets.BROWSERSTACK_ACCESS_KEY }}" ]; then
+            echo "::error::BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY secrets are required."
+            echo "::error::Add them in GitHub Settings > Secrets and Variables > Actions."
+            exit 1
+          fi
+          echo "has_creds=true" >> $GITHUB_OUTPUT
+        env:
+          BS_USER: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+      - name: Determine browser target
+        id: target
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "browser=${{ github.event.inputs.browser }}" >> $GITHUB_OUTPUT
+            echo "browser_version=${{ github.event.inputs.browser_version }}" >> $GITHUB_OUTPUT
+            echo "os=${{ github.event.inputs.os }}" >> $GITHUB_OUTPUT
+            echo "os_version=${{ github.event.inputs.os_version }}" >> $GITHUB_OUTPUT
+          else
+            echo "browser=${{ matrix.browser }}" >> $GITHUB_OUTPUT
+            echo "browser_version=${{ matrix.browser_version }}" >> $GITHUB_OUTPUT
+            echo "os=${{ matrix.os }}" >> $GITHUB_OUTPUT
+            echo "os_version=${{ matrix.os_version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Start BrowserStack Local
+        uses: browserstack/browserstack-local-cli@v2
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          local-identifier: ${{ github.run_id }}-${{ steps.target.outputs.browser }}
+
+      - name: Install Playwright Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2t64 libffi8 libx264-dev
+
+      - name: Run BrowserStack Interaction Tests
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          BROWSERSTACK_BROWSER: ${{ steps.target.outputs.browser }}
+          BROWSERSTACK_BROWSER_VERSION: ${{ steps.target.outputs.browser_version }}
+          BROWSERSTACK_OS: ${{ steps.target.outputs.os }}
+          BROWSERSTACK_OS_VERSION: ${{ steps.target.outputs.os_version }}
+        working-directory: packages/blade
+        run: |
+          echo "Running BrowserStack interaction tests on ${{ steps.target.outputs.os }} ${{ steps.target.outputs.os_version }} / ${{ steps.target.outputs.browser }} ${{ steps.target.outputs.browser_version }}"
+          yarn test:react:interaction:browserstack:ci
