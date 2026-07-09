@@ -7,8 +7,11 @@
  *   --bs-z-index   → z-index for surface and backdrop
  */
 
-/* ===== SURFACE ===== */
+/* Shared easing curve for BottomSheet transitions.
+ * Inherited by .surface, .body, and .footer via CSS custom property cascade. */
 .surface {
+  --bs-easing: cubic-bezier(0.15, 0, 0.24, 0.97);
+
   position: fixed;
   left: 0;
   right: 0;
@@ -34,7 +37,7 @@
   will-change: transform, opacity, height;
   transition-property: transform, opacity, height;
   transition-duration: var(--duration-moderate);
-  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  transition-timing-function: var(--bs-easing);
 }
 
 .surface[data-state='open'] {
@@ -319,7 +322,7 @@
   transform: translateY(8px);
   transition-property: transform;
   transition-duration: var(--duration-moderate);
-  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  transition-timing-function: var(--bs-easing);
   will-change: transform;
 }
 
@@ -367,7 +370,7 @@
   transform: translateY(8px);
   transition-property: transform;
   transition-duration: var(--duration-moderate);
-  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  transition-timing-function: var(--bs-easing);
   will-change: transform;
 }
 

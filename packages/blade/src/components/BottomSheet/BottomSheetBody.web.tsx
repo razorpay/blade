@@ -10,10 +10,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { useTheme } from '~components/BladeProvider';
-import { makeMotionTime } from '~utils/makeMotionTime';
-
-const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
+import { useBottomSheetTransitionStyle } from './bottomSheetAnimationUtils';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -39,7 +36,7 @@ const _BottomSheetBody = ({
     isDragging,
     bind,
   } = useBottomSheetContext();
-  const { theme } = useTheme();
+  const transitionStyle = useBottomSheetTransitionStyle(isOpen, isDragging);
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
 
@@ -76,11 +73,7 @@ const _BottomSheetBody = ({
       flexShrink={1}
       style={{
         ...bodyStyles,
-        transform: isOpen ? 'translateY(0px)' : 'translateY(8px)',
-        transitionProperty: 'transform',
-        transitionDuration: isDragging ? undefined : makeMotionTime(theme.motion.duration.moderate),
-        transitionTimingFunction: BOTTOM_SHEET_EASING,
-        willChange: 'transform',
+        ...transitionStyle,
       }}
       overflow={overflow}
       // Passing isContentDragging to bind()
