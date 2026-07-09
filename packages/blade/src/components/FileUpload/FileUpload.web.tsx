@@ -8,7 +8,7 @@ import type {
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
-  fileUploadHeightTokens,
+  fileUploadInputHeightTokens,
   fileUploadLinkBorderTokens,
   getFileUploadInputHoverTokens,
 } from './fileUploadTokens';
@@ -17,6 +17,7 @@ import { isFileAccepted } from './isFileAccepted';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
+import { UploadIcon } from '~components/Icons';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { screenReaderStyles } from '~components/VisuallyHidden';
@@ -227,7 +228,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
   };
 
-  const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
+  const isSizeSmall = size === 'small';
+  const computedHeight = isSizeVariable
+    ? height ?? '100%'
+    : makeSize(fileUploadInputHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
 
   return (
@@ -268,53 +272,29 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           }}
         >
           <BaseBox display="flex" flexDirection="column" width="100%">
-            <StyledFileUploadWrapper
-              size={size}
-              isDisabled={isDisabled}
-              isActive={isActive}
-              display="flex"
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              height={computedHeight}
-              width={computedWidth}
-              borderRadius="medium"
-              borderWidth="thin"
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              onClick={() => setIsActive(true)}
-              data-comp="f"
-              style={{
-                ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
-              }}
-            >
-              <Box
+            {isSizeSmall ? (
+              <StyledFileUploadWrapper
+                size={size}
+                isDisabled={isDisabled}
+                isActive={isActive}
                 display="flex"
+                flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
-                flexDirection={{ base: 'column', s: `${isSizeVariable ? 'column' : 'row'}` }}
-                gap={makeSize(6)}
-                padding="spacing.3"
+                gap="spacing.2"
+                height={computedHeight}
+                width={computedWidth}
+                borderRadius="small"
+                paddingX="spacing.3"
+                paddingY="spacing.2"
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                onClick={() => setIsActive(true)}
+                style={{
+                  ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
+                }}
               >
-                {isSizeVariable && (
-                  <FileUploadItemIcon
-                    fileName={getFileIconExtension(accept)}
-                    uploadStatus="success"
-                  />
-                )}
-
-                <Text
-                  color={
-                    isDisabled
-                      ? fileUploadColorTokens.text.disabled
-                      : fileUploadColorTokens.text.default
-                  }
-                >
-                  {isSizeVariable
-                    ? dropAreaText ?? 'Drag and drop your files here'
-                    : 'Drag files here or'}{' '}
-                </Text>
                 <SelectorInput
                   id={inputId}
                   hoverTokens={getFileUploadInputHoverTokens()}
@@ -334,36 +314,119 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   ref={getInnerMotionRef({ _motionMeta, ref: mergedRef })}
                   {...makeAnalyticsAttribute(rest)}
                 />
-
+                <UploadIcon
+                  size="small"
+                  color={
+                    isDisabled ? 'interactive.icon.gray.muted' : 'interactive.icon.gray.normal'
+                  }
+                />
+                <Text
+                  size="small"
+                  color={
+                    isDisabled ? 'interactive.text.gray.muted' : 'interactive.text.gray.normal'
+                  }
+                >
+                  {isDisabled ? 'Upload...' : 'Upload'}
+                </Text>
+              </StyledFileUploadWrapper>
+            ) : (
+              <StyledFileUploadWrapper
+                size={size}
+                isDisabled={isDisabled}
+                isActive={isActive}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                height={computedHeight}
+                width={computedWidth}
+                borderRadius="medium"
+                borderWidth="thin"
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                onClick={() => setIsActive(true)}
+                data-comp="f"
+                style={{
+                  ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
+                }}
+              >
                 <Box
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
-                  flexDirection={{ base: 'column', s: 'row' }}
-                  borderRadius="small"
+                  flexDirection={{ base: 'column', s: `${isSizeVariable ? 'column' : 'row'}` }}
+                  gap={makeSize(6)}
+                  padding="spacing.3"
                 >
+                  {isSizeVariable && (
+                    <FileUploadItemIcon
+                      fileName={getFileIconExtension(accept)}
+                      uploadStatus="success"
+                    />
+                  )}
+
+                  <Text
+                    color={
+                      isDisabled
+                        ? fileUploadColorTokens.text.disabled
+                        : fileUploadColorTokens.text.default
+                    }
+                  >
+                    {isSizeVariable
+                      ? dropAreaText ?? 'Drag and drop your files here'
+                      : 'Drag files here or'}{' '}
+                  </Text>
+                  <SelectorInput
+                    id={inputId}
+                    hoverTokens={getFileUploadInputHoverTokens()}
+                    isChecked={false}
+                    isDisabled={isDisabled}
+                    inputProps={{
+                      name,
+                      type: 'file',
+                      onChange: handleInputChange,
+                      multiple: isMultiple,
+                      required: isRequired,
+                      disabled: isDisabled,
+                      accept,
+                      onBlur: () => setIsActive(false),
+                      ...accessibilityProps,
+                    }}
+                    ref={getInnerMotionRef({ _motionMeta, ref: mergedRef })}
+                    {...makeAnalyticsAttribute(rest)}
+                  />
+
                   <Box
                     display="flex"
-                    flexDirection="row"
+                    justifyContent="center"
                     alignItems="center"
-                    borderBottomColor={
-                      fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
-                    }
-                    borderBottomWidth={fileUploadLinkBorderTokens.width.default}
+                    flexDirection={{ base: 'column', s: 'row' }}
+                    borderRadius="small"
                   >
-                    <Text
-                      color={
-                        isDisabled
-                          ? fileUploadColorTokens.link.disabled
-                          : fileUploadColorTokens.link.default
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      alignItems="center"
+                      borderBottomColor={
+                        fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
                       }
+                      borderBottomWidth={fileUploadLinkBorderTokens.width.default}
                     >
-                      {actionButtonText ?? 'Upload'}
-                    </Text>
+                      <Text
+                        color={
+                          isDisabled
+                            ? fileUploadColorTokens.link.disabled
+                            : fileUploadColorTokens.link.default
+                        }
+                      >
+                        {actionButtonText ?? 'Upload'}
+                      </Text>
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-            </StyledFileUploadWrapper>
+              </StyledFileUploadWrapper>
+            )}
           </BaseBox>
         </SelectorLabel>
         {isOneFileSelectedWithSingleUpload && (

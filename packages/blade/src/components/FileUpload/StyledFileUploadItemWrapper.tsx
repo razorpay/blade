@@ -23,10 +23,13 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       makeMotionTime(getIn(theme.motion, fileUploadMotionTokens.duration)),
     );
 
+    const isSmall = size === 'small';
+
     return {
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
+      alignItems: isSmall ? 'center' : undefined,
       justifyContent: 'space-between',
       borderStyle: 'solid',
       minHeight: makeSize(fileUploadHeightTokens[size === 'variable' ? 'large' : size]),
@@ -40,7 +43,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
           ? theme.colors.interactive.border.negative.faded
           : theme.colors.surface.border.gray.subtle,
       wordBreak: 'break-all',
-      boxShadow: `0px 0.5px 4px 0px ${boxShadowColor}`,
+      boxShadow: isSmall ? 'none' : `0px 0.5px 4px 0px ${boxShadowColor}`,
 
       ...(status !== 'uploading' && {
         '&:hover': {

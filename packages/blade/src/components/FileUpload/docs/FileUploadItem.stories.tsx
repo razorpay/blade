@@ -40,7 +40,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['medium', 'large'],
+      options: ['small', 'medium', 'large'],
     },
     onPreview: { action: 'preview clicked' },
     onRemove: { action: 'remove clicked' },
@@ -141,6 +141,103 @@ LargeSize.args = {
   onPreview: ({ file }) => action('onPreview')(file.name),
   onRemove: ({ file }) => action('onRemove')(file.name),
 };
+
+// Small Size
+export const SmallSize = FileUploadItemTemplate.bind({});
+SmallSize.storyName = 'Small Size';
+SmallSize.args = {
+  file: createMockFile('invoice.pdf', 1024 * 256, { status: 'success' }),
+  size: 'small',
+  onPreview: ({ file }) => action('onPreview')(file.name),
+  onRemove: ({ file }) => action('onRemove')(file.name),
+};
+
+// Small Size - All States
+const SmallAllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
+  return (
+    <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.4">
+      <Heading size="small">Small - Success</Heading>
+      <FileUploadItem
+        file={createMockFile('logo.png', 1024 * 120, { status: 'success' })}
+        size="small"
+        onPreview={({ file }) => action('onPreview')(file.name)}
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+
+      <Heading size="small">Small - Uploading</Heading>
+      <FileUploadItem
+        file={createMockFile('photo.jpg', 1024 * 1024 * 2, {
+          status: 'uploading',
+          uploadPercent: 42,
+        })}
+        size="small"
+        onDismiss={({ file }) => action('onDismiss')(file.name)}
+      />
+
+      <Heading size="small">Small - Error</Heading>
+      <FileUploadItem
+        file={createMockFile('corrupted.zip', 1024 * 1024, {
+          status: 'error',
+          errorText: 'Upload failed',
+        })}
+        size="small"
+        onReupload={({ file }) => action('onReupload')(file.name)}
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+    </Box>
+  );
+};
+
+export const SmallAllStates = SmallAllStatesTemplate.bind({});
+SmallAllStates.storyName = 'Small Size - All States';
+
+// Thumbnail Preview
+const ThumbnailTemplate: StoryFn<typeof FileUploadItem> = () => {
+  const sampleImageUrl =
+    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhMWEyZSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0iIzRhOTBkOSIvPjxwYXRoIGQ9Ik0wIDE0MCBMNjAgMTAwIEwxMjAgMTMwIEwxNjAgOTAgTDIwMCAxMjAgTDIwMCAyMDAgTDAgMjAwIFoiIGZpbGw9IiMyZDZiNGUiLz48L3N2Zz4=';
+
+  return (
+    <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.4">
+      <Heading size="small">Small with Thumbnail</Heading>
+      <FileUploadItem
+        file={createMockFile('photo.jpg', 1024 * 500, { status: 'success' })}
+        size="small"
+        thumbnail={sampleImageUrl}
+        onPreview={({ file }) => action('onPreview')(file.name)}
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+
+      <Heading size="small">Medium with Thumbnail</Heading>
+      <FileUploadItem
+        file={createMockFile('banner.png', 1024 * 1024 * 1.2, { status: 'success' })}
+        size="medium"
+        thumbnail={sampleImageUrl}
+        onPreview={({ file }) => action('onPreview')(file.name)}
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+
+      <Heading size="small">Large with Thumbnail</Heading>
+      <FileUploadItem
+        file={createMockFile('hero-image.jpg', 1024 * 1024 * 3, { status: 'success' })}
+        size="large"
+        thumbnail={sampleImageUrl}
+        onPreview={({ file }) => action('onPreview')(file.name)}
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+
+      <Heading size="small">Thumbnail with broken URL (fallback to icon)</Heading>
+      <FileUploadItem
+        file={createMockFile('missing.png', 1024 * 200, { status: 'success' })}
+        size="medium"
+        thumbnail="https://invalid-url-that-will-fail.example/image.png"
+        onRemove={({ file }) => action('onRemove')(file.name)}
+      />
+    </Box>
+  );
+};
+
+export const ThumbnailPreview = ThumbnailTemplate.bind({});
+ThumbnailPreview.storyName = 'Thumbnail Preview';
 
 // All States
 const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {

@@ -24,8 +24,21 @@ const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | Eas
 };
 
 const fileUploadHeightTokens = {
+  small: size['32'],
   medium: size['56'],
   large: size['64'],
+};
+
+const fileUploadInputHeightTokens = {
+  small: size['32'],
+  medium: size['56'],
+  large: size['64'],
+};
+
+const fileUploadThumbnailSizeTokens = {
+  small: size['24'],
+  medium: size['48'],
+  large: size['56'],
 };
 
 const fileUploadColorTokens = {
@@ -86,4 +99,6 @@ export {
   fileUploadColorTokens,
   fileUploadLinkBorderTokens,
   fileUploadHeightTokens,
+  fileUploadInputHeightTokens,
+  fileUploadThumbnailSizeTokens,
 };
