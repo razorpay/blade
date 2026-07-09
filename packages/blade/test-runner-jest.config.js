@@ -58,9 +58,7 @@ if (isBrowserStack) {
       'browserstack.username': BS_USERNAME,
       'browserstack.accessKey': BS_ACCESS_KEY,
       'browserstack.local': 'true',
-      ...(BS_LOCAL_IDENTIFIER
-        ? { 'browserstack.localIdentifier': BS_LOCAL_IDENTIFIER }
-        : {}),
+      ...(BS_LOCAL_IDENTIFIER ? { 'browserstack.localIdentifier': BS_LOCAL_IDENTIFIER } : {}),
       'browserstack.project': 'Blade',
       'browserstack.buildName': BUILD_NAME,
       'browserstack.sessionName': `blade-interaction-${SESSION_NAME}`,
