@@ -66,16 +66,16 @@ jobs:
 
       - name: Check BrowserStack credentials
         id: bs_creds
+        env:
+          BS_USER: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
         run: |
-          if [ -z "${{ secrets.BROWSERSTACK_USERNAME }}" ] || [ -z "${{ secrets.BROWSERSTACK_ACCESS_KEY }}" ]; then
+          if [ -z "$BS_USER" ] || [ -z "$BS_KEY" ]; then
             echo "::error::BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY secrets are required."
             echo "::error::Add them in GitHub Settings > Secrets and Variables > Actions."
             exit 1
           fi
           echo "has_creds=true" >> $GITHUB_OUTPUT
-        env:
-          BS_USER: ${{ secrets.BROWSERSTACK_USERNAME }}
-          BS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
       - name: Determine browser target
         id: target
