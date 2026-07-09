@@ -96,7 +96,9 @@ module.exports = {
       skipLaunch: true,
       // Map the requested browser type for jest-playwright's internal bookkeeping.
       // The actual browser is determined by the BrowserStack CDP caps above.
-      browsers: [BS_BROWSER === 'edge' ? 'chromium' : BS_BROWSER === 'firefox' ? 'firefox' : 'chromium'],
+      browsers: [
+        BS_BROWSER === 'edge' ? 'chromium' : BS_BROWSER === 'firefox' ? 'firefox' : 'chromium',
+      ],
     },
   },
 };
