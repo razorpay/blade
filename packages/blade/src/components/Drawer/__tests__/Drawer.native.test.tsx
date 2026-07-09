@@ -88,12 +88,10 @@ describe('<Drawer /> (native)', () => {
     expect(getByText('Test Content')).toBeTruthy();
   });
 
-  it('should not mount content while closed even when isLazy is false', () => {
-    // With the conditional-Portal-mount pattern the drawer subtree only mounts while
-    // open, so `isLazy` no longer eagerly mounts content behind a closed drawer.
-    const { queryByText } = renderWithTheme(<BasicDrawer isLazy={false} />);
+  it('should mount content while closed when isLazy is false', () => {
+    const { getByText } = renderWithTheme(<BasicDrawer isLazy={false} />);
 
-    expect(queryByText('Test Content')).toBeNull();
+    expect(getByText('Test Content')).toBeTruthy();
   });
 
   it('should close drawer via the header close button', () => {

@@ -32,11 +32,12 @@ const _Drawer = ({
   accessibilityLabel,
   showOverlay = true,
   initialFocusRef,
-  isLazy: _isLazy = true,
+  isLazy = true,
   testID,
   ...rest
 }: DrawerProps): React.ReactElement | null => {
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
+  const closeButtonRef = React.useRef(null);
 
   useVerifyAllowedChildren({
     children,
@@ -56,12 +57,14 @@ const _Drawer = ({
   // - isMounted stays true through the exit animation, then flips false via onExitComplete.
   // - isVisible mirrors isOpen and drives the reanimated slide/opacity.
   // - isExiting is true while the drawer is animating out (mounted but not open).
-  const [isMounted, setIsMounted] = React.useState<boolean>(isOpen);
+  const [isMounted, setIsMounted] = React.useState<boolean>(isOpen || !isLazy);
   const isVisible = isOpen;
   const isExiting = isMounted && !isOpen;
+  const hasEverOpenedRef = React.useRef(isOpen);
 
   React.useEffect(() => {
     if (isOpen) {
+      hasEverOpenedRef.current = true;
       setIsMounted(true);
     }
   }, [isOpen]);
@@ -72,7 +75,7 @@ const _Drawer = ({
     // when the drawer had actually been opened and is now finishing its exit — never
     // on the initial closed render.
     setIsMounted((prevIsMounted) => {
-      if (prevIsMounted) {
+      if (prevIsMounted && hasEverOpenedRef.current) {
         onUnmount?.();
       }
       return false;
@@ -91,7 +94,7 @@ const _Drawer = ({
     if (isOpen) {
       addToDrawerStack({ elementId: drawerId, onDismiss });
       // Move accessibility focus to the requested element (parity with web initialFocus)
-      focusOnElement(initialFocusRef?.current ?? null);
+      focusOnElement(initialFocusRef?.current ?? closeButtonRef.current ?? null);
     } else {
       removeFromDrawerStack({ elementId: drawerId });
     }
@@ -109,6 +112,7 @@ const _Drawer = ({
   const contextValue = React.useMemo(
     () => ({
       close: onDismiss,
+      closeButtonRef,
       stackingLevel,
       isExiting,
     }),
@@ -142,7 +146,7 @@ const _Drawer = ({
   // Presence is driven by `isMounted`: set true on open, flipped false by
   // `handleExitComplete` after the exit animation so the slide-out still plays before
   // the Portal unmounts. `children` render whenever the drawer is mounted.
-  return isMounted ? (
+  return isMounted || !isLazy ? (
     <Portal hostName="BladeBottomSheetPortal">
       <StackingContext.Provider value={stackContextValue}>
         <DrawerContext.Provider value={contextValue}>
