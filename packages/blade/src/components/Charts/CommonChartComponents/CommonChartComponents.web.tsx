@@ -518,7 +518,7 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
     opacity: $isHidden ? 0.4 : 1,
     background: 'none',
     border: 'none',
-    padding: 0,
+    padding: theme.spacing[2],
     '& p': {
       color: theme.colors.surface.text.gray.muted,
       textDecoration: $isHidden ? 'line-through' : 'none',

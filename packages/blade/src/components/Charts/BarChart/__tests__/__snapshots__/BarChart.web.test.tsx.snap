@@ -931,7 +931,7 @@ exports[`<BarChart /> should render complete chart with all components 1`] = `
   opacity: 1;
   background: none;
   border: none;
-  padding: 0;
+  padding: 4px;
 }
 
 .c4.c4.c4.c4.c4 p {
