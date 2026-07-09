@@ -576,7 +576,7 @@ const LegendItem = ({
             width: theme.spacing[4],
             height: theme.spacing[4],
             display: 'inline-block',
-            borderRadius: theme.border.radius.small,
+            borderRadius: theme.border.radius['2xsmall'],
           }}
         />
         <Text size="medium" color="surface.text.gray.muted">
