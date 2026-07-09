@@ -80,7 +80,12 @@ const QuickFilter = React.forwardRef<BladeElementRef, QuickFilterProps>(
     const isQuickFilterSelected = selectedQuickFilters.includes(value);
 
     return (
-      <Pressable onPress={() => onSelect(value)}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={title}
+        accessibilityState={{ selected: isQuickFilterSelected }}
+        onPress={() => onSelect(value)}
+      >
         <StyledQuickFilterWrapper
           isSelected={isQuickFilterSelected}
           {...makeAnalyticsAttribute(rest)}

@@ -15,9 +15,8 @@ const quickFilterColorTokens = {
 } as const;
 
 /**
- * On native the wrapper is a View rather than a Pressable/label.
- * The inner Radio or Checkbox component owns the press target and handles selection
- * state — there is no <label> equivalent that extends the tap area.
+ * On native the wrapper is a styled View inside a parent Pressable (see QuickFilter.native.tsx).
+ * The Pressable owns the tap target; inner Radio/Checkbox are visual-only (pointerEvents="none").
  * Background color is driven by isSelected from context, mirroring web visual.
  *
  * Uses BaseBox (not View) so that styled-components/native can infer the DefaultTheme

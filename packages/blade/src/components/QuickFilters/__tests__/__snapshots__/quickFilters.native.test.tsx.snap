@@ -82,13 +82,15 @@ exports[`<QuickFilters /> should render correctly with multiple selectionType 1`
               }
             >
               <View
+                accessibilityLabel="Option A"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
                     "disabled": undefined,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -326,13 +328,15 @@ exports[`<QuickFilters /> should render correctly with multiple selectionType 1`
                 </View>
               </View>
               <View
+                accessibilityLabel="Option B"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
                     "disabled": undefined,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -661,13 +665,15 @@ exports[`<QuickFilters /> should render values correctly 1`] = `
               }
             >
               <View
+                accessibilityLabel="Title1"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
                     "disabled": undefined,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
@@ -982,13 +988,15 @@ exports[`<QuickFilters /> should render values correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityLabel="Title2"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
                     "disabled": undefined,
                     "expanded": undefined,
-                    "selected": undefined,
+                    "selected": false,
                   }
                 }
                 accessibilityValue={
