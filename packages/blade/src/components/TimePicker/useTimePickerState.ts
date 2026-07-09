@@ -81,9 +81,9 @@ export const useTimePickerState = ({
   });
 
   const handleApply = React.useCallback(() => {
+    onChange?.({ value: timeValue });
     setOldTimeValue(internalTimeValue);
     if (showFooterActions) {
-      onChange?.({ value: timeValue });
       onApply?.({ value: timeValue });
     }
     setControllableIsOpen(() => false);
