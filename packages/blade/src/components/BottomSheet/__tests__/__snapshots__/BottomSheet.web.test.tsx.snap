@@ -621,7 +621,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
               class="c11"
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
-              style="user-select: auto;"
+              style="user-select: auto; transform: translateY(8px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
             >
               <div
                 class="c12"
@@ -1702,7 +1702,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           class="c31"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto;"
+          style="user-select: auto; transform: translateY(0px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
         >
           <div
             class="c32"
@@ -1720,6 +1720,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
         <div
           class="c34"
           data-blade-component="bottom-sheet-footer"
+          style="transform: translateY(0px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
         >
           <div
             class="c29 c30"
@@ -2056,7 +2057,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
           class="c9"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto;"
+          style="user-select: auto; transform: translateY(0px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
         >
           <div
             class="c10"

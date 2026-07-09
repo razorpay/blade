@@ -2354,7 +2354,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             class="c42"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
-            style="user-select: auto;"
+            style="user-select: auto; transform: translateY(0px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
           >
             <div
               class="c43"
@@ -2460,6 +2460,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
           <div
             class="c52"
             data-blade-component="bottom-sheet-footer"
+            style="transform: translateY(0px); transition-property: transform; transition-duration: 280ms; transition-timing-function: cubic-bezier(.15,0,.24,.97); will-change: transform;"
           >
             <div
               class="c40 c41"

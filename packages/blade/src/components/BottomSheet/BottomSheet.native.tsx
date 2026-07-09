@@ -204,6 +204,7 @@ const _BottomSheet = ({
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(_isOpen),
+      isDragging: false,
       close: handleOnClose,
       positionY: 0,
       headerHeight,
