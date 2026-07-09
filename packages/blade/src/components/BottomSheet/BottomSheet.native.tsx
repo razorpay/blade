@@ -80,31 +80,16 @@ const _BottomSheet = ({
   const [hasBodyPadding, setHasBodyPadding] = React.useState(true);
   const [isHeaderEmpty, setIsHeaderEmpty] = React.useState(false);
   const initialSnapPoint = React.useRef<number>(0);
-  const lastSnappedIndexRef = React.useRef<number | null>(null);
+  const lastSnappedSnapPointRef = React.useRef<string | null>(null);
   const isOpenRef = React.useRef(Boolean(_isOpen));
   isOpenRef.current = Boolean(_isOpen);
   // Gorhom emits `onClose` for programmatic snap/close as well as user dismiss.
-  // Suppress parent `onDismiss` during our own sheet animations.
-  const suppressDismissRef = React.useRef(false);
-  const suppressDismissTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Increment before our own animations; consume one count per `onClose` so we
+  // stay in sync with Gorhom instead of relying on a timeout.
+  const suppressDismissCountRef = React.useRef(0);
 
-  const suppressDismiss = React.useCallback((duration = 600): void => {
-    if (suppressDismissTimeoutRef.current) {
-      clearTimeout(suppressDismissTimeoutRef.current);
-    }
-    suppressDismissRef.current = true;
-    suppressDismissTimeoutRef.current = setTimeout(() => {
-      suppressDismissRef.current = false;
-      suppressDismissTimeoutRef.current = null;
-    }, duration);
-  }, []);
-
-  React.useEffect(() => {
-    return () => {
-      if (suppressDismissTimeoutRef.current) {
-        clearTimeout(suppressDismissTimeoutRef.current);
-      }
-    };
+  const suppressDismiss = React.useCallback((): void => {
+    suppressDismissCountRef.current += 1;
   }, []);
 
   const totalHeight = React.useMemo(() => {
@@ -166,7 +151,10 @@ const _BottomSheet = ({
 
   const handleSheetClosed = React.useCallback(() => {
     if (!isDismissible) return;
-    if (suppressDismissRef.current) return;
+    if (suppressDismissCountRef.current > 0) {
+      suppressDismissCountRef.current -= 1;
+      return;
+    }
     // Ignore stale close events once React state is already closed.
     if (!isOpenRef.current) return;
     dismissSheet();
@@ -174,9 +162,7 @@ const _BottomSheet = ({
 
   const handleOnOpen = React.useCallback(() => {
     suppressDismiss();
-    const targetIndex = initialSnapPoint.current;
-    lastSnappedIndexRef.current = targetIndex;
-    sheetRef.current?.snapToIndex(targetIndex);
+    sheetRef.current?.snapToIndex(initialSnapPoint.current);
   }, [suppressDismiss]);
 
   const handleOnClose = React.useCallback(() => {
@@ -199,7 +185,7 @@ const _BottomSheet = ({
         focusOnElement(initialFocusRef.current);
       }
     } else {
-      lastSnappedIndexRef.current = null;
+      lastSnappedSnapPointRef.current = null;
       handleOnClose();
     }
   }, [_isOpen, handleOnClose, handleOnOpen, initialFocusRef]);
@@ -207,11 +193,12 @@ const _BottomSheet = ({
   React.useEffect(() => {
     if (!_isOpen || totalHeight === 0) return;
     const targetIndex = initialSnapPoint.current;
-    if (lastSnappedIndexRef.current === targetIndex) return;
-    lastSnappedIndexRef.current = targetIndex;
+    const targetSnapPoint = _snapPoints[targetIndex];
+    if (lastSnappedSnapPointRef.current === targetSnapPoint) return;
+    lastSnappedSnapPointRef.current = targetSnapPoint;
     suppressDismiss();
     sheetRef.current?.snapToIndex(targetIndex);
-  }, [_isOpen, totalHeight, suppressDismiss]);
+  }, [_isOpen, totalHeight, _snapPoints, suppressDismiss]);
 
   // let the Dropdown component know that it's rendering a bottomsheet
   React.useEffect(() => {
