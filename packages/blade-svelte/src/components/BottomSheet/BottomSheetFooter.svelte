@@ -17,17 +17,14 @@
 
   let footerEl = $state<HTMLDivElement | null>(null);
 
-  /* Re-measure on next paint so the value reflects the browser's final
-   * layout (matches React, which wraps the measurement in `setTimeout(0)`
-   * because the height changes during drag). */
+  /* Measure footer height synchronously — same timing as the body — so
+   * the parent's totalHeight (and thus positionY / surface height) is
+   * correct on the first animation frame. This prevents the body and
+   * footer from animating out of sync when the sheet opens/closes. */
   $effect(() => {
     if (!footerEl) return;
     void ctx?.isOpen;
-    const rafId = requestAnimationFrame(() => {
-      if (!footerEl) return;
-      ctx?.setFooterHeight(footerEl.getBoundingClientRect().height);
-    });
-    return () => cancelAnimationFrame(rafId);
+    ctx?.setFooterHeight(footerEl.getBoundingClientRect().height);
   });
 
   const metaAttrs = metaAttribute({ name: MetaConstants.BottomSheetFooter, testID });

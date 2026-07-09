@@ -6,6 +6,14 @@ import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { BOTTOM_SHEET_EASING } from './utils';
+
+const footerStyles: React.CSSProperties = {
+  transitionProperty: 'height, opacity',
+  transitionTimingFunction: BOTTOM_SHEET_EASING,
+  transitionDuration: 'var(--bs-transition-duration, 280ms)',
+  willChange: 'height, opacity',
+};
 
 const BottomSheetFooter = ({
   children,
@@ -15,13 +23,8 @@ const BottomSheetFooter = ({
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
-    // for some reason the calculated footer height is changing when user drags the sheet
-    // although i don't see a reason why, thus putting it in a setTimeout so that
-    // we calculate the height on the next browser paint
-    window.setTimeout(() => {
-      if (!ref.current) return;
-      setFooterHeight(ref.current.getBoundingClientRect().height);
-    });
+    if (!ref.current) return;
+    setFooterHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
 
   return (
@@ -33,6 +36,7 @@ const BottomSheetFooter = ({
       backgroundColor="popup.background.gray.subtle"
       touchAction="none"
       zIndex={2}
+      style={footerStyles}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}
       {...bind?.()}
       {...makeAnalyticsAttribute(dataAnalyticsProps)}

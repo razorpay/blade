@@ -31,9 +31,14 @@
   justify-content: center;
   align-items: center;
 
+  /* Cascading transition-duration — children (body, footer) inherit this
+   * so their transitions stay in sync with the surface. Set to 0s during
+   * drag via [data-dragging='true'] to disable all transitions together. */
+  --bs-transition-duration: var(--duration-moderate);
+
   will-change: transform, opacity, height;
   transition-property: transform, opacity, height;
-  transition-duration: var(--duration-moderate);
+  transition-duration: var(--bs-transition-duration);
   transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
 }
 
@@ -43,7 +48,7 @@
 }
 
 .surface[data-dragging='true'] {
-  transition-duration: 0s;
+  --bs-transition-duration: 0s;
 }
 
 /* ===== INNER WRAPPER (flex column inside surface) ===== */
@@ -315,6 +320,10 @@
   -webkit-tap-highlight-color: revert;
   -webkit-touch-callout: revert;
   -webkit-user-select: auto;
+  transition-property: height, opacity;
+  transition-duration: var(--bs-transition-duration, var(--duration-moderate));
+  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  will-change: height, opacity;
 }
 
 .bodyOverflowAuto {
@@ -349,6 +358,10 @@
   background-color: var(--popup-background-gray-subtle);
   touch-action: none;
   z-index: 2;
+  transition-property: height, opacity;
+  transition-duration: var(--bs-transition-duration, var(--duration-moderate));
+  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  will-change: height, opacity;
 }
 
 .footerInner {

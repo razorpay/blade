@@ -56,3 +56,5 @@ function computeMaxContent(
 
 export type { SnapPoints };
 export { computeMaxContent, computeMinContent, computeSnapPointBounds };
+
+export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';

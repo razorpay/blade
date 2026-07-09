@@ -11,7 +11,7 @@ import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
-import { computeMaxContent, computeSnapPointBounds } from './utils';
+import { computeMaxContent, computeSnapPointBounds, BOTTOM_SHEET_EASING } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
 import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
@@ -34,13 +34,13 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { componentZIndices } from '~utils/componentZIndices';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
-export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
 
 const BottomSheetSurface = styled.div<{
   windowHeight: number;
   isDragging: boolean;
 }>(({ theme, windowHeight, isDragging }) => {
+  const duration = `${makeMotionTime(theme.motion.duration.moderate)}`;
   return {
     background: theme.colors.popup.background.gray.subtle,
     borderTopLeftRadius: makeSize(size[16]),
@@ -50,9 +50,11 @@ const BottomSheetSurface = styled.div<{
     boxShadow: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
     opacity: 0,
     pointerEvents: 'none',
-    transitionDuration: isDragging
-      ? undefined
-      : `${makeMotionTime(theme.motion.duration.moderate)}`,
+    // Cascading transition-duration — children (body, footer) inherit this
+    // so their transitions stay in sync with the surface. Set to 0s during
+    // drag to disable all transitions together.
+    '--bs-transition-duration': isDragging ? '0s' : duration,
+    transitionDuration: isDragging ? undefined : duration,
     transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform, opacity, height',
     transitionProperty: 'transform, opacity, height',

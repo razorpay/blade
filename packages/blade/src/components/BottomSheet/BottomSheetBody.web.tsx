@@ -10,6 +10,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { BOTTOM_SHEET_EASING } from './utils';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -19,6 +20,10 @@ const bodyStyles: React.CSSProperties = {
   WebkitOverflowScrolling: 'touch',
   userSelect: 'auto',
   touchAction: 'none',
+  transitionProperty: 'height, opacity',
+  transitionTimingFunction: BOTTOM_SHEET_EASING,
+  transitionDuration: 'var(--bs-transition-duration, 280ms)',
+  willChange: 'height, opacity',
 };
 
 const _BottomSheetBody = ({
