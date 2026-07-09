@@ -14,6 +14,8 @@ export type BottomSheetContextValue = {
   isInBottomSheet: true;
   /** Live open state (`true` once the surface has begun fading in). */
   isOpen: boolean;
+  /** Whether the user is currently dragging the sheet (disables child transitions). */
+  isDragging: boolean;
   /** Closes the sheet (when `isDismissible`). */
   close: () => void;
   /**

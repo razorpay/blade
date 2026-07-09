@@ -32,11 +32,15 @@
 
   const metaAttrs = metaAttribute({ name: MetaConstants.BottomSheetFooter, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
+  const footerState = $derived(ctx?.isOpen ? 'open' : 'closed');
+  const footerDragging = $derived(Boolean(ctx?.isDragging));
 </script>
 
 <div
   bind:this={footerEl}
   class={bottomSheetFooterClass}
+  data-state={footerState}
+  data-dragging={footerDragging}
   {...metaAttrs}
   {...analyticsAttrs}
 >

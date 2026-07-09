@@ -56,11 +56,15 @@
 
   const metaAttrs = metaAttribute({ name: MetaConstants.BottomSheetBody, testID: testID ?? 'bottomsheet-body' });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
+  const bodyState = $derived(ctx?.isOpen ? 'open' : 'closed');
+  const bodyDragging = $derived(Boolean(ctx?.isDragging));
 </script>
 
 <div
   bind:this={scrollEl}
   class={bodyClasses}
+  data-state={bodyState}
+  data-dragging={bodyDragging}
   {...metaAttrs}
   {...analyticsAttrs}
 >

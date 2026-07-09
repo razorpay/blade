@@ -315,6 +315,20 @@
   -webkit-tap-highlight-color: revert;
   -webkit-touch-callout: revert;
   -webkit-user-select: auto;
+
+  transform: translateY(8px);
+  transition-property: transform;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  will-change: transform;
+}
+
+.body[data-state='open'] {
+  transform: translateY(0);
+}
+
+.body[data-dragging='true'] {
+  transition-duration: 0s;
 }
 
 .bodyOverflowAuto {
@@ -349,6 +363,20 @@
   background-color: var(--popup-background-gray-subtle);
   touch-action: none;
   z-index: 2;
+
+  transform: translateY(8px);
+  transition-property: transform;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: cubic-bezier(0.15, 0, 0.24, 0.97);
+  will-change: transform;
+}
+
+.footer[data-state='open'] {
+  transform: translateY(0);
+}
+
+.footer[data-dragging='true'] {
+  transition-duration: 0s;
 }
 
 .footerInner {

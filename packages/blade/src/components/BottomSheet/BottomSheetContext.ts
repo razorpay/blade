@@ -46,6 +46,10 @@ type BottomSheetContextProps = {
    */
   isOpen: boolean;
   /**
+   * Whether the user is currently dragging the sheet (disables child transitions)
+   */
+  isDragging: boolean;
+  /**
    * Vertical position of bottomsheet surface
    */
   positionY: number;
@@ -74,6 +78,7 @@ const BottomSheetContext = React.createContext<BottomSheetContextProps>({
   scrollRef: null,
   bind: null,
   isOpen: false,
+  isDragging: false,
   positionY: 0,
   isInBottomSheet: false,
   defaultInitialFocusRef: { current: null },

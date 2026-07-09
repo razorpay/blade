@@ -6,12 +6,17 @@ import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime } from '~utils/makeMotionTime';
+
+const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
 const BottomSheetFooter = ({
   children,
   ...dataAnalyticsProps
 }: BaseFooterProps): React.ReactElement => {
-  const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
+  const { setFooterHeight, isOpen, isDragging, bind } = useBottomSheetContext();
+  const { theme } = useTheme();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -33,6 +38,13 @@ const BottomSheetFooter = ({
       backgroundColor="popup.background.gray.subtle"
       touchAction="none"
       zIndex={2}
+      style={{
+        transform: isOpen ? 'translateY(0px)' : 'translateY(8px)',
+        transitionProperty: 'transform',
+        transitionDuration: isDragging ? undefined : makeMotionTime(theme.motion.duration.moderate),
+        transitionTimingFunction: BOTTOM_SHEET_EASING,
+        willChange: 'transform',
+      }}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}
       {...bind?.()}
       {...makeAnalyticsAttribute(dataAnalyticsProps)}

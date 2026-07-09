@@ -422,6 +422,7 @@ const _BottomSheet = ({
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(isVisible),
+      isDragging,
       close,
       positionY,
       headerHeight,
@@ -440,6 +441,7 @@ const _BottomSheet = ({
     }),
     [
       isVisible,
+      isDragging,
       close,
       positionY,
       headerHeight,

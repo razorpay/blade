@@ -466,6 +466,9 @@
     get isOpen() {
       return isVisible;
     },
+    get isDragging() {
+      return isDragging;
+    },
     close,
     get isHeaderFloating() {
       return !hasBodyPadding && isHeaderEmpty;

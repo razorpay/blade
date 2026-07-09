@@ -10,6 +10,10 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime } from '~utils/makeMotionTime';
+
+const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',
@@ -27,7 +31,15 @@ const _BottomSheetBody = ({
   overflow = 'auto',
   ...dataAnalyticsProps
 }: BottomSheetBodyProps): React.ReactElement => {
-  const { scrollRef, setContentHeight, setHasBodyPadding, isOpen, bind } = useBottomSheetContext();
+  const {
+    scrollRef,
+    setContentHeight,
+    setHasBodyPadding,
+    isOpen,
+    isDragging,
+    bind,
+  } = useBottomSheetContext();
+  const { theme } = useTheme();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const [bottomSheetHasActionList, setBottomSheetHasActionList] = React.useState<boolean>(false);
 
@@ -62,7 +74,14 @@ const _BottomSheetBody = ({
       ref={scrollRef}
       flexGrow={1}
       flexShrink={1}
-      style={bodyStyles}
+      style={{
+        ...bodyStyles,
+        transform: isOpen ? 'translateY(0px)' : 'translateY(8px)',
+        transitionProperty: 'transform',
+        transitionDuration: isDragging ? undefined : makeMotionTime(theme.motion.duration.moderate),
+        transitionTimingFunction: BOTTOM_SHEET_EASING,
+        willChange: 'transform',
+      }}
       overflow={overflow}
       // Passing isContentDragging to bind()
       // Inside the useDrag() hook this will let us know if user is dragging the content or not
