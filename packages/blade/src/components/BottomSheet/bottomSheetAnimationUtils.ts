@@ -12,9 +12,7 @@ const useBottomSheetTransitionStyle = (
   return {
     transform: isOpen ? 'translateY(0px)' : 'translateY(8px)',
     transitionProperty: 'transform',
-    transitionDuration: isDragging
-      ? '0s'
-      : `${makeMotionTime(theme.motion.duration.moderate)}`,
+    transitionDuration: isDragging ? '0s' : `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform',
   };
