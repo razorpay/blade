@@ -348,6 +348,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
+  --bs-transition-duration: 280ms;
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
@@ -621,7 +622,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
               class="c11"
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
-              style="user-select: auto;"
+              style="user-select: auto; transition-property: height, opacity; transition-timing-function: cubic-bezier(.15,0,.24,.97); transition-duration: var(--bs-transition-duration, 280ms); will-change: height, opacity;"
             >
               <div
                 class="c12"
@@ -1331,6 +1332,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
+  --bs-transition-duration: 280ms;
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
@@ -1702,7 +1704,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           class="c31"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto;"
+          style="user-select: auto; transition-property: height, opacity; transition-timing-function: cubic-bezier(.15,0,.24,.97); transition-duration: var(--bs-transition-duration, 280ms); will-change: height, opacity;"
         >
           <div
             class="c32"
@@ -1720,6 +1722,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
         <div
           class="c34"
           data-blade-component="bottom-sheet-footer"
+          style="transition-property: height, opacity; transition-timing-function: cubic-bezier(.15,0,.24,.97); transition-duration: var(--bs-transition-duration, 280ms); will-change: height, opacity;"
         >
           <div
             class="c29 c30"
@@ -1965,6 +1968,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
+  --bs-transition-duration: 280ms;
   -webkit-transition-duration: 280ms;
   transition-duration: 280ms;
   -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
@@ -2056,7 +2060,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
           class="c9"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
-          style="user-select: auto;"
+          style="user-select: auto; transition-property: height, opacity; transition-timing-function: cubic-bezier(.15,0,.24,.97); transition-duration: var(--bs-transition-duration, 280ms); will-change: height, opacity;"
         >
           <div
             class="c10"
