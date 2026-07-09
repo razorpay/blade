@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
@@ -12,7 +12,9 @@ const useBottomSheetTransitionStyle = (
   return {
     transform: isOpen ? 'translateY(0px)' : 'translateY(8px)',
     transitionProperty: 'transform',
-    transitionDuration: isDragging ? undefined : `${makeMotionTime(theme.motion.duration.moderate)}`,
+    transitionDuration: isDragging
+      ? undefined
+      : `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: BOTTOM_SHEET_EASING,
     willChange: 'transform',
   };
