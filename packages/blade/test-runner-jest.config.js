@@ -67,9 +67,6 @@ if (isBrowserStack) {
     connectOptions: {
       wsEndpoint: CDP_ENDPOINT,
     },
-    // Skip local browser launch — the remote browser is provided by BrowserStack.
-    // (jest-playwright-preset checks `skipInitialization`, not `skipLaunch`.)
-    skipInitialization: true,
     // Map the requested browser type for jest-playwright's internal bookkeeping.
     // The actual browser is determined by the BrowserStack CDP caps above.
     browsers: [BS_BROWSER === 'firefox' ? 'firefox' : 'chromium'],
