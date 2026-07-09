@@ -67,7 +67,7 @@ describe('<FileUpload /> (native)', () => {
   });
 
   it('should render help text', () => {
-    const { getByText } = renderWithTheme(
+    const { getAllByText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
@@ -75,11 +75,11 @@ describe('<FileUpload /> (native)', () => {
         accept="image/*"
       />,
     );
-    expect(getByText('Upload .jpg, .jpeg, or .png file only')).toBeTruthy();
+    expect(getAllByText('Upload .jpg, .jpeg, or .png file only').length).toBeGreaterThan(0);
   });
 
   it('should render error text when validationState is error', () => {
-    const { getByText } = renderWithTheme(
+    const { getAllByText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
@@ -88,7 +88,7 @@ describe('<FileUpload /> (native)', () => {
         errorText="Something went wrong"
       />,
     );
-    expect(getByText('Something went wrong')).toBeTruthy();
+    expect(getAllByText('Something went wrong').length).toBeGreaterThan(0);
   });
 });
 

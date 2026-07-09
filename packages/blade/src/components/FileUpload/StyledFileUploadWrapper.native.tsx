@@ -6,7 +6,11 @@ import Animated, {
   interpolateColor,
 } from 'react-native-reanimated';
 import type { StyledFileUploadWrapperProps } from './types';
-import { fileUploadColorTokens, fileUploadMotionTokens } from './fileUploadTokens';
+import {
+  fileUploadColorTokens,
+  fileUploadHeightTokens,
+  fileUploadMotionTokens,
+} from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
@@ -18,6 +22,7 @@ type StyledFileUploadWrapperNativeProps = Omit<StyledFileUploadWrapperProps, 'th
 const StyledFileUploadWrapper = ({
   isDisabled,
   isActive,
+  size,
   children,
   style,
 }: StyledFileUploadWrapperNativeProps): React.ReactElement => {
@@ -58,6 +63,7 @@ const StyledFileUploadWrapper = ({
           borderColor,
           borderWidth: 1,
           borderRadius: theme.border.radius.medium,
+          minHeight: fileUploadHeightTokens[size === 'variable' ? 'large' : size],
           display: 'flex' as const,
           flexDirection: 'row' as const,
           justifyContent: 'center' as const,

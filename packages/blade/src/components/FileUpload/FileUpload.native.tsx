@@ -156,7 +156,8 @@ const _FileUpload = ({
   const showHelpText = !showError && helpText;
   const willRenderHintText = Boolean(helpText) || showError;
   const accessibilityText =
-    accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+    accessibilityLabel ??
+    [showError ? errorText : '', showHelpText ? helpText : ''].filter(Boolean).join(' ');
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
   useEffect(() => {
