@@ -81,12 +81,15 @@ const AnimatedX = ({ isActive, children }) => {
   const { theme } = useTheme();
   const progress = useSharedValue(isActive ? 1 : 0);
 
+  const motionDuration = getIn(theme.motion, 'duration.moderate');
+  const motionEasing = getIn(theme.motion, 'easing.standard.effective');
+
   React.useEffect(() => {
     progress.value = withTiming(isActive ? 1 : 0, {
-      duration: getIn(theme.motion, 'duration.moderate'),
-      easing: Easing.bezier(...getIn(theme.motion, 'easing.standard.effective')),
+      duration: motionDuration,
+      easing: Easing.bezier(...motionEasing),
     });
-  }, [isActive]);
+  }, [isActive, motionDuration, motionEasing]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: progress.value,
@@ -159,6 +162,7 @@ These already work cross-platform — import directly:
 
 ```tsx
 import { ComponentName } from '../ComponentName';
+import { fireEvent } from '@testing-library/react-native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

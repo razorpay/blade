@@ -148,7 +148,7 @@ const AnimatedX = ({ isActive, duration, children }: AnimatedXProps): React.Reac
       duration: motionDuration,
       easing: Easing.bezier(...motionEasing),
     });
-  }, [isActive, motionDuration]);
+  }, [isActive, motionDuration, motionEasing]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: progress.value,

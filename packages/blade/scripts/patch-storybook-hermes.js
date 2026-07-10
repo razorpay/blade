@@ -104,6 +104,10 @@ for (const file of allFiles) {
     /(?:let|var|const)\s+identifierStartRegex\s*=\s*new RegExp\([^;]+;/g,
     'var identifierStartRegex = /[$_a-zA-Z]/;',
   );
+  content = content.replace(
+    /(?:let|var|const)\s+identifierContinueRegex\s*=\s*new RegExp\([^;]+;/g,
+    'var identifierContinueRegex = /[$_a-zA-Z0-9]/;',
+  );
 
   // Case 4: string-built Unicode class references (\p{Lu}, \p{Ll})
   content = content.replace(
