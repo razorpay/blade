@@ -9,6 +9,10 @@ import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
 
+jest.mock('~utils/useId', () => ({
+  useId: (prefix?: string) => (prefix ? `${prefix}-0` : '0'),
+}));
+
 jest.useFakeTimers();
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

@@ -210,7 +210,7 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                     }
                     gradientTransform={null}
                     gradientUnits={0}
-                    name="drawer-header-gradient-information"
+                    name="drawer-header-gradient-0-information"
                     rx="150%"
                     ry="100%"
                   />
@@ -218,7 +218,7 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                 <RNSVGRect
                   fill={
                     {
-                      "brushRef": "drawer-header-gradient-information",
+                      "brushRef": "drawer-header-gradient-0-information",
                       "type": 1,
                     }
                   }
@@ -1506,7 +1506,7 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                     }
                     gradientTransform={null}
                     gradientUnits={0}
-                    name="drawer-header-gradient-information"
+                    name="drawer-header-gradient-0-information"
                     rx="150%"
                     ry="100%"
                   />
@@ -1514,7 +1514,7 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                 <RNSVGRect
                   fill={
                     {
-                      "brushRef": "drawer-header-gradient-information",
+                      "brushRef": "drawer-header-gradient-0-information",
                       "type": 1,
                     }
                   }
@@ -2559,7 +2559,7 @@ exports[`<Drawer /> (native) should render a Drawer with a custom header 1`] = `
                     }
                     gradientTransform={null}
                     gradientUnits={0}
-                    name="drawer-header-gradient-information"
+                    name="drawer-header-gradient-0-information"
                     rx="150%"
                     ry="100%"
                   />
@@ -2567,7 +2567,7 @@ exports[`<Drawer /> (native) should render a Drawer with a custom header 1`] = `
                 <RNSVGRect
                   fill={
                     {
-                      "brushRef": "drawer-header-gradient-information",
+                      "brushRef": "drawer-header-gradient-0-information",
                       "type": 1,
                     }
                   }
