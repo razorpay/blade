@@ -472,8 +472,12 @@ const _InfoGroup = (
   // onto the wrong row and made them collide, and a container `rowGap` on a wrapping row
   // produced no visible separation between the wrapped rows on this RN version. Instead
   // each cell reserves its own `paddingRight` (column gap) and `paddingBottom` (row gap).
+  // To match web's grid gaps (which only sit BETWEEN tracks), the last column of each row
+  // gets no `paddingRight` and the last row gets no `paddingBottom` — otherwise native would
+  // add an extra trailing gap on the right edge of every row and below the final row.
   // Gap tokens mirror the web grid (columnGap base = spacing.6, rowGap = spacing.4).
   const verticalColumnCount = getVerticalColumnCount(gridTemplateColumns, childCount);
+  const verticalRowCount = Math.ceil(childCount / verticalColumnCount);
   const itemWidth = `${100 / verticalColumnCount}%` as BoxProps['width'];
   const columnGapToken: BoxProps['paddingRight'] = 'spacing.6';
   const rowGapToken: BoxProps['paddingBottom'] = 'spacing.4';
@@ -500,14 +504,19 @@ const _InfoGroup = (
         {...getStyledProps(rest)}
       >
         {!isHorizontal
-          ? React.Children.map(children, (child) => {
+          ? React.Children.map(children, (child, index) => {
               if (!React.isValidElement(child)) return child;
+              const isLastColumn = index % verticalColumnCount === verticalColumnCount - 1;
+              const isLastRow =
+                Math.floor(index / verticalColumnCount) === verticalRowCount - 1;
               return (
                 <BaseBox
                   width={itemWidth}
                   flexDirection="column"
-                  paddingRight={verticalColumnCount > 1 ? columnGapToken : undefined}
-                  paddingBottom={rowGapToken}
+                  paddingRight={
+                    verticalColumnCount > 1 && !isLastColumn ? columnGapToken : undefined
+                  }
+                  paddingBottom={isLastRow ? undefined : rowGapToken}
                 >
                   {child}
                 </BaseBox>

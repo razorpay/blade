@@ -2996,7 +2996,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "50%",
           },
@@ -3291,8 +3290,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
-            "paddingRight": 20,
             "width": "50%",
           },
         ]
@@ -3613,7 +3610,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "25%",
           },
@@ -3886,7 +3882,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "25%",
           },
@@ -4159,7 +4154,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "25%",
           },
@@ -4432,8 +4426,6 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
-            "paddingRight": 20,
             "width": "25%",
           },
         ]
@@ -8877,7 +8869,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
           {
             "flexDirection": "column",
             "paddingBottom": 12,
-            "paddingRight": 20,
             "width": "50%",
           },
         ]
@@ -9149,7 +9140,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "50%",
           },
@@ -9743,7 +9733,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "width": "100%",
           },
         ]
@@ -10064,7 +10053,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "50%",
           },
@@ -10337,8 +10325,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
-            "paddingRight": 20,
             "width": "50%",
           },
         ]
@@ -11457,7 +11443,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
           {
             "flexDirection": "column",
             "paddingBottom": 12,
-            "paddingRight": 20,
             "width": "25%",
           },
         ]
@@ -11729,7 +11714,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         [
           {
             "flexDirection": "column",
-            "paddingBottom": 12,
             "paddingRight": 20,
             "width": "25%",
           },
