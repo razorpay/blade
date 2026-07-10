@@ -18,7 +18,7 @@ You are a subagent. Return structured data only — no commentary.
 
 ## Instructions
 
-- **Scope**: UI changes in `packages/blade` (test the {STORYBOOK_URL} for changes), and UI changes in `packages/blade-svelte` (test the {STORYBOOK_URL}/svelte for changes), and for changes in react native components of `packages/blade`, use the PR_BODY screenshots / videos for verification instead of agent-browser
+- **Scope**: UI changes in `packages/blade` (test the {STORYBOOK_URL} for changes), and UI changes in `packages/blade-svelte` (test the {STORYBOOK_URL}/svelte for changes). React native components cannot be verified with agent-browser — skip UI review for react native only changes.
 - **Goals**:
   - Verify if the PR does what it claims to do in PR diff
   - Verify if no existing functionality is broken in parts that PR touches
@@ -26,11 +26,9 @@ You are a subagent. Return structured data only — no commentary.
 ## Steps
 
 > [!NOTE]
-> If the PR is for changes in react native components of `packages/blade`, use the PR_BODY screenshots / videos for verification instead of agent-browser and skip the steps below. If PR_BODY does not contain screenshots / videos, in statuses array, set `state` to `"FAILURE"` and `problem` to `"No screenshots / videos found in PR_BODY (required for react native components)"`.
+> If the PR is for changes in react native components of `packages/blade` only, skip the UI review entirely (return an empty `statuses` array). agent-browser cannot test react native components.
 >
-> Use the screenshots / videos in PR_BODY to verify the changes.
->
-> If change impacts both react native and web components, verify both (screenshots for react native and agent-browser steps below for web components)
+> If change impacts both react native and web components, only verify the web components using the agent-browser steps below.
 
 ### 1. Fetch Storybook URL
 
