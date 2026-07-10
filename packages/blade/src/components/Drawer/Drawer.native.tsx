@@ -69,24 +69,32 @@ const _Drawer = ({
     }
   }, [isOpen]);
 
+  const wasMountedRef = React.useRef(false);
+
+  React.useEffect(() => {
+    wasMountedRef.current = isMounted;
+  }, [isMounted]);
+
   const handleExitComplete = React.useCallback(() => {
     // Flip `isMounted` false so the Portal unmounts after the exit animation. Guard
     // the `onUnmount` side-effect behind the previous-mounted flag so it only fires
     // when the drawer had actually been opened and is now finishing its exit — never
     // on the initial closed render.
-    setIsMounted((prevIsMounted) => {
-      if (prevIsMounted && hasEverOpenedRef.current) {
-        onUnmount?.();
-      }
-      return false;
-    });
+    //
+    // The onUnmount call is intentionally OUTSIDE the state updater to keep the
+    // updater pure (React StrictMode double-invokes updaters in development).
+    if (wasMountedRef.current && hasEverOpenedRef.current) {
+      onUnmount?.();
+    }
+    setIsMounted(false);
   }, [onUnmount]);
 
-  const { stackingLevel } = React.useMemo(() => {
+  const { stackingLevel, isFirstDrawerInStack } = React.useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     const level = Object.keys(drawerStack).indexOf(drawerId) + 1;
     return {
       stackingLevel: level,
+      isFirstDrawerInStack: level === 1 && Object.keys(drawerStack).length > 1,
     };
   }, [drawerId, drawerStack]);
 
@@ -170,6 +178,7 @@ const _Drawer = ({
               onOverlayPress={onDismiss}
               onExitComplete={handleExitComplete}
               accessibilityLabel={accessibilityLabel}
+              isFirstDrawerInStack={isFirstDrawerInStack}
             >
               {children}
             </AnimatedDrawerContainer>

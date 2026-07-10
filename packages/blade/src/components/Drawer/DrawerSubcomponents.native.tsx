@@ -78,10 +78,10 @@ const _DrawerHeader = ({
 
   const isStackedDrawer = stackingLevel && stackingLevel > 1;
 
-  const isAtleastOneDrawerOpen = Object.keys(drawerStack).length > 0;
+  const isAtLeastOneDrawerOpen = Object.keys(drawerStack).length > 0;
 
   // This condition is to avoid back button disappear while stacked drawer is in the exiting transition
-  const isDrawerExiting = isAtleastOneDrawerOpen && isExiting && stackingLevel !== 1;
+  const isDrawerExiting = isAtLeastOneDrawerOpen && isExiting && stackingLevel !== 1;
 
   return (
     <Box position="relative">

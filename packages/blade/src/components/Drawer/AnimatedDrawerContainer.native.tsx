@@ -5,6 +5,7 @@ import Animated, {
   useSharedValue,
   withTiming,
   runOnJS,
+  cancelAnimation,
 } from 'react-native-reanimated';
 import { Dimensions, Pressable } from 'react-native';
 import type { ElevationStyles } from '~tokens/global/elevation';
@@ -76,6 +77,12 @@ type AnimatedDrawerContainerProps = {
    */
   accessibilityLabel?: string;
   /**
+   * Whether this drawer is the first (bottom-most) in a stack of 2+ open drawers.
+   * When true, the resting translateX is offset slightly so the first drawer peeks
+   * out behind the stacked drawer — matching web's stacked-drawer positioning.
+   */
+  isFirstDrawerInStack?: boolean;
+  /**
    * Drawer content (DrawerHeader / DrawerBody / DrawerFooter).
    */
   children: React.ReactNode;
@@ -92,6 +99,7 @@ const AnimatedDrawerContainer = ({
   onOverlayPress,
   onExitComplete,
   accessibilityLabel,
+  isFirstDrawerInStack = false,
   children,
 }: AnimatedDrawerContainerProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -127,7 +135,11 @@ const AnimatedDrawerContainer = ({
     };
     const config = isVisible ? enterConfig : exitConfig;
 
-    translateX.value = withTiming(isVisible ? 0 : screenWidth, config);
+    // When this drawer is the first in a stack (another drawer is open on top),
+    // offset the resting position slightly to the left so the first drawer peeks
+    // out behind the stacked drawer — matching web's stacked-drawer positioning.
+    const stackOffset = isFirstDrawerInStack ? -theme.spacing[5] : 0;
+    translateX.value = withTiming(isVisible ? stackOffset : screenWidth, config);
     surfaceOpacity.value = withTiming(isVisible ? 1 : 0, config);
     overlayOpacity.value = withTiming(isVisible ? 1 : 0, config, (finished) => {
       if (finished && !isVisible && onExitComplete) {
@@ -136,6 +148,16 @@ const AnimatedDrawerContainer = ({
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible, screenWidth]);
+
+  // Cancel all in-flight animations on unmount to prevent UI-thread worklets
+  // from continuing to animate shared values after the component is gone.
+  React.useEffect(() => {
+    return () => {
+      cancelAnimation(translateX);
+      cancelAnimation(surfaceOpacity);
+      cancelAnimation(overlayOpacity);
+    };
+  }, [translateX, surfaceOpacity, overlayOpacity]);
 
   const surfaceAnimatedStyle = useAnimatedStyle(() => {
     return {
