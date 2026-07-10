@@ -34,7 +34,7 @@ For each comment in `COMMENT_URLS`, determine the appropriate resolution:
 
 #### Handling mismatched changes
 
-- Case 1: Diff has peice of change that doesn't match the title or description of the PR.
+- Case 1: Diff has piece of change that doesn't match the title or description of the PR.
   - In most cases, its safe to assume that the code was changed but the PR info was not updated to reflect the changes. You can go and update the PR info instead of reverting the change.
 
 ### 3. Making Changes in branch

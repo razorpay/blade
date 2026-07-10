@@ -22,7 +22,7 @@ const allComments = JSON.parse(
 const selected = allComments.filter(
   (c) =>
     (c.body.includes('@rzp-slash-public') || c.body.includes('@razorpay/slash-public')) ||
-    (c.user.login === 'rzp-slash-public[bot]' && /confidence: ([5-9]\d?|10)\/10/.test(c.body)),
+    (c.user.login === 'rzp-slash-public[bot]' && /confidence: ([5-9]|10)\/10/.test(c.body)),
 );
 
 if (selected.length === 0) {
