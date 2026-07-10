@@ -37,7 +37,7 @@ const StyledFileUploadWrapper = ({
       duration,
       easing: castNativeType(easingFn),
     });
-  }, [isActive, duration]);
+  }, [isActive, duration, easingFn]);
 
   const borderColor = getIn(
     theme.colors,
