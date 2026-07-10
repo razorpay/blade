@@ -1353,15 +1353,18 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
     dayjs().toDate(),
   ]);
   const [comparisonRange, setComparisonRange] = React.useState<DatesRangeValue>([null, null]);
+  const [comparisonVisibleMonth, setComparisonVisibleMonth] = React.useState<Date | undefined>();
 
   // Same-length period immediately preceding the primary range, with no gap between the two.
-  const comparisonVisibleMonth = React.useMemo(() => {
+  React.useEffect(() => {
     const [primaryStart, primaryEnd] = primaryRange;
-    if (!primaryStart || !primaryEnd) return undefined;
+    if (!primaryStart || !primaryEnd) return;
     const rangeLengthInDays = dayjs(primaryEnd).diff(dayjs(primaryStart), 'day');
-    return dayjs(primaryStart)
-      .subtract(rangeLengthInDays + 1, 'day')
-      .toDate();
+    setComparisonVisibleMonth(
+      dayjs(primaryStart)
+        .subtract(rangeLengthInDays + 1, 'day')
+        .toDate(),
+    );
   }, [primaryRange]);
 
   return (
@@ -1381,11 +1384,11 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
           onChange={(date) => setPrimaryRange(date)}
         />
         <DatePickerComponent
-          key={comparisonVisibleMonth?.toISOString()}
           label={{ start: 'Compare to' }}
           selectionType="range"
           value={comparisonRange}
-          defaultVisibleMonth={comparisonVisibleMonth}
+          visibleMonth={comparisonVisibleMonth}
+          onVisibleMonthChange={setComparisonVisibleMonth}
           onChange={(date) => setComparisonRange(date)}
         />
       </Box>

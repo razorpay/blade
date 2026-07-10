@@ -37,10 +37,9 @@ const useDayjsLocale = (): string => {
   // hasn't mounted an I18nProvider, the hook still returns a shape with
   // `i18nState`, just without a locale set.
   const i18n = useI18nContext();
-  return useMemo(
-    () => convertIntlToDayjsLocale(i18n?.i18nState?.locale ?? 'en-IN'),
-    [i18n?.i18nState?.locale],
-  );
+  return useMemo(() => convertIntlToDayjsLocale(i18n?.i18nState?.locale ?? 'en-IN'), [
+    i18n?.i18nState?.locale,
+  ]);
 };
 
 const DEFAULT_FIRST_DAY = 1; // Monday
@@ -143,10 +142,10 @@ const Calendar = ({
   localeName,
 }: CalendarProps): React.ReactElement => {
   const { theme } = useTheme();
-  const grid = useMemo(
-    () => buildMonthGrid(visibleMonth, firstDayOfWeek),
-    [visibleMonth, firstDayOfWeek],
-  );
+  const grid = useMemo(() => buildMonthGrid(visibleMonth, firstDayOfWeek), [
+    visibleMonth,
+    firstDayOfWeek,
+  ]);
   const [start, end] = isRange(selectionType) ? toRange(value) : [toSingle(value), null];
   const fmt = (d: Date | dayjs.Dayjs, pattern: string): string =>
     dayjs(d).locale(localeName).format(pattern);
@@ -254,18 +253,18 @@ const Calendar = ({
               const textColorToken = isSelected
                 ? 'interactive.text.primary.normal'
                 : disabled || !sameMonth
-                  ? 'surface.text.gray.disabled'
-                  : 'surface.text.gray.normal';
+                ? 'surface.text.gray.disabled'
+                : 'surface.text.gray.normal';
               const baseLabel = fmt(day, 'DD MMM YYYY');
               const stateSuffix = selectedStart
                 ? ', selected start of range'
                 : selectedEnd
-                  ? ', selected end of range'
-                  : isSelected
-                    ? ', selected'
-                    : inRange
-                      ? ', in selected range'
-                      : '';
+                ? ', selected end of range'
+                : isSelected
+                ? ', selected'
+                : inRange
+                ? ', in selected range'
+                : '';
               return (
                 <Pressable
                   key={day.toISOString()}
@@ -429,16 +428,16 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
   const helperRenderText = isError
     ? (errorText as string | undefined)
     : isSuccess
-      ? (successText as string | undefined)
-      : (helpText as string | undefined);
+    ? (successText as string | undefined)
+    : (helpText as string | undefined);
   const helperRenderColor:
     | 'feedback.text.negative.intense'
     | 'feedback.text.positive.intense'
     | 'surface.text.gray.muted' = isError
     ? 'feedback.text.negative.intense'
     : isSuccess
-      ? 'feedback.text.positive.intense'
-      : 'surface.text.gray.muted';
+    ? 'feedback.text.positive.intense'
+    : 'surface.text.gray.muted';
 
   // Validation state communicates through the helper text colour below the
   // trigger. The native trigger keeps the standard `surface.border.gray.muted`
@@ -449,8 +448,8 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
     isRequired && necessityIndicator === 'required'
       ? '*'
       : isRequired && necessityIndicator === 'optional'
-        ? ' (optional)'
-        : '';
+      ? ' (optional)'
+      : '';
 
   const [innerValue, setInnerValue] = useControllableState<AnyValue>({
     value: value as AnyValue,
