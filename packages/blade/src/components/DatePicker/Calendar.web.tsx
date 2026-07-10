@@ -99,10 +99,13 @@ const Calendar = <Type extends DateSelectionType>({
 
   // Keeps the legacy `_date` state and the new `_visibleMonth` state in sync so that
   // navigation keeps working regardless of which one is currently driving `currentDate`.
-  const updateCurrentDate = (nextDate: Date) => {
-    setDate(nextDate);
-    setVisibleMonth(() => nextDate);
-  };
+  const updateCurrentDate = React.useCallback(
+    (nextDate: Date) => {
+      setDate(nextDate);
+      setVisibleMonth(() => nextDate);
+    },
+    [setDate, setVisibleMonth],
+  );
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
