@@ -30,8 +30,13 @@ type ChatInputProps = {
   onBlur?: FormInputOnEvent;
 
   /**
-   * Callback fired when the user submits the input (via submit button or Enter key).
+   * Callback fired when the user submits the input.
    * Receives the current text value and the list of attached files.
+   *
+   * **Note (Web):** Triggered by the submit button or by pressing Enter (Shift+Enter inserts a newline).
+   *
+   * **Note (React Native):** Triggered by the submit button only. The return key inserts a newline
+   * (standard mobile chat behavior), so there is no Enter-to-submit on native.
    */
   onSubmit?: ({ value, fileList }: { value: string; fileList: BladeFileList }) => void;
 
@@ -98,6 +103,9 @@ type ChatInputProps = {
    * File types that can be accepted. Follows the HTML input accept attribute format.
    * @example ".jpg,.png,.pdf" or "image/*"
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept
+   *
+   * **Note (React Native):** No effect. File filtering is not handled by ChatInput on native since
+   * consumers wire their own file picker (see `onFileChange`) and are responsible for filtering.
    */
   accept?: string;
 
@@ -105,11 +113,15 @@ type ChatInputProps = {
    * List of ghost suggestions displayed as faded text in the input.
    * When multiple suggestions are provided, they cycle automatically with a crossfade animation.
    * The user can press TAB to accept the currently visible suggestion.
+   *
+   * **Note (React Native):** No effect. Ghost suggestions are a web-only feature.
    */
   suggestions?: string[];
 
   /**
    * Callback fired when the user accepts the currently visible ghost suggestion (via TAB key).
+   *
+   * **Note (React Native):** No effect. Ghost suggestions are a web-only feature.
    */
   onSuggestionAccept?: ({ suggestion }: { suggestion: string }) => void;
 
