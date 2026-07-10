@@ -36,6 +36,7 @@ const _Breadcrumb = (
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const contextValue = React.useMemo(() => ({ size, color }), [size, color]);
+  const childCount = React.Children.count(children);
 
   return (
     <BaseBox
@@ -73,8 +74,8 @@ const _Breadcrumb = (
               >
                 {child}
                 <BaseBox {...makeAccessible({ hidden: true })}>
-                  {index !== React.Children.count(children) - 1 && <Separator size={size} />}
-                  {index === React.Children.count(children) - 1 && showLastSeparator && (
+                  {index !== childCount - 1 && <Separator size={size} />}
+                  {index === childCount - 1 && showLastSeparator && (
                     <Separator size={size} color={color} />
                   )}
                 </BaseBox>
