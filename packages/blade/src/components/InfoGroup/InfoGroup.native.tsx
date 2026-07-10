@@ -397,16 +397,12 @@ const InfoItem = assignWithoutSideEffects(React.forwardRef(_InfoItem), {
 /**
  * Derive the number of grid columns for vertical orientation from a CSS
  * `gridTemplateColumns` value. RN/Yoga has no CSS grid, so we emulate the intended
- * column count with an equal-width wrapping flex layout. The same downstream layout
- * (width `100 / N %`, per-cell `paddingRight` column gap when N > 1, per-cell
- * `paddingBottom` row gap, and text wrapping) is applied for whatever N this returns,
- * so any future `gridTemplateColumns` value is handled automatically. Supported forms:
- *   - `repeat(N, ...)` / `repeat(min(N, ...), ...)`  -> N   (multiple repeats are summed,
- *                                                            explicit tracks around them added)
- *   - a bare integer, e.g. `2`                        -> 2
- *   - an explicit track list, e.g. `1fr 1fr` / `100px 1fr` -> number of tracks (2)
- *   - `1fr`                                           -> 1
- *   - anything unrecognized / undefined              -> `min(4, childCount)` (web default)
+ * column count with an equal-width wrapping flex layout (each cell gets width `100 / N %`).
+ *
+ * We only need to handle the two shapes InfoGroup actually uses:
+ *   - `repeat(N, ...)` / `repeat(min(N, ...), ...)`  -> N  (web default is `repeat(min(4, count), 1fr)`)
+ *   - an explicit track list, e.g. `1fr`, `1fr 1fr`, `50% 50%` -> number of tracks
+ *   - undefined / unrecognized -> `min(4, childCount)` (mirrors the web default)
  */
 const getVerticalColumnCount = (
   gridTemplateColumns: InfoGroupProps['gridTemplateColumns'],
@@ -414,32 +410,14 @@ const getVerticalColumnCount = (
 ): number => {
   const fallback = Math.min(4, Math.max(1, childCount || 1));
 
-  if (gridTemplateColumns == null) return fallback;
-
-  const template = String(gridTemplateColumns).trim();
+  const template = String(gridTemplateColumns ?? '').trim();
   if (!template) return fallback;
 
-  // Bare integer, e.g. "2" -> that many columns.
-  if (/^\d+$/.test(template)) {
-    const parsed = parseInt(template, 10);
-    return parsed > 0 ? parsed : fallback;
-  }
-
-  // Sum every `repeat(N, ...)` / `repeat(min(N, ...), ...)` occurrence (the leading
-  // integer is the repeat count), then add any explicit tracks sitting outside them.
-  const repeatRegex = /repeat\(\s*(?:min|max|minmax)?\(?\s*(\d+)/gi;
-  let repeatMatch: RegExpExecArray | null;
-  let repeatColumns = 0;
-  while ((repeatMatch = repeatRegex.exec(template)) !== null) {
+  // `repeat(N, ...)` / `repeat(min(N, ...), ...)` -> the leading integer is the column count.
+  const repeatMatch = /repeat\(\s*(?:min|max|minmax)?\(?\s*(\d+)/i.exec(template);
+  if (repeatMatch) {
     const parsed = parseInt(repeatMatch[1], 10);
-    if (Number.isFinite(parsed) && parsed > 0) repeatColumns += parsed;
-  }
-  if (repeatColumns > 0) {
-    // Strip the whole `repeat(...)` chunk(s) (allowing one level of nested parens) and
-    // count whatever explicit tracks remain, e.g. `1fr repeat(2, 1fr)` -> 1 + 2 = 3.
-    const remaining = template.replace(/repeat\((?:[^()]|\([^()]*\))*\)/gi, ' ').trim();
-    const extraTracks = remaining ? remaining.split(/\s+/).filter(Boolean).length : 0;
-    return repeatColumns + extraTracks;
+    return parsed > 0 ? parsed : fallback;
   }
 
   // Explicit track list -> number of whitespace-separated tracks.
