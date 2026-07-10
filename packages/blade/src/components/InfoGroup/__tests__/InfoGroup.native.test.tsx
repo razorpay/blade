@@ -55,10 +55,7 @@ describe('<InfoGroup /> (native)', () => {
   });
 
   it('should render InfoGroup with gridTemplateColumns prop without crashing (prop is ignored on native)', () => {
-    // gridTemplateColumns is a web-only CSS prop; on native it resolves to `never`.
-    // We cast it here to verify the component doesn't crash when it receives the prop.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const gridTemplateColumns = '50% 50%' as any;
+    const gridTemplateColumns = '50% 50%';
     const { toJSON } = renderWithTheme(
       <InfoGroup gridTemplateColumns={gridTemplateColumns}>
         <InfoItem>
@@ -279,9 +276,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="1fr" as a single stacked column', () => {
     const { toJSON } = renderWithTheme(
-      // gridTemplateColumns is a web CSS type; cast for the native emulation path.
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      <InfoGroup itemOrientation="vertical" isHighlighted gridTemplateColumns={'1fr' as any}>
+      <InfoGroup itemOrientation="vertical" isHighlighted gridTemplateColumns={'1fr'}>
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -297,8 +292,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="1fr 1fr" as two equal columns', () => {
     const { toJSON } = renderWithTheme(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'1fr 1fr' as any}>
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'1fr 1fr'}>
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -318,8 +312,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="repeat(2, 1fr)" as two equal columns', () => {
     const { toJSON } = renderWithTheme(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'repeat(2, 1fr)' as any}>
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'repeat(2, 1fr)'}>
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>

@@ -226,7 +226,7 @@ const _InfoItemValue = (
       ref={ref as never}
       display="flex"
       flexDirection="row"
-      alignItems="flex-start"
+      alignItems="center"
       // Horizontal: `flex={1}` grows the value to fill the row beside the fixed label column.
       // Vertical: the value sits BELOW the label inside a flex COLUMN, where `flex={1}` would
       // (wrongly) grow it along the vertical axis; instead stretch it to the full cell width so
@@ -400,7 +400,8 @@ const InfoItem = assignWithoutSideEffects(React.forwardRef(_InfoItem), {
  * column count with an equal-width wrapping flex layout (each cell gets width `100 / N %`).
  *
  * We only need to handle the two shapes InfoGroup actually uses:
- *   - `repeat(N, ...)` / `repeat(min(N, ...), ...)`  -> N  (web default is `repeat(min(4, count), 1fr)`)
+ *   - `repeat(N, ...)` / `repeat(min(N, M), ...)` / `repeat(max(N, M), ...)`  -> N or min/max(N, M)
+ *     (web default is `repeat(min(4, count), 1fr)`)
  *   - an explicit track list, e.g. `1fr`, `1fr 1fr`, `50% 50%` -> number of tracks
  *   - undefined / unrecognized -> `min(4, childCount)` (mirrors the web default)
  */
@@ -413,11 +414,24 @@ const getVerticalColumnCount = (
   const template = String(gridTemplateColumns ?? '').trim();
   if (!template) return fallback;
 
-  // `repeat(N, ...)` / `repeat(min(N, ...), ...)` -> the leading integer is the column count.
-  const repeatMatch = /repeat\(\s*(?:min|max|minmax)?\(?\s*(\d+)/i.exec(template);
-  if (repeatMatch) {
-    const parsed = parseInt(repeatMatch[1], 10);
+  // `repeat(N, ...)` -> N is the column count.
+  // `repeat(min(N, M), ...)` -> Math.min(N, M) is the column count.
+  // `repeat(max(N, M), ...)` -> Math.max(N, M) is the column count.
+  // `repeat(minmax(N, M), ...)` -> N is a reasonable default (the min track count).
+  const simpleRepeatMatch = /repeat\(\s*(\d+)/i.exec(template);
+  if (simpleRepeatMatch) {
+    const parsed = parseInt(simpleRepeatMatch[1], 10);
     return parsed > 0 ? parsed : fallback;
+  }
+
+  const minRepeatMatch = /repeat\(\s*min\(\s*(\d+)\s*,\s*(\d+)/i.exec(template);
+  if (minRepeatMatch) {
+    return Math.min(parseInt(minRepeatMatch[1], 10), parseInt(minRepeatMatch[2], 10));
+  }
+
+  const maxRepeatMatch = /repeat\(\s*max\(\s*(\d+)\s*,\s*(\d+)/i.exec(template);
+  if (maxRepeatMatch) {
+    return Math.max(parseInt(maxRepeatMatch[1], 10), parseInt(maxRepeatMatch[2], 10));
   }
 
   // Explicit track list -> number of whitespace-separated tracks.
@@ -506,7 +520,9 @@ const _InfoGroup = (
         {!isHorizontal
           ? React.Children.map(children, (child, index) => {
               if (!React.isValidElement(child)) return child;
-              const isLastColumn = index % verticalColumnCount === verticalColumnCount - 1;
+              const isLastColumn =
+                index % verticalColumnCount === verticalColumnCount - 1 ||
+                index === childCount - 1;
               const isLastRow = Math.floor(index / verticalColumnCount) === verticalRowCount - 1;
               return (
                 <BaseBox
