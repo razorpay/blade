@@ -521,6 +521,7 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
     padding: 0,
     '& p': {
       color: theme.colors.surface.text.gray.muted,
+      textDecoration: $isHidden ? 'line-through' : 'none',
       transition: $isClickable
         ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
         : 'none',
@@ -694,6 +695,9 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
 }) => {
   const { theme } = useTheme();
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+  const hasUserInteractedRef = React.useRef(false);
+  const isControlled = selectedDataKeysProp !== undefined;
+  const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
 
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
@@ -703,6 +707,20 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
   });
+
+  React.useEffect(() => {
+    if (!shouldAutoSelectAllDataKeys || hasUserInteractedRef.current || allDataKeys.length === 0) {
+      return;
+    }
+
+    const isSelectedStateInSync =
+      selectedKeysArray.length === allDataKeys.length &&
+      allDataKeys.every((dataKey) => selectedKeysArray.includes(dataKey));
+
+    if (!isSelectedStateInSync) {
+      setSelectedKeysArray(() => [...allDataKeys], true);
+    }
+  }, [allDataKeys, selectedKeysArray, setSelectedKeysArray, shouldAutoSelectAllDataKeys]);
 
   // Reset selection when allDataKeys completely changes (e.g., when nameKey prop changes)
   // This detects when none of the currently selected keys exist in the new data keys
@@ -724,6 +742,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   // Handle toggle
   const handleClick = React.useCallback(
     (dataKey: string) => {
+      hasUserInteractedRef.current = true;
       const newSelectedKeys = selectedKeysArray.includes(dataKey)
         ? selectedKeysArray.filter((key) => key !== dataKey)
         : [...selectedKeysArray, dataKey];

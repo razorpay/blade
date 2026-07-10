@@ -90,6 +90,25 @@ type AmountCommonProps = {
 type AmountProps = AmountTypeProps & AmountCommonProps;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Amount` for displaying currency values with locale-aware formatting (symbols, commas, decimals).
+- Use `suffix="humanize"` for large numbers that need compact notation (e.g., 1.2M, 123K).
+- Use semantic `color` values (`positive` for credits, `negative` for debits) to convey financial meaning.
+- Match `type` to context: `"body"` for inline amounts, `"heading"` for section-level, `"display"` for hero amounts.
+- Use `isStrikethrough` for original prices in discount contexts.
+- Set `fractionDigits="auto"` to respect currency-specific decimal conventions (JPY=0, INR=2, KWD=3).
+
+**Don't**
+
+- Don't pass values in paise/cents directly — convert to the primary unit (rupees/dollars) before passing to `value`.
+- Don't use invalid size combinations for the chosen `type` — each type has its own valid size range.
+- Don't use `color="neutral"` — it's not supported and throws an error.
+- Don't use `Amount` for arbitrary numbers that aren't currency — use `Text` for non-monetary values.
+- Don't omit `I18nProvider` in your app — proper locale formatting depends on it.
+
 ## Examples
 
 ### Display Variations

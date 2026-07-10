@@ -1799,7 +1799,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-bottom: 2px;
 }
 
-.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]),
+.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c45.c45.c45.c45.c45[aria-expanded="true"] {
   background-color: hsla(206,10%,29%,0.06);
 }

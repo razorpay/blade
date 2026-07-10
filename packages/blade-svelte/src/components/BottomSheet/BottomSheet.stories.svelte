@@ -12,6 +12,10 @@
     args: {
       isOpen: undefined,
       snapPoints: undefined,
+      isDismissible: true,
+      title: 'Address Details',
+      subtitle: 'Saving addresses will improve your checkout experience',
+      showBackButton: false,
     },
     argTypes: {
       isOpen: { table: { disable: true } },
@@ -46,6 +50,9 @@
   import Badge from '../Badge/Badge.svelte';
   import Counter from '../Counter/Counter.svelte';
   import Link from '../Link/Link.svelte';
+
+  /* Playground story state — separate from product-demo stories. */
+  let isPlaygroundOpen = $state(false);
 
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
@@ -169,6 +176,33 @@
     {/each}
   </ul>
 {/snippet}
+
+<!-- Playground — controls drive BottomSheet + header props. -->
+<Story name="Playground">
+  {#snippet template(args: BottomSheetProps & { title?: string; subtitle?: string; showBackButton?: boolean })}
+    <div>
+      <Button onClick={() => (isPlaygroundOpen = true)}>Open</Button>
+      <BottomSheet
+        {...args}
+        isOpen={isPlaygroundOpen}
+        onDismiss={() => (isPlaygroundOpen = false)}
+      >
+        {#snippet children()}
+          <BottomSheetHeader
+            title={args.title ?? 'Address Details'}
+            subtitle={args.subtitle ?? 'Saving addresses will improve your checkout experience'}
+            showBackButton={args.showBackButton}
+          />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>Use controls to tweak header props, isDismissible, and zIndex.</Text>
+            {/snippet}
+          </BottomSheetBody>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
 
 <!-- Story 1: Default — long Lorem Ipsum content + checkbox + Continue button. -->
 <Story name="Default">

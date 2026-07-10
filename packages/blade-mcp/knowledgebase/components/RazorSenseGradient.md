@@ -53,6 +53,25 @@ type RazorSenseGradientProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `RazorSenseGradient` for animated gradient effects masked to SVG icon/logo shapes.
+- Pass SVG elements (`<path>`, `<circle>`, `<rect>`, `<g>`) as children with `fill="white"` for visibility.
+- Match the `viewBox` prop to your SVG path's native coordinate system (typically `"0 0 24 24"` for icons).
+- Use `origin` prop to control where the radial gradient emanates from.
+- Layer over `RazorSense` as a foreground icon overlay for the full Spark Animation pattern.
+- Combine with framer-motion SVG variants (`motion.path`, `motion.g`) for animated mask effects.
+
+**Don't**
+
+- Don't use `RazorSenseGradient` on React Native — it requires WebGL and is web-only.
+- Don't pass HTML elements or React components as children — only SVG elements are supported.
+- Don't use `fill` values other than `"white"` unless you specifically want gradient transparency.
+- Don't use extremely large `size` values for many simultaneous instances — it impacts performance.
+- Don't mismatch `viewBox` with your SVG coordinate system — it causes scaling issues.
+
 ## Example
 
 Here are examples demonstrating various ways to use the RazorSenseGradient component:
