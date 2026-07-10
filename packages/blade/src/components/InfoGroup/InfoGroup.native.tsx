@@ -287,20 +287,22 @@ const HorizontalItemBox = React.forwardRef<
     children: React.ReactNode;
     testID?: string;
   }
->(({ children, testID }, ref): React.ReactElement => {
-  return (
-    <BaseBox
-      ref={ref as never}
-      display="flex"
-      flexDirection="row"
-      alignItems="flex-start"
-      gap="spacing.6"
-      {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
-    >
-      {children}
-    </BaseBox>
-  );
-});
+>(
+  ({ children, testID }, ref): React.ReactElement => {
+    return (
+      <BaseBox
+        ref={ref as never}
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-start"
+        gap="spacing.6"
+        {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
+      >
+        {children}
+      </BaseBox>
+    );
+  },
+);
 
 /**
  * For vertical orientation, items are arranged in columns (flex column with optional divider).
@@ -308,25 +310,27 @@ const HorizontalItemBox = React.forwardRef<
 const VerticalItemBox = React.forwardRef<
   BladeElementRef,
   { children: React.ReactNode; testID?: string; isHighlighted?: boolean }
->(({ children, testID, isHighlighted = false }, ref): React.ReactElement => {
-  return (
-    <BaseBox
-      display="flex"
-      flexDirection="row"
-      alignItems="flex-start"
-      ref={ref as never}
-      {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
-    >
-      {isHighlighted && <Divider orientation="vertical" />}
-      {/* `flex={1}` bounds this column to the grid cell's width so the key/value text
+>(
+  ({ children, testID, isHighlighted = false }, ref): React.ReactElement => {
+    return (
+      <BaseBox
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-start"
+        ref={ref as never}
+        {...metaAttribute({ name: MetaConstants.InfoItem, testID })}
+      >
+        {isHighlighted && <Divider orientation="vertical" />}
+        {/* `flex={1}` bounds this column to the grid cell's width so the key/value text
             wraps to multiple lines instead of overflowing on a single line (RN defaults
             flexShrink to 0, which otherwise lets the content stay one long line). */}
-      <BaseBox display="flex" flexDirection="column" gap="spacing.2" flex={1}>
-        {children}
+        <BaseBox display="flex" flexDirection="column" gap="spacing.2" flex={1}>
+          {children}
+        </BaseBox>
       </BaseBox>
-    </BaseBox>
-  );
-});
+    );
+  },
+);
 
 const _InfoItem = (
   { children, testID, isHighlighted }: InfoItemProps,
