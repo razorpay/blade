@@ -96,4 +96,78 @@ describe('<FilterChipSelectInput /> (native)', () => {
 
     expect(getByTestId('filter-chip-test')).toBeTruthy();
   });
+
+  it('should select multiple options and report all selected values', () => {
+    const onChange = jest.fn();
+    const { getByText, getAllByRole } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" name="status" onChange={onChange} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    fireEvent.press(getByText('Status'));
+    const menuItems = getAllByRole('menuitem');
+    fireEvent.press(menuItems[0]);
+    fireEvent.press(menuItems[1]);
+
+    expect(onChange).toHaveBeenLastCalledWith({
+      name: 'status',
+      values: ['active', 'inactive'],
+    });
+  });
+
+  it('should clear the selected value when the clear button is pressed', () => {
+    const onChange = jest.fn();
+    const onClearButtonClick = jest.fn();
+    const { getByText, getByLabelText, getAllByRole } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput
+          label="Status"
+          name="status"
+          onChange={onChange}
+          onClearButtonClick={onClearButtonClick}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    fireEvent.press(getByText('Status'));
+    fireEvent.press(getAllByRole('menuitem')[0]);
+    expect(onChange).toHaveBeenLastCalledWith({ name: 'status', values: ['active'] });
+
+    fireEvent.press(getByLabelText('Clear Status value'));
+
+    expect(onClearButtonClick).toHaveBeenCalledWith({ name: 'status', values: ['active'] });
+    expect(onChange).toHaveBeenLastCalledWith({ name: 'status', values: [] });
+  });
+
+  it('should reflect a controlled value as the selected chip value', () => {
+    const { getAllByText, getByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Status" name="status" value="active" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    // "Active" is rendered both in the chip trigger (selected value) and in the ActionList item.
+    expect(getAllByText('Active').length).toBeGreaterThanOrEqual(2);
+    // A selected chip renders the clear button.
+    expect(getByLabelText('Clear Status value')).toBeTruthy();
+  });
 });
