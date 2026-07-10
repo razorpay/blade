@@ -24,8 +24,10 @@ const localNodeModules = (() => {
 })();
 const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 
-const CASE_SPLIT_REPLACEMENT_VAR = 'var CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
-const CASE_SPLIT_REPLACEMENT_CONST = 'const CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
+const CASE_SPLIT_REPLACEMENT_VAR =
+  'var CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
+const CASE_SPLIT_REPLACEMENT_CONST =
+  'const CASE_SPLIT_PATTERN = /[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/g;';
 
 const COMPAT_WORDS_CJS = `'use strict';
 Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
@@ -64,7 +66,7 @@ for (const nodeModules of [localNodeModules, rootNodeModules]) {
       .trim()
       .split('\n')
       .filter(Boolean);
-    found.forEach(f => allFiles.add(f));
+    found.forEach((f) => allFiles.add(f));
   } catch {
     // ignore
   }
@@ -88,7 +90,10 @@ for (const file of allFiles) {
 
   // Case 2: CASE_SPLIT_PATTERN (var or const, in any file)
   content = content.replace(/var CASE_SPLIT_PATTERN\s*=\s*\/[^\n;]+;/g, CASE_SPLIT_REPLACEMENT_VAR);
-  content = content.replace(/const CASE_SPLIT_PATTERN\s*=\s*\/[^\n;]+;/g, CASE_SPLIT_REPLACEMENT_CONST);
+  content = content.replace(
+    /const CASE_SPLIT_PATTERN\s*=\s*\/[^\n;]+;/g,
+    CASE_SPLIT_REPLACEMENT_CONST,
+  );
 
   // Case 3: identifierStartRegex + identifierContinueRegex (jsdoc-type-pratt-parser, bundled into chunks)
   content = content.replace(
@@ -101,8 +106,14 @@ for (const file of allFiles) {
   );
 
   // Case 4: string-built Unicode class references (\p{Lu}, \p{Ll})
-  content = content.replace(/const rUnicodeUpper\s*=\s*['"]\\\\p\{Lu\}['"];/g, "const rUnicodeUpper = '[A-Z]';");
-  content = content.replace(/const rUnicodeLower\s*=\s*['"]\\\\p\{Ll\}['"];/g, "const rUnicodeLower = '[a-z]';");
+  content = content.replace(
+    /const rUnicodeUpper\s*=\s*['"]\\\\p\{Lu\}['"];/g,
+    "const rUnicodeUpper = '[A-Z]';",
+  );
+  content = content.replace(
+    /const rUnicodeLower\s*=\s*['"]\\\\p\{Ll\}['"];/g,
+    "const rUnicodeLower = '[a-z]';",
+  );
 
   if (content !== orig) {
     fs.writeFileSync(file, content);
