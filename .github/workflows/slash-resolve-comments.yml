@@ -13,7 +13,7 @@ jobs:
   resolve-comments:
     name: Resolve PR review comments via Slash
     # Skip reviews from bots to prevent feedback loops, except rzp-slash-public
-    # whose comments should be auto-resolved.
+    # whose comments with confidence >= 5/10 should be auto-resolved.
     if: |
       github.actor != 'github-actions[bot]' &&
       github.actor != 'rzp-slash' &&
