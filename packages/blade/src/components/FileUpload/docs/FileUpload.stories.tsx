@@ -12,7 +12,9 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { TextInput } from '~components/Input/TextInput';
 import { Divider } from '~components/Divider';
+import { Modal, ModalHeader, ModalBody } from '~components/Modal';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '~components/BottomSheet';
+import { getPlatformType } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -47,6 +49,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [imageFileSource, setImageFileSource] = useState<string | undefined>();
+  const isReactNative = getPlatformType() === 'react-native';
 
   const uploadFile = (file: BladeFile, fileList: BladeFileList): Promise<Response> => {
     setUploadedFiles(
@@ -169,9 +172,13 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
             {responseData.map((res, index) => {
               return (
                 <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
-                  <Text>
-                    Image {index + 1}: {res?.url ?? 'uploaded'}
-                  </Text>
+                  {isReactNative ? (
+                    <Text>
+                      Image {index + 1}: {res?.url ?? 'uploaded'}
+                    </Text>
+                  ) : (
+                    <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
+                  )}
                   <Divider thickness="thicker" variant="normal" />
                 </Box>
               );
@@ -179,14 +186,25 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
           </Box>
         )}
       </Box>
-      <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
-        <BottomSheetHeader title="Image Preview" />
-        <BottomSheetBody>
-          <Box width="100%">
-            <Text>Preview: {imageFileSource}</Text>
-          </Box>
-        </BottomSheetBody>
-      </BottomSheet>
+      {isReactNative ? (
+        <BottomSheet isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+          <BottomSheetHeader title="Image Preview" />
+          <BottomSheetBody>
+            <Box width="100%">
+              <Text>Preview: {imageFileSource}</Text>
+            </Box>
+          </BottomSheetBody>
+        </BottomSheet>
+      ) : (
+        <Modal isOpen={isOpen} onDismiss={() => setIsOpen(false)} size="medium">
+          <ModalHeader title="Image Preview" />
+          <ModalBody>
+            <Box width="100%">
+              <img src={imageFileSource} alt="Preview" width="50%" height="50%" />
+            </Box>
+          </ModalBody>
+        </Modal>
+      )}
     </Box>
   );
 };
