@@ -276,7 +276,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="1fr" as a single stacked column', () => {
     const { toJSON } = renderWithTheme(
-      <InfoGroup itemOrientation="vertical" isHighlighted gridTemplateColumns={'1fr'}>
+      <InfoGroup itemOrientation="vertical" isHighlighted gridTemplateColumns="1fr">
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -292,7 +292,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="1fr 1fr" as two equal columns', () => {
     const { toJSON } = renderWithTheme(
-      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'1fr 1fr'}>
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns="1fr 1fr">
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>
@@ -312,7 +312,7 @@ describe('<InfoGroup /> (native)', () => {
 
   it('should render vertical InfoGroup with gridTemplateColumns="repeat(2, 1fr)" as two equal columns', () => {
     const { toJSON } = renderWithTheme(
-      <InfoGroup itemOrientation="vertical" gridTemplateColumns={'repeat(2, 1fr)'}>
+      <InfoGroup itemOrientation="vertical" gridTemplateColumns="repeat(2, 1fr)">
         <InfoItem>
           <InfoItemKey>Account Holder</InfoItemKey>
           <InfoItemValue>Saurabh Daware</InfoItemValue>

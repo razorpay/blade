@@ -521,8 +521,7 @@ const _InfoGroup = (
           ? React.Children.map(children, (child, index) => {
               if (!React.isValidElement(child)) return child;
               const isLastColumn =
-                index % verticalColumnCount === verticalColumnCount - 1 ||
-                index === childCount - 1;
+                index % verticalColumnCount === verticalColumnCount - 1 || index === childCount - 1;
               const isLastRow = Math.floor(index / verticalColumnCount) === verticalRowCount - 1;
               return (
                 <BaseBox

@@ -281,7 +281,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -290,7 +290,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -714,7 +714,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -723,7 +723,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with Avatars 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -987,7 +987,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -996,7 +996,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -1248,7 +1248,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -1257,7 +1257,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -1509,7 +1509,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -1518,7 +1518,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -1770,7 +1770,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -1779,7 +1779,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with different sizes 1`]
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -2042,7 +2042,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -2051,7 +2051,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -2287,7 +2287,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -2296,7 +2296,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with gridTemplateColumns
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -2581,7 +2581,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -2590,7 +2590,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -2848,7 +2848,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -2857,7 +2857,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -3170,7 +3170,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -3179,7 +3179,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -3463,7 +3463,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -3472,7 +3472,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with isHighlighted=true 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -3762,7 +3762,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -3771,7 +3771,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -4034,7 +4034,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -4043,7 +4043,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -4306,7 +4306,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -4315,7 +4315,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -4577,7 +4577,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -4586,7 +4586,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with itemOrientation="ve
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -4870,7 +4870,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -4879,7 +4879,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -5115,7 +5115,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -5124,7 +5124,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with per-item isHighligh
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -5387,7 +5387,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -5396,7 +5396,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -5648,7 +5648,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -5657,7 +5657,7 @@ exports[`<InfoGroup /> (native) should render InfoGroup with valueAlign left and
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -6075,7 +6075,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -6084,7 +6084,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -6543,7 +6543,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -6552,7 +6552,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -7066,7 +7066,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -7075,7 +7075,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -7570,7 +7570,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -7579,7 +7579,7 @@ exports[`<InfoGroup /> (native) should render complex InfoGroup with horizontal 
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -7957,7 +7957,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -7966,7 +7966,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -8202,7 +8202,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -8211,7 +8211,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -8447,7 +8447,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         </View>
       </View>
       <View
-        alignItems="flex-start"
+        alignItems="center"
         alignSelf="flex-start"
         data-blade-component="info-item-value"
         display="flex"
@@ -8456,7 +8456,7 @@ exports[`<InfoGroup /> (native) should render simple InfoGroup 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
+              "alignItems": "center",
               "alignSelf": "flex-start",
               "display": "flex",
               "flexBasis": 0,
@@ -8748,7 +8748,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -8757,7 +8757,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -9020,7 +9020,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -9029,7 +9029,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -9140,7 +9140,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
         [
           {
             "flexDirection": "column",
-            "paddingRight": 20,
             "width": "50%",
           },
         ]
@@ -9292,7 +9291,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -9301,7 +9300,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -9613,7 +9612,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -9622,7 +9621,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -9906,7 +9905,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -9915,7 +9914,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -10205,7 +10204,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -10214,7 +10213,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -10476,7 +10475,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -10485,7 +10484,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with gridTempla
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -10776,7 +10775,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -10785,7 +10784,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -11049,7 +11048,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -11058,7 +11057,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -11322,7 +11321,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -11331,7 +11330,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -11594,7 +11593,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -11603,7 +11602,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
@@ -11714,7 +11713,6 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
         [
           {
             "flexDirection": "column",
-            "paddingRight": 20,
             "width": "25%",
           },
         ]
@@ -11866,7 +11864,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             </View>
           </View>
           <View
-            alignItems="flex-start"
+            alignItems="center"
             alignSelf="stretch"
             data-blade-component="info-item-value"
             display="flex"
@@ -11875,7 +11873,7 @@ exports[`<InfoGroup /> (native) should render vertical InfoGroup with more than 
             style={
               [
                 {
-                  "alignItems": "flex-start",
+                  "alignItems": "center",
                   "alignSelf": "stretch",
                   "display": "flex",
                   "flexDirection": "row",
