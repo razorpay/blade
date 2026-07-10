@@ -4,18 +4,29 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Blade GenUI SDK
 
-## Quick Start
+Blade GenUI renders structured, streaming AI responses with Blade components. It includes a
+small set of schema-driven components and an extensible registry for product-specific UI.
+
+> GenUI is currently available on web only.
+
+## Quick start
+
+Wrap the renderer in `GenUIProvider` and pass the parsed component array to
+`GenUISchemaRenderer`.
 
 ```tsx
-import { GenUIProvider, GenUISchemaRenderer } from './sdk';
+import {
+  GenUIProvider,
+  GenUISchemaRenderer,
+  type GenUIComponent,
+} from '@razorpay/blade/components';
 
-function App() {
-  const components = [
-    // Note TEXT can have markdown content, the SDK will handle the rendering of markdown
-    { component: 'TEXT', content: '# Hello World' },
-    { component: 'BADGE', text: 'New', color: 'positive' },
-  ];
+const components: GenUIComponent[] = [
+  { component: 'TEXT', content: '# Payment summary\n\nHere is the latest status.' },
+  { component: 'BADGE', text: 'Settled', color: 'positive' },
+];
 
+function PaymentSummary() {
   return (
     <GenUIProvider>
       <GenUISchemaRenderer components={components} />
@@ -24,171 +35,156 @@ function App() {
 }
 ```
 
-## Built-in Components
+## Built-in components
 
-**TEXT**\
-Markdown text with Blade typography
+| Component    | Purpose                                               |
+| ------------ | ----------------------------------------------------- |
+| `TEXT`       | Markdown content rendered with Blade typography       |
+| `CHART`      | Bar, line, area, and pie charts                       |
+| `TABLE`      | Data tables with typed cells and optional row actions |
+| `CARD`       | Card container with optional header and footer        |
+| `BADGE`      | Status badge                                          |
+| `STACK`      | Vertical or horizontal flex layout                    |
+| `GRID`       | CSS grid layout                                       |
+| `INFO_GROUP` | Key-value information                                 |
+| `BUTTON`     | Action button                                         |
+| `LINK`       | Inline action link                                    |
+| `ALERT`      | Feedback message with optional actions                |
+| `AMOUNT`     | Formatted monetary value                              |
+| `DIVIDER`    | Horizontal or vertical divider                        |
+| `SPACER`     | Explicit spacing between components                   |
 
-**CHART**\
-Bar, line, area, pie charts
+The complete property contract for each schema is available through the Blade MCP
+`get_blade_component_docs` tool by requesting `GenUI`.
 
-**TABLE**\
-Data table with typed cells
+## Custom components
 
-**CARD**\
-Card container with header/footer
-
-**BADGE**\
-Status badge
-
-**STACK**\
-Vertical / horizontal flex layout
-
-**GRID**\
-CSS grid layout
-
-**INFO\_GROUP**\
-Key-value pairs display
-
-**BUTTON**\
-Action button
-
-**LINK**\
-External link
-
-**ALERT**\
-Alert / notification box
-
-**DIVIDER**\
-Horizontal / vertical divider
-
-## Defining Custom Components
+Use `GenUICustomComponent` to define the schema and register its renderer through
+`GenUIProvider`.
 
 ```tsx
-import { GenUIProvider, type CustomComponent } from './sdk';
+import {
+  Amount,
+  Card,
+  CardBody,
+  Skeleton,
+  Text,
+  GenUIProvider,
+  GenUISchemaRenderer,
+  type GenUIComponentRenderer,
+  type GenUICustomComponent,
+} from '@razorpay/blade/components';
 
-// Step 1: Define the custom component
-type MyWidgetComponentProps = CustomComponent<'MY_WIDGET', {
-  title: string;
-  value: number;
-}>;
-
-const MyComponent = ({ title, value }: MyWidgetComponentProps) => (
-  <div>{title}: {value}</div>
-);
-
-// Step 2: Register it in the GenUIProvider
-<GenUIProvider
-  config={{
-    components: {
-      MY_WIDGET: { renderer: MyComponent },
-    },
-  }}
->
-  // Step 3: Render the JSON which includes the custom component
-  <GenUISchemaRenderer components={[{ component: 'MY_WIDGET', title: 'My Widget', value: 123 }]} />
-</GenUIProvider>
-```
-
-## Handling Streaming in Custom Components
-
-During streaming, components receive **partial/incomplete data** as the LLM generates JSON token-by-token. Your custom components must handle these gracefully to avoid runtime errors.
-
-Let's take an example of a custom component that renders a metric card with a title, value, trend, and history.
-
-**Summary:**
-
-1. **Early return with skeleton** — Check required props, show loading state until data is complete
-2. **Validate string values** — Partial strings like `"ac"` arrive before `"active"`
-3. **Filter arrays** — Remove incomplete items before rendering lists
-4. **Optional chaining** — Safe access for nested/optional properties
-5. **Custom memo** — Prevent unnecessary re-renders during streaming
-
-```tsx
-type MetricCardProps = CustomComponent<'METRIC_CARD', {
-  title?: string;
-  value?: number;
-  status?: 'positive' | 'negative' | 'notice' | 'neutral' | 'primary' | 'information';
-  meta?: { updatedAt?: string; author?: string };
-  text?: string;
-  history?: Array<{ date?: string; value?: number }>;
-}>;
-
-const MetricCard = memo(
-  ({ title, value, status, meta, color, history }: MetricCardProps) => {
-    // Tip 1: Early return with skeleton for missing required props
-    // During streaming, props arrive incrementally - show loading state until ready
-    if (!title || value === undefined) {
-      return <Skeleton width="200px" height="100px" />;
-    }
-
-    // Tip 2: Validate enum-like string values before using
-    // During streaming "active" might arrive as: "ac" -> "act" -> "activ" ... -> "active"
-    const validStatuses = ['active', 'inactive', 'pending'];
-    const safeStatus = status && validStatuses.includes(status) ? status : undefined;
-
-    // Tip 3: Filter incomplete items from arrays
-    // Array items stream one-by-one and may have missing fields
-    const validHistory = history?.filter(h => h.date && h.value !== undefined) ?? [];
-
-    return (
-      <Card>
-        <Text>{title}</Text>
-        <Amount value={value} />
-        {safeStatus && <Indicator color={safeStatus} />}
-        {validHistory.length > 0 && <Sparkline data={validHistory} />}
-        {/* Tip 4: Use optional chaining for nested objects */}
-        {meta?.updatedAt && <Text size="small">Updated: {meta.updatedAt}</Text>}
-        {meta?.author && <Text size="small">Author: {meta.author}</Text>}
-      </Card>
-    );
-  },
-  // Tip 5: Custom memo comparison to reduce re-renders during streaming
-  // Only re-render when data actually changes, not on every stream chunk
-  // This is only required if data that is streamed is complex or nested
-  (prevProps, nextProps) => {
-    return (
-      prevProps.status === nextProps.status &&
-      prevProps.history?.length === nextProps.history?.length
-    );
+type RevenueWidgetSchema = GenUICustomComponent<
+  'REVENUE_WIDGET',
+  {
+    title?: string;
+    value?: number;
+    currency?: 'INR' | 'MYR';
   }
-);
+>;
+
+const RevenueWidget = ({ title, value, currency }: RevenueWidgetSchema) => {
+  if (!title || value === undefined) {
+    return <Skeleton width="100%" height="96px" />;
+  }
+
+  return (
+    <Card width="100%">
+      <CardBody>
+        <Text size="small" color="surface.text.gray.muted">
+          {title}
+        </Text>
+        <Amount value={value} currency={currency === 'MYR' ? 'MYR' : 'INR'} />
+      </CardBody>
+    </Card>
+  );
+};
+
+function RevenueResponse() {
+  const revenueComponent: RevenueWidgetSchema = {
+    component: 'REVENUE_WIDGET',
+    title: 'Revenue this month',
+    value: 125000,
+    currency: 'INR',
+  };
+
+  return (
+    <GenUIProvider
+      config={{
+        components: {
+          REVENUE_WIDGET: { renderer: RevenueWidget as GenUIComponentRenderer },
+        },
+      }}
+    >
+      <GenUISchemaRenderer components={[revenueComponent]} />
+    </GenUIProvider>
+  );
+}
 ```
 
-## Action Handling
+## Handling streamed schemas
 
-Handle button/alert actions via `onActionClick`:
+LLM output can be parsed repeatedly while JSON is still being generated. Components may
+therefore receive partial strings, incomplete array entries, or missing optional properties.
 
-Clicking on any built-in GenUI components like `BUTTON` and `ALERT`'s action buttons will trigger the `onActionClick` callback with the action data.
+- Keep schema properties optional when they can arrive incrementally.
+- Render a skeleton or nothing until the minimum required data is present.
+- Validate enum-like strings before forwarding them to Blade components.
+- Filter incomplete array entries before rendering collections.
+- Use optional chaining for nested objects.
+- Avoid side effects during render because the same component can update many times per response.
 
-Built-in Click Action Schema:
+The built-in renderers already follow these rules. Custom renderers are responsible for handling
+their own partial state.
+
+## Action handling
+
+`BUTTON`, `LINK`, `ALERT`, and table row actions send their structured action to the callback in
+the provider configuration. The consumer decides whether to submit another prompt, navigate, or
+perform a product action.
 
 ```tsx
-const ClickActionSchema = z.object({
-  type: z.literal('CLICK'),
-  data: z.object({
-    message: z.string().describe('The message to be sent to the LLM when the button is clicked'),
-  }),
-}).describe('A natural language action to be performed when the button is clicked, this will be executed as a further query to LLM')
+import { GenUIProvider, GenUISchemaRenderer } from '@razorpay/blade/components';
+
+function SuggestedAction() {
+  return (
+    <GenUIProvider
+      config={{
+        onActionClick: (action) => {
+          if (action.type === 'CLICK' && typeof action.data?.message === 'string') {
+            console.log(action.data.message);
+          }
+        },
+      }}
+    >
+      <GenUISchemaRenderer
+        components={[
+          {
+            component: 'BUTTON',
+            text: 'Show failed payments',
+            action: {
+              type: 'CLICK',
+              eventName: 'show_failed_payments',
+              data: { message: 'Show failed payments from the last seven days' },
+            },
+          },
+        ]}
+      />
+    </GenUIProvider>
+  );
+}
 ```
 
-```jsx
-<GenUIProvider
-  onActionClick={(action) => {
-    console.log(action.type, action.data);
-    // TODO: Send another message to the LLM
-    // send({ role: 'human', content: action.data.message })
-    // -> 'Say hello' sent to LLM
-  }}
->
-  <GenUISchemaRenderer
-    components={[
-      {
-        component: 'BUTTON',
-        text: 'Click me',
-        action: { type: 'CLICK', data: { message: 'Say hello' } },
-      },
-    ]}
-  />
-</GenUIProvider>
+## Text animation
+
+Set `isAnimating` while the model is streaming markdown. `animateOptions` controls the word
+animation used by the `TEXT` renderer.
+
+```tsx
+<GenUISchemaRenderer
+  components={[{ component: 'TEXT', content: streamedMarkdown }]}
+  isAnimating={isStreaming}
+  animateOptions={{ duration: 300, sep: 'word' }}
+/>
 ```
