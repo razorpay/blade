@@ -22,11 +22,7 @@ gh pr view {PR_NUMBER} --repo razorpay/blade
 gh api repos/razorpay/blade/pulls/comments/{COMMENT_ID}
 ```
 
-### 2. Validate Each Comment
-
-Before resolving, assess if the comment is valid and actionable — check the relevant code, diff, and PR context. Skip comments that are invalid, irrelevant, or need human input.
-
-### 3. Resolve Each Comment
+### 2. Resolve Each Comment
 
 For each comment in `COMMENT_URLS`, determine the appropriate resolution:
 
@@ -36,17 +32,17 @@ For each comment in `COMMENT_URLS`, determine the appropriate resolution:
   - Go through the rest of the relevant code, commits, PR info, whenever applicable, to determine if the comment is invalid or irrelevant.
 - **Needs PR author input**: add the label `Human Help Needed 🧑🏻‍💻` to the PR instead of guessing.
 
-### 3.5 How to deal with different kind of comments
+### 2.5 How to deal with different kind of comments
 
 - Case 1: Diff has peice of change that doesn't match the title or description of the PR.
   - In most cases, its safe to assume that the code was changed but the PR info was not updated to reflect the changes. You can go and update the PR info instead of reverting the change.
 
-### 4. Making Changes in branch
+### 3. Making Changes in branch
 
 - Try not to deviate from the original change the PR was intended for (check PR info, diff, relevant code state in that branch, etc to get context whenever needed).
 - Its possible that while working on the change, you find out that the comment is invalid or irrelevant or you don't need to make the change at all. In that case, just reply to the inlined comment with small message and add `[resolved by agent]` at the end.
 
-### 5. Push Fixes
+### 4. Push Fixes
 
 If any code fixes were made:
 
@@ -54,7 +50,7 @@ If any code fixes were made:
 git add -A && git diff --cached --quiet || (git commit -m "fix: <relevant commit message> [resolved by agent]" && git push)
 ```
 
-### 6. Reply to Comments
+### 5. Reply to Comments
 
 After resolving, reply to each inlined comment with small message and add `[resolved by agent]` at the end (if you have not already done so).
 
