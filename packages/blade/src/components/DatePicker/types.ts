@@ -60,6 +60,31 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPickerChange?: (picker: PickerType) => void;
 
   /**
+   * Controlled month that the calendar renders, independent of the selected `value`.
+   *
+   * Useful when you want the calendar to open on a specific month without pre-selecting
+   * a date — e.g. a "comparison" range picker that should default to the period
+   * immediately preceding a primary range picker's selection.
+   *
+   * Falls back to the first date of `value`/`defaultValue` (or today) when not set.
+   *
+   * @example
+   * // Anchor a comparison picker to the month before the primary range's start
+   * <DatePicker selectionType="range" visibleMonth={dayjs(primaryStart).subtract(1, 'month').toDate()} />
+   */
+  visibleMonth?: Date;
+  /**
+   * Uncontrolled variant of `visibleMonth`. Sets the initial month the calendar renders,
+   * without pre-selecting a date.
+   */
+  defaultVisibleMonth?: Date;
+  /**
+   * Callback which fires when the rendered month changes, whether via the calendar's
+   * next/previous navigation or programmatically through `visibleMonth`.
+   */
+  onVisibleMonthChange?: (date: Date) => void;
+
+  /**
    * Controlled isOpen state
    */
   isOpen?: boolean;
