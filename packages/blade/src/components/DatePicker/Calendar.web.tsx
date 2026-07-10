@@ -99,13 +99,12 @@ const Calendar = <Type extends DateSelectionType>({
 
   // Keeps the legacy `_date` state and the new `_visibleMonth` state in sync so that
   // navigation keeps working regardless of which one is currently driving `currentDate`.
-  const updateCurrentDate = React.useCallback(
-    (nextDate: Date) => {
-      setDate(nextDate);
-      setVisibleMonth(() => nextDate);
-    },
-    [setDate, setVisibleMonth],
-  );
+  // Note: Not wrapped in useCallback because `setDate` from mantine's `useUncontrolled`
+  // is not memoized, so useCallback would provide no benefit.
+  const updateCurrentDate = (nextDate: Date): void => {
+    setDate(nextDate);
+    setVisibleMonth(() => nextDate);
+  };
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();

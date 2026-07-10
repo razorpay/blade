@@ -68,6 +68,9 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    *
    * Falls back to the first date of `value`/`defaultValue` (or today) when not set.
    *
+   * When `visibleMonth` is controlled, you must handle `onVisibleMonthChange` to keep
+   * the prop in sync — otherwise calendar navigation will not work.
+   *
    * @example
    * // Anchor a comparison picker to the month before the primary range's start
    * <DatePicker selectionType="range" visibleMonth={dayjs(primaryStart).subtract(1, 'month').toDate()} />
