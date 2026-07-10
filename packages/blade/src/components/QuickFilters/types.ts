@@ -61,6 +61,7 @@ type QuickFilterContentProps = Pick<QuickFilterProps, 'trailing' | 'value' | 'ti
 
 type QuickFilterGroupContextType = Pick<QuickFilterGroupCommomProps, 'selectionType'> & {
   selectedQuickFilters: string[];
+  onSelect: (value: string) => void;
 };
 
 type QuickFilterWrapperProps = Pick<QuickFilterGroupCommomProps, 'children' | 'onChange'> & {

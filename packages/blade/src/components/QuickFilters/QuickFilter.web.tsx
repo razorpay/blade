@@ -73,6 +73,10 @@ const QuickFilterContent = ({
 
 const QuickFilter = forwardRef<BladeElementRef, QuickFilterProps>(
   ({ title, value, trailing, testID, ...rest }, ref): React.ReactElement => {
+    // NOTE: Do NOT destructure or call `onSelect` from the context here.
+    // `onSelect` is a native-only field used by the Pressable tap handler in QuickFilter.native.tsx.
+    // On web, state is managed by RadioGroup/CheckboxGroup inside QuickFilterWrapper.
+    // Calling onSelect on web would double-update state.
     const { selectedQuickFilters, selectionType } = useQuickFilterGroupContext();
 
     const isQuickFilterSelected = selectedQuickFilters.includes(value);

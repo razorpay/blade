@@ -199,4 +199,29 @@ describe('<Chip />', () => {
     expect(container.querySelector('[data-analytics-chip="mango"]')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  it('should render chip with leading element', () => {
+    const { container, getByRole } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Select country">
+        <Chip value="IN" leading={<img src="https://example.com/in.svg" width={16} alt="" />}>
+          India
+        </Chip>
+        <Chip value="US" leading={<img src="https://example.com/us.svg" width={16} alt="" />}>
+          United States
+        </Chip>
+      </ChipGroup>,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByRole('radio', { name: 'India' })).toBeInTheDocument();
+    expect(getByRole('radio', { name: 'United States' })).toBeInTheDocument();
+  });
+
+  it('should render chip with leading element and no children', () => {
+    const { container } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Select country">
+        <Chip value="IN" leading={<img src="https://example.com/in.svg" width={16} alt="" />} />
+      </ChipGroup>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
