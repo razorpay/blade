@@ -4,7 +4,7 @@
  *
  * Selects comments that either:
  *   - mention @rzp-slash-public or @razorpay/slash-public (manual delegation), or
- *   - were posted by rzp-slash-public with confidence >= 8/10 (auto-resolution)
+ *   - were posted by rzp-slash-public (auto-resolution, all comments regardless of confidence)
  */
 
 const { execSync } = require('child_process');
@@ -22,7 +22,7 @@ const allComments = JSON.parse(
 const selected = allComments.filter(
   (c) =>
     (c.body.includes('@rzp-slash-public') || c.body.includes('@razorpay/slash-public')) ||
-    (c.user.login === 'rzp-slash-public[bot]' && /confidence: ([89]\d?|10)\/10/.test(c.body)),
+    (c.user.login === 'rzp-slash-public[bot]'),
 );
 
 if (selected.length === 0) {
