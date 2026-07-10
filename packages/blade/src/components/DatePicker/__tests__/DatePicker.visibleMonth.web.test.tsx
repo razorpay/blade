@@ -73,13 +73,15 @@ describe('<DatePicker/> visibleMonth', () => {
 
     expect(onVisibleMonthChange).toHaveBeenCalledTimes(1);
     const calledDate = onVisibleMonthChange.mock.calls[0][0] as Date;
-    const expectedDate = dayjs(anchorMonth).add(1, 'month').toDate();
+    // Range picker on desktop shows 2 columns, so "Next" advances by 2 months
+    const expectedDate = dayjs(anchorMonth).add(2, 'month').toDate();
     expect(dayjs(calledDate).isSame(expectedDate, 'month')).toBe(true);
   });
 
   it('advances the calendar header after navigation when defaultVisibleMonth is set', async () => {
     const anchorMonth = dayjs().subtract(4, 'month').toDate();
-    const nextMonth = dayjs(anchorMonth).add(1, 'month');
+    // Range picker on desktop shows 2 columns, so "Next" advances by 2 months
+    const nextMonth = dayjs(anchorMonth).add(2, 'month');
 
     const { getByRole, getAllByText, queryByText } = renderWithTheme(
       <DatePickerComponent
