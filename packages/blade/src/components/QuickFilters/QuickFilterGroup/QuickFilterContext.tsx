@@ -4,6 +4,8 @@ import type { QuickFilterGroupContextType } from '../types';
 const QuickFilterGroupContext = React.createContext<QuickFilterGroupContextType>({
   selectionType: 'single',
   selectedQuickFilters: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onSelect: () => {},
 });
 const QuickFilterGroupProvider = QuickFilterGroupContext.Provider;
 
