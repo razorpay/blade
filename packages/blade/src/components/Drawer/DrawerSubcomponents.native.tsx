@@ -10,6 +10,7 @@ import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useId } from '~utils/useId';
 import { useTheme } from '~utils';
 
 /**
@@ -25,6 +26,7 @@ const DrawerHeaderGradient = ({
   color: NonNullable<DrawerHeaderProps['color']>;
 }): React.ReactElement => {
   const { theme } = useTheme();
+  const uniqueId = useId('drawer-header-gradient');
   // Web's `feedback.background[color].subtle` token is a low-opacity hsla() (e.g. 0.18 alpha).
   // Web applies it as the far stop of a radial-gradient that fades from `transparent`, so the
   // visible tint never exceeds that alpha (hence it looks very light). react-native-svg's <Stop>
@@ -34,7 +36,7 @@ const DrawerHeaderGradient = ({
   const alphaMatch = subtleColor.match(/hsla?\([^)]*,\s*([\d.]+)\s*\)$/);
   const subtleAlpha = alphaMatch ? Number(alphaMatch[1]) : 1;
   const opaqueColor = subtleColor.replace(/^hsla/, 'hsl').replace(/,\s*[\d.]+\s*\)$/, ')');
-  const gradientId = `drawer-header-gradient-${color}`;
+  const gradientId = `${uniqueId}-${color}`;
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">

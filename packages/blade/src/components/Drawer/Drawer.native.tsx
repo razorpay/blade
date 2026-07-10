@@ -205,7 +205,7 @@ const _Drawer = ({
             <FTXAnnouncement />
             <CatPictures />
           </DrawerBody>
-        <Drawer>
+        </Drawer>
       </Box>
     )
   }
