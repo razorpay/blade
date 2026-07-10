@@ -104,14 +104,26 @@ function isVersionInRange(version: string, from: string, to: string): boolean {
  * @param to - Ending version of the range (e.g., "12.15.0")
  * @returns Object with version numbers as keys and descriptions as values for versions in range
  */
-function getRangeChangelogs(changelogContent: string, from: string, to?: string): ParsedChangelog {
+function getRangeChangelogs(
+  changelogContent: string,
+  from: string,
+  to?: string,
+): ParsedChangelog | undefined {
   const parsed = parseChangelog(changelogContent);
   const result: ParsedChangelog = {};
 
-  // if to is not provided, return only the changelog for the version
+  const fromDescription = parsed[from];
+  if (!fromDescription) {
+    return undefined;
+  }
+
+  // If to is not provided, return only the changelog for the version
   if (!to) {
-    result[from] = parsed[from];
-    return result;
+    return { [from]: fromDescription };
+  }
+
+  if (!parsed[to] || compareVersions(from, to) > 0) {
+    return undefined;
   }
 
   for (const [version, description] of Object.entries(parsed)) {
@@ -157,4 +169,10 @@ function getLatestVersion(
   };
 }
 
-export { getRangeChangelogs, stringifyChangelog, getLatestVersion };
+export {
+  compareVersions,
+  getRangeChangelogs,
+  getLatestVersion,
+  parseChangelog,
+  stringifyChangelog,
+};

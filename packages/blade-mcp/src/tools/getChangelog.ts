@@ -3,8 +3,10 @@ import dedent from 'dedent';
 import { z } from 'zod';
 import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import {
+  compareVersions,
   getLatestVersion,
   getRangeChangelogs,
+  parseChangelog,
   stringifyChangelog,
 } from '../utils/changelogParser.js';
 import { analyticsToolCallEventName } from '../utils/tokens.js';
@@ -16,9 +18,9 @@ Get the changelog of blade to help consumer with blade upgrades and checking rel
 
 Intent examples:
 - help me with upgrades -> read \`package.json\` to get consumer's blade version to use it as \`fromVersion\` and then use \`toVersion\` as \`latest\` version (range)
-- what was changed in x.x.x version? -> Just \`fromVersion\` (set isRange to false & omit toVersion)
-- what was changed between x.x.x and y.y.y versions? -> \`fromVersion\` and \`toVersion\` (set isRange to true)
-- what is the latest version of blade? -> \`fromVersion\` as \`latest\` (set isRange to false & omit toVersion)
+- what was changed in x.x.x version? -> use \`fromVersion\` and omit \`toVersion\`
+- what was changed between x.x.x and y.y.y versions? -> use both \`fromVersion\` and \`toVersion\`
+- what is the latest version of blade? -> use \`fromVersion\` as \`latest\` and omit \`toVersion\`
 
 You will provide high level summary of notable changes in this output format:
 
@@ -43,19 +45,26 @@ https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%4012.0.0
 Example: \`(v12.0.0)\` becomes [(v12.0.0)](https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%4012.0.0)
 `;
 
+const versionPattern = /^\d+\.\d+\.\d+$/;
+const changelogVersionSchema = z
+  .string()
+  .refine(
+    (version) => version === 'latest' || versionPattern.test(version),
+    'Expected "latest" or a semantic version such as 12.10.0',
+  );
+
 const getChangelogToolSchema = {
-  fromVersion: z
-    .string()
-    .describe('The start version of the range to get the changelog for. E.g. 10.15.0'),
-  toVersion: z
-    .string()
+  fromVersion: changelogVersionSchema.describe(
+    'The version to get, or the start version of a range. E.g. 10.15.0 or latest',
+  ),
+  toVersion: changelogVersionSchema
     .optional()
-    .describe('The end version of the range to get the changelog for. E.g. 10.16.0'),
+    .describe('The end version of a range. E.g. 10.16.0 or latest'),
   isRange: z
     .boolean()
     .optional()
     .describe(
-      'Whether to get the changelog for a range of versions or a specific version, this is based on intent of user.',
+      'Optional intent hint retained for compatibility. Providing toVersion always requests a range.',
     ),
   currentProjectRootDirectory: z
     .string()
@@ -71,33 +80,73 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
   currentProjectRootDirectory,
 }) => {
   try {
+    if (isRange && !toVersion) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: '`toVersion` is required when `isRange` is true.',
+      });
+    }
+
     const changelogURL =
       'https://raw.githubusercontent.com/razorpay/blade/refs/heads/master/packages/blade/CHANGELOG.md';
     const response = await fetch(changelogURL, {
       method: 'GET',
+      signal: AbortSignal.timeout(10_000),
     });
-    const changelogText = await response.text();
 
-    const isToVersionLatest = toVersion === 'latest';
-    if (isToVersionLatest) {
-      const latestVersion = getLatestVersion(changelogText);
-      toVersion = latestVersion?.version ?? '';
+    if (!response.ok) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: `Failed to fetch Blade changelog (HTTP ${response.status}). Please try again.`,
+      });
     }
-    const isFromVersionLatest = fromVersion === 'latest';
-    if (isFromVersionLatest) {
-      const latestVersion = getLatestVersion(changelogText);
-      fromVersion = latestVersion?.version ?? fromVersion;
+
+    const changelogText = await response.text();
+    const availableChangelog = parseChangelog(changelogText);
+    const latestVersion = getLatestVersion(changelogText);
+
+    if (!latestVersion) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: 'The Blade changelog did not contain any release entries.',
+      });
+    }
+
+    fromVersion = fromVersion === 'latest' ? latestVersion.version : fromVersion;
+    toVersion = toVersion === 'latest' ? latestVersion.version : toVersion;
+
+    if (!availableChangelog[fromVersion]) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: `No Blade changelog entry was found for ${fromVersion}. The latest available version is ${latestVersion.version}.`,
+      });
+    }
+
+    if (toVersion && !availableChangelog[toVersion]) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: `No Blade changelog entry was found for ${toVersion}. The latest available version is ${latestVersion.version}.`,
+      });
+    }
+
+    if (toVersion && compareVersions(fromVersion, toVersion) > 0) {
+      return handleError({
+        toolName: getChangelogToolName,
+        mcpErrorMessage: `Invalid Blade changelog range: fromVersion (${fromVersion}) must be less than or equal to toVersion (${toVersion}).`,
+      });
     }
 
     const parsedChangelog = getRangeChangelogs(changelogText, fromVersion, toVersion);
-    const stringifiedChangelog = stringifyChangelog(parsedChangelog);
 
-    if (parsedChangelog === undefined) {
+    if (!parsedChangelog) {
       return handleError({
         toolName: getChangelogToolName,
-        mcpErrorMessage: `Failed to fetch changelog.`,
+        mcpErrorMessage: 'Failed to resolve the requested Blade changelog entries.',
       });
     }
+
+    const stringifiedChangelog = stringifyChangelog(parsedChangelog);
+    const isRangeRequest = Boolean(toVersion);
 
     sendAnalytics({
       eventName: analyticsToolCallEventName,
@@ -115,7 +164,9 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
           type: 'text',
           text: dedent`
             ## Changelog for: ${
-              isRange ? `range from ${fromVersion} to ${toVersion}` : `version ${fromVersion}`
+              isRangeRequest
+                ? `range from ${fromVersion} to ${toVersion}`
+                : `version ${fromVersion}`
             }
 
             \`\`\`
@@ -128,7 +179,9 @@ const getChangelogToolCallback: ToolCallback<typeof getChangelogToolSchema> = as
   } catch (error: unknown) {
     return handleError({
       toolName: getChangelogToolName,
-      mcpErrorMessage: `Failed to fetch changelog, ${error}`,
+      mcpErrorMessage: `Failed to fetch Blade changelog: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
     });
   }
 };
