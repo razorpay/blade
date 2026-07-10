@@ -43,6 +43,9 @@ const _Breadcrumb = (
       {...getStyledProps(rest)}
       {...metaAttribute({ name: MetaConstants.Breadcrumb })}
       {...makeAnalyticsAttribute(rest)}
+      // Accepted web/native a11y difference: web renders this as `as="nav"` (a navigation landmark),
+      // but React Native's `accessibilityRole` has no equivalent `navigation` value, so the landmark
+      // cannot be expressed on native. We keep the descriptive `accessibilityLabel` as the closest affordance.
       {...makeAccessible({ label: accessibilityLabel })}
     >
       <BreadcrumbContext.Provider value={contextValue}>
@@ -54,6 +57,8 @@ const _Breadcrumb = (
           alignItems="center"
         >
           {React.Children.map(children, (child, index) => {
+            const isCurrentPage = Boolean((child as React.ReactElement)?.props?.isCurrentPage);
+
             return (
               <BaseBox
                 key={index}
@@ -61,13 +66,14 @@ const _Breadcrumb = (
                 flexDirection="row"
                 alignItems="center"
                 gap="spacing.2"
+                // Native equivalent of web's `aria-current="page"`: RN has no `current` mapping,
+                // so we surface the active item to assistive tech via the `selected` state.
+                {...makeAccessible(isCurrentPage ? { selected: true } : {})}
                 {...metaAttribute({ name: MetaConstants.BreadcrumbItem })}
               >
                 {child}
                 <BaseBox {...makeAccessible({ hidden: true })}>
-                  {index !== React.Children.count(children) - 1 && (
-                    <Separator size={size} color={color} />
-                  )}
+                  {index !== React.Children.count(children) - 1 && <Separator size={size} />}
                   {index === React.Children.count(children) - 1 && showLastSeparator && (
                     <Separator size={size} color={color} />
                   )}

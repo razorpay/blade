@@ -38,6 +38,7 @@ exports[`<Breadcrumb /> should render 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -208,6 +209,7 @@ exports[`<Breadcrumb /> should render 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -378,6 +380,7 @@ exports[`<Breadcrumb /> should render 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -554,6 +557,7 @@ exports[`<Breadcrumb /> should render current page item as text (not a link) 1`]
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -724,6 +728,12 @@ exports[`<Breadcrumb /> should render current page item as text (not a link) 1`]
         </View>
       </View>
       <View
+        accessibilityState={
+          {
+            "selected": true,
+          }
+        }
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -847,6 +857,7 @@ exports[`<Breadcrumb /> should render with large size 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1017,6 +1028,7 @@ exports[`<Breadcrumb /> should render with large size 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1193,6 +1205,7 @@ exports[`<Breadcrumb /> should render with small size 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1363,6 +1376,7 @@ exports[`<Breadcrumb /> should render with small size 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1539,6 +1553,7 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1673,7 +1688,7 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.staticWhite.muted"
+            color="surface.text.gray.muted"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -1684,7 +1699,7 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 0.48)",
+                  "color": "hsla(204, 9%, 42%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -1709,6 +1724,12 @@ exports[`<Breadcrumb /> should render with white color 1`] = `
         </View>
       </View>
       <View
+        accessibilityState={
+          {
+            "selected": true,
+          }
+        }
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -1833,6 +1854,7 @@ exports[`<Breadcrumb /> should support data-analytics attributes 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -2003,6 +2025,7 @@ exports[`<Breadcrumb /> should support data-analytics attributes 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -2179,6 +2202,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
       }
     >
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
@@ -2349,6 +2373,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
         </View>
       </View>
       <View
+        accessible={true}
         alignItems="center"
         data-blade-component="breadcrumb-item"
         display="flex"
