@@ -73,6 +73,9 @@ type ChatInputProps = {
   /**
    * Callback fired when files are selected via the upload button.
    *
+   * ⚠️ **Platform behavior differs:** the callback's timing and the contents of `fileList`
+   * are not the same on Web and React Native — read both notes before wiring a shared handler.
+   *
    * **Note (Web):** Called after files are picked, with `fileList` containing the merged list of
    * previously attached files plus the newly selected files.
    *

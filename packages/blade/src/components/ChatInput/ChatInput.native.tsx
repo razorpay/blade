@@ -23,6 +23,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useId } from '~utils/useId';
 import type { BladeElementRef } from '~utils/types';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
@@ -54,7 +55,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
-  const inputId = React.useId();
+  const inputId = useId('chatinput');
 
   const {
     mergedRef,
@@ -104,7 +105,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         },
       );
     }
-  }, [isError]);
+  }, [isError, theme.motion]);
 
   // Mirror web's `bottom: calc(100% - 12px)` — overlap the input card by spacing.4 (12px)
   // so the banner's square bottom edge tucks behind the input and the shapes read as one.
