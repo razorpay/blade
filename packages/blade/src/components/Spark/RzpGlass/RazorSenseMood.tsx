@@ -141,8 +141,10 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         },
         onError: (error) => {
           if (!active) return;
-          setHasError(true);
-          setShowSnapshot(true);
+          if (!mountRef.current?.hasRenderableOutput()) {
+            setHasError(true);
+            setShowSnapshot(true);
+          }
           onErrorRef.current?.(error);
         },
       });

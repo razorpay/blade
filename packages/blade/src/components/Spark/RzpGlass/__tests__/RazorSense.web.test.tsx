@@ -59,11 +59,15 @@ jest.mock('../RazorSenseMood', () => {
     RazorSenseMood: ({
       mode,
       paused,
+      runtimeState,
+      isRuntimeAdmitted,
       assetsPath,
       onLoad,
     }: {
       mode: string;
       paused: boolean;
+      runtimeState?: string;
+      isRuntimeAdmitted?: boolean;
       assetsPath?: string;
       onLoad?: () => void;
     }) => {
@@ -82,6 +86,8 @@ jest.mock('../RazorSenseMood', () => {
         'data-testid': 'mood-renderer',
         'data-mode': mode,
         'data-paused': String(paused),
+        'data-runtime-state': runtimeState,
+        'data-runtime-admitted': String(isRuntimeAdmitted),
       });
     },
   };
@@ -283,13 +289,16 @@ describe('<RazorSense />', () => {
       );
     };
 
-    const { getByRole } = renderWithTheme(<Example />);
+    const { getByRole, getByTestId } = renderWithTheme(<Example />);
     expect(getLatestRuntimeFamily()).toBe('emotional');
     expect(getLatestRuntimeOptions().retainsWebGL).toBe(false);
 
     fireEvent.click(getByRole('button', { name: 'Use authored' }));
     expect(getLatestRuntimeFamily()).toBe('authored');
     expect(getLatestRuntimeOptions().retainsWebGL).toBe(true);
+    expect(getByTestId('mood-renderer')).toHaveAttribute('data-paused', 'false');
+    expect(getByTestId('mood-renderer')).toHaveAttribute('data-runtime-state', 'active');
+    expect(getByTestId('mood-renderer')).toHaveAttribute('data-runtime-admitted', 'true');
 
     await act(async () => {
       jest.advanceTimersByTime(179);
@@ -297,6 +306,7 @@ describe('<RazorSense />', () => {
     });
     expect(getLatestRuntimeFamily()).toBe('authored');
     expect(getLatestRuntimeOptions().retainsWebGL).toBe(true);
+    expect(getByTestId('mood-renderer')).toHaveAttribute('data-paused', 'false');
     await act(async () => {
       jest.advanceTimersByTime(1);
       await Promise.resolve();
@@ -437,13 +447,18 @@ describe('<RazorSense />', () => {
     jest.useRealTimers();
   });
 
-  it('feeds lifecycle denial and suspension into emotional and legacy pause', async () => {
+  it('passes the public lifecycle contract to emotional renderers and pauses legacy denial', async () => {
     mockUseRazorSenseLifecycle.mockReturnValue({
       ...ACTIVE_LIFECYCLE,
       isAdmitted: false,
     });
     const emotional = renderWithTheme(<RazorSense mode="calm" />);
-    expect(emotional.getByTestId('mood-renderer')).toHaveAttribute('data-paused', 'true');
+    expect(emotional.getByTestId('mood-renderer')).toHaveAttribute('data-paused', 'false');
+    expect(emotional.getByTestId('mood-renderer')).toHaveAttribute('data-runtime-state', 'active');
+    expect(emotional.getByTestId('mood-renderer')).toHaveAttribute(
+      'data-runtime-admitted',
+      'false',
+    );
     emotional.unmount();
 
     mockUseRazorSenseLifecycle.mockReturnValue({

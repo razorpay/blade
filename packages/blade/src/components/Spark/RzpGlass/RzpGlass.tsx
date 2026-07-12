@@ -425,8 +425,6 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
       isInteractive: resolvedIsInteractive,
       retainsWebGL: requestedFamily === 'authored' && mountedFamilies.emotional,
     });
-    const effectivePaused =
-      resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
     const mergedRef = useMergeRefs(forwardedRef, hostRef);
     const initialReadyFamilies = {
       authored: false,
@@ -574,7 +572,9 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseMood
               {...sharedRendererProps}
               mode={lastEmotionalModeRef.current}
-              paused={effectivePaused || visibleFamily !== 'emotional'}
+              paused={resolvedIsPaused}
+              runtimeState={lifecycle.state}
+              isRuntimeAdmitted={lifecycle.isAdmitted}
               onLoad={() => handleFamilyLoad('emotional')}
               onError={(error) => {
                 onError?.(error);

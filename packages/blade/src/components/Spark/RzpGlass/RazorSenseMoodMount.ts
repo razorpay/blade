@@ -220,6 +220,8 @@ class RazorSenseMoodMount {
       return;
     }
     const attemptGeneration = this.beginAttempt();
+    const hadRenderableOutput = this.hasRenderableOutput();
+    let didBeginRendererMutation = false;
 
     try {
       const slot = await this.ensureModeLoaded(mode);
@@ -243,9 +245,10 @@ class RazorSenseMoodMount {
       }
 
       if (!this.shouldOwnRenderer()) return;
+      didBeginRendererMutation = true;
       this.ensureRenderer();
       this.attachSlotTexture(mode, slot);
-      if (!this.hasPresentedFirstFrame) {
+      if (!hadRenderableOutput) {
         this.currentWeights = oneHotMode(mode);
         this.transitionStartWeights = [...this.currentWeights];
         this.transitionTargetWeights = [...this.currentWeights];
@@ -270,8 +273,18 @@ class RazorSenseMoodMount {
       this.syncVideoPlayback();
       this.scheduleRender();
     } catch (cause: unknown) {
-      if (this.disposed || generation !== this.modeGeneration) return;
+      if (this.disposed || generation !== this.modeGeneration) {
+        this.releaseSlotIfUnused(mode);
+        return;
+      }
       if (cause instanceof MoodLoadCancelledError) return;
+      if (!didBeginRendererMutation && this.freezeOutgoingAfterModeFailure(mode)) {
+        this.reportAttemptError(
+          attemptGeneration,
+          cause instanceof Error ? cause : new Error(String(cause)),
+        );
+        return;
+      }
       this.releaseRendererAfterFailure();
       this.reportAttemptError(
         attemptGeneration,
@@ -392,23 +405,42 @@ class RazorSenseMoodMount {
       return { didCapture, didPresent: false };
     }
 
+    const targetMode = this.options.mode;
+    const modeGeneration = ++this.modeGeneration;
+    const existingTargetSlot = this.slots.get(targetMode);
+    let targetSlot: MoodSlot | undefined = existingTargetSlot;
+    const releaseStaleTarget = (): void => {
+      if (
+        targetSlot &&
+        targetSlot !== existingTargetSlot &&
+        this.slots.get(targetMode) === targetSlot
+      ) {
+        this.releaseSlot(targetMode);
+      }
+    };
     try {
-      const slot = await this.ensureModeLoaded(this.options.mode);
-      if (this.disposed || generation !== this.lifecycleGeneration) {
+      const slot = await this.ensureModeLoaded(targetMode);
+      targetSlot = slot;
+      if (
+        this.disposed ||
+        generation !== this.lifecycleGeneration ||
+        modeGeneration !== this.modeGeneration ||
+        targetMode !== this.options.mode
+      ) {
+        releaseStaleTarget();
         return { didCapture, didPresent: false };
       }
 
-      const modeGeneration = ++this.modeGeneration;
       if (slot.isPrepared && this.options.onFrameReady) {
         const source = getRazorSenseAsset({
           assetsPath: this.options.assetsPath,
-          mode: this.options.mode,
+          mode: targetMode,
           colorScheme: this.options.colorScheme,
           viewport: 'desktop',
         }).fallbackSource;
         this.pendingFrameReady = {
           generation: modeGeneration,
-          mode: this.options.mode,
+          mode: targetMode,
           targetTime: slot.video.currentTime,
           frameDuration: 1 / Math.max(1, source.framerate),
         };
@@ -417,17 +449,19 @@ class RazorSenseMoodMount {
       }
       const isExactFrameReady = slot.isPrepared
         ? true
-        : await this.seekSlot(this.options.mode, slot, this.options.startTime, modeGeneration);
+        : await this.seekSlot(targetMode, slot, this.options.startTime, modeGeneration);
       if (
         !isExactFrameReady ||
         this.disposed ||
         generation !== this.lifecycleGeneration ||
-        modeGeneration !== this.modeGeneration
+        modeGeneration !== this.modeGeneration ||
+        targetMode !== this.options.mode
       ) {
+        releaseStaleTarget();
         return { didCapture, didPresent: false };
       }
 
-      this.currentWeights = oneHotMode(this.options.mode);
+      this.currentWeights = oneHotMode(targetMode);
       this.transitionStartWeights = [...this.currentWeights];
       this.transitionTargetWeights = [...this.currentWeights];
       this.transitionActive = false;
@@ -440,7 +474,7 @@ class RazorSenseMoodMount {
       }
 
       this.ensureRenderer();
-      this.attachSlotTexture(this.options.mode, slot);
+      this.attachSlotTexture(targetMode, slot);
       slot.isDirty = true;
       this.draw(performance.now(), false);
       this.syncVideoPlayback();
@@ -449,7 +483,13 @@ class RazorSenseMoodMount {
       if (cause instanceof MoodLoadCancelledError) {
         return { didCapture, didPresent: false };
       }
-      if (this.disposed || generation !== this.lifecycleGeneration) {
+      if (
+        this.disposed ||
+        generation !== this.lifecycleGeneration ||
+        modeGeneration !== this.modeGeneration ||
+        targetMode !== this.options.mode
+      ) {
+        releaseStaleTarget();
         return { didCapture, didPresent: false };
       }
       this.releaseRendererAfterFailure();
@@ -467,6 +507,10 @@ class RazorSenseMoodMount {
       this.pendingCaptures.push({ target, resolve });
       this.draw(performance.now(), false);
     });
+  }
+
+  hasRenderableOutput(): boolean {
+    return this.rendererReady && this.hasPresentedFirstFrame;
   }
 
   private canOwnMedia(): boolean {
@@ -734,6 +778,42 @@ class RazorSenseMoodMount {
       ? this.transitionStartWeights[index] > CONTRIBUTION_EPSILON ||
           this.transitionTargetWeights[index] > CONTRIBUTION_EPSILON
       : this.currentWeights[index] > CONTRIBUTION_EPSILON;
+  }
+
+  private freezeOutgoingAfterModeFailure(failedMode: RazorSenseEmotionalMode): boolean {
+    if (!this.hasRenderableOutput()) return false;
+
+    this.updateTransition(this.getLogicalNow(performance.now()));
+    const failedIndex = getRazorSenseModeIndex(failedMode);
+    const weights = this.currentWeights.map((weight, index) => {
+      const candidateMode = RAZOR_SENSE_EMOTIONAL_MODES[index];
+      return index !== failedIndex && this.slots.has(candidateMode) ? weight : 0;
+    }) as [number, number, number, number];
+    let totalWeight = weights.reduce((total, weight) => total + weight, 0);
+
+    if (totalWeight <= CONTRIBUTION_EPSILON) {
+      const outgoingMode = RAZOR_SENSE_EMOTIONAL_MODES.find(
+        (candidateMode) => candidateMode !== failedMode && this.slots.has(candidateMode),
+      );
+      if (!outgoingMode) return false;
+      weights[getRazorSenseModeIndex(outgoingMode)] = 1;
+      totalWeight = 1;
+    }
+
+    this.currentWeights = weights.map((weight) => weight / totalWeight) as [
+      number,
+      number,
+      number,
+      number,
+    ];
+    this.transitionStartWeights = [...this.currentWeights];
+    this.transitionTargetWeights = [...this.currentWeights];
+    this.transitionActive = false;
+    this.pendingFrameReady = null;
+    this.releaseSlot(failedMode);
+    this.syncVideoPlayback();
+    this.scheduleRender();
+    return true;
   }
 
   private syncVideoPlayback(): void {
