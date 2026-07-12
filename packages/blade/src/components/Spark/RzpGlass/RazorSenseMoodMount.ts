@@ -410,13 +410,17 @@ class RazorSenseMoodMount {
     const existingTargetSlot = this.slots.get(targetMode);
     let targetSlot: MoodSlot | undefined = existingTargetSlot;
     const releaseStaleTarget = (): void => {
-      if (
-        targetSlot &&
-        targetSlot !== existingTargetSlot &&
-        this.slots.get(targetMode) === targetSlot
-      ) {
-        this.releaseSlot(targetMode);
-      }
+      if (!targetSlot || targetSlot === existingTargetSlot) return;
+      if (this.slots.get(targetMode) !== targetSlot) return;
+
+      // Concurrent lifecycle attempts share ensureModeLoaded(). The older
+      // continuation must not tear down the slot now owned by a newer warm or
+      // active attempt for the same mode. A contributing slot is also valid
+      // outgoing material for a concurrent setMode transition.
+      const isOwnedByCurrentLifecycle = targetMode === this.options.mode && this.canOwnMedia();
+      if (isOwnedByCurrentLifecycle || this.modeContributes(targetMode)) return;
+
+      this.releaseSlot(targetMode);
     };
     try {
       const slot = await this.ensureModeLoaded(targetMode);
