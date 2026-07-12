@@ -1,10 +1,20 @@
 import type { RzpGlassPreset } from './presets';
+import type { RazorSenseMode } from './modes';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/assets/spark';
 
 async function preloadRazorSenseAssets(
   _preset: RzpGlassPreset = 'default',
   _assetsPath: string = DEFAULT_CDN_PATH,
+): Promise<void> {
+  // no-op on native
+}
+
+async function preloadRazorSenseModeAssets(
+  _modesOrModes: RazorSenseMode | readonly RazorSenseMode[] = 'neutral',
+  _assetsPath: string = DEFAULT_CDN_PATH,
+  _colorScheme: ColorSchemeNames = 'light',
 ): Promise<void> {
   // no-op on native
 }
@@ -18,6 +28,17 @@ async function loadImage(_src: string): Promise<never> {
 
 async function loadVideo(_src: string): Promise<never> {
   return Promise.reject(new Error('loadVideo is not supported on native'));
+}
+
+function captureVideoCoverFrame(
+  _video: unknown,
+  _canvas: unknown,
+  _container: unknown,
+  _verticalAlignment?: 'center' | 'bottom',
+  _opacity?: number,
+  _clearCanvas?: boolean,
+): void {
+  // no-op on native
 }
 
 function isSafari(): boolean {
@@ -46,6 +67,8 @@ function resolveConfig(
 export {
   DEFAULT_CDN_PATH,
   preloadRazorSenseAssets,
+  preloadRazorSenseModeAssets,
+  captureVideoCoverFrame,
   loadImage,
   loadVideo,
   isSafari,

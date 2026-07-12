@@ -34,10 +34,7 @@ const config: StorybookConfig = {
     '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',
   ],
 
-  addons: [
-    getAbsolutePath('@storybook/addon-docs'),
-    getAbsolutePath('@storybook/addon-a11y'),
-  ],
+  addons: [getAbsolutePath('@storybook/addon-docs'), getAbsolutePath('@storybook/addon-a11y')],
 
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
@@ -50,7 +47,7 @@ const config: StorybookConfig = {
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
 
-  staticDirs: ['../../public'],
+  staticDirs: ['../../public', { from: '../../assets', to: '/assets' }],
 
   viteFinal: async (config) => {
     const { mergeConfig } = await import('vite');

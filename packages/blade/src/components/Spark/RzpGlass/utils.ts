@@ -4,14 +4,28 @@
 
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
+import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
+import {
+  getRazorSenseMobileModeVideoSources,
+  getRazorSenseModeVideoSources,
+  getRazorSenseOperationalModeVideoSources,
+  isRazorSenseEmotionalMode,
+} from './modes';
 import type {
+  LegacyRzpGlassProps,
   RzpGlassAssets,
   RzpGlassConfig,
   RzpGlassPresetDefinition,
-  RzpGlassProps,
 } from './types';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/assets/spark';
+
+const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
+  default: 'neutral',
+  zoomed: 'thinking',
+  bottomWave: 'typing',
+};
 
 const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,
@@ -25,7 +39,7 @@ const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
  * Extract config from props (exclude non-config props).
  * Strips undefined values so they don't clobber preset defaults.
  */
-function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
+function extractConfig(props: LegacyRzpGlassProps): Partial<RzpGlassConfig> {
   const {
     width: _width,
     height: _height,
@@ -34,9 +48,12 @@ function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
     onLoad: _onLoad,
     onError: _onError,
     preset: _preset,
+    mode: _mode,
     assetsPath: _assetsPath,
+    videoSrc: _videoSrc,
     gradientMapSrc: _gradientMapSrc,
     gradientMap2Src: _gradientMap2Src,
+    centerGradientMapSrc: _centerGradientMapSrc,
     gradientMapCanvas: _gradientMapCanvas,
     imageSrc: _imageSrc,
     ...config
@@ -91,7 +108,7 @@ function getPresetAssets(
  * Merge preset config with user-provided config.
  * Preset values are used as base; any explicit prop overrides them.
  */
-function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
+function resolveConfig(props: LegacyRzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
   return {
     ...getPresetConfig(props.preset, assetsPath),
     ...extractConfig(props),
@@ -127,6 +144,65 @@ function loadVideo(src: string): Promise<HTMLVideoElement> {
     video.onerror = () => reject(new Error(`Failed to load video: ${src}`));
     video.load();
   });
+}
+
+/**
+ * Paint the visible, object-fit: cover video frame into a canvas. RazorSense
+ * uses this as a decode bridge while switching between phase-matched light and
+ * dark composites, so the previous material never drops to a blank frame.
+ */
+function captureVideoCoverFrame(
+  video: HTMLVideoElement,
+  canvas: HTMLCanvasElement | null,
+  container: HTMLElement | null,
+  verticalAlignment: 'center' | 'bottom' = 'center',
+  opacity = 1,
+  clearCanvas = true,
+): void {
+  if (
+    !canvas ||
+    !container ||
+    video.readyState < video.HAVE_CURRENT_DATA ||
+    video.videoWidth === 0 ||
+    video.videoHeight === 0
+  ) {
+    return;
+  }
+
+  const renderScale = Math.min(Math.max(window.devicePixelRatio, 1), 2);
+  const width = Math.max(1, Math.round(container.clientWidth * renderScale));
+  const height = Math.max(1, Math.round(container.clientHeight * renderScale));
+  if (canvas.width !== width || canvas.height !== height) {
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  const context = canvas.getContext('2d');
+  if (!context) return;
+
+  const sourceAspect = video.videoWidth / video.videoHeight;
+  const targetAspect = width / height;
+  let sourceX = 0;
+  let sourceY = 0;
+  let sourceWidth = video.videoWidth;
+  let sourceHeight = video.videoHeight;
+
+  if (sourceAspect > targetAspect) {
+    sourceWidth = video.videoHeight * targetAspect;
+    sourceX = (video.videoWidth - sourceWidth) / 2;
+  } else {
+    sourceHeight = video.videoWidth / targetAspect;
+    sourceY =
+      verticalAlignment === 'bottom'
+        ? video.videoHeight - sourceHeight
+        : (video.videoHeight - sourceHeight) / 2;
+  }
+
+  if (clearCanvas) context.clearRect(0, 0, width, height);
+  context.save();
+  context.globalAlpha = opacity;
+  context.drawImage(video, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, width, height);
+  context.restore();
 }
 
 /**
@@ -184,6 +260,7 @@ async function preloadRazorSenseAssets(
   preset: RzpGlassPreset = 'default',
   assetsPath: string = DEFAULT_CDN_PATH,
 ): Promise<void> {
+  const authoredMode = AUTHORED_PRESET_MODES[preset];
   const presets = getPresets(assetsPath);
   const presetDef = presets[preset] || {};
   const defaultAssets = getDefaultAssets(assetsPath);
@@ -195,6 +272,11 @@ async function preloadRazorSenseAssets(
   const centerGradientMapSrc = presetDef.centerGradientMapSrc ?? defaultAssets.centerGradientMapSrc;
 
   const loadPromises: Promise<unknown>[] = [];
+
+  if (authoredMode) {
+    const source = getRazorSenseOperationalModeVideoSources(assetsPath)[authoredMode];
+    loadPromises.push(loadVideo(source));
+  }
 
   if (imageSrc) {
     loadPromises.push(loadImage(imageSrc));
@@ -211,14 +293,38 @@ async function preloadRazorSenseAssets(
   await Promise.all(loadPromises);
 }
 
+/** Preload one or more semantic RazorSense modes for the active viewport. */
+async function preloadRazorSenseModeAssets(
+  modesOrModes: RazorSenseMode | readonly RazorSenseMode[] = 'neutral',
+  assetsPath: string = DEFAULT_CDN_PATH,
+  colorScheme: ColorSchemeNames = 'light',
+): Promise<void> {
+  const modes: readonly RazorSenseMode[] = Array.isArray(modesOrModes)
+    ? modesOrModes
+    : [modesOrModes as RazorSenseMode];
+  const useMobileAssets =
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 809.98px)').matches;
+  const emotionalSources = useMobileAssets
+    ? getRazorSenseMobileModeVideoSources(assetsPath, colorScheme)
+    : getRazorSenseModeVideoSources(assetsPath);
+  const operationalSources = getRazorSenseOperationalModeVideoSources(assetsPath, colorScheme);
+  const sources = modes.map((mode) =>
+    isRazorSenseEmotionalMode(mode) ? emotionalSources[mode] : operationalSources[mode],
+  );
+
+  await Promise.all(sources.map((source) => loadVideo(source)));
+}
+
 export {
   DEFAULT_CDN_PATH,
   getDefaultAssets,
+  captureVideoCoverFrame,
   loadImage,
   loadVideo,
   isSafari,
   bestGuessBrowserZoom,
   preloadRazorSenseAssets,
+  preloadRazorSenseModeAssets,
   getPresetAssets,
   resolveConfig,
 };

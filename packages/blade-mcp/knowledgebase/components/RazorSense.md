@@ -4,13 +4,16 @@ RazorSense
 
 ## Description
 
-RazorSense is a WebGL-powered component that renders an animated glass refraction effect with video/image textures, colorama color grading, displacement, bloom, and light sweep effects. It ships with built-in presets for common use cases such as background waves, success animations, and zoomed-in card treatments. Assets can be preloaded with `preloadRazorSenseAssets()` to avoid frame skipping on mount.
+RazorSense is Blade's responsive glass material. Its semantic `mode` API covers authored operational states (`neutral`, `typing`, `thinking`, `loading`) and emotional states (`calm`, `joyful`, `caution`, `regret`). The operational programs preserve the launch-film flute, refraction, chromatic fringe, caustics, and bloom; emotional modes use the website's shared GPU flute field and exact palettes. RazorSense automatically follows the nearest `BladeProvider` light or dark color scheme; it does not expose a separate appearance prop. The older configurable WebGL renderer remains available through specialized presets and shader-tuning props.
 
 ## Important Constraints
 
 - `videoSrc` and `imageSrc` are mutually exclusive — when `imageSrc` is provided, the video is not created.
 - Changing `gradientMapSrc` or `gradientMap2Src` re-initializes the WebGL context.
-- `preloadRazorSenseAssets(preset)` should be called and awaited before mounting the component with that preset to avoid visible loading artifacts.
+- Prefer the semantic `mode` API for new product work. Use legacy shader props only for existing specialized effects.
+- `preloadRazorSenseModeAssets(modeOrModes, assetsPath?, colorScheme?)` preloads one or more semantic programs. It defaults to `neutral` and `light`; pass `dark` when preloading operational or mobile dark composites.
+- `preloadRazorSenseAssets(preset)` remains the preload helper for legacy presets.
+- Supplying both `mode` and `preset` is invalid intent: `mode` wins and Blade warns in development.
 - The component only works on **web** (requires WebGL).
 - `edgeFeather` values range from 0 (no feather) to higher values for more aggressive feathering: `[top, right, bottom, left]`.
 - `backgroundColor` uses RGB in the `[0-1, 0-1, 0-1]` range — not hex or CSS colors.
@@ -21,9 +24,26 @@ RazorSense is a WebGL-powered component that renders an animated glass refractio
 The following types represent the props that the RazorSense component accepts.
 
 ```typescript
-type RazorSensePreset = 'default' | 'zoomed' | 'bottomWave' | 'rippleWave' | 'circleSlideUp';
+type RazorSensePreset =
+  | 'default'
+  | 'zoomed'
+  | 'bottomWave'
+  | 'rippleWave'
+  | 'circleSlideUp'
+  | 'legacy';
 
-type RazorSenseProps = {
+type RazorSenseMode =
+  | 'neutral'
+  | 'typing'
+  | 'thinking'
+  | 'loading'
+  | 'calm'
+  | 'joyful'
+  | 'caution'
+  | 'regret';
+
+type LegacyRazorSenseProps = {
+  mode?: never;
   /** CSS width (default: '100%') */
   width?: string | number;
   /** CSS height (default: '100%') */
@@ -31,23 +51,28 @@ type RazorSenseProps = {
   /**
    * Named preset that provides a base configuration.
    * Any explicit props override the preset values.
-   * - 'default'       — baseline, same as not passing a preset
-   * - 'zoomed'        — tight closeup with high zoom and edge feathering
-   * - 'bottomWave'    — static image, bottom wave style
+   * - 'default'       — authored Neutral unless shader-tuning props are supplied
+   * - 'zoomed'        — authored Thinking unless shader-tuning props are supplied
+   * - 'bottomWave'    — authored Typing unless shader-tuning props are supplied
    * - 'rippleWave'    — ray pulse video, ripple effect
    * - 'circleSlideUp' — success circle animation
+   * - 'legacy'        — original configurable default shader
    */
   preset?: RazorSensePreset;
   /** Base CDN path for loading default assets */
   assetsPath?: string;
 
   // --- Asset Customization ---
+  /** URL to a custom legacy source video. Passing it selects the legacy renderer. */
+  videoSrc?: string;
   /** URL to a static image to use as the base texture instead of video */
   imageSrc?: string;
   /** URL to the gradient map image for colorama effect */
   gradientMapSrc?: string;
   /** URL to a second gradient map for cross-fading via gradientMapBlend */
   gradientMap2Src?: string;
+  /** URL to the legacy center-element gradient map */
+  centerGradientMapSrc?: string;
   /** Canvas element for runtime gradient map hot-swap without reinitializing WebGL */
   gradientMapCanvas?: HTMLCanvasElement | null;
 
@@ -172,6 +197,30 @@ type RazorSenseProps = {
   className?: string;
   style?: React.CSSProperties;
 };
+
+type SemanticRazorSenseProps = Pick<
+  LegacyRazorSenseProps,
+  | 'width'
+  | 'height'
+  | 'assetsPath'
+  | 'paused'
+  | 'startTime'
+  | 'endTime'
+  | 'playbackRate'
+  | 'onLoad'
+  | 'onError'
+  | 'className'
+  | 'style'
+> & {
+  mode: RazorSenseMode;
+  preset?: never;
+  /** Crossfade duration (default: 0.4 operational, 1 emotional) */
+  modeTransitionDuration?: number;
+  /** Delayed responsive trail in emotional desktop modes (default: true) */
+  interactive?: boolean;
+};
+
+type RazorSenseProps = LegacyRazorSenseProps | SemanticRazorSenseProps;
 ```
 
 ## Usage Guidelines
@@ -179,7 +228,11 @@ type RazorSenseProps = {
 **Do**
 
 - Use `RazorSense` for immersive, branded visual moments: success screens, hero sections, login pages, and loading states.
-- Use presets (`'default'`, `'zoomed'`, `'bottomWave'`, `'rippleWave'`, `'circleSlideUp'`) for quick setup; customize with individual props as needed.
+- Use semantic modes for product meaning: `neutral`, `typing`, `thinking`, `loading`, `calm`, `joyful`, `caution`, and `regret`.
+- Trigger `typing` on focus or typing intent, before the first glyph; do not reset the surrounding UI animation phase per keystroke.
+- Use presets only for compatibility or the specialized `rippleWave` and `circleSlideUp` effects.
+- Let RazorSense inherit appearance from the nearest `BladeProvider`; do not create a parallel component-level theme state.
+- Call `preloadRazorSenseModeAssets(modeOrModes, assetsPath?, colorScheme?)` before mounting latency-sensitive semantic states.
 - Call `preloadRazorSenseAssets(preset)` before mounting to avoid visible frame skipping on first render.
 - Use `edgeFeather` for vignetting when overlaying text or UI on top of the animation.
 - Layer `RazorSenseGradient` on top as a foreground icon overlay for the full Spark Animation pattern.
@@ -187,6 +240,7 @@ type RazorSenseProps = {
 **Don't**
 
 - Don't use `RazorSense` on React Native — it requires WebGL and is web-only.
+- Don't pass both `mode` and `preset`; they describe different rendering APIs.
 - Don't provide both `videoSrc` and `imageSrc` simultaneously — they are mutually exclusive.
 - Don't rapidly change `gradientMapSrc`/`gradientMap2Src` — these re-initialize WebGL and cause flicker.
 - Don't set extremely high `numSegments` — it causes performance degradation.
@@ -214,6 +268,61 @@ const DefaultExample = () => {
 };
 
 export default DefaultExample;
+```
+
+### Semantic States
+
+Use `mode` for all new RazorSense product states.
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import { RazorSense, preloadRazorSenseModeAssets, Box } from '@razorpay/blade/components';
+
+const SemanticExample = () => {
+  const [mode, setMode] = useState('neutral');
+
+  useEffect(() => {
+    preloadRazorSenseModeAssets(['neutral', 'typing', 'thinking']);
+  }, []);
+
+  return (
+    <Box width="100%" height="440px">
+      <RazorSense mode={mode} width="100%" height="100%" />
+      <button onFocus={() => setMode('typing')} onBlur={() => setMode('neutral')}>
+        Start typing
+      </button>
+    </Box>
+  );
+};
+```
+
+### Dark Appearance
+
+RazorSense follows BladeProvider automatically. The dark material uses a wider centered aperture, localized chromatic emission, neutral silver echo rails, and charcoal negative space calibrated from the launch film.
+
+```jsx
+import React, { useEffect } from 'react';
+import {
+  BladeProvider,
+  RazorSense,
+  preloadRazorSenseModeAssets,
+  Box,
+} from '@razorpay/blade/components';
+import { bladeTheme } from '@razorpay/blade/tokens';
+
+const DarkRazorSense = () => {
+  useEffect(() => {
+    preloadRazorSenseModeAssets(['neutral', 'thinking'], undefined, 'dark');
+  }, []);
+
+  return (
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <Box width="100%" height="440px">
+        <RazorSense mode="neutral" width="100%" height="100%" />
+      </Box>
+    </BladeProvider>
+  );
+};
 ```
 
 ### Using Presets
@@ -319,7 +428,12 @@ const SuccessAnimation = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 0 : 1 }}
         transition={{ delay: isLoaded ? 0.5 : 0, duration: isLoaded ? 1.5 : 0.3 }}
-        style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -45%)' }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -45%)',
+        }}
       >
         <RazorSense
           width="500px"
