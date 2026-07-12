@@ -27,14 +27,14 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="RazorSense"
-      componentDescription="This is the RazorSense component which can be used for showing a RazorSense effect on the screen"
+      componentDescription="Legacy compatibility and shader-calibration surfaces. New product code uses the declarative RazorSense state, sequence, and controller APIs."
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80952-9051&t=ozxGdqCDqI9hRYY8-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     />
   );
 };
 
 export default {
-  title: 'Components/RazorSense',
+  title: 'Components/RazorSense/Legacy Compatibility',
   component: RazorSenseComponent,
   args: {},
   tags: ['autodocs'],
