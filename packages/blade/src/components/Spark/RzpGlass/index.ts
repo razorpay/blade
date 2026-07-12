@@ -27,6 +27,7 @@ export type {
   RzpGlassProps as RazorSenseProps,
   LegacyRzpGlassProps as LegacyRazorSenseProps,
   SemanticRazorSenseProps,
+  PreloadRazorSenseOptions,
 } from './types';
 export type { RazorSenseMode, RazorSenseEmotionalMode, RazorSenseOperationalMode } from './modes';
 export {
@@ -37,7 +38,7 @@ export {
 } from './modes';
 
 // Preload utilities
-export { preloadRazorSenseAssets, preloadRazorSenseModeAssets } from './utils';
+export { preloadRazorSense, preloadRazorSenseAssets, preloadRazorSenseModeAssets } from './utils';
 
 // Preset types
 export type { RzpGlassPreset as RazorSensePreset } from './presets';

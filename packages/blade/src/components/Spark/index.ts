@@ -1,4 +1,9 @@
-export { RazorSense, preloadRazorSenseAssets, preloadRazorSenseModeAssets } from './RzpGlass';
+export {
+  RazorSense,
+  preloadRazorSense,
+  preloadRazorSenseAssets,
+  preloadRazorSenseModeAssets,
+} from './RzpGlass';
 export { RazorSenseGradient } from './RazorSenseGradient';
 export type {
   RazorSenseProps,
@@ -8,6 +13,7 @@ export type {
   RazorSenseMode,
   RazorSenseEmotionalMode,
   RazorSenseOperationalMode,
+  PreloadRazorSenseOptions,
 } from './RzpGlass';
 export {
   RAZOR_SENSE_MODES,

@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 const require = createRequire(import.meta.url);
 
 const bladeRoot = resolve(__dirname, '../../');
+const bladePackage = require(resolve(bladeRoot, 'package.json')) as { version: string };
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -63,6 +64,7 @@ const config: StorybookConfig = {
       ],
       define: {
         __DEV__: true,
+        __BLADE_VERSION__: JSON.stringify(bladePackage.version),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       },
       resolve: {

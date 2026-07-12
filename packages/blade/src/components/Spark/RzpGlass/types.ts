@@ -8,6 +8,7 @@
 import type { RzpGlassPreset } from './presets';
 import type { RazorSenseMode } from './modes';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { ColorSchemeNames } from '~tokens/theme';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 // ============================================
@@ -294,6 +295,12 @@ type SemanticRazorSenseProps = RzpGlassCommonProps &
 
 type RzpGlassProps = LegacyRzpGlassProps | SemanticRazorSenseProps;
 
+type PreloadRazorSenseOptions = {
+  modes: RazorSenseMode | readonly RazorSenseMode[];
+  colorSchemes?: ColorSchemeNames | readonly ColorSchemeNames[];
+  assetsPath?: string;
+};
+
 export type {
   RzpGlassConfig,
   RzpGlassAssets,
@@ -302,4 +309,5 @@ export type {
   RzpGlassProps,
   LegacyRzpGlassProps,
   SemanticRazorSenseProps,
+  PreloadRazorSenseOptions,
 };

@@ -1,3 +1,5 @@
+const packagejson = require('./package.json');
+
 const ignores = ['/node_modules/'];
 
 const baseConfig = {
@@ -30,6 +32,7 @@ const baseConfig = {
   },
   globals: {
     __DEV__: true,
+    __BLADE_VERSION__: packagejson.version,
   },
 };
 

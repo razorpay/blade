@@ -1,4 +1,5 @@
 import type { ColorSchemeNames } from '~tokens/theme';
+import { getRazorSenseFallbackVideoSource } from './razorSenseAssets';
 
 const RAZOR_SENSE_OPERATIONAL_MODES = ['neutral', 'typing', 'thinking', 'loading'] as const;
 const RAZOR_SENSE_EMOTIONAL_MODES = ['calm', 'joyful', 'caution', 'regret'] as const;
@@ -20,49 +21,6 @@ const RAZOR_SENSE_MODE_LABELS: Record<RazorSenseMode, string> = {
   joyful: 'Joyful',
   caution: 'Caution',
   regret: 'Regret',
-};
-
-const RAZOR_SENSE_MODE_VIDEO_FILES: Record<RazorSenseEmotionalMode, string> = {
-  calm: 'razorsense-calm.mp4',
-  joyful: 'razorsense-joyful.mp4',
-  caution: 'razorsense-caution.mp4',
-  regret: 'razorsense-regret.mp4',
-};
-
-const RAZOR_SENSE_MOBILE_MODE_VIDEO_FILES: Record<
-  ColorSchemeNames,
-  Record<RazorSenseEmotionalMode, string>
-> = {
-  light: {
-    calm: 'razorsense-calm-mobile.mp4',
-    joyful: 'razorsense-joyful-mobile.mp4',
-    caution: 'razorsense-caution-mobile.mp4',
-    regret: 'razorsense-regret-mobile.mp4',
-  },
-  dark: {
-    calm: 'razorsense-calm-mobile-dark.mp4',
-    joyful: 'razorsense-joyful-mobile-dark.mp4',
-    caution: 'razorsense-caution-mobile-dark.mp4',
-    regret: 'razorsense-regret-mobile-dark.mp4',
-  },
-};
-
-const RAZOR_SENSE_OPERATIONAL_MODE_VIDEO_FILES: Record<
-  ColorSchemeNames,
-  Record<RazorSenseOperationalMode, string>
-> = {
-  light: {
-    neutral: 'razorsense-neutral.mp4',
-    typing: 'razorsense-typing.mp4',
-    thinking: 'razorsense-thinking.mp4',
-    loading: 'razorsense-loading.mp4',
-  },
-  dark: {
-    neutral: 'razorsense-neutral-dark.mp4',
-    typing: 'razorsense-typing-dark.mp4',
-    thinking: 'razorsense-thinking-dark.mp4',
-    loading: 'razorsense-loading-dark.mp4',
-  },
 };
 
 const RAZOR_SENSE_OPERATIONAL_MODE_BACKGROUNDS: Record<
@@ -93,44 +51,35 @@ const RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS: Record<
   loading: { startTime: 0, endTime: 3.125, loop: false },
 };
 
-const getVideoSources = (
+const getFallbackVideoSources = <Mode extends RazorSenseMode>(
   assetsPath: string,
-  files: Record<RazorSenseEmotionalMode, string>,
-): Record<RazorSenseEmotionalMode, string> => {
-  const normalizedPath = assetsPath.replace(/\/$/, '');
-
-  return Object.fromEntries(
-    RAZOR_SENSE_EMOTIONAL_MODES.map((mode) => [
+  modes: readonly Mode[],
+  colorScheme: ColorSchemeNames,
+  viewport: 'desktop' | 'mobile',
+): Record<Mode, string> =>
+  Object.fromEntries(
+    modes.map((mode) => [
       mode,
-      `${normalizedPath}/razorsense-modes/${files[mode]}`,
+      getRazorSenseFallbackVideoSource({ assetsPath, mode, colorScheme, viewport }).src,
     ]),
-  ) as Record<RazorSenseEmotionalMode, string>;
-};
+  ) as Record<Mode, string>;
 
 const getRazorSenseModeVideoSources = (
   assetsPath: string,
 ): Record<RazorSenseEmotionalMode, string> =>
-  getVideoSources(assetsPath, RAZOR_SENSE_MODE_VIDEO_FILES);
+  getFallbackVideoSources(assetsPath, RAZOR_SENSE_EMOTIONAL_MODES, 'light', 'desktop');
 
 const getRazorSenseMobileModeVideoSources = (
   assetsPath: string,
   colorScheme: ColorSchemeNames = 'light',
 ): Record<RazorSenseEmotionalMode, string> =>
-  getVideoSources(assetsPath, RAZOR_SENSE_MOBILE_MODE_VIDEO_FILES[colorScheme]);
+  getFallbackVideoSources(assetsPath, RAZOR_SENSE_EMOTIONAL_MODES, colorScheme, 'mobile');
 
 const getRazorSenseOperationalModeVideoSources = (
   assetsPath: string,
   colorScheme: ColorSchemeNames = 'light',
-): Record<RazorSenseOperationalMode, string> => {
-  const normalizedPath = assetsPath.replace(/\/$/, '');
-
-  return Object.fromEntries(
-    RAZOR_SENSE_OPERATIONAL_MODES.map((mode) => [
-      mode,
-      `${normalizedPath}/razorsense-states/${RAZOR_SENSE_OPERATIONAL_MODE_VIDEO_FILES[colorScheme][mode]}`,
-    ]),
-  ) as Record<RazorSenseOperationalMode, string>;
-};
+): Record<RazorSenseOperationalMode, string> =>
+  getFallbackVideoSources(assetsPath, RAZOR_SENSE_OPERATIONAL_MODES, colorScheme, 'desktop');
 
 const getRazorSenseModeIndex = (mode: RazorSenseEmotionalMode): number =>
   RAZOR_SENSE_EMOTIONAL_MODES.indexOf(mode);

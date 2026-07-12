@@ -5,21 +5,18 @@
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
 import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
-import {
-  getRazorSenseMobileModeVideoSources,
-  getRazorSenseModeVideoSources,
-  getRazorSenseOperationalModeVideoSources,
-  isRazorSenseEmotionalMode,
-} from './modes';
+import { getRazorSenseOperationalModeVideoSources } from './modes';
+import { selectRazorSenseVideoSource } from './razorSenseAssets';
 import type {
   LegacyRzpGlassProps,
+  PreloadRazorSenseOptions,
   RzpGlassAssets,
   RzpGlassConfig,
   RzpGlassPresetDefinition,
 } from './types';
 import type { ColorSchemeNames } from '~tokens/theme';
 
-const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/assets/spark';
+const DEFAULT_CDN_PATH = `https://cdn.jsdelivr.net/npm/@razorpay/blade@${__BLADE_VERSION__}/assets/spark`;
 
 const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
   default: 'neutral',
@@ -238,6 +235,55 @@ function bestGuessBrowserZoom(): number {
   return ratio;
 }
 
+const preloadPromiseByUrl = new Map<string, Promise<void>>();
+
+const preloadVideoUrl = (src: string): Promise<void> => {
+  const existing = preloadPromiseByUrl.get(src);
+  if (existing) return existing;
+
+  const promise = new Promise<void>((resolve, reject) => {
+    const video = document.createElement('video');
+    video.crossOrigin = 'anonymous';
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.onloadeddata = () => resolve();
+    video.onerror = () => reject(new Error(`RazorSense: Failed to preload ${src}`));
+    video.src = src;
+    video.load();
+  }).catch((error) => {
+    preloadPromiseByUrl.delete(src);
+    throw error;
+  });
+
+  preloadPromiseByUrl.set(src, promise);
+  return promise;
+};
+
+/** Preload one or more semantic RazorSense modes for the active viewport. */
+async function preloadRazorSense(options: PreloadRazorSenseOptions): Promise<void> {
+  const modes: readonly RazorSenseMode[] = Array.isArray(options.modes)
+    ? options.modes
+    : [options.modes as RazorSenseMode];
+  const colorSchemesOrScheme = options.colorSchemes ?? 'light';
+  const colorSchemes: readonly ColorSchemeNames[] = Array.isArray(colorSchemesOrScheme)
+    ? colorSchemesOrScheme
+    : [colorSchemesOrScheme as ColorSchemeNames];
+  const isMobileViewport =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 809.98px)').matches;
+  const viewport = isMobileViewport ? 'mobile' : 'desktop';
+  const assetsPath = options.assetsPath ?? DEFAULT_CDN_PATH;
+  const selected = await Promise.all(
+    colorSchemes.flatMap((colorScheme) =>
+      modes.map((mode) => selectRazorSenseVideoSource({ assetsPath, mode, colorScheme, viewport })),
+    ),
+  );
+
+  await Promise.all(selected.map(({ src }) => preloadVideoUrl(src)));
+}
+
 /**
  * Preload all assets for a given RazorSense preset.
  * This ensures videos and images are fully loaded before the component mounts,
@@ -299,20 +345,11 @@ async function preloadRazorSenseModeAssets(
   assetsPath: string = DEFAULT_CDN_PATH,
   colorScheme: ColorSchemeNames = 'light',
 ): Promise<void> {
-  const modes: readonly RazorSenseMode[] = Array.isArray(modesOrModes)
-    ? modesOrModes
-    : [modesOrModes as RazorSenseMode];
-  const useMobileAssets =
-    typeof window !== 'undefined' && window.matchMedia('(max-width: 809.98px)').matches;
-  const emotionalSources = useMobileAssets
-    ? getRazorSenseMobileModeVideoSources(assetsPath, colorScheme)
-    : getRazorSenseModeVideoSources(assetsPath);
-  const operationalSources = getRazorSenseOperationalModeVideoSources(assetsPath, colorScheme);
-  const sources = modes.map((mode) =>
-    isRazorSenseEmotionalMode(mode) ? emotionalSources[mode] : operationalSources[mode],
-  );
-
-  await Promise.all(sources.map((source) => loadVideo(source)));
+  await preloadRazorSense({
+    modes: modesOrModes,
+    assetsPath,
+    colorSchemes: colorScheme,
+  });
 }
 
 export {
@@ -323,6 +360,7 @@ export {
   loadVideo,
   isSafari,
   bestGuessBrowserZoom,
+  preloadRazorSense,
   preloadRazorSenseAssets,
   preloadRazorSenseModeAssets,
   getPresetAssets,
