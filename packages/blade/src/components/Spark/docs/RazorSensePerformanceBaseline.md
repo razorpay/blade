@@ -1,5 +1,12 @@
 # RazorSense performance baseline
 
+This file records the pre-orchestration baseline, a headed after capture of the declarative
+motion-state runtime, and the verified Typing media trim. The after capture uses collector schema
+v2: current WebGL means connected and non-lost, weak references expose still-live detached media
+without pinning it, and representative-still transfers are reported separately from video
+transfers. Those corrected resource gauges must not be compared numerically with the schema-v1
+before table.
+
 <!-- razorsense-runtime:before:start -->
 
 ## before runtime capture
@@ -33,6 +40,93 @@ Limitations:
 - Video frame counters are ten-second deltas from `getVideoPlaybackQuality` (with WebKit counters as a fallback). Long-task and rVFC fields depend on browser support.
 - The collector waits only for `data-scenario-ready="true"`; it intentionally never blocks on `data-scenario-fully-ready` so optimized offscreen instances may remain deferred.
 <!-- razorsense-runtime:before:end -->
+
+<!-- razorsense-runtime:after:start -->
+
+## after runtime capture
+
+Status: **passed**. Captured 2026-07-12T22:02:05.924Z from commit
+`82941077a96132679d8500248a9a76be9cec20d1` with the RazorSense implementation in a dirty worktree
+using headed Chrome 145.0.7632.160 on macOS 26.5.2. All 30 cold-network runs and 50 frame runs
+completed, and all 30 network snapshots passed internal consistency checks. Raw-run SHA-256:
+`d749546ba8e308bd53b62619403c5db4cb4fb7813c8fcdf2e3664daa48ce119b`.
+
+Collector SHA-256: `b273ebdc1fee0b59c9e02b64646e6927288cc022d83d8752ea33b6be13181d32`.
+
+Viewport: 1200x720 at DPR 1. Each scenario uses three cache-disabled cold network runs, then five
+cache-enabled frame runs with a 2 s warm-up and 10 s measurement window. The two public-API cold
+runs click the rendered control once. During their frame windows, the collector drives eight
+synchronous replacements every 1.2 s and a provider light/dark switch every 1 s.
+
+| Scenario                                 | Collector status | Video assets / transfers / observed bytes | Representative still assets / transfers / observed bytes | Video transfer states completed / canceled / failed / other | Still transfer states completed / canceled / failed / other | RAF callback cadence p50 / p95 / p99 (ms) | Long tasks count / total | Tracked / playing / off-DOM sourced media | Current / lifetime WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |
+| ---------------------------------------- | ---------------- | ----------------------------------------: | -------------------------------------------------------: | ----------------------------------------------------------: | ----------------------------------------------------------: | ----------------------------------------: | -----------------------: | ----------------------------------------: | --------------------------------: | ------------------------: | --------------------: |
+| Current neutral                          | passed           |                         1 / 1 / 11.12 MiB |                                         1 / 1 / 0.39 MiB |                                               1 / 0 / 0 / 0 |                                               1 / 0 / 0 / 0 |                        8.40 / 8.40 / 8.40 |              0 / 0.00 ms |                                 1 / 1 / 0 |                             0 / 0 |               1 / 2.50 ms |       244 / 0 (0.00%) |
+| Current calm                             | passed           |                          1 / 1 / 0.53 MiB |                                         1 / 1 / 0.15 MiB |                                               1 / 0 / 0 / 0 |                                               1 / 0 / 0 / 0 |                     41.70 / 42.99 / 43.36 |              0 / 0.00 ms |                                 1 / 1 / 1 |                             1 / 1 |             239 / 0.00 ms |       248 / 0 (0.00%) |
+| Four visible mixed instances             | passed           |                         4 / 5 / 23.93 MiB |                                         4 / 4 / 1.09 MiB |                                               5 / 0 / 0 / 0 |                                               4 / 0 / 0 / 0 |                     33.30 / 34.80 / 35.00 |              0 / 0.00 ms |                                 5 / 4 / 2 |                             2 / 2 |             143 / 1.50 ms |    831 / 100 (11.90%) |
+| Eight mounted instances                  | passed           |                         2 / 2 / 11.65 MiB |                                         8 / 8 / 1.76 MiB |                                               2 / 0 / 0 / 0 |                                               8 / 0 / 0 / 0 |                     41.70 / 43.10 / 46.36 |              0 / 0.00 ms |                                 2 / 2 / 1 |                             1 / 1 |             241 / 0.00 ms |       492 / 0 (0.00%) |
+| Rapid operational changes                | passed           |                       4 / 25 / 126.68 MiB |                                        4 / 20 / 4.81 MiB |                                              25 / 0 / 0 / 0 |                                              20 / 0 / 0 / 0 |                      8.40 / 66.65 / 75.24 |              0 / 0.00 ms |                                 3 / 2 / 1 |                             0 / 0 |            104 / 13.64 ms |        18 / 0 (0.00%) |
+| Rapid emotional changes                  | passed           |                        4 / 14 / 11.35 MiB |                                        4 / 14 / 2.76 MiB |                                              14 / 0 / 0 / 0 |                                              14 / 0 / 0 / 0 |                      8.30 / 24.91 / 33.40 |              0 / 0.00 ms |                                 9 / 2 / 9 |                             1 / 1 |             527 / 4.90 ms |        22 / 0 (0.00%) |
+| Legacy provider appearance changes       | passed           |                         2 / 5 / 37.75 MiB |                                         2 / 5 / 1.77 MiB |                                               5 / 0 / 0 / 0 |                                               5 / 0 / 0 / 0 |                   58.40 / 291.63 / 305.80 |              0 / 0.00 ms |                                 4 / 2 / 2 |                             0 / 0 |              86 / 5.88 ms |        89 / 0 (0.00%) |
+| Public state rapid replacement           | passed           |                         2 / 2 / 11.80 MiB |                                         2 / 3 / 0.81 MiB |                                               2 / 0 / 0 / 0 |                                               3 / 0 / 0 / 0 |                      9.90 / 34.38 / 35.10 |              0 / 0.00 ms |                                 2 / 1 / 2 |                             1 / 1 |             297 / 0.23 ms |       364 / 0 (0.00%) |
+| Public state provider appearance changes | passed           |                          1 / 1 / 0.53 MiB |                                         2 / 2 / 0.39 MiB |                                               1 / 0 / 0 / 0 |                                               2 / 0 / 0 / 0 |                      9.30 / 42.50 / 43.30 |              0 / 0.00 ms |                                 1 / 1 / 1 |                             1 / 1 |             240 / 0.10 ms |       248 / 0 (0.00%) |
+| Page visibility                          | passed           |                         2 / 2 / 11.65 MiB |                                         2 / 2 / 0.54 MiB |                                               2 / 0 / 0 / 0 |                                               2 / 0 / 0 / 0 |                     41.70 / 43.20 / 47.03 |              0 / 0.00 ms |                                 2 / 2 / 1 |                             1 / 1 |             241 / 0.00 ms |       492 / 0 (0.00%) |
+
+### Observed findings
+
+- The six-below-fold fixture mounted eight instances but admitted only two sourced videos and one
+  current WebGL context at the sample boundary. The other six states still requested their
+  representative stills, which accounts for the independent eight-image line item.
+- Public rapid replacement settled repeated eight-command bursts with two video assets, two video
+  transfers, and two still-live sourced elements at the median boundary. The legacy 120 ms mode
+  churn retained only one detached sourced element at the frame boundary after weak-reference
+  correction, but still transferred 126.68 MiB in its median cold run. These scenarios use
+  different trigger cadences, so this is directional evidence rather than a direct before/after
+  ratio.
+- The public provider appearance scenario used one 0.53 MiB video transfer plus the two light/dark
+  representative stills; the legacy 500 ms toggle used five video transfers totaling 37.75 MiB at
+  the median and retained two detached sourced elements at the frame boundary. Its 1 s public
+  trigger cadence again makes this directional, not ratio-grade, evidence.
+- Every scenario's median current and lifetime WebGL counts were equal. One of 50 individual frame
+  runs acquired two contexts over its page lifetime and ended with one current context; the other
+  context had already been collected. No still-live context was detached or context-lost at any
+  measurement boundary.
+- The four-visible mixed fixture dropped a median 100 of 831 decoded video frames (11.90%). That is
+  the remaining measured pressure point; the collector recorded no long tasks, so this capture
+  does not attribute those drops to JavaScript main-thread work.
+
+Limitations:
+
+- This is a single-machine, single-Chrome-version baseline. Use it for comparisons under the same
+  protocol, not as a cross-device performance target.
+- A passed collector scenario means navigation, readiness, and measurement completed; it does not
+  establish a visual-fidelity score or a production service-level objective.
+- Video assets are unique URLs and transfers are CDP request IDs. They include only `razorsense-`
+  video MIME responses or `.mp4`/`.webm` URLs observed during the fixed two-second post-ready
+  window.
+- Representative-still assets are counted independently. They include image responses under
+  `/razorsense-stills/`; shared shader gradient maps and unrelated Storybook images are excluded.
+- Observed bytes sum the immutable CDP `encodedDataLength` snapshot and include partial canceled,
+  failed, or still-in-flight range transfers.
+- Transfer states are disjoint with precedence canceled, failed, completed, then other. The failed
+  count excludes canceled transfers, and other means still in flight or otherwise unclassified at
+  snapshot time. Each displayed value is an independent median across three runs, so median state
+  cells are not guaranteed to add back to the separately computed median transfer count.
+- RAF callback cadence measures time between observed wrapped RAF callback timestamps. It includes
+  intentional idle gaps and is not browser frame-render time.
+- Current WebGL contexts are connected to the document and not context-lost at the end of the
+  ten-second frame window. Lifetime contexts are unique allocations observed since page navigation;
+  raw runs also report detached/lost contexts and allocations during the window.
+- Tracked media includes connected elements plus detached elements that still retain a source.
+  The collector keeps only weak references, so it does not itself prevent collection. Off-DOM media
+  can be an intentional video texture; the gauge proves a still-live sourced element at sample
+  time, not by itself a memory leak.
+- Video frame counters are ten-second deltas from `getVideoPlaybackQuality` (with WebKit counters as
+  a fallback). Long-task and rVFC fields depend on browser support.
+- The collector waits for `data-scenario-ready="true"` in legacy performance fixtures. The two
+  public scenarios instead wait for their public presentation host. It intentionally never waits
+  for `data-scenario-fully-ready`, so optimized offscreen instances may remain deferred.
+
+<!-- razorsense-runtime:after:end -->
 
 ## Typing media trim
 

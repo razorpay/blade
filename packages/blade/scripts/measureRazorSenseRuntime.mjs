@@ -58,7 +58,27 @@ const scenarios = [
   {
     slug: 'provider-appearance-changes',
     storyId: 'components-razorsense-performance--provider-appearance-changes',
-    title: 'Provider appearance changes',
+    title: 'Legacy provider appearance changes',
+  },
+  {
+    slug: 'public-rapid-state-replacement',
+    storyId: 'components-razorsense--rapid-state-replacement',
+    title: 'Public state rapid replacement',
+    readySelector: '[data-razor-sense-presentation-host="true"]',
+    interaction: {
+      buttonText: 'Issue 8 replacements',
+      intervalMs: 1_200,
+    },
+  },
+  {
+    slug: 'public-provider-appearance-changes',
+    storyId: 'components-razorsense--light-to-dark-transition',
+    title: 'Public state provider appearance changes',
+    readySelector: '[data-razor-sense-presentation-host="true"]',
+    interaction: {
+      buttonTextIncludes: 'Switch to',
+      intervalMs: 1_000,
+    },
   },
   {
     slug: 'page-visibility',
@@ -72,6 +92,7 @@ const scenarios = [
 }));
 
 const requiredFlags = new Set(['--storybook-url', '--output', '--label']);
+const allowedFlags = new Set([...requiredFlags, '--headed']);
 
 function parseArguments(argv) {
   const parsed = {};
@@ -80,7 +101,7 @@ function parseArguments(argv) {
     const flag = argv[index];
     const value = argv[index + 1];
 
-    if (!requiredFlags.has(flag)) {
+    if (!allowedFlags.has(flag)) {
       throw new Error(`Unknown argument: ${flag ?? '<missing>'}`);
     }
     if (Object.hasOwn(parsed, flag)) {
@@ -121,12 +142,17 @@ function parseArguments(argv) {
 
   const outputParts = path.parse(outputPath);
   const rawOutputPrefix = path.join(outputParts.dir, `${outputParts.name}.${label}`);
+  const headedValue = parsed['--headed'] ?? 'false';
+  if (!['true', 'false'].includes(headedValue)) {
+    throw new Error('--headed must be either true or false');
+  }
 
   return {
     storybookUrl: storybookUrl.toString().replace(/\/$/, ''),
     outputPath,
     rawOutputPrefix,
     label,
+    headed: headedValue === 'true',
   };
 }
 
@@ -140,8 +166,10 @@ function installRazorSenseMetrics() {
     window.HTMLVideoElement?.prototype.requestVideoFrameCallback;
 
   const pendingAnimationFrames = new Set();
-  const knownMediaElements = new Set();
+  const knownMediaElements = new WeakSet();
   const knownWebGLContexts = new WeakSet();
+  let knownMediaElementRefs = [];
+  let knownWebGLContextRefs = [];
   let knownWebGLContextCount = 0;
   let webGLContextBaseline = 0;
   let videoQualityBaseline = new WeakMap();
@@ -184,10 +212,32 @@ function installRazorSenseMetrics() {
     }
   };
 
+  const hasRetainedSource = (element) =>
+    Boolean(element?.currentSrc || element?.getAttribute?.('src'));
+
+  const trackMediaElement = (element) => {
+    if (knownMediaElements.has(element)) return;
+    knownMediaElements.add(element);
+    knownMediaElementRefs.push(new WeakRef(element));
+  };
+
+  const listKnownMediaElements = () => {
+    const elements = [];
+    knownMediaElementRefs = knownMediaElementRefs.filter((reference) => {
+      const element = reference.deref();
+      if (element) elements.push(element);
+      return Boolean(element);
+    });
+    return elements;
+  };
+
   const listMediaElements = () => {
-    const elements = new Set(knownMediaElements);
-    document.querySelectorAll('audio, video').forEach((element) => elements.add(element));
-    return [...elements].filter((element) => element?.isConnected);
+    const elements = new Set(listKnownMediaElements());
+    document.querySelectorAll('audio, video').forEach((element) => {
+      trackMediaElement(element);
+      elements.add(element);
+    });
+    return [...elements].filter((element) => element?.isConnected || hasRetainedSource(element));
   };
 
   const describeMediaElement = (element) => ({
@@ -196,13 +246,35 @@ function installRazorSenseMetrics() {
     paused: element.paused,
     ended: element.ended,
     readyState: element.readyState,
+    isConnected: element.isConnected,
+    retainsSource: hasRetainedSource(element),
   });
 
   const captureVideoQualityBaseline = () => {
     videoQualityBaseline = new WeakMap();
-    document.querySelectorAll('video').forEach((video) => {
-      videoQualityBaseline.set(video, getVideoQuality(video));
+    listMediaElements()
+      .filter((element) => element.tagName === 'VIDEO')
+      .forEach((video) => {
+        videoQualityBaseline.set(video, getVideoQuality(video));
+      });
+  };
+
+  const isCurrentWebGLContext = (context) => {
+    try {
+      return Boolean(context.canvas?.isConnected) && !context.isContextLost();
+    } catch {
+      return false;
+    }
+  };
+
+  const listKnownWebGLContexts = () => {
+    const contexts = [];
+    knownWebGLContextRefs = knownWebGLContextRefs.filter((reference) => {
+      const context = reference.deref();
+      if (context) contexts.push(context);
+      return Boolean(context);
     });
+    return contexts;
   };
 
   window.requestAnimationFrame = function (...args) {
@@ -247,7 +319,7 @@ function installRazorSenseMetrics() {
   if (originalMediaPlay) {
     window.HTMLMediaElement.prototype.play = function (...args) {
       const returnValue = Reflect.apply(originalMediaPlay, this, args);
-      knownMediaElements.add(this);
+      trackMediaElement(this);
       sample.mediaPlayCalls += 1;
       return returnValue;
     };
@@ -256,7 +328,7 @@ function installRazorSenseMetrics() {
   if (originalMediaPause) {
     window.HTMLMediaElement.prototype.pause = function (...args) {
       const returnValue = Reflect.apply(originalMediaPause, this, args);
-      knownMediaElements.add(this);
+      trackMediaElement(this);
       sample.mediaPauseCalls += 1;
       return returnValue;
     };
@@ -270,6 +342,7 @@ function installRazorSenseMetrics() {
 
       if (isWebGL && context && !knownWebGLContexts.has(context)) {
         knownWebGLContexts.add(context);
+        knownWebGLContextRefs.push(new WeakRef(context));
         knownWebGLContextCount += 1;
       }
 
@@ -335,29 +408,32 @@ function installRazorSenseMetrics() {
 
   const read = () => {
     const mediaElements = listMediaElements();
+    const webGLContexts = listKnownWebGLContexts();
     const currentPlayingElements = mediaElements.filter(
       (element) => !element.paused && !element.ended,
     );
-    const videos = [...document.querySelectorAll('video')].map((video) => {
-      const current = getVideoQuality(video);
-      const baseline = videoQualityBaseline.get(video) ?? {
-        totalVideoFrames: 0,
-        droppedVideoFrames: 0,
-      };
-      const totalVideoFrames = Math.max(0, current.totalVideoFrames - baseline.totalVideoFrames);
-      const droppedVideoFrames = Math.max(
-        0,
-        current.droppedVideoFrames - baseline.droppedVideoFrames,
-      );
+    const videos = mediaElements
+      .filter((element) => element.tagName === 'VIDEO')
+      .map((video) => {
+        const current = getVideoQuality(video);
+        const baseline = videoQualityBaseline.get(video) ?? {
+          totalVideoFrames: 0,
+          droppedVideoFrames: 0,
+        };
+        const totalVideoFrames = Math.max(0, current.totalVideoFrames - baseline.totalVideoFrames);
+        const droppedVideoFrames = Math.max(
+          0,
+          current.droppedVideoFrames - baseline.droppedVideoFrames,
+        );
 
-      return {
-        currentSrc: video.currentSrc || video.src || '',
-        totalVideoFrames,
-        droppedVideoFrames,
-        droppedFramePercentage:
-          totalVideoFrames === 0 ? 0 : (droppedVideoFrames / totalVideoFrames) * 100,
-      };
-    });
+        return {
+          currentSrc: video.currentSrc || video.src || '',
+          totalVideoFrames,
+          droppedVideoFrames,
+          droppedFramePercentage:
+            totalVideoFrames === 0 ? 0 : (droppedVideoFrames / totalVideoFrames) * 100,
+        };
+      });
     const totalVideoFrames = videos.reduce((total, video) => total + video.totalVideoFrames, 0);
     const droppedVideoFrames = videos.reduce((total, video) => total + video.droppedVideoFrames, 0);
 
@@ -375,11 +451,21 @@ function installRazorSenseMetrics() {
         playCalls: sample.mediaPlayCalls,
         pauseCalls: sample.mediaPauseCalls,
         elementCount: mediaElements.length,
+        connectedElementCount: mediaElements.filter((element) => element.isConnected).length,
+        offDOMRetainedSourceCount: mediaElements.filter(
+          (element) => !element.isConnected && hasRetainedSource(element),
+        ).length,
         currentPlayingCount: currentPlayingElements.length,
         currentPlayingElements: currentPlayingElements.map(describeMediaElement),
       },
       webgl: {
         uniqueContextCount: knownWebGLContextCount,
+        currentContextCount: webGLContexts.filter(isCurrentWebGLContext).length,
+        inactiveOrCollectedContextCount:
+          knownWebGLContextCount - webGLContexts.filter(isCurrentWebGLContext).length,
+        detachedOrLostLiveContextCount: webGLContexts.filter(
+          (context) => !isCurrentWebGLContext(context),
+        ).length,
         acquiredDuringMeasurement: knownWebGLContextCount - webGLContextBaseline,
       },
       requestVideoFrameCallback: {
@@ -427,8 +513,43 @@ function buildStoryUrl(storybookUrl, storyId) {
   return url.toString();
 }
 
-async function waitForScenarioReady(page) {
-  await page.locator(readySelector).waitFor({ state: 'attached', timeout: navigationTimeoutMs });
+async function waitForScenarioReady(page, scenario) {
+  await page
+    .locator(scenario.readySelector ?? readySelector)
+    .waitFor({ state: 'attached', timeout: navigationTimeoutMs });
+}
+
+async function clickScenarioButton(page, interaction) {
+  const button = interaction.buttonText
+    ? page.getByRole('button', { name: interaction.buttonText, exact: true })
+    : page.getByRole('button', { name: new RegExp(interaction.buttonTextIncludes, 'i') });
+  await button.click({ timeout: navigationTimeoutMs });
+}
+
+async function startScenarioInteraction(page, scenario) {
+  if (!scenario.interaction) return;
+
+  await clickScenarioButton(page, scenario.interaction);
+  await page.evaluate((interaction) => {
+    const findButton = () =>
+      [...document.querySelectorAll('button')].find((button) => {
+        const label = button.textContent?.trim() ?? '';
+        return interaction.buttonText
+          ? label === interaction.buttonText
+          : label.includes(interaction.buttonTextIncludes);
+      });
+
+    window.__razorSenseCollectorInteraction = window.setInterval(() => {
+      findButton()?.click();
+    }, interaction.intervalMs);
+  }, scenario.interaction);
+}
+
+async function stopScenarioInteraction(page) {
+  await page.evaluate(() => {
+    window.clearInterval(window.__razorSenseCollectorInteraction);
+    delete window.__razorSenseCollectorInteraction;
+  });
 }
 
 function toResponsesByRequestId(requests) {
@@ -450,6 +571,19 @@ function isRazorSenseMediaTransfer(request) {
   const isVideoMimeType = /^video\//i.test(request.mimeType);
   const isVideoFile = /\.(mp4|webm)$/i.test(pathname);
   return request.url.includes('razorsense-') && (isVideoMimeType || isVideoFile);
+}
+
+function isRazorSenseRepresentativeStillTransfer(request) {
+  let pathname = '';
+  try {
+    pathname = new URL(request.url).pathname;
+  } catch {
+    pathname = request.url;
+  }
+
+  const isImageMimeType = /^image\//i.test(request.mimeType);
+  const isImageFile = /\.(avif|jpe?g|png|svg|webp)$/i.test(pathname);
+  return pathname.includes('/razorsense-stills/') && (isImageMimeType || isImageFile);
 }
 
 function classifyMediaTransfers(transfers) {
@@ -486,7 +620,20 @@ function sumTransferClassification(classification) {
   );
 }
 
-async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
+function summarizeTransfers(transfersByRequestId) {
+  const transfers = Object.values(transfersByRequestId);
+  return {
+    uniqueAssetUrlCount: new Set(transfers.map((request) => request.url)).size,
+    transferCount: transfers.length,
+    observedEncodedBytes: transfers.reduce(
+      (total, request) => total + (Number(request.encodedDataLength) || 0),
+      0,
+    ),
+    transferClassification: classifyMediaTransfers(transfers),
+  };
+}
+
+async function collectNetworkRun({ context, page, scenario, storyUrl, runIndex }) {
   const client = await context.newCDPSession(page);
   const requests = new Map();
   const startedAt = new Date().toISOString();
@@ -532,7 +679,10 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     } else {
       await page.reload({ waitUntil: 'domcontentloaded', timeout: navigationTimeoutMs });
     }
-    await waitForScenarioReady(page);
+    await waitForScenarioReady(page, scenario);
+    if (scenario.interaction) {
+      await clickScenarioButton(page, scenario.interaction);
+    }
     await page.waitForTimeout(networkObservationMs);
   } catch (runError) {
     error = serializeError(runError);
@@ -562,14 +712,15 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
       isRazorSenseMediaTransfer(request),
     ),
   );
-  const razorSenseMediaTransfers = Object.values(razorSenseMediaTransfersByRequestId);
-  const uniqueMediaAssetUrlCount = new Set(razorSenseMediaTransfers.map((request) => request.url))
-    .size;
-  const observedMediaEncodedBytes = razorSenseMediaTransfers.reduce(
-    (total, request) => total + (Number(request.encodedDataLength) || 0),
-    0,
+  const razorSenseRepresentativeStillTransfersByRequestId = Object.fromEntries(
+    Object.entries(toResponsesByRequestId(immutableRequestSnapshot)).filter(([, request]) =>
+      isRazorSenseRepresentativeStillTransfer(request),
+    ),
   );
-  const mediaTransferClassification = classifyMediaTransfers(razorSenseMediaTransfers);
+  const mediaSummary = summarizeTransfers(razorSenseMediaTransfersByRequestId);
+  const representativeStillSummary = summarizeTransfers(
+    razorSenseRepresentativeStillTransfersByRequestId,
+  );
 
   return {
     runIndex,
@@ -578,11 +729,16 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     durationMs: performance.now() - startedAtMonotonic,
     cacheCondition: 'CDP Network cache disabled and browser cache cleared',
     observationAfterReadyMs: networkObservationMs,
-    uniqueMediaAssetUrlCount,
-    mediaTransferCount: razorSenseMediaTransfers.length,
-    observedMediaEncodedBytes,
-    mediaTransferClassification,
+    uniqueMediaAssetUrlCount: mediaSummary.uniqueAssetUrlCount,
+    mediaTransferCount: mediaSummary.transferCount,
+    observedMediaEncodedBytes: mediaSummary.observedEncodedBytes,
+    mediaTransferClassification: mediaSummary.transferClassification,
+    uniqueRepresentativeStillAssetUrlCount: representativeStillSummary.uniqueAssetUrlCount,
+    representativeStillTransferCount: representativeStillSummary.transferCount,
+    observedRepresentativeStillEncodedBytes: representativeStillSummary.observedEncodedBytes,
+    representativeStillTransferClassification: representativeStillSummary.transferClassification,
     razorSenseMediaTransfersByRequestId,
+    razorSenseRepresentativeStillTransfersByRequestId,
     ...(error ? { error } : {}),
   };
 }
@@ -597,6 +753,9 @@ function assertSuccessfulNetworkRunsConsistent(result) {
       .forEach((run) => {
         checkedRuns += 1;
         const transfers = Object.values(run.razorSenseMediaTransfersByRequestId ?? {});
+        const representativeStillTransfers = Object.values(
+          run.razorSenseRepresentativeStillTransfersByRequestId ?? {},
+        );
         const observedMediaEncodedBytes = transfers.reduce(
           (total, transfer) => total + (Number(transfer.encodedDataLength) || 0),
           0,
@@ -609,13 +768,36 @@ function assertSuccessfulNetworkRunsConsistent(result) {
         const classificationMatches = ['completed', 'canceled', 'failed', 'other'].every(
           (key) => storedClassification[key] === mediaTransferClassification[key],
         );
+        const representativeStillSummary = summarizeTransfers(
+          run.razorSenseRepresentativeStillTransfersByRequestId ?? {},
+        );
+        const representativeStillClassificationMatches = [
+          'completed',
+          'canceled',
+          'failed',
+          'other',
+        ].every(
+          (key) =>
+            run.representativeStillTransferClassification?.[key] ===
+            representativeStillSummary.transferClassification[key],
+        );
+        const classifiedRepresentativeStillTransferCount = sumTransferClassification(
+          representativeStillSummary.transferClassification,
+        );
 
         if (
           run.observedMediaEncodedBytes !== observedMediaEncodedBytes ||
           run.mediaTransferCount !== mediaTransferCount ||
           run.uniqueMediaAssetUrlCount !== uniqueMediaAssetUrlCount ||
           !classificationMatches ||
-          classifiedMediaTransferCount !== mediaTransferCount
+          classifiedMediaTransferCount !== mediaTransferCount ||
+          run.observedRepresentativeStillEncodedBytes !==
+            representativeStillSummary.observedEncodedBytes ||
+          run.representativeStillTransferCount !== representativeStillSummary.transferCount ||
+          run.uniqueRepresentativeStillAssetUrlCount !==
+            representativeStillSummary.uniqueAssetUrlCount ||
+          !representativeStillClassificationMatches ||
+          classifiedRepresentativeStillTransferCount !== representativeStillTransfers.length
         ) {
           inconsistencies.push({
             scenario: scenario.slug,
@@ -625,6 +807,11 @@ function assertSuccessfulNetworkRunsConsistent(result) {
               mediaTransferCount: run.mediaTransferCount,
               uniqueMediaAssetUrlCount: run.uniqueMediaAssetUrlCount,
               mediaTransferClassification: run.mediaTransferClassification,
+              observedRepresentativeStillEncodedBytes: run.observedRepresentativeStillEncodedBytes,
+              representativeStillTransferCount: run.representativeStillTransferCount,
+              uniqueRepresentativeStillAssetUrlCount: run.uniqueRepresentativeStillAssetUrlCount,
+              representativeStillTransferClassification:
+                run.representativeStillTransferClassification,
             },
             derived: {
               observedMediaEncodedBytes,
@@ -632,6 +819,8 @@ function assertSuccessfulNetworkRunsConsistent(result) {
               uniqueMediaAssetUrlCount,
               mediaTransferClassification,
               classifiedMediaTransferCount,
+              representativeStillSummary,
+              classifiedRepresentativeStillTransferCount,
             },
           });
         }
@@ -659,13 +848,13 @@ async function setNetworkCacheDisabled(context, page, cacheDisabled) {
   }
 }
 
-async function collectFrameRun({ page, runIndex }) {
+async function collectFrameRun({ page, scenario, runIndex }) {
   const startedAt = new Date().toISOString();
   const startedAtMonotonic = performance.now();
 
   try {
     await page.reload({ waitUntil: 'domcontentloaded', timeout: navigationTimeoutMs });
-    await waitForScenarioReady(page);
+    await waitForScenarioReady(page, scenario);
     await page.waitForTimeout(frameWarmupMs);
     await page.evaluate(() => {
       if (!window.__razorSenseMetrics) {
@@ -673,7 +862,9 @@ async function collectFrameRun({ page, runIndex }) {
       }
       window.__razorSenseMetrics.reset();
     });
+    await startScenarioInteraction(page, scenario);
     await page.waitForTimeout(frameObservationMs);
+    await stopScenarioInteraction(page);
     const metrics = await page.evaluate(() => window.__razorSenseMetrics.read());
 
     return {
@@ -687,6 +878,7 @@ async function collectFrameRun({ page, runIndex }) {
       metrics,
     };
   } catch (error) {
+    await stopScenarioInteraction(page).catch(() => undefined);
     return {
       runIndex,
       status: 'failed',
@@ -719,7 +911,7 @@ async function measureScenario({ context, scenario, storybookUrl }) {
   try {
     for (let runIndex = 1; runIndex <= networkRunCount; runIndex += 1) {
       console.log(`[${scenario.slug}] cold network run ${runIndex}/${networkRunCount}`);
-      const run = await collectNetworkRun({ context, page, storyUrl, runIndex });
+      const run = await collectNetworkRun({ context, page, scenario, storyUrl, runIndex });
       scenarioResult.networkRuns.push(run);
       if (run.error) {
         scenarioResult.errors.push({ phase: 'network', runIndex, ...run.error });
@@ -732,14 +924,14 @@ async function measureScenario({ context, scenario, storybookUrl }) {
         waitUntil: 'domcontentloaded',
         timeout: navigationTimeoutMs,
       });
-      await waitForScenarioReady(page);
+      await waitForScenarioReady(page, scenario);
     } catch (error) {
       scenarioResult.errors.push({ phase: 'frame-cache-prime', ...serializeError(error) });
     }
 
     for (let runIndex = 1; runIndex <= frameRunCount; runIndex += 1) {
       console.log(`[${scenario.slug}] frame run ${runIndex}/${frameRunCount}`);
-      const run = await collectFrameRun({ page, runIndex });
+      const run = await collectFrameRun({ page, scenario, runIndex });
       scenarioResult.frameRuns.push(run);
       if (run.error) {
         scenarioResult.errors.push({ phase: 'frame', runIndex, ...run.error });
@@ -819,6 +1011,28 @@ function summarizeScenario(scenarioResult) {
       medianOtherMediaTransferCount: medianMetric(
         networkRuns.map((run) => run.mediaTransferClassification.other),
       ),
+      medianUniqueRepresentativeStillAssetUrlCount: medianMetric(
+        networkRuns.map((run) => run.uniqueRepresentativeStillAssetUrlCount),
+      ),
+      medianRepresentativeStillTransferCount: medianMetric(
+        networkRuns.map((run) => run.representativeStillTransferCount),
+      ),
+      medianObservedRepresentativeStillEncodedBytes: medianMetric(
+        networkRuns.map((run) => run.observedRepresentativeStillEncodedBytes),
+        0,
+      ),
+      medianCompletedRepresentativeStillTransferCount: medianMetric(
+        networkRuns.map((run) => run.representativeStillTransferClassification.completed),
+      ),
+      medianCanceledRepresentativeStillTransferCount: medianMetric(
+        networkRuns.map((run) => run.representativeStillTransferClassification.canceled),
+      ),
+      medianFailedRepresentativeStillTransferCount: medianMetric(
+        networkRuns.map((run) => run.representativeStillTransferClassification.failed),
+      ),
+      medianOtherRepresentativeStillTransferCount: medianMetric(
+        networkRuns.map((run) => run.representativeStillTransferClassification.other),
+      ),
     },
     rafCallbackCadenceMs: {
       p50: medianRunPercentile(frameRuns, (metrics) => metrics.raf.callbackCadenceMs, 0.5),
@@ -839,7 +1053,14 @@ function summarizeScenario(scenarioResult) {
     medianPlayingMediaCount: medianMetric(
       frameRuns.map((run) => run.metrics.media.currentPlayingCount),
     ),
-    medianUniqueWebGLContextCount: medianMetric(
+    medianTrackedMediaCount: medianMetric(frameRuns.map((run) => run.metrics.media.elementCount)),
+    medianOffDOMRetainedSourceCount: medianMetric(
+      frameRuns.map((run) => run.metrics.media.offDOMRetainedSourceCount),
+    ),
+    medianCurrentWebGLContextCount: medianMetric(
+      frameRuns.map((run) => run.metrics.webgl.currentContextCount),
+    ),
+    medianLifetimeWebGLContextCount: medianMetric(
       frameRuns.map((run) => run.metrics.webgl.uniqueContextCount),
     ),
     requestVideoFrameCallback: {
@@ -925,7 +1146,7 @@ async function collectEnvironmentMetadata(args) {
       version: null,
       product: null,
       protocolVersion: null,
-      headless: true,
+      headless: !args.headed,
     },
     macOSProductVersion,
     viewport: defaultViewport,
@@ -994,21 +1215,37 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
       summary.network.medianUniqueMediaAssetUrlCount,
     )} / ${formatInteger(summary.network.medianMediaTransferCount)} / ${formatBytes(
       summary.network.medianObservedMediaEncodedBytes,
+    )} | ${formatInteger(
+      summary.network.medianUniqueRepresentativeStillAssetUrlCount,
+    )} / ${formatInteger(summary.network.medianRepresentativeStillTransferCount)} / ${formatBytes(
+      summary.network.medianObservedRepresentativeStillEncodedBytes,
     )} | ${formatInteger(summary.network.medianCompletedMediaTransferCount)} / ${formatInteger(
       summary.network.medianCanceledMediaTransferCount,
     )} / ${formatInteger(summary.network.medianFailedMediaTransferCount)} / ${formatInteger(
       summary.network.medianOtherMediaTransferCount,
+    )} | ${formatInteger(
+      summary.network.medianCompletedRepresentativeStillTransferCount,
+    )} / ${formatInteger(
+      summary.network.medianCanceledRepresentativeStillTransferCount,
+    )} / ${formatInteger(
+      summary.network.medianFailedRepresentativeStillTransferCount,
+    )} / ${formatInteger(
+      summary.network.medianOtherRepresentativeStillTransferCount,
     )} | ${formatNumber(cadence.p50)} / ${formatNumber(cadence.p95)} / ${formatNumber(
       cadence.p99,
     )} | ${formatInteger(longTasks.medianCount)} / ${formatNumber(
       longTasks.medianTotalDurationMs,
-    )} ms | ${formatInteger(summary.medianPlayingMediaCount)} | ${formatInteger(
-      summary.medianUniqueWebGLContextCount,
-    )} | ${formatInteger(rvfc.medianCallbackCount)} / ${formatNumber(
-      rvfc.latenessMs.p95,
-    )} ms | ${formatInteger(video.medianTotalVideoFrames)} / ${formatInteger(
-      video.medianDroppedVideoFrames,
-    )} (${formatNumber(video.medianDroppedFramePercentage)}%) |`;
+    )} ms | ${formatInteger(summary.medianTrackedMediaCount)} / ${formatInteger(
+      summary.medianPlayingMediaCount,
+    )} / ${formatInteger(summary.medianOffDOMRetainedSourceCount)} | ${formatInteger(
+      summary.medianCurrentWebGLContextCount,
+    )} / ${formatInteger(summary.medianLifetimeWebGLContextCount)} | ${formatInteger(
+      rvfc.medianCallbackCount,
+    )} / ${formatNumber(rvfc.latenessMs.p95)} ms | ${formatInteger(
+      video.medianTotalVideoFrames,
+    )} / ${formatInteger(video.medianDroppedVideoFrames)} (${formatNumber(
+      video.medianDroppedFramePercentage,
+    )}%) |`;
   });
   const failureLines = result.scenarios
     .filter((scenario) => scenario.errors.length > 0)
@@ -1028,9 +1265,9 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
     '',
     `Status: **${result.status}**. Captured ${result.metadata.capturedAt} from commit \`${
       result.metadata.git.commit
-    }\`${
-      result.metadata.git.dirty ? ' with a dirty worktree' : ' with a clean worktree'
-    } using Chrome ${result.metadata.chrome.version} on macOS ${
+    }\`${result.metadata.git.dirty ? ' with a dirty worktree' : ' with a clean worktree'} using ${
+      result.metadata.chrome.headless ? 'headless' : 'headed'
+    } Chrome ${result.metadata.chrome.version} on macOS ${
       result.metadata.macOSProductVersion
     }. Raw runs: [\`${rawFileName}\`](./${rawFileName}).`,
     '',
@@ -1038,8 +1275,8 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
     '',
     `Viewport: ${result.metadata.viewport.width}x${result.metadata.viewport.height} at DPR ${result.metadata.deviceScaleFactor}. Each scenario uses three cache-disabled cold network runs, then five cache-enabled frame runs with a 2 s warm-up and 10 s measurement window.`,
     '',
-    '| Scenario | Collector status | Media assets / transfers / observed bytes | Transfer states completed / canceled / failed / other | RAF callback cadence p50 / p95 / p99 (ms) | Long tasks count / total | Playing media | WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |',
-    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
+    '| Scenario | Collector status | Video assets / transfers / observed bytes | Representative still assets / transfers / observed bytes | Video transfer states completed / canceled / failed / other | Still transfer states completed / canceled / failed / other | RAF callback cadence p50 / p95 / p99 (ms) | Long tasks count / total | Tracked / playing / off-DOM sourced media | Current / lifetime WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |',
+    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
     ...tableRows,
     ...(failureLines.length > 0 ? ['', 'Failures:', '', ...failureLines] : []),
     '',
@@ -1047,11 +1284,13 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
     '',
     '- This is a single-machine, single-Chrome-version baseline. Use it for before/after comparison under the same protocol, not as a cross-device performance target.',
     '- A passed collector scenario means navigation, readiness, and measurement completed; it does not mean every media transfer completed.',
-    '- Network assets are unique URLs and transfers are CDP request IDs. Both include only `razorsense-` video MIME responses or `.mp4`/`.webm` URLs observed during the fixed two-second post-ready window.',
+    '- Video assets are unique URLs and transfers are CDP request IDs. They include only `razorsense-` video MIME responses or `.mp4`/`.webm` URLs observed during the fixed two-second post-ready window.',
+    '- Representative-still assets are counted independently. They include image responses under `/razorsense-stills/`; shared shader gradient maps and unrelated Storybook images are excluded.',
     '- Observed bytes sum the immutable CDP `encodedDataLength` snapshot and include partial canceled, failed, or still-in-flight range transfers.',
     '- Transfer states are disjoint with precedence canceled, failed, completed, then other. The failed count therefore excludes canceled transfers, and other means still in flight or otherwise unclassified at snapshot time.',
     '- RAF callback cadence measures time between observed wrapped RAF callback timestamps. It includes intentional idle gaps and is not browser frame-render time.',
-    '- WebGL context count is a resource gauge and includes unique contexts acquired before the ten-second frame window; raw runs also report contexts acquired during the window.',
+    '- Current WebGL contexts are connected to the document and not context-lost at the end of the ten-second frame window. Lifetime contexts are unique allocations observed since page navigation; raw runs also report detached/lost contexts and allocations during the window.',
+    '- Tracked media includes connected elements plus detached elements that still retain a source. The off-DOM sourced count makes decoder/resource retention outside the DOM visible instead of silently dropping it from the gauge.',
     '- Video frame counters are ten-second deltas from `getVideoPlaybackQuality` (with WebKit counters as a fallback). Long-task and rVFC fields depend on browser support.',
     '- The collector waits only for `data-scenario-ready="true"`; it intentionally never blocks on `data-scenario-fully-ready` so optimized offscreen instances may remain deferred.',
     endMarker,
@@ -1146,7 +1385,7 @@ async function writeResults({ args, result }) {
 
 async function run(args) {
   const result = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     label: args.label,
     status: 'passed',
     metadata: await collectEnvironmentMetadata(args),
@@ -1159,7 +1398,7 @@ async function run(args) {
   try {
     context = await chromium.launchPersistentContext(profilePath, {
       executablePath: chromeExecutable,
-      headless: true,
+      headless: !args.headed,
       viewport: defaultViewport,
       deviceScaleFactor: defaultDeviceScaleFactor,
     });
