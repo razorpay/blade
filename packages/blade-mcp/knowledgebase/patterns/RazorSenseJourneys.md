@@ -39,12 +39,18 @@ Do not create a sequence merely because several states appear over time. Chat re
 Use one material instance for the entire assistant surface.
 
 ```tsx
+import { useState } from 'react';
 import { Box, RazorSense, Text } from '@razorpay/blade/components';
 
 type AgentState = 'idle' | 'typing' | 'thinking' | 'working' | 'success' | 'caution' | 'regret';
 
 const [agentState, setAgentState] = useState<AgentState>('idle');
 const [status, setStatus] = useState('Ready');
+
+const startAgent = async (prompt: string): Promise<unknown> => ({});
+const streamResult = async (run: unknown): Promise<void> => {};
+const canRetry = (error: unknown): boolean => false;
+const ChatSurface = (_props: { onSubmit: (prompt: string) => void }): null => null;
 
 const submit = async (prompt: string) => {
   setAgentState('thinking');
@@ -84,11 +90,17 @@ Rules:
 Application truth changes immediately; controlled replacement retains the outgoing exact frame until the new target is ready.
 
 ```tsx
+const abortActiveRun = (): void => {};
+const setAgentState = (_state: string): void => {};
+const setStatus = (_status: string): void => {};
+
 const stop = () => {
   abortActiveRun();
   setAgentState('idle');
   setStatus('Stopped');
 };
+
+export {};
 ```
 
 Do not manually fade out `thinking`, seek a source, or wait for a loop seam before stopping business work. If the visual itself must finish at a boundary, use a controller command without delaying the abort.
@@ -98,6 +110,13 @@ Do not manually fade out `thinking`, seek a source, or wait for a loop seam befo
 Use the built-in journey for the timestamp-aligned reconstruction of the supplied login reference. Authentication remains independent of decorative playback.
 
 ```tsx
+import { RazorSenseSequence, razorSenseLoginToDashboardJourney } from '@razorpay/blade/components';
+
+const loginAttemptId = 'attempt-1';
+const LoginForm = (): null => null;
+const Dashboard = (): null => null;
+const reportVisualFailure = (error: unknown): void => {};
+
 <RazorSenseSequence
   sequence={razorSenseLoginToDashboardJourney}
   runId={loginAttemptId}
@@ -122,12 +141,18 @@ Rules:
 ### Three-phase branded loading
 
 ```tsx
+import { RazorSenseSequence, razorSenseThreePhaseLoadingJourney } from '@razorpay/blade/components';
+
+const operationId = 'op-1';
+
 <RazorSenseSequence sequence={razorSenseThreePhaseLoadingJourney} runId={operationId} />
 ```
 
 Use this built-in sequence for the authored three-beat composition. If the phases represent actual variable-duration work, define a manual sequence or controlled product states driven by real progress events.
 
 ```tsx
+import { defineRazorSenseSequence } from '@razorpay/blade/components';
+
 const realProgressJourney = defineRazorSenseSequence({
   id: 'merchant.real-progress.v1',
   steps: [
@@ -143,6 +168,8 @@ Call `advance()` from the corresponding progress event. Never substitute fixed t
 ### Ripple wave
 
 ```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
 <RazorSense preset="rippleWave" playback="loop" />
 ```
 
@@ -151,6 +178,8 @@ Use on immersive branded loading or transition surfaces. Pair it with status UI.
 ### Bottom wave
 
 ```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
 <RazorSense preset="bottomWave" playback="once" endBehavior="hold" />
 ```
 
@@ -161,11 +190,15 @@ Use for the supplied exact 10-second, 25fps bottom-edge authored gesture. Keep i
 Choose between semantic and branded success deliberately.
 
 ```tsx
-// Expressive semantic material
-<RazorSense state="success" playback="once" endBehavior="hold" />
+import { RazorSense } from '@razorpay/blade/components';
 
-// Existing success-circle composition
-<RazorSense preset="success" playback="once" endBehavior="hold" />
+<>
+  {/* Expressive semantic material */}
+  <RazorSense state="success" playback="once" endBehavior="hold" />
+
+  {/* Existing success-circle composition */}
+  <RazorSense preset="success" playback="once" endBehavior="hold" />
+</>;
 ```
 
 Reserve both for meaningful outcomes. Use ordinary Blade feedback for small saves, toggles, and low-salience confirmations.
@@ -173,6 +206,10 @@ Reserve both for meaningful outcomes. Use ordinary Blade feedback for small save
 ### Caution and failure recovery
 
 ```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
+const canRetry = true;
+
 <RazorSense state={canRetry ? 'caution' : 'regret'} playback="once" endBehavior="hold" />
 ```
 
@@ -183,6 +220,10 @@ The surrounding UI must explain what happened and provide a recovery action. Do 
 Use a controller only when props cannot express the event relationship.
 
 ```tsx
+import { useRazorSenseController, RazorSense } from '@razorpay/blade/components';
+
+const runRealWork = async (): Promise<void> => {};
+
 const razorSense = useRazorSenseController({ initialState: 'idle' });
 
 const showWorking = async () => {
@@ -227,6 +268,9 @@ Do not use `completed` for an infinite loop. Do not bind one controller to multi
 Preload one probable next semantic or branded target, including a known next appearance, without mounting it.
 
 ```tsx
+import { useEffect } from 'react';
+import { preloadRazorSenseTarget } from '@razorpay/blade/components';
+
 useEffect(() => {
   void preloadRazorSenseTarget({ state: 'thinking' });
 }, []);
@@ -257,22 +301,33 @@ Before generating a RazorSense integration, confirm:
 ## Prohibited generated patterns
 
 ```tsx
-// Wrong: one instance per row/message
-messages.map((message) => <RazorSense state={message.state} />)
+import { RazorSense } from '@razorpay/blade/components';
 
-// Wrong: manual transition wrapper
-<motion.div animate={{ opacity: state === 'thinking' ? 1 : 0 }}>
-  <RazorSense state="thinking" />
-</motion.div>
+const messages: { state: string }[] = [];
+const state = 'idle';
+const setState = (_s: string): void => {};
+const motion = { div: (_props: { animate?: unknown; children?: unknown }): null => null };
 
-// Wrong: timer-driven product truth
-setTimeout(() => setState('success'), 2400)
+function WrongPatterns() {
+  // Wrong: one instance per row/message
+  messages.map((message) => <RazorSense state={message.state} />);
 
-// Wrong: raw shader controls for a normal state
-<RazorSense numSegments={54} displacementX={-18} />
+  // Wrong: manual transition wrapper
+  <motion.div animate={{ opacity: state === 'thinking' ? 1 : 0 }}>
+    <RazorSense state="thinking" />
+  </motion.div>;
 
-// Wrong: one-shot as infinite loop
-<RazorSense preset="audioWave" playback="loop" />
+  // Wrong: timer-driven product truth
+  setTimeout(() => setState('success'), 2400);
+
+  // Wrong: raw shader controls for a normal state
+  <RazorSense numSegments={54} displacementX={-18} />;
+
+  // Wrong: one-shot as infinite loop
+  <RazorSense preset="audioWave" playback="loop" />;
+
+  return null;
+}
 ```
 
 Use controlled state, a validated sequence, or a controller instead.

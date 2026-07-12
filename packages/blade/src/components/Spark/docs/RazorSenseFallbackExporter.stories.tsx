@@ -34,7 +34,7 @@ type ParsedExportRequest =
 const readSingleParam = (params: URLSearchParams, name: string): string => {
   const values = params.getAll(name);
   if (values.length !== 1 || values[0] === '') {
-    throw new Error(`Expected exactly one non-empty \"${name}\" query parameter.`);
+    throw new Error(`Expected exactly one non-empty "${name}" query parameter.`);
   }
   return values[0];
 };
@@ -47,16 +47,16 @@ const parseExportRequest = (): ParsedExportRequest => {
     const viewport = readSingleParam(params, 'viewport');
 
     if (!RAZOR_SENSE_MODES.includes(mode as RazorSenseMode)) {
-      throw new Error(`Invalid mode \"${mode}\".`);
+      throw new Error(`Invalid mode "${mode}".`);
     }
     if (!COLOR_SCHEMES.includes(colorScheme as ColorSchemeNames)) {
-      throw new Error(`Invalid colorScheme \"${colorScheme}\".`);
+      throw new Error(`Invalid colorScheme "${colorScheme}".`);
     }
     if (!VIEWPORTS.includes(viewport as RazorSenseViewport)) {
-      throw new Error(`Invalid viewport \"${viewport}\".`);
+      throw new Error(`Invalid viewport "${viewport}".`);
     }
     if (viewport === 'mobile' && isRazorSenseOperationalMode(mode as RazorSenseMode)) {
-      throw new Error(`Operational mode \"${mode}\" does not support the mobile viewport.`);
+      throw new Error(`Operational mode "${mode}" does not support the mobile viewport.`);
     }
 
     return {

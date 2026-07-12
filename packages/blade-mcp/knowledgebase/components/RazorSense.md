@@ -15,6 +15,8 @@ Use one stable instance for one meaningful product surface. Change `state` when 
 ```tsx
 import { RazorSense } from '@razorpay/blade/components';
 
+const agentState = 'idle' as const;
+
 <RazorSense
   state={agentState}
   width="100%"
@@ -28,6 +30,10 @@ import { RazorSense } from '@razorpay/blade/components';
 Replay the same finite target by changing `replayKey`; do not remount the host.
 
 ```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
+const successfulAttemptId = 'attempt-1';
+
 <RazorSense state="success" replayKey={successfulAttemptId} playback="once" endBehavior="hold" />
 ```
 
@@ -97,6 +103,14 @@ type RazorSenseInterruptionPolicy = 'replace' | 'queue' | 'finish-current';
 ## Sequences and controller
 
 ```tsx
+import {
+  defineRazorSenseSequence,
+  useRazorSenseSequenceController,
+  RazorSenseSequence,
+} from '@razorpay/blade/components';
+
+const attemptId = 'attempt-1';
+
 const setupJourney = defineRazorSenseSequence({
   id: 'merchant.setup.v1',
   steps: [
@@ -117,6 +131,8 @@ Sequence definitions have stable IDs, unique step IDs, and immutable content. `r
 Standalone controller commands expose named milestones rather than being thenable:
 
 ```tsx
+import { useRazorSenseController, RazorSense } from '@razorpay/blade/components';
+
 const controller = useRazorSenseController({ initialState: 'idle' });
 const command = controller.play(
   { state: 'thinking' },
@@ -127,7 +143,7 @@ await command.ready;
 await command.transitioned;
 await command.finishAtBoundary();
 
-return <RazorSense controller={controller} />;
+<RazorSense controller={controller} />;
 ```
 
 One controller drives exactly one mounted host. Do not pass controlled target, playback, transition, replay, or pause props alongside `controller`.
@@ -145,6 +161,8 @@ One controller drives exactly one mounted host. Do not pass controlled target, p
 Preload only one probable next target without mounting it:
 
 ```tsx
+import { preloadRazorSenseTarget } from '@razorpay/blade/components';
+
 await preloadRazorSenseTarget({ state: 'thinking' });
 await preloadRazorSenseTarget({ state: 'thinking' }, undefined, 'dark');
 await preloadRazorSenseTarget({ preset: 'success' });

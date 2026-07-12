@@ -278,6 +278,8 @@ type RazorSenseBrandedPreset =
 ```tsx
 import { RazorSense } from '@razorpay/blade/components';
 
+const agentState = 'idle' as const;
+
 <RazorSense
   state={agentState}
   playback="automatic"
@@ -291,6 +293,10 @@ Controlled state uses replacement semantics. Blade keeps the current exact compo
 Replay the same target with `replayKey`:
 
 ```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
+const resultId = 'result-1';
+
 <RazorSense state="success" replayKey={resultId} playback="once" endBehavior="hold" />
 ```
 
@@ -325,6 +331,10 @@ type RazorSenseTransition = 'automatic' | 'cut' | { duration: DurationString };
 ## Sequences
 
 ```tsx
+import { defineRazorSenseSequence, RazorSenseSequence } from '@razorpay/blade/components';
+
+const attemptId = 'attempt-1';
+
 const sequence = defineRazorSenseSequence({
   id: 'merchant.setup.v1',
   steps: [
@@ -351,9 +361,14 @@ Sequence invariants:
 Manual loops require a sequence controller and a real product event:
 
 ```tsx
+import { useRazorSenseSequenceController, RazorSenseSequence, defineRazorSenseSequence } from '@razorpay/blade/components';
+
+const sequence = defineRazorSenseSequence({ id: 'demo', steps: [] });
+const requestId = 'request-1';
+
 const controller = useRazorSenseSequenceController(sequence);
 
-<RazorSenseSequence sequence={sequence} controller={controller} runId={requestId} />;
+<RazorSenseSequence sequence={sequence} controller={controller} runId={requestId} />
 
 controller.advance();
 ```
@@ -363,6 +378,8 @@ Do not use `setTimeout` to guess thinking, working, authentication, or API durat
 ## Controller
 
 ```tsx
+import { useRazorSenseController, RazorSense } from '@razorpay/blade/components';
+
 const controller = useRazorSenseController({ initialState: 'idle' });
 
 const command = controller.play(
@@ -376,7 +393,7 @@ await command.transitioned;
 // A later real product event:
 await command.finishAtBoundary();
 
-return <RazorSense controller={controller} />;
+<RazorSense controller={controller} />;
 ```
 
 Commands are not thenable:
@@ -427,6 +444,8 @@ An event fires before its associated promise resolves. Transition and playback c
 ## Preloading and multiple instances
 
 ```tsx
+import { preloadRazorSenseTarget } from '@razorpay/blade/components';
+
 await preloadRazorSenseTarget({ state: 'thinking' });
 await preloadRazorSenseTarget({ state: 'thinking' }, undefined, 'dark');
 await preloadRazorSenseTarget({ preset: 'success' });

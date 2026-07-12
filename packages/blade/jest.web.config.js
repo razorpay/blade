@@ -1,4 +1,4 @@
-const packagejson = require('./package.json');
+const packagejson = require('./package');
 
 const ignores = ['/node_modules/'];
 
