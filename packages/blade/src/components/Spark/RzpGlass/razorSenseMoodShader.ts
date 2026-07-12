@@ -294,9 +294,9 @@ float dither8x8(vec2 position) {
 }
 
 void main() {
-  vec2 displayUv = pointerWarp(vUv);
-  vec2 sourceUv = coverUv(displayUv);
-  float flute = fluteMap(displayUv);
+  vec2 sourceWarpUv = pointerWarp(vUv);
+  vec2 sourceUv = coverUv(sourceWarpUv);
+  float flute = fluteMap(vUv);
   float signedFlute = (flute - 0.5) * 2.0;
   sourceUv += vec2(
     -signedFlute * 6.0 * EFFECT_OVERSCAN / DESIGN_SIZE.x,
@@ -341,7 +341,7 @@ void main() {
     float railEdge = pow(abs(signedFlute), 6.0) * uColorSchemeMix;
     color += vec3(0.0, 0.015, 0.065) * railEdge;
   }
-  float trail = trailAt(displayUv);
+  float trail = trailAt(vUv);
   color = mix(color, rotateHue(color, radians(7.0)), trail);
 
   gl_FragColor = vec4(color, 1.0);

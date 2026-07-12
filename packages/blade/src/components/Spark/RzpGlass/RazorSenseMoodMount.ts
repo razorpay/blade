@@ -529,6 +529,10 @@ class RazorSenseMoodMount {
     return this.shouldOwnRenderer() && !this.options.paused;
   }
 
+  private shouldAnimatePointerTrail(): boolean {
+    return this.shouldOwnRenderer() && this.options.interactive && this.trailLifeFrames > 0;
+  }
+
   private async ensureModeLoaded(mode: RazorSenseEmotionalMode): Promise<MoodSlot> {
     const existing = this.slots.get(mode);
     if (existing) return existing;
@@ -955,7 +959,7 @@ class RazorSenseMoodMount {
 
   private handlePointerMove = (event: PointerEvent): void => {
     if (
-      !this.shouldPlay() ||
+      !this.shouldOwnRenderer() ||
       !this.options.interactive ||
       performance.now() - this.mountedAt < POINTER_DELAY_MS
     ) {
@@ -1074,8 +1078,8 @@ class RazorSenseMoodMount {
     if (!this.rendererReady || this.disposed) return false;
     if (
       this.pendingCaptures.length > 0 ||
-      (this.shouldPlay() &&
-        (this.transitionActive || this.colorSchemeTransitionActive || this.trailLifeFrames > 0))
+      (this.shouldPlay() && (this.transitionActive || this.colorSchemeTransitionActive)) ||
+      this.shouldAnimatePointerTrail()
     ) {
       return true;
     }
@@ -1093,7 +1097,7 @@ class RazorSenseMoodMount {
       this.flushPendingCaptures(false);
       return;
     }
-    this.draw(now, this.shouldPlay());
+    this.draw(now, this.shouldPlay() || this.shouldAnimatePointerTrail());
     if (this.hasTimeDependentWork()) this.scheduleRender();
   };
 

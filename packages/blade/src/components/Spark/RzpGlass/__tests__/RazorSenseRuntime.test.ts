@@ -189,6 +189,42 @@ describe('RazorSenseRuntime', () => {
     });
   });
 
+  it('keeps a visible user-paused registration active and admitted for preparation', () => {
+    const entry = register('authored', makeRect(), { isPaused: true });
+
+    emitIntersection(entry.element, makeRect(), true);
+
+    expect(getSnapshot(entry)).toEqual({
+      state: 'active',
+      isAdmitted: true,
+      isPageVisible: true,
+      intersectionRatio: 1,
+    });
+    expect(jest.getTimerCount()).toBe(0);
+  });
+
+  it('does not start a cold lifecycle when an active registration is user-paused', () => {
+    const entry = register('authored', makeRect());
+    emitIntersection(entry.element, makeRect(), true);
+
+    entry.registration.update({
+      family: 'authored',
+      isInteractive: false,
+      isPaused: true,
+    });
+
+    expect(getSnapshot(entry)).toEqual({
+      state: 'active',
+      isAdmitted: true,
+      isPageVisible: true,
+      intersectionRatio: 1,
+    });
+    expect(jest.getTimerCount()).toBe(0);
+
+    jest.advanceTimersByTime(10_000);
+    expect(getSnapshot(entry).state).toBe('active');
+  });
+
   it('uses the initial viewport rect when IntersectionObserver is unavailable', () => {
     window.IntersectionObserver = undefined as never;
     const entry = register('authored', makeRect({ left: 20, top: 20 }));

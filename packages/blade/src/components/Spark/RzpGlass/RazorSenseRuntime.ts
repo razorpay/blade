@@ -11,7 +11,12 @@ type RazorSenseRuntimeSnapshot = {
 
 type RazorSenseRuntimeOptions = {
   family: RazorSenseRendererFamily;
-  isPaused: boolean;
+  /**
+   * @deprecated Consumer pause is a playback concern. It remains accepted so
+   * existing registrations stay source-compatible, but it does not affect
+   * viewport lifecycle or admission.
+   */
+  isPaused?: boolean;
   isInteractive: boolean;
   /** Reserves one WebGL slot while this non-WebGL family fades an outgoing WebGL renderer. */
   retainsWebGL?: boolean;
@@ -128,7 +133,7 @@ class RazorSenseRuntime {
     const rect = element.getBoundingClientRect();
     const metrics = this.getElementViewportMetrics(element, rect);
     const isWithinWarmMargin = metrics.visibleArea > 0 || this.isRectWithinWarmMargin(rect);
-    const isActiveCandidate = metrics.visibleArea > 0 && this.isPageVisible && !options.isPaused;
+    const isActiveCandidate = metrics.visibleArea > 0 && this.isPageVisible;
 
     const entry: RazorSenseRuntimeEntry = {
       id,
@@ -229,23 +234,19 @@ class RazorSenseRuntime {
     if (!entry) return;
 
     const previousOptions = entry.options;
-    if (
+    const runtimeOptionsAreEqual =
       previousOptions.family === nextOptions.family &&
-      previousOptions.isPaused === nextOptions.isPaused &&
       previousOptions.isInteractive === nextOptions.isInteractive &&
-      previousOptions.retainsWebGL === nextOptions.retainsWebGL
-    ) {
-      return;
-    }
+      previousOptions.retainsWebGL === nextOptions.retainsWebGL;
 
     entry.options = nextOptions;
+    if (runtimeOptionsAreEqual) return;
+
     if (previousOptions.isInteractive !== nextOptions.isInteractive) {
       this.updatePointerListeners(entry);
     }
 
-    this.recomputeLifecycle(entry, {
-      canResumeWarm: previousOptions.isPaused && !nextOptions.isPaused,
-    });
+    this.recomputeLifecycle(entry, { canResumeWarm: false });
     this.recomputeAdmissionAndNotify();
   }
 
@@ -278,8 +279,7 @@ class RazorSenseRuntime {
     entry: RazorSenseRuntimeEntry,
     { canResumeWarm }: { canResumeWarm: boolean },
   ): void {
-    const isActiveCandidate =
-      entry.visibleArea > 0 && this.isPageVisible && !entry.options.isPaused;
+    const isActiveCandidate = entry.visibleArea > 0 && this.isPageVisible;
 
     if (isActiveCandidate) {
       entry.hasBeenActive = true;
@@ -293,12 +293,7 @@ class RazorSenseRuntime {
       return;
     }
 
-    if (
-      canResumeWarm &&
-      entry.isWithinWarmMargin &&
-      this.isPageVisible &&
-      !entry.options.isPaused
-    ) {
+    if (canResumeWarm && entry.isWithinWarmMargin && this.isPageVisible) {
       entry.state = 'warm';
       this.clearColdTimer(entry);
       return;
@@ -306,8 +301,7 @@ class RazorSenseRuntime {
 
     if (
       entry.state === 'active' ||
-      (entry.state === 'warm' &&
-        (!entry.isWithinWarmMargin || !this.isPageVisible || entry.options.isPaused))
+      (entry.state === 'warm' && (!entry.isWithinWarmMargin || !this.isPageVisible))
     ) {
       entry.state = 'suspended';
       this.startColdTimer(entry);

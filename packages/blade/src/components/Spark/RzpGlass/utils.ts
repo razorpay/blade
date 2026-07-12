@@ -7,6 +7,8 @@ import { getPresets } from './presets';
 import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
 import { getRazorSenseOperationalModeVideoSources } from './modes';
 import { selectRazorSenseVideoSource } from './razorSenseAssets';
+import { preloadRazorSenseVideo } from './RazorSensePreloadBroker';
+import type { RazorSensePreloadReadiness } from './RazorSensePreloadBroker';
 import type {
   LegacyRzpGlassProps,
   PreloadRazorSenseOptions,
@@ -235,77 +237,9 @@ function bestGuessBrowserZoom(): number {
   return ratio;
 }
 
-type PreloadReadiness = 'loadeddata' | 'canplaythrough';
-
-type PreloadEntry = {
-  video: HTMLVideoElement;
-  loadeddata: Promise<void>;
-  canplaythrough: Promise<void>;
-};
-
-const preloadEntryByUrl = new Map<string, PreloadEntry>();
-
-const createPreloadEntry = (src: string): PreloadEntry => {
-  const video = document.createElement('video');
-  let resolveLoadedData: () => void;
-  let rejectLoadedData: (error: Error) => void;
-  let resolveCanPlayThrough: () => void;
-  let rejectCanPlayThrough: (error: Error) => void;
-  const loadeddata = new Promise<void>((resolve, reject) => {
-    resolveLoadedData = resolve;
-    rejectLoadedData = reject;
-  });
-  const canplaythrough = new Promise<void>((resolve, reject) => {
-    resolveCanPlayThrough = resolve;
-    rejectCanPlayThrough = reject;
-  });
-  const entry = { video, loadeddata, canplaythrough };
-  const fail = (cause?: unknown): void => {
-    if (preloadEntryByUrl.get(src) === entry) preloadEntryByUrl.delete(src);
-    const error =
-      cause instanceof Error ? cause : new Error(`RazorSense: Failed to preload ${src}`);
-    rejectLoadedData(error);
-    rejectCanPlayThrough(error);
-  };
-
-  // Both readiness promises share one media request. Attach rejection handlers
-  // so the readiness level a caller did not request cannot become unhandled.
-  void loadeddata.catch(() => undefined);
-  void canplaythrough.catch(() => undefined);
-
-  video.crossOrigin = 'anonymous';
-  video.muted = true;
-  video.playsInline = true;
-  video.preload = 'auto';
-  video.onloadeddata = () => resolveLoadedData();
-  video.oncanplaythrough = () => {
-    resolveLoadedData();
-    resolveCanPlayThrough();
-  };
-  video.onerror = () => fail();
-
-  preloadEntryByUrl.set(src, entry);
-  try {
-    video.src = src;
-    video.load();
-  } catch (error) {
-    fail(error);
-  }
-
-  return entry;
-};
-
-const preloadVideoUrl = (
-  src: string,
-  readiness: PreloadReadiness = 'loadeddata',
-): Promise<void> => {
-  const entry = preloadEntryByUrl.get(src) ?? createPreloadEntry(src);
-  return entry[readiness];
-};
-
 const preloadRazorSenseWithReadiness = async (
   options: PreloadRazorSenseOptions,
-  readiness: PreloadReadiness,
+  readiness: RazorSensePreloadReadiness,
 ): Promise<void> => {
   const modes: readonly RazorSenseMode[] = Array.isArray(options.modes)
     ? options.modes
@@ -326,7 +260,7 @@ const preloadRazorSenseWithReadiness = async (
     ),
   );
 
-  await Promise.all(selected.map(({ src }) => preloadVideoUrl(src, readiness)));
+  await Promise.all(selected.map(({ src }) => preloadRazorSenseVideo(src, readiness)));
 };
 
 /** Preload one or more semantic RazorSense modes for the active viewport. */
@@ -356,6 +290,8 @@ async function preloadRazorSenseAssets(
   preset: RzpGlassPreset = 'default',
   assetsPath: string = DEFAULT_CDN_PATH,
 ): Promise<void> {
+  if (typeof document === 'undefined' || typeof Image === 'undefined') return;
+
   const authoredMode = AUTHORED_PRESET_MODES[preset];
   const presets = getPresets(assetsPath);
   const presetDef = presets[preset] || {};
@@ -371,13 +307,13 @@ async function preloadRazorSenseAssets(
 
   if (authoredMode) {
     const source = getRazorSenseOperationalModeVideoSources(assetsPath)[authoredMode];
-    loadPromises.push(loadVideo(source));
+    loadPromises.push(preloadRazorSenseVideo(source, 'canplaythrough'));
   }
 
   if (imageSrc) {
     loadPromises.push(loadImage(imageSrc));
   } else if (videoSrc) {
-    loadPromises.push(loadVideo(videoSrc));
+    loadPromises.push(preloadRazorSenseVideo(videoSrc, 'canplaythrough'));
   }
 
   loadPromises.push(
