@@ -242,7 +242,10 @@ const REPRESENTATIVE_PHASES: Record<RazorSenseMode, number> = {
   thinking: 2.25,
   loading: 1.5,
   calm: 2.48,
-  joyful: 0.98,
+  // The final decoded frames dissolve to the surface color. Hold the last
+  // materially expressive frame so a finite success never resolves to a
+  // visually blank canvas.
+  joyful: 0.5,
   caution: 1.22,
   regret: 1.97,
 };

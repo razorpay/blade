@@ -140,7 +140,7 @@ describe('RazorSense assets', () => {
 
       await flushPromises();
       expect(loadVideo).toHaveBeenCalledTimes(1);
-      const video = videos[0] as HTMLVideoElement;
+      const video = videos[0];
       video.dispatchEvent(new Event('loadeddata'));
       await flushPromises();
 
