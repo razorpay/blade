@@ -201,10 +201,9 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       },
     });
 
-    const inputWrapperStyle = useMemo(
-      () => ({ width: counterInputFieldWidth }),
-      [counterInputFieldWidth],
-    );
+    const inputWrapperStyle = useMemo(() => ({ width: counterInputFieldWidth }), [
+      counterInputFieldWidth,
+    ]);
 
     const contextValue = {
       size,

@@ -11,8 +11,8 @@
  * @returns The number of character slots (min 2, +1 for negative sign)
  */
 const getCounterValueDigitCount = (value: number | undefined): number => {
-    const rawCounterValue = value ?? 0;
-    return Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
+  const rawCounterValue = value ?? 0;
+  return Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
 };
 
 export { getCounterValueDigitCount };
