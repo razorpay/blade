@@ -48,6 +48,24 @@ type CounterProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Counter` for displaying numeric values like notification counts, item quantities, or status tallies.
+- Use the `max` prop to cap displayed values (e.g., `max={99}` shows "99+" for larger numbers).
+- Use semantic `color` values to convey meaning: `negative` for error counts, `positive` for success metrics.
+- Use `emphasis="intense"` to draw stronger attention to critical counts.
+- Pair with other components like `SideNavLink` trailing or `TabItem` trailing for contextual counts.
+
+**Don't**
+
+- Don't use `Counter` for interactive elements — it is purely display-only with no click handlers.
+- Don't pass non-numeric content — Counter only accepts a numeric `value` prop.
+- Don't use `Counter` for text-based metadata — use `Badge` instead.
+- Don't use `Counter` where a full `Badge` with descriptive text would be more informative.
+- Don't use decimal values or special number formats — Counter displays integers as-is.
+
 ## Example
 
 This example demonstrates different variants of the Counter component with various sizes, colors, emphasis levels, and a max value with overflow handling.

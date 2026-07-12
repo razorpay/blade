@@ -734,10 +734,63 @@ function validatePartialDateSimple(input: string): { isValid: boolean; error?: s
  */
 const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
 
+/**
+ * Formats a date / date-range into a humanised, easy-to-read format used by the
+ * `displayFormat="compact"` mode (e.g. "7 Jun 2026", "1-23 Jun 2026", or "7 Jun - 12 Jul 2026").
+ *
+ * - Same month & year: only the day is repeated on the start date, e.g. "1-23 Jun 2026".
+ * - Same year, different month: the year is only repeated on the end date, e.g. "7 Jun - 12 Jul 2026".
+ * - Different years: the year is repeated on both dates, e.g. "28 Dec 2025 - 3 Jan 2026".
+ * This intentionally uses a fixed `D MMM YYYY` format (locale-aware) since it is only
+ * used for the read-only compact display and not for editable input parsing.
+ */
+const getHumanizedDate = ({
+  date,
+  locale,
+  selectionType,
+}: {
+  date: Date | [Date | null, Date | null] | null;
+  locale: string;
+  selectionType: 'single' | 'range';
+}): string => {
+  if (!date) return '';
+
+  const withYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM YYYY');
+  const withoutYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM');
+  const dayOnly = (value: Date): string => dayjs(value).locale(locale).format('D');
+  const monthYear = (value: Date): string => dayjs(value).locale(locale).format('MMM YYYY');
+
+  if (selectionType === 'single' && date instanceof Date) {
+    return withYear(date);
+  }
+
+  if (Array.isArray(date)) {
+    const [startDate, endDate] = date;
+    if (startDate && endDate) {
+      const start = dayjs(startDate);
+      const end = dayjs(endDate);
+      const isSameYear = start.year() === end.year();
+      const isSameMonth = isSameYear && start.month() === end.month();
+
+      if (isSameMonth) {
+        return `${dayOnly(startDate)}-${dayOnly(endDate)} ${monthYear(endDate)}`;
+      }
+
+      return `${isSameYear ? withoutYear(startDate) : withYear(startDate)} - ${withYear(endDate)}`;
+    }
+    if (startDate) {
+      return withYear(startDate);
+    }
+  }
+
+  return '';
+};
+
 export {
   convertIntlToDayjsLocale,
   loadScript,
   getFormattedDate,
+  getHumanizedDate,
   rangeFormattedValue,
   rangeInputPlaceHolder,
   finalInputFormat,

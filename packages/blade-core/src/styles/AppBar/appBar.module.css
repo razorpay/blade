@@ -1,0 +1,171 @@
+/* ============================================
+   AppBar Component Styles
+   Mirrors packages/blade/src/components/AppBar/AppBar.web.tsx
+   ============================================ */
+
+/* --- AppBar root ---
+   React renders a BaseBox: display grid, two columns (leading 1fr, actions auto),
+   height size[64] = 64px, sticky/top driven by isSticky, padding from appBarTokens.
+   paddingX = spacing.5 mobile / spacing.6 desktop, paddingY = spacing.3. */
+.appBar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--spacing-3);
+  width: 100%;
+  min-height: 64px;
+  box-sizing: border-box;
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+  z-index: 1000;
+}
+
+/* Desktop horizontal padding bumps to spacing.6 (Figma: 24px) */
+@media (min-width: 768px) {
+  .appBar {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+}
+
+/* Sticky behaviour (default). isSticky=false → relative, top unset (set via data attr). */
+.appBar[data-sticky='true'] {
+  position: sticky;
+  top: 0;
+}
+
+.appBar[data-sticky='false'] {
+  position: relative;
+}
+
+/* --- Variant: neutral (transparent surface, light foreground) ---
+   The AppBar has no background of its own (matches Figma) and sits directly over
+   the page. React forces a dark colorScheme so foreground tokens stay light;
+   Svelte BladeProvider colorScheme scoping is limited, so foreground colors are
+   passed explicitly to Text/Icon (static-white) from the components based on the
+   variant. Only the (transparent) surface background lives here. */
+.appBarNeutral {
+  background-color: var(--transparent);
+}
+
+/* --- Variant: subtle (adaptive gray surface) --- */
+.appBarSubtle {
+  background-color: var(--surface-background-gray-intense);
+}
+
+/* --- AppBar leading row (back button + AppBarLeading + AppBarActions) --- */
+.appBarLeadingRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+}
+
+/* --- AppBar back button cell ---
+   Figma: 12px between back icon and leading content → spacing.4. */
+.appBarBackButton {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: var(--spacing-4);
+}
+
+/* --- AppBarLeading ---
+   React: flex row, align center, gap spacing.3, minWidth 0 (truncation). */
+.appBarLeading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+  flex: 1 1 0;
+  overflow: hidden;
+}
+
+.appBarLeadingLogo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.appBarLeadingLogo :global(img),
+.appBarLeadingLogo :global(svg) {
+  display: block;
+  max-width: 100%;
+  max-height: 20px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Logo + full badge when there is no title — badge stacks below the logo. */
+.appBarLeadingLogoStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.appBarLeadingTitleWrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.appBarLeadingTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-width: 0;
+  width: 100%;
+}
+
+/* Icon badge stays adjacent to title (React: title + badge shrink-wrap in one row). */
+.appBarLeadingTitleRowWithIconBadge {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.appBarLeadingTitle {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.appBarLeadingTitleRowWithIconBadge .appBarLeadingTitle {
+  flex: 0 1 auto;
+}
+
+/* Trust badge stacked below the title row when trustBadgeVariant='default'. */
+.appBarLeadingBadge {
+  display: flex;
+  align-items: center;
+  margin-top: var(--spacing-1);
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* --- AppBarActions ---
+   React: flex row, align center, gap spacing.3, flexShrink 0, marginLeft auto.
+   marginLeft auto pushes the trailing actions to the right edge of the leading row,
+   matching Figma's right-aligned actions. */
+.appBarActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+  margin-left: auto;
+}

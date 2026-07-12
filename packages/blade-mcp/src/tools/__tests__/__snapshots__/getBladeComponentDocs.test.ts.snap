@@ -134,6 +134,24 @@ type IconComponent = React.ComponentType<{
 }>;
 \`\`\`
 
+## Usage Guidelines
+
+**Do**
+
+- Use \`Button\` for primary actions and calls-to-action that trigger operations (submit, save, create).
+- Use \`variant\` to establish visual hierarchy: \`"primary"\` for main actions, \`"secondary"\` for supporting, \`"tertiary"\` for de-emphasized.
+- Use \`href\` prop to render as an anchor element when the button navigates to a URL.
+- Use \`isLoading\` to show feedback during async operations.
+- Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
+
+**Don't**
+
+- Don't use \`Button\` for icon-only actions in tight spaces — use \`IconButton\` instead.
+- Don't use \`Button\` for navigation text that looks like a link — use \`Link\` instead.
+- Don't use \`variant="tertiary"\` with \`color="positive"\` or \`color="negative"\` — tertiary only supports \`"primary"\` and \`"white"\`.
+- Don't use \`type="password"\` on TextInput — but relevant here: don't pass \`type="submit"\` accidentally without a form context.
+- Don't use \`Button\` without text or \`accessibilityLabel\` when using icon-only mode.
+
 ## Example
 
 Here are comprehensive examples demonstrating various ways to use the Button component:
@@ -427,6 +445,24 @@ type AccordionItemBodyProps = {
   children?: React.ReactNode | StringChildrenType;
 } & DataAnalyticsAttribute;
 \`\`\`
+
+## Usage Guidelines
+
+**Do**
+
+- Use \`Accordion\` for 3+ items that need expand/collapse behavior where only one is open at a time (FAQs, settings, documentation).
+- Compose with \`AccordionItem\` → \`AccordionItemHeader\` + \`AccordionItemBody\` (modern API).
+- Use \`showNumberPrefix\` for sequential/ordered items.
+- Use \`leading\` on \`AccordionItemHeader\` for category icons and \`titleSuffix\` for badges.
+- Use controlled mode (\`expandedIndex\` + \`onExpandChange\`) when you need programmatic control.
+
+**Don't**
+
+- Don't use \`Accordion\` when all items should be expandable simultaneously — use multiple \`Collapsible\` components instead.
+- Don't use the deprecated props API (\`title\`/\`description\` on AccordionItem) — use \`AccordionItemHeader\` + \`AccordionItemBody\`.
+- Don't nest Accordions — only single-level is supported.
+- Don't use \`Accordion\` when items are equal-weight and need quick access — use \`Tabs\` instead.
+- Don't combine \`showNumberPrefix\` with \`leading\` icon on the same item.
 
 ## Examples
 
@@ -924,6 +960,24 @@ type IconComponent = React.ComponentType<{
 }>;
 \`\`\`
 
+## Usage Guidelines
+
+**Do**
+
+- Use \`Button\` for primary actions and calls-to-action that trigger operations (submit, save, create).
+- Use \`variant\` to establish visual hierarchy: \`"primary"\` for main actions, \`"secondary"\` for supporting, \`"tertiary"\` for de-emphasized.
+- Use \`href\` prop to render as an anchor element when the button navigates to a URL.
+- Use \`isLoading\` to show feedback during async operations.
+- Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
+
+**Don't**
+
+- Don't use \`Button\` for icon-only actions in tight spaces — use \`IconButton\` instead.
+- Don't use \`Button\` for navigation text that looks like a link — use \`Link\` instead.
+- Don't use \`variant="tertiary"\` with \`color="positive"\` or \`color="negative"\` — tertiary only supports \`"primary"\` and \`"white"\`.
+- Don't use \`type="password"\` on TextInput — but relevant here: don't pass \`type="submit"\` accidentally without a form context.
+- Don't use \`Button\` without text or \`accessibilityLabel\` when using icon-only mode.
+
 ## Example
 
 Here are comprehensive examples demonstrating various ways to use the Button component:
@@ -1217,6 +1271,24 @@ type AccordionItemBodyProps = {
   children?: React.ReactNode | StringChildrenType;
 } & DataAnalyticsAttribute;
 \`\`\`
+
+## Usage Guidelines
+
+**Do**
+
+- Use \`Accordion\` for 3+ items that need expand/collapse behavior where only one is open at a time (FAQs, settings, documentation).
+- Compose with \`AccordionItem\` → \`AccordionItemHeader\` + \`AccordionItemBody\` (modern API).
+- Use \`showNumberPrefix\` for sequential/ordered items.
+- Use \`leading\` on \`AccordionItemHeader\` for category icons and \`titleSuffix\` for badges.
+- Use controlled mode (\`expandedIndex\` + \`onExpandChange\`) when you need programmatic control.
+
+**Don't**
+
+- Don't use \`Accordion\` when all items should be expandable simultaneously — use multiple \`Collapsible\` components instead.
+- Don't use the deprecated props API (\`title\`/\`description\` on AccordionItem) — use \`AccordionItemHeader\` + \`AccordionItemBody\`.
+- Don't nest Accordions — only single-level is supported.
+- Don't use \`Accordion\` when items are equal-weight and need quick access — use \`Tabs\` instead.
+- Don't combine \`showNumberPrefix\` with \`leading\` icon on the same item.
 
 ## Examples
 
@@ -1714,6 +1786,24 @@ type IconComponent = React.ComponentType<{
 }>;
 \`\`\`
 
+## Usage Guidelines
+
+**Do**
+
+- Use \`Button\` for primary actions and calls-to-action that trigger operations (submit, save, create).
+- Use \`variant\` to establish visual hierarchy: \`"primary"\` for main actions, \`"secondary"\` for supporting, \`"tertiary"\` for de-emphasized.
+- Use \`href\` prop to render as an anchor element when the button navigates to a URL.
+- Use \`isLoading\` to show feedback during async operations.
+- Use \`icon\` with \`iconPosition\` for visual reinforcement of the action.
+
+**Don't**
+
+- Don't use \`Button\` for icon-only actions in tight spaces — use \`IconButton\` instead.
+- Don't use \`Button\` for navigation text that looks like a link — use \`Link\` instead.
+- Don't use \`variant="tertiary"\` with \`color="positive"\` or \`color="negative"\` — tertiary only supports \`"primary"\` and \`"white"\`.
+- Don't use \`type="password"\` on TextInput — but relevant here: don't pass \`type="submit"\` accidentally without a form context.
+- Don't use \`Button\` without text or \`accessibilityLabel\` when using icon-only mode.
+
 ## Example
 
 Here are comprehensive examples demonstrating various ways to use the Button component:
@@ -2007,6 +2097,24 @@ type AccordionItemBodyProps = {
   children?: React.ReactNode | StringChildrenType;
 } & DataAnalyticsAttribute;
 \`\`\`
+
+## Usage Guidelines
+
+**Do**
+
+- Use \`Accordion\` for 3+ items that need expand/collapse behavior where only one is open at a time (FAQs, settings, documentation).
+- Compose with \`AccordionItem\` → \`AccordionItemHeader\` + \`AccordionItemBody\` (modern API).
+- Use \`showNumberPrefix\` for sequential/ordered items.
+- Use \`leading\` on \`AccordionItemHeader\` for category icons and \`titleSuffix\` for badges.
+- Use controlled mode (\`expandedIndex\` + \`onExpandChange\`) when you need programmatic control.
+
+**Don't**
+
+- Don't use \`Accordion\` when all items should be expandable simultaneously — use multiple \`Collapsible\` components instead.
+- Don't use the deprecated props API (\`title\`/\`description\` on AccordionItem) — use \`AccordionItemHeader\` + \`AccordionItemBody\`.
+- Don't nest Accordions — only single-level is supported.
+- Don't use \`Accordion\` when items are equal-weight and need quick access — use \`Tabs\` instead.
+- Don't combine \`showNumberPrefix\` with \`leading\` icon on the same item.
 
 ## Examples
 
