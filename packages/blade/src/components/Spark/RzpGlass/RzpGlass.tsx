@@ -117,6 +117,7 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     height = '100%',
     className,
     style,
+    testID,
     onLoad,
     onError,
     assetsPath: assetsPathProp,
@@ -296,32 +297,42 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
 
   if (error) {
     return (
-      <div
-        ref={mergedRef}
+      <BaseBox
+        ref={mergedRef as never}
         className={className}
-        style={{
-          width: widthStyle,
-          height: heightStyle,
-          ...style,
-        }}
+        style={
+          {
+            width: widthStyle,
+            height: heightStyle,
+            ...style,
+          } as never
+        }
+        {...getStyledProps(props)}
+        {...metaAttribute({ name: MetaConstants.RazorSense, testID })}
+        {...makeAnalyticsAttribute(props)}
       />
     );
   }
 
   return (
-    <div
-      ref={mergedRef}
+    <BaseBox
+      ref={mergedRef as never}
+      position="relative"
+      overflow="hidden"
+      backgroundColor="transparent"
       className={className}
-      style={{
-        width: widthStyle,
-        height: heightStyle,
-        position: 'relative',
-        overflow: 'hidden',
-        backgroundColor: 'transparent',
-        transition: `${FADE_IN_MS}ms opacity`,
-        ...(isInitialized ? { opacity: 1 } : { opacity: 0 }),
-        ...style,
-      }}
+      style={
+        {
+          width: widthStyle,
+          height: heightStyle,
+          transition: `${FADE_IN_MS}ms opacity`,
+          opacity: isInitialized ? 1 : 0,
+          ...style,
+        } as never
+      }
+      {...getStyledProps(props)}
+      {...metaAttribute({ name: MetaConstants.RazorSense, testID })}
+      {...makeAnalyticsAttribute(props)}
     />
   );
 });
@@ -380,11 +391,16 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     const resolvedTransitionDuration =
       modeTransitionDuration ?? (requestedFamily === 'emotional' ? 1 : 0.4);
 
-    const markFamilyReady = (family: SemanticRendererFamily): void => {
-      if (readyFamiliesRef.current[family]) return;
+    const markFamilySettled = (family: SemanticRendererFamily): boolean => {
+      if (readyFamiliesRef.current[family]) return false;
       readyFamiliesRef.current = { ...readyFamiliesRef.current, [family]: true };
       setReadyFamilies(readyFamiliesRef.current);
-      if (requestedFamilyRef.current === family) onLoad?.();
+      return true;
+    };
+
+    const handleFamilyLoad = (family: SemanticRendererFamily): void => {
+      const didSettle = markFamilySettled(family);
+      if (didSettle && requestedFamilyRef.current === family) onLoad?.();
     };
 
     useEffect(() => {
@@ -472,9 +488,9 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
               {...sharedRendererProps}
               mode={lastAuthoredModeRef.current}
               paused={resolvedIsPaused || visibleFamily !== 'authored'}
-              onLoad={() => markFamilyReady('authored')}
+              onLoad={() => handleFamilyLoad('authored')}
               onError={(error) => {
-                markFamilyReady('authored');
+                markFamilySettled('authored');
                 onError?.(error);
               }}
             />
@@ -495,9 +511,9 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
               {...sharedRendererProps}
               mode={lastEmotionalModeRef.current}
               paused={resolvedIsPaused || visibleFamily !== 'emotional'}
-              onLoad={() => markFamilyReady('emotional')}
+              onLoad={() => handleFamilyLoad('emotional')}
               onError={(error) => {
-                markFamilyReady('emotional');
+                markFamilySettled('emotional');
                 onError?.(error);
               }}
             />

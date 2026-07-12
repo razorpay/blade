@@ -5,17 +5,29 @@ jest.mock('../RazorSenseAuthored', () => {
       mode,
       paused,
       interactive,
+      assetsPath,
+      onError,
     }: {
       mode: string;
       paused: boolean;
       interactive: boolean;
-    }) =>
-      React.createElement('div', {
+      assetsPath?: string;
+      onError?: (error: Error) => void;
+    }) => {
+      const hasReportedErrorRef = React.useRef(false);
+      React.useEffect(() => {
+        if (assetsPath !== '__test_error__' || hasReportedErrorRef.current) return;
+        hasReportedErrorRef.current = true;
+        onError?.(new Error('Authored renderer failed'));
+      }, [assetsPath, onError]);
+
+      return React.createElement('div', {
         'data-testid': 'authored-renderer',
         'data-mode': mode,
         'data-paused': String(paused),
         'data-interactive': String(interactive),
-      }),
+      });
+    },
   };
 });
 
@@ -134,6 +146,36 @@ describe('<RazorSense />', () => {
     expect(rawLegacy.queryByTestId('authored-renderer')).not.toBeInTheDocument();
     expect(rawLegacy.container.querySelector('[data-razor-sense-mode]')).not.toBeInTheDocument();
     expect(RzpGlassMount).toHaveBeenCalledTimes(1);
+  });
+
+  it('preserves styled props, testID, and analytics attributes on the raw legacy host', () => {
+    const { getByTestId } = renderWithTheme(
+      <RazorSense
+        numSegments={24}
+        marginTop="spacing.3"
+        testID="legacy-razorsense"
+        data-analytics-section="legacy-material"
+      />,
+    );
+    const host = getByTestId('legacy-razorsense');
+
+    expect(host).toHaveAttribute('data-blade-component', 'razorsense');
+    expect(host).toHaveAttribute('data-analytics-section', 'legacy-material');
+    expect(window.getComputedStyle(host).marginTop).toBe('8px');
+    expect(RzpGlassMount).toHaveBeenCalledTimes(1);
+  });
+
+  it('reports semantic renderer errors without reporting a successful load', () => {
+    const onLoad = jest.fn();
+    const onError = jest.fn();
+
+    renderWithTheme(<RazorSense assetsPath="__test_error__" onLoad={onLoad} onError={onError} />);
+
+    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onError).toHaveBeenCalledWith(
+      expect.objectContaining({ message: 'Authored renderer failed' }),
+    );
+    expect(onLoad).not.toHaveBeenCalled();
   });
 
   it('lets semantic controls win runtime legacy collisions and warns once with ignored keys', () => {
