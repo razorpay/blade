@@ -33,3 +33,60 @@ Limitations:
 - Video frame counters are ten-second deltas from `getVideoPlaybackQuality` (with WebKit counters as a fallback). Long-task and rVFC fields depend on browser support.
 - The collector waits only for `data-scenario-ready="true"`; it intentionally never blocks on `data-scenario-fully-ready` so optimized offscreen instances may remain deferred.
 <!-- razorsense-runtime:before:end -->
+
+## Typing media trim
+
+The light and dark Typing assets now contain only the authored `6.68–10.00 s` impulse. They were
+exported from the 10-second masters with `AVAssetExportPresetPassthrough`, an integer
+`CMTimeRange(start: 167/25, duration: 83/25)`, and network optimization enabled. No video samples
+were transcoded.
+
+| Appearance | Source bytes | Shipped bytes |      Saved | Source bitrate | Shipped bitrate | Codec         | Visible frames |
+| ---------- | -----------: | ------------: | ---------: | -------------: | --------------: | ------------- | -------------: |
+| Light      |    2,395,149 |     1,180,184 |     50.73% |  1,905,380 bps |   2,333,390 bps | `avc1.4D4029` |   83 at 25 fps |
+| Dark       |      736,125 |       452,413 |     38.54% |    585,649 bps |     857,733 bps | `avc1.640028` |   83 at 25 fps |
+| **Total**  |    3,131,274 |     1,632,597 | **47.86%** |                |                 |               |                |
+
+The segment bitrate is higher than the ten-second source average because the retained interval is
+the energetic part of the animation. Payload still drops by 1,498,677 bytes because 6.68 seconds of
+unused timeline are gone.
+
+Verification on macOS 26.5.2 with the pinned Pillow, NumPy, and SciPy versions passed all ten
+native-resolution checkpoints: first visible frame, attack, peak/fixed-grid frame, hold, and last
+visible frame in both appearances. Each candidate frame was PNG-byte-identical to its source frame:
+SSIM `1.0`, linear PSNR `Infinity`, Delta E 2000 P95 `0.0`, and symmetric Sobel edge distance P95
+`0 px`. The exporter also requires matching geometry, codec profile, color metadata, 25 fps cadence,
+83 visible frames, source sample-description digest, and compressed-sample digest.
+
+The isolated Storybook fixed-phase captures at the rebased `1.96 s` phase were also byte-identical
+to the committed pre-trim stills: light SHA-256
+`c5f8e7ea732928a2136282bc4d68f4001e7d0a9ae8f491039db8710817222144`, dark SHA-256
+`d6ac20c06b565e6c4a478b8babffb8248ca51c49938f31f85d575896256adf4e`. The full 24-frame fallback
+matrix was not regenerated.
+
+- Light retains BT.709 primaries, transfer function, and matrix metadata.
+- Dark remains explicitly untagged before and after the trim; the passthrough export does not invent
+  a color profile.
+- H.264 dependency preroll remains in the container so the first visible frame decodes correctly.
+  The edit list exposes exactly 83 frames over 3.32 seconds.
+- Whole-file hashes are not used as the reproducibility signal because AVFoundation writes export-time
+  container timestamps. The compressed-sample and format-description digests are deterministic.
+- The HEVC highest-quality preset is an explicit no-go: preflight did not preserve source color
+  metadata and missed the `0.995` SSIM threshold. No HEVC file or manifest candidate is shipped.
+
+To reproduce the export, point `--assets-root` at a directory containing the backed-up, untrimmed
+`razorsense-states/razorsense-typing.mp4` and `razorsense-typing-dark.mp4` masters:
+
+```sh
+swift scripts/exportRazorSenseVideoVariants.swift \
+  --assets-root <untrimmed-typing-assets-root> \
+  --output-dir /tmp/razorsense-typing-output \
+  --write-frames /tmp/razorsense-typing-frames
+/tmp/razorsense-media-venv/bin/python scripts/verifyRazorSenseMedia.py \
+  --reference-dir /tmp/razorsense-typing-frames/reference \
+  --candidate-dir /tmp/razorsense-typing-frames/candidate \
+  --min-ssim 0.995 \
+  --min-psnr 42 \
+  --max-delta-e-p95 1.5 \
+  --max-edge-shift 1
+```

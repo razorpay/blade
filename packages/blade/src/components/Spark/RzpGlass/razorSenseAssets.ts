@@ -11,6 +11,7 @@ type RazorSenseVideoSource = {
   height: number;
   bitrate: number;
   framerate: number;
+  byteLength: number;
 };
 
 type RazorSenseAsset = {
@@ -43,6 +44,7 @@ const createVideoSource = (
   height: number,
   framerate: number,
   bitrate: number,
+  byteLength: number,
 ): RazorSenseVideoSource => ({
   file,
   type: 'video/mp4',
@@ -51,6 +53,7 @@ const createVideoSource = (
   height,
   bitrate,
   framerate,
+  byteLength,
 });
 
 const OPERATIONAL_SOURCES: Record<
@@ -65,6 +68,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       10660661,
+      11663815,
     ),
     typing: createVideoSource(
       'razorsense-states/razorsense-typing.mp4',
@@ -72,7 +76,8 @@ const OPERATIONAL_SOURCES: Record<
       1920,
       1080,
       25,
-      1905380,
+      2333390,
+      1180184,
     ),
     thinking: createVideoSource(
       'razorsense-states/razorsense-thinking.mp4',
@@ -81,6 +86,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       11052569,
+      6219313,
     ),
     loading: createVideoSource(
       'razorsense-states/razorsense-loading.mp4',
@@ -89,6 +95,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       3280996,
+      1283473,
     ),
   },
   dark: {
@@ -99,6 +106,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       2093927,
+      2293780,
     ),
     typing: createVideoSource(
       'razorsense-states/razorsense-typing-dark.mp4',
@@ -106,7 +114,8 @@ const OPERATIONAL_SOURCES: Record<
       1920,
       1080,
       25,
-      585649,
+      857733,
+      452413,
     ),
     thinking: createVideoSource(
       'razorsense-states/razorsense-thinking-dark.mp4',
@@ -115,6 +124,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       4492532,
+      2529246,
     ),
     loading: createVideoSource(
       'razorsense-states/razorsense-loading-dark.mp4',
@@ -123,6 +133,7 @@ const OPERATIONAL_SOURCES: Record<
       1280,
       24,
       123446,
+      49981,
     ),
   },
 };
@@ -135,6 +146,7 @@ const DESKTOP_EMOTIONAL_SOURCES: Record<RazorSenseEmotionalMode, RazorSenseVideo
     440,
     24,
     870025,
+    551471,
   ),
   joyful: createVideoSource(
     'razorsense-modes/razorsense-joyful.mp4',
@@ -143,6 +155,7 @@ const DESKTOP_EMOTIONAL_SOURCES: Record<RazorSenseEmotionalMode, RazorSenseVideo
     440,
     30,
     1719441,
+    434373,
   ),
   caution: createVideoSource(
     'razorsense-modes/razorsense-caution.mp4',
@@ -151,6 +164,7 @@ const DESKTOP_EMOTIONAL_SOURCES: Record<RazorSenseEmotionalMode, RazorSenseVideo
     440,
     30,
     6352596,
+    1944175,
   ),
   regret: createVideoSource(
     'razorsense-modes/razorsense-regret.mp4',
@@ -159,6 +173,7 @@ const DESKTOP_EMOTIONAL_SOURCES: Record<RazorSenseEmotionalMode, RazorSenseVideo
     440,
     30,
     1413669,
+    707410,
   ),
 };
 
@@ -174,6 +189,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       175513,
+      71380,
     ),
     joyful: createVideoSource(
       'razorsense-modes/razorsense-joyful-mobile.mp4',
@@ -182,6 +198,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       217663,
+      68511,
     ),
     caution: createVideoSource(
       'razorsense-modes/razorsense-caution-mobile.mp4',
@@ -190,6 +207,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       162291,
+      78150,
     ),
     regret: createVideoSource(
       'razorsense-modes/razorsense-regret-mobile.mp4',
@@ -198,6 +216,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       212710,
+      92801,
     ),
   },
   dark: {
@@ -208,6 +227,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       443919,
+      177491,
     ),
     joyful: createVideoSource(
       'razorsense-modes/razorsense-joyful-mobile-dark.mp4',
@@ -216,6 +236,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       406636,
+      126480,
     ),
     caution: createVideoSource(
       'razorsense-modes/razorsense-caution-mobile-dark.mp4',
@@ -224,6 +245,7 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       380019,
+      180089,
     ),
     regret: createVideoSource(
       'razorsense-modes/razorsense-regret-mobile-dark.mp4',
@@ -232,13 +254,14 @@ const MOBILE_EMOTIONAL_SOURCES: Record<
       484,
       24,
       68357,
+      31045,
     ),
   },
 };
 
 const REPRESENTATIVE_PHASES: Record<RazorSenseMode, number> = {
   neutral: 5.8,
-  typing: 8.64,
+  typing: 1.96,
   thinking: 2.25,
   loading: 1.5,
   calm: 2.48,

@@ -34,11 +34,12 @@ describe('RazorSense assets', () => {
       codec: 'avc1.640028',
       width: 1920,
       height: 1080,
-      bitrate: 585649,
+      bitrate: 857733,
       framerate: 25,
+      byteLength: 452413,
     });
     expect(operational.representativeFrameFile).toBe('razorsense-stills/desktop-dark-typing.png');
-    expect(operational.representativePhase).toBe(8.64);
+    expect(operational.representativePhase).toBe(1.96);
     expect(emotional.fallbackSource.file).toBe(
       'razorsense-modes/razorsense-joyful-mobile-dark.mp4',
     );

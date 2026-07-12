@@ -46,7 +46,7 @@ const RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS: Record<
   { startTime: number; endTime: number; loop: boolean; crossfadeDuration?: number }
 > = {
   neutral: { startTime: 0, endTime: 8.708, loop: true },
-  typing: { startTime: 6.68, endTime: 10, loop: false },
+  typing: { startTime: 0, endTime: 3.32, loop: false },
   thinking: { startTime: 0, endTime: 4.5, loop: false, crossfadeDuration: 0.6 },
   loading: { startTime: 0, endTime: 3.125, loop: false },
 };
