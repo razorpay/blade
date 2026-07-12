@@ -58,13 +58,19 @@ If not found → report error, skip that component.
 
 ### 0.3 Check Native Status
 
+> Don't classify on bare `throwBladeError` — validation-only files (`Tabs`, `Avatar`, `AccordionButton`) are REAL. Use the Plan agent's genuine-stub detection so the gate and Plan phase agree.
+
 ```bash
-grep -rl "throwBladeError" packages/blade/src/components/{Name}/ --include="*.native.tsx" | head -5
+# Genuine stub = small file whose body is essentially just a throwBladeError (no real render tree/hooks).
+# Validation-only files that use throwBladeError are large, so a line-count threshold separates them.
+grep -rl "throwBladeError" packages/blade/src/components/{Name}/ --include="*.native.tsx" | while read -r f; do
+  if [ "$(wc -l < "$f")" -lt 40 ]; then echo "STUB: $f"; else echo "REAL: $f"; fi
+done
 ```
 
-- If stubs found → component needs migration (proceed)
-- If no `.native.tsx` files at all → component needs migration (proceed)
-- If real implementations found (no throwBladeError) → skip: "Already has native support"
+- Any `STUB:`, or no `.native.tsx` at all → needs migration (proceed)
+- Mix of `STUB:` and `REAL:` → partial migration (proceed — Plan only creates/replaces the stub/missing files, skips REAL ones)
+- All `REAL:` → skip: "Already has native support"
 
 ### 0.4 Allocate Slots — Ports, Devices, Sessions
 
