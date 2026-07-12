@@ -77,6 +77,8 @@ const snapshotsAreEqual = (
 class RazorSenseRuntime {
   private readonly document: Document;
 
+  private readonly defaultView: Window | null;
+
   private readonly entriesByElement = new Map<HTMLElement, RazorSenseRuntimeEntry>();
 
   private readonly entriesById = new Map<number, RazorSenseRuntimeEntry>();
@@ -85,8 +87,13 @@ class RazorSenseRuntime {
 
   private isPageVisible: boolean;
 
+  private isRecomputingAdmission = false;
+
+  private isAdmissionDirty = false;
+
   public constructor(document: Document) {
     this.document = document;
+    this.defaultView = document.defaultView;
     this.isPageVisible = this.getIsPageVisible();
 
     const IntersectionObserverConstructor = document.defaultView?.IntersectionObserver;
@@ -96,6 +103,16 @@ class RazorSenseRuntime {
           threshold: INTERSECTION_THRESHOLDS,
         })
       : undefined;
+
+    if (!this.observer) {
+      this.defaultView?.addEventListener('scroll', this.handleFallbackViewportChange, {
+        capture: true,
+        passive: true,
+      });
+      this.defaultView?.addEventListener('resize', this.handleFallbackViewportChange, {
+        passive: true,
+      });
+    }
 
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
@@ -189,6 +206,22 @@ class RazorSenseRuntime {
     this.recomputeAdmissionAndNotify();
   };
 
+  private readonly handleFallbackViewportChange = (): void => {
+    this.entriesById.forEach((entry) => {
+      const wasWithinWarmMargin = entry.isWithinWarmMargin;
+      const rect = entry.element.getBoundingClientRect();
+      const metrics = this.getElementViewportMetrics(entry.element, rect);
+      entry.visibleArea = metrics.visibleArea;
+      entry.intersectionRatio = metrics.intersectionRatio;
+      entry.isWithinWarmMargin = metrics.visibleArea > 0 || this.isRectWithinWarmMargin(rect);
+      this.recomputeLifecycle(entry, {
+        canResumeWarm: !wasWithinWarmMargin && entry.isWithinWarmMargin,
+      });
+    });
+
+    this.recomputeAdmissionAndNotify();
+  };
+
   private updateEntry(id: number, nextOptions: RazorSenseRuntimeOptions): void {
     const entry = this.entriesById.get(id);
     if (!entry) return;
@@ -230,6 +263,10 @@ class RazorSenseRuntime {
     }
 
     this.observer?.disconnect();
+    if (!this.observer) {
+      this.defaultView?.removeEventListener('scroll', this.handleFallbackViewportChange, true);
+      this.defaultView?.removeEventListener('resize', this.handleFallbackViewportChange);
+    }
     this.document.removeEventListener('visibilitychange', this.handleVisibilityChange);
     runtimesByDocument.delete(this.document);
   }
@@ -280,45 +317,71 @@ class RazorSenseRuntime {
   }
 
   private recomputeAdmissionAndNotify(): void {
-    const activeCandidates = Array.from(this.entriesById.values())
-      .filter((entry) => entry.state === 'active')
-      .sort(this.compareAdmissionPriority);
-    const admittedIds = new Set<number>();
-    let admittedWebGLCount = 0;
+    this.isAdmissionDirty = true;
+    if (this.isRecomputingAdmission) return;
 
-    activeCandidates.forEach((entry) => {
-      if (admittedIds.size >= MAX_ADMITTED_INSTANCES) return;
-      const isWebGL = isWebGLFamily(entry.options.family);
-      if (isWebGL && admittedWebGLCount >= MAX_ADMITTED_WEBGL_INSTANCES) return;
+    this.isRecomputingAdmission = true;
+    try {
+      while (this.isAdmissionDirty) {
+        this.isAdmissionDirty = false;
+        const entries = Array.from(this.entriesById.values());
+        const activeCandidates = entries
+          .filter((entry) => entry.state === 'active')
+          .sort(this.compareAdmissionPriority);
+        const admittedIds = new Set<number>();
+        let admittedWebGLCount = 0;
 
-      admittedIds.add(entry.id);
-      if (isWebGL) admittedWebGLCount += 1;
-    });
+        for (const entry of activeCandidates) {
+          if (admittedIds.size >= MAX_ADMITTED_INSTANCES) break;
+          const isWebGL = isWebGLFamily(entry.options.family);
+          if (isWebGL && admittedWebGLCount >= MAX_ADMITTED_WEBGL_INSTANCES) continue;
 
-    this.entriesById.forEach((entry) => {
-      entry.isAdmitted = admittedIds.has(entry.id);
-      if (
-        __DEV__ &&
-        entry.state === 'active' &&
-        !entry.isAdmitted &&
-        !entry.hasWarnedAboutAdmission
-      ) {
-        entry.hasWarnedAboutAdmission = true;
-        console.warn(
-          `[Blade: RazorSense]: Active instance ${entry.id} is waiting for shared runtime admission.`,
-        );
+          admittedIds.add(entry.id);
+          if (isWebGL) admittedWebGLCount += 1;
+        }
+
+        const notifications: Array<{
+          entry: RazorSenseRuntimeEntry;
+          snapshot: RazorSenseRuntimeSnapshot;
+        }> = [];
+        for (const entry of entries) {
+          if (!entry.isRegistered || this.entriesById.get(entry.id) !== entry) continue;
+
+          entry.isAdmitted = admittedIds.has(entry.id);
+          if (
+            __DEV__ &&
+            entry.state === 'active' &&
+            !entry.isAdmitted &&
+            !entry.hasWarnedAboutAdmission
+          ) {
+            entry.hasWarnedAboutAdmission = true;
+            console.warn(
+              `[Blade: RazorSense]: Active instance ${entry.id} is waiting for shared runtime admission.`,
+            );
+          }
+
+          const snapshot: RazorSenseRuntimeSnapshot = {
+            state: entry.state,
+            isAdmitted: entry.isAdmitted,
+            isPageVisible: this.isPageVisible,
+            intersectionRatio: entry.intersectionRatio,
+          };
+          if (!entry.lastSnapshot || !snapshotsAreEqual(entry.lastSnapshot, snapshot)) {
+            notifications.push({ entry, snapshot });
+          }
+        }
+
+        for (const { entry, snapshot } of notifications) {
+          if (this.isAdmissionDirty) break;
+          if (!entry.isRegistered || this.entriesById.get(entry.id) !== entry) continue;
+
+          entry.lastSnapshot = snapshot;
+          entry.listener(snapshot);
+        }
       }
-
-      const snapshot: RazorSenseRuntimeSnapshot = {
-        state: entry.state,
-        isAdmitted: entry.isAdmitted,
-        isPageVisible: this.isPageVisible,
-        intersectionRatio: entry.intersectionRatio,
-      };
-      if (entry.lastSnapshot && snapshotsAreEqual(entry.lastSnapshot, snapshot)) return;
-      entry.lastSnapshot = snapshot;
-      entry.listener(snapshot);
-    });
+    } finally {
+      this.isRecomputingAdmission = false;
+    }
   }
 
   private readonly compareAdmissionPriority = (

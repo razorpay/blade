@@ -78,11 +78,11 @@ describe('RazorSenseRuntime', () => {
     family: RazorSenseRendererFamily,
     rect: DOMRect,
     options: Partial<Omit<RazorSenseRuntimeOptions, 'family'>> = {},
+    listener = jest.fn<undefined, [RazorSenseRuntimeSnapshot]>(),
   ): RuntimeTestEntry => {
     const element = document.createElement('div');
     document.body.appendChild(element);
     setRect(element, rect);
-    const listener = jest.fn<undefined, [RazorSenseRuntimeSnapshot]>();
     const registration = registerRazorSenseRuntime(
       element,
       {
@@ -201,6 +201,48 @@ describe('RazorSenseRuntime', () => {
     });
   });
 
+  it('keeps the missing-observer fallback live on scroll and removes shared listeners', () => {
+    window.IntersectionObserver = undefined as never;
+    const addEventListener = jest.spyOn(window, 'addEventListener');
+    const removeEventListener = jest.spyOn(window, 'removeEventListener');
+    const entry = register('authored', makeRect());
+
+    expect(addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), {
+      capture: true,
+      passive: true,
+    });
+    expect(addEventListener).toHaveBeenCalledWith('resize', expect.any(Function), {
+      passive: true,
+    });
+
+    setRect(entry.element, makeRect({ top: 1400 }));
+    window.dispatchEvent(new Event('scroll'));
+    expect(getSnapshot(entry).state).toBe('suspended');
+
+    entry.registration.unregister();
+    expect(removeEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), true);
+    expect(removeEventListener).toHaveBeenCalledWith('resize', expect.any(Function));
+  });
+
+  it.each(['scroll', 'resize'] as const)(
+    'activates a dormant fallback registration after a %s geometry change',
+    (eventName) => {
+      window.IntersectionObserver = undefined as never;
+      const entry = register('authored', makeRect({ top: 1400 }));
+      expect(getSnapshot(entry).state).toBe('dormant');
+
+      setRect(entry.element, makeRect());
+      window.dispatchEvent(new Event(eventName));
+
+      expect(getSnapshot(entry)).toEqual({
+        state: 'active',
+        isAdmitted: true,
+        isPageVisible: true,
+        intersectionRatio: 1,
+      });
+    },
+  );
+
   it('suspends an active registration immediately and makes it cold after ten seconds', () => {
     const entry = register('authored', makeRect());
     emitIntersection(entry.element, makeRect(), true);
@@ -271,6 +313,45 @@ describe('RazorSenseRuntime', () => {
     expect(getSnapshot(entries[2]).isAdmitted).toBe(true);
     expect(getSnapshot(entries[5]).isAdmitted).toBe(false);
     expect(consoleWarn).toHaveBeenCalledTimes(2);
+  });
+
+  it('recomputes admission without stale notifications when a listener unregisters itself', () => {
+    let shouldUnregister = false;
+    const firstRegistrationRef: { current?: RazorSenseRuntimeRegistration } = {};
+    const firstListener = jest.fn<undefined, [RazorSenseRuntimeSnapshot]>(() => {
+      if (shouldUnregister) firstRegistrationRef.current?.unregister();
+      return undefined;
+    });
+    const first = register('authored', makeRect(), {}, firstListener);
+    firstRegistrationRef.current = first.registration;
+    const remaining = [
+      register('authored', makeRect()),
+      register('authored', makeRect()),
+      register('authored', makeRect()),
+      register('authored', makeRect()),
+    ];
+    expect(remaining.map((entry) => getSnapshot(entry).isAdmitted)).toEqual([
+      true,
+      true,
+      true,
+      false,
+    ]);
+    const waiter = remaining[3];
+    const waiterCallCount = waiter.listener.mock.calls.length;
+
+    shouldUnregister = true;
+    emitIntersection(first.element, makeRect({ top: -100, height: 200 }), true);
+
+    expect(observer.unobserve).toHaveBeenCalledWith(first.element);
+    expect(remaining.map((entry) => getSnapshot(entry).isAdmitted)).toEqual([
+      true,
+      true,
+      true,
+      true,
+    ]);
+    expect(
+      waiter.listener.mock.calls.slice(waiterCallCount).map(([snapshot]) => snapshot),
+    ).toEqual([expect.objectContaining({ state: 'active', isAdmitted: true })]);
   });
 
   it('ranks active pointer, visible area, and live DOM order in that order', () => {
