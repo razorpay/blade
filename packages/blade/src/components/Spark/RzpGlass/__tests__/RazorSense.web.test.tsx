@@ -106,12 +106,14 @@ const ACTIVE_LIFECYCLE: RazorSenseRuntimeSnapshot = {
   intersectionRatio: 1,
 };
 
-const getLatestRuntimeFamily = (): string => {
+const getLatestRuntimeOptions = (): { family: string; retainsWebGL?: boolean } => {
   const latestCall = mockUseRazorSenseLifecycle.mock.calls[
     mockUseRazorSenseLifecycle.mock.calls.length - 1
-  ] as [React.RefObject<HTMLElement>, { family: string }];
-  return latestCall[1].family;
+  ] as [React.RefObject<HTMLElement>, { family: string; retainsWebGL?: boolean }];
+  return latestCall[1];
 };
+
+const getLatestRuntimeFamily = (): string => getLatestRuntimeOptions().family;
 
 describe('<RazorSense />', () => {
   beforeEach(() => {
@@ -252,7 +254,7 @@ describe('<RazorSense />', () => {
     expect(logger).toHaveBeenCalledTimes(1);
   });
 
-  it('keeps semantic runtime admission emotional until the outgoing renderer unmounts', async () => {
+  it('hands runtime admission to the requested authored family before the emotional fade ends', async () => {
     jest.useFakeTimers();
     const requestAnimationFrame = jest
       .spyOn(window, 'requestAnimationFrame')
@@ -275,20 +277,24 @@ describe('<RazorSense />', () => {
 
     const { getByRole } = renderWithTheme(<Example />);
     expect(getLatestRuntimeFamily()).toBe('emotional');
+    expect(getLatestRuntimeOptions().retainsWebGL).toBe(false);
 
     fireEvent.click(getByRole('button', { name: 'Use authored' }));
-    expect(getLatestRuntimeFamily()).toBe('emotional');
+    expect(getLatestRuntimeFamily()).toBe('authored');
+    expect(getLatestRuntimeOptions().retainsWebGL).toBe(true);
 
     await act(async () => {
       jest.advanceTimersByTime(179);
       await Promise.resolve();
     });
-    expect(getLatestRuntimeFamily()).toBe('emotional');
+    expect(getLatestRuntimeFamily()).toBe('authored');
+    expect(getLatestRuntimeOptions().retainsWebGL).toBe(true);
     await act(async () => {
       jest.advanceTimersByTime(1);
       await Promise.resolve();
     });
     expect(getLatestRuntimeFamily()).toBe('authored');
+    expect(getLatestRuntimeOptions().retainsWebGL).toBe(false);
 
     requestAnimationFrame.mockRestore();
     jest.useRealTimers();

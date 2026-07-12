@@ -13,6 +13,8 @@ type RazorSenseRuntimeOptions = {
   family: RazorSenseRendererFamily;
   isPaused: boolean;
   isInteractive: boolean;
+  /** Reserves one WebGL slot while this non-WebGL family fades an outgoing WebGL renderer. */
+  retainsWebGL?: boolean;
 };
 
 type RazorSenseRuntimeRegistration = {
@@ -230,7 +232,8 @@ class RazorSenseRuntime {
     if (
       previousOptions.family === nextOptions.family &&
       previousOptions.isPaused === nextOptions.isPaused &&
-      previousOptions.isInteractive === nextOptions.isInteractive
+      previousOptions.isInteractive === nextOptions.isInteractive &&
+      previousOptions.retainsWebGL === nextOptions.retainsWebGL
     ) {
       return;
     }
@@ -329,7 +332,12 @@ class RazorSenseRuntime {
           .filter((entry) => entry.state === 'active')
           .sort(this.compareAdmissionPriority);
         const admittedIds = new Set<number>();
-        let admittedWebGLCount = 0;
+        let admittedWebGLCount = Math.min(
+          MAX_ADMITTED_WEBGL_INSTANCES,
+          activeCandidates.filter(
+            (entry) => entry.options.retainsWebGL && !isWebGLFamily(entry.options.family),
+          ).length,
+        );
 
         for (const entry of activeCandidates) {
           if (admittedIds.size >= MAX_ADMITTED_INSTANCES) break;

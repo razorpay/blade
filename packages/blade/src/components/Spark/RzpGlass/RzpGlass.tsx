@@ -414,13 +414,16 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     };
     const mountedFamiliesRef = useRef(initialMountedFamilies);
     const [mountedFamilies, setMountedFamilies] = useState(initialMountedFamilies);
-    const runtimeFamily: SemanticRendererFamily =
-      requestedFamily === 'emotional' || mountedFamilies.emotional ? 'emotional' : 'authored';
+    // Admission follows the requested renderer immediately. Keeping an outgoing
+    // emotional family accounted until its fade completed could deny the authored
+    // renderer the admission it needed to ever present its first frame.
+    const runtimeFamily: SemanticRendererFamily = requestedFamily;
     const hostRef = useRef<HTMLDivElement>(null);
     const lifecycle = useRazorSenseLifecycle(hostRef, {
       family: runtimeFamily,
       isPaused: resolvedIsPaused,
       isInteractive: resolvedIsInteractive,
+      retainsWebGL: requestedFamily === 'authored' && mountedFamilies.emotional,
     });
     const effectivePaused =
       resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;

@@ -32,7 +32,6 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 const FADE_IN_MS = 200;
 const DEFAULT_STATE_TRANSITION_SECONDS = 0.4;
 const OUTGOING_LAYER_DISPOSAL_BUFFER_MS = 80;
-const SNAPSHOT_INTERVAL_MS = 120;
 
 type RazorSenseAuthoredProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseOperationalMode;
@@ -48,6 +47,10 @@ type AuthoredLayer = {
   id: number;
   mode: RazorSenseOperationalMode;
   colorScheme: ColorSchemeNames;
+  assetsPath: string;
+  startTime?: number;
+  endTime?: number;
+  resourceGeneration: number;
   opacity: number;
   status: 'loading' | 'visible' | 'outgoing';
 };
@@ -82,14 +85,13 @@ type AuthoredVideoLayerProps = {
   layer: AuthoredLayer;
   source: string;
   playbackRate: number;
-  startTime?: number;
-  endTime?: number;
+  canPrepareFrame: boolean;
+  readinessGeneration: number;
   shouldPlay: boolean;
   transitionDurationMs: number;
   restoreSnapshot?: LayerPlaybackSnapshot;
-  onReady: (layerId: number) => void;
+  onReady: (layerId: number, readinessGeneration: number) => void;
   onError: (layerId: number, error: Error) => void;
-  onSnapshotTick: () => void;
 };
 
 const releaseVideo = (video: HTMLVideoElement | null): void => {
@@ -110,43 +112,48 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       layer,
       source,
       playbackRate,
-      startTime,
-      endTime,
+      canPrepareFrame,
+      readinessGeneration,
       shouldPlay,
       transitionDurationMs,
       restoreSnapshot,
       onReady,
       onError,
-      onSnapshotTick,
     } = props;
     const wrapperRef = useRef<HTMLDivElement>(null);
     const primaryRef = useRef<HTMLVideoElement>(null);
     const secondaryRef = useRef<HTMLVideoElement>(null);
+    const captureCanvasRef = useRef<HTMLCanvasElement>();
     const thinkingRuntimeRef = useRef<ThinkingLoopRuntime | null>(null);
     const thinkingRafRef = useRef<number | null>(null);
     const frameWaitCleanupsRef = useRef(new Set<CancelVideoFrameWait>());
-    const preparedVideosRef = useRef(new WeakSet<HTMLVideoElement>());
+    const loadedVideosRef = useRef<Partial<Record<'primary' | 'secondary', HTMLVideoElement>>>({});
+    const targetTimesRef = useRef<Partial<Record<'primary' | 'secondary', number>>>({});
+    const preparingKindsRef = useRef(new Set<'primary' | 'secondary'>());
     const exactReadyVideosRef = useRef(new Set<'primary' | 'secondary'>());
     const secondaryFailedRef = useRef(false);
     const hasReportedReadyRef = useRef(false);
+    const canPrepareFrameRef = useRef(canPrepareFrame);
+    const readinessGenerationRef = useRef(readinessGeneration);
     const shouldPlayRef = useRef(shouldPlay);
     const playbackRateRef = useRef(playbackRate);
     const onReadyRef = useRef(onReady);
     const onErrorRef = useRef(onError);
-    const onSnapshotTickRef = useRef(onSnapshotTick);
     const [isExactFrameReady, setIsExactFrameReady] = useState(false);
     const restoreSnapshotRef = useRef(restoreSnapshot);
     const initialRestoreSnapshot = restoreSnapshotRef.current;
     const timing = RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS[layer.mode];
-    const loopStart = Math.max(0, startTime ?? timing.startTime);
-    const loopEnd = endTime ?? timing.endTime;
-    const isTerminalRestore = initialRestoreSnapshot?.isTerminal ?? false;
+    const loopStart = Math.max(0, layer.startTime ?? timing.startTime);
+    const loopEnd = layer.endTime ?? timing.endTime;
+    const isTerminalRestore =
+      layer.mode !== 'thinking' && (initialRestoreSnapshot?.isTerminal ?? false);
 
+    canPrepareFrameRef.current = canPrepareFrame;
+    readinessGenerationRef.current = readinessGeneration;
     shouldPlayRef.current = shouldPlay;
     playbackRateRef.current = playbackRate;
     onReadyRef.current = onReady;
     onErrorRef.current = onError;
-    onSnapshotTickRef.current = onSnapshotTick;
 
     const stopThinkingRaf = useCallback((): void => {
       if (thinkingRafRef.current === null) return;
@@ -154,17 +161,28 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       thinkingRafRef.current = null;
     }, []);
 
-    const release = useCallback((): void => {
+    const cancelFrameWaits = useCallback((): void => {
       frameWaitCleanupsRef.current.forEach((cleanup) => cleanup());
       frameWaitCleanupsRef.current.clear();
+      preparingKindsRef.current.clear();
+    }, []);
+
+    const release = useCallback((): void => {
+      cancelFrameWaits();
       stopThinkingRaf();
       thinkingRuntimeRef.current = null;
       releaseVideo(primaryRef.current);
       releaseVideo(secondaryRef.current);
-    }, [stopThinkingRaf]);
+    }, [cancelFrameWaits, stopThinkingRaf]);
 
     const tryReportReady = useCallback((): void => {
-      if (hasReportedReadyRef.current || !exactReadyVideosRef.current.has('primary')) return;
+      if (
+        hasReportedReadyRef.current ||
+        !canPrepareFrameRef.current ||
+        !exactReadyVideosRef.current.has('primary')
+      ) {
+        return;
+      }
       if (
         layer.mode === 'thinking' &&
         !secondaryFailedRef.current &&
@@ -175,14 +193,25 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
 
       hasReportedReadyRef.current = true;
       setIsExactFrameReady(true);
-      onReadyRef.current(layer.id);
+      onReadyRef.current(layer.id, readinessGenerationRef.current);
     }, [layer.id, layer.mode]);
 
-    const prepareVideo = useCallback(
-      (kind: 'primary' | 'secondary', video: HTMLVideoElement, targetTime: number): void => {
-        if (preparedVideosRef.current.has(video)) return;
-        preparedVideosRef.current.add(video);
+    const armVideo = useCallback(
+      (kind: 'primary' | 'secondary'): void => {
+        const video = loadedVideosRef.current[kind];
+        const targetTime = targetTimesRef.current[kind];
+        if (
+          !video ||
+          targetTime === undefined ||
+          !canPrepareFrameRef.current ||
+          exactReadyVideosRef.current.has(kind) ||
+          preparingKindsRef.current.has(kind)
+        ) {
+          return;
+        }
+        preparingKindsRef.current.add(kind);
         video.playbackRate = playbackRateRef.current;
+        const armedGeneration = readinessGenerationRef.current;
 
         let cleanup: CancelVideoFrameWait = () => undefined;
         cleanup = seekToRazorSenseVideoFrame({
@@ -197,6 +226,10 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
           shouldRemainPaused: true,
           onReady: () => {
             frameWaitCleanupsRef.current.delete(cleanup);
+            preparingKindsRef.current.delete(kind);
+            if (!canPrepareFrameRef.current || readinessGenerationRef.current !== armedGeneration) {
+              return;
+            }
             exactReadyVideosRef.current.add(kind);
             tryReportReady();
           },
@@ -206,18 +239,42 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       [layer.colorScheme, layer.mode, tryReportReady],
     );
 
+    const prepareVideo = useCallback(
+      (kind: 'primary' | 'secondary', video: HTMLVideoElement, targetTime: number): void => {
+        loadedVideosRef.current[kind] = video;
+        targetTimesRef.current[kind] = targetTime;
+        armVideo(kind);
+      },
+      [armVideo],
+    );
+
+    useEffect(() => {
+      if (!canPrepareFrame) {
+        cancelFrameWaits();
+        hasReportedReadyRef.current = false;
+        return;
+      }
+      armVideo('primary');
+      armVideo('secondary');
+      tryReportReady();
+    }, [armVideo, canPrepareFrame, cancelFrameWaits, readinessGeneration, tryReportReady]);
+
     useImperativeHandle(
       forwardedRef,
       () => ({
         capture: (canvas, container, clearCanvas) => {
           const wrapper = wrapperRef.current;
           const primary = primaryRef.current;
-          if (!wrapper || !primary) return false;
+          if (!wrapper || !primary || !canvas || !container) return false;
 
           const layerOpacity = getNumericOpacity(window.getComputedStyle(wrapper).opacity);
           if (layerOpacity <= 0.001) return false;
+          if (!captureCanvasRef.current) {
+            captureCanvasRef.current = wrapper.ownerDocument.createElement('canvas');
+          }
+          const layerCanvas = captureCanvasRef.current;
           const verticalAlignment = layer.mode === 'typing' ? 'bottom' : 'center';
-          let didCapture = false;
+          let didCaptureVideo = false;
           const captureVideo = (video: HTMLVideoElement | null): void => {
             if (
               !video ||
@@ -231,18 +288,40 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
             if (videoOpacity <= 0.001) return;
             captureVideoCoverFrame(
               video,
-              canvas,
+              layerCanvas,
               container,
               verticalAlignment,
-              layerOpacity * videoOpacity,
-              clearCanvas && !didCapture,
+              videoOpacity,
+              !didCaptureVideo,
             );
-            didCapture = true;
+            didCaptureVideo = true;
           };
 
           captureVideo(primary);
           captureVideo(secondaryRef.current);
-          return didCapture;
+          if (!didCaptureVideo) return false;
+
+          if (canvas.width !== layerCanvas.width || canvas.height !== layerCanvas.height) {
+            canvas.width = layerCanvas.width;
+            canvas.height = layerCanvas.height;
+          }
+          const context = canvas.getContext('2d');
+          if (!context) return false;
+          if (clearCanvas) context.clearRect(0, 0, canvas.width, canvas.height);
+
+          const horizontalScale = layer.colorScheme === 'dark' ? 1.2 : 1;
+          const scaledWidth = canvas.width * horizontalScale;
+          context.save();
+          context.globalAlpha = layerOpacity;
+          context.drawImage(
+            layerCanvas,
+            (canvas.width - scaledWidth) / 2,
+            0,
+            scaledWidth,
+            canvas.height,
+          );
+          context.restore();
+          return true;
         },
         getPlaybackSnapshot: () => {
           const primary = primaryRef.current;
@@ -256,7 +335,8 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
             secondaryOpacity: getNumericOpacity(secondary?.style.opacity ?? '0', 0),
             frontWasPrimary: runtime ? runtime.front === primary : true,
             isCrossfading: runtime?.isCrossfading ?? false,
-            isTerminal: !timing.loop && primary.currentTime >= loopEnd - 0.06,
+            isTerminal:
+              layer.mode !== 'thinking' && !timing.loop && primary.currentTime >= loopEnd - 0.06,
           };
         },
         release,
@@ -335,8 +415,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       if (runtime.isCrossfading) runtime.back.play().catch(() => undefined);
       else runtime.back.pause();
 
-      let lastSnapshotAt = 0;
-      const renderLoop = (now: number): void => {
+      const renderLoop = (): void => {
         const crossfadeStart = loopEnd - crossfadeDuration;
         if (!runtime.isCrossfading && runtime.front.currentTime >= crossfadeStart) {
           runtime.back.currentTime = loopStart;
@@ -363,10 +442,6 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
           }
         }
 
-        if (now - lastSnapshotAt >= SNAPSHOT_INTERVAL_MS) {
-          onSnapshotTickRef.current();
-          lastSnapshotAt = now;
-        }
         thinkingRafRef.current = window.requestAnimationFrame(renderLoop);
       };
 
@@ -397,6 +472,31 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       );
     };
 
+    const handleSecondaryError = (): void => {
+      secondaryFailedRef.current = true;
+      cancelFrameWaits();
+      stopThinkingRaf();
+      thinkingRuntimeRef.current = null;
+
+      const primary = primaryRef.current;
+      const secondary = secondaryRef.current;
+      if (primary) {
+        primary.loop = true;
+        primary.style.opacity = '1';
+        if (shouldPlayRef.current && canPrepareFrameRef.current) {
+          primary.play().catch(() => undefined);
+        } else {
+          primary.pause();
+        }
+      }
+      if (secondary) {
+        secondary.pause();
+        secondary.style.opacity = '0';
+      }
+      armVideo('primary');
+      tryReportReady();
+    };
+
     return (
       <div
         ref={wrapperRef}
@@ -416,16 +516,15 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
           ref={primaryRef}
           src={source}
           muted
-          loop={endTime === undefined && timing.loop}
+          loop={layer.endTime === undefined && timing.loop}
           playsInline
           preload="auto"
           onLoadedData={(event) => handlePrimaryLoaded(event.currentTarget)}
           onTimeUpdate={(event) => {
-            const shouldLoop = endTime !== undefined || timing.loop;
+            const shouldLoop = layer.endTime !== undefined || timing.loop;
             if (shouldLoop && event.currentTarget.currentTime >= loopEnd) {
               event.currentTarget.currentTime = loopStart;
             }
-            onSnapshotTickRef.current();
           }}
           onError={() => {
             onErrorRef.current(
@@ -459,11 +558,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
                 Math.max(0, initialRestoreSnapshot?.secondaryTime ?? loopStart),
               );
             }}
-            onError={() => {
-              secondaryFailedRef.current = true;
-              primaryRef.current?.setAttribute('loop', '');
-              tryReportReady();
-            }}
+            onError={handleSecondaryError}
             style={{
               position: 'absolute',
               inset: 0,
@@ -504,11 +599,16 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const { colorScheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const snapshotCanvasRef = useRef<HTMLCanvasElement>(null);
+    const resourceGenerationRef = useRef(0);
     const nextLayerIdRef = useRef(2);
     const initialLayerRef = useRef<AuthoredLayer>({
       id: 1,
       mode,
       colorScheme,
+      assetsPath,
+      startTime,
+      endTime,
+      resourceGeneration: resourceGenerationRef.current,
       opacity: 0,
       status: 'loading',
     });
@@ -524,7 +624,6 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const hasSnapshotRef = useRef(hasSnapshot);
     const [snapshotOpacity, setSnapshotOpacity] = useState(0);
     const [isSnapshotTransitionEnabled, setIsSnapshotTransitionEnabled] = useState(false);
-    const snapshotColorSchemeRef = useRef(colorScheme);
     const [displayedMode, setDisplayedMode] = useState(mode);
     const [displayedColorScheme, setDisplayedColorScheme] = useState(colorScheme);
     const layerHandlesRef = useRef(new Map<number, AuthoredLayerHandle>());
@@ -533,15 +632,18 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const failedLayerIdsRef = useRef(new Set<number>());
     const requestedLayerIdRef = useRef(1);
     const requestedKeyRef = useRef(
-      `${mode}:${colorScheme}:${startTime ?? 'default'}:${endTime ?? 'default'}`,
+      `${mode}:${colorScheme}:${assetsPath}:${startTime ?? 'default'}:${endTime ?? 'default'}`,
     );
-    const requestedPlaybackWindowRef = useRef({ startTime, endTime });
+    const requestedProgramRef = useRef({ assetsPath, startTime, endTime });
     const transitionGenerationRef = useRef(0);
-    const resourceGenerationRef = useRef(0);
+    const readinessGenerationRef = useRef(0);
+    const lastCanPrepareRef = useRef(
+      runtimeState === 'warm' || (runtimeState === 'active' && isRuntimeAdmitted),
+    );
     const transitionTimerRef = useRef<number>();
     const transitionRafRef = useRef<number>();
-    const lastSnapshotAtRef = useRef(0);
     const hasLoadedRef = useRef(false);
+    const frameReadyNotifiedLayerIdsRef = useRef(new Set<number>());
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
     const onFrameReadyRef = useRef(onFrameReady);
@@ -590,7 +692,6 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
     const captureCurrentFrame = useCallback((shouldShowSnapshot: boolean): boolean => {
       let didCapture = false;
-      let capturedScheme = snapshotColorSchemeRef.current;
       layersRef.current.forEach((layer) => {
         const handle = layerHandlesRef.current.get(layer.id);
         if (!handle) return;
@@ -601,12 +702,10 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         );
         if (capturedLayer) {
           didCapture = true;
-          capturedScheme = layer.colorScheme;
         }
       });
 
       if (!didCapture) return false;
-      snapshotColorSchemeRef.current = capturedScheme;
       if (!hasSnapshotRef.current) {
         hasSnapshotRef.current = true;
         setHasSnapshot(true);
@@ -619,10 +718,20 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     }, []);
 
     const createLayer = useCallback(
-      (nextMode: RazorSenseOperationalMode, nextColorScheme: ColorSchemeNames): AuthoredLayer => ({
+      (
+        nextMode: RazorSenseOperationalMode,
+        nextColorScheme: ColorSchemeNames,
+        nextAssetsPath: string,
+        nextStartTime?: number,
+        nextEndTime?: number,
+      ): AuthoredLayer => ({
         id: nextLayerIdRef.current++,
         mode: nextMode,
         colorScheme: nextColorScheme,
+        assetsPath: nextAssetsPath,
+        startTime: nextStartTime,
+        endTime: nextEndTime,
+        resourceGeneration: resourceGenerationRef.current,
         opacity: 0,
         status: 'loading',
       }),
@@ -630,7 +739,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     );
 
     useLayoutEffect(() => {
-      const requestedKey = `${mode}:${colorScheme}:${startTime ?? 'default'}:${
+      const requestedKey = `${mode}:${colorScheme}:${assetsPath}:${startTime ?? 'default'}:${
         endTime ?? 'default'
       }`;
       if (requestedKeyRef.current === requestedKey) return;
@@ -639,41 +748,25 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       const previousRequestedLayer =
         [...previousLayers].reverse().find((layer) => layer.id === requestedLayerIdRef.current) ??
         previousLayers[previousLayers.length - 1];
+      const didAssetsPathChange = requestedProgramRef.current.assetsPath !== assetsPath;
       const didPlaybackWindowChange =
-        requestedPlaybackWindowRef.current.startTime !== startTime ||
-        requestedPlaybackWindowRef.current.endTime !== endTime;
+        requestedProgramRef.current.startTime !== startTime ||
+        requestedProgramRef.current.endTime !== endTime;
+      if (didAssetsPathChange) resourceGenerationRef.current += 1;
       requestedKeyRef.current = requestedKey;
-      requestedPlaybackWindowRef.current = { startTime, endTime };
+      requestedProgramRef.current = { assetsPath, startTime, endTime };
       transitionGenerationRef.current += 1;
+      readinessGenerationRef.current += 1;
       clearTransitionWork();
 
-      const alreadyMounted = [...previousLayers]
-        .reverse()
-        .find((layer) => layer.mode === mode && layer.colorScheme === colorScheme);
-      if (
-        !didPlaybackWindowChange &&
-        alreadyMounted &&
-        layerHandlesRef.current.has(alreadyMounted.id)
-      ) {
-        const retainedIds = new Set([alreadyMounted.id]);
-        releaseLayersExcept(retainedIds);
-        requestedLayerIdRef.current = alreadyMounted.id;
-        replaceLayers([{ ...alreadyMounted, opacity: 1, status: 'visible' }]);
-        const source = sourcesByLayerIdRef.current[alreadyMounted.id];
-        replaceSources(source ? { [alreadyMounted.id]: source } : {});
-        setDisplayedMode(mode);
-        setDisplayedColorScheme(colorScheme);
-        setSnapshotOpacity(0);
-        return;
-      }
-
-      const incomingLayer = createLayer(mode, colorScheme);
+      const incomingLayer = createLayer(mode, colorScheme, assetsPath, startTime, endTime);
       requestedLayerIdRef.current = incomingLayer.id;
       failedLayerIdsRef.current.delete(incomingLayer.id);
       pendingRestoreByLayerIdRef.current.clear();
 
       let incomingRestoreSnapshot: LayerPlaybackSnapshot | undefined;
       if (
+        !didAssetsPathChange &&
         !didPlaybackWindowChange &&
         previousRequestedLayer?.mode === mode &&
         previousRequestedLayer.colorScheme !== colorScheme
@@ -686,9 +779,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       const currentLayer = [...previousLayers]
         .reverse()
         .find((layer) => layer.status !== 'loading' && layerHandlesRef.current.has(layer.id));
-      const isInterruptedTransition = previousLayers.some((layer) => layer.status === 'outgoing');
       const isSchemeChange = previousRequestedLayer?.colorScheme !== colorScheme;
-      if (currentLayer && (isInterruptedTransition || isSchemeChange)) {
+      if (currentLayer && (previousLayers.length > 1 || isSchemeChange)) {
         captureCurrentFrame(true);
       }
 
@@ -711,6 +803,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       }
       replaceLayers([{ ...currentLayer, opacity: 1, status: 'visible' }, incomingLayer]);
     }, [
+      assetsPath,
       captureCurrentFrame,
       clearTransitionWork,
       colorScheme,
@@ -719,8 +812,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       releaseLayersExcept,
       replaceLayers,
       replaceSources,
-      startTime,
       endTime,
+      startTime,
     ]);
 
     useLayoutEffect(() => {
@@ -732,7 +825,9 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       }
 
       if (runtimeState === 'suspended') {
-        if (isMediaRetainedRef.current) captureCurrentFrame(false);
+        transitionGenerationRef.current += 1;
+        clearTransitionWork();
+        if (isMediaRetainedRef.current) captureCurrentFrame(true);
         return;
       }
 
@@ -743,7 +838,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         clearTransitionWork();
         releaseLayersExcept(new Set());
         replaceSources({});
-        const nextLayer = createLayer(mode, colorScheme);
+        const nextLayer = createLayer(mode, colorScheme, assetsPath, startTime, endTime);
         requestedLayerIdRef.current = nextLayer.id;
         pendingRestoreByLayerIdRef.current.clear();
         replaceLayers([nextLayer]);
@@ -753,6 +848,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         setSnapshotOpacity(1);
       }
     }, [
+      assetsPath,
       captureCurrentFrame,
       clearTransitionWork,
       colorScheme,
@@ -764,16 +860,21 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       replaceSources,
       runtimeState,
       setMediaRetained,
+      startTime,
+      endTime,
     ]);
 
     const canPrepare =
       isMediaRetained &&
       (runtimeState === 'warm' || (runtimeState === 'active' && isRuntimeAdmitted));
+    if (lastCanPrepareRef.current !== canPrepare) {
+      lastCanPrepareRef.current = canPrepare;
+      readinessGenerationRef.current += 1;
+    }
     canPrepareRef.current = canPrepare;
 
     useEffect(() => {
       if (!canPrepare) return;
-      const resourceGeneration = resourceGenerationRef.current;
 
       layersRef.current.forEach((layer) => {
         if (
@@ -786,7 +887,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         resolvingLayerIdsRef.current.add(layer.id);
 
         void selectRazorSenseVideoSource({
-          assetsPath,
+          assetsPath: layer.assetsPath,
           mode: layer.mode,
           colorScheme: layer.colorScheme,
           viewport: 'desktop',
@@ -795,7 +896,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
             resolvingLayerIdsRef.current.delete(layer.id);
             if (
               !isMountedRef.current ||
-              resourceGenerationRef.current !== resourceGeneration ||
+              resourceGenerationRef.current !== layer.resourceGeneration ||
               !canPrepareRef.current ||
               !layersRef.current.some((candidate) => candidate.id === layer.id)
             ) {
@@ -805,19 +906,33 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           })
           .catch((cause: unknown) => {
             resolvingLayerIdsRef.current.delete(layer.id);
-            if (!layersRef.current.some((candidate) => candidate.id === layer.id)) return;
+            if (
+              resourceGenerationRef.current !== layer.resourceGeneration ||
+              !layersRef.current.some((candidate) => candidate.id === layer.id)
+            ) {
+              return;
+            }
             failedLayerIdsRef.current.add(layer.id);
             onErrorRef.current?.(cause instanceof Error ? cause : new Error(String(cause)));
           });
       });
-    }, [assetsPath, canPrepare, layers, replaceSources]);
+    }, [canPrepare, layers, replaceSources]);
 
     const handleLayerReady = useCallback(
-      (layerId: number): void => {
-        if (layerId !== requestedLayerIdRef.current) return;
+      (layerId: number, readyGeneration: number): void => {
+        if (
+          layerId !== requestedLayerIdRef.current ||
+          readyGeneration !== readinessGenerationRef.current ||
+          !canPrepareRef.current ||
+          !isMediaRetainedRef.current
+        ) {
+          return;
+        }
         const currentLayers = layersRef.current;
         const incomingLayer = currentLayers.find((layer) => layer.id === layerId);
-        if (!incomingLayer) return;
+        if (!incomingLayer || incomingLayer.resourceGeneration !== resourceGenerationRef.current) {
+          return;
+        }
         pendingRestoreByLayerIdRef.current.delete(layerId);
 
         const generation = ++transitionGenerationRef.current;
@@ -840,7 +955,13 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         } else {
           transitionRafRef.current = window.requestAnimationFrame(() => {
             transitionRafRef.current = undefined;
-            if (generation !== transitionGenerationRef.current) return;
+            if (
+              generation !== transitionGenerationRef.current ||
+              readyGeneration !== readinessGenerationRef.current ||
+              !canPrepareRef.current
+            ) {
+              return;
+            }
             replaceLayers(
               layersRef.current.map((layer) =>
                 layer.id === layerId
@@ -857,14 +978,18 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           hasLoadedRef.current = true;
           onLoadRef.current?.();
         }
-        onFrameReadyRef.current?.();
+        if (!frameReadyNotifiedLayerIdsRef.current.has(layerId)) {
+          frameReadyNotifiedLayerIdsRef.current.add(layerId);
+          onFrameReadyRef.current?.();
+        }
 
         if (outgoingLayers.length === 0) return;
         transitionTimerRef.current = window.setTimeout(() => {
           transitionTimerRef.current = undefined;
           if (
             generation !== transitionGenerationRef.current ||
-            requestedLayerIdRef.current !== layerId
+            requestedLayerIdRef.current !== layerId ||
+            !canPrepareRef.current
           ) {
             return;
           }
@@ -884,6 +1009,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const handleLayerError = useCallback(
       (layerId: number, error: Error): void => {
         if (!layersRef.current.some((layer) => layer.id === layerId)) return;
+        const capturedComposite = captureCurrentFrame(true);
         failedLayerIdsRef.current.add(layerId);
         pendingRestoreByLayerIdRef.current.delete(layerId);
         transitionGenerationRef.current += 1;
@@ -900,7 +1026,10 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           replaceLayers([{ ...outgoing, opacity: 1, status: 'visible' }]);
           setDisplayedMode(outgoing.mode);
           setDisplayedColorScheme(outgoing.colorScheme);
-          setSnapshotOpacity(0);
+          if (capturedComposite || hasSnapshotRef.current) {
+            setIsSnapshotTransitionEnabled(false);
+            setSnapshotOpacity(1);
+          }
         } else {
           replaceLayers([]);
           if (hasSnapshotRef.current) {
@@ -910,15 +1039,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         }
         onErrorRef.current?.(error);
       },
-      [clearTransitionWork, replaceLayers, replaceSources],
+      [captureCurrentFrame, clearTransitionWork, replaceLayers, replaceSources],
     );
-
-    const handleSnapshotTick = useCallback((): void => {
-      const now = performance.now();
-      if (now - lastSnapshotAtRef.current < SNAPSHOT_INTERVAL_MS) return;
-      captureCurrentFrame(false);
-      lastSnapshotAtRef.current = now;
-    }, [captureCurrentFrame]);
 
     useEffect(
       () => () => {
@@ -978,8 +1100,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                   layer={layer}
                   source={source}
                   playbackRate={playbackRate}
-                  startTime={startTime}
-                  endTime={endTime}
+                  canPrepareFrame={canPrepare}
+                  readinessGeneration={readinessGenerationRef.current}
                   shouldPlay={shouldPlay}
                   transitionDurationMs={
                     onFrameReadyRef.current
@@ -991,7 +1113,6 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                   restoreSnapshot={pendingRestoreByLayerIdRef.current.get(layer.id)}
                   onReady={handleLayerReady}
                   onError={handleLayerError}
-                  onSnapshotTick={handleSnapshotTick}
                 />
               );
             })
@@ -1007,7 +1128,6 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
             width: '100%',
             height: '100%',
             opacity: hasSnapshot ? snapshotOpacity : 0,
-            transform: snapshotColorSchemeRef.current === 'dark' ? 'scaleX(1.2)' : 'scaleX(1)',
             transition: isSnapshotTransitionEnabled
               ? `${transitionDurationMs}ms linear opacity`
               : 'none',

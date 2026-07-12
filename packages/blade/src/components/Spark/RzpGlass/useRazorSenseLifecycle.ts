@@ -57,7 +57,7 @@ const useRazorSenseLifecycle = (
 
   useEffect(() => {
     registrationRef.current?.update(optionsRef.current);
-  }, [options.family, options.isInteractive, options.isPaused]);
+  }, [options.family, options.isInteractive, options.isPaused, options.retainsWebGL]);
 
   return snapshot;
 };

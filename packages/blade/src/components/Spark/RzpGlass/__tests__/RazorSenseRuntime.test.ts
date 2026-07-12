@@ -287,7 +287,7 @@ describe('RazorSenseRuntime', () => {
     expect(jest.getTimerCount()).toBe(0);
   });
 
-  it('admits four active registrations with at most two WebGL families and promotes waiters', () => {
+  it('admits four active registrations while reserving outgoing WebGL capacity', () => {
     const entries = ([
       'emotional',
       'legacy',
@@ -295,23 +295,26 @@ describe('RazorSenseRuntime', () => {
       'authored',
       'authored',
       'authored',
-    ] as const).map((family) => register(family, makeRect()));
+    ] as const).map((family, index) =>
+      register(family, makeRect(), index === 3 ? { retainsWebGL: true } : {}),
+    );
     entries.forEach((entry) => emitIntersection(entry.element, makeRect(), true));
 
     expect(window.IntersectionObserver).toHaveBeenCalledTimes(1);
     expect(entries.map((entry) => getSnapshot(entry).isAdmitted)).toEqual([
       true,
-      true,
+      false,
       false,
       true,
       true,
-      false,
+      true,
     ]);
     expect(consoleWarn).toHaveBeenCalledTimes(2);
 
-    entries[1].registration.unregister();
-    expect(getSnapshot(entries[2]).isAdmitted).toBe(true);
-    expect(getSnapshot(entries[5]).isAdmitted).toBe(false);
+    entries[0].registration.unregister();
+    expect(getSnapshot(entries[1]).isAdmitted).toBe(true);
+    expect(getSnapshot(entries[2]).isAdmitted).toBe(false);
+    expect(getSnapshot(entries[5]).isAdmitted).toBe(true);
     expect(consoleWarn).toHaveBeenCalledTimes(2);
   });
 
