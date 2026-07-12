@@ -32,7 +32,7 @@ const seekToRazorSenseVideoFrame = ({
   const requestedTime = Math.max(0, targetTime);
   const frameDuration = 1 / Math.max(1, frameRate);
   const expectedFrameTime =
-    Math.ceil((requestedTime - MEDIA_TIME_EPSILON_SECONDS) * frameRate) / frameRate;
+    Math.floor((requestedTime + MEDIA_TIME_EPSILON_SECONDS) * frameRate) / frameRate;
   let isCancelled = false;
   let frameCallbackId: number | null = null;
   let firstRafId: number | null = null;
@@ -104,7 +104,11 @@ const seekToRazorSenseVideoFrame = ({
           // so scheduling jitter cannot leave the element on the next frame.
           video.pause();
           video.addEventListener('seeked', handleConfirmedFrameSeeked, { once: true });
-          video.currentTime = metadata.mediaTime;
+          // Keep the media clock at the requested phase, safely inside the
+          // already-confirmed frame's presentation interval. Seeking to the
+          // frame's exact boundary can make Chromium composite either adjacent
+          // frame even though both callbacks report the same mediaTime.
+          video.currentTime = requestedTime;
           if (!video.seeking) handleConfirmedFrameSeeked();
         } else {
           finish();
@@ -113,7 +117,8 @@ const seekToRazorSenseVideoFrame = ({
       }
 
       // A callback queued before the seek can still present the old frame. Keep
-      // waiting until the browser reports the requested decoded media time.
+      // waiting until the browser reports the frame whose presentation interval
+      // contains the requested time.
       if (
         !hasSeekCompleted ||
         video.seeking ||
@@ -129,7 +134,7 @@ const seekToRazorSenseVideoFrame = ({
       hasSeekCompleted = false;
       video.addEventListener('seeked', handleSeeked, { once: true });
       waitForPresentedFrame();
-      video.currentTime = requestedTime;
+      video.currentTime = expectedFrameTime;
       if (!video.seeking) handleSeeked();
     });
   };

@@ -14,6 +14,10 @@ const storyId = 'components-razorsense-fallback-exporter--exporter';
 const readySelector = '[data-razor-sense-export][data-export-ready="true"]';
 const errorSelector = '[data-export-error]';
 const navigationTimeoutMs = 90_000;
+const transparentPixelPng = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
+  'base64',
+);
 
 const operationalModes = ['neutral', 'typing', 'thinking', 'loading'];
 const emotionalModes = ['calm', 'joyful', 'caution', 'regret'];
@@ -411,6 +415,17 @@ const run = async () => {
       globalThis.__BLADE_VERSION__ = version;
     }, packageMetadata.version);
     await context.route('**/favicon.ico', (route) => route.fulfill({ status: 204, body: '' }));
+    // The production renderer keeps its calibrated still beneath the progressive
+    // video layer. During regeneration those same files have intentionally been
+    // removed, so serve a transparent pixel to keep the capture self-contained
+    // and prevent stale fallback pixels from influencing the new still.
+    await context.route('**/assets/spark/razorsense-stills/*.png', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'image/png',
+        body: transparentPixelPng,
+      }),
+    );
     const page = context.pages()[0] ?? (await context.newPage());
     page.on('pageerror', (error) => pageErrors.push({ type: 'pageerror', message: error.message }));
     page.on('console', (message) => {
