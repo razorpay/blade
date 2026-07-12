@@ -287,34 +287,38 @@ describe('RazorSenseRuntime', () => {
     expect(jest.getTimerCount()).toBe(0);
   });
 
-  it('admits four active registrations while reserving outgoing WebGL capacity', () => {
-    const entries = ([
-      'emotional',
-      'legacy',
-      'emotional',
-      'authored',
-      'authored',
-      'authored',
-    ] as const).map((family, index) =>
-      register(family, makeRect(), index === 3 ? { retainsWebGL: true } : {}),
+  it('charges retained WebGL only when the prioritized registration is admitted', () => {
+    const retained = register('authored', makeRect({ width: 10, height: 10 }), {
+      isInteractive: true,
+      retainsWebGL: true,
+    });
+    const emotional = register('emotional', makeRect({ width: 300, height: 200 }));
+    const legacy = register('legacy', makeRect({ width: 250, height: 200 }));
+    const authoredA = register('authored', makeRect({ width: 200, height: 150 }));
+    const authoredB = register('authored', makeRect({ width: 150, height: 150 }));
+    const entries = [retained, emotional, legacy, authoredA, authoredB];
+    entries.forEach((entry) =>
+      emitIntersection(entry.element, entry.element.getBoundingClientRect(), true),
     );
-    entries.forEach((entry) => emitIntersection(entry.element, makeRect(), true));
 
     expect(window.IntersectionObserver).toHaveBeenCalledTimes(1);
     expect(entries.map((entry) => getSnapshot(entry).isAdmitted)).toEqual([
+      false,
       true,
-      false,
-      false,
       true,
       true,
       true,
     ]);
-    expect(consoleWarn).toHaveBeenCalledTimes(2);
+    expect(consoleWarn).toHaveBeenCalledTimes(1);
 
-    entries[0].registration.unregister();
-    expect(getSnapshot(entries[1]).isAdmitted).toBe(true);
-    expect(getSnapshot(entries[2]).isAdmitted).toBe(false);
-    expect(getSnapshot(entries[5]).isAdmitted).toBe(true);
+    retained.element.dispatchEvent(new Event('pointerenter'));
+    expect(entries.map((entry) => getSnapshot(entry).isAdmitted)).toEqual([
+      true,
+      true,
+      false,
+      true,
+      true,
+    ]);
     expect(consoleWarn).toHaveBeenCalledTimes(2);
   });
 

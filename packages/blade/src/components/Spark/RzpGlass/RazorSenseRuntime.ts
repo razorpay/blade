@@ -332,20 +332,16 @@ class RazorSenseRuntime {
           .filter((entry) => entry.state === 'active')
           .sort(this.compareAdmissionPriority);
         const admittedIds = new Set<number>();
-        let admittedWebGLCount = Math.min(
-          MAX_ADMITTED_WEBGL_INSTANCES,
-          activeCandidates.filter(
-            (entry) => entry.options.retainsWebGL && !isWebGLFamily(entry.options.family),
-          ).length,
-        );
+        let admittedWebGLCount = 0;
 
         for (const entry of activeCandidates) {
           if (admittedIds.size >= MAX_ADMITTED_INSTANCES) break;
-          const isWebGL = isWebGLFamily(entry.options.family);
-          if (isWebGL && admittedWebGLCount >= MAX_ADMITTED_WEBGL_INSTANCES) continue;
+          const consumesWebGL =
+            isWebGLFamily(entry.options.family) || Boolean(entry.options.retainsWebGL);
+          if (consumesWebGL && admittedWebGLCount >= MAX_ADMITTED_WEBGL_INSTANCES) continue;
 
           admittedIds.add(entry.id);
-          if (isWebGL) admittedWebGLCount += 1;
+          if (consumesWebGL) admittedWebGLCount += 1;
         }
 
         const notifications: Array<{

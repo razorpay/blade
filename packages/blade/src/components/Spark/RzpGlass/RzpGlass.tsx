@@ -435,6 +435,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     const readyFamiliesRef = useRef(initialReadyFamilies);
     const [readyFamilies, setReadyFamilies] = useState(initialReadyFamilies);
     const [visibleFamily, setVisibleFamily] = useState(requestedFamily);
+    const familyCleanupGenerationRef = useRef(0);
     const resolvedTransitionDuration =
       modeTransitionDuration ?? (requestedFamily === 'emotional' ? 1 : 0.4);
 
@@ -472,21 +473,36 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     }, [readyFamilies, requestedFamily, visibleFamily]);
 
     useEffect(() => {
-      const outgoingFamily: SemanticRendererFamily =
-        visibleFamily === 'authored' ? 'emotional' : 'authored';
-      if (!mountedFamiliesRef.current[outgoingFamily]) return undefined;
+      const cleanupGeneration = ++familyCleanupGenerationRef.current;
+      if (requestedFamily !== visibleFamily) return undefined;
+      const hasNonVisibleMountedFamily = (['authored', 'emotional'] as const).some(
+        (family) => family !== visibleFamily && mountedFamilies[family],
+      );
+      if (!hasNonVisibleMountedFamily) return undefined;
 
       const timeoutId = window.setTimeout(() => {
-        if (requestedFamilyRef.current !== visibleFamily) return;
-        mountedFamiliesRef.current = {
-          ...mountedFamiliesRef.current,
-          [outgoingFamily]: false,
-        };
-        setMountedFamilies(mountedFamiliesRef.current);
+        if (
+          cleanupGeneration !== familyCleanupGenerationRef.current ||
+          requestedFamilyRef.current !== visibleFamily
+        ) {
+          return;
+        }
+
+        let didChange = false;
+        const nextMountedFamilies = { ...mountedFamiliesRef.current };
+        (['authored', 'emotional'] as const).forEach((family) => {
+          if (family === visibleFamily || family === requestedFamilyRef.current) return;
+          if (!nextMountedFamilies[family]) return;
+          nextMountedFamilies[family] = false;
+          didChange = true;
+        });
+        if (!didChange) return;
+        mountedFamiliesRef.current = nextMountedFamilies;
+        setMountedFamilies(nextMountedFamilies);
       }, resolvedTransitionDuration * 1000 + 80);
 
       return () => window.clearTimeout(timeoutId);
-    }, [resolvedTransitionDuration, visibleFamily]);
+    }, [mountedFamilies, requestedFamily, resolvedTransitionDuration, visibleFamily]);
 
     const widthStyle = typeof width === 'number' ? `${width}px` : width;
     const heightStyle = typeof height === 'number' ? `${height}px` : height;

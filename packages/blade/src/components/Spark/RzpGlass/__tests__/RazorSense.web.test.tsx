@@ -8,6 +8,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { logger } from '~utils/logger';
 
 const mockUseRazorSenseLifecycle = jest.fn();
+const mockDelayedMoodLoads: Array<() => void> = [];
 
 jest.mock('../useRazorSenseLifecycle', () => ({
   useRazorSenseLifecycle: (...args: unknown[]) => mockUseRazorSenseLifecycle(...args),
@@ -58,18 +59,24 @@ jest.mock('../RazorSenseMood', () => {
     RazorSenseMood: ({
       mode,
       paused,
+      assetsPath,
       onLoad,
     }: {
       mode: string;
       paused: boolean;
+      assetsPath?: string;
       onLoad?: () => void;
     }) => {
       const hasLoadedRef = ReactModule.useRef(false);
       ReactModule.useEffect(() => {
         if (hasLoadedRef.current) return;
         hasLoadedRef.current = true;
+        if (assetsPath === '__test_slow_mood__') {
+          mockDelayedMoodLoads.push(() => onLoad?.());
+          return;
+        }
         onLoad?.();
-      }, [onLoad]);
+      }, [assetsPath, onLoad]);
 
       return ReactModule.createElement('div', {
         'data-testid': 'mood-renderer',
@@ -118,6 +125,7 @@ const getLatestRuntimeFamily = (): string => getLatestRuntimeOptions().family;
 describe('<RazorSense />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockDelayedMoodLoads.length = 0;
     mockUseRazorSenseLifecycle.mockReturnValue(ACTIVE_LIFECYCLE);
   });
 
@@ -295,6 +303,47 @@ describe('<RazorSense />', () => {
     });
     expect(getLatestRuntimeFamily()).toBe('authored');
     expect(getLatestRuntimeOptions().retainsWebGL).toBe(false);
+
+    requestAnimationFrame.mockRestore();
+    jest.useRealTimers();
+  });
+
+  it('disposes a slow hidden emotional family when the request returns to authored', async () => {
+    jest.useFakeTimers();
+    const requestAnimationFrame = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((callback) => {
+        callback(0);
+        return 1;
+      });
+
+    const Example = (): React.ReactElement => {
+      const [mode, setMode] = React.useState<'neutral' | 'calm'>('neutral');
+      return (
+        <>
+          <button type="button" onClick={() => setMode('calm')}>
+            Use emotional
+          </button>
+          <button type="button" onClick={() => setMode('neutral')}>
+            Use authored
+          </button>
+          <RazorSense assetsPath="__test_slow_mood__" mode={mode} modeTransitionDuration={0.1} />
+        </>
+      );
+    };
+
+    const { getByRole, getByTestId, queryByTestId } = renderWithTheme(<Example />);
+    fireEvent.click(getByRole('button', { name: 'Use emotional' }));
+    expect(getByTestId('mood-renderer')).toBeInTheDocument();
+    expect(mockDelayedMoodLoads).toHaveLength(1);
+
+    fireEvent.click(getByRole('button', { name: 'Use authored' }));
+    await act(async () => {
+      jest.advanceTimersByTime(180);
+      await Promise.resolve();
+    });
+
+    expect(queryByTestId('mood-renderer')).not.toBeInTheDocument();
 
     requestAnimationFrame.mockRestore();
     jest.useRealTimers();

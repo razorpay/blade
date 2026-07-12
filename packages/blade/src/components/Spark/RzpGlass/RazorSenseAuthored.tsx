@@ -91,7 +91,7 @@ type AuthoredVideoLayerProps = {
   transitionDurationMs: number;
   restoreSnapshot?: LayerPlaybackSnapshot;
   onReady: (layerId: number, readinessGeneration: number) => void;
-  onError: (layerId: number, error: Error) => void;
+  onError: (layerId: number, error: Error, disposition?: 'fatal' | 'recoverable') => void;
 };
 
 const releaseVideo = (video: HTMLVideoElement | null): void => {
@@ -167,6 +167,22 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       preparingKindsRef.current.clear();
     }, []);
 
+    const syncFailedSeamPlayback = useCallback((): void => {
+      if (!secondaryFailedRef.current) return;
+      const primary = primaryRef.current;
+      if (!primary) return;
+
+      if (
+        canPrepareFrameRef.current &&
+        shouldPlayRef.current &&
+        exactReadyVideosRef.current.has('primary')
+      ) {
+        primary.play().catch(() => undefined);
+      } else {
+        primary.pause();
+      }
+    }, []);
+
     const release = useCallback((): void => {
       cancelFrameWaits();
       stopThinkingRaf();
@@ -204,6 +220,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
           !video ||
           targetTime === undefined ||
           !canPrepareFrameRef.current ||
+          (kind === 'secondary' && secondaryFailedRef.current) ||
           exactReadyVideosRef.current.has(kind) ||
           preparingKindsRef.current.has(kind)
         ) {
@@ -232,11 +249,12 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
             }
             exactReadyVideosRef.current.add(kind);
             tryReportReady();
+            if (kind === 'primary') syncFailedSeamPlayback();
           },
         });
         frameWaitCleanupsRef.current.add(cleanup);
       },
-      [layer.colorScheme, layer.mode, tryReportReady],
+      [layer.colorScheme, layer.mode, syncFailedSeamPlayback, tryReportReady],
     );
 
     const prepareVideo = useCallback(
@@ -347,15 +365,15 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
     useLayoutEffect(() => {
       const primary = primaryRef.current;
       const secondary = secondaryRef.current;
-      if (!isExactFrameReady) return;
-
-      primary!.playbackRate = playbackRate;
+      if (primary) primary.playbackRate = playbackRate;
       if (secondary) secondary.playbackRate = playbackRate;
-      if (!shouldPlay || isTerminalRestore) {
+      if (!canPrepareFrame || !shouldPlay || isTerminalRestore) {
         primary?.pause();
         secondary?.pause();
+        if (!canPrepareFrame) cancelFrameWaits();
         return;
       }
+      if (!isExactFrameReady) return;
 
       if (layer.mode !== 'thinking') {
         primary?.play().catch(() => undefined);
@@ -367,7 +385,15 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       runtime.front.play().catch(() => undefined);
       if (runtime.isCrossfading) runtime.back.play().catch(() => undefined);
       else runtime.back.pause();
-    }, [isExactFrameReady, isTerminalRestore, layer.mode, playbackRate, shouldPlay]);
+    }, [
+      canPrepareFrame,
+      cancelFrameWaits,
+      isExactFrameReady,
+      isTerminalRestore,
+      layer.mode,
+      playbackRate,
+      shouldPlay,
+    ]);
 
     useEffect(() => {
       stopThinkingRaf();
@@ -473,6 +499,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
     };
 
     const handleSecondaryError = (): void => {
+      if (secondaryFailedRef.current) return;
       secondaryFailedRef.current = true;
       cancelFrameWaits();
       stopThinkingRaf();
@@ -483,18 +510,20 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       if (primary) {
         primary.loop = true;
         primary.style.opacity = '1';
-        if (shouldPlayRef.current && canPrepareFrameRef.current) {
-          primary.play().catch(() => undefined);
-        } else {
-          primary.pause();
-        }
+        primary.pause();
       }
       if (secondary) {
         secondary.pause();
         secondary.style.opacity = '0';
       }
+      onErrorRef.current(
+        layer.id,
+        new Error(`RazorSense: Failed to load the ${layer.mode} authored seam`),
+        'recoverable',
+      );
       armVideo('primary');
       tryReportReady();
+      syncFailedSeamPlayback();
     };
 
     return (
@@ -1007,7 +1036,11 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     );
 
     const handleLayerError = useCallback(
-      (layerId: number, error: Error): void => {
+      (layerId: number, error: Error, disposition: 'fatal' | 'recoverable' = 'fatal'): void => {
+        if (disposition === 'recoverable') {
+          onErrorRef.current?.(error);
+          return;
+        }
         if (!layersRef.current.some((layer) => layer.id === layerId)) return;
         const capturedComposite = captureCurrentFrame(true);
         failedLayerIdsRef.current.add(layerId);
