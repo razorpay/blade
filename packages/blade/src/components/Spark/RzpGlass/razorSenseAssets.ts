@@ -27,6 +27,15 @@ type RazorSenseAssetRequest = {
   viewport: RazorSenseViewport;
 };
 
+type RazorSenseRepresentativeFrame = {
+  file: string;
+  src: string;
+  phase: number;
+  width: number;
+  height: number;
+  objectPosition: 'center' | 'center bottom';
+};
+
 const createVideoSource = (
   file: string,
   codec: string,
@@ -272,6 +281,21 @@ const joinAssetPath = (assetsPath: string, file: string): string => {
   return normalizedPath ? `${normalizedPath}/${normalizedFile}` : `/${normalizedFile}`;
 };
 
+const getRazorSenseRepresentativeFrame = (
+  request: RazorSenseAssetRequest,
+): RazorSenseRepresentativeFrame => {
+  const asset = getRazorSenseAsset(request);
+
+  return {
+    file: asset.representativeFrameFile,
+    src: joinAssetPath(request.assetsPath, asset.representativeFrameFile),
+    phase: asset.representativePhase,
+    width: asset.fallbackSource.width,
+    height: asset.fallbackSource.height,
+    objectPosition: request.mode === 'typing' ? 'center bottom' : 'center',
+  };
+};
+
 const getRazorSenseFallbackVideoSource = (
   request: RazorSenseAssetRequest,
 ): { src: string; source: RazorSenseVideoSource } => {
@@ -339,8 +363,15 @@ const selectRazorSenseVideoSource = async (
 export {
   getRazorSenseAsset,
   getRazorSenseFallbackVideoSource,
+  getRazorSenseRepresentativeFrame,
   joinAssetPath,
   selectRazorSenseVideoSource,
 };
 
-export type { RazorSenseAsset, RazorSenseAssetRequest, RazorSenseVideoSource, RazorSenseViewport };
+export type {
+  RazorSenseAsset,
+  RazorSenseAssetRequest,
+  RazorSenseRepresentativeFrame,
+  RazorSenseVideoSource,
+  RazorSenseViewport,
+};
