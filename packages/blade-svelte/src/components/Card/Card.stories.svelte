@@ -7,12 +7,26 @@
     component: Card,
     tags: ['autodocs'],
     argTypes: {
+      children: {
+        control: false,
+        table: { disable: true },
+      },
+      variant: {
+        control: 'radio',
+        options: ['primary', 'secondary', 'theme'],
+      },
       backgroundColor: {
         control: 'select',
         options: [
           'surface.background.gray.intense',
           'surface.background.gray.moderate',
           'surface.background.gray.subtle',
+          'surface.background.primary.subtle',
+          'surface.background.primary.intense',
+          'surface.background.sea.subtle',
+          'surface.background.sea.intense',
+          'surface.background.cloud.subtle',
+          'surface.background.cloud.intense',
         ],
       },
       borderRadius: {
@@ -25,7 +39,8 @@
       },
     },
     args: {
-      backgroundColor: 'surface.background.gray.intense',
+      variant: 'theme',
+      backgroundColor: 'surface.background.primary.subtle',
       borderRadius: 'medium',
       padding: 'spacing.7',
     },
@@ -33,6 +48,12 @@
 </script>
 
 <script lang="ts">
+  import TicketCard from './TicketCard.svelte';
+  import TicketCardBody from './TicketCardBody.svelte';
+  import TicketCardFooter from './TicketCardFooter.svelte';
+  import InfoCard from './InfoCard.svelte';
+  import InfoCardBody from './InfoCardBody.svelte';
+  import InfoCardFooter from './InfoCardFooter.svelte';
   import CardBody from './CardBody.svelte';
   import CardHeader from './CardHeader.svelte';
   import CardHeaderLeading from './CardHeaderLeading.svelte';
@@ -47,19 +68,80 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
-  import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon } from '../Icons';
+  import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
+  import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
+  import type { CardSpacingValueType } from './types';
+
+  type CardStoryArgs = {
+    variant?: 'primary' | 'secondary' | 'theme';
+    backgroundColor?: CardBackgroundColor;
+    borderRadius?: 'medium' | 'large' | 'xlarge';
+    padding?: CardSpacingValueType;
+  };
+
+  type CardSurfaceArgs =
+    | { variant?: 'primary' | 'secondary'; backgroundColor?: never; borderRadius?: 'medium' | 'large' | 'xlarge'; padding?: CardSpacingValueType }
+    | { variant: 'theme'; backgroundColor?: CardBackgroundColor; borderRadius?: 'medium' | 'large' | 'xlarge'; padding?: CardSpacingValueType };
+
+  function getCardSurfaceProps(args: CardStoryArgs): CardSurfaceArgs {
+    const common = { borderRadius: args.borderRadius, padding: args.padding };
+    if (args.variant === 'theme') {
+      return { ...common, variant: 'theme', backgroundColor: args.backgroundColor };
+    }
+    // The Playground only exercises the standard surface treatments; TicketCard and InfoCard have
+    // their own dedicated stories.
+    const standardVariant = args.variant === 'secondary' ? 'secondary' : 'primary';
+    return { ...common, variant: standardVariant };
+  }
 </script>
 
+<!-- Playground — args-driven; Controls panel updates Card surface props -->
 <Story name="Playground">
   {#snippet template(args)}
-    {@const { children: _, ...rest } = args}
-    <Card {...rest} width="400px">
-      <CardBody>
-        <Text>
-          Card playground — tweak background, padding, and border radius via controls.
-        </Text>
-      </CardBody>
-    </Card>
+    <div
+      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+    >
+      <Card {...getCardSurfaceProps(args)}>
+        <CardHeader>
+          <CardHeaderLeading
+            title="Payment Links"
+            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+          >
+            {#snippet prefix()}
+              <CardHeaderIcon icon={CreditCardIcon} />
+            {/snippet}
+            {#snippet suffix()}
+              <CardHeaderCounter value={12} />
+            {/snippet}
+          </CardHeaderLeading>
+          <CardHeaderTrailing>
+            {#snippet visual()}
+              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+            {/snippet}
+          </CardHeaderTrailing>
+        </CardHeader>
+        <CardBody>
+          <Text>
+            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+          <CardFooterTrailing
+            actions={{
+              primary: {
+                text: 'Learn More',
+                onClick: () => console.log('Primary Action Clicked'),
+              },
+              secondary: {
+                text: 'Try Demo',
+                onClick: () => console.log('Secondary Action Clicked'),
+              },
+            }}
+          />
+        </CardFooter>
+      </Card>
+    </div>
   {/snippet}
 </Story>
 
@@ -397,7 +479,6 @@
 <!-- Story 6: Metric Card Variant -->
 <Story name="Metric Card Variant" asChild>
   <Card
-    backgroundColor="surface.background.gray.intense"
     maxWidth="500px"
     minWidth="300px"
     padding="spacing.5"
@@ -499,5 +580,158 @@
         </Text>
       </CardBody>
     </Card>
+  </div>
+</Story>
+
+<!-- Story 8: Card Types — primary / secondary / theme treatments -->
+<Story name="Card Types" asChild>
+  <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+    <Card variant="primary" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Primary Card"
+          subtitle="Elevated styling with surface.background.gray.intense background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>variant="primary" uses gradients and drop shadow. backgroundColor is ignored.</Text>
+      </CardBody>
+    </Card>
+
+    <Card variant="secondary" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Secondary Card"
+          subtitle="Flat styling with surface.background.gray.moderate background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>variant="secondary" is flat with no elevation. backgroundColor is ignored.</Text>
+      </CardBody>
+    </Card>
+
+    <Card variant="theme" backgroundColor="surface.background.cloud.subtle" maxWidth="500px">
+      <CardHeader showDivider={false}>
+        <CardHeaderLeading
+          title="Theme Card"
+          subtitle="Elevated styling with surface.background.cloud.subtle background"
+        />
+      </CardHeader>
+      <CardBody>
+        <Text>variant="theme" matches primary elevation with a custom backgroundColor (cloud subtle here).</Text>
+      </CardBody>
+    </Card>
+  </div>
+</Story>
+
+<!-- Story 9: Order Summary — order item with SKU image, details, and pricing -->
+<Story name="Order Summary" asChild>
+  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+    <Card maxWidth="380px" size="medium">
+      <CardHeader>
+        <CardHeaderLeading title="Order summary" />
+        <CardHeaderTrailing>
+          {#snippet visual()}
+            <CardHeaderIconButton
+              icon={ChevronRightIcon}
+              accessibilityLabel="View order summary"
+              onClick={() => console.log('Order summary clicked')}
+            />
+          {/snippet}
+        </CardHeaderTrailing>
+      </CardHeader>
+      <CardBody>
+        <div style="display: flex; flex-direction: row; gap: var(--spacing-4); align-items: flex-start;">
+          <img
+            width="48"
+            height="48"
+            src="https://images.unsplash.com/photo-1545127398-14699f92334b?w=96&h=96&fit=crop"
+            alt="boAt XP345 Headphones"
+            style="flex-shrink: 0; border-radius: var(--border-radius-medium); object-fit: cover; background-color: var(--surface-background-gray-intense);"
+          />
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-1);">
+            <Text weight="semibold" size="medium" color="surface.text.gray.normal">
+              boAt XP345 Headphones
+            </Text>
+            <Text size="small" color="surface.text.gray.subtle">
+              Qty.1 • Black • XL
+            </Text>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: var(--spacing-1); flex-shrink: 0;">
+            <Amount value={1149} fractionDigits={0} weight="semibold" size="large" />
+            <Amount
+              value={4660}
+              fractionDigits={0}
+              isStrikethrough
+              color="surface.text.gray.subtle"
+              size="small"
+            />
+          </div>
+        </div>
+      </CardBody>
+    </Card>
+  </div>
+</Story>
+
+<!-- Reusable renderers for the sectioned-variant showcase stories below. Defined at component
+     top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
+{#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
+  <TicketCard width="280px" {isSelected} {isDisabled}>
+    <TicketCardBody>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+      </div>
+    </TicketCardBody>
+    <TicketCardFooter>
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <div style="display: flex; flex-direction: column;">
+          <Text size="small" color="surface.text.gray.subtle">Seat</Text>
+          <Text weight="semibold">A-24</Text>
+        </div>
+        <Amount value={4999} type="body" weight="semibold" />
+      </div>
+    </TicketCardFooter>
+  </TicketCard>
+{/snippet}
+
+{#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
+  <InfoCard width="280px" {isSelected} {isDisabled}>
+    <InfoCardBody>
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+      </div>
+    </InfoCardBody>
+    <InfoCardFooter>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <Text size="small" color="surface.text.gray.subtle">Venue</Text>
+        <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+      </div>
+    </InfoCardFooter>
+  </InfoCard>
+{/snippet}
+
+<!-- Story 10: Ticket Card — two sections split by a scalloped, notched tear line.
+     Compose with `TicketCardBody` and `TicketCardFooter`. -->
+<Story name="Ticket Card" asChild>
+  <div
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+  >
+    {@render ticketCard('Default', false, false)}
+    {@render ticketCard('Selected', true, false)}
+    {@render ticketCard('Disabled', false, true)}
+  </div>
+</Story>
+
+<!-- Story 11: Info Card — emphasized header over subtle body inside single rounded border.
+     Compose with `InfoCardBody` and `InfoCardFooter`. -->
+<Story name="Info Card" asChild>
+  <div
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+  >
+    {@render infoCard('Default', false, false)}
+    {@render infoCard('Selected', true, false)}
+    {@render infoCard('Disabled', false, true)}
   </div>
 </Story>
