@@ -160,7 +160,7 @@ const renderValue = (
       weight="medium"
       color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal'}
     >
-      {value as string}
+      {typeof value === 'string' ? value : ''}
     </Text>
   );
 };
@@ -173,6 +173,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
     isDisabled,
     selectionType = 'single',
     onClick,
+    onKeyDown,
     accessibilityProps,
     id,
     ...rest
@@ -209,6 +210,14 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
                 onClick?.(e);
               }
         }
+        {...({
+          onKeyDown: isDisabled
+            ? undefined
+            : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              (e: any) => {
+                onKeyDown?.(e);
+              },
+        } as any)}
         {...makeAccessible({
           ...accessibilityProps,
           role: accessibilityProps?.role ?? 'button',
@@ -237,7 +246,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton
             {...makeAccessible({ label: `Clear ${label} value`, role: 'button' })}
-            onPress={isDisabled ? undefined : () => onClearButtonClick?.({ value: value ?? '' })}
+            onPress={isDisabled ? undefined : () => onClearButtonClick?.()}
             disabled={isDisabled}
             {...metaAttribute({ name: 'filter-chip-close-button' })}
           >

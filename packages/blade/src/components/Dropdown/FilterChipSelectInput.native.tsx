@@ -16,7 +16,7 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'value' | 'label' | 'testID' | 'onClick' | 'selectionType'
+  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
@@ -29,6 +29,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const idBase = useId('filter-chip-select-input');
   const {
     onClick,
+    onBlur,
+    onKeyDown,
     accessibilityLabel,
     testID,
     value,
@@ -46,6 +48,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     options,
     selectedIndices,
     onTriggerClick,
+    onTriggerKeydown,
     dropdownBaseId,
     isOpen,
     activeIndex,
@@ -57,7 +60,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     controlledValueIndices,
     changeCallbackTriggerer,
   } = useDropdown();
-  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
+  const valueTitle =
+    typeof value === 'string' ? (options.find((option) => option.value === value)?.title ?? value) : undefined;
 
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
@@ -74,7 +78,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       indices = selectedIndices;
     }
 
-    return indices.map((selectionIndex) => options[selectionIndex].value);
+    return indices.map((i) => options[i]?.value).filter((v): v is string => v !== undefined);
   };
 
   useEffect(() => {
@@ -99,7 +103,9 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       if (listViewSelectedFilters[label]) {
         const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(savedIndices);
-        const inputValue = savedIndices.map((selectionIndex) => options[selectionIndex].value);
+        const inputValue = savedIndices
+          .map((i) => options[i]?.value)
+          .filter((v): v is string => v !== undefined);
         setUncontrolledInputValue(inputValue);
         setFilterChipGroupSelectedFilters((prev) =>
           prev.includes(label) ? prev : [...prev, label],
@@ -120,7 +126,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       setSelectedIndices(newSelectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled, options]);
+  }, [isUnControlled, options, value]);
 
   const getTitleFromValue = (value: string): string => {
     const option = options.find((option) => option.value === value);
@@ -138,8 +144,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   };
 
   const handleClearButtonClick = (): void => {
-    const indices = isControlled ? controlledValueIndices : selectedIndices;
-    const currentValues = indices.map((selectionIndex) => options[selectionIndex].value);
+    const currentValues = getValuesArrayFromIndices();
     onClearButtonClick?.({ name: name ?? idBase, values: currentValues });
     onChange?.({ name: name ?? idBase, values: [] });
     setFilterChipGroupSelectedFilters((prev) => prev.filter((filter) => filter !== label));
@@ -189,6 +194,22 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCallbackTriggerer]);
 
+  const handleKeyDown = (e: React.KeyboardEvent<Element>): void => {
+    onKeyDown?.(e);
+    onTriggerKeydown?.({ event: e as React.KeyboardEvent<HTMLInputElement> });
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+      e.preventDefault();
+      e.stopPropagation();
+      onTriggerClick();
+    }
+  };
+
   return (
     <BaseFilterChip
       label={label}
@@ -198,6 +219,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       {...rest}
       testID={testID}
       ref={triggererRef as any}
+      onKeyDown={handleKeyDown}
       accessibilityProps={{
         label: accessibilityLabel ?? label,
         hasPopup: getActionListContainerRole(hasFooterAction, 'FilterChipSelectInput'),
@@ -208,6 +230,9 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       onClick={(e) => {
         onTriggerClick();
         onClick?.(e);
+      }}
+      onBlur={(e) => {
+        onBlur?.(e);
       }}
       isDisabled={isDisabled}
     />

@@ -12,7 +12,7 @@ type BaseFilterChipProps = {
   /**
    * Change handler when FilterChip's value is cleared
    */
-  onClearButtonClick?: ({ value }: { value: string | string[] }) => void;
+  onClearButtonClick?: (props?: { value: string | string[] }) => void;
 
   /**
    * Children. Title of the Chip
