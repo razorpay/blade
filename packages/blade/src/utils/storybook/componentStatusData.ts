@@ -1355,6 +1355,21 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'RazorSense',
+    description:
+      'Declarative motion-state system for semantic product intent, branded presets, and authored journeys.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/RazorSense',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };

@@ -9,6 +9,7 @@
     "**/**.web.tsx",
     "**/**.web.test.ts",
     "**/**.web.test.tsx",
+    "**/**.web.ssr.test.tsx",
     "**/ThemePlayground/**/**.tsx",
     "**/utils/storybook/**",
     "**/storybook-recipes/**",
