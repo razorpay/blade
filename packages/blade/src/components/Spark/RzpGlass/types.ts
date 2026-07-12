@@ -249,7 +249,6 @@ type LegacyRzpGlassProps = RzpGlassCommonProps &
     isInteractive?: never;
     accessibilityLabel?: never;
     modeTransitionDuration?: never;
-    interactive?: never;
     /**
      * Named preset that provides a base configuration.
      * Any explicit props you pass will override the preset values.
@@ -271,7 +270,7 @@ type SemanticRazorSenseProps = RzpGlassCommonProps &
   StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute &
-  Pick<RzpGlassPlaybackConfig, 'paused' | 'startTime' | 'endTime' | 'playbackRate'> & {
+  Pick<RzpGlassPlaybackConfig, 'startTime' | 'endTime' | 'playbackRate'> & {
     /**
      * Semantic RazorSense state.
      *
@@ -281,16 +280,14 @@ type SemanticRazorSenseProps = RzpGlassCommonProps &
      */
     mode?: RazorSenseMode;
     preset?: never;
-    /** Whether RazorSense motion is paused (default: false). Takes precedence over `paused`. */
+    /** Whether RazorSense motion is paused (default: false). */
     isPaused?: boolean;
-    /** Whether emotional modes respond to pointer input (default: true). Takes precedence over `interactive`. */
+    /** Whether emotional modes respond to pointer input (default: true). */
     isInteractive?: boolean;
     /** Accessible name for a meaningful RazorSense visual. Omit for decorative usage. */
     accessibilityLabel?: string;
     /** Duration in seconds for semantic state transitions (1s emotional, 0.4s operational). */
     modeTransitionDuration?: number;
-    /** Enables the delayed pointer liquify response in emotional modes (default: true). */
-    interactive?: boolean;
   };
 
 type RzpGlassProps = LegacyRzpGlassProps | SemanticRazorSenseProps;

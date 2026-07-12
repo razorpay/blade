@@ -451,6 +451,10 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyInternalProps>(function 
 type SemanticRendererFamily = 'authored' | 'emotional';
 
 type SemanticRazorSenseInternalProps = SemanticRazorSenseProps & {
+  /** @internal Resolved pause state from the presentation host. */
+  paused?: boolean;
+  /** @internal Resolved interactive state from the presentation host. */
+  interactive?: boolean;
   /** @internal Prioritizes an incoming renderer without increasing global caps. */
   runtimePriority?: number;
   /** @internal A new identity replays the same semantic target without remounting its renderer. */
@@ -479,12 +483,10 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseInternal
       assetsPath,
       modeTransitionDuration,
       isPaused,
-      paused,
       playbackRate = 1,
       startTime = 0,
       endTime,
       isInteractive,
-      interactive,
       accessibilityLabel,
       testID,
       onLoad,
@@ -497,8 +499,8 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseInternal
       runtimePriority,
     } = props;
     const { colorScheme } = useTheme();
-    const resolvedIsPaused = isPaused ?? paused ?? false;
-    const resolvedIsInteractive = isInteractive ?? interactive ?? true;
+    const resolvedIsPaused = isPaused ?? false;
+    const resolvedIsInteractive = isInteractive ?? true;
     const requestedFamily = getSemanticRendererFamily(mode);
     const requestedFamilyRef = useRef(requestedFamily);
     requestedFamilyRef.current = requestedFamily;

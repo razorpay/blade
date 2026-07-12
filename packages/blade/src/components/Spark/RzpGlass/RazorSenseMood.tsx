@@ -56,6 +56,10 @@ const MOBILE_BASE_COLORS: Record<ColorSchemeNames, Record<RazorSenseEmotionalMod
 
 type RazorSenseMoodProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseEmotionalMode;
+  /** @internal Resolved pause state from the parent semantic component. */
+  paused?: boolean;
+  /** @internal Resolved interactive state from the parent semantic component. */
+  interactive?: boolean;
   /** @internal Shared runtime lifecycle. Direct internal renderers default to active. */
   runtimeState?: RazorSenseLifecycleState;
   /** @internal Shared runtime admission. Direct internal renderers default to admitted. */

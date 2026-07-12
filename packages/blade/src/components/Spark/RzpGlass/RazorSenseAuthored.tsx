@@ -37,6 +37,8 @@ const OUTGOING_LAYER_DISPOSAL_BUFFER_MS = 80;
 
 type RazorSenseAuthoredProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseOperationalMode;
+  /** @internal Resolved pause state from the parent semantic component. */
+  paused?: boolean;
   /** @internal Shared runtime lifecycle. Direct internal renderers default to active. */
   runtimeState?: RazorSenseLifecycleState;
   /** @internal Shared runtime admission. Direct internal renderers default to admitted. */

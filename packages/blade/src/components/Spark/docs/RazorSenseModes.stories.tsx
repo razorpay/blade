@@ -485,7 +485,7 @@ export const FourModes: StoryFn<typeof RazorSenseComponent> = () => (
               assetsPath="/assets/spark"
               width="100%"
               height="100%"
-              interactive={false}
+              isInteractive={false}
             />
           </Box>
         </Box>
@@ -515,9 +515,9 @@ export const PhaseCalibration: StoryFn<typeof RazorSenseComponent> = () => (
               assetsPath="/assets/spark"
               width="100%"
               height="100%"
-              paused
+              isPaused
               startTime={REPRESENTATIVE_MODE_TIMES[mode]}
-              interactive={false}
+              isInteractive={false}
             />
           </Box>
         </Box>
@@ -545,7 +545,7 @@ export const InteractionCalibration: StoryFn<typeof RazorSenseComponent> = () =>
           assetsPath="/assets/spark"
           width="100%"
           height="100%"
-          paused
+          isPaused
           startTime={REPRESENTATIVE_MODE_TIMES.calm}
         />
       </Box>
@@ -581,7 +581,7 @@ export const OperationalStates: StoryFn<typeof RazorSenseComponent> = () => (
               assetsPath="/assets/spark"
               width="100%"
               height="100%"
-              interactive={false}
+              isInteractive={false}
             />
           </Box>
         </Box>
@@ -608,7 +608,7 @@ export const ThinkingLifecycle: StoryFn<typeof RazorSenseComponent> = () => {
           assetsPath="/assets/spark"
           width="100%"
           height="100%"
-          paused={paused}
+          isPaused={paused}
         />
         <button
           type="button"

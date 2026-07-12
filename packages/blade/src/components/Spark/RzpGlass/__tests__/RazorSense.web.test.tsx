@@ -204,8 +204,8 @@ describe('<RazorSense />', () => {
     expect(RzpGlassMount).not.toHaveBeenCalled();
   });
 
-  it('uses canonical pause state over its alias and defaults omitted mode to Neutral', async () => {
-    const canonicalTrue = renderWithTheme(<RazorSense paused={false} isPaused={true} />);
+  it('respects isPaused and defaults omitted mode to Neutral', async () => {
+    const canonicalTrue = renderWithTheme(<RazorSense isPaused={true} />);
 
     expect(getRazorSenseHost(canonicalTrue.container)).toHaveAttribute(
       'data-razor-sense-mode',
@@ -214,7 +214,7 @@ describe('<RazorSense />', () => {
     expect(canonicalTrue.getByTestId('authored-renderer')).toHaveAttribute('data-paused', 'true');
     canonicalTrue.unmount();
 
-    const canonicalFalse = renderWithTheme(<RazorSense paused={true} isPaused={false} />);
+    const canonicalFalse = renderWithTheme(<RazorSense isPaused={false} />);
     await waitFor(() =>
       expect(canonicalFalse.getByTestId('authored-renderer')).toHaveAttribute(
         'data-paused',
@@ -223,17 +223,17 @@ describe('<RazorSense />', () => {
     );
   });
 
-  it('uses canonical interactivity over its alias', () => {
-    const canonicalTrue = renderWithTheme(<RazorSense interactive={false} isInteractive={true} />);
+  it('respects isInteractive prop', () => {
+    const interactiveTrue = renderWithTheme(<RazorSense isInteractive={true} />);
 
-    expect(canonicalTrue.getByTestId('authored-renderer')).toHaveAttribute(
+    expect(interactiveTrue.getByTestId('authored-renderer')).toHaveAttribute(
       'data-interactive',
       'true',
     );
-    canonicalTrue.unmount();
+    interactiveTrue.unmount();
 
-    const canonicalFalse = renderWithTheme(<RazorSense interactive={true} isInteractive={false} />);
-    expect(canonicalFalse.getByTestId('authored-renderer')).toHaveAttribute(
+    const interactiveFalse = renderWithTheme(<RazorSense isInteractive={false} />);
+    expect(interactiveFalse.getByTestId('authored-renderer')).toHaveAttribute(
       'data-interactive',
       'false',
     );

@@ -78,7 +78,7 @@ type RazorSenseFixtureProps = {
   mode: RazorSenseMode;
   width: string;
   height: string;
-  interactive?: boolean;
+  isInteractive?: boolean;
   modeTransitionDuration?: number;
   onLoad?: () => void;
 };
@@ -87,7 +87,7 @@ const RazorSenseFixture = ({
   mode,
   width,
   height,
-  interactive,
+  isInteractive,
   modeTransitionDuration,
   onLoad,
 }: RazorSenseFixtureProps): ReactElement => (
@@ -97,7 +97,7 @@ const RazorSenseFixture = ({
       assetsPath={ASSETS_PATH}
       width={width}
       height={height}
-      interactive={interactive}
+      isInteractive={isInteractive}
       modeTransitionDuration={modeTransitionDuration}
       onLoad={onLoad}
     />
@@ -205,7 +205,7 @@ export const FourVisibleMixedInstances: StoryFn<typeof RazorSenseComponent> = ()
             mode={mode}
             width="560px"
             height="280px"
-            interactive={false}
+            isInteractive={false}
             onLoad={() => markReady(mode)}
           />
         ))}
@@ -234,7 +234,7 @@ export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => 
               mode={mode}
               width="560px"
               height="280px"
-              interactive={false}
+              isInteractive={false}
               onLoad={() => {
                 visibleReadiness.markReady(mode);
                 fullReadiness.markReady(`above-${mode}`);
@@ -255,7 +255,7 @@ export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => 
               mode={mode}
               width="560px"
               height="240px"
-              interactive={false}
+              isInteractive={false}
               onLoad={() => fullReadiness.markReady(`below-${mode}`)}
             />
           ))}
@@ -280,7 +280,7 @@ export const RapidOperationalChanges: StoryFn<typeof RazorSenseComponent> = () =
         mode={mode}
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
-        interactive={false}
+        isInteractive={false}
         modeTransitionDuration={0.08}
         onLoad={() => setIsReady(true)}
       />
@@ -303,7 +303,7 @@ export const RapidEmotionalChanges: StoryFn<typeof RazorSenseComponent> = () => 
         mode={mode}
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
-        interactive={false}
+        isInteractive={false}
         modeTransitionDuration={0.12}
         onLoad={() => setIsReady(true)}
       />
@@ -338,7 +338,7 @@ const ProviderAppearanceSurface = (): ReactElement => {
         mode="neutral"
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
-        interactive={false}
+        isInteractive={false}
         modeTransitionDuration={0.2}
         onLoad={() => setIsReady(true)}
       />
@@ -374,14 +374,14 @@ export const PageVisibility: StoryFn<typeof RazorSenseComponent> = () => {
             mode="neutral"
             width="560px"
             height="600px"
-            interactive={false}
+            isInteractive={false}
             onLoad={() => markReady('neutral')}
           />
           <RazorSenseFixture
             mode="calm"
             width="560px"
             height="600px"
-            interactive={false}
+            isInteractive={false}
             onLoad={() => markReady('calm')}
           />
         </Box>

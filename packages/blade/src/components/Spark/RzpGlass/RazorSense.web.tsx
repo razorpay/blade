@@ -272,9 +272,9 @@ const ControlledRazorSense = forwardRef<
 
   useIsomorphicLayoutEffect(() => {
     if (isControllerOwned) return;
-    if (runtimeProps.isPaused ?? runtimeProps.paused) controller.pause();
+    if (runtimeProps.isPaused) controller.pause();
     else controller.resume();
-  }, [controller, isControllerOwned, runtimeProps.isPaused, runtimeProps.paused]);
+  }, [controller, isControllerOwned, runtimeProps.isPaused]);
 
   useEffect(() => {
     const generation = ++lifecycleGenerationRef.current;
@@ -292,9 +292,7 @@ const ControlledRazorSense = forwardRef<
   const program = getRazorSenseProgram(target);
   const visualMode = 'visualMode' in program ? program.visualMode : undefined;
   const hasAccessibilityLabel = Boolean(props.accessibilityLabel);
-  const resolvedIsInteractive =
-    props.isInteractive ??
-    (typeof runtimeProps.interactive === 'boolean' ? runtimeProps.interactive : true);
+  const resolvedIsInteractive = props.isInteractive ?? true;
 
   return (
     <BaseBox
