@@ -69,12 +69,19 @@ function createProgram(
   }
 
   const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
+  if (!vertexShader) return null;
   const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
-
-  if (!vertexShader || !fragmentShader) return null;
+  if (!fragmentShader) {
+    gl.deleteShader(vertexShader);
+    return null;
+  }
 
   const program = gl.createProgram();
-  if (!program) return null;
+  if (!program) {
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+    return null;
+  }
 
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
@@ -120,6 +127,7 @@ function setupFullscreenQuad(
 ): FullscreenQuadBuffers | null {
   // Position attribute
   const positionLocation = gl.getAttribLocation(program, positionAttr);
+  if (positionLocation < 0) return null;
   const positionBuffer = gl.createBuffer();
   if (!positionBuffer) return null;
 
@@ -130,8 +138,15 @@ function setupFullscreenQuad(
 
   // UV attribute
   const uvLocation = gl.getAttribLocation(program, uvAttr);
+  if (uvLocation < 0) {
+    gl.deleteBuffer(positionBuffer);
+    return null;
+  }
   const uvBuffer = gl.createBuffer();
-  if (!uvBuffer) return null;
+  if (!uvBuffer) {
+    gl.deleteBuffer(positionBuffer);
+    return null;
+  }
 
   gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, FULLSCREEN_QUAD_UVS, gl.STATIC_DRAW);
@@ -188,6 +203,7 @@ class Texture {
     this.flipY = params.flipY ?? true;
 
     this.texture = gl.createTexture();
+    if (!this.texture) throw new Error('RazorSense: Failed to create a WebGL texture');
     this.bind();
     this.setParameters();
   }

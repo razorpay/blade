@@ -96,7 +96,7 @@ class RazorSenseMoodMount {
   private gl: WebGLRenderingContext | null = null;
   private program: WebGLProgram | null = null;
   private buffers: FullscreenQuadBuffers | null = null;
-  private readonly uniformLocations: Record<string, WebGLUniformLocation | null> = {};
+  private uniformLocations: Record<string, WebGLUniformLocation | null> = {};
   private readonly placeholderTextures: Texture[] = [];
   private trailTexture: Texture | null = null;
   private trailLifeFrames = 0;
@@ -127,6 +127,7 @@ class RazorSenseMoodMount {
   private pendingCaptures: PendingCapture[] = [];
   private modeGeneration = 0;
   private lifecycleGeneration = 0;
+  private attemptGeneration = 0;
   private hasPresentedFirstFrame = false;
   private hasReportedUnexpectedContextLoss = false;
   private intentionalContextLoss = false;
@@ -162,36 +163,39 @@ class RazorSenseMoodMount {
   async loadAssets(): Promise<void> {
     if (!this.canOwnMedia()) return;
     const generation = ++this.modeGeneration;
-    let slot: MoodSlot;
+    const attemptGeneration = this.beginAttempt();
     try {
-      slot = await this.ensureModeLoaded(this.options.mode);
-    } catch (error: unknown) {
+      const slot = await this.ensureModeLoaded(this.options.mode);
+      if (this.disposed || generation !== this.modeGeneration) return;
+
+      const isExactFrameReady = await this.seekSlot(
+        this.options.mode,
+        slot,
+        this.options.startTime,
+        generation,
+      );
+      if (!isExactFrameReady || this.disposed || generation !== this.modeGeneration) return;
+
+      if (this.shouldOwnRenderer()) {
+        this.ensureRenderer();
+        this.attachSlotTexture(this.options.mode, slot);
+        slot.isDirty = true;
+        this.draw(performance.now(), false);
+      }
+      this.syncVideoPlayback();
+    } catch (cause: unknown) {
       if (
-        error instanceof MoodLoadCancelledError ||
+        cause instanceof MoodLoadCancelledError ||
         this.disposed ||
         generation !== this.modeGeneration
       ) {
         return;
       }
+      const error = cause instanceof Error ? cause : new Error(String(cause));
+      this.releaseRendererAfterFailure();
+      this.reportAttemptError(attemptGeneration, error);
       throw error;
     }
-    if (this.disposed || generation !== this.modeGeneration) return;
-
-    const isExactFrameReady = await this.seekSlot(
-      this.options.mode,
-      slot,
-      this.options.startTime,
-      generation,
-    );
-    if (!isExactFrameReady || this.disposed || generation !== this.modeGeneration) return;
-
-    if (this.shouldOwnRenderer()) {
-      this.ensureRenderer();
-      this.attachSlotTexture(this.options.mode, slot);
-      slot.isDirty = true;
-      this.draw(performance.now(), false);
-    }
-    this.syncVideoPlayback();
   }
 
   async setMode(mode: RazorSenseEmotionalMode): Promise<void> {
@@ -215,6 +219,7 @@ class RazorSenseMoodMount {
       this.pendingFrameReady = null;
       return;
     }
+    const attemptGeneration = this.beginAttempt();
 
     try {
       const slot = await this.ensureModeLoaded(mode);
@@ -267,8 +272,9 @@ class RazorSenseMoodMount {
     } catch (cause: unknown) {
       if (this.disposed || generation !== this.modeGeneration) return;
       if (cause instanceof MoodLoadCancelledError) return;
+      this.releaseRendererAfterFailure();
       this.reportAttemptError(
-        generation,
+        attemptGeneration,
         cause instanceof Error ? cause : new Error(String(cause)),
       );
     }
@@ -345,6 +351,7 @@ class RazorSenseMoodMount {
   ): Promise<LifecycleResult> {
     if (this.disposed) return { didCapture: false, didPresent: false };
     const generation = ++this.lifecycleGeneration;
+    const attemptGeneration = this.beginAttempt();
     const shouldReleaseRenderer =
       runtimeState === 'warm' ||
       runtimeState === 'dormant' ||
@@ -353,7 +360,16 @@ class RazorSenseMoodMount {
     let didCapture = false;
 
     if ((runtimeState === 'suspended' || shouldReleaseRenderer) && captureTarget) {
-      didCapture = await this.captureFrame(captureTarget);
+      try {
+        didCapture = await this.captureFrame(captureTarget);
+      } catch (cause: unknown) {
+        this.releaseRendererAfterFailure();
+        this.reportAttemptError(
+          attemptGeneration,
+          cause instanceof Error ? cause : new Error(String(cause)),
+        );
+        return { didCapture: false, didPresent: false };
+      }
       if (this.disposed || generation !== this.lifecycleGeneration) {
         return { didCapture, didPresent: false };
       }
@@ -376,72 +392,73 @@ class RazorSenseMoodMount {
       return { didCapture, didPresent: false };
     }
 
-    let slot: MoodSlot;
     try {
-      slot = await this.ensureModeLoaded(this.options.mode);
+      const slot = await this.ensureModeLoaded(this.options.mode);
+      if (this.disposed || generation !== this.lifecycleGeneration) {
+        return { didCapture, didPresent: false };
+      }
+
+      const modeGeneration = ++this.modeGeneration;
+      if (slot.isPrepared && this.options.onFrameReady) {
+        const source = getRazorSenseAsset({
+          assetsPath: this.options.assetsPath,
+          mode: this.options.mode,
+          colorScheme: this.options.colorScheme,
+          viewport: 'desktop',
+        }).fallbackSource;
+        this.pendingFrameReady = {
+          generation: modeGeneration,
+          mode: this.options.mode,
+          targetTime: slot.video.currentTime,
+          frameDuration: 1 / Math.max(1, source.framerate),
+        };
+        slot.isDirty = true;
+        slot.lastUploadedTime = -1;
+      }
+      const isExactFrameReady = slot.isPrepared
+        ? true
+        : await this.seekSlot(this.options.mode, slot, this.options.startTime, modeGeneration);
+      if (
+        !isExactFrameReady ||
+        this.disposed ||
+        generation !== this.lifecycleGeneration ||
+        modeGeneration !== this.modeGeneration
+      ) {
+        return { didCapture, didPresent: false };
+      }
+
+      this.currentWeights = oneHotMode(this.options.mode);
+      this.transitionStartWeights = [...this.currentWeights];
+      this.transitionTargetWeights = [...this.currentWeights];
+      this.transitionActive = false;
+      this.releaseZeroWeightSlots();
+
+      if (runtimeState === 'warm') {
+        this.pauseAndCancelAllVideoCallbacks();
+        this.releaseRenderer(true);
+        return { didCapture, didPresent: false };
+      }
+
+      this.ensureRenderer();
+      this.attachSlotTexture(this.options.mode, slot);
+      slot.isDirty = true;
+      this.draw(performance.now(), false);
+      this.syncVideoPlayback();
+      return { didCapture, didPresent: true };
     } catch (cause: unknown) {
       if (cause instanceof MoodLoadCancelledError) {
         return { didCapture, didPresent: false };
       }
-      if (generation === this.lifecycleGeneration) {
-        this.reportAttemptError(
-          this.modeGeneration,
-          cause instanceof Error ? cause : new Error(String(cause)),
-        );
+      if (this.disposed || generation !== this.lifecycleGeneration) {
+        return { didCapture, didPresent: false };
       }
+      this.releaseRendererAfterFailure();
+      this.reportAttemptError(
+        attemptGeneration,
+        cause instanceof Error ? cause : new Error(String(cause)),
+      );
       return { didCapture, didPresent: false };
     }
-    if (this.disposed || generation !== this.lifecycleGeneration) {
-      return { didCapture, didPresent: false };
-    }
-
-    const modeGeneration = ++this.modeGeneration;
-    if (slot.isPrepared && this.options.onFrameReady) {
-      const source = getRazorSenseAsset({
-        assetsPath: this.options.assetsPath,
-        mode: this.options.mode,
-        colorScheme: this.options.colorScheme,
-        viewport: 'desktop',
-      }).fallbackSource;
-      this.pendingFrameReady = {
-        generation: modeGeneration,
-        mode: this.options.mode,
-        targetTime: slot.video.currentTime,
-        frameDuration: 1 / Math.max(1, source.framerate),
-      };
-      slot.isDirty = true;
-      slot.lastUploadedTime = -1;
-    }
-    const isExactFrameReady = slot.isPrepared
-      ? true
-      : await this.seekSlot(this.options.mode, slot, this.options.startTime, modeGeneration);
-    if (
-      !isExactFrameReady ||
-      this.disposed ||
-      generation !== this.lifecycleGeneration ||
-      modeGeneration !== this.modeGeneration
-    ) {
-      return { didCapture, didPresent: false };
-    }
-
-    this.currentWeights = oneHotMode(this.options.mode);
-    this.transitionStartWeights = [...this.currentWeights];
-    this.transitionTargetWeights = [...this.currentWeights];
-    this.transitionActive = false;
-    this.releaseZeroWeightSlots();
-
-    if (runtimeState === 'warm') {
-      this.pauseAndCancelAllVideoCallbacks();
-      this.releaseRenderer(true);
-      return { didCapture, didPresent: false };
-    }
-
-    this.ensureRenderer();
-    this.attachSlotTexture(this.options.mode, slot);
-    slot.isDirty = true;
-    this.draw(performance.now(), false);
-    this.syncVideoPlayback();
-    return { didCapture, didPresent: true };
   }
 
   captureFrame(target: HTMLCanvasElement): Promise<boolean> {
@@ -574,6 +591,10 @@ class RazorSenseMoodMount {
   private ensureRenderer(): void {
     if (this.rendererReady || this.disposed) return;
 
+    if (this.canvasElement || this.gl) {
+      this.releaseRenderer(false);
+    }
+
     const canvasElement = document.createElement('canvas');
     Object.assign(canvasElement.style, {
       display: 'block',
@@ -584,6 +605,7 @@ class RazorSenseMoodMount {
       borderRadius: 'inherit',
       pointerEvents: 'none',
       zIndex: '1',
+      opacity: '1',
     });
     canvasElement.setAttribute('aria-hidden', 'true');
     const gl = canvasElement.getContext('webgl', {
@@ -597,6 +619,28 @@ class RazorSenseMoodMount {
     });
     if (!gl) throw new Error('RazorSense: WebGL is not supported in this browser');
 
+    this.canvasElement = canvasElement;
+    this.gl = gl;
+    this.intentionalContextLoss = false;
+    this.hasReportedUnexpectedContextLoss = false;
+    canvasElement.addEventListener('webglcontextlost', this.handleContextLost);
+    canvasElement.addEventListener('webglcontextrestored', this.handleContextRestored);
+    this.parentElement.prepend(canvasElement);
+
+    try {
+      this.initializeRendererResources();
+    } catch (error: unknown) {
+      this.releaseRenderer(false);
+      throw error;
+    }
+  }
+
+  private initializeRendererResources(): void {
+    const gl = this.gl;
+    const canvasElement = this.canvasElement;
+    if (!gl || !canvasElement) {
+      throw new Error('RazorSense: Failed to initialize the emotional-mode renderer');
+    }
     gl.disable(gl.DEPTH_TEST);
     gl.disable(gl.CULL_FACE);
     const program = createProgram(gl, razorSenseMoodVertexShader, razorSenseMoodFragmentShader);
@@ -607,14 +651,11 @@ class RazorSenseMoodMount {
       throw new Error('RazorSense: Failed to create fullscreen geometry');
     }
 
-    this.canvasElement = canvasElement;
-    this.gl = gl;
     this.program = program;
     this.buffers = buffers;
-    this.intentionalContextLoss = false;
-    this.hasReportedUnexpectedContextLoss = false;
-    this.parentElement.prepend(canvasElement);
     gl.useProgram(program);
+
+    this.uniformLocations = {};
 
     for (const uniformName of [
       'uCalmTexture',
@@ -665,7 +706,6 @@ class RazorSenseMoodMount {
     this.resizeObserver.observe(this.parentElement);
     this.parentElement.addEventListener('pointermove', this.handlePointerMove);
     this.parentElement.addEventListener('pointerdown', this.handlePointerMove);
-    canvasElement.addEventListener('webglcontextlost', this.handleContextLost);
     this.rendererReady = true;
     this.updateDiagnostics();
     this.handleResize();
@@ -705,6 +745,10 @@ class RazorSenseMoodMount {
         slot.video
           .play()
           .then(() => {
+            if (!this.rendererReady || !this.shouldPlay() || !this.modeContributes(mode)) {
+              slot.video.pause();
+              return;
+            }
             this.scheduleVideoFrame(mode, slot);
             this.updateDiagnostics();
           })
@@ -726,6 +770,7 @@ class RazorSenseMoodMount {
       !slot.video.requestVideoFrameCallback ||
       slot.video.paused ||
       this.disposed ||
+      !this.rendererReady ||
       !this.shouldPlay() ||
       !this.modeContributes(mode)
     ) {
@@ -733,13 +778,11 @@ class RazorSenseMoodMount {
     }
     slot.frameCallbackId = slot.video.requestVideoFrameCallback(() => {
       slot.frameCallbackId = null;
-      this.updateDiagnostics();
       if (this.disposed || this.slots.get(mode) !== slot) return;
       slot.isDirty = true;
       this.scheduleRender();
       this.scheduleVideoFrame(mode, slot);
     });
-    this.updateDiagnostics();
   }
 
   private cancelVideoFrame(slot: MoodSlot): void {
@@ -821,9 +864,9 @@ class RazorSenseMoodMount {
     if (this.canvasElement.width !== width || this.canvasElement.height !== height) {
       this.canvasElement.width = width;
       this.canvasElement.height = height;
-      this.gl.viewport(0, 0, width, height);
-      this.scheduleRender();
     }
+    this.gl.viewport(0, 0, width, height);
+    this.scheduleRender();
   };
 
   private handlePointerMove = (event: PointerEvent): void => {
@@ -892,17 +935,48 @@ class RazorSenseMoodMount {
       return;
     }
     this.hasReportedUnexpectedContextLoss = true;
+    const attemptGeneration = this.beginAttempt();
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
     this.rafId = null;
     this.pauseAndCancelAllVideoCallbacks();
-    this.releaseRenderer(false);
-    this.options.onError(new Error('RazorSense: WebGL context was lost'));
+    this.flushPendingCaptures(false);
+    this.clearRendererResourcesAfterContextLoss();
+    if (this.canvasElement) this.canvasElement.style.opacity = '0';
+    this.reportAttemptError(attemptGeneration, new Error('RazorSense: WebGL context was lost'));
+  };
+
+  private handleContextRestored = (): void => {
+    if (this.disposed || this.intentionalContextLoss) return;
+    const attemptGeneration = this.beginAttempt();
+    if (!this.shouldOwnRenderer()) {
+      this.releaseRenderer(false);
+      return;
+    }
+
+    try {
+      this.initializeRendererResources();
+      this.slots.forEach((slot) => {
+        slot.isDirty = true;
+        slot.lastUploadedTime = -1;
+      });
+      const hadPresentedFirstFrame = this.hasPresentedFirstFrame;
+      this.draw(performance.now(), false);
+      if (hadPresentedFirstFrame) this.options.onFirstFrame?.();
+      if (this.canvasElement) this.canvasElement.style.opacity = '1';
+      this.hasReportedUnexpectedContextLoss = false;
+      this.syncVideoPlayback();
+    } catch (cause: unknown) {
+      this.releaseRendererAfterFailure();
+      this.reportAttemptError(
+        attemptGeneration,
+        cause instanceof Error ? cause : new Error(String(cause)),
+      );
+    }
   };
 
   private scheduleRender(): void {
     if (this.rafId !== null || !this.rendererReady || this.disposed) return;
     this.rafId = requestAnimationFrame(this.render);
-    this.updateDiagnostics();
   }
 
   private cancelRenderIfIdle(): void {
@@ -931,7 +1005,6 @@ class RazorSenseMoodMount {
 
   private render = (now: number): void => {
     this.rafId = null;
-    this.updateDiagnostics();
     if (this.disposed || !this.rendererReady) {
       this.flushPendingCaptures(false);
       return;
@@ -1077,6 +1150,30 @@ class RazorSenseMoodMount {
     [...this.slots.keys()].forEach((mode) => this.releaseSlot(mode));
   }
 
+  private clearRendererResourcesAfterContextLoss(): void {
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
+    this.parentElement.removeEventListener('pointermove', this.handlePointerMove);
+    this.parentElement.removeEventListener('pointerdown', this.handlePointerMove);
+    this.slots.forEach((slot) => {
+      slot.texture = null;
+    });
+    this.placeholderTextures.length = 0;
+    this.trailTexture = null;
+    this.program = null;
+    this.buffers = null;
+    this.rendererReady = false;
+    this.pendingFrameReady = null;
+    this.uniformLocations = {};
+    this.updateDiagnostics();
+  }
+
+  private releaseRendererAfterFailure(): void {
+    this.pauseAndCancelAllVideoCallbacks();
+    this.pendingFrameReady = null;
+    this.releaseRenderer(false);
+  }
+
   private releaseRenderer(loseContext: boolean): void {
     if (!this.canvasElement && !this.gl) return;
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
@@ -1087,6 +1184,7 @@ class RazorSenseMoodMount {
     this.parentElement.removeEventListener('pointermove', this.handlePointerMove);
     this.parentElement.removeEventListener('pointerdown', this.handlePointerMove);
     this.canvasElement?.removeEventListener('webglcontextlost', this.handleContextLost);
+    this.canvasElement?.removeEventListener('webglcontextrestored', this.handleContextRestored);
     this.slots.forEach((slot) => {
       slot.texture?.destroy();
       slot.texture = null;
@@ -1100,8 +1198,8 @@ class RazorSenseMoodMount {
       this.gl.deleteBuffer(this.buffers.uvBuffer);
     }
     if (this.gl && this.program) this.gl.deleteProgram(this.program);
+    this.intentionalContextLoss = loseContext;
     if (loseContext && this.gl) {
-      this.intentionalContextLoss = true;
       this.gl.getExtension('WEBGL_lose_context')?.loseContext();
     }
     this.canvasElement?.remove();
@@ -1110,10 +1208,12 @@ class RazorSenseMoodMount {
     this.program = null;
     this.buffers = null;
     this.rendererReady = false;
+    this.uniformLocations = {};
     this.updateDiagnostics();
   }
 
   private updateDiagnostics(): void {
+    if (!__DEV__) return;
     this.parentElement.setAttribute(
       'data-razor-sense-mood-slots',
       [...this.slots.keys()].join(','),
@@ -1145,6 +1245,11 @@ class RazorSenseMoodMount {
     this.options.onError(error);
   }
 
+  private beginAttempt(): number {
+    this.attemptGeneration += 1;
+    return this.attemptGeneration;
+  }
+
   dispose({ loseContext = false }: { loseContext?: boolean } = {}): void {
     if (this.disposed) return;
     this.disposed = true;
@@ -1157,11 +1262,13 @@ class RazorSenseMoodMount {
     this.flushPendingCaptures(false);
     this.parentElement.removeAttribute('data-razor-sense-mode');
     this.parentElement.removeAttribute('data-razor-sense-color-scheme');
-    this.parentElement.removeAttribute('data-razor-sense-mood-slots');
-    this.parentElement.removeAttribute('data-razor-sense-mood-renderer');
-    this.parentElement.removeAttribute('data-razor-sense-mood-playing');
-    this.parentElement.removeAttribute('data-razor-sense-mood-raf');
-    this.parentElement.removeAttribute('data-razor-sense-mood-frame-callbacks');
+    if (__DEV__) {
+      this.parentElement.removeAttribute('data-razor-sense-mood-slots');
+      this.parentElement.removeAttribute('data-razor-sense-mood-renderer');
+      this.parentElement.removeAttribute('data-razor-sense-mood-playing');
+      this.parentElement.removeAttribute('data-razor-sense-mood-raf');
+      this.parentElement.removeAttribute('data-razor-sense-mood-frame-callbacks');
+    }
   }
 }
 

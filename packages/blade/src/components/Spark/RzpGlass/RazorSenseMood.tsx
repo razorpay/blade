@@ -140,18 +140,20 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           }
         },
         onError: (error) => {
-          if (active) onErrorRef.current?.(error);
+          if (!active) return;
+          setHasError(true);
+          setShowSnapshot(true);
+          onErrorRef.current?.(error);
         },
       });
       mountRef.current = mount;
       mountedModeRef.current = mode;
       lifecycleKeyRef.current = `${runtimeState}:${isRuntimeAdmitted}`;
 
-      void mount.loadAssets().catch((cause: unknown) => {
+      void mount.loadAssets().catch(() => {
         if (!active) return;
-        const error = cause instanceof Error ? cause : new Error(String(cause));
         setHasError(true);
-        onErrorRef.current?.(error);
+        setShowSnapshot(true);
       });
 
       return () => {
@@ -166,7 +168,10 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     useEffect(() => {
       if (!mountRef.current || mountedModeRef.current === mode) return;
       mountedModeRef.current = mode;
-      void mountRef.current.setMode(mode);
+      void mountRef.current.setMode(mode).catch(() => {
+        setHasError(true);
+        setShowSnapshot(true);
+      });
     }, [mode]);
 
     useEffect(() => {
@@ -200,6 +205,7 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           if (!active) return;
           if (didCapture) setHasSnapshot(true);
           if (didPresent) {
+            setHasError(false);
             setShowSnapshot(false);
           } else if (
             runtimeState === 'warm' ||
@@ -208,7 +214,16 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
             (runtimeState === 'active' && !isRuntimeAdmitted)
           ) {
             setShowSnapshot(didCapture || hasSnapshot);
+          } else {
+            setHasError(true);
+            setShowSnapshot(didCapture || hasSnapshot);
           }
+        })
+        .catch((cause: unknown) => {
+          if (!active) return;
+          setHasError(true);
+          setShowSnapshot(true);
+          onErrorRef.current?.(cause instanceof Error ? cause : new Error(String(cause)));
         });
       return () => {
         active = false;
@@ -319,13 +334,16 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const frameWaitByLayerIdRef = useRef(new Map<number, CancelVideoFrameWait>());
     const preparedLayerIdsRef = useRef(new Set<number>());
     const readyLayerIdsRef = useRef(new Set<number>());
-    const resolvingLayerIdsRef = useRef(new Set<number>());
+    const resolvingAttemptByLayerIdRef = useRef(new Map<number, number>());
+    const attemptByLayerIdRef = useRef(new Map<number, number>());
     const requestedLayerIdRef = useRef(1);
     const requestedKeyRef = useRef(
       `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`,
     );
     const transitionGenerationRef = useRef(0);
     const resourceGenerationRef = useRef(0);
+    const lifecycleGenerationRef = useRef(0);
+    const attemptGenerationRef = useRef(0);
     const transitionTimerRef = useRef<number>();
     const transitionRafRef = useRef<number>();
     const lifecycleKeyRef = useRef(`${runtimeState}:${isRuntimeAdmitted}`);
@@ -336,6 +354,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const onErrorRef = useRef(onError);
     const onFrameReadyRef = useRef(onFrameReady);
     const shouldPlayRef = useRef(false);
+    const canOwnMediaRef = useRef(false);
     const [hasSnapshot, setHasSnapshot] = useState(false);
     const hasSnapshotRef = useRef(hasSnapshot);
     const [snapshotOpacity, setSnapshotOpacity] = useState(0);
@@ -352,6 +371,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     onErrorRef.current = onError;
     onFrameReadyRef.current = onFrameReady;
     shouldPlayRef.current = shouldPlay;
+    canOwnMediaRef.current = canOwnMedia;
 
     const replaceLayers = useCallback((nextLayers: MobileMoodLayer[]): void => {
       layersRef.current = nextLayers;
@@ -379,6 +399,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       (layerId: number): void => {
         cancelFrameWait(layerId);
         readyLayerIdsRef.current.delete(layerId);
+        resolvingAttemptByLayerIdRef.current.delete(layerId);
+        attemptByLayerIdRef.current.delete(layerId);
         releaseVideo(videoByLayerIdRef.current.get(layerId));
         videoByLayerIdRef.current.delete(layerId);
       },
@@ -534,10 +556,20 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
 
     const prepareLayer = useCallback(
       (layer: MobileMoodLayer, video: HTMLVideoElement): void => {
-        if (preparedLayerIdsRef.current.has(layer.id)) return;
+        if (
+          !canOwnMediaRef.current ||
+          layer.id !== requestedLayerIdRef.current ||
+          !layersRef.current.some((candidate) => candidate.id === layer.id) ||
+          preparedLayerIdsRef.current.has(layer.id)
+        ) {
+          return;
+        }
         preparedLayerIdsRef.current.add(layer.id);
         video.playbackRate = playbackRate;
         const generation = transitionGenerationRef.current;
+        const lifecycleGeneration = lifecycleGenerationRef.current;
+        const attemptGeneration = ++attemptGenerationRef.current;
+        attemptByLayerIdRef.current.set(layer.id, attemptGeneration);
         const frameRate = getRazorSenseAsset({
           assetsPath,
           mode: layer.mode,
@@ -551,10 +583,18 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           frameRate,
           shouldRemainPaused: true,
           onReady: () => {
-            frameWaitByLayerIdRef.current.delete(layer.id);
-            preparedLayerIdsRef.current.delete(layer.id);
+            const isCurrentAttempt =
+              attemptByLayerIdRef.current.get(layer.id) === attemptGeneration;
+            if (isCurrentAttempt) {
+              frameWaitByLayerIdRef.current.delete(layer.id);
+              preparedLayerIdsRef.current.delete(layer.id);
+            }
             if (
               generation !== transitionGenerationRef.current ||
+              lifecycleGeneration !== lifecycleGenerationRef.current ||
+              !canOwnMediaRef.current ||
+              !isCurrentAttempt ||
+              layer.id !== requestedLayerIdRef.current ||
               !layersRef.current.some((candidate) => candidate.id === layer.id)
             ) {
               return;
@@ -572,7 +612,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       const requestedKey = `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`;
       if (requestedKeyRef.current === requestedKey) return;
       requestedKeyRef.current = requestedKey;
-      const generation = ++transitionGenerationRef.current;
+      transitionGenerationRef.current += 1;
       clearTransitionWork();
       frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
       frameWaitByLayerIdRef.current.clear();
@@ -610,7 +650,6 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         replaceLayers([{ ...currentLayer, opacity: 1, status: 'visible' }, incomingLayer]);
       }
       resourceGenerationRef.current += 1;
-      reportedAttemptErrorsRef.current.delete(generation);
     }, [
       assetsPath,
       canOwnMedia,
@@ -629,12 +668,16 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       if (lifecycleKeyRef.current === key) return;
       lifecycleKeyRef.current = key;
       clearTransitionWork();
+      lifecycleGenerationRef.current += 1;
+      resourceGenerationRef.current += 1;
+      resolvingAttemptByLayerIdRef.current.clear();
+      attemptByLayerIdRef.current.clear();
+      frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
+      frameWaitByLayerIdRef.current.clear();
+      preparedLayerIdsRef.current.clear();
 
       if (runtimeState === 'suspended') {
         captureCurrentFrame(true);
-        frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
-        frameWaitByLayerIdRef.current.clear();
-        preparedLayerIdsRef.current.clear();
         videoByLayerIdRef.current.forEach((video) => video.pause());
         const requestedLayer = layersRef.current.find(
           (layer) => layer.id === requestedLayerIdRef.current,
@@ -653,7 +696,6 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       ) {
         captureCurrentFrame(true);
         transitionGenerationRef.current += 1;
-        resourceGenerationRef.current += 1;
         releaseLayersExcept(new Set());
         const nextLayer = createLayer(mode, colorScheme, startTime);
         requestedLayerIdRef.current = nextLayer.id;
@@ -661,9 +703,15 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         return;
       }
 
-      const requestedLayer = layersRef.current.find(
+      let requestedLayer = layersRef.current.find(
         (layer) => layer.id === requestedLayerIdRef.current,
       );
+      if (!requestedLayer) {
+        requestedLayer = createLayer(mode, colorScheme, startTime);
+        requestedLayerIdRef.current = requestedLayer.id;
+        replaceLayers([requestedLayer]);
+        return;
+      }
       if (requestedLayer && readyLayerIdsRef.current.has(requestedLayer.id)) {
         handleLayerReady(requestedLayer.id, transitionGenerationRef.current);
       } else if (requestedLayer) {
@@ -693,9 +741,18 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     useEffect(() => {
       if (!canOwnMedia) return;
       const resourceGeneration = resourceGenerationRef.current;
+      const lifecycleGeneration = lifecycleGenerationRef.current;
       layersRef.current.forEach((layer) => {
-        if (layer.source || resolvingLayerIdsRef.current.has(layer.id)) return;
-        resolvingLayerIdsRef.current.add(layer.id);
+        if (
+          layer.source ||
+          layer.id !== requestedLayerIdRef.current ||
+          resolvingAttemptByLayerIdRef.current.has(layer.id)
+        ) {
+          return;
+        }
+        const attemptGeneration = ++attemptGenerationRef.current;
+        resolvingAttemptByLayerIdRef.current.set(layer.id, attemptGeneration);
+        attemptByLayerIdRef.current.set(layer.id, attemptGeneration);
         void selectRazorSenseVideoSource({
           assetsPath,
           mode: layer.mode,
@@ -703,10 +760,16 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           viewport: 'mobile',
         })
           .then(({ src }) => {
-            resolvingLayerIdsRef.current.delete(layer.id);
+            if (resolvingAttemptByLayerIdRef.current.get(layer.id) === attemptGeneration) {
+              resolvingAttemptByLayerIdRef.current.delete(layer.id);
+            }
             if (
               !isMountedRef.current ||
+              !canOwnMediaRef.current ||
+              lifecycleGeneration !== lifecycleGenerationRef.current ||
               resourceGeneration !== resourceGenerationRef.current ||
+              attemptByLayerIdRef.current.get(layer.id) !== attemptGeneration ||
+              layer.id !== requestedLayerIdRef.current ||
               !layersRef.current.some((candidate) => candidate.id === layer.id)
             ) {
               return;
@@ -718,14 +781,18 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
             );
           })
           .catch((cause: unknown) => {
-            resolvingLayerIdsRef.current.delete(layer.id);
+            if (resolvingAttemptByLayerIdRef.current.get(layer.id) === attemptGeneration) {
+              resolvingAttemptByLayerIdRef.current.delete(layer.id);
+            }
             if (
+              !canOwnMediaRef.current ||
+              lifecycleGeneration !== lifecycleGenerationRef.current ||
               resourceGeneration !== resourceGenerationRef.current ||
+              attemptByLayerIdRef.current.get(layer.id) !== attemptGeneration ||
               layer.id !== requestedLayerIdRef.current
             ) {
               return;
             }
-            const generation = transitionGenerationRef.current;
             const remainingLayers = layersRef.current.filter(
               (candidate) => candidate.id !== layer.id,
             );
@@ -740,7 +807,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
               setHasError(true);
             }
             reportAttemptError(
-              generation,
+              attemptGeneration,
               cause instanceof Error ? cause : new Error(String(cause)),
             );
           });
@@ -761,6 +828,9 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         isMountedRef.current = false;
         transitionGenerationRef.current += 1;
         resourceGenerationRef.current += 1;
+        lifecycleGenerationRef.current += 1;
+        resolvingAttemptByLayerIdRef.current.clear();
+        attemptByLayerIdRef.current.clear();
         clearTransitionWork();
         releaseLayersExcept(new Set());
       },
@@ -819,11 +889,28 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
               preload="auto"
               onLoadedData={(event) => prepareLayer(layer, event.currentTarget)}
               onError={() => {
-                const generation = transitionGenerationRef.current;
                 if (
                   layer.id !== requestedLayerIdRef.current ||
                   !layersRef.current.some((candidate) => candidate.id === layer.id)
                 ) {
+                  return;
+                }
+                const attemptGeneration =
+                  attemptByLayerIdRef.current.get(layer.id) ?? ++attemptGenerationRef.current;
+                if (!canOwnMediaRef.current) {
+                  cancelFrameWait(layer.id);
+                  readyLayerIdsRef.current.delete(layer.id);
+                  releaseVideo(videoByLayerIdRef.current.get(layer.id));
+                  videoByLayerIdRef.current.delete(layer.id);
+                  resolvingAttemptByLayerIdRef.current.delete(layer.id);
+                  attemptByLayerIdRef.current.delete(layer.id);
+                  replaceLayers(
+                    layersRef.current.map((candidate) =>
+                      candidate.id === layer.id
+                        ? { ...candidate, source: undefined, status: 'loading' }
+                        : candidate,
+                    ),
+                  );
                   return;
                 }
                 releaseLayer(layer.id);
@@ -841,7 +928,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
                   setHasError(true);
                 }
                 reportAttemptError(
-                  generation,
+                  attemptGeneration,
                   new Error(`RazorSense: Failed to load the ${layer.mode} mobile mode`),
                 );
               }}
