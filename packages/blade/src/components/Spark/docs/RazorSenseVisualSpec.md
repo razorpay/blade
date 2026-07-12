@@ -2,6 +2,8 @@
 
 This is the source-backed contract for Blade's RazorSense renderer. It records the observable material, motion, state semantics, and playback rules. It intentionally separates verified output from assumptions about the original After Effects graph.
 
+This is the material-calibration contract. The canonical product API is documented in [RazorSenseMotionStateGuide.md](./RazorSenseMotionStateGuide.md). Examples below use declarative `state` and branded `preset` targets; the older `mode` and raw-shader surfaces remain compatibility and internal-calibration paths.
+
 ## References inspected
 
 - Launch film: `/Users/aditya.nawal/Downloads/RAZORSENSE VIDEO.mp4` — 1920×1080, 30 fps, 87.567 seconds.
@@ -148,7 +150,7 @@ The pointer response begins after four seconds, matching the site. A low-resolut
 - a small seven-degree hue response;
 - exponential trail decay rather than a stateless cursor bubble.
 
-Selecting the active emotion again restarts its envelope. An interrupted emotion transition continues from the currently blended weights without remounting the canvas.
+The inspected website restarts an emotion when its active button is selected again. Blade keeps same-target renders idempotent; product code changes `replayKey` or issues a new controller occurrence when a deliberate replay is required. An interrupted emotion transition continues from the currently blended weights without remounting the canvas.
 
 ### Mobile
 
@@ -169,7 +171,7 @@ Blade follows the nearest `BladeProvider` color scheme automatically:
 
 ```tsx
 <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-  <RazorSense mode="neutral" width="100%" height="440px" />
+  <RazorSense state="idle" width="100%" height="440px" />
 </BladeProvider>
 ```
 
@@ -185,29 +187,29 @@ Implementation by renderer:
 
 ## Public API
 
-`mode` describes product meaning. Explicit mode selection is preferred:
+`state` describes product meaning. Renderer names, source timing, and shader calibration remain internal:
 
 ```tsx
-import { RazorSense, preloadRazorSenseModeAssets } from '@razorpay/blade/components';
+import { RazorSense, preloadRazorSenseTarget } from '@razorpay/blade/components';
 
-await preloadRazorSenseModeAssets(['neutral', 'thinking']);
-await preloadRazorSenseModeAssets(['neutral', 'thinking'], undefined, 'dark');
+await preloadRazorSenseTarget({ state: 'thinking' });
+await preloadRazorSenseTarget({ state: 'thinking' }, undefined, 'dark');
 
-<RazorSense mode="neutral" width="100%" height="100%" />;
-<RazorSense mode="typing" width="100%" height="240px" />;
-<RazorSense mode="thinking" width="100%" height="320px" />;
-<RazorSense mode="loading" width="160px" height="160px" />;
-<RazorSense mode="calm" width="100%" height="440px" interactive />;
+<RazorSense state="idle" width="100%" height="100%" />;
+<RazorSense state="typing" width="100%" height="240px" />;
+<RazorSense state="thinking" width="100%" height="320px" />;
+<RazorSense state="loading" width="160px" height="160px" />;
+<RazorSense state="working" width="100%" height="440px" isInteractive />;
 ```
 
 ```ts
-type RazorSenseMode =
-  | 'neutral'
+type RazorSenseState =
+  | 'idle'
   | 'typing'
   | 'thinking'
+  | 'working'
   | 'loading'
-  | 'calm'
-  | 'joyful'
+  | 'success'
   | 'caution'
   | 'regret';
 ```
@@ -216,17 +218,22 @@ Compatibility behavior:
 
 - `<RazorSense />` and `preset="default"` use authored Neutral.
 - `preset="zoomed"` uses authored Thinking.
-- `preset="bottomWave"` uses authored Typing.
-- `rippleWave`, `circleSlideUp`, and calls with legacy shader-tuning props keep the legacy renderer.
+- `preset="bottomWave"` uses the exact 10-second, 25fps Bottom Wave source through the managed branded-preset path. It accepts finite `once` or `repeat` playback; loop remains rejected until an authored seam is verified.
+- `preset="rippleWave"` remains a managed branded target backed by its legacy renderer.
+- `preset="success"` is the managed replacement for `preset="circleSlideUp"`; the old name remains accepted on the compatibility renderer.
+- `preset="compactLoader"` and `preset="audioWave"` are finite managed targets.
+- `mode="neutral|typing|thinking|loading|calm|joyful|caution|regret"` remains accepted and maps to the semantic state vocabulary.
+- Calls with raw shader-tuning props keep the legacy renderer.
 - `preset="legacy"` is the explicit migration escape hatch for the original default shader.
-- TypeScript rejects `mode + preset` and `mode + legacy shader knobs`. JavaScript calls still resolve `mode` first and warn in development.
+- Normal product recipes must not combine semantic state with compatibility targets or raw calibration controls.
 
 Relevant controls:
 
-- `modeTransitionDuration` controls semantic crossfades.
-- `paused`, `playbackRate`, `startTime`, and `endTime` support calibration and controlled playback.
-- `interactive={false}` disables the delayed emotional trail.
-- `preloadRazorSenseModeAssets(modeOrModes, assetsPath, colorScheme)` preloads only requested states; its defaults are Neutral and light. Pass `dark` when preloading operational or mobile dark composites.
+- `transition`, `playback`, `repeatCount`, `endBehavior`, `replayKey`, and `isPaused` control a managed occurrence without exposing media time.
+- `isInteractive={false}` disables the delayed emotional trail.
+- `preloadRazorSenseTarget(target, assetsPath?, colorScheme?)` prepares one probable semantic or branded target without mounting it.
+- `modeTransitionDuration`, `paused`, `playbackRate`, `startTime`, `endTime`, and shader uniforms are compatibility/calibration controls. Do not use them for normal product state.
+- `preloadRazorSenseModeAssets` and `preloadRazorSenseAssets` remain compatibility helpers for existing mode and legacy-preset integrations.
 
 ## Implementation map
 
@@ -235,7 +242,9 @@ Relevant controls:
 - `RzpGlass/razorSenseMoodShader.ts` — emotional flute geometry, overscan, palette, dither, refraction, and trail response.
 - `RzpGlass/RazorSenseMoodMount.ts` — desktop WebGL lifecycle, source textures, transitions, trail feedback, resize, and disposal.
 - `RzpGlass/RazorSenseMood.tsx` — desktop/mobile selection and responsive fallbacks.
-- `RzpGlass/RzpGlass.tsx` — decode-gated cross-family transition host, semantic routing, and legacy compatibility.
+- `RzpGlass/RazorSenseController.ts` — occurrence identity, queueing, replacement, cancellation, and deterministic milestones.
+- `RzpGlass/RazorSensePresentationHost.web.tsx` — readiness-gated renderer slots, exact-frame retention, cross-family transitions, static fallback, and viewport lifecycle.
+- `RzpGlass/RzpGlass.tsx` — legacy renderer adapter and raw-calibration compatibility.
 - `RazorSenseModes.stories.tsx` — operational grid, emotional comparisons, fixed-phase calibration, interaction calibration, mobile reference, and product application.
 
 ## Browser verification contract

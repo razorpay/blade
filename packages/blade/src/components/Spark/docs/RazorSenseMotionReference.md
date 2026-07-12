@@ -28,25 +28,25 @@ Source: `NEW Login-Dashboard.mp4`.
 
 ### Timeline
 
-| Phase                    |  Frames |            Time | Observation                                                                                                                                                                   | Implementation contract                                                                                                              |
-| ------------------------ | ------: | --------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Login hold               |   0-148 |   0.000-6.167 s | **Observed.** The form, copy, and crop are stable while the left material moves internally.                                                                                   | Real Blade login UI remains interactive. RazorSense runs as an ambient background program.                                           |
-| Form exit                | 149-159 |   6.208-6.625 s | **Observed.** A large glass field expands horizontally across the form. The material covers/clips the crisp UI; this is not a black wipe, a UI blur, or an opacity-only fade. | A registered `collapse-to-mark` edge owns the foreground mask and material expansion. The outgoing UI remains mounted until covered. |
-| Material bleach          | 159-169 |   6.625-7.042 s | **Observed.** The field becomes near-white while its large geometry continues drifting.                                                                                       | Hold the final large-field composite; do not expose a blank DOM background.                                                          |
-| Loader overlap           | 170-171 |   7.083-7.125 s | **Observed.** The first compact loader ghost appears before the large field has completely vanished.                                                                          | Incoming loader readiness overlaps the outgoing field by roughly two source frames.                                                  |
-| Loader beat 1            | 172-221 |   7.167-9.208 s | **Observed.** Complete compact blue-to-ghost pulse.                                                                                                                           | One `compactLoader` occurrence, accelerated from the standalone source.                                                              |
-| Loader beat 2            | 222-271 |  9.250-11.292 s | **Observed.** A second distinct occurrence of the same pulse.                                                                                                                 | Replay the same preset without remounting the host. Occurrence identity must differ from target equality.                            |
-| Loader beat 3            | 272-295 | 11.333-12.292 s | **Observed.** Third pulse begins and is interrupted before its natural terminal.                                                                                              | `finish-current` is not used here; the authored edge replaces the active beat at a named cue.                                        |
-| Aperture expansion       | 296-316 | 12.333-13.167 s | **Observed.** The compact mark opens into large rails. “Let’s start our journey” becomes visible at frames 305-306.                                                           | Registered `expand-from-mark` edge morphs scale/aperture and masks foreground reveal.                                                |
-| Dashboard shell reveal   | 317-323 | 13.208-13.458 s | **Observed.** Top chrome appears first, then the shell/background becomes readable.                                                                                           | Reveal shell behind the moving rails. No independent UI fade timer.                                                                  |
-| Dashboard content reveal | 324-347 | 13.500-14.458 s | **Observed.** Heading and prompt enter first; lower cards and chips follow from frame 330.                                                                                    | Step lifecycle events drive ordered real-UI visibility. RazorSense remains one continuous material.                                  |
-| Settled dashboard        | 348-384 | 14.500-16.000 s | **Observed.** Composition is effectively settled and held.                                                                                                                    | Final program loops or holds without restarting the journey.                                                                         |
+| Phase                    |  Frames |            Time | Observation                                                                                                                                                                   | Implementation contract                                                                                                                                                     |
+| ------------------------ | ------: | --------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Login hold               |   0-148 |   0.000-6.167 s | **Observed.** The form, copy, and crop are stable while the left material moves internally.                                                                                   | Real Blade login UI remains interactive. RazorSense runs as an ambient background program.                                                                                  |
+| Form exit                | 149-159 |   6.208-6.625 s | **Observed.** A large glass field expands horizontally across the form. The material covers/clips the crisp UI; this is not a black wipe, a UI blur, or an opacity-only fade. | The built-in sequence keeps the outgoing UI mounted, collapses the live rail material into the mark, and uses a synchronized tinted cover; consumers do not animate the UI. |
+| Material bleach          | 159-169 |   6.625-7.042 s | **Observed.** The field becomes near-white while its large geometry continues drifting.                                                                                       | Hold the final large-field composite; do not expose a blank DOM background.                                                                                                 |
+| Loader overlap           | 170-171 |   7.083-7.125 s | **Observed.** The first compact loader ghost appears before the large field has completely vanished.                                                                          | Incoming loader readiness overlaps the outgoing field by roughly two source frames.                                                                                         |
+| Loader beat 1            | 172-221 |   7.167-9.208 s | **Observed.** Complete compact blue-to-ghost pulse.                                                                                                                           | One `compactLoader` occurrence, accelerated from the standalone source.                                                                                                     |
+| Loader beat 2            | 222-271 |  9.250-11.292 s | **Observed.** A second distinct occurrence of the same pulse.                                                                                                                 | Replay the same preset without remounting the host. Occurrence identity must differ from target equality.                                                                   |
+| Loader beat 3            | 272-295 | 11.333-12.292 s | **Observed.** Third pulse begins and is interrupted before its natural terminal.                                                                                              | `finish-current` is not used here; the authored edge replaces the active beat at a named cue.                                                                               |
+| Aperture expansion       | 296-316 | 12.333-13.167 s | **Observed.** The compact mark opens into large rails. “Let’s start our journey” becomes visible at frames 305-306.                                                           | The built-in sequence expands the destination rail material and aperture mask together, then emits the foreground cue at the recorded frame boundary.                       |
+| Dashboard shell reveal   | 317-323 | 13.208-13.458 s | **Observed.** Top chrome appears first, then the shell/background becomes readable.                                                                                           | Reveal shell behind the moving rails. No independent UI fade timer.                                                                                                         |
+| Dashboard content reveal | 324-347 | 13.500-14.458 s | **Observed.** Heading and prompt enter first; lower cards and chips follow from frame 330.                                                                                    | Step lifecycle events drive ordered real-UI visibility. RazorSense remains one continuous material.                                                                         |
+| Settled dashboard        | 348-384 | 14.500-16.000 s | **Observed.** Composition is effectively settled and held.                                                                                                                    | Final program loops or holds without restarting the journey.                                                                                                                |
 
 ### Loader source correlation
 
 The three loading beats are not arbitrary timers. Normalized frame metrics correlate the first two beats with `Loader.mp4` at 0.99-0.997 when the 75-frame, 3.125-second source is mapped to approximately 50 frames, or 2.083 seconds. The third occurrence is deliberately interrupted.
 
-**Inferred implementation:** register named source cues and a journey-specific playback rate near 1.5. The exact rate and interruption cue must be rechecked in the browser using fixed timestamps; consumers do not receive those numbers.
+**Verified implementation:** the built-in manifest registers named source cues and maps the 75-frame loader source at `1.5x` for the first two 50-frame windows. A July 13 browser replay confirmed the three distinct occurrences, the deliberately shortened third beat, and the handoff into the frame-296 reveal without a blank frame. Consumers do not receive those calibration numbers.
 
 ### Geometry and compositing
 
@@ -114,7 +114,7 @@ Source: `Bottom Wave (Default, Typing).mp4`.
 - **Observed:** the material is confined to a thin overscanned band along the lower edge for the entire 10-second source.
 - **Observed:** the upper field stays visually empty; motion is lateral and internal within the band.
 - **Observed:** blue and pale green energy alternate across the horizon without changing the crop.
-- **Inferred:** the preset loops only at a verified internal seam. It must never be center-cropped into a generic full-field material.
+- **Implemented boundary:** the exact ten-second source supports finite `once` or `repeat` playback. Loop remains rejected until an authored seam is verified. It must never be center-cropped into a generic full-field material.
 
 ## Earlier login journey
 
@@ -132,7 +132,7 @@ These are coarse contact-sheet boundaries. The newer 24 fps journey above is can
 
 Source: `RAZORSENSE VIDEO.mp4`.
 
-The film is editorial evidence rather than a single reusable sequence. The following shot groups are observed at one-second sampling and must be validated at denser frames when a matching product recipe is calibrated:
+The film is editorial evidence rather than a single reusable sequence. The following table is an observed one-second editorial map, not a frame-accurate transition specification. Dense inspection in this document is limited to the explicitly timestamped login, loader, audio-wave, thinking, bottom-wave, website-interaction, and dark-material boundaries. A product recipe must not claim launch-film shot fidelity beyond those recorded boundaries without a new dense comparison.
 
 |      Time | Observed role                                                                                                                                        |
 | --------: | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -147,7 +147,7 @@ The film is editorial evidence rather than a single reusable sequence. The follo
 |   74-82 s | Design-language titles and the audio-wave form.                                                                                                      |
 | 83-87.6 s | Closing brand and URL.                                                                                                                               |
 
-Dark mode is a separate calibrated material, not a color inversion. It preserves saturated blue/green/orange/red energy, dark neutral bases, luminous rail edges, and readable foreground contrast.
+Dark mode is a separate calibrated material, not a color inversion. The launch film directly verifies the saturated blue treatment, dark neutral base, luminous rail edges, and readable foreground contrast. The green, orange, and red dark palettes are Blade calibration derived from the emotional modes rather than launch-film observations.
 
 ## Website emotional modes
 
@@ -162,7 +162,7 @@ This is directly observed in the live output and proved from the website impleme
 3. The fixed displacement field is still indexed by the unwarped output pixel.
 4. Therefore rail pitch, topology, and screen position remain fixed while material underneath them refracts and changes color.
 
-The current Blade shader incorrectly evaluates `fluteMap(pointerWarp(vUv))`. The implementation must evaluate the sampled background at the warped coordinate and the flute field at `vUv`.
+The pre-fix Blade shader evaluated `fluteMap(pointerWarp(vUv))`, which moved the rail topology with the pointer. The current implementation evaluates source/background sampling at the warped coordinate and the flute field at `vUv`; the rails therefore remain screen-fixed while the material beneath them refracts. Any future interaction change must preserve that separation.
 
 Additional observed parameters from the website are evidence for calibration, not public API:
 
@@ -190,7 +190,9 @@ These rules combine observed behavior with the product requirements:
 9. Mobile uses registered crops or mobile sources. Desktop media must not be naively squeezed into a portrait box.
 10. Foreground UI remains real, accessible Blade content. RazorSense is never the only loading, success, caution, or failure signal.
 
-## Verification checkpoints
+## Verification checkpoints and evidence status
+
+The timestamps below are the required comparison set. They record which source boundaries must be inspected; they are not, by themselves, proof that the final browser output matches. A verification handoff must pair each important source boundary with a browser capture or explicitly label it unverified.
 
 For the login journey, browser captures must include frames equivalent to source frames 148, 149, 159, 169, 170, 172, 221, 222, 271, 272, 295, 296, 305, 317, 320, 324, 336, and 348.
 
@@ -209,3 +211,5 @@ Every calibration pass compares:
 - light/dark appearance;
 - desktop/mobile crop;
 - interruption from each boundary phase.
+
+On July 13, 2026, the 16:9 Storybook journey was replayed continuously and visually inspected at 6.50 s, 7.05 s, 12.60 s, 13.20 s, and 14.50 s. The checks confirmed real foreground UI, distinct loader occurrences, a material collapse/reveal, ordered shell/content/card cues, and no blank or grayscale handoff. The source film contains only a baked composite, so the clean material rail geometry remains a reconstructed implementation rather than a byte-exact derivative. The exhaustive checkpoint list above is the calibration set for any future clean source delivery; exact-fidelity claims remain limited to comparisons reported with their timestamp, viewport, appearance, and measured or visually inspected result.
