@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { RazorSense as RazorSenseComponent } from '../';
-import type { RazorSenseMode } from '../RzpGlass';
+import type { RazorSenseMode } from '../';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
@@ -38,6 +38,7 @@ type ScenarioRootProps = {
   colorScheme?: 'light' | 'dark';
   pageVisibility?: DocumentVisibilityState;
   mountedCount?: number;
+  isReady: boolean;
 };
 
 const ScenarioRoot = ({
@@ -49,9 +50,11 @@ const ScenarioRoot = ({
   colorScheme,
   pageVisibility,
   mountedCount,
+  isReady,
 }: ScenarioRootProps): ReactElement => (
   <div
     data-razor-sense-scenario={scenario}
+    data-scenario-ready={isReady ? 'true' : 'false'}
     data-current-mode={currentMode}
     data-color-scheme={colorScheme}
     data-page-visibility={pageVisibility}
@@ -74,6 +77,7 @@ type RazorSenseFixtureProps = {
   height: string;
   interactive?: boolean;
   modeTransitionDuration?: number;
+  onLoad?: () => void;
 };
 
 const RazorSenseFixture = ({
@@ -82,6 +86,7 @@ const RazorSenseFixture = ({
   height,
   interactive,
   modeTransitionDuration,
+  onLoad,
 }: RazorSenseFixtureProps): ReactElement => (
   <Box position="relative" width={width} height={height} overflow="hidden">
     <RazorSenseComponent
@@ -91,6 +96,7 @@ const RazorSenseFixture = ({
       height={height}
       interactive={interactive}
       modeTransitionDuration={modeTransitionDuration}
+      onLoad={onLoad}
     />
   </Box>
 );
@@ -98,18 +104,36 @@ const RazorSenseFixture = ({
 const useRapidMode = <Mode extends RazorSenseMode>(
   modes: readonly Mode[],
   intervalMs: number,
+  isReady: boolean,
 ): Mode => {
   const [modeIndex, setModeIndex] = useState(0);
 
   useEffect(() => {
+    if (!isReady) return undefined;
+
     const interval = window.setInterval(() => {
       setModeIndex((currentIndex) => (currentIndex + 1) % modes.length);
     }, intervalMs);
 
     return () => window.clearInterval(interval);
-  }, [intervalMs, modes.length]);
+  }, [intervalMs, isReady, modes.length]);
 
   return modes[modeIndex];
+};
+
+const useScenarioReadiness = (
+  expectedCount: number,
+): { isReady: boolean; markReady: (id: string) => void } => {
+  const readyIDsRef = useRef(new Set<string>());
+  const [readyCount, setReadyCount] = useState(0);
+
+  const markReady = useCallback((id: string): void => {
+    if (readyIDsRef.current.has(id)) return;
+    readyIDsRef.current.add(id);
+    setReadyCount(readyIDsRef.current.size);
+  }, []);
+
+  return { isReady: readyCount >= expectedCount, markReady };
 };
 
 const usePageVisibility = (): DocumentVisibilityState => {
@@ -127,110 +151,153 @@ const usePageVisibility = (): DocumentVisibilityState => {
   return pageVisibility;
 };
 
+const SingleModeScenario = ({ mode }: { mode: RazorSenseMode }): ReactElement => {
+  const [isReady, setIsReady] = useState(false);
+
+  return (
+    <ScenarioRoot
+      scenario={`current-${mode}`}
+      currentMode={mode}
+      mountedCount={1}
+      isReady={isReady}
+    >
+      <RazorSenseFixture
+        mode={mode}
+        width={DEFAULT_SCENARIO_WIDTH}
+        height={DEFAULT_SCENARIO_HEIGHT}
+        onLoad={() => setIsReady(true)}
+      />
+    </ScenarioRoot>
+  );
+};
+
 export const CurrentNeutral: StoryFn<typeof RazorSenseComponent> = () => (
-  <ScenarioRoot scenario="current-neutral" currentMode="neutral" mountedCount={1}>
-    <RazorSenseFixture
-      mode="neutral"
-      width={DEFAULT_SCENARIO_WIDTH}
-      height={DEFAULT_SCENARIO_HEIGHT}
-    />
-  </ScenarioRoot>
+  <SingleModeScenario mode="neutral" />
 );
 
 export const CurrentCalm: StoryFn<typeof RazorSenseComponent> = () => (
-  <ScenarioRoot scenario="current-calm" currentMode="calm" mountedCount={1}>
-    <RazorSenseFixture
-      mode="calm"
-      width={DEFAULT_SCENARIO_WIDTH}
-      height={DEFAULT_SCENARIO_HEIGHT}
-    />
-  </ScenarioRoot>
+  <SingleModeScenario mode="calm" />
 );
 
-export const FourVisibleMixedInstances: StoryFn<typeof RazorSenseComponent> = () => (
-  <ScenarioRoot scenario="four-visible-mixed-instances" mountedCount={4} height="640px">
-    <Box
-      display="grid"
-      gridTemplateColumns="repeat(2, 560px)"
-      gridTemplateRows="repeat(2, 280px)"
-      gap="spacing.4"
-      padding="spacing.4"
+export const FourVisibleMixedInstances: StoryFn<typeof RazorSenseComponent> = () => {
+  const { isReady, markReady } = useScenarioReadiness(MIXED_MODES.length);
+
+  return (
+    <ScenarioRoot
+      scenario="four-visible-mixed-instances"
+      mountedCount={4}
+      height="640px"
+      isReady={isReady}
     >
-      {MIXED_MODES.map((mode) => (
-        <RazorSenseFixture
-          key={mode}
-          mode={mode}
-          width="560px"
-          height="280px"
-          interactive={false}
-        />
-      ))}
-    </Box>
-  </ScenarioRoot>
-);
-
-export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => (
-  <ScenarioRoot scenario="eight-mounted-six-below-fold" mountedCount={8} height="2120px">
-    <Box padding="spacing.4">
-      <Box display="grid" gridTemplateColumns="repeat(2, 560px)" gap="spacing.4">
-        {ABOVE_FOLD_MODES.map((mode) => (
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(2, 560px)"
+        gridTemplateRows="repeat(2, 280px)"
+        gap="spacing.4"
+        padding="spacing.4"
+      >
+        {MIXED_MODES.map((mode) => (
           <RazorSenseFixture
             key={mode}
             mode={mode}
             width="560px"
             height="280px"
             interactive={false}
+            onLoad={() => markReady(mode)}
           />
         ))}
       </Box>
-      <Box height="960px" />
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(2, 560px)"
-        gridTemplateRows="repeat(3, 240px)"
-        gap="spacing.4"
-      >
-        {BELOW_FOLD_MODES.map((mode) => (
-          <RazorSenseFixture
-            key={mode}
-            mode={mode}
-            width="560px"
-            height="240px"
-            interactive={false}
-          />
-        ))}
-      </Box>
-    </Box>
-  </ScenarioRoot>
-);
+    </ScenarioRoot>
+  );
+};
 
-export const RapidOperationalChanges: StoryFn<typeof RazorSenseComponent> = () => {
-  const mode = useRapidMode(RAPID_OPERATIONAL_MODES, 120);
+export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => {
+  const { isReady, markReady } = useScenarioReadiness(ABOVE_FOLD_MODES.length);
 
   return (
-    <ScenarioRoot scenario="rapid-operational-changes" currentMode={mode} mountedCount={1}>
+    <ScenarioRoot
+      scenario="eight-mounted-six-below-fold"
+      mountedCount={8}
+      height="2120px"
+      isReady={isReady}
+    >
+      <Box padding="spacing.4">
+        <Box display="grid" gridTemplateColumns="repeat(2, 560px)" gap="spacing.4">
+          {ABOVE_FOLD_MODES.map((mode) => (
+            <RazorSenseFixture
+              key={mode}
+              mode={mode}
+              width="560px"
+              height="280px"
+              interactive={false}
+              onLoad={() => markReady(`above-${mode}`)}
+            />
+          ))}
+        </Box>
+        <Box height="960px" />
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(2, 560px)"
+          gridTemplateRows="repeat(3, 240px)"
+          gap="spacing.4"
+        >
+          {BELOW_FOLD_MODES.map((mode) => (
+            <RazorSenseFixture
+              key={mode}
+              mode={mode}
+              width="560px"
+              height="240px"
+              interactive={false}
+              onLoad={() => markReady(`below-${mode}`)}
+            />
+          ))}
+        </Box>
+      </Box>
+    </ScenarioRoot>
+  );
+};
+
+export const RapidOperationalChanges: StoryFn<typeof RazorSenseComponent> = () => {
+  const [isReady, setIsReady] = useState(false);
+  const mode = useRapidMode(RAPID_OPERATIONAL_MODES, 120, isReady);
+
+  return (
+    <ScenarioRoot
+      scenario="rapid-operational-changes"
+      currentMode={mode}
+      mountedCount={1}
+      isReady={isReady}
+    >
       <RazorSenseFixture
         mode={mode}
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
         interactive={false}
         modeTransitionDuration={0.08}
+        onLoad={() => setIsReady(true)}
       />
     </ScenarioRoot>
   );
 };
 
 export const RapidEmotionalChanges: StoryFn<typeof RazorSenseComponent> = () => {
-  const mode = useRapidMode(RAPID_EMOTIONAL_MODES, 180);
+  const [isReady, setIsReady] = useState(false);
+  const mode = useRapidMode(RAPID_EMOTIONAL_MODES, 180, isReady);
 
   return (
-    <ScenarioRoot scenario="rapid-emotional-changes" currentMode={mode} mountedCount={1}>
+    <ScenarioRoot
+      scenario="rapid-emotional-changes"
+      currentMode={mode}
+      mountedCount={1}
+      isReady={isReady}
+    >
       <RazorSenseFixture
         mode={mode}
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
         interactive={false}
         modeTransitionDuration={0.12}
+        onLoad={() => setIsReady(true)}
       />
     </ScenarioRoot>
   );
@@ -238,8 +305,11 @@ export const RapidEmotionalChanges: StoryFn<typeof RazorSenseComponent> = () => 
 
 const ProviderAppearanceSurface = (): ReactElement => {
   const { colorScheme, setColorScheme } = useTheme();
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    if (!isReady) return undefined;
+
     let nextColorScheme: 'light' | 'dark' = 'dark';
     const interval = window.setInterval(() => {
       setColorScheme(nextColorScheme);
@@ -247,16 +317,22 @@ const ProviderAppearanceSurface = (): ReactElement => {
     }, 500);
 
     return () => window.clearInterval(interval);
-  }, [setColorScheme]);
+  }, [isReady, setColorScheme]);
 
   return (
-    <ScenarioRoot scenario="provider-appearance-changes" colorScheme={colorScheme} mountedCount={1}>
+    <ScenarioRoot
+      scenario="provider-appearance-changes"
+      colorScheme={colorScheme}
+      mountedCount={1}
+      isReady={isReady}
+    >
       <RazorSenseFixture
         mode="neutral"
         width={DEFAULT_SCENARIO_WIDTH}
         height={DEFAULT_SCENARIO_HEIGHT}
         interactive={false}
         modeTransitionDuration={0.2}
+        onLoad={() => setIsReady(true)}
       />
     </ScenarioRoot>
   );
@@ -270,9 +346,15 @@ export const ProviderAppearanceChanges: StoryFn<typeof RazorSenseComponent> = ()
 
 export const PageVisibility: StoryFn<typeof RazorSenseComponent> = () => {
   const pageVisibility = usePageVisibility();
+  const { isReady, markReady } = useScenarioReadiness(2);
 
   return (
-    <ScenarioRoot scenario="page-visibility" pageVisibility={pageVisibility} mountedCount={2}>
+    <ScenarioRoot
+      scenario="page-visibility"
+      pageVisibility={pageVisibility}
+      mountedCount={2}
+      isReady={isReady}
+    >
       <Box padding="spacing.4">
         <Box height="40px" display="flex" alignItems="center">
           <Text size="small" weight="semibold">
@@ -280,8 +362,20 @@ export const PageVisibility: StoryFn<typeof RazorSenseComponent> = () => {
           </Text>
         </Box>
         <Box display="grid" gridTemplateColumns="repeat(2, 560px)" gap="spacing.4">
-          <RazorSenseFixture mode="neutral" width="560px" height="600px" interactive={false} />
-          <RazorSenseFixture mode="calm" width="560px" height="600px" interactive={false} />
+          <RazorSenseFixture
+            mode="neutral"
+            width="560px"
+            height="600px"
+            interactive={false}
+            onLoad={() => markReady('neutral')}
+          />
+          <RazorSenseFixture
+            mode="calm"
+            width="560px"
+            height="600px"
+            interactive={false}
+            onLoad={() => markReady('calm')}
+          />
         </Box>
       </Box>
     </ScenarioRoot>
