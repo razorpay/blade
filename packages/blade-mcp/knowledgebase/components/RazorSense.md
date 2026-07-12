@@ -4,13 +4,174 @@ RazorSense
 
 ## Description
 
-RazorSense is Blade's responsive glass material. Its semantic `mode` API covers authored operational states (`neutral`, `typing`, `thinking`, `loading`) and emotional states (`calm`, `joyful`, `caution`, `regret`). The operational programs preserve the launch-film flute, refraction, chromatic fringe, caustics, and bloom; emotional modes use the website's shared GPU flute field and exact palettes. RazorSense automatically follows the nearest `BladeProvider` light or dark color scheme; it does not expose a separate appearance prop. The older configurable WebGL renderer remains available through specialized presets and shader-tuning props.
+RazorSense is Blade's declarative visual state system for expressive product moments. Product code declares semantic intent such as `typing`, `thinking`, `working`, `success`, `caution`, or `regret`, or selects a durable branded preset. Blade owns renderer selection, source readiness, exact-frame retention, transitions, playback, interruption, cleanup, appearance, reduced motion, and fallback output.
 
-## Important Constraints
+This is the canonical component document. Fetch the **RazorSense Journeys** pattern for full AI chat, login-to-dashboard, loading, ripple, bottom-wave, success, caution, and recovery recipes. The `mode` API, legacy preset names, and raw shader controls remain documented below only for compatibility and internal calibration.
+
+## Three-minute quick start
+
+Use one stable instance for one meaningful product surface. Change `state` when product truth changes.
+
+```tsx
+import { RazorSense } from '@razorpay/blade/components';
+
+<RazorSense
+  state={agentState}
+  width="100%"
+  height="320px"
+  accessibilityLabel="Assistant activity"
+/>;
+```
+
+`playback="automatic"` and `transition="automatic"` are implicit. A controlled state change uses replacement semantics: the newest state wins, and the current exact frame remains visible until the incoming target is ready.
+
+Replay the same finite target by changing `replayKey`; do not remount the host.
+
+```tsx
+<RazorSense state="success" replayKey={successfulAttemptId} playback="once" endBehavior="hold" />
+```
+
+## Choose the right API
+
+| Product need                                                        | API                                                          |
+| ------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Existing application state determines the visual                    | One controlled `<RazorSense state={state} />`.               |
+| Reusable linear choreography                                        | `defineRazorSenseSequence` and `<RazorSenseSequence>`.       |
+| Awaitable readiness, cancellation, queueing, or event-driven replay | One `useRazorSenseController` bound to one host.             |
+| A loop in a sequence waits for a real product event                 | `useRazorSenseSequenceController(sequence)` and `advance()`. |
+| A specific durable composition is required                          | A branded `preset`, not a semantic-state alias.              |
+| Existing calibrated shader or old preset                            | Compatibility surface below; never a normal state recipe.    |
+
+Business branching, authentication, navigation, API completion, status copy, focus, and recovery remain application-owned. A public statechart is intentionally not part of RazorSense; application statecharts drive controlled `state`.
+
+## Semantic states and branded presets
+
+```ts
+type RazorSenseState =
+  | 'idle'
+  | 'typing'
+  | 'thinking'
+  | 'working'
+  | 'loading'
+  | 'success'
+  | 'caution'
+  | 'regret';
+
+type RazorSenseBrandedPreset =
+  | 'rippleWave'
+  | 'bottomWave'
+  | 'success'
+  | 'compactLoader'
+  | 'audioWave';
+```
+
+- `idle`: resting or ready surface.
+- `typing`: focus or composition intent; never restart it per keystroke.
+- `thinking`: internal deliberation.
+- `working`: active execution, streaming, or tool use.
+- `loading`: bounded preparation. Request a loop only for a genuinely indefinite wait.
+- `state="success"`: meaningful completion, not every minor successful action.
+- `caution`: recoverable attention or confirmation.
+- `regret`: failed, reversed, or unavailable outcome with recovery UI.
+- `rippleWave` and `bottomWave`: durable branded wave compositions.
+- `preset="success"`: the existing branded success-circle composition, distinct from semantic `state="success"`.
+- `compactLoader`: finite compact loading mark.
+- `audioWave`: finite authored audio-wave gesture.
+
+## Transitions, playback, and interruption
+
+```ts
+type RazorSenseTransition = 'automatic' | 'cut' | { duration: DurationString };
+type RazorSensePlayback = 'automatic' | 'once' | 'repeat' | 'loop';
+type RazorSenseEndBehavior = 'hold' | 'reset-to-start';
+type RazorSenseInterruptionPolicy = 'replace' | 'queue' | 'finish-current';
+```
+
+- Prefer `automatic`. `cut` still waits for incoming readiness. A duration token changes only the registered edge duration, not its easing or renderer strategy.
+- `repeatCount` is the number of additional iterations after the first.
+- A loop has no natural completion. Finish, advance, replace, or cancel it at a real product boundary.
+- `success` and `audioWave` presets are once-only. `bottomWave` and `compactLoader` are finite-only.
+- `replace` makes newest truth win. `queue` appends. `finish-current` starts the newest pending request at the nearest registered safe boundary.
+- Do not add opacity wrappers, media seeking, shader interpolation, or cleanup timers around RazorSense.
+
+## Sequences and controller
+
+```tsx
+const setupJourney = defineRazorSenseSequence({
+  id: 'merchant.setup.v1',
+  steps: [
+    { id: 'connect', preset: 'compactLoader', playback: 'once' },
+    { id: 'verify', state: 'working', playback: 'loop', advance: 'manual' },
+    { id: 'finish', state: 'success', playback: 'once' },
+  ],
+  endBehavior: 'hold',
+});
+
+const controller = useRazorSenseSequenceController(setupJourney);
+
+<RazorSenseSequence sequence={setupJourney} controller={controller} runId={attemptId} />;
+```
+
+Sequence definitions have stable IDs, unique step IDs, and immutable content. `runId` distinguishes executions. Finite steps advance on completion by default. Loop steps require `advance="manual"` and cannot declare `holdAfterMs`. Keep branching outside the sequence.
+
+Standalone controller commands expose named milestones rather than being thenable:
+
+```tsx
+const controller = useRazorSenseController({ initialState: 'idle' });
+const command = controller.play(
+  { state: 'thinking' },
+  { playback: 'loop', interruptionPolicy: 'replace' },
+);
+
+await command.ready;
+await command.transitioned;
+await command.finishAtBoundary();
+
+return <RazorSense controller={controller} />;
+```
+
+One controller drives exactly one mounted host. Do not pass controlled target, playback, transition, replay, or pause props alongside `controller`.
+
+## Appearance, lifecycle, accessibility, and preload
+
+- Appearance comes only from the nearest `BladeProvider`; semantic states, `compactLoader`, and `bottomWave` have calibrated dark output. Other branded footage without a verified dark source remains appearance-invariant; never use CSS inversion.
+- Responsive mobile web uses registered portrait sources and crops. React Native motion orchestration is unsupported in this release.
+- Server output is the registered responsive representative `<picture>`. Media, WebGL, observers, and clocks start after hydration. Keep provider appearance, initial target, replay identity, sequence ID, and run ID hydration-stable.
+- Blade honors `prefers-reduced-motion`; finite work presents a calibrated still and loops wait for external advance.
+- Hidden, offscreen, paused, and runtime-denied instances stop active scheduling.
+- RazorSense is decorative by default. `accessibilityLabel` names meaningful material but never replaces visible copy, progress, status, alert, or recovery UI.
+- Prefer one instance per meaningful surface. Never mount one per chat message or dense row.
+
+Preload only one probable next target without mounting it:
+
+```tsx
+await preloadRazorSenseTarget({ state: 'thinking' });
+await preloadRazorSenseTarget({ state: 'thinking' }, undefined, 'dark');
+await preloadRazorSenseTarget({ preset: 'success' });
+```
+
+## Managed compatibility map
+
+| Compatibility input                                    | Canonical product input                                          |
+| ------------------------------------------------------ | ---------------------------------------------------------------- |
+| `<RazorSense />`, `preset="default"`, `mode="neutral"` | `state="idle"`                                                   |
+| `preset="zoomed"`, `mode="thinking"`                   | `state="thinking"`                                               |
+| `mode="typing"`                                        | `state="typing"`                                                 |
+| `mode="loading"`                                       | `state="loading"`                                                |
+| `mode="calm"`                                          | `state="working"`                                                |
+| `mode="joyful"`                                        | `state="success"`                                                |
+| `mode="caution"`, `mode="regret"`                      | Same-named semantic states                                       |
+| `preset="circleSlideUp"`                               | `preset="success"`                                               |
+| Raw loader time ranges                                 | `state="loading"`, `preset="compactLoader"`, or a typed sequence |
+| `preset="legacy"` or raw shader props                  | Compatibility/internal calibration only                          |
+
+No removal date is declared for `mode` or the raw renderer. `circleSlideUp` is a legacy product-facing name and new code uses `preset="success"`. Compatibility support is not permission for agents to generate raw shader controls for normal product state.
+
+## Legacy calibration constraints
 
 - `videoSrc` and `imageSrc` are mutually exclusive — when `imageSrc` is provided, the video is not created.
 - Changing `gradientMapSrc` or `gradientMap2Src` re-initializes the WebGL context.
-- Prefer the semantic `mode` API for new product work. Use legacy shader props only for existing specialized effects.
+- Prefer the declarative `state` API for new product work. Use `mode` and legacy shader props only for compatibility or internal calibration.
 - `preloadRazorSenseModeAssets(modeOrModes, assetsPath?, colorScheme?)` preloads one or more semantic programs. It defaults to `neutral` and `light`; pass `dark` when preloading operational or mobile dark composites.
 - `preloadRazorSenseAssets(preset)` remains the preload helper for legacy presets.
 - Supplying both `mode` and `preset` is invalid intent: `mode` wins and Blade warns in development.
@@ -19,9 +180,9 @@ RazorSense is Blade's responsive glass material. Its semantic `mode` API covers 
 - `backgroundColor` uses RGB in the `[0-1, 0-1, 0-1]` range — not hex or CSS colors.
 - Props always take priority over preset values.
 
-## TypeScript Types
+## Legacy compatibility TypeScript reference
 
-The following types represent the props that the RazorSense component accepts.
+The following types describe the older mode/raw surface retained for existing calibrated integrations. They are not the complete declarative `RazorSenseProps` union and must not be used as the new product API reference.
 
 ```typescript
 type RazorSensePreset =
@@ -53,7 +214,7 @@ type LegacyRazorSenseProps = {
    * Any explicit props override the preset values.
    * - 'default'       — authored Neutral unless shader-tuning props are supplied
    * - 'zoomed'        — authored Thinking unless shader-tuning props are supplied
-   * - 'bottomWave'    — authored Typing unless shader-tuning props are supplied
+   * - 'bottomWave'    — exact finite 10-second bottom-wave source
    * - 'rippleWave'    — ray pulse video, ripple effect
    * - 'circleSlideUp' — success circle animation
    * - 'legacy'        — original configurable default shader
@@ -223,19 +384,19 @@ type SemanticRazorSenseProps = Pick<
 type RazorSenseProps = LegacyRazorSenseProps | SemanticRazorSenseProps;
 ```
 
-## Usage Guidelines
+## Legacy compatibility guidance
 
 **Do**
 
 - Use `RazorSense` for immersive, branded visual moments: success screens, hero sections, login pages, and loading states.
-- Use semantic modes for product meaning: `neutral`, `typing`, `thinking`, `loading`, `calm`, `joyful`, `caution`, and `regret`.
+- Use declarative states for product meaning. Compatibility modes map `neutral`, `typing`, `thinking`, `loading`, `calm`, `joyful`, `caution`, and `regret` to `idle`, `typing`, `thinking`, `loading`, `working`, `success`, `caution`, and `regret`.
 - Trigger `typing` on focus or typing intent, before the first glyph; do not reset the surrounding UI animation phase per keystroke.
-- Use presets only for compatibility or the specialized `rippleWave` and `circleSlideUp` effects.
+- Use managed branded presets for durable compositions. Prefer `preset="success"` over the legacy `circleSlideUp` name.
 - Let RazorSense inherit appearance from the nearest `BladeProvider`; do not create a parallel component-level theme state.
-- Call `preloadRazorSenseModeAssets(modeOrModes, assetsPath?, colorScheme?)` before mounting latency-sensitive semantic states.
-- Call `preloadRazorSenseAssets(preset)` before mounting to avoid visible frame skipping on first render.
+- Call `preloadRazorSenseTarget(target, assetsPath?, colorScheme?)` for a probable next semantic or branded target.
+- Keep `preloadRazorSenseModeAssets` and `preloadRazorSenseAssets` only for existing mode and legacy-preset integrations.
 - Use `edgeFeather` for vignetting when overlaying text or UI on top of the animation.
-- Layer `RazorSenseGradient` on top as a foreground icon overlay for the full Spark Animation pattern.
+- Layer `RazorSenseGradient` on top only for the specialized Spark Animation compatibility pattern.
 
 **Don't**
 
@@ -247,13 +408,13 @@ type RazorSenseProps = LegacyRazorSenseProps | SemanticRazorSenseProps;
 - Don't use `RazorSense` for simple transitions or button feedback — use standard CSS/framer-motion animations for lightweight effects.
 - Don't pass hex/CSS colors to `backgroundColor` — it expects normalized RGB `[0-1, 0-1, 0-1]`.
 
-## Example
+## Legacy and calibration examples
 
 Here are examples demonstrating various ways to use the RazorSense component:
 
 ### Basic Usage
 
-Renders the default glass refraction animation filling its container.
+Renders the compatibility default, which maps to semantic `idle`. Prefer `state="idle"` in new code.
 
 ```jsx
 import React from 'react';
@@ -270,25 +431,25 @@ const DefaultExample = () => {
 export default DefaultExample;
 ```
 
-### Semantic States
+### Compatibility mode mapping
 
-Use `mode` for all new RazorSense product states.
+Existing `mode` integrations remain supported. New product code uses `state` and target-based preload.
 
 ```jsx
 import React, { useEffect, useState } from 'react';
-import { RazorSense, preloadRazorSenseModeAssets, Box } from '@razorpay/blade/components';
+import { RazorSense, preloadRazorSenseTarget, Box } from '@razorpay/blade/components';
 
 const SemanticExample = () => {
-  const [mode, setMode] = useState('neutral');
+  const [state, setState] = useState('idle');
 
   useEffect(() => {
-    preloadRazorSenseModeAssets(['neutral', 'typing', 'thinking']);
+    void preloadRazorSenseTarget({ state: 'thinking' });
   }, []);
 
   return (
     <Box width="100%" height="440px">
-      <RazorSense mode={mode} width="100%" height="100%" />
-      <button onFocus={() => setMode('typing')} onBlur={() => setMode('neutral')}>
+      <RazorSense state={state} width="100%" height="100%" />
+      <button onFocus={() => setState('typing')} onBlur={() => setState('idle')}>
         Start typing
       </button>
     </Box>
@@ -298,27 +459,27 @@ const SemanticExample = () => {
 
 ### Dark Appearance
 
-RazorSense follows BladeProvider automatically. The dark material uses a wider centered aperture, localized chromatic emission, neutral silver echo rails, and charcoal negative space calibrated from the launch film.
+RazorSense follows BladeProvider automatically. Semantic states and `compactLoader` use the separately calibrated dark material: a wider centered aperture, localized chromatic emission, neutral silver echo rails, and charcoal negative space. `bottomWave` uses its authenticated, phase-matched dark master. `rippleWave`, branded `success`, and `audioWave` retain their supplied authored appearance because no verified dark source exists for those presets; do not fake one with CSS filters or inversion.
 
 ```jsx
 import React, { useEffect } from 'react';
 import {
   BladeProvider,
   RazorSense,
-  preloadRazorSenseModeAssets,
+  preloadRazorSenseTarget,
   Box,
 } from '@razorpay/blade/components';
 import { bladeTheme } from '@razorpay/blade/tokens';
 
 const DarkRazorSense = () => {
   useEffect(() => {
-    preloadRazorSenseModeAssets(['neutral', 'thinking'], undefined, 'dark');
+    void preloadRazorSenseTarget({ state: 'thinking' }, undefined, 'dark');
   }, []);
 
   return (
     <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
       <Box width="100%" height="440px">
-        <RazorSense mode="neutral" width="100%" height="100%" />
+        <RazorSense state="thinking" width="100%" height="100%" />
       </Box>
     </BladeProvider>
   );
@@ -327,7 +488,7 @@ const DarkRazorSense = () => {
 
 ### Using Presets
 
-Presets provide ready-made configurations for common use cases.
+Managed branded presets provide durable compositions. The `default`, `zoomed`, and `circleSlideUp` names shown in older code are compatibility aliases.
 
 ```jsx
 import React from 'react';
@@ -343,12 +504,18 @@ const PresetExamples = () => {
 
       {/* Bottom wave — decorative footer/header strip */}
       <Box width="100%" height="250px">
-        <RazorSense width="100%" height="100%" preset="bottomWave" />
+        <RazorSense
+          width="100%"
+          height="100%"
+          preset="bottomWave"
+          playback="once"
+          endBehavior="hold"
+        />
       </Box>
 
       {/* Ripple wave — pulsing ray animation */}
       <Box width="100%" height="100vh">
-        <RazorSense width="100%" height="100%" preset="rippleWave" />
+        <RazorSense width="100%" height="100%" preset="rippleWave" playback="loop" />
       </Box>
     </Box>
   );
@@ -383,9 +550,9 @@ const PausedExample = () => {
 export default PausedExample;
 ```
 
-### Success Animation with Preloading
+### Legacy success composition
 
-Uses `preloadRazorSenseAssets` to preload assets before mounting, combined with a success UI card and framer-motion animations.
+The example below is retained only to explain the old raw composition. New product code uses `<RazorSense preset="success" playback="once" endBehavior="hold" />` and keeps result UI independent; it must not coordinate RazorSense opacity or completion with Framer Motion.
 
 ```jsx
 import React, { useState, useEffect } from 'react';
