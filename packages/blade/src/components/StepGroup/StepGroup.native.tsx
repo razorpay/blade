@@ -4,6 +4,7 @@ import type { StepGroupContextType, StepGroupProps } from './types';
 import { StepGroupContext, useStepGroup } from './StepGroupContext';
 import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -54,9 +55,21 @@ const useChildrenWithIndexes = ({
               React.isValidElement(nestedChild) &&
               getComponentId(nestedChild) === collapsibleComponentIds.CollapsibleBody
             ) {
+              const nestedChildProps = nestedChild.props as {
+                children: React.ReactElement;
+                width?: BaseBoxProps['width'];
+              };
               return React.cloneElement(nestedChild as React.ReactElement, {
+                /*
+                  Collapsible aligns its children to the start (alignItems: 'flex-start'), so the
+                  body shrink-wraps to its content width by default. StepItem relies on width: '100%'
+                  to fill the row and let its header column flex-grow — without a definite full width
+                  the header collapses to 0 and only the markers stay visible. Forcing the body to
+                  full width gives StepItem a definite width to resolve against.
+                */
+                width: nestedChildProps.width ?? '100%',
                 children: traverseGroupAndAddIndex(
-                  (nestedChild.props as { children: React.ReactElement }).children,
+                  nestedChildProps.children,
                   nestingLevelOfGroup,
                   stepItemIndex,
                 ),

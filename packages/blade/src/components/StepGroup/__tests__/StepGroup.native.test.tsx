@@ -1,8 +1,11 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
+import { markerLineHorizontalLength } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Badge } from '~components/Badge';
+import { size as sizeTokens } from '~tokens/global';
+import { Collapsible, CollapsibleBody, CollapsibleLink } from '~components/Collapsible';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -160,5 +163,42 @@ describe('<StepGroup /> (native)', () => {
       </StepGroup>,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should force the CollapsibleBody to full width so nested StepItems can fill the row', () => {
+    // Collapsible aligns children to the start, so without an explicit width the body
+    // shrink-wraps and StepItem's `width: '100%'` header collapses to 0 (only markers show).
+    // StepGroup injects width="100%" onto the CollapsibleBody to prevent this.
+    const { getByTestId } = renderWithTheme(
+      <StepGroup>
+        <StepItem title="Introduction" />
+        <Collapsible>
+          <CollapsibleLink>Show</CollapsibleLink>
+          <CollapsibleBody testID="step-collapsible-body">
+            <StepItem title="Business Details" />
+            <StepItem title="Complete Onboarding" />
+          </CollapsibleBody>
+        </Collapsible>
+      </StepGroup>,
+    );
+
+    const collapsibleBody = getByTestId('step-collapsible-body');
+    const flattenedStyle = Array.isArray(collapsibleBody.props.style)
+      ? Object.assign({}, ...collapsibleBody.props.style)
+      : collapsibleBody.props.style;
+    expect(flattenedStyle.width).toBe('100%');
+  });
+
+  describe('markerLineHorizontalLength token', () => {
+    it('should be a fixed length that is roughly half the horizontal item width', () => {
+      // Horizontal StepItem uses a definite width of sizeTokens['160'] and each item
+      // renders a connector segment on each side of the marker. Two segments should
+      // roughly span one item width so adjacent connectors read as a continuous line.
+      const horizontalItemWidth = sizeTokens['160'];
+
+      expect(markerLineHorizontalLength).toBe(sizeTokens['72']);
+      expect(markerLineHorizontalLength * 2).toBeGreaterThan(horizontalItemWidth * 0.75);
+      expect(markerLineHorizontalLength * 2).toBeLessThanOrEqual(horizontalItemWidth);
+    });
   });
 });
