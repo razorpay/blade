@@ -531,10 +531,11 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseAuthored
               {...sharedRendererProps}
               mode={lastAuthoredModeRef.current}
-              paused={effectivePaused || visibleFamily !== 'authored'}
+              paused={resolvedIsPaused}
+              runtimeState={lifecycle.state}
+              isRuntimeAdmitted={lifecycle.isAdmitted}
               onLoad={() => handleFamilyLoad('authored')}
               onError={(error) => {
-                markFamilySettled('authored');
                 onError?.(error);
               }}
             />
@@ -557,7 +558,6 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
               paused={effectivePaused || visibleFamily !== 'emotional'}
               onLoad={() => handleFamilyLoad('emotional')}
               onError={(error) => {
-                markFamilySettled('emotional');
                 onError?.(error);
               }}
             />
