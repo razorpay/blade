@@ -175,6 +175,8 @@ class Texture {
   private wrapS: number;
   private wrapT: number;
   private flipY: boolean;
+  private allocatedWidth = 0;
+  private allocatedHeight = 0;
 
   constructor(gl: WebGLRenderingContext, params: TextureParams = {}) {
     this.gl = gl;
@@ -213,23 +215,57 @@ class Texture {
 
     this.bind();
 
-    if (this.flipY) {
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    }
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, this.flipY);
 
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+    const size = this.getSourceSize(source);
+    this.allocatedWidth = size.width;
+    this.allocatedHeight = size.height;
   }
 
   /**
    * Update texture from video frame (call each frame for video textures)
    */
   update(source: TextureSource): void {
-    this.image(source);
+    if (!source) return;
+
+    const { gl } = this;
+    const size = this.getSourceSize(source);
+    if (
+      size.width <= 0 ||
+      size.height <= 0 ||
+      size.width !== this.allocatedWidth ||
+      size.height !== this.allocatedHeight
+    ) {
+      this.image(source);
+      return;
+    }
+
+    this.bind();
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, this.flipY);
+    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
+  }
+
+  private getSourceSize(
+    source: Exclude<TextureSource, null>,
+  ): {
+    width: number;
+    height: number;
+  } {
+    if (source instanceof HTMLVideoElement) {
+      return { width: source.videoWidth, height: source.videoHeight };
+    }
+    if (source instanceof HTMLImageElement) {
+      return { width: source.naturalWidth, height: source.naturalHeight };
+    }
+    return { width: source.width, height: source.height };
   }
 
   destroy(): void {
     this.gl.deleteTexture(this.texture);
     this.texture = null;
+    this.allocatedWidth = 0;
+    this.allocatedHeight = 0;
   }
 }
 

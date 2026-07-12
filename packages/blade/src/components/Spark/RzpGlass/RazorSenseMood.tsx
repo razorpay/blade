@@ -1,10 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { RazorSenseEmotionalMode } from './modes';
-import { getRazorSenseMobileModeVideoSources, RAZOR_SENSE_EMOTIONAL_MODES } from './modes';
+import { RazorSenseFallback } from './RazorSenseFallback';
 import { RazorSenseMoodMount } from './RazorSenseMoodMount';
-import { getRazorSenseAsset } from './razorSenseAssets';
+import {
+  getRazorSenseAsset,
+  getRazorSenseRepresentativeFrame,
+  selectRazorSenseVideoSource,
+} from './razorSenseAssets';
+import type { RazorSenseLifecycleState } from './RazorSenseRuntime';
 import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
 import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
 import type { SemanticRazorSenseProps } from './types';
@@ -15,6 +20,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 
 const FADE_IN_MS = 200;
 const MOBILE_MEDIA_QUERY = '(max-width: 809.98px)';
+const MOBILE_TRANSITION_DISPOSAL_BUFFER_MS = 60;
 
 const FALLBACK_COLORS: Record<ColorSchemeNames, Record<RazorSenseEmotionalMode, string>> = {
   light: {
@@ -48,12 +54,29 @@ const MOBILE_BASE_COLORS: Record<ColorSchemeNames, Record<RazorSenseEmotionalMod
 
 type RazorSenseMoodProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseEmotionalMode;
+  /** @internal Shared runtime lifecycle. Direct internal renderers default to active. */
+  runtimeState?: RazorSenseLifecycleState;
+  /** @internal Shared runtime admission. Direct internal renderers default to admitted. */
+  isRuntimeAdmitted?: boolean;
   /** @internal Used by the fallback exporter after the requested frame is presented. */
   onFrameReady?: () => void;
 };
 
-type VideoWithFrameCallback = HTMLVideoElement & {
-  requestVideoFrameCallback?: (callback: () => void) => number;
+type MobileMoodLayer = {
+  id: number;
+  mode: RazorSenseEmotionalMode;
+  colorScheme: ColorSchemeNames;
+  targetTime: number;
+  source?: string;
+  opacity: number;
+  status: 'loading' | 'visible' | 'outgoing';
+};
+
+const releaseVideo = (video: HTMLVideoElement | undefined): void => {
+  if (!video) return;
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
 };
 
 const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
@@ -73,74 +96,77 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       onLoad,
       onError,
       onFrameReady,
+      runtimeState = 'active',
+      isRuntimeAdmitted = true,
     } = props;
     const containerRef = useRef<HTMLDivElement>(null);
+    const snapshotCanvasRef = useRef<HTMLCanvasElement>(null);
     const mountRef = useRef<RazorSenseMoodMount | null>(null);
-    const [isInitialized, setIsInitialized] = useState(false);
+    const mountedModeRef = useRef(mode);
+    const lifecycleKeyRef = useRef(`${runtimeState}:${isRuntimeAdmitted}`);
+    const onLoadRef = useRef(onLoad);
+    const onErrorRef = useRef(onError);
+    const hasLoadedRef = useRef(false);
+    const [hasSnapshot, setHasSnapshot] = useState(false);
+    const [showSnapshot, setShowSnapshot] = useState(false);
     const [hasError, setHasError] = useState(false);
     const { colorScheme } = useTheme();
 
+    onLoadRef.current = onLoad;
+    onErrorRef.current = onError;
+
     useEffect(() => {
       if (!containerRef.current) return undefined;
-
       let active = true;
-      let mount: RazorSenseMoodMount;
-      try {
-        mount = new RazorSenseMoodMount(containerRef.current, {
-          mode,
-          assetsPath,
-          transitionDuration: modeTransitionDuration,
-          paused,
-          playbackRate,
-          startTime,
-          interactive,
-          colorScheme,
-          onFrameReady,
-          onError: (error) => {
-            if (!active) return;
-            mountRef.current?.dispose();
-            mountRef.current = null;
-            setHasError(true);
-            onError?.(error);
-          },
-        });
-      } catch (cause: unknown) {
-        const error = cause instanceof Error ? cause : new Error(String(cause));
-        setHasError(true);
-        onError?.(error);
-        return undefined;
-      }
-      mountRef.current = mount;
-
-      void mount
-        .loadAssets()
-        .then(() => {
+      const mount = new RazorSenseMoodMount(containerRef.current, {
+        mode,
+        assetsPath,
+        transitionDuration: modeTransitionDuration,
+        paused,
+        playbackRate,
+        startTime,
+        interactive,
+        colorScheme,
+        runtimeState,
+        isRuntimeAdmitted,
+        onFrameReady,
+        onFirstFrame: () => {
           if (!active) return;
           setHasError(false);
-          setIsInitialized(true);
-          onLoad?.();
-        })
-        .catch((cause: unknown) => {
-          if (!active) return;
-          const error = cause instanceof Error ? cause : new Error(String(cause));
-          mount.dispose();
-          mountRef.current = null;
-          setHasError(true);
-          onError?.(error);
-        });
+          setShowSnapshot(false);
+          if (!hasLoadedRef.current) {
+            hasLoadedRef.current = true;
+            onLoadRef.current?.();
+          }
+        },
+        onError: (error) => {
+          if (active) onErrorRef.current?.(error);
+        },
+      });
+      mountRef.current = mount;
+      mountedModeRef.current = mode;
+      lifecycleKeyRef.current = `${runtimeState}:${isRuntimeAdmitted}`;
+
+      void mount.loadAssets().catch((cause: unknown) => {
+        if (!active) return;
+        const error = cause instanceof Error ? cause : new Error(String(cause));
+        setHasError(true);
+        onErrorRef.current?.(error);
+      });
 
       return () => {
         active = false;
         mount.dispose();
         mountRef.current = null;
-        setIsInitialized(false);
       };
-      // Mode changes are intentionally handled in-place by the effect below.
+      // Mode, options, and lifecycle changes are handled in-place below.
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [assetsPath]);
 
     useEffect(() => {
-      mountRef.current?.setMode(mode);
+      if (!mountRef.current || mountedModeRef.current === mode) return;
+      mountedModeRef.current = mode;
+      void mountRef.current.setMode(mode);
     }, [mode]);
 
     useEffect(() => {
@@ -163,9 +189,41 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       startTime,
     ]);
 
+    useLayoutEffect(() => {
+      const key = `${runtimeState}:${isRuntimeAdmitted}`;
+      if (!mountRef.current || lifecycleKeyRef.current === key) return undefined;
+      lifecycleKeyRef.current = key;
+      let active = true;
+      void mountRef.current
+        .setRuntimeState(runtimeState, isRuntimeAdmitted, snapshotCanvasRef.current)
+        .then(({ didCapture, didPresent }) => {
+          if (!active) return;
+          if (didCapture) setHasSnapshot(true);
+          if (didPresent) {
+            setShowSnapshot(false);
+          } else if (
+            runtimeState === 'warm' ||
+            runtimeState === 'dormant' ||
+            runtimeState === 'cold' ||
+            (runtimeState === 'active' && !isRuntimeAdmitted)
+          ) {
+            setShowSnapshot(didCapture || hasSnapshot);
+          }
+        });
+      return () => {
+        active = false;
+      };
+    }, [hasSnapshot, isRuntimeAdmitted, runtimeState]);
+
     const mergedRef = useMergeRefs(forwardedRef, containerRef);
     const widthStyle = typeof width === 'number' ? `${width}px` : width;
     const heightStyle = typeof height === 'number' ? `${height}px` : height;
+    const representativeFrame = getRazorSenseRepresentativeFrame({
+      assetsPath,
+      mode,
+      colorScheme,
+      viewport: 'desktop',
+    });
 
     return (
       <div
@@ -176,12 +234,49 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           height: heightStyle,
           position: 'relative',
           overflow: 'hidden',
-          backgroundColor: hasError ? FALLBACK_COLORS[colorScheme][mode] : 'transparent',
-          transition: `${FADE_IN_MS}ms opacity, ${FADE_IN_MS}ms background-color`,
-          opacity: isInitialized || hasError ? 1 : 0,
+          backgroundColor: FALLBACK_COLORS[colorScheme][mode],
+          transition: `${FADE_IN_MS}ms background-color`,
           ...style,
         }}
-      />
+      >
+        <div
+          aria-hidden="true"
+          style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+        >
+          <RazorSenseFallback
+            src={representativeFrame.src}
+            objectPosition={representativeFrame.objectPosition}
+          />
+        </div>
+        <canvas
+          ref={snapshotCanvasRef}
+          aria-hidden="true"
+          data-razor-sense-mood-snapshot={hasSnapshot ? 'ready' : 'empty'}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            zIndex: 2,
+            opacity: showSnapshot && hasSnapshot ? 1 : 0,
+            pointerEvents: 'none',
+          }}
+        />
+        {hasError ? (
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 3,
+              backgroundColor: FALLBACK_COLORS[colorScheme][mode],
+              opacity: 0,
+              pointerEvents: 'none',
+            }}
+          />
+        ) : null}
+      </div>
     );
   },
 );
@@ -202,218 +297,486 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       onLoad,
       onError,
       onFrameReady,
+      runtimeState = 'active',
+      isRuntimeAdmitted = true,
     } = props;
     const { colorScheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
-    const schemeSnapshotCanvasRef = useRef<HTMLCanvasElement>(null);
-    const videoRefs = useRef<Partial<Record<RazorSenseEmotionalMode, HTMLVideoElement>>>({});
-    const playbackTimesRef = useRef<Partial<Record<RazorSenseEmotionalMode, number>>>({});
-    const pendingPlaybackTimesRef = useRef<Partial<Record<RazorSenseEmotionalMode, number>>>({});
-    const displayedColorSchemeRef = useRef(colorScheme);
-    const requestedColorSchemeRef = useRef(colorScheme);
-    const schemeTransitionPendingRef = useRef(false);
-    const schemeTransitionGenerationRef = useRef(0);
-    const pausedRef = useRef(paused);
-    const playbackRateRef = useRef(playbackRate);
-    const startTimeRef = useRef(startTime);
-    const transitionDurationRef = useRef(modeTransitionDuration);
-    const modeRef = useRef(mode);
+    const snapshotCanvasRef = useRef<HTMLCanvasElement>(null);
+    const layerCaptureCanvasRef = useRef<HTMLCanvasElement>(null);
+    const nextLayerIdRef = useRef(2);
+    const initialLayerRef = useRef<MobileMoodLayer>({
+      id: 1,
+      mode,
+      colorScheme,
+      targetTime: Math.max(0, startTime),
+      opacity: 0,
+      status: 'loading',
+    });
+    const [layers, setLayersState] = useState<MobileMoodLayer[]>([initialLayerRef.current]);
+    const layersRef = useRef(layers);
+    const videoByLayerIdRef = useRef(new Map<number, HTMLVideoElement>());
+    const frameWaitByLayerIdRef = useRef(new Map<number, CancelVideoFrameWait>());
+    const preparedLayerIdsRef = useRef(new Set<number>());
+    const readyLayerIdsRef = useRef(new Set<number>());
+    const resolvingLayerIdsRef = useRef(new Set<number>());
+    const requestedLayerIdRef = useRef(1);
+    const requestedKeyRef = useRef(
+      `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`,
+    );
+    const transitionGenerationRef = useRef(0);
+    const resourceGenerationRef = useRef(0);
+    const transitionTimerRef = useRef<number>();
+    const transitionRafRef = useRef<number>();
+    const lifecycleKeyRef = useRef(`${runtimeState}:${isRuntimeAdmitted}`);
+    const hasLoadedRef = useRef(false);
+    const reportedAttemptErrorsRef = useRef(new Set<number>());
+    const isMountedRef = useRef(true);
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
     const onFrameReadyRef = useRef(onFrameReady);
-    const frameReadyCleanupRef = useRef<CancelVideoFrameWait | null>(null);
-    const hasLoadedRef = useRef(false);
-    const loadedModesRef = useRef(new Set<RazorSenseEmotionalMode>());
-    const failedModeErrorsRef = useRef(new Map<RazorSenseEmotionalMode, Error>());
-    const [isInitialized, setIsInitialized] = useState(false);
+    const shouldPlayRef = useRef(false);
+    const [hasSnapshot, setHasSnapshot] = useState(false);
+    const hasSnapshotRef = useRef(hasSnapshot);
+    const [snapshotOpacity, setSnapshotOpacity] = useState(0);
+    const [isSnapshotTransitionEnabled, setIsSnapshotTransitionEnabled] = useState(false);
+    const [displayedMode, setDisplayedMode] = useState(mode);
+    const [displayedColorScheme, setDisplayedColorScheme] = useState(colorScheme);
     const [hasError, setHasError] = useState(false);
-    const [, setSchemeTransitionEpoch] = useState(0);
-    const sources = getRazorSenseMobileModeVideoSources(assetsPath, colorScheme);
 
-    if (requestedColorSchemeRef.current !== colorScheme) {
-      const pendingTimes = { ...playbackTimesRef.current };
-      const activeVideo = videoRefs.current[mode];
-      if (activeVideo?.readyState && Number.isFinite(activeVideo.currentTime)) {
-        pendingTimes[mode] = activeVideo.currentTime;
-      }
-      pendingPlaybackTimesRef.current = pendingTimes;
-      requestedColorSchemeRef.current = colorScheme;
-      schemeTransitionPendingRef.current = true;
-      schemeTransitionGenerationRef.current += 1;
-    }
-
-    const completeSchemeTransition = useCallback(
-      (candidate: RazorSenseEmotionalMode): void => {
-        if (
-          candidate !== modeRef.current ||
-          !schemeTransitionPendingRef.current ||
-          requestedColorSchemeRef.current !== colorScheme
-        ) {
-          return;
-        }
-        const completionGeneration = schemeTransitionGenerationRef.current;
-        window.requestAnimationFrame(() => {
-          if (
-            !schemeTransitionPendingRef.current ||
-            requestedColorSchemeRef.current !== colorScheme ||
-            schemeTransitionGenerationRef.current !== completionGeneration
-          ) {
-            return;
-          }
-          displayedColorSchemeRef.current = colorScheme;
-          schemeTransitionPendingRef.current = false;
-          pendingPlaybackTimesRef.current = {};
-          setSchemeTransitionEpoch((epoch) => epoch + 1);
-        });
-      },
-      [colorScheme],
-    );
-
-    const completeSchemeTransitionAfterDecodedFrame = useCallback(
-      (candidate: RazorSenseEmotionalMode, video: HTMLVideoElement): void => {
-        const waitForPresentedFrame = (): void => {
-          const frameVideo = video as VideoWithFrameCallback;
-          if (!pausedRef.current && !document.hidden && frameVideo.requestVideoFrameCallback) {
-            frameVideo.requestVideoFrameCallback(() => completeSchemeTransition(candidate));
-          } else {
-            window.requestAnimationFrame(() => completeSchemeTransition(candidate));
-          }
-        };
-
-        if (video.seeking) {
-          video.addEventListener('seeked', waitForPresentedFrame, { once: true });
-        } else {
-          waitForPresentedFrame();
-        }
-      },
-      [completeSchemeTransition],
-    );
-
-    const requestFrameReady = useCallback(
-      (candidate: RazorSenseEmotionalMode, video: HTMLVideoElement, targetTime: number): void => {
-        if (!onFrameReadyRef.current || candidate !== modeRef.current) return;
-        frameReadyCleanupRef.current?.();
-        const frameRate = getRazorSenseAsset({
-          assetsPath,
-          mode: candidate,
-          colorScheme,
-          viewport: 'mobile',
-        }).fallbackSource.framerate;
-        frameReadyCleanupRef.current = seekToRazorSenseVideoFrame({
-          video,
-          targetTime,
-          frameRate,
-          shouldRemainPaused: pausedRef.current,
-          onReady: () => {
-            frameReadyCleanupRef.current = null;
-            if (candidate === modeRef.current) onFrameReadyRef.current?.();
-          },
-        });
-      },
-      [assetsPath, colorScheme],
-    );
-
-    pausedRef.current = paused;
-    playbackRateRef.current = playbackRate;
-    startTimeRef.current = startTime;
-    transitionDurationRef.current = modeTransitionDuration;
-    modeRef.current = mode;
+    const canOwnMedia = runtimeState === 'warm' || (runtimeState === 'active' && isRuntimeAdmitted);
+    const shouldPlay = runtimeState === 'active' && isRuntimeAdmitted && !paused;
+    layersRef.current = layers;
+    hasSnapshotRef.current = hasSnapshot;
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
     onFrameReadyRef.current = onFrameReady;
+    shouldPlayRef.current = shouldPlay;
 
-    useEffect(() => {
-      loadedModesRef.current.clear();
-      failedModeErrorsRef.current.clear();
-      setHasError(false);
-    }, [colorScheme]);
+    const replaceLayers = useCallback((nextLayers: MobileMoodLayer[]): void => {
+      layersRef.current = nextLayers;
+      setLayersState(nextLayers);
+    }, []);
 
-    useEffect(() => {
-      const knownError = failedModeErrorsRef.current.get(mode);
-      if (knownError) {
-        setHasError(true);
-        onErrorRef.current?.(knownError);
-      } else if (loadedModesRef.current.has(mode)) {
-        setHasError(false);
-        setIsInitialized(true);
-        if (!hasLoadedRef.current) {
-          hasLoadedRef.current = true;
-          onLoadRef.current?.();
-        }
+    const clearTransitionWork = useCallback((): void => {
+      if (transitionTimerRef.current !== undefined) {
+        window.clearTimeout(transitionTimerRef.current);
+        transitionTimerRef.current = undefined;
       }
-
-      const targetVideo = videoRefs.current[mode];
-      if (targetVideo) {
-        const targetTime = Math.max(0, startTimeRef.current);
-        if (onFrameReadyRef.current && loadedModesRef.current.has(mode)) {
-          requestFrameReady(mode, targetVideo, targetTime);
-        } else if (!onFrameReadyRef.current) {
-          targetVideo.currentTime = targetTime;
-        }
-        targetVideo.playbackRate = playbackRateRef.current;
-        if (!pausedRef.current && !document.hidden) {
-          targetVideo.play().catch(() => undefined);
-        }
+      if (transitionRafRef.current !== undefined) {
+        window.cancelAnimationFrame(transitionRafRef.current);
+        transitionRafRef.current = undefined;
       }
+    }, []);
 
-      const pausePreviousVideos = window.setTimeout(() => {
-        Object.entries(videoRefs.current).forEach(([candidate, video]) => {
-          if (candidate !== mode) video?.pause();
-        });
-      }, transitionDurationRef.current * 1000 + 60);
+    const cancelFrameWait = useCallback((layerId: number): void => {
+      frameWaitByLayerIdRef.current.get(layerId)?.();
+      frameWaitByLayerIdRef.current.delete(layerId);
+      preparedLayerIdsRef.current.delete(layerId);
+    }, []);
 
-      return () => window.clearTimeout(pausePreviousVideos);
-    }, [mode, requestFrameReady]);
+    const releaseLayer = useCallback(
+      (layerId: number): void => {
+        cancelFrameWait(layerId);
+        readyLayerIdsRef.current.delete(layerId);
+        releaseVideo(videoByLayerIdRef.current.get(layerId));
+        videoByLayerIdRef.current.delete(layerId);
+      },
+      [cancelFrameWait],
+    );
 
-    useEffect(() => {
-      Object.entries(videoRefs.current).forEach(([candidate, video]) => {
-        if (!video) return;
-        video.playbackRate = playbackRate;
-        if (paused) {
-          video.pause();
-        } else if (candidate === mode && !document.hidden) {
-          video.play().catch(() => undefined);
-        }
-      });
-    }, [mode, paused, playbackRate]);
-
-    useEffect(
-      () => () => {
-        frameReadyCleanupRef.current?.();
-        frameReadyCleanupRef.current = null;
-        Object.values(videoRefs.current).forEach((video) => {
-          video?.pause();
-          if (video) {
-            video.src = '';
-            video.load();
-          }
+    const releaseLayersExcept = useCallback(
+      (retainedLayerIds: ReadonlySet<number>): void => {
+        videoByLayerIdRef.current.forEach((_video, layerId) => {
+          if (!retainedLayerIds.has(layerId)) releaseLayer(layerId);
         });
       },
+      [releaseLayer],
+    );
+
+    const captureCurrentFrame = useCallback((shouldShowSnapshot: boolean): boolean => {
+      const target = snapshotCanvasRef.current;
+      const scratch = layerCaptureCanvasRef.current;
+      const container = containerRef.current;
+      if (!target || !scratch || !container) return false;
+      let didCapture = false;
+
+      layersRef.current.forEach((layer) => {
+        const video = videoByLayerIdRef.current.get(layer.id);
+        if (
+          !video ||
+          video.readyState < video.HAVE_CURRENT_DATA ||
+          video.videoWidth === 0 ||
+          video.videoHeight === 0
+        ) {
+          return;
+        }
+        const computedOpacity = Number(window.getComputedStyle(video).opacity);
+        const opacity = Number.isFinite(computedOpacity) ? computedOpacity : layer.opacity;
+        if (opacity <= 0.001) return;
+
+        captureVideoCoverFrame(video, scratch, container);
+        if (!didCapture) {
+          target.width = scratch.width;
+          target.height = scratch.height;
+        }
+        const context = target.getContext('2d');
+        if (!context) return;
+        if (!didCapture) context.clearRect(0, 0, target.width, target.height);
+        const horizontalScale = layer.colorScheme === 'dark' ? 1.2 : 1;
+        context.save();
+        context.globalAlpha = opacity;
+        context.translate(target.width / 2, 0);
+        context.scale(horizontalScale, 1);
+        context.translate(-target.width / 2, 0);
+        context.drawImage(scratch, 0, 0, target.width, target.height);
+        context.restore();
+        didCapture = true;
+      });
+
+      if (!didCapture) return false;
+      if (!hasSnapshotRef.current) {
+        hasSnapshotRef.current = true;
+        setHasSnapshot(true);
+      }
+      if (shouldShowSnapshot) {
+        setIsSnapshotTransitionEnabled(false);
+        setSnapshotOpacity(1);
+      }
+      return true;
+    }, []);
+
+    const createLayer = useCallback(
+      (
+        nextMode: RazorSenseEmotionalMode,
+        nextColorScheme: ColorSchemeNames,
+        targetTime: number,
+      ): MobileMoodLayer => ({
+        id: nextLayerIdRef.current++,
+        mode: nextMode,
+        colorScheme: nextColorScheme,
+        targetTime: Math.max(0, targetTime),
+        opacity: 0,
+        status: 'loading',
+      }),
       [],
     );
 
-    useEffect(() => {
-      const handleVisibilityChange = (): void => {
-        if (document.hidden) {
-          Object.values(videoRefs.current).forEach((video) => video?.pause());
+    const reportAttemptError = useCallback((generation: number, error: Error): void => {
+      if (reportedAttemptErrorsRef.current.has(generation)) return;
+      reportedAttemptErrorsRef.current.add(generation);
+      onErrorRef.current?.(error);
+    }, []);
+
+    const handleLayerReady = useCallback(
+      (layerId: number, generation: number): void => {
+        if (
+          !isMountedRef.current ||
+          generation !== transitionGenerationRef.current ||
+          layerId !== requestedLayerIdRef.current
+        ) {
           return;
         }
+        const currentLayers = layersRef.current;
+        const incomingLayer = currentLayers.find((layer) => layer.id === layerId);
+        if (!incomingLayer) return;
+        const isFirstExactReady = !readyLayerIdsRef.current.has(layerId);
+        readyLayerIdsRef.current.add(layerId);
+        setHasError(false);
+        setDisplayedMode(incomingLayer.mode);
+        setDisplayedColorScheme(incomingLayer.colorScheme);
 
-        if (!pausedRef.current) {
-          videoRefs.current[modeRef.current]?.play().catch(() => undefined);
+        const settleTransition = (): void => {
+          if (generation !== transitionGenerationRef.current) return;
+          replaceLayers(
+            layersRef.current.map((layer) =>
+              layer.id === layerId
+                ? { ...layer, opacity: 1, status: 'visible' }
+                : { ...layer, opacity: 0, status: 'outgoing' },
+            ),
+          );
+          setIsSnapshotTransitionEnabled(true);
+          setSnapshotOpacity(0);
+        };
+        if (onFrameReadyRef.current) settleTransition();
+        else {
+          transitionRafRef.current = window.requestAnimationFrame(() => {
+            transitionRafRef.current = undefined;
+            settleTransition();
+          });
         }
-      };
 
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-      return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-    }, []);
+        if (isFirstExactReady && !hasLoadedRef.current) {
+          hasLoadedRef.current = true;
+          onLoadRef.current?.();
+        }
+        if (isFirstExactReady) onFrameReadyRef.current?.();
+
+        const outgoingLayerIds = currentLayers
+          .filter((layer) => layer.id !== layerId)
+          .map((layer) => layer.id);
+        if (outgoingLayerIds.length === 0) return;
+        transitionTimerRef.current = window.setTimeout(() => {
+          transitionTimerRef.current = undefined;
+          if (
+            generation !== transitionGenerationRef.current ||
+            requestedLayerIdRef.current !== layerId
+          ) {
+            return;
+          }
+          outgoingLayerIds.forEach(releaseLayer);
+          const settledLayer = layersRef.current.find((layer) => layer.id === layerId);
+          if (settledLayer) replaceLayers([{ ...settledLayer, opacity: 1, status: 'visible' }]);
+        }, Math.max(0, modeTransitionDuration * 1000) + MOBILE_TRANSITION_DISPOSAL_BUFFER_MS);
+      },
+      [modeTransitionDuration, releaseLayer, replaceLayers],
+    );
+
+    const prepareLayer = useCallback(
+      (layer: MobileMoodLayer, video: HTMLVideoElement): void => {
+        if (preparedLayerIdsRef.current.has(layer.id)) return;
+        preparedLayerIdsRef.current.add(layer.id);
+        video.playbackRate = playbackRate;
+        const generation = transitionGenerationRef.current;
+        const frameRate = getRazorSenseAsset({
+          assetsPath,
+          mode: layer.mode,
+          colorScheme: layer.colorScheme,
+          viewport: 'mobile',
+        }).fallbackSource.framerate;
+        let cleanup: CancelVideoFrameWait = () => undefined;
+        cleanup = seekToRazorSenseVideoFrame({
+          video,
+          targetTime: layer.targetTime,
+          frameRate,
+          shouldRemainPaused: true,
+          onReady: () => {
+            frameWaitByLayerIdRef.current.delete(layer.id);
+            preparedLayerIdsRef.current.delete(layer.id);
+            if (
+              generation !== transitionGenerationRef.current ||
+              !layersRef.current.some((candidate) => candidate.id === layer.id)
+            ) {
+              return;
+            }
+            handleLayerReady(layer.id, generation);
+            if (shouldPlayRef.current) video.play().catch(() => undefined);
+          },
+        });
+        frameWaitByLayerIdRef.current.set(layer.id, cleanup);
+      },
+      [assetsPath, handleLayerReady, playbackRate],
+    );
+
+    useLayoutEffect(() => {
+      const requestedKey = `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`;
+      if (requestedKeyRef.current === requestedKey) return;
+      requestedKeyRef.current = requestedKey;
+      const generation = ++transitionGenerationRef.current;
+      clearTransitionWork();
+      frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
+      frameWaitByLayerIdRef.current.clear();
+      preparedLayerIdsRef.current.clear();
+
+      const previousLayers = layersRef.current;
+      const previousRequested =
+        previousLayers.find((layer) => layer.id === requestedLayerIdRef.current) ??
+        previousLayers[previousLayers.length - 1];
+      let targetTime = Math.max(0, startTime);
+      if (previousRequested?.mode === mode && previousRequested.colorScheme !== colorScheme) {
+        const previousVideo = videoByLayerIdRef.current.get(previousRequested.id);
+        if (previousVideo && Number.isFinite(previousVideo.currentTime)) {
+          targetTime = previousVideo.currentTime;
+        }
+      }
+      const incomingLayer = createLayer(mode, colorScheme, targetTime);
+      requestedLayerIdRef.current = incomingLayer.id;
+      readyLayerIdsRef.current.delete(incomingLayer.id);
+      setHasError(false);
+
+      const currentLayer = [...previousLayers]
+        .reverse()
+        .find((layer) => layer.status !== 'loading' && readyLayerIdsRef.current.has(layer.id));
+      const isInterrupted =
+        previousLayers.length > 1 ||
+        previousLayers.some((layer) => layer.status === 'loading' || layer.status === 'outgoing');
+      if (isInterrupted) captureCurrentFrame(true);
+
+      if (!canOwnMedia || !currentLayer || isInterrupted) {
+        releaseLayersExcept(new Set());
+        replaceLayers([incomingLayer]);
+      } else {
+        releaseLayersExcept(new Set([currentLayer.id]));
+        replaceLayers([{ ...currentLayer, opacity: 1, status: 'visible' }, incomingLayer]);
+      }
+      resourceGenerationRef.current += 1;
+      reportedAttemptErrorsRef.current.delete(generation);
+    }, [
+      assetsPath,
+      canOwnMedia,
+      captureCurrentFrame,
+      clearTransitionWork,
+      colorScheme,
+      createLayer,
+      mode,
+      releaseLayersExcept,
+      replaceLayers,
+      startTime,
+    ]);
+
+    useLayoutEffect(() => {
+      const key = `${runtimeState}:${isRuntimeAdmitted}`;
+      if (lifecycleKeyRef.current === key) return;
+      lifecycleKeyRef.current = key;
+      clearTransitionWork();
+
+      if (runtimeState === 'suspended') {
+        captureCurrentFrame(true);
+        frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
+        frameWaitByLayerIdRef.current.clear();
+        preparedLayerIdsRef.current.clear();
+        videoByLayerIdRef.current.forEach((video) => video.pause());
+        const requestedLayer = layersRef.current.find(
+          (layer) => layer.id === requestedLayerIdRef.current,
+        );
+        if (requestedLayer) {
+          releaseLayersExcept(new Set([requestedLayer.id]));
+          replaceLayers([{ ...requestedLayer, opacity: 0 }]);
+        }
+        return;
+      }
+
+      if (
+        runtimeState === 'dormant' ||
+        runtimeState === 'cold' ||
+        (runtimeState === 'active' && !isRuntimeAdmitted)
+      ) {
+        captureCurrentFrame(true);
+        transitionGenerationRef.current += 1;
+        resourceGenerationRef.current += 1;
+        releaseLayersExcept(new Set());
+        const nextLayer = createLayer(mode, colorScheme, startTime);
+        requestedLayerIdRef.current = nextLayer.id;
+        replaceLayers([nextLayer]);
+        return;
+      }
+
+      const requestedLayer = layersRef.current.find(
+        (layer) => layer.id === requestedLayerIdRef.current,
+      );
+      if (requestedLayer && readyLayerIdsRef.current.has(requestedLayer.id)) {
+        handleLayerReady(requestedLayer.id, transitionGenerationRef.current);
+      } else if (requestedLayer) {
+        const requestedVideo = videoByLayerIdRef.current.get(requestedLayer.id);
+        if (
+          requestedVideo?.readyState &&
+          requestedVideo.readyState >= requestedVideo.HAVE_CURRENT_DATA
+        ) {
+          prepareLayer(requestedLayer, requestedVideo);
+        }
+      }
+    }, [
+      captureCurrentFrame,
+      clearTransitionWork,
+      colorScheme,
+      createLayer,
+      handleLayerReady,
+      isRuntimeAdmitted,
+      mode,
+      prepareLayer,
+      releaseLayersExcept,
+      replaceLayers,
+      runtimeState,
+      startTime,
+    ]);
+
+    useEffect(() => {
+      if (!canOwnMedia) return;
+      const resourceGeneration = resourceGenerationRef.current;
+      layersRef.current.forEach((layer) => {
+        if (layer.source || resolvingLayerIdsRef.current.has(layer.id)) return;
+        resolvingLayerIdsRef.current.add(layer.id);
+        void selectRazorSenseVideoSource({
+          assetsPath,
+          mode: layer.mode,
+          colorScheme: layer.colorScheme,
+          viewport: 'mobile',
+        })
+          .then(({ src }) => {
+            resolvingLayerIdsRef.current.delete(layer.id);
+            if (
+              !isMountedRef.current ||
+              resourceGeneration !== resourceGenerationRef.current ||
+              !layersRef.current.some((candidate) => candidate.id === layer.id)
+            ) {
+              return;
+            }
+            replaceLayers(
+              layersRef.current.map((candidate) =>
+                candidate.id === layer.id ? { ...candidate, source: src } : candidate,
+              ),
+            );
+          })
+          .catch((cause: unknown) => {
+            resolvingLayerIdsRef.current.delete(layer.id);
+            if (
+              resourceGeneration !== resourceGenerationRef.current ||
+              layer.id !== requestedLayerIdRef.current
+            ) {
+              return;
+            }
+            const generation = transitionGenerationRef.current;
+            const remainingLayers = layersRef.current.filter(
+              (candidate) => candidate.id !== layer.id,
+            );
+            if (remainingLayers.length > 0) {
+              const retained = remainingLayers[remainingLayers.length - 1];
+              replaceLayers([{ ...retained, opacity: 1, status: 'visible' }]);
+              setDisplayedMode(retained.mode);
+              setDisplayedColorScheme(retained.colorScheme);
+              setSnapshotOpacity(0);
+            } else {
+              replaceLayers([]);
+              setHasError(true);
+            }
+            reportAttemptError(
+              generation,
+              cause instanceof Error ? cause : new Error(String(cause)),
+            );
+          });
+      });
+    }, [assetsPath, canOwnMedia, layers, replaceLayers, reportAttemptError]);
+
+    useEffect(() => {
+      videoByLayerIdRef.current.forEach((video, layerId) => {
+        video.playbackRate = playbackRate;
+        const isReady = readyLayerIdsRef.current.has(layerId);
+        if (shouldPlay && isReady) video.play().catch(() => undefined);
+        else video.pause();
+      });
+    }, [layers, playbackRate, shouldPlay]);
+
+    useEffect(
+      () => () => {
+        isMountedRef.current = false;
+        transitionGenerationRef.current += 1;
+        resourceGenerationRef.current += 1;
+        clearTransitionWork();
+        releaseLayersExcept(new Set());
+      },
+      [clearTransitionWork, releaseLayersExcept],
+    );
 
     const mergedRef = useMergeRefs(forwardedRef, containerRef);
     const widthStyle = typeof width === 'number' ? `${width}px` : width;
     const heightStyle = typeof height === 'number' ? `${height}px` : height;
-    const displayedColorScheme = schemeTransitionPendingRef.current
-      ? displayedColorSchemeRef.current
-      : colorScheme;
+    const representativeFrame = getRazorSenseRepresentativeFrame({
+      assetsPath,
+      mode,
+      colorScheme,
+      viewport: 'mobile',
+    });
+    const transitionDurationMs = Math.max(0, modeTransitionDuration * 1000);
 
     return (
       <div
@@ -424,106 +787,117 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           height: heightStyle,
           position: 'relative',
           overflow: 'hidden',
-          backgroundColor: MOBILE_BASE_COLORS[displayedColorScheme][mode],
-          transition: `${FADE_IN_MS}ms opacity, ${
-            modeTransitionDuration * 1000
-          }ms background-color`,
-          opacity: isInitialized || hasError ? 1 : 0,
+          backgroundColor: MOBILE_BASE_COLORS[displayedColorScheme][displayedMode],
+          transition: `${transitionDurationMs}ms background-color`,
           ...style,
         }}
       >
-        {RAZOR_SENSE_EMOTIONAL_MODES.map((candidate) => (
-          <video
-            key={candidate}
-            ref={(video) => {
-              if (video) videoRefs.current[candidate] = video;
-            }}
-            aria-hidden="true"
-            src={sources[candidate]}
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onLoadedData={() => {
-              loadedModesRef.current.add(candidate);
-              failedModeErrorsRef.current.delete(candidate);
-              if (candidate !== mode) return;
-              const video = videoRefs.current[candidate];
-              if (video) {
-                const restoredTime = schemeTransitionPendingRef.current
-                  ? pendingPlaybackTimesRef.current[candidate]
-                  : undefined;
-                const targetTime = Math.max(0, restoredTime ?? startTimeRef.current);
-                if (onFrameReadyRef.current) {
-                  requestFrameReady(candidate, video, targetTime);
-                } else {
-                  video.currentTime = targetTime;
-                }
-                video.playbackRate = playbackRateRef.current;
-                if (!pausedRef.current && !document.hidden) {
-                  video.play().catch(() => undefined);
-                }
-              }
-              setHasError(false);
-              setIsInitialized(true);
-              if (!hasLoadedRef.current) {
-                hasLoadedRef.current = true;
-                onLoadRef.current?.();
-              }
-              if (video) completeSchemeTransitionAfterDecodedFrame(candidate, video);
-            }}
-            onTimeUpdate={(event) => {
-              playbackTimesRef.current[candidate] = event.currentTarget.currentTime;
-              if (candidate === modeRef.current && !schemeTransitionPendingRef.current) {
-                captureVideoCoverFrame(
-                  event.currentTarget,
-                  schemeSnapshotCanvasRef.current,
-                  containerRef.current,
-                );
-              }
-            }}
-            onError={() => {
-              const error = new Error(`RazorSense: Failed to load the ${candidate} mobile mode`);
-              loadedModesRef.current.delete(candidate);
-              failedModeErrorsRef.current.set(candidate, error);
-              if (candidate !== mode) return;
-              frameReadyCleanupRef.current?.();
-              frameReadyCleanupRef.current = null;
-              setHasError(true);
-              onErrorRef.current?.(error);
-            }}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              display: 'block',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              opacity: mode === candidate ? 1 : 0,
-              transform: colorScheme === 'dark' ? 'scaleX(1.2)' : 'scaleX(1)',
-              transition: `${modeTransitionDuration * 1000}ms ease opacity`,
-              transitionProperty: 'opacity, transform',
-              pointerEvents: 'none',
-            }}
-          />
-        ))}
-        <canvas
-          ref={schemeSnapshotCanvasRef}
+        <div
           aria-hidden="true"
+          style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+        >
+          <RazorSenseFallback
+            src={representativeFrame.src}
+            objectPosition={representativeFrame.objectPosition}
+          />
+        </div>
+        {layers.map((layer) =>
+          layer.source ? (
+            <video
+              key={layer.id}
+              ref={(video) => {
+                if (video) videoByLayerIdRef.current.set(layer.id, video);
+                else videoByLayerIdRef.current.delete(layer.id);
+              }}
+              aria-hidden="true"
+              data-razor-sense-mobile-layer={layer.mode}
+              data-razor-sense-mobile-layer-status={layer.status}
+              src={layer.source}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onLoadedData={(event) => prepareLayer(layer, event.currentTarget)}
+              onError={() => {
+                const generation = transitionGenerationRef.current;
+                if (
+                  layer.id !== requestedLayerIdRef.current ||
+                  !layersRef.current.some((candidate) => candidate.id === layer.id)
+                ) {
+                  return;
+                }
+                releaseLayer(layer.id);
+                const remainingLayers = layersRef.current.filter(
+                  (candidate) => candidate.id !== layer.id,
+                );
+                if (remainingLayers.length > 0) {
+                  const retained = remainingLayers[remainingLayers.length - 1];
+                  replaceLayers([{ ...retained, opacity: 1, status: 'visible' }]);
+                  setDisplayedMode(retained.mode);
+                  setDisplayedColorScheme(retained.colorScheme);
+                  setSnapshotOpacity(0);
+                } else {
+                  replaceLayers([]);
+                  setHasError(true);
+                }
+                reportAttemptError(
+                  generation,
+                  new Error(`RazorSense: Failed to load the ${layer.mode} mobile mode`),
+                );
+              }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                zIndex: 1,
+                objectFit: 'cover',
+                opacity: layer.opacity,
+                transform: layer.colorScheme === 'dark' ? 'scaleX(1.2)' : 'scaleX(1)',
+                transition: `${
+                  layer.id === initialLayerRef.current.id && !hasLoadedRef.current
+                    ? FADE_IN_MS
+                    : transitionDurationMs
+                }ms ease opacity`,
+                transitionProperty: 'opacity, transform',
+                pointerEvents: 'none',
+              }}
+            />
+          ) : null,
+        )}
+        <canvas
+          ref={snapshotCanvasRef}
+          aria-hidden="true"
+          data-razor-sense-mobile-snapshot={hasSnapshot ? 'ready' : 'empty'}
           style={{
             position: 'absolute',
             inset: 0,
             display: 'block',
             width: '100%',
             height: '100%',
-            opacity: schemeTransitionPendingRef.current ? 1 : 0,
-            transform: displayedColorScheme === 'dark' ? 'scaleX(1.2)' : 'scaleX(1)',
-            transition: schemeTransitionPendingRef.current
-              ? 'none'
-              : `${modeTransitionDuration * 1000}ms ease opacity`,
+            zIndex: 2,
+            opacity: hasSnapshot ? snapshotOpacity : 0,
+            transition: isSnapshotTransitionEnabled
+              ? `${transitionDurationMs}ms ease opacity`
+              : 'none',
             pointerEvents: 'none',
           }}
         />
+        <canvas ref={layerCaptureCanvasRef} aria-hidden="true" style={{ display: 'none' }} />
+        {hasError ? (
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 3,
+              backgroundColor: FALLBACK_COLORS[colorScheme][mode],
+              opacity: 0,
+              pointerEvents: 'none',
+            }}
+          />
+        ) : null}
       </div>
     );
   },
@@ -566,8 +940,8 @@ const RazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(function 
   if (useMobileRenderer) {
     return <MobileRazorSenseMood {...props} ref={forwardedRef} />;
   }
-
   return <DesktopRazorSenseMood {...props} ref={forwardedRef} />;
 });
 
 export { RazorSenseMood, MobileRazorSenseMood };
+export type { RazorSenseMoodProps };
