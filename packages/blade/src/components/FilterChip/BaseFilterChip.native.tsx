@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import type { LayoutChangeEvent } from 'react-native';
+import type { LayoutChangeEvent, GestureResponderEvent } from 'react-native';
 import styled from 'styled-components/native';
 import Svg, { Rect } from 'react-native-svg';
 import type { BaseFilterChipProps } from './types';
@@ -205,19 +205,17 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
         onPress={
           isDisabled
             ? undefined
-            : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (e: any) => {
-                onClick?.(e);
+            : (e: GestureResponderEvent) => {
+                onClick?.((e as unknown) as React.MouseEventHandler);
               }
         }
-        {...({
+        {...(({
           onKeyDown: isDisabled
             ? undefined
-            : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (e: any) => {
-                onKeyDown?.(e);
+            : (e: GestureResponderEvent) => {
+                onKeyDown?.((e as unknown) as React.KeyboardEvent<Element>);
               },
-        } as any)}
+        } as unknown) as Record<string, unknown>)}
         {...makeAccessible({
           ...accessibilityProps,
           role: accessibilityProps?.role ?? 'button',

@@ -79,6 +79,7 @@ exports[`<FilterChipSelectInput /> (native) should render with default props 1`]
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
