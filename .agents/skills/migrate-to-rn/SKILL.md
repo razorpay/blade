@@ -349,7 +349,9 @@ Ready to create PR?
 For each component that passed:
 
 ```bash
-cd {Worktree} && git add -A
+# Stage only the component source — NOT the migration artifacts/screenshots in .claude/artifacts/.
+cd {Worktree} && git add packages/blade/src/components/{Name}
+# Add any other intentionally-changed source files explicitly (e.g. storybook registration) — never `git add -A`.
 cd {Worktree} && git commit -m "feat(native): Add React Native support for {Name}
 
 Implements .native.tsx files for the {Name} component, replacing stub
