@@ -92,7 +92,7 @@ const StyledFilterChip = styled(View)<{
     // When unselected the dashed border is drawn via an SVG overlay (see DashedBorder) so we
     // rely on it entirely: the native border has zero width, keeping the overlay's coordinate
     // space aligned with the border-box and avoiding iOS's buggy dashed+radius render.
-    borderWidth: $isSelected ? ((makeBorderSize(theme.border.width.thin) as unknown) as number) : 0,
+    borderWidth: $isSelected ? makeBorderSize(theme.border.width.thin) : 0,
     borderColor: $isSelected
       ? theme.colors.interactive.border.gray[$isDisabled ? 'disabled' : 'faded']
       : 'transparent',
@@ -236,7 +236,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
         <>
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton
-            accessibilityLabel={`Clear ${label} value`}
+            {...makeAccessible({ label: `Clear ${label} value`, role: 'button' })}
             onPress={isDisabled ? undefined : () => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
             {...metaAttribute({ name: 'filter-chip-close-button' })}
